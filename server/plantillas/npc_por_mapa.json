@@ -1,0 +1,622 @@
+{
+  "_nota": "NPC de quest permanentes, de los sp_v##_questnpc.xml del cliente. Traen npc_type, mapa, tile y direccion, asi que se pueden colocar sin necesidad de capturar el mapa. Los NPC de evento (sp20##_*.xml) NO se incluyen: solo aparecen en sus fechas. Los monstruos no estan en ningun xml; esos si son datos de servidor y solo salen de capturas.",
+  "mapas": {
+    "3": [
+      {
+        "npc_type": 11249,
+        "nombre": "Raziel",
+        "sprite": 40053,
+        "tile": [
+          267,
+          93
+        ],
+        "dir": 6,
+        "msgid": 116301
+      },
+      {
+        "npc_type": 14342,
+        "nombre": "Vulcan Priest Lupin",
+        "sprite": 40515,
+        "tile": [
+          252,
+          126
+        ],
+        "dir": 7,
+        "msgid": 130601
+      },
+      {
+        "npc_type": 14498,
+        "nombre": "Elder Wanta",
+        "sprite": 40522,
+        "tile": [
+          258,
+          129
+        ],
+        "dir": 7,
+        "msgid": 135701
+      },
+      {
+        "npc_type": 14528,
+        "nombre": "Maid Ruby",
+        "sprite": 40545,
+        "tile": [
+          265,
+          132
+        ],
+        "dir": 7,
+        "msgid": 136401
+      },
+      {
+        "npc_type": 14617,
+        "nombre": "Miner Hasset",
+        "sprite": 40567,
+        "tile": [
+          269,
+          134
+        ],
+        "dir": 7,
+        "msgid": 139301
+      },
+      {
+        "npc_type": 14722,
+        "nombre": "Smith Buff",
+        "sprite": 40590,
+        "tile": [
+          273,
+          136
+        ],
+        "dir": 7,
+        "msgid": 142601
+      },
+      {
+        "npc_type": 14830,
+        "nombre": "Baby Blair",
+        "sprite": 40609,
+        "tile": [
+          277,
+          138
+        ],
+        "dir": 7,
+        "msgid": 146301
+      },
+      {
+        "npc_type": 14909,
+        "nombre": "Raydia",
+        "sprite": 40631,
+        "tile": [
+          253,
+          121
+        ],
+        "dir": 7,
+        "msgid": 147401
+      },
+      {
+        "npc_type": 24569,
+        "nombre": "Fat Ryder",
+        "sprite": 40187,
+        "tile": [
+          280,
+          140
+        ],
+        "dir": 7,
+        "msgid": 151701
+      },
+      {
+        "npc_type": 24647,
+        "nombre": "Arecia",
+        "sprite": 40641,
+        "tile": [
+          244,
+          122
+        ],
+        "dir": 7,
+        "msgid": 153701
+      },
+      {
+        "npc_type": 24677,
+        "nombre": "Lil' Crane",
+        "sprite": 40737,
+        "tile": [
+          223,
+          115
+        ],
+        "dir": 5,
+        "msgid": 154801
+      },
+      {
+        "npc_type": 24757,
+        "nombre": "Weston",
+        "sprite": 40751,
+        "tile": [
+          218,
+          118
+        ],
+        "dir": 5,
+        "msgid": 156601
+      },
+      {
+        "npc_type": 24807,
+        "nombre": "Matia",
+        "sprite": 40773,
+        "tile": [
+          215,
+          120
+        ],
+        "dir": 5,
+        "msgid": 159001
+      }
+    ],
+    "26": [
+      {
+        "npc_type": 11249,
+        "nombre": "Raziel",
+        "sprite": 40053,
+        "tile": [
+          283,
+          134
+        ],
+        "dir": 5,
+        "msgid": 116301
+      },
+      {
+        "npc_type": 14342,
+        "nombre": "Vulcan Priest Lupin",
+        "sprite": 40515,
+        "tile": [
+          188,
+          156
+        ],
+        "dir": 7,
+        "msgid": 130601
+      },
+      {
+        "npc_type": 14498,
+        "nombre": "Elder Wanta",
+        "sprite": 40522,
+        "tile": [
+          192,
+          157
+        ],
+        "dir": 7,
+        "msgid": 135701
+      },
+      {
+        "npc_type": 14528,
+        "nombre": "Maid Ruby",
+        "sprite": 40545,
+        "tile": [
+          194,
+          161
+        ],
+        "dir": 7,
+        "msgid": 136401
+      },
+      {
+        "npc_type": 14617,
+        "nombre": "Miner Hasset",
+        "sprite": 40567,
+        "tile": [
+          195,
+          166
+        ],
+        "dir": 7,
+        "msgid": 139301
+      },
+      {
+        "npc_type": 14722,
+        "nombre": "Smith Buff",
+        "sprite": 40590,
+        "tile": [
+          192,
+          169
+        ],
+        "dir": 7,
+        "msgid": 142601
+      },
+      {
+        "npc_type": 14830,
+        "nombre": "Baby Blair",
+        "sprite": 40609,
+        "tile": [
+          189,
+          171
+        ],
+        "dir": 7,
+        "msgid": 146301
+      },
+      {
+        "npc_type": 14909,
+        "nombre": "Raydia",
+        "sprite": 40631,
+        "tile": [
+          199,
+          175
+        ],
+        "dir": 7,
+        "msgid": 147401
+      },
+      {
+        "npc_type": 24569,
+        "nombre": "Fat Ryder",
+        "sprite": 40187,
+        "tile": [
+          200,
+          180
+        ],
+        "dir": 7,
+        "msgid": 151701
+      },
+      {
+        "npc_type": 24647,
+        "nombre": "Arecia",
+        "sprite": 40641,
+        "tile": [
+          205,
+          179
+        ],
+        "dir": 5,
+        "msgid": 153701
+      },
+      {
+        "npc_type": 24677,
+        "nombre": "Lil' Crane",
+        "sprite": 40737,
+        "tile": [
+          209,
+          177
+        ],
+        "dir": 5,
+        "msgid": 154801
+      },
+      {
+        "npc_type": 24757,
+        "nombre": "Weston",
+        "sprite": 40751,
+        "tile": [
+          180,
+          152
+        ],
+        "dir": 7,
+        "msgid": 156601
+      },
+      {
+        "npc_type": 24807,
+        "nombre": "Matia",
+        "sprite": 40773,
+        "tile": [
+          161,
+          143
+        ],
+        "dir": 7,
+        "msgid": 159001
+      }
+    ],
+    "29": [
+      {
+        "npc_type": 11249,
+        "nombre": "Raziel",
+        "sprite": 40053,
+        "tile": [
+          176,
+          133
+        ],
+        "dir": 6,
+        "msgid": 116301
+      },
+      {
+        "npc_type": 14342,
+        "nombre": "Vulcan Priest Lupin",
+        "sprite": 40515,
+        "tile": [
+          224,
+          116
+        ],
+        "dir": 7,
+        "msgid": 130601
+      },
+      {
+        "npc_type": 14498,
+        "nombre": "Elder Wanta",
+        "sprite": 40522,
+        "tile": [
+          226,
+          121
+        ],
+        "dir": 7,
+        "msgid": 135701
+      },
+      {
+        "npc_type": 14528,
+        "nombre": "Maid Ruby",
+        "sprite": 40545,
+        "tile": [
+          225,
+          125
+        ],
+        "dir": 7,
+        "msgid": 136401
+      },
+      {
+        "npc_type": 14617,
+        "nombre": "Miner Hasset",
+        "sprite": 40567,
+        "tile": [
+          226,
+          130
+        ],
+        "dir": 7,
+        "msgid": 139301
+      },
+      {
+        "npc_type": 14722,
+        "nombre": "Smith Buff",
+        "sprite": 40590,
+        "tile": [
+          227,
+          134
+        ],
+        "dir": 7,
+        "msgid": 142601
+      },
+      {
+        "npc_type": 14830,
+        "nombre": "Baby Blair",
+        "sprite": 40609,
+        "tile": [
+          218,
+          131
+        ],
+        "dir": 6,
+        "msgid": 146301
+      },
+      {
+        "npc_type": 14909,
+        "nombre": "Raydia",
+        "sprite": 40631,
+        "tile": [
+          211,
+          132
+        ],
+        "dir": 6,
+        "msgid": 147401
+      },
+      {
+        "npc_type": 24569,
+        "nombre": "Fat Ryder",
+        "sprite": 40187,
+        "tile": [
+          206,
+          132
+        ],
+        "dir": 6,
+        "msgid": 151701
+      },
+      {
+        "npc_type": 24647,
+        "nombre": "Arecia",
+        "sprite": 40641,
+        "tile": [
+          215,
+          113
+        ],
+        "dir": 6,
+        "msgid": 153701
+      },
+      {
+        "npc_type": 24677,
+        "nombre": "Lil' Crane",
+        "sprite": 40737,
+        "tile": [
+          211,
+          113
+        ],
+        "dir": 6,
+        "msgid": 154801
+      },
+      {
+        "npc_type": 24757,
+        "nombre": "Weston",
+        "sprite": 40751,
+        "tile": [
+          201,
+          132
+        ],
+        "dir": 6,
+        "msgid": 156601
+      },
+      {
+        "npc_type": 24807,
+        "nombre": "Matia",
+        "sprite": 40773,
+        "tile": [
+          192,
+          131
+        ],
+        "dir": 7,
+        "msgid": 159001
+      }
+    ],
+    "38": [
+      {
+        "npc_type": 11249,
+        "nombre": "Raziel",
+        "sprite": 40053,
+        "tile": [
+          96,
+          91
+        ],
+        "dir": 6,
+        "msgid": 116301
+      },
+      {
+        "npc_type": 14342,
+        "nombre": "Vulcan Priest Lupin",
+        "sprite": 40515,
+        "tile": [
+          108,
+          148
+        ],
+        "dir": 5,
+        "msgid": 130601
+      },
+      {
+        "npc_type": 14498,
+        "nombre": "Elder Wanta",
+        "sprite": 40522,
+        "tile": [
+          104,
+          150
+        ],
+        "dir": 5,
+        "msgid": 135701
+      },
+      {
+        "npc_type": 14528,
+        "nombre": "Maid Ruby",
+        "sprite": 40545,
+        "tile": [
+          101,
+          151
+        ],
+        "dir": 5,
+        "msgid": 136401
+      },
+      {
+        "npc_type": 14617,
+        "nombre": "Miner Hasset",
+        "sprite": 40567,
+        "tile": [
+          98,
+          153
+        ],
+        "dir": 5,
+        "msgid": 139301
+      },
+      {
+        "npc_type": 14722,
+        "nombre": "Smith Buff",
+        "sprite": 40590,
+        "tile": [
+          95,
+          155
+        ],
+        "dir": 5,
+        "msgid": 142601
+      },
+      {
+        "npc_type": 14830,
+        "nombre": "Baby Blair",
+        "sprite": 40609,
+        "tile": [
+          87,
+          148
+        ],
+        "dir": 7,
+        "msgid": 146301
+      },
+      {
+        "npc_type": 14909,
+        "nombre": "Raydia",
+        "sprite": 40631,
+        "tile": [
+          92,
+          146
+        ],
+        "dir": 7,
+        "msgid": 147401
+      },
+      {
+        "npc_type": 24569,
+        "nombre": "Fat Ryder",
+        "sprite": 40187,
+        "tile": [
+          96,
+          143
+        ],
+        "dir": 7,
+        "msgid": 151701
+      },
+      {
+        "npc_type": 24647,
+        "nombre": "Arecia",
+        "sprite": 40641,
+        "tile": [
+          78,
+          146
+        ],
+        "dir": 6,
+        "msgid": 153701
+      },
+      {
+        "npc_type": 24677,
+        "nombre": "Lil' Crane",
+        "sprite": 40737,
+        "tile": [
+          116,
+          144
+        ],
+        "dir": 5,
+        "msgid": 154801
+      },
+      {
+        "npc_type": 24757,
+        "nombre": "Weston",
+        "sprite": 40751,
+        "tile": [
+          74,
+          144
+        ],
+        "dir": 6,
+        "msgid": 156601
+      },
+      {
+        "npc_type": 24807,
+        "nombre": "Matia",
+        "sprite": 40773,
+        "tile": [
+          143,
+          131
+        ],
+        "dir": 5,
+        "msgid": 159001
+      }
+    ],
+    "88": [
+      {
+        "npc_type": 14986,
+        "nombre": "Puji",
+        "sprite": 40011,
+        "tile": [
+          68,
+          96
+        ],
+        "dir": 5,
+        "msgid": 149301
+      },
+      {
+        "npc_type": 14987,
+        "nombre": "Lucas",
+        "sprite": 40657,
+        "tile": [
+          70,
+          95
+        ],
+        "dir": 5,
+        "msgid": 149301
+      }
+    ],
+    "308": [
+      {
+        "npc_type": 24798,
+        "nombre": "Past the Time Spirit",
+        "sprite": 40542,
+        "tile": [
+          159,
+          91
+        ],
+        "dir": 5,
+        "msgid": 158401
+      }
+    ]
+  }
+}

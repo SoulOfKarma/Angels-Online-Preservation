@@ -1,0 +1,306 @@
+"""
+Proxy de captura: se pone en el medio entre el cliente y un servidor REAL.
+
+Por que un proxy y no Wireshark:
+  - entrega los streams ya separados por conexion y por sentido
+  - saca la clave del Hello al vuelo y la guarda junto a la captura
+  - y sobre todo: REESCRIBE EL REDIRECT, para que la conexion al servidor de
+    mundo tambien pase por aca. Sin eso solo se captura el login.
+
+Uso:
+    python tools/proxy.py --server-xml "G:/Play Angels Online/server.xml"
+
+Deja una copia .bak del server.xml y lo apunta a 127.0.0.1. Todo queda en
+logs/proxy/ con el mismo formato que el resto del proyecto, asi que
+tools/diagnosticar.py lo entiende sin cambios.
+"""
+import asyncio
+import argparse
+import datetime
+import pathlib
+import struct
+import sys
+import time
+import json
+import logging
+
+RAIZ = pathlib.Path(__file__).parent.parent
+sys.path.insert(0, str(RAIZ / 'proto'))
+from framing import HDR, decode_header, encode_header, checksum, submessages
+from handshake import parse_hello, XorStatic, XorEvolving
+
+log = logging.getLogger('proxy')
+SALIDA = RAIZ / 'logs' / 'proxy'
+
+
+class Grab:
+    """Graba una conexion en los dos sentidos, mas la clave de sesion."""
+
+    def __init__(self, etiqueta):
+        SALIDA.mkdir(parents=True, exist_ok=True)
+        marca = datetime.datetime.now().strftime('%H%M%S_%f')
+        self.base = etiqueta + '_' + marca
+        self.c2s = open(SALIDA / (self.base + '_c2s.bin'), 'wb')
+        self.s2c = open(SALIDA / (self.base + '_s2c.bin'), 'wb')
+        # Los dos sentidos MEZCLADOS y con marca de tiempo. Con los .bin por
+        # separado no se puede saber que respuesta corresponde a que pedido:
+        # es justo lo que falto para identificar el dialogo de los NPC.
+        self.orden = open(SALIDA / (self.base + '_orden.jsonl'), 'w',
+                          encoding='utf-8')
+        self.t0 = time.time()
+        self.clave = None
+        self.cripto = {}                  # sentido -> cifrador
+        # Lo que entrega recv() son trozos de TCP, no frames: un frame puede
+        # venir partido entre dos lecturas, o varios pueden llegar juntos. Sin
+        # acumular, los frames partidos se pierden -- en la primera captura se
+        # perdieron cuatro bloques de 4 a 5 KB, justo los mas grandes.
+        self.pendiente = {'c2s': b'', 's2c': b''}
+
+    def guardar_clave(self, k):
+        self.clave = k
+        (SALIDA / (self.base + '_clave.txt')).write_text(k.hex(), encoding='utf-8')
+
+    def anotar(self, sentido, datos):
+        """Descifra, parte en sub-mensajes y los deja en orden cronologico.
+
+        El cliente cifra con clave evolutiva (cambia en cada paquete), asi que
+        hay que descifrar en secuencia y con un cifrador propio por sentido."""
+        if self.clave is None:
+            return
+        cr = self.cripto.get(sentido)
+        if cr is None:
+            cr = self.cripto[sentido] = (XorEvolving(self.clave) if sentido == 'c2s'
+                                         else XorStatic(self.clave))
+        datos = self.pendiente[sentido] + datos
+        off = 0
+        while off + HDR <= len(datos):
+            try:
+                h = decode_header(datos, off)
+            except Exception:
+                break
+            if h['length'] == 0:
+                break
+            if off + h['wire'] > len(datos):
+                break              # frame incompleto: esperar mas bytes
+            crudo = datos[off + HDR: off + h['wire']]
+            cuerpo = cr.decrypt(crudo) if h['encrypted'] else crudo
+            if h['seq'] != 0xFFFF and not h['compressed']:
+                try:
+                    subs, usado = submessages(cuerpo[:h['length']])
+                    if usado != h['length']:
+                        subs = [(-1, cuerpo[:h['length']])]
+                except Exception:
+                    subs = [(-1, cuerpo[:h['length']])]
+                for op, b in subs:
+                    self.orden.write(json.dumps({
+                        't': round(time.time() - self.t0, 4),
+                        'dir': sentido, 'opcode': op, 'len': len(b),
+                        'hex': b[:4096].hex()}))   # 256 escondia el formato del 0x001A
+                    self.orden.write(chr(10))
+                self.orden.flush()
+            off += h['wire']
+        self.pendiente[sentido] = datos[off:]
+
+    def cerrar(self):
+        for f in (self.c2s, self.s2c, self.orden):
+            try:
+                f.close()
+            except Exception:
+                pass
+
+
+def reescribir_redirect(datos, clave, host_nuevo, puerto_nuevo, aviso):
+    """Cambia ip y puerto del sub-mensaje 0x0004 (REDIRECT).
+
+    Hay que rehacer el frame entero: el checksum se calcula sobre el texto en
+    claro y viaja en el header, asi que no alcanza con parchear los bytes.
+    """
+    salida = bytearray()
+    off = 0
+    while off + HDR <= len(datos):
+        h = decode_header(datos, off)
+        if h['length'] == 0 or off + h['wire'] > len(datos):
+            salida.extend(datos[off:])
+            break
+        crudo = datos[off + HDR: off + h['wire']]
+        cuerpo = XorStatic(clave).decrypt(crudo) if h['encrypted'] else crudo
+        plano = cuerpo[:h['length']]
+        cambiado = False
+
+        if not h['compressed']:
+            subs, usado = submessages(plano)
+            if usado == h['length']:
+                nuevo = bytearray()
+                for op, b in subs:
+                    b = bytearray(b)
+                    if op == 0x0004 and len(b) >= 25:
+                        ip_vieja = bytes(b[7:23]).split(b'\x00')[0].decode('ascii', 'replace')
+                        pt_viejo = struct.unpack_from('<H', b, 23)[0]
+                        aviso(ip_vieja, pt_viejo)
+                        b[7:23] = host_nuevo.encode('ascii')[:15].ljust(16, b'\x00')
+                        struct.pack_into('<H', b, 23, puerto_nuevo)
+                        cambiado = True
+                    nuevo += struct.pack('<HH', len(b) + 2, op) + bytes(b)
+                if cambiado:
+                    plano = bytes(nuevo)
+
+        if cambiado:
+            n = len(plano)
+            ck = checksum(plano, n)
+            if h['encrypted']:
+                pad = ((n + 0xF) >> 4) << 4
+                salida += encode_header(n, h['seq'], 0x01, ck)
+                salida += XorStatic(clave).encrypt(plano + b'\x00' * (pad - n))
+            else:
+                salida += encode_header(n, h['seq'], 0x00, ck) + plano
+        else:
+            salida += datos[off: off + h['wire']]
+        off += h['wire']
+    return bytes(salida)
+
+
+class Proxy:
+    def __init__(self, destino, puerto, wpuerto_local, fport):
+        self.destino = destino
+        self.puerto = puerto
+        self.wpuerto_local = wpuerto_local
+        self.fport = fport
+        self.mundo_real = None      # (ip, puerto) que dijo el servidor real
+
+    async def tuberia(self, lector, escritor, grab, sentido, transformar=None):
+        f = grab.c2s if sentido == 'c2s' else grab.s2c
+        try:
+            while True:
+                d = await lector.read(65536)
+                if not d:
+                    break
+                f.write(d)
+                f.flush()
+                grab.anotar(sentido, d)
+                if sentido == 's2c' and grab.clave is None:
+                    try:
+                        h = decode_header(d, 0)
+                        if h['seq'] == 0xFFFF and not h['encrypted']:
+                            k = parse_hello(d[HDR:HDR + h['length']])['key']
+                            grab.guardar_clave(k)
+                            log.info('  clave de sesion: ' + k.hex(' '))
+                    except Exception:
+                        pass
+                if transformar and grab.clave is not None:
+                    d = transformar(d, grab.clave)
+                escritor.write(d)
+                await escritor.drain()
+        except (ConnectionResetError, asyncio.IncompleteReadError, BrokenPipeError):
+            pass
+        finally:
+            try:
+                escritor.close()
+            except Exception:
+                pass
+
+    async def maneja(self, lector, escritor, puerto_destino, etiqueta, reescribe):
+        addr = escritor.get_extra_info('peername')
+        grab = Grab(etiqueta)
+        log.info('[%s] cliente %s -> %s:%s  (grabando %s)',
+                 etiqueta, addr, self.destino, puerto_destino, grab.base)
+        try:
+            rl, wl = await asyncio.open_connection(self.destino, puerto_destino)
+        except Exception as e:
+            log.error('[%s] no se pudo conectar al servidor real: %s', etiqueta, e)
+            escritor.close()
+            return
+
+        def aviso(ip, pt):
+            self.mundo_real = (ip, pt)
+            log.info('  REDIRECT del servidor: %s:%s', ip, pt)
+            log.info('  reescrito a 127.0.0.1:%s (asi la sesion de mundo '
+                     'tambien se graba)', self.wpuerto_local)
+
+        t = None
+        if reescribe:
+            def t(d, k):
+                return reescribir_redirect(d, k, '127.0.0.1',
+                                           self.wpuerto_local, aviso)
+
+        await asyncio.gather(
+            self.tuberia(lector, wl, grab, 'c2s'),
+            self.tuberia(rl, escritor, grab, 's2c', t),
+        )
+        grab.cerrar()
+        log.info('[%s] cerrada -> logs/proxy/%s_*.bin', etiqueta, grab.base)
+
+    async def correr(self):
+        import functools
+
+        s1 = await asyncio.start_server(
+            functools.partial(self.maneja, puerto_destino=self.puerto,
+                              etiqueta='login', reescribe=True),
+            '127.0.0.1', self.puerto)
+        log.info('LOGIN    127.0.0.1:%s -> %s:%s', self.puerto, self.destino, self.puerto)
+
+        async def mundo(l, e):
+            if not self.mundo_real:
+                log.warning('llego una conexion de mundo sin redirect previo')
+                e.close()
+                return
+            ip, pt = self.mundo_real
+            self.destino_mundo = ip
+            await self.maneja(l, e, puerto_destino=pt, etiqueta='mundo',
+                              reescribe=False)
+
+        s2 = await asyncio.start_server(mundo, '127.0.0.1', self.wpuerto_local)
+        log.info('MUNDO    127.0.0.1:%s -> (el que diga el redirect)', self.wpuerto_local)
+
+        s3 = await asyncio.start_server(
+            functools.partial(self.maneja, puerto_destino=self.fport,
+                              etiqueta='archivos', reescribe=False),
+            '127.0.0.1', self.fport)
+        log.info('ARCHIVOS 127.0.0.1:%s -> %s:%s', self.fport, self.destino, self.fport)
+        log.info('')
+        log.info('Arranca el cliente. Todo queda en logs/proxy/')
+        async with s1, s2, s3:
+            await asyncio.gather(s1.serve_forever(), s2.serve_forever(),
+                                 s3.serve_forever())
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument('--destino', default='IP.DEL.SERVIDOR.PRIVADO')
+    ap.add_argument('--puerto', type=int, default=30000)
+    ap.add_argument('--fport', type=int, default=30007)
+    ap.add_argument('--wpuerto', type=int, default=30001,
+                    help='puerto local donde se recibe la sesion de mundo')
+    ap.add_argument('--server-xml',
+                    help='ruta al server.xml del cliente; se edita dejando copia .bak')
+    ap.add_argument('--restaurar', action='store_true',
+                    help='devuelve el server.xml a su version original y sale')
+    a = ap.parse_args()
+    logging.basicConfig(level=logging.INFO, format='%(asctime)s %(message)s')
+
+    if a.server_xml:
+        p = pathlib.Path(a.server_xml)
+        bak = p.with_suffix(p.suffix + '.bak')
+        if a.restaurar:
+            if bak.exists():
+                p.write_bytes(bak.read_bytes())
+                log.info('server.xml restaurado desde %s', bak.name)
+            else:
+                log.error('no hay copia de seguridad %s', bak.name)
+            return
+        if not bak.exists():
+            bak.write_bytes(p.read_bytes())
+            log.info('copia de seguridad: %s', bak)
+        t = p.read_text(encoding='utf-8-sig')
+        t = t.replace('ip="' + a.destino + '"', 'ip="127.0.0.1"')
+        t = t.replace('fip="' + a.destino + '"', 'fip="127.0.0.1"')
+        p.write_text(t, encoding='utf-8-sig')
+        log.info('server.xml apuntado a 127.0.0.1 (original en %s)', bak.name)
+
+    try:
+        asyncio.run(Proxy(a.destino, a.puerto, a.wpuerto, a.fport).correr())
+    except KeyboardInterrupt:
+        log.info('proxy detenido')
+
+
+if __name__ == '__main__':
+    main()

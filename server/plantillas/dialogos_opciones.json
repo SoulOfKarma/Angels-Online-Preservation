@@ -1,0 +1,65 @@
+{
+  "_nota": "Dialogos con OPCIONES, medidos del privado. El campo val cambia por NPC (6 Cupid, 4 Shopkeeper, 49 Wolay) y las opciones van detras como LE32. El texto de cada una esta en msg.xml, asi que solo hay que mandar los ids.",
+  "por_entidad": {
+    "1": [
+      {
+        "hex": "71160000060000030072160000731600007416000041420f0042420f0000000000",
+        "id": 5745,
+        "val": 6,
+        "ops": [
+          5746,
+          5747,
+          5748
+        ]
+      }
+    ],
+    "2": [
+      {
+        "hex": "a31600002c00000300a5160000a6160000a71600005f430f0060430f0000000000",
+        "id": 5795,
+        "val": 44,
+        "ops": [
+          5797,
+          5798,
+          5799
+        ]
+      },
+      {
+        "hex": "a81600002c00000000",
+        "id": 5800,
+        "val": 44,
+        "ops": []
+      }
+    ],
+    "24": [
+      {
+        "hex": "452f00000400000200472f0000492f00004f420f0000000000",
+        "id": 12101,
+        "val": 4,
+        "ops": [
+          12103,
+          12105
+        ]
+      }
+    ],
+    "3": [
+      {
+        "hex": "d71300003100000200d8130000d91300000a430f0000000000",
+        "id": 5079,
+        "val": 49,
+        "ops": [
+          5080,
+          5081
+        ]
+      }
+    ],
+    "150": [
+      {
+        "hex": "101400000000000000",
+        "id": 5136,
+        "val": 0,
+        "ops": []
+      }
+    ]
+  }
+}

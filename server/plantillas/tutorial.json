@@ -1,0 +1,42 @@
+{
+  "raphael": [
+    [
+      "89130000030002000031004b61726d615800",
+      "8a1300000300000000",
+      "8b1300000300000000",
+      "8c1300000300000000",
+      "8d1300000300000000"
+    ],
+    [
+      "8e1300000300000000",
+      "8f1300000300000200901300009113000048420f0049420f00",
+      "961300000300000000",
+      "971300000300000000",
+      "981300000300000000",
+      "991300000300000000",
+      "9a1300000300000000"
+    ]
+  ],
+  "aide": [
+    [
+      "9e1300003400000200b5130000b61300006d420f0000000000"
+    ]
+  ],
+  "_nota": "Guion del tutorial, medido del servidor privado. Cada tramo es una conversacion completa: el jugador habla, avanza con 0x000B y al final llega el 0x0012 de ceros. El personaje pasa al tramo siguiente cuando termina el anterior. El Interface Tutor tiene un solo tramo, recuperado de la primera captura; ofrece un menu (5240 lleva dos opciones). CUSTOMIZADO: el tutorial de Angel Raphael se acorto a dos tramos a pedido del jugador. El original tenia cuatro y terminaba en el Fighting Palace pasando por la compra del examen al Angel Aide; los tramos 2 y 3 siguen medidos en el historial de este archivo por si se quiere volver atras.",
+  "interface": [
+    [
+      "781400000200000200791400007a1400004b420f0000000000",
+      "7b1400000200000000",
+      "7c1400000200000000",
+      "7d1400000200000000",
+      "7e1400000200000000",
+      "7f1400000200000000",
+      "801400000200000000",
+      "811400000200000000",
+      "821400000200000000",
+      "831400000200000000",
+      "841400000200000000",
+      "851400000200000000"
+    ]
+  ]
+}

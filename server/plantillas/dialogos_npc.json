@@ -1,0 +1,119 @@
+{
+  "_nota": "Dialogo de cada NPC. 'hex' es el cuerpo del 0x0012 tal como lo manda el servidor real cuando esta capturado, con sus opciones; para los demas se arma uno sin opciones con el id que se encontro en msg.xml. El texto vive en el cliente: el servidor solo manda el numero.",
+  "npcs": {
+    "Director Wolay": {
+      "msgid": 5079,
+      "val": 49,
+      "hex": "d71300003100000200d8130000d91300000a430f0000000000",
+      "texto": "I'm Director Wolay. Don't forget to study hard to become an excellent Angel."
+    },
+    "Repair Angel": {
+      "msgid": 5100,
+      "texto": "Hello, I'm the Repair Angel; I can mend any equipment in the Angel Lyceum.",
+      "val": 3,
+      "hex": "ec1300000300000000"
+    },
+    "Magic Professor": {
+      "msgid": 11801,
+      "texto": "Hello, I am the Magic Professor, what can I do for you?",
+      "val": 3,
+      "hex": "192e00000300000000"
+    },
+    "Battle Professor": {
+      "msgid": 11501,
+      "texto": "Hello, I am the Battle Professor, what can I do for you?",
+      "val": 3,
+      "hex": "ed2c00000300000000"
+    },
+    "Shopkeeper": {
+      "msgid": 12101,
+      "val": 4,
+      "hex": "452f00000400000200472f0000492f00004f420f0000000000",
+      "texto": "Hello, I am the Shopkeeper! In my shop I have weapons and equipment of every kind imaginable. It is my aim to help all o"
+    },
+    "Weapon Lecturer": {
+      "msgid": 11001,
+      "texto": "Hello, I'm the Weapon Lecturer, what can I do for you?",
+      "val": 3,
+      "hex": "f92a00000300000000"
+    },
+    "Armor Lecturer": {
+      "msgid": 11101,
+      "texto": "Hello, I'm the Armor Lecturer, what can I do for you?",
+      "val": 3,
+      "hex": "5d2b00000300000000"
+    },
+    "Sewing Lecturer": {
+      "msgid": 11201,
+      "texto": "Hello, I'm the Sewing Lecturer, what can I do for you?",
+      "val": 3,
+      "hex": "c12b00000300000000"
+    },
+    "Art Lecturer": {
+      "msgid": 11301,
+      "texto": "Hello, I'm the Art Lecturer, what can I do for you?",
+      "val": 3,
+      "hex": "252c00000300000000"
+    },
+    "Cooking Lecturer": {
+      "msgid": 11401,
+      "texto": "Hello, I'm the Cooking Lecturer, what can I do for you?",
+      "val": 3,
+      "hex": "892c00000300000000"
+    },
+    "Chief Director": {
+      "msgid": 5029,
+      "texto": "Hello there, Little Angel, I'm the Chief Director ! There is a warehouse for each of the freshman in the campus; do you ",
+      "val": 3,
+      "hex": "a51300000300000000"
+    },
+    "Cupid": {
+      "msgid": 5745,
+      "val": 6,
+      "hex": "71160000060000030072160000731600007416000041420f0042420f0000000000",
+      "texto": "Hi! I'm the loveliest of all the Angels in Heaven, my name is Cupid. Do you need my help?"
+    },
+    "Skill Angel": {
+      "msgid": 5023,
+      "texto": "I'm the Skill Angel, are you satisfied with your skill distribution? If you have any problems during your studies, you m",
+      "val": 3,
+      "hex": "9f1300000300000000"
+    },
+    "Weapon Salesman": {
+      "msgid": 70000,
+      "texto": "I am the Weapon Salesman* of the Suft C of C, do you want to do business with me?",
+      "val": 3,
+      "hex": "701101000300000000"
+    },
+    "Armor Salesman": {
+      "msgid": 70001,
+      "texto": "I am the Armor Salesman* of the Suft C of C, do you want to do business with me?",
+      "val": 3,
+      "hex": "711101000300000000"
+    },
+    "Sewing Salesman": {
+      "msgid": 70002,
+      "texto": "I am the Sewing Salesman* of the Suft C of C, do you want to do business with me?",
+      "val": 3,
+      "hex": "721101000300000000"
+    },
+    "Cooking Salesman": {
+      "msgid": 70003,
+      "texto": "I am the Cooking Salesman* of the Suft C of C, do you want to do business with me?",
+      "val": 3,
+      "hex": "731101000300000000"
+    },
+    "Porter Shiwala": {
+      "msgid": 5795,
+      "val": 44,
+      "hex": "a31600002c00000300a5160000a6160000a71600005f430f0060430f0000000000",
+      "texto": ""
+    },
+    "Aurora Totem": {
+      "msgid": 5136,
+      "val": 0,
+      "hex": "101400000000000000",
+      "texto": ""
+    }
+  }
+}

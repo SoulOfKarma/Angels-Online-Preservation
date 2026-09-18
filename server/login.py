@@ -1,0 +1,254 @@
+"""
+Secuencia de entrada al mundo.
+
+Emite los 21 mensajes de inicializacion en el orden medido de una captura real
+(ver docs/05_SERVIDOR.md).
+
+CRITERIO, para que quede claro que es que:
+
+  PARAMETRIZADO -- campos que entendemos y construimos desde cero:
+      0x0002  entity_id, posicion, nombre, habilidades
+      0x0021  registro de quests
+      0x005B  barra de habilidades
+      0x005D  timestamp del servidor
+
+  PLANTILLA    -- mensajes que sabemos emitir pero no interpretar. Se envian
+                  tal como los emitio el servidor real. Es andamiaje honesto:
+                  sirve para que el cliente entre, no es entender el mensaje.
+      0x016F, 0x0014, 0x001E, 0x0155, 0x0156, 0x012A, 0x005C,
+      0x001A, 0x001D, 0x0185
+"""
+import sys
+import json
+import time
+import struct
+import pathlib
+from dataclasses import dataclass, field
+
+sys.path.insert(0, str(pathlib.Path(__file__).parent.parent / 'proto'))
+from codec import Msg
+import messages  # noqa: registra los esquemas
+
+PLANTILLAS = pathlib.Path(__file__).parent / 'plantillas'
+
+# mensajes que sabemos CONSTRUIR (el resto va como plantilla)
+CONSTRUIDOS = {0x0002, 0x0021, 0x005B, 0x005D, 0x001A, 0x001D}
+
+
+@dataclass
+class Personaje:
+    entity_id: int = 14509          # id de runtime
+    char_id: int = 4794             # id persistente
+    nombre: str = "Jugador"
+    tile_x: int = 128
+    tile_y: int = 62
+    habilidades: list = field(default_factory=list)   # [(skill_id, nivel, exp)]
+    barra: list = field(default_factory=list)         # [magic_id, ...] hasta 24
+    quests: list = field(default_factory=list)        # [(quest_id, paso), ...]
+    hp: int = 205
+    hp_max: int = 205
+    mp: int = 154
+    mp_max: int = 154
+    inventario: dict = field(default_factory=dict)  # {ranura: item_id}
+    tutorial: int = 0        # en que tramo del tutorial va
+    oro: int = 0
+    stage: int = 51
+
+
+def _cargar_secuencia():
+    """Secuencia de entrada al mundo, capturada de un servidor REAL.
+
+    Reemplaza la que se armo con la captura vieja de IGG. Comparando ambas,
+    a la anterior le faltaban DOS mensajes:
+      - 0x018A (25 B), que va PRIMERO, antes que todo
+      - 0x0064 (19.460 B), el mas grande de la secuencia
+    Y varios tenian otro tamano (0x0156: 20 B contra 40; 0x001A: 209 contra
+    2484). Por eso el cliente se quedaba en la pantalla de seleccion.
+
+    Origen: logs/proxy/mundo_011628 -- 129 mensajes, 34.514 bytes.
+    """
+    d = PLANTILLAS / 'mundo_real'
+    sec = json.loads((d / 'secuencia.json').read_text(encoding='utf-8'))
+    for m in sec:
+        m['datos'] = (d / m['archivo']).read_bytes()
+    return sec
+
+
+_SEC = None
+MAPA_DE_LA_PLANTILLA = 51   # la captura es de Guide Palace
+
+
+def secuencia(p: Personaje):
+    """Devuelve [bytes] -- cada uno un sub-mensaje listo (opcode incluido)."""
+    global _SEC
+    if _SEC is None:
+        _SEC = _cargar_secuencia()
+
+    # La captura NO es solo la entrada al mundo: del indice 35 en adelante son
+    # las RESPUESTAS a lo que fue haciendo el jugador que se grabo. El patron
+    # 0x006D (ack vacio) + 0x0016 (direccion) + 0x0005 (ENTITY_MOVE) se repite
+    # una vez por cada movimiento suyo, y los 27 ENTITY_MOVE son todos de su
+    # entidad 92. Mandarlos al entrar significa anunciar los movimientos de una
+    # entidad que en este servidor no existe, mas 17 mensajes de estado que son
+    # de su personaje, no del nuestro. La entrada propiamente dicha son los 35
+    # primeros (0..34), que terminan en 0x0027; el 35 ya es el ack del primer
+    # movimiento. Con AO_SECUENCIA_COMPLETA=1 se manda todo, para comparar.
+    import os as _o
+    sec = _SEC if _o.environ.get('AO_SECUENCIA_COMPLETA') else _SEC[:35]
+
+    # Los NPC de la plantilla son los de Guide Palace: Angel Raphael, el
+    # Interface Tutor y Angel Aide, con sus posiciones de ese mapa. Mandarlos
+    # en cualquier otro mapa los hace aparecer donde no van -- en el Lyceum
+    # salian los tres flotando entre los NPC que de verdad viven ahi.
+    #
+    # Fuera de Guide Palace no se manda ninguno. El Lyceum tiene los suyos
+    # (Shopkeeper, Skill Angel, Director Wolay, los Salesman, los Lecturer...)
+    # y sus monstruos, pero sus posiciones son datos de SERVIDOR y no estan en
+    # el cliente: hacen falta capturas de ese mapa para poder poblarlo.
+    # 0x0008 NPC y monstruos, 0x000E los recursos, 0x0185 sus atributos.
+    # Todos traen las posiciones de Guide Palace.
+    NPC_DE_GUIDE_PALACE = {0x0008, 0x000E, 0x0185}
+    if p.stage != MAPA_DE_LA_PLANTILLA:
+        sec = [m for m in sec if m['opcode'] not in NPC_DE_GUIDE_PALACE]
+
+    salida = []
+    for m in sec:
+        op, base = m['opcode'], m['datos']
+        if op == 0x0002:
+            salida.append(_ficha(p, base))
+        elif op == 0x0021:
+            salida.append(_quests(p, base))
+        elif op == 0x005B:
+            salida.append(_barra(p, base))
+        elif op == 0x001D:
+            # Atributos de entidad. La plantilla trae el entity_id del
+            # personaje que se grabo, asi que habia que reescribirlo: se
+            # estaban anunciando los atributos de una entidad ajena.
+            salida.append(struct.pack('<HI', 0x001D, p.entity_id) + base[4:])
+        elif op == 0x001A:
+            # El inventario. Antes se mandaba la plantilla tal cual, o sea el
+            # inventario del personaje que se grabo; ahora se arma con el del
+            # jugador, asi que cada item aparece en su ranura.
+            import inventario as _inv
+            # Con la cantidad de cada cosa: el oro vive en la ranura 0 y su
+            # cantidad es p.oro. Antes iba todo con cantidad 1 y al recargar
+            # el mapa el jugador perdia el oro de vista.
+            _items = [(r, it, p.oro if r == _inv.RANURA_ORO else 1)
+                      for r, it in p.inventario.items()]
+            salida.append(_inv.completo(p.char_id, _items))
+        elif op == 0x005D:
+            salida.append(struct.pack('<HI', 0x005D, int(time.time())))
+        else:
+            salida.append(struct.pack('<H', op) + base)   # plantilla tal cual
+    salida += poblar(p.stage)
+    return salida
+
+
+def _npc_spawn(entity_id, npc_type, nombre, tile, sprite=0):
+    """Arma un NPC_SPAWN (0x0008) desde cero, para los NPC que salen de los
+    xml del cliente y no de una captura."""
+    b = bytearray(63)
+    struct.pack_into('<IIII', b, 0, entity_id, 1, tile[0], tile[1])
+    n = str(nombre).encode('ascii', 'replace')[:16]
+    b[16:16 + len(n)] = n
+    struct.pack_into('<I', b, 34, sprite or 40001)
+    struct.pack_into('<I', b, 40, 200)          # klass 200 = NPC con dialogo
+    struct.pack_into('<H', b, 45, npc_type)
+    return struct.pack('<H', 0x0008) + bytes(b)
+
+
+def npc_de_los_xml(stage: int, desde=900):
+    """NPC de quest que el cliente trae colocados en sus xml.
+
+    No hacen falta capturas: sp_v##_questnpc.xml da el npc_type, el mapa y el
+    tile. Los entity_id se inventan a partir de `desde` para no chocar con los
+    de las capturas, que son bajos.
+    """
+    f = PLANTILLAS / 'npc_por_mapa.json'
+    if not f.exists():
+        return []
+    d = json.loads(f.read_text(encoding='utf-8')).get('mapas', {})
+    salida = []
+    for k, e in enumerate(d.get(str(stage), [])):
+        salida.append(_npc_spawn(desde + k, e['npc_type'], e['nombre'],
+                                 e['tile'], e.get('sprite', 0)))
+    return salida
+
+
+def spawn_de(stage: int):
+    """Tile de aparicion del mapa, de setting/eng/jumpmap.xml."""
+    f = PLANTILLAS / 'jumpmap.json'
+    if not f.exists():
+        return None
+    for d in json.loads(f.read_text(encoding='utf-8'))['destinos']:
+        if d['stage'] == stage:
+            return tuple(d['tile'])
+    return None
+
+
+def poblar(stage: int):
+    """NPC, monstruos y totems propios del mapa.
+
+    Guide Palace ya viene poblado en la plantilla de la secuencia. Para el
+    resto de mapas hacen falta capturas: sus posiciones son datos de servidor
+    y no estan en el cliente. Por ahora solo esta el Angel Lyceum.
+    """
+    # Primero los NPC que el cliente trae colocados en sus xml: esos valen
+    # para cualquier mapa y no necesitan captura.
+    salida = npc_de_los_xml(stage)
+    f = PLANTILLAS / 'lyceum.json'
+    if stage != 41 or not f.exists():
+        return salida
+    d = json.loads(f.read_text(encoding='utf-8'))
+    salida += [struct.pack('<H', 0x0008) + bytes.fromhex(e['hex'])
+               for e in d['spawns']]
+    # Los recursos del mapa: vetas de cobre, arboles, hierbas, madrigueras.
+    salida += [struct.pack('<H', 0x000E) + bytes.fromhex(e['hex'])
+               for e in d.get('recursos', [])]
+    return salida
+
+
+def _ficha(p, base):
+    m = Msg.registry[(0x0002, 's2c', 'privado')]
+    d = m.parse(base)
+    d['entity_id'] = p.entity_id
+    d['tile_x'], d['tile_y'] = p.tile_x, p.tile_y
+    d['flags'] = p.stage          # el mapa va en +4 de la ficha
+    nom = p.nombre.encode('ascii', 'replace')[:33]
+    d['name_raw'] = nom + b'\x00' * (34 - len(nom))
+    # HP y MP. El campo 'stats' arranca en +102 de la ficha, asi que los
+    # cuatro LE32 del principio son hp, hp_max, mp, mp_max (+102, +106,
+    # +110, +114). Localizados buscando los 296 y 218 que el cliente mostraba
+    # en pantalla con la plantilla sin tocar: eran los del personaje de otro
+    # servidor, no los del jugador.
+    st = bytearray(d['stats'])
+    struct.pack_into('<IIII', st, 0, p.hp, p.hp_max, p.mp, p.mp_max)
+    d['stats'] = bytes(st)
+    if p.habilidades:
+        sk = list(d['skills'])
+        for i, (sid, nivel, exp) in enumerate(p.habilidades[:36]):
+            sk[i] = {'skill_id': sid, 'level': nivel, 'level2': nivel,
+                     'cero': b'\x00' * 4, 'exp': exp, 'idx': i + 1}
+        for i in range(len(p.habilidades), 36):
+            sk[i] = {'skill_id': 0, 'level': 0, 'level2': 0,
+                     'cero': b'\x00' * 4, 'exp': 0, 'idx': 0}
+        d['skills'] = sk
+    return m.build(**d)
+
+
+def _quests(p, base):
+    m = Msg.registry[(0x0021, 's2c', 'privado')]
+    if not p.quests:
+        return struct.pack('<H', 0x0021) + base
+    qs = [{'char_id': p.char_id, 'quest_id': q, 'paso': s, 'resto': b'\x00' * 11}
+          for q, s in p.quests]
+    return m.build(n=len(qs), quests=qs)
+
+
+def _barra(p, base):
+    m = Msg.registry[(0x005B, 's2c', 'privado')]
+    if not p.barra:
+        return struct.pack('<H', 0x005B) + base
+    r = [{'usada': 1, 'magic_id': mid, 'resto': b'\x00' * 6} for mid in p.barra[:24]]
+    r += [{'usada': 0, 'magic_id': 0, 'resto': b'\x00' * 6}] * (24 - len(r))
+    return m.build(ranuras=r)
