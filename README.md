@@ -22,26 +22,33 @@ without sugarcoating.
 - Angel Raphael's tutorial: picking a class, getting the gear, the transfer
 - Full inventory: equip, unequip, move between slots, durability
 - Stats computed from `item.xml` (gear actually adds up)
-- Buying from shops: the purchase message works and deducts the gold, but
-  **the shop window does not open** from the dialogue, so in practice you
-  still cannot buy anything while playing
-- Angel Lyceum populated: 52 NPCs, 81 monsters and 158 resources in place
-- Combat: hitting, being hit, seeing the damage number, killing and looting
-- NPC dialogue: the text and its options are shown, but **picking an option
-  closes the box** instead of continuing
+- Angel Lyceum drawn: 52 NPCs, 81 monsters and 158 resources appear at their
+  real positions, taken from the client's XML files
+
+**Partly**
+
+- Combat: you can target a monster and hit it, and the server tracks each
+  monster's health, but **the damage number doesn't show and the loot never
+  arrives**. The messages are sent and match the real server byte for byte,
+  so something else is missing that hasn't been identified yet
+- NPC dialogue: 17 of the Lyceum's 52 NPCs have their text and options, but
+  **picking an option closes the box** instead of continuing
+- Shops: the purchase message works and deducts the gold, but **the shop
+  window never opens** from the dialogue, so in practice you still cannot
+  buy anything while playing
 
 **Does not work**
 
-- NPCs neither move nor react; monsters don't attack on their own and don't
-  respawn when killed
+- NPCs and monsters are static: they don't move, don't react, don't attack on
+  their own and don't respawn when killed
+- Resources can't be gathered
 - Boxes can't be opened: the "use item" message is missing
 - The three starting spells are missing, the ones bound to F1-F3
 - No experience and no levelling up
-- Resources can't be gathered
 - Characters can't be deleted
 - Floor teleport zones don't work (the map change itself does, but the server
   has to trigger it)
-- 35 of the Lyceum's 52 NPCs still have no dialogue
+- Five of the Lyceum's NPCs were never captured and are missing
 - Passwords are **not validated**: the auth block hasn't been decrypted
 
 ---
@@ -218,12 +225,15 @@ Two lessons that took several rounds to learn:
 
 What would help right now, most useful first:
 
-1. **Picking dialogue options** on several different NPCs. Five or six cases
+1. **Killing a monster from the first hit to the loot.** The damage number and
+   the loot don't show up here, and the capture in hand doesn't cover the whole
+   exchange.
+2. **Picking dialogue options** on several different NPCs. Five or six cases
    would settle both the shop and Cupid's respawn point.
-2. **Deleting a character** that is past its protection period.
-3. **Crossing a floor teleport zone.**
-4. **Gathering a resource** with the right tool equipped.
-5. **Levelling up**, to see what the server sends.
+3. **Deleting a character** that is past its protection period.
+4. **Crossing a floor teleport zone.**
+5. **Gathering a resource** with the right tool equipped.
+6. **Levelling up**, to see what the server sends.
 
 ### Any kind of help
 

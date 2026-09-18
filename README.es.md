@@ -21,26 +21,33 @@ clase, se pelea y se compra. Lo que falta está listado abajo, sin adornos.
 - Tutorial de Angel Raphael: elegir clase, recibir el equipo y el traslado
 - Inventario completo: equipar, desequipar, mover entre casillas, durabilidad
 - Stats calculados desde `item.xml` (el equipo suma de verdad)
-- Compra en tiendas: el mensaje de compra funciona y descuenta el oro, pero
-  **la ventana de tienda no se abre** desde el diálogo, así que en la
-  práctica todavía no se puede comprar jugando
-- Angel Lyceum poblado: 52 NPC, 81 monstruos y 158 recursos en su sitio
-- Combate: pegar, recibir, ver el número de daño, matar y cobrar el botín
-- Diálogos de NPC: el texto y sus opciones se muestran, pero **elegir una
-  opción cierra el cuadro** en vez de continuar
+- Angel Lyceum dibujado: 52 NPC, 81 monstruos y 158 recursos aparecen en sus
+  posiciones reales, sacadas de los XML del cliente
+
+**A medias**
+
+- Combate: se puede fijar un objetivo y pegarle, y el servidor lleva la vida
+  de cada monstruo, pero **no se ve el número de daño ni llega el botín**.
+  Los mensajes se mandan y coinciden byte a byte con los del servidor real,
+  así que falta algo más que todavía no se identificó
+- Diálogos de NPC: 17 de los 52 NPC del Lyceum tienen su texto y sus
+  opciones, pero **elegir una opción cierra el cuadro** en vez de continuar
+- Tiendas: el mensaje de compra funciona y descuenta el oro, pero **la
+  ventana de tienda no se abre nunca** desde el diálogo, así que jugando
+  todavía no se puede comprar nada
 
 **No funciona**
 
-- Los NPC no se mueven ni reaccionan; los monstruos no atacan por su cuenta
-  ni reaparecen al morir
+- NPC y monstruos están quietos: no se mueven, no reaccionan, no atacan por
+  su cuenta y no reaparecen al morir
+- Los recursos no se recolectan
 - Las cajas no se abren: falta el mensaje de "usar objeto"
 - Faltan los tres hechizos iniciales, los de las teclas F1 a F3
 - No hay experiencia ni subir de nivel
-- Los recursos no se recolectan
 - No se pueden borrar personajes
 - Las zonas de teletransporte del suelo no funcionan (el cambio de mapa sí,
   pero hay que dispararlo desde el servidor)
-- 35 de los 52 NPC del Lyceum siguen sin diálogo
+- Faltan cinco NPC del Lyceum que no se llegaron a capturar
 - La contraseña **no se valida**: el bloque de autenticación no está descifrado
 
 ---
@@ -214,12 +221,15 @@ Dos consejos que costaron varias rondas aprender:
 
 Lo que haría falta ahora, por orden de utilidad:
 
-1. **Elegir opciones de diálogo** en varios NPC distintos. Con cinco o seis
+1. **Matar un monstruo entero**, desde el primer golpe hasta el botín. Acá no
+   se ve el número de daño ni llega el botín, y la captura que hay no cubre el
+   intercambio completo.
+2. **Elegir opciones de diálogo** en varios NPC distintos. Con cinco o seis
    casos se resuelve la tienda y el punto de reaparición.
-2. **Borrar un personaje** que ya haya pasado su período de protección.
-3. **Cruzar una zona de teletransporte** del suelo.
-4. **Recolectar un recurso** con la herramienta equipada.
-5. **Subir de nivel** y ver qué manda el servidor.
+3. **Borrar un personaje** que ya haya pasado su período de protección.
+4. **Cruzar una zona de teletransporte** del suelo.
+5. **Recolectar un recurso** con la herramienta equipada.
+6. **Subir de nivel** y ver qué manda el servidor.
 
 ### Aportes de cualquier tipo
 
