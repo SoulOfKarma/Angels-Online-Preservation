@@ -100,6 +100,96 @@ The documentation is in Spanish. The code and the commit history are too.
 
 ---
 
+## Known issues, with screenshots
+
+Each one is under `docs/capturas/`.
+
+### 1. Skills come up empty and monsters can't be hit
+
+![empty skills](docs/capturas/1-skills-vacias-y-enemigos.png)
+
+The skill panel shows the chosen class's row and question marks for the rest.
+The three starting spells are also missing (Slicing Chop I, Swiftness Song I,
+Injury Cure I), the ones bound to F1-F3: the real server sends them with
+message id 425 and they aren't sent here.
+
+### 2. NPCs stand still and say nothing
+
+![idle npcs](docs/capturas/2-npcs-quietos-sin-dialogo.png)
+
+House Pickets and friends wander around in the real game and have a default
+line. Here they are planted and mute: there's no NPC movement, and 35 of the
+Lyceum's 52 have no text assigned.
+
+### 3. Boxes don't open
+
+![boxes](docs/capturas/3-cajas-no-abren.png)
+
+They're handed out correctly and the tooltip is right (read from `item.xml`),
+but clicking them does nothing. The "use item" message is missing and doesn't
+appear in any capture. In-game, opening the level 5 box gives you the level 15
+one, that one the level 25, and so on.
+
+### 4. The shop window doesn't open
+
+![shop](docs/capturas/4-tienda-no-abre.png)
+
+The Shopkeeper's dialogue shows both options, but choosing "Tell me about the
+buying and selling of goods" closes the box instead of opening the shop. Buying
+itself **does work** (`0x0027` is implemented): what's missing is knowing which
+dialogue each option leads to.
+
+### 5. Portals don't work
+
+![portals](docs/capturas/5-portales-no-funcionan.png)
+
+Floor teleport zones are visible but do nothing, and sometimes the character
+gets stuck against them. Changing maps **is** implemented (`0x000C` + `0x0009`);
+what's missing is what the client sends when stepping on the zone.
+
+---
+
+## What is deliberately skipped
+
+So the server runs without a database or a sign-up flow, some things aren't
+checked. These aren't bugs, they're decisions:
+
+**Accounts create themselves.** Log in with any username and it gets saved to
+`data/cuentas.json`. If you want to set one up by hand, it's plain JSON:
+
+```json
+{
+  "cuentas": {
+    "youruser": {
+      "password": "whatever",
+      "personajes": []
+    }
+  }
+}
+```
+
+**Passwords are NOT validated.** Anything gets you in. The username is read
+from the auth message, but the block carrying the password hasn't been
+decrypted, so there's nothing to compare against. Finding that field was tried
+twice and both attempts were wrong: one rejected valid logins, the other
+accepted everything because the offset turned out to be a client-side
+constant. It's documented in `server/cuentas.py`.
+
+**There's no sign-up, no email, no recovery.** It's a local server.
+
+### Visual glitches on reconnect
+
+Some things look wrong until you log out and back in. Server and client end up
+agreeing, but the client doesn't refresh on the spot:
+
+- On a fresh character, gear sometimes doesn't show until you reconnect
+- Music cuts out when changing maps
+- The gear panel can be left with an extra slot drawn
+
+Nothing gets corrupted: what's in `data/cuentas.json` is always correct.
+
+---
+
 ## How to help
 
 What's missing most isn't programming: it's **captures**.

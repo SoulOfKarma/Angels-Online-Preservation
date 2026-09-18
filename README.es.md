@@ -95,6 +95,97 @@ cosas se dieron por buenas con una sola muestra y resultaron falsas.
 
 ---
 
+## Fallos conocidos, con foto
+
+Cada uno está en `docs/capturas/`.
+
+### 1. Las habilidades salen vacías y a los enemigos no se les puede pegar
+
+![skills vacías](docs/capturas/1-skills-vacias-y-enemigos.png)
+
+El panel de habilidades muestra la fila de la clase elegida y el resto en
+interrogantes. Faltan además los tres hechizos iniciales (Slicing Chop I,
+Swiftness Song I, Injury Cure I), que son los que van a las teclas F1 a F3: el
+servidor real los manda con id de mensaje 425 y aquí no se mandan.
+
+### 2. Los NPC están quietos y sin diálogo
+
+![npcs quietos](docs/capturas/2-npcs-quietos-sin-dialogo.png)
+
+Los House Pickets y compañía se mueven solos en el juego real y tienen una
+línea por defecto. Aquí están plantados y mudos: no hay movimiento de NPC, y
+35 de los 52 del Lyceum no tienen ningún texto asignado.
+
+### 3. Las cajas no se abren
+
+![cajas](docs/capturas/3-cajas-no-abren.png)
+
+Se entregan bien y el tooltip es correcto (se lee de `item.xml`), pero hacerles
+clic no hace nada. Falta el mensaje de "usar objeto", que no aparece en ninguna
+captura. En el juego, abrir la caja de nivel 5 entrega la de 15, esa la de 25,
+y así.
+
+### 4. La ventana de compra no se abre
+
+![tienda](docs/capturas/4-tienda-no-abre.png)
+
+El diálogo del Shopkeeper sale con sus dos opciones, pero elegir "Tell me about
+the buying and selling of goods" cierra el cuadro en vez de abrir la tienda. La
+compra en sí **sí funciona** (`0x0027` está implementado): lo que falta es
+saber a qué diálogo lleva cada opción.
+
+### 5. Los portales no funcionan
+
+![portales](docs/capturas/5-portales-no-funcionan.png)
+
+Las zonas de teletransporte del suelo se ven pero no hacen nada, y a veces el
+personaje se queda trabado contra ellas. El cambio de mapa **sí está
+implementado** (`0x000C` + `0x0009`); lo que falta es qué manda el cliente al
+pisar la zona.
+
+---
+
+## Lo que está saltado a propósito
+
+Para que el servidor arranque sin una base de datos ni un registro, hay cosas
+que no se comprueban. No son fallos, son decisiones:
+
+**Las cuentas se crean solas.** Entrás con cualquier usuario y queda guardado
+en `data/cuentas.json`. Si querés preparar una a mano, es un JSON normal:
+
+```json
+{
+  "cuentas": {
+    "tuusuario": {
+      "password": "loquesea",
+      "personajes": []
+    }
+  }
+}
+```
+
+**La contraseña NO se valida.** Entra cualquiera. El usuario sí se lee del
+mensaje de autenticación, pero el bloque donde viaja la contraseña no está
+descifrado, así que no hay con qué compararla. Se intentó dos veces dar con el
+campo y las dos salieron mal: una rechazaba logins válidos y la otra aceptaba
+todo porque el offset resultó ser una constante del cliente. Está documentado
+en `server/cuentas.py`.
+
+**No hay registro, ni correo, ni recuperación.** Es un servidor local.
+
+### Fallos visuales al reconectar
+
+Algunas cosas se ven mal hasta que salís y volvés a entrar. El servidor y el
+cliente terminan de acuerdo, pero el cliente no refresca en el momento:
+
+- Al crear un personaje, el equipo a veces no aparece hasta reconectar
+- Al cambiar de mapa, la música se corta
+- El panel de equipo puede quedar con una casilla dibujada de más
+
+No corrompen nada: lo que hay en `data/cuentas.json` es siempre lo correcto.
+
+---
+
 ## Cómo ayudar
 
 Lo que más falta no es programación: son **capturas**.
