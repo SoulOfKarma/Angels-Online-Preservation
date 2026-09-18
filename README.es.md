@@ -21,16 +21,20 @@ clase, se pelea y se compra. Lo que falta está listado abajo, sin adornos.
 - Tutorial de Angel Raphael: elegir clase, recibir el equipo y el traslado
 - Inventario completo: equipar, desequipar, mover entre casillas, durabilidad
 - Stats calculados desde `item.xml` (el equipo suma de verdad)
-- Compra en tiendas
+- Compra en tiendas: el mensaje de compra funciona y descuenta el oro, pero
+  **la ventana de tienda no se abre** desde el diálogo, así que en la
+  práctica todavía no se puede comprar jugando
 - Angel Lyceum poblado: 52 NPC, 81 monstruos y 158 recursos en su sitio
 - Combate: pegar, recibir, ver el número de daño, matar y cobrar el botín
-- Diálogos de NPC con sus opciones
+- Diálogos de NPC: el texto y sus opciones se muestran, pero **elegir una
+  opción cierra el cuadro** en vez de continuar
 
 **No funciona**
 
 - Los NPC no se mueven ni reaccionan; los monstruos no atacan por su cuenta
   ni reaparecen al morir
-- Elegir una opción de diálogo cierra el cuadro en vez de continuar
+- Las cajas no se abren: falta el mensaje de "usar objeto"
+- Faltan los tres hechizos iniciales, los de las teclas F1 a F3
 - No hay experiencia ni subir de nivel
 - Los recursos no se recolectan
 - No se pueden borrar personajes
@@ -99,9 +103,9 @@ cosas se dieron por buenas con una sola muestra y resultaron falsas.
 
 Cada uno está en `docs/capturas/`.
 
-### 1. Las habilidades salen vacías y a los enemigos no se les puede pegar
+### 1. El panel de habilidades sale a medias
 
-![skills vacías](docs/capturas/1-skills-vacias-y-enemigos.png)
+![habilidades](docs/capturas/1-skills-vacias.png)
 
 El panel de habilidades muestra la fila de la clase elegida y el resto en
 interrogantes. Faltan además los tres hechizos iniciales (Slicing Chop I,

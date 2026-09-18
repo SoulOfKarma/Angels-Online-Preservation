@@ -22,16 +22,20 @@ without sugarcoating.
 - Angel Raphael's tutorial: picking a class, getting the gear, the transfer
 - Full inventory: equip, unequip, move between slots, durability
 - Stats computed from `item.xml` (gear actually adds up)
-- Buying from shops
+- Buying from shops: the purchase message works and deducts the gold, but
+  **the shop window does not open** from the dialogue, so in practice you
+  still cannot buy anything while playing
 - Angel Lyceum populated: 52 NPCs, 81 monsters and 158 resources in place
 - Combat: hitting, being hit, seeing the damage number, killing and looting
-- NPC dialogue with its options
+- NPC dialogue: the text and its options are shown, but **picking an option
+  closes the box** instead of continuing
 
 **Does not work**
 
 - NPCs neither move nor react; monsters don't attack on their own and don't
   respawn when killed
-- Picking a dialogue option closes the box instead of continuing
+- Boxes can't be opened: the "use item" message is missing
+- The three starting spells are missing, the ones bound to F1-F3
 - No experience and no levelling up
 - Resources can't be gathered
 - Characters can't be deleted
@@ -104,9 +108,9 @@ The documentation is in Spanish. The code and the commit history are too.
 
 Each one is under `docs/capturas/`.
 
-### 1. Skills come up empty and monsters can't be hit
+### 1. The skill panel comes up half empty
 
-![empty skills](docs/capturas/1-skills-vacias-y-enemigos.png)
+![skills](docs/capturas/1-skills-vacias.png)
 
 The skill panel shows the chosen class's row and question marks for the rest.
 The three starting spells are also missing (Slicing Chop I, Swiftness Song I,
