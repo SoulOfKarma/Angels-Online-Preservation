@@ -3,7 +3,7 @@
 ***English** · [Español](README.es.md)*
 
 Reverse-engineered network protocol for **Angels Online** (IGG, shut down in
-February 2026) and a server that speaks it, built from the client files and
+February 2026, client 8.5.1.0) and a server that speaks it, built from the client files and
 from traffic captures.
 
 This is not a complete emulator. It is the **documented protocol** plus a
@@ -45,6 +45,8 @@ without sugarcoating.
 ## Running it
 
 You need **Python 3.10 or newer** and the Angels Online client installed.
+Tested against client **8.5.1.0**; the captures the protocol comes from were
+taken with an **8.6.0.8**, and both speak the same thing.
 
 1. Point the client at your machine, in its `server.xml`:
 

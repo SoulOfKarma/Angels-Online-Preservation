@@ -3,7 +3,7 @@
 *[English](README.md) · **Español***
 
 Reconstrucción del protocolo de red de **Angels Online** (IGG, cerrado en
-febrero de 2026) y un servidor que lo habla, hecho por ingeniería inversa del
+febrero de 2026, cliente 8.5.1.0) y un servidor que lo habla, hecho por ingeniería inversa del
 cliente y de capturas de tráfico.
 
 No es un emulador completo. Es el **protocolo documentado** y un servidor que
@@ -43,7 +43,9 @@ clase, se pelea y se compra. Lo que falta está listado abajo, sin adornos.
 
 ## Cómo ejecutarlo
 
-Hace falta **Python 3.10 o superior** y el cliente de Angels Online instalado.
+Hace falta **Python 3.10 o superior** y el cliente de Angels Online
+instalado. Probado con el cliente **8.5.1.0**; las capturas de las que sale
+el protocolo se tomaron con un **8.6.0.8**, y los dos hablan lo mismo.
 
 1. Apuntá el cliente a tu máquina. En su `server.xml`:
 
