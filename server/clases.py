@@ -58,6 +58,68 @@ def nombre(skill_id: int) -> str:
     return _cargar().get(skill_id, f'Skill{skill_id}')
 
 
+# Los tres hechizos que el servidor real manda al elegir clase, con id de
+# mensaje 425. Cuales son depende del arma: en magic.xml cada rama tiene
+# exactamente tres registros de nivel 1 bajo su 技能限制1. La correspondencia
+# entre la rama china y el numero de habilidad sale de comparar el nombre
+# ingles de skill.xml (9 = Sword) con el de la rama (劍術技能 = espada).
+RAMA_POR_SKILL = {
+    9: '劍術技能',      # Sword       -> Slicing Hit / Swiftness Song / Injury Cure
+    10: '斧錘技能',     # Axe         -> Basic Beating / Ferocious Song / Fighting Shield
+    11: '槍術技能',     # Spear       -> Basic Attack / Bloody Song / Endless Energy
+    17: '弓箭技能',     # Longbow     -> Basic Shot / Accurate Song / Dodge Step
+    32: '影刃技能',     # Mantle      -> Stab / Nimble / Poisoned Dagger
+    1: '生命技能',      # Life        -> Shock Wave / Cure Spell / Silver Shield
+    2: '死靈技能',      # Wraith      -> Poison Hit / Soul Entangle / Summon Skeleton
+    3: '混亂技能',      # Chaos       -> Magic Bomb / Charming Blessing / Sage Blessing
+    4: '大地技能',      # Earth       -> Flying Dart / Earth Blessing / Shining Charm
+}
+_HECHIZOS = None
+
+
+def _cargar_hechizos():
+    """magic.xml: rama -> [(numero, nombre)] de los hechizos de nivel 1."""
+    global _HECHIZOS
+    if _HECHIZOS is not None:
+        return _HECHIZOS
+    _HECHIZOS = {}
+    for pak in ('update26', 'UPDATE18', 'data1'):
+        f = PAKS / pak / 'setting' / 'eng' / 'magic.xml'
+        if not f.exists():
+            continue
+        for l in f.read_text(encoding='utf-8', errors='replace').splitlines():
+            if '技能等限="1"' not in l or '法術等級="1"' not in l:
+                continue
+            rama = re.search(r'技能限制1="([^"]+)"', l)
+            num = re.search(r'編號="(\d+)"', l)
+            nom = re.search(r'名稱="([^"]+)"', l)
+            if not (rama and num and nom) or nom.group(1).startswith('test-'):
+                continue
+            _HECHIZOS.setdefault(rama.group(1), []).append(
+                (int(num.group(1)), nom.group(1)))
+        if _HECHIZOS:
+            break
+    for v in _HECHIZOS.values():
+        v.sort()
+    return _HECHIZOS
+
+
+def hechizos_iniciales(skill_ids):
+    """Los tres hechizos de nivel 1 del arma elegida, en el orden de magic.xml.
+
+    En la captura llegan como tres 0x000D seguidos, uno por hechizo, justo
+    despues del 0x001C del arbol (logs/proxy/mundo_103243_666191_s2c.bin,
+    offset 36618). Ese log es de un personaje de lanza y trae "Slicing Chop I":
+    ese servidor tiene la 601 renombrada, en el cliente se llama "Slicing Hit I".
+    """
+    tabla = _cargar_hechizos()
+    for sid in skill_ids:
+        rama = RAMA_POR_SKILL.get(sid)
+        if rama and tabla.get(rama):
+            return [n for _, n in tabla[rama][:3]]
+    return []
+
+
 def parsear_eleccion(cuerpo: bytes):
     """Los seis skill_id que manda el cliente al confirmar la clase."""
     return [b for b in cuerpo[:6] if b]

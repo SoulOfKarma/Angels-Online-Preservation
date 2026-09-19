@@ -385,7 +385,12 @@ class Servidor:
             # interrogantes.
             if p.habilidades:
                 import clases as _cl
-                ses.enviar(_cl.arbol([h[0] for h in p.habilidades]))
+                _ids = [h[0] for h in p.habilidades]
+                ses.enviar(_cl.arbol(_ids))
+                # Y los hechizos de F1..F3: el cliente tampoco los recuerda
+                # entre sesiones, hay que volver a mandarlos al entrar.
+                for _h in _cl.hechizos_iniciales(_ids):
+                    ses.enviar(_cl.aviso(_h, tipo=7, msg_id=_cl.MSG_HECHIZO))
             log.info(f"[{addr}] entro al mundo: '{p.nombre}' entidad={p.entity_id} "
                      f"char_id={p.char_id} tile=({p.tile_x},{p.tile_y})")
             log.info(f"[{addr}] (credenciales NO validadas: formato aun sin descifrar)")
@@ -521,6 +526,13 @@ class Servidor:
             # El arbol completo. Sin el, el panel de habilidades del cliente
             # sale lleno de interrogantes: no conoce las otras treinta.
             salida.append(clases.arbol(ids))
+            # Los tres hechizos de nivel 1 del arma, que son los que el
+            # cliente pone en F1..F3. En la captura llegan justo despues del
+            # arbol, tres 0x000D seguidos con id de mensaje 425.
+            hechizos = clases.hechizos_iniciales(ids)
+            for h in hechizos:
+                salida.append(clases.aviso(h, tipo=7,
+                                           msg_id=clases.MSG_HECHIZO))
             ses.enviar(*salida)
             if ses.personaje:
                 ses.personaje.habilidades = [(sid, 1, 0) for sid in ids]
@@ -529,7 +541,9 @@ class Servidor:
                         ses.usuario, ses.personaje.char_id,
                         ses.personaje.habilidades)
             log.info(f"[{addr}] CLASE ELEGIDA: "
-                     + ', '.join(f'{clases.nombre(i)}({i})' for i in ids))
+                     + ', '.join(f'{clases.nombre(i)}({i})' for i in ids)
+                     + (f" | hechizos: {', '.join(hechizos)}" if hechizos
+                        else " | SIN hechizos de nivel 1 para esa rama"))
             # Entregar lo que da la clase y anotar el class_id. Ambas cosas
             # estan medidas del servidor real, no deducidas.
             import inventario as _iv
