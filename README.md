@@ -122,9 +122,11 @@ Each one is under `docs/capturas/`.
 The skill panel shows the chosen class's row and question marks for the rest.
 The three starting spells are also missing, the ones bound to F1-F3: the real
 server sends them with message id 425 and they aren't sent here. Which three
-they are depends on the weapon you pick; for sword they are Slicing Hit I,
-Swiftness Song I and Injury Cure I (ids 601, 602 and 603 in `magic.xml`, the
-three level-1 entries with `技能限制1="劍術技能"`).
+they are depends on the weapon you pick: the character in the screenshot uses
+a spear, so his would be Basic Attack I, Bloody Song I and Endless Energy I
+(ids 801, 802 and 803 in `magic.xml`, the three level-1 entries with
+`技能限制1="槍術技能"`). With a sword they would be Slicing Hit I, Swiftness
+Song I and Injury Cure I, ids 601 to 603.
 
 ### 2. NPCs stand still and say nothing
 

@@ -1037,10 +1037,12 @@ La etapa se guarda en cuentas.json, asi que sobrevive al cierre.
 
 - Los tres hechizos iniciales. En la captura llegan como 0x000D con id de
   mensaje 425, y son los que el cliente pone en la barra F1..F3. No se mandan.
-  Cuales son depende del arma: para espada son Slicing Hit I, Swiftness Song I
-  e Injury Cure I, ids 601/602/603 de magic.xml (los tres registros de nivel 1
-  con 技能限制1="劍術技能"). Verificado contra G:/extracted_paks/update26/
-  setting/eng/magic.xml el 2026-09-18.
+  Cuales son depende del arma. En magic.xml cada arma tiene sus tres registros
+  de nivel 1 bajo su 技能限制1: lanza (槍術技能) son Basic Attack I, Bloody
+  Song I y Endless Energy I, ids 801/802/803; espada (劍術技能) son Slicing
+  Hit I, Swiftness Song I e Injury Cure I, ids 601/602/603. Verificado contra
+  G:/extracted_paks/update26/setting/eng/magic.xml el 2026-09-18.
+  La captura 1-skills-vacias.png es de un personaje de lanza.
 - La tienda del Angel Aide: el examen (Newbie Physical Examination File) por
   10 de oro. El mensaje de la tienda no esta identificado.
 - El cambio de mapa al Fighting Palace (stage 57) al terminar el tutorial.
@@ -1085,8 +1087,8 @@ Ademas faltan:
 - **Las skills en el panel.** El 0x001C generado sale identico byte a byte al
   real y se manda al elegir clase y al entrar, asi que el problema no es ese
   mensaje. Pista pendiente: el servidor real manda ademas tres hechizos
-  (para espada: Slicing Hit I, Swiftness Song I, Injury Cure I) con id de
-  mensaje 425, y esos no se mandan.
+  (los tres de nivel 1 del arma elegida; con lanza, Basic Attack I / Bloody
+  Song I / Endless Energy I) con id de mensaje 425, y esos no se mandan.
 - **Borrar personajes.**
 
 ## Para REGALAR un item no sirve el 0x001A

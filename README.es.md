@@ -117,9 +117,11 @@ Cada uno está en `docs/capturas/`.
 El panel de habilidades muestra la fila de la clase elegida y el resto en
 interrogantes. Faltan además los tres hechizos iniciales, los que van a las
 teclas F1 a F3: el servidor real los manda con id de mensaje 425 y aquí no se
-mandan. Cuáles son depende del arma elegida; para espada son Slicing Hit I,
-Swiftness Song I e Injury Cure I (ids 601, 602 y 603 de `magic.xml`, los tres
-de nivel 1 con `技能限制1="劍術技能"`).
+mandan. Cuáles son depende del arma elegida: el personaje de la captura usa
+lanza, así que los suyos serían Basic Attack I, Bloody Song I y Endless
+Energy I (ids 801, 802 y 803 de `magic.xml`, los tres de nivel 1 con
+`技能限制1="槍術技能"`). Con espada serían Slicing Hit I, Swiftness Song I e
+Injury Cure I, ids 601 a 603.
 
 ### 2. Los NPC están quietos y sin diálogo
 
