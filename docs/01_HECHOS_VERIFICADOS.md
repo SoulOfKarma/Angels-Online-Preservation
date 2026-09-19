@@ -1043,6 +1043,13 @@ La etapa se guarda en cuentas.json, asi que sobrevive al cierre.
   Hit I, Swiftness Song I e Injury Cure I, ids 601/602/603. Verificado contra
   G:/extracted_paks/update26/setting/eng/magic.xml el 2026-09-18.
   La captura 1-skills-vacias.png es de un personaje de lanza.
+
+  OJO con el nombre: en logs/proxy/mundo_103243_666191_s2c.bin el servidor
+  privado manda "Slicing Chop I" y "Swiftness Song I" (offset 36631, cada uno
+  precedido por 0d 00 a9 01 07 = msg_id 425, tipo 7). "Slicing Chop" no existe
+  en ningun XML del cliente: en magic.xml la 601 se llama "Slicing Hit I". Ese
+  servidor tiene la skill renombrada. Para el nombre canonico mandan los XML
+  del cliente, no la captura; la captura vale para el formato del mensaje.
 - La tienda del Angel Aide: el examen (Newbie Physical Examination File) por
   10 de oro. El mensaje de la tienda no esta identificado.
 - El cambio de mapa al Fighting Palace (stage 57) al terminar el tutorial.
