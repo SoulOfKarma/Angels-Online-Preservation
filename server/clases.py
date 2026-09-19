@@ -107,17 +107,42 @@ def _cargar_hechizos():
 def hechizos_iniciales(skill_ids):
     """Los tres hechizos de nivel 1 del arma elegida, en el orden de magic.xml.
 
+    Devuelve [(numero, nombre)] en el orden de magic.xml.
+
     En la captura llegan como tres 0x000D seguidos, uno por hechizo, justo
     despues del 0x001C del arbol (logs/proxy/mundo_103243_666191_s2c.bin,
-    offset 36618). Ese log es de un personaje de lanza y trae "Slicing Chop I":
-    ese servidor tiene la 601 renombrada, en el cliente se llama "Slicing Hit I".
+    offset 36618), y enseguida un 0x001D que es el que los otorga de verdad.
+    Ese log es de un personaje de ESPADA (los ids son 601/602/603) y trae
+    "Slicing Chop I": ese servidor tiene la 601 renombrada, en el cliente se
+    llama "Slicing Hit I".
     """
     tabla = _cargar_hechizos()
     for sid in skill_ids:
         rama = RAMA_POR_SKILL.get(sid)
         if rama and tabla.get(rama):
-            return [n for _, n in tabla[rama][:3]]
+            return tabla[rama][:3]
     return []
+
+
+KIND_HECHIZO = 9
+
+
+def otorgar_hechizos(entity_id: int, numeros) -> bytes:
+    """0x001D: el mensaje que pone los hechizos en la barra F1..F3.
+
+    El 0x000D de arriba solo escribe "Learn Basic Attack I" en el chat; los
+    iconos no aparecen hasta que llega esto. Medido en
+    logs/proxy/mundo_103243_666191_s2c.bin offset 36709:
+
+        22 00 1d 00 | 64 00 00 00 | 03 | 09 59 02 00 00 01 00 00 00 | ...
+
+        [LE32 entidad][U8 cantidad] y luego, por hechizo,
+        [U8 kind=9][LE32 numero de magic.xml][LE32 nivel]
+    """
+    cuerpo = struct.pack('<IB', entity_id, len(numeros))
+    for n in numeros:
+        cuerpo += struct.pack('<BII', KIND_HECHIZO, n, 1)
+    return struct.pack('<H', 0x001D) + cuerpo
 
 
 def parsear_eleccion(cuerpo: bytes):

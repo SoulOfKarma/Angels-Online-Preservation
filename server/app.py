@@ -389,8 +389,13 @@ class Servidor:
                 ses.enviar(_cl.arbol(_ids))
                 # Y los hechizos de F1..F3: el cliente tampoco los recuerda
                 # entre sesiones, hay que volver a mandarlos al entrar.
-                for _h in _cl.hechizos_iniciales(_ids):
-                    ses.enviar(_cl.aviso(_h, tipo=7, msg_id=_cl.MSG_HECHIZO))
+                _hech = _cl.hechizos_iniciales(_ids)
+                for _n, _nom in _hech:
+                    ses.enviar(_cl.aviso(_nom, tipo=7,
+                                         msg_id=_cl.MSG_HECHIZO))
+                if _hech:
+                    ses.enviar(_cl.otorgar_hechizos(
+                        p.entity_id, [n for n, _ in _hech]))
             log.info(f"[{addr}] entro al mundo: '{p.nombre}' entidad={p.entity_id} "
                      f"char_id={p.char_id} tile=({p.tile_x},{p.tile_y})")
             log.info(f"[{addr}] (credenciales NO validadas: formato aun sin descifrar)")
@@ -530,9 +535,14 @@ class Servidor:
             # cliente pone en F1..F3. En la captura llegan justo despues del
             # arbol, tres 0x000D seguidos con id de mensaje 425.
             hechizos = clases.hechizos_iniciales(ids)
-            for h in hechizos:
-                salida.append(clases.aviso(h, tipo=7,
+            for _, nom in hechizos:
+                salida.append(clases.aviso(nom, tipo=7,
                                            msg_id=clases.MSG_HECHIZO))
+            # El 0x000D de arriba solo escribe "Learn X" en el chat. Los
+            # iconos no salen hasta que llega este 0x001D.
+            if hechizos and ses.personaje:
+                salida.append(clases.otorgar_hechizos(
+                    ses.personaje.entity_id, [n for n, _ in hechizos]))
             ses.enviar(*salida)
             if ses.personaje:
                 ses.personaje.habilidades = [(sid, 1, 0) for sid in ids]
@@ -542,7 +552,8 @@ class Servidor:
                         ses.personaje.habilidades)
             log.info(f"[{addr}] CLASE ELEGIDA: "
                      + ', '.join(f'{clases.nombre(i)}({i})' for i in ids)
-                     + (f" | hechizos: {', '.join(hechizos)}" if hechizos
+                     + (f" | hechizos: {', '.join(n for _, n in hechizos)}"
+                        if hechizos
                         else " | SIN hechizos de nivel 1 para esa rama"))
             # Entregar lo que da la clase y anotar el class_id. Ambas cosas
             # estan medidas del servidor real, no deducidas.
