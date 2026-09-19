@@ -1035,7 +1035,19 @@ La etapa se guarda en cuentas.json, asi que sobrevive al cierre.
 
 ## Lo que falta del tutorial
 
-- Los tres hechizos iniciales. En la captura llegan como 0x000D con id de
+- RESUELTO: los tres hechizos iniciales ya salen. Hacian falta DOS mensajes,
+  no uno. El 0x000D con id 425 solo escribe "Learn Basic Attack I" en el chat;
+  los iconos aparecen con el 0x001D que llega enseguida (offset 36709 del log):
+
+      0x001D  [LE32 entidad][U8 cantidad]
+              por hechizo: [U8 kind=9][LE32 numero de magic.xml][LE32 nivel]
+
+  Confirmado en el cliente: salen en el panel y en la barra F1..F3. Pero no
+  se ejecutan; falta el mensaje de lanzar un hechizo, sin identificar.
+  Leccion: que el texto del chat salga no quiere decir que el efecto ocurrio.
+  Kind 9 de 0x001D es nuevo; hasta ahora solo estaba medido el 12.
+
+- (original) Los tres hechizos iniciales. En la captura llegan como 0x000D con id de
   mensaje 425, y son los que el cliente pone en la barra F1..F3. No se mandan.
   Cuales son depende del arma. En magic.xml cada arma tiene sus tres registros
   de nivel 1 bajo su 技能限制1: lanza (槍術技能) son Basic Attack I, Bloody

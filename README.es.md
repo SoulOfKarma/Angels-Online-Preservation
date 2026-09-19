@@ -42,7 +42,8 @@ clase, se pelea y se compra. Lo que falta está listado abajo, sin adornos.
   su cuenta y no reaparecen al morir
 - Los recursos no se recolectan
 - Las cajas no se abren: falta el mensaje de "usar objeto"
-- Faltan los tres hechizos iniciales, los de las teclas F1 a F3
+- Los hechizos no se lanzan: los tres iniciales aparecen en F1 a F3 pero
+  usarlos no hace nada
 - No hay experiencia ni subir de nivel
 - No se pueden borrar personajes
 - Las zonas de teletransporte del suelo no funcionan (el cambio de mapa sí,
@@ -115,13 +116,15 @@ Cada uno está en `docs/capturas/`.
 ![habilidades](docs/capturas/1-skills-vacias.png)
 
 El panel de habilidades muestra la fila de la clase elegida y el resto en
-interrogantes. Faltan además los tres hechizos iniciales, los que van a las
-teclas F1 a F3: el servidor real los manda con id de mensaje 425 y aquí no se
-mandan. Cuáles son depende del arma elegida: el personaje de la captura usa
-lanza, así que los suyos serían Basic Attack I, Bloody Song I y Endless
-Energy I (ids 801, 802 y 803 de `magic.xml`, los tres de nivel 1 con
-`技能限制1="槍術技能"`). Con espada serían Slicing Hit I, Swiftness Song I e
-Injury Cure I, ids 601 a 603.
+interrogantes: el cliente no conoce las otras treinta.
+
+Los tres hechizos iniciales **ya salen** (la captura es de antes de eso), pero
+solo visualmente: están los iconos en el panel y en la barra F1 a F3, y no
+hacen nada al usarlos. Falta el mensaje de lanzar un hechizo, que todavía no
+está identificado. Cuáles son los tres depende del arma; se leen de
+`magic.xml`, donde cada rama tiene exactamente tres registros de nivel 1 bajo
+su `技能限制1` (lanza: Basic Attack I, Bloody Song I, Endless Energy I, ids
+801 a 803; espada: Slicing Hit I, Swiftness Song I, Injury Cure I, 601 a 603).
 
 ### 2. Los NPC están quietos y sin diálogo
 

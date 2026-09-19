@@ -43,7 +43,8 @@ without sugarcoating.
   their own and don't respawn when killed
 - Resources can't be gathered
 - Boxes can't be opened: the "use item" message is missing
-- The three starting spells are missing, the ones bound to F1-F3
+- Spells can't be cast: the three starting ones show up on F1-F3, but using
+  them does nothing
 - No experience and no levelling up
 - Characters can't be deleted
 - Floor teleport zones don't work (the map change itself does, but the server
@@ -119,14 +120,16 @@ Each one is under `docs/capturas/`.
 
 ![skills](docs/capturas/1-skills-vacias.png)
 
-The skill panel shows the chosen class's row and question marks for the rest.
-The three starting spells are also missing, the ones bound to F1-F3: the real
-server sends them with message id 425 and they aren't sent here. Which three
-they are depends on the weapon you pick: the character in the screenshot uses
-a spear, so his would be Basic Attack I, Bloody Song I and Endless Energy I
-(ids 801, 802 and 803 in `magic.xml`, the three level-1 entries with
-`技能限制1="槍術技能"`). With a sword they would be Slicing Hit I, Swiftness
-Song I and Injury Cure I, ids 601 to 603.
+The skill panel shows the chosen class's row and question marks for the rest:
+the client doesn't know the other thirty.
+
+The three starting spells **do show up now** (the screenshot predates that),
+but only visually: the icons are in the panel and on the F1-F3 bar, and using
+them does nothing. The "cast a spell" message hasn't been identified yet.
+Which three they are depends on the weapon; they're read from `magic.xml`,
+where each branch has exactly three level-1 entries under its `技能限制1`
+(spear: Basic Attack I, Bloody Song I, Endless Energy I, ids 801 to 803;
+sword: Slicing Hit I, Swiftness Song I, Injury Cure I, 601 to 603).
 
 ### 2. NPCs stand still and say nothing
 
