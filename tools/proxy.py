@@ -17,6 +17,7 @@ tools/diagnosticar.py lo entiende sin cambios.
 import asyncio
 import argparse
 import os
+import re
 import datetime
 import pathlib
 import struct
@@ -268,13 +269,15 @@ def main():
     ap = argparse.ArgumentParser()
     # La IP del servidor no va en el repo. Se pasa con --destino o con
     # la variable de entorno AO_DESTINO.
-    ap.add_argument('--destino',
-                    default=os.environ.get('AO_DESTINO',
-                                           'IP.DEL.SERVIDOR.PRIVADO'))
-    ap.add_argument('--puerto', type=int, default=30000)
-    ap.add_argument('--fport', type=int, default=30007)
-    ap.add_argument('--wpuerto', type=int, default=30001,
-                    help='puerto local donde se recibe la sesion de mundo')
+    ap.add_argument('--destino', default=os.environ.get('AO_DESTINO'),
+                    help='IP del servidor; si no se pasa se lee del server.xml')
+    ap.add_argument('--puerto', type=int,
+                    help='puerto de login; por defecto el del server.xml')
+    ap.add_argument('--fport', type=int,
+                    help='puerto de archivos; por defecto el del server.xml')
+    ap.add_argument('--wpuerto', type=int, default=0,
+                    help='puerto local donde se recibe la sesion de mundo; '
+                         '0 = el de login mas uno')
     ap.add_argument('--server-xml',
                     help='ruta al server.xml del cliente; se edita dejando copia .bak')
     ap.add_argument('--restaurar', action='store_true',
@@ -285,6 +288,23 @@ def main():
     if a.server_xml:
         p = pathlib.Path(a.server_xml)
         bak = p.with_suffix(p.suffix + '.bak')
+        # Cada servidor privado usa sus propios puertos: AngelWar escucha en
+        # 24100/12007, no en 30000/30007. Salen del server.xml, asi que no
+        # hace falta que los averigue nadie.
+        fuente = bak if (bak.exists() and not a.restaurar) else p
+        datos = re.search(
+            r'ip="([^"]+)"\s+port="(\d+)"[^>]*?fip="([^"]+)"\s+fport="(\d+)"',
+            fuente.read_text(encoding='utf-8-sig'))
+        if datos:
+            a.destino = a.destino or datos.group(1)
+            a.puerto = a.puerto or int(datos.group(2))
+            a.fport = a.fport or int(datos.group(4))
+            if datos.group(3) != datos.group(1):
+                log.warning('fip (%s) no es la misma ip que port (%s)',
+                            datos.group(3), datos.group(1))
+        elif not a.restaurar:
+            log.error('no pude leer ip/port de %s', p.name)
+            return
         if a.restaurar:
             if bak.exists():
                 p.write_bytes(bak.read_bytes())
@@ -301,6 +321,12 @@ def main():
         p.write_text(t, encoding='utf-8-sig')
         log.info('server.xml apuntado a 127.0.0.1 (original en %s)', bak.name)
 
+    if not a.destino or not a.puerto or not a.fport:
+        log.error('falta la IP o los puertos: pasalos con --destino/--puerto/'
+                  '--fport o usa --server-xml')
+        return
+    if not a.wpuerto:
+        a.wpuerto = a.puerto + 1
     try:
         asyncio.run(Proxy(a.destino, a.puerto, a.wpuerto, a.fport).correr())
     except KeyboardInterrupt:
