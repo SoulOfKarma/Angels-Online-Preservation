@@ -457,10 +457,11 @@ def completo(char_id: int, items) -> bytes:
     normal = bytes.fromhex(p['normal'])
     equip = bytes.fromhex(p['equipable'])
     lista = []
-    for it in sorted(items):
-        ranura, item_id = it[0], it[1]
-        cant = it[2] if len(it) > 2 else 1
+    for it in sorted(items, key=lambda x: int(x[0])):
+        ranura, item_id = int(it[0]), int(it[1])
+        cant = int(it[2]) if len(it) > 2 else 1
         es_eq = es_equipable(item_id)
+
         e = bytearray(equip if es_eq else normal)
         e[1:9] = instancia_de(char_id, item_id)
         struct.pack_into('<I', e, 9, item_id)

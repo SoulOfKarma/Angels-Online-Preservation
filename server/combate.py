@@ -315,6 +315,11 @@ def datos_magia(magic_id: int) -> dict:
                     any(k in nom.lower() for k in ('heal', 'prayer', 'cure', 'recovery', 'sanctuary', 'tears'))
                 ))
                 res['es_auto'] = ('自己' in target or target == '自己')
+                res['es_pasiva'] = (
+                    d.get('被動') == '是' or
+                    (act in ('無動作', '', 'None') and not res['es_ataque'] and not res['es_cura']) or
+                    any(k in nom.lower() for k in ('enhance', 'grapple', 'reserve', 'finesse', 'garment', 'mastery'))
+                )
         except Exception:
             pass
     _MAGIC_CACHE[magic_id] = res
@@ -453,5 +458,27 @@ def efecto_curacion(atacante: int, objetivo: int, cura_hp: int, efecto: int = 16
     struct.pack_into('<H', b1, 21, 0)
 
     return [struct.pack('<H', 0x0011) + bytes(b0), struct.pack('<H', 0x0011) + bytes(b1)]
+
+
+def efecto_recuperacion_mp(atacante: int, objetivo: int, rec_mp: int, efecto: int = 69):
+    """Efecto visual de recuperacion MP 0x0011 (fase 0x00 y fase 0x80)."""
+    b0 = bytearray(23)
+    b0[0] = efecto & 0xFF
+    b0[1] = 0x00
+    struct.pack_into('<II', b0, 2, atacante, objetivo)
+    struct.pack_into('<H', b0, 18, max(0, min(65535, rec_mp)))
+    b0[20] = 1
+    struct.pack_into('<H', b0, 21, 360)
+
+    b1 = bytearray(23)
+    b1[0] = efecto & 0xFF
+    b1[1] = 0x80
+    struct.pack_into('<II', b1, 2, atacante, objetivo)
+    struct.pack_into('<H', b1, 18, 0)
+    b1[20] = 1
+    struct.pack_into('<H', b1, 21, 360)
+
+    return [struct.pack('<H', 0x0011) + bytes(b0), struct.pack('<H', 0x0011) + bytes(b1)]
+
 
 

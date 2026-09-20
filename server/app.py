@@ -601,6 +601,9 @@ class Servidor:
                 # Habilidad activa sobre uno mismo (F1, F2, F3, buffs o curaciones)
                 if tipo != _cb.ATAQUE_NORMAL or objetivo == yo:
                     mag = _cb.datos_magia(tipo)
+                    # Si es una habilidad pasiva, ignorar (no se castea activamente en la barra)
+                    if mag.get('es_pasiva'):
+                        return
                     # Si es una habilidad de ataque, no se puede autocastear
                     if mag.get('es_ataque'):
                         return
@@ -619,7 +622,6 @@ class Servidor:
                     ef = _cb.efecto_de_ataque(tipo)
                     import clases as _cl
                     pkgs = [
-                        _cb.empieza_ataque(yo),
                         _cb.atributo(yo, ses.esfuerzo, _cb.KIND_SP),
                     ]
                     # Si es una habilidad de curacion (Cure Spell, etc.)
@@ -636,34 +638,24 @@ class Servidor:
                                                      hp_max=ses.personaje.hp_max, mp_max=ses.personaje.mp_max)
                         log.info(f"[{addr}] habilidad curativa {tipo} curó {cura} HP ({ses.personaje.hp}/{ses.personaje.hp_max})")
                     else:
-                        # Buff activo sobre si mismo: solo efecto visual
+                        # Buff activo sobre si mismo: efecto visual
                         pkgs.extend(_cb.efecto_curacion(yo, yo, 0, efecto=ef))
 
                     cd_ms = mag.get('cd_ms', 1000)
                     dur_ms = mag.get('dur_ms', 0)
                     if cd_ms > 0:
                         pkgs.append(struct.pack('<HIBBII', 0x001D, yo, 1, 3, tipo, cd_ms))
-                        import asyncio
                         try:
                             asyncio.get_event_loop().call_later(cd_ms / 1000.0, lambda: ses.enviar(struct.pack('<HIBBII', 0x001D, yo, 1, 3, tipo, 0)))
                         except Exception:
                             pass
                     if dur_ms > 0:
                         pkgs.append(struct.pack('<HIBBII', 0x001D, yo, 1, 4, tipo, dur_ms))
-                        import asyncio
                         try:
                             asyncio.get_event_loop().call_later(dur_ms / 1000.0, lambda: ses.enviar(struct.pack('<HIBBII', 0x001D, yo, 1, 4, tipo, 0)))
                         except Exception:
                             pass
                     ses.enviar(*pkgs)
-                    # Resetear animacion tras 0.6 segundos para volver a postura de reposo
-                    import asyncio
-                    try:
-                        asyncio.get_event_loop().call_later(0.6, lambda: ses.enviar(
-                            struct.pack('<HIII', 0x000A, yo, 0, 0)
-                        ))
-                    except Exception:
-                        pass
                     log.info(f"[{addr}] habilidad {tipo} ejecutada sobre si mismo ({mag.get('nombre')}) [cd={cd_ms}ms, dur={dur_ms}ms]")
                     return
                 log.debug(f"[{addr}] ataque a la entidad {objetivo}: no es un monstruo conocido")
@@ -697,11 +689,11 @@ class Servidor:
                 cd_ms = mag.get('cd_ms', 1000)
                 if cd_ms > 0:
                     ses.enviar(struct.pack('<HIBBII', 0x001D, yo, 1, 3, tipo, cd_ms))
-                    import asyncio
                     try:
                         asyncio.get_event_loop().call_later(cd_ms / 1000.0, lambda: ses.enviar(struct.pack('<HIBBII', 0x001D, yo, 1, 3, tipo, 0)))
                     except Exception:
                         pass
+
             else:
                 atk_magic, atk_efecto = _cb.ataque_estandar_arma(arma_puesta)
 
@@ -712,7 +704,6 @@ class Servidor:
 
             ses.esfuerzo = max(0, getattr(ses, 'esfuerzo', 900) - _cb.COSTE_GOLPE)
             ses.enviar(_cb.atributo(objetivo, m.porcentaje),
-                       _cb.empieza_ataque(yo),
                        *_cb.numero_de_dano(yo, objetivo, dano, atk_magic, efecto=atk_efecto),
                        _cb.atributo(yo, ses.esfuerzo, _cb.KIND_ESFUERZO))
             if m.vivo:
@@ -763,11 +754,11 @@ class Servidor:
                        _cb.muerte_monstruo(objetivo, yo))
 
             # Despawnear a los 2.5 segundos para que se vea la animacion de morir completa
-            import asyncio
             try:
                 asyncio.get_event_loop().call_later(2.5, lambda: ses.enviar(_cb.despawn_monstruo(objetivo)))
             except Exception:
                 pass
+
 
             # Programar respawn del monstruo en 20 segundos
             def _respawn():
@@ -857,19 +848,30 @@ class Servidor:
             salida_combate.append(_cl.aviso(f'{oro} Gold', tipo=0, msg_id=_cl.MSG_ITEM))
 
 
-            # 5. Drops de items al inventario (con apilamiento de consumibles)
+            # 5. Drops de items al inventario (con apilamiento de consumibles y tope de bolsa)
             drops = _cb.botin_items(m.npc_type)
             bolsa = getattr(ses, 'inventario', {})
+            tiene_mochila = (bolsa.get(7) is not None or bolsa.get(8) is not None)
+            max_ranura = 44 if tiene_mochila else 39
+
             for item_drop, cant in drops:
                 r_slot = None
                 if _iv.es_apilable(item_drop):
                     for s, it_id in bolsa.items():
-                        if s >= 20 and it_id == item_drop:
+                        if 20 <= s <= max_ranura and it_id == item_drop:
                             r_slot = s
                             break
                 if r_slot is None:
-                    r_slot = _ranura_libre(bolsa, desde=20)
-                    bolsa[r_slot] = item_drop
+                    for r in range(20, max_ranura + 1):
+                        if r not in bolsa:
+                            r_slot = r
+                            break
+                if r_slot is None:
+                    salida_combate.append(_cl.aviso("Inventory is full!", tipo=0, msg_id=_cl.MSG_ITEM))
+                    log.info(f"[{addr}] inventario lleno (limite={max_ranura}), drop {item_drop} ignorado")
+                    continue
+
+                bolsa[r_slot] = item_drop
                 salida_combate.append(_cl.aviso(_nombre_item(item_drop), tipo=0, msg_id=_cl.MSG_ITEM))
                 salida_combate.extend(_iv.entregar(cid, item_drop, r_slot))
 
@@ -935,6 +937,81 @@ class Servidor:
                 cuentas.guardar_oro(ses.usuario, cid, ses.oro)
             log.info(f"[{addr}] compra: {_nombre_item(item_id)} x{cant} por "
                      f"{precio}; quedan {ses.oro} de oro")
+            return
+
+        # --- venta a tienda NPC (WND_NPCSALE) ---------------------------
+        # Cliente manda [LE32 n_items] y luego [LE32 slot][LE32 inst_hi][LE32 cant] por item
+        if opcode == 0x0028 and ses.rol == 'mundo' and cuerpo and ses.personaje:
+            import clases as _c
+            import inventario as _iv
+            bolsa = getattr(ses, 'inventario', {})
+            cid = ses.personaje.char_id
+            oro_ganado = 0
+            if len(cuerpo) >= 4:
+                n_items = struct.unpack_from('<I', cuerpo, 0)[0]
+                offset = 4
+                for _ in range(n_items):
+                    if offset + 12 > len(cuerpo):
+                        break
+                    slot, inst_hi, cant = struct.unpack_from('<III', cuerpo, offset)
+                    offset += 12
+                    cant = max(1, cant)
+                    if slot in bolsa:
+                        it_id = bolsa[slot]
+                        del bolsa[slot]
+                        precio_base = _precio_item(it_id)
+                        ganancia_item = max(1, (precio_base // 2)) * cant
+                        oro_ganado += ganancia_item
+                        log.info(f"[{addr}] vendio item {it_id} ranura {slot} x{cant} por {ganancia_item} oro")
+
+                ses.oro = getattr(ses, 'oro', 0) + oro_ganado
+                if ses.personaje:
+                    ses.personaje.oro = ses.oro
+                salida = [
+                    _iv.completo(cid, _con_oro(ses)),
+                    _c.aviso(f"{oro_ganado} Gold", tipo=0, msg_id=_c.MSG_PAGO),
+                ]
+                ses.enviar(*salida)
+                if getattr(ses, 'usuario', None):
+                    cuentas.guardar_inventario(ses.usuario, cid, bolsa)
+                    cuentas.guardar_oro(ses.usuario, cid, ses.oro)
+            return
+
+        # --- Descartar / Destruir item del inventario (papelera) ---------
+        if opcode == 0x004C and ses.rol == 'mundo' and ses.personaje and cuerpo:
+            import inventario as _iv
+            import clases as _c
+            slot = cuerpo[0]
+            bolsa = getattr(ses, 'inventario', {})
+            cid = ses.personaje.char_id
+            if slot in bolsa:
+                item_del = bolsa[slot]
+                del bolsa[slot]
+                nom_it = _nombre_item(item_del)
+                ses.enviar(_iv.completo(cid, _con_oro(ses)),
+                           _c.aviso(f"Destroyed {nom_it}", tipo=0, msg_id=_c.MSG_ITEM))
+                if getattr(ses, 'usuario', None):
+                    cuentas.guardar_inventario(ses.usuario, cid, bolsa)
+                log.info(f"[{addr}] item destruido en ranura {slot}: {item_del} ({nom_it})")
+            return
+
+        # --- Mover / Intercambiar item entre ranuras (drag & drop) -------
+        if opcode == 0x0130 and ses.rol == 'mundo' and ses.personaje and cuerpo:
+            import inventario as _iv
+            if len(cuerpo) >= 2:
+                s1, s2 = cuerpo[0], cuerpo[1]
+                bolsa = getattr(ses, 'inventario', {})
+                cid = ses.personaje.char_id
+                it1 = bolsa.pop(s1, None)
+                it2 = bolsa.pop(s2, None)
+                if it1 is not None:
+                    bolsa[s2] = it1
+                if it2 is not None:
+                    bolsa[s1] = it2
+                ses.enviar(_iv.completo(cid, _con_oro(ses)))
+                if getattr(ses, 'usuario', None):
+                    cuentas.guardar_inventario(ses.usuario, cid, bolsa)
+                log.info(f"[{addr}] intercambio ranuras inventario: {s1} <-> {s2}")
             return
 
         # --- eleccion de clase -----------------------------------------
@@ -1205,12 +1282,14 @@ class Servidor:
                     curado = ef_con['hp']
                     ses.personaje.hp = min(ses.personaje.hp_max, ses.personaje.hp + curado)
                     salida.append(_cb.atributo(yo, ses.personaje.hp, _cb.KIND_HP))
-                    salida.append(_c.aviso(f"Recovered {curado} HP", tipo=0, msg_id=_c.MSG_ITEM))
+                    salida.extend(_cb.efecto_curacion(yo, yo, curado, efecto=165))
                 if 'mp' in ef_con:
                     rec_mp = ef_con['mp']
                     ses.personaje.mp = min(ses.personaje.mp_max, ses.personaje.mp + rec_mp)
                     salida.append(_cb.atributo(yo, ses.personaje.mp, _cb.KIND_MP))
-                    salida.append(_c.aviso(f"Recovered {rec_mp} MP", tipo=0, msg_id=_c.MSG_ITEM))
+                    pct_mp = max(0, min(100, round(100 * ses.personaje.mp / ses.personaje.mp_max)))
+                    salida.append(_cb.atributo(yo, pct_mp, 1))
+                    salida.extend(_cb.efecto_recuperacion_mp(yo, yo, rec_mp, efecto=69))
                 salida.append(inv.completo(cid, _con_oro(ses)))
                 ses.enviar(*salida)
                 if getattr(ses, 'usuario', None):

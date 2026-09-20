@@ -142,9 +142,10 @@ def secuencia(p: Personaje):
             # Con la cantidad de cada cosa: el oro vive en la ranura 0 y su
             # cantidad es p.oro. Antes iba todo con cantidad 1 y al recargar
             # el mapa el jugador perdia el oro de vista.
-            _items = [(r, it, p.oro if r == _inv.RANURA_ORO else 1)
+            _items = [(int(r), int(it), p.oro if int(r) == _inv.RANURA_ORO else 1)
                       for r, it in p.inventario.items()]
             salida.append(_inv.completo(p.char_id, _items))
+
         elif op == 0x005D:
             salida.append(struct.pack('<HI', 0x005D, int(time.time())))
         elif op == 0x0196:
