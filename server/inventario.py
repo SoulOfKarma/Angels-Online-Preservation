@@ -93,6 +93,11 @@ def movimiento(origen: int, destino: int, char_id: int, item_id: int,
     # bloque del item.
     if 'dur' in o:
         struct.pack_into('<I', b, o['dur'], durabilidad(item_id))
+    if es_mascota(item_id):
+        nombres_elfos = {3396: b"Water Elf\x00", 3397: b"Fire Elf\x00", 3398: b"Wind Elf\x00", 3399: b"Earth Elf\x00"}
+        nom_pet = nombres_elfos.get(item_id, b"Pet\x00")
+        it_pos = o['item']
+        b[it_pos + 4:it_pos + 4 + len(nom_pet)] = nom_pet
     return struct.pack('<H', 0x001B) + bytes(b)
 
 
@@ -119,18 +124,16 @@ def _bonus(item_id: int) -> dict:
     return _BON.get(item_id, {'def': 0, 'accuracy': 0, 'agility': 0, 'atk': 0})
 
 
-def stats(bolsa=None) -> bytes:
-    """Sub-mensaje 0x0042 con los stats ya recalculados segun el equipo.
+def stats(bolsa=None, habilidades: list = None) -> bytes:
+    """Sub-mensaje 0x0042 con los stats del personaje segun lo que lleva puesto y habilidades pasivas.
 
     El array que empieza en +20 alterna valor base y valor efectivo:
 
         idx 0  ataque base      idx 1  R.Atk     idx 2  L.Atk
         idx 3  defensa base     idx 4  Dfs
 
-    El efectivo es el base mas lo que suma cada pieza puesta. Verificado
-    contra la sesion capturada: la defensa pasa de 12 a 28 al ponerse la
-    prenda (+10), los guantes (+3) y los zapatos (+3), y cada Sabre sube su
-    mano en 27. Los tres saltos aparecen en el trafico uno a uno.
+    El efectivo es el base mas lo que suma cada pieza puesta y los bonus de
+    habilidades pasivas (Enhance +2 def, Grapple +4 atk, Garment +3 def).
 
     bolsa: {ranura: item_id}. Sin ella se devuelve la plantilla tal cual.
     """
@@ -141,6 +144,18 @@ def stats(bolsa=None) -> bytes:
     base_atk = struct.unpack_from('<I', b, 20)[0]
     base_def = struct.unpack_from('<I', b, 20 + 12)[0]
     suma_def = 0
+    sk_atk = 0
+    sk_def = 0
+    if habilidades:
+        for sk in habilidades:
+            sk_id = sk[0]
+            sk_lv = sk[1] if len(sk) > 1 else 1
+            if sk_id == 12:    # Enhance
+                sk_def += sk_lv * 2
+            elif sk_id == 13:  # Grapple
+                sk_atk += sk_lv * 4
+            elif sk_id == 33:  # Garment
+                sk_def += sk_lv * 3
     mano = {RANURA_DERECHA: 0, RANURA_IZQUIERDA: 0}
     for ranura, item_id in bolsa.items():
         if not es_equipo(ranura) or ranura == RANURA_ORO:
@@ -149,9 +164,9 @@ def stats(bolsa=None) -> bytes:
         suma_def += x['def']
         if ranura in mano:
             mano[ranura] = x['atk'] + x['accuracy']
-    struct.pack_into('<I', b, 20 + 4, base_atk + mano[RANURA_DERECHA])
-    struct.pack_into('<I', b, 20 + 8, base_atk + mano[RANURA_IZQUIERDA])
-    struct.pack_into('<I', b, 20 + 16, base_def + suma_def)
+    struct.pack_into('<I', b, 20 + 4, base_atk + mano[RANURA_DERECHA] + sk_atk)
+    struct.pack_into('<I', b, 20 + 8, base_atk + mano[RANURA_IZQUIERDA] + sk_atk)
+    struct.pack_into('<I', b, 20 + 16, base_def + suma_def + sk_def)
     return struct.pack('<H', 0x0042) + bytes(b)
 
 
@@ -225,13 +240,14 @@ def _tabla():
             con = sqlite3.connect(db)
             campos = ','.join(f'"{c}"' for c in COLUMNAS_EQUIPO)
             for fila in con.execute(
-                    f'select id,"耐久",{campos} from item '
+                    f'select id,"耐久","物品類別",{campos} from item '
                     "where id glob '[0-9]*'"):
                 try:
                     d = int(fila[1]) if fila[1] else 0
                 except ValueError:
                     d = 0
-                _CAT[int(fila[0])] = (any(fila[2:]), d)
+                es_eq = any(v == '是' for v in fila[3:]) or (fila[2] == '寵物')
+                _CAT[int(fila[0])] = (es_eq, d)
     return _CAT
 
 
@@ -240,21 +256,156 @@ def es_equipable(item_id: int) -> bool:
     return _tabla().get(item_id, (False, 0))[0]
 
 
-def durabilidad(item_id: int) -> int:
-    """Durabilidad maxima ("Hardiness" en el cliente). 0 = no la gasta.
+def es_mascota(item_id: int) -> bool:
+    """Si el item es una mascota o huevo de mascota."""
+    if item_id in (3396, 3397, 3398, 3399):
+        return True
+    return ranura_equipo_de(item_id) == 9
 
-    Va en el offset +45 de la entrada. Se encontro comparando dos entradas
-    equipables de la misma captura: el Cask (584), que en item.xml tiene 耐久
-    180, lleva 180 justo ahi, y el Sabre (10), que no tiene esa columna,
-    lleva 0. Es el unico byte en que las dos entradas difieren.
-    """
+
+_SLOT_CACHE = None
+_PET_SPRITE_CACHE = {}
+
+def ranura_equipo_de(item_id: int):
+    """Devuelve la ranura de equipamiento donde se coloca el item, o None si no es equipable."""
+    global _SLOT_CACHE
+    if _SLOT_CACHE is None:
+        import sqlite3
+        db = pathlib.Path(__file__).parent.parent / 'corpus' / 'content.db'
+        _SLOT_CACHE = {}
+        if db.exists():
+            con = sqlite3.connect(db)
+            campos = ','.join(f'"{c}"' for c in COLUMNAS_EQUIPO)
+            for fila in con.execute(
+                    f'select id,"物品類別",{campos} from item '
+                    "where id glob '[0-9]*'"):
+                iid = int(fila[0])
+                cat = fila[1]
+                rhand, lhand, head, acc, body, hands, feet, back, pet = [v == '是' for v in fila[2:]]
+                if cat == '寵物' or pet:
+                    _SLOT_CACHE[iid] = 9
+                elif rhand:
+                    _SLOT_CACHE[iid] = 3
+                elif lhand:
+                    _SLOT_CACHE[iid] = 4
+                elif body:
+                    _SLOT_CACHE[iid] = 2
+                elif head:
+                    _SLOT_CACHE[iid] = 1
+                elif hands:
+                    _SLOT_CACHE[iid] = 5
+                elif feet:
+                    _SLOT_CACHE[iid] = 6
+                elif back:
+                    _SLOT_CACHE[iid] = 7
+                elif acc:
+                    _SLOT_CACHE[iid] = 8
+    return _SLOT_CACHE.get(item_id)
+
+
+def sprite_de_mascota(item_id: int) -> int:
+    """Devuelve el ID de sprite (圖號1) de la mascota/huevo para invocarla."""
+    global _PET_SPRITE_CACHE
+    if item_id in _PET_SPRITE_CACHE:
+        return _PET_SPRITE_CACHE[item_id]
+    import sqlite3
+    db = pathlib.Path(__file__).parent.parent / 'corpus' / 'content.db'
+    sprite = 44069   # Default: Fire Elf Egg sprite
+    if db.exists():
+        try:
+            con = sqlite3.connect(db)
+            row = con.execute('select "動態資料1" from item where id=?', (str(item_id),)).fetchone()
+            if row and row[0]:
+                pet_id = str(row[0]).strip()
+                import xml.etree.ElementTree as ET
+                p_xml = pathlib.Path('f:/Ao Proyect/AO/data/game_xml/setting_full/setting/eng/pet.xml')
+                if p_xml.exists():
+                    tree = ET.parse(p_xml)
+                    for elem in tree.getroot():
+                        if elem.attrib.get('編號') == pet_id:
+                            sp = elem.attrib.get('圖號1')
+                            if sp and sp.isdigit():
+                                sprite = int(sp)
+                                break
+        except Exception:
+            pass
+    _PET_SPRITE_CACHE[item_id] = sprite
+    return sprite
+
+
+def es_comida_mascota(item_id: int) -> bool:
+    """Si el item es comida o suplemento de mascota (Pet Cookies, Pet Can, Pet Feed, Biscuits)."""
+    return item_id in (2, 3374, 3375, 3376)
+
+
+_RECOMPENSAS_CACHE = {}
+
+def recompensas_caja(item_id: int):
+    """Si el item es una caja de regalo o bolsa de la suerte (Elf Lucky Bag, Growth Boxes, etc.),
+    devuelve lista de (item_id, cantidad) a entregar. Si no, devuelve None."""
+    if es_comida_mascota(item_id):
+        return None
+    import sqlite3, random
+    db = pathlib.Path(__file__).parent.parent / 'corpus' / 'content.db'
+    if not db.exists():
+        return None
+    try:
+        con = sqlite3.connect(db)
+        row = con.execute('select "動態資料1", "物品類別", "基本名稱" from item where id=?', (str(item_id),)).fetchone()
+        if not row:
+            return None
+        drop_id = str(row[0]).strip() if row[0] else None
+        cat = str(row[1] or '')
+        name = str(row[2] or '')
+
+        # Caso especial: Elf Lucky Bag / Elf Egg / 妖精蛋
+        # Da una de las 4 mascotas elfos elementales
+        if ('elf' in name.lower() and any(k in name.lower() for k in ('bag', 'lucky', 'egg'))) or '妖精' in name:
+            mascotas_elfo = [3396, 3397, 3398, 3399]  # Water, Fire, Wind, Earth Elf Egg
+            return [(random.choice(mascotas_elfo), 1)]
+
+        # Solo procesar categorias de cajas / bolsas / huevos
+        categorias_validas = ('紅包', '扭蛋', '禮物', '禮盒', '寶箱')
+        es_bolsa = any(k in name.lower() for k in ('bag', 'lucky', 'egg', 'box', 'gift', 'chest', 'package', 'combine', 'set')) or cat in categorias_validas or any(k in name for k in ('福袋', '禮包', '蛋'))
+        if not es_bolsa or not drop_id:
+            return None
+
+        dt = con.execute('select * from drop_table where id=?', (drop_id,)).fetchone()
+        if not dt:
+            return None
+        cols = [c[1] for c in con.execute('pragma table_info(drop_table)').fetchall()]
+        row_dict = dict(zip(cols, dt))
+        rewards = []
+        for i in range(1, 21):
+            it = row_dict.get(f'item{i}')
+            cnt = row_dict.get(f'count{i}')
+            if it and str(it).strip() and str(it).isdigit():
+                rewards.append((int(it), int(cnt) if cnt and str(cnt).isdigit() else 1))
+        if not rewards:
+            return None
+
+        # Si incluye mascotas elfo, dar una de las 4 mascotas elfo
+        mascotas_elfo = [3396, 3397, 3398, 3399]
+        if any(r[0] in mascotas_elfo for r in rewards):
+            return [(random.choice(mascotas_elfo), 1)]
+
+        # Lucky Bags / Red Envelopes / Eggs dan 1 item aleatorio
+        if cat in ('紅包', '扭蛋') or any(k in name.lower() for k in ('lucky', 'bag', 'egg')) or any(k in name for k in ('福袋', '蛋')):
+            return [random.choice(rewards)]
+
+        # Cajas de regalo (Growth Boxes, Combines, Sets) dan todo el contenido
+        return rewards
+    except Exception:
+        return None
+
+
+def durabilidad(item_id: int) -> int:
+    """Durabilidad maxima que trae un item nuevo, de item.xml."""
     base = _tabla().get(item_id, (False, 0))[1]
     if not base:
+        if es_mascota(item_id):
+            return 100
         return 0
-    # Con AO_DURABILIDAD se puede subir (o bajar) la de todo lo que entrega
-    # el servidor. Es una palanca de este servidor, no algo del juego: con 10
-    # las armas del kit salen con 300 en vez de 30 y tardan diez veces mas en
-    # romperse. Hoy no cambia nada porque nada gasta durabilidad todavia.
     import os
     try:
         factor = float(os.environ.get('AO_DURABILIDAD', '1'))
@@ -275,29 +426,37 @@ def completo(char_id: int, items) -> bytes:
     for it in sorted(items):
         ranura, item_id = it[0], it[1]
         cant = it[2] if len(it) > 2 else 1
-        e = bytearray(equip if es_equipable(item_id) else normal)
+        es_eq = es_equipable(item_id)
+        e = bytearray(equip if es_eq else normal)
         e[1:9] = instancia_de(char_id, item_id)
         struct.pack_into('<I', e, 9, item_id)
         struct.pack_into('<I', e, 34, char_id)
         struct.pack_into('<H', e, 38, ranura)
         struct.pack_into('<I', e, 40, cant)
-        struct.pack_into('<I', e, OFF_DURABILIDAD, durabilidad(item_id))
+        dur = durabilidad(item_id)
+        if es_mascota(item_id):
+            # Formatear datos de mascota para que no crashee el tooltip y no se vea muerta
+            nombres_elfos = {3396: b"Water Elf\x00", 3397: b"Fire Elf\x00", 3398: b"Wind Elf\x00", 3399: b"Earth Elf\x00"}
+            nom_pet = nombres_elfos.get(item_id, b"Pet\x00")
+            e[13:13 + len(nom_pet)] = nom_pet
+            # Durabilidad / Satiacion = 100
+            struct.pack_into('<I', e, OFF_DURABILIDAD, 100)
+            # Max Durabilidad / Max Satiacion = 100 (para evitar division por cero en % de barra)
+            struct.pack_into('<I', e, OFF_DURABILIDAD + 4, 100)
+            # Intimidad / Lealtad = 100
+            struct.pack_into('<I', e, OFF_DURABILIDAD + 8, 100)
+            # Nivel = 1
+            struct.pack_into('<I', e, OFF_DURABILIDAD + 12, 1)
+        else:
+            struct.pack_into('<I', e, OFF_DURABILIDAD, dur)
         lista.append(bytes(e))
     fuera = struct.pack('<I', len(lista)) + b''.join(lista)
     return struct.pack('<H', 0x001A) + fuera
 
 
 # ------------------------------------------------- entrega de un item
-# Para REGALAR un item no sirve el 0x001A: el cliente solo lo lee al entrar al
-# mundo, asi que los items aparecian en el chat ("Obtain Students' Gloves")
-# pero el panel seguia vacio hasta salir y volver a entrar. Lo que refresca en
-# caliente son DOS mensajes 0x001B, uno por contenedor:
-#
-#     contenedor 1  123 bytes
-#     contenedor 2  131 bytes
-#
-# En los dos: +4 marca 01, +5 instancia de 8 bytes, +13 item_id LE32,
-# +38 char_id LE32, +42 ranura LE16, +49 durabilidad LE32.
+# Para entregar items se manda cont1 (contenedor 1 = inventario/mochila).
+# No se manda cont2 (que movia al equipo ranura 3 y vaciaba la 20).
 PLANTILLA_ENTREGA = pathlib.Path(__file__).parent / 'plantillas' / 'entrega_item.json'
 _PE = None
 
@@ -310,15 +469,22 @@ def _plantilla_entrega():
 
 
 def entregar(char_id: int, item_id: int, ranura: int):
-    """Los dos sub-mensajes 0x001B que meten un item en el inventario."""
+    """Sub-mensaje 0x001B cont1 que mete un item en la mochila del inventario."""
     p = _plantilla_entrega()
-    salida = []
-    for clave in ('cont1', 'cont2'):
-        b = bytearray(bytes.fromhex(p[clave]))
-        b[5:13] = instancia_de(char_id, item_id)
-        struct.pack_into('<I', b, 13, item_id)
-        struct.pack_into('<I', b, 38, char_id)
-        struct.pack_into('<H', b, 42, ranura)
-        struct.pack_into('<I', b, 49, durabilidad(item_id))
-        salida.append(struct.pack('<H', 0x001B) + bytes(b))
-    return salida
+    b = bytearray(bytes.fromhex(p['cont1']))
+    b[5:13] = instancia_de(char_id, item_id)
+    struct.pack_into('<I', b, 13, item_id)
+    struct.pack_into('<I', b, 38, char_id)
+    struct.pack_into('<H', b, 42, ranura)
+    dur = durabilidad(item_id)
+    if es_mascota(item_id):
+        nombres_elfos = {3396: b"Water Elf\x00", 3397: b"Fire Elf\x00", 3398: b"Wind Elf\x00", 3399: b"Earth Elf\x00"}
+        nom_pet = nombres_elfos.get(item_id, b"Pet\x00")
+        b[17:17 + len(nom_pet)] = nom_pet
+        struct.pack_into('<I', b, 49, 100)
+        struct.pack_into('<I', b, 53, 100)
+        struct.pack_into('<I', b, 57, 100)
+        struct.pack_into('<I', b, 61, 1)
+    else:
+        struct.pack_into('<I', b, 49, dur)
+    return [struct.pack('<H', 0x001B) + bytes(b)]

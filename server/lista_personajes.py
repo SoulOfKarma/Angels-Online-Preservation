@@ -147,15 +147,13 @@ def bloque_cuenta(personajes, ranuras=MAX_RANURAS, subcanal=2,
                          personajes[i].get('hp_max', personajes[i].get('hp', 0)) & 0xFFFFFFFF)
         struct.pack_into('<I', a, OFF_MP_MAX + 4 * i,
                          personajes[i].get('mp_max', personajes[i].get('mp', 0)) & 0xFFFFFFFF)
-    # [479] son las HABILIDADES, no el equipo. La documentacion previa lo
-    # llamaba "arreglos de EQUIPO" y por eso se dejaba en cero. En el bloque
-    # capturado de un personaje con clase ahi estan sus seis habilidades
-    # (9, 12, 13, 15, 16, 33), una cada cuatro bytes, y el equipo real vive
-    # dentro del slot.
+    # [479] son las HABILIDADES evaluadas para la clase (sub_71C380).
+    # Cada ranura ocupa 36 bytes (9 DWORDs = 36 B, desde 479 + 36 * i):
+    # seis habilidades iniciales y tres ceros. Con salto de 24 se solapaban.
     for i in range(min(len(personajes), ranuras)):
         for k, h in enumerate(personajes[i].get('habilidades', [])[:6]):
             sid = h[0] if isinstance(h, (list, tuple)) else h
-            struct.pack_into('<I', a, OFF_SKILLS + 4 * (6 * i + k),
+            struct.pack_into('<I', a, OFF_SKILLS + 36 * i + 4 * k,
                              int(sid) & 0xFFFFFFFF)
     return bytes(a[2:])                   # el opcode lo pone quien empaqueta
 

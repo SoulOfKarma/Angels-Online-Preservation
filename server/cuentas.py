@@ -142,6 +142,11 @@ def personaje_de(cuenta, indice=0):
         tutorial=p.get('tutorial', 0),
         oro=p.get('oro', 0),
         stage=p.get('stage_id', 51),
+        faction=p.get('faction', 'Heaven'),
+        nivel=p.get('nivel', 1),
+        exp=p.get('exp', 0),
+        banco={int(k): v for k, v in p.get('banco', {}).items()},
+        buffs=p.get('buffs', {}),
     )
 
 
@@ -238,3 +243,68 @@ def guardar_mapa(usuario: str, char_id: int, stage: int, tile_x: int, tile_y: in
             ARCHIVO.write_text(json.dumps(d, indent=2, ensure_ascii=False),
                                encoding='utf-8')
             return
+
+
+def guardar_faccion(usuario: str, char_id: int, faccion: str):
+    """Guarda la faccion elegida (Aurora, Dark City, Iron Castle, Breeze Woods)."""
+    d = json.loads(ARCHIVO.read_text(encoding='utf-8'))
+    c = d['cuentas'].get(usuario)
+    if not c:
+        return
+    for p in c.get('personajes', []):
+        if p.get('char_id') == char_id:
+            p['faction'] = faccion
+            ARCHIVO.write_text(json.dumps(d, indent=2, ensure_ascii=False),
+                               encoding='utf-8')
+            return
+
+
+def guardar_progreso(usuario: str, char_id: int, nivel: int, exp: int,
+                     hp: int = None, mp: int = None, habilidades: list = None):
+    """Guarda nivel, exp, hp, mp y habilidades del personaje."""
+    d = json.loads(ARCHIVO.read_text(encoding='utf-8'))
+    c = d['cuentas'].get(usuario)
+    if not c:
+        return
+    for p in c.get('personajes', []):
+        if p.get('char_id') == char_id:
+            p['nivel'] = int(nivel)
+            p['exp'] = int(exp)
+            if hp is not None:
+                p['hp'] = int(hp)
+            if mp is not None:
+                p['mp'] = int(mp)
+            if habilidades is not None:
+                p['habilidades'] = [list(h) for h in habilidades]
+            ARCHIVO.write_text(json.dumps(d, indent=2, ensure_ascii=False),
+                               encoding='utf-8')
+            return
+
+
+def guardar_banco(usuario: str, char_id: int, banco: dict):
+    """Guarda los items del almacen/banco del personaje."""
+    d = json.loads(ARCHIVO.read_text(encoding='utf-8'))
+    c = d['cuentas'].get(usuario)
+    if not c:
+        return
+    for p in c.get('personajes', []):
+        if p.get('char_id') == char_id:
+            p['banco'] = {str(k): v for k, v in sorted(banco.items())}
+            ARCHIVO.write_text(json.dumps(d, indent=2, ensure_ascii=False),
+                               encoding='utf-8')
+            return
+
+
+def guardar_buffs(usuario: str, char_id: int, buffs: dict):
+    """Guarda los buffs activos del personaje."""
+    d = json.loads(ARCHIVO.read_text(encoding='utf-8'))
+    c = d['cuentas'].get(usuario)
+    if not c:
+        return
+    for p in c.get('personajes', []):
+        if p.get('char_id') == char_id:
+            p['buffs'] = buffs
+            ARCHIVO.write_text(json.dumps(d, indent=2, ensure_ascii=False),
+                               encoding='utf-8')
+            return
+

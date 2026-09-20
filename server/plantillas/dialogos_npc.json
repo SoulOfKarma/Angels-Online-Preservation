@@ -2,9 +2,9 @@
   "_nota": "Dialogo de cada NPC. 'hex' es el cuerpo del 0x0012 tal como lo manda el servidor real cuando esta capturado, con sus opciones; para los demas se arma uno sin opciones con el id que se encontro en msg.xml. El texto vive en el cliente: el servidor solo manda el numero.",
   "npcs": {
     "Director Wolay": {
-      "msgid": 5079,
+      "msgid": 10004,
       "val": 49,
-      "hex": "d71300003100000200d8130000d91300000a430f0000000000",
+      "hex": "142700003100000000",
       "texto": "I'm Director Wolay. Don't forget to study hard to become an excellent Angel."
     },
     "Repair Angel": {
@@ -65,7 +65,7 @@
       "msgid": 5029,
       "texto": "Hello there, Little Angel, I'm the Chief Director ! There is a warehouse for each of the freshman in the campus; do you ",
       "val": 3,
-      "hex": "a51300000300000000"
+      "hex": "a51300000300000200a6130000a7130000"
     },
     "Cupid": {
       "msgid": 5745,
@@ -77,7 +77,7 @@
       "msgid": 5023,
       "texto": "I'm the Skill Angel, are you satisfied with your skill distribution? If you have any problems during your studies, you m",
       "val": 3,
-      "hex": "9f1300000300000000"
+      "hex": "9f1300000300000200a0130000a1130000"
     },
     "Weapon Salesman": {
       "msgid": 70000,
@@ -110,10 +110,82 @@
       "texto": ""
     },
     "Aurora Totem": {
-      "msgid": 5136,
-      "val": 0,
-      "hex": "101400000000000000",
-      "texto": ""
+      "msgid": 10201,
+      "val": 4,
+      "hex": "d92700000400000400dd270000df270000e0270000de270000",
+      "texto": "Hello, I'm the Angel Protector from Aurora City, do you want to join us?"
+    },
+    "House Pickets": {
+      "msgid": 7055,
+      "val": 3,
+      "hex": "8f1b00000300000000",
+      "texto": "The House Pickets and many excellent graduates gave up their vacations to join in the battle. But, the number of the Hell Rabbits is increasing by the day. Do we have enough force to stop them?"
+    },
+    "Dark City Totem": {
+      "msgid": 10202,
+      "val": 4,
+      "hex": "da2700000400000400dd270000e1270000e2270000de270000",
+      "texto": "Hello, I'm the Angel Protector from Dark City, do you want to join us?"
+    },
+    "Iron Totem": {
+      "msgid": 10203,
+      "val": 4,
+      "hex": "db2700000400000400dd270000e3270000e4270000de270000",
+      "texto": "Hello, I'm the Angel Protector from Iron Castle, do you want to join us?"
+    },
+    "Breeze Totem": {
+      "msgid": 10204,
+      "val": 4,
+      "hex": "dc2700000400000400dd270000e5270000e6270000de270000",
+      "texto": "Hello, I'm the Angel Protector from Breeze Woods, do you want to join us?"
+    },
+    "Pet Expert": {
+      "msgid": 6100,
+      "val": 4,
+      "hex": "d41700000400000400d5170000d6170000d7170000d8170000",
+      "texto": "I'm the Pet Merchant, I sell many kinds of props and feedstuffs you can take a look around if you are interested!"
+    },
+    "Gaoler Angel": {
+      "msgid": 5085,
+      "val": 3,
+      "hex": "dd1300000300000000",
+      "texto": "Gaoler Angel"
+    },
+    "Scroll Seller": {
+      "msgid": 5628,
+      "val": 4,
+      "hex": "fc1500000400000200472f0000492f0000",
+      "texto": "Hello, Little Angel, I'm the Angel Merchant who sells the Skill Scroll, if you want to learn some skills, you can buy one from me."
+    },
+    "Magic Seller": {
+      "msgid": 5235,
+      "val": 4,
+      "hex": "731400000400000200472f0000492f0000",
+      "texto": "Hello, Little Angel, I'm the Angel Merchant who sells the magic scrolls. If you want to learn more magic, you can buy one."
+    },
+    "Michael": {
+      "msgid": 5001,
+      "val": 3,
+      "hex": "891300000300000000",
+      "texto": "Michael"
+    },
+    "Angels' Tutor": {
+      "msgid": 10101,
+      "val": 4,
+      "hex": "7527000004000005007b2700007c2700007d2700007e2700007f270000",
+      "texto": "/c$2%1/c*,I'm your tutor in the Angel Lyceum."
+    },
+    "C. Plan Seller": {
+      "msgid": 5234,
+      "val": 4,
+      "hex": "721400000400000200472f0000492f0000",
+      "texto": "Hello, Little Angel, I'm the Angel Merchant who sells the manufacture recipes. If you want to learn how to make things then you can buy one."
+    },
+    "Bao Clerk": {
+      "msgid": 5236,
+      "val": 4,
+      "hex": "7414000004000003007514000076140000492f0000",
+      "texto": "Which warehouse do you want to use?"
     }
   }
 }

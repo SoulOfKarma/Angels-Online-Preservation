@@ -38,15 +38,15 @@ _MON = None
 
 
 def _datos(npc_type: int):
-    """{hp, atk, var, def} del monstruo, o None si no esta en monster.xml."""
+    """{hp, atk, var, def, exp} del monstruo, o None si no esta en monster.xml."""
     global _MON
     if _MON is None:
         db = pathlib.Path(__file__).parent.parent / 'corpus' / 'content.db'
         _MON = {}
         if db.exists():
             con = sqlite3.connect(db)
-            for i, n, hp, a, v, d in con.execute(
-                    'select id,name,hp,atk_avg,atk_var,def from monster '
+            for i, n, hp, a, v, d, ev in con.execute(
+                    'select id,name,hp,atk_avg,atk_var,def,exp_value from monster '
                     "where id glob '[0-9]*'"):
                 def _n(x):
                     try:
@@ -54,8 +54,50 @@ def _datos(npc_type: int):
                     except (TypeError, ValueError):
                         return 0
                 _MON[int(i)] = {'nombre': n, 'hp': _n(hp) or 1, 'atk': _n(a),
-                                'var': _n(v), 'def': _n(d)}
+                                'var': _n(v), 'def': _n(d), 'exp': _n(ev) or 25}
     return _MON.get(npc_type)
+
+
+_CURVA_NIVEL = None
+
+def _cargar_curva_nivel():
+    global _CURVA_NIVEL
+    if _CURVA_NIVEL is None:
+        db = pathlib.Path(__file__).parent.parent / 'corpus' / 'content.db'
+        _CURVA_NIVEL = {}
+        if db.exists():
+            try:
+                con = sqlite3.connect(db)
+                for lv, exp in con.execute('select level, exp_char from level'):
+                    try:
+                        _CURVA_NIVEL[int(lv)] = int(exp)
+                    except ValueError:
+                        pass
+            except Exception:
+                pass
+    return _CURVA_NIVEL or {}
+
+
+def exp_para_nivel(nv: int) -> int:
+    curva = _cargar_curva_nivel()
+    return curva.get(nv, nv * 120)
+
+
+def calcular_exp(npc_type: int, buffs: dict = None) -> int:
+    """Calcula la EXP de personaje ganada aplicando los multiplicadores de configuracion."""
+    import configuracion
+    d = _datos(npc_type) or {}
+    base = d.get('exp', 35)
+    mult = configuracion.multiplicador_exp(buffs)
+    return max(1, int(round(base * mult)))
+
+
+def calcular_skill_exp(buffs: dict = None) -> int:
+    """Calcula la Skill EXP ganada aplicando los multiplicadores de configuracion."""
+    import configuracion
+    base = 6
+    mult = configuracion.multiplicador_skill_exp(buffs)
+    return max(1, int(round(base * mult)))
 
 
 def atributo(entity_id: int, valor: int, kind: int = VIDA) -> bytes:
@@ -88,7 +130,7 @@ def parsear_ataque(cuerpo: bytes):
     if len(cuerpo) < 4:
         return None
     tipo, objetivo = struct.unpack_from('<HH', cuerpo, 0)
-    return (tipo, objetivo) if objetivo else None
+    return (tipo, objetivo)
 
 
 class Monstruo:
@@ -98,7 +140,8 @@ class Monstruo:
         self.entity_id = entity_id
         self.npc_type = npc_type
         self.nombre = nombre
-        self.tile = tile
+        self.tile = list(tile)
+        self.spawn_tile = list(tile)
         d = _datos(npc_type) or {'hp': 50, 'atk': 5, 'var': 1, 'def': 0}
         self.hp_max = d['hp']
         self.hp = d['hp']
@@ -133,11 +176,88 @@ class Monstruo:
     def revivir(self):
         self.hp = self.hp_max
         self.muerto_en = None
+        self.tile = list(self.spawn_tile)
 
 
 def botin(nivel_monstruo: int = 1) -> int:
-    """Cuanto oro suelta. En la captura los Slarm daban entre 1 y 3."""
-    return random.randint(1, 3)
+    """Cuanto oro suelta. Aplica el multiplicador de configuracion."""
+    import configuracion
+    base = random.randint(3, 8)
+    return max(1, int(round(base * configuracion.TASA_ORO_BASE)))
+
+
+_DROPS_CACHE = {}
+
+
+def botin_items(npc_type: int) -> list:
+    """Items que suelta el monstruo de drop_table con multiplicador de drops."""
+    global _DROPS_CACHE
+    if npc_type in _DROPS_CACHE:
+        candidatos = _DROPS_CACHE[npc_type]
+    else:
+        db = pathlib.Path(__file__).parent.parent / 'corpus' / 'content.db'
+        candidatos = []
+        if db.exists():
+            try:
+                con = sqlite3.connect(db)
+                mrow = con.execute('select drop_id from monster where id=?', (str(npc_type),)).fetchone()
+                if mrow and mrow[0]:
+                    did = str(mrow[0]).strip()
+                    dt = con.execute('select * from drop_table where id=?', (did,)).fetchone()
+                    if dt:
+                        cols = [c[1] for c in con.execute('pragma table_info(drop_table)').fetchall()]
+                        row_dict = dict(zip(cols, dt))
+                        for i in range(1, 9):
+                            it = row_dict.get(f'item{i}')
+                            cnt = row_dict.get(f'count{i}')
+                            if it and str(it).isdigit():
+                                c_val = int(cnt) if cnt and str(cnt).isdigit() else 1
+                                candidatos.append((int(it), c_val))
+            except Exception:
+                pass
+        _DROPS_CACHE[npc_type] = candidatos
+
+    import configuracion
+    prob = min(0.95, 0.70 * configuracion.multiplicador_drop())
+    drops = []
+    if candidatos and random.random() < prob:
+        drops.append(random.choice(candidatos))
+    return drops
+
+
+_MAGIC_CACHE = {}
+
+
+def datos_magia(magic_id: int) -> dict:
+    """Informacion del hechizo/skill desde magic.xml."""
+    global _MAGIC_CACHE
+    if magic_id in _MAGIC_CACHE:
+        return _MAGIC_CACHE[magic_id]
+    db = pathlib.Path(__file__).parent.parent / 'corpus' / 'content.db'
+    res = {'id': magic_id, 'nombre': '', 'mp': 0, 'sp': COSTE_GOLPE, 'efecto': EFECTO_GOLPE, 'hp': 0, 'es_auto': False}
+    if db.exists():
+        try:
+            con = sqlite3.connect(db)
+            cols = [c[1] for c in con.execute('pragma table_info(magic)').fetchall()]
+            row = con.execute('select * from magic where id=?', (str(magic_id),)).fetchone()
+            if row:
+                d = dict(zip(cols, row))
+                res['nombre'] = d.get('name') or ''
+                try: res['mp'] = int(float(d.get('消耗MP') or 0))
+                except ValueError: res['mp'] = 0
+                try: res['sp'] = int(float(d.get('消耗SP') or COSTE_GOLPE))
+                except ValueError: res['sp'] = COSTE_GOLPE
+                try: res['efecto'] = int(float(d.get('特效編號') or EFECTO_GOLPE))
+                except ValueError: res['efecto'] = EFECTO_GOLPE
+                try: res['hp'] = int(float(d.get('hp') or 0))
+                except ValueError: res['hp'] = 0
+                target = str(d.get('對象') or '')
+                res['es_auto'] = ('自己' in target or '自己' in str(d.get('desc') or ''))
+        except Exception:
+            pass
+    _MAGIC_CACHE[magic_id] = res
+    return res
+
 
 
 # --------------------------------------------------------------- 0x0011
@@ -157,6 +277,27 @@ def botin(nivel_monstruo: int = 1) -> int:
 # Medido: van siempre de a dos, primero la fase 0x00 con el dano y despues la
 # 0x80 con cero.
 EFECTO_GOLPE = 0x94
+_EFECTOS_CACHE = {}
+
+
+def efecto_de_ataque(magic_id: int) -> int:
+    """Devuelve el numero de efecto visual para este ataque o skill de magic.xml."""
+    global _EFECTOS_CACHE
+    if magic_id in _EFECTOS_CACHE:
+        return _EFECTOS_CACHE[magic_id]
+    db = pathlib.Path(__file__).parent.parent / 'corpus' / 'content.db'
+    if db.exists():
+        try:
+            con = sqlite3.connect(db)
+            row = con.execute('select "特效編號" from magic where id=?', (str(magic_id),)).fetchone()
+            if row and row[0] and str(row[0]).isdigit():
+                val = int(row[0])
+                _EFECTOS_CACHE[magic_id] = val
+                return val
+        except Exception:
+            pass
+    _EFECTOS_CACHE[magic_id] = EFECTO_GOLPE
+    return EFECTO_GOLPE
 
 
 def numero_de_dano(atacante: int, objetivo: int, dano: int,

@@ -1,0 +1,133 @@
+SYSTEM_SCREEN_WIDTH = 800
+SYSTEM_SCREEN_HEIGHT = 600
+DXSOUND_VOLUME_MIN = 0
+DXSOUND_VOLUME_MAX = 100
+WINDOW_PLANE = 4000
+wsVisible = 1
+wsDisable = 2
+wsChild = 4
+wsPopup = 8
+wsPuzzlex = 16
+wsTabstop = 32
+wsTransparent = 64
+wsPuzzle = 128
+wsDrag = 256
+wsDrop = 512
+wsAutoClose = 1024
+wsTopMost = 2048
+wsMoveable = 4096
+ssHCenter = 65536
+ssVCenter = 131072
+ssLeft = 262144
+ssRight = 524288
+msHCenter = 65536
+esHCenter = 65536
+esVCenter = 131072
+esLeft = 262144
+esRight = 524288
+esPassword = 1048576
+esNumber = 2097152
+esWantReturn = 4194304
+bsHCenter = 65536
+bsVCenter = 131072
+bsLeft = 262144
+bsRight = 524288
+bsCheck = 1048576
+bsRadio = 3145728
+bsRadioBegin = 4194304
+bsRadioEnd = 8388608
+csVScroll = 65536
+csHScroll = 131072
+csSimple = 262144
+psVertical = 65536
+psHorizontal = 131072
+psInverse = 262144
+psShowPos = 524288
+psShowPosOverMax = 1048576
+dsVertical = 65536
+dsHorizontal = 131072
+lsVScroll = 65536
+lsHScroll = 131072
+lsHCenter = 262144
+lsVCenter = 524288
+lsLeft = 1048576
+lsRight = 2097152
+lsTop = 4194304
+lsBottom = 8388608
+lsReport = 16777216
+lsCheck = 33554432
+lsSCheck = 67108864
+lsVItem = 134217728
+lsHItem = 268435456
+tsHCenter = 65536
+tsCursor = 131072
+tsTop = 262144
+tsBottom = 524288
+tsLeft = 1048576
+tsRight = 2097152
+mbOk = 0
+mbOkCancel = 1
+mbYesNo = 2
+mbnOk = 0
+mbnCancel = 1
+mbnYes = 2
+mbnNo = 3
+ICON_ATTRIB_DARK = 1
+ICON_ATTRIB_FIT = 2
+ICON_ATTRIB_ZOOM = 4
+ICON_ATTRIB_LIGHT = 8
+ICON_ATTRIB_MIXER = 16
+ICON_ATTRIB_LIGHT2 = 32
+ICON_ATTRIB_TABLE = 64
+ICON_ATTRIB_FAST = 128
+ICON_ATTRIB_THEME = 256
+ICON_ATTRIB_GRAY = 512
+DROP_TYPE_ITEM = 1
+DROP_TYPE_EMOT = 2
+DROP_TYPE_MAGIC = 3
+DROP_TYPE_QUICK_KEY = 4
+CURSOR_MODE_NORMAL = 0
+CURSOR_MODE_GROUPINVITE = 1
+CURSOR_MODE_GROUPPROMOTE = 2
+CURSOR_MODE_GROUPKICK = 3
+CURSOR_MODE_TRADE = 4
+CURSOR_MODE_CARD = 5
+CURSOR_MODE_KICK = 6
+CURSOR_MODE_MINIGAME = 7
+CURSOR_MODE_FRIENDINVITE = 8
+CURSOR_MODE_TRADEINVITE = 9
+CURSOR_MODE_USEITEM2TARGET = 10
+CURSOR_MODE_USEENCHANT = 11
+CURSOR_MODE_USEGEM = 12
+CURSOR_MODE_USEPERFORATE = 13
+CURSOR_MODE_USEREINFORCE = 14
+CURSOR_MODE_TESTBASEBIAS = 15
+CURSOR_MODE_TESTMASKBIAS = 16
+CURSOR_MODE_CASTTARGET = 17
+CURSOR_MODE_CASTENEMYTARGET = 18
+CURSOR_MODE_CASTPOS = 19
+CURSOR_MODE_CASTDEAD = 20
+CURSOR_MODE_USEROBOTPART = 21
+CURSOR_MODE_TOWERBASETARGET = 22
+CURSOR_MODE_USEITEM2PARTNER = 23
+voiceHello = 0
+voiceGoodbye = 1
+voiceWelcome = 2
+voiceThank = 3
+voiceSuccessed = 4
+voiceFailed = 5
+RELOAD_FILE_NAME = ""
+
+function setreload(file)
+  RELOAD_FILE_NAME = file
+  reload()
+end
+
+function reload()
+  window.reload(RELOAD_FILE_NAME)
+end
+
+function OnCancel(dwID, dwCmdID, dwParam, pParam)
+  window.destroy(window.parent(dwID))
+  return 1
+end

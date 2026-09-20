@@ -39,11 +39,18 @@ def _nombre_entidad(ses, entity_id: int) -> str:
     """El nombre del NPC del mapa, para buscarle su dialogo."""
     import json
     f = pathlib.Path(__file__).parent / 'plantillas' / 'lyceum.json'
-    if not f.exists():
-        return ''
-    for e in json.loads(f.read_text(encoding='utf-8'))['spawns']:
-        if e['entity_id'] == entity_id:
-            return e['nombre']
+    if f.exists():
+        for e in json.loads(f.read_text(encoding='utf-8'))['spawns']:
+            if e['entity_id'] == entity_id:
+                return e['nombre']
+    # Si es un NPC de quest de los xmls (entity_id >= 900)
+    f_mapas = pathlib.Path(__file__).parent / 'plantillas' / 'npc_por_mapa.json'
+    if f_mapas.exists() and entity_id >= 900 and getattr(ses, 'personaje', None):
+        d_mapas = json.loads(f_mapas.read_text(encoding='utf-8')).get('mapas', {})
+        st_npcs = d_mapas.get(str(ses.personaje.stage), [])
+        idx = entity_id - 900
+        if 0 <= idx < len(st_npcs):
+            return st_npcs[idx].get('nombre', '')
     return ''
 
 
@@ -51,6 +58,10 @@ def _monstruos_de(stage: int):
     """Los monstruos vivos del mapa, por entity_id."""
     import json
     import combate
+    import login as _lg
+    if stage in _lg.PLAYGROUND_MONSTERS:
+        return {eid: combate.Monstruo(eid, ntype, nom, tile)
+                for eid, ntype, nom, tile in _lg.PLAYGROUND_MONSTERS[stage]}
     f = pathlib.Path(__file__).parent / 'plantillas' / 'lyceum.json'
     if stage != 41 or not f.exists():
         return {}
@@ -100,7 +111,10 @@ def _final_tutorial(ses, addr):
     # Y al Lyceum.
     ses.personaje.stage = clases.STAGE_LYCEUM
     ses.personaje.tile_x, ses.personaje.tile_y = clases.TILE_LYCEUM
+    ses.monstruos = _monstruos_de(clases.STAGE_LYCEUM)
     ses.enviar(clases.cambiar_mapa(clases.STAGE_LYCEUM))
+    import login as _lg
+    ses.enviar(*_lg.poblar(clases.STAGE_LYCEUM))
     if getattr(ses, 'usuario', None):
         cuentas.guardar_inventario(ses.usuario, cid, bolsa)
         cuentas.guardar_mapa(ses.usuario, cid, clases.STAGE_LYCEUM,
@@ -180,18 +194,91 @@ class Servidor:
         # IP porque el puerto de origen cambia entre las dos conexiones.
         self.pendientes = {}
 
+    async def _patrulla_lyceum(self, ses):
+        """Mueve a los House Pickets periodicamente para que patrullen el Angel Lyceum,
+        y gestiona el respawn de monstruos y movimiento de la mascota."""
+        rutas = [
+            (5, [(94, 55), (94, 61)]),
+            (6, [(123, 53), (128, 53)]),
+            (7, [(145, 81), (150, 81)]),
+            (12, [(145, 71), (145, 77)]),
+            (16, [(217, 75), (211, 75)]),
+        ]
+        estado = {eid: 0 for eid, _ in rutas}
+        MOVE = Msg.registry[(0x0005, 's2c', '*')]
+        try:
+            while True:
+                await asyncio.sleep(5)
+                if not getattr(ses, 'personaje', None):
+                    continue
+
+                # 1. Patrulla de House Pickets en Angel Lyceum
+                if ses.personaje.stage == 41:
+                    for eid, pts in rutas:
+                        idx = estado[eid]
+                        nxt = 1 - idx
+                        cur_t = pts[idx]
+                        dst_t = pts[nxt]
+                        estado[eid] = nxt
+                        msg = MOVE.build(
+                            entity_id=eid,
+                            cur_x=cur_t[0] * 32,
+                            cur_y=cur_t[1] * 32,
+                            dst_x=dst_t[0] * 32,
+                            dst_y=dst_t[1] * 32,
+                            speed=50
+                        )
+                        ses.enviar(msg)
+
+                # 2. Respawn de monstruos caidos
+                monstruos = getattr(ses, 'monstruos', {})
+                import login as _lg
+                for mid, m in list(monstruos.items()):
+                    if m.toca_reaparecer():
+                        m.revivir()
+                        ses.enviar(_lg._npc_spawn(m.entity_id, m.npc_type, m.nombre, m.spawn_tile, klass=1))
+                        log.info(f"monstruo {m.nombre} (eid={m.entity_id}) reaparecio en {m.spawn_tile}")
+
+                # 3. Seguimiento de mascota al jugador
+                pet_id = getattr(ses, 'pet_entity_id', None)
+                if pet_id and ses.personaje:
+                    px, py = ses.personaje.tile_x, ses.personaje.tile_y
+                    msg_pet = MOVE.build(
+                        entity_id=pet_id,
+                        cur_x=(px + 1) * 32,
+                        cur_y=py * 32,
+                        dst_x=px * 32,
+                        dst_y=py * 32,
+                        speed=100
+                    )
+                    ses.enviar(msg_pet)
+
+                salida = ses.drenar()
+                if salida and getattr(ses, 'writer', None):
+                    if getattr(ses, 'grab', None):
+                        ses.grab.salida(salida)
+                    ses.writer.write(salida)
+                    await ses.writer.drain()
+        except asyncio.CancelledError:
+            pass
+        except Exception as e:
+            log.debug(f"patrulla lyceum detenida: {e}")
+
     async def cliente(self, reader, writer, rol='mundo'):
         addr = writer.get_extra_info('peername')
         self.sesiones += 1
         ses = Session(addr)
         ses.rol = rol
         ses.puerto = self.port if rol == 'login' else self.wport
+        ses.writer = writer
         grab = Grabador(addr, self.port if rol == 'login' else self.wport, ses.key)
+        ses.grab = grab
+        ses.patrulla_task = asyncio.create_task(self._patrulla_lyceum(ses)) if rol == 'mundo' else None
         log.info(f"[{addr}] conectado ({rol})  clave={ses.key.hex(' ')}")
-        log.info(f"[{addr}] grabando sesion -> logs/sesiones/{grab.base}_*.bin")
+        log.info(f"[{addr}] grabando sesion -> logs/sesiones/{ses.grab.base}_*.bin")
         ses.enviar_hello()
         primero = ses.drenar()
-        grab.salida(primero)
+        ses.grab.salida(primero)
         writer.write(primero)
         await writer.drain()
         try:
@@ -221,6 +308,8 @@ class Servidor:
         except (ConnectionResetError, asyncio.IncompleteReadError):
             pass
         finally:
+            if getattr(ses, 'patrulla_task', None):
+                ses.patrulla_task.cancel()
             # Guardar donde quedo el personaje, para que al volver a entrar
             # aparezca ahi y no en el punto de aparicion.
             if getattr(ses, 'personaje', None) and getattr(ses, 'usuario', None):
@@ -387,12 +476,9 @@ class Servidor:
                 import clases as _cl
                 _ids = [h[0] for h in p.habilidades]
                 ses.enviar(_cl.arbol(_ids))
-                # Y los hechizos de F1..F3: el cliente tampoco los recuerda
-                # entre sesiones, hay que volver a mandarlos al entrar.
+                # Y los hechizos de F1..F3: el cliente no los recuerda entre sesiones,
+                # por lo que se otorgan las ranuras (0x001D) sin spamear el chat con avisos.
                 _hech = _cl.hechizos_iniciales(_ids)
-                for _n, _nom in _hech:
-                    ses.enviar(_cl.aviso(_nom, tipo=7,
-                                         msg_id=_cl.MSG_HECHIZO))
                 if _hech:
                     ses.enviar(_cl.otorgar_hechizos(
                         p.entity_id, [n for n, _ in _hech]))
@@ -408,51 +494,178 @@ class Servidor:
             if not d3:
                 return
             tipo, objetivo = d3
+            yo = ses.entity_id or 1001
+
             bichos = getattr(ses, 'monstruos', None) or {}
             m = bichos.get(objetivo)
             if m is None:
-                log.debug(f"[{addr}] ataque a la entidad {objetivo}: no es un "
-                          f"monstruo conocido")
+                # Habilidad activa sobre uno mismo (F1, F2, F3, buffs o sin objetivo fijado)
+                if tipo != _cb.ATAQUE_NORMAL or objetivo == yo:
+                    mag = _cb.datos_magia(tipo)
+                    mp_coste = mag.get('mp', 0)
+                    sp_coste = mag.get('sp', _cb.COSTE_GOLPE)
+                    if ses.personaje and mp_coste > 0:
+                        if ses.personaje.mp < mp_coste:
+                            log.info(f"[{addr}] MP insuficiente ({ses.personaje.mp}/{mp_coste}) para habilidad {tipo}")
+                            return
+                        ses.personaje.mp = max(0, ses.personaje.mp - mp_coste)
+                        pct_mp = max(0, min(100, round(100 * ses.personaje.mp / ses.personaje.mp_max)))
+                        ses.enviar(_cb.atributo(yo, pct_mp, 1))
+
+                    ses.esfuerzo = max(0, getattr(ses, 'esfuerzo', 900) - sp_coste)
+                    ef = _cb.efecto_de_ataque(tipo)
+                    import clases as _cl
+                    ses.enviar(_cb.empieza_ataque(yo),
+                               *_cb.numero_de_dano(yo, yo, 0, tipo, efecto=ef),
+                               _cb.atributo(yo, ses.esfuerzo, _cb.KIND_ESFUERZO))
+                    log.info(f"[{addr}] habilidad {tipo} ejecutada sobre si mismo ({mag.get('nombre')})")
+                    return
+                log.debug(f"[{addr}] ataque a la entidad {objetivo}: no es un monstruo conocido")
                 return
             if not m.vivo:
                 return
-            yo = ses.entity_id or 1001
-            # El dano sale del ataque del jugador menos la defensa del bicho.
+            # El dano sale del ataque del jugador mas bonos pasivos menos defensa del bicho.
             import inventario as _iv
-            st = _iv.stats(ses.inventario)
+            habs = ses.personaje.habilidades if ses.personaje else None
+            st = _iv.stats(ses.inventario, habs)
             ataque = struct.unpack_from('<I', st, 2 + 20 + 4)[0]
-            dano = m.recibir(ataque)
-            # El orden es el de la captura, y importa: primero la vida del
-            # objetivo, despues un 0x000A CON CEROS que abre el ataque, y solo
-            # entonces los dos 0x0011, que son los que dibujan el numero.
-            # Mandar el dano dentro del 0x000A no hace nada: el cliente lo
-            # ignora, y por eso se veia el gesto sin numero.
+
+            # Si se usa una habilidad activa (ej. Slicing Hit 601, etc.)
+            dano_extra = 0
+            if tipo != _cb.ATAQUE_NORMAL:
+                mag = _cb.datos_magia(tipo)
+                mp_coste = mag.get('mp', 0)
+                if ses.personaje and mp_coste > 0:
+                    if ses.personaje.mp < mp_coste:
+                        log.info(f"[{addr}] MP insuficiente ({ses.personaje.mp}/{mp_coste}) para habilidad {tipo}")
+                        return
+                    ses.personaje.mp = max(0, ses.personaje.mp - mp_coste)
+                    pct_mp = max(0, min(100, round(100 * ses.personaje.mp / ses.personaje.mp_max)))
+                    ses.enviar(_cb.atributo(yo, pct_mp, 1))
+                dano_extra = abs(mag.get('hp', 0))
+
+            dano = m.recibir(ataque + dano_extra)
+            ef = _cb.efecto_de_ataque(tipo)
             ses.esfuerzo = max(0, getattr(ses, 'esfuerzo', 900) - _cb.COSTE_GOLPE)
             ses.enviar(_cb.atributo(objetivo, m.porcentaje),
                        _cb.empieza_ataque(yo),
-                       *_cb.numero_de_dano(yo, objetivo, dano, tipo),
+                       *_cb.numero_de_dano(yo, objetivo, dano, tipo, efecto=ef),
                        _cb.atributo(yo, ses.esfuerzo, _cb.KIND_ESFUERZO))
             if m.vivo:
                 # Contraataca.
                 suyo = m.pegar()
-                ses.enviar(_cb.empieza_ataque(objetivo),
-                           *_cb.numero_de_dano(objetivo, yo, suyo))
+                if ses.personaje:
+                    ses.personaje.hp = max(0, ses.personaje.hp - suyo)
+                    if ses.personaje.hp <= 0:
+                        # Muerte del jugador: avisar y revivir en punto seguro
+                        ses.enviar(_cb.empieza_ataque(objetivo),
+                                   *_cb.numero_de_dano(objetivo, yo, suyo),
+                                   _cb.atributo(yo, 0, _cb.VIDA),
+                                   _cl.aviso("You were defeated! Returning to safe haven...", tipo=0, msg_id=_cl.MSG_ITEM))
+                        # Revivir con vida llena en el centro de Angel Lyceum
+                        ses.personaje.hp = ses.personaje.hp_max
+                        ses.personaje.mp = ses.personaje.mp_max
+                        ses.personaje.tile_x, ses.personaje.tile_y = 128, 62
+                        ses.enviar(struct.pack('<HIII', 0x0003, ses.personaje.entity_id, 128, 62),
+                                   _cb.atributo(yo, 100, _cb.VIDA))
+                        if getattr(ses, 'usuario', None):
+                            cuentas.guardar_posicion(ses.usuario, ses.personaje.char_id, 128, 62)
+                            cuentas.guardar_progreso(ses.usuario, ses.personaje.char_id,
+                                                     ses.personaje.nivel, ses.personaje.exp,
+                                                     ses.personaje.hp, ses.personaje.mp)
+                        log.info(f"[{addr}] jugador derrotado por {m.nombre}; revivido en punto seguro")
+                        return
+
+                    pct = max(1, round(100 * ses.personaje.hp / ses.personaje.hp_max))
+                    ses.enviar(_cb.empieza_ataque(objetivo),
+                               *_cb.numero_de_dano(objetivo, yo, suyo),
+                               _cb.atributo(yo, pct, _cb.VIDA))
+                else:
+                    ses.enviar(_cb.empieza_ataque(objetivo),
+                               *_cb.numero_de_dano(objetivo, yo, suyo))
                 log.debug(f"[{addr}] pego {dano} al {m.nombre} "
                           f"({m.porcentaje}%), me devolvio {suyo}")
                 return
-            # Muerto: el botin entra DIRECTO al inventario, no cae al suelo.
+
+            # --- Monstruo Muerto: Avisar muerte, EXP, Skill EXP y Botin ---
             import clases as _cl
+            # 1. Avisar muerte del monstruo (vida 0)
+            ses.enviar(_cb.atributo(objetivo, 0, _cb.VIDA))
+
+            # 2. Calcular EXP y Skill EXP con los multiplicadores configurables
+            buffs = ses.personaje.buffs if ses.personaje else {}
+            exp_ganada = _cb.calcular_exp(m.npc_type, buffs)
+            sk_exp_ganada = _cb.calcular_skill_exp(buffs)
+
+            # 3. Oro
             oro = _cb.botin()
             ses.oro = getattr(ses, 'oro', 0) + oro
             if ses.personaje:
                 ses.personaje.oro = ses.oro
+
+            salida_combate = []
             cid = ses.personaje.char_id if ses.personaje else 4980
-            ses.enviar(_iv.completo(cid, _con_oro(ses)),
-                       _cl.aviso(f'{oro} Gold', tipo=0, msg_id=_cl.MSG_ITEM))
-            if getattr(ses, 'usuario', None):
-                cuentas.guardar_oro(ses.usuario, cid, ses.oro)
+
+            # 4. Progreso de personaje
+            if ses.personaje:
+                p = ses.personaje
+                p.exp += exp_ganada
+                exp_siguiente = _cb.exp_para_nivel(p.nivel + 1)
+                if p.exp >= exp_siguiente:
+                    p.nivel += 1
+                    p.hp_max += 25
+                    p.hp = p.hp_max
+                    p.mp_max += 15
+                    p.mp = p.mp_max
+                    salida_combate.append(_cl.aviso(f"Level Up! Reached Level {p.nivel}!", tipo=0, msg_id=_cl.MSG_ITEM))
+                    salida_combate.append(_cb.atributo(yo, 100, _cb.VIDA))
+                    salida_combate.append(_iv.stats(ses.inventario, p.habilidades))
+                    log.info(f"[{addr}] {p.nombre} SUBIO A NIVEL {p.nivel}!")
+
+                # Actualizar porcentaje de EXP en la barra (0..10000)
+                exp_ant = _cb.exp_para_nivel(p.nivel)
+                exp_sig = _cb.exp_para_nivel(p.nivel + 1)
+                diff = max(1, exp_sig - exp_ant)
+                pct_exp_bp = max(0, min(10000, int(round((p.exp - exp_ant) * 10000 / diff))))
+                salida_combate.append(_cb.atributo(yo, pct_exp_bp, 3))
+                salida_combate.append(struct.pack('<HIBBI', 0x001D, yo, 1, 1, p.exp))
+
+                if p.habilidades:
+                    primera = list(p.habilidades[0])
+                    primera[2] += sk_exp_ganada
+                    p.habilidades[0] = tuple(primera)
+                    # Actualizar porcentaje de Skill EXP en la barra (0..10000)
+                    sk_lv = primera[1]
+                    sk_exp_sig = sk_lv * 500
+                    pct_sk_bp = max(0, min(10000, int(round(primera[2] * 10000 / max(1, sk_exp_sig)))))
+                    salida_combate.append(_cb.atributo(yo, pct_sk_bp, 4))
+
+                salida_combate.append(_cl.aviso(f"Obtained {exp_ganada} EXP", tipo=0, msg_id=_cl.MSG_ITEM))
+                salida_combate.append(_cl.aviso(f"Obtained {sk_exp_ganada} Skill EXP", tipo=0, msg_id=_cl.MSG_ITEM))
+
+                if getattr(ses, 'usuario', None):
+                    cuentas.guardar_progreso(ses.usuario, p.char_id, p.nivel, p.exp,
+                                             p.hp, p.mp, p.habilidades)
+                    cuentas.guardar_oro(ses.usuario, p.char_id, ses.oro)
+
+            salida_combate.append(_cl.aviso(f'{oro} Gold', tipo=0, msg_id=_cl.MSG_ITEM))
+
+            # 5. Drops de items al inventario
+            drops = _cb.botin_items(m.npc_type)
+            bolsa = getattr(ses, 'inventario', {})
+            for item_drop, cant in drops:
+                r_slot = _ranura_libre(bolsa, desde=20)
+                bolsa[r_slot] = item_drop
+                salida_combate.append(_cl.aviso(_nombre_item(item_drop), tipo=0, msg_id=_cl.MSG_ITEM))
+                salida_combate.extend(_iv.entregar(cid, item_drop, r_slot))
+
+            salida_combate.append(_iv.completo(cid, _con_oro(ses)))
+            ses.enviar(*salida_combate)
+            if ses.personaje and getattr(ses, 'usuario', None):
+                cuentas.guardar_inventario(ses.usuario, cid, bolsa)
+
             log.info(f"[{addr}] mato un {m.nombre} (entidad {objetivo}); "
-                     f"+{oro} de oro, total {ses.oro}")
+                     f"+{exp_ganada} exp, +{sk_exp_ganada} skill exp, +{oro} oro, {len(drops)} items")
             return
 
         # --- el cliente pide el mapa nuevo -------------------------------
@@ -609,21 +822,43 @@ class Servidor:
             if org not in bolsa:
                 log.warning(f"[{addr}] mover {org} -> {dst}: la ranura {org} esta vacia")
                 return
+            cid = ses.personaje.char_id if ses.personaje else 4980
             if dst in bolsa:
-                log.warning(f"[{addr}] mover {org} -> {dst}: la ranura {dst} ya "
-                            f"esta ocupada (apilar todavia no se implementa)")
+                # Intercambio (swap) entre ranuras ocupadas
+                it_org = bolsa[org]
+                it_dst = bolsa[dst]
+                bolsa[org] = it_dst
+                bolsa[dst] = it_org
+                salida = [
+                    inv.movimiento(org, dst, cid, it_org, inv.instancia_de(cid, it_org)),
+                    inv.movimiento(dst, org, cid, it_dst, inv.instancia_de(cid, it_dst)),
+                ]
+                if inv.es_equipo(org) or inv.es_equipo(dst):
+                    salida.append(inv.stats(bolsa))
+                ses.enviar(*salida)
+                if ses.personaje and getattr(ses, 'usuario', None):
+                    cuentas.guardar_inventario(ses.usuario, ses.personaje.char_id, bolsa)
+                log.info(f"[{addr}] swap ranuras {org} ({it_org}) <-> {dst} ({it_dst})")
                 return
+
             it = bolsa.pop(org)
             bolsa[dst] = it
-            cid = ses.personaje.char_id if ses.personaje else 4980
             salida = [inv.movimiento(org, dst, cid, it, inv.instancia_de(cid, it))]
-            # Los stats solo se recalculan si cambia lo que lleva puesto: en la
-            # captura hay 26 movimientos y solo 2 traen 0x0042, justo los dos
-            # que tocan la ranura del cuerpo.
-            # Recalcular si cambio CUALQUIER ranura de equipo, no solo el
-            # cuerpo: hay mochilas equipables y podria haber mas piezas.
             if inv.es_equipo(org) or inv.es_equipo(dst):
                 salida.append(inv.stats(bolsa))
+            # Gestion de mascota en ranura 9
+            if dst == 9:
+                sp = inv.sprite_de_mascota(it)
+                pet_eid = (ses.personaje.entity_id if ses.personaje else 1001) + 5000
+                ses.pet_entity_id = pet_eid
+                import login as _lg
+                salida.append(_lg._npc_spawn(pet_eid, 9999, "Pet", (ses.personaje.tile_x + 1, ses.personaje.tile_y), sprite=sp))
+            elif org == 9 and dst != 9:
+                pet_eid = getattr(ses, 'pet_entity_id', None)
+                if pet_eid:
+                    import combate as _cb
+                    salida.append(_cb.atributo(pet_eid, 0, _cb.VIDA))
+                    ses.pet_entity_id = None
             ses.enviar(*salida)
             if ses.personaje and getattr(ses, 'usuario', None):
                 cuentas.guardar_inventario(ses.usuario, ses.personaje.char_id, bolsa)
@@ -631,9 +866,110 @@ class Servidor:
                      + ("  (cambia el equipo)"
                         if inv.es_equipo(org) or inv.es_equipo(dst) else ""))
             return
-            ses.equipo = estado
-            ses.enviar(*equipo.mensajes(estado, ses.entity_id or 1001))
-            log.info(f"[{addr}] item movido {org} -> {dst}: ropa {estado}")
+
+        # --- usar item (clic derecho) --------------------------------
+        # C -> S 0x002E [U8 ranura][LE32 target]
+        if opcode == 0x002E and ses.rol == 'mundo' and cuerpo:
+            import inventario as inv
+            import clases as _c
+            ranura = cuerpo[0]
+            bolsa = getattr(ses, 'inventario', None)
+            if bolsa is None or ranura not in bolsa:
+                return
+            item_id = bolsa[ranura]
+            cid = ses.personaje.char_id if ses.personaje else 4980
+
+            # Caso 1: Item equipable (clic derecho)
+            if inv.es_equipo(ranura):
+                # Ya esta puesto -> desequipar a la bolsa
+                dst = _ranura_libre(bolsa, desde=20)
+                it = bolsa.pop(ranura)
+                bolsa[dst] = it
+                salida = [
+                    inv.movimiento(ranura, dst, cid, it, inv.instancia_de(cid, it)),
+                    inv.stats(bolsa)
+                ]
+                if ranura == 9 and getattr(ses, 'pet_entity_id', None):
+                    import combate as _cb
+                    salida.append(_cb.atributo(ses.pet_entity_id, 0, _cb.VIDA))
+                    ses.pet_entity_id = None
+                ses.enviar(*salida)
+                if ses.personaje and getattr(ses, 'usuario', None):
+                    cuentas.guardar_inventario(ses.usuario, cid, bolsa)
+                log.info(f"[{addr}] desequipar: item {it} ({ranura}) -> bolsa ({dst})")
+                return
+
+            eq_slot = inv.ranura_equipo_de(item_id)
+            if eq_slot is not None:
+                # Poner en la ranura de equipo correspondiente
+                dst = eq_slot
+                if dst in bolsa:
+                    # Reemplazar equipo actual (swap con lo puesto)
+                    it_eq = bolsa[dst]
+                    bolsa[ranura] = it_eq
+                    bolsa[dst] = item_id
+                    salida = [
+                        inv.movimiento(ranura, dst, cid, item_id, inv.instancia_de(cid, item_id)),
+                        inv.movimiento(dst, ranura, cid, it_eq, inv.instancia_de(cid, it_eq)),
+                        inv.stats(bolsa)
+                    ]
+                    log.info(f"[{addr}] reemplazar equipo: item {item_id} -> {dst}, sacando {it_eq} -> {ranura}")
+                else:
+                    it = bolsa.pop(ranura)
+                    bolsa[dst] = it
+                    salida = [
+                        inv.movimiento(ranura, dst, cid, it, inv.instancia_de(cid, it)),
+                        inv.stats(bolsa)
+                    ]
+                    log.info(f"[{addr}] equipar directo: item {it} -> ranura {dst}")
+
+                if dst == 9:
+                    # Spawn de la mascota invocada
+                    sp = inv.sprite_de_mascota(item_id)
+                    pet_eid = (ses.personaje.entity_id if ses.personaje else 1001) + 5000
+                    ses.pet_entity_id = pet_eid
+                    import login as _lg
+                    salida.append(_lg._npc_spawn(pet_eid, 9999, "Pet", (ses.personaje.tile_x + 1, ses.personaje.tile_y), sprite=sp))
+
+                ses.enviar(*salida)
+                if ses.personaje and getattr(ses, 'usuario', None):
+                    cuentas.guardar_inventario(ses.usuario, cid, bolsa)
+                return
+
+            # Caso 2: Comida de mascota (Pet Cookies, Pet Can, Pet Feed, Biscuits)
+            if inv.es_comida_mascota(item_id):
+                del bolsa[ranura]
+                salida = [
+                    _c.aviso("Pet satiation increased!", tipo=0, msg_id=_c.MSG_ITEM),
+                    inv.completo(cid, _con_oro(ses))
+                ]
+                ses.enviar(*salida)
+                if ses.personaje and getattr(ses, 'usuario', None):
+                    cuentas.guardar_inventario(ses.usuario, cid, bolsa)
+                log.info(f"[{addr}] comida de mascota usada: {item_id} (ranura {ranura})")
+                return
+
+            # Caso 3: Cajas de regalo / Growth Boxes (drop_table)
+            recompensas = inv.recompensas_caja(item_id)
+            if recompensas:
+                del bolsa[ranura]
+                log.info(f"[{addr}] abriendo caja {item_id} de ranura {ranura}: "
+                         f"{len(recompensas)} tipos de items")
+                salida = []
+                primero = True
+                for rew_id, cant in recompensas:
+                    r_slot = ranura if primero else _ranura_libre(bolsa, desde=20)
+                    primero = False
+                    bolsa[r_slot] = rew_id
+                    salida.append(_c.aviso(_nombre_item(rew_id), tipo=0, msg_id=_c.MSG_ITEM))
+                    salida.extend(inv.entregar(cid, rew_id, r_slot))
+                salida.append(inv.completo(cid, _con_oro(ses)))
+                ses.enviar(*salida)
+                if ses.personaje and getattr(ses, 'usuario', None):
+                    cuentas.guardar_inventario(ses.usuario, cid, bolsa)
+                return
+
+            log.info(f"[{addr}] usar item {item_id} (ranura {ranura}): sin accion")
             return
 
         # --- dialogo con los NPC -------------------------------------
@@ -683,12 +1019,14 @@ class Servidor:
             if ses.personaje and ses.personaje.stage != MAPA_DEL_TUTORIAL:
                 # Fuera del tutorial, cada NPC tiene su propia linea, sacada
                 # de msg.xml por su nombre.
-                g2 = dialogos.propio(_nombre_entidad(ses, ent))
+                faccion = ses.personaje.faction if ses.personaje else "Heaven"
+                g2 = dialogos.propio(_nombre_entidad(ses, ent), faccion=faccion)
                 if g2:
                     nom2 = ses.personaje.nombre if ses.personaje else 'Jugador'
                     ses.dlg_ent, ses.dlg_guion, ses.dlg_paso = ent, g2, 1
+                    ses.dlg_val = struct.unpack_from('<H', g2[0], 4)[0] if len(g2[0]) >= 6 else 4
                     ses.enviar(dialogos.linea_de(g2, 0, nom2))
-                    log.info(f"[{addr}] dialogo de {_nombre_entidad(ses, ent)}")
+                    log.info(f"[{addr}] dialogo de {_nombre_entidad(ses, ent)} (val={ses.dlg_val})")
                     return
                 log.debug(f"[{addr}] clic en la entidad {ent}: sin dialogo")
                 return
@@ -699,6 +1037,7 @@ class Servidor:
                 return
             nom = ses.personaje.nombre if ses.personaje else 'Jugador'
             ses.dlg_ent, ses.dlg_guion, ses.dlg_paso = ent, g, 0
+            ses.dlg_val = 4
             ses.enviar(dialogos.linea_de(g, 0, nom))
             ses.dlg_paso = 1
             log.info(f"[{addr}] dialogo con la entidad {ent} (etapa {etapa}): "
@@ -715,9 +1054,38 @@ class Servidor:
                 _ops = dialogos.opciones_de(g[paso - 1]) if 0 < paso <= len(g) else []
                 _i = dialogos.indice_opcion(_v)
                 _el = _ops[_i] if _i < len(_ops) else None
-                ses.enviar(dialogos.respuesta_a(_el) if _el
-                           else struct.pack('<H', 0x0012) + dialogos.FIN)
-                ses.dlg_ent = None
+                val = getattr(ses, 'dlg_val', 4)
+                submsgs = dialogos.respuesta_a(_el, entidad=ent, val=val) if _el else (struct.pack('<H', 0x0012) + dialogos.FIN,)
+                ses.enviar(*submsgs)
+
+                # Elecciones especiales
+                if _el == 10125 and ses.personaje:
+                    # Quit training con Angels' Tutor -> graduado / habilitado para elegir faccion
+                    ses.personaje.faction = "Graduated"
+                    if getattr(ses, 'usuario', None):
+                        cuentas.guardar_faccion(ses.usuario, ses.personaje.char_id, "Graduated")
+                    log.info(f"[{addr}] {ses.personaje.nombre} completo o abandono el entrenamiento; listo para faccion")
+                elif _el == 10235 and ses.personaje:
+                    # Confirmar en totem (41 Aurora, 44 Dark City, 43 Iron, 45 Breeze)
+                    totem_faccion = {41: "Aurora", 44: "Dark City", 43: "Iron Castle", 45: "Breeze Woods"}
+                    nueva_fac = totem_faccion.get(ent, "Aurora")
+                    ses.personaje.faction = nueva_fac
+                    if getattr(ses, 'usuario', None):
+                        cuentas.guardar_faccion(ses.usuario, ses.personaje.char_id, nueva_fac)
+                    log.info(f"[{addr}] {ses.personaje.nombre} eligio faccion: {nueva_fac}")
+
+                termina = any(
+                    m.endswith(dialogos.FIN) or struct.unpack_from('<H', m, 0)[0] in (0x0034, 0x002B, 0x001D)
+                    for m in submsgs if len(m) >= 2
+                )
+                if termina:
+                    ses.dlg_ent = None
+                else:
+                    ses.dlg_ent = ent
+                    ses.dlg_guion = [submsgs[0][2:]]
+                    ses.dlg_paso = 1
+                    if len(submsgs[0]) >= 8:
+                        ses.dlg_val = struct.unpack_from('<H', submsgs[0], 6)[0]
                 log.info(f"[{addr}] eligio la opcion {_i + 1}"
                          + (f" (dialogo {_el})" if _el else ""))
                 return
@@ -728,12 +1096,6 @@ class Servidor:
                 log.debug(f"[{addr}] dialogo {ent}: linea {paso + 1}")
             else:
                 ses.dlg_ent = None
-                # Este atributo (kind 12, valor 0) es lo que hace que el
-                # cliente ofrezca elegir clase. Repasando las capturas por
-                # NPC, solo sale tras el dialogo de Angel Raphael (entidad
-                # 19), nunca tras el Interface Tutor ni el Angel Aide. Y
-                # tampoco vuelve a salir una vez elegida la clase: en la
-                # misma sesion se habla tres veces mas con Raphael y ya no
                 # aparece. Mandarlo tras cualquier dialogo hacia que todos
                 # los NPC abrieran la ventana de clases.
                 # Angel Aide vende el examen al terminar su dialogo. Todavia
@@ -776,7 +1138,10 @@ class Servidor:
                         # Terminado el tutorial, Angel Raphael manda al Lyceum.
                         ses.personaje.stage = _cls.STAGE_LYCEUM
                         ses.personaje.tile_x, ses.personaje.tile_y = _cls.TILE_LYCEUM
+                        ses.monstruos = _monstruos_de(_cls.STAGE_LYCEUM)
                         ses.enviar(_cls.cambiar_mapa(_cls.STAGE_LYCEUM))
+                        import login as _lg
+                        ses.enviar(*_lg.poblar(_cls.STAGE_LYCEUM))
                         if getattr(ses, 'usuario', None):
                             cuentas.guardar_mapa(ses.usuario,
                                                  ses.personaje.char_id,
@@ -816,6 +1181,37 @@ class Servidor:
             if ses.personaje:
                 ses.personaje.tile_x = dst['x'] // 32
                 ses.personaje.tile_y = dst['y'] // 32
+                import clases as _cl3
+                nuevo_stage, nuevo_tile = None, None
+                tx, ty = ses.personaje.tile_x, ses.personaje.tile_y
+                if ses.personaje.stage == 41:
+                    # Portal Este: esquina inferior derecha cerca de Teleporter Jack (tile ~261, 12)
+                    if tx >= 256 and ty <= 25:
+                        nuevo_stage, nuevo_tile = 42, (15, 110)
+                    # Portal Oeste: esquina superior izquierda cerca de Teleporter Shiva (tile ~15, 140)
+                    elif tx <= 25 and ty >= 125:
+                        nuevo_stage, nuevo_tile = 43, (185, 25)
+                elif ses.personaje.stage == 42:
+                    # Retorno desde East Playground (42) a Lyceum (41)
+                    if tx <= 5 and 100 <= ty <= 120:
+                        nuevo_stage, nuevo_tile = 41, (254, 16)
+                elif ses.personaje.stage == 43:
+                    # Retorno desde West Playground (43) a Lyceum (41)
+                    if tx >= 195 and 15 <= ty <= 35:
+                        nuevo_stage, nuevo_tile = 41, (28, 125)
+
+                if nuevo_stage:
+                    ses.personaje.stage = nuevo_stage
+                    ses.personaje.tile_x, ses.personaje.tile_y = nuevo_tile
+                    ses.monstruos = _monstruos_de(nuevo_stage)
+                    ses.enviar(_cl3.cambiar_mapa(nuevo_stage))
+                    import login as _lg
+                    ses.enviar(*_lg.poblar(nuevo_stage))
+                    if getattr(ses, 'usuario', None):
+                        cuentas.guardar_mapa(ses.usuario, ses.personaje.char_id,
+                                             nuevo_stage, *nuevo_tile)
+                    log.info(f"[{addr}] transicion de mapa: stage {nuevo_stage} tile {nuevo_tile}")
+                    return
             log.debug(f"[{addr}] movimiento ({d['cur_x']},{d['cur_y']}) -> "
                       f"({dst['x']},{dst['y']}) via {d['n']} waypoints")
 

@@ -53,6 +53,11 @@ class Personaje:
     tutorial: int = 0        # en que tramo del tutorial va
     oro: int = 0
     stage: int = 51
+    faction: str = "Heaven"
+    nivel: int = 1
+    exp: int = 0
+    banco: dict = field(default_factory=dict)
+    buffs: dict = field(default_factory=dict)
 
 
 def _cargar_secuencia():
@@ -120,6 +125,10 @@ def secuencia(p: Personaje):
             salida.append(_quests(p, base))
         elif op == 0x005B:
             salida.append(_barra(p, base))
+        elif op == 0x0014:
+            # Opcode 0x0014 le indica al cliente su propio entity_id (sub_5F1230: ecx + 0x20d0).
+            # En la captura tenia 517 grabado; hay que poner el entity_id real del personaje.
+            salida.append(struct.pack('<HI', 0x0014, p.entity_id) + base[4:])
         elif op == 0x001D:
             # Atributos de entidad. La plantilla trae el entity_id del
             # personaje que se grabo, asi que habia que reescribirlo: se
@@ -138,21 +147,65 @@ def secuencia(p: Personaje):
             salida.append(_inv.completo(p.char_id, _items))
         elif op == 0x005D:
             salida.append(struct.pack('<HI', 0x005D, int(time.time())))
+        elif op == 0x0196:
+            # Opcode 0x0196 lleva el stage del mapa en offset 8 (2 bytes)
+            b = bytearray(base)
+            if len(b) >= 10:
+                struct.pack_into('<H', b, 8, p.stage)
+            salida.append(struct.pack('<H', 0x0196) + bytes(b))
         else:
             salida.append(struct.pack('<H', op) + base)   # plantilla tal cual
     salida += poblar(p.stage)
     return salida
 
 
-def _npc_spawn(entity_id, npc_type, nombre, tile, sprite=0):
-    """Arma un NPC_SPAWN (0x0008) desde cero, para los NPC que salen de los
-    xml del cliente y no de una captura."""
+PLAYGROUND_MONSTERS = {
+    42: [  # East Playground
+        (701, 19, "Slarm", (25, 110)),
+        (702, 19, "Slarm", (35, 105)),
+        (703, 19, "Slarm", (45, 115)),
+        (704, 19, "Slarm", (55, 100)),
+        (705, 19, "Slarm", (65, 110)),
+        (706, 7, "Lily", (30, 95)),
+        (707, 7, "Lily", (40, 85)),
+        (708, 7, "Lily", (50, 90)),
+        (709, 7, "Lily", (60, 80)),
+        (710, 7, "Lily", (70, 95)),
+        (711, 19, "Slarm", (80, 105)),
+        (712, 7, "Lily", (85, 90)),
+    ],
+    43: [  # West Playground
+        (801, 19, "Slarm", (175, 30)),
+        (802, 19, "Slarm", (165, 40)),
+        (803, 19, "Slarm", (155, 35)),
+        (804, 19, "Slarm", (145, 50)),
+        (805, 19, "Slarm", (135, 45)),
+        (806, 7, "Lily", (170, 55)),
+        (807, 7, "Lily", (160, 60)),
+        (808, 7, "Lily", (150, 65)),
+        (809, 7, "Lily", (140, 70)),
+        (810, 7, "Lily", (130, 60)),
+        (811, 19, "Slarm", (120, 50)),
+        (812, 7, "Lily", (115, 65)),
+    ],
+}
+
+
+def _npc_spawn(entity_id, npc_type, nombre, tile, sprite=0, klass=200):
+    """Arma un NPC_SPAWN (0x0008) desde cero, para los NPC y monstruos."""
     b = bytearray(63)
-    struct.pack_into('<IIII', b, 0, entity_id, 1, tile[0], tile[1])
+    struct.pack_into('<IIII', b, 0, entity_id, 0 if klass == 1 else 1, tile[0], tile[1])
     n = str(nombre).encode('ascii', 'replace')[:16]
     b[16:16 + len(n)] = n
-    struct.pack_into('<I', b, 34, sprite or 40001)
-    struct.pack_into('<I', b, 40, 200)          # klass 200 = NPC con dialogo
+    if not sprite:
+        if npc_type == 19:
+            sprite = 10779393  # Slarm
+        elif npc_type == 7:
+            sprite = 10762498  # Lily
+        else:
+            sprite = 40001
+    struct.pack_into('<I', b, 34, sprite)
+    struct.pack_into('<I', b, 40, klass)          # klass 200 = NPC con dialogo, 1 = monstruo
     struct.pack_into('<H', b, 45, npc_type)
     return struct.pack('<H', 0x0008) + bytes(b)
 
@@ -196,6 +249,10 @@ def poblar(stage: int):
     # Primero los NPC que el cliente trae colocados en sus xml: esos valen
     # para cualquier mapa y no necesitan captura.
     salida = npc_de_los_xml(stage)
+    if stage in PLAYGROUND_MONSTERS:
+        for eid, ntype, nom, tile in PLAYGROUND_MONSTERS[stage]:
+            salida.append(_npc_spawn(eid, ntype, nom, tile, klass=1))
+        return salida
     f = PLANTILLAS / 'lyceum.json'
     if stage != 41 or not f.exists():
         return salida
@@ -213,9 +270,19 @@ def _ficha(p, base):
     d = m.parse(base)
     d['entity_id'] = p.entity_id
     d['tile_x'], d['tile_y'] = p.tile_x, p.tile_y
-    d['flags'] = p.stage          # el mapa va en +4 de la ficha
+    d['flags'] = 0
+    # En 0x0002, el mapa/stage real va en el offset 3953 (offset 3235 dentro de 'resto')
+    r = bytearray(d['resto'])
+    if len(r) >= 3239:
+        struct.pack_into('<I', r, 3235, p.stage)
+        d['resto'] = bytes(r)
     nom = p.nombre.encode('ascii', 'replace')[:33]
     d['name_raw'] = nom + b'\x00' * (34 - len(nom))
+    u50 = bytearray(d['unk_50'])
+    if len(u50) >= 34:
+        u50[13] = max(1, p.nivel) & 0xFF
+        struct.pack_into('<I', u50, 30, p.exp & 0xFFFFFFFF)
+        d['unk_50'] = bytes(u50)
     # HP y MP. El campo 'stats' arranca en +102 de la ficha, asi que los
     # cuatro LE32 del principio son hp, hp_max, mp, mp_max (+102, +106,
     # +110, +114). Localizados buscando los 296 y 218 que el cliente mostraba

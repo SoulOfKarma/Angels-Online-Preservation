@@ -164,8 +164,21 @@ def _propios():
     return _PROPIOS
 
 
-def propio(nombre: str):
+def armar_linea(mid: int, val: int = 4, opts: list = None) -> bytes:
+    """Construye un sub-mensaje 0x0012 completo."""
+    opts = opts or []
+    hdr = struct.pack('<IHBBB', mid, val, 0, len(opts), 0)
+    body = b''.join(struct.pack('<I', o) for o in opts)
+    return struct.pack('<H', 0x0012) + hdr + body
+
+
+def propio(nombre: str, faccion: str = "Heaven"):
     """Una linea de dialogo para ese NPC, o None si no se le conoce ninguna."""
+    if nombre == 'Director Wolay':
+        if faccion == "Heaven":
+            return [armar_linea(10004, 49, [])[2:]]
+        else:
+            return [armar_linea(5079, 49, [5080, 5081])[2:]]
     d = _propios().get(nombre)
     if not d:
         return None
@@ -176,19 +189,48 @@ def propio(nombre: str):
 
 
 # ------------------------------------------- elegir una opcion del cuadro
-# El cliente manda 0x000B con 1 para pasar de linea y con 10 + indice para
-# elegir una opcion: se vieron el 10 (primera) y el 11 (segunda).
-#
-# Lo que el servidor contesta NO esta resuelto. El unico caso capturado es el
-# dialogo 5795 con opciones [5797, 5798, 5799]: el jugador eligio la segunda y
-# el servidor contesto con el 5800, que no es ninguna de las tres. O sea que
-# hay una tabla de "a que dialogo lleva cada opcion" que no esta en el
-# trafico, y con un solo caso no se puede deducir.
-#
-# Mientras tanto se hace lo unico sensato: cerrar el cuadro. Antes no se
-# contestaba nada y quedaba abierto.
 PRIMERA_OPCION = 10
-RESPUESTAS = {5798: 5800}     # lo unico medido
+RESPUESTAS = {
+    5798: 5800,
+    # Descripciones de ciudades y totems
+    10207: 10215,
+    10208: 10223,
+    10209: 10217,
+    10210: 10224,
+    10211: 10219,
+    10212: 10225,
+    10213: 10221,
+    10214: 10226,
+    # Pet Expert
+    6101: 6105,
+    6103: 6117,
+    # Angels' Tutor
+    10107: 10112,   # Score Regulation
+    10108: 10115,   # Top Student Training
+    10125: 10130,   # Quit training confirm Yes -> 10130
+    10119: 10121,   # Graduate confirm Yes -> 10121
+}
+
+# Tiendas especificas segun la entidad del NPC que vende (para opcion 12103)
+TIENDAS_POR_ENTIDAD = {
+    11: 47,    # Scroll Seller (Lyceum) -> Shop 47 (Novice / Freshman Scrolls)
+    19: 18,    # Magic Seller (Lyceum) -> Shop 18 (Magic Scrolls)
+    46: 4,     # C. Plan Seller (Lyceum) -> Shop 4 (Production Recipes)
+    47: 4,     # C. Plan Seller (Lyceum) -> Shop 4 (Production Recipes)
+    33: 2,     # Weapon Salesman -> Shop 2
+    34: 3,     # Armor Salesman -> Shop 3
+    38: 5,     # Sewing Salesman -> Shop 5
+    40: 6,     # Art Saleman -> Shop 6
+    4: 1,      # Shopkeeper -> Shop 1
+}
+
+# Opciones de dialogo que abren la ventana de tienda (WND_NPCSALE).
+# Medido en sub_605190/sub_656E70 del cliente: opcode S->C 0x0034 [LE16 shop_id].
+TIENDAS_POR_OPCION = {
+    12103: 1,    # Default compra/venta
+    6102: 69,    # Pet Expert -> Shop 69 (Comida y galletas de mascota)
+    5045: 37,    # Angel Aide (Guide Palace) -> Shop 37
+}
 
 
 def es_opcion(valor: int) -> bool:
@@ -210,9 +252,56 @@ def opciones_de(linea: bytes):
     return [struct.unpack_from('<I', linea, base + 4 * k)[0] for k in range(n)]
 
 
-def respuesta_a(opcion_id: int):
-    """Sub-mensaje 0x0012 con lo que contesta esa opcion, o el cierre."""
+def respuesta_a(opcion_id: int, entidad: int = 0, val: int = 4):
+    """Devuelve tupla de sub-mensajes: apertura de tienda y/o cierre/continuacion de dialogo."""
+    if opcion_id in TIENDAS_POR_OPCION:
+        if opcion_id == 12103 and entidad in TIENDAS_POR_ENTIDAD:
+            shop_id = TIENDAS_POR_ENTIDAD[entidad]
+        else:
+            shop_id = TIENDAS_POR_OPCION[opcion_id]
+        pkg_shop = struct.pack('<HH', 0x0034, shop_id)
+        pkg_cierre = struct.pack('<H', 0x0012) + FIN
+        return (pkg_shop, pkg_cierre)
+
+    # Opcion 10110: "Quit the training" con Angels' Tutor
+    if opcion_id == 10110:
+        pkg_pregunta = armar_linea(10123, val, [10125, 10126])
+        return (pkg_pregunta,)
+
+    # Opcion 10109: "Graduation" con Angels' Tutor
+    if opcion_id == 10109:
+        pkg_pregunta = armar_linea(10118, val, [10119, 10120])
+        return (pkg_pregunta,)
+
+    # Opcion 10205: "I decided to be an Angel Protector" en un totem
+    if opcion_id == 10205:
+        preguntas = {
+            41: 10231,  # Aurora
+            44: 10232,  # Dark City
+            43: 10233,  # Iron Castle
+            45: 10234,  # Breeze Woods
+        }
+        mid = preguntas.get(entidad, 10231)
+        pkg_pregunta = armar_linea(mid, val, [10235, 10236])
+        return (pkg_pregunta,)
+
+    # Almacen / Banco (Bao Clerk y Chief Director)
+    if opcion_id in (5030, 5237):
+        # Abrir almacen personal: WND_WAREHOUSE (opcode 0x002B)
+        pkg_cierre = struct.pack('<H', 0x0012) + FIN
+        # S->C 0x002B abre la ventana de almacen
+        pkg_bank = struct.pack('<HII', 0x002B, 1, 0)
+        return (pkg_bank, pkg_cierre)
+
+    # Skill Angel (5024): redistribucion de habilidades / cambio de clase
+    if opcion_id == 5024:
+        pkg_cierre = struct.pack('<H', 0x0012) + FIN
+        pkg_skill_reset = struct.pack('<HIBBII', 0x001D, entidad, 1, 12, 0, 0)
+        return (pkg_skill_reset, pkg_cierre)
+
     sig = RESPUESTAS.get(opcion_id)
     if sig is None:
-        return struct.pack('<H', 0x0012) + FIN
-    return struct.pack('<H', 0x0012) + struct.pack('<IHBBB', sig, 44, 0, 0, 0)
+        return (struct.pack('<H', 0x0012) + FIN,)
+    return (armar_linea(sig, val, []),)
+
+
