@@ -156,56 +156,81 @@ def secuencia(p: Personaje):
         else:
             salida.append(struct.pack('<H', op) + base)   # plantilla tal cual
     salida += poblar(p.stage)
+    # Atributos nativos iniciales del personaje (HP, MP, EXP bar)
+    import combate as _cb_ini
+    salida.append(_cb_ini.atributo(p.entity_id, p.hp, _cb_ini.KIND_HP))
+    salida.append(_cb_ini.atributo(p.entity_id, p.mp, _cb_ini.KIND_MP))
+    salida.append(_cb_ini.atributo(p.entity_id, p.exp, _cb_ini.KIND_EXP))
     return salida
 
 
 PLAYGROUND_MONSTERS = {
-    42: [  # East Playground
+    42: [  # East Playground: Slarm, Lily, Water Elf, Earth Elf, Wind Elf, Fire Elf
         (701, 19, "Slarm", (25, 110)),
         (702, 19, "Slarm", (35, 105)),
         (703, 19, "Slarm", (45, 115)),
-        (704, 19, "Slarm", (55, 100)),
-        (705, 19, "Slarm", (65, 110)),
-        (706, 7, "Lily", (30, 95)),
-        (707, 7, "Lily", (40, 85)),
-        (708, 7, "Lily", (50, 90)),
-        (709, 7, "Lily", (60, 80)),
-        (710, 7, "Lily", (70, 95)),
-        (711, 19, "Slarm", (80, 105)),
-        (712, 7, "Lily", (85, 90)),
+        (704, 7, "Lily", (30, 95)),
+        (705, 7, "Lily", (40, 85)),
+        (706, 3, "Water Elf", (55, 100)),
+        (707, 3, "Water Elf", (65, 110)),
+        (708, 4, "Earth Elf", (50, 90)),
+        (709, 4, "Earth Elf", (60, 80)),
+        (710, 1, "Wind Elf", (70, 95)),
+        (711, 1, "Wind Elf", (80, 105)),
+        (712, 2, "Fire Elf", (85, 90)),
+        (713, 2, "Fire Elf", (95, 100)),
     ],
-    43: [  # West Playground
+    43: [  # West Playground: Slarm, Lily, Water Elf, Earth Elf, Wind Elf, Fire Elf
         (801, 19, "Slarm", (175, 30)),
         (802, 19, "Slarm", (165, 40)),
         (803, 19, "Slarm", (155, 35)),
-        (804, 19, "Slarm", (145, 50)),
-        (805, 19, "Slarm", (135, 45)),
-        (806, 7, "Lily", (170, 55)),
-        (807, 7, "Lily", (160, 60)),
-        (808, 7, "Lily", (150, 65)),
-        (809, 7, "Lily", (140, 70)),
-        (810, 7, "Lily", (130, 60)),
-        (811, 19, "Slarm", (120, 50)),
-        (812, 7, "Lily", (115, 65)),
+        (804, 7, "Lily", (170, 55)),
+        (805, 7, "Lily", (160, 60)),
+        (806, 3, "Water Elf", (145, 50)),
+        (807, 3, "Water Elf", (135, 45)),
+        (808, 4, "Earth Elf", (150, 65)),
+        (809, 4, "Earth Elf", (140, 70)),
+        (810, 1, "Wind Elf", (130, 60)),
+        (811, 1, "Wind Elf", (120, 50)),
+        (812, 2, "Fire Elf", (115, 65)),
+        (813, 2, "Fire Elf", (105, 55)),
     ],
 }
 
 
+def _monster_spawn(entity_id, npc_type, nombre, tile):
+    """Arma un NPC_SPAWN (0x0008) 100% identico a la captura real."""
+    b = bytearray(63)
+    struct.pack_into('<IIII', b, 0, entity_id, 0, tile[0], tile[1])
+    n = str(nombre).encode('ascii', 'replace')[:16]
+    b[16:16 + len(n)] = n
+    SPRITES = {19: 42107, 7: 42041, 1: 42055, 2: 42056, 3: 42057, 4: 42058}
+    sprite_id = SPRITES.get(npc_type, 42107)
+    b[32] = 0
+    b[33] = 4 if npc_type == 19 else 1
+    struct.pack_into('<H', b, 34, sprite_id)
+    struct.pack_into('<H', b, 38, 7)
+    struct.pack_into('<I', b, 40, 1)  # klass 1 = monster
+    b[44] = 4 if npc_type == 19 else 3
+    b[45] = npc_type & 0xFF
+    b[46] = (npc_type >> 8) & 0xFF
+    b[47] = 0x08
+    b[48] = 0x80
+    return struct.pack('<H', 0x0008) + bytes(b)
+
+
 def _npc_spawn(entity_id, npc_type, nombre, tile, sprite=0, klass=200):
     """Arma un NPC_SPAWN (0x0008) desde cero, para los NPC y monstruos."""
+    if klass == 1:
+        return _monster_spawn(entity_id, npc_type, nombre, tile)
     b = bytearray(63)
-    struct.pack_into('<IIII', b, 0, entity_id, 0 if klass == 1 else 1, tile[0], tile[1])
+    struct.pack_into('<IIII', b, 0, entity_id, 1, tile[0], tile[1])
     n = str(nombre).encode('ascii', 'replace')[:16]
     b[16:16 + len(n)] = n
     if not sprite:
-        if npc_type == 19:
-            sprite = 10779393  # Slarm
-        elif npc_type == 7:
-            sprite = 10762498  # Lily
-        else:
-            sprite = 40001
+        sprite = 40001
     struct.pack_into('<I', b, 34, sprite)
-    struct.pack_into('<I', b, 40, klass)          # klass 200 = NPC con dialogo, 1 = monstruo
+    struct.pack_into('<I', b, 40, klass)
     struct.pack_into('<H', b, 45, npc_type)
     return struct.pack('<H', 0x0008) + bytes(b)
 
@@ -240,18 +265,16 @@ def spawn_de(stage: int):
 
 
 def poblar(stage: int):
-    """NPC, monstruos y totems propios del mapa.
-
-    Guide Palace ya viene poblado en la plantilla de la secuencia. Para el
-    resto de mapas hacen falta capturas: sus posiciones son datos de servidor
-    y no estan en el cliente. Por ahora solo esta el Angel Lyceum.
-    """
-    # Primero los NPC que el cliente trae colocados en sus xml: esos valen
-    # para cualquier mapa y no necesitan captura.
+    """NPC, monstruos, portales y totems propios del mapa."""
     salida = npc_de_los_xml(stage)
     if stage in PLAYGROUND_MONSTERS:
         for eid, ntype, nom, tile in PLAYGROUND_MONSTERS[stage]:
             salida.append(_npc_spawn(eid, ntype, nom, tile, klass=1))
+        # Portal de retorno visual: tornadito con alas brillantes (sprite 40375)
+        if stage == 42:
+            salida.append(_npc_spawn(899, 8978, "To Lyceum", (11, 113), sprite=40375, klass=200))
+        elif stage == 43:
+            salida.append(_npc_spawn(898, 8978, "To Lyceum", (189, 24), sprite=40375, klass=200))
         return salida
     f = PLANTILLAS / 'lyceum.json'
     if stage != 41 or not f.exists():
@@ -259,6 +282,9 @@ def poblar(stage: int):
     d = json.loads(f.read_text(encoding='utf-8'))
     salida += [struct.pack('<H', 0x0008) + bytes.fromhex(e['hex'])
                for e in d['spawns']]
+    # Portales visuales con tornadito de alas brillantes en Lyceum
+    salida.append(_npc_spawn(896, 8978, "East Portal", (258, 15), sprite=40375, klass=200))
+    salida.append(_npc_spawn(897, 8978, "West Portal", (18, 135), sprite=40375, klass=200))
     # Los recursos del mapa: vetas de cobre, arboles, hierbas, madrigueras.
     salida += [struct.pack('<H', 0x000E) + bytes.fromhex(e['hex'])
                for e in d.get('recursos', [])]
@@ -279,9 +305,11 @@ def _ficha(p, base):
     nom = p.nombre.encode('ascii', 'replace')[:33]
     d['name_raw'] = nom + b'\x00' * (34 - len(nom))
     u50 = bytearray(d['unk_50'])
-    if len(u50) >= 34:
-        u50[13] = max(1, p.nivel) & 0xFF
-        struct.pack_into('<I', u50, 30, p.exp & 0xFFFFFFFF)
+    if len(u50) >= 24:
+        # En el servidor oficial (mundo_021229), el nivel es un Big-Endian DWORD en offset 12:
+        # [12..15] = 00 00 00 [nivel]. La exp va en offset 19 LE32.
+        struct.pack_into('>I', u50, 12, max(1, p.nivel))
+        struct.pack_into('<I', u50, 19, p.exp & 0xFFFFFFFF)
         d['unk_50'] = bytes(u50)
     # HP y MP. El campo 'stats' arranca en +102 de la ficha, asi que los
     # cuatro LE32 del principio son hp, hp_max, mp, mp_max (+102, +106,

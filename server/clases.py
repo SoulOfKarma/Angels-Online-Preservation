@@ -310,16 +310,28 @@ def _arbol():
 
 
 def arbol(ids) -> bytes:
-    """Sub-mensaje 0x001C con las 36 habilidades y las seis elegidas marcadas."""
+    """Sub-mensaje 0x001C con las 36 habilidades, nivel real y las seis elegidas marcadas."""
     a = _arbol()
-    elegidas = [i for i in ids if i in a['regs']]
+    niveles = {}
+    lista_ids = []
+    for item in ids:
+        if isinstance(item, (tuple, list)):
+            sid = item[0]
+            niveles[sid] = item[1] if len(item) > 1 else 1
+            lista_ids.append(sid)
+        else:
+            niveles[item] = 1
+            lista_ids.append(item)
+    elegidas = [i for i in lista_ids if i in a['regs']]
     resto = [i for i in sorted(a['regs']) if i not in elegidas]
     salida = bytearray(a['cabecera'])
     for puesto, sid in enumerate(elegidas + resto):
         r = bytearray(a['regs'][sid])
+        r[1] = max(1, min(100, niveles.get(sid, 1)))
         r[13] = puesto + 1 if puesto < len(elegidas) else 0
         salida += r
     return struct.pack('<H', 0x001C) + bytes(salida)
+
 
 
 # --------------------------------------------------------------- tienda

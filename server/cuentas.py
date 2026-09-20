@@ -260,8 +260,9 @@ def guardar_faccion(usuario: str, char_id: int, faccion: str):
 
 
 def guardar_progreso(usuario: str, char_id: int, nivel: int, exp: int,
-                     hp: int = None, mp: int = None, habilidades: list = None):
-    """Guarda nivel, exp, hp, mp y habilidades del personaje."""
+                     hp: int = None, mp: int = None, habilidades: list = None,
+                     hp_max: int = None, mp_max: int = None):
+    """Guarda nivel, exp, hp, mp, hp_max, mp_max y habilidades tras combate."""
     d = json.loads(ARCHIVO.read_text(encoding='utf-8'))
     c = d['cuentas'].get(usuario)
     if not c:
@@ -272,8 +273,16 @@ def guardar_progreso(usuario: str, char_id: int, nivel: int, exp: int,
             p['exp'] = int(exp)
             if hp is not None:
                 p['hp'] = int(hp)
+            if hp_max is not None:
+                p['hp_max'] = int(hp_max)
+            elif hp is not None and hp > p.get('hp_max', 0):
+                p['hp_max'] = int(hp)
             if mp is not None:
                 p['mp'] = int(mp)
+            if mp_max is not None:
+                p['mp_max'] = int(mp_max)
+            elif mp is not None and mp > p.get('mp_max', 0):
+                p['mp_max'] = int(mp)
             if habilidades is not None:
                 p['habilidades'] = [list(h) for h in habilidades]
             ARCHIVO.write_text(json.dumps(d, indent=2, ensure_ascii=False),

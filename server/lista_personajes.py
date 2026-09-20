@@ -92,7 +92,9 @@ def _ficha(buf, base, idx, p):
     # Solo el VALOR ACTUAL vive en la ficha. El MAXIMO va en arreglos
     # aparte (ver OFF_HP_MAX / OFF_MP_MAX en bloque_cuenta).
     struct.pack_into('<I', buf, base + 109, p.get('hp', 0) & 0xFFFFFFFF)
+    struct.pack_into('<I', buf, base + 113, p.get('hp_max', p.get('hp', 0)) & 0xFFFFFFFF)
     struct.pack_into('<I', buf, base + 117, p.get('mp', 0) & 0xFFFFFFFF)
+    struct.pack_into('<I', buf, base + 121, p.get('mp_max', p.get('mp', 0)) & 0xFFFFFFFF)
     # Equipo que se ve en el muneco del selector: cinco LE32 desde +81.
     # Medido en el bloque que mando el servidor privado para un personaje
     # equipado: +84..+100 del cuerpo, o sea +81..+97 dentro del slot, con

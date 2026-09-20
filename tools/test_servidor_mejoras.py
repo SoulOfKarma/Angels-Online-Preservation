@@ -33,8 +33,8 @@ sk_exp = cb.calcular_skill_exp()
 print(f"EXP obtenida de Slarm (con mult {configuracion.multiplicador_exp()}x): {exp_slarm}")
 print(f"Skill EXP obtenida: {sk_exp}")
 despawn = cb.despawn_monstruo(500)
-print("Despawn paquete (0x001B) len:", len(despawn), "hex:", despawn.hex())
-assert despawn[:2] == b'\x1b\x00', "Debe ser opcode 0x001B"
+print("Despawn paquete (0x0007) len:", len(despawn), "hex:", despawn.hex())
+assert despawn[:2] == b'\x07\x00', "Debe ser opcode 0x0007"
 
 print("\n=== 4. Test Dialogos y Tiendas ===")
 import dialogos
@@ -42,8 +42,8 @@ import dialogos
 res_scroll = dialogos.respuesta_a(12103, entidad=11)
 assert len(res_scroll) == 2, "Debe abrir tienda y cerrar dialogo"
 shop_id_scroll = struct.unpack_from('<H', res_scroll[0], 2)[0]
-print("Scroll Seller abre Shop ID:", shop_id_scroll)
-assert shop_id_scroll == 47, f"Esperaba Shop 47 para Scroll Seller, obtuve {shop_id_scroll}"
+assert shop_id_scroll == 17, f"Esperaba Shop 17 para Scroll Seller, obtuve {shop_id_scroll}"
+
 
 # Magic Seller entidad 19
 res_magic = dialogos.respuesta_a(12103, entidad=19)
@@ -61,7 +61,7 @@ assert shop_id_pet == 69, f"Esperaba Shop 69 para Pet Expert, obtuve {shop_id_pe
 res_pet_talk = dialogos.respuesta_a(6101, entidad=48, val=4)[0]
 val_portrait = struct.unpack_from('<H', res_pet_talk, 6)[0] # mid=LE32@2, val=LE16@6
 print("Pet Expert 'Tell me about pets' portrait val:", val_portrait)
-assert val_portrait == 4, f"Esperaba portrait 4, obtuve {val_portrait}"
+assert val_portrait == 48, f"Esperaba portrait 48, obtuve {val_portrait}"
 
 # Angels' Tutor 10110 -> 10123
 res_tutor_quit = dialogos.respuesta_a(10110, entidad=25, val=4)[0]

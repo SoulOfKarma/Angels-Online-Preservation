@@ -16,6 +16,7 @@ tools/diagnosticar.py lo entiende sin cambios.
 """
 import asyncio
 import argparse
+import os
 import datetime
 import pathlib
 import struct
@@ -265,7 +266,11 @@ class Proxy:
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument('--destino', default='IP.DEL.SERVIDOR.PRIVADO')
+    # La IP del servidor no va en el repo. Se pasa con --destino o con
+    # la variable de entorno AO_DESTINO.
+    ap.add_argument('--destino',
+                    default=os.environ.get('AO_DESTINO',
+                                           'IP.DEL.SERVIDOR.PRIVADO'))
     ap.add_argument('--puerto', type=int, default=30000)
     ap.add_argument('--fport', type=int, default=30007)
     ap.add_argument('--wpuerto', type=int, default=30001,

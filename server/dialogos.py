@@ -175,10 +175,20 @@ def armar_linea(mid: int, val: int = 4, opts: list = None) -> bytes:
 def propio(nombre: str, faccion: str = "Heaven"):
     """Una linea de dialogo para ese NPC, o None si no se le conoce ninguna."""
     if nombre == 'Director Wolay':
-        if faccion == "Heaven":
+        if faccion in ("Heaven", "Neutral", "Neutrally", "Graduated"):
             return [armar_linea(10004, 49, [])[2:]]
         else:
             return [armar_linea(5079, 49, [5080, 5081])[2:]]
+    if 'Repair Angel' in nombre:
+        return [armar_linea(5100, 4, [5101, 12105])[2:]]
+    if 'Cupid' in nombre:
+        return [armar_linea(5745, 6, [5746, 5747, 5748])[2:]]
+    if "Angels' Tutor" in nombre:
+        return [armar_linea(10101, 4, [10107, 10108, 10109, 10110])[2:]]
+    if 'Jack' in nombre:
+        return [armar_linea(5235, 4, [20001, 20002])[2:]]
+    if 'Shiva' in nombre:
+        return [armar_linea(5235, 4, [20003, 20004])[2:]]
     d = _propios().get(nombre)
     if not d:
         return None
@@ -203,7 +213,11 @@ RESPUESTAS = {
     10214: 10226,
     # Pet Expert
     6101: 6105,
-    6103: 6117,
+    6106: 6112,
+    6107: 6113,
+    6108: 6114,
+    6109: 6115,
+    6110: 6116,
     # Angels' Tutor
     10107: 10112,   # Score Regulation
     10108: 10115,   # Top Student Training
@@ -213,15 +227,18 @@ RESPUESTAS = {
 
 # Tiendas especificas segun la entidad del NPC que vende (para opcion 12103)
 TIENDAS_POR_ENTIDAD = {
-    11: 47,    # Scroll Seller (Lyceum) -> Shop 47 (Novice / Freshman Scrolls)
-    19: 18,    # Magic Seller (Lyceum) -> Shop 18 (Magic Scrolls)
-    46: 4,     # C. Plan Seller (Lyceum) -> Shop 4 (Production Recipes)
-    47: 4,     # C. Plan Seller (Lyceum) -> Shop 4 (Production Recipes)
-    33: 2,     # Weapon Salesman -> Shop 2
-    34: 3,     # Armor Salesman -> Shop 3
+    11: 17,    # Scroll Seller (Lyceum) -> Shop 17 (Combat Skill Scrolls: Crazy Roar, Recovery Shield, etc.)
+    19: 18,    # Magic Seller (Lyceum) -> Shop 18 (Magic Scrolls: Shock Wave, Cure Spell, etc.)
+    46: 21,    # C. Plan Seller (Lyceum) -> Shop 21 (Craft / Wood recipes)
+    47: 22,    # C. Plan Seller (Lyceum) -> Shop 22 (Tailor / Sewing recipes)
+    17: 16,    # Ironsmith (Lyceum) -> Shop 16 (Weaponsmith recipes)
+    18: 20,    # Ironsmith (Lyceum) -> Shop 20 (Armorsmith recipes)
+    36: 2,     # Weapon Salesman -> Shop 2
+    37: 3,     # Armor Salesman -> Shop 3
     38: 5,     # Sewing Salesman -> Shop 5
+    39: 7,     # Cooking Salesman -> Shop 7
     40: 6,     # Art Saleman -> Shop 6
-    4: 1,      # Shopkeeper -> Shop 1
+    24: 1,     # Shopkeeper -> Shop 1
 }
 
 # Opciones de dialogo que abren la ventana de tienda (WND_NPCSALE).
@@ -263,6 +280,16 @@ def respuesta_a(opcion_id: int, entidad: int = 0, val: int = 4):
         pkg_cierre = struct.pack('<H', 0x0012) + FIN
         return (pkg_shop, pkg_cierre)
 
+    # Pet Expert: 6101 "Tell me about pets", 6103 "Pet Revival" (WND_PET_RESURRECT 0x0066)
+    if opcion_id == 6101:
+        return (armar_linea(6105, 48, [6106, 6107, 6108, 6109, 6110, 6111]),)
+    if opcion_id == 6103:
+        pkg_cierre = struct.pack('<H', 0x0012) + FIN
+        pkg_revival = struct.pack('<HBB', 0x0066, 1, 0)
+        return (pkg_revival, pkg_cierre)
+    if opcion_id in (6104, 6111, 6119, 5665, 5793):
+        return (struct.pack('<H', 0x0012) + FIN,)
+
     # Opcion 10110: "Quit the training" con Angels' Tutor
     if opcion_id == 10110:
         pkg_pregunta = armar_linea(10123, val, [10125, 10126])
@@ -289,19 +316,53 @@ def respuesta_a(opcion_id: int, entidad: int = 0, val: int = 4):
     if opcion_id in (5030, 5237):
         # Abrir almacen personal: WND_WAREHOUSE (opcode 0x002B)
         pkg_cierre = struct.pack('<H', 0x0012) + FIN
-        # S->C 0x002B abre la ventana de almacen
         pkg_bank = struct.pack('<HII', 0x002B, 1, 0)
         return (pkg_bank, pkg_cierre)
 
-    # Skill Angel (5024): redistribucion de habilidades / cambio de clase
+    # Skill Angel: 5024 ("Change Skill" / redistribucion) vs 5820 ("Choose profession skills")
     if opcion_id == 5024:
         pkg_cierre = struct.pack('<H', 0x0012) + FIN
-        pkg_skill_reset = struct.pack('<HIBBII', 0x001D, entidad, 1, 12, 0, 0)
+        # 0x001D kind=10 es la ventana nativa de redistribucion de puntos
+        pkg_skill_reset = struct.pack('<HIBBII', 0x001D, entidad, 1, 10, 0, 0)
         return (pkg_skill_reset, pkg_cierre)
+    if opcion_id == 5820:
+        pkg_cierre = struct.pack('<H', 0x0012) + FIN
+        # 0x001D kind=12 es la ventana de seleccion de profesion
+        pkg_prof = struct.pack('<HIBBII', 0x001D, entidad, 1, 12, 0, 0)
+        return (pkg_prof, pkg_cierre)
+
+    # Repair Angel: 5101 ("Repair the equipment.") -> abre WND_REPAIR (opcode 0x004F)
+    if opcion_id == 5101:
+        pkg_cierre = struct.pack('<H', 0x0012) + FIN
+        pkg_repair = struct.pack('<HBB', 0x004F, 1, 0)
+        return (pkg_repair, pkg_cierre)
+
+    # Cupid: 5747 ("Set the place for your revival.") -> Checkpoint / Savepoint
+    if opcion_id == 5747:
+        pkg_cierre = struct.pack('<H', 0x0012) + FIN
+        import clases as _c
+        pkg_aviso = _c.aviso("Revival point has been set to Angel Lyceum!", tipo=0, msg_id=_c.MSG_ITEM)
+        return (pkg_aviso, pkg_cierre)
+    if opcion_id == 5746:
+        # Descripcion de ayuda
+        return (armar_linea(5749, val, []),)
+    if opcion_id == 5748:
+        return (struct.pack('<H', 0x0012) + FIN,)
+
+    # Director Wolay: 5080 (Return to City), 5081 (Leave)
+    if opcion_id == 5080:
+        return (armar_linea(5082, val, []),)
+    if opcion_id in (5081, 20002, 20004):
+        return (struct.pack('<H', 0x0012) + FIN,)
+
+    # Teleporters Jack & Shiva (20001 East Field A1, 20003 West Field A1)
+    if opcion_id in (20001, 20003):
+        return (struct.pack('<H', 0x0012) + FIN,)
 
     sig = RESPUESTAS.get(opcion_id)
     if sig is None:
         return (struct.pack('<H', 0x0012) + FIN,)
     return (armar_linea(sig, val, []),)
+
 
 

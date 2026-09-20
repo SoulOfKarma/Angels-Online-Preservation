@@ -252,8 +252,17 @@ def _tabla():
 
 
 def es_equipable(item_id: int) -> bool:
-    """Si el item se lleva puesto. Decide el tamano de su entrada: 119 o 86."""
+    """Si el item va en alguna de las casillas de equipo (0..9). Las mascotas van en ranura 9."""
+    if es_mascota(item_id):
+        return True
     return _tabla().get(item_id, (False, 0))[0]
+
+
+def es_apilable(item_id: int) -> bool:
+    """Si el item se puede acumular en una misma casilla (pociones, hojas, galletas, materiales)."""
+    if not item_id or es_equipable(item_id):
+        return False
+    return True
 
 
 def es_mascota(item_id: int) -> bool:
@@ -302,6 +311,31 @@ def ranura_equipo_de(item_id: int):
                     _SLOT_CACHE[iid] = 8
     return _SLOT_CACHE.get(item_id)
 
+_TWO_HAND_CACHE = {}
+
+def es_arma_dos_manos(item_id: int) -> bool:
+    """Si el arma requiere ambas manos (Lanza, Arco, etc.)."""
+    global _TWO_HAND_CACHE
+    if not item_id:
+        return False
+    if item_id in _TWO_HAND_CACHE:
+        return _TWO_HAND_CACHE[item_id]
+    import sqlite3
+    db = pathlib.Path(__file__).parent.parent / 'corpus' / 'content.db'
+    res = False
+    if db.exists():
+        try:
+            con = sqlite3.connect(db)
+            row = con.execute('select "物品類別" from item where id=?', (str(item_id),)).fetchone()
+            if row and row[0]:
+                cat = str(row[0])
+                res = any(k in cat for k in ('槍', '弓', '雙手'))
+        except Exception:
+            pass
+    _TWO_HAND_CACHE[item_id] = res
+    return res
+
+
 
 def sprite_de_mascota(item_id: int) -> int:
     """Devuelve el ID de sprite (圖號1) de la mascota/huevo para invocarla."""
@@ -334,8 +368,8 @@ def sprite_de_mascota(item_id: int) -> int:
 
 
 def es_comida_mascota(item_id: int) -> bool:
-    """Si el item es comida o suplemento de mascota (Pet Cookies, Pet Can, Pet Feed, Biscuits)."""
-    return item_id in (2, 3374, 3375, 3376)
+    """Si el item es comida o suplemento exclusivo de mascota (Pet Cookies, Pet Can, Pet Feed)."""
+    return item_id in (3374, 3375, 3376)
 
 
 _RECOMPENSAS_CACHE = {}
@@ -481,10 +515,69 @@ def entregar(char_id: int, item_id: int, ranura: int):
         nombres_elfos = {3396: b"Water Elf\x00", 3397: b"Fire Elf\x00", 3398: b"Wind Elf\x00", 3399: b"Earth Elf\x00"}
         nom_pet = nombres_elfos.get(item_id, b"Pet\x00")
         b[17:17 + len(nom_pet)] = nom_pet
-        struct.pack_into('<I', b, 49, 100)
-        struct.pack_into('<I', b, 53, 100)
-        struct.pack_into('<I', b, 57, 100)
-        struct.pack_into('<I', b, 61, 1)
+        struct.pack_into('<I', b, 48, 100)
+        struct.pack_into('<I', b, 52, 100)
+        struct.pack_into('<I', b, 56, 100)
+        struct.pack_into('<I', b, 60, 1)
     else:
-        struct.pack_into('<I', b, 49, dur)
+        struct.pack_into('<I', b, 48, dur)
     return [struct.pack('<H', 0x001B) + bytes(b)]
+
+
+def efecto_consumible(item_id: int):
+    """Devuelve dict con {'hp': X, 'mp': Y} si el item es un consumible/pocion/hierba, o None."""
+    import sqlite3, re
+    db = pathlib.Path(__file__).parent.parent / 'corpus' / 'content.db'
+    if not db.exists():
+        return None
+    try:
+        con = sqlite3.connect(db)
+        row = con.execute('select "動態資料1", "常駐法術", "物品類別", "基本名稱", "說明" from item where id=?', (str(item_id),)).fetchone()
+        if not row:
+            return None
+        d1, mid, cat, name, desc = str(row[0] or ''), str(row[1] or ''), str(row[2] or ''), str(row[3] or ''), str(row[4] or '')
+        res = {}
+        # 1. Si apunta a un registro en magic.xml via 常駐法術 o 動態資料1
+        magic_id = mid if mid and mid.isdigit() else (d1 if d1 and d1.isdigit() else None)
+        if magic_id:
+            m_row = con.execute('select hp, mp from magic where id=?', (str(magic_id),)).fetchone()
+            if m_row:
+                if m_row[0] and str(m_row[0]).strip().isdigit() and int(m_row[0]) > 0:
+                    res['hp'] = int(m_row[0])
+                if m_row[1] and str(m_row[1]).strip().isdigit() and int(m_row[1]) > 0:
+                    res['mp'] = int(m_row[1])
+        # 2. Si no, parsear descripcion ("restore 40 hp", "increase 50 mp")
+        if not res:
+            m_mp = re.search(r'(?:increase|restore)\s*(\d+)\s*mp', desc, re.I)
+            if m_mp:
+                res['mp'] = int(m_mp.group(1))
+            m_hp = re.search(r'(?:increase|restore)\s*(\d+)\s*hp', desc, re.I)
+            if m_hp:
+                res['hp'] = int(m_hp.group(1))
+        # 3. Heuristica si no habia magic row
+        if not res and d1.isdigit() and int(d1) > 0:
+            val = int(d1)
+            if 'mp' in name.lower() or 'magic' in name.lower() or 'blue' in name.lower():
+                res['mp'] = val
+            else:
+                res['hp'] = val
+        return res if res else None
+    except Exception:
+        return None
+
+
+def es_tarjeta_coleccion(item_id: int) -> bool:
+    """Si el item es una tarjeta/card de monstruo coleccionable."""
+    import sqlite3
+    db = pathlib.Path(__file__).parent.parent / 'corpus' / 'content.db'
+    if not db.exists():
+        return False
+    try:
+        con = sqlite3.connect(db)
+        r = con.execute('select "物品類別", "基本名稱" from item where id=?', (str(item_id),)).fetchone()
+        if r:
+            return r[0] == '卡片' or 'Card' in str(r[1] or '')
+        return False
+    except Exception:
+        return False
+
