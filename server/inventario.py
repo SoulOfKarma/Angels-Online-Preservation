@@ -31,6 +31,7 @@ quinto stat, que el cliente muestra como Dfs: 5 sin la ropa y 15 con ella.
 import json
 import pathlib
 import struct
+import time
 
 PLANTILLA = pathlib.Path(__file__).parent / 'plantillas' / 'inventario.json'
 RANURA_CUERPO = 2           # la unica ranura de equipo MEDIDA en el trafico
@@ -124,49 +125,189 @@ def _bonus(item_id: int) -> dict:
     return _BON.get(item_id, {'def': 0, 'accuracy': 0, 'agility': 0, 'atk': 0})
 
 
-def stats(bolsa=None, habilidades: list = None) -> bytes:
+def stats(bolsa=None, habilidades: list = None,
+          hp: int = None, hp_max: int = None,
+          mp: int = None, mp_max: int = None,
+          oro: int = None,
+          buffs: dict = None,
+          sp: int = None, sp_max: int = None) -> bytes:
     """Sub-mensaje 0x0042 con los stats del personaje segun lo que lleva puesto y habilidades pasivas.
 
     El array que empieza en +20 alterna valor base y valor efectivo:
-
         idx 0  ataque base      idx 1  R.Atk     idx 2  L.Atk
         idx 3  defensa base     idx 4  Dfs
+        idx 5  Spl Atk base     idx 6  Spl Atk
+        idx 7  Spl Dfs base     idx 8  Spl Dfs
+        +56    Rigor (Acc) base / eff
+        +60    Agility (Dodge) base / eff
+        +64    Critical base / eff
+        +68    SP bars current / max (1 barra = 1000 puntos)
 
     El efectivo es el base mas lo que suma cada pieza puesta y los bonus de
-    habilidades pasivas (Enhance +2 def, Grapple +4 atk, Garment +3 def).
-
-    bolsa: {ranura: item_id}. Sin ella se devuelve la plantilla tal cual.
+    habilidades pasivas segun el nivel de cada habilidad.
     """
     p = _plantillas()
     b = bytearray(bytes.fromhex(p['stats_sin_ropa']))
-    if bolsa is None:
-        return struct.pack('<H', 0x0042) + bytes(b)
-    base_atk = struct.unpack_from('<I', b, 20)[0]
-    base_def = struct.unpack_from('<I', b, 20 + 12)[0]
-    suma_def = 0
+
+    base_atk = 7
+    base_def = 6
+    base_rigor = 7
+    base_agi = 6
+    base_matk = 5
+    base_mdef = 5
+    base_crit = 5
+    crit_eff = 5
+    load_max = 2000
+    sp_max_bars = 2
+
+    hp_bonus = 0
+    mp_bonus = 0
     sk_atk = 0
     sk_def = 0
+    sk_rigor = 0
+    sk_agi = 0
+    sk_matk = 0
+    sk_mdef = 0
+
     if habilidades:
-        for sk in habilidades:
-            sk_id = sk[0]
-            sk_lv = sk[1] if len(sk) > 1 else 1
-            if sk_id == 12:    # Enhance
-                sk_def += sk_lv * 2
-            elif sk_id == 13:  # Grapple
-                sk_atk += sk_lv * 4
-            elif sk_id == 33:  # Garment
-                sk_def += sk_lv * 3
-    mano = {RANURA_DERECHA: 0, RANURA_IZQUIERDA: 0}
-    for ranura, item_id in bolsa.items():
-        if not es_equipo(ranura) or ranura == RANURA_ORO:
-            continue
-        x = _bonus(item_id)
-        suma_def += x['def']
-        if ranura in mano:
-            mano[ranura] = x['atk'] + x['accuracy']
-    struct.pack_into('<I', b, 20 + 4, base_atk + mano[RANURA_DERECHA] + sk_atk)
-    struct.pack_into('<I', b, 20 + 8, base_atk + mano[RANURA_IZQUIERDA] + sk_atk)
-    struct.pack_into('<I', b, 20 + 16, base_def + suma_def + sk_def)
+        for h in habilidades:
+            sid = h[0] if isinstance(h, (list, tuple)) else h
+            slv = h[1] if isinstance(h, (list, tuple)) and len(h) > 1 else 1
+            extra = max(0, slv - 1)
+
+            if sid == 9:      # Sword: +4 atk base, +1 atk y +1 rigor por nivel arriba de 1
+                sk_atk += 4 + extra
+                sk_rigor += extra
+            elif sid == 10:   # Axe: +4 atk base, +1 atk por nivel, +8 rigor cada 10 niveles
+                sk_atk += 4 + extra
+                sk_rigor += 8 * (slv // 10)
+            elif sid == 11:   # Spear: +4 atk base, +1 atk por nivel, +8 rigor cada 10 niveles
+                sk_atk += 4 + extra
+                sk_rigor += 8 * (slv // 10)
+            elif sid == 12:   # Enhance: +2 def base, +24 hp (con=2), +1 def y +12 hp por nivel
+                sk_def += 2 + extra
+                hp_bonus += extra * 12
+            elif sid == 13:   # Grapple: +4 rigor base, +1 atk, +1 rigor y +12 hp por nivel
+                sk_rigor += 4 + extra
+                sk_atk += extra
+                hp_bonus += extra * 12
+            elif sid == 14:   # Shield: +4 def base, +3 def por nivel
+                sk_def += 4 + extra * 3
+            elif sid == 15:   # Reserve: +2 atk base, +1 atk por nivel, +1 barra SP cada 25 niveles
+                sk_atk += 2 + extra
+                sp_max_bars += (slv // 25)
+            elif sid == 16:   # Finesse: +4 agi base, +1 agi por nivel
+                sk_agi += 4 + extra
+            elif sid == 17:   # Longbow: +4 atk base, +1 atk por nivel, +8 rigor cada 10 niveles
+                sk_atk += 4 + extra
+                sk_rigor += 8 * (slv // 10)
+            elif sid == 18:   # Snipe: +2 atk base, +1 atk por nivel
+                sk_atk += 2 + extra
+            elif sid == 19:   # Eagle Eye: +2 rigor, +2 agi base, +1 rigor y +1 agi por nivel
+                sk_rigor += 2 + extra
+                sk_agi += 2 + extra
+            elif sid == 32:   # Mantle: +3 def, +1 agi, +60 carga
+                sk_def += 3
+                sk_agi += 1
+                load_max += 60 + extra * 60
+            elif sid == 33:   # Garment: +4 def, +72 carga
+                sk_def += 4
+                load_max += 72 + extra * 72
+            elif sid == 34:   # Vestment: +2 def, +2 mdef, +48 carga
+                sk_def += 2
+                sk_mdef += 2
+                load_max += 48 + extra * 48
+            elif sid in (20, 21, 22, 23): # Collect, Fishing, Dig, Lumber: +2 atk
+                sk_atk += 2
+            elif sid in (1, 2, 3, 4):     # Magic elemental: +4 matk
+                sk_matk += 4
+            elif sid == 5:    # Curse: +2 matk, +1 matk por nivel
+                sk_matk += 2 + extra
+            elif sid == 6:    # Meditate: +2 mdef, +30 mp, +1 mdef y +15 mp por nivel
+                sk_mdef += 2 + extra
+                mp_bonus += 30 + extra * 15
+            elif sid == 7:    # Hit: +2 matk, +1 matk y +5 mp por nivel
+                sk_matk += 2 + extra
+                mp_bonus += extra * 5
+            elif sid == 8:    # Staff Hit: +2 atk, +1 matk, +1 mdef base, +1 atk/matk/rigor por nivel
+                sk_atk += 2 + extra
+                sk_matk += 1 + extra
+                sk_mdef += 1
+                sk_rigor += extra
+
+    c_atk_base = base_atk + sk_atk
+    c_def_base = base_def + sk_def
+    c_rigor_base = base_rigor + sk_rigor
+    c_agi_base = base_agi + sk_agi
+    c_matk_base = base_matk + sk_matk
+    c_mdef_base = base_mdef + sk_mdef
+
+    if sp_max is not None:
+        sp_max_bars = max(sp_max_bars, sp_max)
+    if sp is not None:
+        sp_bars_current = min(sp_max_bars, max(0, sp // 1000))
+    else:
+        sp_bars_current = sp_max_bars
+
+    if buffs:
+        now = time.time()
+        for b_id, b_data in buffs.items():
+            if isinstance(b_data, dict) and b_data.get('fin', 0) > now and 'crit' in b_data:
+                crit_eff += b_data['crit']
+
+    eq_def = 0
+    eq_r_atk = 0
+    eq_l_atk = 0
+    eq_rigor = 0
+    eq_agi = 0
+    eq_load = 0
+
+    if bolsa:
+        for ranura, item_id in bolsa.items():
+            if not es_equipo(ranura) or ranura == RANURA_ORO:
+                continue
+            x = _bonus(item_id)
+            eq_def += x.get('def', 0)
+            eq_rigor += x.get('accuracy', 0)
+            eq_agi += x.get('agility', 0)
+            if ranura == RANURA_DERECHA:
+                eq_r_atk += x.get('atk', 0) + x.get('accuracy', 0)
+            elif ranura == RANURA_IZQUIERDA:
+                eq_l_atk += x.get('atk', 0) + x.get('accuracy', 0)
+
+    r_atk_eff = c_atk_base + eq_r_atk
+    l_atk_eff = c_atk_base + eq_l_atk
+    dfs_eff = c_def_base + eq_def
+    rigor_eff = c_rigor_base + eq_rigor
+    agi_eff = c_agi_base + eq_agi
+
+    hp_eff = hp if hp is not None else struct.unpack_from('<I', b, 0)[0]
+    hp_max_eff = (hp_max + hp_bonus) if hp_max is not None else (struct.unpack_from('<I', b, 4)[0] + hp_bonus)
+    mp_eff = mp if mp is not None else struct.unpack_from('<I', b, 8)[0]
+    mp_max_eff = (mp_max + mp_bonus) if mp_max is not None else (struct.unpack_from('<I', b, 12)[0] + mp_bonus)
+
+    struct.pack_into('<I', b, 0, hp_eff)
+    struct.pack_into('<I', b, 4, hp_max_eff)
+    struct.pack_into('<I', b, 8, mp_eff)
+    struct.pack_into('<I', b, 12, mp_max_eff)
+    struct.pack_into('<HH', b, 16, eq_load, load_max)
+    struct.pack_into('<I', b, 20, c_atk_base)
+    struct.pack_into('<I', b, 24, r_atk_eff)
+    struct.pack_into('<I', b, 28, l_atk_eff)
+    struct.pack_into('<I', b, 32, c_def_base)
+    struct.pack_into('<I', b, 36, dfs_eff)
+    struct.pack_into('<I', b, 40, c_matk_base)
+    struct.pack_into('<I', b, 44, c_matk_base)
+    struct.pack_into('<I', b, 48, c_mdef_base)
+    struct.pack_into('<I', b, 52, c_mdef_base)
+    struct.pack_into('<HH', b, 56, c_rigor_base, rigor_eff)
+    struct.pack_into('<HH', b, 60, c_agi_base, agi_eff)
+    struct.pack_into('<HH', b, 64, base_crit, crit_eff)
+    struct.pack_into('<HH', b, 68, sp_bars_current, sp_max_bars)
+    struct.pack_into('<II', b, 92, 5000, 5000)
+    if oro is not None:
+        struct.pack_into('<I', b, 100, oro)
+
     return struct.pack('<H', 0x0042) + bytes(b)
 
 

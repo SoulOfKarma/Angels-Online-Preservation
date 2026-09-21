@@ -123,6 +123,11 @@ def _tutorial():
     return _TUT
 
 
+def recargar_tutorial():
+    global _TUT
+    _TUT = None
+
+
 def guion_etapa(entity_id: int, etapa: int):
     """El tramo de dialogo que toca, o None si ese NPC ya no tiene mas."""
     nom = NOMBRE_POR_ENTIDAD.get(entity_id)
@@ -164,11 +169,13 @@ def _propios():
     return _PROPIOS
 
 
-def armar_linea(mid: int, val: int = 4, opts: list = None) -> bytes:
+def armar_linea(mid: int, val: int = 4, opts: list = None, strings: list = None) -> bytes:
     """Construye un sub-mensaje 0x0012 completo."""
     opts = opts or []
-    hdr = struct.pack('<IHBBB', mid, val, 0, len(opts), 0)
-    body = b''.join(struct.pack('<I', o) for o in opts)
+    strings = strings or []
+    cadenas_b = b''.join(s.encode('ascii', 'replace') + b'\x00' for s in strings)
+    hdr = struct.pack('<IHBBB', mid, val, len(strings), len(opts), 0)
+    body = cadenas_b + b''.join(struct.pack('<I', o) for o in opts)
     return struct.pack('<H', 0x0012) + hdr + body
 
 
@@ -287,7 +294,7 @@ def respuesta_a(opcion_id: int, entidad: int = 0, val: int = 4):
         pkg_cierre = struct.pack('<H', 0x0012) + FIN
         pkg_revival = struct.pack('<HBB', 0x0066, 1, 0)
         return (pkg_revival, pkg_cierre)
-    if opcion_id in (6104, 6111, 6119, 5665, 5793):
+    if opcion_id in (6104, 6111, 6119, 5665, 5793) or 5802 <= opcion_id <= 5812:
         return (struct.pack('<H', 0x0012) + FIN,)
 
     # Opcion 10110: "Quit the training" con Angels' Tutor
@@ -355,8 +362,10 @@ def respuesta_a(opcion_id: int, entidad: int = 0, val: int = 4):
     if opcion_id in (5081, 20002, 20004):
         return (struct.pack('<H', 0x0012) + FIN,)
 
-    # Teleporters Jack & Shiva (20001 East Field A1, 20003 West Field A1)
-    if opcion_id in (20001, 20003):
+    # Angel Raphael (Guide Palace)
+    if opcion_id == 5009:  # "I don't want to join in." -> 5010 (preguntar si esta seguro)
+        return (armar_linea(5010, 3, [5011, 5012]),)
+    if opcion_id in (5012, 5242, 5046):  # 5012 "Let me see.", 5242 Tutor "No, thanks.", 5046 Aide "Quit"
         return (struct.pack('<H', 0x0012) + FIN,)
 
     sig = RESPUESTAS.get(opcion_id)

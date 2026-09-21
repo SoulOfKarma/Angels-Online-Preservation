@@ -80,6 +80,12 @@ def _ficha(buf, base, idx, p):
         buf[base + 6 + i] = v & 0xFF
     # stage_id: con 0 el cliente crashea al cargar el mapa
     struct.pack_into('<I', buf, base + 11, (p.get('stage_id') or 129) & 0xFFFFFFFF)
+    # +15: flags de ficha (bit 0x10000000 = novato / recien creado)
+    # CRITICO: sub_4C5BA0 en Angel.exe evalua `if (ficha[15] & 0x10000000)`.
+    # Si esta seteado, inicializa HP Max = 205 (0xCD), MP Max = 154 (0x9A) y Job = "Novice".
+    # Sin este bit, el cliente no setea HP/MP Max y la tarjeta muestra "205 / 0" y "154 / 0".
+    flags = p.get('flags', 0)
+    struct.pack_into('<I', buf, base + 15, flags & 0xFFFFFFFF)
     # no-cero = la ranura tiene personaje (si no, abre el dialogo de creacion)
     struct.pack_into('<I', buf, base + 31, p.get('char_id', idx + 1) & 0xFFFFFFFF)
     nom = str(p.get('nombre', '')).encode('ascii', 'replace')[:16]

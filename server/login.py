@@ -40,13 +40,13 @@ class Personaje:
     entity_id: int = 14509          # id de runtime
     char_id: int = 4794             # id persistente
     nombre: str = "Jugador"
-    tile_x: int = 128
-    tile_y: int = 62
+    tile_x: int = 247
+    tile_y: int = 24
     habilidades: list = field(default_factory=list)   # [(skill_id, nivel, exp)]
     barra: list = field(default_factory=list)         # [magic_id, ...] hasta 24
     quests: list = field(default_factory=list)        # [(quest_id, paso), ...]
-    hp: int = 205
-    hp_max: int = 205
+    hp: int = 280
+    hp_max: int = 280
     mp: int = 154
     mp_max: int = 154
     inventario: dict = field(default_factory=dict)  # {ranura: item_id}
@@ -140,12 +140,25 @@ def secuencia(p: Personaje):
             # jugador, asi que cada item aparece en su ranura.
             import inventario as _inv
             # Con la cantidad de cada cosa: el oro vive en la ranura 0 y su
-            # cantidad es p.oro. Antes iba todo con cantidad 1 y al recargar
-            # el mapa el jugador perdia el oro de vista.
-            _items = [(int(r), int(it), p.oro if int(r) == _inv.RANURA_ORO else 1)
+            # item_id siempre es 1 (ITEM_ORO) y su cantidad es p.oro.
+            _items = [(int(r), _inv.ITEM_ORO if int(r) == _inv.RANURA_ORO else int(it),
+                       p.oro if int(r) == _inv.RANURA_ORO else 1)
                       for r, it in p.inventario.items()]
             salida.append(_inv.completo(p.char_id, _items))
 
+        elif op == 0x0008:
+            # En Guide Palace (stage 51), asegurar las coordenadas exactas de AngelWar:
+            # Raphael (19) en (244, 30), Tutor (20) en (236, 27), Aide (21) en (252, 27)
+            b = bytearray(base)
+            ent = struct.unpack_from('<I', b, 0)[0]
+            if p.stage == 51:
+                if ent == 19:
+                    struct.pack_into('<II', b, 8, 244, 30)
+                elif ent == 20:
+                    struct.pack_into('<II', b, 8, 236, 27)
+                elif ent == 21:
+                    struct.pack_into('<II', b, 8, 252, 27)
+            salida.append(struct.pack('<H', 0x0008) + bytes(b))
         elif op == 0x005D:
             salida.append(struct.pack('<HI', 0x005D, int(time.time())))
         elif op == 0x0196:
@@ -159,7 +172,8 @@ def secuencia(p: Personaje):
     salida += poblar(p.stage)
     # Atributos nativos iniciales del personaje (HP, MP, EXP bar)
     import combate as _cb_ini
-    salida.append(_cb_ini.atributo(p.entity_id, p.hp, _cb_ini.KIND_HP))
+    hp_val = 280 if (not p.habilidades and p.nivel == 1 and p.hp <= 205) else p.hp
+    salida.append(_cb_ini.atributo(p.entity_id, hp_val, _cb_ini.KIND_HP))
     salida.append(_cb_ini.atributo(p.entity_id, p.mp, _cb_ini.KIND_MP))
     salida.append(_cb_ini.atributo(p.entity_id, p.exp, _cb_ini.KIND_EXP))
     return salida
@@ -271,11 +285,6 @@ def poblar(stage: int):
     if stage in PLAYGROUND_MONSTERS:
         for eid, ntype, nom, tile in PLAYGROUND_MONSTERS[stage]:
             salida.append(_npc_spawn(eid, ntype, nom, tile, klass=1))
-        # Portal de retorno visual: tornadito con alas brillantes (sprite 40375)
-        if stage == 42:
-            salida.append(_npc_spawn(899, 8978, "To Lyceum", (11, 113), sprite=40375, klass=200))
-        elif stage == 43:
-            salida.append(_npc_spawn(898, 8978, "To Lyceum", (189, 24), sprite=40375, klass=200))
         return salida
     f = PLANTILLAS / 'lyceum.json'
     if stage != 41 or not f.exists():
@@ -283,9 +292,6 @@ def poblar(stage: int):
     d = json.loads(f.read_text(encoding='utf-8'))
     salida += [struct.pack('<H', 0x0008) + bytes.fromhex(e['hex'])
                for e in d['spawns']]
-    # Portales visuales con tornadito de alas brillantes en Lyceum
-    salida.append(_npc_spawn(896, 8978, "East Portal", (258, 15), sprite=40375, klass=200))
-    salida.append(_npc_spawn(897, 8978, "West Portal", (18, 135), sprite=40375, klass=200))
     # Los recursos del mapa: vetas de cobre, arboles, hierbas, madrigueras.
     salida += [struct.pack('<H', 0x000E) + bytes.fromhex(e['hex'])
                for e in d.get('recursos', [])]
@@ -318,7 +324,9 @@ def _ficha(p, base):
     # en pantalla con la plantilla sin tocar: eran los del personaje de otro
     # servidor, no los del jugador.
     st = bytearray(d['stats'])
-    struct.pack_into('<IIII', st, 0, p.hp, p.hp_max, p.mp, p.mp_max)
+    hp_val = 280 if (not p.habilidades and p.nivel == 1 and p.hp <= 205) else p.hp
+    hp_max_val = 280 if (not p.habilidades and p.nivel == 1 and p.hp_max <= 205) else p.hp_max
+    struct.pack_into('<IIII', st, 0, hp_val, hp_max_val, p.mp, p.mp_max)
     d['stats'] = bytes(st)
     if p.habilidades:
         sk = list(d['skills'])

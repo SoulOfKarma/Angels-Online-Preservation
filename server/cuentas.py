@@ -231,6 +231,20 @@ def guardar_oro(usuario: str, char_id: int, oro: int):
             return
 
 
+def guardar_barra(usuario: str, char_id: int, barra: list):
+    """Deja en disco los accesos rapidos de la barra (F1..F8, 1..8, etc.)."""
+    d = json.loads(ARCHIVO.read_text(encoding='utf-8'))
+    c = d['cuentas'].get(usuario)
+    if not c:
+        return
+    for p in c.get('personajes', []):
+        if p.get('char_id') == char_id:
+            p['barra'] = list(barra)
+            ARCHIVO.write_text(json.dumps(d, indent=2, ensure_ascii=False),
+                               encoding='utf-8')
+            return
+
+
 def guardar_mapa(usuario: str, char_id: int, stage: int, tile_x: int, tile_y: int):
     d = json.loads(ARCHIVO.read_text(encoding='utf-8'))
     c = d['cuentas'].get(usuario)

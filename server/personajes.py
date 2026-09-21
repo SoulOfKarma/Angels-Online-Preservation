@@ -22,23 +22,20 @@ import struct
 import pathlib
 
 MAPA_INICIAL = 51                 # Guide Palace (stage.name en content.db)
-# MEDIDO, no deducido. La ficha 0x0002 que el servidor privado le mando a un
-# personaje recien creado trae tile=(82,83) en +8/+12, y los tres NPC_SPAWN
-# del tutorial caen alrededor: Interface Tutor (80,85) a 2 tiles, Angel
-# Raphael (88,87) a 6, Angel Aide (96,85) a 14. Antes usaba el centro
-# geometrico del mapa (185,78), que queda a 97 tiles del NPC mas cercano:
-# por eso el jugador aparecia solo, fuera del rango de vista de todos.
+# Medido de la sesion real de AngelWar (mundo_163130_471128):
+# Karmav2 aparece exactamente en tile=(247,24), frente a Angel Raphael (244,30),
+# Interface Tutor (236,27) a la izquierda y Angel Aide (252,27) a la derecha.
 TILE_INICIAL = tuple(int(x) for x in
-                     __import__('os').environ.get('AO_TILE', '82,83').split(','))          # "Guide Palace" segun stage.xml
+                     __import__('os').environ.get('AO_TILE', '247,24').split(','))
 NIVEL_INICIAL = 1
 CLASE_INICIAL = 0          # "Novice" segun class.xml
 
-# Stats iniciales REALES, tomados de capturas de pantalla de un personaje
-# nivel 1 recien creado en el servidor Global y en uno privado: la tarjeta de
-# seleccion muestra HP 205/205 y MP 154/154, y el mapa inicial es
-# "Guide Palace" (id 51), no "Angel Lyceum" (41) como puse antes.
-HP_INICIAL = 296
-MP_INICIAL = 218
+# Stats iniciales REALES medidos de la tarjeta de seleccion en AngelWar:
+# HP 205/205 y MP 154/154, mapa "Guide Palace" (id 51).
+HP_INICIAL = 205
+HP_MAX_INICIAL = 205
+MP_INICIAL = 154
+MP_MAX_INICIAL = 154
 
 
 def parsear_creacion(cuerpo: bytes) -> dict:
@@ -87,47 +84,33 @@ def personaje_nuevo(nombre: str, ranura: int, char_id: int) -> dict:
         'class_id': CLASE_INICIAL,
         'stage_id': MAPA_INICIAL,
         'hp': HP_INICIAL,
-        'hp_max': HP_INICIAL,
+        'hp_max': HP_MAX_INICIAL,
         'mp': MP_INICIAL,
-        'mp_max': MP_INICIAL,
-        # Apariencia copiada de una ficha REAL capturada de un servidor
-        # vivo. Con todo en cero el cliente no puede armar la ruta del
-        # sprite del personaje y manda basura de pila en su 0x0006.
+        'mp_max': MP_MAX_INICIAL,
         'apariencia': [0, 0, 0, 8, 8],
-        # PROVISIONAL, y conviene decirlo: no es el punto de aparicion real.
-        # La cabecera de map/map051.mpc dice que Guide Palace mide 371x156
-        # tiles, asi que (0,0) es la esquina y con toda probabilidad no se
-        # puede caminar ahi. Esto es el centro geometrico -- deducido del
-        # tamano del mapa, no medido de un servidor. Se ajusta con AO_TILE.
         'tile_x': TILE_INICIAL[0],
         'tile_y': TILE_INICIAL[1],
         'habilidades': [],
         'barra': [],
         'quests': [],
-        # Arranca con la ropa puesta en la ranura del cuerpo. Es lo que se ve
-        # en el trafico real: el 0x001B del privado mueve el item 26 desde la
-        # ranura 2, o sea que ahi estaba.
-        # Ranura 0 = el oro, 2 = el cuerpo, de la 20 en adelante la mochila.
-        # SOLO estos dos. Se probo entregar tambien 28, 30 y 20103 y el cliente
-        # no los mostro: dejo las ranuras 20, 21 y 22 vacias en pantalla
-        # mientras el servidor las creia ocupadas, o sea que del 0x001A de 467
-        # bytes no leyo las cinco entradas. La suposicion de que el tamano
-        # fuera 4 + 86*N + 33 para cualquier N era falsa, o falta algun campo
-        # que diga cuantas entradas vienen. Hasta saberlo, solo lo comprobado.
+        'oro': 0,
         'inventario': {
-            '0': 1,                           # Gold
+            '0': 1,                           # Gold (item ID 1)
             '2': ROPA_INICIAL['cuerpo'],      # 26 Students' Uniform, puesta
         },
     }
 
 
 def respuesta_creacion(ranura: int, p: dict) -> bytes:
-    """Sub-mensaje 0x0001: el cliente copia 144 B desde el offset 4 a la
+    """Sub-mensaje 0x0001: el cliente copia 147 B desde el offset 4 a la
     ficha de la ranura y vuelve a dibujar la pantalla de seleccion."""
     from lista_personajes import _ficha
     cuerpo = bytearray(152)              # [LE16 error][ficha de 147 B + extra]
     # cuerpo[0:2] = 0  -> exito
-    _ficha(cuerpo, 2, ranura, p)
+    p_creacion = dict(p)
+    # Bit 0x10000000 le indica al cliente inicializar HP Max = 205, MP Max = 154 y Job = Novice
+    p_creacion['flags'] = p.get('flags') or 0x10000000
+    _ficha(cuerpo, 2, ranura, p_creacion)
     return struct.pack('<H', 0x0001) + bytes(cuerpo)
 
 

@@ -27,10 +27,9 @@ ATAQUE_NORMAL = 656
 OBJETIVO_FIJADO = 0x03060001
 VIDA = 0                    # kind 0 del 0x0013: HP (o % en monstruos)
 KIND_HP = 0                 # HP actual del jugador / % del monstruo
-KIND_SP = 2                 # SP / esfuerzo del jugador
-KIND_MP = 3                 # MP actual del jugador
-KIND_EXP = 4                # EXP total acumulada del jugador
-KIND_ESFUERZO = 2
+KIND_MP = 2                 # MP actual del jugador (medido en 70/70 capturas de AngelWar)
+KIND_SP = 4                 # Puntos de SP acumulados del jugador (0..max_sp*1000)
+KIND_EXP = 4                # Alias retrocompatible
 COSTE_GOLPE = 4
 SEGUNDOS_REAPARICION = 20
 _MON = None
@@ -273,7 +272,9 @@ def datos_magia(magic_id: int) -> dict:
     db = pathlib.Path(__file__).parent.parent / 'corpus' / 'content.db'
     res = {'id': magic_id, 'nombre': '', 'mp': 0, 'sp': COSTE_GOLPE,
            'efecto': EFECTO_GOLPE, 'hp': 0, 'cd_ms': 1000, 'dur_ms': 0,
-           'es_auto': False, 'es_cura': False}
+           'cast_time': 100, 'crit_rate': 0, 'phys_mit': 0, 'mag_mit': 0,
+           'es_auto': False, 'es_cura': False, 'es_buff': False,
+           'es_ataque': False, 'es_pasiva': False}
     if db.exists():
         try:
             con = sqlite3.connect(db)
@@ -282,43 +283,62 @@ def datos_magia(magic_id: int) -> dict:
             if row:
                 d = dict(zip(cols, row))
                 res['nombre'] = d.get('name') or ''
-                try: res['mp'] = int(float(d.get('消耗MP') or 0))
-                except ValueError: res['mp'] = 0
-                try: res['sp'] = int(float(d.get('消耗SP') or COSTE_GOLPE))
-                except ValueError: res['sp'] = COSTE_GOLPE
-                try: res['efecto'] = int(float(d.get('特效編號') or EFECTO_GOLPE))
-                except ValueError: res['efecto'] = EFECTO_GOLPE
-                try: res['hp'] = int(float(d.get('hp') or 0))
-                except ValueError: res['hp'] = 0
-                try: res['cd_ms'] = int(float(d.get('後置時間') or 1000))
-                except ValueError: res['cd_ms'] = 1000
-                try:
-                    dur_val = int(float(d.get('持續時間') or 0))
-                    res['dur_ms'] = (dur_val * 1000) if dur_val < 1000 else dur_val
-                except ValueError: res['dur_ms'] = 0
-                try: res['rango'] = int(float(d.get('射程') or 1))
-                except ValueError: res['rango'] = 1
+                def _num(val, default=0):
+                    try: return int(float(val)) if val is not None and str(val).strip() else default
+                    except (ValueError, TypeError): return default
+
+                res['mp'] = _num(d.get('消耗MP'), 0)
+                res['cost_sp'] = _num(d.get('消耗SP燈') or d.get('cost_sp'), 0)
+                res['sp'] = res['cost_sp']
+                res['efecto'] = _num(d.get('特效編號'), EFECTO_GOLPE)
+                res['hp'] = _num(d.get('hp'), 0)
+                res['cd_ms'] = _num(d.get('後置時間'), 1000)
+                dur_val = _num(d.get('持續時間'), 0)
+                res['dur_ms'] = (dur_val * 1000) if (0 < dur_val < 1000) else dur_val
+                res['cast_time'] = _num(d.get('前置時間'), 100)
+                res['rango'] = _num(d.get('射程'), 1)
+                res['crit_rate'] = _num(d.get('crit_rate'), 0)
+                res['phys_mit'] = _num(d.get('物理傷害抵銷'), 0)
+                res['mag_mit'] = _num(d.get('魔法傷害抵銷'), 0)
 
                 target = str(d.get('對象') or '')
                 desc = str(d.get('desc') or '')
-                nom = res['nombre']
                 act = str(d.get('施展動作') or '')
                 res['accion'] = act
-                hp_def = str(d.get('HP定義') or '')
 
-                # Una habilidad de ataque tiene 攻擊型='是' o accion de ataque/disparo
-                es_atk_flag = (d.get('攻擊型') == '是')
-                res['es_ataque'] = (es_atk_flag or '攻擊' in act or '射擊' in act)
-                # Curacion solo si NO es ataque ofensivo y tiene definicion de HP o nombre curativo
-                res['es_cura'] = (not res['es_ataque'] and (
-                    '數值' in hp_def or '最大值' in hp_def or
-                    any(k in nom.lower() for k in ('heal', 'prayer', 'cure', 'recovery', 'sanctuary', 'tears'))
-                ))
-                res['es_auto'] = ('自己' in target or target == '自己')
+                nom_l = res['nombre'].lower()
+                desc_l = desc.lower()
+
+                # Curacion directa solo si es un hechizo curativo real (ej. Cure Spell, Holy Light, Angel Prayer, Tears of Life)
+                # Las habilidades basicas como Injury Cure son buffs con regeneracion, no curas directas verdes
+                res['es_cura'] = (
+                    any(k in nom_l for k in ('cure spell', 'holy light', 'angel prayer', 'tears of life')) or
+                    ('restores hp' in desc_l and 'speed' not in desc_l and 'injury' not in nom_l and 'song' not in nom_l)
+                ) and d.get('攻擊型') != '是'
+
+                # Buff temporal (aumenta defensa, velocidad, critico, % reduccion de dano, etc.)
+                res['es_buff'] = (
+                    res['dur_ms'] > 0 or
+                    target == '自己' or
+                    res['crit_rate'] > 0 or
+                    res['phys_mit'] > 0 or
+                    ('within the effective time' in desc_l or 'increase' in desc_l or 'raises' in desc_l or 'enhances' in desc_l)
+                ) and not (d.get('攻擊型') == '是' or 'harm' in desc_l) and not res['es_cura']
+
+                # Habilidad ofensiva de ataque (dano a enemigo, estun, etc.)
+                res['es_ataque'] = (not res['es_cura']) and (not res['es_buff']) and (
+                    d.get('攻擊型') == '是' or
+                    any(k in desc_l for k in ('attack', 'attacks', 'harm', 'laceration', 'damage', 'shoot', 'strike', 'repulse', 'stun', 'pierce')) or
+                    any(k in nom_l for k in ('hit', 'attack', 'chop', 'beating', 'slash', 'wave', 'bomb', 'shot', 'thrust', 'strike', 'killing'))
+                )
+
+                # Se puede usar sobre uno mismo si es curacion o buff
+                res['es_auto'] = res['es_cura'] or res['es_buff']
+
                 res['es_pasiva'] = (
                     d.get('被動') == '是' or
-                    (act in ('無動作', '', 'None') and not res['es_ataque'] and not res['es_cura']) or
-                    any(k in nom.lower() for k in ('enhance', 'grapple', 'reserve', 'finesse', 'garment', 'mastery'))
+                    (act in ('無動作', '', 'None') and not res['es_ataque'] and not res['es_cura'] and not res['es_auto']) or
+                    any(k in nom_l for k in ('enhance', 'grapple', 'reserve', 'finesse', 'garment', 'mastery'))
                 )
         except Exception:
             pass
@@ -481,4 +501,27 @@ def efecto_recuperacion_mp(atacante: int, objetivo: int, rec_mp: int, efecto: in
     return [struct.pack('<H', 0x0011) + bytes(b0), struct.pack('<H', 0x0011) + bytes(b1)]
 
 
+def gcd_paquete() -> bytes:
+    """Sub-mensaje 0x0149 de Global Cooldown (500 ms) para oscurecer iconos brevemente."""
+    return struct.pack('<HIIIIIIIIBBH', 0x0149, 1, 0, 500, 0, 0, 0, 0, 0, 5, 255, 255)
 
+
+def efecto_magia_self(yo: int, ef: int, tipo: int, cast_time: int = 100):
+    """Efecto visual 0x0011 al castear un buff sobre si mismo (fase 0x00 y fase 0x80)."""
+    b0 = bytearray(23)
+    b0[0] = ef & 0xFF
+    b0[1] = 0x00
+    struct.pack_into('<II', b0, 2, yo, yo)
+    struct.pack_into('<H', b0, 18, cast_time & 0xFFFF)
+    b0[20] = 2
+    struct.pack_into('<H', b0, 21, tipo & 0xFFFF)
+
+    b1 = bytearray(23)
+    b1[0] = ef & 0xFF
+    b1[1] = 0x80
+    struct.pack_into('<II', b1, 2, yo, yo)
+    struct.pack_into('<H', b1, 18, 0)
+    b1[20] = 2
+    struct.pack_into('<H', b1, 21, tipo & 0xFFFF)
+
+    return [struct.pack('<H', 0x0011) + bytes(b0), struct.pack('<H', 0x0011) + bytes(b1)]

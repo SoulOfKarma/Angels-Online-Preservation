@@ -189,8 +189,10 @@ def aviso(texto: str, tipo: int = 7, msg_id: int = MSG_HABILIDAD) -> bytes:
 # y ademas dio el item 10 "Sabre" en vez del 19826 "FreshmanSabre". Se usan los
 # Freshman porque son los que corresponden al juego; si el privado entrega
 # otros es cosa suya.
+# Medido de AngelWar (mundo_163130_471128): Swordsman recibe dos FreshmanSabre (item 10)
+# en ranuras 3 y 4.
 ARMA_POR_SKILL = {
-    8: 19850, 9: 19826, 10: 19832, 11: 19838,
+    8: 19850, 9: 10, 10: 19832, 11: 19838,
     14: 19820, 17: 19844, 24: 19814, 32: 19856,
 }
 # Con que mano se empuna. Las reglas salen de lo poco medido y de como
@@ -204,7 +206,7 @@ ARMA_POR_SKILL = {
 #   - el resto, una sola arma en la derecha
 SKILL_ESCUDO = 14
 ESCUDO = 19820                     # FreshmanRound Shield
-DOS_ARMAS = {9, 32}                # Sword (medido) y Mantle: hojas gemelas
+DOS_ARMAS = {9, 10, 32}            # Sword (9), Axe/Hammer (10 - Warrior), Mantle (32 - Shadowblade): armas dobles
 # Las clases magicas (Priest, Summoner, Wizard, Magician) no tienen habilidad
 # de arma cuerpo a cuerpo, pero llevan baston. Si entre las seis hay alguna
 # habilidad de magia y ninguna de arma, se les da el baston.
@@ -236,14 +238,9 @@ ENTIDAD_TIENDA = 21        # Angel Aide
 REQUISITO_ETAPA = {}
 ETAPA_PIDE_CLASE = 1
 
-# class_id del slot en el bloque de cuenta. Lo unico MEDIDO es que un
-# personaje con la habilidad Sword lleva 5. En setting/eng/class.xml el 5 es
-# "Protector" y el Swordsman seria el 7, y el jugador dice que ese personaje
-# es Warrior, asi que el campo parece ir desplazado; con un solo caso no
-# alcanza. Y ademas las habilidades se pueden mezclar, con lo que la clase
-# sale de la combinacion y no de una sola. Queda sin resolver: lo que hay es
-# ese valor medido y nada mas.
-CLASE_POR_SKILL = {9: 5}
+# class_id del slot en el bloque de cuenta.
+# setting/eng/class.xml: id="7" name="Swordsman"
+CLASE_POR_SKILL = {9: 7}
 
 
 def regalo(ids):
@@ -267,7 +264,9 @@ def regalo(ids):
         salida.append((4, ESCUDO))
     elif arma is not None and principal in DOS_ARMAS:
         salida.append((4, arma))
-    return salida + list(ROPA_DE_CLASE)
+    elif principal == 17:
+        salida.append((4, 458))    # Wooden Arrow
+    return salida
 
 
 def class_id(skill_principal: int):
