@@ -457,6 +457,60 @@ def muerte_monstruo(monstruo_id: int, jugador_id: int) -> bytes:
 # 951, 1410), asi que el campo es el efecto a reproducir, no el dano.
 # Mandar el dano ahi -- que es lo que se hacia -- deja el tipo en un valor
 # sin sentido y el cliente reproduce cualquier cosa.
+_GRUPOS = None
+
+
+def _cargar_grupos():
+    """magic.xml (via corpus/content.db): grupo -> hechizos, y hechizo -> grupo."""
+    global _GRUPOS
+    if _GRUPOS is not None:
+        return _GRUPOS
+    por_grupo, de_hechizo = {}, {}
+    db = pathlib.Path(__file__).parent.parent / 'corpus' / 'content.db'
+    if db.exists():
+        try:
+            con = sqlite3.connect(db)
+            for mid, gru in con.execute(
+                    'select id, 群組編號 from magic where 群組編號 is not null'):
+                try:
+                    n, g = int(mid), int(float(gru))
+                except (TypeError, ValueError):
+                    continue
+                por_grupo.setdefault(g, []).append(n)
+                de_hechizo[n] = g
+            con.close()
+        except Exception:
+            pass
+    _GRUPOS = (por_grupo, de_hechizo)
+    return _GRUPOS
+
+
+def grupo_de(magic_id: int):
+    """Los hechizos que comparten cooldown con `magic_id`, el incluido.
+
+    El servidor real no manda el cooldown por habilidad de clase sino por
+    GRUPO de hechizo (群組編號 de magic.xml). Al usar Slicing Hit I llegan
+    0x001D code=3 con 601, 612, 623, 634 y 645 -- los cinco niveles de
+    Slicing Hit -- y 2570 en adelante, que es Mangle: todo el grupo 1201.
+    Medido en logs/proxy/mundo_152251_735154, t=118.71.
+    """
+    por_grupo, de_hechizo = _cargar_grupos()
+    g = de_hechizo.get(magic_id)
+    if g is None:
+        return [magic_id]
+    return sorted(por_grupo.get(g, [magic_id]))
+
+
+def confirmar_cast(target: int, x: int, y: int, tipo: int = 1) -> bytes:
+    """0x0006 s2c: confirma el cast y dice sobre que casilla ocurre.
+
+    Medido: 01 00 | dd 7c 0f 00 | 75 00 00 00 | cd 00 00 00 | 00 00
+    es decir [u2 tipo][u4 target][u4 x][u4 y][u2 0]. Antes se armaba con un
+    formato inventado de 15 bytes que no correspondia a nada.
+    """
+    return struct.pack('<HHIIIH', 0x0006, tipo & 0xFFFF, target, x, y, 0)
+
+
 TIPO_GOLPE = 1
 TIPO_GOLPE_ALT = 3
 TIPO_MUERTE = 7

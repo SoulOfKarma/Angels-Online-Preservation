@@ -931,15 +931,17 @@ class Servidor:
                 # Enviar cooldown de TODAS las habilidades (kind=3) igual que el servidor real
                 # El servidor real manda kind=3 con cd_ms para cada skill al usar una habilidad
                 cd_ms = mag.get('cd_ms', 1000)
-                if cd_ms > 0 and ses.personaje and getattr(ses.personaje, 'habilidades', None):
-                    # Inundar cooldowns de todas las skills del jugador (copia exacta del comportamiento real)
-                    cd_pkgs = []
-                    for h_item in ses.personaje.habilidades:
-                        sk_id = h_item[0] if isinstance(h_item, (list, tuple)) else h_item
-                        cd_pkgs.append(struct.pack('<HIBBII', 0x001D, yo, 1, 3, sk_id, cd_ms))
+                if cd_ms > 0 and ses.personaje:
+                    # El cooldown NO va por habilidad de clase (Sword, Enhance,
+                    # Grapple...) sino por GRUPO de hechizo: al usar Slicing
+                    # Hit I el servidor real manda 601, 612, 623, 634, 645 y
+                    # la familia Mangle, que comparten el 群組編號 1201.
+                    # Mandarlo con los ids de clase no hacia nada porque esos
+                    # ids no estan en la barra.
+                    _sk_ids_copia = _cb.grupo_de(tipo)
+                    cd_pkgs = [struct.pack('<HIBBII', 0x001D, yo, 1, 3, sk_id, cd_ms)
+                               for sk_id in _sk_ids_copia]
                     ses.enviar(*cd_pkgs, _cb.gcd_paquete())
-                    _sk_ids_copia = [h_item[0] if isinstance(h_item, (list, tuple)) else h_item
-                                     for h_item in ses.personaje.habilidades]
                     try:
                         asyncio.get_event_loop().call_later(cd_ms / 1000.0,
                             lambda ids=_sk_ids_copia: ses.enviar(*[
@@ -1001,24 +1003,23 @@ class Servidor:
             pkgs_sk = _otorgar_skill_exp(ses, ses.personaje, yo, arma_puesta=arma_puesta,
                                          magic_id=tipo if tipo != _cb.ATAQUE_NORMAL else 0)
 
-            # S2C 0x0006 confirmacion de ataque: el servidor confirma que el golpe llego al objetivo.
-            # Sin este paquete el cliente no reproduce el sprite de efecto del ataque.
-            # Formato: [U8 01][U8 00][LE32 target_entity][U8 seq][U8 00][U8 00][U8 00][LE32 0xCB000000_pad]
-            atk_seq = getattr(ses, '_atk_seq', 0x80)
-            ses._atk_seq = (atk_seq + 3) & 0xFF
-            atk_confirm = struct.pack('<BBIBBBBB', 0x01, 0x00, objetivo, atk_seq, 0x00, 0x00, 0x00, 0xCB) + b'\x00\x00\x00\x00'
             # Enviar animacion de ataque 0x000A + confirmacion 0x0006 + dano visual 0x0011 + vida monstruo 0x0013 + SP
-            ses.enviar(_cb.ataque(yo, objetivo, atk_efecto),
-                       struct.pack('<H', 0x0006) + atk_confirm,
-                       _cb.atributo(objetivo, m.porcentaje),
+            # Orden medido en Celestia (mundo_152251_735154, t=118.55 a 118.88):
+            #   0x0006 confirmacion del cast, con la casilla del objetivo
+            #   0x0011 cast inicio y cierre, en el MISMO envio
+            #   0x0013 vida del objetivo ya descontada
+            #   0x000B el numero de dano
+            #   0x000A el golpe, DESPUES del numero
+            # Antes se mandaba el 0x000A primero, la confirmacion con un
+            # formato inventado de 15 bytes y el cierre 120 ms mas tarde.
+            ses.enviar(_cb.confirmar_cast(objetivo, m.tile_x, m.tile_y),
                        _cb.numero_de_dano(yo, objetivo, dano, atk_magic, efecto=atk_efecto),
-                       _cb.numero_flotante(objetivo, dano),
+                       _cb.cierre_de_dano(yo, objetivo, atk_magic, efecto=atk_efecto),
+                       _cb.atributo(objetivo, m.porcentaje),
+                       _cb.numero_flotante(objetivo, dano, _cb.TIPO_DANO_ALT),
+                       _cb.ataque(yo, objetivo, atk_efecto, _cb.TIPO_GOLPE_ALT),
                        *pkgs_sk,
                        *pkgs_sp)
-            try:
-                asyncio.get_event_loop().call_later(0.12, lambda: ses.enviar_inmediato(_cb.cierre_de_dano(yo, objetivo, atk_magic, efecto=atk_efecto)))
-            except Exception:
-                pass
             if m.vivo:
                 # Contraataca inmediatamente si esta en rango
                 dist_m = max(abs(m.tile_x - ses.personaje.tile_x), abs(m.tile_y - ses.personaje.tile_y)) if ses.personaje else 1

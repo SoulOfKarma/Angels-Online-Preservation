@@ -1856,3 +1856,45 @@ Pendiente de medir: de donde sale el numero de animacion del 0x000A (se vieron
 634, 951 y 1410 en golpes distintos; no coincide con el 特效編號 del hechizo).
 Y por que un golpe con habilidad pega tan poco: Little Slarm (monster.xml id
 224) tiene defensa 0, asi que la formula max(1, ataque - defensa) no lo explica.
+
+
+## SECUENCIA COMPLETA DE UN GOLPE CON HABILIDAD (Celestia, 2026-09-21)
+
+logs/proxy/mundo_152251_735154, cast de Slicing Hit I (601) sobre el monstruo
+0x000f7cdd, entre t=118.27 y t=118.88:
+
+    C2S 0x0006  [u2 effect=601][u4 target]  + 10 bytes en cero
+    S2C 0x0013  [monstruo] code=0x0001 arg=100     vida antes, en %
+    S2C 0x0006  [u2 1][u4 target][u4 x=117][u4 y=205][u2 0]   confirmacion
+    S2C 0x0011  sprite=136 yo->monstruo dur=100 anim=2 spell=601   cast
+    S2C 0x0011  sprite=136 fase 0x80 dur=0                        cierre
+    S2C 0x001D  [yo] count=1 code=3 [601][1000]   cooldown, uno por hechizo
+    S2C 0x001D  ... 612, 623, 634, 645, 2570..2579   todo el grupo 1201
+    S2C 0x0013  [monstruo] code=0x0001 arg=0       vida despues
+    S2C 0x000B  [monstruo] tipo=2 cantidad=97      EL NUMERO DE DANO
+    S2C 0x000A  [yo][monstruo] tipo=3 anim=1410    el golpe, tras el numero
+    S2C 0x000A  [monstruo][yo] tipo=7 anim=0       muerte
+    S2C 0x000D  msg=501 "200" "200"                experiencia, dos strings
+    S2C 0x0013  [yo] code=0x0001 HP, code=0x0201 MP, code=0x0401
+
+Tres errores nuestros que esto corrige:
+
+1. **El 0x0006 de confirmacion** se armaba con un formato inventado de 15
+   bytes ([01][00][target][seq][...][0xCB]). Es [u2 tipo][u4 target][u4 x]
+   [u4 y][u2 0], 16 bytes, y la posicion es la casilla del objetivo.
+   Arreglado con `combate.confirmar_cast()`, identico a la captura.
+2. **El orden.** Mandabamos el 0x000A primero y el cierre del cast 120 ms
+   despues. El real manda confirmacion, las DOS fases del 0x0011 juntas, la
+   vida, el numero y recien entonces el 0x000A.
+3. **El cooldown iba con los ids de habilidad de clase** (Sword=9, Enhance=12,
+   Grapple=13...), que no estan en la barra, asi que el cliente no mostraba
+   nada. Va por GRUPO de hechizo, el 群組編號 de magic.xml: Slicing Hit I-V
+   mas Mangle I-X son el grupo 1201, y son exactamente los que llegan en la
+   captura. Arreglado con `combate.grupo_de()`.
+
+El sprite del 0x0011 es el 特效編號 del hechizo (601 -> 136, 602 -> 133), que
+ya se leia bien. El campo animacion del 0x000A (1410 para la skill 601) sigue
+sin explicacion: no es el 特效編號 ni el numero del hechizo.
+
+Nota: en esta sesion el cliente NUNCA mando un ataque basico. Los 23 casts son
+601, 602 y 603. Falta medir como se pide un golpe sin habilidad.
