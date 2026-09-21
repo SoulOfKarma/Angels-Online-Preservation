@@ -16,6 +16,7 @@ import sys
 import pathlib
 import logging
 import collections
+import time
 
 sys.path.insert(0, str(pathlib.Path(__file__).parent.parent / 'proto'))
 from framing import HDR, decode_header, build_frame, submessages, pack_submessages, SEQ_HELLO
@@ -44,6 +45,10 @@ class Session:
         self.usuario = None
         self.puerto = None
         self.cerrar_tras_redirect = False
+        self.sentado = False
+        self.ultimo_movimiento = time.time()
+        self.ultimo_combate = 0.0
+        self.ultimo_regen_tick = 0.0
 
     # ---------------------------------------------------------------- salida
 
@@ -83,6 +88,18 @@ class Session:
         out = b''.join(self.salida)
         self.salida.clear()
         return out
+
+    def enviar_inmediato(self, *submsgs):
+        """Envia submensajes a la red de inmediato sin esperar al drenaje del bucle principal."""
+        self.enviar(*submsgs)
+        out = self.drenar()
+        if out and getattr(self, 'writer', None):
+            try:
+                if getattr(self, 'grab', None):
+                    self.grab.salida(out)
+                self.writer.write(out)
+            except Exception:
+                pass
 
     # ---------------------------------------------------------------- entrada
 

@@ -196,6 +196,22 @@ def propio(nombre: str, faccion: str = "Heaven"):
         return [armar_linea(5235, 4, [20001, 20002])[2:]]
     if 'Shiva' in nombre:
         return [armar_linea(5235, 4, [20003, 20004])[2:]]
+    if 'Aurora Totem' in nombre:
+        if faccion not in ("Heaven", "Neutral", "Neutrally", "Graduated"):
+            return [armar_linea(5136, 0, [])[2:]]
+        return [bytes.fromhex(_propios().get('Aurora Totem', {}).get('hex', 'd92700000400000400dd270000df270000e0270000de270000'))]
+    if 'Breeze Totem' in nombre:
+        if faccion not in ("Heaven", "Neutral", "Neutrally", "Graduated"):
+            return [armar_linea(5137, 0, [])[2:]]
+        return [bytes.fromhex(_propios().get('Breeze Totem', {}).get('hex', 'dc2700000400000400dd270000e5270000e6270000de270000'))]
+    if 'Dark City Totem' in nombre:
+        if faccion not in ("Heaven", "Neutral", "Neutrally", "Graduated"):
+            return [armar_linea(5138, 0, [])[2:]]
+        return [bytes.fromhex(_propios().get('Dark City Totem', {}).get('hex', 'da2700000400000400dd270000e1270000e2270000de270000'))]
+    if 'Iron Totem' in nombre:
+        if faccion not in ("Heaven", "Neutral", "Neutrally", "Graduated"):
+            return [armar_linea(5139, 0, [])[2:]]
+        return [bytes.fromhex(_propios().get('Iron Totem', {}).get('hex', 'db2700000400000400dd270000e3270000e4270000de270000'))]
     d = _propios().get(nombre)
     if not d:
         return None
@@ -310,10 +326,10 @@ def respuesta_a(opcion_id: int, entidad: int = 0, val: int = 4):
     # Opcion 10205: "I decided to be an Angel Protector" en un totem
     if opcion_id == 10205:
         preguntas = {
-            41: 10231,  # Aurora
-            44: 10232,  # Dark City
-            43: 10233,  # Iron Castle
-            45: 10234,  # Breeze Woods
+            41: 10231, 150: 10231,  # Aurora
+            44: 10232, 122: 10232,  # Dark City
+            43: 10233, 121: 10233,  # Iron Castle
+            45: 10234, 120: 10234,  # Breeze Woods
         }
         mid = preguntas.get(entidad, 10231)
         pkg_pregunta = armar_linea(mid, val, [10235, 10236])
@@ -365,13 +381,41 @@ def respuesta_a(opcion_id: int, entidad: int = 0, val: int = 4):
     # Angel Raphael (Guide Palace)
     if opcion_id == 5009:  # "I don't want to join in." -> 5010 (preguntar si esta seguro)
         return (armar_linea(5010, 3, [5011, 5012]),)
-    if opcion_id in (5012, 5242, 5046):  # 5012 "Let me see.", 5242 Tutor "No, thanks.", 5046 Aide "Quit"
+    if opcion_id in (5012, 5242, 5046, 5059, 5064):  # Quit / cerrar
         return (struct.pack('<H', 0x0012) + FIN,)
+
+    # Angel Raphael (Fighting Palace): 5063 "I'm ready to go to the Angel Lyceum."
+    if opcion_id == 5063:
+        return (armar_linea(5065, val, []),)
 
     sig = RESPUESTAS.get(opcion_id)
     if sig is None:
         return (struct.pack('<H', 0x0012) + FIN,)
     return (armar_linea(sig, val, []),)
+
+
+def guion_fighting_palace(kills: int, nombre: str):
+    """Guion de Angel Raphael en Fighting Palace segun las muertes de Little Slarm."""
+    val = 5
+    if kills < 2:
+        return [
+            armar_linea(5048, val, [], strings=["1", nombre])[2:],
+            armar_linea(5049, val, [])[2:],
+            armar_linea(5050, val, [])[2:],
+            armar_linea(5051, val, [])[2:],
+            armar_linea(5052, val, [])[2:],
+            armar_linea(5053, val, [])[2:],
+            armar_linea(5054, val, [])[2:],
+            armar_linea(5055, val, [])[2:],
+            armar_linea(5056, val, [5058, 5059])[2:],
+        ]
+    else:
+        return [
+            armar_linea(5060, val, [])[2:],
+            armar_linea(5061, val, [])[2:],
+            armar_linea(5062, val, [5063, 5064])[2:],
+        ]
+
 
 
 

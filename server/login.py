@@ -126,9 +126,14 @@ def secuencia(p: Personaje):
         elif op == 0x005B:
             salida.append(_barra(p, base))
         elif op == 0x0014:
-            # Opcode 0x0014 le indica al cliente su propio entity_id (sub_5F1230: ecx + 0x20d0).
-            # En la captura tenia 517 grabado; hay que poner el entity_id real del personaje.
-            salida.append(struct.pack('<HI', 0x0014, p.entity_id) + base[4:])
+            # Opcode 0x0014: flags de mapa / radar (dword_A37C44 + 8400 en Angel.exe).
+            # En sub_5AA6A0 (render del Scene Map), se comprueba:
+            #   if (!sub_60D9F0(...) && !(*(_DWORD *)(v132 + 8400) & 0x20))
+            # Si el bit 0x20 esta encendido, Angel.exe DESACTIVA por completo el Scene Map!
+            # Antes se sobreescribia con p.entity_id (ej: 1001, 1003), que tienen el bit 0x20 encendido,
+            # dejando el Scene Map completamente vacio (teal).
+            # La captura oficial (init_02_0014.bin) manda 0x00000205 (517) con bit 0x20 en 0.
+            salida.append(struct.pack('<H', 0x0014) + base)
         elif op == 0x001D:
             # Atributos de entidad. La plantilla trae el entity_id del
             # personaje que se grabo, asi que habia que reescribirlo: se
@@ -210,6 +215,26 @@ PLAYGROUND_MONSTERS = {
         (812, 2, "Fire Elf", (115, 65)),
         (813, 2, "Fire Elf", (105, 55)),
     ],
+    57: [  # Fighting Palace: 8 Little Slarms Este + 8 Little Slarms Oeste (16 en total)
+        # 8 Little Slarms Este (derecha)
+        (901, 224, "Little Slarm", (226, 35)),
+        (902, 224, "Little Slarm", (228, 33)),
+        (903, 224, "Little Slarm", (230, 31)),
+        (904, 224, "Little Slarm", (233, 27)),
+        (905, 224, "Little Slarm", (225, 29)),
+        (906, 224, "Little Slarm", (227, 26)),
+        (907, 224, "Little Slarm", (231, 35)),
+        (908, 224, "Little Slarm", (224, 32)),
+        # 8 Little Slarms Oeste (izquierda)
+        (909, 224, "Little Slarm", (206, 35)),
+        (910, 224, "Little Slarm", (204, 33)),
+        (911, 224, "Little Slarm", (202, 31)),
+        (912, 224, "Little Slarm", (199, 27)),
+        (913, 224, "Little Slarm", (207, 29)),
+        (914, 224, "Little Slarm", (205, 26)),
+        (915, 224, "Little Slarm", (201, 35)),
+        (916, 224, "Little Slarm", (208, 32)),
+    ],
 }
 
 
@@ -219,7 +244,7 @@ def _monster_spawn(entity_id, npc_type, nombre, tile):
     struct.pack_into('<IIII', b, 0, entity_id, 0, tile[0], tile[1])
     n = str(nombre).encode('ascii', 'replace')[:16]
     b[16:16 + len(n)] = n
-    SPRITES = {19: 42107, 7: 42041, 1: 42055, 2: 42056, 3: 42057, 4: 42058}
+    SPRITES = {19: 42107, 7: 42041, 1: 42055, 2: 42056, 3: 42057, 4: 42058, 224: 42107}
     sprite_id = SPRITES.get(npc_type, 42107)
     b[32] = 0
     b[33] = 4 if npc_type == 19 else 1
@@ -231,6 +256,19 @@ def _monster_spawn(entity_id, npc_type, nombre, tile):
     b[46] = (npc_type >> 8) & 0xFF
     b[47] = 0x08
     b[48] = 0x80
+    return struct.pack('<H', 0x0008) + bytes(b)
+
+
+def _totem_spawn(entity_id: int, npc_type: int, nombre: str, tile: tuple) -> bytes:
+    """Arma un NPC_SPAWN (0x0008) identico al de lyceum.json para los totems de faccion."""
+    b = bytearray(63)
+    struct.pack_into('<IIII', b, 0, entity_id, 0, tile[0], tile[1])
+    n = str(nombre).encode('ascii', 'replace')[:16]
+    b[16:16 + len(n)] = n
+    b[33] = 0x06
+    struct.pack_into('<H', b, 34, 60241)
+    struct.pack_into('<I', b, 40, 200)
+    struct.pack_into('<H', b, 45, npc_type)
     return struct.pack('<H', 0x0008) + bytes(b)
 
 
@@ -282,6 +320,14 @@ def spawn_de(stage: int):
 def poblar(stage: int):
     """NPC, monstruos, portales y totems propios del mapa."""
     salida = npc_de_los_xml(stage)
+    if stage == 57:
+        # Angel Raphael en Fighting Palace (MiniMap 217, 32 / 216, 37)
+        salida.append(_npc_spawn(500, 1894, "Angel Raphael", (217, 32), sprite=40005, klass=200))
+        # 4 Totems de Facciones (Dark City, Breeze Woods, Aurora, Iron Castle) con sprite real de totem 60241
+        salida.append(_totem_spawn(501, 1938, "Dark City Totem", (209, 39)))
+        salida.append(_totem_spawn(502, 1940, "Breeze Totem", (212, 40)))
+        salida.append(_totem_spawn(503, 1937, "Aurora Totem", (220, 39)))
+        salida.append(_totem_spawn(504, 1939, "Iron Totem", (223, 40)))
     if stage in PLAYGROUND_MONSTERS:
         for eid, ntype, nom, tile in PLAYGROUND_MONSTERS[stage]:
             salida.append(_npc_spawn(eid, ntype, nom, tile, klass=1))

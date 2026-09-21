@@ -439,15 +439,20 @@ def muerte_monstruo(monstruo_id: int, jugador_id: int) -> bytes:
 
 def numero_de_dano(atacante: int, objetivo: int, dano: int,
                    ataque: int = ATAQUE_NORMAL, efecto: int = EFECTO_GOLPE):
-    """Sub-mensaje 0x0011 que dibuja el numero del golpe flotante en pantalla (fase 0x00 y fase 0x80)."""
+    """Sub-mensaje 0x0011 que dibuja el numero del golpe y reproduce el sprite de ataque (fase 0x00)."""
     b0 = bytearray(23)
     b0[0] = efecto & 0xFF
-    b0[1] = 0x00  # Fase 0: dibuja el numero de dano en pantalla
+    b0[1] = 0x00  # Fase 0: dibuja el numero de dano en pantalla y reproduce la animacion
     struct.pack_into('<II', b0, 2, atacante, objetivo)
     struct.pack_into('<H', b0, 18, max(0, min(65535, dano)))
     b0[20] = 2
     struct.pack_into('<H', b0, 21, ataque & 0xFFFF)
+    return struct.pack('<H', 0x0011) + bytes(b0)
 
+
+def cierre_de_dano(atacante: int, objetivo: int,
+                   ataque: int = ATAQUE_NORMAL, efecto: int = EFECTO_GOLPE):
+    """Sub-mensaje 0x0011 fase 0x80 que concluye el impacto tras reproducir el efecto."""
     b1 = bytearray(23)
     b1[0] = efecto & 0xFF
     b1[1] = 0x80  # Fase 0x80: cierre del impacto con dano 0
@@ -455,12 +460,11 @@ def numero_de_dano(atacante: int, objetivo: int, dano: int,
     struct.pack_into('<H', b1, 18, 0)
     b1[20] = 2
     struct.pack_into('<H', b1, 21, ataque & 0xFFFF)
+    return struct.pack('<H', 0x0011) + bytes(b1)
 
-    return [struct.pack('<H', 0x0011) + bytes(b0), struct.pack('<H', 0x0011) + bytes(b1)]
 
-
-def efecto_curacion(atacante: int, objetivo: int, cura_hp: int, efecto: int = 165):
-    """Efecto visual de curacion 0x0011 sin golpe ofensivo (fase 0x00 y fase 0x80)."""
+def efecto_curacion_inicio(atacante: int, objetivo: int, cura_hp: int, efecto: int = 165) -> bytes:
+    """Fase 0x00 de curacion 0x0011."""
     b0 = bytearray(23)
     b0[0] = efecto & 0xFF
     b0[1] = 0x00
@@ -468,7 +472,11 @@ def efecto_curacion(atacante: int, objetivo: int, cura_hp: int, efecto: int = 16
     struct.pack_into('<H', b0, 18, max(0, min(65535, cura_hp)))
     b0[20] = 1  # Tipo 1 (cura/verde)
     struct.pack_into('<H', b0, 21, 0)
+    return struct.pack('<H', 0x0011) + bytes(b0)
 
+
+def efecto_curacion_fin(atacante: int, objetivo: int, efecto: int = 165) -> bytes:
+    """Fase 0x80 de curacion 0x0011."""
     b1 = bytearray(23)
     b1[0] = efecto & 0xFF
     b1[1] = 0x80
@@ -476,8 +484,13 @@ def efecto_curacion(atacante: int, objetivo: int, cura_hp: int, efecto: int = 16
     struct.pack_into('<H', b1, 18, 0)
     b1[20] = 1
     struct.pack_into('<H', b1, 21, 0)
+    return struct.pack('<H', 0x0011) + bytes(b1)
 
-    return [struct.pack('<H', 0x0011) + bytes(b0), struct.pack('<H', 0x0011) + bytes(b1)]
+
+def efecto_curacion(atacante: int, objetivo: int, cura_hp: int, efecto: int = 165):
+    """Efecto visual de curacion 0x0011 sin golpe ofensivo (fase 0x00 y fase 0x80)."""
+    return [efecto_curacion_inicio(atacante, objetivo, cura_hp, efecto),
+            efecto_curacion_fin(atacante, objetivo, efecto)]
 
 
 def efecto_recuperacion_mp(atacante: int, objetivo: int, rec_mp: int, efecto: int = 69):
@@ -502,12 +515,12 @@ def efecto_recuperacion_mp(atacante: int, objetivo: int, rec_mp: int, efecto: in
 
 
 def gcd_paquete() -> bytes:
-    """Sub-mensaje 0x0149 de Global Cooldown (500 ms) para oscurecer iconos brevemente."""
+    """Opcode 0x0149 (329 decimal): animacion de cooldown global (GCD)."""
     return struct.pack('<HIIIIIIIIBBH', 0x0149, 1, 0, 500, 0, 0, 0, 0, 0, 5, 255, 255)
 
 
-def efecto_magia_self(yo: int, ef: int, tipo: int, cast_time: int = 100):
-    """Efecto visual 0x0011 al castear un buff sobre si mismo (fase 0x00 y fase 0x80)."""
+def efecto_magia_self_inicio(yo: int, ef: int, tipo: int, cast_time: int = 100) -> bytes:
+    """Fase 0x00 del efecto visual 0x0011 de buff sobre si mismo."""
     b0 = bytearray(23)
     b0[0] = ef & 0xFF
     b0[1] = 0x00
@@ -515,7 +528,11 @@ def efecto_magia_self(yo: int, ef: int, tipo: int, cast_time: int = 100):
     struct.pack_into('<H', b0, 18, cast_time & 0xFFFF)
     b0[20] = 2
     struct.pack_into('<H', b0, 21, tipo & 0xFFFF)
+    return struct.pack('<H', 0x0011) + bytes(b0)
 
+
+def efecto_magia_self_fin(yo: int, ef: int, tipo: int) -> bytes:
+    """Fase 0x80 del efecto visual 0x0011 de buff sobre si mismo."""
     b1 = bytearray(23)
     b1[0] = ef & 0xFF
     b1[1] = 0x80
@@ -523,5 +540,10 @@ def efecto_magia_self(yo: int, ef: int, tipo: int, cast_time: int = 100):
     struct.pack_into('<H', b1, 18, 0)
     b1[20] = 2
     struct.pack_into('<H', b1, 21, tipo & 0xFFFF)
+    return struct.pack('<H', 0x0011) + bytes(b1)
 
-    return [struct.pack('<H', 0x0011) + bytes(b0), struct.pack('<H', 0x0011) + bytes(b1)]
+
+def efecto_magia_self(yo: int, ef: int, tipo: int, cast_time: int = 100):
+    """Efecto visual 0x0011 al castear un buff sobre si mismo (ambas fases retrocompatible)."""
+    return [efecto_magia_self_inicio(yo, ef, tipo, cast_time),
+            efecto_magia_self_fin(yo, ef, tipo)]
