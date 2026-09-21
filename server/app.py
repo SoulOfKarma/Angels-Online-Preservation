@@ -699,6 +699,7 @@ class Servidor:
                                         ef_atk = m.proj_ef if m.proj_ef > 0 else 148
                                         ses.enviar(_cb.empieza_ataque(m.entity_id),
                                                    *_cb.numero_de_dano(m.entity_id, yo, suyo, ataque=656, efecto=ef_atk),
+                                                   _cb.numero_de_dano(m.entity_id, yo, suyo, ataque=656, efecto=ef_atk),
                                                    _cb.atributo(yo, pct_hp, _cb.VIDA))
                                         if p.hp <= 0:
                                             import clases as _cl
@@ -928,8 +929,27 @@ class Servidor:
                 atk_magic = tipo
                 atk_efecto = _cb.efecto_de_ataque(tipo)
                 # Enviar cooldown de la habilidad activa (kind=3) y GCD
+                # Enviar cooldown de TODAS las habilidades (kind=3) igual que el servidor real
+                # El servidor real manda kind=3 con cd_ms para cada skill al usar una habilidad
                 cd_ms = mag.get('cd_ms', 1000)
-                if cd_ms > 0:
+                if cd_ms > 0 and ses.personaje and getattr(ses.personaje, 'habilidades', None):
+                    # Inundar cooldowns de todas las skills del jugador (copia exacta del comportamiento real)
+                    cd_pkgs = []
+                    for h_item in ses.personaje.habilidades:
+                        sk_id = h_item[0] if isinstance(h_item, (list, tuple)) else h_item
+                        cd_pkgs.append(struct.pack('<HIBBII', 0x001D, yo, 1, 3, sk_id, cd_ms))
+                    ses.enviar(*cd_pkgs, _cb.gcd_paquete())
+                    _sk_ids_copia = [h_item[0] if isinstance(h_item, (list, tuple)) else h_item
+                                     for h_item in ses.personaje.habilidades]
+                    try:
+                        asyncio.get_event_loop().call_later(cd_ms / 1000.0,
+                            lambda ids=_sk_ids_copia: ses.enviar(*[
+                                struct.pack('<HIBBII', 0x001D, yo, 1, 3, sk_id, 0)
+                                for sk_id in ids
+                            ]))
+                    except Exception:
+                        pass
+                elif cd_ms > 0:
                     ses.enviar(struct.pack('<HIBBII', 0x001D, yo, 1, 3, tipo, cd_ms), _cb.gcd_paquete())
                     try:
                         asyncio.get_event_loop().call_later(cd_ms / 1000.0, lambda: ses.enviar(struct.pack('<HIBBII', 0x001D, yo, 1, 3, tipo, 0)))
@@ -983,7 +1003,15 @@ class Servidor:
                                          magic_id=tipo if tipo != _cb.ATAQUE_NORMAL else 0)
 
             # Enviar animacion de ataque 0x000A + dano visual 0x0011 + vida monstruo 0x0013 + SP
+            # S2C 0x0006 confirmacion de ataque: el servidor confirma que el golpe llego al objetivo.
+            # Sin este paquete el cliente no reproduce el sprite de efecto del ataque.
+            # Formato: [U8 01][U8 00][LE32 target_entity][U8 seq][U8 00][U8 00][U8 00][LE32 0xCB000000_pad]
+            atk_seq = getattr(ses, '_atk_seq', 0x80)
+            ses._atk_seq = (atk_seq + 3) & 0xFF
+            atk_confirm = struct.pack('<BBIBBBBB', 0x01, 0x00, objetivo, atk_seq, 0x00, 0x00, 0x00, 0xCB) + b'\x00\x00\x00\x00'
+            # Enviar animacion de ataque 0x000A + confirmacion 0x0006 + dano visual 0x0011 + vida monstruo 0x0013 + SP
             ses.enviar(_cb.empieza_ataque(yo),
+                       struct.pack('<H', 0x0006) + atk_confirm,
                        _cb.atributo(objetivo, m.porcentaje),
                        _cb.numero_de_dano(yo, objetivo, dano, atk_magic, efecto=atk_efecto),
                        *pkgs_sk,
@@ -1112,10 +1140,20 @@ class Servidor:
                     # 0x001D KIND 30: Experiencia del nivel actual
                     salida_combate.append(struct.pack('<HIBBII', 0x001D, yo, 1, 30, p.exp, 0))
                     # 0x001D KIND 31: Experiencia para el siguiente nivel
+                    # 0x001D compound level-up: opcode + entity + count=4 + 4x(kind + v1 + v2)
+                    # Kind 29=level, 30=current_exp, 31=exp_to_next, 32=exp_bar
                     exp_sig = _cb.exp_para_nivel(p.nivel + 1)
                     salida_combate.append(struct.pack('<HIBBII', 0x001D, yo, 1, 31, exp_sig, 0))
+                    salida_combate.append(
+                        struct.pack('<HIB', 0x001D, yo, 4) +
+                        struct.pack('<BII', 29, p.nivel, 0) +
+                        struct.pack('<BII', 30, p.exp, 0) +
+                        struct.pack('<BII', 31, exp_sig, 0) +
+                        struct.pack('<BII', 32, p.exp, 0)
+                    )
                     salida_combate.append(_stats_ses(ses))
                     log.info(f"[{addr}] {p.nombre} SUBIO A NIVEL {p.nivel} (enviado 0x001D kind=29)!")
+                    log.info(f"[{addr}] {p.nombre} SUBIO A NIVEL {p.nivel} (enviado 0x001D compound)!")
 
                 # Paquetes oficiales para EXP y actualizacion de barra
                 # 0x000B kind=1 genera 'Obtain X Exp.' en pantalla y chat
@@ -1624,6 +1662,45 @@ class Servidor:
                 return
 
             log.info(f"[{addr}] usar item {item_id} (ranura {ranura}): sin accion")
+            return
+
+        # --- escena / mapa de radar (Scene Map) -------------------------
+        # 0x012D C2S: el cliente abre la ventana de mini-mapa/escena.
+        # El servidor responde con una cabecera 0x0062 (entidad de zona) y
+        # luego entradas 0x0061 para cada NPC/entidad de interes, terminando
+        # con un 0x0061 de un solo byte 0x00.
+        if opcode == 0x012D and ses.rol == 'mundo':
+            # Usar un entity_id de zona generico basado en el stage del jugador
+            stage_z = getattr(ses.personaje, 'stage', 41) if ses.personaje else 41
+            zona_eid = 0x000F3000 + stage_z  # entidad de zona ficticia por mapa
+            ses.enviar(struct.pack('<HI', 0x0062, zona_eid),
+                       struct.pack('<HB', 0x0061, 0x00))
+            log.debug(f"[{addr}] escena (0x012D) respondida para stage {stage_z}")
+            return
+
+        # 0x012B C2S: radar de NPCs cercanos (5 bytes: 02 00 00 00 00).
+        # El servidor responde con 0x0062 + lista de entidades 0x0061 + 0x00.
+        # Cada entrada 0x0061 tiene: [U8 kind=1][LE32 eid][LE32 v1][LE32 v2][24 bytes cero]
+        if opcode == 0x012B and ses.rol == 'mundo':
+            stage_z = getattr(ses.personaje, 'stage', 41) if ses.personaje else 41
+            zona_eid = 0x000F3000 + stage_z
+            pkgs_radar = [struct.pack('<HI', 0x0062, zona_eid)]
+            # Agregar al jugador como entidad del radar
+            if ses.personaje:
+                yo = ses.personaje.entity_id
+                radar_entry = (
+                    struct.pack('<H', 0x0061) +
+                    struct.pack('<B', 0x01) +  # kind=1 (jugador)
+                    struct.pack('<I', yo) +
+                    struct.pack('<I', ses.personaje.nivel) +
+                    struct.pack('<I', 100) +  # HP%
+                    b'\x00' * 24
+                )
+                pkgs_radar.append(radar_entry)
+            # Terminador
+            pkgs_radar.append(struct.pack('<HB', 0x0061, 0x00))
+            ses.enviar(*pkgs_radar)
+            log.debug(f"[{addr}] radar (0x012B) respondido para stage {stage_z}")
             return
 
         # --- dialogo con los NPC -------------------------------------
