@@ -1,0 +1,506 @@
+{
+ "_nota": "NPC del Fighting Palace (stage 57) medidos en Celestia, captura mundo_102010_448895. El mapa tiene DIEZ plataformas iguales y cada una lleva su Angel Raphael y sus cuatro totems: son 10 Raphael y 40 totems, no 4. Se guardan los DATOS y no los bytes crudos, porque el 0x0008 de Celestia mide 62 o 64 bytes y este cliente espera 63. Las posiciones de la plataforma (216,37) son las que el usuario leyo en pantalla; la captura daba uno o dos tiles de diferencia en Aurora, Iron y Raphael. Angel Raphael lleva \"angulo\" para el 0x0016 rotate: mira hacia abajo, no a la derecha. La rueda del 0x0016 rotate quedo medida: 0=derecha, 2=arriba, 4=izquierda, 6=abajo. No se manda ninguna rotacion: Angel Raphael se deja como viene por defecto, que es como lo queria el usuario. Angel Raphael va con klass=200, que es como estaba antes y como se veia bien. La captura de Celestia da 199, pero con 199 este cliente lo dibuja mirando a la derecha.",
+ "stage": 57,
+ "spawns": [
+  {
+   "nombre": "Angel Raphael",
+   "npc_type": 1894,
+   "klass": 200,
+   "tile": [
+    128,
+    37
+   ],
+   "sprite": 40005
+  },
+  {
+   "nombre": "Iron Totem",
+   "npc_type": 1939,
+   "klass": 200,
+   "tile": [
+    139,
+    37
+   ],
+   "sprite": 60241
+  },
+  {
+   "nombre": "Angel Raphael",
+   "npc_type": 1894,
+   "klass": 200,
+   "tile": [
+    216,
+    37
+   ],
+   "sprite": 40005
+  },
+  {
+   "nombre": "Iron Totem",
+   "npc_type": 1939,
+   "klass": 200,
+   "tile": [
+    228,
+    37
+   ],
+   "sprite": 60241
+  },
+  {
+   "nombre": "Dark City Totem",
+   "npc_type": 1938,
+   "klass": 200,
+   "tile": [
+    117,
+    38
+   ],
+   "sprite": 60241
+  },
+  {
+   "nombre": "Dark City Totem",
+   "npc_type": 1938,
+   "klass": 200,
+   "tile": [
+    206,
+    38
+   ],
+   "sprite": 60241
+  },
+  {
+   "nombre": "Angel Raphael",
+   "npc_type": 1894,
+   "klass": 200,
+   "tile": [
+    39,
+    40
+   ],
+   "sprite": 40005
+  },
+  {
+   "nombre": "Iron Totem",
+   "npc_type": 1939,
+   "klass": 200,
+   "tile": [
+    50,
+    40
+   ],
+   "sprite": 60241
+  },
+  {
+   "nombre": "Breeze Totem",
+   "npc_type": 1940,
+   "klass": 200,
+   "tile": [
+    122,
+    40
+   ],
+   "sprite": 60241
+  },
+  {
+   "nombre": "Aurora Totem",
+   "npc_type": 1937,
+   "klass": 200,
+   "tile": [
+    134,
+    40
+   ],
+   "sprite": 60241
+  },
+  {
+   "nombre": "Breeze Totem",
+   "npc_type": 1940,
+   "klass": 200,
+   "tile": [
+    211,
+    40
+   ],
+   "sprite": 60241
+  },
+  {
+   "nombre": "Aurora Totem",
+   "npc_type": 1937,
+   "klass": 200,
+   "tile": [
+    222,
+    40
+   ],
+   "sprite": 60241
+  },
+  {
+   "nombre": "Dark City Totem",
+   "npc_type": 1938,
+   "klass": 200,
+   "tile": [
+    28,
+    41
+   ],
+   "sprite": 60241
+  },
+  {
+   "nombre": "Breeze Totem",
+   "npc_type": 1940,
+   "klass": 200,
+   "tile": [
+    33,
+    43
+   ],
+   "sprite": 60241
+  },
+  {
+   "nombre": "Aurora Totem",
+   "npc_type": 1937,
+   "klass": 200,
+   "tile": [
+    44,
+    43
+   ],
+   "sprite": 60241
+  },
+  {
+   "nombre": "Angel Raphael",
+   "npc_type": 1894,
+   "klass": 200,
+   "tile": [
+    216,
+    98
+   ],
+   "sprite": 40005
+  },
+  {
+   "nombre": "Iron Totem",
+   "npc_type": 1939,
+   "klass": 200,
+   "tile": [
+    227,
+    98
+   ],
+   "sprite": 60241
+  },
+  {
+   "nombre": "Dark City Totem",
+   "npc_type": 1938,
+   "klass": 200,
+   "tile": [
+    205,
+    99
+   ],
+   "sprite": 60241
+  },
+  {
+   "nombre": "Breeze Totem",
+   "npc_type": 1940,
+   "klass": 200,
+   "tile": [
+    210,
+    101
+   ],
+   "sprite": 60241
+  },
+  {
+   "nombre": "Aurora Totem",
+   "npc_type": 1937,
+   "klass": 200,
+   "tile": [
+    221,
+    101
+   ],
+   "sprite": 60241
+  },
+  {
+   "nombre": "Angel Raphael",
+   "npc_type": 1894,
+   "klass": 200,
+   "tile": [
+    126,
+    118
+   ],
+   "sprite": 40005
+  },
+  {
+   "nombre": "Iron Totem",
+   "npc_type": 1939,
+   "klass": 200,
+   "tile": [
+    138,
+    119
+   ],
+   "sprite": 60241
+  },
+  {
+   "nombre": "Angel Raphael",
+   "npc_type": 1894,
+   "klass": 200,
+   "tile": [
+    39,
+    120
+   ],
+   "sprite": 40005
+  },
+  {
+   "nombre": "Dark City Totem",
+   "npc_type": 1938,
+   "klass": 200,
+   "tile": [
+    115,
+    120
+   ],
+   "sprite": 60241
+  },
+  {
+   "nombre": "Iron Totem",
+   "npc_type": 1939,
+   "klass": 200,
+   "tile": [
+    50,
+    121
+   ],
+   "sprite": 60241
+  },
+  {
+   "nombre": "Dark City Totem",
+   "npc_type": 1938,
+   "klass": 200,
+   "tile": [
+    28,
+    122
+   ],
+   "sprite": 60241
+  },
+  {
+   "nombre": "Breeze Totem",
+   "npc_type": 1940,
+   "klass": 200,
+   "tile": [
+    121,
+    122
+   ],
+   "sprite": 60241
+  },
+  {
+   "nombre": "Aurora Totem",
+   "npc_type": 1937,
+   "klass": 200,
+   "tile": [
+    132,
+    122
+   ],
+   "sprite": 60241
+  },
+  {
+   "nombre": "Breeze Totem",
+   "npc_type": 1940,
+   "klass": 200,
+   "tile": [
+    33,
+    124
+   ],
+   "sprite": 60241
+  },
+  {
+   "nombre": "Aurora Totem",
+   "npc_type": 1937,
+   "klass": 200,
+   "tile": [
+    44,
+    124
+   ],
+   "sprite": 60241
+  },
+  {
+   "nombre": "Angel Raphael",
+   "npc_type": 1894,
+   "klass": 200,
+   "tile": [
+    213,
+    155
+   ],
+   "sprite": 40005
+  },
+  {
+   "nombre": "Iron Totem",
+   "npc_type": 1939,
+   "klass": 200,
+   "tile": [
+    224,
+    156
+   ],
+   "sprite": 60241
+  },
+  {
+   "nombre": "Dark City Totem",
+   "npc_type": 1938,
+   "klass": 200,
+   "tile": [
+    202,
+    157
+   ],
+   "sprite": 60241
+  },
+  {
+   "nombre": "Breeze Totem",
+   "npc_type": 1940,
+   "klass": 200,
+   "tile": [
+    207,
+    159
+   ],
+   "sprite": 60241
+  },
+  {
+   "nombre": "Aurora Totem",
+   "npc_type": 1937,
+   "klass": 200,
+   "tile": [
+    219,
+    159
+   ],
+   "sprite": 60241
+  },
+  {
+   "nombre": "Angel Raphael",
+   "npc_type": 1894,
+   "klass": 200,
+   "tile": [
+    130,
+    208
+   ],
+   "sprite": 40005
+  },
+  {
+   "nombre": "Iron Totem",
+   "npc_type": 1939,
+   "klass": 200,
+   "tile": [
+    142,
+    208
+   ],
+   "sprite": 60241
+  },
+  {
+   "nombre": "Angel Raphael",
+   "npc_type": 1894,
+   "klass": 200,
+   "tile": [
+    213,
+    208
+   ],
+   "sprite": 40005
+  },
+  {
+   "nombre": "Iron Totem",
+   "npc_type": 1939,
+   "klass": 200,
+   "tile": [
+    224,
+    208
+   ],
+   "sprite": 60241
+  },
+  {
+   "nombre": "Angel Raphael",
+   "npc_type": 1894,
+   "klass": 200,
+   "tile": [
+    41,
+    209
+   ],
+   "sprite": 40005
+  },
+  {
+   "nombre": "Dark City Totem",
+   "npc_type": 1938,
+   "klass": 200,
+   "tile": [
+    120,
+    209
+   ],
+   "sprite": 60241
+  },
+  {
+   "nombre": "Dark City Totem",
+   "npc_type": 1938,
+   "klass": 200,
+   "tile": [
+    202,
+    209
+   ],
+   "sprite": 60241
+  },
+  {
+   "nombre": "Dark City Totem",
+   "npc_type": 1938,
+   "klass": 200,
+   "tile": [
+    31,
+    210
+   ],
+   "sprite": 60241
+  },
+  {
+   "nombre": "Iron Totem",
+   "npc_type": 1939,
+   "klass": 200,
+   "tile": [
+    53,
+    210
+   ],
+   "sprite": 60241
+  },
+  {
+   "nombre": "Breeze Totem",
+   "npc_type": 1940,
+   "klass": 200,
+   "tile": [
+    125,
+    211
+   ],
+   "sprite": 60241
+  },
+  {
+   "nombre": "Aurora Totem",
+   "npc_type": 1937,
+   "klass": 200,
+   "tile": [
+    136,
+    211
+   ],
+   "sprite": 60241
+  },
+  {
+   "nombre": "Breeze Totem",
+   "npc_type": 1940,
+   "klass": 200,
+   "tile": [
+    207,
+    211
+   ],
+   "sprite": 60241
+  },
+  {
+   "nombre": "Aurora Totem",
+   "npc_type": 1937,
+   "klass": 200,
+   "tile": [
+    219,
+    211
+   ],
+   "sprite": 60241
+  },
+  {
+   "nombre": "Breeze Totem",
+   "npc_type": 1940,
+   "klass": 200,
+   "tile": [
+    36,
+    212
+   ],
+   "sprite": 60241
+  },
+  {
+   "nombre": "Aurora Totem",
+   "npc_type": 1937,
+   "klass": 200,
+   "tile": [
+    47,
+    212
+   ],
+   "sprite": 60241
+  }
+ ]
+}

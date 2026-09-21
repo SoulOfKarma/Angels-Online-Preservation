@@ -1898,3 +1898,140 @@ sin explicacion: no es el 特效編號 ni el numero del hechizo.
 
 Nota: en esta sesion el cliente NUNCA mando un ataque basico. Los 23 casts son
 601, 602 y 603. Falta medir como se pide un golpe sin habilidad.
+
+
+## EL ATAQUE BASICO SE PIDE CON 0x0005, NO CON 0x0006
+
+logs/proxy/mundo_154337_948959, t=3.08 y t=6.23. En dos sesiones enteras de
+Celestia el cliente NUNCA mando un 0x0006 para pegar sin habilidad: los unicos
+casts son 601, 602 y 603. El golpe basico se pide haciendo clic en la entidad:
+
+    C2S 0x0005  [u4 target][u2 0]
+    S2C 0x0013  [monstruo] code=0x0001 arg=vida en %
+    S2C 0x000A  [yo][monstruo] tipo=3 anim=1480     SIN 0x0011 ni 0x0006
+    S2C 0x0013  [monstruo] vida nueva
+    S2C 0x000B  [monstruo] tipo=1 cantidad=51       el numero
+    S2C 0x000D  msg=503 tipo=2 "Sword" "100"        skill exp, dos strings
+    S2C 0x000D  msg=508 tipo=2 "Sword" ""           subio de nivel la skill
+
+Nosotros contestabamos al clic con un 0x000A de "fijar objetivo" y esperabamos
+un 0x0006 que el cliente nunca manda. Por eso el golpe basico no existia, con
+ninguna arma. Arreglado: el clic ejecuta el ataque.
+
+Con habilidad el orden es distinto (t=9.4352): 0x0006 confirmacion, 0x0011
+inicio, **0x000A**, 0x0011 cierre. El 0x000A va ENTRE las dos fases. Mandar las
+dos fases juntas hacia que la animacion se viera doble y acelerada.
+
+Otros dos errores corregidos de paso:
+
+- `parsear_ataque()` leia el objetivo como u2. Es u4. Con ids bajos daba igual,
+  pero 0x000f7cdd se truncaba a 0x7cdd.
+- La animacion del 0x000A no es el 特效編號 del hechizo (136, 148...). Se
+  midieron 1480 y 1410 para el mismo personaje y 951 para el monstruo. No
+  coincide con 常駐法術, 動態資料1 ni 動態資料2 de item.xml. Por ahora es la
+  constante ANIM_GOLPE = 1480, que es lo medido.
+
+
+## PENDIENTE (anotado el 2026-09-21, sin tocar por pedido del usuario)
+
+- **Injury Cure I (603) no cura.** El buff se aplica y el tooltip sale bien
+  ("continue 7 secs"), pero el HP del personaje no sube. En magic.xml el 603
+  tiene HP="15" con 作用間隔 (intervalo) y 持續時間 (duracion): es una cura
+  por tics, no de golpe. Falta aplicar el HP periodico y reflejarlo con el
+  0x0013 de vida.
+- Confirmado de paso: el mensaje de skill exp ya sale como texto correcto
+  ("Sword has obtained 4 Exp.") y sin el numero flotante fantasma.
+
+
+## NO SE PUEDEN REENVIAR LOS 0x0008 DE CELESTIA TAL CUAL
+
+Al poblar el Fighting Palace con los NPC_SPAWN copiados byte a byte de la
+captura, el cliente CRASHEA al entrar al mapa (log del 2026-09-21 16:28: entra,
+pide el avatar y se desconecta con "opcodes SIN ESQUEMA 0x0002 x2, 0x0011 x1").
+
+El motivo: el 0x0008 de Celestia mide **62 o 64 bytes** segun el NPC, y el
+cliente 8.5.1.0 espera **63**. La estructura interna es la misma (entity, x, y,
+nombre en el offset 16, sprite en el 34, klass en el 40, npc_type en el 45),
+solo cambia el largo. Es otra cara de la diferencia de version de protocolo ya
+anotada en la seccion 10.
+
+Regla: de las capturas de un servidor de otra version se toman los DATOS
+(posiciones, npc_type, klass, sprite, ids de dialogo), nunca los bytes crudos.
+Los mensajes se rearman con nuestros constructores.
+
+Lo medido del Fighting Palace, ya aplicado:
+
+    Aurora Totem     npc_type 1937  tile (132,122)  sprite 60241  msg 5136
+    Dark City Totem  npc_type 1938  tile (115,120)  sprite 60241  msg 5137
+    Iron Totem       npc_type 1939  tile (138,119)  sprite 60241  msg 5138
+    Breeze Totem     npc_type 1940  tile (121,122)  sprite 60241  msg 5139
+    Angel Raphael    npc_type 1894  klass 199       sprite 40005
+      diez copias: (39,40) (39,120) (41,209) (126,118) (128,37)
+                   (130,208) (213,155) (213,208) (216,98) (217,37)
+
+Los cuatro textos de totem estaban CRUZADOS en dialogos.py (Breeze tenia el de
+Dark City, Dark City el de Iron, Iron el de Breeze). El orden correcto es
+correlativo con el npc_type.
+
+Sigue sin aparecer de donde sale la ORIENTACION de un NPC: no esta en el
+0x0008 (los diez Raphael solo difieren en id y posicion), no llega por red (el
+unico 0x0016 de la captura son 3 bytes y no apunta a ningun NPC) y en
+G:/extracted_paks no hay ningun .lua ni columna 方向 en los xml de eng.
+
+
+## EL 0x0008: EL FLAG DEL OFFSET 4 Y EL SPRITE SON 圖號 DE npc.xml
+
+Dos cosas que costaron varias pruebas con los totems del Fighting Palace:
+
+1. **El offset 4 es un flag de visibilidad.** Vale 1 en los NPC que el cliente
+   dibuja y 0 en los que no. Celestia manda 0 en los totems y su cliente los
+   dibuja igual, pero el 8.5.1.0 los ignoraba por completo: no aparecia nada.
+   Con el flag en 1 el cliente crea la entidad, le pone el nombre flotante y
+   la hace clicable.
+
+2. **El campo del offset 34 NO es un numero de sprite libre: es el 圖號 de
+   setting/eng/npc.xml, indexado por el npc_type.** Los cuatro totems
+   (npc 1937-1940) tienen 圖號 40001. El 60241 que arrastrabamos desde
+   lyceum.json es el de "House Bulletin" (npc 2625), asi que el cliente creaba
+   la entidad y no dibujaba nada: nombre si, grafico no.
+
+Sintoma util para el futuro: **si sale el nombre flotando pero no el dibujo,
+el sprite esta mal; si no sale nada, es el flag del offset 4.**
+
+Ahora el sprite se lee con `login.sprite_de(npc_type)` en vez de copiarse de
+una captura. Angel Raphael (1894) da 40005, que es el que ya se usaba y
+funcionaba, lo cual sirve de comprobacion cruzada.
+
+
+## EFECTOS DE LAS HABILIDADES: STUN, SANGRADO Y COMBOS (2026-09-21)
+
+Todo sale del mismo par de campos de magic.xml: 轉嫁法術 (el hechizo que el
+ataque encadena) y 轉嫁機率 (con que probabilidad). Lo traen 3917 hechizos.
+
+    601 Slicing Hit I   -> 1040  100%  sangrado, HP -2 cada 2s durante 10s
+    701 Basic Beating I -> 1045   10%  ATURDE 2s (魔法狀態=暈眩)
+    604 Tendon Chop I   -> 1041  100%  ralentiza, 移動速度 -10 durante 5s
+    5846 Strangle Strike I -> 8602 100%  COMBO de 2000 x5
+
+Estados de 魔法狀態: 暈眩 aturdir, 冰凍 congelar, 定身 inmovilizar, 沉默
+silenciar, 麻痺 paralizar, 捆綁 atar, 恐懼 miedo, 封招 sellar. Los 閃<color>色
+son solo el tinte del sprite, no un estado.
+
+**Los combos**: el hijo lleva la marca 單體多次攻擊 ("varios golpes sobre un
+solo objetivo"), el numero de golpes es 動態參數2 del PADRE y el dano de cada
+golpe el HP del HIJO. Comprobado contra la wiki: Strangle Strike I es 2000 x5
+y el XML da HP=2000 con 動態參數2=5; el V es 3200 x9 con HP=3200 y param2=9.
+
+**El stun NO viaja por red.** En mundo_181419_370379 el jugador pega decenas de
+veces con Basic Beating y el hechizo 1045 no aparece NUNCA: solo llegan el
+0x0011 del 701 y su cooldown. El aturdimiento es logica del servidor, que deja
+de mover y de dejar atacar al monstruo. El cliente ya dibuja la animacion.
+
+**El critico va en el tipo del 0x000B**, el mismo campo que lleva el numero:
+tipo 1 golpe normal, tipo 2 critico. En esa captura los golpes de 45..92 son
+tipo 1 y los de 98 y 101 tipo 2, que son los que salen con la estrella naranja.
+
+PENDIENTE: ejecutar el combo (repetir el 0x000B N veces; el 命中時間=200 del
+hijo sugiere 200 ms entre golpes, sin confirmar) y la ralentizacion, que se
+registra pero todavia no afecta la velocidad. Hace falta una captura con un
+personaje de nivel alto: Strangle Strike pide 181 y Cross Chop 40.

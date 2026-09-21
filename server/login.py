@@ -21,6 +21,7 @@ CRITERIO, para que quede claro que es que:
 import sys
 import json
 import time
+import logging
 import struct
 import pathlib
 from dataclasses import dataclass, field
@@ -29,6 +30,7 @@ sys.path.insert(0, str(pathlib.Path(__file__).parent.parent / 'proto'))
 from codec import Msg
 import messages  # noqa: registra los esquemas
 
+log = logging.getLogger('app')
 PLANTILLAS = pathlib.Path(__file__).parent / 'plantillas'
 
 # mensajes que sabemos CONSTRUIR (el resto va como plantilla)
@@ -181,6 +183,17 @@ def secuencia(p: Personaje):
     salida.append(_cb_ini.atributo(p.entity_id, hp_val, _cb_ini.KIND_HP))
     salida.append(_cb_ini.atributo(p.entity_id, p.mp, _cb_ini.KIND_MP))
     salida.append(_cb_ini.atributo(p.entity_id, p.exp, _cb_ini.KIND_EXP))
+    # La barra de experiencia necesita los cuatro valores, no solo el actual:
+    # sin el "cuanto falta para el siguiente nivel" el cliente la dibujaba
+    # llena y con el numero de un personaje de nivel 1. Es el mismo 0x001D
+    # compuesto que se manda al subir de nivel.
+    #   kind 29 nivel, 30 exp actual, 31 exp del siguiente nivel, 32 la barra
+    salida.append(
+        struct.pack('<HIB', 0x001D, p.entity_id, 4)
+        + struct.pack('<BII', 29, p.nivel, 0)
+        + struct.pack('<BII', 30, p.exp, 0)
+        + struct.pack('<BII', 31, _cb_ini.exp_para_nivel(p.nivel + 1), 0)
+        + struct.pack('<BII', 32, p.exp, 0))
     return salida
 
 
@@ -259,6 +272,121 @@ def _monster_spawn(entity_id, npc_type, nombre, tile):
     return struct.pack('<H', 0x0008) + bytes(b)
 
 
+def rotar(entity_id: int, angulo: int) -> bytes:
+    """0x0016: orienta a una entidad. [u4 entity][u1 angulo].
+
+    La direccion NO viaja en el 0x0008: los diez Angel Raphael de la captura
+    solo difieren en id y posicion, y el campo del offset 4 solo vale 0 o 1
+    (es un flag, no un angulo). Asi que hay que mandarla aparte.
+    """
+    return struct.pack('<HIB', 0x0016, entity_id, angulo & 0xFF)
+
+
+_TOTEM_BASE = None
+
+
+# Los totems NO son NPC: son objetos de mapa, o sea 0x000E, igual que las
+# vetas y los arboles. En el Angel Lyceum son los recursos 150, 121, 122 y 120
+# de lyceum.json, con sprite 60051..60054 y la posicion en PIXELES. Por eso
+# mandarlos como 0x0008 no funcionaba de ninguna manera: con el flag del
+# offset 4 en 1 salia el nombre flotando y ningun dibujo, y con el sprite de
+# npc.xml (40001) salia un NPC humanoide.
+# Hacia donde mira Angel Raphael en el Fighting Palace. 0..7; probado:
+# 2 = arriba, 4 = izquierda, 6 y 0 = derecha. Poner None para no mandar
+# ninguna rotacion y dejarlo como viene por defecto.
+ANGULO_RAPHAEL = 6
+
+SPRITE_TOTEM = {'Aurora Totem': 60051, 'Dark City Totem': 60052,
+                'Iron Totem': 60053, 'Breeze Totem': 60054}
+# entity_id -> nombre de todo lo que se pone en el Fighting Palace, para que
+# el clic encuentre su dialogo sin depender de ids escritos a mano.
+TOTEMS_PUESTOS = {}
+_TOTEM_OBJ = None
+
+
+def _totem_objeto(entity_id: int, nombre: str, tile) -> bytes:
+    """Un totem como objeto de mapa (0x000E), copiado del Lyceum."""
+    global _TOTEM_OBJ
+    if _TOTEM_OBJ is None:
+        _TOTEM_OBJ = {}
+        f = PLANTILLAS / 'lyceum.json'
+        if f.exists():
+            porsprite = {v: k for k, v in SPRITE_TOTEM.items()}
+            for e in json.loads(f.read_text(encoding='utf-8')).get('recursos', []):
+                b = bytes.fromhex(e['hex'])
+                if len(b) < 36:
+                    continue
+                s = struct.unpack_from('<H', b, 34)[0]
+                if s in porsprite:
+                    _TOTEM_OBJ[porsprite[s]] = b
+    base = _TOTEM_OBJ.get(nombre)
+    if base is None:
+        return None
+    b = bytearray(base)
+    struct.pack_into('<I', b, 0, entity_id)
+    struct.pack_into('<II', b, 8, tile[0] * 32 + 16, tile[1] * 32 + 16)
+    TOTEMS_PUESTOS[entity_id] = nombre
+    return struct.pack('<H', 0x000E) + bytes(b)
+
+
+_SPRITES_NPC = None
+
+
+def sprite_de(npc_type: int, por_defecto: int = 40001) -> int:
+    """El 圖號 de setting/eng/npc.xml para ese npc_type.
+
+    El campo del offset 34 del 0x0008 no es un numero de sprite libre: es el
+    圖號 de npc.xml. Los cuatro totems (1937-1940) lo tienen en 40001, no en
+    60241 -- 60241 es el de "House Bulletin" (npc 2625), y por eso el cliente
+    creaba la entidad, le ponia el nombre, y no dibujaba nada.
+    """
+    global _SPRITES_NPC
+    if _SPRITES_NPC is None:
+        import re as _re
+        _SPRITES_NPC = {}
+        raiz = pathlib.Path('G:/extracted_paks')
+        for pak in ('update26', 'UPDATE18', 'data1'):
+            f = raiz / pak / 'setting' / 'eng' / 'npc.xml'
+            if not f.exists():
+                continue
+            for m in _re.finditer(r'<npc 編號="(\d+)" 圖號="(\d+)"',
+                                  f.read_text(encoding='utf-8', errors='replace')):
+                _SPRITES_NPC.setdefault(int(m.group(1)), int(m.group(2)))
+            if _SPRITES_NPC:
+                break
+    return _SPRITES_NPC.get(npc_type, por_defecto)
+
+
+def _totem_de_lyceum(entity_id: int, nombre: str, tile) -> bytes:
+    """Un totem copiado BYTE A BYTE del que funciona en el Angel Lyceum.
+
+    En el Lyceum los cuatro totems se ven y responden; en el Fighting Palace,
+    armados con _totem_spawn(), no aparecian pese a que los dos mensajes
+    parecian iguales. Asi que en vez de reconstruirlos se toma el 0x0008 de
+    lyceum.json -- que viene de una captura de ESTA version del servidor -- y
+    solo se le cambian el entity_id y la casilla.
+    """
+    global _TOTEM_BASE
+    if _TOTEM_BASE is None:
+        _TOTEM_BASE = {}
+        f = PLANTILLAS / 'lyceum.json'
+        if f.exists():
+            for e in json.loads(f.read_text(encoding='utf-8'))['spawns']:
+                if 'Totem' in e['nombre']:
+                    _TOTEM_BASE[e['nombre']] = bytes.fromhex(e['hex'])
+    base = _TOTEM_BASE.get(nombre)
+    if base is None:
+        return None
+    b = bytearray(base)
+    struct.pack_into('<I', b, 0, entity_id)
+    struct.pack_into('<II', b, 8, tile[0], tile[1])
+    # El flag del offset 4 vale 1 en los NPC que SI se dibujan (Angel Raphael
+    # aparece con flag=1) y 0 en los totems, que no aparecian. Celestia manda
+    # 0 en los totems, pero su cliente es de otra version. Se fuerza a 1.
+    struct.pack_into('<I', b, 4, 1)
+    return struct.pack('<H', 0x0008) + bytes(b)
+
+
 def _totem_spawn(entity_id: int, npc_type: int, nombre: str, tile: tuple) -> bytes:
     """Arma un NPC_SPAWN (0x0008) identico al de lyceum.json para los totems de faccion."""
     b = bytearray(63)
@@ -272,8 +400,16 @@ def _totem_spawn(entity_id: int, npc_type: int, nombre: str, tile: tuple) -> byt
     return struct.pack('<H', 0x0008) + bytes(b)
 
 
-def _npc_spawn(entity_id, npc_type, nombre, tile, sprite=0, klass=200):
-    """Arma un NPC_SPAWN (0x0008) desde cero, para los NPC y monstruos."""
+def _npc_spawn(entity_id, npc_type, nombre, tile, sprite=0, klass=200,
+               direccion=None):
+    """Arma un NPC_SPAWN (0x0008) desde cero, para los NPC y monstruos.
+
+    `direccion` va en el byte 33. Celestia manda 6 ahi en todos sus NPC y
+    nosotros mandabamos 0: por eso Angel Raphael miraba a la derecha en vez
+    de al frente. Los totems del Lyceum, que se ven bien orientados, tambien
+    llevan 6. El 0x0016 rotate no sirve para esto: se probaron los ocho
+    valores y el NPC no gira.
+    """
     if klass == 1:
         return _monster_spawn(entity_id, npc_type, nombre, tile)
     b = bytearray(63)
@@ -282,6 +418,8 @@ def _npc_spawn(entity_id, npc_type, nombre, tile, sprite=0, klass=200):
     b[16:16 + len(n)] = n
     if not sprite:
         sprite = 40001
+    if direccion is not None:
+        b[33] = direccion & 0xFF
     struct.pack_into('<I', b, 34, sprite)
     struct.pack_into('<I', b, 40, klass)
     struct.pack_into('<H', b, 45, npc_type)
@@ -317,17 +455,73 @@ def spawn_de(stage: int):
     return None
 
 
+def portales_de(stage: int):
+    """Los 0x000E de los tornados que hay que dibujar en este mapa.
+
+    Los del Lyceum ya vienen en lyceum.json; los de otros mapas se arman
+    copiando ese mismo objeto y cambiandole id y posicion, igual que se hizo
+    con los totems del Fighting Palace.
+    """
+    f = PLANTILLAS / 'portales.json'
+    if not f.exists():
+        return []
+    cfg = json.loads(f.read_text(encoding='utf-8'))
+    base_hex = cfg.get('plantilla_hex')
+    if not base_hex:
+        return []
+    salida = []
+    for por in cfg.get('mapas', {}).get(str(stage), []):
+        if not por.get('dibujar'):
+            continue
+        b = bytearray(bytes.fromhex(base_hex))
+        struct.pack_into('<I', b, 0, por['entity'])
+        struct.pack_into('<II', b, 8,
+                         por['tile'][0] * 32 + 16, por['tile'][1] * 32 + 16)
+        salida.append(struct.pack('<H', 0x000E) + bytes(b))
+    return salida
+
+
 def poblar(stage: int):
     """NPC, monstruos, portales y totems propios del mapa."""
     salida = npc_de_los_xml(stage)
+    salida += portales_de(stage)
     if stage == 57:
-        # Angel Raphael en Fighting Palace (MiniMap 217, 32 / 216, 37)
-        salida.append(_npc_spawn(500, 1894, "Angel Raphael", (217, 32), sprite=40005, klass=200))
-        # 4 Totems de Facciones (Dark City, Breeze Woods, Aurora, Iron Castle) con sprite real de totem 60241
-        salida.append(_totem_spawn(501, 1938, "Dark City Totem", (209, 39)))
-        salida.append(_totem_spawn(502, 1940, "Breeze Totem", (212, 40)))
-        salida.append(_totem_spawn(503, 1937, "Aurora Totem", (220, 39)))
-        salida.append(_totem_spawn(504, 1939, "Iron Totem", (223, 40)))
+        # Fighting Palace: los diez Angel Raphael y los cuatro totems, con los
+        # 0x0008 tal cual los manda Celestia. Antes estaban en posiciones
+        # inventadas (209,39), (212,40)... y Raphael con klass=200 cuando es
+        # 199, ademas de que solo se ponia uno de los diez.
+        fp = PLANTILLAS / 'fighting_palace.json'
+        if fp.exists():
+            d_fp = json.loads(fp.read_text(encoding='utf-8'))
+            # Se reconstruyen con nuestro constructor: el 0x0008 de Celestia
+            # mide 62 o 64 bytes y este cliente espera 63. Reenviar los bytes
+            # crudos lo crashea al entrar al mapa.
+            for k, e in enumerate(d_fp['spawns']):
+                if 'Totem' in e['nombre']:
+                    # Los totems son objetos de mapa (0x000E), no NPC.
+                    m_obj = _totem_objeto(300 + k, e['nombre'], tuple(e['tile']))
+                    if m_obj is not None:
+                        salida.append(m_obj)
+                        continue
+                # Todo lo demas -- los diez Angel Raphael -- como NPC, con su
+                # direccion en el byte 33.
+                TOTEMS_PUESTOS[300 + k] = e['nombre']
+                salida.append(_npc_spawn(300 + k, e['npc_type'],
+                                         e['nombre'], tuple(e['tile']),
+                                         sprite=sprite_de(e['npc_type']),
+                                         klass=e['klass'],
+                                         direccion=ANGULO_RAPHAEL))
+            # Ademas del byte 33 se manda el 0x0016: con el spawn solo,
+            # Angel Raphael queda mirando a la derecha. Asi estaba cuando el
+            # usuario lo dio por bueno.
+            if ANGULO_RAPHAEL is not None:
+                for k, e in enumerate(d_fp['spawns']):
+                    if e['nombre'] == 'Angel Raphael':
+                        salida.append(rotar(300 + k, ANGULO_RAPHAEL))
+            _tot = sum(1 for e in d_fp['spawns'] if 'Totem' in e['nombre'])
+            log.info('Fighting Palace: %d spawns de fighting_palace.json '
+                     '(%d totems, %d Raphael)', len(d_fp['spawns']), _tot,
+                     len(d_fp['spawns']) - _tot)
     if stage in PLAYGROUND_MONSTERS:
         for eid, ntype, nom, tile in PLAYGROUND_MONSTERS[stage]:
             salida.append(_npc_spawn(eid, ntype, nom, tile, klass=1))

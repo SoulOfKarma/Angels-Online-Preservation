@@ -36,6 +36,30 @@ ENTIDAD_MAESTRO_CLASE = 19
 MAPA_DEL_TUTORIAL = 51      # los entity_id del tutorial solo valen aqui
 
 
+_PORTALES = None
+
+
+def _portales():
+    """La tabla de tornados de plantillas/portales.json."""
+    global _PORTALES
+    import json
+    if _PORTALES is None:
+        f = pathlib.Path(__file__).parent / 'plantillas' / 'portales.json'
+        _PORTALES = json.loads(f.read_text(encoding='utf-8')) if f.exists() else {
+            'msg': 5801, 'opciones': [], 'radio': 2, 'mapas': {}}
+    return _PORTALES
+
+
+def _portal_en(stage, tx, ty):
+    """El tornado que se esta pisando, o None."""
+    cfg = _portales()
+    r = cfg.get('radio', 2)
+    for por in cfg.get('mapas', {}).get(str(stage), []):
+        if abs(por['tile'][0] - tx) <= r and abs(por['tile'][1] - ty) <= r:
+            return por
+    return None
+
+
 def _nombre_entidad(ses, entity_id: int) -> str:
     """El nombre del NPC del mapa, para buscarle su dialogo."""
     totems_lyceum = {
@@ -46,6 +70,11 @@ def _nombre_entidad(ses, entity_id: int) -> str:
     }
     if entity_id in totems_lyceum:
         return totems_lyceum[entity_id]
+    # Los totems del Fighting Palace se mandan como objetos de mapa y su
+    # entity_id lo asigna poblar(), asi que no puede ir escrito a mano.
+    import login as _lg
+    if entity_id in _lg.TOTEMS_PUESTOS:
+        return _lg.TOTEMS_PUESTOS[entity_id]
     import json
     f = pathlib.Path(__file__).parent / 'plantillas' / 'lyceum.json'
     if f.exists():
@@ -222,68 +251,83 @@ def _stats_ses(ses):
     return inv.stats(bolsa, habs, hp=hp, hp_max=hp_max, mp=mp, mp_max=mp_max, oro=oro, buffs=buffs, sp=sp, sp_max=bars)
 
 
-def _otorgar_skill_exp(ses, p, yo, arma_puesta=0, magic_id=0):
+def _otorgar_skill_exp(ses, p, yo, arma_puesta=0, magic_id=0, accion=None):
     """Otorga Skill EXP en cada impacto de ataque o uso de habilidad activa (buff/cura/spell)."""
     if not p or not getattr(p, 'habilidades', None):
         return []
     import configuracion, cuentas, clases as _cl, combate as _cb, inventario as _iv
     pkgs = []
     mult = configuracion.multiplicador_skill_exp()
-    exp_ganada = max(1, int(round(2 * mult)))
+    exp_ganada = max(1, int(round(1 * mult)))
 
     SKILLS_PRODUCTOR = {20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31}
 
-    skill_arma = None
-    if arma_puesta:
-        for sid, itid in _cl.ARMA_POR_SKILL.items():
-            if itid == arma_puesta:
-                skill_arma = sid
-                break
+    # Las habilidades de arma de TODO lo equipado, no solo de la ranura del
+    # arma: un Protector con hacha y escudo entrena Axe y Shield, y asi sale
+    # en las capturas de Celestia.
+    skills_arma = _cl.skills_de_equipo(getattr(ses, 'inventario', None))
+    if not skills_arma and arma_puesta:
+        sid_a = _cl.skill_de_item(arma_puesta)
+        if sid_a:
+            skills_arma = {sid_a}
 
     nuevas_habs = []
     subio_alguna = False
-    exp_otorgada = False
+    # Suben TODAS las habilidades del personaje, no solo la del arma. En las
+    # capturas de Celestia aparecen Reserve, Finesse, Grapple, Garment,
+    # Enhance y Sword con recuentos parecidos (23, 23, 23, 21, 20, 19 sobre
+    # 2824 golpes), asi que cada una tira su propia probabilidad por golpe.
+    # El valor base es 1: los "100 Exp" de la captura son el multiplicador de
+    # ese servidor.
+    # Que habilidades pueden subir con esta accion. Un espadachin no sube
+    # Cook ni Fishing por pegarle a un monstruo: cada habilidad tiene su
+    # actividad, declarada en skill.xml (ver clases.ACCION_POR_SKILL).
+    if accion is None:
+        if magic_id and not skills_arma:
+            accion = 'magia'
+        elif 17 in skills_arma:
+            accion = 'distancia'      # con arco
+        else:
+            accion = 'melee'
+    # skills_arma va adentro: es lo que arrastra Shield con espada o hacha,
+    # y Snipe y Eagle Eye con arco.
+    candidatas = _cl.skills_que_suben(accion, skills_arma)
     for h in p.habilidades:
         sid, slv, sexp = h[0], h[1], h[2]
-        aplica = False
-        if magic_id:
-            # Si se uso una habilidad magica/hechizo, avanza su rama correspondiente
-            rama = _cl.RAMA_POR_SKILL.get(sid)
-            if rama or sid in {1, 2, 3, 4, 9, 10, 11, 17, 32}:
-                aplica = True
-        else:
-            # Ataque fisico: avanza la habilidad del arma en mano o la habilidad principal de ataque
-            if skill_arma and sid == skill_arma:
-                aplica = True
-            elif not skill_arma and sid in (1, 9, 10, 11, 17, 32):
-                aplica = True
-
-        if aplica and not exp_otorgada:
-            sexp += exp_ganada
-            exp_otorgada = True
-            sid_ganador = sid
-            max_lv = (p.nivel + 11) if sid in SKILLS_PRODUCTOR else p.nivel
-            req = max(1, slv * 100)
-            while sexp >= req and slv < max_lv:
-                sexp -= req
-                slv += 1
-                req = max(1, slv * 100)
-                subio_alguna = True
-                pkgs.append(_cl.aviso(f"The level of the spell {_cl.nombre(sid)} has been upgraded.", tipo=0, msg_id=_cl.MSG_ITEM))
-            if slv >= max_lv:
-                sexp = min(sexp, req)
-            pct_exp = min(100, int(round(100.0 * sexp / req)))
-
+        if sid not in candidatas or random.random() >= _cb.PROB_SKILL_EXP:
+            nuevas_habs.append((sid, slv, sexp))
+            continue
+        sexp += exp_ganada
+        max_lv = (p.nivel + 11) if sid in SKILLS_PRODUCTOR else p.nivel
+        # La experiencia que pide cada nivel sale de la tabla medida en las
+        # capturas (3, 6, 8, 12, 16, 30...), no de nivel*100: con esa formula
+        # dos puntos de exp daban 0% y la habilidad no subia nunca.
+        req = max(1, _cl.exp_requerida_skill(slv))
+        while sexp >= req and slv < max_lv:
+            sexp -= req
+            slv += 1
+            req = max(1, _cl.exp_requerida_skill(slv))
+            subio_alguna = True
+            pkgs.append(_cl.aviso_doble(_cl.MSG_SKILL_SUBE, _cl.nombre(sid)))
+        if slv >= max_lv:
+            sexp = min(sexp, req)
+        pct_exp = min(100, int(round(100.0 * sexp / req)))
+        # La skill exp va como TEXTO en un 0x000D de dos cadenas, no como
+        # 0x000B: ese mensaje dibuja un numero flotante, y mandandolo con el
+        # numero de la habilidad aparecia un "9" verde junto al dano.
+        pkgs.append(_cl.aviso_doble(_cl.MSG_SKILL_EXP, _cl.nombre(sid),
+                                    str(exp_ganada)))
+        # 0x001D kind=53: la barra porcentual de esa habilidad en la UI
+        pkgs.append(struct.pack('<HIBBII', 0x001D, yo, 1, 53, sid, pct_exp))
         nuevas_habs.append((sid, slv, sexp))
 
     p.habilidades = nuevas_habs
-    if exp_otorgada:
-        # 0x000B kind=4 con val=sid: muestra en chat y pantalla '[Skill] has obtained 1 Exp.'
-        pkgs.append(struct.pack('<HIBIH', 0x000B, yo, 4, sid_ganador, 0))
-        # 0x001D kind=53 (0x35): actualiza la barra porcentual de la habilidad en la UI
-        pkgs.append(struct.pack('<HIBBII', 0x001D, yo, 1, 53, sid_ganador, pct_exp))
-    if subio_alguna:
+    if pkgs:
+        # El arbol va en CADA ganancia, no solo al subir: es el mensaje que
+        # lleva la experiencia de cada habilidad y por lo tanto el porcentaje
+        # que muestra el panel.
         pkgs.append(_cl.arbol(p.habilidades))
+    if subio_alguna:
         pkgs.append(_stats_ses(ses))
 
     if getattr(ses, 'usuario', None):
@@ -678,6 +722,19 @@ class Servidor:
                             if not getattr(m, 'vivo', True):
                                 continue
 
+                            # El sangrado le resta vida aunque nadie lo toque,
+                            # y un monstruo aturdido no se mueve ni ataca.
+                            _sang = m.tick_sangrado()
+                            if _sang:
+                                ses.enviar(_cb.numero_flotante(m.entity_id, _sang),
+                                           _cb.atributo(m.entity_id, m.porcentaje))
+                                if not m.vivo:
+                                    ses.enviar(_cb.muerte_monstruo(m.entity_id, yo),
+                                               _cb.despawn_monstruo(m.entity_id))
+                                    continue
+                            if m.aturdido:
+                                continue
+
                             dist_x = abs(m.tile_x - p.tile_x)
                             dist_y = abs(m.tile_y - p.tile_y)
                             dist = max(dist_x, dist_y)
@@ -697,7 +754,7 @@ class Servidor:
                                         p.hp = max(0, p.hp - suyo)
                                         pct_hp = max(0, min(100, round(100 * p.hp / p.hp_max)))
                                         ef_atk = m.proj_ef if m.proj_ef > 0 else 148
-                                        ses.enviar(_cb.ataque(m.entity_id, yo, ef_atk),
+                                        ses.enviar(_cb.ataque(m.entity_id, yo, _cb.anim_de_monstruo(m.nombre)),
                                                    _cb.numero_de_dano(m.entity_id, yo, suyo, ataque=656, efecto=ef_atk),
                                                    _cb.numero_flotante(yo, suyo),
                                                    _cb.atributo(yo, pct_hp, _cb.VIDA))
@@ -727,14 +784,15 @@ class Servidor:
                                                               dst_x=dst_x, dst_y=dst_y, speed=m.move_speed or 50))
                             else:
                                 # 2. Monstruo libre: pasear aleatoriamente si no es estatico
-                                if not getattr(m, 'es_estatico', False) and random.random() < 0.12:
+                                if not getattr(m, 'es_estatico', False) and random.random() < _cb.PROB_PASEO:
                                     dx = random.choice([-1, 0, 1])
                                     dy = random.choice([-1, 0, 1])
                                     if dx == 0 and dy == 0:
                                         continue
                                     new_x = m.tile_x + dx
                                     new_y = m.tile_y + dy
-                                    if abs(new_x - m.spawn_x) <= m.move_range and abs(new_y - m.spawn_y) <= m.move_range:
+                                    _rango = max(m.move_range, _cb.RANGO_PASEO_MIN)
+                                    if abs(new_x - m.spawn_x) <= _rango and abs(new_y - m.spawn_y) <= _rango:
                                         cur_x, cur_y = m.tile_x * 32, m.tile_y * 32
                                         m.tile_x = new_x
                                         m.tile_y = new_y
@@ -974,6 +1032,16 @@ class Servidor:
                 total_atk = int(round(total_atk * 1.5))
 
             dano = m.recibir(total_atk)
+            # El ataque puede encadenar otro hechizo (轉嫁法術): Slicing Hit
+            # sangra al 100%, Basic Beating aturde al 10%, Tendon Chop
+            # ralentiza. No se manda nada por red: el efecto lo lleva el
+            # servidor y el cliente ya reproduce la animacion del 0x0011.
+            _ef2 = _cb.efecto_secundario(tipo) if tipo != _cb.ATAQUE_NORMAL else None
+            if _ef2 and random.random() * 100 < _ef2.get('prob', 0):
+                _aplicado = m.aplicar_efecto(_ef2)
+                if _aplicado:
+                    log.info(f"[{addr}] {m.nombre}: {_aplicado} por "
+                             f"{_ef2.get('nombre')} ({_ef2['dur_ms']}ms)")
             # Marcar al monstruo en combate con el jugador
             m.en_combate_con = yo
             m.ultimo_ataque = time.time()
@@ -1012,14 +1080,43 @@ class Servidor:
             #   0x000A el golpe, DESPUES del numero
             # Antes se mandaba el 0x000A primero, la confirmacion con un
             # formato inventado de 15 bytes y el cierre 120 ms mas tarde.
-            ses.enviar(_cb.confirmar_cast(objetivo, m.tile_x, m.tile_y),
-                       _cb.numero_de_dano(yo, objetivo, dano, atk_magic, efecto=atk_efecto),
-                       _cb.cierre_de_dano(yo, objetivo, atk_magic, efecto=atk_efecto),
-                       _cb.atributo(objetivo, m.porcentaje),
-                       _cb.numero_flotante(objetivo, dano, _cb.TIPO_DANO_ALT),
-                       _cb.ataque(yo, objetivo, atk_efecto, _cb.TIPO_GOLPE_ALT),
-                       *pkgs_sk,
-                       *pkgs_sp)
+            if tipo != _cb.ATAQUE_NORMAL:
+                # Con habilidad (medido en mundo_154337_948959, t=9.4352):
+                #   0x0006 confirmacion
+                #   0x0011 inicio del cast
+                #   0x000A el golpe, ENTRE las dos fases
+                #   0x0011 cierre
+                # Mandar las dos fases juntas hacia que el efecto se viera
+                # doble y acelerado.
+                salida_golpe = [
+                    _cb.confirmar_cast(objetivo, m.tile_x, m.tile_y),
+                    _cb.numero_de_dano(yo, objetivo, dano, atk_magic, efecto=atk_efecto),
+                    _cb.ataque(yo, objetivo, _cb.anim_de_arma(arma_puesta), _cb.TIPO_GOLPE_ALT),
+                    _cb.cierre_de_dano(yo, objetivo, atk_magic, efecto=atk_efecto),
+                ]
+            else:
+                # Golpe basico (t=3.08 y t=6.23 de la misma captura): no lleva
+                # 0x0011 ni confirmacion 0x0006, solo el 0x000A.
+                salida_golpe = [
+                    _cb.ataque(yo, objetivo, _cb.anim_de_arma(arma_puesta), _cb.TIPO_GOLPE_ALT),
+                ]
+            # El golpe sale ya; el dano llega ~650 ms despues, cuando la
+            # animacion termina. Medido en mundo_161013_564371 sobre siete
+            # golpes: 644, 647, 668, 687, 690, 854 ms (media 650 descartando
+            # un 1510 de dos golpes encadenados). Mandarlo todo junto hacia
+            # que el numero saliera antes de que el arma llegara al bicho.
+            ses.enviar(*salida_golpe)
+            _pkgs_dano = (_cb.atributo(objetivo, m.porcentaje),
+                          _cb.numero_flotante(objetivo, dano,
+                                            _cb.TIPO_DANO_CRITICO if es_crit
+                                            else _cb.TIPO_DANO),
+                          *pkgs_sk, *pkgs_sp)
+            try:
+                asyncio.get_event_loop().call_later(
+                    _cb.RETRASO_DANO,
+                    lambda p=_pkgs_dano: ses.enviar_inmediato(*p))
+            except Exception:
+                ses.enviar(*_pkgs_dano)
             if m.vivo:
                 # Contraataca inmediatamente si esta en rango
                 dist_m = max(abs(m.tile_x - ses.personaje.tile_x), abs(m.tile_y - ses.personaje.tile_y)) if ses.personaje else 1
@@ -1057,13 +1154,13 @@ class Servidor:
                             return
 
                         ef_mon = m.proj_ef if m.proj_ef > 0 else 148
-                        ses.enviar(_cb.ataque(objetivo, yo, ef_mon),
+                        ses.enviar(_cb.ataque(objetivo, yo, _cb.anim_de_monstruo(m.nombre)),
                                    _cb.numero_de_dano(objetivo, yo, suyo, ataque=656, efecto=ef_mon),
                                    _cb.numero_flotante(yo, suyo),
                                    _cb.atributo(yo, ses.personaje.hp, _cb.KIND_HP))
                     else:
                         ef_mon = m.proj_ef if m.proj_ef > 0 else 148
-                        ses.enviar(_cb.ataque(objetivo, yo, ef_mon),
+                        ses.enviar(_cb.ataque(objetivo, yo, _cb.anim_de_monstruo(m.nombre)),
                                    _cb.numero_de_dano(objetivo, yo, suyo, ataque=656, efecto=ef_mon),
                                    _cb.numero_flotante(yo, suyo))
                 log.debug(f"[{addr}] pego {dano} al {m.nombre} "
@@ -1150,9 +1247,14 @@ class Servidor:
                     salida_combate.append(_stats_ses(ses))
                     log.info(f"[{addr}] {p.nombre} SUBIO A NIVEL {p.nivel} (enviado 0x001D compound)!")
 
-                # Paquetes oficiales para EXP y actualizacion de barra
-                # 0x000B kind=1 genera 'Obtain X Exp.' en pantalla y chat
-                salida_combate.append(_cb.exp_paquete(objetivo, exp_ganada, 1))
+                # La experiencia va como TEXTO, igual que la skill exp. Antes
+                # se mandaba un 0x000B tipo 1 sobre el MONSTRUO, y ese mensaje
+                # dibuja un numero de dano: por eso aparecia un "4" fantasma
+                # junto al golpe, que era la exp y no dano. Medido en Celestia:
+                # 0d 00 f5 01 00 "200" 00 "200" 00 00
+                salida_combate.append(_cl.aviso_doble(_cl.MSG_EXP,
+                                                      str(exp_ganada),
+                                                      str(exp_ganada), tipo=0))
                 # 0x001D kind=32 (0x20) ACTUALIZA LA BARRA DE EXPERIENCIA EN LA UI
                 salida_combate.append(struct.pack('<HIBBII', 0x001D, yo, 1, 32, p.exp, 0))
 
@@ -1728,13 +1830,21 @@ class Servidor:
             import combate as _cb0
             _m = (getattr(ses, 'monstruos', None) or {}).get(ent)
             if _m is not None:
-                # Lo que contesta el servidor real es un 0x000A fijando el
-                # objetivo, no la vida. Con el 0x0013 solo, el cliente no
-                # llegaba a mandar el 0x0006 y no se podia atacar.
-                ses.enviar(_cb0.fijar_objetivo(ses.entity_id or 1001, ent),
-                           _cb0.atributo(ent, _m.porcentaje))
-                log.debug(f"[{addr}] objetivo fijado: {_m.nombre} "
-                          f"({_m.porcentaje}%)")
+                # El clic sobre un monstruo ES el ataque basico: el cliente no
+                # manda ningun 0x0006 para pegar sin habilidad. Medido en
+                # mundo_154337_948959, t=3.08:
+                #   C2S 0x0005 [target][00 00]
+                #   S2C 0x0013 [monstruo] vida actual
+                #   S2C 0x000A [yo][monstruo] tipo=3 anim=1480
+                #   S2C 0x0013 + 0x000B con el numero
+                # Antes se contestaba fijando el objetivo y se esperaba un
+                # 0x0006 que nunca llegaba, asi que el golpe basico no existia.
+                if _m.vivo:
+                    ses.enviar(_cb0.atributo(ent, _m.porcentaje))
+                    self.manejar(ses, 0x0006, m, d, addr,
+                                 struct.pack('<HI', _cb0.ATAQUE_NORMAL, ent))
+                else:
+                    ses.enviar(_cb0.atributo(ent, _m.porcentaje))
                 return
 
 
@@ -1746,7 +1856,10 @@ class Servidor:
             # valen en Guide Palace.
             # En Fighting Palace (stage 57):
             if ses.personaje and ses.personaje.stage == 57:
-                if ent == 500:
+                # Por NOMBRE: los entity_id los asigna poblar() y ya no son
+                # el 500 fijo de antes.
+                _nom_ent = _nombre_entidad(ses, ent)
+                if _nom_ent == 'Angel Raphael':
                     kills = getattr(ses, 'slarm_kills', 0)
                     nom = ses.personaje.nombre if ses.personaje else 'Jugador'
                     g_fp = dialogos.guion_fighting_palace(kills, nom)
@@ -1757,13 +1870,14 @@ class Servidor:
                     log.info(f"[{addr}] Angel Raphael (Fighting Palace, kills={kills}): linea 1 de {len(g_fp)}")
                     return
                 # Totems de facciones en Fighting Palace:
-                totems_fp = {501: 5138, 502: 5137, 503: 5136, 504: 5139}
-                if ent in totems_fp:
-                    sub_totem = dialogos.armar_linea(totems_fp[ent], 4, [])
+                totems_fp = {'Iron Totem': 5138, 'Dark City Totem': 5137,
+                             'Aurora Totem': 5136, 'Breeze Totem': 5139}
+                if _nom_ent in totems_fp:
+                    sub_totem = dialogos.armar_linea(totems_fp[_nom_ent], 4, [])
                     ses.dlg_ent, ses.dlg_guion, ses.dlg_paso = ent, [sub_totem[2:]], 1
                     ses.dlg_val = 4
                     ses.enviar(sub_totem)
-                    log.info(f"[{addr}] Totem {ent} en Fighting Palace (dialogo {totems_fp[ent]})")
+                    log.info(f"[{addr}] Totem {_nom_ent} ({ent}) en Fighting Palace")
                     return
                 log.debug(f"[{addr}] clic en la entidad {ent} en stage 57: sin dialogo")
                 return
@@ -1937,11 +2051,11 @@ class Servidor:
                     # West Playground A1..A5
                     import clases as _cl3
                     ses.personaje.stage = 43
-                    ses.personaje.tile_x, ses.personaje.tile_y = (189, 24)
+                    ses.personaje.tile_x, ses.personaje.tile_y = (193, 20)
                     ses.monstruos = _monstruos_de(43)
                     ses.enviar(_cl3.cambiar_mapa(43))
                     if getattr(ses, 'usuario', None):
-                        cuentas.guardar_mapa(ses.usuario, ses.personaje.char_id, 43, 189, 24)
+                        cuentas.guardar_mapa(ses.usuario, ses.personaje.char_id, 43, 193, 20)
                     log.info(f"[{addr}] West Portal: al West Playground (stage 43)")
                 elif _el == 5080 and ses.personaje:
                     # Director Wolay: retorno a la ciudad de faccion elegida
@@ -2131,46 +2245,40 @@ class Servidor:
                 ses.personaje.tile_x = dst['x'] // 32
                 ses.personaje.tile_y = dst['y'] // 32
                 import clases as _cl3
-                nuevo_stage, nuevo_tile = None, None
-                tx, ty = ses.personaje.tile_x, ses.personaje.tile_y
-                if ses.personaje.stage == 41:
-                    # Portal Este en Lyceum -> abrir dialogo oficial si no esta abierto
-                    if tx >= 256 and ty <= 17:
-                        if getattr(ses, 'dlg_ent', None) != 896:
-                            import dialogos
-                            ses.dlg_ent, ses.dlg_paso = 896, 1
-                            ses.dlg_guion = [dialogos.armar_linea(5801, 4, [5802, 5803, 5804, 5805, 5806, 5812])[2:]]
-                            ses.dlg_val = 4
-                            ses.enviar(dialogos.linea_de(ses.dlg_guion, 0, ses.personaje.nombre))
-                            log.info(f"[{addr}] menu de East Portal abierto por posicion ({tx},{ty})")
-                    # Portal Oeste en Lyceum -> abrir dialogo oficial si no esta abierto
-                    elif tx <= 32 and ty >= 126:
-                        if getattr(ses, 'dlg_ent', None) != 897:
-                            import dialogos
-                            ses.dlg_ent, ses.dlg_paso = 897, 1
-                            ses.dlg_guion = [dialogos.armar_linea(5801, 4, [5807, 5808, 5809, 5810, 5811, 5812])[2:]]
-                            ses.dlg_val = 4
-                            ses.enviar(dialogos.linea_de(ses.dlg_guion, 0, ses.personaje.nombre))
-                            log.info(f"[{addr}] menu de West Portal abierto por posicion ({tx},{ty})")
-                elif ses.personaje.stage == 42:
-                    # Retorno desde East Playground (42) a Lyceum (41) al pisar el portal (11, 113)
-                    if tx <= 15 and 106 <= ty <= 120:
-                        nuevo_stage, nuevo_tile = 41, (257, 15)
-                elif ses.personaje.stage == 43:
-                    # Retorno desde West Playground (43) a Lyceum (41) al pisar el portal (189, 24)
-                    if tx >= 185 and 18 <= ty <= 30:
-                        nuevo_stage, nuevo_tile = 41, (28, 131)
-
-                if nuevo_stage:
-                    ses.personaje.stage = nuevo_stage
-                    ses.personaje.tile_x, ses.personaje.tile_y = nuevo_tile
-                    ses.monstruos = _monstruos_de(nuevo_stage)
-                    ses.enviar(_cl3.cambiar_mapa(nuevo_stage))
+                # Portales: un solo camino, el de plantillas/portales.json.
+                # Antes habia otro bloque con areas enormes (tx<=32 y ty>=126
+                # es un cuadrante entero del Lyceum) que abria el dialogo con
+                # val=4, o sea CON retrato de NPC, y que ademas teletransportaba
+                # sin preguntar desde media pantalla de distancia.
+                # Se evalua con la posicion ACTUAL que informa el cliente,
+                # no con el destino del movimiento: si no, al hacer clic hacia
+                # el tornado el dialogo saltaba de inmediato, con el personaje
+                # todavia a media pantalla.
+                tx, ty = d['cur_x'] // 32, d['cur_y'] // 32
+                _por = _portal_en(ses.personaje.stage, tx, ty)
+                if _por is not None and not _por.get('preguntar'):
+                    # Vuelta directa: acercarse y listo, sin menu.
+                    _dst, _lleg = _por['destino'], _por['llegada']
+                    ses.personaje.stage = _dst
+                    ses.personaje.tile_x, ses.personaje.tile_y = _lleg
+                    ses.monstruos = _monstruos_de(_dst)
+                    ses.enviar(_cl3.cambiar_mapa(_dst))
                     if getattr(ses, 'usuario', None):
                         cuentas.guardar_mapa(ses.usuario, ses.personaje.char_id,
-                                             nuevo_stage, *nuevo_tile)
-                    log.info(f"[{addr}] transicion de mapa: stage {nuevo_stage} tile {nuevo_tile}")
+                                             _dst, *_lleg)
+                    log.info(f"[{addr}] portal directo: stage {_dst} tile {_lleg}")
                     return
+                if _por is not None and getattr(ses, 'dlg_ent', None) is None:
+                    import dialogos as _dlg
+                    _cfg = _portales()
+                    sub = _dlg.armar_linea(_cfg['msg'], 0, _cfg['opciones'])
+                    ses.dlg_ent = _por['entity']
+                    ses.dlg_guion = [sub[2:]]
+                    ses.dlg_paso = 1
+                    ses.dlg_val = 0
+                    ses.dlg_portal = _por
+                    ses.enviar(sub)
+                    log.info(f"[{addr}] portal en {_por['tile']}: pregunta destino")
             log.debug(f"[{addr}] movimiento ({d['cur_x']},{d['cur_y']}) -> "
                       f"({dst['x']},{dst['y']}) via {d['n']} waypoints")
 

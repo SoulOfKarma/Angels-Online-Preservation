@@ -197,21 +197,25 @@ def propio(nombre: str, faccion: str = "Heaven"):
     if 'Shiva' in nombre:
         return [armar_linea(5235, 4, [20003, 20004])[2:]]
     if 'Aurora Totem' in nombre:
-        if faccion not in ("Heaven", "Neutral", "Neutrally", "Graduated"):
-            return [armar_linea(5136, 0, [])[2:]]
-        return [bytes.fromhex(_propios().get('Aurora Totem', {}).get('hex', 'd92700000400000400dd270000df270000e0270000de270000'))]
+        # msg.xml 5136. Un totem solo dice su frase: el bloque
+        # anterior devolvia, para faccion Heaven, el dialogo 10201 que es
+        # del Angel Protector ('I'm the Angel Protector from Aurora City').
+        return [armar_linea(5136, 0, [])[2:]]
     if 'Breeze Totem' in nombre:
-        if faccion not in ("Heaven", "Neutral", "Neutrally", "Graduated"):
-            return [armar_linea(5137, 0, [])[2:]]
-        return [bytes.fromhex(_propios().get('Breeze Totem', {}).get('hex', 'dc2700000400000400dd270000e5270000e6270000de270000'))]
+        # msg.xml 5139. Un totem solo dice su frase: el bloque
+        # anterior devolvia, para faccion Heaven, el dialogo 10201 que es
+        # del Angel Protector ('I'm the Angel Protector from Aurora City').
+        return [armar_linea(5139, 0, [])[2:]]
     if 'Dark City Totem' in nombre:
-        if faccion not in ("Heaven", "Neutral", "Neutrally", "Graduated"):
-            return [armar_linea(5138, 0, [])[2:]]
-        return [bytes.fromhex(_propios().get('Dark City Totem', {}).get('hex', 'da2700000400000400dd270000e1270000e2270000de270000'))]
+        # msg.xml 5137. Un totem solo dice su frase: el bloque
+        # anterior devolvia, para faccion Heaven, el dialogo 10201 que es
+        # del Angel Protector ('I'm the Angel Protector from Aurora City').
+        return [armar_linea(5137, 0, [])[2:]]
     if 'Iron Totem' in nombre:
-        if faccion not in ("Heaven", "Neutral", "Neutrally", "Graduated"):
-            return [armar_linea(5139, 0, [])[2:]]
-        return [bytes.fromhex(_propios().get('Iron Totem', {}).get('hex', 'db2700000400000400dd270000e3270000e4270000de270000'))]
+        # msg.xml 5138. Un totem solo dice su frase: el bloque
+        # anterior devolvia, para faccion Heaven, el dialogo 10201 que es
+        # del Angel Protector ('I'm the Angel Protector from Aurora City').
+        return [armar_linea(5138, 0, [])[2:]]
     d = _propios().get(nombre)
     if not d:
         return None

@@ -141,10 +141,16 @@ def despawn_monstruo(entity_id: int) -> bytes:
 
 
 def parsear_ataque(cuerpo: bytes):
-    """(tipo_de_ataque, entity del objetivo) del 0x0006 del mundo."""
-    if len(cuerpo) < 4:
+    """(tipo_de_ataque, entity del objetivo) del 0x0006 del mundo.
+
+    El objetivo es u4, no u2. Con entidades de id bajo daba igual, pero en
+    Celestia los monstruos son 0x000f7cdd y leerlo como u2 lo truncaba a
+    0x7cdd. Medido: C2S 0x0006 = 59 02 dd 7c 0f 00 + 10 bytes en cero,
+    o sea [u2 effect=601][u4 target=0x000f7cdd].
+    """
+    if len(cuerpo) < 6:
         return None
-    tipo, objetivo = struct.unpack_from('<HH', cuerpo, 0)
+    tipo, objetivo = struct.unpack_from('<HI', cuerpo, 0)
     return (tipo, objetivo)
 
 
@@ -179,6 +185,16 @@ class Monstruo:
         self.muerto_en = None
         self.en_combate_con = None
         self.ultimo_ataque = 0.0
+        # Efectos que le aplicaron los ataques del jugador. El stun y el
+        # sangrado NO viajan por red: en la captura de Celestia, al pegar con
+        # Basic Beating solo llega su 0x0011 y el cooldown, nunca el hechizo
+        # 1045. Los lleva el servidor.
+        self.aturdido_hasta = 0.0
+        self.lento_hasta = 0.0
+        self.sangra_hasta = 0.0
+        self.sangra_cada = 0
+        self.sangra_hp = 0
+        self.sangra_ultimo = 0.0
 
     @property
     def vivo(self):
@@ -187,6 +203,46 @@ class Monstruo:
     @property
     def porcentaje(self):
         return max(0, min(100, round(100 * self.hp / self.hp_max)))
+
+    @property
+    def aturdido(self):
+        return time.time() < self.aturdido_hasta
+
+    def aplicar_efecto(self, ef: dict):
+        """Aplica el 轉嫁法術 de un ataque: stun, sangrado o ralentizacion."""
+        if not ef or not ef.get('dur_ms'):
+            return None
+        ahora = time.time()
+        fin = ahora + ef['dur_ms'] / 1000.0
+        if ef.get('estado') in ('aturdido', 'congelado', 'inmovilizado',
+                                'paralizado', 'atado'):
+            self.aturdido_hasta = max(self.aturdido_hasta, fin)
+            return 'aturdido'
+        if ef.get('hp_tick', 0) < 0:
+            self.sangra_hasta = max(self.sangra_hasta, fin)
+            self.sangra_cada = max(1, ef.get('intervalo') or 1)
+            self.sangra_hp = abs(ef['hp_tick'])
+            self.sangra_ultimo = ahora
+            return 'sangrado'
+        if ef.get('vel_mov', 0) < 0:
+            self.lento_hasta = max(self.lento_hasta, fin)
+            return 'lento'
+        return None
+
+    def tick_sangrado(self):
+        """Cuanto dano por sangrado toca ahora, o 0."""
+        ahora = time.time()
+        if ahora >= self.sangra_hasta or not self.sangra_hp:
+            return 0
+        if ahora - self.sangra_ultimo < self.sangra_cada:
+            return 0
+        self.sangra_ultimo = ahora
+        d = min(self.hp, self.sangra_hp)
+        self.hp = max(0, self.hp - d)
+        if not self.hp:
+            self.muerto_en = ahora
+            self.en_combate_con = None
+        return d
 
     def recibir(self, ataque: int) -> int:
         """Aplica el dano y devuelve cuanto pego de verdad."""
@@ -368,6 +424,114 @@ EFECTO_GOLPE = 0x94
 _EFECTOS_CACHE = {}
 
 
+# Los ataques no solo hacen dano: magic.xml los encadena con OTRO hechizo,
+# el "transferido" (轉嫁法術), con su probabilidad (轉嫁機率). Medido:
+#
+#   601 Slicing Hit I   -> 1040 Sliced Hit I    100%  sangrado, -2 HP cada 2s por 10s
+#   701 Basic Beating I -> 1045 Basic Beat I     10%  ATURDE 2s (魔法狀態=暈眩)
+#   801 Basic Attack I  -> 1050 Basic Attack I   20%
+#   901 Basic Shot I    -> 1055 Basic Shot I     30%
+#   604 Tendon Chop I   -> 1041 Tendon Chop I         ralentiza, 移動速度 -10 por 5s
+#
+# El estado va en 魔法狀態: 暈眩 aturdir, 冰凍 congelar, 定身 inmovilizar,
+# 沉默 silenciar, 麻痺 paralizar, 捆綁 atar, 恐懼 miedo, 封招 sellar skills.
+ESTADOS = {
+    '暈眩': 'aturdido', '冰凍': 'congelado', '定身': 'inmovilizado',
+    '沉默': 'silenciado', '麻痺': 'paralizado', '捆綁': 'atado',
+    '恐懼': 'miedo', '封招': 'sellado', '反彈': 'reflejo',
+}
+
+
+_MAGIC_XML = None
+
+
+def _magic_xml():
+    """magic.xml crudo, indexado por numero. content.db no sirve para esto:
+    se construyo de una version sin las columnas 轉嫁法術 / 魔法狀態."""
+    global _MAGIC_XML
+    if _MAGIC_XML is not None:
+        return _MAGIC_XML
+    import re as _re
+    _MAGIC_XML = {}
+    raiz = pathlib.Path('G:/extracted_paks')
+    for pak in ('update26', 'UPDATE18', 'data1'):
+        f = raiz / pak / 'setting' / 'eng' / 'magic.xml'
+        if not f.exists():
+            continue
+        for l in f.read_text(encoding='utf-8', errors='replace').splitlines():
+            m = _re.search(r'編號="(\d+)"', l)
+            if m:
+                _MAGIC_XML[int(m.group(1))] = dict(
+                    _re.findall(r'(\S+?)="([^"]*)"', l))
+        if _MAGIC_XML:
+            break
+    return _MAGIC_XML
+
+
+def combo_de(magic_id: int):
+    """{'golpes', 'intervalo_ms', 'dano'} si el ataque pega varias veces.
+
+    Hay DOS formas de combo en magic.xml:
+
+    1. Directa, en el propio hechizo: 連擊次數 golpes y 連擊間隔 ms entre
+       cada uno. Cross Chop I (605) trae 連擊次數=2 y 連擊間隔=200, que es
+       el "121 x2" de la wiki.
+    2. Encadenada, via 轉嫁法術 a un hijo marcado 單體多次攻擊, donde el
+       numero de golpes es 動態參數2 del padre. Asi funciona Strangle Strike.
+    """
+    tabla = _magic_xml()
+    d = tabla.get(int(magic_id or 0))
+    if not d:
+        return None
+    def _n(v, x=0):
+        try: return int(float(v)) if v not in (None, '') else x
+        except (TypeError, ValueError): return x
+    golpes = _n(d.get('連擊次數'))
+    if golpes > 1:
+        return {'golpes': golpes,
+                'intervalo_ms': _n(d.get('連擊間隔'), 200),
+                'dano': _n(d.get('HP'))}
+    ef = efecto_secundario(magic_id)
+    if ef and ef.get('golpes', 1) > 1:
+        return {'golpes': ef['golpes'],
+                'intervalo_ms': _n(tabla.get(ef['magia'], {}).get('命中時間'), 200),
+                'dano': ef.get('dano_golpe', 0)}
+    return None
+
+
+def efecto_secundario(magic_id: int):
+    """{'magia', 'prob', 'estado', 'dur_ms', 'hp_tick', ...} o None.
+
+    Es el hechizo que el ataque encadena por 轉嫁法術 y con que probabilidad.
+    De ahi salen el sangrado de Slicing Hit, el aturdimiento de Basic Beating
+    y la ralentizacion de Tendon Chop.
+    """
+    tabla = _magic_xml()
+    d = tabla.get(int(magic_id or 0))
+    if not d or not d.get('轉嫁法術'):
+        return None
+    def _n(v, x=0):
+        try: return int(float(v)) if v not in (None, '') else x
+        except (TypeError, ValueError): return x
+    hijo = _n(d['轉嫁法術'])
+    h = tabla.get(hijo, {})
+    # Los ataques en combo encadenan un hijo marcado 單體多次攻擊 ("varios
+    # golpes sobre un solo objetivo"). El numero de golpes es 動態參數2 del
+    # PADRE y el dano de cada uno el HP del HIJO. Comprobado contra la wiki:
+    # Strangle Strike I es 2000 x5 y el XML da HP=2000 con 動態參數2=5; el V
+    # es 3200 x9 y da HP=3200 con 動態參數2=9.
+    golpes = _n(d.get('動態參數2'), 1) if h.get('單體多次攻擊') == '是' else 1
+    return {'magia': hijo, 'prob': _n(d.get('轉嫁機率')),
+            'nombre': h.get('名稱', ''),
+            'golpes': max(1, golpes),
+            'dano_golpe': _n(h.get('HP')) if h.get('單體多次攻擊') == '是' else 0,
+            'estado': ESTADOS.get(h.get('魔法狀態', ''), h.get('魔法狀態', '')),
+            'dur_ms': _n(h.get('持續時間')) * 1000,
+            'hp_tick': _n(h.get('HP')),
+            'intervalo': _n(h.get('作用間隔')),
+            'vel_mov': _n(h.get('移動速度'))}
+
+
 def efecto_de_ataque(magic_id: int) -> int:
     """Devuelve el numero de efecto visual para este ataque o skill de magic.xml."""
     global _EFECTOS_CACHE
@@ -501,6 +665,54 @@ def grupo_de(magic_id: int):
     return sorted(por_grupo.get(g, [magic_id]))
 
 
+# La animacion que viaja en el 0x000A. En Celestia se midieron 1480 (0x05c8)
+# y 1410 (0x0582) para el mismo Swordsman en sesiones distintas, y 951 para el
+# golpe del monstruo. NO es el 特效編號 del hechizo ni ningun campo de item.xml
+# que se haya encontrado: se probaron 常駐法術, 動態資料1 y 動態資料2 y no
+# coinciden. Queda como constante hasta poder medirlo con varias armas.
+# Segundos entre el 0x000A del golpe y el 0x000B con el numero. Medido en
+# mundo_161013_564371: 644, 647, 668, 687 y 690 ms en golpes limpios.
+# Cuanto se alejan los monstruos de su punto de aparicion al pasear. En
+# monster.xml el Little Slarm trae move_range=2, asi que apenas se despegan
+# del sitio; se amplia a peticion para que el mapa se vea mas vivo. El valor
+# del xml se respeta cuando es mayor.
+# Probabilidad, por golpe y por habilidad, de ganar un punto de skill exp.
+# Medido en mundo_181419_370379: 8 avisos de skill exp en 18 golpes propios
+# con cinco habilidades candidatas (Axe, Shield, Grapple, Garment, Reserve),
+# o sea 8/(18*5) = 9% por habilidad y por golpe.
+PROB_SKILL_EXP = 0.09
+
+RANGO_PASEO_MIN = 9
+PROB_PASEO = 0.22
+
+RETRASO_DANO = 0.65
+
+ANIM_GOLPE = 1480
+# Animacion del 0x000A de cada monstruo al pegar, medida en Celestia
+# (mundo_181419_370379): el Slarm usa 740 y la Lily 1009. No coincide con
+# el 投射特效 de monster.xml (la Lily tiene 50008 ahi), asi que por ahora
+# es una tabla por nombre con un valor por defecto.
+ANIM_POR_MONSTRUO = {'Slarm': 740, 'Little Slarm': 740, 'Lily': 1009}
+ANIM_MONSTRUO = 951
+
+
+def anim_de_monstruo(nombre: str) -> int:
+    for clave, val in ANIM_POR_MONSTRUO.items():
+        if clave.lower() in (nombre or '').lower():
+            return val
+    return ANIM_MONSTRUO
+
+
+def anim_de_arma(item_id: int = 0) -> int:
+    """Animacion del 0x000A para el arma equipada.
+
+    Por ahora devuelve siempre la medida en la captura. Antes se pasaba aqui
+    el 特效編號 del hechizo (136, 148...), que no es una animacion valida de
+    este mensaje y hacia que el cliente reprodujera cualquier cosa.
+    """
+    return ANIM_GOLPE
+
+
 def confirmar_cast(target: int, x: int, y: int, tipo: int = 1) -> bytes:
     """0x0006 s2c: confirma el cast y dice sobre que casilla ocurre.
 
@@ -523,8 +735,12 @@ def ataque(source: int, target: int, animacion: int = 0,
                        tipo & 0xFFFF, animacion & 0xFFFF)
 
 
+# El tipo del 0x000B distingue el golpe normal del CRITICO: en
+# mundo_181419_370379 los golpes de 45..92 llegan con tipo 1 y los de 98 y 101
+# con tipo 2, que es el numero con la estrella naranja.
 TIPO_DANO = 1
-TIPO_DANO_ALT = 2      # aparece tambien un tipo 2 en la misma captura
+TIPO_DANO_CRITICO = 2
+TIPO_DANO_ALT = 2      # alias historico
 
 
 def numero_flotante(entity_id: int, cantidad: int, tipo: int = TIPO_DANO) -> bytes:

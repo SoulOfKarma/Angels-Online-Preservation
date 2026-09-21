@@ -27,16 +27,19 @@ class TestTotemsAndSkills(unittest.TestCase):
         self.assertEqual(app._nombre_entidad(ses, 120), 'Breeze Totem')
 
     def test_totem_dialogues(self):
-        # When unassigned faction, clicking totem opens faction selection (10201..10204)
-        d_aurora = dialogos.propio('Aurora Totem', faccion="Heaven")
-        self.assertIsNotNone(d_aurora)
-        mid_a = struct.unpack_from('<I', d_aurora[0], 0)[0]
-        self.assertEqual(mid_a, 10201)
-
-        # When already assigned, clicking totem opens description (5136..5139)
-        d_aurora_joined = dialogos.propio('Aurora Totem', faccion="Aurora")
-        mid_aj = struct.unpack_from('<I', d_aurora_joined[0], 0)[0]
-        self.assertEqual(mid_aj, 5136)
+        # Un totem dice SIEMPRE su frase, sea cual sea la faccion. Antes,
+        # con faccion Heaven, devolvia el 10201, que es el dialogo del Angel
+        # Protector ("I'm the Angel Protector from Aurora City") y se veia al
+        # hablarle al totem del Lyceum.
+        for faccion in ("Heaven", "Aurora", "Dark"):
+            for nombre, esperado in (('Aurora Totem', 5136),
+                                     ('Dark City Totem', 5137),
+                                     ('Iron Totem', 5138),
+                                     ('Breeze Totem', 5139)):
+                d = dialogos.propio(nombre, faccion=faccion)
+                self.assertIsNotNone(d)
+                self.assertEqual(struct.unpack_from('<I', d[0], 0)[0], esperado,
+                                 f'{nombre} con faccion {faccion}')
 
         # Confirm choice option 10205 maps correctly for all entities
         resp_41 = dialogos.respuesta_a(10205, entidad=41)

@@ -1,0 +1,50 @@
+{
+ "_nota": "Los tornados con alas (sprite 60001). NO se clican: el dialogo salta al PISARLOS, y va sin retrato (val=0 en el 0x0012). Medido en Celestia, mundo_181419_370379: el unico mensaje del cliente antes del 0x0012 es un 0x0004 de movimiento, y la cabecera es id=5801 val=0 n_str=0 n_opt=6. El radio es 1: hay que estar ENCIMA del tornado. Con radio mayor saltaba desde media pantalla. El de vuelta NO pregunta: acercarse y ya teletransporta. Solo el del Lyceum abre el menu, porque tiene cinco destinos.",
+ "msg": 5801,
+ "opciones": [
+  5807,
+  5808,
+  5809,
+  5810,
+  5811,
+  5812
+ ],
+ "radio": 1,
+ "mapas": {
+  "41": [
+   {
+    "entity": 138,
+    "tile": [
+     25,
+     129
+    ],
+    "destino": 43,
+    "llegada": [
+     193,
+     20
+    ],
+    "nota": "Lyceum -> West PlaygroundA1",
+    "preguntar": true
+   }
+  ],
+  "43": [
+   {
+    "entity": 700,
+    "tile": [
+     193,
+     20
+    ],
+    "destino": 41,
+    "llegada": [
+     25,
+     129
+    ],
+    "dibujar": true,
+    "nota": "West PlaygroundA1 -> Lyceum. En Celestia esta a la derecha de (191,19), donde el jugador aparece al llegar.",
+    "preguntar": false
+   }
+  ]
+ },
+ "sprite": 60001,
+ "plantilla_hex": "8a00000002000000340300003a10000000000000000000000000000000000000000661ea00000481030000"
+}

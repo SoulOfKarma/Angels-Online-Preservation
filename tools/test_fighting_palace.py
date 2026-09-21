@@ -20,10 +20,26 @@ class TestFightingPalaceTutorial(unittest.TestCase):
             self.assertTrue(tile[0] > 0 and tile[1] > 0)
         
         spawns_57 = login.poblar(57)
-        # Debe contener a Angel Raphael (entidad 500) y a los Little Slarm
         eids = [struct.unpack_from('<I', s, 2)[0] for s in spawns_57 if len(s) >= 6]
-        self.assertIn(500, eids)
         self.assertIn(901, eids)
+        # Angel Raphael y los cuatro totems ya no llevan entity_id inventado:
+        # salen de fighting_palace.json con los ids y posiciones de Celestia,
+        # asi que se comprueban por nombre.
+        nul = bytes([0])
+        nombres = [s[18:34].split(nul)[0].decode('latin-1')
+                   for s in spawns_57 if len(s) >= 34]
+        self.assertEqual(nombres.count("Angel Raphael"), 10)
+        # Los totems no son NPC sino objetos de mapa (0x000E), asi que no
+        # aparecen entre los nombres de los 0x0008: se comprueban aparte.
+        # El registro incluye tambien a los diez Angel Raphael, porque su
+        # dialogo se resuelve por nombre y no por un entity_id fijo.
+        self.assertEqual(len(login.TOTEMS_PUESTOS), 50)
+        self.assertEqual(
+            sum(1 for v in login.TOTEMS_PUESTOS.values() if v == 'Angel Raphael'), 10)
+        for totem in ("Aurora Totem", "Dark City Totem",
+                      "Iron Totem", "Breeze Totem"):
+            self.assertEqual(
+                sum(1 for v in login.TOTEMS_PUESTOS.values() if v == totem), 10)
 
     def test_fighting_palace_dialogues(self):
         # Antes de matar 2 Little Slarm

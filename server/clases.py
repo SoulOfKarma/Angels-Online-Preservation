@@ -104,6 +104,26 @@ def _cargar_hechizos():
     return _HECHIZOS
 
 
+MSG_EXP = 501            # "Obtain <n> Exp."
+MSG_SKILL_EXP = 503        # "<skill> has obtained <n> Exp."
+MSG_SKILL_SUBE = 508       # "The level of the spell <skill> has been upgraded."
+
+
+def aviso_doble(msg_id: int, s1: str, s2: str = '', tipo: int = 2) -> bytes:
+    """0x000D con DOS cadenas, que es como llega la skill exp.
+
+    Medido: 0d 00 | f7 01 | 02 | "Sword" | "100" | 00 00
+    Antes la skill exp se mandaba como 0x000B tipo 4 con el numero de la
+    habilidad, y el cliente lo dibujaba como un numero flotante sobre el
+    personaje: ese era el "9" verde que aparecia junto al dano.
+    """
+    nul = bytes([0])
+    return (struct.pack('<HHB', 0x000D, msg_id, tipo)
+            + s1.encode('latin-1', 'replace') + nul
+            + s2.encode('latin-1', 'replace') + nul
+            + nul)
+
+
 def hechizos_iniciales(skill_ids):
     """Los tres hechizos de nivel 1 del arma elegida, en el orden de magic.xml.
 
@@ -308,15 +328,160 @@ def _arbol():
     return _ARBOL
 
 
+# Experiencia que pide cada nivel de habilidad, del 1 al 10. Medido en los
+# 98 arboles capturados: el offset 9 del registro vale 3 en nivel 1, 12 en el
+# 4, 16 en el 5, 30 en el 6, 40 en el 7, 55 en el 8, 70 en el 9 y 85 en el 10.
+# Comprobacion: un registro con exp=2 y req=3 da 66.67%, y el Grapple al
+# 62.50% de la captura es 5 de 8.
+# Como sube cada una de las 36 habilidades. Sale de setting/eng/skill.xml:
+# la descripcion lo dice en ingles y los atributos chinos lo marcan
+# (採藥 recolectar, 釣魚 pescar, 挖礦 minar, 伐木 talar, 製作武器 armas,
+# 製作防具 armaduras, 裁縫 costura, 工藝 artesania, 烹飪 cocina,
+# 近程攻擊 cuerpo a cuerpo, 遠程攻擊 a distancia).
+#
+# Antes se le daba experiencia a todas las habilidades en cada golpe, asi que
+# un espadachin subia Cook y Fishing pegandole a un Slarm.
+ACCION_POR_SKILL = {
+    # Ramas de magia: suben lanzando hechizos de su propia rama
+    1: 'magia', 2: 'magia', 3: 'magia', 4: 'magia',
+    # Armas: suben golpeando con ESE tipo de arma
+    9: 'arma', 10: 'arma', 11: 'arma', 17: 'arma', 30: 'arma', 14: 'arma',
+    # Recoleccion y produccion: suben haciendo esa actividad
+    20: 'recolectar', 21: 'recolectar', 22: 'recolectar', 23: 'recolectar',
+    26: 'producir', 27: 'producir', 28: 'producir', 29: 'producir', 31: 'producir',
+}
+
+# Lo que sube SIEMPRE con cada actividad, ademas de la habilidad concreta.
+# Definido por el usuario a partir de como funciona el juego:
+#
+#   melee (espada, hacha, lanza, arco, shadowblade) -> Enhance, Grapple,
+#       Reserve, Finesse y la armadura (Garment o Mantle, la que se lleve)
+#   arco -> ademas Snipe y Eagle Eye
+#   espada o hacha -> ademas Shield
+#   magia -> Curse, Hit, Staff Hit, Meditate y Vestment
+#   recolectar -> ademas Drive y Mechanism
+#
+# Como despues se filtra por las habilidades que el personaje REALMENTE tiene,
+# poner Garment y Mantle juntos no hace que suban las dos: sube la que lleve.
+PASIVAS_POR_ACCION = {
+    'melee': [12, 13, 15, 16, 33, 32],       # Enhance Grapple Reserve Finesse Garment Mantle
+    'distancia': [12, 13, 15, 16, 33, 32, 18, 19],   # + Snipe y Eagle Eye
+    'magia': [5, 7, 8, 6, 34],               # Curse Hit StaffHit Meditate Vestment
+    'recolectar': [25, 24],                  # Drive y Mechanism
+    'producir': [],
+}
+
+# Que armas arrastran ademas otra habilidad al golpear.
+EXTRA_POR_ARMA = {
+    9: [14],    # espada -> Shield
+    10: [14],   # hacha  -> Shield
+    17: [18, 19],   # arco -> Snipe y Eagle Eye
+}
+
+
+# Categoria del arma (物品類別 de item.xml) -> numero de habilidad.
+# Medido: el hacha Freshman (19832) es 錘, el escudo (19820) es 盾 y ademas
+# trae 技能限制1="14", y el sable (19826) es 刀.
+SKILL_POR_CATEGORIA = {
+    '劍': 9, '刀': 9,          # espada y sable -> Sword
+    '斧': 10, '錘': 10,        # hacha y martillo -> Axe
+    '槍': 11, '矛': 11,        # lanza -> Spear
+    '弓': 17, '弩': 17,        # arco y ballesta -> Longbow
+    '盾': 14,                  # escudo -> Shield
+    '杖': 8,                   # baston -> Staff Hit
+    '匕首': 30,                # daga -> ShadowBlade
+}
+_CAT_ITEM = None
+
+
+def skill_de_item(item_id: int):
+    """El numero de habilidad que entrena ese item equipado, o None.
+
+    Primero mira 技能限制1 de item.xml, que en el escudo Freshman vale 14;
+    si no lo trae, traduce su 物品類別. Antes se comparaba el item contra
+    ARMA_POR_SKILL, que solo conoce las armas Freshman, y ademas se miraba
+    una sola ranura: por eso un Protector con hacha y escudo no subia Shield.
+    """
+    global _CAT_ITEM
+    if _CAT_ITEM is None:
+        import sqlite3
+        _CAT_ITEM = {}
+        db = pathlib.Path(__file__).parent.parent / 'corpus' / 'content.db'
+        if db.exists():
+            try:
+                con = sqlite3.connect(db)
+                for iid, cat, lim in con.execute(
+                        'select id, 物品類別, 技能限制1 from item'):
+                    try:
+                        _CAT_ITEM[int(iid)] = (cat or '', lim or '')
+                    except (TypeError, ValueError):
+                        continue
+                con.close()
+            except Exception:
+                pass
+    cat, lim = _CAT_ITEM.get(int(item_id or 0), ('', ''))
+    try:
+        if lim and int(float(lim)) in ACCION_POR_SKILL:
+            return int(float(lim))
+    except (TypeError, ValueError):
+        pass
+    return SKILL_POR_CATEGORIA.get(cat)
+
+
+def skills_de_equipo(inventario):
+    """Las habilidades de arma que entrena TODO lo equipado (ambas manos)."""
+    salida = set()
+    for ranura, item_id in (inventario or {}).items():
+        if not isinstance(ranura, int) or ranura > 12:
+            continue
+        sid = skill_de_item(item_id)
+        if sid:
+            salida.add(sid)
+    return salida
+
+
+def skills_que_suben(accion: str, skills_arma=()):
+    """Las habilidades que ganan experiencia con esa accion.
+
+    `skills_arma` son las de lo equipado (puede haber varias: hacha y escudo).
+    Se les suma lo que arrastre cada arma, por ejemplo Shield con espada o
+    hacha, y Snipe con arco.
+    """
+    salida = set(PASIVAS_POR_ACCION.get(accion, []))
+    salida |= {sid for sid, a in ACCION_POR_SKILL.items() if a == accion}
+    for sid in (skills_arma or ()):
+        salida.add(sid)
+        salida.update(EXTRA_POR_ARMA.get(sid, []))
+    return salida
+
+
+EXP_POR_NIVEL_SKILL = [3, 6, 8, 12, 16, 30, 40, 55, 70, 85]
+
+
+def exp_requerida_skill(nivel: int) -> int:
+    if nivel < 1:
+        return EXP_POR_NIVEL_SKILL[0]
+    if nivel > len(EXP_POR_NIVEL_SKILL):
+        return EXP_POR_NIVEL_SKILL[-1]
+    return EXP_POR_NIVEL_SKILL[nivel - 1]
+
+
 def arbol(ids) -> bytes:
-    """Sub-mensaje 0x001C con las 36 habilidades, nivel real y las seis elegidas marcadas."""
+    """Sub-mensaje 0x001C con las 36 habilidades, su nivel y su experiencia.
+
+    Cada registro son 14 bytes: [skill_id][nivel][0][nivel][0][LE16 exp]
+    [0][0][requerido][0][0][0][puesto]. Antes solo se llenaba el nivel, asi
+    que el panel mostraba siempre 0.00%.
+    """
     a = _arbol()
     niveles = {}
     lista_ids = []
+    exps = {}
     for item in ids:
         if isinstance(item, (tuple, list)):
             sid = item[0]
             niveles[sid] = item[1] if len(item) > 1 else 1
+            exps[sid] = item[2] if len(item) > 2 else 0
             lista_ids.append(sid)
         else:
             niveles[item] = 1
@@ -326,7 +491,11 @@ def arbol(ids) -> bytes:
     salida = bytearray(a['cabecera'])
     for puesto, sid in enumerate(elegidas + resto):
         r = bytearray(a['regs'][sid])
-        r[1] = max(1, min(100, niveles.get(sid, 1)))
+        nv = max(1, min(100, niveles.get(sid, 1)))
+        r[1] = nv
+        r[3] = nv
+        struct.pack_into('<H', r, 5, max(0, min(65535, exps.get(sid, 0))))
+        r[9] = min(255, exp_requerida_skill(nv))
         r[13] = puesto + 1 if puesto < len(elegidas) else 0
         salida += r
     return struct.pack('<H', 0x001C) + bytes(salida)
