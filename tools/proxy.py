@@ -253,16 +253,24 @@ class Proxy:
         s2 = await asyncio.start_server(mundo, '127.0.0.1', self.wpuerto_local)
         log.info('MUNDO    127.0.0.1:%s -> (el que diga el redirect)', self.wpuerto_local)
 
-        s3 = await asyncio.start_server(
-            functools.partial(self.maneja, puerto_destino=self.fport,
-                              etiqueta='archivos', reescribe=False),
-            '127.0.0.1', self.fport)
-        log.info('ARCHIVOS 127.0.0.1:%s -> %s:%s', self.fport, self.destino, self.fport)
+        # Hay servidores que usan el mismo puerto para login y para archivos
+        # (Celestia: port 30000 y fport 30000). Ahi no se puede levantar un
+        # segundo listener: las dos cosas entran por el de login.
+        s3 = None
+        if self.fport != self.puerto:
+            s3 = await asyncio.start_server(
+                functools.partial(self.maneja, puerto_destino=self.fport,
+                                  etiqueta='archivos', reescribe=False),
+                '127.0.0.1', self.fport)
+            log.info('ARCHIVOS 127.0.0.1:%s -> %s:%s',
+                     self.fport, self.destino, self.fport)
+        else:
+            log.info('ARCHIVOS comparten el puerto de login (fport = port = %s)',
+                     self.fport)
         log.info('')
         log.info('Arranca el cliente. Todo queda en logs/proxy/')
-        async with s1, s2, s3:
-            await asyncio.gather(s1.serve_forever(), s2.serve_forever(),
-                                 s3.serve_forever())
+        servidores = [s1, s2] + ([s3] if s3 else [])
+        await asyncio.gather(*(s.serve_forever() for s in servidores))
 
 
 def main():
