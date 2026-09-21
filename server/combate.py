@@ -437,6 +437,48 @@ def muerte_monstruo(monstruo_id: int, jugador_id: int) -> bytes:
     return struct.pack('<HIII', 0x000A, monstruo_id, jugador_id, 7)
 
 
+# El numero que se ve flotar sobre quien recibe el golpe NO viaja en 0x0011
+# (ese mensaje es el "cast": sprite, duracion, animacion y spell_id). Va en un
+# 0x000B propio, dirigido a la entidad que RECIBE, con el formato que ya usaba
+# exp_paquete(). Medido en logs/proxy/mundo_152251_735154_s2c.bin, donde la
+# secuencia de un golpe es:
+#
+#   0x0013 [monstruo] code=1 arg=100   vida antes, en porcentaje
+#   0x000A [yo][monstruo] tipo anim    el golpe
+#   0x0013 [monstruo] code=1 arg=0     vida despues
+#   0x000B [monstruo] tipo=1 dano=46   <-- el numero
+#   0x000A [monstruo][yo] 07 00 00 00  muerte
+#   0x001D [yo] code=0x20 valor        experiencia
+#   0x0007 [monstruo] 02               desaparece
+# 0x000A no es "[atacante][0][0]": son 12 bytes
+#     [u4 source][u4 target][u2 tipo][u2 animacion]
+# Medido en mundo_152251_735154_s2c.bin. Tipos vistos: 1 y 3 en los golpes,
+# 7 en la muerte (con animacion 0). Las animaciones varian por golpe (634,
+# 951, 1410), asi que el campo es el efecto a reproducir, no el dano.
+# Mandar el dano ahi -- que es lo que se hacia -- deja el tipo en un valor
+# sin sentido y el cliente reproduce cualquier cosa.
+TIPO_GOLPE = 1
+TIPO_GOLPE_ALT = 3
+TIPO_MUERTE = 7
+
+
+def ataque(source: int, target: int, animacion: int = 0,
+           tipo: int = TIPO_GOLPE) -> bytes:
+    """0x000A: un golpe de `source` sobre `target` con su animacion."""
+    return struct.pack('<HIIHH', 0x000A, source, target,
+                       tipo & 0xFFFF, animacion & 0xFFFF)
+
+
+TIPO_DANO = 1
+TIPO_DANO_ALT = 2      # aparece tambien un tipo 2 en la misma captura
+
+
+def numero_flotante(entity_id: int, cantidad: int, tipo: int = TIPO_DANO) -> bytes:
+    """0x000B: el numero que flota sobre `entity_id`. Mismo formato que exp_paquete."""
+    return struct.pack('<HIBIH', 0x000B, entity_id, tipo,
+                       max(0, min(0xFFFFFFFF, int(cantidad))), 0)
+
+
 def numero_de_dano(atacante: int, objetivo: int, dano: int,
                    ataque: int = ATAQUE_NORMAL, efecto: int = EFECTO_GOLPE):
     """Sub-mensaje 0x0011 que dibuja el numero del golpe y reproduce el sprite de ataque (fase 0x00)."""

@@ -1772,3 +1772,87 @@ y queda anotada la unica respuesta medida (5798 -> 5800).
 Para resolverlo del todo hacen falta capturas eligiendo opciones en varios
 NPC: con cinco o seis casos se ve si el destino esta en msg.xml, si es una
 tabla aparte o si lo decide el servidor.
+
+
+## FUENTE NUEVA: el repo banana (2026-09-21)
+
+https://github.com/fygonzalo/banana documenta el protocolo de AO en specs
+Kaitai (`specs/game/{client,server}/<numero>_<nombre>.yaml`). Es trabajo de
+terceros, asi que **no cuenta como verificado**: cuenta como hipotesis muy
+buena. Lo que ya cruzamos contra nuestras capturas coincide, lo cual le da
+mucho peso.
+
+Coincide con lo que teniamos medido: 0x0002 authenticate, 0x0005 interact_npc,
+0x0027 store_buy, 0x003A choose_class, 0x001A items, 0x001B items_update,
+0x000C game_address, 0x000D system_log, 0x0012 show_dialog, 0x0008 spawn_npc,
+0x000E spawn_object, 0x0128 broadcast, 0x0042 set_stats.
+
+Nos CORRIGE o agrega:
+
+- **0x0011 s2c NO es "numero de dano": es `cast`.** Sus 23 bytes son
+  [u1 sprite][u1 unk][u4 source][u4 target][u4 x][u4 y][u2 duration]
+  [u1 animation][u2 spell_id]. Nuestro `numero_de_dano()` escribe el dano en
+  el offset 18, que segun el spec es la DURACION del cast, y deja la posicion
+  (offsets 10 y 14) en cero. Es coherente con que el usuario no viera numeros
+  de dano. PENDIENTE: confirmar con una captura de combate de Celestia y
+  averiguar en que mensaje viaja el numero. Candidato: 0x000B.
+- **0x000B s2c = `heal`**: [u4 entity][u1 type][u4 amount][u2 unk]. Es
+  exactamente el formato de nuestro `exp_paquete()`. type 1=HP, 2=MP; el 4 lo
+  usamos para skill exp. Es el mensaje de los numeros flotantes.
+- **0x001D s2c = `entity_action`**: [u4 target][u1 count] y luego, por accion,
+  [u1 code][argumentos]. Codigos: 1 equip [u4 slot][u4 item], 3 cooldown
+  [u4 objeto][u4 tiempo], 4 **buff** [u4 efecto][u4 tiempo], 10 change_skill,
+  12 choose_profession. El 12 coincide con lo que ya habiamos medido, y el 9
+  que usamos para otorgar hechizos no esta en su lista pero funciona.
+- **0x005B s2c = `spell_bar`**: 24 ranuras de [u1 type][u4 code][u4 unk], con
+  type 1=hechizo, 2=consumible, 3=gesto, 4=item. VERIFICADO en captura propia:
+  logs/proxy/mundo_132653_320706_s2c.bin trae uno de 218 bytes con F1/F2/F3 =
+  601/602/603 y F12 = type 2 code 47382. Nuestro `_barra()` ya lo construye.
+- **0x005F s2c = `store`** y **0x0061 s2c = `eshop_items`**: la ventana de
+  tienda que no abre y el Item Mall.
+- **0x002E c2s = `item_consume`** y 0x002F item_split: los consumibles que no
+  se gastan.
+- **0x0044 c2s = `set_shortcut`**: asignar una ranura de la barra.
+- Otros sin usar todavia: 0x0003 teleport, 0x0007 remove_entity, 0x0016 rotate,
+  0x0019 emote, 0x004E load_bank, 0x0059 load_guild_bank, toda la rama de
+  amigos (0x0027-0x0040) y de liga (0x0053-0x0056).
+
+Opcodes que aparecen en la captura de Celestia y que banana NO documenta:
+0x0010, 0x0014, 0x0149, 0x016E, 0x016F, 0x0179, 0x018A.
+
+
+## COMBATE MEDIDO EN CELESTIA (2026-09-21)
+
+Captura propia: logs/proxy/mundo_152251_735154_s2c.bin, Swordsman nivel 6-8 en
+el Fighting Palace. Secuencia completa de un golpe:
+
+    0x0013 [monstruo] code=0x0001 arg=100    vida antes, en porcentaje
+    0x000A [yo][monstruo] tipo=3 anim=1410   el golpe
+    0x0013 [monstruo] code=0x0001 arg=0      vida despues
+    0x000B [monstruo] tipo=1 cantidad=46     EL NUMERO DE DANO
+    0x000A [monstruo][yo] tipo=7 anim=0      muerte
+    0x001D [yo] code=0x20 valor=2600         experiencia
+    0x0007 [monstruo] 02                     desaparece
+
+Dos errores nuestros que esto deja en evidencia:
+
+1. **El numero de dano va en 0x000B, no en 0x0011.** 0x0011 es el "cast" y no
+   tiene campo de dano: el offset 18 donde lo escribiamos es la DURACION.
+   Arreglado con `combate.numero_flotante()`, byte a byte igual a la captura.
+2. **0x000A es [u4 source][u4 target][u2 tipo][u2 animacion].** Mandabamos
+   target=0 y el dano metido donde van tipo y animacion, asi que el cliente
+   reproducia un efecto arbitrario. Arreglado con `combate.ataque()`, los tres
+   casos de la captura (tipo 1, tipo 3 y la muerte) se reproducen exactos.
+
+Lo que YA estaba bien y no se toco:
+
+- El buff sobre uno mismo: `efecto_magia_self_inicio(282, 133, 602, 100)` sale
+  identico al 0x0011 de la captura. El sprite es el 特效編號 de magic.xml
+  (Swiftness Song I = 602 -> 133) y ya se lee bien.
+- El 0x001D de buff, code 4 [efecto][tiempo], y el de cooldown, code 3.
+- La barra F1..F12 (0x005B): verificada con F1/F2/F3 = 601/602/603.
+
+Pendiente de medir: de donde sale el numero de animacion del 0x000A (se vieron
+634, 951 y 1410 en golpes distintos; no coincide con el 特效編號 del hechizo).
+Y por que un golpe con habilidad pega tan poco: Little Slarm (monster.xml id
+224) tiene defensa 0, asi que la formula max(1, ataque - defensa) no lo explica.

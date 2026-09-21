@@ -697,9 +697,9 @@ class Servidor:
                                         p.hp = max(0, p.hp - suyo)
                                         pct_hp = max(0, min(100, round(100 * p.hp / p.hp_max)))
                                         ef_atk = m.proj_ef if m.proj_ef > 0 else 148
-                                        ses.enviar(_cb.empieza_ataque(m.entity_id),
-                                                   *_cb.numero_de_dano(m.entity_id, yo, suyo, ataque=656, efecto=ef_atk),
+                                        ses.enviar(_cb.ataque(m.entity_id, yo, ef_atk),
                                                    _cb.numero_de_dano(m.entity_id, yo, suyo, ataque=656, efecto=ef_atk),
+                                                   _cb.numero_flotante(yo, suyo),
                                                    _cb.atributo(yo, pct_hp, _cb.VIDA))
                                         if p.hp <= 0:
                                             import clases as _cl
@@ -928,7 +928,6 @@ class Servidor:
                 dano_extra = abs(mag.get('hp', 0))
                 atk_magic = tipo
                 atk_efecto = _cb.efecto_de_ataque(tipo)
-                # Enviar cooldown de la habilidad activa (kind=3) y GCD
                 # Enviar cooldown de TODAS las habilidades (kind=3) igual que el servidor real
                 # El servidor real manda kind=3 con cd_ms para cada skill al usar una habilidad
                 cd_ms = mag.get('cd_ms', 1000)
@@ -1002,7 +1001,6 @@ class Servidor:
             pkgs_sk = _otorgar_skill_exp(ses, ses.personaje, yo, arma_puesta=arma_puesta,
                                          magic_id=tipo if tipo != _cb.ATAQUE_NORMAL else 0)
 
-            # Enviar animacion de ataque 0x000A + dano visual 0x0011 + vida monstruo 0x0013 + SP
             # S2C 0x0006 confirmacion de ataque: el servidor confirma que el golpe llego al objetivo.
             # Sin este paquete el cliente no reproduce el sprite de efecto del ataque.
             # Formato: [U8 01][U8 00][LE32 target_entity][U8 seq][U8 00][U8 00][U8 00][LE32 0xCB000000_pad]
@@ -1010,10 +1008,11 @@ class Servidor:
             ses._atk_seq = (atk_seq + 3) & 0xFF
             atk_confirm = struct.pack('<BBIBBBBB', 0x01, 0x00, objetivo, atk_seq, 0x00, 0x00, 0x00, 0xCB) + b'\x00\x00\x00\x00'
             # Enviar animacion de ataque 0x000A + confirmacion 0x0006 + dano visual 0x0011 + vida monstruo 0x0013 + SP
-            ses.enviar(_cb.empieza_ataque(yo),
+            ses.enviar(_cb.ataque(yo, objetivo, atk_efecto),
                        struct.pack('<H', 0x0006) + atk_confirm,
                        _cb.atributo(objetivo, m.porcentaje),
                        _cb.numero_de_dano(yo, objetivo, dano, atk_magic, efecto=atk_efecto),
+                       _cb.numero_flotante(objetivo, dano),
                        *pkgs_sk,
                        *pkgs_sp)
             try:
@@ -1057,13 +1056,15 @@ class Servidor:
                             return
 
                         ef_mon = m.proj_ef if m.proj_ef > 0 else 148
-                        ses.enviar(_cb.empieza_ataque(objetivo),
+                        ses.enviar(_cb.ataque(objetivo, yo, ef_mon),
                                    _cb.numero_de_dano(objetivo, yo, suyo, ataque=656, efecto=ef_mon),
+                                   _cb.numero_flotante(yo, suyo),
                                    _cb.atributo(yo, ses.personaje.hp, _cb.KIND_HP))
                     else:
                         ef_mon = m.proj_ef if m.proj_ef > 0 else 148
-                        ses.enviar(_cb.empieza_ataque(objetivo),
-                                   _cb.numero_de_dano(objetivo, yo, suyo, ataque=656, efecto=ef_mon))
+                        ses.enviar(_cb.ataque(objetivo, yo, ef_mon),
+                                   _cb.numero_de_dano(objetivo, yo, suyo, ataque=656, efecto=ef_mon),
+                                   _cb.numero_flotante(yo, suyo))
                 log.debug(f"[{addr}] pego {dano} al {m.nombre} "
                           f"({m.porcentaje}%), contraataque procesado")
                 return
@@ -1135,15 +1136,9 @@ class Servidor:
                     salida_combate.append(_cl.aviso(f"Level Up! Reached Level {p.nivel}!", tipo=0, msg_id=_cl.MSG_ITEM))
                     salida_combate.append(_cb.atributo(yo, p.hp, _cb.KIND_HP))
                     salida_combate.append(_cb.atributo(yo, p.mp, _cb.KIND_MP))
-                    # 0x001D KIND 29: Actualiza el NUMERO DE NIVEL (LV) en la UI superior izquierda
-                    salida_combate.append(struct.pack('<HIBBII', 0x001D, yo, 1, 29, p.nivel, 0))
-                    # 0x001D KIND 30: Experiencia del nivel actual
-                    salida_combate.append(struct.pack('<HIBBII', 0x001D, yo, 1, 30, p.exp, 0))
-                    # 0x001D KIND 31: Experiencia para el siguiente nivel
                     # 0x001D compound level-up: opcode + entity + count=4 + 4x(kind + v1 + v2)
                     # Kind 29=level, 30=current_exp, 31=exp_to_next, 32=exp_bar
                     exp_sig = _cb.exp_para_nivel(p.nivel + 1)
-                    salida_combate.append(struct.pack('<HIBBII', 0x001D, yo, 1, 31, exp_sig, 0))
                     salida_combate.append(
                         struct.pack('<HIB', 0x001D, yo, 4) +
                         struct.pack('<BII', 29, p.nivel, 0) +
@@ -1152,7 +1147,6 @@ class Servidor:
                         struct.pack('<BII', 32, p.exp, 0)
                     )
                     salida_combate.append(_stats_ses(ses))
-                    log.info(f"[{addr}] {p.nombre} SUBIO A NIVEL {p.nivel} (enviado 0x001D kind=29)!")
                     log.info(f"[{addr}] {p.nombre} SUBIO A NIVEL {p.nivel} (enviado 0x001D compound)!")
 
                 # Paquetes oficiales para EXP y actualizacion de barra
