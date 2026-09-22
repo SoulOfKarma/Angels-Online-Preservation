@@ -139,6 +139,7 @@ def personaje_de(cuenta, indice=0):
         mp=p.get('mp', 154), mp_max=p.get('mp_max', 154),
         # Las claves de JSON siempre son texto; las ranuras son numeros.
         inventario={int(k): v for k, v in p.get('inventario', {}).items()},
+        cantidades={int(k): int(v) for k, v in p.get('cantidades', {}).items()},
         tutorial=p.get('tutorial', 0),
         oro=p.get('oro', 0),
         stage=p.get('stage_id', 51),
@@ -150,8 +151,34 @@ def personaje_de(cuenta, indice=0):
     )
 
 
-def guardar_inventario(usuario: str, char_id: int, bolsa: dict):
-    """Deja el inventario en disco tras mover un item."""
+def borrar_personaje(usuario: str, ranura: int):
+    """Borra el personaje de esa ranura. Devuelve su char_id, o None.
+
+    En el juego real el borrado tiene un contador de ocho horas (en la
+    captura llega como 28799 segundos en la lista de personajes). Aqui se
+    borra en el acto, que es lo util para probar.
+    """
+    d = json.loads(ARCHIVO.read_text(encoding='utf-8'))
+    c = d['cuentas'].get(usuario)
+    if not c:
+        return None
+    for i, p in enumerate(c.get('personajes', [])):
+        if p.get('ranura') == ranura:
+            char_id = p.get('char_id')
+            del c['personajes'][i]
+            ARCHIVO.write_text(json.dumps(d, ensure_ascii=False, indent=1),
+                               encoding='utf-8')
+            return char_id
+    return None
+
+
+def guardar_inventario(usuario: str, char_id: int, bolsa: dict,
+                       cantidades: dict = None):
+    """Deja el inventario en disco tras mover un item.
+
+    Las cantidades van aparte para no cambiar el formato de 'inventario',
+    que es {ranura: item_id}. Una casilla que no aparece lleva una unidad.
+    """
     d = json.loads(ARCHIVO.read_text(encoding='utf-8'))
     c = d['cuentas'].get(usuario)
     if not c:
@@ -159,6 +186,10 @@ def guardar_inventario(usuario: str, char_id: int, bolsa: dict):
     for p in c.get('personajes', []):
         if p.get('char_id') == char_id:
             p['inventario'] = {str(k): v for k, v in sorted(bolsa.items())}
+            if cantidades is not None:
+                p['cantidades'] = {str(k): int(v)
+                                   for k, v in sorted(cantidades.items())
+                                   if int(v) > 1 and int(k) in bolsa}
             ARCHIVO.write_text(json.dumps(d, indent=2, ensure_ascii=False),
                                encoding='utf-8')
             return

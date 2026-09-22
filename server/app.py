@@ -43,6 +43,24 @@ REVIVIR_LYCEUM = (173, 91)
 _PORTALES = None
 
 
+def critico_jugador(ses) -> int:
+    """El Critical del personaje (en %), de su hoja de stats."""
+    try:
+        import struct as _s
+        return _s.unpack_from('<H', _stats_ses(ses), 66 + 2)[0]
+    except Exception:
+        return 5
+
+
+def defensa_jugador(ses) -> int:
+    """El Dfs del personaje, leido de su hoja de stats."""
+    try:
+        import struct as _s
+        return _s.unpack_from('<I', _stats_ses(ses), 38)[0]
+    except Exception:
+        return 0
+
+
 def skills_arma_ses(ses):
     """Las habilidades de arma de lo equipado."""
     import clases as _cl
@@ -137,6 +155,41 @@ def _precio_item(item_id: int) -> int:
         return 0
 
 
+# Lo que descuenta la tienda sobre el precio de lista al comprar. La Red
+# Potion 1 tiene price 40 en item.xml; el cliente la enseña a 35 en la
+# ventana de compra (40 * 7/8) y Celestia cobro 34 en las dos capturas
+# (476 por catorce, 680 por veinte). Se usa el 7/8 que muestra el cliente
+# para que la cuenta le cuadre al jugador.
+DESCUENTO_COMPRA = 7 / 8
+
+
+def _precio_compra(item_id: int) -> int:
+    """Lo que cuesta comprar ese item en una tienda."""
+    return max(1, int(_precio_item(item_id) * DESCUENTO_COMPRA))
+
+
+def _precio_venta(item_id: int) -> int:
+    """Lo que paga la tienda por ese item.
+
+    item.xml trae su propia columna de precio de venta, distinta de price:
+    la Red Potion 1 vale 40 de compra y 12 de venta, y son justo los numeros
+    de la captura (11 pociones dieron 132 de oro). Antes se usaba price // 2,
+    que habria dado 20. El nombre de esa columna quedo ilegible al montar la
+    base, asi que se lee por posicion; el equipo la trae vacia y para eso se
+    sigue usando la mitad del precio de compra.
+    """
+    import sqlite3
+    db = pathlib.Path(__file__).parent.parent / 'corpus' / 'content.db'
+    try:
+        r = sqlite3.connect(db).execute(
+            'select * from item where id=?', (str(item_id),)).fetchone()
+        if r and len(r) > 4 and r[4]:
+            return max(1, int(float(r[4])))
+    except Exception:
+        pass
+    return max(1, _precio_item(item_id) // 2)
+
+
 def _ranura_libre(bolsa, desde=20):
     """Primera casilla vacia de la mochila."""
     r = desde
@@ -168,7 +221,8 @@ def _final_tutorial(ses, addr):
     ses.monstruos = _monstruos_de(clases.STAGE_LYCEUM)
     ses.enviar(clases.cambiar_mapa(clases.STAGE_LYCEUM))
     if getattr(ses, 'usuario', None):
-        cuentas.guardar_inventario(ses.usuario, cid, bolsa)
+        cuentas.guardar_inventario(ses.usuario, cid, bolsa,
+                                   _cantidades(ses))
         cuentas.guardar_mapa(ses.usuario, cid, clases.STAGE_LYCEUM,
                              *clases.TILE_LYCEUM)
     log.info(f"[{addr}] tutorial terminado: set completo, "
@@ -202,23 +256,151 @@ def _premio(srv, ses, addr, etapa):
         # entrada de la ranura 0 y no hay un mensaje de "cambio de oro"
         # identificado.
         if r['oro']:
-            ses.enviar(inv.completo(cid, _con_oro(ses)))
+            ses.enviar(inv.completo(cid, _con_oro(ses), _dueno(ses)))
         if getattr(ses, 'usuario', None):
-            cuentas.guardar_inventario(ses.usuario, cid, ses.inventario)
+            cuentas.guardar_inventario(ses.usuario, cid, ses.inventario,
+                                   _cantidades(ses))
         log.info(f"[{addr}] tutorial: entregado el premio de la etapa {etapa}")
 
 
+def _cantidades(ses) -> dict:
+    """Cuantas unidades hay en cada casilla. La casilla que no esta aqui
+    lleva una sola."""
+    c = getattr(ses, 'cantidades', None)
+    if c is None:
+        c = {}
+        ses.cantidades = c
+    return c
+
+
+def _cant_de(ses, ranura: int) -> int:
+    return max(1, int(_cantidades(ses).get(int(ranura), 1)))
+
+
+def _instancias(ses) -> dict:
+    """El id de instancia de ocho bytes de cada casilla ocupada."""
+    m = getattr(ses, 'instancias', None)
+    if m is None:
+        m = {}
+        ses.instancias = m
+    return m
+
+
+def _inst(ses, ranura: int) -> bytes:
+    """La instancia de esa casilla, creandola la primera vez."""
+    import inventario as inv
+    m = _instancias(ses)
+    r = int(ranura)
+    if r not in m:
+        m[r] = inv.instancia_nueva()
+    return m[r]
+
+
+def _mover_inst(ses, origen: int, destino: int):
+    """La instancia viaja con el item cuando cambia de casilla."""
+    m = _instancias(ses)
+    v = m.pop(int(origen), None)
+    if v is not None:
+        m[int(destino)] = v
+
+
+def _meter(ses, item_id: int, n: int = 1) -> int:
+    """Mete n unidades en la mochila y devuelve la casilla que las lleva.
+
+    Si el item se apila y ya hay un monton suyo, se suma ahi en vez de
+    ocupar una casilla nueva: es lo que hace el juego real y lo que faltaba
+    para que las galletas y el pasto no llenaran el inventario.
+    """
+    import inventario as inv
+    bolsa = ses.inventario
+    item_id = int(item_id)
+    n = max(1, int(n))
+    if inv.es_apilable(item_id):
+        for ranura, it in bolsa.items():
+            r = int(ranura)
+            if r == inv.RANURA_ORO or int(it) != item_id:
+                continue
+            if inv.es_equipo(r):
+                continue
+            _cantidades(ses)[r] = _cant_de(ses, r) + n
+            return r
+    r = _ranura_libre(bolsa)
+    bolsa[r] = item_id
+    _instancias(ses)[r] = inv.instancia_nueva()
+    if n > 1:
+        _cantidades(ses)[r] = n
+    return r
+
+
+def _sacar(ses, ranura: int, n: int = 1) -> int:
+    """Quita n unidades de esa casilla y devuelve cuantas quito de verdad."""
+    ranura = int(ranura)
+    bolsa = ses.inventario
+    if ranura not in bolsa:
+        return 0
+    hay = _cant_de(ses, ranura)
+    quita = min(hay, max(1, int(n)))
+    if quita >= hay:
+        del bolsa[ranura]
+        _cantidades(ses).pop(ranura, None)
+        _instancias(ses).pop(ranura, None)
+    else:
+        _cantidades(ses)[ranura] = hay - quita
+    return quita
+
+
 def _con_oro(ses):
-    """El inventario con la cantidad de oro en su ranura."""
+    """El inventario con la cantidad de cada casilla."""
     import inventario as inv
     out = []
     for ranura, item_id in ses.inventario.items():
         r = int(ranura)
         if r == inv.RANURA_ORO:
-            out.append((r, int(item_id), getattr(ses, 'oro', 0)))
+            out.append((r, int(item_id), getattr(ses, 'oro', 0), _inst(ses, r)))
         else:
-            out.append((r, int(item_id), 1))
+            out.append((r, int(item_id), _cant_de(ses, r), _inst(ses, r)))
     return out
+
+
+def _dueno(ses):
+    """La entidad del personaje, que es lo que va en los mensajes de
+    inventario; no es lo mismo que su char_id."""
+    p = getattr(ses, 'personaje', None)
+    return getattr(p, 'entity_id', None) or getattr(ses, 'entity_id', None)
+
+
+def _refrescar(ses, ranuras, con_oro=False):
+    """Los 0x001B de las casillas que cambiaron.
+
+    El servidor real no reenvia el inventario entero tras comprar, vender o
+    usar algo: manda una linea por casilla tocada. Con el 0x001A completo el
+    cliente se quedaba con lo que ya tenia pintado y los items vendidos
+    seguian apareciendo en la mochila.
+    """
+    import inventario as inv
+    cid = ses.personaje.char_id if ses.personaje else 4980
+    fuera = []
+    if con_oro:
+        fuera.append(inv.actualizar_ranura(cid, inv.RANURA_ORO, 1,
+                                           getattr(ses, 'oro', 0),
+                                           _inst(ses, inv.RANURA_ORO),
+                                           _dueno(ses)))
+    for r in sorted(set(int(x) for x in ranuras)):
+        if r in ses.inventario:
+            fuera.append(inv.actualizar_ranura(cid, r, int(ses.inventario[r]),
+                                               _cant_de(ses, r), _inst(ses, r),
+                                               _dueno(ses)))
+        else:
+            dueno = ses.personaje.entity_id if ses.personaje else cid
+            fuera.append(inv.vaciar_ranura(dueno, r))
+    return fuera
+
+
+def _guardar_bolsa(ses, cid):
+    """Guarda inventario y cantidades juntos."""
+    if getattr(ses, 'usuario', None):
+        cuentas.guardar_inventario(ses.usuario, cid, ses.inventario,
+                                   _cantidades(ses))
 
 
 def _nombre_item(item_id: int) -> str:
@@ -518,6 +700,7 @@ class Servidor:
                 grab.entrada(data)
                 for opcode, cuerpo in ses.alimentar(data):
                     ses.vistos[opcode] += 1
+                    grab.submensaje('c2s', opcode, cuerpo)
                     m, d = ses.parsear(opcode, cuerpo)
                     if m is None:
                         self.desconocidos[opcode] += 1
@@ -645,6 +828,27 @@ class Servidor:
                      f"nivel={nuevo['nivel']} mapa={nuevo['stage_id']} -> guardado")
             return
 
+        if opcode == 0x0004 and ses.rol == 'login':
+            # BORRAR PERSONAJE. Medido en Celestia (login_032338_580015):
+            #   C2S 0x0004  [u8 unk][PIN de 33 bytes]
+            #   S2C 0x0002  [2 bytes][LE32 char_id]
+            #   y la lista de personajes otra vez
+            # Alli el borrado queda en espera ocho horas (28799 s en la
+            # lista); aqui se borra en el acto, que es lo util para probar.
+            import login_server as _ls
+            ranura = cuerpo[0] if cuerpo else 0
+            char_id = cuentas.borrar_personaje(ses.usuario, ranura)
+            if char_id is None:
+                log.warning(f"[{addr}] BORRAR: no hay personaje en la ranura {ranura}")
+                return
+            ses.enviar(struct.pack('<HHI', 0x0002, 0, char_id))
+            cta = cuentas.cargar()['cuentas'].get(ses.usuario) or {'personajes': []}
+            ses.enviar(_ls.respuesta_login(cta.get('personajes', []),
+                                           cuenta=ses.usuario))
+            log.info(f"[{addr}] PERSONAJE BORRADO: ranura {ranura} "
+                     f"char_id {char_id} (sin espera)")
+            return
+
         if opcode == 0x0006 and ses.rol == 'login':
             # ENTRAR AL MUNDO. El cuerpo trae la ruta del sprite del personaje
             # elegido, por ejemplo "\chr\i263g\20263_Wait.spr".
@@ -697,6 +901,7 @@ class Servidor:
             # volvia a leer p.inventario, que seguia sin los items entregados.
             # De ahi que los regalos solo aparecieran al reconectar.
             ses.inventario = p.inventario
+            ses.cantidades = p.cantidades
             ses.oro = p.oro
             ses.monstruos = _monstruos_de(p.stage)
             bars, max_pts = _max_sp_info(p)
@@ -724,10 +929,18 @@ class Servidor:
             async def _ia_monstruos():
                 import random, time
                 import combate as _cb
+                TICK_IA = 0.1
+                # La probabilidad de pasear sale del tick: un paso cada 5.6 s
+                # de mediana, que es lo medido en el Lyceum de Celestia.
+                PROB_PASO = TICK_IA / _cb.SEGUNDOS_ENTRE_PASEOS
                 MOVE = Msg.registry[(0x0005, 's2c', '*')]
                 try:
                     while getattr(ses, 'personaje', None):
-                        await asyncio.sleep(1.2)
+                        # Cada 100 ms. Las cadencias de los monstruos van de
+                        # 672 a 1120 ms: con un bucle de 300 ms un bicho de
+                        # 1.0 s acababa pegando cada 1.2 s y a saltos, que es
+                        # lo que se veia con las Lilys (lentas y no fluidas).
+                        await asyncio.sleep(TICK_IA)
                         p = getattr(ses, 'personaje', None)
                         if not p or not getattr(ses, 'monstruos', None):
                             continue
@@ -776,41 +989,75 @@ class Servidor:
                                 r_atk = max(1, getattr(m, 'atk_range', 1))
                                 if dist <= r_atk:
                                     # Atacar al jugador si paso el cooldown (2.0s)
-                                    if ahora - getattr(m, 'ultimo_ataque', 0) >= 2.0:
+                                    if ahora - getattr(m, 'ultimo_ataque', 0) >= _cb.cadencia_monstruo(m):
                                         m.ultimo_ataque = ahora
-                                        suyo = m.pegar()
-                                        p.hp = max(0, p.hp - suyo)
-                                        pct_hp = max(0, min(100, round(100 * p.hp / p.hp_max)))
+                                        suyo = _cb.dano_recibido(m.pegar(),
+                                                                 defensa_jugador(ses))
                                         ef_atk = m.proj_ef if m.proj_ef > 0 else 148
-                                        ses.enviar(_cb.ataque(m.entity_id, yo, _cb.anim_de_monstruo(m.nombre)),
-                                                   _cb.numero_de_dano(m.entity_id, yo, suyo, ataque=656, efecto=ef_atk),
-                                                   _cb.numero_flotante(yo, suyo),
-                                                   _cb.atributo(yo, pct_hp, _cb.VIDA))
-                                        if p.hp <= 0:
-                                            # Igual que el otro camino de
-                                            # muerte: se manda el 0x000A con
+
+                                        # El golpe sale ya y el dano espera a
+                                        # que la animacion termine. El campo de
+                                        # animacion del 0x000A es su duracion
+                                        # en milisegundos: en Celestia un bicho
+                                        # con animacion 951 manda su numero a
+                                        # los 951 ms y uno con 774 a los 784.
+                                        # Antes el dano se descontaba en el
+                                        # acto, con el cliente aun levantando
+                                        # el arma, y no cuadraba nada.
+                                        ses.enviar(_cb.ataque(
+                                            m.entity_id, yo,
+                                            _cb.anim_de_monstruo(m.nombre)))
+
+                                        def _impacto(m=m, suyo=suyo, ef_atk=ef_atk):
+                                            # Si el bicho se murio durante su
+                                            # propia animacion, el golpe no
+                                            # llega. Esto es lo que hacia que
+                                            # siguiera bajando vida despues de
+                                            # matarlo.
+                                            if not getattr(m, 'vivo', False):
+                                                return
+                                            pj = getattr(ses, 'personaje', None)
+                                            if not pj or getattr(ses, 'muerto', False):
+                                                return
+                                            if getattr(m, 'en_combate_con', None) != yo:
+                                                return
+                                            pj.hp = max(0, pj.hp - suyo)
+                                            ses.enviar_inmediato(
+                                                _cb.numero_de_dano(m.entity_id, yo, suyo,
+                                                                   ataque=656, efecto=ef_atk),
+                                                _cb.numero_flotante(yo, suyo),
+                                                # HP ABSOLUTO, no el porcentaje:
+                                                # VIDA y KIND_HP son el mismo
+                                                # campo, y aqui se mandaba 0..100.
+                                                # La barra saltaba a "80" y
+                                                # parecia que el golpe quitaba 300.
+                                                _cb.atributo(yo, pj.hp, _cb.KIND_HP))
+                                            if pj.hp > 0:
+                                                return
+                                            # Muerte del jugador: el 0x000A con
                                             # tipo 7 y la vida en cero, y se
-                                            # espera a que el jugador elija en
-                                            # la ventana del cliente. Este
-                                            # bloque conservaba el revivir
-                                            # automatico en (138,60), que es
-                                            # donde quedaban los personajes
-                                            # varados tras morir.
-                                            ses.enviar(
-                                                _cb.ataque(yo, m.entity_id, 0,
-                                                           _cb.TIPO_MUERTE),
+                                            # espera a que elija en la ventana
+                                            # del cliente.
+                                            ses.enviar_inmediato(
+                                                _cb.ataque(yo, m.entity_id, 0, _cb.TIPO_MUERTE),
                                                 _cb.atributo(yo, 0, _cb.KIND_HP))
                                             ses.muerto = True
                                             m.en_combate_con = None
                                             if getattr(ses, 'usuario', None):
                                                 cuentas.guardar_progreso(
-                                                    ses.usuario, p.char_id,
-                                                    p.nivel, p.exp, 0, p.mp,
-                                                    p.habilidades,
-                                                    hp_max=p.hp_max,
-                                                    mp_max=p.mp_max)
+                                                    ses.usuario, pj.char_id,
+                                                    pj.nivel, pj.exp, 0, pj.mp,
+                                                    pj.habilidades,
+                                                    hp_max=pj.hp_max,
+                                                    mp_max=pj.mp_max)
                                             log.info(f"[{addr}] jugador muerto "
                                                      f"por {m.nombre} (IA)")
+
+                                        try:
+                                            asyncio.get_event_loop().call_later(
+                                                _cb.retraso_golpe_monstruo(m), _impacto)
+                                        except Exception:
+                                            _impacto()
                                 else:
                                     # Fuera de rango: avanzar hacia el jugador solo si NO es estatico (como Lily)
                                     if not getattr(m, 'es_estatico', False):
@@ -825,10 +1072,20 @@ class Servidor:
                                                               cur_x=cur_x, cur_y=cur_y,
                                                               dst_x=dst_x, dst_y=dst_y, speed=m.move_speed or 50))
                             else:
-                                # 2. Monstruo libre: pasear aleatoriamente si no es estatico
-                                if not getattr(m, 'es_estatico', False) and random.random() < _cb.PROB_PASEO:
-                                    dx = random.choice([-1, 0, 1])
-                                    dy = random.choice([-1, 0, 1])
+                                # 2. Monstruo libre: pasear, salvo los
+                                # estaticos. Las Lily son plantas: no se
+                                # mueven ni para pasear ni para perseguir.
+                                # (En el Lyceum de Celestia se mueven 238 de
+                                # 238 bichos, pero ahi no hay Lily.)
+                                if not getattr(m, 'es_estatico', False) and random.random() < PROB_PASO:
+                                    # El paso es de una a tres casillas por
+                                    # eje: en Celestia los desplazamientos mas
+                                    # repetidos son (1,2), (1,1), (1,3), (2,1)
+                                    # y (3,1). Con un paso de una sola casilla
+                                    # el mapa parecia quieto.
+                                    _n = _cb.PASO_PASEO_MAX
+                                    dx = random.randint(-_n, _n)
+                                    dy = random.randint(-_n, _n)
                                     if dx == 0 and dy == 0:
                                         continue
                                     new_x = m.tile_x + dx
@@ -842,7 +1099,8 @@ class Servidor:
                                         dst_x, dst_y = new_x * 32, new_y * 32
                                         ses.enviar(MOVE.build(entity_id=m.entity_id,
                                                               cur_x=cur_x, cur_y=cur_y,
-                                                              dst_x=dst_x, dst_y=dst_y, speed=m.move_speed or 50))
+                                                              dst_x=dst_x, dst_y=dst_y,
+                                                              speed=m.move_speed or _cb.VELOCIDAD_PASEO))
                 except Exception:
                     pass
 
@@ -861,13 +1119,6 @@ class Servidor:
             # dano sobre el cadaver.
             if getattr(ses, 'muerto', False):
                 return
-            # Cadencia: un golpe cada 1,5 s como en el servidor real. El
-            # cliente repite el ataque solo, y sin limite se procesaban todos
-            # y el personaje pegaba muchisimo mas rapido de lo normal.
-            _ahora_atk = time.time()
-            if _ahora_atk - getattr(ses, 'ultimo_golpe', 0) < _cb.CADENCIA_ATAQUE:
-                return
-            ses.ultimo_golpe = _ahora_atk
             d3 = _cb.parsear_ataque(cuerpo)
             if not d3:
                 return
@@ -876,21 +1127,36 @@ class Servidor:
 
             bichos = getattr(ses, 'monstruos', None) or {}
             m = bichos.get(objetivo)
-            # No se puede pegar desde lejos. El cliente deja hacer clic en un
-            # monstruo que esta al otro lado de la pantalla, y como el golpe
-            # se procesaba igual, el monstruo contraatacaba desde alli. Hay
-            # que estar dentro del alcance del arma o de la habilidad.
+            arma_puesta = ses.inventario.get(3, 0) if ses.inventario else 0
+
+            # PRIMERO el alcance, DESPUES la cadencia. Si se comprueba al
+            # reves, cada intento de pegar mientras uno camina hacia el bicho
+            # consume el cooldown aunque el golpe se descarte: al llegar al
+            # lado hay que esperar el ciclo entero y parece que el personaje
+            # "lo piensa" antes de empezar.
             if m is not None and ses.personaje:
-                _rango_arma = 1
+                # El alcance sale del arma o de la habilidad, no es 1 fijo:
+                # con sable es 1 casilla, con lanza 2 y con arco 12.
                 if tipo != _cb.ATAQUE_NORMAL:
                     _rango_arma = max(1, _cb.datos_magia(tipo).get('rango', 1))
+                else:
+                    _rango_arma = _cb.alcance_arma(arma_puesta)
                 _d = max(abs(m.tile_x - ses.personaje.tile_x),
                          abs(m.tile_y - ses.personaje.tile_y))
                 if _d > _rango_arma + 1:
                     log.debug(f"[{addr}] golpe fuera de alcance: {_d} casillas "
                               f"(alcance {_rango_arma})")
                     return
-            arma_puesta = ses.inventario.get(3, 0) if ses.inventario else 0
+
+            # Ya en rango: ahora si, la cadencia.
+            _ahora_atk = time.time()
+            _cad = _cb.cadencia_ataque(
+                getattr(ses.personaje, 'buffs', None) if ses.personaje else None,
+                getattr(ses.personaje, 'habilidades', None) if ses.personaje else None,
+                duales=lleva_duales_ses(ses))
+            if _ahora_atk - getattr(ses, 'ultimo_golpe', 0) < _cad:
+                return
+            ses.ultimo_golpe = _ahora_atk
 
             # Si se uso una habilidad de ataque sin objetivo fijado, auto-fijar el monstruo mas cercano
             if m is None and tipo != _cb.ATAQUE_NORMAL and ses.personaje:
@@ -1121,7 +1387,9 @@ class Servidor:
                 for b_id, b_data in list(buffs_activos.items()):
                     if isinstance(b_data, dict) and b_data.get('fin', 0) > now and 'crit' in b_data:
                         extra_crit += b_data['crit']
-            crit_prob = min(0.90, (5 + extra_crit) / 100.0)
+            # El Critical del personaje, no un 5 fijo: con Critical 11 la
+            # probabilidad es 11%, no 5%.
+            crit_prob = min(0.90, (critico_jugador(ses) + extra_crit) / 100.0)
             es_crit = (random.random() < crit_prob)
             total_atk = ataque + dano_extra
             if es_crit:
@@ -1210,10 +1478,17 @@ class Servidor:
                 # los dos numeros son iguales (122 y 122, 81 y 81). El
                 # segundo llega ~700 ms despues del primero.
                 _d2 = m.recibir(total_atk) if m.vivo else 0
+                # La segunda mano tira SU PROPIO critico. Antes se reusaba el
+                # resultado del primero, asi que un critico salia duplicado y
+                # parecia que la probabilidad era el doble.
+                _crit2 = random.random() < crit_prob
+                if _crit2:
+                    _d2 = int(round(_d2 * 1.5))
+                _tipo2 = _cb.TIPO_DANO_CRITICO if _crit2 else _cb.TIPO_DANO
                 _pkgs_dano = (_cb.numero_flotante(objetivo, dano, _tipo_num),
                               *pkgs_sk, *pkgs_sp)
                 _pkgs_dano2 = ((_cb.atributo(objetivo, m.porcentaje),
-                                _cb.numero_flotante(objetivo, _d2, _tipo_num))
+                                _cb.numero_flotante(objetivo, _d2, _tipo2))
                                if _d2 else
                                (_cb.atributo(objetivo, m.porcentaje),))
             else:
@@ -1223,68 +1498,34 @@ class Servidor:
                 _pkgs_dano2 = None
             try:
                 bucle = asyncio.get_event_loop()
-                bucle.call_later(_cb.RETRASO_DANO,
+                # El retraso depende de la velocidad de ataque: Finesse
+                # descuenta un 10% y cada Swiftness Song lo suyo (5% la I,
+                # 15% la V, del campo 攻擊速度 de magic.xml).
+                _ret = _cb.retraso_golpe(buffs_activos,
+                                         getattr(ses.personaje, 'habilidades', None))
+                bucle.call_later(_ret,
                                  lambda p=_pkgs_dano: ses.enviar_inmediato(*p))
                 if _pkgs_dano2:
                     bucle.call_later(
-                        _cb.RETRASO_DANO + _cb.RETRASO_SEGUNDA_MANO,
+                        _ret + _cb.RETRASO_SEGUNDA_MANO,
                         lambda p=_pkgs_dano2: ses.enviar_inmediato(*p))
             except Exception:
                 ses.enviar(*_pkgs_dano)
                 if _pkgs_dano2:
                     ses.enviar(*_pkgs_dano2)
             if m.vivo:
-                # Contraataca inmediatamente si esta en rango
-                dist_m = max(abs(m.tile_x - ses.personaje.tile_x), abs(m.tile_y - ses.personaje.tile_y)) if ses.personaje else 1
-                if dist_m <= getattr(m, 'atk_range', 1):
-                    suyo = m.pegar()
-                    # Aplicar mitigacion de daño porcentual de Fighting Shield (% mitigacion calculo final)
-                    mit_pct = 0
-                    if buffs_activos:
-                        now = time.time()
-                        for b_id, b_data in list(buffs_activos.items()):
-                            if isinstance(b_data, dict) and b_data.get('fin', 0) > now and 'mit' in b_data:
-                                mit_pct += b_data['mit']
-                    if mit_pct > 0:
-                        suyo = max(1, int(round(suyo * (1.0 - min(80, mit_pct) / 100.0))))
-
-                    if ses.personaje and not getattr(ses, 'muerto', False):
-                        ses.personaje.hp = max(0, ses.personaje.hp - suyo)
-                        if ses.personaje.hp <= 0:
-                            # Morir es lo mismo que le pasa a un monstruo:
-                            # 0x000A [el que muere][el que lo mato] tipo=7 y el
-                            # 0x0013 con la vida en cero. La ventana "You are
-                            # dead" la abre el CLIENTE solo; el servidor no
-                            # manda ningun dialogo. Medido en Celestia,
-                            # mundo_190339_977913 t=620.85.
-                            # Antes se revivia de una en el checkpoint sin
-                            # preguntar, asi que la ventana no llegaba a salir.
-                            ses.enviar(_cb.numero_flotante(yo, suyo),
-                                       _cb.ataque(yo, objetivo, 0, _cb.TIPO_MUERTE),
-                                       _cb.atributo(yo, 0, _cb.KIND_HP))
-                            ses.muerto = True
-                            m.en_combate_con = None
-                            if getattr(ses, 'usuario', None):
-                                cuentas.guardar_progreso(ses.usuario, ses.personaje.char_id,
-                                                         ses.personaje.nivel, ses.personaje.exp,
-                                                         0, ses.personaje.mp,
-                                                         ses.personaje.habilidades,
-                                                         hp_max=ses.personaje.hp_max,
-                                                         mp_max=ses.personaje.mp_max)
-                            log.info(f"[{addr}] jugador muerto por {m.nombre}; "
-                                     f"esperando que elija donde revivir")
-                            return
-
-                        ef_mon = m.proj_ef if m.proj_ef > 0 else 148
-                        ses.enviar(_cb.ataque(objetivo, yo, _cb.anim_de_monstruo(m.nombre)),
-                                   _cb.numero_de_dano(objetivo, yo, suyo, ataque=656, efecto=ef_mon),
-                                   _cb.numero_flotante(yo, suyo),
-                                   _cb.atributo(yo, ses.personaje.hp, _cb.KIND_HP))
-                    else:
-                        ef_mon = m.proj_ef if m.proj_ef > 0 else 148
-                        ses.enviar(_cb.ataque(objetivo, yo, _cb.anim_de_monstruo(m.nombre)),
-                                   _cb.numero_de_dano(objetivo, yo, suyo, ataque=656, efecto=ef_mon),
-                                   _cb.numero_flotante(yo, suyo))
+                # El monstruo no contraataca desde aqui. Solo se lo marca en
+                # combate y la IA le da el turno cuando le toca segun su
+                # cadencia. Antes habia DOS caminos que le hacian pegar -- este
+                # y la IA -- y cuando coincidian soltaba dos golpes casi al
+                # mismo tiempo, que es lo que se veia con las Lilys.
+                if m.en_combate_con != yo:
+                    m.en_combate_con = yo
+                    # Que conteste en el tick siguiente, no dentro de un
+                    # ciclo entero. El golpe sale ya y el dano llega cuando
+                    # termina la animacion, asi que no pega instantaneo: lo
+                    # que se quitaba era la espera muerta de antes.
+                    m.ultimo_ataque = 0
                 log.debug(f"[{addr}] pego {dano} al {m.nombre} "
                           f"({m.porcentaje}%), contraataque procesado")
                 return
@@ -1395,30 +1636,31 @@ class Servidor:
             tiene_mochila = (bolsa.get(7) is not None or bolsa.get(8) is not None)
             max_ranura = 44 if tiene_mochila else 39
 
+            tocadas_botin = []
             for item_drop, cant in drops:
-                r_slot = None
+                cant = max(1, int(cant))
+                # Si ya hay un monton de eso, se suma ahi. Antes se ocupaba
+                # una casilla por unidad porque no habia cantidades.
+                apila = None
                 if _iv.es_apilable(item_drop):
-                    for s, it_id in bolsa.items():
-                        if 20 <= s <= max_ranura and it_id == item_drop:
-                            r_slot = s
+                    for s_r, it_id in bolsa.items():
+                        if 20 <= s_r <= max_ranura and it_id == item_drop:
+                            apila = s_r
                             break
-                if r_slot is None:
-                    for r in range(20, max_ranura + 1):
-                        if r not in bolsa:
-                            r_slot = r
-                            break
-                if r_slot is None:
-                    log.info(f"[{addr}] inventario lleno (limite={max_ranura}), drop {item_drop} ignorado silenciosamente")
+                if apila is None and not any(r not in bolsa
+                                             for r in range(20, max_ranura + 1)):
+                    log.info(f"[{addr}] inventario lleno (limite={max_ranura}), "
+                             f"drop {item_drop} ignorado silenciosamente")
                     continue
 
-                bolsa[r_slot] = item_drop
+                tocadas_botin.append(_meter(ses, item_drop, cant))
                 salida_combate.append(_cl.aviso(_nombre_item(item_drop), tipo=0, msg_id=_cl.MSG_ITEM))
-                salida_combate.extend(_iv.entregar(cid, item_drop, r_slot))
 
-            salida_combate.append(_iv.completo(cid, _con_oro(ses)))
+            salida_combate.extend(_refrescar(ses, tocadas_botin, con_oro=True))
             ses.enviar(*salida_combate)
             if ses.personaje and getattr(ses, 'usuario', None):
-                cuentas.guardar_inventario(ses.usuario, cid, bolsa)
+                cuentas.guardar_inventario(ses.usuario, cid, bolsa,
+                                   _cantidades(ses))
 
             log.info(f"[{addr}] mato un {m.nombre} (entidad {objetivo}); "
                      f"+{exp_ganada} exp, +{oro} oro, {len(drops)} items")
@@ -1455,73 +1697,159 @@ class Servidor:
 
         # --- comprar en una tienda ---------------------------------------
         # La ventana la abre el cliente solo; aqui solo se atiende la compra.
-        if opcode == 0x0027 and ses.rol == 'mundo' and cuerpo:
+        # --- compra en tienda NPC ---------------------------------------
+        # Medido en Celestia al comprar diez pociones rojas y diez azules de
+        # una sola vez:
+        #     02000000 | 42000000 0a000000 | 43000000 0a000000
+        # o sea [u32 n] y luego n veces [u32 item_id][u32 cantidad]. Antes se
+        # leia UN solo item por mensaje, por eso no se podia comprar mas de
+        # una cosa a la vez ni llevarse varias unidades.
+        if opcode == 0x0027 and ses.rol == 'mundo' and cuerpo and len(cuerpo) >= 4:
             import clases as _c
             import inventario as _iv
-            import sqlite3 as _sq
-            d2 = _c.parsear_compra(cuerpo)
-            if not d2 or getattr(ses, 'inventario', None) is None:
+            if getattr(ses, 'inventario', None) is None:
                 return
-            item_id, cant = d2
-            precio = _precio_item(item_id) * cant
-            if getattr(ses, 'oro', 0) < precio:
-                log.warning(f"[{addr}] compra rechazada: el item {item_id} vale "
-                            f"{precio} y hay {getattr(ses, 'oro', 0)}")
+            n_items = struct.unpack_from('<I', cuerpo, 0)[0]
+            pedido = []
+            off = 4
+            for _ in range(min(n_items, 64)):
+                if off + 8 > len(cuerpo):
+                    break
+                item_id, cant = struct.unpack_from('<II', cuerpo, off)
+                off += 8
+                if item_id and cant:
+                    pedido.append((item_id, min(int(cant), 9999)))
+            if not pedido:
                 return
-            ses.oro -= precio
+
+            total = sum(_precio_compra(i) * c for i, c in pedido)
+            if getattr(ses, 'oro', 0) < total:
+                log.warning(f"[{addr}] compra rechazada: cuesta {total} y hay "
+                            f"{getattr(ses, 'oro', 0)}")
+                return
+            ses.oro -= total
             if ses.personaje:
                 ses.personaje.oro = ses.oro
-            ranura = _ranura_libre(ses.inventario)
-            ses.inventario[ranura] = item_id
             cid = ses.personaje.char_id if ses.personaje else 4980
-            ses.enviar(_c.aviso(f'{precio} Gold', tipo=0, msg_id=_c.MSG_PAGO),
-                       _c.aviso(_nombre_item(item_id), tipo=0, msg_id=_c.MSG_ITEM),
-                       *_iv.entregar(cid, item_id, ranura),
-                       _iv.completo(cid, _con_oro(ses)),
-                       struct.pack('<HII', 0x0035, item_id, cant))
+
+            # El cartel del oro va primero y luego uno por item, igual que en
+            # la captura: "680Gold" y despues cada nombre.
+            tocadas = []
+            avisos = []
+            for item_id, cant in pedido:
+                tocadas.append(_meter(ses, item_id, cant))
+                avisos.append(_c.aviso(_nombre_item(item_id), tipo=0,
+                                       msg_id=_c.MSG_ITEM))
+            ses.enviar(*_refrescar(ses, tocadas, con_oro=True),
+                       _c.aviso(f'{total} Gold', tipo=0, msg_id=_c.MSG_PAGO),
+                       *avisos)
+            _guardar_bolsa(ses, cid)
             if getattr(ses, 'usuario', None):
-                cuentas.guardar_inventario(ses.usuario, cid, ses.inventario)
                 cuentas.guardar_oro(ses.usuario, cid, ses.oro)
-            log.info(f"[{addr}] compra: {_nombre_item(item_id)} x{cant} por "
-                     f"{precio}; quedan {ses.oro} de oro")
+            log.info(f"[{addr}] compra: {pedido} por {total}; "
+                     f"quedan {ses.oro} de oro")
             return
 
-        # --- venta a tienda NPC (WND_NPCSALE) ---------------------------
-        # Cliente manda [LE32 n_items] y luego [LE32 slot][LE32 inst_hi][LE32 cant] por item
+        # --- venta a tienda NPC ------------------------------------------
+        # Medido al vender 5 de una pila y 6 de otra:
+        #     02000000 | 6b480300 2e23b26a 05000000 | 6c480300 2e23b26a 06000000
+        # o sea [u32 n] y luego n veces [u32 instancia][u32 sello][u32 cant].
+        # Los OCHO primeros bytes son el id de instancia del item, no el
+        # numero de casilla: leerlos como casilla no casaba nunca, no se
+        # sacaba nada del inventario y la venta pagaba 0.
         if opcode == 0x0028 and ses.rol == 'mundo' and cuerpo and ses.personaje:
             import clases as _c
             import inventario as _iv
             bolsa = getattr(ses, 'inventario', {})
             cid = ses.personaje.char_id
+            if len(cuerpo) < 4:
+                return
+            n_items = struct.unpack_from('<I', cuerpo, 0)[0]
             oro_ganado = 0
-            if len(cuerpo) >= 4:
-                n_items = struct.unpack_from('<I', cuerpo, 0)[0]
-                offset = 4
-                for _ in range(n_items):
-                    if offset + 12 > len(cuerpo):
-                        break
-                    slot, inst_hi, cant = struct.unpack_from('<III', cuerpo, offset)
-                    offset += 12
-                    cant = max(1, cant)
-                    if slot in bolsa:
-                        it_id = bolsa[slot]
-                        del bolsa[slot]
-                        precio_base = _precio_item(it_id)
-                        ganancia_item = max(1, (precio_base // 2)) * cant
-                        oro_ganado += ganancia_item
-                        log.info(f"[{addr}] vendio item {it_id} ranura {slot} x{cant} por {ganancia_item} oro")
+            tocadas = []
+            off = 4
+            for _ in range(min(n_items, 64)):
+                if off + 12 > len(cuerpo):
+                    break
+                inst = cuerpo[off:off + 8]
+                cant = struct.unpack_from('<I', cuerpo, off + 8)[0]
+                off += 12
+                ranura = _iv.ranura_de_instancia(_instancias(ses), inst)
+                if ranura is None or _iv.es_equipo(ranura):
+                    log.warning(f"[{addr}] venta: instancia {inst.hex()} "
+                                f"no esta en la mochila")
+                    continue
+                it_id = bolsa[ranura]
+                vendidas = _sacar(ses, ranura, cant)
+                if not vendidas:
+                    continue
+                ganancia = _precio_venta(it_id) * vendidas
+                oro_ganado += ganancia
+                tocadas.append(ranura)
+                log.info(f"[{addr}] vendio {it_id} x{vendidas} de la casilla "
+                         f"{ranura} por {ganancia} de oro")
+            if not oro_ganado:
+                return
+            ses.oro = getattr(ses, 'oro', 0) + oro_ganado
+            ses.personaje.oro = ses.oro
+            ses.enviar(*_refrescar(ses, tocadas, con_oro=True),
+                       _c.aviso(f"{oro_ganado} Gold", tipo=0, msg_id=_c.MSG_ITEM))
+            _guardar_bolsa(ses, cid)
+            if getattr(ses, 'usuario', None):
+                cuentas.guardar_oro(ses.usuario, cid, ses.oro)
+            return
 
-                ses.oro = getattr(ses, 'oro', 0) + oro_ganado
-                if ses.personaje:
-                    ses.personaje.oro = ses.oro
-                salida = [
-                    _iv.completo(cid, _con_oro(ses)),
-                    _c.aviso(f"{oro_ganado} Gold", tipo=0, msg_id=_c.MSG_PAGO),
-                ]
-                ses.enviar(*salida)
-                if getattr(ses, 'usuario', None):
-                    cuentas.guardar_inventario(ses.usuario, cid, bolsa)
-                    cuentas.guardar_oro(ses.usuario, cid, ses.oro)
+        # --- separar un monton en dos -------------------------------------
+        # Medido al sacar una pocion de una pila de seis:
+        #     0b | 2b00 | 2900 | 01000000
+        # o sea [u8 contenedor][u16 casilla destino][u16 casilla origen]
+        # [u32 cantidad]. La pila nueva estrena id de instancia: en la
+        # captura la de origen sigue con 215293 y la nueva sale con 215300.
+        if opcode == 0x002F and ses.rol == 'mundo' and ses.personaje and len(cuerpo) >= 9:
+            import inventario as _iv
+            destino, origen = struct.unpack_from('<HH', cuerpo, 1)
+            cuantas = struct.unpack_from('<I', cuerpo, 5)[0]
+            bolsa = getattr(ses, 'inventario', {})
+            if origen not in bolsa or destino in bolsa or cuantas < 1:
+                log.warning(f"[{addr}] separar invalido: {origen} -> {destino} "
+                            f"x{cuantas}")
+                return
+            hay = _cant_de(ses, origen)
+            if cuantas >= hay:
+                log.warning(f"[{addr}] separar: piden {cuantas} y hay {hay}")
+                return
+            item_id = bolsa[origen]
+            _cantidades(ses)[origen] = hay - cuantas
+            bolsa[destino] = item_id
+            _instancias(ses)[destino] = _iv.instancia_nueva()
+            if cuantas > 1:
+                _cantidades(ses)[destino] = cuantas
+            cid = ses.personaje.char_id
+            ses.enviar(*_refrescar(ses, [origen, destino]))
+            _guardar_bolsa(ses, cid)
+            log.info(f"[{addr}] separadas {cuantas} de {item_id}: casilla "
+                     f"{origen} ({hay} -> {hay - cuantas}) y casilla {destino}")
+            return
+
+        # --- destruir un monton entero (papelera) ------------------------
+        # Medido: c2s 0x0013 = [u16 casilla][u32 item_id], y el servidor
+        # contesta con el 0x001B corto que deja la casilla vacia. Nuestro
+        # codigo escuchaba el 0x004C, que el cliente no manda nunca.
+        if opcode == 0x0013 and ses.rol == 'mundo' and ses.personaje and len(cuerpo) >= 6:
+            import inventario as _iv
+            ranura, item_id = struct.unpack_from('<HI', cuerpo, 0)
+            bolsa = getattr(ses, 'inventario', {})
+            if ranura not in bolsa or int(bolsa[ranura]) != int(item_id):
+                log.warning(f"[{addr}] destruir: la casilla {ranura} no tiene "
+                            f"el item {item_id}")
+                return
+            cuantas = _cant_de(ses, ranura)
+            _sacar(ses, ranura, cuantas)
+            cid = ses.personaje.char_id
+            ses.enviar(_iv.vaciar_ranura(ses.personaje.entity_id, ranura))
+            _guardar_bolsa(ses, cid)
+            log.info(f"[{addr}] destruido: item {item_id} x{cuantas} de la "
+                     f"casilla {ranura}")
             return
 
         # --- Descartar / Destruir item del inventario (papelera) ---------
@@ -1535,10 +1863,11 @@ class Servidor:
                 item_del = bolsa[slot]
                 del bolsa[slot]
                 nom_it = _nombre_item(item_del)
-                ses.enviar(_iv.completo(cid, _con_oro(ses)),
+                ses.enviar(_iv.completo(cid, _con_oro(ses), _dueno(ses)),
                            _c.aviso(f"Destroyed {nom_it}", tipo=0, msg_id=_c.MSG_ITEM))
                 if getattr(ses, 'usuario', None):
-                    cuentas.guardar_inventario(ses.usuario, cid, bolsa)
+                    cuentas.guardar_inventario(ses.usuario, cid, bolsa,
+                                   _cantidades(ses))
                 log.info(f"[{addr}] item destruido en ranura {slot}: {item_del} ({nom_it})")
             return
 
@@ -1555,9 +1884,10 @@ class Servidor:
                     bolsa[s2] = it1
                 if it2 is not None:
                     bolsa[s1] = it2
-                ses.enviar(_iv.completo(cid, _con_oro(ses)))
+                ses.enviar(_iv.completo(cid, _con_oro(ses), _dueno(ses)))
                 if getattr(ses, 'usuario', None):
-                    cuentas.guardar_inventario(ses.usuario, cid, bolsa)
+                    cuentas.guardar_inventario(ses.usuario, cid, bolsa,
+                                   _cantidades(ses))
                 log.info(f"[{addr}] intercambio ranuras inventario: {s1} <-> {s2}")
             return
 
@@ -1608,7 +1938,7 @@ class Servidor:
                     if item_id not in items_vistos:
                         items_vistos.add(item_id)
                         salida.append(clases.aviso(_nombre_item(item_id), tipo=0, msg_id=clases.MSG_ITEM))
-                salida.append(_iv.completo(cid, _con_oro(ses)))
+                salida.append(_iv.completo(cid, _con_oro(ses), _dueno(ses)))
 
             # Actualizar stats para Swordsman: Max HP = 304, MP = 154
             if ses.personaje:
@@ -1638,7 +1968,8 @@ class Servidor:
                         ses.usuario, ses.personaje.char_id,
                         ses.personaje.habilidades)
                     cuentas.guardar_oro(ses.usuario, cid, ses.personaje.oro)
-                    cuentas.guardar_inventario(ses.usuario, cid, ses.inventario)
+                    cuentas.guardar_inventario(ses.usuario, cid, ses.inventario,
+                                   _cantidades(ses))
                     cuentas.guardar_barra(ses.usuario, cid, ses.personaje.barra)
                     cuentas.guardar_progreso(
                         ses.usuario, cid, ses.personaje.nivel, ses.personaje.exp,
@@ -1692,21 +2023,34 @@ class Servidor:
                 it_dst = bolsa[dst]
                 bolsa[org] = it_dst
                 bolsa[dst] = it_org
-                salida = [
-                    inv.movimiento(org, dst, cid, it_org, inv.instancia_de(cid, it_org)),
-                    inv.movimiento(dst, org, cid, it_dst, inv.instancia_de(cid, it_dst)),
-                ]
+                _c_org = _cant_de(ses, org)
+                _c_dst = _cant_de(ses, dst)
+                _cantidades(ses)[org] = _c_dst
+                _cantidades(ses)[dst] = _c_org
+                _mover_inst(ses, org, 0xFFFF)
+                _mover_inst(ses, dst, org)
+                _mover_inst(ses, 0xFFFF, dst)
+                # Las dos casillas en UN solo mensaje, con el estado de
+                # puesto de cada una, que es lo que hace el servidor real.
+                salida = [inv.acuse_movimiento(org),
+                          inv.actualizar_ranuras(cid, [
+                    (dst, it_org, _c_org, _inst(ses, dst)),
+                    (org, it_dst, _c_dst, _inst(ses, org)),
+                ], _dueno(ses))]
                 if inv.es_equipo(org) or inv.es_equipo(dst):
                     salida.append(_stats_ses(ses))
                 ses.enviar(*salida)
                 if ses.personaje and getattr(ses, 'usuario', None):
-                    cuentas.guardar_inventario(ses.usuario, ses.personaje.char_id, bolsa)
+                    cuentas.guardar_inventario(ses.usuario, ses.personaje.char_id, bolsa,
+                                   _cantidades(ses))
                 log.info(f"[{addr}] swap ranuras {org} ({it_org}) <-> {dst} ({it_dst})")
                 return
 
             it = bolsa.pop(org)
             bolsa[dst] = it
-            salida = [inv.movimiento(org, dst, cid, it, inv.instancia_de(cid, it))]
+            _mover_inst(ses, org, dst)
+            salida = [inv.acuse_movimiento(org)]
+            salida.extend(_refrescar(ses, [org, dst]))
             if inv.es_equipo(org) or inv.es_equipo(dst):
                 salida.append(_stats_ses(ses))
             # Gestion de mascota en ranura 9
@@ -1724,7 +2068,8 @@ class Servidor:
                     ses.pet_entity_id = None
             ses.enviar(*salida)
             if ses.personaje and getattr(ses, 'usuario', None):
-                cuentas.guardar_inventario(ses.usuario, ses.personaje.char_id, bolsa)
+                cuentas.guardar_inventario(ses.usuario, ses.personaje.char_id, bolsa,
+                                   _cantidades(ses))
             log.info(f"[{addr}] item {it}: ranura {org} -> {dst}"
                      + ("  (cambia el equipo)"
                         if inv.es_equipo(org) or inv.es_equipo(dst) else ""))
@@ -1732,10 +2077,11 @@ class Servidor:
 
         # --- usar item (clic derecho) --------------------------------
         # C -> S 0x002E [U8 ranura][LE32 target]
-        if opcode == 0x002E and ses.rol == 'mundo' and cuerpo:
+        # Usar / equipar lo que hay en una casilla. Medido: [u32 casilla][u8 0].
+        if opcode == 0x002E and ses.rol == 'mundo' and len(cuerpo) >= 4:
             import inventario as inv
             import clases as _c
-            ranura = cuerpo[0]
+            ranura = struct.unpack_from('<I', cuerpo, 0)[0]
             bolsa = getattr(ses, 'inventario', None)
             if bolsa is None or ranura not in bolsa:
                 return
@@ -1748,17 +2094,19 @@ class Servidor:
                 dst = _ranura_libre(bolsa, desde=20)
                 it = bolsa.pop(ranura)
                 bolsa[dst] = it
-                salida = [
-                    inv.movimiento(ranura, dst, cid, it, inv.instancia_de(cid, it)),
-                    _stats_ses(ses)
-                ]
+                _mover_inst(ses, ranura, dst)
+                # Sin acuse: en la captura el 0x002E (usar) no recibe
+                # ninguno, solo el 0x0012 de arrastrar.
+                salida = list(_refrescar(ses, [ranura, dst]))
+                salida.append(_stats_ses(ses))
                 if ranura == 9 and getattr(ses, 'pet_entity_id', None):
                     import combate as _cb
                     salida.append(_cb.atributo(ses.pet_entity_id, 0, _cb.VIDA))
                     ses.pet_entity_id = None
                 ses.enviar(*salida)
                 if ses.personaje and getattr(ses, 'usuario', None):
-                    cuentas.guardar_inventario(ses.usuario, cid, bolsa)
+                    cuentas.guardar_inventario(ses.usuario, cid, bolsa,
+                                   _cantidades(ses))
                 log.info(f"[{addr}] desequipar: item {it} ({ranura}) -> bolsa ({dst})")
                 return
 
@@ -1789,12 +2137,13 @@ class Servidor:
                 else:
                     it = bolsa.pop(ranura)
                     bolsa[dst] = it
+                    _mover_inst(ses, ranura, dst)
                     log.info(f"[{addr}] equipar directo: item {it} -> ranura {dst}")
 
-                salida = [
-                    inv.completo(cid, _con_oro(ses)),
-                    _stats_ses(ses)
-                ]
+                # Sin acuse: en la captura el 0x002E (usar) no recibe
+                # ninguno, solo el 0x0012 de arrastrar.
+                salida = list(_refrescar(ses, [ranura, dst]))
+                salida.append(_stats_ses(ses))
 
                 if dst == 9:
                     # Spawn de la mascota invocada
@@ -1806,46 +2155,51 @@ class Servidor:
 
                 ses.enviar(*salida)
                 if ses.personaje and getattr(ses, 'usuario', None):
-                    cuentas.guardar_inventario(ses.usuario, cid, bolsa)
+                    cuentas.guardar_inventario(ses.usuario, cid, bolsa,
+                                   _cantidades(ses))
                 return
 
             # Caso 2: Comida de mascota (Pet Cookies, Pet Can, Pet Feed) - Solo si hay mascota activa
             if inv.es_comida_mascota(item_id) and (9 in bolsa):
-                del bolsa[ranura]
+                _sacar(ses, ranura, 1)
                 salida = [
                     _c.aviso("Fed pet! Hunger satiated (up to 500/100 buffer).", tipo=0, msg_id=_c.MSG_ITEM),
-                    inv.completo(cid, _con_oro(ses))
+                    *_refrescar(ses, [ranura]),
                 ]
                 ses.enviar(*salida)
                 if ses.personaje and getattr(ses, 'usuario', None):
-                    cuentas.guardar_inventario(ses.usuario, cid, bolsa)
+                    cuentas.guardar_inventario(ses.usuario, cid, bolsa,
+                                   _cantidades(ses))
                 log.info(f"[{addr}] comida de mascota usada: {item_id} (ranura {ranura})")
                 return
 
             # Caso 3: Cajas de regalo / Growth Boxes (drop_table)
             recompensas = inv.recompensas_caja(item_id)
             if recompensas:
-                del bolsa[ranura]
+                # Se gasta UNA caja, no la pila entera, y lo que sale se
+                # apila con lo que ya hubiera.
+                _sacar(ses, ranura, 1)
                 log.info(f"[{addr}] abriendo caja {item_id} de ranura {ranura}: "
                          f"{len(recompensas)} tipos de items")
                 salida = []
-                primero = True
+                tocadas = [ranura]
                 for rew_id, cant in recompensas:
-                    r_slot = ranura if primero else _ranura_libre(bolsa, desde=20)
-                    primero = False
-                    bolsa[r_slot] = rew_id
+                    tocadas.append(_meter(ses, rew_id, max(1, int(cant))))
                     salida.append(_c.aviso(_nombre_item(rew_id), tipo=0, msg_id=_c.MSG_ITEM))
-                    salida.extend(inv.entregar(cid, rew_id, r_slot))
-                salida.append(inv.completo(cid, _con_oro(ses)))
+                salida.extend(_refrescar(ses, tocadas))
                 ses.enviar(*salida)
                 if ses.personaje and getattr(ses, 'usuario', None):
-                    cuentas.guardar_inventario(ses.usuario, cid, bolsa)
+                    cuentas.guardar_inventario(ses.usuario, cid, bolsa,
+                                   _cantidades(ses))
                 return
 
             # Caso 4: Consumibles (Pociones HP/MP, Hierba Magica 1228, Biscuits 2, etc.)
             ef_con = inv.efecto_consumible(item_id)
             if ef_con and ses.personaje:
-                del bolsa[ranura]
+                # Una unidad del monton. Antes se borraba la casilla entera:
+                # con una sola galleta daba igual, pero con una pila de diez
+                # desaparecian las diez de un mordisco.
+                _sacar(ses, ranura, 1)
                 salida = []
                 yo = ses.personaje.entity_id
                 import combate as _cb
@@ -1858,30 +2212,35 @@ class Servidor:
                     rec_mp = ef_con['mp']
                     ses.personaje.mp = min(ses.personaje.mp_max, ses.personaje.mp + rec_mp)
                     salida.append(_cb.atributo(yo, ses.personaje.mp, _cb.KIND_MP))
-                    pct_mp = max(0, min(100, round(100 * ses.personaje.mp / ses.personaje.mp_max)))
-                    salida.append(_cb.atributo(yo, pct_mp, 1))
+                    # Aqui iba ademas un 0x0013 con el MP en porcentaje y
+                    # kind 1. Ese kind no existe: en todas las capturas los
+                    # unicos que manda el servidor son 0, 2, 4 y 6, nunca 1.
                     salida.extend(_cb.efecto_recuperacion_mp(yo, yo, rec_mp, efecto=69))
-                salida.append(inv.completo(cid, _con_oro(ses)))
+                salida.extend(_refrescar(ses, [ranura]))
+                # Y los stats, que es lo que refresca las barras del panel.
+                salida.append(_stats_ses(ses))
                 ses.enviar(*salida)
                 if getattr(ses, 'usuario', None):
                     cuentas.guardar_progreso(ses.usuario, cid, ses.personaje.nivel, ses.personaje.exp,
                                              ses.personaje.hp, ses.personaje.mp,
                                              hp_max=ses.personaje.hp_max, mp_max=ses.personaje.mp_max)
-                    cuentas.guardar_inventario(ses.usuario, cid, bolsa)
+                    cuentas.guardar_inventario(ses.usuario, cid, bolsa,
+                                   _cantidades(ses))
                 log.info(f"[{addr}] consumible usado: {item_id} (ranura {ranura}) -> {ef_con}")
                 return
 
             # Caso 5: Tarjetas de Monstruo / Coleccionables
             if inv.es_tarjeta_coleccion(item_id):
-                del bolsa[ranura]
+                _sacar(ses, ranura, 1)
                 nom_it = _nombre_item(item_id)
                 salida = [
                     _c.aviso(f"Registered {nom_it} to Card Collection!", tipo=0, msg_id=_c.MSG_ITEM),
-                    inv.completo(cid, _con_oro(ses))
+                    *_refrescar(ses, [ranura]),
                 ]
                 ses.enviar(*salida)
                 if ses.personaje and getattr(ses, 'usuario', None):
-                    cuentas.guardar_inventario(ses.usuario, cid, bolsa)
+                    cuentas.guardar_inventario(ses.usuario, cid, bolsa,
+                                   _cantidades(ses))
                 log.info(f"[{addr}] tarjeta usada: {nom_it} (ranura {ranura})")
                 return
 
@@ -1972,6 +2331,13 @@ class Servidor:
                 # Atacar tambien aqui hacia que cada clic disparara DOS
                 # golpes con 15 ms de diferencia, y por eso el personaje
                 # pegaba al doble de velocidad.
+                # Objetivo nuevo: se limpia el cooldown para que el primer
+                # golpe salga enseguida. Si no, el clic cae dentro de la
+                # cadencia del objetivo anterior y el personaje "lo piensa"
+                # antes de empezar a pegar.
+                if getattr(ses, 'objetivo_actual', None) != ent:
+                    ses.objetivo_actual = ent
+                    ses.ultimo_golpe = 0
                 ses.enviar(_cb0.atributo(ent, _m.porcentaje))
                 return
 
@@ -2259,10 +2625,11 @@ class Servidor:
                 ses.inventario[s_shoe] = 30
                 ses.enviar(*_iv.entregar(cid, 28, s_glov),
                            *_iv.entregar(cid, 30, s_shoe),
-                           _iv.completo(cid, _con_oro(ses)),
+                           _iv.completo(cid, _con_oro(ses), _dueno(ses)),
                            _cls.aviso("Students' Gloves\x00Students' shoes", tipo=0, msg_id=493))
                 if getattr(ses, 'usuario', None):
-                    cuentas.guardar_inventario(ses.usuario, cid, ses.inventario)
+                    cuentas.guardar_inventario(ses.usuario, cid, ses.inventario,
+                                   _cantidades(ses))
                 log.info(f"[{addr}] Raphael: entregados guantes (slot {s_glov}) y zapatos (slot {s_shoe})")
 
             ses.enviar(dialogos.linea_de(g, paso, nom))
@@ -2317,7 +2684,8 @@ class Servidor:
                             ses.enviar(_iv.completo(ses.personaje.char_id, _con_oro(ses)))
                             ses.personaje.tutorial = 3
                             if getattr(ses, 'usuario', None):
-                                cuentas.guardar_inventario(ses.usuario, ses.personaje.char_id, ses.inventario)
+                                cuentas.guardar_inventario(ses.usuario, ses.personaje.char_id, ses.inventario,
+                                   _cantidades(ses))
                                 cuentas.guardar_tutorial(ses.usuario, ses.personaje.char_id, 3)
                             ses.personaje.stage = 57
                             ses.personaje.tile_x, ses.personaje.tile_y = (216, 37)

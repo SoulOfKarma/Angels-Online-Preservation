@@ -52,6 +52,8 @@ class Personaje:
     mp: int = 154
     mp_max: int = 154
     inventario: dict = field(default_factory=dict)  # {ranura: item_id}
+    # Cuantas unidades hay en cada casilla. La que no esta aqui lleva una.
+    cantidades: dict = field(default_factory=dict)  # {ranura: cantidad}
     tutorial: int = 0        # en que tramo del tutorial va
     oro: int = 0
     stage: int = 51

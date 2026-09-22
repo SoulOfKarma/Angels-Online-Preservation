@@ -65,13 +65,23 @@ def test_swordsman_class_selection():
     l_atk = struct.unpack_from('<I', st_sub, 2 + 28)[0]
     base_def = struct.unpack_from('<I', st_sub, 2 + 32)[0]
     dfs = struct.unpack_from('<I', st_sub, 2 + 36)[0]
-    oro = struct.unpack_from('<I', st_sub, 2 + 100)[0]
+    # El offset 100 NO es el oro: es la carga actual. Se comprobo de dos
+    # maneras. En la captura de Celestia el 0x0042 lleva el tope en el 92 y
+    # en el 96 (los dos 8096) y en el 100 un numero que sube de a uno segun
+    # se recoge botin. Y cuando aqui se escribia el oro en el 100, el cliente
+    # lo enseñaba como peso: la barra decia "5447/2648" con 5447 de oro. El
+    # oro no viaja en este mensaje, sino en la ranura 0 del inventario.
+    peso = struct.unpack_from('<I', st_sub, 2 + 100)[0]
+    tope = struct.unpack_from('<I', st_sub, 2 + 96)[0]
     assert base_atk == 13, f"Expected base_atk 13, got {base_atk}"
     assert r_atk == 40 and l_atk == 40, f"Expected R.Atk/L.Atk 40/40, got {r_atk}/{l_atk}"
     assert base_def == 12, f"Expected base_def 12, got {base_def}"
     assert dfs == 22, f"Expected Dfs 22, got {dfs}"
-    assert oro == 160, f"Expected 160 gold, got {oro}"
-    print("  PASS: Swordsman rewards, dual Sabres (10), 160 gold, and 0x0042 stats (HP 280/304, Atk 40, Dfs 22) verified!")
+    esperado = sum(inventario.peso_de(i) for i in bolsa.values())
+    assert peso == esperado, f"Expected weight {esperado}, got {peso}"
+    assert tope > 0 and peso <= tope, f"Weight {peso} over cap {tope}"
+    print("  PASS: Swordsman rewards, dual Sabres (10), and 0x0042 stats "
+          f"(HP 280/304, Atk 40, Dfs 22, peso {peso}/{tope}) verified!")
 
 if __name__ == '__main__':
     test_character_defaults()

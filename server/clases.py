@@ -445,6 +445,42 @@ RANURA_MANO_DER = 3
 RANURA_MANO_IZQ = 4
 
 
+def es_dos_manos(item_id) -> bool:
+    """True si el arma ocupa las dos manos.
+
+    En item.xml las de una mano traen 左手裝備="是" (se pueden empunar con la
+    izquierda); las de dos manos NO. La lanza Freshman, por ejemplo, tiene
+    右手裝備="是" y el campo izquierdo vacio. Un arma asi nunca es dual, por
+    mas que el personaje tenga las dos manos ocupadas con ella.
+    """
+    global _MANOS_ITEM
+    try:
+        _MANOS_ITEM
+    except NameError:
+        _MANOS_ITEM = None
+    if _MANOS_ITEM is None:
+        import sqlite3
+        _MANOS_ITEM = {}
+        db = pathlib.Path(__file__).parent.parent / 'corpus' / 'content.db'
+        if db.exists():
+            try:
+                con = sqlite3.connect(db)
+                for iid, izq in con.execute('select id, 左手裝備 from item'):
+                    try:
+                        _MANOS_ITEM[int(iid)] = (izq == '是')
+                    except (TypeError, ValueError):
+                        continue
+                con.close()
+            except Exception:
+                pass
+    if not item_id:
+        return False
+    return not _MANOS_ITEM.get(int(item_id), True)
+
+
+_MANOS_ITEM = None
+
+
 def lleva_duales(inventario) -> bool:
     """True solo si hay un ARMA DE MANO en cada mano.
 
@@ -461,6 +497,8 @@ def lleva_duales(inventario) -> bool:
         item_id = inv.get(ranura) or inv.get(str(ranura))
         if not item_id:
             continue
+        if es_dos_manos(item_id):
+            return False      # un arma a dos manos nunca es dual
         if skill_de_item(item_id) in SKILLS_ARMA_MANO:
             manos += 1
     return manos > 1

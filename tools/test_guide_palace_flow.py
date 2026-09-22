@@ -84,12 +84,17 @@ def test_tutorial_dialogues():
     assert ids_2 == [5021, 5039, 5040, 5041, 5042, 5043], f"Got {ids_2}"
     print("Raphael Stage 2 (Buying goods + 10 Gold) verified!")
 
-    # Stage 3: 5048..5054
+    # Stage 3: el cierre en Guide Palace es una sola linea, la 5047. El
+    # tutorial de combate (5048..5054) se movio al Fighting Palace y ahora
+    # lo sirve guion_fighting_palace(), no guion_etapa().
     g_raph_3 = dialogos.guion_etapa(19, 3)
-    assert len(g_raph_3) == 7
+    assert len(g_raph_3) == 1, f"Got {len(g_raph_3)}"
     ids_3 = [struct.unpack_from('<I', l, 0)[0] for l in g_raph_3]
-    assert ids_3 == [5048, 5049, 5050, 5051, 5052, 5053, 5054], f"Got {ids_3}"
-    print("Raphael Stage 3 (Final exam delivery & battle tutorial) verified!")
+    assert ids_3 == [5047], f"Got {ids_3}"
+    g_fp = dialogos.guion_fighting_palace(0, "TestHero")
+    ids_fp = [struct.unpack_from('<I', l, 0)[0] for l in g_fp]
+    assert ids_fp[0] == 5048, f"Got {ids_fp}"
+    print("Raphael Stage 3 (cierre 5047 + tutorial de combate en el Palace) verified!")
 
     print("\n--- 4. Testing Swordsman Class Reward ---")
     regalo = clases.regalo([9, 12, 13, 15, 16, 33])

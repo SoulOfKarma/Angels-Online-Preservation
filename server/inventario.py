@@ -49,6 +49,91 @@ PRIMERA_RANURA_BOLSA = 20
 _P = None
 
 
+_PESOS = None
+
+
+def peso_de(item_id: int) -> int:
+    """El peso de un item, de la columna weight de item.xml."""
+    global _PESOS
+    if _PESOS is None:
+        import sqlite3
+        _PESOS = {}
+        db = pathlib.Path(__file__).parent.parent / 'corpus' / 'content.db'
+        if db.exists():
+            try:
+                con = sqlite3.connect(db)
+                for iid, w in con.execute('select id, weight from item'):
+                    try:
+                        _PESOS[int(iid)] = int(float(w or 0))
+                    except (TypeError, ValueError):
+                        continue
+                con.close()
+            except Exception:
+                pass
+    return _PESOS.get(int(item_id or 0), 0)
+
+
+def peso_total(bolsa) -> int:
+    """Lo que pesa todo lo que se lleva encima."""
+    return sum(peso_de(i) for r, i in (bolsa or {}).items()
+               if r != RANURA_ORO)
+
+
+_CORRELATIVO = [0x030000]
+
+
+def instancia_nueva() -> bytes:
+    """Un id de instancia de ocho bytes para un monton recien creado.
+
+    En la captura son [u32 correlativo][u32 sello de tiempo]: al comprar dos
+    cosas a la vez salen 215293 y 215294 con el MISMO sello, y al separar un
+    monton la pila nueva se lleva 215300 con un sello posterior. O sea el
+    numero es un contador global del servidor y el sello es el momento.
+    """
+    _CORRELATIVO[0] += 1
+    return struct.pack('<II', _CORRELATIVO[0], int(time.time()))
+
+
+def es_apilable(item_id: int) -> bool:
+    """Si varias unidades de ese item comparten una sola casilla.
+
+    Todo lo que no se equipa se apila: pociones, galletas, pasto magico. En
+    la captura de Celestia se compran diez pociones rojas y ocupan UNA
+    casilla con cantidad diez; nuestro inventario era {ranura: item_id} sin
+    cantidades, asi que cada unidad pedia su propia casilla y al usar una se
+    borraba el monton entero.
+    """
+    return not es_equipable(item_id)
+
+
+def vaciar_ranura(dueno: int, ranura: int) -> bytes:
+    """0x001B que deja una casilla vacia.
+
+    Medido al destruir un monton de pociones:
+        01000000 | 02 | 01 | 1e010000 | 2900
+    es decir [u32 n=1][u8 02 = vaciar][u8 01][u32 dueno][u16 ranura].
+    """
+    return struct.pack('<HIBBIH', 0x001B, 1, 2, 1, dueno, ranura)
+
+
+def ranura_de_instancia(instancias, instancia: bytes):
+    """A que casilla corresponde ese id de instancia de ocho bytes.
+
+    Al vender, el cliente NO manda la casilla: manda el id de instancia del
+    monton, el mismo que le dimos en el 0x001A. Antes se leian esos bytes
+    como si fueran el numero de casilla, nunca casaban con nada y la venta
+    no sacaba nada del inventario ni pagaba: por eso daba 0.
+
+    Tampoco sirve deducirlo del item: al separar un monton la pila nueva se
+    lleva una instancia distinta, asi que dos casillas con el mismo item
+    tienen ids diferentes. Hay que llevar el mapa casilla -> instancia.
+    """
+    for ranura, inst in (instancias or {}).items():
+        if bytes(inst)[:8] == instancia[:8]:
+            return int(ranura)
+    return None
+
+
 def es_equipo(ranura: int) -> bool:
     """Si esa ranura es del personaje (equipo) y no de la mochila."""
     return ranura < PRIMERA_RANURA_BOLSA
@@ -304,9 +389,13 @@ def stats(bolsa=None, habilidades: list = None,
     struct.pack_into('<HH', b, 60, c_agi_base, agi_eff)
     struct.pack_into('<HH', b, 64, base_crit, crit_eff)
     struct.pack_into('<HH', b, 68, sp_bars_current, sp_max_bars)
-    struct.pack_into('<II', b, 92, 5000, 5000)
-    if oro is not None:
-        struct.pack_into('<I', b, 100, oro)
+    # Peso. El orden no es el que parecia: en la captura de Celestia los
+    # offsets 92 y 96 llevan los dos el tope y el 100 lleva lo que se carga
+    # ahora (sube de a uno segun se recoge botin). Antes escribiamos el oro
+    # en el 100 y el cliente lo leia como peso, por eso la barra aparecia
+    # llena. El oro no va aqui: viaja en la ranura 0 del inventario.
+    tope = max(1, load_max)
+    struct.pack_into('<III', b, 92, tope, tope, min(peso_total(bolsa), 0xFFFFFFFF))
 
     return struct.pack('<H', 0x0042) + bytes(b)
 
@@ -589,45 +678,115 @@ def durabilidad(item_id: int) -> int:
     return max(0, min(int(base * factor), 0xFFFFFFFF))
 
 
-def completo(char_id: int, items) -> bytes:
+def _entrada(char_id: int, ranura: int, item_id: int, cant: int,
+             inst: bytes = None, dueno: int = None) -> bytes:
+    """Los bytes que describen lo que hay en una casilla.
+
+    Son 86 para lo que no se equipa y 119 para lo que si. 'dueno' es la
+    ENTIDAD del personaje, no su char_id: en la captura los dos numeros son
+    distintos (286 y 282) y el que viaja aqui es el de la entidad. Si no se
+    pasa se usa el char_id, que es lo que se hacia antes.
+    """
+    if dueno is None:
+        dueno = char_id
+    p = _plantilla_inicial()
+    es_eq = es_equipable(item_id)
+    e = bytearray(bytes.fromhex(p['equipable'] if es_eq else p['normal']))
+    # El cuarto dato es el id de instancia del monton. Si no viene se deriva
+    # del item, que es lo que se hacia siempre; pero dos montones del mismo
+    # item comparten esa derivacion y el cliente los confunde al venderlos,
+    # asi que quien lleve el mapa debe pasarlo.
+    e[1:9] = (bytes(inst)[:8] if inst else instancia_de(char_id, item_id))
+    struct.pack_into('<I', e, 9, item_id)
+    struct.pack_into('<I', e, 34, dueno)
+    struct.pack_into('<H', e, 38, ranura)
+    struct.pack_into('<I', e, 40, cant)
+    if es_mascota(item_id):
+        # Formatear datos de mascota para que no crashee el tooltip y no se
+        # vea muerta
+        nombres_elfos = {3396: b"Water Elf\x00", 3397: b"Fire Elf\x00",
+                         3398: b"Wind Elf\x00", 3399: b"Earth Elf\x00"}
+        nom_pet = nombres_elfos.get(item_id, b"Pet\x00")
+        e[13:13 + len(nom_pet)] = nom_pet
+        struct.pack_into('<I', e, OFF_DURABILIDAD, 100)
+        struct.pack_into('<I', e, OFF_DURABILIDAD + 4, 100)
+        struct.pack_into('<I', e, OFF_DURABILIDAD + 8, 100)
+        struct.pack_into('<I', e, OFF_DURABILIDAD + 12, 1)
+    else:
+        struct.pack_into('<I', e, OFF_DURABILIDAD, durabilidad(item_id))
+    if es_eq:
+        # Donde esta puesta la prenda. Comparando el mismo NewbieHeavy
+        # Costume en la mochila y en el cuerpo, lo unico que cambia ademas
+        # de la casilla es esto:
+        #     off 53  la entidad que la lleva, o cero si esta guardada
+        #     off 57  el contenedor: 3 mochila, 2 cuerpo
+        # Nosotros dejabamos los dos en cero, asi que el cliente nunca se
+        # enteraba de que la prenda estaba PUESTA y seguia dibujando al
+        # personaje en ropa interior.
+        puesta = es_equipo(ranura)
+        struct.pack_into('<I', e, 53, dueno if puesta else 0)
+        e[57] = 2 if puesta else 3
+        e[58] = 1
+        # Y el servidor repite ahi los dieciseis bits bajos del numero de
+        # instancia.
+        struct.pack_into('<I', e, 84,
+                         struct.unpack_from('<I', e, 1)[0] & 0xFFFF)
+    return bytes(e)
+
+
+def completo(char_id: int, items, dueno: int = None) -> bytes:
     """Sub-mensaje 0x001A con todo el inventario.
 
-    items: iterable de (ranura, item_id) o (ranura, item_id, cantidad).
+    items: iterable de (ranura, item_id[, cantidad[, instancia]]).
     """
-    p = _plantilla_inicial()
-    normal = bytes.fromhex(p['normal'])
-    equip = bytes.fromhex(p['equipable'])
     lista = []
     for it in sorted(items, key=lambda x: int(x[0])):
-        ranura, item_id = int(it[0]), int(it[1])
-        cant = int(it[2]) if len(it) > 2 else 1
-        es_eq = es_equipable(item_id)
-
-        e = bytearray(equip if es_eq else normal)
-        e[1:9] = instancia_de(char_id, item_id)
-        struct.pack_into('<I', e, 9, item_id)
-        struct.pack_into('<I', e, 34, char_id)
-        struct.pack_into('<H', e, 38, ranura)
-        struct.pack_into('<I', e, 40, cant)
-        dur = durabilidad(item_id)
-        if es_mascota(item_id):
-            # Formatear datos de mascota para que no crashee el tooltip y no se vea muerta
-            nombres_elfos = {3396: b"Water Elf\x00", 3397: b"Fire Elf\x00", 3398: b"Wind Elf\x00", 3399: b"Earth Elf\x00"}
-            nom_pet = nombres_elfos.get(item_id, b"Pet\x00")
-            e[13:13 + len(nom_pet)] = nom_pet
-            # Durabilidad / Satiacion = 100
-            struct.pack_into('<I', e, OFF_DURABILIDAD, 100)
-            # Max Durabilidad / Max Satiacion = 100 (para evitar division por cero en % de barra)
-            struct.pack_into('<I', e, OFF_DURABILIDAD + 4, 100)
-            # Intimidad / Lealtad = 100
-            struct.pack_into('<I', e, OFF_DURABILIDAD + 8, 100)
-            # Nivel = 1
-            struct.pack_into('<I', e, OFF_DURABILIDAD + 12, 1)
-        else:
-            struct.pack_into('<I', e, OFF_DURABILIDAD, dur)
-        lista.append(bytes(e))
+        lista.append(_entrada(char_id, int(it[0]), int(it[1]),
+                              int(it[2]) if len(it) > 2 else 1,
+                              it[3] if len(it) > 3 else None, dueno))
     fuera = struct.pack('<I', len(lista)) + b''.join(lista)
     return struct.pack('<H', 0x001A) + fuera
+
+
+def acuse_movimiento(ranura: int, accion: int = 0x0012) -> bytes:
+    """0x0006 s2c: "hecho lo que pediste con esa casilla".
+
+    Medido al equipar: el cliente manda 0x0012 [41][2] y lo primero que le
+    llega de vuelta es 0x0006 con 12 00 29 00, o sea el opcode que se
+    confirma y la casilla de origen; despues vienen el 0x001B y el 0x0042.
+    Sin este acuse el cliente apunta el cambio en el panel de equipo y en
+    los stats pero no redibuja al personaje: el equipo queda invisible.
+    """
+    return struct.pack('<HHH', 0x0006, accion, ranura)
+
+
+def actualizar_ranuras(char_id: int, entradas, dueno: int = None) -> bytes:
+    """0x001B con varias casillas de una vez.
+
+    Es lo que manda el servidor al equipar: en la captura, mover la prenda
+    de la casilla 41 al cuerpo devuelve UN 0x001B con dos entradas -- la
+    prenda ya en la casilla 2 y la que llevaba puesta de vuelta en la 41 --
+    y despues el 0x0042 con los stats. Antes se mandaban dos mensajes de
+    movimiento con un formato antiguo que no lleva el estado de puesto.
+
+    entradas: iterable de (ranura, item_id, cantidad, instancia).
+    """
+    lista = [_entrada(char_id, int(r), int(i), int(c), ins, dueno)
+             for r, i, c, ins in entradas]
+    return (struct.pack('<HI', 0x001B, len(lista)) + b''.join(lista))
+
+
+def actualizar_ranura(char_id: int, ranura: int, item_id: int, cant: int,
+                      inst: bytes = None, dueno: int = None) -> bytes:
+    """0x001B de 90 bytes: como queda UNA casilla.
+
+    Es lo que manda el servidor real despues de comprar, vender, usar o
+    separar: una linea por casilla tocada, no el inventario entero. Al
+    reenviar el 0x001A completo el cliente se quedaba con lo que ya tenia
+    pintado y los items vendidos seguian viendose en la mochila.
+    """
+    return (struct.pack('<HI', 0x001B, 1)
+            + _entrada(char_id, ranura, item_id, cant, inst, dueno))
 
 
 # ------------------------------------------------- entrega de un item

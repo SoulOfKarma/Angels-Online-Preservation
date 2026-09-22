@@ -63,6 +63,7 @@ def _datos(npc_type: int):
                     'atk_range': _n(d.get('atk_range')) or 1,
                     'proj_ef': _n(d.get('投射特效')) or 0,
                     'move_speed': _n(d.get('move_speed')),
+                    'atk_speed': _n(d.get('atk_speed')) or 60,
                     'move_range': _n(d.get('move_range')) or 6,
                 }
     return _MON.get(npc_type)
@@ -195,6 +196,7 @@ class Monstruo:
         self.atk_range = d.get('atk_range', 1)
         self.proj_ef = d.get('proj_ef', 0)
         self.move_speed = d.get('move_speed', 50)
+        self.atk_speed = d.get('atk_speed', 60)
         self.move_range = d.get('move_range', 6)
         # Las Lilys no se mueven de su lugar pero atacan a distancia como arqueros
         self.es_estatico = ('lily' in nombre.lower() or self.move_speed == 0)
@@ -547,8 +549,10 @@ def cura_por_tics(magic_id: int):
     dur = _n(d.get('持續時間'))
     if hp <= 0 or intervalo <= 0 or dur <= 0:
         return None
+    # El primer tic es al lanzarla, asi que en 11 s con intervalo de 5 caben
+    # tres (0, 5 y 10), no dos: con la division a secas se perdia el ultimo.
     return {'hp': hp, 'intervalo': intervalo, 'dur_ms': dur * 1000,
-            'tics': max(1, dur // intervalo)}
+            'tics': max(1, dur // intervalo + 1)}
 
 
 def efecto_secundario(magic_id: int):
@@ -743,51 +747,191 @@ def grupo_de(magic_id: int):
 # golpe del monstruo. NO es el 特效編號 del hechizo ni ningun campo de item.xml
 # que se haya encontrado: se probaron 常駐法術, 動態資料1 y 動態資料2 y no
 # coinciden. Queda como constante hasta poder medirlo con varias armas.
-# Segundos entre el 0x000A del golpe y el 0x000B con el numero. Medido en
-# mundo_213507_817914: 779, 815 y 826 ms. (Una medicion anterior con otra
-# arma dio ~650 ms, asi que puede depender de la velocidad del arma.)
-# Cuanto se alejan los monstruos de su punto de aparicion al pasear. En
-# monster.xml el Little Slarm trae move_range=2, asi que apenas se despegan
-# del sitio; se amplia a peticion para que el mapa se vea mas vivo. El valor
-# del xml se respeta cuando es mayor.
+# Formula de dano: dano = ataque * K / (K + defensa). Despejada de medidas
+# contra el mismo monstruo con distintas armas. OJO: solo vale para niveles
+# bajos. A nivel 118 la relacion es LINEAL en la defensa (ver docs) y esta
+# formula se queda muy corta; hace falta rehacerla con datos de ese rango.
+K_DEFENSA = 33
+
+# La variacion del golpe es minima: seis golpes seguidos al mismo monstruo en
+# Chocolate Forest dieron 103530, 103548, 103551, 103577 y 103585, un 0.05%.
+VARIACION_DANO = 0.97
+
 # Probabilidad, por golpe y por habilidad, de ganar un punto de skill exp.
-# Medido en mundo_181419_370379: 8 avisos de skill exp en 18 golpes propios
-# con cinco habilidades candidatas (Axe, Shield, Grapple, Garment, Reserve),
-# o sea 8/(18*5) = 9% por habilidad y por golpe.
+# Medido: 8 avisos en 18 golpes con cinco habilidades candidatas.
 PROB_SKILL_EXP = 0.09
 
-# Hasta cuantas casillas te persigue un monstruo al que le pegaste. Los
-# monstruos son PASIVOS: no agroan por cercania, solo si los atacas.
+# Cuanto se alejan los monstruos de su punto de aparicion al pasear, y con
+# que probabilidad dan un paso EN CADA TICK de la IA (300 ms). Era 0.22 con
+# ticks de 1,2 s; al hacer el bucle cuatro veces mas fino hubo que dividirla
+# para que no pasearan cuatro veces mas. En monster.xml el Little Slarm trae
+# move_range=2 y apenas se despega del sitio.
+RANGO_PASEO_MIN = 9
+PROB_PASEO = 0.055
+
+# Hasta cuantas casillas te persigue un monstruo al que le pegaste. Son
+# PASIVOS: no agroan por cercania, solo si los atacas.
 RANGO_PERDER_AGRO = 18
 
-RANGO_PASEO_MIN = 9
-PROB_PASEO = 0.22
+# Oro base que suelta un monstruo, antes del multiplicador del servidor.
+TASA_ORO_BASE = 1
 
-# Constante de la formula de dano: dano = ataque * K / (K + defensa).
-# Despejada de dos medidas exactas contra el mismo monstruo (ver recibir()).
-K_DEFENSA = 33
-# El dano no es fijo: la formula da el TOPE y cada golpe cae entre el 80% y el
-# 100% de ese valor. Medido contra un Earth Elf (defensa 59):
-#   sin arma, ataque 165 -> tope 59.2, golpes de 47, 50, 53 y 59
-#   duales,   ataque 218 -> tope 78.2, golpes de 69, 70, 71, 75 y 76
-# El maximo observado coincide con el tope en los dos casos.
-VARIACION_DANO = 0.80
+# Lo que aporta cada fuente de velocidad de ataque, en tanto por uno.
+# El valor de Swiftness Song sale de 攻擊速度 en magic.xml: la I trae 5 y la
+# V trae 15, que es el 15% que se midio. Finesse aporta un 10% fijo por
+# tener la habilidad ("increases attack speed" en skill.xml, sin numero).
+VELOCIDAD_FINESSE = 0.10
+SKILL_FINESSE = 16
+TOPE_VELOCIDAD = 0.60
 
-# Con dos armas el golpe se reparte: pega la primera, y la segunda llega un
-# poco despues, no las dos a la vez. El intervalo es el mismo que usan los
-# ataques en combo (連擊間隔 = 200 ms en magic.xml).
-# Minimo entre golpes del jugador. NO es un cooldown: el ritmo lo marca el
-# cliente, que manda el ataque cada ~1490 ms y lo repite solo mientras dure
-# el combate. Esto es solo un tope anti-spam.
+
+def bono_velocidad(buffs=None, habilidades=None) -> float:
+    """Suma de los bonos de velocidad de ataque, en tanto por uno."""
+    import time as _t
+    pct = 0.0
+    ahora = _t.time()
+    for mid, b in (buffs or {}).items():
+        if not isinstance(b, dict) or b.get('fin', 0) <= ahora:
+            continue
+        d = _magic_xml().get(int(mid), {})
+        try:
+            v = float(d.get('攻擊速度') or 0)
+        except (TypeError, ValueError):
+            v = 0
+        pct += v / 100.0
+    for h in (habilidades or ()):
+        sid = h[0] if isinstance(h, (list, tuple)) else h
+        if sid == SKILL_FINESSE:
+            pct += VELOCIDAD_FINESSE
+    return min(TOPE_VELOCIDAD, pct)
+
+
+# Minimo entre golpes del jugador. NO es el metronomo: el ritmo lo marca el
+# cliente, que pide un golpe cuando termina su animacion. Medido en Celestia:
+# el cliente manda el 0x0016 cada 1481..1501 ms (muy estable) y el servidor
+# responde con el 0x000A cada 1554..1685 ms, es decir no filtra nada. En otra
+# sesion sin buffs el ciclo salio en 1.6..1.8 s.
 #
-# Estuvo en 1.5 s y fue un error: como el cliente ataca cada 1.49 s, cada
-# golpe caia justo por debajo del limite y se descartaba, asi que se perdia
-# casi uno de cada dos y el ataque se sentia entrecortado.
-CADENCIA_ATAQUE = 0.5
+# Esto estuvo en 2.30 s, calculado como si el servidor mandara el ritmo, y era
+# mas largo que lo que pide el cliente: se rechazaba uno de cada dos golpes y
+# el ciclo real salia a ~3 s. Eso es lo que se sentia como "la piensa antes de
+# atacar" al llegar al lado del bicho.
+#
+# El valor es un piso de seguridad por debajo de todo lo medido (1481 ms menos
+# un margen), para no comerse peticiones ni con jitter de red.
+CADENCIA_ATAQUE = 1.37
+
+
+def dano_recibido(ataque: int, defensa: int) -> int:
+    """Dano que recibe el jugador, ya reducido por su defensa.
+
+    Antes el golpe del monstruo se descontaba TAL CUAL de la vida: su ataque
+    entero, sin mirar la defensa del personaje. Por eso los bichos pegaban
+    igual de fuerte con armadura que sin ella y el Dfs no servia de nada.
+    Se usa la misma relacion que cuando pegamos nosotros.
+    """
+    return max(1, int(round(ataque * K_DEFENSA / (K_DEFENSA + max(0, defensa)))))
+
+
+# Cada cuanto pega un monstruo, en segundos. Medido en las capturas:
+#   Slarm  (攻擊速度 90) -> 835 ms      Lily (30) -> 1121 ms
+#   Earth Elf            -> 1023 ms     Death Mummy -> 672 ms
+# Con esos dos puntos sale una recta: ms = 1264 - 4.77 * velocidad.
+# Antes se usaba 2.0 s fijo para todos, el doble de lento que el real y sin
+# distinguir un bicho rapido de uno lento.
+CADENCIA_MONSTRUO_BASE = 1.264
+CADENCIA_MONSTRUO_PENDIENTE = 0.00477
+CADENCIA_MONSTRUO_MIN = 0.40
+
+# Paseo de los monstruos. En la captura del Angel Lyceum de Celestia hay 239
+# bichos moviendose a la vez: cada uno da un paso cada 5.6 s de mediana (3.6 a
+# 7.7 s), y el paso es de UNA A TRES casillas por eje, no de una sola. La
+# velocidad que declara el 0x0005 es 75, no 50. Con un paso de una casilla y
+# velocidad 50 el mapa se veia quieto comparado con el suyo.
+PASO_PASEO_MAX = 3
+VELOCIDAD_PASEO = 75
+SEGUNDOS_ENTRE_PASEOS = 5.6
+
+# Segundos entre el 0x000A del monstruo y su numero de dano. El campo de
+# animacion del 0x000A es la duracion en milisegundos: un bicho con animacion
+# 951 manda su 0x000B a los 951..1118 ms, y otro con 774 a los 783..786 ms.
+# Antes el dano del monstruo se aplicaba en el acto mientras el cliente aun
+# reproducia el golpe, por eso los numeros no cuadraban con la animacion.
+def retraso_golpe_monstruo(m) -> float:
+    """Lo mismo que su ciclo: el numero cae al terminar la animacion, que es
+    justo cuando arranca el golpe siguiente. Si se calculara aparte de la
+    cadencia, un bicho acelerado por su velocidad de ataque recibiria el
+    golpe siguiente antes de que aterrizara el dano del anterior."""
+    return cadencia_monstruo(m)
+
+
+def alcance_arma(item_id: int = 0) -> int:
+    """Desde cuantas casillas se puede pegar con esa arma.
+
+    Sale del 射程 del hechizo de ataque basico del arma: punos, sable y hacha
+    tienen 1, la lanza 2 y el arco 12. Es la regla de siempre -- guerreros de
+    cerca, arqueros de lejos -- pero leida de los datos en vez de escrita a
+    mano. Antes se usaba 1 para todo ataque normal.
+    """
+    magia, _ = ataque_estandar_arma(item_id)
+    d = _magic_xml().get(int(magia), {})
+    try:
+        return max(1, int(float(d.get('射程') or 1)))
+    except (TypeError, ValueError):
+        return 1
+
+
+def cadencia_monstruo(m) -> float:
+    """Segundos entre golpes de ese monstruo.
+
+    El ciclo de un monstruo es lo que dura su animacion: en la captura uno
+    con animacion 951 manda su 0x000A cada 951..1118 ms y su numero de dano
+    justo 951 ms despues de cada golpe, o sea el dano cae cuando arranca el
+    golpe siguiente. Con la formula de antes (1.264 - 0.00477 * velocidad)
+    salian ciclos mas largos que la animacion y quedaba un hueco muerto: el
+    bicho se quedaba parado esperando para volver a pegar.
+
+    La velocidad de ataque de monster.xml sigue contando, pero acortando o
+    alargando esa animacion en vez de sustituirla.
+    """
+    base = anim_de_monstruo(getattr(m, 'nombre', '')) / 1000.0
+    vel = getattr(m, 'atk_speed', 0) or 0
+    if vel:
+        base *= max(0.5, 1.0 - min(0.5, vel / 200.0))
+    return max(CADENCIA_MONSTRUO_MIN, base)
+
+
+def cadencia_ataque(buffs=None, habilidades=None, duales=False) -> float:
+    """Minimo entre golpes, ya con la velocidad de ataque aplicada.
+
+    Con dos armas se usaba un minimo mas largo -- el golpe mas los dos
+    numeros -- y el personaje se quedaba parado esperando despues de que la
+    animacion habia terminado. El ciclo dual lo lleva el cliente, asi que
+    aqui va el mismo piso que con una sola arma.
+    """
+    return CADENCIA_ATAQUE * (1.0 - bono_velocidad(buffs, habilidades))
+
+
+# Pausa entre el final del ciclo dual y el golpe siguiente.
+RESPIRO_DUALES = 0.0
+
+# Segundos entre el 0x000A del golpe y el 0x000B con el numero.
+#
+# Los 664 ms medidos en Chocolate Forest son CON dos bonos de velocidad de
+# ataque puestos: Swiftness Song V (15%) y Finesse (10%). Se restan del base,
+# no se multiplican: 664 / (1 - 0.25) = 885 ms de tiempo base.
+#
+# Comprobacion: nuestro servidor medido dio 775 ms con Finesse sola, y
+# 885 * (1 - 0.10) = 796. Encaja.
+RETRASO_DANO = 0.885
+
+def retraso_golpe(buffs=None, habilidades=None) -> float:
+    """Segundos hasta el numero de dano, ya con la velocidad de ataque."""
+    return RETRASO_DANO * (1.0 - bono_velocidad(buffs, habilidades))
+
 
 RETRASO_SEGUNDA_MANO = 0.70
 
-RETRASO_DANO = 0.78
 
 ANIM_GOLPE = 1480
 # Animacion del 0x000A de cada monstruo al pegar, medida en Celestia
@@ -816,13 +960,48 @@ ANIM_SIN_ARMA = 666
 ANIM_DUALES = 832
 
 
+# Con animacion 0 el cliente reproduce la que corresponde al arma que tiene
+# puesta, que es la que conoce el. Forzar un numero concreto le hace usar OTRA
+# animacion: mandando 1480 con cualquier arma, el golpe se veia acelerado y
+# sin relacion con lo equipado.
+#
+# Los valores reales existen -- Celestia manda 1287 con su arma de nivel 118,
+# y en otras capturas 666, 832 y 1480 -- pero no se encontro de donde salen:
+# no estan en magic.xml (1480 es "Collected Cake") ni en ninguna columna de
+# item.xml. Hasta saberlo, dejar que el cliente elija es mas fiel que
+# imponerle una animacion equivocada.
+# ---- ANIMACION DEL GOLPE: PARA PROBAR A MANO ----------------------------
+# Numero que va en el 0x000A. Con 0 elige el cliente segun el arma equipada.
+# Valores vistos en capturas de Celestia: 666, 832, 1287, 1480.
+#
+# Se puede poner uno por tipo de arma, porque la lanza (dos manos) no se
+# mueve igual que un sable ni que dos dagas. Cambiar y reiniciar el servidor.
+ANIM_POR_DEFECTO = 1500     # lo que no encaje en ninguna de abajo
+ANIM_SIN_ARMA_TEST = 0      # a mano limpia
+ANIM_DUALES_TEST = 0        # dos armas de una mano
+ANIM_DOS_MANOS_TEST = 0     # lanza, o cualquier arma a dos manos
+ANIM_POR_SKILL = {          # por habilidad de arma: 9 espada, 10 hacha,
+    # 11: 0,                # 11 lanza, 17 arco, 30 daga, 8 baston
+}
+# -------------------------------------------------------------------------
+
+
 def anim_de_arma(item_id: int = 0, duales: bool = False) -> int:
-    """Animacion del 0x000A para lo que se tenga equipado."""
-    if duales:
-        return ANIM_DUALES
+    """Animacion del 0x000A. 0 = la que el cliente sepa del arma equipada."""
+    if duales and ANIM_DUALES_TEST:
+        return ANIM_DUALES_TEST
     if not item_id:
-        return ANIM_SIN_ARMA
-    return ANIM_GOLPE
+        return ANIM_SIN_ARMA_TEST or ANIM_POR_DEFECTO
+    try:
+        import clases as _cl
+        if ANIM_DOS_MANOS_TEST and _cl.es_dos_manos(item_id):
+            return ANIM_DOS_MANOS_TEST
+        sid = _cl.skill_de_item(item_id)
+        if sid in ANIM_POR_SKILL:
+            return ANIM_POR_SKILL[sid]
+    except Exception:
+        pass
+    return ANIM_POR_DEFECTO
 
 
 def confirmar_cast(target: int, x: int, y: int, tipo: int = 1) -> bytes:
