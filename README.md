@@ -1,6 +1,6 @@
 # Angels Online — local server
 
-***English** · [Español](README.es.md)*
+**\*English** · [Español](README.es.md)\*
 
 Reverse-engineered network protocol for **Angels Online** (IGG, shut down in
 February 2026, client 8.5.1.0) and a server that speaks it, built from the client files and
@@ -24,6 +24,7 @@ without sugarcoating.
 - Stats computed from `item.xml` (gear actually adds up)
 - Angel Lyceum drawn: 52 NPCs, 81 monsters and 158 resources appear at their
   real positions, taken from the client's XML files
+- Tutorial Works
 
 **Partly**
 
@@ -36,19 +37,21 @@ without sugarcoating.
 - Shops: the purchase message works and deducts the gold, but **the shop
   window never opens** from the dialogue, so in practice you still cannot
   buy anything while playing
+  - Shop Works to buy but only 1 to 1 item not multiply and can't sell
 
 **Does not work**
 
 - NPCs and monsters are static: they don't move, don't react, don't attack on
-  their own and don't respawn when killed
+  their own and don't respawn when killed / Partly Works
+  Skills Not show efects but can use technicaly and basics attacks are some bugged and in dual speed buged.
 - Resources can't be gathered
-- Boxes can't be opened: the "use item" message is missing
+- Boxes can't be opened: the "use item" message is missing / Partly
 - Spells can't be cast: the three starting ones show up on F1-F3, but using
-  them does nothing
-- No experience and no levelling up
+  them does nothing / Partly Cast but can't see but yes buff and attack.
+- No experience and no levelling up / Fixed
 - Characters can't be deleted
 - Floor teleport zones don't work (the map change itself does, but the server
-  has to trigger it)
+  has to trigger it) / Fixed
 - Five of the Lyceum's NPCs were never captured and are missing
 - Passwords are **not validated**: the auth block hasn't been decrypted
 
@@ -83,12 +86,12 @@ debug.
 
 ### Environment variables
 
-| Variable | What it does |
-|---|---|
-| `AO_TILE` | Spawn tile in Guide Palace (default `82,83`) |
-| `AO_TILE_LYCEUM` | Spawn tile in the Lyceum (`152,74`) |
-| `AO_DURABILIDAD` | Multiplies the durability of everything the server hands out |
-| `AO_SECUENCIA_COMPLETA` | Sends the whole captured entry sequence, for comparison |
+| Variable                | What it does                                                 |
+| ----------------------- | ------------------------------------------------------------ |
+| `AO_TILE`               | Spawn tile in Guide Palace (default `82,83`)                 |
+| `AO_TILE_LYCEUM`        | Spawn tile in the Lyceum (`152,74`)                          |
+| `AO_DURABILIDAD`        | Multiplies the durability of everything the server hands out |
+| `AO_SECUENCIA_COMPLETA` | Sends the whole captured entry sequence, for comparison      |
 
 ---
 
@@ -131,6 +134,8 @@ where each branch has exactly three level-1 entries under its `技能限制1`
 (spear: Basic Attack I, Bloody Song I, Endless Energy I, ids 801 to 803;
 sword: Slicing Hit I, Swiftness Song I, Injury Cure I, 601 to 603).
 
+- Update: This works partly can buff but some effects and visual effects not showing or works.
+
 ### 2. NPCs stand still and say nothing
 
 ![idle npcs](docs/capturas/2-npcs-quietos-sin-dialogo.png)
@@ -138,6 +143,7 @@ sword: Slicing Hit I, Swiftness Song I, Injury Cure I, 601 to 603).
 House Pickets and friends wander around in the real game and have a default
 line. Here they are planted and mute: there's no NPC movement, and 35 of the
 Lyceum's 52 have no text assigned.
+Update: some npcs can set dialogues.
 
 ### 3. Boxes don't open
 
@@ -157,6 +163,8 @@ buying and selling of goods" closes the box instead of opening the shop. Buying
 itself **does work** (`0x0027` is implemented): what's missing is knowing which
 dialogue each option leads to.
 
+- Update: Some shops works
+
 ### 5. Portals don't work
 
 ![portals](docs/capturas/5-portales-no-funcionan.png)
@@ -164,6 +172,8 @@ dialogue each option leads to.
 Floor teleport zones are visible but do nothing, and sometimes the character
 gets stuck against them. Changing maps **is** implemented (`0x000C` + `0x0009`);
 what's missing is what the client sends when stepping on the zone.
+
+- Update: Some portal Works
 
 ---
 
