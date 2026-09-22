@@ -20,6 +20,7 @@ defensa 25) y Slarm el 19 (118 de vida, ataque 28+-2, defensa 25).
 import pathlib
 import random
 import sqlite3
+import random
 import struct
 import time
 
@@ -108,6 +109,21 @@ def calcular_skill_exp(buffs: dict = None) -> int:
     base = 6
     mult = configuracion.multiplicador_skill_exp(buffs)
     return max(1, int(round(base * mult)))
+
+
+CODE_EQUIPAR = 1
+
+
+def equipar_visual(entity_id: int, ranura: int, item_id: int) -> bytes:
+    """0x001D code=1: le dice al cliente QUE lleva puesto en esa ranura.
+
+    Sin esto el personaje se dibuja con la apariencia por defecto: en ropa
+    interior y con un baston en la mano, sin importar lo que tenga equipado.
+    Formato del spec: [u4 entidad][u1 cantidad][u1 code=1][u4 ranura][u4 item].
+    Con item 0 se quita la pieza.
+    """
+    return (struct.pack('<HIB', 0x001D, entity_id, 1)
+            + struct.pack('<BII', CODE_EQUIPAR, ranura, item_id))
 
 
 def atributo(entity_id: int, valor: int, kind: int = VIDA) -> bytes:
@@ -245,8 +261,21 @@ class Monstruo:
         return d
 
     def recibir(self, ataque: int) -> int:
-        """Aplica el dano y devuelve cuanto pego de verdad."""
-        d = max(1, ataque - self.defensa)
+        """Aplica el dano y devuelve cuanto pego de verdad.
+
+        La defensa NO se resta: divide. Medido en Celestia contra un Earth Elf
+        (defensa 59), con el mismo personaje y dos armas distintas:
+
+            R.Atk 212 -> 76 de dano     212 * 33/92 = 76.04
+            R.Atk 165 -> 59 de dano     165 * 33/92 = 59.18
+
+        El cociente dano/ataque da 0.358 en los dos casos, o sea que depende
+        solo de la defensa. Con la resta simple que habia antes, un nivel 5
+        con 48 de ataque le hacia 1 de dano a un Earth Elf y era imposible
+        matarlo.
+        """
+        tope = ataque * K_DEFENSA / (K_DEFENSA + self.defensa)
+        d = max(1, int(round(tope * random.uniform(VARIACION_DANO, 1.0))))
         self.hp = max(0, self.hp - d)
         if not self.hp:
             self.muerto_en = time.time()
@@ -499,6 +528,29 @@ def combo_de(magic_id: int):
     return None
 
 
+def cura_por_tics(magic_id: int):
+    """{'hp', 'intervalo', 'dur_ms', 'tics'} si el hechizo cura poco a poco.
+
+    Injury Cure I (603) es 對象="自己" HP="15" 作用間隔="5" 持續時間="11":
+    quince de vida cada cinco segundos durante once. La heuristica de
+    datos_magia lo marcaba como buff y no curaba nada, porque solo miraba el
+    HP y no el intervalo.
+    """
+    d = _magic_xml().get(int(magic_id or 0))
+    if not d or d.get('對象') != '自己':
+        return None
+    def _n(v, x=0):
+        try: return int(float(v)) if v not in (None, '') else x
+        except (TypeError, ValueError): return x
+    hp = _n(d.get('HP'))
+    intervalo = _n(d.get('作用間隔'))
+    dur = _n(d.get('持續時間'))
+    if hp <= 0 or intervalo <= 0 or dur <= 0:
+        return None
+    return {'hp': hp, 'intervalo': intervalo, 'dur_ms': dur * 1000,
+            'tics': max(1, dur // intervalo)}
+
+
 def efecto_secundario(magic_id: int):
     """{'magia', 'prob', 'estado', 'dur_ms', 'hp_tick', ...} o None.
 
@@ -532,6 +584,28 @@ def efecto_secundario(magic_id: int):
             'vel_mov': _n(h.get('移動速度'))}
 
 
+_EFECTOS_DISPONIBLES = None
+
+
+def efecto_existe(numero: int) -> bool:
+    """Si el cliente tiene el sprite de ese 特效編號.
+
+    Los efectos viven en shape/magic/<numero>/*.shp, uno por numero. Sirve
+    para no mandar efectos que el cliente no puede dibujar: comprobado que
+    136 (Slicing Hit), 141 (Ferocious Song), 146 (Injury Cure) y 175
+    (Fighting Shield) estan ahi con sus sprites.
+    """
+    global _EFECTOS_DISPONIBLES
+    if _EFECTOS_DISPONIBLES is None:
+        _EFECTOS_DISPONIBLES = set()
+        d = pathlib.Path('G:/extracted_paks/data1/shape/magic')
+        if d.is_dir():
+            for sub in d.iterdir():
+                if sub.is_dir() and sub.name.isdigit():
+                    _EFECTOS_DISPONIBLES.add(int(sub.name))
+    return not _EFECTOS_DISPONIBLES or int(numero) in _EFECTOS_DISPONIBLES
+
+
 def efecto_de_ataque(magic_id: int) -> int:
     """Devuelve el numero de efecto visual para este ataque o skill de magic.xml."""
     global _EFECTOS_CACHE
@@ -556,32 +630,31 @@ _WEAPON_ATTACK_CACHE = {}
 
 
 def ataque_estandar_arma(item_id: int) -> tuple:
-    """Devuelve (magic_id, efecto_visual) segun el arma equipada."""
+    """(magic_id, efecto) del ataque basico segun el arma equipada.
+
+    Se deriva de los datos, no de una lista a mano: la habilidad del arma
+    sale de su categoria en item.xml y el ataque basico es el hechizo de
+    nivel 1 de esa rama en magic.xml, con su 特效編號.
+
+    La tabla escrita a mano que habia antes daba (809, 198) para la lanza, y
+    el efecto 198 NO EXISTE en shape/magic: por eso con lanza no se veia
+    ningun efecto. El correcto es Basic Attack I (801) con el efecto 157.
+    """
     global _WEAPON_ATTACK_CACHE
-    if not item_id:
-        return (656, 136)
     if item_id in _WEAPON_ATTACK_CACHE:
         return _WEAPON_ATTACK_CACHE[item_id]
-    db = pathlib.Path(__file__).parent.parent / 'corpus' / 'content.db'
-    res = (656, 136)
-    if db.exists():
-        try:
-            con = sqlite3.connect(db)
-            row = con.execute('select "物品類別" from item where id=?', (str(item_id),)).fetchone()
-            if row and row[0]:
-                cat = str(row[0])
-                if '槍' in cat:   # Lanza / Spear (2 manos): Spear Hacking I
-                    res = (809, 198)
-                elif '錘' in cat:  # Maza / Martillo
-                    res = (734, 138)
-                elif '弓' in cat:  # Arco
-                    res = (771, 140)
-                elif '杖' in cat:  # Baculo / Baston
-                    res = (807, 165)
-                else:             # Espada, Daga, Hacha
-                    res = (656, 136)
-        except Exception:
-            pass
+    res = (656, 136)          # sin arma: pelea a mano limpia
+    try:
+        import clases as _cl
+        sid = _cl.skill_de_item(item_id) if item_id else None
+        hech = _cl.hechizos_iniciales([sid]) if sid else []
+        if hech:
+            magia = hech[0][0]
+            ef = efecto_de_ataque(magia)
+            if efecto_existe(ef):
+                res = (magia, ef)
+    except Exception:
+        pass
     _WEAPON_ATTACK_CACHE[item_id] = res
     return res
 
@@ -671,7 +744,8 @@ def grupo_de(magic_id: int):
 # que se haya encontrado: se probaron 常駐法術, 動態資料1 y 動態資料2 y no
 # coinciden. Queda como constante hasta poder medirlo con varias armas.
 # Segundos entre el 0x000A del golpe y el 0x000B con el numero. Medido en
-# mundo_161013_564371: 644, 647, 668, 687 y 690 ms en golpes limpios.
+# mundo_213507_817914: 779, 815 y 826 ms. (Una medicion anterior con otra
+# arma dio ~650 ms, asi que puede depender de la velocidad del arma.)
 # Cuanto se alejan los monstruos de su punto de aparicion al pasear. En
 # monster.xml el Little Slarm trae move_range=2, asi que apenas se despegan
 # del sitio; se amplia a peticion para que el mapa se vea mas vivo. El valor
@@ -682,10 +756,38 @@ def grupo_de(magic_id: int):
 # o sea 8/(18*5) = 9% por habilidad y por golpe.
 PROB_SKILL_EXP = 0.09
 
+# Hasta cuantas casillas te persigue un monstruo al que le pegaste. Los
+# monstruos son PASIVOS: no agroan por cercania, solo si los atacas.
+RANGO_PERDER_AGRO = 18
+
 RANGO_PASEO_MIN = 9
 PROB_PASEO = 0.22
 
-RETRASO_DANO = 0.65
+# Constante de la formula de dano: dano = ataque * K / (K + defensa).
+# Despejada de dos medidas exactas contra el mismo monstruo (ver recibir()).
+K_DEFENSA = 33
+# El dano no es fijo: la formula da el TOPE y cada golpe cae entre el 80% y el
+# 100% de ese valor. Medido contra un Earth Elf (defensa 59):
+#   sin arma, ataque 165 -> tope 59.2, golpes de 47, 50, 53 y 59
+#   duales,   ataque 218 -> tope 78.2, golpes de 69, 70, 71, 75 y 76
+# El maximo observado coincide con el tope en los dos casos.
+VARIACION_DANO = 0.80
+
+# Con dos armas el golpe se reparte: pega la primera, y la segunda llega un
+# poco despues, no las dos a la vez. El intervalo es el mismo que usan los
+# ataques en combo (連擊間隔 = 200 ms en magic.xml).
+# Minimo entre golpes del jugador. NO es un cooldown: el ritmo lo marca el
+# cliente, que manda el ataque cada ~1490 ms y lo repite solo mientras dure
+# el combate. Esto es solo un tope anti-spam.
+#
+# Estuvo en 1.5 s y fue un error: como el cliente ataca cada 1.49 s, cada
+# golpe caia justo por debajo del limite y se descartaba, asi que se perdia
+# casi uno de cada dos y el ataque se sentia entrecortado.
+CADENCIA_ATAQUE = 0.5
+
+RETRASO_SEGUNDA_MANO = 0.70
+
+RETRASO_DANO = 0.78
 
 ANIM_GOLPE = 1480
 # Animacion del 0x000A de cada monstruo al pegar, medida en Celestia
@@ -703,13 +805,23 @@ def anim_de_monstruo(nombre: str) -> int:
     return ANIM_MONSTRUO
 
 
-def anim_de_arma(item_id: int = 0) -> int:
-    """Animacion del 0x000A para el arma equipada.
+# Animacion del 0x000A segun con que se pegue. Medido en Celestia:
+#   sin arma (punos)      666
+#   dos armas (duales)    832
+#   espada               1480
+#   hacha           951 y 1009
+# Las duales NO pegan dos veces: en la captura cada golpe manda un solo
+# 0x000B. Lo unico que cambia es la animacion y el ataque total.
+ANIM_SIN_ARMA = 666
+ANIM_DUALES = 832
 
-    Por ahora devuelve siempre la medida en la captura. Antes se pasaba aqui
-    el 特效編號 del hechizo (136, 148...), que no es una animacion valida de
-    este mensaje y hacia que el cliente reprodujera cualquier cosa.
-    """
+
+def anim_de_arma(item_id: int = 0, duales: bool = False) -> int:
+    """Animacion del 0x000A para lo que se tenga equipado."""
+    if duales:
+        return ANIM_DUALES
+    if not item_id:
+        return ANIM_SIN_ARMA
     return ANIM_GOLPE
 
 
@@ -749,14 +861,23 @@ def numero_flotante(entity_id: int, cantidad: int, tipo: int = TIPO_DANO) -> byt
                        max(0, min(0xFFFFFFFF, int(cantidad))), 0)
 
 
-def numero_de_dano(atacante: int, objetivo: int, dano: int,
-                   ataque: int = ATAQUE_NORMAL, efecto: int = EFECTO_GOLPE):
-    """Sub-mensaje 0x0011 que dibuja el numero del golpe y reproduce el sprite de ataque (fase 0x00)."""
+def numero_de_dano(atacante: int, objetivo: int, dano: int = 0,
+                   ataque: int = ATAQUE_NORMAL, efecto: int = EFECTO_GOLPE,
+                   cast_time: int = 100):
+    """0x0011 fase 0x00: reproduce el EFECTO del ataque sobre el objetivo.
+
+    El offset 18 es el CAST TIME, no el dano. Aqui se seguia escribiendo el
+    dano, asi que el efecto duraba lo que valiera el golpe -- 47, 80, 2... --
+    y no se llegaba a ver. El numero va aparte, en el 0x000B.
+    Medido en Celestia (mundo_204956_255129): un Slicing Hit sobre un monstruo
+    es 88 00 | yo | monstruo | 0 | 0 | 64 00 | 02 | 59 02, o sea sprite 136,
+    cast time 100, anim 2 y el hechizo 601.
+    """
     b0 = bytearray(23)
     b0[0] = efecto & 0xFF
-    b0[1] = 0x00  # Fase 0: dibuja el numero de dano en pantalla y reproduce la animacion
+    b0[1] = 0x00
     struct.pack_into('<II', b0, 2, atacante, objetivo)
-    struct.pack_into('<H', b0, 18, max(0, min(65535, dano)))
+    struct.pack_into('<H', b0, 18, max(0, min(65535, cast_time)))
     b0[20] = 2
     struct.pack_into('<H', b0, 21, ataque & 0xFFFF)
     return struct.pack('<H', 0x0011) + bytes(b0)
@@ -841,6 +962,26 @@ def efecto_magia_self_inicio(yo: int, ef: int, tipo: int, cast_time: int = 100) 
     b0[20] = 2
     struct.pack_into('<H', b0, 21, tipo & 0xFFFF)
     return struct.pack('<H', 0x0011) + bytes(b0)
+
+
+def efecto_magia_self_cierre(yo: int, ef: int, tipo: int,
+                             tile_x: int = 0, tile_y: int = 0) -> bytes:
+    """Tercera linea del 0x0011, solo en las curaciones.
+
+    Injury Cure manda una fase 0x80 extra con anim=0, ademas de la normal con
+    anim=2. A diferencia de las otras dos, esta SI lleva la casilla del
+    jugador en los campos de posicion. Medido en mundo_204956_255129 t=416.59:
+    92 80 | 1e010000 | 1e010000 | 86000000 | 57000000 | 0000 | 00 | 5b02
+    """
+    b = bytearray(23)
+    b[0] = ef & 0xFF
+    b[1] = 0x80
+    struct.pack_into('<II', b, 2, yo, yo)
+    struct.pack_into('<II', b, 10, tile_x, tile_y)
+    struct.pack_into('<H', b, 18, 0)
+    b[20] = 0
+    struct.pack_into('<H', b, 21, tipo & 0xFFFF)
+    return struct.pack('<H', 0x0011) + bytes(b)
 
 
 def efecto_magia_self_fin(yo: int, ef: int, tipo: int) -> bytes:

@@ -382,14 +382,20 @@ EXTRA_POR_ARMA = {
 # Categoria del arma (物品類別 de item.xml) -> numero de habilidad.
 # Medido: el hacha Freshman (19832) es 錘, el escudo (19820) es 盾 y ademas
 # trae 技能限制1="14", y el sable (19826) es 刀.
+# Categorias tal como aparecen en item.xml, contadas sobre todo lo que lleva
+# 右手裝備 o 左手裝備. Las que habia escritas a mano (弓, 弩, 矛, 匕首) no
+# existen: el arco es 弓箭 y la daga 影刃, por eso el arco caia en el ataque
+# por defecto.
 SKILL_POR_CATEGORIA = {
-    '劍': 9, '刀': 9,          # espada y sable -> Sword
-    '斧': 10, '錘': 10,        # hacha y martillo -> Axe
-    '槍': 11, '矛': 11,        # lanza -> Spear
-    '弓': 17, '弩': 17,        # arco y ballesta -> Longbow
-    '盾': 14,                  # escudo -> Shield
-    '杖': 8,                   # baston -> Staff Hit
-    '匕首': 30,                # daga -> ShadowBlade
+    '劍': 9, '刀': 9,          # espada (226) y sable (167) -> Sword
+    '斧': 10, '錘': 10,        # hacha (210) y martillo (178) -> Axe
+    '槍': 11,                  # lanza (384) -> Spear
+    '弓箭': 17, '彈弓': 17,    # arco (363) y tirachinas (21) -> Longbow
+    '影刃': 30,                # hoja de sombra (331) -> ShadowBlade
+    '盾': 14,                  # escudo (267) -> Shield
+    '杖': 8,                   # baston (386) -> Staff Hit
+    '鐵鍬': 22,                # pala -> Dig
+    '釣竿': 21,                # cana de pescar -> Fishing
 }
 _CAT_ITEM = None
 
@@ -426,6 +432,38 @@ def skill_de_item(item_id: int):
     except (TypeError, ValueError):
         pass
     return SKILL_POR_CATEGORIA.get(cat)
+
+
+# Habilidades que corresponden a un arma de MANO. El escudo (14) no cuenta:
+# llevar espada y escudo no es pelear con dos armas.
+SKILLS_ARMA_MANO = {9, 10, 11, 17, 30, 8}
+
+
+# Las dos ranuras de mano. La 3 es la principal y la 4 la secundaria: en
+# cuentas.json un Protector tiene el arma en la 3 y el escudo en la 4.
+RANURA_MANO_DER = 3
+RANURA_MANO_IZQ = 4
+
+
+def lleva_duales(inventario) -> bool:
+    """True solo si hay un ARMA DE MANO en cada mano.
+
+    Se cuentan ARMAS, no habilidades. Contando habilidades fallaba por los
+    dos lados: dos dagas iguales dan las dos la habilidad 9 y el conjunto las
+    colapsaba en una (no detectaba duales), mientras que sable + stick da 9 y
+    10 y las contaba como duales aunque una fuera un escudo o un objeto que
+    no se empuna. Tampoco vale mirar solo si hay dos armas en el equipo: el
+    escudo (盾) va en la mano izquierda y no es pelear con dos armas.
+    """
+    inv = inventario or {}
+    manos = 0
+    for ranura in (RANURA_MANO_DER, RANURA_MANO_IZQ):
+        item_id = inv.get(ranura) or inv.get(str(ranura))
+        if not item_id:
+            continue
+        if skill_de_item(item_id) in SKILLS_ARMA_MANO:
+            manos += 1
+    return manos > 1
 
 
 def skills_de_equipo(inventario):

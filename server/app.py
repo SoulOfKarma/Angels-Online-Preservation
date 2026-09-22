@@ -34,9 +34,25 @@ log = logging.getLogger('app')
 # atributo que habilita la eleccion de clase.
 ENTIDAD_MAESTRO_CLASE = 19
 MAPA_DEL_TUTORIAL = 51      # los entity_id del tutorial solo valen aqui
+# Donde revive quien muere sin checkpoint: el Angel Lyceum, junto a los NPC.
+# Medido en Celestia: al elegir "Return to Angel Lyceum" aparece en (173,91).
+# Con checkpoint de Cupido el punto cambia y queda al lado de Cupido.
+REVIVIR_LYCEUM = (173, 91)
 
 
 _PORTALES = None
+
+
+def skills_arma_ses(ses):
+    """Las habilidades de arma de lo equipado."""
+    import clases as _cl
+    return _cl.skills_de_equipo(getattr(ses, 'inventario', None))
+
+
+def lleva_duales_ses(ses):
+    """Si el personaje pelea con DOS armas de mano (el escudo no cuenta)."""
+    import clases as _cl
+    return _cl.lleva_duales(getattr(ses, 'inventario', None))
 
 
 def _portales():
@@ -718,6 +734,11 @@ class Servidor:
                         ahora = time.time()
                         yo = p.entity_id
 
+                        if getattr(ses, 'muerto', False):
+                            # Un jugador muerto no recibe mas golpes: si no,
+                            # la IA lo seguia matando y la ventana de muerte
+                            # se reabria una y otra vez.
+                            break
                         for m in list(ses.monstruos.values()):
                             if not getattr(m, 'vivo', True):
                                 continue
@@ -739,10 +760,17 @@ class Servidor:
                             dist_y = abs(m.tile_y - p.tile_y)
                             dist = max(dist_x, dist_y)
 
+                            # Los monstruos son PASIVOS: no atacan hasta que
+                            # el jugador les pega. Se probo agro por cercania
+                            # y esta mal: en el juego real se puede caminar
+                            # entre ellos sin que reaccionen.
+
                             # 1. Monstruo en combate con el jugador
                             if getattr(m, 'en_combate_con', None) == yo:
-                                if dist > 18:
+                                if dist > _cb.RANGO_PERDER_AGRO:
                                     m.en_combate_con = None
+                                    log.debug(f"[{addr}] {m.nombre} pierde el "
+                                              f"agro a {dist} casillas")
                                     continue
 
                                 r_atk = max(1, getattr(m, 'atk_range', 1))
@@ -759,16 +787,30 @@ class Servidor:
                                                    _cb.numero_flotante(yo, suyo),
                                                    _cb.atributo(yo, pct_hp, _cb.VIDA))
                                         if p.hp <= 0:
-                                            import clases as _cl
-                                            ses.enviar(_cl.aviso("You were defeated! Returning to safe haven...", tipo=0, msg_id=_cl.MSG_ITEM))
-                                            p.hp = p.hp_max
-                                            p.mp = p.mp_max
-                                            rev_x = getattr(p, 'spawn_x', 138)
-                                            rev_y = getattr(p, 'spawn_y', 60)
-                                            p.tile_x, p.tile_y = rev_x, rev_y
-                                            ses.enviar(struct.pack('<HIII', 0x0003, p.entity_id, rev_x, rev_y),
-                                                       _cb.atributo(yo, p.hp, _cb.KIND_HP))
+                                            # Igual que el otro camino de
+                                            # muerte: se manda el 0x000A con
+                                            # tipo 7 y la vida en cero, y se
+                                            # espera a que el jugador elija en
+                                            # la ventana del cliente. Este
+                                            # bloque conservaba el revivir
+                                            # automatico en (138,60), que es
+                                            # donde quedaban los personajes
+                                            # varados tras morir.
+                                            ses.enviar(
+                                                _cb.ataque(yo, m.entity_id, 0,
+                                                           _cb.TIPO_MUERTE),
+                                                _cb.atributo(yo, 0, _cb.KIND_HP))
+                                            ses.muerto = True
                                             m.en_combate_con = None
+                                            if getattr(ses, 'usuario', None):
+                                                cuentas.guardar_progreso(
+                                                    ses.usuario, p.char_id,
+                                                    p.nivel, p.exp, 0, p.mp,
+                                                    p.habilidades,
+                                                    hp_max=p.hp_max,
+                                                    mp_max=p.mp_max)
+                                            log.info(f"[{addr}] jugador muerto "
+                                                     f"por {m.nombre} (IA)")
                                 else:
                                     # Fuera de rango: avanzar hacia el jugador solo si NO es estatico (como Lily)
                                     if not getattr(m, 'es_estatico', False):
@@ -813,6 +855,19 @@ class Servidor:
         # --- combate -----------------------------------------------------
         if opcode == 0x0006 and ses.rol == 'mundo' and cuerpo:
             import combate as _cb
+            # Un muerto no pega ni recibe. El cliente sigue repitiendo el
+            # ataque con la ventana de muerte abierta, y cada uno hacia que
+            # el monstruo contraatacara: por eso seguian saliendo numeros de
+            # dano sobre el cadaver.
+            if getattr(ses, 'muerto', False):
+                return
+            # Cadencia: un golpe cada 1,5 s como en el servidor real. El
+            # cliente repite el ataque solo, y sin limite se procesaban todos
+            # y el personaje pegaba muchisimo mas rapido de lo normal.
+            _ahora_atk = time.time()
+            if _ahora_atk - getattr(ses, 'ultimo_golpe', 0) < _cb.CADENCIA_ATAQUE:
+                return
+            ses.ultimo_golpe = _ahora_atk
             d3 = _cb.parsear_ataque(cuerpo)
             if not d3:
                 return
@@ -821,6 +876,20 @@ class Servidor:
 
             bichos = getattr(ses, 'monstruos', None) or {}
             m = bichos.get(objetivo)
+            # No se puede pegar desde lejos. El cliente deja hacer clic en un
+            # monstruo que esta al otro lado de la pantalla, y como el golpe
+            # se procesaba igual, el monstruo contraatacaba desde alli. Hay
+            # que estar dentro del alcance del arma o de la habilidad.
+            if m is not None and ses.personaje:
+                _rango_arma = 1
+                if tipo != _cb.ATAQUE_NORMAL:
+                    _rango_arma = max(1, _cb.datos_magia(tipo).get('rango', 1))
+                _d = max(abs(m.tile_x - ses.personaje.tile_x),
+                         abs(m.tile_y - ses.personaje.tile_y))
+                if _d > _rango_arma + 1:
+                    log.debug(f"[{addr}] golpe fuera de alcance: {_d} casillas "
+                              f"(alcance {_rango_arma})")
+                    return
             arma_puesta = ses.inventario.get(3, 0) if ses.inventario else 0
 
             # Si se uso una habilidad de ataque sin objetivo fijado, auto-fijar el monstruo mas cercano
@@ -870,6 +939,33 @@ class Servidor:
                     cast_time = mag.get('cast_time', 100)
                     import clases as _cl
                     import inventario as _iv
+
+                    # 1a. Curacion POR TICS (Injury Cure: 15 HP cada 5 s
+                    # durante 11). datos_magia la marcaba como buff y no
+                    # curaba nada: solo miraba el HP y no el intervalo.
+                    _tic = _cb.cura_por_tics(tipo)
+                    if _tic and ses.personaje:
+                        def _curar_tic(n=0):
+                            if not ses.personaje or getattr(ses, 'muerto', False):
+                                return
+                            antes = ses.personaje.hp
+                            ses.personaje.hp = min(ses.personaje.hp_max,
+                                                   ses.personaje.hp + _tic['hp'])
+                            sanado = ses.personaje.hp - antes
+                            if sanado > 0:
+                                ses.enviar_inmediato(
+                                    _cb.numero_flotante(yo, sanado, 1),
+                                    _cb.atributo(yo, ses.personaje.hp, _cb.KIND_HP))
+                            if n + 1 < _tic['tics']:
+                                try:
+                                    asyncio.get_event_loop().call_later(
+                                        _tic['intervalo'],
+                                        lambda: _curar_tic(n + 1))
+                                except Exception:
+                                    pass
+                        _curar_tic()
+                        log.info(f"[{addr}] {mag.get('nombre')}: cura {_tic['hp']} "
+                                 f"HP x{_tic['tics']} cada {_tic['intervalo']}s")
 
                     # 1. Habilidad de curacion real (Cure Spell de mago, etc.)
                     if mag.get('es_cura') and ses.personaje:
@@ -1080,25 +1176,26 @@ class Servidor:
             #   0x000A el golpe, DESPUES del numero
             # Antes se mandaba el 0x000A primero, la confirmacion con un
             # formato inventado de 15 bytes y el cierre 120 ms mas tarde.
+            _anim_golpe = _cb.anim_de_arma(arma_puesta,
+                                           duales=lleva_duales_ses(ses))
             if tipo != _cb.ATAQUE_NORMAL:
-                # Con habilidad (medido en mundo_154337_948959, t=9.4352):
-                #   0x0006 confirmacion
-                #   0x0011 inicio del cast
-                #   0x000A el golpe, ENTRE las dos fases
-                #   0x0011 cierre
-                # Mandar las dos fases juntas hacia que el efecto se viera
-                # doble y acelerado.
+                # CON HABILIDAD: confirmacion, efecto 0x0011 con el sprite de
+                # la habilidad, el golpe entre las dos fases, y cierre.
                 salida_golpe = [
                     _cb.confirmar_cast(objetivo, m.tile_x, m.tile_y),
                     _cb.numero_de_dano(yo, objetivo, dano, atk_magic, efecto=atk_efecto),
-                    _cb.ataque(yo, objetivo, _cb.anim_de_arma(arma_puesta), _cb.TIPO_GOLPE_ALT),
+                    _cb.ataque(yo, objetivo, _anim_golpe, _cb.TIPO_GOLPE_ALT),
                     _cb.cierre_de_dano(yo, objetivo, atk_magic, efecto=atk_efecto),
                 ]
             else:
-                # Golpe basico (t=3.08 y t=6.23 de la misma captura): no lleva
-                # 0x0011 ni confirmacion 0x0006, solo el 0x000A.
+                # ATAQUE NORMAL: solo el 0x000A. En la captura de Celestia
+                # (mundo_213507_817914) un golpe sin habilidad es unicamente
+                # 0x000A anim=1480 y despues los 0x000B con los numeros; no
+                # hay NINGUN 0x0011. Nosotros mandabamos uno igual, con el
+                # sprite de "Advance Chop", y por eso el efecto que se veia
+                # no correspondia al arma.
                 salida_golpe = [
-                    _cb.ataque(yo, objetivo, _cb.anim_de_arma(arma_puesta), _cb.TIPO_GOLPE_ALT),
+                    _cb.ataque(yo, objetivo, _anim_golpe, _cb.TIPO_GOLPE_ALT),
                 ]
             # El golpe sale ya; el dano llega ~650 ms despues, cuando la
             # animacion termina. Medido en mundo_161013_564371 sobre siete
@@ -1106,17 +1203,36 @@ class Servidor:
             # un 1510 de dos golpes encadenados). Mandarlo todo junto hacia
             # que el numero saliera antes de que el arma llegara al bicho.
             ses.enviar(*salida_golpe)
-            _pkgs_dano = (_cb.atributo(objetivo, m.porcentaje),
-                          _cb.numero_flotante(objetivo, dano,
-                                            _cb.TIPO_DANO_CRITICO if es_crit
-                                            else _cb.TIPO_DANO),
-                          *pkgs_sk, *pkgs_sp)
+            _tipo_num = _cb.TIPO_DANO_CRITICO if es_crit else _cb.TIPO_DANO
+            _duales = lleva_duales_ses(ses)
+            if _duales:
+                # Cada mano hace su dano COMPLETO, no la mitad: en la captura
+                # los dos numeros son iguales (122 y 122, 81 y 81). El
+                # segundo llega ~700 ms despues del primero.
+                _d2 = m.recibir(total_atk) if m.vivo else 0
+                _pkgs_dano = (_cb.numero_flotante(objetivo, dano, _tipo_num),
+                              *pkgs_sk, *pkgs_sp)
+                _pkgs_dano2 = ((_cb.atributo(objetivo, m.porcentaje),
+                                _cb.numero_flotante(objetivo, _d2, _tipo_num))
+                               if _d2 else
+                               (_cb.atributo(objetivo, m.porcentaje),))
+            else:
+                _pkgs_dano = (_cb.atributo(objetivo, m.porcentaje),
+                              _cb.numero_flotante(objetivo, dano, _tipo_num),
+                              *pkgs_sk, *pkgs_sp)
+                _pkgs_dano2 = None
             try:
-                asyncio.get_event_loop().call_later(
-                    _cb.RETRASO_DANO,
-                    lambda p=_pkgs_dano: ses.enviar_inmediato(*p))
+                bucle = asyncio.get_event_loop()
+                bucle.call_later(_cb.RETRASO_DANO,
+                                 lambda p=_pkgs_dano: ses.enviar_inmediato(*p))
+                if _pkgs_dano2:
+                    bucle.call_later(
+                        _cb.RETRASO_DANO + _cb.RETRASO_SEGUNDA_MANO,
+                        lambda p=_pkgs_dano2: ses.enviar_inmediato(*p))
             except Exception:
                 ses.enviar(*_pkgs_dano)
+                if _pkgs_dano2:
+                    ses.enviar(*_pkgs_dano2)
             if m.vivo:
                 # Contraataca inmediatamente si esta en rango
                 dist_m = max(abs(m.tile_x - ses.personaje.tile_x), abs(m.tile_y - ses.personaje.tile_y)) if ses.personaje else 1
@@ -1132,25 +1248,31 @@ class Servidor:
                     if mit_pct > 0:
                         suyo = max(1, int(round(suyo * (1.0 - min(80, mit_pct) / 100.0))))
 
-                    if ses.personaje:
+                    if ses.personaje and not getattr(ses, 'muerto', False):
                         ses.personaje.hp = max(0, ses.personaje.hp - suyo)
                         if ses.personaje.hp <= 0:
-                            import clases as _cl
-                            ses.enviar(_cl.aviso("You were defeated! Returning to safe haven...", tipo=0, msg_id=_cl.MSG_ITEM))
-                            ses.personaje.hp = ses.personaje.hp_max
-                            ses.personaje.mp = ses.personaje.mp_max
-                            rev_x = getattr(ses.personaje, 'spawn_x', 138)
-                            rev_y = getattr(ses.personaje, 'spawn_y', 60)
-                            ses.personaje.tile_x, ses.personaje.tile_y = rev_x, rev_y
-                            ses.enviar(struct.pack('<HIII', 0x0003, ses.personaje.entity_id, rev_x, rev_y),
-                                       _cb.atributo(yo, ses.personaje.hp, _cb.KIND_HP))
+                            # Morir es lo mismo que le pasa a un monstruo:
+                            # 0x000A [el que muere][el que lo mato] tipo=7 y el
+                            # 0x0013 con la vida en cero. La ventana "You are
+                            # dead" la abre el CLIENTE solo; el servidor no
+                            # manda ningun dialogo. Medido en Celestia,
+                            # mundo_190339_977913 t=620.85.
+                            # Antes se revivia de una en el checkpoint sin
+                            # preguntar, asi que la ventana no llegaba a salir.
+                            ses.enviar(_cb.numero_flotante(yo, suyo),
+                                       _cb.ataque(yo, objetivo, 0, _cb.TIPO_MUERTE),
+                                       _cb.atributo(yo, 0, _cb.KIND_HP))
+                            ses.muerto = True
                             m.en_combate_con = None
                             if getattr(ses, 'usuario', None):
-                                cuentas.guardar_posicion(ses.usuario, ses.personaje.char_id, rev_x, rev_y)
                                 cuentas.guardar_progreso(ses.usuario, ses.personaje.char_id,
                                                          ses.personaje.nivel, ses.personaje.exp,
-                                                         ses.personaje.hp, ses.personaje.mp)
-                            log.info(f"[{addr}] jugador derrotado por {m.nombre}; revivido en checkpoint ({rev_x}, {rev_y})")
+                                                         0, ses.personaje.mp,
+                                                         ses.personaje.habilidades,
+                                                         hp_max=ses.personaje.hp_max,
+                                                         mp_max=ses.personaje.mp_max)
+                            log.info(f"[{addr}] jugador muerto por {m.nombre}; "
+                                     f"esperando que elija donde revivir")
                             return
 
                         ef_mon = m.proj_ef if m.proj_ef > 0 else 148
@@ -1318,7 +1440,12 @@ class Servidor:
             ses.enviar(_stats_ses(ses))
             if p.habilidades:
                 _ids = [h[0] for h in p.habilidades]
-                ses.enviar(_cl2.arbol(_ids))
+                # OJO: el arbol lleva nivel y experiencia de cada
+                # habilidad, asi que hay que pasarle p.habilidades entero.
+                # Pasando solo los ids, arbol() pone nivel 1 y exp 0 y el
+                # panel salia reseteado a 0.00% despues de cada cambio de
+                # mapa o de revivir.
+                ses.enviar(_cl2.arbol(p.habilidades))
                 _hech = _cl2.hechizos_iniciales(_ids)
                 if _hech:
                     ses.enviar(_cl2.otorgar_hechizos(p.entity_id, [n for n, _ in _hech]))
@@ -1839,12 +1966,13 @@ class Servidor:
                 #   S2C 0x0013 + 0x000B con el numero
                 # Antes se contestaba fijando el objetivo y se esperaba un
                 # 0x0006 que nunca llegaba, asi que el golpe basico no existia.
-                if _m.vivo:
-                    ses.enviar(_cb0.atributo(ent, _m.porcentaje))
-                    self.manejar(ses, 0x0006, m, d, addr,
-                                 struct.pack('<HI', _cb0.ATAQUE_NORMAL, ent))
-                else:
-                    ses.enviar(_cb0.atributo(ent, _m.porcentaje))
+                # El clic SOLO selecciona: se contesta con la vida del
+                # monstruo y nada mas. El golpe lo pide el cliente aparte,
+                # con el 0x0016 accion 0x0c, y lo repite solo cada ~1,5 s.
+                # Atacar tambien aqui hacia que cada clic disparara DOS
+                # golpes con 15 ms de diferencia, y por eso el personaje
+                # pegaba al doble de velocidad.
+                ses.enviar(_cb0.atributo(ent, _m.porcentaje))
                 return
 
 
@@ -2051,11 +2179,11 @@ class Servidor:
                     # West Playground A1..A5
                     import clases as _cl3
                     ses.personaje.stage = 43
-                    ses.personaje.tile_x, ses.personaje.tile_y = (193, 20)
+                    ses.personaje.tile_x, ses.personaje.tile_y = (186, 27)
                     ses.monstruos = _monstruos_de(43)
                     ses.enviar(_cl3.cambiar_mapa(43))
                     if getattr(ses, 'usuario', None):
-                        cuentas.guardar_mapa(ses.usuario, ses.personaje.char_id, 43, 193, 20)
+                        cuentas.guardar_mapa(ses.usuario, ses.personaje.char_id, 43, 186, 27)
                     log.info(f"[{addr}] West Portal: al West Playground (stage 43)")
                 elif _el == 5080 and ses.personaje:
                     # Director Wolay: retorno a la ciudad de faccion elegida
@@ -2211,8 +2339,44 @@ class Servidor:
             return
 
         # --- Acciones de personaje: Sentarse / Levantarse con tecla Insert (0x0016) ---
-        if opcode == 0x0016 and ses.rol == 'mundo' and len(cuerpo) >= 4:
-            accion = struct.unpack_from('<I', cuerpo, 0)[0]
+        if opcode == 0x0016 and ses.rol == 'mundo' and len(cuerpo) >= 5:
+            # [u1 accion][u4 parametro]. Antes se leia un u32 desde el offset
+            # 0, que da bien para las acciones chicas (2 revivir, 4 sentarse)
+            # porque los bytes altos son cero, pero rompe la 0x0c.
+            accion = cuerpo[0]
+            parametro = struct.unpack_from('<I', cuerpo, 1)[0]
+            if accion == 0x0C and ses.personaje and not getattr(ses, 'muerto', False):
+                # ATAQUE BASICO. El cliente NO manda 0x0006 para pegar sin
+                # habilidad ni espera a que se le conteste un clic: manda este
+                # 0x0016 y lo repite solo cada ~1,5 s mientras dure el combate.
+                # Medido en Celestia, mundo_201655_173169 t=40.4.
+                import combate as _cb5
+                self.manejar(ses, 0x0006, m, d, addr,
+                             struct.pack('<HI', _cb5.ATAQUE_NORMAL, parametro))
+                return
+            if accion == 2 and ses.personaje and getattr(ses, 'muerto', False):
+                # "Return to Angel Lyceum to revive". La ventana la abre el
+                # cliente al morir y contesta con este 0x0016 [02 00 00 00 00];
+                # el servidor solo tiene que revivir y cambiar el mapa.
+                # Medido en Celestia, mundo_190339_977913 t=684.51.
+                import clases as _cl4
+                p2 = ses.personaje
+                rev_x = getattr(p2, 'checkpoint_x', 0) or REVIVIR_LYCEUM[0]
+                rev_y = getattr(p2, 'checkpoint_y', 0) or REVIVIR_LYCEUM[1]
+                p2.hp = p2.hp_max
+                p2.mp = p2.mp_max
+                p2.stage = getattr(p2, 'checkpoint_stage', 0) or 41
+                p2.tile_x, p2.tile_y = rev_x, rev_y
+                ses.muerto = False
+                ses.monstruos = _monstruos_de(p2.stage)
+                ses.enviar(_cl4.cambiar_mapa(p2.stage))
+                if getattr(ses, 'usuario', None):
+                    cuentas.guardar_mapa(ses.usuario, p2.char_id,
+                                         p2.stage, rev_x, rev_y)
+                    cuentas.guardar_progreso(ses.usuario, p2.char_id,
+                                             p2.nivel, p2.exp, p2.hp, p2.mp)
+                log.info(f"[{addr}] revive en stage {p2.stage} ({rev_x},{rev_y})")
+                return
             if accion == 4 and ses.personaje:
                 yo = ses.personaje.entity_id
                 ses.sentado = not getattr(ses, 'sentado', False)
@@ -2256,6 +2420,16 @@ class Servidor:
                 # todavia a media pantalla.
                 tx, ty = d['cur_x'] // 32, d['cur_y'] // 32
                 _por = _portal_en(ses.personaje.stage, tx, ty)
+                # Se recuerda en que portal se esta parado y solo se abre el
+                # menu al ENTRAR. Antes bastaba con que dlg_ent estuviera
+                # libre, pero si el cliente cierra el cuadro por su cuenta
+                # -- con la X o con Escape -- no avisa, dlg_ent queda pegado y
+                # el portal no volvia a abrir hasta reconectar.
+                _antes = getattr(ses, 'portal_pisado', None)
+                _ahora = tuple(_por['tile']) if _por else None
+                ses.portal_pisado = _ahora
+                if _ahora is not None and _ahora == _antes:
+                    _por = None       # ya estaba encima: no reabrir
                 if _por is not None and not _por.get('preguntar'):
                     # Vuelta directa: acercarse y listo, sin menu.
                     _dst, _lleg = _por['destino'], _por['llegada']
@@ -2268,7 +2442,7 @@ class Servidor:
                                              _dst, *_lleg)
                     log.info(f"[{addr}] portal directo: stage {_dst} tile {_lleg}")
                     return
-                if _por is not None and getattr(ses, 'dlg_ent', None) is None:
+                if _por is not None:
                     import dialogos as _dlg
                     _cfg = _portales()
                     sub = _dlg.armar_linea(_cfg['msg'], 0, _cfg['opciones'])
