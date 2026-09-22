@@ -112,7 +112,18 @@ class Grab:
 
 
 def reescribir_redirect(datos, clave, host_nuevo, puerto_nuevo, aviso):
-    """Cambia ip y puerto del sub-mensaje 0x0004 (REDIRECT).
+    """Cambia ip y puerto de los mensajes que mandan al cliente a otro sitio.
+
+    Son dos:
+
+    - **0x0004 REDIRECT**, en la sesion de login: manda al cliente del login
+      al mundo.
+    - **0x000C CAMBIO DE MAPA**, en la sesion de mundo:
+      `[u32 stage][u16 puerto][ip asciiz]`. Celestia lo usa para mudar al
+      cliente a OTRO servidor al cambiar de mapa: en la captura del West
+      Playground llega con el puerto 30001 y la ip 35.236.242.228. Como no se
+      reescribia, el cliente se reconectaba directo al servidor real y la
+      grabacion se cortaba en seco justo al cambiar de mapa.
 
     Hay que rehacer el frame entero: el checksum se calcula sobre el texto en
     claro y viaja en el header, asi que no alcanza con parchear los bytes.
@@ -142,6 +153,24 @@ def reescribir_redirect(datos, clave, host_nuevo, puerto_nuevo, aviso):
                         b[7:23] = host_nuevo.encode('ascii')[:15].ljust(16, b'\x00')
                         struct.pack_into('<H', b, 23, puerto_nuevo)
                         cambiado = True
+                    elif op == 0x000C and len(b) >= 8:
+                        # Solo si trae ip de verdad: el cambio de mapa dentro
+                        # del mismo servidor manda un 0x000C corto, y ese no
+                        # se toca.
+                        cruda = bytes(b[6:]).split(b'\x00')[0]
+                        try:
+                            ip_vieja = cruda.decode('ascii')
+                        except UnicodeDecodeError:
+                            ip_vieja = ''
+                        if ip_vieja.count('.') == 3:
+                            pt_viejo = struct.unpack_from('<H', b, 4)[0]
+                            stage = struct.unpack_from('<I', b, 0)[0]
+                            aviso(ip_vieja, pt_viejo, stage)
+                            hueco = len(b) - 6
+                            b[6:] = (host_nuevo.encode('ascii')[:hueco - 1]
+                                     .ljust(hueco, b'\x00'))
+                            struct.pack_into('<H', b, 4, puerto_nuevo)
+                            cambiado = True
                     nuevo += struct.pack('<HH', len(b) + 2, op) + bytes(b)
                 if cambiado:
                     plano = bytes(nuevo)
@@ -200,21 +229,29 @@ class Proxy:
             except Exception:
                 pass
 
-    async def maneja(self, lector, escritor, puerto_destino, etiqueta, reescribe):
+    async def maneja(self, lector, escritor, puerto_destino, etiqueta,
+                     reescribe, host_destino=None):
+        # El cambio de mapa puede mandar a OTRA maquina, no solo a otro
+        # puerto, asi que el host se pasa aparte en vez de usar siempre el
+        # del login.
+        host_destino = host_destino or self.destino
         addr = escritor.get_extra_info('peername')
         grab = Grab(etiqueta)
         log.info('[%s] cliente %s -> %s:%s  (grabando %s)',
-                 etiqueta, addr, self.destino, puerto_destino, grab.base)
+                 etiqueta, addr, host_destino, puerto_destino, grab.base)
         try:
-            rl, wl = await asyncio.open_connection(self.destino, puerto_destino)
+            rl, wl = await asyncio.open_connection(host_destino, puerto_destino)
         except Exception as e:
             log.error('[%s] no se pudo conectar al servidor real: %s', etiqueta, e)
             escritor.close()
             return
 
-        def aviso(ip, pt):
+        def aviso(ip, pt, stage=None):
             self.mundo_real = (ip, pt)
-            log.info('  REDIRECT del servidor: %s:%s', ip, pt)
+            if stage is None:
+                log.info('  REDIRECT del servidor: %s:%s', ip, pt)
+            else:
+                log.info('  CAMBIO DE MAPA al stage %s: %s:%s', stage, ip, pt)
             log.info('  reescrito a 127.0.0.1:%s (asi la sesion de mundo '
                      'tambien se graba)', self.wpuerto_local)
 
@@ -247,8 +284,11 @@ class Proxy:
                 return
             ip, pt = self.mundo_real
             self.destino_mundo = ip
+            # reescribe=True tambien aqui: la sesion de mundo es la que
+            # trae el 0x000C del cambio de mapa. Sin esto el cliente se iba
+            # al servidor real en cuanto cambiabas de mapa.
             await self.maneja(l, e, puerto_destino=pt, etiqueta='mundo',
-                              reescribe=False)
+                              reescribe=True, host_destino=ip)
 
         s2 = await asyncio.start_server(mundo, '127.0.0.1', self.wpuerto_local)
         log.info('MUNDO    127.0.0.1:%s -> (el que diga el redirect)', self.wpuerto_local)

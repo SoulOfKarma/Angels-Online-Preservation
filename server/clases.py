@@ -74,6 +74,25 @@ RAMA_POR_SKILL = {
     3: '混亂技能',      # Chaos       -> Magic Bomb / Charming Blessing / Sage Blessing
     4: '大地技能',      # Earth       -> Flying Dart / Earth Blessing / Shining Charm
 }
+# Nombre en ingles de cada rama, el que el cliente enseña al equipar o
+# descargar una. Los numeros son los mismos que usa el servidor real: en la
+# captura, cambiar con 0x002F contenedor 10 manda "Chaos" con el 3 y
+# "Meditate" con el 6.
+NOMBRE_RAMA = {
+    1: 'Life', 2: 'Wraith', 3: 'Chaos', 4: 'Earth', 5: 'Curse',
+    6: 'Meditate', 7: 'Hit', 8: 'Staff Hit', 9: 'Sword', 10: 'Axe',
+    11: 'Spear', 12: 'Enhance', 13: 'Grapple', 14: 'Shield', 15: 'Reserve',
+    16: 'Finesse', 17: 'Longbow', 18: 'Snipe', 19: 'Eagle Eye',
+    20: 'Collect', 21: 'Fishing', 22: 'Dig', 23: 'Lumber',
+    30: 'Cooking', 32: 'Mantle', 33: 'Garment', 34: 'Vestment',
+    35: 'Avatar',
+}
+
+
+def nombre_de_rama(sid: int) -> str:
+    return NOMBRE_RAMA.get(int(sid), 'Skill %d' % sid)
+
+
 _HECHIZOS = None
 
 

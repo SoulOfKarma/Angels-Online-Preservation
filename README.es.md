@@ -8,7 +8,11 @@ cliente y de capturas de tráfico.
 
 No es un emulador completo. Es el **protocolo documentado** y un servidor que
 llega hasta donde llega: se crea un personaje, se hace el tutorial, se elige
-clase, se pelea y se compra. Lo que falta está listado abajo, sin adornos.
+clase, se pelea, se sube de nivel y se compra y vende en las tiendas. Lo que
+falta está listado abajo, sin adornos.
+
+Cada afirmación sobre el protocolo tiene una medición detrás. Donde algo es
+una suposición, lo dice.
 
 ---
 
@@ -16,40 +20,58 @@ clase, se pelea y se compra. Lo que falta está listado abajo, sin adornos.
 
 **Funciona**
 
-- Login, creación y selección de personaje, con persistencia en disco
-- Entrada al mundo, movimiento y cambio de mapa
-- Tutorial de Angel Raphael: elegir clase, recibir el equipo y el traslado
-- Inventario completo: equipar, desequipar, mover entre casillas, durabilidad
-- Stats calculados desde `item.xml` (el equipo suma de verdad)
-- Angel Lyceum dibujado: 52 NPC, 81 monstruos y 158 recursos aparecen en sus
-  posiciones reales, sacadas de los XML del cliente
+- Login, creación, selección y borrado de personaje, con persistencia en disco
+- Entrada al mundo, movimiento, cambio de mapa y portales del suelo
+- El tutorial de Angel Raphael: elegir clase, recibir el equipo y el traslado
+- Inventario con **cantidades**: los consumibles se apilan, y equipar,
+  desequipar y mover entre casillas se contesta casilla por casilla, como
+  hace el servidor real
+- Tiendas: comprar **varios objetos y varias unidades de una vez**, vender,
+  separar un montón y destruirlo. Los precios de compra y venta salen de
+  `item.xml`, y el total de una venta coincide con el capturado al oro
+- Usar consumibles: las pociones y la comida devuelven HP y MP y gastan una
+  unidad
+- Stats calculados desde `item.xml` (el equipo suma de verdad), incluido el
+  peso que se carga
+- Combate: pegar y recibir, números de daño, críticos, armas duales, efectos
+  de ataque, morir y revivir, botín, experiencia y experiencia de habilidad
+- Monstruos: cadencia de ataque propia de cada uno, persecución, paseo,
+  reaparición y efectos de sangrado y aturdimiento
+- Tres mapas poblados a partir de capturas: Angel Lyceum (52 NPC, 81
+  monstruos, 158 recursos), East Playground (170 monstruos, 66 recursos) y
+  West Playground (150 monstruos, 67 recursos), mas el Fighting Palace con
+  Angel Raphael y los cuarenta tótems
+- Portales entre el Lyceum y los dos playgrounds, con sus menús
+- Cupid fija el punto de revivir donde estás parado
+- Animación y ritmo de ataque por arma, medidos: lanza, bastón, espada, daga
+  y dos armas de una mano mandan cada uno su propio par de valores
+- El cooldown de cada habilidad sale de sus propios datos, aparte del ritmo
+  del ataque básico
+- Los magos pueden cambiar de rama de magia: se otorgan los hechizos de la
+  nueva y se quitan los de la vieja
 
 **A medias**
 
-- Combate: se puede fijar un objetivo y pegarle, y el servidor lleva la vida
-  de cada monstruo, pero **no se ve el número de daño ni llega el botín**.
-  Los mensajes se mandan y coinciden byte a byte con los del servidor real,
-  así que falta algo más que todavía no se identificó
-- Diálogos de NPC: 17 de los 52 NPC del Lyceum tienen su texto y sus
-  opciones, pero **elegir una opción cierra el cuadro** en vez de continuar
-- Tiendas: el mensaje de compra funciona y descuenta el oro, pero **la
-  ventana de tienda no se abre nunca** desde el diálogo, así que jugando
-  todavía no se puede comprar nada
+- Diálogos de NPC: 17 de los 52 del Lyceum tienen su texto y sus opciones
+- Hechizos: salen en F1-F3, se lanzan, dan buff y hacen daño, pero faltan
+  algunos efectos visuales
+- La fórmula de daño aguanta a nivel bajo y se va mucho a nivel alto: resultó
+  ser lineal en la defensa, y los coeficientes dependen del nivel de los dos
+  bandos
+- Los combos se leen de `magic.xml` pero no se ejecutan
+- El efecto de lentitud se registra pero no cambia la velocidad de movimiento
+- El bastón y el hacha usan la animación de ataque de la espada hasta que
+  alguien capture la suya
 
 **No funciona**
 
-- NPC y monstruos están quietos: no se mueven, no reaccionan, no atacan por
-  su cuenta y no reaparecen al morir
-- Los recursos no se recolectan
-- Las cajas no se abren: falta el mensaje de "usar objeto"
-- Los hechizos no se lanzan: los tres iniciales aparecen en F1 a F3 pero
-  usarlos no hace nada
-- No hay experiencia ni subir de nivel
-- No se pueden borrar personajes
-- Las zonas de teletransporte del suelo no funcionan (el cambio de mapa sí,
-  pero hay que dispararlo desde el servidor)
-- Faltan cinco NPC del Lyceum que no se llegaron a capturar
-- La contraseña **no se valida**: el bloque de autenticación no está descifrado
+- La ID Card dibuja al personaje en ropa interior, aunque el muñeco del mundo
+  sí sale vestido (más abajo)
+- Los recursos no se recolectan, así que las nueve habilidades de recolección
+  y producción no suben nunca
+- Faltan cinco NPC del Lyceum que nunca se capturaron
+- Las contraseñas **no se validan**: el bloque de autenticación sigue sin
+  descifrar
 
 ---
 
@@ -107,59 +129,55 @@ cosas se dieron por buenas con una sola muestra y resultaron falsas.
 
 ---
 
-## Fallos conocidos, con foto
+## Fallos conocidos
 
-Cada uno está en `docs/capturas/`.
+### La ID Card dibuja al personaje desnudo
 
-### 1. El panel de habilidades sale a medias
+El muñeco que camina por el mundo lleva su equipo bien, pero la figura del
+panel de la ID Card sale en ropa interior. Ahí el arma y los zapatos **sí**
+se dibujan; la que no se aplica es la prenda del cuerpo.
 
-![habilidades](docs/capturas/1-skills-vacias.png)
+Tres candidatos quedaron descartados por medición, para que nadie los repita:
+el `0x0149` es byte a byte idéntico siempre, el `0x0179` sale igual después
+de cada equipado sin importar qué te pongas, y la ficha `0x0002` no contiene
+ningún id del equipo — dos logins del **mismo** personaje con equipo distinto
+se diferencian en sólo 56 bytes, y todos son stats y nivel.
 
-El panel de habilidades muestra la fila de la clase elegida y el resto en
-interrogantes: el cliente no conoce las otras treinta.
+Lo que lo resolvería es una captura hecha con la ID Card **abierta**,
+quitándose y poniéndose una prenda del cuerpo.
 
-Los tres hechizos iniciales **ya salen** (la captura es de antes de eso), pero
-solo visualmente: están los iconos en el panel y en la barra F1 a F3, y no
-hacen nada al usarlos. Falta el mensaje de lanzar un hechizo, que todavía no
-está identificado. Cuáles son los tres depende del arma; se leen de
-`magic.xml`, donde cada rama tiene exactamente tres registros de nivel 1 bajo
-su `技能限制1` (lanza: Basic Attack I, Bloody Song I, Endless Energy I, ids
-801 a 803; espada: Slicing Hit I, Swiftness Song I, Injury Cure I, 601 a 603).
+### La fórmula de daño se va a nivel alto
 
-### 2. Los NPC están quietos y sin diálogo
+`ataque x 33 / (33 + defensa)` cuadra con lo que hace un personaje de nivel
+bajo. A nivel 118 se equivoca por un factor de unas 75 veces. La relación
+resultó ser lineal en la defensa en vez de multiplicativa, con una pendiente
+que depende de los niveles en juego, y no hay muestras suficientes de varios
+rangos de nivel para fijarla.
 
-![npcs quietos](docs/capturas/2-npcs-quietos-sin-dialogo.png)
+### La animación de ataque del bastón y el hacha
 
-Los House Pickets y compañía se mueven solos en el juego real y tienen una
-línea por defecto. Aquí están plantados y mudos: no hay movimiento de NPC, y
-35 de los 52 del Lyceum no tienen ningún texto asignado.
+El `0x000A` lleva un tipo y un número de animación, y el par depende del arma.
+Medido siguiendo los cambios de equipo dentro de cada sesión:
 
-### 3. Las cajas no se abren
+| arma | tipo | animación |
+| ---- | ---- | --------- |
+| espada, daga | 3 | 1480 |
+| lanza | 2 | 827 |
+| bastón | 2 | 951 |
+| dos armas de una mano | 2 | 832 |
 
-![cajas](docs/capturas/3-cajas-no-abren.png)
+El número no es una duración: la lanza pega más lento que la espada y sin
+embargo su número es menor. Lo que hace es elegir qué animación reproduce el
+cliente, así que mandar el equivocado hace que la lanza ataque como si
+llevaras dos armas y ni se vea el arma. El bastón y el hacha todavía caen en
+el par de la espada, así que una captura de alguien atacando con ellos
+completaría la tabla.
 
-Se entregan bien y el tooltip es correcto (se lee de `item.xml`), pero hacerles
-clic no hace nada. Falta el mensaje de "usar objeto", que no aparece en ninguna
-captura. En el juego, abrir la caja de nivel 5 entrega la de 15, esa la de 25,
-y así.
+### Fotos de fallos ya resueltos
 
-### 4. La ventana de compra no se abre
-
-![tienda](docs/capturas/4-tienda-no-abre.png)
-
-El diálogo del Shopkeeper sale con sus dos opciones, pero elegir "Tell me about
-the buying and selling of goods" cierra el cuadro en vez de abrir la tienda. La
-compra en sí **sí funciona** (`0x0027` está implementado): lo que falta es
-saber a qué diálogo lleva cada opción.
-
-### 5. Los portales no funcionan
-
-![portales](docs/capturas/5-portales-no-funcionan.png)
-
-Las zonas de teletransporte del suelo se ven pero no hacen nada, y a veces el
-personaje se queda trabado contra ellas. El cambio de mapa **sí está
-implementado** (`0x000C` + `0x0009`); lo que falta es qué manda el cliente al
-pisar la zona.
+Las imágenes de `docs/capturas/` se conservan como registro. Los cinco están
+resueltos: el panel de habilidades y los hechizos de F1-F3, los diálogos y el
+movimiento de los NPC, abrir cajas, la tienda y los portales del suelo.
 
 ---
 
@@ -196,7 +214,6 @@ en `server/cuentas.py`.
 Algunas cosas se ven mal hasta que salís y volvés a entrar. El servidor y el
 cliente terminan de acuerdo, pero el cliente no refresca en el momento:
 
-- Al crear un personaje, el equipo a veces no aparece hasta reconectar
 - Al cambiar de mapa, la música se corta
 - El panel de equipo puede quedar con una casilla dibujada de más
 
@@ -228,15 +245,16 @@ Dos consejos que costaron varias rondas aprender:
 
 Lo que haría falta ahora, por orden de utilidad:
 
-1. **Matar un monstruo entero**, desde el primer golpe hasta el botín. Acá no
-   se ve el número de daño ni llega el botín, y la captura que hay no cubre el
-   intercambio completo.
+1. **Equipar una prenda del cuerpo con la ID Card abierta**, para aislar el
+   mensaje que redibuja la figura.
 2. **Elegir opciones de diálogo** en varios NPC distintos. Con cinco o seis
-   casos se resuelve la tienda y el punto de reaparición.
-3. **Borrar un personaje** que ya haya pasado su período de protección.
-4. **Cruzar una zona de teletransporte** del suelo.
-5. **Recolectar un recurso** con la herramienta equipada.
-6. **Subir de nivel** y ver qué manda el servidor.
+   casos se llenan los 35 NPC del Lyceum que siguen sin texto.
+3. **Recolectar un recurso** con la herramienta equipada. De eso dependen
+   nueve habilidades y hoy ninguna puede subir.
+4. **Una pelea larga contra monstruos de varios niveles**, anotando el nivel
+   de los dos bandos, para fijar la fórmula de daño.
+5. **Atacar con bastón y con hacha**, para terminar la tabla de animaciones
+   de ataque (espada, lanza y dos armas ya están medidas).
 
 ### Aportes de cualquier tipo
 

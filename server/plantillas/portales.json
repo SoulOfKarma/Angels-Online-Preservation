@@ -1,5 +1,5 @@
 {
- "_nota": "Los tornados con alas (sprite 60001). NO se clican: el dialogo salta al PISARLOS, y va sin retrato (val=0 en el 0x0012). Medido en Celestia, mundo_181419_370379: el unico mensaje del cliente antes del 0x0012 es un 0x0004 de movimiento, y la cabecera es id=5801 val=0 n_str=0 n_opt=6. El radio es 1: hay que estar ENCIMA del tornado. Con radio mayor saltaba desde media pantalla. El de vuelta NO pregunta: acercarse y ya teletransporta. Solo el del Lyceum abre el menu, porque tiene cinco destinos. El punto de llegada esta a proposito lejos del tornado: si se aparece encima, el portal directo devuelve al instante y queda un bucle.",
+ "_nota": "Los tornados con alas (sprite 60001). NO se clican: el dialogo salta al PISARLOS, y va sin retrato (val=0 en el 0x0012). Medido en Celestia, mundo_181419_370379: el unico mensaje del cliente antes del 0x0012 es un 0x0004 de movimiento, y la cabecera es id=5801 val=0 n_str=0 n_opt=6. El radio es 1: hay que estar ENCIMA del tornado. Con radio mayor saltaba desde media pantalla. El de vuelta NO pregunta: acercarse y ya teletransporta. Solo el del Lyceum abre el menu, porque tiene cinco destinos. El punto de llegada esta a proposito lejos del tornado: si se aparece encima, el portal directo devuelve al instante y queda un bucle. Los cinco tornados del Lyceum YA estan dibujados: son recursos del propio mapa con sprite 60001 (entidades 5, 6, 138, 215 y 230), asi que no hay que dibujar nada, solo asignarles destino. Cada uno puede traer sus propias 'opciones'; si no las trae se usan las de arriba.",
  "msg": 5801,
  "opciones": [
   5807,
@@ -25,6 +25,28 @@
     ],
     "nota": "Lyceum -> West PlaygroundA1",
     "preguntar": true
+   },
+   {
+    "entity": 702,
+    "tile": [
+     261,
+     11
+    ],
+    "destino": 42,
+    "llegada": [
+     9,
+     111
+    ],
+    "opciones": [
+     5802,
+     5803,
+     5804,
+     5805,
+     5806
+    ],
+    "nota": "Lyceum -> East PlaygroundA1. Tile y llegada medidos en el juego, no deducidos.",
+    "preguntar": true,
+    "dibujar": true
    }
   ],
   "43": [
@@ -41,6 +63,23 @@
     ],
     "dibujar": true,
     "nota": "West PlaygroundA1 -> Lyceum. En Celestia esta a la derecha de (191,19), donde el jugador aparece al llegar.",
+    "preguntar": false
+   }
+  ],
+  "42": [
+   {
+    "entity": 701,
+    "tile": [
+     8,
+     115
+    ],
+    "destino": 41,
+    "llegada": [
+     261,
+     11
+    ],
+    "dibujar": true,
+    "nota": "East PlaygroundA1 -> Lyceum. Posicion medida en el juego.",
     "preguntar": false
    }
   ]

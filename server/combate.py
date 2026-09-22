@@ -292,11 +292,21 @@ class Monstruo:
                 and time.time() - self.muerto_en >= SEGUNDOS_REAPARICION)
 
     def revivir(self):
+        """Vuelve a la vida cerca de su sitio, no clavado en el mismo punto.
+
+        Antes reaparecia siempre en la casilla exacta de su spawn, asi que
+        las Lily salian una y otra vez en el mismo lugar. Ahora sale en un
+        punto al azar dentro de su radio de movimiento -- los estaticos
+        incluidos, que no pasean pero si pueden aparecer en otro sitio.
+        """
+        import random as _r
         self.hp = self.hp_max
         self.muerto_en = None
-        self.tile = list(self.spawn_tile)
-        self.tile_x = self.spawn_x
-        self.tile_y = self.spawn_y
+        radio = max(1, min(getattr(self, 'move_range', 0) or 0,
+                           RANGO_PASEO_MIN))
+        self.tile_x = self.spawn_x + _r.randint(-radio, radio)
+        self.tile_y = self.spawn_y + _r.randint(-radio, radio)
+        self.tile = [self.tile_x, self.tile_y]
         self.en_combate_con = None
         self.ultimo_ataque = 0.0
 
@@ -633,6 +643,39 @@ def efecto_de_ataque(magic_id: int) -> int:
 _WEAPON_ATTACK_CACHE = {}
 
 
+# Cuanto pesa el "Stance power" de una habilidad en el golpe.
+#
+# El Stance power ES el campo `hp` de magic.xml: Slicing Hit I tiene 50 y el
+# tooltip dice "Stance power: 50"; Advance Chop V tiene 325 y dice 325. Todas
+# las habilidades de ataque llevan ademas 公式=15, que es su id de formula.
+#
+# Se suma al ataque, no se multiplica, y esto es lo medido: en Celestia, con
+# R.Atk 57650, un Advance Chop V (stance 325) hizo 689.459 y 689.808 de dano
+# mientras que un golpe BASICO hizo 780.680 a 781.453. Si la habilidad
+# llevara un multiplicador interno tendria que haber pegado mucho mas fuerte,
+# y pego menos. Con 57650 de ataque, sumar 325 no se nota -- que es justo lo
+# que se ve.
+#
+# A nivel bajo si se nota: con R.Atk 68, un Slicing Hit I pasa de 39 a 66 de
+# dano contra un Slarm, un 70% mas.
+#
+# Queda como constante para poder subirlo si en el juego se siente flojo. En
+# 1.0 es la suma pura, que es lo unico que respalda la medicion.
+PESO_STANCE = 1.0
+
+
+def stance_de(magic_id: int) -> int:
+    """El Stance power de esa habilidad, del campo `hp` de magic.xml."""
+    return abs(int(datos_magia(magic_id).get('hp', 0) or 0))
+
+
+def ataque_con_stance(ataque: int, magic_id: int = 0) -> int:
+    """El ataque total de un golpe: el R.Atk mas el Stance de la habilidad."""
+    if not magic_id:
+        return int(ataque)
+    return int(round(ataque + stance_de(magic_id) * PESO_STANCE))
+
+
 def ataque_estandar_arma(item_id: int) -> tuple:
     """(magic_id, efecto) del ataque basico segun el arma equipada.
 
@@ -819,7 +862,11 @@ def bono_velocidad(buffs=None, habilidades=None) -> float:
 #
 # El valor es un piso de seguridad por debajo de todo lo medido (1481 ms menos
 # un margen), para no comerse peticiones ni con jitter de red.
-CADENCIA_ATAQUE = 1.37
+# Bajado de 1.37 a 1.15 con el log del propio juego: el cliente pedia golpes
+# a los 1.073 y 1.111 s y el minimo le quedaba en 1.165, asi que se perdian
+# por cincuenta milisegundos. El piso tiene que quedar POR DEBAJO de lo que
+# pide el cliente, nunca al lado.
+CADENCIA_ATAQUE = 1.15
 
 
 def dano_recibido(ataque: int, defensa: int) -> int:
@@ -852,6 +899,16 @@ PASO_PASEO_MAX = 3
 VELOCIDAD_PASEO = 75
 SEGUNDOS_ENTRE_PASEOS = 5.6
 
+# Cuanto tarda un monstruo en recorrer una casilla, y cuanto descansa entre
+# un paso y el siguiente. El paseo se programaba con una probabilidad por
+# tick: cada bicho tenia la misma posibilidad de arrancar en cualquier
+# momento, asi que se movian a tirones -- un paso, una pausa larga, otro
+# paso. Ahora cada uno lleva su propio reloj: cuando termina de caminar sale
+# de nuevo casi enseguida, y el movimiento se ve continuo.
+SEGUNDOS_POR_CASILLA = 0.34
+PAUSA_PASEO_MIN = 0.15
+PAUSA_PASEO_MAX = 0.90
+
 # Segundos entre el 0x000A del monstruo y su numero de dano. El campo de
 # animacion del 0x000A es la duracion en milisegundos: un bicho con animacion
 # 951 manda su 0x000B a los 951..1118 ms, y otro con 774 a los 783..786 ms.
@@ -881,27 +938,67 @@ def alcance_arma(item_id: int = 0) -> int:
         return 1
 
 
+# Segundos entre golpes de cada monstruo, MEDIDOS en el trafico. Van aparte
+# de la animacion, que es otra cosa: la Lily se anima en 1009 ms pero pega
+# cada 1400-1530, y el Slarm se anima en 740 y pega cada 798.
+#
+#   Slarm            798 ms   (una muestra)
+#   Lily            1411 y 1530 ms
+#   Death's Head 1  1305 ms
+#
+# El Slarm se deja en 2.00 a proposito: a su ritmo real resulta injugable
+# aqui, y el usuario pidio ese valor probando en el juego. Lo que no este en
+# esta tabla usa su animacion como ritmo.
+CADENCIA_POR_MONSTRUO = {
+    'Slarm': 2.00,
+    'Lily': 1.47,
+    "Death's Head": 1.305,
+}
+
+
 def cadencia_monstruo(m) -> float:
-    """Segundos entre golpes de ese monstruo.
+    """Segundos entre golpes de ese monstruo: su animacion, y nada mas.
 
-    El ciclo de un monstruo es lo que dura su animacion: en la captura uno
-    con animacion 951 manda su 0x000A cada 951..1118 ms y su numero de dano
-    justo 951 ms despues de cada golpe, o sea el dano cae cuando arranca el
-    golpe siguiente. Con la formula de antes (1.264 - 0.00477 * velocidad)
-    salian ciclos mas largos que la animacion y quedaba un hueco muerto: el
-    bicho se quedaba parado esperando para volver a pegar.
+    Lo medido es que el campo de animacion del 0x000A ES el ciclo: un bicho
+    con animacion 951 manda su golpe cada 951 ms y su numero de dano justo
+    951 ms despues. Asi que el ciclo sale de ANIM_POR_MONSTRUO y se acabo.
 
-    La velocidad de ataque de monster.xml sigue contando, pero acortando o
-    alargando esa animacion en vez de sustituirla.
+    Aqui habia ademas un escalado por el atk_speed de monster.xml,
+    `1 - atk_speed / 200`, que me invente. El Slarm tiene atk_speed 90, asi
+    que con 1500 de animacion pegaba cada 825 ms: seguia siendo demasiado
+    rapido por mucho que se subiera el numero. No se sabe que unidad es el
+    atk_speed ni como se traduce a milisegundos, asi que hasta tener una
+    medicion no se usa para nada.
+
+    Para un bicho nuevo o un jefe, se le pone su entrada en
+    ANIM_POR_MONSTRUO y ese es su ciclo en milisegundos.
     """
-    base = anim_de_monstruo(getattr(m, 'nombre', '')) / 1000.0
-    vel = getattr(m, 'atk_speed', 0) or 0
-    if vel:
-        base *= max(0.5, 1.0 - min(0.5, vel / 200.0))
-    return max(CADENCIA_MONSTRUO_MIN, base)
+    nombre = getattr(m, 'nombre', '') or ''
+    for clave, val in CADENCIA_POR_MONSTRUO.items():
+        if clave.lower() in nombre.lower():
+            return max(CADENCIA_MONSTRUO_MIN, val)
+    return max(CADENCIA_MONSTRUO_MIN, anim_de_monstruo(nombre) / 1000.0)
 
 
-def cadencia_ataque(buffs=None, habilidades=None, duales=False) -> float:
+# Segundos entre golpes segun el arma, por su habilidad:
+#   9 espada, 10 hacha/martillo, 11 lanza, 17 arco, 30 daga, 8 baston.
+# El usuario lo describio asi jugando: la espada marca el ritmo normal, y la
+# lanza, la daga y el baston van a esa misma velocidad de una mano; el hacha
+# es la lenta. Lo que no este aqui usa CADENCIA_ATAQUE.
+CADENCIA_POR_ARMA = {
+    9: CADENCIA_ATAQUE,          # espada
+    30: CADENCIA_ATAQUE,         # daga
+    # La lanza va un poco mas rapida que la espada, y el baston se queda con
+    # la velocidad que tenia la lanza. Probado en el juego.
+    11: CADENCIA_ATAQUE * 0.87,  # lanza
+    8: CADENCIA_ATAQUE,          # baston
+    10: CADENCIA_ATAQUE * 1.30,  # hacha y martillo: la mas lenta
+    17: CADENCIA_ATAQUE * 1.15,  # arco
+}
+
+
+def cadencia_ataque(buffs=None, habilidades=None, duales=False,
+                    item_id: int = 0) -> float:
     """Minimo entre golpes, ya con la velocidad de ataque aplicada.
 
     Con dos armas se usaba un minimo mas largo -- el golpe mas los dos
@@ -909,7 +1006,14 @@ def cadencia_ataque(buffs=None, habilidades=None, duales=False) -> float:
     animacion habia terminado. El ciclo dual lo lleva el cliente, asi que
     aqui va el mismo piso que con una sola arma.
     """
-    return CADENCIA_ATAQUE * (1.0 - bono_velocidad(buffs, habilidades))
+    base = CADENCIA_ATAQUE
+    if item_id:
+        try:
+            import clases as _cl
+            base = CADENCIA_POR_ARMA.get(_cl.skill_de_item(item_id), base)
+        except Exception:
+            pass
+    return base * (1.0 - bono_velocidad(buffs, habilidades))
 
 
 # Pausa entre el final del ciclo dual y el golpe siguiente.
@@ -938,7 +1042,24 @@ ANIM_GOLPE = 1480
 # (mundo_181419_370379): el Slarm usa 740 y la Lily 1009. No coincide con
 # el 投射特效 de monster.xml (la Lily tiene 50008 ahi), asi que por ahora
 # es una tabla por nombre con un valor por defecto.
-ANIM_POR_MONSTRUO = {'Slarm': 740, 'Little Slarm': 740, 'Lily': 1009}
+# La animacion de un monstruo es tambien su ciclo de ataque en milisegundos.
+# El 740 del Slarm venia de una estimacion vieja, no de una medicion, y le
+# salian golpes cada 0.74 s: demasiado rapido. Los unicos valores medidos de
+# verdad en el trafico son 951, 774 y 832, con ciclos de 920 a 1140 ms, asi
+# que el Slarm usa el valor por defecto hasta que se mida el suyo.
+# El Slarm va a 1500, el mismo ciclo que el del jugador: con el 951 medido
+# en otros bichos seguia pegando demasiado rapido. Lo pidio el usuario tras
+# probarlo en el juego.
+# La ANIMACION de cada monstruo, medida en el trafico: el Slarm manda 740 y
+# el Death's Head 832, los dos con tipo 1. Es el dibujo que reproduce el
+# cliente y no tiene nada que ver con cada cuanto pega.
+#
+# Estuvieron mezclados: para frenar al Slarm se subio este numero a 2000, y
+# eso le mandaba al cliente una animacion que no existe. Ahora la animacion
+# va aqui y el ritmo en CADENCIA_POR_MONSTRUO.
+ANIM_POR_MONSTRUO = {'Slarm': 740, "Death's Head": 832, 'Lily': 1009}
+# Para un bicho que no este en la tabla: 951, que es el valor mas comun
+# de los medidos.
 ANIM_MONSTRUO = 951
 
 
@@ -976,18 +1097,69 @@ ANIM_DUALES = 832
 #
 # Se puede poner uno por tipo de arma, porque la lanza (dos manos) no se
 # mueve igual que un sable ni que dos dagas. Cambiar y reiniciar el servidor.
-ANIM_POR_DEFECTO = 1500     # lo que no encaje en ninguna de abajo
+# 0 = NO se impone ninguna animacion y el cliente reproduce la del arma que
+# lleva puesta. Es lo que hace el servidor real: en mundo_032752 los 21
+# golpes del jugador salen con animacion 0.
+#
+# Estuvo en 1500 fijo, y por eso la lanza y el baston -- que son a dos manos
+# -- atacaban con la animacion de duales y ni siquiera se veia el arma. El
+# numero solo hace falta si se quiere forzar una animacion concreta para
+# probar algo.
+ANIM_POR_DEFECTO = 0
 ANIM_SIN_ARMA_TEST = 0      # a mano limpia
 ANIM_DUALES_TEST = 0        # dos armas de una mano
 ANIM_DOS_MANOS_TEST = 0     # lanza, o cualquier arma a dos manos
-ANIM_POR_SKILL = {          # por habilidad de arma: 9 espada, 10 hacha,
-    # 11: 0,                # 11 lanza, 17 arco, 30 daga, 8 baston
+# Tipo y animacion del 0x000A segun la habilidad del arma. MEDIDO en las
+# capturas siguiendo los cambios de equipo dentro de cada sesion:
+#
+#   lanza  (Serphyna's Crime, se equipa en t=71.88)  -> tipo 2, animacion 827
+#   espada y daga                                    -> tipo 3, animacion 1480
+#
+# La animacion no es una duracion: la lanza pega mas lento que la espada y
+# sin embargo su numero es menor. Es el identificador de la animacion que el
+# cliente reproduce, y por eso hay que mandar el que corresponde al arma: con
+# el de la espada la lanza atacaba como si llevara dos armas y ni se veia.
+#
+#   9 espada, 10 hacha, 11 lanza, 17 arco, 30 daga, 8 baston
+GOLPE_POR_SKILL = {
+    9: (3, 1480),
+    30: (3, 1480),
+    11: (2, 827),
+    8: (2, 951),     # baston: medido con el Walking Stick del mago
 }
+GOLPE_POR_DEFECTO = (3, 1480)
+ANIM_POR_SKILL = {}
 # -------------------------------------------------------------------------
 
 
-def anim_de_arma(item_id: int = 0, duales: bool = False) -> int:
-    """Animacion del 0x000A. 0 = la que el cliente sepa del arma equipada."""
+def golpe_de_arma(item_id: int = 0, duales: bool = False) -> tuple:
+    """(tipo, animacion) del 0x000A para el arma que se lleva puesta.
+
+    Con dos armas de una mano el servidor real manda tipo 2 y una animacion
+    cercana a 830, igual que la lanza; con una sola arma, tipo 3.
+    """
+    if duales:
+        return (2, 832)
+    try:
+        import clases as _cl
+        sid = _cl.skill_de_item(item_id) if item_id else None
+        if sid in GOLPE_POR_SKILL:
+            return GOLPE_POR_SKILL[sid]
+    except Exception:
+        pass
+    return GOLPE_POR_DEFECTO
+
+
+def anim_de_arma(item_id: int = 0, duales: bool = False,
+                 ciclo_ms: int = 0) -> int:
+    """Animacion del 0x000A, que ES la duracion del ciclo en milisegundos.
+
+    Por defecto vale lo que dure el ciclo de ataque de verdad (`ciclo_ms`).
+    Estaba fija en 1500 mientras el jugador pegaba cada 1100 ms, asi que el
+    cliente se quedaba siempre en medio de una animacion y no dejaba lanzar
+    habilidades. Las constantes de prueba de abajo siguen mandando si se les
+    pone un valor.
+    """
     if duales and ANIM_DUALES_TEST:
         return ANIM_DUALES_TEST
     if not item_id:
@@ -1021,9 +1193,24 @@ TIPO_MUERTE = 7
 
 def ataque(source: int, target: int, animacion: int = 0,
            tipo: int = TIPO_GOLPE) -> bytes:
-    """0x000A: un golpe de `source` sobre `target` con su animacion."""
-    return struct.pack('<HIIHH', 0x000A, source, target,
-                       tipo & 0xFFFF, animacion & 0xFFFF)
+    """0x000A: el golpe. [u4 origen][u4 objetivo][u2 tipo][u2 animacion].
+
+    El tipo y la animacion van de la mano. Cruzando todas las capturas, el
+    servidor real solo manda estas combinaciones:
+
+        tipo 0 con animacion 0        245 veces
+        tipo 3 con 1287, 1410 o 1480   40 veces
+        tipo 2 con 827                  4 veces
+
+    Nunca manda tipo 3 con animacion 0, que es justo lo que mandabamos
+    nosotros desde que se dejo la animacion en cero. Asi que si no hay
+    animacion, el tipo tambien va en cero.
+
+    (Y el numero de animacion NO depende del arma: con la misma espada
+    aparece 0, 1287 y 827 en sesiones distintas, y con la daga 1480 y 1410.
+    Depende del estado del personaje, no de lo que lleve en la mano.)
+    """
+    return struct.pack('<HIIHH', 0x000A, source, target, tipo, animacion)
 
 
 # El tipo del 0x000B distingue el golpe normal del CRITICO: en
@@ -1127,8 +1314,14 @@ def efecto_recuperacion_mp(atacante: int, objetivo: int, rec_mp: int, efecto: in
 
 
 def gcd_paquete() -> bytes:
-    """Opcode 0x0149 (329 decimal): animacion de cooldown global (GCD)."""
-    return struct.pack('<HIIIIIIIIBBH', 0x0149, 1, 0, 500, 0, 0, 0, 0, 0, 5, 255, 255)
+    """Opcode 0x0149: el cooldown global (GCD).
+
+    Comparado byte a byte con el que manda Celestia: era identico salvo el
+    offset 28, donde el real lleva 72 y nosotros mandabamos 0. Se manda en
+    cada uso de habilidad, asi que un GCD mal formado es candidato a que el
+    cliente no deje lanzar ninguna.
+    """
+    return struct.pack('<HIIIIIIIIBBH', 0x0149, 1, 0, 500, 0, 0, 0, 0, 72, 5, 255, 255)
 
 
 def efecto_magia_self_inicio(yo: int, ef: int, tipo: int, cast_time: int = 100) -> bytes:

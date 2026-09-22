@@ -2035,3 +2035,197 @@ PENDIENTE: ejecutar el combo (repetir el 0x000B N veces; el 命中時間=200 del
 hijo sugiere 200 ms entre golpes, sin confirmar) y la ralentizacion, que se
 registra pero todavia no afecta la velocidad. Hace falta una captura con un
 personaje de nivel alto: Strangle Strike pide 181 y Cross Chop 40.
+
+## LA TIENDA Y LAS CANTIDADES (Celestia, 2026-09-22)
+
+Cuatro acciones capturadas en la misma sesion, con el cliente haciendo compra,
+uso, venta, separacion y destruccion.
+
+| accion   | c2s      | formato                                                   |
+| -------- | -------- | --------------------------------------------------------- |
+| comprar  | `0x0027` | `[u32 n]` + n x `[u32 item_id][u32 cantidad]`              |
+| vender   | `0x0028` | `[u32 n]` + n x `[u32 instancia][u32 sello][u32 cantidad]` |
+| usar     | `0x002E` | `[u32 casilla][u8 0]`                                      |
+| separar  | `0x002F` | `[u8 contenedor][u16 destino][u16 origen][u32 cantidad]`   |
+| destruir | `0x0013` | `[u16 casilla][u32 item_id]`                               |
+
+Bytes reales:
+
+```
+comprar   02000000 42000000 0a000000 43000000 0a000000   (10 rojas + 10 azules)
+vender    02000000 6b480300 2e23b26a 05000000 ...        (5 de una pila y 6 de otra)
+usar      2a000000 00
+separar   0b 2b00 2900 01000000                          (1 de la casilla 41 a la 43)
+destruir  2900 42000000
+```
+
+Tres errores que esto corrigio:
+
+1. **La compra leia un solo item por mensaje.** El cliente manda varios items
+   Y varias unidades de una vez, por eso no se podia comprar mas de uno.
+2. **La venta leia los ocho primeros bytes como numero de casilla.** No lo
+   son: son el id de instancia del monton. Nunca casaban con nada, no se
+   sacaba nada del inventario y la venta pagaba 0.
+3. **Destruir escuchaba el `0x004C`**, que el cliente no manda nunca.
+
+### El 0x001B: una linea por casilla, no el inventario entero
+
+El servidor real NO reenvia el `0x001A` completo despues de comprar, vender,
+usar o separar. Manda un `0x001B` por casilla tocada:
+
+```
+c2s 0x28 (vender)
+s2c 0x1b  12B  -> casilla 41 vacia
+s2c 0x1b  12B  -> casilla 42 vacia
+s2c 0x1b  90B  -> el oro nuevo
+s2c 0xd        -> "120Gold"
+```
+
+Con el `0x001A` completo el cliente se queda con lo que ya tiene pintado y
+las casillas nunca se vacian: los objetos vendidos seguian viendose.
+
+- **Vaciar una casilla** (12 bytes): `[u32 n=1][u8 02][u8 01][u32 dueno][u16 casilla]`
+- **Actualizar una casilla** (90 bytes, o 123 si es equipo): la misma entrada
+  que el `0x001A`, con `n=1`
+
+### La entrada de una casilla
+
+86 bytes para lo que no se equipa y **119 para lo que si**.
+
+| off | campo                                                            |
+| --- | ---------------------------------------------------------------- |
+| 1   | id de instancia (8 bytes)                                        |
+| 9   | item_id (el oro es el item 1, en la casilla 0)                   |
+| 34  | **la ENTIDAD** del personaje, no su char_id                      |
+| 38  | casilla                                                          |
+| 40  | cantidad                                                         |
+| 53  | la entidad que lo lleva puesto, 0 si esta guardado (solo equipo) |
+| 57  | contenedor: **3 mochila, 2 cuerpo** (solo equipo)                |
+| 84  | los 16 bits bajos del numero de instancia (solo equipo)          |
+
+Los offsets 53 y 57 son **el estado de puesto**. Comparando el mismo
+NewbieHeavy Costume guardado y en el cuerpo, lo unico que cambia ademas de la
+casilla son esos dos campos. Se mandaban en cero, asi que el cliente nunca se
+enteraba de que la prenda estaba puesta y seguia dibujando al personaje en
+ropa interior.
+
+El offset 34 es la entidad: en la captura el char_id es 282 y la entidad 286,
+y el numero que viaja aqui es el 286.
+
+### El id de instancia
+
+Ocho bytes: `[u32 correlativo][u32 sello de tiempo]`. Al comprar dos cosas a
+la vez salen 215293 y 215294 con el mismo sello; al separar un monton, la
+pila nueva estrena 215300 con un sello posterior.
+
+**Es por monton, no por item.** No se puede derivar del item_id: al separar,
+dos casillas con el mismo item tienen ids distintos, y al vender una se
+vendia la otra. Hay que llevar el mapa casilla -> instancia.
+
+### Equipar
+
+`c2s 0x0012 = [u16 origen][u16 destino]`. La respuesta:
+
+```
+s2c 0x0006    4B   12 00 29 00    <- acuse: opcode confirmado y casilla origen
+s2c 0x001B  242B   las DOS casillas en un solo mensaje
+s2c 0x0042  105B   los stats
+```
+
+El acuse `0x0006` no se mandaba. Sin el, el cliente apunta el cambio en el
+panel de equipo y en los stats pero no redibuja al personaje.
+
+Ojo: el `0x002E` (usar) **no** lleva acuse; solo el `0x0012`.
+
+### Precios
+
+`item.xml` tiene dos columnas. `price` es el precio de lista y la columna 4
+es el de venta: la Red Potion 1 vale 40 y 12. Vender 10 pociones dio 120 de
+oro, que es exactamente 10 x 12. Antes se usaba `price // 2`, que habria dado
+200.
+
+En la compra el cliente enseña 35 por unidad (40 x 7/8) y Celestia cobro 34
+en las dos capturas. Su cliente y su servidor no cuadran entre si; aca se usa
+el 7/8 que el cliente muestra, para que la cuenta le cierre al jugador.
+
+## EL PESO VA EN EL OFFSET 100, NO EN EL 92 (2026-09-22)
+
+El `0x0042` lleva el tope de carga en el 92 **y** en el 96 (en la captura de
+Celestia los dos son 8096) y la carga actual en el 100, que sube de a uno
+segun se recoge botin.
+
+Nosotros escribiamos el ORO en el 100 y el cliente lo leia como peso: la
+barra decia "5447/2648" con 5447 de oro. El oro no va en este mensaje, viaja
+en la ranura 0 del inventario, como el item 1.
+
+## LA ANIMACION DEL 0x000A ES LA DURACION DEL CICLO (2026-09-22)
+
+El campo que se llamaba "animacion" es **la duracion del ciclo de ataque en
+milisegundos**. Medido cruzando cada `0x000A` con el `0x000B` que le sigue:
+
+| animacion | el numero llega a los |
+| --------- | --------------------- |
+| 951       | 951 ms (mediana 1011) |
+| 774       | 784 ms                |
+| 832       | 831 ms                |
+
+Y es tambien el periodo: el jugador con animacion 1480 manda su `0x0016` cada
+1481..1501 ms.
+
+Dos consecuencias:
+
+1. **El servidor no marca el ritmo del jugador.** El cliente pide un golpe
+   cuando termina su animacion, y el servidor de Celestia responde cada
+   1554..1685 ms, o sea no filtra nada. Nuestra cadencia estaba en 2300 ms,
+   mas larga que lo que pide el cliente: se rechazaba uno de cada dos golpes y
+   el ciclo real salia a ~3 s. Ahora es un piso de 1.37 s, por debajo de todo
+   lo medido.
+2. **El ciclo de un monstruo es su animacion.** El numero de dano cae cuando
+   arranca el golpe siguiente. Si se calcula aparte, un bicho acelerado
+   recibe el golpe siguiente antes de que aterrice el dano del anterior.
+
+Aplicar el dano del monstruo en el acto, mientras el cliente aun levanta el
+arma, es lo que hacia que llegara dano de monstruos ya muertos. Ahora el
+golpe sale ya y el numero espera, y se cancela si el bicho muere.
+
+Los unicos valores de animacion medidos de verdad son 951, 774 y 832, con
+ciclos de 920 a 1140 ms. El 740 que tenia el Slarm era una estimacion vieja y
+le salian golpes cada 0.74 s: demasiado rapido.
+
+## LOS KIND DEL 0x0013 (2026-09-22)
+
+Contando todos los `0x0013` de todas las capturas, los unicos kind que manda
+el servidor real son **0, 2, 4 y 6**. El 2 es el MP (se confirmo cruzandolo
+con el `0x0042`: 881 de MP en los dos). **El kind 1 no existe**; se estaba
+mandando el MP en porcentaje con ese kind, inventado.
+
+## EL PASEO DE LOS MONSTRUOS (Celestia, 2026-09-22)
+
+En el Angel Lyceum de Celestia hay **251 entidades y 238 se mueven**. Cada una
+da un paso cada 5.6 s de mediana (3.6 a 7.7 s), y el paso es de **una a tres
+casillas por eje**, no de una sola. La velocidad que declara el `0x0005` es
+75.
+
+Ojo: que alli se muevan 238 de 238 no significa que se muevan todos los
+bichos del juego. Las Lily son plantas y no se mueven ni para pasear; en ese
+mapa no hay ninguna. Se cambio para que pasearan todas y el usuario lo
+corrigio: lo de estatico solo quiere decir que no persiguen.
+
+## LA APARIENCIA DE LA ID CARD: TRES CANDIDATOS DESCARTADOS (2026-09-22)
+
+El muneco del mundo sale vestido pero el de la ID Card sale en ropa interior.
+Ahi el arma y los zapatos SI se dibujan; la que no se aplica es la prenda del
+cuerpo.
+
+Descartado por medicion, no hace falta repetirlo:
+
+- **`0x0149`**: sale al entrar y en cada equipado, pero es byte a byte
+  identico siempre.
+- **`0x0179`**: igual, y sale identico despues de cada equipado sin importar
+  que te pongas.
+- **`0x0002`** (la ficha, 4096 bytes): no contiene ningun id del equipo.
+  Comparando dos logins del MISMO personaje con equipo distinto, solo cambian
+  56 bytes y todos caen en la zona de stats y nivel.
+
+PENDIENTE: una captura con la ID Card ABIERTA quitandose y poniendose una
+prenda del cuerpo, para aislar el mensaje que redibuja la figura.

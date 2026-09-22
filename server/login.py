@@ -54,6 +54,10 @@ class Personaje:
     inventario: dict = field(default_factory=dict)  # {ranura: item_id}
     # Cuantas unidades hay en cada casilla. La que no esta aqui lleva una.
     cantidades: dict = field(default_factory=dict)  # {ranura: cantidad}
+    # Donde revive, fijado con Cupid. En cero = el punto por defecto.
+    checkpoint_stage: int = 0
+    checkpoint_x: int = 0
+    checkpoint_y: int = 0
     tutorial: int = 0        # en que tramo del tutorial va
     oro: int = 0
     stage: int = 51
@@ -306,6 +310,30 @@ TOTEMS_PUESTOS = {}
 _TOTEM_OBJ = None
 
 
+def objeto_de_mapa(r) -> bytes:
+    """Un 0x000E armado desde sus datos: vetas, arboles, madrigueras, totems.
+
+    El mensaje mide 43 bytes en los dos servidores y sus campos estan en el
+    mismo sitio, comprobado contra los 158 recursos del Lyceum: el id en el
+    0, la capa en el 4, la posicion en PIXELES en el 8 y el 12, y el sprite
+    en el 34.
+    """
+    b = bytearray(43)
+    struct.pack_into('<I', b, 0, int(r['entity_id']))
+    struct.pack_into('<I', b, 4, int(r.get('capa', 0)))
+    struct.pack_into('<II', b, 8, int(r['px'][0]), int(r['px'][1]))
+    # Los offsets 16..31 son un bloque libre: casi siempre ceros, pero en
+    # algunos recursos llevan su nombre en texto ("Copper(M)").
+    medio = bytes.fromhex(r.get('medio', ''))[:16]
+    b[16:16 + len(medio)] = medio
+    b[32] = int(r.get('marca', 0)) & 0xFF
+    b[33] = int(r.get('orient', 6)) & 0xFF
+    struct.pack_into('<H', b, 34, int(r['sprite']))
+    cola = bytes.fromhex(r.get('cola', ''))[:7]
+    b[36:36 + len(cola)] = cola
+    return struct.pack('<H', 0x000E) + bytes(b)
+
+
 def _totem_objeto(entity_id: int, nombre: str, tile) -> bytes:
     """Un totem como objeto de mapa (0x000E), copiado del Lyceum."""
     global _TOTEM_OBJ
@@ -403,7 +431,7 @@ def _totem_spawn(entity_id: int, npc_type: int, nombre: str, tile: tuple) -> byt
 
 
 def _npc_spawn(entity_id, npc_type, nombre, tile, sprite=0, klass=200,
-               direccion=None):
+               direccion=None, visible=1):
     """Arma un NPC_SPAWN (0x0008) desde cero, para los NPC y monstruos.
 
     `direccion` va en el byte 33. Celestia manda 6 ahi en todos sus NPC y
@@ -415,7 +443,12 @@ def _npc_spawn(entity_id, npc_type, nombre, tile, sprite=0, klass=200,
     if klass == 1:
         return _monster_spawn(entity_id, npc_type, nombre, tile)
     b = bytearray(63)
-    struct.pack_into('<IIII', b, 0, entity_id, 1, tile[0], tile[1])
+    # El offset 4 decide si el nombre queda flotando sobre la entidad. En la
+    # captura vale 1 SOLO en los NPC de verdad (Cupid); los totems y todos
+    # los monstruos llevan 0 y su nombre se ve al pasar el raton o en el
+    # mapa de escena. Mandabamos 1 para todo, asi que los totems tenian el
+    # cartel pegado encima.
+    struct.pack_into('<IIII', b, 0, entity_id, visible, tile[0], tile[1])
     n = str(nombre).encode('ascii', 'replace')[:16]
     b[16:16 + len(n)] = n
     if not sprite:
@@ -524,7 +557,33 @@ def poblar(stage: int):
             log.info('Fighting Palace: %d spawns de fighting_palace.json '
                      '(%d totems, %d Raphael)', len(d_fp['spawns']), _tot,
                      len(d_fp['spawns']) - _tot)
-    if stage in PLAYGROUND_MONSTERS:
+    # Los dos playgrounds, sacados de capturas de Celestia recorriendo el mapa
+    # entero. Se reconstruyen desde los DATOS con nuestros propios
+    # constructores, no se reenvian sus bytes.
+    _pg = {43: 'west_playground.json', 42: 'east_playground.json'}
+    f43 = PLANTILLAS / _pg[stage] if stage in _pg else None
+    if f43 is not None and f43.exists():
+        d43 = json.loads(f43.read_text(encoding='utf-8'))
+        for e in d43['spawns']:
+            # El sprite va TAL COMO SE CAPTURO. Antes no se pasaba, asi que
+            # los NPC salian con el generico: Cupid aparecia dibujado como
+            # Angel Michael y los totems igual. El suyo es 40006 para Cupid y
+            # 60241 para los cuatro totems.
+            salida.append(_npc_spawn(e['entity_id'], e['npc_type'],
+                                     e['nombre'], tuple(e['tile']),
+                                     sprite=e.get('sprite', 0),
+                                     klass=e.get('klass', 200),
+                                     direccion=e.get('direccion'),
+                                     visible=e.get('visible', 1)))
+            if 'Totem' in e['nombre']:
+                TOTEMS_PUESTOS[e['entity_id']] = e['nombre']
+        salida += [objeto_de_mapa(r) for r in d43.get('recursos', [])]
+        log.info('Playground %d: %d spawns (%d monstruos) y %d recursos',
+                 stage, len(d43['spawns']),
+                 sum(1 for e in d43['spawns'] if e.get('monstruo')),
+                 len(d43.get('recursos', [])))
+        return salida
+    if stage in PLAYGROUND_MONSTERS and stage not in _pg:
         for eid, ntype, nom, tile in PLAYGROUND_MONSTERS[stage]:
             salida.append(_npc_spawn(eid, ntype, nom, tile, klass=1))
         return salida
@@ -566,9 +625,15 @@ def _ficha(p, base):
     # en pantalla con la plantilla sin tocar: eran los del personaje de otro
     # servidor, no los del jugador.
     st = bytearray(d['stats'])
+    # El maximo va CON el bono de las pasivas, igual que en el 0x0042. Si no,
+    # la ID Card enseñaba un tope distinto del que enseña la barra de arriba:
+    # 529/529 en la card contra 529/1009 en el HUD.
+    import inventario as _inv
+    hp_tope = _inv.vida_maxima(p.hp_max, p.habilidades)
+    mp_tope = _inv.mana_maximo(p.mp_max, p.habilidades)
     hp_val = 280 if (not p.habilidades and p.nivel == 1 and p.hp <= 205) else p.hp
-    hp_max_val = 280 if (not p.habilidades and p.nivel == 1 and p.hp_max <= 205) else p.hp_max
-    struct.pack_into('<IIII', st, 0, hp_val, hp_max_val, p.mp, p.mp_max)
+    hp_max_val = 280 if (not p.habilidades and p.nivel == 1 and p.hp_max <= 205) else hp_tope
+    struct.pack_into('<IIII', st, 0, hp_val, hp_max_val, p.mp, mp_tope)
     d['stats'] = bytes(st)
     if p.habilidades:
         sk = list(d['skills'])

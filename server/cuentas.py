@@ -139,6 +139,9 @@ def personaje_de(cuenta, indice=0):
         mp=p.get('mp', 154), mp_max=p.get('mp_max', 154),
         # Las claves de JSON siempre son texto; las ranuras son numeros.
         inventario={int(k): v for k, v in p.get('inventario', {}).items()},
+        checkpoint_stage=int((p.get('checkpoint') or {}).get('stage', 0)),
+        checkpoint_x=int(((p.get('checkpoint') or {}).get('tile') or [0, 0])[0]),
+        checkpoint_y=int(((p.get('checkpoint') or {}).get('tile') or [0, 0])[1]),
         cantidades={int(k): int(v) for k, v in p.get('cantidades', {}).items()},
         tutorial=p.get('tutorial', 0),
         oro=p.get('oro', 0),
@@ -190,6 +193,20 @@ def guardar_inventario(usuario: str, char_id: int, bolsa: dict,
                 p['cantidades'] = {str(k): int(v)
                                    for k, v in sorted(cantidades.items())
                                    if int(v) > 1 and int(k) in bolsa}
+            ARCHIVO.write_text(json.dumps(d, indent=2, ensure_ascii=False),
+                               encoding='utf-8')
+            return
+
+
+def guardar_checkpoint(usuario: str, char_id: int, stage: int, tx: int, ty: int):
+    """Donde revive el personaje, fijado hablando con Cupid."""
+    d = json.loads(ARCHIVO.read_text(encoding='utf-8'))
+    c = d['cuentas'].get(usuario)
+    if not c:
+        return
+    for p in c.get('personajes', []):
+        if p.get('char_id') == char_id:
+            p['checkpoint'] = {'stage': int(stage), 'tile': [int(tx), int(ty)]}
             ARCHIVO.write_text(json.dumps(d, indent=2, ensure_ascii=False),
                                encoding='utf-8')
             return

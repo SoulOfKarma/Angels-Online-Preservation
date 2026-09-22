@@ -131,11 +131,21 @@ def _monstruos_de(stage: int):
     import json
     import combate
     import login as _lg
-    if stage in _lg.PLAYGROUND_MONSTERS:
-        return {eid: combate.Monstruo(eid, ntype, nom, tile)
-                for eid, ntype, nom, tile in _lg.PLAYGROUND_MONSTERS[stage]}
-    f = pathlib.Path(__file__).parent / 'plantillas' / 'lyceum.json'
-    if stage != 41 or not f.exists():
+    plantillas = pathlib.Path(__file__).parent / 'plantillas'
+    # Cada mapa poblado tiene su plantilla. El West Playground trae 150
+    # monstruos de seis clases, asi que su IA sale de aqui igual que la del
+    # Lyceum: pasean, persiguen, pegan y reaparecen.
+    por_stage = {41: 'lyceum.json', 43: 'west_playground.json',
+                 42: 'east_playground.json'}
+    nombre = por_stage.get(stage)
+    if not nombre:
+        # Los mapas que aun no tienen plantilla usan la lista escrita a mano.
+        if stage in _lg.PLAYGROUND_MONSTERS:
+            return {eid: combate.Monstruo(eid, ntype, nom, tile)
+                    for eid, ntype, nom, tile in _lg.PLAYGROUND_MONSTERS[stage]}
+        return {}
+    f = plantillas / nombre
+    if not f.exists():
         return {}
     d = json.loads(f.read_text(encoding='utf-8'))
     return {e['entity_id']: combate.Monstruo(e['entity_id'], e['npc_type'],
@@ -190,12 +200,28 @@ def _precio_venta(item_id: int) -> int:
     return max(1, _precio_item(item_id) // 2)
 
 
+# Ultima casilla utilizable de la mochila. Sin mochila puesta son 20..39; con
+# ella llega hasta la 44. Poner algo mas alla del tope no da error: el objeto
+# entra en el inventario pero el cliente no lo dibuja, asi que queda invisible
+# hasta que el jugador consigue una mochila y de golpe le aparecen cosas que
+# no sabia que tenia.
+TOPE_SIN_MOCHILA = 39
+TOPE_CON_MOCHILA = 44
+
+
+def _tope_bolsa(bolsa) -> int:
+    """Hasta que casilla se puede guardar, segun si hay mochila puesta."""
+    b = bolsa or {}
+    hay = b.get(7) is not None or b.get(8) is not None
+    return TOPE_CON_MOCHILA if hay else TOPE_SIN_MOCHILA
+
+
 def _ranura_libre(bolsa, desde=20):
-    """Primera casilla vacia de la mochila."""
-    r = desde
-    while r in bolsa:
-        r += 1
-    return r
+    """Primera casilla vacia de la mochila, o None si esta llena."""
+    for r in range(desde, _tope_bolsa(bolsa) + 1):
+        if r not in bolsa:
+            return r
+    return None
 
 
 def _final_tutorial(ses, addr):
@@ -325,6 +351,8 @@ def _meter(ses, item_id: int, n: int = 1) -> int:
             _cantidades(ses)[r] = _cant_de(ses, r) + n
             return r
     r = _ranura_libre(bolsa)
+    if r is None:
+        return None
     bolsa[r] = item_id
     _instancias(ses)[r] = inv.instancia_nueva()
     if n > 1:
@@ -385,7 +413,7 @@ def _refrescar(ses, ranuras, con_oro=False):
                                            getattr(ses, 'oro', 0),
                                            _inst(ses, inv.RANURA_ORO),
                                            _dueno(ses)))
-    for r in sorted(set(int(x) for x in ranuras)):
+    for r in sorted(set(int(x) for x in ranuras if x is not None)):
         if r in ses.inventario:
             fuera.append(inv.actualizar_ranura(cid, r, int(ses.inventario[r]),
                                                _cant_de(ses, r), _inst(ses, r),
@@ -430,6 +458,26 @@ def _max_sp_info(p):
                 break
     bars = 2 + (res_rank // 25)
     return bars, bars * 1000
+
+
+def _vida_max(p) -> int:
+    """El tope de vida que el cliente enseña: el guardado mas lo que dan las
+    pasivas. Se curaba contra el guardado a secas, que es menor, asi que la
+    barra nunca se llenaba y estando "al tope" las pociones no hacian nada."""
+    import inventario as inv
+    return inv.vida_maxima(getattr(p, 'hp_max', 0), getattr(p, 'habilidades', None))
+
+
+def _mana_max(p) -> int:
+    import inventario as inv
+    return inv.mana_maximo(getattr(p, 'mp_max', 0), getattr(p, 'habilidades', None))
+
+
+def _cb_alcance(ses) -> int:
+    """Desde cuantas casillas llega el arma que se lleva puesta."""
+    import combate as _cb
+    arma = ses.inventario.get(3, 0) if getattr(ses, 'inventario', None) else 0
+    return _cb.alcance_arma(arma)
 
 
 def _stats_ses(ses):
@@ -657,10 +705,10 @@ class Servidor:
                 if toca_regen:
                     pkgs = []
                     if p.mp < p.mp_max:
-                        p.mp = min(p.mp_max, p.mp + rec_mp)
+                        p.mp = min(_mana_max(p), p.mp + rec_mp)
                         pkgs.append(_cb.atributo(yo, p.mp, _cb.KIND_MP))
                     if p.hp < p.hp_max:
-                        p.hp = min(p.hp_max, p.hp + rec_hp)
+                        p.hp = min(_vida_max(p), p.hp + rec_hp)
                         pkgs.append(_cb.atributo(yo, p.hp, _cb.KIND_HP))
 
                     if pkgs:
@@ -990,7 +1038,14 @@ class Servidor:
                                 if dist <= r_atk:
                                     # Atacar al jugador si paso el cooldown (2.0s)
                                     if ahora - getattr(m, 'ultimo_ataque', 0) >= _cb.cadencia_monstruo(m):
+                                        _prev = getattr(m, 'ultimo_ataque', 0)
                                         m.ultimo_ataque = ahora
+                                        if _prev:
+                                            log.info(
+                                                f"[{addr}] {m.nombre} pega: "
+                                                f"pasaron {ahora - _prev:.3f}s "
+                                                f"(ciclo configurado "
+                                                f"{_cb.cadencia_monstruo(m):.3f}s)")
                                         suyo = _cb.dano_recibido(m.pegar(),
                                                                  defensa_jugador(ses))
                                         ef_atk = m.proj_ef if m.proj_ef > 0 else 148
@@ -1075,34 +1130,61 @@ class Servidor:
                                 # 2. Monstruo libre: pasear, salvo los
                                 # estaticos. Las Lily son plantas: no se
                                 # mueven ni para pasear ni para perseguir.
-                                # (En el Lyceum de Celestia se mueven 238 de
-                                # 238 bichos, pero ahi no hay Lily.)
-                                if not getattr(m, 'es_estatico', False) and random.random() < PROB_PASO:
-                                    # El paso es de una a tres casillas por
-                                    # eje: en Celestia los desplazamientos mas
-                                    # repetidos son (1,2), (1,1), (1,3), (2,1)
-                                    # y (3,1). Con un paso de una sola casilla
-                                    # el mapa parecia quieto.
-                                    _n = _cb.PASO_PASEO_MAX
-                                    dx = random.randint(-_n, _n)
-                                    dy = random.randint(-_n, _n)
-                                    if dx == 0 and dy == 0:
-                                        continue
-                                    new_x = m.tile_x + dx
-                                    new_y = m.tile_y + dy
-                                    _rango = max(m.move_range, _cb.RANGO_PASEO_MIN)
-                                    if abs(new_x - m.spawn_x) <= _rango and abs(new_y - m.spawn_y) <= _rango:
-                                        cur_x, cur_y = m.tile_x * 32, m.tile_y * 32
-                                        m.tile_x = new_x
-                                        m.tile_y = new_y
-                                        m.tile[0], m.tile[1] = new_x, new_y
-                                        dst_x, dst_y = new_x * 32, new_y * 32
-                                        ses.enviar(MOVE.build(entity_id=m.entity_id,
-                                                              cur_x=cur_x, cur_y=cur_y,
-                                                              dst_x=dst_x, dst_y=dst_y,
-                                                              speed=m.move_speed or _cb.VELOCIDAD_PASEO))
+                                #
+                                # Cada bicho lleva su propio reloj en vez de
+                                # una probabilidad por tick. Con la
+                                # probabilidad se movian a tirones: un paso,
+                                # una pausa larga y otro paso. Ahora, en
+                                # cuanto termina de recorrer el tramo
+                                # anterior, sale de nuevo tras una pausa
+                                # corta, y el paseo se ve continuo.
+                                if getattr(m, 'es_estatico', False):
+                                    continue
+                                if ahora < getattr(m, 'proximo_paso', 0):
+                                    continue
+                                # El paso es de una a tres casillas por eje:
+                                # en Celestia los desplazamientos mas
+                                # repetidos son (1,2), (1,1), (1,3), (2,1) y
+                                # (3,1).
+                                _n = _cb.PASO_PASEO_MAX
+                                dx = random.randint(-_n, _n)
+                                dy = random.randint(-_n, _n)
+                                if dx == 0 and dy == 0:
+                                    dx = random.choice((-1, 1))
+                                new_x = m.tile_x + dx
+                                new_y = m.tile_y + dy
+                                _rango = max(m.move_range, _cb.RANGO_PASEO_MIN)
+                                if (abs(new_x - m.spawn_x) > _rango
+                                        or abs(new_y - m.spawn_y) > _rango):
+                                    # Se paso del radio: da media vuelta en
+                                    # vez de quedarse parado esperando.
+                                    new_x = m.spawn_x + random.randint(-_rango, _rango)
+                                    new_y = m.spawn_y + random.randint(-_rango, _rango)
+                                _pasos = max(abs(new_x - m.tile_x),
+                                             abs(new_y - m.tile_y)) or 1
+                                m.proximo_paso = (ahora
+                                                  + _pasos * _cb.SEGUNDOS_POR_CASILLA
+                                                  + random.uniform(_cb.PAUSA_PASEO_MIN,
+                                                                   _cb.PAUSA_PASEO_MAX))
+                                cur_x, cur_y = m.tile_x * 32, m.tile_y * 32
+                                m.tile_x = new_x
+                                m.tile_y = new_y
+                                m.tile[0], m.tile[1] = new_x, new_y
+                                dst_x, dst_y = new_x * 32, new_y * 32
+                                ses.enviar(MOVE.build(entity_id=m.entity_id,
+                                                      cur_x=cur_x, cur_y=cur_y,
+                                                      dst_x=dst_x, dst_y=dst_y,
+                                                      speed=m.move_speed or _cb.VELOCIDAD_PASEO))
                 except Exception:
-                    pass
+                    # Estaba en 'pass': si algo fallaba UNA vez la tarea
+                    # moria en silencio y todos los monstruos del mapa se
+                    # quedaban quietos para siempre, sin dejar rastro en el
+                    # log. Ahora se anota y la IA se vuelve a levantar.
+                    log.exception(f"[{addr}] la IA de monstruos fallo, "
+                                  f"se reinicia")
+                    if getattr(ses, 'personaje', None):
+                        asyncio.get_event_loop().call_later(
+                            1.0, lambda: asyncio.create_task(_ia_monstruos()))
 
             asyncio.create_task(_ia_monstruos())
             log.info(f"[{addr}] entro al mundo: '{p.nombre}' entidad={p.entity_id} "
@@ -1144,19 +1226,73 @@ class Servidor:
                 _d = max(abs(m.tile_x - ses.personaje.tile_x),
                          abs(m.tile_y - ses.personaje.tile_y))
                 if _d > _rango_arma + 1:
-                    log.debug(f"[{addr}] golpe fuera de alcance: {_d} casillas "
-                              f"(alcance {_rango_arma})")
+                    log.info(f"[{addr}] GOLPE RECHAZADO por alcance: {_d} "
+                             f"casillas y el arma llega a {_rango_arma}. "
+                             f"jugador ({ses.personaje.tile_x},"
+                             f"{ses.personaje.tile_y}) bicho "
+                             f"({m.tile_x},{m.tile_y})")
                     return
 
             # Ya en rango: ahora si, la cadencia.
+            #
+            # Objetivo nuevo: el primer golpe sale enseguida. El cooldown se
+            # limpiaba solo al clicar (0x0005), pero si uno camina hasta el
+            # bicho y ataca sin volver a clicar, el primer 0x0016 caia dentro
+            # de la cadencia del objetivo anterior y el personaje se quedaba
+            # quieto un rato antes de empezar a pegar.
+            if m is not None:
+                _obj_act = getattr(ses, 'objetivo_actual', None)
+                # Solo el ataque BASICO necesita objetivo fijado. Una
+                # habilidad es una accion que el jugador pide a proposito y
+                # sale siempre: al aplicarle esta regla dejaron de ejecutarse
+                # los golpes de las skills.
+                if _obj_act is None and tipo == _cb.ATAQUE_NORMAL:
+                    log.info(f"[{addr}] GOLPE RECHAZADO: no hay objetivo "
+                             f"fijado (te alejaste del {m.nombre})")
+                    return
+                if _obj_act != objetivo:
+                    # Objetivo nuevo: el primer golpe sale enseguida, sin
+                    # arrastrar la cadencia del anterior.
+                    ses.objetivo_actual = objetivo
+                    ses.ultimo_golpe = 0
+
             _ahora_atk = time.time()
-            _cad = _cb.cadencia_ataque(
-                getattr(ses.personaje, 'buffs', None) if ses.personaje else None,
-                getattr(ses.personaje, 'habilidades', None) if ses.personaje else None,
-                duales=lleva_duales_ses(ses))
-            if _ahora_atk - getattr(ses, 'ultimo_golpe', 0) < _cad:
-                return
-            ses.ultimo_golpe = _ahora_atk
+            if tipo != _cb.ATAQUE_NORMAL:
+                # Una habilidad tiene SU PROPIO cooldown, el que el cliente
+                # dibuja en el icono y que sale del 後置時間 de magic.xml
+                # (Slicing Hit I: 1000 ms). Antes se le exigia la cadencia
+                # del ataque basico, 1370 ms: el jugador apretaba en cuanto
+                # el icono se liberaba, a los 1000 ms, el servidor lo
+                # rechazaba, y como el cliente manda UNA sola peticion por
+                # ciclo se rechazaban todas. La habilidad salia una vez y no
+                # volvia a salir nunca.
+                _cd = max(0.0, _cb.datos_magia(tipo).get('cd_ms', 0) / 1000.0)
+                _usos = getattr(ses, 'ultimo_uso', None)
+                if _usos is None:
+                    _usos = {}
+                    ses.ultimo_uso = _usos
+                _espera = _ahora_atk - _usos.get(tipo, 0)
+                if _espera < _cd:
+                    log.info(f"[{addr}] HABILIDAD {tipo} RECHAZADA: pidio a "
+                             f"los {_espera:.3f}s y su cooldown es {_cd:.3f}s")
+                    return
+                _usos[tipo] = _ahora_atk
+                # Y NO se toca ses.ultimo_golpe: la habilidad tiene su propio
+                # cooldown y el ataque basico el suyo. Al compartirlos, usar
+                # una habilidad dejaba al personaje quieto un ciclo entero
+                # antes de volver a pegar.
+            else:
+                _cad = _cb.cadencia_ataque(
+                    getattr(ses.personaje, 'buffs', None) if ses.personaje else None,
+                    getattr(ses.personaje, 'habilidades', None) if ses.personaje else None,
+                    duales=lleva_duales_ses(ses),
+                    item_id=arma_puesta)
+                _espera = _ahora_atk - getattr(ses, 'ultimo_golpe', 0)
+                if _espera < _cad:
+                    log.info(f"[{addr}] GOLPE RECHAZADO por cadencia: pidio a "
+                             f"los {_espera:.3f}s y el minimo es {_cad:.3f}s")
+                    return
+                ses.ultimo_golpe = _ahora_atk
 
             # Si se uso una habilidad de ataque sin objetivo fijado, auto-fijar el monstruo mas cercano
             if m is None and tipo != _cb.ATAQUE_NORMAL and ses.personaje:
@@ -1177,6 +1313,11 @@ class Servidor:
                         return
                     # Si es una habilidad de ataque, no se puede autocastear
                     if mag.get('es_ataque'):
+                        log.info(f"[{addr}] HABILIDAD {tipo} SIN OBJETIVO: el "
+                                 f"cliente pidio '{mag.get('nombre')}' con "
+                                 f"objetivo {objetivo}, que no es ningun "
+                                 f"monstruo de este mapa, y no hay ninguno a "
+                                 f"tiro. No se hace nada.")
                         return
 
                     # Si estaba sentado, levantarse antes de ejecutar habilidad
@@ -1215,7 +1356,7 @@ class Servidor:
                             if not ses.personaje or getattr(ses, 'muerto', False):
                                 return
                             antes = ses.personaje.hp
-                            ses.personaje.hp = min(ses.personaje.hp_max,
+                            ses.personaje.hp = min(_vida_max(ses.personaje),
                                                    ses.personaje.hp + _tic['hp'])
                             sanado = ses.personaje.hp - antes
                             if sanado > 0:
@@ -1236,7 +1377,7 @@ class Servidor:
                     # 1. Habilidad de curacion real (Cure Spell de mago, etc.)
                     if mag.get('es_cura') and ses.personaje:
                         cura = max(10, abs(mag.get('hp', 0)))
-                        ses.personaje.hp = min(ses.personaje.hp_max, ses.personaje.hp + cura)
+                        ses.personaje.hp = min(_vida_max(ses.personaje), ses.personaje.hp + cura)
                         ses.enviar(_cb.efecto_curacion_inicio(yo, yo, cura, efecto=ef), _cb.gcd_paquete())
                         def _fin_cura():
                             if ses.personaje:
@@ -1345,7 +1486,10 @@ class Servidor:
                         return
                     ses.personaje.mp = max(0, ses.personaje.mp - mp_coste)
                     ses.enviar(_cb.atributo(yo, ses.personaje.mp, _cb.KIND_MP))
-                dano_extra = abs(mag.get('hp', 0))
+                # El Stance power de la habilidad, ponderado por
+                # PESO_STANCE (ver combate.py: la medicion dice que se suma
+                # tal cual, sin multiplicador).
+                dano_extra = int(round(_cb.stance_de(tipo) * _cb.PESO_STANCE))
                 atk_magic = tipo
                 atk_efecto = _cb.efecto_de_ataque(tipo)
                 # Enviar cooldown de TODAS las habilidades (kind=3) igual que el servidor real
@@ -1364,7 +1508,7 @@ class Servidor:
                     ses.enviar(*cd_pkgs, _cb.gcd_paquete())
                     try:
                         asyncio.get_event_loop().call_later(cd_ms / 1000.0,
-                            lambda ids=_sk_ids_copia: ses.enviar(*[
+                            lambda ids=_sk_ids_copia: ses.enviar_inmediato(*[
                                 struct.pack('<HIBBII', 0x001D, yo, 1, 3, sk_id, 0)
                                 for sk_id in ids
                             ]))
@@ -1373,7 +1517,7 @@ class Servidor:
                 elif cd_ms > 0:
                     ses.enviar(struct.pack('<HIBBII', 0x001D, yo, 1, 3, tipo, cd_ms), _cb.gcd_paquete())
                     try:
-                        asyncio.get_event_loop().call_later(cd_ms / 1000.0, lambda: ses.enviar(struct.pack('<HIBBII', 0x001D, yo, 1, 3, tipo, 0)))
+                        asyncio.get_event_loop().call_later(cd_ms / 1000.0, lambda: ses.enviar_inmediato(struct.pack('<HIBBII', 0x001D, yo, 1, 3, tipo, 0)))
                     except Exception:
                         pass
 
@@ -1396,6 +1540,11 @@ class Servidor:
                 total_atk = int(round(total_atk * 1.5))
 
             dano = m.recibir(total_atk)
+            if tipo != _cb.ATAQUE_NORMAL:
+                log.info(f"[{addr}] habilidad {tipo}: R.Atk {ataque} + stance "
+                         f"{dano_extra} = {total_atk}"
+                         f"{' (critico)' if es_crit else ''} -> {dano} de dano "
+                         f"al {m.nombre} ({m.hp}/{m.hp_max})")
             # El ataque puede encadenar otro hechizo (轉嫁法術): Slicing Hit
             # sangra al 100%, Basic Beating aturde al 10%, Tendon Chop
             # ralentiza. No se manda nada por red: el efecto lo lleva el
@@ -1444,17 +1593,37 @@ class Servidor:
             #   0x000A el golpe, DESPUES del numero
             # Antes se mandaba el 0x000A primero, la confirmacion con un
             # formato inventado de 15 bytes y el cierre 120 ms mas tarde.
-            _anim_golpe = _cb.anim_de_arma(arma_puesta,
-                                           duales=lleva_duales_ses(ses))
+            # La animacion que se le declara al cliente ES la duracion del
+            # ciclo en milisegundos, asi que tiene que valer lo mismo que la
+            # cadencia. Estaba fija en 1500 mientras el cliente pegaba cada
+            # 1100: el cliente se quedaba permanentemente "en medio de un
+            # golpe" y por eso no dejaba lanzar la habilidad.
+            # El tipo y la animacion salen del arma, medidos en las
+            # capturas: lanza tipo 2 animacion 827, espada y daga tipo 3
+            # animacion 1480, dos armas de una mano tipo 2 animacion 832.
+            _tipo_golpe, _anim_golpe = _cb.golpe_de_arma(
+                arma_puesta, duales=lleva_duales_ses(ses))
+            _cierre_skill = None
             if tipo != _cb.ATAQUE_NORMAL:
-                # CON HABILIDAD: confirmacion, efecto 0x0011 con el sprite de
-                # la habilidad, el golpe entre las dos fases, y cierre.
+                # CON HABILIDAD, tal como lo manda Celestia (Advance Chop V
+                # sobre un monstruo, t=867.884):
+                #   0x0006 confirmacion del cast
+                #   0x0011 fase 0x00, el efecto arranca
+                #   ...el tiempo de lanzamiento...
+                #   0x0011 fase 0x80, el efecto cierra, Y CON EL el 0x0013
+                #   con la vida y el 0x000B con el numero
+                #
+                # No hay NINGUN 0x000A en medio. Nosotros mandabamos uno
+                # entre las dos fases y ademas cerrabamos el efecto en el
+                # acto, asi que el numero llegaba despues de un cierre que ya
+                # habia pasado y el cliente no lo dibujaba: la habilidad se
+                # veia pero no mostraba dano.
                 salida_golpe = [
                     _cb.confirmar_cast(objetivo, m.tile_x, m.tile_y),
                     _cb.numero_de_dano(yo, objetivo, dano, atk_magic, efecto=atk_efecto),
-                    _cb.ataque(yo, objetivo, _anim_golpe, _cb.TIPO_GOLPE_ALT),
-                    _cb.cierre_de_dano(yo, objetivo, atk_magic, efecto=atk_efecto),
                 ]
+                _cierre_skill = _cb.cierre_de_dano(yo, objetivo, atk_magic,
+                                                   efecto=atk_efecto)
             else:
                 # ATAQUE NORMAL: solo el 0x000A. En la captura de Celestia
                 # (mundo_213507_817914) un golpe sin habilidad es unicamente
@@ -1463,7 +1632,7 @@ class Servidor:
                 # sprite de "Advance Chop", y por eso el efecto que se veia
                 # no correspondia al arma.
                 salida_golpe = [
-                    _cb.ataque(yo, objetivo, _anim_golpe, _cb.TIPO_GOLPE_ALT),
+                    _cb.ataque(yo, objetivo, _anim_golpe, _tipo_golpe),
                 ]
             # El golpe sale ya; el dano llega ~650 ms despues, cuando la
             # animacion termina. Medido en mundo_161013_564371 sobre siete
@@ -1473,7 +1642,10 @@ class Servidor:
             ses.enviar(*salida_golpe)
             _tipo_num = _cb.TIPO_DANO_CRITICO if es_crit else _cb.TIPO_DANO
             _duales = lleva_duales_ses(ses)
-            if _duales:
+            # El segundo golpe de las duales es del ataque BASICO. Una
+            # habilidad es UN golpe: con duales se estaba aplicando dos veces
+            # el dano entero de la skill.
+            if _duales and tipo == _cb.ATAQUE_NORMAL:
                 # Cada mano hace su dano COMPLETO, no la mitad: en la captura
                 # los dos numeros son iguales (122 y 122, 81 y 81). El
                 # segundo llega ~700 ms despues del primero.
@@ -1485,24 +1657,39 @@ class Servidor:
                 if _crit2:
                     _d2 = int(round(_d2 * 1.5))
                 _tipo2 = _cb.TIPO_DANO_CRITICO if _crit2 else _cb.TIPO_DANO
-                _pkgs_dano = (_cb.numero_flotante(objetivo, dano, _tipo_num),
+                _pkgs_dano = (*( (_cierre_skill,) if _cierre_skill else () ),
+                              _cb.atributo(objetivo, m.porcentaje),
+                              _cb.numero_flotante(objetivo, dano, _tipo_num),
                               *pkgs_sk, *pkgs_sp)
                 _pkgs_dano2 = ((_cb.atributo(objetivo, m.porcentaje),
                                 _cb.numero_flotante(objetivo, _d2, _tipo2))
                                if _d2 else
                                (_cb.atributo(objetivo, m.porcentaje),))
             else:
-                _pkgs_dano = (_cb.atributo(objetivo, m.porcentaje),
+                _pkgs_dano = (*( (_cierre_skill,) if _cierre_skill else () ),
+                              _cb.atributo(objetivo, m.porcentaje),
                               _cb.numero_flotante(objetivo, dano, _tipo_num),
                               *pkgs_sk, *pkgs_sp)
                 _pkgs_dano2 = None
+            _ret = 0.0
             try:
                 bucle = asyncio.get_event_loop()
                 # El retraso depende de la velocidad de ataque: Finesse
                 # descuenta un 10% y cada Swiftness Song lo suyo (5% la I,
                 # 15% la V, del campo 攻擊速度 de magic.xml).
-                _ret = _cb.retraso_golpe(buffs_activos,
-                                         getattr(ses.personaje, 'habilidades', None))
+                if tipo != _cb.ATAQUE_NORMAL:
+                    # Con habilidad el dano llega con el CIERRE del efecto,
+                    # no al final de un golpe de arma. Medido en Celestia:
+                    # el cast de Advance Chop V manda el 0x0011 fase 0 al
+                    # instante y el 0x0011 fase 0x80 con el 0x000B del dano
+                    # a los 269 ms, que es su tiempo de lanzamiento (100 ms)
+                    # mas la red. Aqui se usaba el retraso del golpe de arma,
+                    # 885 ms, asi que el numero salia mucho despues de que
+                    # la animacion habia terminado.
+                    _ret = max(0.1, _cb.datos_magia(tipo).get('cast_time', 100) / 1000.0)
+                else:
+                    _ret = _cb.retraso_golpe(buffs_activos,
+                                             getattr(ses.personaje, 'habilidades', None))
                 bucle.call_later(_ret,
                                  lambda p=_pkgs_dano: ses.enviar_inmediato(*p))
                 if _pkgs_dano2:
@@ -1538,15 +1725,25 @@ class Servidor:
                 log.info(f"[{addr}] Little Slarm derrotado en Fighting Palace ({ses.slarm_kills}/2)")
 
             # 1. Avisar muerte del monstruo (vida 0) y evento de muerte (tipo 7)
-            # El monstruo reproduce su animacion de muerte en el cliente
-            ses.enviar(_cb.atributo(objetivo, 0, _cb.VIDA),
+            #
+            # Va con el MISMO retraso que el numero de dano. El golpe se
+            # aplica en el acto pero su numero llega despues, y la muerte se
+            # mandaba al instante: el bicho caia antes de que el arma lo
+            # tocara. Se veia sobre todo con las Lily, que tienen poca vida y
+            # mueren de uno o dos golpes.
+            _muerte = (_cb.atributo(objetivo, 0, _cb.VIDA),
                        _cb.muerte_monstruo(objetivo, yo))
-
-            # Despawnear a los 2.5 segundos para que se vea la animacion de morir completa
+            _espera_muerte = _ret
             try:
-                asyncio.get_event_loop().call_later(2.5, lambda: ses.enviar_inmediato(_cb.despawn_monstruo(objetivo)))
+                _bucle = asyncio.get_event_loop()
+                _bucle.call_later(_espera_muerte,
+                                  lambda p=_muerte: ses.enviar_inmediato(*p))
+                # Y el despawn, 2.5 s despues de la muerte, para que se vea
+                # entera la animacion de morir.
+                _bucle.call_later(_espera_muerte + 2.5,
+                                  lambda: ses.enviar_inmediato(_cb.despawn_monstruo(objetivo)))
             except Exception:
-                pass
+                ses.enviar(*_muerte)
 
 
             # Programar respawn del monstruo en 20 segundos
@@ -1592,7 +1789,7 @@ class Servidor:
                     else:
                         break
                 if subio_nivel:
-                    p.hp = p.hp_max
+                    p.hp = _vida_max(p)
                     p.mp = p.mp_max
                     salida_combate.append(_cl.aviso(f"Level Up! Reached Level {p.nivel}!", tipo=0, msg_id=_cl.MSG_ITEM))
                     salida_combate.append(_cb.atributo(yo, p.hp, _cb.KIND_HP))
@@ -1633,8 +1830,7 @@ class Servidor:
             # 5. Drops de items al inventario (con apilamiento de consumibles y tope de bolsa)
             drops = _cb.botin_items(m.npc_type)
             bolsa = getattr(ses, 'inventario', {})
-            tiene_mochila = (bolsa.get(7) is not None or bolsa.get(8) is not None)
-            max_ranura = 44 if tiene_mochila else 39
+            max_ranura = _tope_bolsa(bolsa)
 
             tocadas_botin = []
             for item_drop, cant in drops:
@@ -1657,7 +1853,15 @@ class Servidor:
                 salida_combate.append(_cl.aviso(_nombre_item(item_drop), tipo=0, msg_id=_cl.MSG_ITEM))
 
             salida_combate.extend(_refrescar(ses, tocadas_botin, con_oro=True))
-            ses.enviar(*salida_combate)
+            # El botin, la experiencia y los avisos tambien esperan a que el
+            # golpe llegue: si no, el oro y los items salian en pantalla
+            # antes que el numero de dano que mato al bicho.
+            try:
+                asyncio.get_event_loop().call_later(
+                    _espera_muerte,
+                    lambda p=tuple(salida_combate): ses.enviar_inmediato(*p))
+            except Exception:
+                ses.enviar(*salida_combate)
             if ses.personaje and getattr(ses, 'usuario', None):
                 cuentas.guardar_inventario(ses.usuario, cid, bolsa,
                                    _cantidades(ses))
@@ -1737,7 +1941,12 @@ class Servidor:
             tocadas = []
             avisos = []
             for item_id, cant in pedido:
-                tocadas.append(_meter(ses, item_id, cant))
+                _r = _meter(ses, item_id, cant)
+                if _r is None:
+                    log.warning(f"[{addr}] compra: no entra {item_id} x{cant}, "
+                                f"la mochila esta llena")
+                    continue
+                tocadas.append(_r)
                 avisos.append(_c.aviso(_nombre_item(item_id), tipo=0,
                                        msg_id=_c.MSG_ITEM))
             ses.enviar(*_refrescar(ses, tocadas, con_oro=True),
@@ -1807,6 +2016,67 @@ class Servidor:
         # captura la de origen sigue con 215293 y la nueva sale con 215300.
         if opcode == 0x002F and ses.rol == 'mundo' and ses.personaje and len(cuerpo) >= 9:
             import inventario as _iv
+            # El primer byte es el CONTENEDOR, y el mismo mensaje sirve para
+            # cosas distintas:
+            #   11 = la mochila, y entonces esto parte un monton en dos
+            #   10 = el panel de hechizos del mago: equipar una rama y
+            #        descargar otra. Medido: el cliente manda
+            #        0a 0600 0000 03000000 y el servidor contesta con el
+            #        aviso 424 ("Chaos" equipado), el 423 ("Meditate"
+            #        descargado), los stats, el arbol de habilidades y un
+            #        0x001D codigo 9 por cada hechizo nuevo, con su aviso
+            #        425. Eso todavia no esta implementado aqui.
+            # No mirabamos este byte, asi que un cambio de hechizo entraba
+            # por el camino de partir pilas del inventario.
+            _contenedor = cuerpo[0]
+            if _contenedor == 10:
+                # Cambio de rama del mago. Medido: [u8 10][u32 la que se
+                # descarga][u32 la que se equipa], con nuestra misma
+                # numeracion. Los tres casos de la captura encajan:
+                #   06->03  descarga Meditate, equipa Chaos
+                #   07->23  descarga Hit,      equipa Avatar
+                #   23->07  descarga Avatar,   equipa Hit
+                import clases as _cl2
+                _fuera, _dentro = struct.unpack_from('<II', cuerpo, 1)
+                _p = ses.personaje
+                _habs = list(_p.habilidades or [])
+                _pos = next((k for k, h in enumerate(_habs) if h[0] == _fuera), None)
+                if _pos is None:
+                    log.warning(f"[{addr}] cambio de rama: no se lleva la "
+                                f"{_fuera} ({_cl2.nombre_de_rama(_fuera)})")
+                    return
+                _habs[_pos] = (_dentro, 1, 0)
+                _p.habilidades = _habs
+                # El orden es el del servidor real: primero el aviso de la
+                # que entra, despues el de la que sale, los stats, el arbol,
+                # y un 0x001D por cada hechizo nuevo con su aviso.
+                _salida = [
+                    _cl2.aviso(_cl2.nombre_de_rama(_dentro), tipo=7, msg_id=424),
+                    _cl2.aviso(_cl2.nombre_de_rama(_fuera), tipo=7, msg_id=423),
+                    _stats_ses(ses),
+                    _cl2.arbol(_p.habilidades),
+                ]
+                _nuevos = _cl2.hechizos_iniciales([_dentro])
+                if _nuevos:
+                    _salida.append(_cl2.otorgar_hechizos(
+                        _p.entity_id, [n for n, _ in _nuevos]))
+                    for _, _nom in _nuevos:
+                        _salida.append(_cl2.aviso(_nom, tipo=7,
+                                                  msg_id=_cl2.MSG_HECHIZO))
+                ses.enviar(*_salida)
+                if getattr(ses, 'usuario', None):
+                    cuentas.guardar_habilidades(ses.usuario, _p.char_id,
+                                                _p.habilidades)
+                log.info(f"[{addr}] cambio de rama: fuera "
+                         f"{_cl2.nombre_de_rama(_fuera)}, dentro "
+                         f"{_cl2.nombre_de_rama(_dentro)} "
+                         f"({len(_nuevos)} hechizos)")
+                return
+            if _contenedor != 11:
+                log.info(f"[{addr}] 0x002F con contenedor {_contenedor}: no es "
+                         f"la mochila ni el panel de hechizos, se ignora "
+                         f"(cuerpo {cuerpo.hex()})")
+                return
             destino, origen = struct.unpack_from('<HH', cuerpo, 1)
             cuantas = struct.unpack_from('<I', cuerpo, 5)[0]
             bolsa = getattr(ses, 'inventario', {})
@@ -2205,12 +2475,12 @@ class Servidor:
                 import combate as _cb
                 if 'hp' in ef_con:
                     curado = ef_con['hp']
-                    ses.personaje.hp = min(ses.personaje.hp_max, ses.personaje.hp + curado)
+                    ses.personaje.hp = min(_vida_max(ses.personaje), ses.personaje.hp + curado)
                     salida.append(_cb.atributo(yo, ses.personaje.hp, _cb.KIND_HP))
                     salida.extend(_cb.efecto_curacion(yo, yo, curado, efecto=165))
                 if 'mp' in ef_con:
                     rec_mp = ef_con['mp']
-                    ses.personaje.mp = min(ses.personaje.mp_max, ses.personaje.mp + rec_mp)
+                    ses.personaje.mp = min(_mana_max(ses.personaje), ses.personaje.mp + rec_mp)
                     salida.append(_cb.atributo(yo, ses.personaje.mp, _cb.KIND_MP))
                     # Aqui iba ademas un 0x0013 con el MP en porcentaje y
                     # kind 1. Ese kind no existe: en todas las capturas los
@@ -2506,11 +2776,24 @@ class Servidor:
                         cuentas.guardar_faccion(ses.usuario, ses.personaje.char_id, nueva_fac)
                     log.info(f"[{addr}] {ses.personaje.nombre} eligio faccion: {nueva_fac}")
                 elif _el == 5747 and ses.personaje:
-                    # Cupid: Savepoint en Angel Lyceum (tile 138, 60)
-                    ses.personaje.spawn_stage = 41
-                    ses.personaje.spawn_x = 138
-                    ses.personaje.spawn_y = 60
-                    log.info(f"[{addr}] {ses.personaje.nombre} registro checkpoint con Cupid (138, 60)")
+                    # Cupid: fija donde se revive.
+                    #
+                    # Dos cosas estaban mal. Se guardaba en spawn_stage/
+                    # spawn_x/spawn_y y al revivir se leia checkpoint_stage/
+                    # checkpoint_x/checkpoint_y, o sea otros campos: el
+                    # checkpoint no hacia nada. Y ademas fijaba siempre el
+                    # Lyceum en (138,60) aunque hablaras con el Cupid del
+                    # East o del West. Ahora queda donde estas parado, que es
+                    # justo al lado del Cupid con el que hablaste.
+                    _pj = ses.personaje
+                    _pj.checkpoint_stage = _pj.stage
+                    _pj.checkpoint_x, _pj.checkpoint_y = _pj.tile_x, _pj.tile_y
+                    if getattr(ses, 'usuario', None):
+                        cuentas.guardar_checkpoint(ses.usuario, _pj.char_id,
+                                                   _pj.stage, _pj.tile_x, _pj.tile_y)
+                    log.info(f"[{addr}] {_pj.nombre} fijo el punto de revivir "
+                             f"con Cupid: mapa {_pj.stage} casilla "
+                             f"({_pj.tile_x},{_pj.tile_y})")
                 elif _el == 20001 and ses.personaje:
                     # Teleporter Jack: East Field A1 (stage 42)
                     import clases as _cl3
@@ -2731,8 +3014,8 @@ class Servidor:
                 p2 = ses.personaje
                 rev_x = getattr(p2, 'checkpoint_x', 0) or REVIVIR_LYCEUM[0]
                 rev_y = getattr(p2, 'checkpoint_y', 0) or REVIVIR_LYCEUM[1]
-                p2.hp = p2.hp_max
-                p2.mp = p2.mp_max
+                p2.hp = _vida_max(p2)
+                p2.mp = _mana_max(p2)
                 p2.stage = getattr(p2, 'checkpoint_stage', 0) or 41
                 p2.tile_x, p2.tile_y = rev_x, rev_y
                 ses.muerto = False
@@ -2776,6 +3059,22 @@ class Servidor:
             if ses.personaje:
                 ses.personaje.tile_x = dst['x'] // 32
                 ses.personaje.tile_y = dst['y'] // 32
+
+                # Si el movimiento termina LEJOS del objetivo, se lo suelta:
+                # atacabas, te ibas, y al pararte el personaje seguia pegandole
+                # al bicho. Caminar HACIA el no lo suelta, que es lo que pasa
+                # cuando uno clica un enemigo lejano y se acerca.
+                _obj = getattr(ses, 'objetivo_actual', None)
+                if _obj:
+                    _bi = (getattr(ses, 'monstruos', None) or {}).get(_obj)
+                    if _bi is not None:
+                        _alc = _cb_alcance(ses)
+                        _dd = max(abs(_bi.tile_x - ses.personaje.tile_x),
+                                  abs(_bi.tile_y - ses.personaje.tile_y))
+                        if _dd > _alc + 1:
+                            ses.objetivo_actual = None
+                            log.info(f"[{addr}] objetivo soltado: te alejaste a "
+                                     f"{_dd} casillas del {_bi.nombre}")
                 import clases as _cl3
                 # Portales: un solo camino, el de plantillas/portales.json.
                 # Antes habia otro bloque con areas enormes (tx<=32 y ty>=126
@@ -2786,8 +3085,19 @@ class Servidor:
                 # no con el destino del movimiento: si no, al hacer clic hacia
                 # el tornado el dialogo saltaba de inmediato, con el personaje
                 # todavia a media pantalla.
+                # Se mira el portal en la casilla DE LLEGADA y, si ahi no
+                # hay, en la de salida. Antes solo se miraba la de salida:
+                # si hacias clic directo encima del tornado no pasaba nada
+                # hasta que te movieras otra vez. Mirar solo la de llegada
+                # tampoco sirve -- por eso estaba asi -- porque al clicar
+                # hacia el tornado desde lejos el dialogo saltaba de
+                # inmediato, con el personaje todavia a media pantalla; eso
+                # lo cubre el radio 1, que exige estar encima.
                 tx, ty = d['cur_x'] // 32, d['cur_y'] // 32
-                _por = _portal_en(ses.personaje.stage, tx, ty)
+                _dx, _dy = dst['x'] // 32, dst['y'] // 32
+                _por = _portal_en(ses.personaje.stage, _dx, _dy)
+                if _por is None:
+                    _por = _portal_en(ses.personaje.stage, tx, ty)
                 # Se recuerda en que portal se esta parado y solo se abre el
                 # menu al ENTRAR. Antes bastaba con que dlg_ent estuviera
                 # libre, pero si el cliente cierra el cuadro por su cuenta
@@ -2813,7 +3123,11 @@ class Servidor:
                 if _por is not None:
                     import dialogos as _dlg
                     _cfg = _portales()
-                    sub = _dlg.armar_linea(_cfg['msg'], 0, _cfg['opciones'])
+                    # Cada tornado puede traer su propio menu: el del
+                    # Lyceum al West ofrece A1..A5 del West y el del
+                    # East los suyos.
+                    _ops = _por.get('opciones') or _cfg['opciones']
+                    sub = _dlg.armar_linea(_cfg['msg'], 0, _ops)
                     ses.dlg_ent = _por['entity']
                     ses.dlg_guion = [sub[2:]]
                     ses.dlg_paso = 1

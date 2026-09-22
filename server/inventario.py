@@ -210,30 +210,21 @@ def _bonus(item_id: int) -> dict:
     return _BON.get(item_id, {'def': 0, 'accuracy': 0, 'agility': 0, 'atk': 0})
 
 
-def stats(bolsa=None, habilidades: list = None,
-          hp: int = None, hp_max: int = None,
-          mp: int = None, mp_max: int = None,
-          oro: int = None,
-          buffs: dict = None,
-          sp: int = None, sp_max: int = None) -> bytes:
-    """Sub-mensaje 0x0042 con los stats del personaje segun lo que lleva puesto y habilidades pasivas.
+def bonos_de_habilidades(habilidades):
+    """Lo que suman las habilidades: vida, mana, carga, barras de SP y stats.
 
-    El array que empieza en +20 alterna valor base y valor efectivo:
-        idx 0  ataque base      idx 1  R.Atk     idx 2  L.Atk
-        idx 3  defensa base     idx 4  Dfs
-        idx 5  Spl Atk base     idx 6  Spl Atk
-        idx 7  Spl Dfs base     idx 8  Spl Dfs
-        +56    Rigor (Acc) base / eff
-        +60    Agility (Dodge) base / eff
-        +64    Critical base / eff
-        +68    SP bars current / max (1 barra = 1000 puntos)
+    OJO: esta tabla esta escrita a mano, no sale de los datos del cliente.
+    En `content.db` no hay ninguna tabla de habilidades -- la tabla `level`
+    solo trae la experiencia que pide cada nivel de cada rama -- asi que
+    estos numeros no estan verificados contra nada. El HP no lo da el arma
+    (Sword no sube vida, cura): lo dan las pasivas, Enhance y Grapple.
 
-    El efectivo es el base mas lo que suma cada pieza puesta y los bonus de
-    habilidades pasivas segun el nivel de cada habilidad.
+    Se saco de dentro de stats() porque el tope de vida hacia falta en dos
+    sitios y solo se calculaba en uno: el 0x0042 mandaba el maximo CON el
+    bono y la ficha 0x0002 lo mandaba sin el. La ID Card decia 529/529
+    mientras el HUD decia 529/1009, y como el servidor se quedaba con el
+    529 se creia lleno y las pociones no curaban nada hasta que te pegaban.
     """
-    p = _plantillas()
-    b = bytearray(bytes.fromhex(p['stats_sin_ropa']))
-
     base_atk = 7
     base_def = 6
     base_rigor = 7
@@ -319,6 +310,60 @@ def stats(bolsa=None, habilidades: list = None,
                 sk_matk += 1 + extra
                 sk_mdef += 1
                 sk_rigor += extra
+
+    return {
+        'atk': sk_atk, 'def': sk_def, 'rigor': sk_rigor, 'agi': sk_agi,
+        'matk': sk_matk, 'mdef': sk_mdef,
+        'hp': hp_bonus, 'mp': mp_bonus,
+        'carga': load_max, 'barras_sp': sp_max_bars,
+    }
+
+
+def vida_maxima(hp_max, habilidades):
+    """El tope de vida de verdad: el guardado mas lo que dan las pasivas."""
+    return int(hp_max or 0) + bonos_de_habilidades(habilidades)['hp']
+
+
+def mana_maximo(mp_max, habilidades):
+    """El tope de mana de verdad."""
+    return int(mp_max or 0) + bonos_de_habilidades(habilidades)['mp']
+
+
+
+def stats(bolsa=None, habilidades: list = None,
+          hp: int = None, hp_max: int = None,
+          mp: int = None, mp_max: int = None,
+          oro: int = None,
+          buffs: dict = None,
+          sp: int = None, sp_max: int = None) -> bytes:
+    """Sub-mensaje 0x0042 con los stats del personaje segun lo que lleva puesto y habilidades pasivas.
+
+    El array que empieza en +20 alterna valor base y valor efectivo:
+        idx 0  ataque base      idx 1  R.Atk     idx 2  L.Atk
+        idx 3  defensa base     idx 4  Dfs
+        idx 5  Spl Atk base     idx 6  Spl Atk
+        idx 7  Spl Dfs base     idx 8  Spl Dfs
+        +56    Rigor (Acc) base / eff
+        +60    Agility (Dodge) base / eff
+        +64    Critical base / eff
+        +68    SP bars current / max (1 barra = 1000 puntos)
+
+    El efectivo es el base mas lo que suma cada pieza puesta y los bonus de
+    habilidades pasivas segun el nivel de cada habilidad.
+    """
+    p = _plantillas()
+    b = bytearray(bytes.fromhex(p['stats_sin_ropa']))
+
+    _b = bonos_de_habilidades(habilidades)
+    base_atk, base_def, base_rigor = 7, 6, 7
+    base_agi, base_matk, base_mdef = 6, 5, 5
+    base_crit = 5
+    crit_eff = 5
+    load_max = _b['carga']
+    sp_max_bars = _b['barras_sp']
+    hp_bonus, mp_bonus = _b['hp'], _b['mp']
+    sk_atk, sk_def, sk_rigor = _b['atk'], _b['def'], _b['rigor']
+    sk_agi, sk_matk, sk_mdef = _b['agi'], _b['matk'], _b['mdef']
 
     c_atk_base = base_atk + sk_atk
     c_def_base = base_def + sk_def

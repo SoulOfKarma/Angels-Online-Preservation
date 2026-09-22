@@ -287,12 +287,21 @@ En orden de dependencia:
    pero se pueden construir y enviar.
 3. **`0x0002` C2S** (autenticacion, 37 B). Solo 3 muestras y el cuerpo va sin
    guardar por contener credenciales.
-4. **`0x000D`** (2,33% del trafico) y **`0x001B`** (1,09%).
-5. **Logica de juego.** Movimiento, combate, NPCs. Los DATOS ya estan en
-   `corpus/content.db`; falta el codigo que los usa.
+4. ~~**`0x000D`** y **`0x001B`**~~ **RESUELTOS**. El `0x001B` esta descrito
+   entero en `01_HECHOS_VERIFICADOS.md`: la entrada de una casilla, el
+   estado de puesto de una prenda y la forma corta que vacia una casilla.
+5. ~~**Logica de juego**~~ **HECHA en su mayor parte**: movimiento, combate,
+   inventario con cantidades, tiendas, NPCs y IA de monstruos. Lo que queda
+   se lista en el README.
 
 ## Lo que sigue siendo codigo, no datos
 
 La **formula de combate**: como atk/def/precision/agilidad producen dano. Eso
 nunca estuvo en el cliente y hay que disenarlo, calibrandolo contra los stats
 reales de `monster.xml`.
+
+Estado: `ataque x 33 / (33 + defensa)` cuadra a nivel bajo y se va por un
+factor de unas 75 veces a nivel 118. La relacion resulto ser lineal en la
+defensa, con una pendiente que depende de los niveles de los dos bandos, y
+faltan muestras de varios rangos para fijarla. La precision (Rigor) y la
+esquiva (Agilidad) se calculan pero todavia no entran en el combate.

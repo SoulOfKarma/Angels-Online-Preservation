@@ -8,8 +8,11 @@ from traffic captures.
 
 This is not a complete emulator. It is the **documented protocol** plus a
 server that goes as far as it goes: you can create a character, run the
-tutorial, pick a class, fight and buy. What is missing is listed below,
-without sugarcoating.
+tutorial, pick a class, fight monsters, level up, and buy and sell in shops.
+What is missing is listed below, without sugarcoating.
+
+Every protocol claim in here has a measurement behind it. Where something is
+a guess, it says so.
 
 ---
 
@@ -17,41 +20,54 @@ without sugarcoating.
 
 **Works**
 
-- Login, character creation and selection, saved to disk
-- Entering the world, movement, and changing maps
+- Login, character creation, selection and deletion, saved to disk
+- Entering the world, movement, changing maps, and floor teleport zones
 - Angel Raphael's tutorial: picking a class, getting the gear, the transfer
-- Full inventory: equip, unequip, move between slots, durability
-- Stats computed from `item.xml` (gear actually adds up)
-- Angel Lyceum drawn: 52 NPCs, 81 monsters and 158 resources appear at their
-  real positions, taken from the client's XML files
-- Tutorial Works
+- Inventory with **quantities**: consumables stack, and equipping, unequipping
+  and moving between slots all report back per slot, the way the real server
+  does
+- Shops: buying **several items and several units in one go**, selling,
+  splitting a stack and destroying one. Buy and sell prices come from
+  `item.xml`, and the sale total matches the captured one to the gold
+- Using consumables: potions and food restore HP and MP and spend one unit
+- Stats computed from `item.xml` (gear actually adds up), including carry
+  weight
+- Combat: hitting and being hit, damage numbers, criticals, dual wield,
+  attack effects, dying and reviving, loot, experience and skill experience
+- Monsters: per-monster attack cadence, chasing, wandering, respawn, and
+  bleed and stun effects
+- Three maps fully populated from captures: Angel Lyceum (52 NPCs, 81
+  monsters, 158 resources), East Playground (170 monsters, 66 resources) and
+  West Playground (150 monsters, 67 resources), plus the Fighting Palace with
+  Angel Raphael and the forty totems
+- Portals between the Lyceum and both playgrounds, with their menus
+- Cupid sets your revival point where you are standing
+- Per-weapon attack animation and rhythm, measured: spear, staff, sword,
+  dagger and dual wielding each send their own pair of values
+- Skill cooldowns come from each skill's own data, separate from the basic
+  attack rhythm
+- Mages can swap a magic branch: the spells of the new branch are granted
+  and the old branch's are dropped
 
 **Partly**
 
-- Combat: you can target a monster and hit it, and the server tracks each
-  monster's health, but **the damage number doesn't show and the loot never
-  arrives**. The messages are sent and match the real server byte for byte,
-  so something else is missing that hasn't been identified yet
-- NPC dialogue: 17 of the Lyceum's 52 NPCs have their text and options, but
-  **picking an option closes the box** instead of continuing
-- Shops: the purchase message works and deducts the gold, but **the shop
-  window never opens** from the dialogue, so in practice you still cannot
-  buy anything while playing
-  - Shop Works to buy but only 1 to 1 item not multiply and can't sell
+- NPC dialogue: 17 of the Lyceum's 52 NPCs have their text and options
+- Spells: they show up on F1-F3, cast, buff and deal damage, but some visual
+  effects are still missing
+- The damage formula holds up at low level and drifts badly at high level: it
+  turned out to be linear in defence, and the coefficients depend on the
+  levels of both sides
+- Combos are read from `magic.xml` but never executed
+- The slow effect is registered but doesn't change movement speed
+- The staff and the axe use the sword's attack animation until someone
+  captures theirs
 
 **Does not work**
 
-- NPCs and monsters are static: they don't move, don't react, don't attack on
-  their own and don't respawn when killed / Partly Works
-  Skills Not show efects but can use technicaly and basics attacks are some bugged and in dual speed buged.
-- Resources can't be gathered
-- Boxes can't be opened: the "use item" message is missing / Partly
-- Spells can't be cast: the three starting ones show up on F1-F3, but using
-  them does nothing / Partly Cast but can't see but yes buff and attack.
-- No experience and no levelling up / Fixed
-- Characters can't be deleted
-- Floor teleport zones don't work (the map change itself does, but the server
-  has to trigger it) / Fixed
+- The ID Card draws the character in their underwear, even though the sprite
+  in the world is dressed correctly (see below)
+- Resources can't be gathered, so the nine skills tied to gathering and
+  crafting never level up
 - Five of the Lyceum's NPCs were never captured and are missing
 - Passwords are **not validated**: the auth block hasn't been decrypted
 
@@ -105,7 +121,7 @@ tools/        capture proxy and analysis tools
 docs/         everything that was worked out, and how it was verified
 ```
 
-**Read `docs/01_HECHOS_VERIFICADOS.md` before touching anything.** It is 1750
+**Read `docs/01_HECHOS_VERIFICADOS.md` before touching anything.** It is over two thousand
 lines covering every finding, how it was checked, and the mistakes made along
 the way with their diagnosis. That last part is worth more than the code:
 several things were taken as true from a single sample and turned out to be
@@ -115,65 +131,55 @@ The documentation is in Spanish. The code and the commit history are too.
 
 ---
 
-## Known issues, with screenshots
+## Known issues
 
-Each one is under `docs/capturas/`.
+### The ID Card draws the character undressed
 
-### 1. The skill panel comes up half empty
+The sprite walking around the world wears its gear correctly, but the figure
+inside the ID Card panel shows the character in their underwear. The weapon
+and the boots *are* drawn there; it is the body garment that never applies.
 
-![skills](docs/capturas/1-skills-vacias.png)
+Three candidates were ruled out by measurement, so nobody needs to repeat
+them: `0x0149` is byte-for-byte identical every single time, `0x0179` comes
+out the same after every equip regardless of what you put on, and the
+character record `0x0002` contains none of the equipped item ids — two logins
+of the *same* character with different gear differ in only 56 bytes, all of
+them stats and level.
 
-The skill panel shows the chosen class's row and question marks for the rest:
-the client doesn't know the other thirty.
+What would settle it is a capture taken with the ID Card **open** while
+taking a body garment off and putting it back on.
 
-The three starting spells **do show up now** (the screenshot predates that),
-but only visually: the icons are in the panel and on the F1-F3 bar, and using
-them does nothing. The "cast a spell" message hasn't been identified yet.
-Which three they are depends on the weapon; they're read from `magic.xml`,
-where each branch has exactly three level-1 entries under its `技能限制1`
-(spear: Basic Attack I, Bloody Song I, Endless Energy I, ids 801 to 803;
-sword: Slicing Hit I, Swiftness Song I, Injury Cure I, 601 to 603).
+### The damage formula drifts at high level
 
-- Update: This works partly can buff but some effects and visual effects not showing or works.
+`attack x 33 / (33 + defence)` matches what a low-level character does. At
+level 118 it is off by a factor of about 75. The relationship turned out to
+be linear in defence rather than multiplicative, with a slope that depends on
+the levels involved, and there aren't enough samples across level ranges to
+pin it down.
 
-### 2. NPCs stand still and say nothing
+### The staff and the axe attack animations
 
-![idle npcs](docs/capturas/2-npcs-quietos-sin-dialogo.png)
+The `0x000A` carries a type and an animation number, and the pair depends on
+the weapon. Measured by following the equipment changes inside each session:
 
-House Pickets and friends wander around in the real game and have a default
-line. Here they are planted and mute: there's no NPC movement, and 35 of the
-Lyceum's 52 have no text assigned.
-Update: some npcs can set dialogues.
+| weapon | type | animation |
+| ------ | ---- | --------- |
+| sword, dagger | 3 | 1480 |
+| spear | 2 | 827 |
+| staff | 2 | 951 |
+| two one-handed weapons | 2 | 832 |
 
-### 3. Boxes don't open
+The number is not a duration: the spear swings slower than the sword and yet
+its number is lower. It selects which animation the client plays, so sending
+the wrong one makes a spear attack as if it were dual wielding, with the
+weapon not drawn at all. The staff and the axe still fall back to the sword's
+pair, so a capture of someone attacking with them would finish the table.
 
-![boxes](docs/capturas/3-cajas-no-abren.png)
+### Screenshots of issues since fixed
 
-They're handed out correctly and the tooltip is right (read from `item.xml`),
-but clicking them does nothing. The "use item" message is missing and doesn't
-appear in any capture. In-game, opening the level 5 box gives you the level 15
-one, that one the level 25, and so on.
-
-### 4. The shop window doesn't open
-
-![shop](docs/capturas/4-tienda-no-abre.png)
-
-The Shopkeeper's dialogue shows both options, but choosing "Tell me about the
-buying and selling of goods" closes the box instead of opening the shop. Buying
-itself **does work** (`0x0027` is implemented): what's missing is knowing which
-dialogue each option leads to.
-
-- Update: Some shops works
-
-### 5. Portals don't work
-
-![portals](docs/capturas/5-portales-no-funcionan.png)
-
-Floor teleport zones are visible but do nothing, and sometimes the character
-gets stuck against them. Changing maps **is** implemented (`0x000C` + `0x0009`);
-what's missing is what the client sends when stepping on the zone.
-
-- Update: Some portal Works
+The images under `docs/capturas/` are kept as a record. All five have been
+resolved: the skill panel and the F1-F3 spells, NPC dialogue and movement,
+opening boxes, the shop, and the floor teleport zones.
 
 ---
 
@@ -210,7 +216,6 @@ constant. It's documented in `server/cuentas.py`.
 Some things look wrong until you log out and back in. Server and client end up
 agreeing, but the client doesn't refresh on the spot:
 
-- On a fresh character, gear sometimes doesn't show until you reconnect
 - Music cuts out when changing maps
 - The gear panel can be left with an extra slot drawn
 
@@ -242,15 +247,16 @@ Two lessons that took several rounds to learn:
 
 What would help right now, most useful first:
 
-1. **Killing a monster from the first hit to the loot.** The damage number and
-   the loot don't show up here, and the capture in hand doesn't cover the whole
-   exchange.
+1. **Equipping a body garment with the ID Card open**, so the message that
+   redraws the figure can be isolated.
 2. **Picking dialogue options** on several different NPCs. Five or six cases
-   would settle both the shop and Cupid's respawn point.
-3. **Deleting a character** that is past its protection period.
-4. **Crossing a floor teleport zone.**
-5. **Gathering a resource** with the right tool equipped.
-6. **Levelling up**, to see what the server sends.
+   would fill in the 35 Lyceum NPCs that still have no text.
+3. **Gathering a resource** with the right tool equipped. Nine skills depend
+   on it and none of them can level up today.
+4. **A long fight against monsters of several different levels**, with the
+   levels of both sides written down, to pin the damage formula.
+5. **Attacking with a staff and with an axe**, to finish the table of attack
+   animations (sword, spear and dual wielding are already measured).
 
 ### Any kind of help
 
