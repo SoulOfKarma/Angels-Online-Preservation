@@ -2447,6 +2447,306 @@
     "dibujar": false,
     "preguntar": false,
     "nota": "Vine Front -> Bottomless Pit. Tornado 112831. YA ESTA MEDIDO: el MOVE_REQ vino de (238,14), a siete casillas, con el paso acabando en (238,8), a una. La llegada (18,51) es la que mando Celestia; antes estaba puesta a ojo en (15,49), a tres de la real. Quedan sin destino (236,282) y (5,282), los dos abajo del todo."
+   },
+   {
+    "entity": 112829,
+    "tile": [
+     236,
+     282
+    ],
+    "destino": 138,
+    "llegada": [
+     235,
+     9
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Vine Front -> Roam Battlefield. Tornado 112829. OJO AL RADIO: el MOVE_REQ vino de (232,279), a CUATRO casillas, pero esa misma (232,279) es donde Celestia DEJA al volver; con radio 4 el jugador se saldria solo al aterrizar. Se deja en 3 y el salto lo coge el portal armado, porque el paso acaba en (235,281), a una."
+   },
+   {
+    "entity": 112830,
+    "tile": [
+     5,
+     282
+    ],
+    "destino": 138,
+    "llegada": [
+     15,
+     10
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Vine Front -> Roam Battlefield, SEGUNDO enlace entre los mismos dos mapas. Tornado 112830, el tercero y ultimo de Vine Front: con este queda completo. El MOVE_REQ vino de (8,281), a tres casillas. Los dos mapas estan unidos por DOS pares de tornados, uno por cada esquina de abajo: este por la izquierda y el 112829/112899 por la derecha."
+   }
+  ],
+  "138": [
+   {
+    "entity": 112899,
+    "tile": [
+     238,
+     2
+    ],
+    "destino": 137,
+    "llegada": [
+     232,
+     279
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Roam Battlefield -> Vine Front. Tornado 112899; el MOVE_REQ vino de (237,4), a dos casillas. La llegada (232,279) es la que mando Celestia (la otra vuelta: (229,280)). LOS DOS SENTIDOS MEDIDOS. Roam Battlefield tiene CUATRO tornados: quedan sin destino (7,275), (242,275) y (12,1)."
+   },
+   {
+    "entity": 112898,
+    "tile": [
+     12,
+     1
+    ],
+    "destino": 137,
+    "llegada": [
+     16,
+     279
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Roam Battlefield -> Vine Front, el segundo enlace. Tornado 112898; el MOVE_REQ vino de (14,7), a seis casillas, con el paso acabando en (13,3), a dos. La llegada (16,279) es la que mando Celestia. LOS DOS SENTIDOS MEDIDOS. Quedan sin destino (7,275) y (242,275)."
+   },
+   {
+    "entity": 112897,
+    "tile": [
+     242,
+     275
+    ],
+    "destino": 139,
+    "llegada": [
+     282,
+     18
+    ],
+    "radio": 4,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Roam Battlefield -> Sky Pumice. Tornado 112897. El MOVE_REQ vino de (243,271), a cuatro casillas, con el primer tramo acabando en (239,276), a tres. Radio 4 para cubrir tambien la casilla informada; la llegada del sentido contrario, (234,276), queda a ocho. La llegada (282,18) es la que mando Celestia. Celestia no deja siempre en la misma casilla: el mismo cruce, medido dos veces, dejo en (282,18) y en (275,14). Se usa la primera; la dispersion es de unas pocas casillas y no toca ningun portal."
+   },
+   {
+    "entity": 112896,
+    "tile": [
+     7,
+     275
+    ],
+    "destino": 139,
+    "llegada": [
+     47,
+     13
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Roam Battlefield -> Sky Pumice por el tornado OESTE 112896. Cruzado dos veces: los MOVE_REQ acabaron su primer tramo en (8,275) y en (8,274), las dos a una casilla. Las llegadas fueron (47,13) y (52,13); se usa la primera. LOS DOS SENTIDOS MEDIDOS."
+   }
+  ],
+  "139": [
+   {
+    "entity": 113022,
+    "tile": [
+     283,
+     10
+    ],
+    "destino": 138,
+    "llegada": [
+     234,
+     276
+    ],
+    "radio": 5,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Sky Pumice -> Roam Battlefield. Tornado 113022; el MOVE_REQ vino de (282,15), a cinco casillas, con el paso acabando en (283,9), a una. La llegada (234,276) es la que mando Celestia. LOS DOS SENTIDOS MEDIDOS. Sky Pumice tiene CUATRO tornados: quedan sin destino (50,5), (7,173) y (292,173). Celestia no deja siempre en la misma casilla: el mismo cruce, medido dos veces, dejo en (234,276) y en (243,271). Se usa la primera; la dispersion es de unas pocas casillas y no toca ningun portal. Radio 5: las dos casillas informadas, (282,15) y (278,8), cayeron justo a cinco; las llegadas mas cercanas quedan a ocho."
+   },
+   {
+    "entity": 113023,
+    "tile": [
+     50,
+     5
+    ],
+    "destino": 138,
+    "llegada": [
+     15,
+     271
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Sky Pumice -> Roam Battlefield por el tornado 113023, el del noroeste. El MOVE_REQ salio de (47,7), a tres casillas; el primer tramo acababa en (53,13), lejos, asi que aqui dispara la casilla informada, no el tramo. Las llegadas fueron (15,271) y (16,275); se usa la primera. Sky Pumice ya no tiene tornados sueltos: sus cuatro estan medidos."
+   },
+   {
+    "entity": 113025,
+    "tile": [
+     292,
+     173
+    ],
+    "destino": 140,
+    "llegada": [
+     15,
+     14
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Sky Pumice -> Winding Flower Corridor por el tornado 113025, el del sureste. Cruzado dos veces: los primeros tramos acabaron los dos en (291,172), a una casilla. Las llegadas fueron (15,14) y (11,15); se usa la primera. LOS DOS SENTIDOS MEDIDOS."
+   },
+   {
+    "entity": 113024,
+    "tile": [
+     7,
+     173
+    ],
+    "destino": 146,
+    "llegada": [
+     294,
+     12
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Sky Pumice -> Airship Station por el tornado 113024, el del oeste. Cruzado dos veces y las dos el primer tramo acabo en (8,172), pegado al tornado. La llegada fue (294,12) las DOS veces, sin dispersion. LOS DOS SENTIDOS MEDIDOS."
+   }
+  ],
+  "140": [
+   {
+    "entity": 113087,
+    "tile": [
+     9,
+     7
+    ],
+    "destino": 139,
+    "llegada": [
+     285,
+     170
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Winding Flower Corridor -> Sky Pumice por el tornado 113087. El MOVE_REQ salio de (15,14) y su primer tramo acabo en (9,5), a dos casillas. La llegada (285,170) es la que mando Celestia. "
+   },
+   {
+    "entity": 113026,
+    "tile": [
+     40,
+     149
+    ],
+    "destino": 147,
+    "llegada": [
+     281,
+     23
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Winding Flower Corridor -> Bouleuterion por el tornado 113026. Cruzado dos veces: los primeros tramos acabaron en (41,148) y en (38,150), a una y a dos casillas. Las llegadas fueron (281,23) y (282,25); se usa la primera. LOS DOS SENTIDOS MEDIDOS."
+   }
+  ],
+  "147": [
+   {
+    "entity": 113449,
+    "tile": [
+     290,
+     19
+    ],
+    "destino": 140,
+    "llegada": [
+     45,
+     146
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Bouleuterion -> Winding Flower Corridor por el tornado 113449. Cruzado dos veces y las dos el primer tramo acabo en la misma casilla, (289,20), pegada al tornado. Las llegadas fueron (45,146) y (42,144); se usa la primera. Bouleuterion ya no tiene tornados sueltos: sus tres estan medidos."
+   },
+   {
+    "entity": 113448,
+    "tile": [
+     21,
+     26
+    ],
+    "destino": 146,
+    "llegada": [
+     272,
+     150
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Bouleuterion -> Airship Station por el tornado 113448, el del noroeste. El MOVE_REQ salio de (23,31), a cinco casillas, y su primer tramo acabo justo ENCIMA del tornado, en (21,26). La llegada (272,150) es la que mando Celestia y queda a cinco del tornado de vuelta, fuera del radio: no rebota."
+   },
+   {
+    "entity": 113508,
+    "tile": [
+     140,
+     84
+    ],
+    "destino": 148,
+    "llegada": [
+     143,
+     88
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Bouleuterion -> Season Garden por el tornado 113508, el del CENTRO del mapa. Cruzado dos veces: los primeros tramos acabaron en (141,83) y en (139,83), a una casilla. Las llegadas fueron (143,88) y (139,90); se usa la primera. Este era el que parecia entrada de instancia por estar en el centro y no en un borde: NO lo es, lleva a un mapa normal. La suposicion estaba mal. LOS DOS SENTIDOS MEDIDOS."
+   }
+  ],
+  "146": [
+   {
+    "entity": 113376,
+    "tile": [
+     295,
+     2
+    ],
+    "destino": 139,
+    "llegada": [
+     9,
+     169
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Airship Station -> Sky Pumice por el tornado 113376, el de la esquina noreste. El MOVE_REQ salio de (294,4), a dos casillas, y su primer tramo acabo en (294,3), a una. La llegada (9,169) es la que mando Celestia."
+   },
+   {
+    "entity": 113377,
+    "tile": [
+     273,
+     155
+    ],
+    "destino": 147,
+    "llegada": [
+     23,
+     34
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Airship Station -> Bouleuterion por el tornado 113377, el del sureste. Cruzado dos veces y las dos el primer tramo acabo en (272,154), a una casilla. La llegada fue (23,34) las DOS veces, sin dispersion. LOS DOS SENTIDOS MEDIDOS."
+   }
+  ],
+  "148": [
+   {
+    "entity": 113572,
+    "tile": [
+     144,
+     93
+    ],
+    "destino": 147,
+    "llegada": [
+     134,
+     82
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Season Garden -> Bouleuterion por el tornado 113572, tambien en el centro del mapa. El MOVE_REQ salio de (143,88), a cinco casillas, y su primer tramo acabo en (143,92), a una. La llegada (134,82) queda a seis del tornado de ida, fuera del radio. El otro tornado del mapa, el 113571 en (288,174), sigue sin destino: el usuario avisa de que en Season Garden hay una instancia, asi que es el candidato a su entrada, SIN MEDIR todavia."
    }
   ]
  },

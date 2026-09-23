@@ -37,13 +37,16 @@ una suposición, lo dice.
   de ataque, morir y revivir, botín, experiencia y experiencia de habilidad
 - Monstruos: cadencia de ataque propia de cada uno, persecución, paseo,
   reaparición y efectos de sangrado y aturdimiento
-- **68 mapas poblados a partir de capturas**: 9.276 monstruos, 818 NPC y
-  4.389 objetos de mapa, 3.406 de ellos con su recurso identificado. Cada
+- **74 mapas poblados a partir de capturas**: 10.494 monstruos, 896 NPC y
+  4.779 objetos de mapa, 3.768 de ellos con su recurso identificado. Cada
   monstruo, NPC y recurso sale de una captura; nada está inventado
-- **Heart of Eden completo** y **Atlantis completo salvo las instancias**,
-  más buena parte de Pharaoh, East Orient, Floating y los territorios de las
+- **Heart of Eden completo**, **Atlantis completo salvo las instancias** y
+  **Floating completo**: sus cinco mapas (Roam Battlefield, Sky Pumice,
+  Winding Flower Corridor, Airship Station y Bouleuterion) tienen todos sus
+  tornados medidos, y a Season Garden solo le falta la entrada de su
+  instancia. Más buena parte de Pharaoh, East Orient y los territorios de las
   cuatro facciones
-- **144 portales**, casi todos medidos en los dos sentidos: la casilla del
+- **162 portales**, casi todos medidos en los dos sentidos: la casilla del
   tornado sale de la captura, y también aquella donde el servidor real deja
   al jugador al cruzar
 - Las cuatro ciudades de facción con su casilla de llegada, las cuatro
@@ -66,6 +69,12 @@ una suposición, lo dice.
 **A medias**
 
 - Diálogos de NPC: 17 de los 52 del Lyceum tienen su texto y sus opciones
+- **Las habilidades solo están probadas de verdad en tres ramas: espada,
+  lanza y hacha/martillo (Warrior)**, y ahí a medias -- se lanzan, pegan y
+  dan buff, pero falta bastante. Las **ramas de magia (Life, Wraith, Chaos,
+  Earth) no están probadas**: un jugador avisó de que a un mago le fallaron
+  los hechizos, y eso todavía no está diagnosticado. Arco y daga tampoco se
+  han probado. Si vas a probar el servidor, juega una clase cuerpo a cuerpo
 - Hechizos: salen en F1-F3, se lanzan, dan buff y hacen daño, pero faltan
   algunos efectos visuales
 - La fórmula de daño aguanta a nivel bajo y se va mucho a nivel alto: resultó

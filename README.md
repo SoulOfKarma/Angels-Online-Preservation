@@ -36,13 +36,16 @@ a guess, it says so.
   attack effects, dying and reviving, loot, experience and skill experience
 - Monsters: per-monster attack cadence, chasing, wandering, respawn, and
   bleed and stun effects
-- **68 maps populated from captures**: 9,276 monsters, 818 NPCs and 4,389 map
-  objects, 3,406 of them with their resource name resolved. Every monster, NPC
+- **74 maps populated from captures**: 10,494 monsters, 896 NPCs and 4,779 map
+  objects, 3,768 of them with their resource name resolved. Every monster, NPC
   and resource comes from a capture; none of it is made up
-- **Heart of Eden is complete** and **Atlantis is complete except for the
-  instances**, plus a good part of Pharaoh, East Orient, Floating and the four
-  faction territories
-- **144 portals**, almost all measured in both directions: the tornado's tile
+- **Heart of Eden is complete**, **Atlantis is complete except for the
+  instances** and **Floating is complete**: its five maps (Roam Battlefield,
+  Sky Pumice, Winding Flower Corridor, Airship Station and Bouleuterion) have
+  every tornado measured, and Season Garden only has its instance entrance
+  left. Plus a good part of Pharaoh, East Orient and the four faction
+  territories
+- **162 portals**, almost all measured in both directions: the tornado's tile
   comes from the capture, and so does the tile the real server drops you on
 - The four faction cities with their arrival tile, all four measured: Aurora
   City, Breeze Woods, Iron Castle and Dark City. Picking a faction leaves you
@@ -63,6 +66,12 @@ a guess, it says so.
 **Partly**
 
 - NPC dialogue: 17 of the Lyceum's 52 NPCs have their text and options
+- **Skills are only really tested on three branches: Sword, Spear and
+  Axe/Hammer (Warrior)**, and even there only partly -- they cast, hit and
+  buff, but plenty is still missing. The **magic branches (Life, Wraith,
+  Chaos, Earth) are not tested**: a player reported that a mage's spells
+  failed on them, and that is not diagnosed yet. Longbow and Mantle have
+  had no testing either. If you are trying this out, play a melee class
 - Spells: they show up on F1-F3, cast, buff and deal damage, but some visual
   effects are still missing
 - The damage formula holds up at low level and drifts badly at high level: it
