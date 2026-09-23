@@ -215,17 +215,64 @@ def armar_linea(mid: int, val: int = 4, opts: list = None, strings: list = None,
 #   rango alto
 #       55803, otro mensaje distinto
 #
-# Solo esta medido el de Breeze Woods; las otras tres ciudades usan sus
-# propios numeros y hay que capturarlas.
-ANGEL_DE_CIUDAD = {
-    29: {
-        'sin_registrar': (50001, (50002, 50003, 50004, 50018, 50005),
+# El Angel de cada ciudad. LAS CUATRO CIUDADES SON EL MISMO DIALOGO con la
+# base cambiada, y eso no es una suposicion: los cuatro bloques estan en
+# msg.xml uno al lado del otro y dicen lo mismo palabra por palabra.
+#
+#   base    ciudad         x0001 bienvenida        x0002 registrarse
+#   20000   Aurora City    "...Angel Protector of Aurora City..."
+#   30000   Dark City      "...Guard Angel of Dark City..."
+#   40000   Iron Castle    "...Guard Angel in Iron Castle..."
+#   50000   Breeze Woods   "...Angel Protector of Breeze Woods..."
+#
+# y dentro de cada bloque: x0002 registrarse, x0003 la mision, x0004 el
+# honor, x0005 salir, x0018 volver al Lyceum, x0019 el traslado.
+#
+# Las quests van igual de ordenadas en quest.xml:
+#   registro  127 Aurora  128 Dark City  129 Iron Castle  130 Breeze Woods
+#   conocer   133         134            135              136
+#   nivel     137         138            139              140
+#
+# ANTES AQUI SOLO ESTABA BREEZE WOODS (stage 29). En las otras tres ciudades
+# el Angel no encontraba entrada y se caia al dialogo de ELEGIR FACCION del
+# Graduation Palace: salia con otro texto y otro retrato, la quest de
+# registro no se completaba y la opcion de volver al Lyceum no existia.
+#
+# OJO: los codigos de accion (0x0f42xx) SOLO estan medidos para Breeze
+# Woods. Para las otras tres se reutilizan los suyos porque la respuesta se
+# despacha por el ID DE OPCION, no por la accion; si alguna vez se captura
+# el Angel de otra ciudad, hay que comprobarlos.
+_CIUDADES = (
+    # stage, base del dialogo, indice para las quests
+    (3,  20000, 0),   # Aurora City
+    (26, 30000, 1),   # Dark City
+    (38, 40000, 2),   # Iron Castle
+    (29, 50000, 3),   # Breeze Woods  <- el unico medido
+)
+
+ANGEL_DE_CIUDAD = {}
+for _st, _b, _i in _CIUDADES:
+    ANGEL_DE_CIUDAD[_st] = {
+        'sin_registrar': (_b + 1, (_b + 2, _b + 3, _b + 4, _b + 18, _b + 5),
                           (0x0f4258, 0x0f4252, 0x0f4254, 0x0f4260, 0)),
-        'registrado': (50001, (50003, 50004, 50018, 50005),
+        'registrado': (_b + 1, (_b + 3, _b + 4, _b + 18, _b + 5),
                        (0x0f4252, 0x0f4254, 0x0f425d, 0)),
-        'mision_registro': 130,
-    },
-}
+        'mision_registro': 127 + _i,
+        'mision_conocer': 133 + _i,
+        'mision_nivel': 137 + _i,
+        'opcion_registrar': _b + 2,
+        'opcion_lyceum': _b + 18,
+        'msg_traslado': _b + 19,
+        '_medido': _st == 29,
+    }
+del _st, _b, _i
+
+# opcion -> stage, para despachar sin saber donde esta el jugador
+CIUDAD_POR_OPCION = {}
+for _st, _cfg in ANGEL_DE_CIUDAD.items():
+    CIUDAD_POR_OPCION[_cfg['opcion_registrar']] = _st
+    CIUDAD_POR_OPCION[_cfg['opcion_lyceum']] = _st
+del _st, _cfg
 
 ANGELES_FACCION = {
     'Aurora Angel':     (5,  10201, (10207, 10208, 10205, 10206),
@@ -493,8 +540,13 @@ def respuesta_a(opcion_id: int, entidad: int = 0, val: int = 4,
     # de rango alto (55803) la lleva como 20018 y los de registro (50001)
     # como 50018. Solo estaba puesto el primero, asi que despues de
     # registrarse el boton no hacia nada.
-    if opcion_id in (20018, 50018):
-        return (armar_linea(50019, 112),)
+    if opcion_id in CIUDAD_POR_OPCION and opcion_id % 10000 == 18:
+        # Cada ciudad contesta con SU mensaje de traslado, no con el de
+        # Breeze Woods. Antes se devolvia siempre el 50019, asi que en
+        # Aurora, Dark City o Iron Castle el jugador leia el texto de otra
+        # ciudad.
+        _cfg = ANGEL_DE_CIUDAD[CIUDAD_POR_OPCION[opcion_id]]
+        return (armar_linea(_cfg['msg_traslado'], 112),)
 
     # Opcion 10235: confirmar que si. NO cierra el cuadro: quedan dos lineas
     # mas antes del viaje. Medido con el BreezeWood Angel:

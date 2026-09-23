@@ -3073,6 +3073,7 @@ class Servidor:
                     if _ops:
                         break
                 _i = dialogos.indice_opcion(_v)
+                import dialogos as _dlg_mod
                 _el = _ops[_i] if 0 <= _i < len(_ops) else None
                 val = getattr(ses, 'dlg_val', 4)
                 if _el is None:
@@ -3276,14 +3277,22 @@ class Servidor:
                     if getattr(ses, 'usuario', None):
                         cuentas.guardar_mapa(ses.usuario, ses.personaje.char_id, 43, 186, 27)
                     log.info(f"[{addr}] West Portal: al West Playground (stage 43)")
-                elif _el == 50002 and ses.personaje:
+                elif (_el in _dlg_mod.CIUDAD_POR_OPCION
+                      and _el % 10000 == 2 and ses.personaje):
                     # "I have come here to register!": completa la mision de
                     # registro y da las dos siguientes. Medido con el Angel
                     # de Breeze Woods: llegan la 136 "Knowing Breeze Woods",
                     # la 140 "Reaching higher level" y la 130 con el paso 1.
+                    # LAS QUESTS SON LAS DE SU CIUDAD, no las de Breeze
+                    # Woods. Antes estaban escritas a mano (136, 140 y 130),
+                    # asi que registrarse en Aurora completaba la quest de
+                    # Breeze y daba las suyas.
                     import clases as _clr, time as _tmr
                     _pjr = ses.personaje
-                    _nuevas_q = (136, 140)
+                    _cfgr = _dlg_mod.ANGEL_DE_CIUDAD[
+                        _dlg_mod.CIUDAD_POR_OPCION[_el]]
+                    _q_reg = _cfgr['mision_registro']
+                    _nuevas_q = (_cfgr['mision_conocer'], _cfgr['mision_nivel'])
                     _paqr = []
                     for _q in _nuevas_q:
                         if _q not in [x[0] for x in (_pjr.quests or [])]:
@@ -3291,15 +3300,16 @@ class Servidor:
                         _paqr += [_clr.mision(_pjr.char_id, _q, 0),
                                   _clr.aviso(_clr.nombre_de_quest(_q), tipo=0,
                                              msg_id=_clr.MSG_QUEST)]
-                    _pjr.quests = [(q, 1 if q == 130 else pa)
+                    _pjr.quests = [(q, 1 if q == _q_reg else pa)
                                    for q, pa in (_pjr.quests or [])]
-                    _paqr.append(_clr.mision(_pjr.char_id, 130, 1,
+                    _paqr.append(_clr.mision(_pjr.char_id, _q_reg, 1,
                                              int(_tmr.time())))
                     ses.enviar(*_paqr)
                     log.info(f"[{addr}] {_pjr.nombre} se registro con el Angel "
-                             f"de su ciudad: misiones 136 y 140, la 130 "
-                             f"completada")
-                elif _el in (20018, 50018) and ses.personaje:
+                             f"de su ciudad: misiones {_nuevas_q}, la "
+                             f"{_q_reg} completada")
+                elif (_el in _dlg_mod.CIUDAD_POR_OPCION
+                      and _el % 10000 == 18 and ses.personaje):
                     # "Send me back to the Angel Lyceum" del Angel de una
                     # ciudad. Medido: contesta con el 50019 y el cambio de
                     # mapa llega al cerrarse el cuadro, no en el acto.
