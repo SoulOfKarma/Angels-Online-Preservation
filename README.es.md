@@ -47,7 +47,13 @@ una suposición, lo dice.
   tornado sale de la captura, y también aquella donde el servidor real deja
   al jugador al cruzar
 - Las cuatro ciudades de facción con su casilla de llegada, las cuatro
-  medidas: Aurora City, Breeze Woods, Iron Castle y Dark City
+  medidas: Aurora City, Breeze Woods, Iron Castle y Dark City. Al elegir
+  facción el juego deja al jugador al lado del Ángel de esa ciudad, a tres o
+  cuatro casillas, en las cuatro
+- **El flujo completo de salir del Lyceum**: el Angels' Tutor, elegir facción
+  en el Graduation Palace, viajar a la ciudad, registrarse con su Ángel y que
+  te devuelva al Lyceum. Funciona en **las cuatro ciudades**, cada una con su
+  texto, su misión de registro y sus misiones siguientes
 - Los portales entre el Lyceum y los dos playgrounds, con sus menús
 - Cupid fija el punto de revivir donde estás parado
 - Animación y ritmo de ataque por arma, medidos: lanza, bastón, espada, daga
@@ -69,6 +75,10 @@ una suposición, lo dice.
 - El efecto de lentitud se registra pero no cambia la velocidad de movimiento
 - El bastón y el hacha usan la animación de ataque de la espada hasta que
   alguien capture la suya
+- Las monturas se equipan en la ranura 10 y sí dan velocidad, pero no la
+  correcta: dos monturas distintas que declaran el mismo `move_speed` dan
+  velocidades distintas en el servidor real, así que lo que aporta una
+  montura depende de su propia instancia y eso no viaja en `item.xml`
 
 **No funciona**
 
@@ -79,6 +89,16 @@ una suposición, lo dice.
 - Faltan cinco NPC del Lyceum que nunca se capturaron
 - Las contraseñas **no se validan**: el bloque de autenticación sigue sin
   descifrar
+- Las misiones y si se habló con Michael **no se guardan en disco**: duran lo
+  que dura la sesión y se pierden al reconectar
+- La puerta del buceo está **documentada pero no se aplica**: los dos
+  entrenadores, sus diálogos y las dos habilidades están capturados, pero el
+  portal a los mapas submarinos deja pasar a cualquiera
+- Las instancias (Lost Region y Horrible Lost Region): el diálogo de entrada,
+  los dos modos y los mensajes de rechazo están capturados, pero nadie ha
+  entrado. Sus monstruos se saben por la wiki; sus posiciones no
+- Los equipos y la lista de amigos: el protocolo está documentado desde una
+  captura con dos cuentas, pero el servidor todavía no implementa ninguno
 
 ---
 

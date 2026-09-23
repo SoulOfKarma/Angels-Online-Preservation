@@ -45,7 +45,12 @@ a guess, it says so.
 - **144 portals**, almost all measured in both directions: the tornado's tile
   comes from the capture, and so does the tile the real server drops you on
 - The four faction cities with their arrival tile, all four measured: Aurora
-  City, Breeze Woods, Iron Castle and Dark City
+  City, Breeze Woods, Iron Castle and Dark City. Picking a faction leaves you
+  next to that city's Angel, three or four tiles away, in all four
+- **The full leave-the-Lyceum flow**: the Angels' Tutor, choosing a faction at
+  the Graduation Palace, travelling to your city, registering with its Angel
+  and being sent back to the Lyceum. It works in **all four cities**, each
+  with its own text, its own registration quest and its own follow-ups
 - Portals between the Lyceum and both playgrounds, with their menus
 - Cupid sets your revival point where you are standing
 - Per-weapon attack animation and rhythm, measured: spear, staff, sword,
@@ -67,6 +72,10 @@ a guess, it says so.
 - The slow effect is registered but doesn't change movement speed
 - The staff and the axe use the sword's attack animation until someone
   captures theirs
+- Mounts equip to slot 10 and do speed you up, but not by the right amount:
+  two different mounts that declare the same `move_speed` give different
+  speeds in the real server, so what a mount contributes depends on its own
+  instance, and that doesn't travel in `item.xml`
 
 **Does not work**
 
@@ -76,6 +85,16 @@ a guess, it says so.
   crafting never level up
 - Five of the Lyceum's NPCs were never captured and are missing
 - Passwords are **not validated**: the auth block hasn't been decrypted
+- Quests and whether you have spoken to Michael are **not saved to disk**:
+  they survive the session and are lost on reconnect
+- The diving gate is **documented but not enforced**: both trainers, their
+  dialogue and the two skills are captured, but the portal into the
+  underwater maps still lets anyone through
+- Instances (Lost Region and Horrible Lost Region): the entry dialogue, the
+  two modes and the rejection messages are captured, but nobody has been
+  inside. Their monsters are known from the wiki; their positions are not
+- Parties and the friend list: the protocol is documented from a two-account
+  capture, but the server does not implement either yet
 
 ---
 
