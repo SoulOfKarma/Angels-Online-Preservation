@@ -1,0 +1,2850 @@
+{
+ "_nota": "Scrap Iron Village (stage 34), de dos capturas de Celestia del 23/09/2026. Territorio de la faccion Steel (Iron Totem).",
+ "stage": 34,
+ "spawns": [
+  {
+   "entity_id": 29218,
+   "nombre": "Iron Totem",
+   "npc_type": 1939,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    233,
+    64
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 122035,
+   "nombre": "Cupid",
+   "npc_type": 1862,
+   "sprite": 40006,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    180,
+    105
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122036,
+   "nombre": "Engineer",
+   "npc_type": 1653,
+   "sprite": 40039,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    158,
+    112
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122037,
+   "nombre": "Worker",
+   "npc_type": 1654,
+   "sprite": 40038,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    209,
+    115
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122038,
+   "nombre": "Repair Worker",
+   "npc_type": 1655,
+   "sprite": 40038,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    218,
+    69
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122039,
+   "nombre": "Designer",
+   "npc_type": 1656,
+   "sprite": 40039,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    177,
+    87
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122040,
+   "nombre": "Edison",
+   "npc_type": 1658,
+   "sprite": 40039,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    201,
+    86
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 1013103,
+   "nombre": "Radiant Slarm",
+   "npc_type": 60,
+   "sprite": 42036,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    251,
+    180
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013104,
+   "nombre": "Radiant Slarm",
+   "npc_type": 60,
+   "sprite": 42036,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    239,
+    152
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013105,
+   "nombre": "Radiant Slarm",
+   "npc_type": 60,
+   "sprite": 42036,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    236,
+    171
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013106,
+   "nombre": "Radiant Slarm",
+   "npc_type": 60,
+   "sprite": 42036,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    233,
+    158
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013107,
+   "nombre": "Radiant Slarm",
+   "npc_type": 60,
+   "sprite": 42036,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    226,
+    150
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013108,
+   "nombre": "Radiant Slarm",
+   "npc_type": 60,
+   "sprite": 42036,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    238,
+    172
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013109,
+   "nombre": "Radiant Slarm",
+   "npc_type": 60,
+   "sprite": 42036,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    248,
+    173
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013110,
+   "nombre": "Radiant Slarm",
+   "npc_type": 60,
+   "sprite": 42036,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    229,
+    158
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013111,
+   "nombre": "Radiant Slarm",
+   "npc_type": 60,
+   "sprite": 42036,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    236,
+    176
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013112,
+   "nombre": "Radiant Slarm",
+   "npc_type": 60,
+   "sprite": 42036,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    242,
+    177
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013113,
+   "nombre": "Radiant Slarm",
+   "npc_type": 60,
+   "sprite": 42036,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    124,
+    166
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013114,
+   "nombre": "Radiant Slarm",
+   "npc_type": 60,
+   "sprite": 42036,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    142,
+    136
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013115,
+   "nombre": "Radiant Slarm",
+   "npc_type": 60,
+   "sprite": 42036,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    142,
+    167
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013116,
+   "nombre": "Radiant Slarm",
+   "npc_type": 60,
+   "sprite": 42036,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    168,
+    168
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013117,
+   "nombre": "Radiant Slarm",
+   "npc_type": 60,
+   "sprite": 42036,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    164,
+    146
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013118,
+   "nombre": "Radiant Slarm",
+   "npc_type": 60,
+   "sprite": 42036,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    141,
+    175
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013119,
+   "nombre": "Radiant Slarm",
+   "npc_type": 60,
+   "sprite": 42036,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    155,
+    156
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013120,
+   "nombre": "Radiant Slarm",
+   "npc_type": 60,
+   "sprite": 42036,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    128,
+    158
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013121,
+   "nombre": "Radiant Slarm",
+   "npc_type": 60,
+   "sprite": 42036,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    174,
+    157
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013122,
+   "nombre": "Radiant Slarm",
+   "npc_type": 60,
+   "sprite": 42036,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    133,
+    133
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013123,
+   "nombre": "Radiant Slarm",
+   "npc_type": 60,
+   "sprite": 42036,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    161,
+    145
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013124,
+   "nombre": "Radiant Slarm",
+   "npc_type": 60,
+   "sprite": 42036,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    125,
+    159
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013125,
+   "nombre": "Radiant Slarm",
+   "npc_type": 60,
+   "sprite": 42036,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    213,
+    124
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013126,
+   "nombre": "Radiant Slarm",
+   "npc_type": 60,
+   "sprite": 42036,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    258,
+    97
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013127,
+   "nombre": "Radiant Slarm",
+   "npc_type": 60,
+   "sprite": 42036,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    233,
+    152
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013128,
+   "nombre": "Radiant Slarm",
+   "npc_type": 60,
+   "sprite": 42036,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    238,
+    117
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013129,
+   "nombre": "Radiant Slarm",
+   "npc_type": 60,
+   "sprite": 42036,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    230,
+    145
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013130,
+   "nombre": "Radiant Slarm",
+   "npc_type": 60,
+   "sprite": 42036,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    240,
+    119
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013131,
+   "nombre": "Radiant Slarm",
+   "npc_type": 60,
+   "sprite": 42036,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    260,
+    97
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013132,
+   "nombre": "Radiant Slarm",
+   "npc_type": 60,
+   "sprite": 42036,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    216,
+    134
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013133,
+   "nombre": "Radiant Slarm",
+   "npc_type": 60,
+   "sprite": 42036,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    255,
+    96
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013134,
+   "nombre": "Radiant Slarm",
+   "npc_type": 60,
+   "sprite": 42036,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    238,
+    114
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013135,
+   "nombre": "Radiant Slarm",
+   "npc_type": 60,
+   "sprite": 42036,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    243,
+    149
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013136,
+   "nombre": "Radiant Slarm",
+   "npc_type": 60,
+   "sprite": 42036,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    211,
+    125
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013137,
+   "nombre": "Radiant Slarm",
+   "npc_type": 60,
+   "sprite": 42036,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    243,
+    149
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013138,
+   "nombre": "Radiant Slarm",
+   "npc_type": 60,
+   "sprite": 42036,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    220,
+    123
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013139,
+   "nombre": "Radiant Slarm",
+   "npc_type": 60,
+   "sprite": 42036,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    262,
+    96
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013140,
+   "nombre": "Fat Robot",
+   "npc_type": 61,
+   "sprite": 40096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    214,
+    29
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1013141,
+   "nombre": "Fat Robot",
+   "npc_type": 61,
+   "sprite": 40096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    246,
+    31
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1013142,
+   "nombre": "Fat Robot",
+   "npc_type": 61,
+   "sprite": 40096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    205,
+    59
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1013143,
+   "nombre": "Fat Robot",
+   "npc_type": 61,
+   "sprite": 40096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    256,
+    57
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1013144,
+   "nombre": "Fat Robot",
+   "npc_type": 61,
+   "sprite": 40096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    210,
+    31
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1013145,
+   "nombre": "Fat Robot",
+   "npc_type": 61,
+   "sprite": 40096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    279,
+    18
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1013146,
+   "nombre": "Fat Robot",
+   "npc_type": 61,
+   "sprite": 40096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    267,
+    15
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1013147,
+   "nombre": "Fat Robot",
+   "npc_type": 61,
+   "sprite": 40096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    213,
+    21
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1013148,
+   "nombre": "Fat Robot",
+   "npc_type": 61,
+   "sprite": 40096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    256,
+    29
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1013149,
+   "nombre": "Fat Robot",
+   "npc_type": 61,
+   "sprite": 40096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    252,
+    49
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1013150,
+   "nombre": "Fat Robot",
+   "npc_type": 61,
+   "sprite": 40096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    150,
+    36
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1013151,
+   "nombre": "Fat Robot",
+   "npc_type": 61,
+   "sprite": 40096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    186,
+    45
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1013152,
+   "nombre": "Fat Robot",
+   "npc_type": 61,
+   "sprite": 40096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    134,
+    64
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1013153,
+   "nombre": "Fat Robot",
+   "npc_type": 61,
+   "sprite": 40096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    122,
+    92
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1013154,
+   "nombre": "Fat Robot",
+   "npc_type": 61,
+   "sprite": 40096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    151,
+    64
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1013155,
+   "nombre": "Fat Robot",
+   "npc_type": 61,
+   "sprite": 40096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    161,
+    53
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1013156,
+   "nombre": "Fat Robot",
+   "npc_type": 61,
+   "sprite": 40096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    173,
+    50
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1013157,
+   "nombre": "Fat Robot",
+   "npc_type": 61,
+   "sprite": 40096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    153,
+    76
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1013158,
+   "nombre": "Fat Robot",
+   "npc_type": 61,
+   "sprite": 40096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    183,
+    55
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1013159,
+   "nombre": "Fat Robot",
+   "npc_type": 61,
+   "sprite": 40096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    143,
+    58
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1013160,
+   "nombre": "Fat Robot",
+   "npc_type": 61,
+   "sprite": 40096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    120,
+    82
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1013161,
+   "nombre": "Fat Robot",
+   "npc_type": 61,
+   "sprite": 40096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    144,
+    25
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1013162,
+   "nombre": "Fat Robot",
+   "npc_type": 61,
+   "sprite": 40096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    118,
+    16
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1013163,
+   "nombre": "Fat Robot",
+   "npc_type": 61,
+   "sprite": 40096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    119,
+    44
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1013164,
+   "nombre": "Fat Robot",
+   "npc_type": 61,
+   "sprite": 40096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    115,
+    53
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1013165,
+   "nombre": "Fat Robot",
+   "npc_type": 61,
+   "sprite": 40096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    90,
+    50
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1013166,
+   "nombre": "Fat Robot",
+   "npc_type": 61,
+   "sprite": 40096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    116,
+    39
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1013167,
+   "nombre": "Fat Robot",
+   "npc_type": 61,
+   "sprite": 40096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    118,
+    52
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1013168,
+   "nombre": "Fat Robot",
+   "npc_type": 61,
+   "sprite": 40096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    101,
+    41
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1013169,
+   "nombre": "Fat Robot",
+   "npc_type": 61,
+   "sprite": 40096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    111,
+    15
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1013170,
+   "nombre": "Fat Robot",
+   "npc_type": 61,
+   "sprite": 40096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    118,
+    50
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1013171,
+   "nombre": "Fat Robot",
+   "npc_type": 61,
+   "sprite": 40096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    95,
+    49
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1013172,
+   "nombre": "Fat Robot",
+   "npc_type": 61,
+   "sprite": 40096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    111,
+    50
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1013173,
+   "nombre": "Fat Robot",
+   "npc_type": 61,
+   "sprite": 40096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    107,
+    20
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1013174,
+   "nombre": "Fat Robot",
+   "npc_type": 61,
+   "sprite": 40096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    117,
+    35
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1013175,
+   "nombre": "Fat Robot",
+   "npc_type": 61,
+   "sprite": 40096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    90,
+    51
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1013176,
+   "nombre": "Fat Robot",
+   "npc_type": 61,
+   "sprite": 40096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    108,
+    58
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1013177,
+   "nombre": "Buccinal Robot",
+   "npc_type": 62,
+   "sprite": 40095,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    61,
+    120
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013178,
+   "nombre": "Buccinal Robot",
+   "npc_type": 62,
+   "sprite": 40095,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    41,
+    29
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013179,
+   "nombre": "Buccinal Robot",
+   "npc_type": 62,
+   "sprite": 40095,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    34,
+    60
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013180,
+   "nombre": "Buccinal Robot",
+   "npc_type": 62,
+   "sprite": 40095,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    59,
+    110
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013181,
+   "nombre": "Buccinal Robot",
+   "npc_type": 62,
+   "sprite": 40095,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    33,
+    56
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013182,
+   "nombre": "Buccinal Robot",
+   "npc_type": 62,
+   "sprite": 40095,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    44,
+    34
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013183,
+   "nombre": "Buccinal Robot",
+   "npc_type": 62,
+   "sprite": 40095,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    40,
+    58
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013184,
+   "nombre": "Buccinal Robot",
+   "npc_type": 62,
+   "sprite": 40095,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    63,
+    110
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013185,
+   "nombre": "Buccinal Robot",
+   "npc_type": 62,
+   "sprite": 40095,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    53,
+    38
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013186,
+   "nombre": "Buccinal Robot",
+   "npc_type": 62,
+   "sprite": 40095,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    43,
+    42
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013187,
+   "nombre": "Buccinal Robot",
+   "npc_type": 62,
+   "sprite": 40095,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    74,
+    148
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013188,
+   "nombre": "Buccinal Robot",
+   "npc_type": 62,
+   "sprite": 40095,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    90,
+    126
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013189,
+   "nombre": "Buccinal Robot",
+   "npc_type": 62,
+   "sprite": 40095,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    80,
+    146
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013190,
+   "nombre": "Buccinal Robot",
+   "npc_type": 62,
+   "sprite": 40095,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    107,
+    138
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013191,
+   "nombre": "Buccinal Robot",
+   "npc_type": 62,
+   "sprite": 40095,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    81,
+    141
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013192,
+   "nombre": "Buccinal Robot",
+   "npc_type": 62,
+   "sprite": 40095,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    95,
+    133
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013193,
+   "nombre": "Buccinal Robot",
+   "npc_type": 62,
+   "sprite": 40095,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    85,
+    124
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013194,
+   "nombre": "Buccinal Robot",
+   "npc_type": 62,
+   "sprite": 40095,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    81,
+    138
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013195,
+   "nombre": "Buccinal Robot",
+   "npc_type": 62,
+   "sprite": 40095,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    69,
+    147
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013196,
+   "nombre": "Buccinal Robot",
+   "npc_type": 62,
+   "sprite": 40095,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    92,
+    138
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013197,
+   "nombre": "Buccinal Robot",
+   "npc_type": 62,
+   "sprite": 40095,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    97,
+    130
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013198,
+   "nombre": "Buccinal Robot",
+   "npc_type": 62,
+   "sprite": 40095,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    83,
+    133
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013199,
+   "nombre": "Buccinal Robot",
+   "npc_type": 62,
+   "sprite": 40095,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    119,
+    76
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013200,
+   "nombre": "Buccinal Robot",
+   "npc_type": 62,
+   "sprite": 40095,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    93,
+    124
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013201,
+   "nombre": "Buccinal Robot",
+   "npc_type": 62,
+   "sprite": 40095,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    132,
+    103
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013202,
+   "nombre": "Buccinal Robot",
+   "npc_type": 62,
+   "sprite": 40095,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    80,
+    57
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013203,
+   "nombre": "Buccinal Robot",
+   "npc_type": 62,
+   "sprite": 40095,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    125,
+    90
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013204,
+   "nombre": "Buccinal Robot",
+   "npc_type": 62,
+   "sprite": 40095,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    121,
+    102
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013205,
+   "nombre": "Buccinal Robot",
+   "npc_type": 62,
+   "sprite": 40095,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    83,
+    127
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013206,
+   "nombre": "Buccinal Robot",
+   "npc_type": 62,
+   "sprite": 40095,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    123,
+    73
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013207,
+   "nombre": "Buccinal Robot",
+   "npc_type": 62,
+   "sprite": 40095,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    127,
+    84
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013208,
+   "nombre": "Buccinal Robot",
+   "npc_type": 62,
+   "sprite": 40095,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    83,
+    58
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 14
+  },
+  {
+   "entity_id": 1013209,
+   "nombre": "Turbo Robot",
+   "npc_type": 63,
+   "sprite": 40097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    257,
+    19
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 22
+  },
+  {
+   "entity_id": 1013210,
+   "nombre": "Metal Robot",
+   "npc_type": 64,
+   "sprite": 42054,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    168,
+    174
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 19
+  }
+ ],
+ "recursos": [
+  {
+   "entity_id": 101564,
+   "capa": 0,
+   "px": [
+    8717,
+    4774
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60009,
+   "cola": "00000000000000",
+   "nombre_visible": "White Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101565,
+   "capa": 0,
+   "px": [
+    8895,
+    4854
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60009,
+   "cola": "00000000000000",
+   "nombre_visible": "White Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101566,
+   "capa": 0,
+   "px": [
+    9063,
+    4737
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60008,
+   "cola": "00000000000000",
+   "nombre_visible": "White Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101567,
+   "capa": 0,
+   "px": [
+    8738,
+    4847
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60008,
+   "cola": "00000000000000",
+   "nombre_visible": "White Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101568,
+   "capa": 0,
+   "px": [
+    8576,
+    4711
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60006,
+   "cola": "00000000000000",
+   "nombre_visible": "White Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004",
+   "material": "Bright Alga(S)"
+  },
+  {
+   "entity_id": 101569,
+   "capa": 0,
+   "px": [
+    8889,
+    4751
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60006,
+   "cola": "00000000000000",
+   "nombre_visible": "White Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004",
+   "material": "Bright Alga(S)"
+  },
+  {
+   "entity_id": 101570,
+   "capa": 0,
+   "px": [
+    8969,
+    4796
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60007,
+   "cola": "00000000000000",
+   "nombre_visible": "White Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101571,
+   "capa": 0,
+   "px": [
+    8741,
+    4812
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60135,
+   "cola": "00000000000000",
+   "nombre_visible": "White Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101572,
+   "capa": 2,
+   "px": [
+    8911,
+    4855
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60135,
+   "cola": "00000000000000",
+   "nombre_visible": "White Alga(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101573,
+   "capa": 0,
+   "px": [
+    9003,
+    4769
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60135,
+   "cola": "00000000000000",
+   "nombre_visible": "White Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101574,
+   "capa": 0,
+   "px": [
+    8940,
+    4803
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60108,
+   "cola": "00000000000000",
+   "nombre_visible": "White Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101575,
+   "capa": 0,
+   "px": [
+    8639,
+    4776
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60108,
+   "cola": "00000000000000",
+   "nombre_visible": "White Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101576,
+   "capa": 0,
+   "px": [
+    8541,
+    4706
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60108,
+   "cola": "00000000000000",
+   "nombre_visible": "White Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101577,
+   "capa": 0,
+   "px": [
+    9135,
+    4702
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60108,
+   "cola": "00000000000000",
+   "nombre_visible": "White Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101578,
+   "capa": 0,
+   "px": [
+    405,
+    3565
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60111,
+   "cola": "00000000000000",
+   "nombre_visible": "Teak(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 101579,
+   "capa": 0,
+   "px": [
+    613,
+    4101
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60111,
+   "cola": "00000000000000",
+   "nombre_visible": "Teak(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 101580,
+   "capa": 0,
+   "px": [
+    1597,
+    4279
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60111,
+   "cola": "00000000000000",
+   "nombre_visible": "Teak(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 101581,
+   "capa": 2,
+   "px": [
+    1793,
+    4280
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60111,
+   "cola": "00000000000000",
+   "nombre_visible": "Teak(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 101582,
+   "capa": 0,
+   "px": [
+    1046,
+    3570
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60111,
+   "cola": "00000000000000",
+   "nombre_visible": "Teak(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 101583,
+   "capa": 0,
+   "px": [
+    1092,
+    4296
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60124,
+   "cola": "00000000000000",
+   "nombre_visible": "Teak(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 101584,
+   "capa": 0,
+   "px": [
+    740,
+    4060
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60124,
+   "cola": "00000000000000",
+   "nombre_visible": "Teak(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 101585,
+   "capa": 0,
+   "px": [
+    1414,
+    4164
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60124,
+   "cola": "00000000000000",
+   "nombre_visible": "Teak(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 101586,
+   "capa": 0,
+   "px": [
+    1556,
+    4235
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60124,
+   "cola": "00000000000000",
+   "nombre_visible": "Teak(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 101587,
+   "capa": 0,
+   "px": [
+    897,
+    3644
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60124,
+   "cola": "00000000000000",
+   "nombre_visible": "Teak(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 101588,
+   "capa": 0,
+   "px": [
+    812,
+    4083
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60177,
+   "cola": "00000000000000",
+   "nombre_visible": "Teak(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material_posibles": [
+    "Big Poplar",
+    "Poplar(L)"
+   ]
+  },
+  {
+   "entity_id": 101589,
+   "capa": 0,
+   "px": [
+    1330,
+    4169
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60177,
+   "cola": "00000000000000",
+   "nombre_visible": "Teak(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material_posibles": [
+    "Big Poplar",
+    "Poplar(L)"
+   ]
+  },
+  {
+   "entity_id": 101590,
+   "capa": 0,
+   "px": [
+    432,
+    3659
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60177,
+   "cola": "00000000000000",
+   "nombre_visible": "Teak(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material_posibles": [
+    "Big Poplar",
+    "Poplar(L)"
+   ]
+  },
+  {
+   "entity_id": 101591,
+   "capa": 2,
+   "px": [
+    1130,
+    4335
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60177,
+   "cola": "00000000000000",
+   "nombre_visible": "Teak(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001",
+   "material_posibles": [
+    "Big Poplar",
+    "Poplar(L)"
+   ]
+  },
+  {
+   "entity_id": 101592,
+   "capa": 2,
+   "px": [
+    974,
+    3673
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60177,
+   "cola": "00000000000000",
+   "nombre_visible": "Teak(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001",
+   "material_posibles": [
+    "Big Poplar",
+    "Poplar(L)"
+   ]
+  },
+  {
+   "entity_id": 101593,
+   "capa": 0,
+   "px": [
+    2353,
+    3076
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60010,
+   "cola": "00000000000000",
+   "nombre_visible": "Tin(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 101594,
+   "capa": 0,
+   "px": [
+    2731,
+    2807
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60010,
+   "cola": "00000000000000",
+   "nombre_visible": "Tin(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 101595,
+   "capa": 2,
+   "px": [
+    2465,
+    2565
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60010,
+   "cola": "00000000000000",
+   "nombre_visible": "Tin(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 101596,
+   "capa": 0,
+   "px": [
+    2351,
+    2777
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60010,
+   "cola": "00000000000000",
+   "nombre_visible": "Tin(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 101597,
+   "capa": 0,
+   "px": [
+    2718,
+    2884
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60010,
+   "cola": "00000000000000",
+   "nombre_visible": "Tin(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 101598,
+   "capa": 2,
+   "px": [
+    2828,
+    2872
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60011,
+   "cola": "00000000000000",
+   "nombre_visible": "Tin(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 101599,
+   "capa": 0,
+   "px": [
+    2765,
+    2845
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60011,
+   "cola": "00000000000000",
+   "nombre_visible": "Tin(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 101600,
+   "capa": 0,
+   "px": [
+    2404,
+    3109
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60011,
+   "cola": "00000000000000",
+   "nombre_visible": "Tin(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 101601,
+   "capa": 0,
+   "px": [
+    2325,
+    2850
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60011,
+   "cola": "00000000000000",
+   "nombre_visible": "Tin(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 101602,
+   "capa": 0,
+   "px": [
+    2380,
+    2981
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60011,
+   "cola": "00000000000000",
+   "nombre_visible": "Tin(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 101603,
+   "capa": 0,
+   "px": [
+    2496,
+    3121
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60012,
+   "cola": "00000000000000",
+   "nombre_visible": "Tin(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material_posibles": [
+    "Big Tin",
+    "Tin (L)"
+   ]
+  },
+  {
+   "entity_id": 101604,
+   "capa": 0,
+   "px": [
+    2355,
+    2908
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60012,
+   "cola": "00000000000000",
+   "nombre_visible": "Tin(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material_posibles": [
+    "Big Tin",
+    "Tin (L)"
+   ]
+  },
+  {
+   "entity_id": 101605,
+   "capa": 0,
+   "px": [
+    2436,
+    2490
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60012,
+   "cola": "00000000000000",
+   "nombre_visible": "Tin(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material_posibles": [
+    "Big Tin",
+    "Tin (L)"
+   ]
+  },
+  {
+   "entity_id": 101606,
+   "capa": 2,
+   "px": [
+    2139,
+    2364
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60012,
+   "cola": "00000000000000",
+   "nombre_visible": "Tin(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002",
+   "material_posibles": [
+    "Big Tin",
+    "Tin (L)"
+   ]
+  },
+  {
+   "entity_id": 101607,
+   "capa": 2,
+   "px": [
+    2839,
+    2941
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60012,
+   "cola": "00000000000000",
+   "nombre_visible": "Tin(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002",
+   "material_posibles": [
+    "Big Tin",
+    "Tin (L)"
+   ]
+  },
+  {
+   "entity_id": 101608,
+   "capa": 0,
+   "px": [
+    970,
+    5749
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60226,
+   "cola": "00000000000000",
+   "nombre_visible": "Lavender(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 101609,
+   "capa": 0,
+   "px": [
+    1245,
+    5779
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60226,
+   "cola": "00000000000000",
+   "nombre_visible": "Lavender(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 101610,
+   "capa": 0,
+   "px": [
+    590,
+    5252
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60226,
+   "cola": "00000000000000",
+   "nombre_visible": "Lavender(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 101611,
+   "capa": 0,
+   "px": [
+    600,
+    5150
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60226,
+   "cola": "00000000000000",
+   "nombre_visible": "Lavender(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 101612,
+   "capa": 0,
+   "px": [
+    1543,
+    5686
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60226,
+   "cola": "00000000000000",
+   "nombre_visible": "Lavender(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 101613,
+   "capa": 2,
+   "px": [
+    1461,
+    5888
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60226,
+   "cola": "00000000000000",
+   "nombre_visible": "Lavender(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 101614,
+   "capa": 2,
+   "px": [
+    1464,
+    5621
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60226,
+   "cola": "00000000000000",
+   "nombre_visible": "Lavender(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 101615,
+   "capa": 0,
+   "px": [
+    804,
+    5566
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60226,
+   "cola": "00000000000000",
+   "nombre_visible": "Lavender(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 101616,
+   "capa": 2,
+   "px": [
+    1005,
+    5391
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60226,
+   "cola": "00000000000000",
+   "nombre_visible": "Lavender(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 101617,
+   "capa": 0,
+   "px": [
+    852,
+    5330
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60226,
+   "cola": "00000000000000",
+   "nombre_visible": "Lavender(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 101618,
+   "capa": 0,
+   "px": [
+    4577,
+    1356
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60168,
+   "cola": "00000000000000",
+   "nombre_visible": "Monster Den(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material": "Beast Den(S)"
+  },
+  {
+   "entity_id": 101619,
+   "capa": 0,
+   "px": [
+    4683,
+    1276
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60168,
+   "cola": "00000000000000",
+   "nombre_visible": "Monster Den(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material": "Beast Den(S)"
+  },
+  {
+   "entity_id": 101620,
+   "capa": 2,
+   "px": [
+    4907,
+    1294
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60168,
+   "cola": "00000000000000",
+   "nombre_visible": "Monster Den(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material": "Beast Den(S)"
+  },
+  {
+   "entity_id": 101621,
+   "capa": 2,
+   "px": [
+    4071,
+    1596
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60168,
+   "cola": "00000000000000",
+   "nombre_visible": "Monster Den(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material": "Beast Den(S)"
+  },
+  {
+   "entity_id": 101622,
+   "capa": 0,
+   "px": [
+    3917,
+    1530
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60168,
+   "cola": "00000000000000",
+   "nombre_visible": "Monster Den(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material": "Beast Den(S)"
+  },
+  {
+   "entity_id": 101623,
+   "capa": 2,
+   "px": [
+    4056,
+    1508
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60168,
+   "cola": "00000000000000",
+   "nombre_visible": "Monster Den(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material": "Beast Den(S)"
+  },
+  {
+   "entity_id": 101624,
+   "capa": 0,
+   "px": [
+    9302,
+    5825
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 101625,
+   "capa": 0,
+   "px": [
+    569,
+    331
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 101626,
+   "capa": 0,
+   "px": [
+    7443,
+    2079
+   ],
+   "medio": "006f70706572284d2900000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60053,
+   "cola": "00002280140000",
+   "que_es": "Iron Totem"
+  },
+  {
+   "entity_id": 121589,
+   "capa": 0,
+   "px": [
+    1082,
+    5605
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "que_es": "tornado (portal)"
+  }
+ ]
+}

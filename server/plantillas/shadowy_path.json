@@ -1,0 +1,3400 @@
+{
+ "_nota": "Shadowy Path (stage 32), de dos capturas de Celestia del 23/09/2026. Territorio de la faccion Shadow (Totem de Dark City).",
+ "stage": 32,
+ "spawns": [
+  {
+   "entity_id": 29185,
+   "nombre": "Dark City Totem",
+   "npc_type": 1938,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    170,
+    124
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 122017,
+   "nombre": "Foreman",
+   "npc_type": 1693,
+   "sprite": 40017,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    231,
+    103
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122018,
+   "nombre": "Engineer2",
+   "npc_type": 1698,
+   "sprite": 40017,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    214,
+    197
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122019,
+   "nombre": "Engineer",
+   "npc_type": 1694,
+   "sprite": 40017,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    144,
+    74
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122020,
+   "nombre": "Worker",
+   "npc_type": 1695,
+   "sprite": 40019,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    232,
+    95
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122021,
+   "nombre": "Railway Boss",
+   "npc_type": 1697,
+   "sprite": 40017,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    225,
+    104
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122022,
+   "nombre": "Symbol Merchant",
+   "npc_type": 1696,
+   "sprite": 40018,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    228,
+    136
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122023,
+   "nombre": "Badge Collector",
+   "npc_type": 1966,
+   "sprite": 40042,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    226,
+    195
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122024,
+   "nombre": "Sickle Soldier",
+   "npc_type": 1692,
+   "sprite": 40020,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    214,
+    143
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 1012850,
+   "nombre": "Skeletal Rogue",
+   "npc_type": 84,
+   "sprite": 42022,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    183,
+    160
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 8
+  },
+  {
+   "entity_id": 1012851,
+   "nombre": "Skeletal Rogue",
+   "npc_type": 84,
+   "sprite": 42022,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    172,
+    165
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 8
+  },
+  {
+   "entity_id": 1012852,
+   "nombre": "Skeletal Rogue",
+   "npc_type": 84,
+   "sprite": 42022,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    204,
+    173
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 8
+  },
+  {
+   "entity_id": 1012853,
+   "nombre": "Skeletal Rogue",
+   "npc_type": 84,
+   "sprite": 42022,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    187,
+    177
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 8
+  },
+  {
+   "entity_id": 1012854,
+   "nombre": "Skeletal Rogue",
+   "npc_type": 84,
+   "sprite": 42022,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    179,
+    181
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 8
+  },
+  {
+   "entity_id": 1012855,
+   "nombre": "Skeletal Rogue",
+   "npc_type": 84,
+   "sprite": 42022,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    163,
+    179
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 8
+  },
+  {
+   "entity_id": 1012856,
+   "nombre": "Skeletal Rogue",
+   "npc_type": 84,
+   "sprite": 42022,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    176,
+    186
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 8
+  },
+  {
+   "entity_id": 1012857,
+   "nombre": "Skeletal Rogue",
+   "npc_type": 84,
+   "sprite": 42022,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    195,
+    177
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 8
+  },
+  {
+   "entity_id": 1012858,
+   "nombre": "Skeletal Rogue",
+   "npc_type": 84,
+   "sprite": 42022,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    182,
+    153
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 8
+  },
+  {
+   "entity_id": 1012859,
+   "nombre": "Skeletal Rogue",
+   "npc_type": 84,
+   "sprite": 42022,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    185,
+    164
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 8
+  },
+  {
+   "entity_id": 1012860,
+   "nombre": "Skeletal Rogue",
+   "npc_type": 84,
+   "sprite": 42022,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    211,
+    176
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 8
+  },
+  {
+   "entity_id": 1012861,
+   "nombre": "Skeletal Rogue",
+   "npc_type": 84,
+   "sprite": 42022,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    182,
+    163
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 8
+  },
+  {
+   "entity_id": 1012862,
+   "nombre": "Skeletal Rogue",
+   "npc_type": 84,
+   "sprite": 42022,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    179,
+    183
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 8
+  },
+  {
+   "entity_id": 1012863,
+   "nombre": "Skeletal Rogue",
+   "npc_type": 84,
+   "sprite": 42022,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    190,
+    152
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 8
+  },
+  {
+   "entity_id": 1012864,
+   "nombre": "Skeletal Rogue",
+   "npc_type": 84,
+   "sprite": 42022,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    158,
+    178
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 8
+  },
+  {
+   "entity_id": 1012865,
+   "nombre": "Skeletal Rogue",
+   "npc_type": 84,
+   "sprite": 42022,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    150,
+    179
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 8
+  },
+  {
+   "entity_id": 1012866,
+   "nombre": "Skeletal Rogue",
+   "npc_type": 84,
+   "sprite": 42022,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    125,
+    202
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 8
+  },
+  {
+   "entity_id": 1012867,
+   "nombre": "Skeletal Rogue",
+   "npc_type": 84,
+   "sprite": 42022,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    118,
+    172
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 8
+  },
+  {
+   "entity_id": 1012868,
+   "nombre": "Skeletal Rogue",
+   "npc_type": 84,
+   "sprite": 42022,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    100,
+    187
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 8
+  },
+  {
+   "entity_id": 1012869,
+   "nombre": "Skeletal Rogue",
+   "npc_type": 84,
+   "sprite": 42022,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    96,
+    197
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 8
+  },
+  {
+   "entity_id": 1012870,
+   "nombre": "Skeletal Rogue",
+   "npc_type": 84,
+   "sprite": 42022,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    116,
+    181
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 8
+  },
+  {
+   "entity_id": 1012871,
+   "nombre": "Skeletal Rogue",
+   "npc_type": 84,
+   "sprite": 42022,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    143,
+    173
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 8
+  },
+  {
+   "entity_id": 1012872,
+   "nombre": "Skeletal Rogue",
+   "npc_type": 84,
+   "sprite": 42022,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    125,
+    201
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 8
+  },
+  {
+   "entity_id": 1012873,
+   "nombre": "Skeletal Rogue",
+   "npc_type": 84,
+   "sprite": 42022,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    148,
+    177
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 8
+  },
+  {
+   "entity_id": 1012874,
+   "nombre": "Skeletal Rogue",
+   "npc_type": 84,
+   "sprite": 42022,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    128,
+    202
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 8
+  },
+  {
+   "entity_id": 1012875,
+   "nombre": "Skeletal Rogue",
+   "npc_type": 84,
+   "sprite": 42022,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    102,
+    190
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 8
+  },
+  {
+   "entity_id": 1012876,
+   "nombre": "Skeletal Rogue",
+   "npc_type": 84,
+   "sprite": 42022,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    122,
+    171
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 8
+  },
+  {
+   "entity_id": 1012877,
+   "nombre": "Skeletal Rogue",
+   "npc_type": 84,
+   "sprite": 42022,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    137,
+    173
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 8
+  },
+  {
+   "entity_id": 1012878,
+   "nombre": "Skeletal Rogue",
+   "npc_type": 84,
+   "sprite": 42022,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    125,
+    201
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 8
+  },
+  {
+   "entity_id": 1012879,
+   "nombre": "Skeletal Rogue",
+   "npc_type": 84,
+   "sprite": 42022,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    109,
+    188
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 8
+  },
+  {
+   "entity_id": 1012880,
+   "nombre": "Skeletal Rogue",
+   "npc_type": 84,
+   "sprite": 42022,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    129,
+    178
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 8
+  },
+  {
+   "entity_id": 1012881,
+   "nombre": "Skeletal Rogue",
+   "npc_type": 84,
+   "sprite": 42022,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    153,
+    166
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 8
+  },
+  {
+   "entity_id": 1012882,
+   "nombre": "Skeletal Rogue",
+   "npc_type": 84,
+   "sprite": 42022,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    127,
+    172
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 8
+  },
+  {
+   "entity_id": 1012883,
+   "nombre": "Skeletal Rogue",
+   "npc_type": 84,
+   "sprite": 42022,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    122,
+    202
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 8
+  },
+  {
+   "entity_id": 1012884,
+   "nombre": "Skeletal Rogue",
+   "npc_type": 84,
+   "sprite": 42022,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    110,
+    201
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 8
+  },
+  {
+   "entity_id": 1012885,
+   "nombre": "Skeletal Sniper",
+   "npc_type": 85,
+   "sprite": 42023,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    19,
+    146
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012886,
+   "nombre": "Skeletal Sniper",
+   "npc_type": 85,
+   "sprite": 42023,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    42,
+    168
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012887,
+   "nombre": "Skeletal Sniper",
+   "npc_type": 85,
+   "sprite": 42023,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    58,
+    161
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012888,
+   "nombre": "Skeletal Sniper",
+   "npc_type": 85,
+   "sprite": 42023,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    43,
+    141
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012889,
+   "nombre": "Skeletal Sniper",
+   "npc_type": 85,
+   "sprite": 42023,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    84,
+    143
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012890,
+   "nombre": "Skeletal Sniper",
+   "npc_type": 85,
+   "sprite": 42023,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    87,
+    140
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012891,
+   "nombre": "Skeletal Sniper",
+   "npc_type": 85,
+   "sprite": 42023,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    59,
+    148
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012892,
+   "nombre": "Skeletal Sniper",
+   "npc_type": 85,
+   "sprite": 42023,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    52,
+    164
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012893,
+   "nombre": "Skeletal Sniper",
+   "npc_type": 85,
+   "sprite": 42023,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    44,
+    140
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012894,
+   "nombre": "Skeletal Sniper",
+   "npc_type": 85,
+   "sprite": 42023,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    26,
+    147
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012895,
+   "nombre": "Skeletal Sniper",
+   "npc_type": 85,
+   "sprite": 42023,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    78,
+    137
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012896,
+   "nombre": "Skeletal Sniper",
+   "npc_type": 85,
+   "sprite": 42023,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    43,
+    152
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012897,
+   "nombre": "Skeletal Sniper",
+   "npc_type": 85,
+   "sprite": 42023,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    48,
+    162
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012898,
+   "nombre": "Skeletal Sniper",
+   "npc_type": 85,
+   "sprite": 42023,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    18,
+    149
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012899,
+   "nombre": "Skeletal Sniper",
+   "npc_type": 85,
+   "sprite": 42023,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    60,
+    146
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012900,
+   "nombre": "Skeletal Sniper",
+   "npc_type": 85,
+   "sprite": 42023,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    141,
+    124
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012901,
+   "nombre": "Skeletal Sniper",
+   "npc_type": 85,
+   "sprite": 42023,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    112,
+    119
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012902,
+   "nombre": "Skeletal Sniper",
+   "npc_type": 85,
+   "sprite": 42023,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    99,
+    148
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012903,
+   "nombre": "Skeletal Sniper",
+   "npc_type": 85,
+   "sprite": 42023,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    108,
+    133
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012904,
+   "nombre": "Skeletal Sniper",
+   "npc_type": 85,
+   "sprite": 42023,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    102,
+    148
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012905,
+   "nombre": "Skeletal Sniper",
+   "npc_type": 85,
+   "sprite": 42023,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    104,
+    139
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012906,
+   "nombre": "Skeletal Sniper",
+   "npc_type": 85,
+   "sprite": 42023,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    105,
+    122
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012907,
+   "nombre": "Skeletal Sniper",
+   "npc_type": 85,
+   "sprite": 42023,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    144,
+    123
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012908,
+   "nombre": "Skeletal Sniper",
+   "npc_type": 85,
+   "sprite": 42023,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    101,
+    128
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012909,
+   "nombre": "Skeletal Sniper",
+   "npc_type": 85,
+   "sprite": 42023,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    140,
+    130
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012910,
+   "nombre": "Skeletal Sniper",
+   "npc_type": 85,
+   "sprite": 42023,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    103,
+    144
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012911,
+   "nombre": "Skeletal Sniper",
+   "npc_type": 85,
+   "sprite": 42023,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    103,
+    153
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012912,
+   "nombre": "Skeletal Sniper",
+   "npc_type": 85,
+   "sprite": 42023,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    111,
+    149
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012913,
+   "nombre": "Skeletal Sniper",
+   "npc_type": 85,
+   "sprite": 42023,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    110,
+    138
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012914,
+   "nombre": "Skeletal Sniper",
+   "npc_type": 85,
+   "sprite": 42023,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    107,
+    116
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012915,
+   "nombre": "Skeletal Sniper",
+   "npc_type": 85,
+   "sprite": 42023,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    139,
+    129
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012916,
+   "nombre": "Skeletal Sniper",
+   "npc_type": 85,
+   "sprite": 42023,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    107,
+    148
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012917,
+   "nombre": "Skeletal Sniper",
+   "npc_type": 85,
+   "sprite": 42023,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    149,
+    123
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012918,
+   "nombre": "Skeletal Sniper",
+   "npc_type": 85,
+   "sprite": 42023,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    110,
+    124
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012919,
+   "nombre": "Skeletal Sniper",
+   "npc_type": 85,
+   "sprite": 42023,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    115,
+    138
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012920,
+   "nombre": "Red-cloth Skull",
+   "npc_type": 86,
+   "sprite": 42024,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    47,
+    112
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012921,
+   "nombre": "Red-cloth Skull",
+   "npc_type": 86,
+   "sprite": 42024,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    46,
+    96
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012922,
+   "nombre": "Red-cloth Skull",
+   "npc_type": 86,
+   "sprite": 42024,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    30,
+    108
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012923,
+   "nombre": "Red-cloth Skull",
+   "npc_type": 86,
+   "sprite": 42024,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    106
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012924,
+   "nombre": "Red-cloth Skull",
+   "npc_type": 86,
+   "sprite": 42024,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    30,
+    86
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012925,
+   "nombre": "Red-cloth Skull",
+   "npc_type": 86,
+   "sprite": 42024,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    22,
+    90
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012926,
+   "nombre": "Red-cloth Skull",
+   "npc_type": 86,
+   "sprite": 42024,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    43,
+    102
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012927,
+   "nombre": "Red-cloth Skull",
+   "npc_type": 86,
+   "sprite": 42024,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    37,
+    113
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012928,
+   "nombre": "Red-cloth Skull",
+   "npc_type": 86,
+   "sprite": 42024,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    22,
+    101
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012929,
+   "nombre": "Red-cloth Skull",
+   "npc_type": 86,
+   "sprite": 42024,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    37,
+    87
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012930,
+   "nombre": "Red-cloth Skull",
+   "npc_type": 86,
+   "sprite": 42024,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    38,
+    107
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012931,
+   "nombre": "Red-cloth Skull",
+   "npc_type": 86,
+   "sprite": 42024,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    21,
+    97
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012932,
+   "nombre": "Red-cloth Skull",
+   "npc_type": 86,
+   "sprite": 42024,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    41,
+    104
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012933,
+   "nombre": "Red-cloth Skull",
+   "npc_type": 86,
+   "sprite": 42024,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    42,
+    94
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012934,
+   "nombre": "Red-cloth Skull",
+   "npc_type": 86,
+   "sprite": 42024,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    29,
+    98
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012935,
+   "nombre": "Red-cloth Skull",
+   "npc_type": 86,
+   "sprite": 42024,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    98,
+    81
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012936,
+   "nombre": "Red-cloth Skull",
+   "npc_type": 86,
+   "sprite": 42024,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    82,
+    61
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012937,
+   "nombre": "Red-cloth Skull",
+   "npc_type": 86,
+   "sprite": 42024,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    100,
+    55
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012938,
+   "nombre": "Red-cloth Skull",
+   "npc_type": 86,
+   "sprite": 42024,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    97,
+    78
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012939,
+   "nombre": "Red-cloth Skull",
+   "npc_type": 86,
+   "sprite": 42024,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    171,
+    60
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012940,
+   "nombre": "Red-cloth Skull",
+   "npc_type": 86,
+   "sprite": 42024,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    104,
+    67
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012941,
+   "nombre": "Red-cloth Skull",
+   "npc_type": 86,
+   "sprite": 42024,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    117,
+    64
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012942,
+   "nombre": "Red-cloth Skull",
+   "npc_type": 86,
+   "sprite": 42024,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    71,
+    64
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012943,
+   "nombre": "Red-cloth Skull",
+   "npc_type": 86,
+   "sprite": 42024,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    105,
+    74
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012944,
+   "nombre": "Red-cloth Skull",
+   "npc_type": 86,
+   "sprite": 42024,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    105,
+    41
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012945,
+   "nombre": "Red-cloth Skull",
+   "npc_type": 86,
+   "sprite": 42024,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    166,
+    62
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012946,
+   "nombre": "Red-cloth Skull",
+   "npc_type": 86,
+   "sprite": 42024,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    96,
+    83
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012947,
+   "nombre": "Red-cloth Skull",
+   "npc_type": 86,
+   "sprite": 42024,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    157,
+    60
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012948,
+   "nombre": "Red-cloth Skull",
+   "npc_type": 86,
+   "sprite": 42024,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    104,
+    68
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012949,
+   "nombre": "Red-cloth Skull",
+   "npc_type": 86,
+   "sprite": 42024,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    106,
+    57
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012950,
+   "nombre": "Red-cloth Skull",
+   "npc_type": 86,
+   "sprite": 42024,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    98,
+    86
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012951,
+   "nombre": "Red-cloth Skull",
+   "npc_type": 86,
+   "sprite": 42024,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    78,
+    64
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012952,
+   "nombre": "Red-cloth Skull",
+   "npc_type": 86,
+   "sprite": 42024,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    97,
+    82
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012953,
+   "nombre": "Red-cloth Skull",
+   "npc_type": 86,
+   "sprite": 42024,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    115,
+    71
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012954,
+   "nombre": "Red-cloth Skull",
+   "npc_type": 86,
+   "sprite": 42024,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    70,
+    60
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012955,
+   "nombre": "Evil Cat",
+   "npc_type": 87,
+   "sprite": 42015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    293,
+    120
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012956,
+   "nombre": "Evil Cat",
+   "npc_type": 87,
+   "sprite": 42015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    279,
+    102
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012957,
+   "nombre": "Evil Cat",
+   "npc_type": 87,
+   "sprite": 42015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    275,
+    116
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012958,
+   "nombre": "Evil Cat",
+   "npc_type": 87,
+   "sprite": 42015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    271,
+    133
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012959,
+   "nombre": "Evil Cat",
+   "npc_type": 87,
+   "sprite": 42015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    295,
+    125
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012960,
+   "nombre": "Evil Cat",
+   "npc_type": 87,
+   "sprite": 42015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    282,
+    117
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012961,
+   "nombre": "Evil Cat",
+   "npc_type": 87,
+   "sprite": 42015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    295,
+    123
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012962,
+   "nombre": "Evil Cat",
+   "npc_type": 87,
+   "sprite": 42015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    275,
+    112
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012963,
+   "nombre": "Evil Cat",
+   "npc_type": 87,
+   "sprite": 42015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    268,
+    138
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012964,
+   "nombre": "Evil Cat",
+   "npc_type": 87,
+   "sprite": 42015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    268,
+    98
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012965,
+   "nombre": "Evil Cat",
+   "npc_type": 87,
+   "sprite": 42015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    218,
+    44
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012966,
+   "nombre": "Evil Cat",
+   "npc_type": 87,
+   "sprite": 42015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    231,
+    43
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012967,
+   "nombre": "Evil Cat",
+   "npc_type": 87,
+   "sprite": 42015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    167,
+    57
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012968,
+   "nombre": "Evil Cat",
+   "npc_type": 87,
+   "sprite": 42015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    215,
+    44
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012969,
+   "nombre": "Evil Cat",
+   "npc_type": 87,
+   "sprite": 42015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    161,
+    52
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012970,
+   "nombre": "Evil Cat",
+   "npc_type": 87,
+   "sprite": 42015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    225,
+    41
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012971,
+   "nombre": "Evil Cat",
+   "npc_type": 87,
+   "sprite": 42015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    159,
+    51
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012972,
+   "nombre": "Evil Cat",
+   "npc_type": 87,
+   "sprite": 42015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    212,
+    46
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012973,
+   "nombre": "Evil Cat",
+   "npc_type": 87,
+   "sprite": 42015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    235,
+    53
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012974,
+   "nombre": "Evil Cat",
+   "npc_type": 87,
+   "sprite": 42015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    165,
+    48
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012975,
+   "nombre": "Evil Cat",
+   "npc_type": 87,
+   "sprite": 42015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    235,
+    47
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012976,
+   "nombre": "Evil Cat",
+   "npc_type": 87,
+   "sprite": 42015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    216,
+    42
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012977,
+   "nombre": "Evil Cat",
+   "npc_type": 87,
+   "sprite": 42015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    224,
+    45
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012978,
+   "nombre": "Evil Cat",
+   "npc_type": 87,
+   "sprite": 42015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    162,
+    45
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012979,
+   "nombre": "Evil Cat",
+   "npc_type": 87,
+   "sprite": 42015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    240,
+    41
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012980,
+   "nombre": "Evil Cat",
+   "npc_type": 87,
+   "sprite": 42015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    270,
+    58
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012981,
+   "nombre": "Evil Cat",
+   "npc_type": 87,
+   "sprite": 42015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    270,
+    48
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012982,
+   "nombre": "Evil Cat",
+   "npc_type": 87,
+   "sprite": 42015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    263,
+    82
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012983,
+   "nombre": "Evil Cat",
+   "npc_type": 87,
+   "sprite": 42015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    264,
+    77
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012984,
+   "nombre": "Evil Cat",
+   "npc_type": 87,
+   "sprite": 42015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    264,
+    49
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012985,
+   "nombre": "Evil Cat",
+   "npc_type": 87,
+   "sprite": 42015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    267,
+    59
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012986,
+   "nombre": "Evil Cat",
+   "npc_type": 87,
+   "sprite": 42015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    267,
+    71
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012987,
+   "nombre": "Evil Cat",
+   "npc_type": 87,
+   "sprite": 42015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    261,
+    65
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012988,
+   "nombre": "Evil Cat",
+   "npc_type": 87,
+   "sprite": 42015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    267,
+    59
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012989,
+   "nombre": "Evil Cat",
+   "npc_type": 87,
+   "sprite": 42015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    257,
+    54
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 11
+  },
+  {
+   "entity_id": 1012990,
+   "nombre": "Skull Leader",
+   "npc_type": 88,
+   "sprite": 42124,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    43,
+    112
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 16
+  },
+  {
+   "entity_id": 1012991,
+   "nombre": "Giant Cat Cinlo",
+   "npc_type": 89,
+   "sprite": 42125,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    282,
+    131
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 16
+  }
+ ],
+ "recursos": [
+  {
+   "entity_id": 101469,
+   "capa": 2,
+   "px": [
+    4204,
+    4197
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60109,
+   "cola": "00000000000000",
+   "nombre_visible": "Copper(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002",
+   "material": "Steel(S)"
+  },
+  {
+   "entity_id": 101470,
+   "capa": 0,
+   "px": [
+    4315,
+    4205
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60109,
+   "cola": "00000000000000",
+   "nombre_visible": "Copper(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material": "Steel(S)"
+  },
+  {
+   "entity_id": 101471,
+   "capa": 0,
+   "px": [
+    3977,
+    4254
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60109,
+   "cola": "00000000000000",
+   "nombre_visible": "Copper(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material": "Steel(S)"
+  },
+  {
+   "entity_id": 101472,
+   "capa": 2,
+   "px": [
+    4535,
+    4222
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60109,
+   "cola": "00000000000000",
+   "nombre_visible": "Copper(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002",
+   "material": "Steel(S)"
+  },
+  {
+   "entity_id": 101473,
+   "capa": 0,
+   "px": [
+    3809,
+    4441
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60109,
+   "cola": "00000000000000",
+   "nombre_visible": "Copper(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material": "Steel(S)"
+  },
+  {
+   "entity_id": 101474,
+   "capa": 0,
+   "px": [
+    8788,
+    2604
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60139,
+   "cola": "00000000000000",
+   "nombre_visible": "Wild Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101475,
+   "capa": 0,
+   "px": [
+    9314,
+    2444
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60139,
+   "cola": "00000000000000",
+   "nombre_visible": "Wild Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101476,
+   "capa": 0,
+   "px": [
+    9198,
+    2471
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60138,
+   "cola": "00000000000000",
+   "nombre_visible": "Wild Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101477,
+   "capa": 0,
+   "px": [
+    8873,
+    2575
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60138,
+   "cola": "00000000000000",
+   "nombre_visible": "Wild Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101478,
+   "capa": 0,
+   "px": [
+    9518,
+    2285
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60138,
+   "cola": "00000000000000",
+   "nombre_visible": "Wild Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101479,
+   "capa": 0,
+   "px": [
+    9645,
+    2242
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60194,
+   "cola": "00000000000000",
+   "nombre_visible": "Wild Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101480,
+   "capa": 0,
+   "px": [
+    9552,
+    2272
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60193,
+   "cola": "00000000000000",
+   "nombre_visible": "Wild Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101481,
+   "capa": 0,
+   "px": [
+    9332,
+    2446
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60212,
+   "cola": "00000000000000",
+   "nombre_visible": "Wild Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101482,
+   "capa": 0,
+   "px": [
+    9251,
+    2476
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60212,
+   "cola": "00000000000000",
+   "nombre_visible": "Wild Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101483,
+   "capa": 0,
+   "px": [
+    9516,
+    2286
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60212,
+   "cola": "00000000000000",
+   "nombre_visible": "Wild Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101484,
+   "capa": 0,
+   "px": [
+    8736,
+    2637
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60216,
+   "cola": "00000000000000",
+   "nombre_visible": "Wild Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101485,
+   "capa": 0,
+   "px": [
+    8763,
+    2614
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60212,
+   "cola": "00000000000000",
+   "nombre_visible": "Wild Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101486,
+   "capa": 0,
+   "px": [
+    9724,
+    2027
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60212,
+   "cola": "00000000000000",
+   "nombre_visible": "Wild Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101487,
+   "capa": 0,
+   "px": [
+    9617,
+    2242
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60212,
+   "cola": "00000000000000",
+   "nombre_visible": "Wild Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101488,
+   "capa": 0,
+   "px": [
+    4372,
+    4174
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60121,
+   "cola": "00000000000000",
+   "nombre_visible": "Copper(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material": "Steel(M)"
+  },
+  {
+   "entity_id": 101489,
+   "capa": 2,
+   "px": [
+    4157,
+    4222
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60121,
+   "cola": "00000000000000",
+   "nombre_visible": "Copper(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002",
+   "material": "Steel(M)"
+  },
+  {
+   "entity_id": 101490,
+   "capa": 0,
+   "px": [
+    3929,
+    4377
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60121,
+   "cola": "00000000000000",
+   "nombre_visible": "Copper(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material": "Steel(M)"
+  },
+  {
+   "entity_id": 101491,
+   "capa": 0,
+   "px": [
+    4437,
+    3927
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60121,
+   "cola": "00000000000000",
+   "nombre_visible": "Copper(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material": "Steel(M)"
+  },
+  {
+   "entity_id": 101492,
+   "capa": 0,
+   "px": [
+    4244,
+    4006
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60121,
+   "cola": "00000000000000",
+   "nombre_visible": "Copper(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material": "Steel(M)"
+  },
+  {
+   "entity_id": 101493,
+   "capa": 0,
+   "px": [
+    3879,
+    4426
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60160,
+   "cola": "00000000000000",
+   "nombre_visible": "Copper(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material_posibles": [
+    "Big Crystal",
+    "Steel(L)"
+   ]
+  },
+  {
+   "entity_id": 101494,
+   "capa": 2,
+   "px": [
+    4069,
+    4234
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60160,
+   "cola": "00000000000000",
+   "nombre_visible": "Copper(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002",
+   "material_posibles": [
+    "Big Crystal",
+    "Steel(L)"
+   ]
+  },
+  {
+   "entity_id": 101495,
+   "capa": 0,
+   "px": [
+    4463,
+    4188
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60160,
+   "cola": "00000000000000",
+   "nombre_visible": "Copper(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material_posibles": [
+    "Big Crystal",
+    "Steel(L)"
+   ]
+  },
+  {
+   "entity_id": 101496,
+   "capa": 0,
+   "px": [
+    4614,
+    4444
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60160,
+   "cola": "00000000000000",
+   "nombre_visible": "Copper(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material_posibles": [
+    "Big Crystal",
+    "Steel(L)"
+   ]
+  },
+  {
+   "entity_id": 101497,
+   "capa": 0,
+   "px": [
+    4389,
+    3978
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60160,
+   "cola": "00000000000000",
+   "nombre_visible": "Copper(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material_posibles": [
+    "Big Crystal",
+    "Steel(L)"
+   ]
+  },
+  {
+   "entity_id": 101498,
+   "capa": 0,
+   "px": [
+    7781,
+    944
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60182,
+   "cola": "00000000000000",
+   "nombre_visible": "Poplar(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 101499,
+   "capa": 2,
+   "px": [
+    7106,
+    774
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60182,
+   "cola": "00000000000000",
+   "nombre_visible": "Poplar(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 101500,
+   "capa": 0,
+   "px": [
+    6820,
+    620
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60182,
+   "cola": "00000000000000",
+   "nombre_visible": "Poplar(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 101501,
+   "capa": 2,
+   "px": [
+    6594,
+    512
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60182,
+   "cola": "00000000000000",
+   "nombre_visible": "Poplar(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 101502,
+   "capa": 0,
+   "px": [
+    6242,
+    500
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60182,
+   "cola": "00000000000000",
+   "nombre_visible": "Poplar(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 101503,
+   "capa": 0,
+   "px": [
+    7073,
+    735
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60183,
+   "cola": "00000000000000",
+   "nombre_visible": "Poplar(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 101504,
+   "capa": 0,
+   "px": [
+    6388,
+    500
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60183,
+   "cola": "00000000000000",
+   "nombre_visible": "Poplar(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 101505,
+   "capa": 2,
+   "px": [
+    7435,
+    740
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60183,
+   "cola": "00000000000000",
+   "nombre_visible": "Poplar(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 101506,
+   "capa": 0,
+   "px": [
+    7341,
+    726
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60183,
+   "cola": "00000000000000",
+   "nombre_visible": "Poplar(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 101507,
+   "capa": 0,
+   "px": [
+    7723,
+    940
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60183,
+   "cola": "00000000000000",
+   "nombre_visible": "Poplar(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 101508,
+   "capa": 0,
+   "px": [
+    7364,
+    761
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60179,
+   "cola": "00000000000000",
+   "nombre_visible": "Poplar(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material_posibles": [
+    "Big Violet",
+    "Wisteria(L)"
+   ]
+  },
+  {
+   "entity_id": 101509,
+   "capa": 0,
+   "px": [
+    8031,
+    868
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60179,
+   "cola": "00000000000000",
+   "nombre_visible": "Poplar(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material_posibles": [
+    "Big Violet",
+    "Wisteria(L)"
+   ]
+  },
+  {
+   "entity_id": 101510,
+   "capa": 0,
+   "px": [
+    7618,
+    732
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60179,
+   "cola": "00000000000000",
+   "nombre_visible": "Poplar(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material_posibles": [
+    "Big Violet",
+    "Wisteria(L)"
+   ]
+  },
+  {
+   "entity_id": 101511,
+   "capa": 0,
+   "px": [
+    6355,
+    367
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60179,
+   "cola": "00000000000000",
+   "nombre_visible": "Poplar(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material_posibles": [
+    "Big Violet",
+    "Wisteria(L)"
+   ]
+  },
+  {
+   "entity_id": 101512,
+   "capa": 2,
+   "px": [
+    6914,
+    560
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60179,
+   "cola": "00000000000000",
+   "nombre_visible": "Poplar(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001",
+   "material_posibles": [
+    "Big Violet",
+    "Wisteria(L)"
+   ]
+  },
+  {
+   "entity_id": 101513,
+   "capa": 0,
+   "px": [
+    5016,
+    1263
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60233,
+   "cola": "00000000000000",
+   "nombre_visible": "Horseradish(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material": "Angel Bush(L)"
+  },
+  {
+   "entity_id": 101514,
+   "capa": 0,
+   "px": [
+    5428,
+    1246
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60233,
+   "cola": "00000000000000",
+   "nombre_visible": "Horseradish(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material": "Angel Bush(L)"
+  },
+  {
+   "entity_id": 101515,
+   "capa": 2,
+   "px": [
+    5459,
+    1146
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60233,
+   "cola": "00000000000000",
+   "nombre_visible": "Horseradish(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material": "Angel Bush(L)"
+  },
+  {
+   "entity_id": 101516,
+   "capa": 0,
+   "px": [
+    4976,
+    1170
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60233,
+   "cola": "00000000000000",
+   "nombre_visible": "Horseradish(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material": "Angel Bush(L)"
+  },
+  {
+   "entity_id": 101517,
+   "capa": 2,
+   "px": [
+    4973,
+    1119
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60233,
+   "cola": "00000000000000",
+   "nombre_visible": "Horseradish(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material": "Angel Bush(L)"
+  },
+  {
+   "entity_id": 101518,
+   "capa": 0,
+   "px": [
+    5257,
+    829
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60233,
+   "cola": "00000000000000",
+   "nombre_visible": "Horseradish(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material": "Angel Bush(L)"
+  },
+  {
+   "entity_id": 101519,
+   "capa": 0,
+   "px": [
+    5609,
+    1124
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60233,
+   "cola": "00000000000000",
+   "nombre_visible": "Horseradish(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material": "Angel Bush(L)"
+  },
+  {
+   "entity_id": 101520,
+   "capa": 2,
+   "px": [
+    6089,
+    1070
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60233,
+   "cola": "00000000000000",
+   "nombre_visible": "Horseradish(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material": "Angel Bush(L)"
+  },
+  {
+   "entity_id": 101521,
+   "capa": 0,
+   "px": [
+    6101,
+    1169
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60233,
+   "cola": "00000000000000",
+   "nombre_visible": "Horseradish(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material": "Angel Bush(L)"
+  },
+  {
+   "entity_id": 101522,
+   "capa": 0,
+   "px": [
+    5615,
+    790
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60233,
+   "cola": "00000000000000",
+   "nombre_visible": "Horseradish(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material": "Angel Bush(L)"
+  },
+  {
+   "entity_id": 101523,
+   "capa": 0,
+   "px": [
+    1933,
+    3104
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60173,
+   "cola": "00000000000000",
+   "nombre_visible": "Beast Den(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 101524,
+   "capa": 2,
+   "px": [
+    2351,
+    3015
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60173,
+   "cola": "00000000000000",
+   "nombre_visible": "Beast Den(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 101525,
+   "capa": 2,
+   "px": [
+    3285,
+    3448
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60173,
+   "cola": "00000000000000",
+   "nombre_visible": "Beast Den(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 101526,
+   "capa": 2,
+   "px": [
+    2962,
+    3232
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60173,
+   "cola": "00000000000000",
+   "nombre_visible": "Beast Den(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 101527,
+   "capa": 0,
+   "px": [
+    3449,
+    3012
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60173,
+   "cola": "00000000000000",
+   "nombre_visible": "Beast Den(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 101528,
+   "capa": 0,
+   "px": [
+    3570,
+    3159
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60173,
+   "cola": "00000000000000",
+   "nombre_visible": "Beast Den(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 101529,
+   "capa": 0,
+   "px": [
+    279,
+    6224
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 101530,
+   "capa": 0,
+   "px": [
+    9984,
+    6497
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 101531,
+   "capa": 0,
+   "px": [
+    9492,
+    578
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 101532,
+   "capa": 0,
+   "px": [
+    5426,
+    3986
+   ],
+   "medio": "00000000180000000000000000000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60052,
+   "cola": "00002280140000",
+   "que_es": "Dark City Totem"
+  }
+ ]
+}

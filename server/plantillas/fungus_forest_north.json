@@ -1,0 +1,2902 @@
+{
+ "_nota": "Fungus Forest North (stage 25), de dos capturas de Celestia del 23/09/2026. Territorio de la faccion Shadow (Totem de Dark City).",
+ "stage": 25,
+ "spawns": [
+  {
+   "entity_id": 29073,
+   "nombre": "Dark City Totem",
+   "npc_type": 1938,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    177,
+    101
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 121840,
+   "nombre": "Exploring Member",
+   "npc_type": 1923,
+   "sprite": 40134,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    297,
+    153
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 121841,
+   "nombre": "Badge Master",
+   "npc_type": 1969,
+   "sprite": 40042,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    271,
+    72
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 121842,
+   "nombre": "Big Mouth Anglu",
+   "npc_type": 1946,
+   "sprite": 40020,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    127,
+    59
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 121843,
+   "nombre": "Project Leader",
+   "npc_type": 1947,
+   "sprite": 40079,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    288,
+    76
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 1012280,
+   "nombre": "Giant Mouse",
+   "npc_type": 143,
+   "sprite": 42161,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    120,
+    25
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012281,
+   "nombre": "Giant Mouse",
+   "npc_type": 143,
+   "sprite": 42161,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    126,
+    23
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012282,
+   "nombre": "Giant Mouse",
+   "npc_type": 143,
+   "sprite": 42161,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    162,
+    97
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012283,
+   "nombre": "Giant Mouse",
+   "npc_type": 143,
+   "sprite": 42161,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    152,
+    111
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012284,
+   "nombre": "Giant Mouse",
+   "npc_type": 143,
+   "sprite": 42161,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    147,
+    76
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012285,
+   "nombre": "Giant Mouse",
+   "npc_type": 143,
+   "sprite": 42161,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    150,
+    80
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012286,
+   "nombre": "Giant Mouse",
+   "npc_type": 143,
+   "sprite": 42161,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    124,
+    76
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012287,
+   "nombre": "Giant Mouse",
+   "npc_type": 143,
+   "sprite": 42161,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    118,
+    79
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012288,
+   "nombre": "Giant Mouse",
+   "npc_type": 143,
+   "sprite": 42161,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    155,
+    101
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012289,
+   "nombre": "Giant Mouse",
+   "npc_type": 143,
+   "sprite": 42161,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    153,
+    107
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012290,
+   "nombre": "Giant Mouse",
+   "npc_type": 143,
+   "sprite": 42161,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    93,
+    107
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012291,
+   "nombre": "Giant Mouse",
+   "npc_type": 143,
+   "sprite": 42161,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    78,
+    97
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012292,
+   "nombre": "Giant Mouse",
+   "npc_type": 143,
+   "sprite": 42161,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    77,
+    88
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012293,
+   "nombre": "Giant Mouse",
+   "npc_type": 143,
+   "sprite": 42161,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    87,
+    83
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012294,
+   "nombre": "Giant Mouse",
+   "npc_type": 143,
+   "sprite": 42161,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    95,
+    95
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012295,
+   "nombre": "Giant Mouse",
+   "npc_type": 143,
+   "sprite": 42161,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    93,
+    88
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012296,
+   "nombre": "Giant Mouse",
+   "npc_type": 143,
+   "sprite": 42161,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    69,
+    69
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012297,
+   "nombre": "Giant Mouse",
+   "npc_type": 143,
+   "sprite": 42161,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    78,
+    88
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012298,
+   "nombre": "Giant Mouse",
+   "npc_type": 143,
+   "sprite": 42161,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    86,
+    99
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012299,
+   "nombre": "Giant Mouse",
+   "npc_type": 143,
+   "sprite": 42161,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    87,
+    112
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012300,
+   "nombre": "Giant Mouse",
+   "npc_type": 143,
+   "sprite": 42161,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    98,
+    111
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012301,
+   "nombre": "Giant Mouse",
+   "npc_type": 143,
+   "sprite": 42161,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    96,
+    96
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012302,
+   "nombre": "Giant Mouse",
+   "npc_type": 143,
+   "sprite": 42161,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    95,
+    89
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012303,
+   "nombre": "Giant Mouse",
+   "npc_type": 143,
+   "sprite": 42161,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    79,
+    100
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012304,
+   "nombre": "Giant Mouse",
+   "npc_type": 143,
+   "sprite": 42161,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    86,
+    83
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012305,
+   "nombre": "Giant Mouse",
+   "npc_type": 143,
+   "sprite": 42161,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    173,
+    59
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012306,
+   "nombre": "Giant Mouse",
+   "npc_type": 143,
+   "sprite": 42161,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    142,
+    31
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012307,
+   "nombre": "Giant Mouse",
+   "npc_type": 143,
+   "sprite": 42161,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    155,
+    34
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012308,
+   "nombre": "Giant Mouse",
+   "npc_type": 143,
+   "sprite": 42161,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    135,
+    19
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012309,
+   "nombre": "Giant Mouse",
+   "npc_type": 143,
+   "sprite": 42161,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    197,
+    52
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012310,
+   "nombre": "Giant Mouse",
+   "npc_type": 143,
+   "sprite": 42161,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    142,
+    21
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012311,
+   "nombre": "Giant Mouse",
+   "npc_type": 143,
+   "sprite": 42161,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    176,
+    66
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012312,
+   "nombre": "Giant Mouse",
+   "npc_type": 143,
+   "sprite": 42161,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    155,
+    35
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012313,
+   "nombre": "Giant Mouse",
+   "npc_type": 143,
+   "sprite": 42161,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    147,
+    28
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012314,
+   "nombre": "Giant Mouse",
+   "npc_type": 143,
+   "sprite": 42161,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    197,
+    48
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012315,
+   "nombre": "Orange Mushroom",
+   "npc_type": 144,
+   "sprite": 42163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    204,
+    89
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012316,
+   "nombre": "Orange Mushroom",
+   "npc_type": 144,
+   "sprite": 42163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    155,
+    67
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012317,
+   "nombre": "Orange Mushroom",
+   "npc_type": 144,
+   "sprite": 42163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    193,
+    60
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012318,
+   "nombre": "Orange Mushroom",
+   "npc_type": 144,
+   "sprite": 42163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    173,
+    78
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012319,
+   "nombre": "Orange Mushroom",
+   "npc_type": 144,
+   "sprite": 42163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    199,
+    88
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012320,
+   "nombre": "Orange Mushroom",
+   "npc_type": 144,
+   "sprite": 42163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    174,
+    82
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012321,
+   "nombre": "Orange Mushroom",
+   "npc_type": 144,
+   "sprite": 42163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    159,
+    62
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012322,
+   "nombre": "Orange Mushroom",
+   "npc_type": 144,
+   "sprite": 42163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    194,
+    50
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012323,
+   "nombre": "Orange Mushroom",
+   "npc_type": 144,
+   "sprite": 42163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    206,
+    82
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012324,
+   "nombre": "Orange Mushroom",
+   "npc_type": 144,
+   "sprite": 42163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    185,
+    55
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012325,
+   "nombre": "Orange Mushroom",
+   "npc_type": 144,
+   "sprite": 42163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    161,
+    71
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012326,
+   "nombre": "Orange Mushroom",
+   "npc_type": 144,
+   "sprite": 42163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    163,
+    57
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012327,
+   "nombre": "Orange Mushroom",
+   "npc_type": 144,
+   "sprite": 42163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    166,
+    83
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012328,
+   "nombre": "Orange Mushroom",
+   "npc_type": 144,
+   "sprite": 42163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    200,
+    84
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012329,
+   "nombre": "Orange Mushroom",
+   "npc_type": 144,
+   "sprite": 42163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    184,
+    52
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012330,
+   "nombre": "Orange Mushroom",
+   "npc_type": 144,
+   "sprite": 42163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    134,
+    142
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012331,
+   "nombre": "Orange Mushroom",
+   "npc_type": 144,
+   "sprite": 42163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    132,
+    123
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012332,
+   "nombre": "Orange Mushroom",
+   "npc_type": 144,
+   "sprite": 42163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    144,
+    121
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012333,
+   "nombre": "Orange Mushroom",
+   "npc_type": 144,
+   "sprite": 42163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    126,
+    129
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012334,
+   "nombre": "Orange Mushroom",
+   "npc_type": 144,
+   "sprite": 42163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    139,
+    131
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012335,
+   "nombre": "Orange Mushroom",
+   "npc_type": 144,
+   "sprite": 42163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    125,
+    149
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012336,
+   "nombre": "Orange Mushroom",
+   "npc_type": 144,
+   "sprite": 42163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    124,
+    139
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012337,
+   "nombre": "Orange Mushroom",
+   "npc_type": 144,
+   "sprite": 42163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    141,
+    126
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012338,
+   "nombre": "Orange Mushroom",
+   "npc_type": 144,
+   "sprite": 42163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    127,
+    142
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012339,
+   "nombre": "Orange Mushroom",
+   "npc_type": 144,
+   "sprite": 42163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    134,
+    126
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012340,
+   "nombre": "Orange Mushroom",
+   "npc_type": 144,
+   "sprite": 42163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    141,
+    116
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012341,
+   "nombre": "Orange Mushroom",
+   "npc_type": 144,
+   "sprite": 42163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    133,
+    141
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012342,
+   "nombre": "Orange Mushroom",
+   "npc_type": 144,
+   "sprite": 42163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    124,
+    150
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012343,
+   "nombre": "Orange Mushroom",
+   "npc_type": 144,
+   "sprite": 42163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    129,
+    135
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012344,
+   "nombre": "Orange Mushroom",
+   "npc_type": 144,
+   "sprite": 42163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    142,
+    135
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012345,
+   "nombre": "Orange Mushroom",
+   "npc_type": 144,
+   "sprite": 42163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    223,
+    56
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012346,
+   "nombre": "Orange Mushroom",
+   "npc_type": 144,
+   "sprite": 42163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    193,
+    47
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012347,
+   "nombre": "Orange Mushroom",
+   "npc_type": 144,
+   "sprite": 42163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    221,
+    57
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012348,
+   "nombre": "Orange Mushroom",
+   "npc_type": 144,
+   "sprite": 42163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    220,
+    61
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012349,
+   "nombre": "Orange Mushroom",
+   "npc_type": 144,
+   "sprite": 42163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    204,
+    45
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012350,
+   "nombre": "Orange Mushroom",
+   "npc_type": 144,
+   "sprite": 42163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    212,
+    67
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012351,
+   "nombre": "Orange Mushroom",
+   "npc_type": 144,
+   "sprite": 42163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    221,
+    58
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012352,
+   "nombre": "Orange Mushroom",
+   "npc_type": 144,
+   "sprite": 42163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    191,
+    55
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012353,
+   "nombre": "Orange Mushroom",
+   "npc_type": 144,
+   "sprite": 42163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    217,
+    62
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012354,
+   "nombre": "Orange Mushroom",
+   "npc_type": 144,
+   "sprite": 42163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    223,
+    67
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012355,
+   "nombre": "Orange Mushroom",
+   "npc_type": 144,
+   "sprite": 42163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    193,
+    57
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012356,
+   "nombre": "Orange Mushroom",
+   "npc_type": 144,
+   "sprite": 42163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    219,
+    59
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012357,
+   "nombre": "Orange Mushroom",
+   "npc_type": 144,
+   "sprite": 42163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    191,
+    52
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012358,
+   "nombre": "Orange Mushroom",
+   "npc_type": 144,
+   "sprite": 42163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    219,
+    56
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012359,
+   "nombre": "Orange Mushroom",
+   "npc_type": 144,
+   "sprite": 42163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    213,
+    62
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012360,
+   "nombre": "Dark Fungus",
+   "npc_type": 145,
+   "sprite": 42165,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    214,
+    119
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012361,
+   "nombre": "Dark Fungus",
+   "npc_type": 145,
+   "sprite": 42165,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    253,
+    129
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012362,
+   "nombre": "Dark Fungus",
+   "npc_type": 145,
+   "sprite": 42165,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    253,
+    104
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012363,
+   "nombre": "Dark Fungus",
+   "npc_type": 145,
+   "sprite": 42165,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    209,
+    131
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012364,
+   "nombre": "Dark Fungus",
+   "npc_type": 145,
+   "sprite": 42165,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    204,
+    112
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012365,
+   "nombre": "Dark Fungus",
+   "npc_type": 145,
+   "sprite": 42165,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    245,
+    123
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012366,
+   "nombre": "Dark Fungus",
+   "npc_type": 145,
+   "sprite": 42165,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    255,
+    106
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012367,
+   "nombre": "Dark Fungus",
+   "npc_type": 145,
+   "sprite": 42165,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    250,
+    108
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012368,
+   "nombre": "Dark Fungus",
+   "npc_type": 145,
+   "sprite": 42165,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    268,
+    130
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012369,
+   "nombre": "Dark Fungus",
+   "npc_type": 145,
+   "sprite": 42165,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    251,
+    130
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012370,
+   "nombre": "Dark Fungus",
+   "npc_type": 145,
+   "sprite": 42165,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    209,
+    119
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012371,
+   "nombre": "Dark Fungus",
+   "npc_type": 145,
+   "sprite": 42165,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    261,
+    137
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012372,
+   "nombre": "Dark Fungus",
+   "npc_type": 145,
+   "sprite": 42165,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    254,
+    106
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012373,
+   "nombre": "Dark Fungus",
+   "npc_type": 145,
+   "sprite": 42165,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    220,
+    138
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012374,
+   "nombre": "Dark Fungus",
+   "npc_type": 145,
+   "sprite": 42165,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    207,
+    119
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012375,
+   "nombre": "Dark Fungus",
+   "npc_type": 145,
+   "sprite": 42165,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    246,
+    45
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012376,
+   "nombre": "Dark Fungus",
+   "npc_type": 145,
+   "sprite": 42165,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    292,
+    30
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012377,
+   "nombre": "Dark Fungus",
+   "npc_type": 145,
+   "sprite": 42165,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    264,
+    18
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012378,
+   "nombre": "Dark Fungus",
+   "npc_type": 145,
+   "sprite": 42165,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    249,
+    31
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012379,
+   "nombre": "Dark Fungus",
+   "npc_type": 145,
+   "sprite": 42165,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    289,
+    34
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012380,
+   "nombre": "Dark Fungus",
+   "npc_type": 145,
+   "sprite": 42165,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    255,
+    27
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012381,
+   "nombre": "Dark Fungus",
+   "npc_type": 145,
+   "sprite": 42165,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    246,
+    47
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012382,
+   "nombre": "Dark Fungus",
+   "npc_type": 145,
+   "sprite": 42165,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    244,
+    44
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012383,
+   "nombre": "Dark Fungus",
+   "npc_type": 145,
+   "sprite": 42165,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    249,
+    32
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012384,
+   "nombre": "Dark Fungus",
+   "npc_type": 145,
+   "sprite": 42165,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    293,
+    40
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012385,
+   "nombre": "Dark Fungus",
+   "npc_type": 145,
+   "sprite": 42165,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    243,
+    52
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012386,
+   "nombre": "Dark Fungus",
+   "npc_type": 145,
+   "sprite": 42165,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    252,
+    31
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012387,
+   "nombre": "Dark Fungus",
+   "npc_type": 145,
+   "sprite": 42165,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    296,
+    34
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012388,
+   "nombre": "Dark Fungus",
+   "npc_type": 145,
+   "sprite": 42165,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    253,
+    50
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012389,
+   "nombre": "Dark Fungus",
+   "npc_type": 145,
+   "sprite": 42165,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    252,
+    31
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012390,
+   "nombre": "Dark Fungus",
+   "npc_type": 145,
+   "sprite": 42165,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    279,
+    129
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012391,
+   "nombre": "Dark Fungus",
+   "npc_type": 145,
+   "sprite": 42165,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    270,
+    110
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012392,
+   "nombre": "Dark Fungus",
+   "npc_type": 145,
+   "sprite": 42165,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    296,
+    116
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012393,
+   "nombre": "Dark Fungus",
+   "npc_type": 145,
+   "sprite": 42165,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    317,
+    115
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012394,
+   "nombre": "Dark Fungus",
+   "npc_type": 145,
+   "sprite": 42165,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    267,
+    115
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012395,
+   "nombre": "Dark Fungus",
+   "npc_type": 145,
+   "sprite": 42165,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    264,
+    108
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012396,
+   "nombre": "Dark Fungus",
+   "npc_type": 145,
+   "sprite": 42165,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    284,
+    127
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012397,
+   "nombre": "Dark Fungus",
+   "npc_type": 145,
+   "sprite": 42165,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    326,
+    112
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012398,
+   "nombre": "Dark Fungus",
+   "npc_type": 145,
+   "sprite": 42165,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    274,
+    129
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012399,
+   "nombre": "Dark Fungus",
+   "npc_type": 145,
+   "sprite": 42165,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    326,
+    117
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012400,
+   "nombre": "Dark Fungus",
+   "npc_type": 145,
+   "sprite": 42165,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    270,
+    111
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012401,
+   "nombre": "Dark Fungus",
+   "npc_type": 145,
+   "sprite": 42165,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    297,
+    121
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012402,
+   "nombre": "Dark Fungus",
+   "npc_type": 145,
+   "sprite": 42165,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    297,
+    113
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012403,
+   "nombre": "Dark Fungus",
+   "npc_type": 145,
+   "sprite": 42165,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    321,
+    114
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012404,
+   "nombre": "Dark Fungus",
+   "npc_type": 145,
+   "sprite": 42165,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    284,
+    131
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012405,
+   "nombre": "Hell Mouse",
+   "npc_type": 146,
+   "sprite": 42162,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    136,
+    37
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012406,
+   "nombre": "Mutant Mushroom",
+   "npc_type": 147,
+   "sprite": 42164,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    121,
+    139
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 37
+  },
+  {
+   "entity_id": 1012407,
+   "nombre": "Elder Fungus",
+   "npc_type": 148,
+   "sprite": 42166,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    308,
+    119
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 39
+  }
+ ],
+ "recursos": [
+  {
+   "entity_id": 101136,
+   "capa": 2,
+   "px": [
+    6052,
+    787
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60110,
+   "cola": "00000000000000",
+   "nombre_visible": "Obsidian(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002",
+   "material": "Copper(L)"
+  },
+  {
+   "entity_id": 101137,
+   "capa": 0,
+   "px": [
+    5970,
+    415
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60110,
+   "cola": "00000000000000",
+   "nombre_visible": "Obsidian(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material": "Copper(L)"
+  },
+  {
+   "entity_id": 101138,
+   "capa": 0,
+   "px": [
+    6270,
+    904
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60110,
+   "cola": "00000000000000",
+   "nombre_visible": "Obsidian(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material": "Copper(L)"
+  },
+  {
+   "entity_id": 101139,
+   "capa": 2,
+   "px": [
+    6405,
+    704
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60110,
+   "cola": "00000000000000",
+   "nombre_visible": "Obsidian(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002",
+   "material": "Copper(L)"
+  },
+  {
+   "entity_id": 101140,
+   "capa": 0,
+   "px": [
+    6465,
+    662
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60110,
+   "cola": "00000000000000",
+   "nombre_visible": "Obsidian(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material": "Copper(L)"
+  },
+  {
+   "entity_id": 101141,
+   "capa": 2,
+   "px": [
+    819,
+    3407
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60134,
+   "cola": "00000000000000",
+   "nombre_visible": "Bandit Den(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 101142,
+   "capa": 2,
+   "px": [
+    365,
+    3356
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60134,
+   "cola": "00000000000000",
+   "nombre_visible": "Bandit Den(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 101143,
+   "capa": 0,
+   "px": [
+    561,
+    3329
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60134,
+   "cola": "00000000000000",
+   "nombre_visible": "Bandit Den(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 101144,
+   "capa": 2,
+   "px": [
+    1342,
+    3742
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60134,
+   "cola": "00000000000000",
+   "nombre_visible": "Bandit Den(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 101145,
+   "capa": 0,
+   "px": [
+    1818,
+    3372
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60134,
+   "cola": "00000000000000",
+   "nombre_visible": "Bandit Den(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 101146,
+   "capa": 0,
+   "px": [
+    1838,
+    3602
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60134,
+   "cola": "00000000000000",
+   "nombre_visible": "Bandit Den(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 101147,
+   "capa": 0,
+   "px": [
+    6340,
+    754
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60122,
+   "cola": "00000000000000",
+   "nombre_visible": "Obsidian(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material": "Copper(M)"
+  },
+  {
+   "entity_id": 101148,
+   "capa": 2,
+   "px": [
+    6609,
+    531
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60122,
+   "cola": "00000000000000",
+   "nombre_visible": "Obsidian(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002",
+   "material": "Copper(M)"
+  },
+  {
+   "entity_id": 101149,
+   "capa": 2,
+   "px": [
+    6414,
+    488
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60122,
+   "cola": "00000000000000",
+   "nombre_visible": "Obsidian(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002",
+   "material": "Copper(M)"
+  },
+  {
+   "entity_id": 101150,
+   "capa": 0,
+   "px": [
+    5914,
+    373
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60122,
+   "cola": "00000000000000",
+   "nombre_visible": "Obsidian(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material": "Copper(M)"
+  },
+  {
+   "entity_id": 101151,
+   "capa": 0,
+   "px": [
+    5967,
+    689
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60122,
+   "cola": "00000000000000",
+   "nombre_visible": "Obsidian(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material": "Copper(M)"
+  },
+  {
+   "entity_id": 101152,
+   "capa": 0,
+   "px": [
+    6330,
+    811
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60158,
+   "cola": "00000000000000",
+   "nombre_visible": "Obsidian(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material_posibles": [
+    "Big Copper",
+    "Copper (L)",
+    "Copper(S)"
+   ]
+  },
+  {
+   "entity_id": 101153,
+   "capa": 0,
+   "px": [
+    6597,
+    597
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60158,
+   "cola": "00000000000000",
+   "nombre_visible": "Obsidian(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material_posibles": [
+    "Big Copper",
+    "Copper (L)",
+    "Copper(S)"
+   ]
+  },
+  {
+   "entity_id": 101154,
+   "capa": 2,
+   "px": [
+    6333,
+    483
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60158,
+   "cola": "00000000000000",
+   "nombre_visible": "Obsidian(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002",
+   "material_posibles": [
+    "Big Copper",
+    "Copper (L)",
+    "Copper(S)"
+   ]
+  },
+  {
+   "entity_id": 101155,
+   "capa": 0,
+   "px": [
+    5814,
+    372
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60158,
+   "cola": "00000000000000",
+   "nombre_visible": "Obsidian(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material_posibles": [
+    "Big Copper",
+    "Copper (L)",
+    "Copper(S)"
+   ]
+  },
+  {
+   "entity_id": 101156,
+   "capa": 0,
+   "px": [
+    5959,
+    816
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60158,
+   "cola": "00000000000000",
+   "nombre_visible": "Obsidian(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material_posibles": [
+    "Big Copper",
+    "Copper (L)",
+    "Copper(S)"
+   ]
+  },
+  {
+   "entity_id": 101157,
+   "capa": 0,
+   "px": [
+    1483,
+    1166
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60112,
+   "cola": "00000000000000",
+   "nombre_visible": "Viburnum(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material": "Poplar(S)"
+  },
+  {
+   "entity_id": 101158,
+   "capa": 0,
+   "px": [
+    1704,
+    478
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60112,
+   "cola": "00000000000000",
+   "nombre_visible": "Viburnum(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material": "Poplar(S)"
+  },
+  {
+   "entity_id": 101159,
+   "capa": 2,
+   "px": [
+    1383,
+    244
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60112,
+   "cola": "00000000000000",
+   "nombre_visible": "Viburnum(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001",
+   "material": "Poplar(S)"
+  },
+  {
+   "entity_id": 101160,
+   "capa": 0,
+   "px": [
+    1253,
+    510
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60112,
+   "cola": "00000000000000",
+   "nombre_visible": "Viburnum(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material": "Poplar(S)"
+  },
+  {
+   "entity_id": 101161,
+   "capa": 2,
+   "px": [
+    1006,
+    587
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60112,
+   "cola": "00000000000000",
+   "nombre_visible": "Viburnum(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001",
+   "material": "Poplar(S)"
+  },
+  {
+   "entity_id": 101162,
+   "capa": 0,
+   "px": [
+    1775,
+    570
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60123,
+   "cola": "00000000000000",
+   "nombre_visible": "Viburnum(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material": "Poplar(M)"
+  },
+  {
+   "entity_id": 101163,
+   "capa": 0,
+   "px": [
+    1517,
+    333
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60123,
+   "cola": "00000000000000",
+   "nombre_visible": "Viburnum(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material": "Poplar(M)"
+  },
+  {
+   "entity_id": 101164,
+   "capa": 2,
+   "px": [
+    1395,
+    574
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60123,
+   "cola": "00000000000000",
+   "nombre_visible": "Viburnum(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001",
+   "material": "Poplar(M)"
+  },
+  {
+   "entity_id": 101165,
+   "capa": 0,
+   "px": [
+    1472,
+    817
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60123,
+   "cola": "00000000000000",
+   "nombre_visible": "Viburnum(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material": "Poplar(M)"
+  },
+  {
+   "entity_id": 101166,
+   "capa": 2,
+   "px": [
+    1569,
+    1077
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60123,
+   "cola": "00000000000000",
+   "nombre_visible": "Viburnum(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001",
+   "material": "Poplar(M)"
+  },
+  {
+   "entity_id": 101167,
+   "capa": 0,
+   "px": [
+    1510,
+    966
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60176,
+   "cola": "00000000000000",
+   "nombre_visible": "Viburnum(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material_posibles": [
+    "Grapefruit(L)",
+    "Poplar(L)",
+    "Teak(L)"
+   ]
+  },
+  {
+   "entity_id": 101168,
+   "capa": 0,
+   "px": [
+    1832,
+    601
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60176,
+   "cola": "00000000000000",
+   "nombre_visible": "Viburnum(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material_posibles": [
+    "Grapefruit(L)",
+    "Poplar(L)",
+    "Teak(L)"
+   ]
+  },
+  {
+   "entity_id": 101169,
+   "capa": 0,
+   "px": [
+    1376,
+    609
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60176,
+   "cola": "00000000000000",
+   "nombre_visible": "Viburnum(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material_posibles": [
+    "Grapefruit(L)",
+    "Poplar(L)",
+    "Teak(L)"
+   ]
+  },
+  {
+   "entity_id": 101170,
+   "capa": 2,
+   "px": [
+    2584,
+    487
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60176,
+   "cola": "00000000000000",
+   "nombre_visible": "Viburnum(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001",
+   "material_posibles": [
+    "Grapefruit(L)",
+    "Poplar(L)",
+    "Teak(L)"
+   ]
+  },
+  {
+   "entity_id": 101171,
+   "capa": 0,
+   "px": [
+    1620,
+    372
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60176,
+   "cola": "00000000000000",
+   "nombre_visible": "Viburnum(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material_posibles": [
+    "Grapefruit(L)",
+    "Poplar(L)",
+    "Teak(L)"
+   ]
+  },
+  {
+   "entity_id": 101172,
+   "capa": 0,
+   "px": [
+    1614,
+    1671
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60102,
+   "cola": "00000000000000",
+   "nombre_visible": "Bright Bush(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material": "Horseradish(S)"
+  },
+  {
+   "entity_id": 101173,
+   "capa": 0,
+   "px": [
+    1604,
+    2102
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60102,
+   "cola": "00000000000000",
+   "nombre_visible": "Bright Bush(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material": "Horseradish(S)"
+  },
+  {
+   "entity_id": 101174,
+   "capa": 2,
+   "px": [
+    2002,
+    1992
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60102,
+   "cola": "00000000000000",
+   "nombre_visible": "Bright Bush(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material": "Horseradish(S)"
+  },
+  {
+   "entity_id": 101175,
+   "capa": 0,
+   "px": [
+    1411,
+    1843
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60102,
+   "cola": "00000000000000",
+   "nombre_visible": "Bright Bush(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material": "Horseradish(S)"
+  },
+  {
+   "entity_id": 101176,
+   "capa": 0,
+   "px": [
+    1601,
+    1766
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60102,
+   "cola": "00000000000000",
+   "nombre_visible": "Bright Bush(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material": "Horseradish(S)"
+  },
+  {
+   "entity_id": 101177,
+   "capa": 2,
+   "px": [
+    2015,
+    1834
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60102,
+   "cola": "00000000000000",
+   "nombre_visible": "Bright Bush(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material": "Horseradish(S)"
+  },
+  {
+   "entity_id": 101178,
+   "capa": 0,
+   "px": [
+    1853,
+    1720
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60102,
+   "cola": "00000000000000",
+   "nombre_visible": "Bright Bush(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material": "Horseradish(S)"
+  },
+  {
+   "entity_id": 101179,
+   "capa": 2,
+   "px": [
+    1453,
+    1662
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60102,
+   "cola": "00000000000000",
+   "nombre_visible": "Bright Bush(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material": "Horseradish(S)"
+  },
+  {
+   "entity_id": 101180,
+   "capa": 0,
+   "px": [
+    2243,
+    1324
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60102,
+   "cola": "00000000000000",
+   "nombre_visible": "Bright Bush(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material": "Horseradish(S)"
+  },
+  {
+   "entity_id": 101181,
+   "capa": 2,
+   "px": [
+    2280,
+    1228
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60102,
+   "cola": "00000000000000",
+   "nombre_visible": "Bright Bush(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material": "Horseradish(S)"
+  },
+  {
+   "entity_id": 101182,
+   "capa": 0,
+   "px": [
+    453,
+    209
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 101183,
+   "capa": 0,
+   "px": [
+    11006,
+    240
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 101184,
+   "capa": 0,
+   "px": [
+    5650,
+    3254
+   ],
+   "medio": "00000000180000000000000000000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60052,
+   "cola": "00002280140000",
+   "que_es": "Dark City Totem"
+  }
+ ]
+}

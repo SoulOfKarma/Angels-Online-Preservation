@@ -1,0 +1,2451 @@
+{
+ "_nota": "Bottomless Pit (stage 31), de dos capturas de Celestia del 23/09/2026. Aqui esta el Spy Angel de la faccion Shadow (quest 359) y los Fire Mimic que pide la quest 360.",
+ "stage": 31,
+ "spawns": [
+  {
+   "entity_id": 29169,
+   "nombre": "Dark City Totem",
+   "npc_type": 1938,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    144,
+    89
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 122008,
+   "nombre": "Adv. Plan Seller",
+   "npc_type": 1851,
+   "sprite": 40138,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    157,
+    88
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122009,
+   "nombre": "Chief Esmat",
+   "npc_type": 1713,
+   "sprite": 40107,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    196,
+    89
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122010,
+   "nombre": "Cupid",
+   "npc_type": 1862,
+   "sprite": 40006,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    171,
+    95
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122011,
+   "nombre": "Spy Angel",
+   "npc_type": 1866,
+   "sprite": 40112,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    314,
+    37
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122012,
+   "nombre": "Badge Fan",
+   "npc_type": 1967,
+   "sprite": 40042,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    94,
+    184
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122013,
+   "nombre": "Sickle Soldier",
+   "npc_type": 1709,
+   "sprite": 40022,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    221,
+    75
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122014,
+   "nombre": "Researcher",
+   "npc_type": 1710,
+   "sprite": 40108,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    200,
+    78
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122015,
+   "nombre": "Analyst",
+   "npc_type": 1711,
+   "sprite": 40108,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    207,
+    68
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122016,
+   "nombre": "Researcher",
+   "npc_type": 1712,
+   "sprite": 40109,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    209,
+    83
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 1012743,
+   "nombre": "Fire Mimic",
+   "npc_type": 95,
+   "sprite": 42007,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    289,
+    136
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012744,
+   "nombre": "Fire Mimic",
+   "npc_type": 95,
+   "sprite": 42007,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    312,
+    174
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012745,
+   "nombre": "Fire Mimic",
+   "npc_type": 95,
+   "sprite": 42007,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    302,
+    142
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012746,
+   "nombre": "Fire Mimic",
+   "npc_type": 95,
+   "sprite": 42007,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    284,
+    137
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012747,
+   "nombre": "Fire Mimic",
+   "npc_type": 95,
+   "sprite": 42007,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    309,
+    142
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012748,
+   "nombre": "Fire Mimic",
+   "npc_type": 95,
+   "sprite": 42007,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    302,
+    164
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012749,
+   "nombre": "Fire Mimic",
+   "npc_type": 95,
+   "sprite": 42007,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    306,
+    150
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012750,
+   "nombre": "Fire Mimic",
+   "npc_type": 95,
+   "sprite": 42007,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    282,
+    134
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012751,
+   "nombre": "Fire Mimic",
+   "npc_type": 95,
+   "sprite": 42007,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    308,
+    168
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012752,
+   "nombre": "Fire Mimic",
+   "npc_type": 95,
+   "sprite": 42007,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    259,
+    148
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012753,
+   "nombre": "Fire Mimic",
+   "npc_type": 95,
+   "sprite": 42007,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    218,
+    142
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012754,
+   "nombre": "Fire Mimic",
+   "npc_type": 95,
+   "sprite": 42007,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    202,
+    155
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012755,
+   "nombre": "Fire Mimic",
+   "npc_type": 95,
+   "sprite": 42007,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    176,
+    180
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012756,
+   "nombre": "Fire Mimic",
+   "npc_type": 95,
+   "sprite": 42007,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    180,
+    184
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012757,
+   "nombre": "Fire Mimic",
+   "npc_type": 95,
+   "sprite": 42007,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    213,
+    146
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012758,
+   "nombre": "Fire Mimic",
+   "npc_type": 95,
+   "sprite": 42007,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    200,
+    154
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012759,
+   "nombre": "Fire Mimic",
+   "npc_type": 95,
+   "sprite": 42007,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    174,
+    181
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012760,
+   "nombre": "Fire Mimic",
+   "npc_type": 95,
+   "sprite": 42007,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    216,
+    137
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012761,
+   "nombre": "Fire Mimic",
+   "npc_type": 95,
+   "sprite": 42007,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    193,
+    147
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012762,
+   "nombre": "Fire Mimic",
+   "npc_type": 95,
+   "sprite": 42007,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    218,
+    140
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012763,
+   "nombre": "Fire Mimic",
+   "npc_type": 95,
+   "sprite": 42007,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    265,
+    186
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012764,
+   "nombre": "Fire Mimic",
+   "npc_type": 95,
+   "sprite": 42007,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    252,
+    175
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012765,
+   "nombre": "Fire Mimic",
+   "npc_type": 95,
+   "sprite": 42007,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    217,
+    189
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012766,
+   "nombre": "Fire Mimic",
+   "npc_type": 95,
+   "sprite": 42007,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    226,
+    166
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012767,
+   "nombre": "Fire Mimic",
+   "npc_type": 95,
+   "sprite": 42007,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    268,
+    182
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012768,
+   "nombre": "Fire Mimic",
+   "npc_type": 95,
+   "sprite": 42007,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    264,
+    181
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012769,
+   "nombre": "Fire Mimic",
+   "npc_type": 95,
+   "sprite": 42007,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    222,
+    166
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012770,
+   "nombre": "Fire Mimic",
+   "npc_type": 95,
+   "sprite": 42007,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    258,
+    179
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012771,
+   "nombre": "Fire Mimic",
+   "npc_type": 95,
+   "sprite": 42007,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    219,
+    180
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012772,
+   "nombre": "Fire Mimic",
+   "npc_type": 95,
+   "sprite": 42007,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    235,
+    176
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012773,
+   "nombre": "Fire Mimic",
+   "npc_type": 95,
+   "sprite": 42007,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    225,
+    167
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012774,
+   "nombre": "Fire Mimic",
+   "npc_type": 95,
+   "sprite": 42007,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    258,
+    192
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012775,
+   "nombre": "Fire Mimic",
+   "npc_type": 95,
+   "sprite": 42007,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    228,
+    178
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012776,
+   "nombre": "Fire Mimic",
+   "npc_type": 95,
+   "sprite": 42007,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    219,
+    184
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012777,
+   "nombre": "Fire Mimic",
+   "npc_type": 95,
+   "sprite": 42007,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    255,
+    173
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012778,
+   "nombre": "Frantic Wizard",
+   "npc_type": 96,
+   "sprite": 42026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    54,
+    63
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012779,
+   "nombre": "Frantic Wizard",
+   "npc_type": 96,
+   "sprite": 42026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    89,
+    45
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012780,
+   "nombre": "Frantic Wizard",
+   "npc_type": 96,
+   "sprite": 42026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    96,
+    42
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012781,
+   "nombre": "Frantic Wizard",
+   "npc_type": 96,
+   "sprite": 42026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    43,
+    32
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012782,
+   "nombre": "Frantic Wizard",
+   "npc_type": 96,
+   "sprite": 42026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    88,
+    46
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012783,
+   "nombre": "Frantic Wizard",
+   "npc_type": 96,
+   "sprite": 42026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    34,
+    35
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012784,
+   "nombre": "Frantic Wizard",
+   "npc_type": 96,
+   "sprite": 42026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    92,
+    44
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012785,
+   "nombre": "Frantic Wizard",
+   "npc_type": 96,
+   "sprite": 42026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    74,
+    30
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012786,
+   "nombre": "Frantic Wizard",
+   "npc_type": 96,
+   "sprite": 42026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    55,
+    53
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012787,
+   "nombre": "Frantic Wizard",
+   "npc_type": 96,
+   "sprite": 42026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    38,
+    30
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012788,
+   "nombre": "Frantic Wizard",
+   "npc_type": 96,
+   "sprite": 42026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    63,
+    88
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012789,
+   "nombre": "Frantic Wizard",
+   "npc_type": 96,
+   "sprite": 42026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    91,
+    121
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012790,
+   "nombre": "Frantic Wizard",
+   "npc_type": 96,
+   "sprite": 42026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    79,
+    103
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012791,
+   "nombre": "Frantic Wizard",
+   "npc_type": 96,
+   "sprite": 42026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    93,
+    69
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012792,
+   "nombre": "Frantic Wizard",
+   "npc_type": 96,
+   "sprite": 42026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    64,
+    98
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012793,
+   "nombre": "Frantic Wizard",
+   "npc_type": 96,
+   "sprite": 42026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    99,
+    70
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012794,
+   "nombre": "Frantic Wizard",
+   "npc_type": 96,
+   "sprite": 42026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    81,
+    108
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012795,
+   "nombre": "Frantic Wizard",
+   "npc_type": 96,
+   "sprite": 42026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    100,
+    116
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012796,
+   "nombre": "Frantic Wizard",
+   "npc_type": 96,
+   "sprite": 42026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    101,
+    70
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012797,
+   "nombre": "Frantic Wizard",
+   "npc_type": 96,
+   "sprite": 42026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    95,
+    109
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012798,
+   "nombre": "Frantic Wizard",
+   "npc_type": 96,
+   "sprite": 42026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    151,
+    157
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012799,
+   "nombre": "Frantic Wizard",
+   "npc_type": 96,
+   "sprite": 42026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    82,
+    121
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012800,
+   "nombre": "Frantic Wizard",
+   "npc_type": 96,
+   "sprite": 42026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    80,
+    122
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012801,
+   "nombre": "Frantic Wizard",
+   "npc_type": 96,
+   "sprite": 42026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    79,
+    122
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012802,
+   "nombre": "Frantic Wizard",
+   "npc_type": 96,
+   "sprite": 42026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    79,
+    118
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012803,
+   "nombre": "Frantic Wizard",
+   "npc_type": 96,
+   "sprite": 42026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    85,
+    130
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012804,
+   "nombre": "Frantic Wizard",
+   "npc_type": 96,
+   "sprite": 42026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    156,
+    148
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012805,
+   "nombre": "Frantic Wizard",
+   "npc_type": 96,
+   "sprite": 42026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    123,
+    141
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012806,
+   "nombre": "Frantic Wizard",
+   "npc_type": 96,
+   "sprite": 42026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    83,
+    124
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012807,
+   "nombre": "Frantic Wizard",
+   "npc_type": 96,
+   "sprite": 42026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    121,
+    149
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012808,
+   "nombre": "Frantic Wizard",
+   "npc_type": 96,
+   "sprite": 42026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    79,
+    124
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012809,
+   "nombre": "Frantic Wizard",
+   "npc_type": 96,
+   "sprite": 42026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    152,
+    150
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012810,
+   "nombre": "Frantic Wizard",
+   "npc_type": 96,
+   "sprite": 42026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    128,
+    151
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012811,
+   "nombre": "Frantic Wizard",
+   "npc_type": 96,
+   "sprite": 42026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    129,
+    145
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012812,
+   "nombre": "Frantic Wizard",
+   "npc_type": 96,
+   "sprite": 42026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    87,
+    123
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 20
+  },
+  {
+   "entity_id": 1012813,
+   "nombre": "Crow Wizard",
+   "npc_type": 97,
+   "sprite": 42025,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    279,
+    62
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1012814,
+   "nombre": "Crow Wizard",
+   "npc_type": 97,
+   "sprite": 42025,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    256,
+    76
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1012815,
+   "nombre": "Crow Wizard",
+   "npc_type": 97,
+   "sprite": 42025,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    246,
+    66
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1012816,
+   "nombre": "Crow Wizard",
+   "npc_type": 97,
+   "sprite": 42025,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    275,
+    58
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1012817,
+   "nombre": "Crow Wizard",
+   "npc_type": 97,
+   "sprite": 42025,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    274,
+    46
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1012818,
+   "nombre": "Crow Wizard",
+   "npc_type": 97,
+   "sprite": 42025,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    261,
+    80
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1012819,
+   "nombre": "Crow Wizard",
+   "npc_type": 97,
+   "sprite": 42025,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    243,
+    60
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1012820,
+   "nombre": "Crow Wizard",
+   "npc_type": 97,
+   "sprite": 42025,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    261,
+    72
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1012821,
+   "nombre": "Crow Wizard",
+   "npc_type": 97,
+   "sprite": 42025,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    232,
+    63
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1012822,
+   "nombre": "Crow Wizard",
+   "npc_type": 97,
+   "sprite": 42025,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    280,
+    75
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1012823,
+   "nombre": "Crow Wizard",
+   "npc_type": 97,
+   "sprite": 42025,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    178,
+    15
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1012824,
+   "nombre": "Crow Wizard",
+   "npc_type": 97,
+   "sprite": 42025,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    118,
+    48
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1012825,
+   "nombre": "Crow Wizard",
+   "npc_type": 97,
+   "sprite": 42025,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    215,
+    34
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1012826,
+   "nombre": "Crow Wizard",
+   "npc_type": 97,
+   "sprite": 42025,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    202,
+    37
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1012827,
+   "nombre": "Crow Wizard",
+   "npc_type": 97,
+   "sprite": 42025,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    216,
+    43
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1012828,
+   "nombre": "Crow Wizard",
+   "npc_type": 97,
+   "sprite": 42025,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    179,
+    16
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1012829,
+   "nombre": "Crow Wizard",
+   "npc_type": 97,
+   "sprite": 42025,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    130,
+    58
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1012830,
+   "nombre": "Crow Wizard",
+   "npc_type": 97,
+   "sprite": 42025,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    122,
+    19
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1012831,
+   "nombre": "Crow Wizard",
+   "npc_type": 97,
+   "sprite": 42025,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    129,
+    58
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1012832,
+   "nombre": "Crow Wizard",
+   "npc_type": 97,
+   "sprite": 42025,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    171,
+    16
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1012833,
+   "nombre": "Crow Wizard",
+   "npc_type": 97,
+   "sprite": 42025,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    267,
+    125
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1012834,
+   "nombre": "Crow Wizard",
+   "npc_type": 97,
+   "sprite": 42025,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    239,
+    110
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1012835,
+   "nombre": "Crow Wizard",
+   "npc_type": 97,
+   "sprite": 42025,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    268,
+    125
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1012836,
+   "nombre": "Crow Wizard",
+   "npc_type": 97,
+   "sprite": 42025,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    260,
+    129
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1012837,
+   "nombre": "Crow Wizard",
+   "npc_type": 97,
+   "sprite": 42025,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    237,
+    108
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1012838,
+   "nombre": "Crow Wizard",
+   "npc_type": 97,
+   "sprite": 42025,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    268,
+    129
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1012839,
+   "nombre": "Crow Wizard",
+   "npc_type": 97,
+   "sprite": 42025,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    257,
+    131
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1012840,
+   "nombre": "Crow Wizard",
+   "npc_type": 97,
+   "sprite": 42025,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    266,
+    120
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1012841,
+   "nombre": "Crow Wizard",
+   "npc_type": 97,
+   "sprite": 42025,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    263,
+    131
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1012842,
+   "nombre": "Crow Wizard",
+   "npc_type": 97,
+   "sprite": 42025,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    271,
+    125
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1012843,
+   "nombre": "Crow Wizard",
+   "npc_type": 97,
+   "sprite": 42025,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    260,
+    124
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1012844,
+   "nombre": "Crow Wizard",
+   "npc_type": 97,
+   "sprite": 42025,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    246,
+    117
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1012845,
+   "nombre": "Crow Wizard",
+   "npc_type": 97,
+   "sprite": 42025,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    268,
+    130
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1012846,
+   "nombre": "Crow Wizard",
+   "npc_type": 97,
+   "sprite": 42025,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    260,
+    134
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1012847,
+   "nombre": "Crow Wizard",
+   "npc_type": 97,
+   "sprite": 42025,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    249,
+    107
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 17
+  },
+  {
+   "entity_id": 1012848,
+   "nombre": "Wizard Mord",
+   "npc_type": 98,
+   "sprite": 42128,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    26,
+    41
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 25
+  },
+  {
+   "entity_id": 1012849,
+   "nombre": "Stunt Lord Abbi",
+   "npc_type": 99,
+   "sprite": 42129,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    191,
+    191
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 25
+  }
+ ],
+ "recursos": [
+  {
+   "entity_id": 101429,
+   "capa": 0,
+   "px": [
+    8362,
+    1168
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60145,
+   "cola": "00000000000000",
+   "nombre_visible": "CrystalAlga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101430,
+   "capa": 0,
+   "px": [
+    8199,
+    1038
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60145,
+   "cola": "00000000000000",
+   "nombre_visible": "CrystalAlga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101431,
+   "capa": 0,
+   "px": [
+    8229,
+    1119
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60144,
+   "cola": "00000000000000",
+   "nombre_visible": "CrystalAlga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101432,
+   "capa": 0,
+   "px": [
+    7804,
+    1079
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60144,
+   "cola": "00000000000000",
+   "nombre_visible": "CrystalAlga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101433,
+   "capa": 0,
+   "px": [
+    7987,
+    687
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60144,
+   "cola": "00000000000000",
+   "nombre_visible": "CrystalAlga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101434,
+   "capa": 0,
+   "px": [
+    7940,
+    652
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60188,
+   "cola": "00000000000000",
+   "nombre_visible": "CrystalAlga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101435,
+   "capa": 0,
+   "px": [
+    8506,
+    704
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60188,
+   "cola": "00000000000000",
+   "nombre_visible": "CrystalAlga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101436,
+   "capa": 0,
+   "px": [
+    8523,
+    714
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60216,
+   "cola": "00000000000000",
+   "nombre_visible": "CrystalAlga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101437,
+   "capa": 0,
+   "px": [
+    7960,
+    691
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60216,
+   "cola": "00000000000000",
+   "nombre_visible": "CrystalAlga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101438,
+   "capa": 0,
+   "px": [
+    8617,
+    678
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60216,
+   "cola": "00000000000000",
+   "nombre_visible": "CrystalAlga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101439,
+   "capa": 0,
+   "px": [
+    8259,
+    1162
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60216,
+   "cola": "00000000000000",
+   "nombre_visible": "CrystalAlga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101440,
+   "capa": 0,
+   "px": [
+    7853,
+    1085
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60216,
+   "cola": "00000000000000",
+   "nombre_visible": "CrystalAlga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101441,
+   "capa": 0,
+   "px": [
+    7897,
+    653
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60212,
+   "cola": "00000000000000",
+   "nombre_visible": "CrystalAlga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101442,
+   "capa": 0,
+   "px": [
+    8143,
+    1054
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60216,
+   "cola": "00000000000000",
+   "nombre_visible": "CrystalAlga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101443,
+   "capa": 0,
+   "px": [
+    1357,
+    3940
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60165,
+   "cola": "00000000000000",
+   "nombre_visible": "Iron(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 101444,
+   "capa": 2,
+   "px": [
+    1274,
+    3934
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60165,
+   "cola": "00000000000000",
+   "nombre_visible": "Iron(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 101445,
+   "capa": 0,
+   "px": [
+    875,
+    3916
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60165,
+   "cola": "00000000000000",
+   "nombre_visible": "Iron(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 101446,
+   "capa": 0,
+   "px": [
+    654,
+    3484
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60165,
+   "cola": "00000000000000",
+   "nombre_visible": "Iron(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 101447,
+   "capa": 0,
+   "px": [
+    1036,
+    3991
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60165,
+   "cola": "00000000000000",
+   "nombre_visible": "Iron(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 101448,
+   "capa": 0,
+   "px": [
+    627,
+    3587
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60164,
+   "cola": "00000000000000",
+   "nombre_visible": "Iron(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 101449,
+   "capa": 0,
+   "px": [
+    848,
+    3981
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60164,
+   "cola": "00000000000000",
+   "nombre_visible": "Iron(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 101450,
+   "capa": 2,
+   "px": [
+    604,
+    3896
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60164,
+   "cola": "00000000000000",
+   "nombre_visible": "Iron(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 101451,
+   "capa": 0,
+   "px": [
+    1209,
+    3946
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60164,
+   "cola": "00000000000000",
+   "nombre_visible": "Iron(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 101452,
+   "capa": 0,
+   "px": [
+    1414,
+    3966
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60164,
+   "cola": "00000000000000",
+   "nombre_visible": "Iron(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 101453,
+   "capa": 0,
+   "px": [
+    928,
+    4027
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60166,
+   "cola": "00000000000000",
+   "nombre_visible": "Iron(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material_posibles": [
+    "Bauxite (L)",
+    "Big Bauxite"
+   ]
+  },
+  {
+   "entity_id": 101454,
+   "capa": 0,
+   "px": [
+    538,
+    3843
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60166,
+   "cola": "00000000000000",
+   "nombre_visible": "Iron(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material_posibles": [
+    "Bauxite (L)",
+    "Big Bauxite"
+   ]
+  },
+  {
+   "entity_id": 101455,
+   "capa": 2,
+   "px": [
+    636,
+    3957
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60166,
+   "cola": "00000000000000",
+   "nombre_visible": "Iron(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002",
+   "material_posibles": [
+    "Bauxite (L)",
+    "Big Bauxite"
+   ]
+  },
+  {
+   "entity_id": 101456,
+   "capa": 0,
+   "px": [
+    1468,
+    4020
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60166,
+   "cola": "00000000000000",
+   "nombre_visible": "Iron(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material_posibles": [
+    "Bauxite (L)",
+    "Big Bauxite"
+   ]
+  },
+  {
+   "entity_id": 101457,
+   "capa": 0,
+   "px": [
+    601,
+    3517
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60166,
+   "cola": "00000000000000",
+   "nombre_visible": "Iron(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material_posibles": [
+    "Bauxite (L)",
+    "Big Bauxite"
+   ]
+  },
+  {
+   "entity_id": 101458,
+   "capa": 0,
+   "px": [
+    9800,
+    3008
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60204,
+   "cola": "00000000000000",
+   "nombre_visible": "OldBeastDen(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 101459,
+   "capa": 0,
+   "px": [
+    10396,
+    2822
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60204,
+   "cola": "00000000000000",
+   "nombre_visible": "OldBeastDen(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 101460,
+   "capa": 0,
+   "px": [
+    10437,
+    2609
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60204,
+   "cola": "00000000000000",
+   "nombre_visible": "OldBeastDen(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 101461,
+   "capa": 2,
+   "px": [
+    9509,
+    2776
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60204,
+   "cola": "00000000000000",
+   "nombre_visible": "OldBeastDen(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 101462,
+   "capa": 2,
+   "px": [
+    9843,
+    2561
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60204,
+   "cola": "00000000000000",
+   "nombre_visible": "OldBeastDen(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 101463,
+   "capa": 0,
+   "px": [
+    10185,
+    2373
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60204,
+   "cola": "00000000000000",
+   "nombre_visible": "OldBeastDen(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 101464,
+   "capa": 0,
+   "px": [
+    9665,
+    6228
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 101465,
+   "capa": 0,
+   "px": [
+    10519,
+    699
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 101466,
+   "capa": 2,
+   "px": [
+    276,
+    1748
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 101467,
+   "capa": 2,
+   "px": [
+    1399,
+    5590
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60154,
+   "cola": "00004080140000"
+  },
+  {
+   "entity_id": 101468,
+   "capa": 2,
+   "px": [
+    4594,
+    2871
+   ],
+   "medio": "00000000180000000000000000000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60052,
+   "cola": "00002280140000",
+   "que_es": "Dark City Totem"
+  },
+  {
+   "entity_id": 121588,
+   "capa": 2,
+   "px": [
+    5064,
+    3125
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "que_es": "tornado (portal)"
+  }
+ ]
+}

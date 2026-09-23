@@ -1,0 +1,4392 @@
+{
+ "_nota": "Colorful Coral Reefs (stage 85), de una captura de Celestia del 23/09/2026. Mapa submarino: hace falta el Neritic Diving Skill de Nira para entrar.",
+ "stage": 85,
+ "spawns": [
+  {
+   "entity_id": 30032,
+   "nombre": "Aurora Totem",
+   "npc_type": 1937,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    205,
+    13
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 30033,
+   "nombre": "Dark City Totem",
+   "npc_type": 1938,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    208,
+    23
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 30034,
+   "nombre": "Iron Totem",
+   "npc_type": 1939,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    179,
+    17
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 30035,
+   "nombre": "Breeze Totem",
+   "npc_type": 1940,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    184,
+    26
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 122340,
+   "nombre": "Cupid",
+   "npc_type": 1862,
+   "sprite": 40006,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    28,
+    33
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122341,
+   "nombre": "Pioneer Member",
+   "npc_type": 2237,
+   "sprite": 40037,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    57,
+    76
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122342,
+   "nombre": "Mermaid Alice",
+   "npc_type": 2167,
+   "sprite": 40185,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    19,
+    79
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 1018542,
+   "nombre": "Ink Octopus",
+   "npc_type": 1180,
+   "sprite": 42387,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    145,
+    74
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 67
+  },
+  {
+   "entity_id": 1018543,
+   "nombre": "Ink Octopus",
+   "npc_type": 1180,
+   "sprite": 42387,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    129,
+    59
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 67
+  },
+  {
+   "entity_id": 1018544,
+   "nombre": "Ink Octopus",
+   "npc_type": 1180,
+   "sprite": 42387,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    49,
+    56
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 67
+  },
+  {
+   "entity_id": 1018545,
+   "nombre": "Ink Octopus",
+   "npc_type": 1180,
+   "sprite": 42387,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    91,
+    71
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 67
+  },
+  {
+   "entity_id": 1018546,
+   "nombre": "Ink Octopus",
+   "npc_type": 1180,
+   "sprite": 42387,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    87,
+    59
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 67
+  },
+  {
+   "entity_id": 1018547,
+   "nombre": "Ink Octopus",
+   "npc_type": 1180,
+   "sprite": 42387,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    106,
+    69
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 67
+  },
+  {
+   "entity_id": 1018548,
+   "nombre": "Ink Octopus",
+   "npc_type": 1180,
+   "sprite": 42387,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    86,
+    56
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 67
+  },
+  {
+   "entity_id": 1018549,
+   "nombre": "Ink Octopus",
+   "npc_type": 1180,
+   "sprite": 42387,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    90,
+    67
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 67
+  },
+  {
+   "entity_id": 1018550,
+   "nombre": "Ink Octopus",
+   "npc_type": 1180,
+   "sprite": 42387,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    118,
+    51
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 67
+  },
+  {
+   "entity_id": 1018551,
+   "nombre": "Ink Octopus",
+   "npc_type": 1180,
+   "sprite": 42387,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    48,
+    51
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 67
+  },
+  {
+   "entity_id": 1018552,
+   "nombre": "Ink Octopus",
+   "npc_type": 1180,
+   "sprite": 42387,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    100,
+    76
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 67
+  },
+  {
+   "entity_id": 1018553,
+   "nombre": "Ink Octopus",
+   "npc_type": 1180,
+   "sprite": 42387,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    149,
+    67
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 67
+  },
+  {
+   "entity_id": 1018554,
+   "nombre": "Ink Octopus",
+   "npc_type": 1180,
+   "sprite": 42387,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    49,
+    53
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 67
+  },
+  {
+   "entity_id": 1018555,
+   "nombre": "Ink Octopus",
+   "npc_type": 1180,
+   "sprite": 42387,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    120,
+    59
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 67
+  },
+  {
+   "entity_id": 1018556,
+   "nombre": "Ink Octopus",
+   "npc_type": 1180,
+   "sprite": 42387,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    101,
+    79
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 67
+  },
+  {
+   "entity_id": 1018557,
+   "nombre": "Ink Octopus",
+   "npc_type": 1180,
+   "sprite": 42387,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    222,
+    57
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 67
+  },
+  {
+   "entity_id": 1018558,
+   "nombre": "Ink Octopus",
+   "npc_type": 1180,
+   "sprite": 42387,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    207,
+    58
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 67
+  },
+  {
+   "entity_id": 1018559,
+   "nombre": "Ink Octopus",
+   "npc_type": 1180,
+   "sprite": 42387,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    180,
+    83
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 67
+  },
+  {
+   "entity_id": 1018560,
+   "nombre": "Ink Octopus",
+   "npc_type": 1180,
+   "sprite": 42387,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    220,
+    18
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 67
+  },
+  {
+   "entity_id": 1018561,
+   "nombre": "Ink Octopus",
+   "npc_type": 1180,
+   "sprite": 42387,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    270,
+    59
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 67
+  },
+  {
+   "entity_id": 1018562,
+   "nombre": "Ink Octopus",
+   "npc_type": 1180,
+   "sprite": 42387,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    266,
+    29
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 67
+  },
+  {
+   "entity_id": 1018563,
+   "nombre": "Ink Octopus",
+   "npc_type": 1180,
+   "sprite": 42387,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    182,
+    87
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 67
+  },
+  {
+   "entity_id": 1018564,
+   "nombre": "Ink Octopus",
+   "npc_type": 1180,
+   "sprite": 42387,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    220,
+    63
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 67
+  },
+  {
+   "entity_id": 1018565,
+   "nombre": "Ink Octopus",
+   "npc_type": 1180,
+   "sprite": 42387,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    216,
+    20
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 67
+  },
+  {
+   "entity_id": 1018566,
+   "nombre": "Ink Octopus",
+   "npc_type": 1180,
+   "sprite": 42387,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    259,
+    26
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 67
+  },
+  {
+   "entity_id": 1018567,
+   "nombre": "Ink Octopus",
+   "npc_type": 1180,
+   "sprite": 42387,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    209,
+    56
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 67
+  },
+  {
+   "entity_id": 1018568,
+   "nombre": "Ink Octopus",
+   "npc_type": 1180,
+   "sprite": 42387,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    279,
+    57
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 67
+  },
+  {
+   "entity_id": 1018569,
+   "nombre": "Ink Octopus",
+   "npc_type": 1180,
+   "sprite": 42387,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    274,
+    52
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 67
+  },
+  {
+   "entity_id": 1018570,
+   "nombre": "Ink Octopus",
+   "npc_type": 1180,
+   "sprite": 42387,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    189,
+    81
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 67
+  },
+  {
+   "entity_id": 1018571,
+   "nombre": "Ink Octopus",
+   "npc_type": 1180,
+   "sprite": 42387,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    204,
+    54
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 67
+  },
+  {
+   "entity_id": 1018572,
+   "nombre": "Crab General",
+   "npc_type": 1181,
+   "sprite": 42378,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    59,
+    103
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 65
+  },
+  {
+   "entity_id": 1018573,
+   "nombre": "Crab General",
+   "npc_type": 1181,
+   "sprite": 42378,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    28,
+    158
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 65
+  },
+  {
+   "entity_id": 1018574,
+   "nombre": "Crab General",
+   "npc_type": 1181,
+   "sprite": 42378,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    37,
+    138
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 65
+  },
+  {
+   "entity_id": 1018575,
+   "nombre": "Crab General",
+   "npc_type": 1181,
+   "sprite": 42378,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    51,
+    108
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 65
+  },
+  {
+   "entity_id": 1018576,
+   "nombre": "Crab General",
+   "npc_type": 1181,
+   "sprite": 42378,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    83,
+    135
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 65
+  },
+  {
+   "entity_id": 1018577,
+   "nombre": "Crab General",
+   "npc_type": 1181,
+   "sprite": 42378,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    55,
+    161
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 65
+  },
+  {
+   "entity_id": 1018578,
+   "nombre": "Crab General",
+   "npc_type": 1181,
+   "sprite": 42378,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    71,
+    93
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 65
+  },
+  {
+   "entity_id": 1018579,
+   "nombre": "Crab General",
+   "npc_type": 1181,
+   "sprite": 42378,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    50,
+    103
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 65
+  },
+  {
+   "entity_id": 1018580,
+   "nombre": "Crab General",
+   "npc_type": 1181,
+   "sprite": 42378,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    73,
+    130
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 65
+  },
+  {
+   "entity_id": 1018581,
+   "nombre": "Crab General",
+   "npc_type": 1181,
+   "sprite": 42378,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    31,
+    153
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 65
+  },
+  {
+   "entity_id": 1018582,
+   "nombre": "Crab General",
+   "npc_type": 1181,
+   "sprite": 42378,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    45,
+    131
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 65
+  },
+  {
+   "entity_id": 1018583,
+   "nombre": "Crab General",
+   "npc_type": 1181,
+   "sprite": 42378,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    55,
+    156
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 65
+  },
+  {
+   "entity_id": 1018584,
+   "nombre": "Crab General",
+   "npc_type": 1181,
+   "sprite": 42378,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    81,
+    139
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 65
+  },
+  {
+   "entity_id": 1018585,
+   "nombre": "Crab General",
+   "npc_type": 1181,
+   "sprite": 42378,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    71,
+    94
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 65
+  },
+  {
+   "entity_id": 1018586,
+   "nombre": "Crab General",
+   "npc_type": 1181,
+   "sprite": 42378,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    32,
+    154
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 65
+  },
+  {
+   "entity_id": 1018587,
+   "nombre": "Crab General",
+   "npc_type": 1181,
+   "sprite": 42378,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    22,
+    117
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 65
+  },
+  {
+   "entity_id": 1018588,
+   "nombre": "Crab General",
+   "npc_type": 1181,
+   "sprite": 42378,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    61,
+    119
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 65
+  },
+  {
+   "entity_id": 1018589,
+   "nombre": "Crab General",
+   "npc_type": 1181,
+   "sprite": 42378,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    73,
+    123
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 65
+  },
+  {
+   "entity_id": 1018590,
+   "nombre": "Crab General",
+   "npc_type": 1181,
+   "sprite": 42378,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    74,
+    145
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 65
+  },
+  {
+   "entity_id": 1018591,
+   "nombre": "Crab General",
+   "npc_type": 1181,
+   "sprite": 42378,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    70,
+    118
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 65
+  },
+  {
+   "entity_id": 1018592,
+   "nombre": "Crab General",
+   "npc_type": 1181,
+   "sprite": 42378,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    52,
+    150
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 65
+  },
+  {
+   "entity_id": 1018593,
+   "nombre": "Crab General",
+   "npc_type": 1181,
+   "sprite": 42378,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    54,
+    116
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 65
+  },
+  {
+   "entity_id": 1018594,
+   "nombre": "Crab General",
+   "npc_type": 1181,
+   "sprite": 42378,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    92,
+    136
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 65
+  },
+  {
+   "entity_id": 1018595,
+   "nombre": "Crab General",
+   "npc_type": 1181,
+   "sprite": 42378,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    73,
+    120
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 65
+  },
+  {
+   "entity_id": 1018596,
+   "nombre": "Crab General",
+   "npc_type": 1181,
+   "sprite": 42378,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    26,
+    126
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 65
+  },
+  {
+   "entity_id": 1018597,
+   "nombre": "Wood Octopus",
+   "npc_type": 1182,
+   "sprite": 42386,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    255,
+    56
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 69
+  },
+  {
+   "entity_id": 1018598,
+   "nombre": "Wood Octopus",
+   "npc_type": 1182,
+   "sprite": 42386,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    211,
+    68
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 69
+  },
+  {
+   "entity_id": 1018599,
+   "nombre": "Wood Octopus",
+   "npc_type": 1182,
+   "sprite": 42386,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    242,
+    26
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 69
+  },
+  {
+   "entity_id": 1018600,
+   "nombre": "Wood Octopus",
+   "npc_type": 1182,
+   "sprite": 42386,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    276,
+    29
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 69
+  },
+  {
+   "entity_id": 1018601,
+   "nombre": "Wood Octopus",
+   "npc_type": 1182,
+   "sprite": 42386,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    219,
+    44
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 69
+  },
+  {
+   "entity_id": 1018602,
+   "nombre": "Wood Octopus",
+   "npc_type": 1182,
+   "sprite": 42386,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    231,
+    38
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 69
+  },
+  {
+   "entity_id": 1018603,
+   "nombre": "Wood Octopus",
+   "npc_type": 1182,
+   "sprite": 42386,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    276,
+    33
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 69
+  },
+  {
+   "entity_id": 1018604,
+   "nombre": "Wood Octopus",
+   "npc_type": 1182,
+   "sprite": 42386,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    264,
+    52
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 69
+  },
+  {
+   "entity_id": 1018605,
+   "nombre": "Wood Octopus",
+   "npc_type": 1182,
+   "sprite": 42386,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    231,
+    46
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 69
+  },
+  {
+   "entity_id": 1018606,
+   "nombre": "Wood Octopus",
+   "npc_type": 1182,
+   "sprite": 42386,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    207,
+    65
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 69
+  },
+  {
+   "entity_id": 1018607,
+   "nombre": "Wood Octopus",
+   "npc_type": 1182,
+   "sprite": 42386,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    251,
+    34
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 69
+  },
+  {
+   "entity_id": 1018608,
+   "nombre": "Wood Octopus",
+   "npc_type": 1182,
+   "sprite": 42386,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    216,
+    54
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 69
+  },
+  {
+   "entity_id": 1018609,
+   "nombre": "Wood Octopus",
+   "npc_type": 1182,
+   "sprite": 42386,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    208,
+    65
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 69
+  },
+  {
+   "entity_id": 1018610,
+   "nombre": "Wood Octopus",
+   "npc_type": 1182,
+   "sprite": 42386,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    277,
+    38
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 69
+  },
+  {
+   "entity_id": 1018611,
+   "nombre": "Wood Octopus",
+   "npc_type": 1182,
+   "sprite": 42386,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    239,
+    38
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 69
+  },
+  {
+   "entity_id": 1018612,
+   "nombre": "Ball Jellyfish",
+   "npc_type": 1187,
+   "sprite": 42404,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    215,
+    74
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 72
+  },
+  {
+   "entity_id": 1018613,
+   "nombre": "Ball Jellyfish",
+   "npc_type": 1187,
+   "sprite": 42404,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    208,
+    37
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 72
+  },
+  {
+   "entity_id": 1018614,
+   "nombre": "Ball Jellyfish",
+   "npc_type": 1187,
+   "sprite": 42404,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    248,
+    68
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 72
+  },
+  {
+   "entity_id": 1018615,
+   "nombre": "Ball Jellyfish",
+   "npc_type": 1187,
+   "sprite": 42404,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    200,
+    82
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 72
+  },
+  {
+   "entity_id": 1018616,
+   "nombre": "Ball Jellyfish",
+   "npc_type": 1187,
+   "sprite": 42404,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    283,
+    42
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 72
+  },
+  {
+   "entity_id": 1018617,
+   "nombre": "Ball Jellyfish",
+   "npc_type": 1187,
+   "sprite": 42404,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    233,
+    19
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 72
+  },
+  {
+   "entity_id": 1018618,
+   "nombre": "Ball Jellyfish",
+   "npc_type": 1187,
+   "sprite": 42404,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    248,
+    68
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 72
+  },
+  {
+   "entity_id": 1018619,
+   "nombre": "Ball Jellyfish",
+   "npc_type": 1187,
+   "sprite": 42404,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    279,
+    49
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 72
+  },
+  {
+   "entity_id": 1018620,
+   "nombre": "Ball Jellyfish",
+   "npc_type": 1187,
+   "sprite": 42404,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    194,
+    83
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 72
+  },
+  {
+   "entity_id": 1018621,
+   "nombre": "Ball Jellyfish",
+   "npc_type": 1187,
+   "sprite": 42404,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    237,
+    17
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 72
+  },
+  {
+   "entity_id": 1018622,
+   "nombre": "Ball Jellyfish",
+   "npc_type": 1187,
+   "sprite": 42404,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    219,
+    75
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 72
+  },
+  {
+   "entity_id": 1018623,
+   "nombre": "Ball Jellyfish",
+   "npc_type": 1187,
+   "sprite": 42404,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    200,
+    39
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 72
+  },
+  {
+   "entity_id": 1018624,
+   "nombre": "Ball Jellyfish",
+   "npc_type": 1187,
+   "sprite": 42404,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    239,
+    17
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 72
+  },
+  {
+   "entity_id": 1018625,
+   "nombre": "Ball Jellyfish",
+   "npc_type": 1187,
+   "sprite": 42404,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    242,
+    68
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 72
+  },
+  {
+   "entity_id": 1018626,
+   "nombre": "Ball Jellyfish",
+   "npc_type": 1187,
+   "sprite": 42404,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    280,
+    47
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 72
+  },
+  {
+   "entity_id": 1018627,
+   "nombre": "Whelk Swordsman",
+   "npc_type": 1188,
+   "sprite": 42384,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    110
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 73
+  },
+  {
+   "entity_id": 1018628,
+   "nombre": "Whelk Swordsman",
+   "npc_type": 1188,
+   "sprite": 42384,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    65,
+    120
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 73
+  },
+  {
+   "entity_id": 1018629,
+   "nombre": "Whelk Swordsman",
+   "npc_type": 1188,
+   "sprite": 42384,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    32,
+    154
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 73
+  },
+  {
+   "entity_id": 1018630,
+   "nombre": "Whelk Swordsman",
+   "npc_type": 1188,
+   "sprite": 42384,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    66,
+    155
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 73
+  },
+  {
+   "entity_id": 1018631,
+   "nombre": "Whelk Swordsman",
+   "npc_type": 1188,
+   "sprite": 42384,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    73,
+    107
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 73
+  },
+  {
+   "entity_id": 1018632,
+   "nombre": "Whelk Swordsman",
+   "npc_type": 1188,
+   "sprite": 42384,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    68,
+    109
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 73
+  },
+  {
+   "entity_id": 1018633,
+   "nombre": "Whelk Swordsman",
+   "npc_type": 1188,
+   "sprite": 42384,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    71,
+    129
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 73
+  },
+  {
+   "entity_id": 1018634,
+   "nombre": "Whelk Swordsman",
+   "npc_type": 1188,
+   "sprite": 42384,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    41,
+    161
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 73
+  },
+  {
+   "entity_id": 1018635,
+   "nombre": "Whelk Swordsman",
+   "npc_type": 1188,
+   "sprite": 42384,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    35,
+    107
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 73
+  },
+  {
+   "entity_id": 1018636,
+   "nombre": "Whelk Swordsman",
+   "npc_type": 1188,
+   "sprite": 42384,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    68,
+    154
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 73
+  },
+  {
+   "entity_id": 1018637,
+   "nombre": "Whelk Mage",
+   "npc_type": 1189,
+   "sprite": 42385,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    84,
+    114
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 74
+  },
+  {
+   "entity_id": 1018638,
+   "nombre": "Whelk Mage",
+   "npc_type": 1189,
+   "sprite": 42385,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    26,
+    138
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 74
+  },
+  {
+   "entity_id": 1018639,
+   "nombre": "Whelk Mage",
+   "npc_type": 1189,
+   "sprite": 42385,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    48,
+    112
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 74
+  },
+  {
+   "entity_id": 1018640,
+   "nombre": "Whelk Mage",
+   "npc_type": 1189,
+   "sprite": 42385,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    85,
+    160
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 74
+  },
+  {
+   "entity_id": 1018641,
+   "nombre": "Whelk Mage",
+   "npc_type": 1189,
+   "sprite": 42385,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    84,
+    130
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 74
+  },
+  {
+   "entity_id": 1018642,
+   "nombre": "Whelk Mage",
+   "npc_type": 1189,
+   "sprite": 42385,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    103,
+    118
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 74
+  },
+  {
+   "entity_id": 1018643,
+   "nombre": "Whelk Mage",
+   "npc_type": 1189,
+   "sprite": 42385,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    90,
+    146
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 74
+  },
+  {
+   "entity_id": 1018644,
+   "nombre": "Whelk Mage",
+   "npc_type": 1189,
+   "sprite": 42385,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    30,
+    126
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 74
+  },
+  {
+   "entity_id": 1018645,
+   "nombre": "Whelk Mage",
+   "npc_type": 1189,
+   "sprite": 42385,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    84,
+    148
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 74
+  },
+  {
+   "entity_id": 1018646,
+   "nombre": "Whelk Mage",
+   "npc_type": 1189,
+   "sprite": 42385,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    95,
+    114
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 74
+  },
+  {
+   "entity_id": 1018647,
+   "nombre": "Whelk Mage",
+   "npc_type": 1189,
+   "sprite": 42385,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    21,
+    146
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 74
+  },
+  {
+   "entity_id": 1018648,
+   "nombre": "Whelk Mage",
+   "npc_type": 1189,
+   "sprite": 42385,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    32,
+    127
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 74
+  },
+  {
+   "entity_id": 1018649,
+   "nombre": "Whelk Mage",
+   "npc_type": 1189,
+   "sprite": 42385,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    83,
+    108
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 74
+  },
+  {
+   "entity_id": 1018650,
+   "nombre": "Whelk Mage",
+   "npc_type": 1189,
+   "sprite": 42385,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    90,
+    128
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 74
+  },
+  {
+   "entity_id": 1018651,
+   "nombre": "Whelk Mage",
+   "npc_type": 1189,
+   "sprite": 42385,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    45,
+    116
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 74
+  },
+  {
+   "entity_id": 1018652,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    243,
+    150
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018653,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    211,
+    153
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018654,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    135,
+    163
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018655,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    257,
+    145
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018656,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    178,
+    169
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018657,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    257,
+    150
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018658,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    140,
+    167
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018659,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    239,
+    149
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018660,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    181,
+    168
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018661,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    206,
+    147
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018662,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    178,
+    163
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018663,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    138,
+    165
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018664,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    239,
+    142
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018665,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    262,
+    152
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018666,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    207,
+    147
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018667,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    242,
+    154
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018668,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    214,
+    148
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018669,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    260,
+    148
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018670,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    170,
+    161
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018671,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    143,
+    168
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018672,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    247,
+    162
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018673,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    191,
+    162
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018674,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    265,
+    140
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018675,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    222,
+    153
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018676,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    154,
+    169
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018677,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    241,
+    152
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018678,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    183,
+    165
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018679,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    263,
+    139
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018680,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    224,
+    150
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018681,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    148,
+    163
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018682,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    240,
+    132
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018683,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    163,
+    165
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018684,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    197,
+    168
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018685,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    246,
+    148
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018686,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    232,
+    151
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018687,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    196,
+    163
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018688,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    243,
+    130
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018689,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    165,
+    166
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018690,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    247,
+    142
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018691,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    231,
+    154
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018692,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    234,
+    157
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018693,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    243,
+    137
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018694,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    194,
+    167
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018695,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    163,
+    161
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018696,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    243,
+    144
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018697,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    115,
+    51
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018698,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    134,
+    39
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018699,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    54,
+    62
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018700,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    119,
+    87
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018701,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    77,
+    38
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018702,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    161,
+    63
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018703,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    111,
+    88
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018704,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    77,
+    40
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018705,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    117,
+    44
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018706,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    123,
+    31
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018707,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    49,
+    66
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018708,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    160,
+    63
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018709,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    112,
+    40
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018710,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    154,
+    58
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018711,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    127,
+    34
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018712,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    54,
+    65
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018713,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    115,
+    91
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018714,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    89,
+    37
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018715,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    119,
+    50
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018716,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    154,
+    58
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018717,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    75,
+    64
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018718,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    97,
+    42
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018719,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    57,
+    38
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018720,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    141,
+    39
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018721,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    145,
+    85
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018722,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    132,
+    56
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018723,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    142,
+    85
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018724,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    104,
+    53
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018725,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    135,
+    51
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018726,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    74,
+    63
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018727,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    266,
+    105
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018728,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    264,
+    108
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  },
+  {
+   "entity_id": 1018729,
+   "nombre": "Scale Fish",
+   "npc_type": 1190,
+   "sprite": 42380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    266,
+    112
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 76
+  }
+ ],
+ "recursos": [
+  {
+   "entity_id": 106506,
+   "capa": 2,
+   "px": [
+    9227,
+    298
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 106507,
+   "capa": 2,
+   "px": [
+    400,
+    5479
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 106508,
+   "capa": 0,
+   "px": [
+    537,
+    2827
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60259,
+   "cola": "00004080110000",
+   "nombre_visible": "Primrose(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material": "Primrose(L)"
+  },
+  {
+   "entity_id": 106509,
+   "capa": 2,
+   "px": [
+    237,
+    2722
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60259,
+   "cola": "00004080110000",
+   "nombre_visible": "Primrose(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material": "Primrose(L)"
+  },
+  {
+   "entity_id": 106510,
+   "capa": 2,
+   "px": [
+    802,
+    2654
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60259,
+   "cola": "00004080110000",
+   "nombre_visible": "Primrose(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material": "Primrose(L)"
+  },
+  {
+   "entity_id": 106511,
+   "capa": 0,
+   "px": [
+    744,
+    2702
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60259,
+   "cola": "00004080110000",
+   "nombre_visible": "Primrose(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material": "Primrose(L)"
+  },
+  {
+   "entity_id": 106512,
+   "capa": 0,
+   "px": [
+    313,
+    2889
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60259,
+   "cola": "00004080110000",
+   "nombre_visible": "Primrose(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material": "Primrose(L)"
+  },
+  {
+   "entity_id": 106513,
+   "capa": 2,
+   "px": [
+    339,
+    2394
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60259,
+   "cola": "00004080110000",
+   "nombre_visible": "Primrose(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material": "Primrose(L)"
+  },
+  {
+   "entity_id": 106514,
+   "capa": 0,
+   "px": [
+    304,
+    2431
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60259,
+   "cola": "00004080110000",
+   "nombre_visible": "Primrose(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material": "Primrose(L)"
+  },
+  {
+   "entity_id": 106515,
+   "capa": 2,
+   "px": [
+    311,
+    2618
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60259,
+   "cola": "00004080110000",
+   "nombre_visible": "Primrose(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material": "Primrose(L)"
+  },
+  {
+   "entity_id": 106516,
+   "capa": 2,
+   "px": [
+    6799,
+    4113
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60259,
+   "cola": "00004080110000",
+   "nombre_visible": "Primrose(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material": "Primrose(L)"
+  },
+  {
+   "entity_id": 106517,
+   "capa": 2,
+   "px": [
+    6491,
+    4080
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60259,
+   "cola": "00004080110000",
+   "nombre_visible": "Primrose(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material": "Primrose(L)"
+  },
+  {
+   "entity_id": 106518,
+   "capa": 0,
+   "px": [
+    6568,
+    4140
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60259,
+   "cola": "00004080110000",
+   "nombre_visible": "Primrose(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material": "Primrose(L)"
+  },
+  {
+   "entity_id": 106519,
+   "capa": 2,
+   "px": [
+    6345,
+    4174
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60259,
+   "cola": "00004080110000",
+   "nombre_visible": "Primrose(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material": "Primrose(L)"
+  },
+  {
+   "entity_id": 106520,
+   "capa": 0,
+   "px": [
+    5983,
+    4309
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60259,
+   "cola": "00004080110000",
+   "nombre_visible": "Primrose(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material": "Primrose(L)"
+  },
+  {
+   "entity_id": 106521,
+   "capa": 0,
+   "px": [
+    6781,
+    4145
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60259,
+   "cola": "00004080110000",
+   "nombre_visible": "Primrose(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material": "Primrose(L)"
+  },
+  {
+   "entity_id": 106522,
+   "capa": 0,
+   "px": [
+    5000,
+    3774
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60262,
+   "cola": "00004080110000",
+   "nombre_visible": "Lycosa Den(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material": "Lycosa Den(L)"
+  },
+  {
+   "entity_id": 106523,
+   "capa": 0,
+   "px": [
+    4984,
+    3483
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60261,
+   "cola": "00004080110000",
+   "nombre_visible": "Lycosa Den(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material": "Lycosa Den(M)"
+  },
+  {
+   "entity_id": 106524,
+   "capa": 0,
+   "px": [
+    5078,
+    3622
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60260,
+   "cola": "00004080110000",
+   "nombre_visible": "Lycosa Den(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material": "Lycosa Den(S)"
+  },
+  {
+   "entity_id": 106525,
+   "capa": 2,
+   "px": [
+    4722,
+    3833
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60260,
+   "cola": "00004080110000",
+   "nombre_visible": "Lycosa Den(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material": "Lycosa Den(S)"
+  },
+  {
+   "entity_id": 106526,
+   "capa": 0,
+   "px": [
+    4771,
+    3813
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60261,
+   "cola": "00004080110000",
+   "nombre_visible": "Lycosa Den(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material": "Lycosa Den(M)"
+  },
+  {
+   "entity_id": 106527,
+   "capa": 2,
+   "px": [
+    4351,
+    3694
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60262,
+   "cola": "00004080110000",
+   "nombre_visible": "Lycosa Den(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material": "Lycosa Den(L)"
+  },
+  {
+   "entity_id": 106528,
+   "capa": 2,
+   "px": [
+    5126,
+    3639
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60260,
+   "cola": "00004080110000",
+   "nombre_visible": "Lycosa Den(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material": "Lycosa Den(S)"
+  },
+  {
+   "entity_id": 106529,
+   "capa": 2,
+   "px": [
+    4658,
+    4031
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60261,
+   "cola": "00004080110000",
+   "nombre_visible": "Lycosa Den(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material": "Lycosa Den(M)"
+  },
+  {
+   "entity_id": 106530,
+   "capa": 2,
+   "px": [
+    4870,
+    490
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60262,
+   "cola": "00004080110000",
+   "nombre_visible": "Lycosa Den(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material": "Lycosa Den(L)"
+  },
+  {
+   "entity_id": 106531,
+   "capa": 2,
+   "px": [
+    5293,
+    600
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60261,
+   "cola": "00004080110000",
+   "nombre_visible": "Lycosa Den(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material": "Lycosa Den(M)"
+  },
+  {
+   "entity_id": 106532,
+   "capa": 0,
+   "px": [
+    5016,
+    196
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60260,
+   "cola": "00004080110000",
+   "nombre_visible": "Lycosa Den(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material": "Lycosa Den(S)"
+  },
+  {
+   "entity_id": 106533,
+   "capa": 2,
+   "px": [
+    4784,
+    313
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60261,
+   "cola": "00004080110000",
+   "nombre_visible": "Lycosa Den(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material": "Lycosa Den(M)"
+  },
+  {
+   "entity_id": 106534,
+   "capa": 2,
+   "px": [
+    5599,
+    308
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60260,
+   "cola": "00004080110000",
+   "nombre_visible": "Lycosa Den(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material": "Lycosa Den(S)"
+  },
+  {
+   "entity_id": 106535,
+   "capa": 0,
+   "px": [
+    5920,
+    249
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60260,
+   "cola": "00004080110000",
+   "nombre_visible": "Lycosa Den(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material": "Lycosa Den(S)"
+  },
+  {
+   "entity_id": 106536,
+   "capa": 2,
+   "px": [
+    5824,
+    177
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60252,
+   "cola": "000040800f0000",
+   "nombre_visible": "BloodBamboo(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001",
+   "material_posibles": [
+    "Big Bamboo",
+    "BloodBamboo(L)"
+   ]
+  },
+  {
+   "entity_id": 106537,
+   "capa": 0,
+   "px": [
+    6229,
+    375
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60254,
+   "cola": "000040800f0000",
+   "nombre_visible": "BloodBamboo(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 106538,
+   "capa": 2,
+   "px": [
+    6166,
+    381
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60254,
+   "cola": "000040800f0000",
+   "nombre_visible": "BloodBamboo(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 106539,
+   "capa": 0,
+   "px": [
+    4892,
+    204
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60253,
+   "cola": "000040800f0000",
+   "nombre_visible": "BloodBamboo(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 106540,
+   "capa": 2,
+   "px": [
+    5344,
+    238
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60254,
+   "cola": "000040800f0000",
+   "nombre_visible": "BloodBamboo(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 106541,
+   "capa": 2,
+   "px": [
+    5388,
+    290
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60253,
+   "cola": "000040800f0000",
+   "nombre_visible": "BloodBamboo(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 106542,
+   "capa": 0,
+   "px": [
+    8988,
+    3965
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60252,
+   "cola": "000040800f0000",
+   "nombre_visible": "BloodBamboo(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material_posibles": [
+    "Big Bamboo",
+    "BloodBamboo(L)"
+   ]
+  },
+  {
+   "entity_id": 106543,
+   "capa": 0,
+   "px": [
+    9275,
+    3705
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60252,
+   "cola": "000040800f0000",
+   "nombre_visible": "BloodBamboo(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material_posibles": [
+    "Big Bamboo",
+    "BloodBamboo(L)"
+   ]
+  },
+  {
+   "entity_id": 106544,
+   "capa": 0,
+   "px": [
+    9027,
+    3959
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60253,
+   "cola": "000040800f0000",
+   "nombre_visible": "BloodBamboo(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 106545,
+   "capa": 0,
+   "px": [
+    9217,
+    3716
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60254,
+   "cola": "000040800f0000",
+   "nombre_visible": "BloodBamboo(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 106546,
+   "capa": 2,
+   "px": [
+    9268,
+    3543
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60254,
+   "cola": "000040800f0000",
+   "nombre_visible": "BloodBamboo(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 106547,
+   "capa": 2,
+   "px": [
+    9208,
+    3530
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60253,
+   "cola": "000040800f0000",
+   "nombre_visible": "BloodBamboo(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 106548,
+   "capa": 2,
+   "px": [
+    9162,
+    3918
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60254,
+   "cola": "000040800f0000",
+   "nombre_visible": "BloodBamboo(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 106549,
+   "capa": 2,
+   "px": [
+    9343,
+    3901
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60252,
+   "cola": "000040800f0000",
+   "nombre_visible": "BloodBamboo(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001",
+   "material_posibles": [
+    "Big Bamboo",
+    "BloodBamboo(L)"
+   ]
+  },
+  {
+   "entity_id": 106550,
+   "capa": 0,
+   "px": [
+    9263,
+    3053
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60246,
+   "cola": "00004080100000",
+   "nombre_visible": "BlackSilver(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material_posibles": [
+    "Big Silica",
+    "BlackSilver(L)"
+   ]
+  },
+  {
+   "entity_id": 106551,
+   "capa": 0,
+   "px": [
+    9157,
+    3135
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60247,
+   "cola": "00004080100000",
+   "nombre_visible": "BlackSilver(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 106552,
+   "capa": 0,
+   "px": [
+    9100,
+    3156
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60248,
+   "cola": "00004080100000",
+   "nombre_visible": "BlackSilver(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 106553,
+   "capa": 2,
+   "px": [
+    9161,
+    3323
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60246,
+   "cola": "00004080100000",
+   "nombre_visible": "BlackSilver(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002",
+   "material_posibles": [
+    "Big Silica",
+    "BlackSilver(L)"
+   ]
+  },
+  {
+   "entity_id": 106554,
+   "capa": 2,
+   "px": [
+    9124,
+    3031
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60247,
+   "cola": "00004080100000",
+   "nombre_visible": "BlackSilver(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 106555,
+   "capa": 2,
+   "px": [
+    9242,
+    3446
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60248,
+   "cola": "00004080100000",
+   "nombre_visible": "BlackSilver(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 106556,
+   "capa": 2,
+   "px": [
+    8967,
+    2974
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60246,
+   "cola": "00004080100000",
+   "nombre_visible": "BlackSilver(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002",
+   "material_posibles": [
+    "Big Silica",
+    "BlackSilver(L)"
+   ]
+  },
+  {
+   "entity_id": 106557,
+   "capa": 2,
+   "px": [
+    9129,
+    3309
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60247,
+   "cola": "00004080100000",
+   "nombre_visible": "BlackSilver(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 106558,
+   "capa": 0,
+   "px": [
+    5813,
+    4287
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60248,
+   "cola": "00004080100000",
+   "nombre_visible": "BlackSilver(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 106559,
+   "capa": 2,
+   "px": [
+    6114,
+    4272
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60248,
+   "cola": "00004080100000",
+   "nombre_visible": "BlackSilver(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 106560,
+   "capa": 2,
+   "px": [
+    6148,
+    4284
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60247,
+   "cola": "00004080100000",
+   "nombre_visible": "BlackSilver(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 106561,
+   "capa": 0,
+   "px": [
+    5487,
+    4508
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60247,
+   "cola": "00004080100000",
+   "nombre_visible": "BlackSilver(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 106562,
+   "capa": 0,
+   "px": [
+    5655,
+    4426
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60246,
+   "cola": "00004080100000",
+   "nombre_visible": "BlackSilver(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material_posibles": [
+    "Big Silica",
+    "BlackSilver(L)"
+   ]
+  },
+  {
+   "entity_id": 106563,
+   "capa": 0,
+   "px": [
+    6158,
+    4254
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60248,
+   "cola": "00004080100000",
+   "nombre_visible": "BlackSilver(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 106564,
+   "capa": 2,
+   "px": [
+    7828,
+    3311
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60186,
+   "cola": "00004080120000",
+   "nombre_visible": "Spot Alga(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 106565,
+   "capa": 0,
+   "px": [
+    4199,
+    4195
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60184,
+   "cola": "00004080120000",
+   "nombre_visible": "Spot Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 106566,
+   "capa": 2,
+   "px": [
+    7745,
+    3232
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60184,
+   "cola": "00004080120000",
+   "nombre_visible": "Spot Alga(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 106567,
+   "capa": 0,
+   "px": [
+    7701,
+    3191
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60184,
+   "cola": "00004080120000",
+   "nombre_visible": "Spot Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 106568,
+   "capa": 0,
+   "px": [
+    4441,
+    4130
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60184,
+   "cola": "00004080120000",
+   "nombre_visible": "Spot Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 106569,
+   "capa": 2,
+   "px": [
+    4370,
+    4204
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60184,
+   "cola": "00004080120000",
+   "nombre_visible": "Spot Alga(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 106570,
+   "capa": 2,
+   "px": [
+    7986,
+    3087
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60186,
+   "cola": "00004080120000",
+   "nombre_visible": "Spot Alga(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 106571,
+   "capa": 2,
+   "px": [
+    7716,
+    3167
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60186,
+   "cola": "00004080120000",
+   "nombre_visible": "Spot Alga(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 106572,
+   "capa": 2,
+   "px": [
+    4230,
+    4186
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60184,
+   "cola": "00004080120000",
+   "nombre_visible": "Spot Alga(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 106573,
+   "capa": 0,
+   "px": [
+    4185,
+    3989
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60184,
+   "cola": "00004080120000",
+   "nombre_visible": "Spot Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 106574,
+   "capa": 2,
+   "px": [
+    4297,
+    3918
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60184,
+   "cola": "00004080120000",
+   "nombre_visible": "Spot Alga(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 106575,
+   "capa": 0,
+   "px": [
+    4140,
+    4029
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60186,
+   "cola": "00004080120000",
+   "nombre_visible": "Spot Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 106576,
+   "capa": 0,
+   "px": [
+    4209,
+    4159
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60186,
+   "cola": "00004080120000",
+   "nombre_visible": "Spot Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 106577,
+   "capa": 0,
+   "px": [
+    6568,
+    435
+   ],
+   "medio": "006f70706572284d2900000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60051,
+   "cola": "00002280140000",
+   "que_es": "Aurora Totem"
+  },
+  {
+   "entity_id": 106578,
+   "capa": 2,
+   "px": [
+    5736,
+    577
+   ],
+   "medio": "006f70706572284d2900000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60053,
+   "cola": "00002280140000",
+   "que_es": "Iron Totem"
+  },
+  {
+   "entity_id": 106579,
+   "capa": 0,
+   "px": [
+    4324,
+    3843
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60186,
+   "cola": "00004080120000",
+   "nombre_visible": "Spot Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 106580,
+   "capa": 0,
+   "px": [
+    7867,
+    3115
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60184,
+   "cola": "00004080120000",
+   "nombre_visible": "Spot Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 106581,
+   "capa": 0,
+   "px": [
+    7827,
+    3355
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60184,
+   "cola": "00004080120000",
+   "nombre_visible": "Spot Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 106582,
+   "capa": 2,
+   "px": [
+    7857,
+    3335
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60184,
+   "cola": "00004080120000",
+   "nombre_visible": "Spot Alga(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 106583,
+   "capa": 0,
+   "px": [
+    6644,
+    758
+   ],
+   "medio": "00000000180000000000000000000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60052,
+   "cola": "00002280140000",
+   "que_es": "Dark City Totem"
+  },
+  {
+   "entity_id": 106584,
+   "capa": 2,
+   "px": [
+    4357,
+    3850
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60186,
+   "cola": "00004080120000",
+   "nombre_visible": "Spot Alga(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 106585,
+   "capa": 0,
+   "px": [
+    8115,
+    3090
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60186,
+   "cola": "00004080120000",
+   "nombre_visible": "Spot Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 106586,
+   "capa": 2,
+   "px": [
+    8060,
+    3059
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60184,
+   "cola": "00004080120000",
+   "nombre_visible": "Spot Alga(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 106587,
+   "capa": 2,
+   "px": [
+    8177,
+    3185
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60186,
+   "cola": "00004080120000",
+   "nombre_visible": "Spot Alga(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 106588,
+   "capa": 0,
+   "px": [
+    5903,
+    868
+   ],
+   "medio": "000000ba156f77650000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60054,
+   "cola": "00002280140000",
+   "que_es": "Breeze Totem"
+  },
+  {
+   "entity_id": 106589,
+   "capa": 0,
+   "px": [
+    8755,
+    5162
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080030000"
+  }
+ ]
+}

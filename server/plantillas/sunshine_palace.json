@@ -1,0 +1,4475 @@
+{
+ "_nota": "Sunshine Palace (stage 131), de dos capturas de Celestia del 23/09/2026. Solo tiene UN tornado: es un callejon sin salida. El unico tornado es el (12,5) hacia Flower Corridor. El objeto de (285,167) es una silla ligada a la quest elite de nivel 119, que lleva a otro mapa todavia sin capturar.",
+ "stage": 131,
+ "spawns": [
+  {
+   "entity_id": 30768,
+   "nombre": "Aurora Totem",
+   "npc_type": 1937,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    172,
+    136
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 30769,
+   "nombre": "Dark City Totem",
+   "npc_type": 1938,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    223,
+    161
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 30770,
+   "nombre": "Iron Totem",
+   "npc_type": 1939,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    283,
+    130
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 30771,
+   "nombre": "Breeze Totem",
+   "npc_type": 1940,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    233,
+    105
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 1025838,
+   "nombre": "Palace Gunner",
+   "npc_type": 5466,
+   "sprite": 40012,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    47,
+    149
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 109
+  },
+  {
+   "entity_id": 1025839,
+   "nombre": "Palace Gunner",
+   "npc_type": 5466,
+   "sprite": 40012,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    62,
+    160
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 109
+  },
+  {
+   "entity_id": 1025840,
+   "nombre": "Palace Gunner",
+   "npc_type": 5466,
+   "sprite": 40012,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    43,
+    152
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 109
+  },
+  {
+   "entity_id": 1025841,
+   "nombre": "Palace Gunner",
+   "npc_type": 5466,
+   "sprite": 40012,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    53,
+    115
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 109
+  },
+  {
+   "entity_id": 1025842,
+   "nombre": "Palace Gunner",
+   "npc_type": 5466,
+   "sprite": 40012,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    54,
+    137
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 109
+  },
+  {
+   "entity_id": 1025843,
+   "nombre": "Palace Gunner",
+   "npc_type": 5466,
+   "sprite": 40012,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    60,
+    121
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 109
+  },
+  {
+   "entity_id": 1025844,
+   "nombre": "Palace Gunner",
+   "npc_type": 5466,
+   "sprite": 40012,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    32,
+    127
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 109
+  },
+  {
+   "entity_id": 1025845,
+   "nombre": "Palace Gunner",
+   "npc_type": 5466,
+   "sprite": 40012,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    32,
+    127
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 109
+  },
+  {
+   "entity_id": 1025846,
+   "nombre": "Palace Gunner",
+   "npc_type": 5466,
+   "sprite": 40012,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    46,
+    119
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 109
+  },
+  {
+   "entity_id": 1025847,
+   "nombre": "Palace Gunner",
+   "npc_type": 5466,
+   "sprite": 40012,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    46,
+    128
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 109
+  },
+  {
+   "entity_id": 1025848,
+   "nombre": "Palace Gunner",
+   "npc_type": 5466,
+   "sprite": 40012,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    45,
+    144
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 109
+  },
+  {
+   "entity_id": 1025849,
+   "nombre": "Palace Gunner",
+   "npc_type": 5466,
+   "sprite": 40012,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    44,
+    152
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 109
+  },
+  {
+   "entity_id": 1025850,
+   "nombre": "Palace Gunner",
+   "npc_type": 5466,
+   "sprite": 40012,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    43,
+    156
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 109
+  },
+  {
+   "entity_id": 1025851,
+   "nombre": "Palace Gunner",
+   "npc_type": 5466,
+   "sprite": 40012,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    58,
+    143
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 109
+  },
+  {
+   "entity_id": 1025852,
+   "nombre": "Palace Gunner",
+   "npc_type": 5466,
+   "sprite": 40012,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    51,
+    157
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 109
+  },
+  {
+   "entity_id": 1025853,
+   "nombre": "Palace Gunner",
+   "npc_type": 5466,
+   "sprite": 40012,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    36,
+    149
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 109
+  },
+  {
+   "entity_id": 1025854,
+   "nombre": "Palace Gunner",
+   "npc_type": 5466,
+   "sprite": 40012,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    76,
+    173
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 109
+  },
+  {
+   "entity_id": 1025855,
+   "nombre": "Palace Gunner",
+   "npc_type": 5466,
+   "sprite": 40012,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    50,
+    154
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 109
+  },
+  {
+   "entity_id": 1025856,
+   "nombre": "Palace Gunner",
+   "npc_type": 5466,
+   "sprite": 40012,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    62,
+    155
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 109
+  },
+  {
+   "entity_id": 1025857,
+   "nombre": "Palace Gunner",
+   "npc_type": 5466,
+   "sprite": 40012,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    48,
+    145
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 109
+  },
+  {
+   "entity_id": 1025858,
+   "nombre": "Palace Gunner",
+   "npc_type": 5466,
+   "sprite": 40012,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    47,
+    154
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 109
+  },
+  {
+   "entity_id": 1025859,
+   "nombre": "Palace Gunner",
+   "npc_type": 5466,
+   "sprite": 40012,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    62,
+    162
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 109
+  },
+  {
+   "entity_id": 1025860,
+   "nombre": "Palace Gunner",
+   "npc_type": 5466,
+   "sprite": 40012,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    51,
+    141
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 109
+  },
+  {
+   "entity_id": 1025861,
+   "nombre": "Palace Gunner",
+   "npc_type": 5466,
+   "sprite": 40012,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    34,
+    142
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 109
+  },
+  {
+   "entity_id": 1025862,
+   "nombre": "Palace Gunner",
+   "npc_type": 5466,
+   "sprite": 40012,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    69,
+    150
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 109
+  },
+  {
+   "entity_id": 1025863,
+   "nombre": "Palace Archer",
+   "npc_type": 5467,
+   "sprite": 40016,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    102,
+    148
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 110
+  },
+  {
+   "entity_id": 1025864,
+   "nombre": "Palace Archer",
+   "npc_type": 5467,
+   "sprite": 40016,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    133,
+    153
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 110
+  },
+  {
+   "entity_id": 1025865,
+   "nombre": "Palace Archer",
+   "npc_type": 5467,
+   "sprite": 40016,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    110,
+    154
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 110
+  },
+  {
+   "entity_id": 1025866,
+   "nombre": "Palace Archer",
+   "npc_type": 5467,
+   "sprite": 40016,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    105,
+    161
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 110
+  },
+  {
+   "entity_id": 1025867,
+   "nombre": "Palace Archer",
+   "npc_type": 5467,
+   "sprite": 40016,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    128,
+    141
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 110
+  },
+  {
+   "entity_id": 1025868,
+   "nombre": "Palace Archer",
+   "npc_type": 5467,
+   "sprite": 40016,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    99,
+    153
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 110
+  },
+  {
+   "entity_id": 1025869,
+   "nombre": "Palace Archer",
+   "npc_type": 5467,
+   "sprite": 40016,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    70,
+    168
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 110
+  },
+  {
+   "entity_id": 1025870,
+   "nombre": "Palace Archer",
+   "npc_type": 5467,
+   "sprite": 40016,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    114,
+    158
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 110
+  },
+  {
+   "entity_id": 1025871,
+   "nombre": "Palace Archer",
+   "npc_type": 5467,
+   "sprite": 40016,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    106,
+    168
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 110
+  },
+  {
+   "entity_id": 1025872,
+   "nombre": "Palace Archer",
+   "npc_type": 5467,
+   "sprite": 40016,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    63,
+    162
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 110
+  },
+  {
+   "entity_id": 1025873,
+   "nombre": "Palace Archer",
+   "npc_type": 5467,
+   "sprite": 40016,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    113,
+    161
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 110
+  },
+  {
+   "entity_id": 1025874,
+   "nombre": "Palace Archer",
+   "npc_type": 5467,
+   "sprite": 40016,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    122,
+    147
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 110
+  },
+  {
+   "entity_id": 1025875,
+   "nombre": "Palace Archer",
+   "npc_type": 5467,
+   "sprite": 40016,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    96,
+    153
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 110
+  },
+  {
+   "entity_id": 1025876,
+   "nombre": "Palace Archer",
+   "npc_type": 5467,
+   "sprite": 40016,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    108,
+    151
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 110
+  },
+  {
+   "entity_id": 1025877,
+   "nombre": "Palace Archer",
+   "npc_type": 5467,
+   "sprite": 40016,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    106,
+    152
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 110
+  },
+  {
+   "entity_id": 1025878,
+   "nombre": "Palace Archer",
+   "npc_type": 5467,
+   "sprite": 40016,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    106,
+    163
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 110
+  },
+  {
+   "entity_id": 1025879,
+   "nombre": "Palace Archer",
+   "npc_type": 5467,
+   "sprite": 40016,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    127,
+    141
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 110
+  },
+  {
+   "entity_id": 1025880,
+   "nombre": "Palace Archer",
+   "npc_type": 5467,
+   "sprite": 40016,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    84,
+    173
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 110
+  },
+  {
+   "entity_id": 1025881,
+   "nombre": "Palace Archer",
+   "npc_type": 5467,
+   "sprite": 40016,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    114,
+    153
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 110
+  },
+  {
+   "entity_id": 1025882,
+   "nombre": "Palace Archer",
+   "npc_type": 5467,
+   "sprite": 40016,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    102,
+    158
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 110
+  },
+  {
+   "entity_id": 1025883,
+   "nombre": "Palace Archer",
+   "npc_type": 5467,
+   "sprite": 40016,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    99,
+    166
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 110
+  },
+  {
+   "entity_id": 1025884,
+   "nombre": "Palace Archer",
+   "npc_type": 5467,
+   "sprite": 40016,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    108,
+    149
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 110
+  },
+  {
+   "entity_id": 1025885,
+   "nombre": "Palace Archer",
+   "npc_type": 5467,
+   "sprite": 40016,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    59,
+    153
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 110
+  },
+  {
+   "entity_id": 1025886,
+   "nombre": "Palace Archer",
+   "npc_type": 5467,
+   "sprite": 40016,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    61,
+    162
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 110
+  },
+  {
+   "entity_id": 1025887,
+   "nombre": "Palace Archer",
+   "npc_type": 5467,
+   "sprite": 40016,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    116,
+    161
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 110
+  },
+  {
+   "entity_id": 1025888,
+   "nombre": "Palace Swordsman",
+   "npc_type": 5468,
+   "sprite": 40113,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    189,
+    108
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 112
+  },
+  {
+   "entity_id": 1025889,
+   "nombre": "Palace Swordsman",
+   "npc_type": 5468,
+   "sprite": 40113,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    182,
+    113
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 112
+  },
+  {
+   "entity_id": 1025890,
+   "nombre": "Palace Swordsman",
+   "npc_type": 5468,
+   "sprite": 40113,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    189,
+    136
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 112
+  },
+  {
+   "entity_id": 1025891,
+   "nombre": "Palace Swordsman",
+   "npc_type": 5468,
+   "sprite": 40113,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    200,
+    115
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 112
+  },
+  {
+   "entity_id": 1025892,
+   "nombre": "Palace Swordsman",
+   "npc_type": 5468,
+   "sprite": 40113,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    210,
+    116
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 112
+  },
+  {
+   "entity_id": 1025893,
+   "nombre": "Palace Swordsman",
+   "npc_type": 5468,
+   "sprite": 40113,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    193,
+    133
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 112
+  },
+  {
+   "entity_id": 1025894,
+   "nombre": "Palace Swordsman",
+   "npc_type": 5468,
+   "sprite": 40113,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    196,
+    127
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 112
+  },
+  {
+   "entity_id": 1025895,
+   "nombre": "Palace Swordsman",
+   "npc_type": 5468,
+   "sprite": 40113,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    205,
+    137
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 112
+  },
+  {
+   "entity_id": 1025896,
+   "nombre": "Palace Swordsman",
+   "npc_type": 5468,
+   "sprite": 40113,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    178,
+    131
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 112
+  },
+  {
+   "entity_id": 1025897,
+   "nombre": "Palace Swordsman",
+   "npc_type": 5468,
+   "sprite": 40113,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    185,
+    132
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 112
+  },
+  {
+   "entity_id": 1025898,
+   "nombre": "Palace Swordsman",
+   "npc_type": 5468,
+   "sprite": 40113,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    222,
+    111
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 112
+  },
+  {
+   "entity_id": 1025899,
+   "nombre": "Palace Swordsman",
+   "npc_type": 5468,
+   "sprite": 40113,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    221,
+    116
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 112
+  },
+  {
+   "entity_id": 1025900,
+   "nombre": "Palace Swordsman",
+   "npc_type": 5468,
+   "sprite": 40113,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    196,
+    139
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 112
+  },
+  {
+   "entity_id": 1025901,
+   "nombre": "Palace Swordsman",
+   "npc_type": 5468,
+   "sprite": 40113,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    244,
+    121
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 112
+  },
+  {
+   "entity_id": 1025902,
+   "nombre": "Palace Swordsman",
+   "npc_type": 5468,
+   "sprite": 40113,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    195,
+    140
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 112
+  },
+  {
+   "entity_id": 1025903,
+   "nombre": "Palace Swordsman",
+   "npc_type": 5468,
+   "sprite": 40113,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    194,
+    141
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 112
+  },
+  {
+   "entity_id": 1025904,
+   "nombre": "Palace Swordsman",
+   "npc_type": 5468,
+   "sprite": 40113,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    213,
+    148
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 112
+  },
+  {
+   "entity_id": 1025905,
+   "nombre": "Palace Swordsman",
+   "npc_type": 5468,
+   "sprite": 40113,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    193,
+    136
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 112
+  },
+  {
+   "entity_id": 1025906,
+   "nombre": "Palace Swordsman",
+   "npc_type": 5468,
+   "sprite": 40113,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    201,
+    135
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 112
+  },
+  {
+   "entity_id": 1025907,
+   "nombre": "Palace Swordsman",
+   "npc_type": 5468,
+   "sprite": 40113,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    189,
+    129
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 112
+  },
+  {
+   "entity_id": 1025908,
+   "nombre": "Palace Swordsman",
+   "npc_type": 5468,
+   "sprite": 40113,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    189,
+    134
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 112
+  },
+  {
+   "entity_id": 1025909,
+   "nombre": "Palace Swordsman",
+   "npc_type": 5468,
+   "sprite": 40113,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    174,
+    111
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 112
+  },
+  {
+   "entity_id": 1025910,
+   "nombre": "Palace Swordsman",
+   "npc_type": 5468,
+   "sprite": 40113,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    196,
+    116
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 112
+  },
+  {
+   "entity_id": 1025911,
+   "nombre": "Palace Swordsman",
+   "npc_type": 5468,
+   "sprite": 40113,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    191,
+    131
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 112
+  },
+  {
+   "entity_id": 1025912,
+   "nombre": "Palace Swordsman",
+   "npc_type": 5468,
+   "sprite": 40113,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    201,
+    124
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 112
+  },
+  {
+   "entity_id": 1025913,
+   "nombre": "Palace Axeman",
+   "npc_type": 5469,
+   "sprite": 40114,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    262,
+    156
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 113
+  },
+  {
+   "entity_id": 1025914,
+   "nombre": "Palace Axeman",
+   "npc_type": 5469,
+   "sprite": 40114,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    254,
+    155
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 113
+  },
+  {
+   "entity_id": 1025915,
+   "nombre": "Palace Axeman",
+   "npc_type": 5469,
+   "sprite": 40114,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    262,
+    157
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 113
+  },
+  {
+   "entity_id": 1025916,
+   "nombre": "Palace Axeman",
+   "npc_type": 5469,
+   "sprite": 40114,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    252,
+    137
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 113
+  },
+  {
+   "entity_id": 1025917,
+   "nombre": "Palace Axeman",
+   "npc_type": 5469,
+   "sprite": 40114,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    270,
+    159
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 113
+  },
+  {
+   "entity_id": 1025918,
+   "nombre": "Palace Axeman",
+   "npc_type": 5469,
+   "sprite": 40114,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    258,
+    135
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 113
+  },
+  {
+   "entity_id": 1025919,
+   "nombre": "Palace Axeman",
+   "npc_type": 5469,
+   "sprite": 40114,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    212,
+    127
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 113
+  },
+  {
+   "entity_id": 1025920,
+   "nombre": "Palace Axeman",
+   "npc_type": 5469,
+   "sprite": 40114,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    223,
+    140
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 113
+  },
+  {
+   "entity_id": 1025921,
+   "nombre": "Palace Axeman",
+   "npc_type": 5469,
+   "sprite": 40114,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    228,
+    156
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 113
+  },
+  {
+   "entity_id": 1025922,
+   "nombre": "Palace Axeman",
+   "npc_type": 5469,
+   "sprite": 40114,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    209,
+    129
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 113
+  },
+  {
+   "entity_id": 1025923,
+   "nombre": "Palace Axeman",
+   "npc_type": 5469,
+   "sprite": 40114,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    252,
+    127
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 113
+  },
+  {
+   "entity_id": 1025924,
+   "nombre": "Palace Axeman",
+   "npc_type": 5469,
+   "sprite": 40114,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    262,
+    145
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 113
+  },
+  {
+   "entity_id": 1025925,
+   "nombre": "Palace Axeman",
+   "npc_type": 5469,
+   "sprite": 40114,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    265,
+    118
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 113
+  },
+  {
+   "entity_id": 1025926,
+   "nombre": "Palace Axeman",
+   "npc_type": 5469,
+   "sprite": 40114,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    266,
+    150
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 113
+  },
+  {
+   "entity_id": 1025927,
+   "nombre": "Palace Axeman",
+   "npc_type": 5469,
+   "sprite": 40114,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    253,
+    134
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 113
+  },
+  {
+   "entity_id": 1025928,
+   "nombre": "Palace Axeman",
+   "npc_type": 5469,
+   "sprite": 40114,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    221,
+    152
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 113
+  },
+  {
+   "entity_id": 1025929,
+   "nombre": "Palace Axeman",
+   "npc_type": 5469,
+   "sprite": 40114,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    220,
+    156
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 113
+  },
+  {
+   "entity_id": 1025930,
+   "nombre": "Palace Axeman",
+   "npc_type": 5469,
+   "sprite": 40114,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    222,
+    152
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 113
+  },
+  {
+   "entity_id": 1025931,
+   "nombre": "Palace Axeman",
+   "npc_type": 5469,
+   "sprite": 40114,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    221,
+    145
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 113
+  },
+  {
+   "entity_id": 1025932,
+   "nombre": "Palace Axeman",
+   "npc_type": 5469,
+   "sprite": 40114,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    227,
+    150
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 113
+  },
+  {
+   "entity_id": 1025933,
+   "nombre": "Palace Axeman",
+   "npc_type": 5469,
+   "sprite": 40114,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    223,
+    139
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 113
+  },
+  {
+   "entity_id": 1025934,
+   "nombre": "Palace Axeman",
+   "npc_type": 5469,
+   "sprite": 40114,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    216,
+    124
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 113
+  },
+  {
+   "entity_id": 1025935,
+   "nombre": "Palace Axeman",
+   "npc_type": 5469,
+   "sprite": 40114,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    227,
+    128
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 113
+  },
+  {
+   "entity_id": 1025936,
+   "nombre": "Palace Axeman",
+   "npc_type": 5469,
+   "sprite": 40114,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    256,
+    128
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 113
+  },
+  {
+   "entity_id": 1025937,
+   "nombre": "Palace Axeman",
+   "npc_type": 5469,
+   "sprite": 40114,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    223,
+    140
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 113
+  },
+  {
+   "entity_id": 1025938,
+   "nombre": "Palace Sniper",
+   "npc_type": 5470,
+   "sprite": 40115,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    103,
+    96
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 114
+  },
+  {
+   "entity_id": 1025939,
+   "nombre": "Palace Sniper",
+   "npc_type": 5470,
+   "sprite": 40115,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    116,
+    98
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 114
+  },
+  {
+   "entity_id": 1025940,
+   "nombre": "Palace Sniper",
+   "npc_type": 5470,
+   "sprite": 40115,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    94,
+    92
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 114
+  },
+  {
+   "entity_id": 1025941,
+   "nombre": "Palace Sniper",
+   "npc_type": 5470,
+   "sprite": 40115,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    116,
+    90
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 114
+  },
+  {
+   "entity_id": 1025942,
+   "nombre": "Palace Sniper",
+   "npc_type": 5470,
+   "sprite": 40115,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    116,
+    99
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 114
+  },
+  {
+   "entity_id": 1025943,
+   "nombre": "Palace Sniper",
+   "npc_type": 5470,
+   "sprite": 40115,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    127,
+    109
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 114
+  },
+  {
+   "entity_id": 1025944,
+   "nombre": "Palace Sniper",
+   "npc_type": 5470,
+   "sprite": 40115,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    151,
+    91
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 114
+  },
+  {
+   "entity_id": 1025945,
+   "nombre": "Palace Sniper",
+   "npc_type": 5470,
+   "sprite": 40115,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    114,
+    100
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 114
+  },
+  {
+   "entity_id": 1025946,
+   "nombre": "Palace Sniper",
+   "npc_type": 5470,
+   "sprite": 40115,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    135,
+    96
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 114
+  },
+  {
+   "entity_id": 1025947,
+   "nombre": "Palace Sniper",
+   "npc_type": 5470,
+   "sprite": 40115,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    115,
+    97
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 114
+  },
+  {
+   "entity_id": 1025948,
+   "nombre": "Palace Sniper",
+   "npc_type": 5470,
+   "sprite": 40115,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    105,
+    97
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 114
+  },
+  {
+   "entity_id": 1025949,
+   "nombre": "Palace Sniper",
+   "npc_type": 5470,
+   "sprite": 40115,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    93,
+    93
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 114
+  },
+  {
+   "entity_id": 1025950,
+   "nombre": "Palace Sniper",
+   "npc_type": 5470,
+   "sprite": 40115,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    120,
+    105
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 114
+  },
+  {
+   "entity_id": 1025951,
+   "nombre": "Palace Sniper",
+   "npc_type": 5470,
+   "sprite": 40115,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    73,
+    92
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 114
+  },
+  {
+   "entity_id": 1025952,
+   "nombre": "Palace Sniper",
+   "npc_type": 5470,
+   "sprite": 40115,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    132,
+    101
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 114
+  },
+  {
+   "entity_id": 1025953,
+   "nombre": "Palace Sniper",
+   "npc_type": 5470,
+   "sprite": 40115,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    127,
+    103
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 114
+  },
+  {
+   "entity_id": 1025954,
+   "nombre": "Palace Sniper",
+   "npc_type": 5470,
+   "sprite": 40115,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    161,
+    87
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 114
+  },
+  {
+   "entity_id": 1025955,
+   "nombre": "Palace Sniper",
+   "npc_type": 5470,
+   "sprite": 40115,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    110,
+    93
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 114
+  },
+  {
+   "entity_id": 1025956,
+   "nombre": "Palace Sniper",
+   "npc_type": 5470,
+   "sprite": 40115,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    148,
+    97
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 114
+  },
+  {
+   "entity_id": 1025957,
+   "nombre": "Palace Sniper",
+   "npc_type": 5470,
+   "sprite": 40115,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    122,
+    94
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 114
+  },
+  {
+   "entity_id": 1025958,
+   "nombre": "Palace Rifleman",
+   "npc_type": 5471,
+   "sprite": 40116,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    185,
+    75
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 116
+  },
+  {
+   "entity_id": 1025959,
+   "nombre": "Palace Rifleman",
+   "npc_type": 5471,
+   "sprite": 40116,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    151,
+    50
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 116
+  },
+  {
+   "entity_id": 1025960,
+   "nombre": "Palace Rifleman",
+   "npc_type": 5471,
+   "sprite": 40116,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    170,
+    60
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 116
+  },
+  {
+   "entity_id": 1025961,
+   "nombre": "Palace Rifleman",
+   "npc_type": 5471,
+   "sprite": 40116,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    187,
+    69
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 116
+  },
+  {
+   "entity_id": 1025962,
+   "nombre": "Palace Rifleman",
+   "npc_type": 5471,
+   "sprite": 40116,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    168,
+    61
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 116
+  },
+  {
+   "entity_id": 1025963,
+   "nombre": "Palace Rifleman",
+   "npc_type": 5471,
+   "sprite": 40116,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    192,
+    79
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 116
+  },
+  {
+   "entity_id": 1025964,
+   "nombre": "Palace Rifleman",
+   "npc_type": 5471,
+   "sprite": 40116,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    179,
+    88
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 116
+  },
+  {
+   "entity_id": 1025965,
+   "nombre": "Palace Rifleman",
+   "npc_type": 5471,
+   "sprite": 40116,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    173,
+    56
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 116
+  },
+  {
+   "entity_id": 1025966,
+   "nombre": "Palace Rifleman",
+   "npc_type": 5471,
+   "sprite": 40116,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    179,
+    66
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 116
+  },
+  {
+   "entity_id": 1025967,
+   "nombre": "Palace Rifleman",
+   "npc_type": 5471,
+   "sprite": 40116,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    171,
+    79
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 116
+  },
+  {
+   "entity_id": 1025968,
+   "nombre": "Palace Rifleman",
+   "npc_type": 5471,
+   "sprite": 40116,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    189,
+    72
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 116
+  },
+  {
+   "entity_id": 1025969,
+   "nombre": "Palace Rifleman",
+   "npc_type": 5471,
+   "sprite": 40116,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    169,
+    61
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 116
+  },
+  {
+   "entity_id": 1025970,
+   "nombre": "Palace Rifleman",
+   "npc_type": 5471,
+   "sprite": 40116,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    158,
+    57
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 116
+  },
+  {
+   "entity_id": 1025971,
+   "nombre": "Palace Rifleman",
+   "npc_type": 5471,
+   "sprite": 40116,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    175,
+    85
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 116
+  },
+  {
+   "entity_id": 1025972,
+   "nombre": "Palace Rifleman",
+   "npc_type": 5471,
+   "sprite": 40116,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    162,
+    59
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 116
+  },
+  {
+   "entity_id": 1025973,
+   "nombre": "Palace Rifleman",
+   "npc_type": 5471,
+   "sprite": 40116,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    170,
+    84
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 116
+  },
+  {
+   "entity_id": 1025974,
+   "nombre": "Palace Rifleman",
+   "npc_type": 5471,
+   "sprite": 40116,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    190,
+    79
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 116
+  },
+  {
+   "entity_id": 1025975,
+   "nombre": "Palace Rifleman",
+   "npc_type": 5471,
+   "sprite": 40116,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    171,
+    74
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 116
+  },
+  {
+   "entity_id": 1025976,
+   "nombre": "Palace Rifleman",
+   "npc_type": 5471,
+   "sprite": 40116,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    172,
+    60
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 116
+  },
+  {
+   "entity_id": 1025977,
+   "nombre": "Palace Rifleman",
+   "npc_type": 5471,
+   "sprite": 40116,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    166,
+    62
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 116
+  },
+  {
+   "entity_id": 1025978,
+   "nombre": "Skeleton Warrior",
+   "npc_type": 5472,
+   "sprite": 42672,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    145,
+    95
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 117
+  },
+  {
+   "entity_id": 1025979,
+   "nombre": "Skeleton Warrior",
+   "npc_type": 5472,
+   "sprite": 42672,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    165,
+    97
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 117
+  },
+  {
+   "entity_id": 1025980,
+   "nombre": "Skeleton Warrior",
+   "npc_type": 5472,
+   "sprite": 42672,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    145,
+    92
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 117
+  },
+  {
+   "entity_id": 1025981,
+   "nombre": "Skeleton Warrior",
+   "npc_type": 5472,
+   "sprite": 42672,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    137,
+    98
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 117
+  },
+  {
+   "entity_id": 1025982,
+   "nombre": "Skeleton Warrior",
+   "npc_type": 5472,
+   "sprite": 42672,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    159,
+    87
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 117
+  },
+  {
+   "entity_id": 1025983,
+   "nombre": "Skeleton Warrior",
+   "npc_type": 5472,
+   "sprite": 42672,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    173,
+    88
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 117
+  },
+  {
+   "entity_id": 1025984,
+   "nombre": "Skeleton Warrior",
+   "npc_type": 5472,
+   "sprite": 42672,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    159,
+    82
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 117
+  },
+  {
+   "entity_id": 1025985,
+   "nombre": "Skeleton Warrior",
+   "npc_type": 5472,
+   "sprite": 42672,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    180,
+    85
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 117
+  },
+  {
+   "entity_id": 1025986,
+   "nombre": "Skeleton Warrior",
+   "npc_type": 5472,
+   "sprite": 42672,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    170,
+    86
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 117
+  },
+  {
+   "entity_id": 1025987,
+   "nombre": "Skeleton Warrior",
+   "npc_type": 5472,
+   "sprite": 42672,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    150,
+    79
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 117
+  },
+  {
+   "entity_id": 1025988,
+   "nombre": "Skeleton Warrior",
+   "npc_type": 5472,
+   "sprite": 42672,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    179,
+    78
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 117
+  },
+  {
+   "entity_id": 1025989,
+   "nombre": "Skeleton Warrior",
+   "npc_type": 5472,
+   "sprite": 42672,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    174,
+    73
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 117
+  },
+  {
+   "entity_id": 1025990,
+   "nombre": "Skeleton Warrior",
+   "npc_type": 5472,
+   "sprite": 42672,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    181,
+    69
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 117
+  },
+  {
+   "entity_id": 1025991,
+   "nombre": "Skeleton Warrior",
+   "npc_type": 5472,
+   "sprite": 42672,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    192,
+    71
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 117
+  },
+  {
+   "entity_id": 1025992,
+   "nombre": "Skeleton Warrior",
+   "npc_type": 5472,
+   "sprite": 42672,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    181,
+    80
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 117
+  },
+  {
+   "entity_id": 1025993,
+   "nombre": "Skeleton Warrior",
+   "npc_type": 5472,
+   "sprite": 42672,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    152,
+    81
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 117
+  },
+  {
+   "entity_id": 1025994,
+   "nombre": "Skeleton Warrior",
+   "npc_type": 5472,
+   "sprite": 42672,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    172,
+    77
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 117
+  },
+  {
+   "entity_id": 1025995,
+   "nombre": "Skeleton Warrior",
+   "npc_type": 5472,
+   "sprite": 42672,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    177,
+    73
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 117
+  },
+  {
+   "entity_id": 1025996,
+   "nombre": "Skeleton Warrior",
+   "npc_type": 5472,
+   "sprite": 42672,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    161,
+    95
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 117
+  },
+  {
+   "entity_id": 1025997,
+   "nombre": "Skeleton Warrior",
+   "npc_type": 5472,
+   "sprite": 42672,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    164,
+    78
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 117
+  },
+  {
+   "entity_id": 1025998,
+   "nombre": "White Flower Pix",
+   "npc_type": 5473,
+   "sprite": 44078,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    50,
+    17
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 118
+  },
+  {
+   "entity_id": 1025999,
+   "nombre": "White Flower Pix",
+   "npc_type": 5473,
+   "sprite": 44078,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    74,
+    50
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 118
+  },
+  {
+   "entity_id": 1026000,
+   "nombre": "White Flower Pix",
+   "npc_type": 5473,
+   "sprite": 44078,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    67,
+    26
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 118
+  },
+  {
+   "entity_id": 1026001,
+   "nombre": "White Flower Pix",
+   "npc_type": 5473,
+   "sprite": 44078,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    44,
+    26
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 118
+  },
+  {
+   "entity_id": 1026002,
+   "nombre": "White Flower Pix",
+   "npc_type": 5473,
+   "sprite": 44078,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    61,
+    34
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 118
+  },
+  {
+   "entity_id": 1026003,
+   "nombre": "White Flower Pix",
+   "npc_type": 5473,
+   "sprite": 44078,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    48,
+    48
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 118
+  },
+  {
+   "entity_id": 1026004,
+   "nombre": "White Flower Pix",
+   "npc_type": 5473,
+   "sprite": 44078,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    60,
+    43
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 118
+  },
+  {
+   "entity_id": 1026005,
+   "nombre": "White Flower Pix",
+   "npc_type": 5473,
+   "sprite": 44078,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    69,
+    32
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 118
+  },
+  {
+   "entity_id": 1026006,
+   "nombre": "White Flower Pix",
+   "npc_type": 5473,
+   "sprite": 44078,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    25,
+    54
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 118
+  },
+  {
+   "entity_id": 1026007,
+   "nombre": "White Flower Pix",
+   "npc_type": 5473,
+   "sprite": 44078,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    40,
+    60
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 118
+  },
+  {
+   "entity_id": 1026008,
+   "nombre": "White Flower Pix",
+   "npc_type": 5473,
+   "sprite": 44078,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    84,
+    23
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 118
+  },
+  {
+   "entity_id": 1026009,
+   "nombre": "White Flower Pix",
+   "npc_type": 5473,
+   "sprite": 44078,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    73,
+    39
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 118
+  },
+  {
+   "entity_id": 1026010,
+   "nombre": "White Flower Pix",
+   "npc_type": 5473,
+   "sprite": 44078,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    85,
+    37
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 118
+  },
+  {
+   "entity_id": 1026011,
+   "nombre": "White Flower Pix",
+   "npc_type": 5473,
+   "sprite": 44078,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    68,
+    38
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 118
+  },
+  {
+   "entity_id": 1026012,
+   "nombre": "White Flower Pix",
+   "npc_type": 5473,
+   "sprite": 44078,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    101,
+    34
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 118
+  },
+  {
+   "entity_id": 1026013,
+   "nombre": "Red Flower Pixie",
+   "npc_type": 5474,
+   "sprite": 44098,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    52,
+    57
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 118
+  },
+  {
+   "entity_id": 1026014,
+   "nombre": "Red Flower Pixie",
+   "npc_type": 5474,
+   "sprite": 44098,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    36,
+    81
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 118
+  },
+  {
+   "entity_id": 1026015,
+   "nombre": "Red Flower Pixie",
+   "npc_type": 5474,
+   "sprite": 44098,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    44,
+    75
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 118
+  },
+  {
+   "entity_id": 1026016,
+   "nombre": "Red Flower Pixie",
+   "npc_type": 5474,
+   "sprite": 44098,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    35,
+    68
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 118
+  },
+  {
+   "entity_id": 1026017,
+   "nombre": "Red Flower Pixie",
+   "npc_type": 5474,
+   "sprite": 44098,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    41,
+    68
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 118
+  },
+  {
+   "entity_id": 1026018,
+   "nombre": "Red Flower Pixie",
+   "npc_type": 5474,
+   "sprite": 44098,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    11,
+    58
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 118
+  },
+  {
+   "entity_id": 1026019,
+   "nombre": "Red Flower Pixie",
+   "npc_type": 5474,
+   "sprite": 44098,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    50,
+    71
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 118
+  },
+  {
+   "entity_id": 1026020,
+   "nombre": "Red Flower Pixie",
+   "npc_type": 5474,
+   "sprite": 44098,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    22,
+    65
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 118
+  },
+  {
+   "entity_id": 1026021,
+   "nombre": "Red Flower Pixie",
+   "npc_type": 5474,
+   "sprite": 44098,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    35,
+    75
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 118
+  },
+  {
+   "entity_id": 1026022,
+   "nombre": "Red Flower Pixie",
+   "npc_type": 5474,
+   "sprite": 44098,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    38,
+    58
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 118
+  },
+  {
+   "entity_id": 1026023,
+   "nombre": "Red Flower Pixie",
+   "npc_type": 5474,
+   "sprite": 44098,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    48,
+    83
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 118
+  },
+  {
+   "entity_id": 1026024,
+   "nombre": "Red Flower Pixie",
+   "npc_type": 5474,
+   "sprite": 44098,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    46,
+    51
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 118
+  },
+  {
+   "entity_id": 1026025,
+   "nombre": "Red Flower Pixie",
+   "npc_type": 5474,
+   "sprite": 44098,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    43,
+    73
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 118
+  },
+  {
+   "entity_id": 1026026,
+   "nombre": "Red Flower Pixie",
+   "npc_type": 5474,
+   "sprite": 44098,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    46,
+    74
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 118
+  },
+  {
+   "entity_id": 1026027,
+   "nombre": "Red Flower Pixie",
+   "npc_type": 5474,
+   "sprite": 44098,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    33,
+    49
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 118
+  },
+  {
+   "entity_id": 1026028,
+   "nombre": "Pixie Emily",
+   "npc_type": 5475,
+   "sprite": 44088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    123,
+    38
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 119
+  },
+  {
+   "entity_id": 1026029,
+   "nombre": "Pixie Emily",
+   "npc_type": 5475,
+   "sprite": 44088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    130,
+    44
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 119
+  },
+  {
+   "entity_id": 1026030,
+   "nombre": "Pixie Emily",
+   "npc_type": 5475,
+   "sprite": 44088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    135,
+    36
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 119
+  },
+  {
+   "entity_id": 1026031,
+   "nombre": "Pixie Emily",
+   "npc_type": 5475,
+   "sprite": 44088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    109,
+    38
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 119
+  },
+  {
+   "entity_id": 1026032,
+   "nombre": "Pixie Emily",
+   "npc_type": 5475,
+   "sprite": 44088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    139,
+    19
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 119
+  },
+  {
+   "entity_id": 1026033,
+   "nombre": "Pixie Emily",
+   "npc_type": 5475,
+   "sprite": 44088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    108,
+    25
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 119
+  },
+  {
+   "entity_id": 1026034,
+   "nombre": "Pixie Emily",
+   "npc_type": 5475,
+   "sprite": 44088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    104,
+    20
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 119
+  },
+  {
+   "entity_id": 1026035,
+   "nombre": "Pixie Emily",
+   "npc_type": 5475,
+   "sprite": 44088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    89,
+    31
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 119
+  },
+  {
+   "entity_id": 1026036,
+   "nombre": "Pixie Emily",
+   "npc_type": 5475,
+   "sprite": 44088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    109,
+    39
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 119
+  },
+  {
+   "entity_id": 1026037,
+   "nombre": "Pixie Emily",
+   "npc_type": 5475,
+   "sprite": 44088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    114,
+    37
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 119
+  },
+  {
+   "entity_id": 1026038,
+   "nombre": "Pixie Emily",
+   "npc_type": 5475,
+   "sprite": 44088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    121,
+    21
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 119
+  },
+  {
+   "entity_id": 1026039,
+   "nombre": "Pixie Emily",
+   "npc_type": 5475,
+   "sprite": 44088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    122,
+    45
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 119
+  },
+  {
+   "entity_id": 1026040,
+   "nombre": "Pixie Emily",
+   "npc_type": 5475,
+   "sprite": 44088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    78,
+    36
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 119
+  },
+  {
+   "entity_id": 1026041,
+   "nombre": "Pixie Emily",
+   "npc_type": 5475,
+   "sprite": 44088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    90,
+    41
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 119
+  },
+  {
+   "entity_id": 1026042,
+   "nombre": "Pixie Emily",
+   "npc_type": 5475,
+   "sprite": 44088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    103,
+    38
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 119
+  },
+  {
+   "entity_id": 1026043,
+   "nombre": "Fierce Knight Wi",
+   "npc_type": 5476,
+   "sprite": 40013,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    82,
+    172
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 114
+  },
+  {
+   "entity_id": 1026044,
+   "nombre": "Sacrificial Lind",
+   "npc_type": 5477,
+   "sprite": 42319,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    80,
+    38
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 119
+  },
+  {
+   "entity_id": 1026045,
+   "nombre": "Silver Lord Neli",
+   "npc_type": 5478,
+   "sprite": 42414,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    196,
+    106
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 124
+  },
+  {
+   "entity_id": 1071213,
+   "nombre": "Death's Head 1",
+   "npc_type": 210,
+   "sprite": 42142,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    152,
+    72
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 1
+  }
+ ],
+ "recursos": [
+  {
+   "entity_id": 112664,
+   "capa": 0,
+   "px": [
+    7449,
+    3384
+   ],
+   "medio": "000000ba156f77650000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60054,
+   "cola": "00002280140000",
+   "que_es": "Breeze Totem"
+  },
+  {
+   "entity_id": 112665,
+   "capa": 0,
+   "px": [
+    7130,
+    5171
+   ],
+   "medio": "00000000180000000000000000000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60052,
+   "cola": "00002280140000",
+   "que_es": "Dark City Totem"
+  },
+  {
+   "entity_id": 112666,
+   "capa": 0,
+   "px": [
+    9061,
+    4187
+   ],
+   "medio": "006f70706572284d2900000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60053,
+   "cola": "00002280140000",
+   "que_es": "Iron Totem"
+  },
+  {
+   "entity_id": 112667,
+   "capa": 0,
+   "px": [
+    5509,
+    4387
+   ],
+   "medio": "006f70706572284d2900000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60051,
+   "cola": "00002280140000",
+   "que_es": "Aurora Totem"
+  },
+  {
+   "entity_id": 112668,
+   "capa": 0,
+   "px": [
+    9168,
+    5401
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60417,
+   "cola": "00004080140000",
+   "nota": "EL TRONO del fondo de Sunshine Palace (285,167 en el minimapa; el objeto esta en (286,168), sprite 60417). NO es un tornado: el unico tornado del mapa es el 112669 en (12,5), que vuelve a Flower Corridor.\nEs el paso final de la quest elite de nivel 119 y lleva a otro mapa que todavia no esta capturado. Sin la quest el cliente contesta: \"It seems that it has been sealed by some unknown magic. Nobody can get close to it.\"\nCOMO SE ABRE (lo conto el usuario, que lo tiene hecho en otra cuenta): hace falta la quest ACTIVA solo la PRIMERA vez. Una vez hecha, el trono queda abierto para siempre y se puede entrar y salir sin la quest. O sea que no es una puerta que mire la quest cada vez, sino un permiso que se gana una vez y se guarda en el personaje."
+  },
+  {
+   "entity_id": 112669,
+   "capa": 0,
+   "px": [
+    399,
+    186
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 112670,
+   "capa": 0,
+   "px": [
+    5646,
+    415
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60346,
+   "cola": "00000000000000",
+   "nombre_visible": "Chromite(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material": "Chromite(S)"
+  },
+  {
+   "entity_id": 112671,
+   "capa": 2,
+   "px": [
+    5538,
+    529
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60346,
+   "cola": "00000000000000",
+   "nombre_visible": "Chromite(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002",
+   "material": "Chromite(S)"
+  },
+  {
+   "entity_id": 112672,
+   "capa": 0,
+   "px": [
+    6730,
+    2386
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60346,
+   "cola": "00000000000000",
+   "nombre_visible": "Chromite(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material": "Chromite(S)"
+  },
+  {
+   "entity_id": 112673,
+   "capa": 2,
+   "px": [
+    7030,
+    2184
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60346,
+   "cola": "00000000000000",
+   "nombre_visible": "Chromite(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002",
+   "material": "Chromite(S)"
+  },
+  {
+   "entity_id": 112674,
+   "capa": 0,
+   "px": [
+    5613,
+    478
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60345,
+   "cola": "00000000000000",
+   "nombre_visible": "Chromite(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material": "Chromite(M)"
+  },
+  {
+   "entity_id": 112675,
+   "capa": 2,
+   "px": [
+    6108,
+    340
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60345,
+   "cola": "00000000000000",
+   "nombre_visible": "Chromite(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002",
+   "material": "Chromite(M)"
+  },
+  {
+   "entity_id": 112676,
+   "capa": 0,
+   "px": [
+    6984,
+    2297
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60345,
+   "cola": "00000000000000",
+   "nombre_visible": "Chromite(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material": "Chromite(M)"
+  },
+  {
+   "entity_id": 112677,
+   "capa": 2,
+   "px": [
+    6618,
+    2481
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60345,
+   "cola": "00000000000000",
+   "nombre_visible": "Chromite(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002",
+   "material": "Chromite(M)"
+  },
+  {
+   "entity_id": 112678,
+   "capa": 0,
+   "px": [
+    5803,
+    337
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60344,
+   "cola": "00000000000000",
+   "nombre_visible": "Chromite(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material_posibles": [
+    "Chromite",
+    "Chromite(L)",
+    "Wrought Iron Mine(L)"
+   ]
+  },
+  {
+   "entity_id": 112679,
+   "capa": 2,
+   "px": [
+    7258,
+    2095
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60344,
+   "cola": "00000000000000",
+   "nombre_visible": "Chromite(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002",
+   "material_posibles": [
+    "Chromite",
+    "Chromite(L)",
+    "Wrought Iron Mine(L)"
+   ]
+  },
+  {
+   "entity_id": 112680,
+   "capa": 0,
+   "px": [
+    6864,
+    2272
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60344,
+   "cola": "00000000000000",
+   "nombre_visible": "Chromite(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material_posibles": [
+    "Chromite",
+    "Chromite(L)",
+    "Wrought Iron Mine(L)"
+   ]
+  },
+  {
+   "entity_id": 112681,
+   "capa": 2,
+   "px": [
+    6513,
+    2505
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60344,
+   "cola": "00000000000000",
+   "nombre_visible": "Chromite(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002",
+   "material_posibles": [
+    "Chromite",
+    "Chromite(L)",
+    "Wrought Iron Mine(L)"
+   ]
+  },
+  {
+   "entity_id": 112682,
+   "capa": 2,
+   "px": [
+    7804,
+    1817
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60352,
+   "cola": "00000000000000",
+   "nombre_visible": "Lord Coco(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001",
+   "material": "Lord Coco(S)"
+  },
+  {
+   "entity_id": 112683,
+   "capa": 0,
+   "px": [
+    8229,
+    1645
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60352,
+   "cola": "00000000000000",
+   "nombre_visible": "Lord Coco(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material": "Lord Coco(S)"
+  },
+  {
+   "entity_id": 112684,
+   "capa": 0,
+   "px": [
+    2936,
+    3330
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60352,
+   "cola": "00000000000000",
+   "nombre_visible": "Lord Coco(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material": "Lord Coco(S)"
+  },
+  {
+   "entity_id": 112685,
+   "capa": 0,
+   "px": [
+    8093,
+    1657
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60352,
+   "cola": "00000000000000",
+   "nombre_visible": "Lord Coco(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material": "Lord Coco(S)"
+  },
+  {
+   "entity_id": 112686,
+   "capa": 0,
+   "px": [
+    7940,
+    1785
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60351,
+   "cola": "00000000000000",
+   "nombre_visible": "Lord Coco(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material": "Lord Coco(M)"
+  },
+  {
+   "entity_id": 112687,
+   "capa": 2,
+   "px": [
+    8275,
+    1571
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60351,
+   "cola": "00000000000000",
+   "nombre_visible": "Lord Coco(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001",
+   "material": "Lord Coco(M)"
+  },
+  {
+   "entity_id": 112688,
+   "capa": 0,
+   "px": [
+    2458,
+    3588
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60351,
+   "cola": "00000000000000",
+   "nombre_visible": "Lord Coco(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material": "Lord Coco(M)"
+  },
+  {
+   "entity_id": 112689,
+   "capa": 2,
+   "px": [
+    2789,
+    3363
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60351,
+   "cola": "00000000000000",
+   "nombre_visible": "Lord Coco(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001",
+   "material": "Lord Coco(M)"
+  },
+  {
+   "entity_id": 112690,
+   "capa": 0,
+   "px": [
+    8343,
+    1572
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60350,
+   "cola": "00000000000000",
+   "nombre_visible": "Lord Coco(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material_posibles": [
+    "Coconut(L)",
+    "Lord Coco",
+    "Lord Coco(L)"
+   ]
+  },
+  {
+   "entity_id": 112691,
+   "capa": 0,
+   "px": [
+    8067,
+    1712
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60350,
+   "cola": "00000000000000",
+   "nombre_visible": "Lord Coco(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material_posibles": [
+    "Coconut(L)",
+    "Lord Coco",
+    "Lord Coco(L)"
+   ]
+  },
+  {
+   "entity_id": 112692,
+   "capa": 2,
+   "px": [
+    8216,
+    1405
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60350,
+   "cola": "00000000000000",
+   "nombre_visible": "Lord Coco(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001",
+   "material_posibles": [
+    "Coconut(L)",
+    "Lord Coco",
+    "Lord Coco(L)"
+   ]
+  },
+  {
+   "entity_id": 112693,
+   "capa": 0,
+   "px": [
+    2535,
+    3477
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60350,
+   "cola": "00000000000000",
+   "nombre_visible": "Lord Coco(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material_posibles": [
+    "Coconut(L)",
+    "Lord Coco",
+    "Lord Coco(L)"
+   ]
+  },
+  {
+   "entity_id": 112694,
+   "capa": 2,
+   "px": [
+    6101,
+    563
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60358,
+   "cola": "00000000000000",
+   "nombre_visible": "Hoof Den(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Hoof Den(S)",
+    "Trottle Den(S)"
+   ]
+  },
+  {
+   "entity_id": 112695,
+   "capa": 2,
+   "px": [
+    8518,
+    2750
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60358,
+   "cola": "00000000000000",
+   "nombre_visible": "Hoof Den(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Hoof Den(S)",
+    "Trottle Den(S)"
+   ]
+  },
+  {
+   "entity_id": 112696,
+   "capa": 0,
+   "px": [
+    9061,
+    2804
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60358,
+   "cola": "00000000000000",
+   "nombre_visible": "Hoof Den(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Hoof Den(S)",
+    "Trottle Den(S)"
+   ]
+  },
+  {
+   "entity_id": 112697,
+   "capa": 0,
+   "px": [
+    8148,
+    2649
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60358,
+   "cola": "00000000000000",
+   "nombre_visible": "Hoof Den(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Hoof Den(S)",
+    "Trottle Den(S)"
+   ]
+  },
+  {
+   "entity_id": 112698,
+   "capa": 0,
+   "px": [
+    5993,
+    670
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60357,
+   "cola": "00000000000000",
+   "nombre_visible": "Hoof Den(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material": "Hoof Den(M)"
+  },
+  {
+   "entity_id": 112699,
+   "capa": 0,
+   "px": [
+    6404,
+    440
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60357,
+   "cola": "00000000000000",
+   "nombre_visible": "Hoof Den(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material": "Hoof Den(M)"
+  },
+  {
+   "entity_id": 112700,
+   "capa": 2,
+   "px": [
+    8748,
+    2782
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60357,
+   "cola": "00000000000000",
+   "nombre_visible": "Hoof Den(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material": "Hoof Den(M)"
+  },
+  {
+   "entity_id": 112701,
+   "capa": 0,
+   "px": [
+    8552,
+    2449
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60357,
+   "cola": "00000000000000",
+   "nombre_visible": "Hoof Den(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material": "Hoof Den(M)"
+  },
+  {
+   "entity_id": 112702,
+   "capa": 0,
+   "px": [
+    6210,
+    569
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60356,
+   "cola": "00000000000000",
+   "nombre_visible": "Hoof Den(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Hoof Den",
+    "Hoof Den(L)"
+   ]
+  },
+  {
+   "entity_id": 112703,
+   "capa": 2,
+   "px": [
+    8839,
+    2878
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60356,
+   "cola": "00000000000000",
+   "nombre_visible": "Hoof Den(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Hoof Den",
+    "Hoof Den(L)"
+   ]
+  },
+  {
+   "entity_id": 112704,
+   "capa": 2,
+   "px": [
+    7942,
+    2546
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60356,
+   "cola": "00000000000000",
+   "nombre_visible": "Hoof Den(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Hoof Den",
+    "Hoof Den(L)"
+   ]
+  },
+  {
+   "entity_id": 112705,
+   "capa": 0,
+   "px": [
+    9135,
+    2931
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60356,
+   "cola": "00000000000000",
+   "nombre_visible": "Hoof Den(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Hoof Den",
+    "Hoof Den(L)"
+   ]
+  },
+  {
+   "entity_id": 112706,
+   "capa": 0,
+   "px": [
+    4890,
+    1192
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60364,
+   "cola": "00000000000000",
+   "nombre_visible": "Fly Bush(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material": "Fly Bush(S)"
+  },
+  {
+   "entity_id": 112707,
+   "capa": 2,
+   "px": [
+    5297,
+    1031
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60364,
+   "cola": "00000000000000",
+   "nombre_visible": "Fly Bush(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material": "Fly Bush(S)"
+  },
+  {
+   "entity_id": 112708,
+   "capa": 0,
+   "px": [
+    2205,
+    3202
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60364,
+   "cola": "00000000000000",
+   "nombre_visible": "Fly Bush(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material": "Fly Bush(S)"
+  },
+  {
+   "entity_id": 112709,
+   "capa": 0,
+   "px": [
+    5720,
+    843
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60364,
+   "cola": "00000000000000",
+   "nombre_visible": "Fly Bush(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material": "Fly Bush(S)"
+  },
+  {
+   "entity_id": 112710,
+   "capa": 0,
+   "px": [
+    5027,
+    1125
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60362,
+   "cola": "00000000000000",
+   "nombre_visible": "Fly Bush(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Fly Bush",
+    "Fly Bush(L)",
+    "Venus Flytrap(L)"
+   ]
+  },
+  {
+   "entity_id": 112711,
+   "capa": 2,
+   "px": [
+    5418,
+    911
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60362,
+   "cola": "00000000000000",
+   "nombre_visible": "Fly Bush(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Fly Bush",
+    "Fly Bush(L)",
+    "Venus Flytrap(L)"
+   ]
+  },
+  {
+   "entity_id": 112712,
+   "capa": 0,
+   "px": [
+    2053,
+    3356
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60362,
+   "cola": "00000000000000",
+   "nombre_visible": "Fly Bush(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Fly Bush",
+    "Fly Bush(L)",
+    "Venus Flytrap(L)"
+   ]
+  },
+  {
+   "entity_id": 112713,
+   "capa": 0,
+   "px": [
+    5814,
+    728
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60362,
+   "cola": "00000000000000",
+   "nombre_visible": "Fly Bush(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Fly Bush",
+    "Fly Bush(L)",
+    "Venus Flytrap(L)"
+   ]
+  },
+  {
+   "entity_id": 112714,
+   "capa": 2,
+   "px": [
+    5127,
+    1049
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60362,
+   "cola": "00000000000000",
+   "nombre_visible": "Fly Bush(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Fly Bush",
+    "Fly Bush(L)",
+    "Venus Flytrap(L)"
+   ]
+  },
+  {
+   "entity_id": 112715,
+   "capa": 0,
+   "px": [
+    5574,
+    849
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60362,
+   "cola": "00000000000000",
+   "nombre_visible": "Fly Bush(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Fly Bush",
+    "Fly Bush(L)",
+    "Venus Flytrap(L)"
+   ]
+  },
+  {
+   "entity_id": 112716,
+   "capa": 0,
+   "px": [
+    1786,
+    3502
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60362,
+   "cola": "00000000000000",
+   "nombre_visible": "Fly Bush(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Fly Bush",
+    "Fly Bush(L)",
+    "Venus Flytrap(L)"
+   ]
+  },
+  {
+   "entity_id": 112717,
+   "capa": 2,
+   "px": [
+    2175,
+    3254
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60362,
+   "cola": "00000000000000",
+   "nombre_visible": "Fly Bush(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Fly Bush",
+    "Fly Bush(L)",
+    "Venus Flytrap(L)"
+   ]
+  },
+  {
+   "entity_id": 112718,
+   "capa": 0,
+   "px": [
+    6223,
+    1703
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60366,
+   "cola": "00000000000000",
+   "nombre_visible": "Pirana Fish(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004",
+   "material_posibles": [
+    "Pirana Fish",
+    "Pirana Fish(L)",
+    "Pirana Fish(M)",
+    "Pirana Fish(S)",
+    "Piranhas(S)"
+   ]
+  },
+  {
+   "entity_id": 112719,
+   "capa": 2,
+   "px": [
+    6023,
+    1780
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60366,
+   "cola": "00000000000000",
+   "nombre_visible": "Pirana Fish(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000004",
+   "material_posibles": [
+    "Pirana Fish",
+    "Pirana Fish(L)",
+    "Pirana Fish(M)",
+    "Pirana Fish(S)",
+    "Piranhas(S)"
+   ]
+  },
+  {
+   "entity_id": 112720,
+   "capa": 2,
+   "px": [
+    6720,
+    1247
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60366,
+   "cola": "00000000000000",
+   "nombre_visible": "Pirana Fish(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000004",
+   "material_posibles": [
+    "Pirana Fish",
+    "Pirana Fish(L)",
+    "Pirana Fish(M)",
+    "Pirana Fish(S)",
+    "Piranhas(S)"
+   ]
+  },
+  {
+   "entity_id": 112721,
+   "capa": 2,
+   "px": [
+    7615,
+    860
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60366,
+   "cola": "00000000000000",
+   "nombre_visible": "Pirana Fish(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000004",
+   "material_posibles": [
+    "Pirana Fish",
+    "Pirana Fish(L)",
+    "Pirana Fish(M)",
+    "Pirana Fish(S)",
+    "Piranhas(S)"
+   ]
+  },
+  {
+   "entity_id": 112722,
+   "capa": 0,
+   "px": [
+    5841,
+    1625
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60077,
+   "cola": "00000000000000",
+   "nombre_visible": "Pirana Fish(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004",
+   "material_posibles": [
+    "Crystal Alga(S)",
+    "CrystalAlga(S)"
+   ]
+  },
+  {
+   "entity_id": 112723,
+   "capa": 0,
+   "px": [
+    6316,
+    1332
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60190,
+   "cola": "00000000000000",
+   "nombre_visible": "Pirana Fish(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 112724,
+   "capa": 0,
+   "px": [
+    6899,
+    1292
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60189,
+   "cola": "00000000000000",
+   "nombre_visible": "Pirana Fish(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 112725,
+   "capa": 0,
+   "px": [
+    7374,
+    809
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60076,
+   "cola": "00000000000000",
+   "nombre_visible": "Pirana Fish(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 112726,
+   "capa": 0,
+   "px": [
+    5983,
+    1609
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60189,
+   "cola": "00000000000000",
+   "nombre_visible": "Pirana Fish(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 112727,
+   "capa": 0,
+   "px": [
+    6123,
+    1353
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60076,
+   "cola": "00000000000000",
+   "nombre_visible": "Pirana Fish(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 112728,
+   "capa": 0,
+   "px": [
+    6818,
+    1149
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60077,
+   "cola": "00000000000000",
+   "nombre_visible": "Pirana Fish(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004",
+   "material_posibles": [
+    "Crystal Alga(S)",
+    "CrystalAlga(S)"
+   ]
+  },
+  {
+   "entity_id": 112729,
+   "capa": 0,
+   "px": [
+    7803,
+    792
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60190,
+   "cola": "00000000000000",
+   "nombre_visible": "Pirana Fish(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  }
+ ]
+}

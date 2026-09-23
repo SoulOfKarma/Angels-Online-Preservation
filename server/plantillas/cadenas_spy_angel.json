@@ -1,0 +1,93 @@
+{
+ "_nota": "Las cuatro cadenas del Spy Angel, una por faccion. NO hace falta capturarlas para saber a donde van: salen de quest.xml del propio cliente. Cada Angel de ciudad manda a un mapa distinto a hablar con SU Spy Angel, y de ahi la cadena sigue con matar bichos, un Badge y buscar a Asmode. Los cuatro Spy Angel comparten el sprite 40112 pero tienen npc_type distinto (1863, 1866, 1867, 1868); el de Cryptic Moon Swamp que capturamos vino con npc_type 112, asi que ese dato hay que mirarlo en la captura de cada mapa y no deducirlo. LAS CUATRO CADENAS TIENEN YA SU MAPA CAPTURADO (23/09/2026). Los npc_type reales de los cuatro Spy Angel son los que estan aqui, sacados de cada captura: npc.xml daba 1863, 1866, 1867 y 1868 como candidatos pero no decia cual era cual.",
+ "cadenas": [
+  {
+   "faccion": "Aurora",
+   "ciudad": "Aurora City",
+   "stage_ciudad": 3,
+   "quest_inicial": 256,
+   "quests": [
+    256,
+    257,
+    258,
+    259,
+    260,
+    262
+   ],
+   "mapa_spy": "Dawn Harbor",
+   "stage_spy": 4,
+   "plantilla": "dawn_harbor.json",
+   "spy_npc_type": 1863,
+   "spy_tile": [
+    71,
+    178
+   ],
+   "spy_entity": 121690,
+   "matar": "Grey Mouse",
+   "badge": "Secret Badge",
+   "asmode_en": "Riprap Coast",
+   "stage_asmode": 2
+  },
+  {
+   "faccion": "Shadow",
+   "ciudad": "Dark City",
+   "stage_ciudad": 26,
+   "quest_inicial": 359,
+   "quests": [
+    359,
+    360,
+    361,
+    362,
+    363,
+    365
+   ],
+   "mapa_spy": "Bottomless Pit",
+   "stage_spy": 31,
+   "plantilla": "bottomless_pit.json",
+   "matar": "Fire Mimic",
+   "badge": "Bat Badge",
+   "asmode_en": "De Naqoura Maze",
+   "spy_npc_type": 1866,
+   "spy_tile": [
+    314,
+    37
+   ],
+   "spy_entity": 122011,
+   "asmode_stage": 14,
+   "asmode_tile": [
+    54,
+    15
+   ],
+   "_asmode": "La quest 362 lo llama \"De Naqoura Maze\" pero el mapa es el stage 14, que stage.xml llama \"Degula Maze\". Asmode esta ahi, capturado en (54,15)."
+  },
+  {
+   "faccion": "Steel",
+   "ciudad": "Iron Castle",
+   "stage_ciudad": 38,
+   "quest_inicial": 459,
+   "mapa_spy": "Cactus Plain",
+   "stage_spy": 39,
+   "plantilla": "cactus_plain.json",
+   "spy_npc_type": 1867,
+   "spy_tile": [
+    59,
+    138
+   ],
+   "spy_entity": 122165
+  },
+  {
+   "faccion": "Beasts",
+   "ciudad": "Breeze Woods",
+   "stage_ciudad": 29,
+   "quest_inicial": 558,
+   "mapa_spy": "Cryptic Moon Swamp",
+   "stage_spy": 30,
+   "plantilla": "cryptic_moon_swamp.json",
+   "spy_npc_type": 112,
+   "spy_tile": [
+    21,
+    154
+   ]
+  }
+ ]
+}

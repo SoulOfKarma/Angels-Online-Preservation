@@ -88,8 +88,12 @@ def _portales():
 def _portal_en(stage, tx, ty):
     """El tornado que se esta pisando, o None."""
     cfg = _portales()
-    r = cfg.get('radio', 2)
     for por in cfg.get('mapas', {}).get(str(stage), []):
+        # Radio propio si lo trae. El radio 1 global pide estar justo encima,
+        # y eso no vale para todos: el tornado de Mushroom hacia Jade Vale
+        # dispara desde dos casillas antes -- medido, el jugador se quedo en
+        # (6,238) y el tornado esta en (5,240).
+        r = por.get('radio', cfg.get('radio', 2))
         if abs(por['tile'][0] - tx) <= r and abs(por['tile'][1] - ty) <= r:
             return por
     return None
@@ -115,13 +119,13 @@ def _nombre_entidad(ses, entity_id: int) -> str:
     # la del Lyceum. Mirando una sola, los NPC del Graduation Palace y de los
     # dos playgrounds no se resolvian por nombre y se quedaban mudos: el
     # dialogo se busca POR NOMBRE.
+    import login as _lgm
     _plant = pathlib.Path(__file__).parent / 'plantillas'
     _st = getattr(getattr(ses, 'personaje', None), 'stage', None)
     _archivos = []
-    _por_stage = {41: 'lyceum.json', 42: 'east_playground.json',
-                  43: 'west_playground.json', 58: 'graduation_palace.json',
-                  57: 'fighting_palace.json', 29: 'breeze_woods.json',
-                  23: 'dense_forest.json', 30: 'cryptic_moon_swamp.json'}
+    # La tabla comun mas los dos que se tratan aparte.
+    _por_stage = {**_lgm.PLANTILLAS_POR_STAGE,
+                  41: 'lyceum.json', 57: 'fighting_palace.json'}
     if _st in _por_stage:
         _archivos.append(_por_stage[_st])
     if 'lyceum.json' not in _archivos:
@@ -153,10 +157,7 @@ def _monstruos_de(stage: int):
     # Cada mapa poblado tiene su plantilla. El West Playground trae 150
     # monstruos de seis clases, asi que su IA sale de aqui igual que la del
     # Lyceum: pasean, persiguen, pegan y reaparecen.
-    por_stage = {41: 'lyceum.json', 43: 'west_playground.json',
-                 42: 'east_playground.json', 58: 'graduation_palace.json',
-                 29: 'breeze_woods.json', 23: 'dense_forest.json',
-                 30: 'cryptic_moon_swamp.json'}
+    por_stage = {**_lg.PLANTILLAS_POR_STAGE, 41: 'lyceum.json'}
     nombre = por_stage.get(stage)
     if not nombre:
         # Los mapas que aun no tienen plantilla usan la lista escrita a mano.
@@ -169,7 +170,8 @@ def _monstruos_de(stage: int):
         return {}
     d = json.loads(f.read_text(encoding='utf-8'))
     return {e['entity_id']: combate.Monstruo(e['entity_id'], e['npc_type'],
-                                             e['nombre'], e['tile'])
+                                             e['nombre'], e['tile'],
+                                             e.get('sprite', 0))
             for e in d['spawns'] if e.get('monstruo')}
 
 
@@ -491,6 +493,55 @@ def _max_sp_info(p):
 # juego es 110, y los monstruos caminan a 75.
 VELOCIDAD_JUGADOR = int(os.environ.get('AO_VELOCIDAD', '110'))
 
+# La montura va en la ranura 10 y sube la velocidad del 0x0005. Medido en
+# Celestia con el mismo personaje, quitandola y volviendola a poner:
+#
+#   sin montura              122
+#   con Earthy Piglet (36400) 226
+#   con "MAX 200"    (40441)  212
+#
+# OJO, la columna move_speed de item.xml NO basta: las dos monturas de arriba
+# la tienen en 60 y dan velocidades distintas, y la que mas agility declara es
+# la mas LENTA. Ademas, al quitar la 40441 los stats bajaron 2400 de HP y 2000
+# de MP, cuando su fila dice hp=1720 y mp=1540. O sea que lo que aporta una
+# montura depende de SU INSTANCIA -- son mascotas con nivel propio -- y eso no
+# esta en item.xml, asi que con los datos del cliente no se puede reproducir el
+# numero exacto.
+#
+# Aqui se aplica el move_speed como porcentaje, que es lo unico sostenible con
+# lo que hay: es la forma correcta, aunque el numero no salga clavado al de
+# Celestia hasta que sepamos modelar el nivel de la montura.
+RANURA_MONTURA = 10
+
+# Bono de montura, en por ciento, que PISA el move_speed del item. A peticion
+# del usuario: el Gryphon declara 50 y aqui se usa 150. Poner 0 para respetar
+# lo que diga item.xml.
+#
+# El campo del 0x0005 es U16, no un byte: en las capturas hay jugadores de
+# Celestia moviendose a 260 y a 283, asi que 275 (110 x 2,5) entra de sobra en
+# lo que el cliente maneja de verdad. El tope de 1000 es solo para que una
+# variable de entorno mal puesta no mande un numero absurdo.
+BONO_MONTURA = int(os.environ.get('AO_MONTURA_BONO', '150'))
+
+
+def _velocidad_de(ses) -> int:
+    """La velocidad del 0x0005: la de a pie, o con el bono de la montura."""
+    base = VELOCIDAD_JUGADOR
+    try:
+        import inventario as _inv
+        bolsa = getattr(ses, 'inventario', None) or {}
+        item = bolsa.get(RANURA_MONTURA)
+        if not item:
+            return base
+        ms = _inv.velocidad_de_montura(item)
+        if not ms:
+            return base
+        if BONO_MONTURA:
+            ms = BONO_MONTURA
+        return max(1, min(1000, int(round(base * (100 + ms) / 100.0))))
+    except Exception:
+        return base
+
 # Donde deja el Angel de una ciudad al mandarte de vuelta: al lado de
 # Director Wolay, en el Angel Lyceum. La casilla la midio el usuario.
 TILE_VUELTA_LYCEUM = (128, 62)
@@ -506,18 +557,50 @@ TILE_GRADUACION = (26, 7)
 # El unico confirmado en el juego es el de Breeze Woods, que sale como
 # "Beasts"; los otros tres son la traduccion mas probable y hay que
 # comprobarlos eligiendo esas facciones.
+# Que faccion da cada ciudad. YA NO SE ADIVINA: sale de los datos del
+# cliente. jumpmap.xml mete cada ciudad en su "territorio de faccion"
+# (jumpmapclass.xml: 14 Aurora, 15 Shadow, 16 Beasts, 17 Steel) y ahi no hay
+# ambiguedad posible.
+#
+#   stage  3 Aurora City    categoria 14  -> Aurora
+#   stage 26 Dark City      categoria 15  -> Shadow
+#   stage 29 Breeze Woods   categoria 16  -> Beasts   <- coincide con lo medido
+#   stage 38 Iron Castle    categoria 17  -> Steel
+#
+# Antes aqui habia 'Holy', 'Evil' y 'Chaos', que nos inventamos: esos nombres
+# NO EXISTEN en el cliente. Los suyos son los de string.xml 1031..1035.
 NOMBRE_DE_FACCION = {
-    'Breeze Woods': 'Beasts',      # medido
-    'Aurora': 'Holy',              # sin confirmar
-    'Dark City': 'Evil',           # sin confirmar
-    'Iron Castle': 'Chaos',        # sin confirmar
+    'Breeze Woods': 'Beasts',
+    'Aurora': 'Aurora',
+    'Dark City': 'Shadow',
+    'Iron Castle': 'Steel',
 }
 
+# Donde deja el Angel del Graduation Palace al elegir faccion: AL LADO del
+# Angel de la ciudad, no en la entrada. Comprobado en las dos que tenemos
+# capturadas:
+#
+#   Breeze Woods   BreezeWood Angel en (325,97)  -> deja en (321,97)   4 casillas
+#   Aurora City    Aurora Angel     en (188,183) -> deja en (191,182)   3 casillas
+#   Iron Castle    IronCastle Angel en (64,161)  -> deja en (68,163)    4 casillas
+#   Dark City      Dark City Angel  en (313,69)  -> deja en (309,69)    4 casillas
+#
+# Las dos caen a tres o cuatro casillas del angel y en su misma fila. Aurora
+# City es el stage 3, confirmado por captura el 23/09/2026; su casilla la dio
+# el usuario probando en el juego.
+#
+# LAS CUATRO ESTAN MEDIDAS (23/09/2026). Los dos stage que quedaban a ojo, el
+# 38 de Iron Castle y el 26 de Dark City, resultaron correctos; las casillas
+# las dio el usuario probando en el juego. La regla se cumple en las cuatro:
+# te dejan AL LADO del Angel de la ciudad, a tres o cuatro casillas y en su
+# misma fila. Cuando se capturen, la casilla se saca buscando a su
+# Angel en la plantilla y poniendose a su lado, que es la pauta de las otras
+# dos.
 CIUDAD_DE_FACCION = {
     "Breeze Woods": (29, (321, 97)),
-    "Aurora": (3, (206, 173)),
-    "Dark City": (26, (213, 45)),
-    "Iron Castle": (38, (74, 149)),
+    "Aurora": (3, (191, 182)),
+    "Iron Castle": (38, (68, 163)),
+    "Dark City": (26, (309, 69)),
 }
 
 
@@ -563,6 +646,85 @@ def _apariencia(ses):
     ent = p.entity_id
     return [_cb.equipar_visual(ent, r, int(bolsa.get(r, 0) or 0))
             for r in RANURAS_VISIBLES]
+
+
+def _viajar_por_portal(ses, addr, por, motivo=''):
+    """Manda al jugador por un tornado que no pregunta."""
+    import clases as _cl3
+    dst, lleg = por['destino'], por['llegada']
+    ses.personaje.stage = dst
+    ses.personaje.tile_x, ses.personaje.tile_y = lleg
+    ses.monstruos = _monstruos_de(dst)
+    # Si el sitio donde nos deja cae DENTRO del radio de un tornado del mapa
+    # nuevo, se marca como ya pisado para no volver a viajar al primer paso.
+    # No es un caso raro: Celestia deja en (294,168) de Flower Corridor, a
+    # cuatro casillas de su tornado (295,172), y alli no hace bucle solo
+    # porque el jugador llega parado. Sin esto, la casilla de llegada tenia
+    # que elegirse a mano lejos de todo tornado.
+    _en_llegada = _portal_en(dst, *lleg)
+    ses.portal_pisado = tuple(_en_llegada['tile']) if _en_llegada else None
+    ses.mapa_cambiado_en = time.time()
+    ses.enviar(_cl3.cambiar_mapa(dst))
+    if getattr(ses, 'usuario', None):
+        cuentas.guardar_mapa(ses.usuario, ses.personaje.char_id, dst, *lleg)
+    log.info(f"[{addr}] portal directo: stage {dst} tile {lleg} {motivo}")
+
+
+def _armar_portal_al_llegar(ses, addr, destino_tile, casillas):
+    """Dispara el portal cuando el paso TERMINA encima de un tornado.
+
+    El servidor solo mira la casilla que el cliente dice ocupar, y eso deja un
+    agujero: si el ultimo tramo de la ruta acaba justo sobre el tornado, el
+    cliente camina hasta alli, se queda quieto y NO vuelve a mandar nada, asi
+    que nunca llegamos a verlo encima y el portal no dispara.
+
+    Medido en Celestia, saliendo de Sunshine Palace: el ultimo MOVE_REQ vino
+    desde (19,10), a SIETE casillas del tornado, con destino (13,6), que esta a
+    una. Despues no mando nada mas y el cambio de mapa llego 0,9 s despues.
+
+    No vale con mirar el destino del paso y viajar en el acto: el primer
+    waypoint llega a estar a 21 casillas, asi que el jugador se teletransportaria
+    desde media pantalla. Lo que se hace es ARMAR el viaje para dentro de lo
+    que tarde en andar ese tramo; cualquier movimiento nuevo lo cancela, asi
+    que si cambia de idea a mitad de camino no viaja.
+    """
+    import asyncio
+    _cancelar_portal_armado(ses)
+    por = _portal_en(ses.personaje.stage, *destino_tile)
+    if por is None or por.get('preguntar'):
+        return
+    # Mismo guardia que el camino normal: si ya se estaba encima de ese
+    # tornado no se vuelve a viajar, o al aterrizar dentro de su radio se
+    # saldria otra vez en cuanto el jugador diera un paso.
+    if getattr(ses, 'portal_pisado', None) == tuple(por['tile']):
+        return
+    vel = max(1, _velocidad_de(ses))
+    # 25 casillas-velocidad por segundo: sale de las capturas, donde el
+    # personaje a velocidad 212 recorria unas dos casillas cada 0,2 s.
+    espera = min(10.0, max(0.2, casillas * 25.0 / vel))
+
+    def _saltar():
+        ses.portal_armado = None
+        try:
+            if ses.personaje and _portal_en(ses.personaje.stage, *destino_tile) is por:
+                _viajar_por_portal(ses, addr, por, '(al terminar el paso)')
+        except Exception:
+            log.exception('fallo el portal armado')
+
+    try:
+        ses.portal_armado = asyncio.get_event_loop().call_later(espera, _saltar)
+    except Exception:
+        ses.portal_armado = None
+
+
+def _cancelar_portal_armado(ses):
+    h = getattr(ses, 'portal_armado', None)
+    if h is not None:
+        try:
+            h.cancel()
+        except Exception:
+            pass
+        ses.portal_armado = None
 
 
 def _cerrar_viaje(ses, addr, stage, tile, nombre_dest):
@@ -1350,6 +1512,12 @@ class Servidor:
                                                       cur_x=cur_x, cur_y=cur_y,
                                                       dst_x=dst_x, dst_y=dst_y,
                                                       speed=m.move_speed or _cb.VELOCIDAD_PASEO))
+                        # AL FINAL DE CADA TICK, A LA RED. Sin esto el paseo
+                        # se quedaba en el buffer hasta que el cliente mandaba
+                        # algo, o sea que los monstruos solo se movian cuando
+                        # se movia el jugador. Los golpes si se veian porque
+                        # usan enviar_inmediato, que ya volcaba.
+                        ses.volcar()
                 except Exception:
                     # Estaba en 'pass': si algo fallaba UNA vez la tarea
                     # moria en silencio y todos los monstruos del mapa se
@@ -1927,7 +2095,9 @@ class Servidor:
                     m.revivir()
                     import login as _lg
                     # Mandar aparicion del monstruo vivo de nuevo en su spawn_tile
-                    ses.enviar_inmediato(_lg._npc_spawn(objetivo, m.npc_type, m.nombre, (m.tile_x, m.tile_y), klass=1))
+                    ses.enviar_inmediato(_lg._npc_spawn(
+                        objetivo, m.npc_type, m.nombre, (m.tile_x, m.tile_y),
+                        sprite=getattr(m, 'sprite', 0), klass=1))
                     log.info(f"[{addr}] monstruo {m.nombre} (entidad {objetivo}) reaparecio")
 
             try:
@@ -3401,24 +3571,67 @@ class Servidor:
                 ses.sentado = False
                 if ses.personaje:
                     ses.enviar(struct.pack('<HIII', 0x000A, ses.personaje.entity_id, 0, 0))
-            # Ruta con waypoints. Se confirma el ultimo tramo.
-            if not d.get('path'):
-                return
-            dst = d['path'][-1]
             MOVE = Msg.registry[(0x0005, 's2c', '*')]
             ACK = Msg.registry[(0x006D, 's2c', '*')]
+            # RUTA VACIA: el cliente avisa de que esta parado y no tiene por
+            # donde salir. Antes se salia de aqui sin contestar nada y el
+            # cliente se quedaba esperando el acuse para siempre: eso era el
+            # "stuck" que solo se arreglaba reconectando. El acuse va igual.
+            if not d.get('path'):
+                ses.enviar(ACK.build())
+                if ses.personaje:
+                    ses.personaje.tile_x = d['cur_x'] // 32
+                    ses.personaje.tile_y = d['cur_y'] // 32
+                log.warning(f"[{addr}] el cliente dice que no puede moverse "
+                            f"desde ({d['cur_x'] // 32},{d['cur_y'] // 32})")
+                return
+            # EL PRIMER TRAMO, NO EL ULTIMO. El cliente manda la ruta entera
+            # ya esquivada -- con sus curvas para rodear agua y acantilados --
+            # y espera que se le confirme tramo a tramo. Confirmando el ultimo
+            # se le mandaba en LINEA RECTA hasta el final, cortando por encima
+            # del agua y del vacio; al terminar quedaba dentro de una zona
+            # intransitable, desde donde su buscador de rutas ya no encontraba
+            # salida y empezaba a mandar rutas vacias. Por eso se trababa
+            # siempre en los puentes y en las orillas.
+            # Medido en Celestia: de 325 rutas de dos o mas tramos, en 291 el
+            # servidor devuelve el PRIMER waypoint y en NINGUNA el ultimo.
+            dst = d['path'][0]
             ses.enviar(ACK.build(),
                        MOVE.build(entity_id=ses.entity_id or 1001,
                                   cur_x=d['cur_x'], cur_y=d['cur_y'],
                                   dst_x=dst['x'], dst_y=dst['y'],
-                                  speed=VELOCIDAD_JUGADOR))
+                                  speed=_velocidad_de(ses)))
             # Anotar donde queda. Las coordenadas del cliente van en pixeles y
             # el tile mide 32: 2640 -> 82 y 2672 -> 83, que es justo el punto
             # de aparicion de Guide Palace. Se guarda al desconectar, no en
             # cada paso, para no escribir en disco varias veces por segundo.
             if ses.personaje:
+                _ox, _oy = d['cur_x'] // 32, d['cur_y'] // 32
+                # MOVIMIENTO EN VUELO DEL MAPA ANTERIOR. El viaje puede
+                # dispararse por temporizador -- el portal que se arma al
+                # terminar el paso --, no solo al contestar un paquete, asi
+                # que los movimientos que el cliente ya tenia mandados llegan
+                # DESPUES del cambio de mapa y traen casillas del mapa viejo.
+                # Aceptandolos se pisaba la posicion recien puesta: el
+                # personaje acababa en el stage nuevo con la casilla del
+                # anterior. Asi es como quedo en Jade Vale (stage 13) con la
+                # (6,241), que es el tornado de Mushroom Forest, fuera de la
+                # zona jugable y sin poder moverse.
+                _dt = time.time() - getattr(ses, 'mapa_cambiado_en', 0)
+                _lejos = max(abs(_ox - (ses.personaje.tile_x or 0)),
+                             abs(_oy - (ses.personaje.tile_y or 0)))
+                if _dt < 3.0 and _lejos > 15:
+                    log.info(f"[{addr}] descartado un movimiento del mapa "
+                             f"anterior: dice estar en ({_ox},{_oy}) y acaba "
+                             f"de llegar a ({ses.personaje.tile_x},"
+                             f"{ses.personaje.tile_y})")
+                    return
                 ses.personaje.tile_x = dst['x'] // 32
                 ses.personaje.tile_y = dst['y'] // 32
+                _armar_portal_al_llegar(
+                    ses, addr, (ses.personaje.tile_x, ses.personaje.tile_y),
+                    max(abs(ses.personaje.tile_x - _ox),
+                        abs(ses.personaje.tile_y - _oy)))
 
                 # Si el movimiento termina LEJOS del objetivo, se lo suelta:
                 # atacabas, te ibas, y al pararte el personaje seguia pegandole
@@ -3473,15 +3686,8 @@ class Servidor:
                     _por = None       # ya estaba encima: no reabrir
                 if _por is not None and not _por.get('preguntar'):
                     # Vuelta directa: acercarse y listo, sin menu.
-                    _dst, _lleg = _por['destino'], _por['llegada']
-                    ses.personaje.stage = _dst
-                    ses.personaje.tile_x, ses.personaje.tile_y = _lleg
-                    ses.monstruos = _monstruos_de(_dst)
-                    ses.enviar(_cl3.cambiar_mapa(_dst))
-                    if getattr(ses, 'usuario', None):
-                        cuentas.guardar_mapa(ses.usuario, ses.personaje.char_id,
-                                             _dst, *_lleg)
-                    log.info(f"[{addr}] portal directo: stage {_dst} tile {_lleg}")
+                    _cancelar_portal_armado(ses)
+                    _viajar_por_portal(ses, addr, _por)
                     return
                 if _por is not None:
                     import dialogos as _dlg

@@ -1,0 +1,1400 @@
+{
+ "_nota": "Iron Castle (stage 38), la ciudad de la faccion Steel. De dos capturas de Celestia del 23/09/2026.",
+ "stage": 38,
+ "spawns": [
+  {
+   "entity_id": 29282,
+   "nombre": "Iron Totem",
+   "npc_type": 1939,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    158,
+    75
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 122088,
+   "nombre": "Material Seller",
+   "npc_type": 1917,
+   "sprite": 40038,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    240,
+    85
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122089,
+   "nombre": "Healer",
+   "npc_type": 1879,
+   "sprite": 40074,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    117,
+    58
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122090,
+   "nombre": "Weapon Director",
+   "npc_type": 1803,
+   "sprite": 40039,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    177,
+    128
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122091,
+   "nombre": "Cooking Director",
+   "npc_type": 1815,
+   "sprite": 40101,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    275,
+    88
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122092,
+   "nombre": "Armor Director",
+   "npc_type": 1807,
+   "sprite": 40039,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    186,
+    134
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122093,
+   "nombre": "Weaponsmith",
+   "npc_type": 1605,
+   "sprite": 40035,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    325,
+    45
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122094,
+   "nombre": "Sword Expert",
+   "npc_type": 1888,
+   "sprite": 40157,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    299,
+    51
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122095,
+   "nombre": "Axe Expert",
+   "npc_type": 1906,
+   "sprite": 40158,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    305,
+    37
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122096,
+   "nombre": "Spear Expert",
+   "npc_type": 1907,
+   "sprite": 40159,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    293,
+    32
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122097,
+   "nombre": "Heavygear Seller",
+   "npc_type": 1608,
+   "sprite": 40073,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    311,
+    53
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122098,
+   "nombre": "Technician",
+   "npc_type": 1682,
+   "sprite": 40038,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    81,
+    47
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122099,
+   "nombre": "Ride Seller",
+   "npc_type": 1615,
+   "sprite": 40038,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    189,
+    118
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122100,
+   "nombre": "Scholar Francise",
+   "npc_type": 1664,
+   "sprite": 40039,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    44,
+    81
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122101,
+   "nombre": "Weapon Salesman",
+   "npc_type": 1783,
+   "sprite": 40038,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    209,
+    130
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122102,
+   "nombre": "Armor Salesman",
+   "npc_type": 1787,
+   "sprite": 40074,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    223,
+    126
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122103,
+   "nombre": "Bank Clerk",
+   "npc_type": 1681,
+   "sprite": 40035,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    157,
+    149
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122104,
+   "nombre": "Bow Seller",
+   "npc_type": 1606,
+   "sprite": 40038,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    153,
+    98
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122105,
+   "nombre": "Lightgear Seller",
+   "npc_type": 1609,
+   "sprite": 40074,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    149,
+    103
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122106,
+   "nombre": "Borg Seller A",
+   "npc_type": 1607,
+   "sprite": 40035,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    136,
+    45
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122107,
+   "nombre": "IronCastle Angel",
+   "npc_type": 1689,
+   "sprite": 40112,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    64,
+    161
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122108,
+   "nombre": "Einstein",
+   "npc_type": 1657,
+   "sprite": 40039,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    75,
+    83
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122109,
+   "nombre": "Cupid",
+   "npc_type": 1862,
+   "sprite": 40006,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    72,
+    149
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122110,
+   "nombre": "Pioneer Ocadon",
+   "npc_type": 1737,
+   "sprite": 40039,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    74,
+    168
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122111,
+   "nombre": "Merchant Saleen",
+   "npc_type": 1738,
+   "sprite": 40038,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    84,
+    164
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122112,
+   "nombre": "Researcher Along",
+   "npc_type": 1648,
+   "sprite": 40100,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    79,
+    79
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122113,
+   "nombre": "Life Mage",
+   "npc_type": 1611,
+   "sprite": 40039,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    15,
+    91
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122114,
+   "nombre": "Wraith Mage",
+   "npc_type": 1612,
+   "sprite": 40076,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    2,
+    97
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122115,
+   "nombre": "Chaos Mage",
+   "npc_type": 1613,
+   "sprite": 40077,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    22,
+    103
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122116,
+   "nombre": "Earth Mage",
+   "npc_type": 1614,
+   "sprite": 40078,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    13,
+    105
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122117,
+   "nombre": "Chief Assistant",
+   "npc_type": 1765,
+   "sprite": 40036,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    150,
+    71
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122118,
+   "nombre": "Pestle Soldier",
+   "npc_type": 1821,
+   "sprite": 40037,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    155,
+    71
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122119,
+   "nombre": "Pestle Soldier",
+   "npc_type": 1821,
+   "sprite": 40037,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    148,
+    74
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122120,
+   "nombre": "Art Director",
+   "npc_type": 1819,
+   "sprite": 40100,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    195,
+    138
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122121,
+   "nombre": "Catkin",
+   "npc_type": 1641,
+   "sprite": 40094,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    143,
+    45
+   ],
+   "direccion": 6,
+   "visible": 1,
+   "nota": "Bicho decorativo de ciudad: vive en npc.xml, no en monster.xml, y llego con klass 0. Estaba marcado como monstruo por error."
+  },
+  {
+   "entity_id": 122122,
+   "nombre": "Sewing Director",
+   "npc_type": 1811,
+   "sprite": 40100,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    278,
+    119
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122123,
+   "nombre": "Art Saleman",
+   "npc_type": 1799,
+   "sprite": 40038,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    231,
+    123
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122124,
+   "nombre": "Cooking Salesman",
+   "npc_type": 1795,
+   "sprite": 40074,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    275,
+    74
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122125,
+   "nombre": "Sewing Salesman",
+   "npc_type": 1791,
+   "sprite": 40075,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    273,
+    113
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122126,
+   "nombre": "Borg Seller B",
+   "npc_type": 1912,
+   "sprite": 40095,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    140,
+    39
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122127,
+   "nombre": "Skill Angel",
+   "npc_type": 1891,
+   "sprite": 40112,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    130,
+    141
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122128,
+   "nombre": "Bow Expert",
+   "npc_type": 1908,
+   "sprite": 40160,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    161,
+    94
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122129,
+   "nombre": "Bank Clerk",
+   "npc_type": 1681,
+   "sprite": 40035,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    148,
+    152
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122130,
+   "nombre": "Mage Gear Seller",
+   "npc_type": 1610,
+   "sprite": 40075,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    23,
+    87
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122131,
+   "nombre": "W. Plan Seller",
+   "npc_type": 1838,
+   "sprite": 40125,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    228,
+    144
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122132,
+   "nombre": "A. Recipe Seller",
+   "npc_type": 1839,
+   "sprite": 40126,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    242,
+    141
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122133,
+   "nombre": "C. Plan Seller",
+   "npc_type": 1840,
+   "sprite": 40127,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    223,
+    138
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122134,
+   "nombre": "D. Plan Seller",
+   "npc_type": 1841,
+   "sprite": 40128,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    287,
+    108
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122135,
+   "nombre": "F. Plan Seller",
+   "npc_type": 1842,
+   "sprite": 40129,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    288,
+    81
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122136,
+   "nombre": "League Clerk",
+   "npc_type": 1882,
+   "sprite": 40040,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    323,
+    169
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122137,
+   "nombre": "Bank Clerk",
+   "npc_type": 1681,
+   "sprite": 40035,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    139,
+    150
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122138,
+   "nombre": "Ride Seller C",
+   "npc_type": 1928,
+   "sprite": 40158,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    175,
+    115
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122139,
+   "nombre": "Bank Clerk",
+   "npc_type": 1681,
+   "sprite": 40035,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    156,
+    141
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122140,
+   "nombre": "Exploration Head",
+   "npc_type": 1920,
+   "sprite": 40039,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    95,
+    61
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122141,
+   "nombre": "Antique Expert",
+   "npc_type": 1982,
+   "sprite": 40101,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    213,
+    27
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122142,
+   "nombre": "Sentinel Angel",
+   "npc_type": 2007,
+   "sprite": 40053,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    146,
+    34
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122143,
+   "nombre": "Defence Bookman",
+   "npc_type": 2084,
+   "sprite": 40166,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    254,
+    98
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122144,
+   "nombre": "Heaven General",
+   "npc_type": 2010,
+   "sprite": 40047,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    129,
+    27
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122145,
+   "nombre": "Machel",
+   "npc_type": 1679,
+   "sprite": 40104,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    335,
+    52
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122146,
+   "nombre": "Assoc. Captain",
+   "npc_type": 2174,
+   "sprite": 40076,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    117,
+    28
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122147,
+   "nombre": "Riddle City",
+   "npc_type": 2323,
+   "sprite": 40077,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    68,
+    68
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122148,
+   "nombre": "Pet Expert",
+   "npc_type": 2001,
+   "sprite": 40095,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    101,
+    103
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122149,
+   "nombre": "Dipsey Risker",
+   "npc_type": 2324,
+   "sprite": 40126,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    147,
+    128
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122150,
+   "nombre": "BattlefieldAngel",
+   "npc_type": 2429,
+   "sprite": 40053,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    36,
+    102
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122151,
+   "nombre": "Green Forest Sch",
+   "npc_type": 2439,
+   "sprite": 40211,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    90,
+    96
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122152,
+   "nombre": "Uncle Valen",
+   "npc_type": 2664,
+   "sprite": 40207,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    122,
+    140
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122153,
+   "nombre": "Aunt Daisy",
+   "npc_type": 2665,
+   "sprite": 40015,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    323,
+    34
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122154,
+   "nombre": "Paradise Angel",
+   "npc_type": 6905,
+   "sprite": 40179,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    138,
+    77
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122155,
+   "nombre": "Angel of Achieve",
+   "npc_type": 8803,
+   "sprite": 40276,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    100,
+    60
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122156,
+   "nombre": "Angel Primeval",
+   "npc_type": 7940,
+   "sprite": 40053,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    146,
+    88
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122157,
+   "nombre": "Bassil Archeolog",
+   "npc_type": 8863,
+   "sprite": 40331,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    93,
+    98
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122158,
+   "nombre": "Adventure Guild ",
+   "npc_type": 8928,
+   "sprite": 40251,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    93,
+    83
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122159,
+   "nombre": "Felika",
+   "npc_type": 11033,
+   "sprite": 40381,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    96,
+    81
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122160,
+   "nombre": "Cowboy Cop",
+   "npc_type": 11106,
+   "sprite": 40394,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    93,
+    87
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122161,
+   "nombre": "Honey Peachy",
+   "npc_type": 11313,
+   "sprite": 40451,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    93,
+    78
+   ],
+   "direccion": 6,
+   "visible": 1
+  }
+ ],
+ "recursos": [
+  {
+   "entity_id": 101803,
+   "capa": 0,
+   "px": [
+    1090,
+    90
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 101804,
+   "capa": 0,
+   "px": [
+    10752,
+    5471
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 101805,
+   "capa": 0,
+   "px": [
+    1523,
+    3061
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60039,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 101806,
+   "capa": 0,
+   "px": [
+    1397,
+    3125
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60041,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 101807,
+   "capa": 2,
+   "px": [
+    472,
+    2616
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60044,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 101808,
+   "capa": 0,
+   "px": [
+    1279,
+    3177
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60045,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 101809,
+   "capa": 2,
+   "px": [
+    606,
+    2549
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60048,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 101810,
+   "capa": 2,
+   "px": [
+    330,
+    2695
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60050,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 101811,
+   "capa": 2,
+   "px": [
+    7514,
+    4637
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60056,
+   "cola": "00004080020000"
+  },
+  {
+   "entity_id": 101812,
+   "capa": 2,
+   "px": [
+    7794,
+    4483
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60056,
+   "cola": "00004080020000"
+  },
+  {
+   "entity_id": 101813,
+   "capa": 0,
+   "px": [
+    7447,
+    4668
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60058,
+   "cola": "00004080020000"
+  },
+  {
+   "entity_id": 101814,
+   "capa": 2,
+   "px": [
+    7544,
+    4284
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60060,
+   "cola": "00004080020000"
+  },
+  {
+   "entity_id": 101815,
+   "capa": 0,
+   "px": [
+    7634,
+    4263
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60062,
+   "cola": "00004080020000"
+  },
+  {
+   "entity_id": 101816,
+   "capa": 2,
+   "px": [
+    9060,
+    2458
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60068,
+   "cola": "00004080020000"
+  },
+  {
+   "entity_id": 101817,
+   "capa": 2,
+   "px": [
+    8590,
+    2808
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60069,
+   "cola": "00004080020000"
+  },
+  {
+   "entity_id": 101818,
+   "capa": 0,
+   "px": [
+    9010,
+    2810
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60069,
+   "cola": "00004080020000"
+  },
+  {
+   "entity_id": 101819,
+   "capa": 0,
+   "px": [
+    7855,
+    4449
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60078,
+   "cola": "00004080020000"
+  },
+  {
+   "entity_id": 101820,
+   "capa": 0,
+   "px": [
+    8990,
+    3853
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60147,
+   "cola": "00004080020000"
+  },
+  {
+   "entity_id": 101821,
+   "capa": 0,
+   "px": [
+    9259,
+    3722
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60147,
+   "cola": "00004080020000"
+  },
+  {
+   "entity_id": 101822,
+   "capa": 0,
+   "px": [
+    9387,
+    3656
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60147,
+   "cola": "00004080020000"
+  },
+  {
+   "entity_id": 101823,
+   "capa": 0,
+   "px": [
+    9050,
+    3820
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60148,
+   "cola": "00004080020000"
+  },
+  {
+   "entity_id": 101824,
+   "capa": 0,
+   "px": [
+    9196,
+    3753
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60148,
+   "cola": "00004080020000"
+  },
+  {
+   "entity_id": 101825,
+   "capa": 0,
+   "px": [
+    9451,
+    3625
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60148,
+   "cola": "00004080020000"
+  },
+  {
+   "entity_id": 101826,
+   "capa": 2,
+   "px": [
+    3320,
+    1899
+   ],
+   "medio": "000000002c0000000000000000000000",
+   "marca": 109,
+   "orient": 6,
+   "sprite": 60245,
+   "cola": "00000280140000"
+  },
+  {
+   "entity_id": 101827,
+   "capa": 0,
+   "px": [
+    3566,
+    1907
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 62357,
+   "cola": "00004080140000"
+  },
+  {
+   "entity_id": 101828,
+   "capa": 0,
+   "px": [
+    5048,
+    2445
+   ],
+   "medio": "006f70706572284d2900000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60053,
+   "cola": "00002280140000",
+   "que_es": "Iron Totem"
+  }
+ ]
+}

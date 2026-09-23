@@ -174,10 +174,15 @@ def parsear_ataque(cuerpo: bytes):
 class Monstruo:
     """Un bicho vivo en el mapa."""
 
-    def __init__(self, entity_id, npc_type, nombre, tile):
+    def __init__(self, entity_id, npc_type, nombre, tile, sprite=0):
         self.entity_id = entity_id
         self.npc_type = npc_type
         self.nombre = nombre
+        # El sprite que venia en la captura. Hace falta al REAPARECER: si no
+        # se guarda, el monstruo se reconstruye sin el y cae en la tabla por
+        # defecto, que es la del Slarm. Por eso las Wild Lily, los Forest
+        # Monkey y los demas volvian a la vida convertidos en slimes.
+        self.sprite = sprite
         self.tile = list(tile)
         self.tile_x = tile[0]
         self.tile_y = tile[1]

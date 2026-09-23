@@ -1,3049 +1,3391 @@
 {
-  "_nota": "West Playground (stage 43), de una captura de Celestia del 22/09/2026. Se guardan los DATOS, no los bytes: sus 0x0008 miden 62 y 64 y los nuestros 63, y reenviar sus bytes tal cual ya hizo caer al cliente una vez. El npc_type se busca por NOMBRE en nuestro monster.xml. Los 0x000E si miden 43 en los dos, asi que se reconstruyen campo a campo y salen identicos al original.",
-  "stage": 43,
-  "spawns": [
-    {
-      "entity_id": 29360,
-      "nombre": "Aurora Totem",
-      "npc_type": 241,
-      "sprite": 60241,
-      "klass": 200,
-      "monstruo": false,
-      "tile": [
-        103,
-        83
-      ],
-      "direccion": 6,
-      "visible": 0
-    },
-    {
-      "entity_id": 29361,
-      "nombre": "Dark City Totem",
-      "npc_type": 241,
-      "sprite": 60241,
-      "klass": 200,
-      "monstruo": false,
-      "tile": [
-        139,
-        65
-      ],
-      "direccion": 6,
-      "visible": 0
-    },
-    {
-      "entity_id": 29362,
-      "nombre": "Iron Totem",
-      "npc_type": 241,
-      "sprite": 60241,
-      "klass": 200,
-      "monstruo": false,
-      "tile": [
-        104,
-        47
-      ],
-      "direccion": 6,
-      "visible": 0
-    },
-    {
-      "entity_id": 29363,
-      "nombre": "Breeze Totem",
-      "npc_type": 241,
-      "sprite": 60241,
-      "klass": 200,
-      "monstruo": false,
-      "tile": [
-        69,
-        66
-      ],
-      "direccion": 6,
-      "visible": 0
-    },
-    {
-      "entity_id": 122225,
-      "nombre": "Cupid",
-      "npc_type": 6,
-      "sprite": 40006,
-      "klass": 200,
-      "monstruo": false,
-      "tile": [
-        140,
-        52
-      ],
-      "direccion": 6,
-      "visible": 1
-    },
-    {
-      "entity_id": 1013917,
-      "nombre": "Wind Elf",
-      "npc_type": 1,
-      "sprite": 42055,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        101,
-        73
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013918,
-      "nombre": "Wind Elf",
-      "npc_type": 1,
-      "sprite": 42055,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        87,
-        66
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013919,
-      "nombre": "Wind Elf",
-      "npc_type": 1,
-      "sprite": 42055,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        77,
-        62
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013920,
-      "nombre": "Wind Elf",
-      "npc_type": 1,
-      "sprite": 42055,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        89,
-        75
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013921,
-      "nombre": "Wind Elf",
-      "npc_type": 1,
-      "sprite": 42055,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        92,
-        65
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013922,
-      "nombre": "Wind Elf",
-      "npc_type": 1,
-      "sprite": 42055,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        85,
-        67
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013923,
-      "nombre": "Wind Elf",
-      "npc_type": 1,
-      "sprite": 42055,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        109,
-        72
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013924,
-      "nombre": "Wind Elf",
-      "npc_type": 1,
-      "sprite": 42055,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        83,
-        60
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013925,
-      "nombre": "Wind Elf",
-      "npc_type": 1,
-      "sprite": 42055,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        110,
-        72
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013926,
-      "nombre": "Wind Elf",
-      "npc_type": 1,
-      "sprite": 42055,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        87,
-        68
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013927,
-      "nombre": "Wind Elf",
-      "npc_type": 1,
-      "sprite": 42055,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        97,
-        72
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013928,
-      "nombre": "Wind Elf",
-      "npc_type": 1,
-      "sprite": 42055,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        87,
-        61
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013929,
-      "nombre": "Wind Elf",
-      "npc_type": 1,
-      "sprite": 42055,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        86,
-        60
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013930,
-      "nombre": "Wind Elf",
-      "npc_type": 1,
-      "sprite": 42055,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        86,
-        63
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013931,
-      "nombre": "Wind Elf",
-      "npc_type": 1,
-      "sprite": 42055,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        98,
-        79
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013932,
-      "nombre": "Wind Elf",
-      "npc_type": 1,
-      "sprite": 42055,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        113,
-        55
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013933,
-      "nombre": "Wind Elf",
-      "npc_type": 1,
-      "sprite": 42055,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        124,
-        75
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013934,
-      "nombre": "Wind Elf",
-      "npc_type": 1,
-      "sprite": 42055,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        97,
-        57
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013935,
-      "nombre": "Wind Elf",
-      "npc_type": 1,
-      "sprite": 42055,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        105,
-        61
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013936,
-      "nombre": "Wind Elf",
-      "npc_type": 1,
-      "sprite": 42055,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        81,
-        47
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013937,
-      "nombre": "Wind Elf",
-      "npc_type": 1,
-      "sprite": 42055,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        122,
-        60
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013938,
-      "nombre": "Wind Elf",
-      "npc_type": 1,
-      "sprite": 42055,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        97,
-        32
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013939,
-      "nombre": "Wind Elf",
-      "npc_type": 1,
-      "sprite": 42055,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        117,
-        67
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013940,
-      "nombre": "Wind Elf",
-      "npc_type": 1,
-      "sprite": 42055,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        103,
-        49
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013941,
-      "nombre": "Wind Elf",
-      "npc_type": 1,
-      "sprite": 42055,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        107,
-        64
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013942,
-      "nombre": "Wind Elf",
-      "npc_type": 1,
-      "sprite": 42055,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        79,
-        41
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013943,
-      "nombre": "Wind Elf",
-      "npc_type": 1,
-      "sprite": 42055,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        97,
-        31
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013944,
-      "nombre": "Wind Elf",
-      "npc_type": 1,
-      "sprite": 42055,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        105,
-        52
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013945,
-      "nombre": "Wind Elf",
-      "npc_type": 1,
-      "sprite": 42055,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        77,
-        42
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013946,
-      "nombre": "Wind Elf",
-      "npc_type": 1,
-      "sprite": 42055,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        118,
-        76
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013947,
-      "nombre": "Fire Elf",
-      "npc_type": 2,
-      "sprite": 42056,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        81,
-        83
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013948,
-      "nombre": "Fire Elf",
-      "npc_type": 2,
-      "sprite": 42056,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        97,
-        103
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013949,
-      "nombre": "Fire Elf",
-      "npc_type": 2,
-      "sprite": 42056,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        75,
-        98
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013950,
-      "nombre": "Fire Elf",
-      "npc_type": 2,
-      "sprite": 42056,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        78,
-        84
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013951,
-      "nombre": "Fire Elf",
-      "npc_type": 2,
-      "sprite": 42056,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        66,
-        85
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013952,
-      "nombre": "Fire Elf",
-      "npc_type": 2,
-      "sprite": 42056,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        60,
-        86
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013953,
-      "nombre": "Fire Elf",
-      "npc_type": 2,
-      "sprite": 42056,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        81,
-        103
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013954,
-      "nombre": "Fire Elf",
-      "npc_type": 2,
-      "sprite": 42056,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        83,
-        97
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013955,
-      "nombre": "Fire Elf",
-      "npc_type": 2,
-      "sprite": 42056,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        79,
-        94
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013956,
-      "nombre": "Fire Elf",
-      "npc_type": 2,
-      "sprite": 42056,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        57,
-        85
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013957,
-      "nombre": "Fire Elf",
-      "npc_type": 2,
-      "sprite": 42056,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        19,
-        69
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013958,
-      "nombre": "Fire Elf",
-      "npc_type": 2,
-      "sprite": 42056,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        28,
-        78
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013959,
-      "nombre": "Fire Elf",
-      "npc_type": 2,
-      "sprite": 42056,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        37,
-        84
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013960,
-      "nombre": "Fire Elf",
-      "npc_type": 2,
-      "sprite": 42056,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        21,
-        75
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013961,
-      "nombre": "Fire Elf",
-      "npc_type": 2,
-      "sprite": 42056,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        24,
-        76
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013962,
-      "nombre": "Fire Elf",
-      "npc_type": 2,
-      "sprite": 42056,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        49,
-        89
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013963,
-      "nombre": "Fire Elf",
-      "npc_type": 2,
-      "sprite": 42056,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        20,
-        69
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013964,
-      "nombre": "Fire Elf",
-      "npc_type": 2,
-      "sprite": 42056,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        39,
-        68
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013965,
-      "nombre": "Fire Elf",
-      "npc_type": 2,
-      "sprite": 42056,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        19,
-        70
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013966,
-      "nombre": "Fire Elf",
-      "npc_type": 2,
-      "sprite": 42056,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        52,
-        82
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013967,
-      "nombre": "Water Elf",
-      "npc_type": 3,
-      "sprite": 42057,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        66,
-        49
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013968,
-      "nombre": "Water Elf",
-      "npc_type": 3,
-      "sprite": 42057,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        39,
-        62
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013969,
-      "nombre": "Water Elf",
-      "npc_type": 3,
-      "sprite": 42057,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        42,
-        65
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013970,
-      "nombre": "Water Elf",
-      "npc_type": 3,
-      "sprite": 42057,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        35,
-        72
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013971,
-      "nombre": "Water Elf",
-      "npc_type": 3,
-      "sprite": 42057,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        69,
-        44
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013972,
-      "nombre": "Water Elf",
-      "npc_type": 3,
-      "sprite": 42057,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        31,
-        66
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013973,
-      "nombre": "Water Elf",
-      "npc_type": 3,
-      "sprite": 42057,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        38,
-        63
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013974,
-      "nombre": "Water Elf",
-      "npc_type": 3,
-      "sprite": 42057,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        42,
-        61
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013975,
-      "nombre": "Water Elf",
-      "npc_type": 3,
-      "sprite": 42057,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        70,
-        50
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013976,
-      "nombre": "Water Elf",
-      "npc_type": 3,
-      "sprite": 42057,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        74,
-        45
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013977,
-      "nombre": "Water Elf",
-      "npc_type": 3,
-      "sprite": 42057,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        104,
-        26
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013978,
-      "nombre": "Water Elf",
-      "npc_type": 3,
-      "sprite": 42057,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        83,
-        31
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013979,
-      "nombre": "Water Elf",
-      "npc_type": 3,
-      "sprite": 42057,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        75,
-        39
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013980,
-      "nombre": "Water Elf",
-      "npc_type": 3,
-      "sprite": 42057,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        100,
-        20
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013981,
-      "nombre": "Water Elf",
-      "npc_type": 3,
-      "sprite": 42057,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        80,
-        43
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013982,
-      "nombre": "Water Elf",
-      "npc_type": 3,
-      "sprite": 42057,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        74,
-        49
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013983,
-      "nombre": "Water Elf",
-      "npc_type": 3,
-      "sprite": 42057,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        97,
-        33
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013984,
-      "nombre": "Water Elf",
-      "npc_type": 3,
-      "sprite": 42057,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        105,
-        18
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013985,
-      "nombre": "Water Elf",
-      "npc_type": 3,
-      "sprite": 42057,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        81,
-        41
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013986,
-      "nombre": "Water Elf",
-      "npc_type": 3,
-      "sprite": 42057,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        106,
-        23
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013987,
-      "nombre": "Earth Elf",
-      "npc_type": 4,
-      "sprite": 42058,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        104,
-        110
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013988,
-      "nombre": "Earth Elf",
-      "npc_type": 4,
-      "sprite": 42058,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        114,
-        101
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013989,
-      "nombre": "Earth Elf",
-      "npc_type": 4,
-      "sprite": 42058,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        108,
-        105
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013990,
-      "nombre": "Earth Elf",
-      "npc_type": 4,
-      "sprite": 42058,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        112,
-        105
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013991,
-      "nombre": "Earth Elf",
-      "npc_type": 4,
-      "sprite": 42058,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        123,
-        92
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013992,
-      "nombre": "Earth Elf",
-      "npc_type": 4,
-      "sprite": 42058,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        106,
-        109
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013993,
-      "nombre": "Earth Elf",
-      "npc_type": 4,
-      "sprite": 42058,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        112,
-        98
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013994,
-      "nombre": "Earth Elf",
-      "npc_type": 4,
-      "sprite": 42058,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        115,
-        92
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013995,
-      "nombre": "Earth Elf",
-      "npc_type": 4,
-      "sprite": 42058,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        121,
-        99
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013996,
-      "nombre": "Earth Elf",
-      "npc_type": 4,
-      "sprite": 42058,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        113,
-        94
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013997,
-      "nombre": "Earth Elf",
-      "npc_type": 4,
-      "sprite": 42058,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        113,
-        98
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013998,
-      "nombre": "Earth Elf",
-      "npc_type": 4,
-      "sprite": 42058,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        112,
-        105
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1013999,
-      "nombre": "Earth Elf",
-      "npc_type": 4,
-      "sprite": 42058,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        108,
-        96
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014000,
-      "nombre": "Earth Elf",
-      "npc_type": 4,
-      "sprite": 42058,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        102,
-        110
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014001,
-      "nombre": "Earth Elf",
-      "npc_type": 4,
-      "sprite": 42058,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        104,
-        111
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014002,
-      "nombre": "Earth Elf",
-      "npc_type": 4,
-      "sprite": 42058,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        180,
-        69
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014003,
-      "nombre": "Earth Elf",
-      "npc_type": 4,
-      "sprite": 42058,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        175,
-        72
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014004,
-      "nombre": "Earth Elf",
-      "npc_type": 4,
-      "sprite": 42058,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        176,
-        74
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014005,
-      "nombre": "Earth Elf",
-      "npc_type": 4,
-      "sprite": 42058,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        162,
-        74
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014006,
-      "nombre": "Earth Elf",
-      "npc_type": 4,
-      "sprite": 42058,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        149,
-        92
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014007,
-      "nombre": "Earth Elf",
-      "npc_type": 4,
-      "sprite": 42058,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        170,
-        66
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014008,
-      "nombre": "Earth Elf",
-      "npc_type": 4,
-      "sprite": 42058,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        175,
-        69
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014009,
-      "nombre": "Earth Elf",
-      "npc_type": 4,
-      "sprite": 42058,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        172,
-        76
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014010,
-      "nombre": "Earth Elf",
-      "npc_type": 4,
-      "sprite": 42058,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        173,
-        72
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014011,
-      "nombre": "Earth Elf",
-      "npc_type": 4,
-      "sprite": 42058,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        172,
-        66
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014012,
-      "nombre": "Earth Elf",
-      "npc_type": 4,
-      "sprite": 42058,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        179,
-        67
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014013,
-      "nombre": "Earth Elf",
-      "npc_type": 4,
-      "sprite": 42058,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        180,
-        74
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014014,
-      "nombre": "Earth Elf",
-      "npc_type": 4,
-      "sprite": 42058,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        179,
-        70
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014015,
-      "nombre": "Earth Elf",
-      "npc_type": 4,
-      "sprite": 42058,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        173,
-        66
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014016,
-      "nombre": "Earth Elf",
-      "npc_type": 4,
-      "sprite": 42058,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        170,
-        75
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014017,
-      "nombre": "Lily",
-      "npc_type": 7,
-      "sprite": 42041,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        166,
-        55
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014018,
-      "nombre": "Lily",
-      "npc_type": 7,
-      "sprite": 42041,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        162,
-        48
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014019,
-      "nombre": "Lily",
-      "npc_type": 7,
-      "sprite": 42041,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        177,
-        51
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014020,
-      "nombre": "Lily",
-      "npc_type": 7,
-      "sprite": 42041,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        183,
-        35
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014021,
-      "nombre": "Lily",
-      "npc_type": 7,
-      "sprite": 42041,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        182,
-        69
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014022,
-      "nombre": "Lily",
-      "npc_type": 7,
-      "sprite": 42041,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        152,
-        55
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014023,
-      "nombre": "Lily",
-      "npc_type": 7,
-      "sprite": 42041,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        171,
-        75
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014024,
-      "nombre": "Lily",
-      "npc_type": 7,
-      "sprite": 42041,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        189,
-        47
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014025,
-      "nombre": "Lily",
-      "npc_type": 7,
-      "sprite": 42041,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        165,
-        61
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014026,
-      "nombre": "Lily",
-      "npc_type": 7,
-      "sprite": 42041,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        195,
-        71
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014027,
-      "nombre": "Lily",
-      "npc_type": 7,
-      "sprite": 42041,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        96,
-        9
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014028,
-      "nombre": "Lily",
-      "npc_type": 7,
-      "sprite": 42041,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        110,
-        8
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014029,
-      "nombre": "Lily",
-      "npc_type": 7,
-      "sprite": 42041,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        91,
-        38
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014030,
-      "nombre": "Lily",
-      "npc_type": 7,
-      "sprite": 42041,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        122,
-        13
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014031,
-      "nombre": "Lily",
-      "npc_type": 7,
-      "sprite": 42041,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        112,
-        35
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014032,
-      "nombre": "Lily",
-      "npc_type": 7,
-      "sprite": 42041,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        103,
-        31
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014033,
-      "nombre": "Lily",
-      "npc_type": 7,
-      "sprite": 42041,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        137,
-        25
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014034,
-      "nombre": "Lily",
-      "npc_type": 7,
-      "sprite": 42041,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        98,
-        22
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014035,
-      "nombre": "Lily",
-      "npc_type": 7,
-      "sprite": 42041,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        103,
-        31
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014036,
-      "nombre": "Lily",
-      "npc_type": 7,
-      "sprite": 42041,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        110,
-        8
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014037,
-      "nombre": "Slarm",
-      "npc_type": 19,
-      "sprite": 42107,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        163,
-        47
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014038,
-      "nombre": "Slarm",
-      "npc_type": 19,
-      "sprite": 42107,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        175,
-        39
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014039,
-      "nombre": "Slarm",
-      "npc_type": 19,
-      "sprite": 42107,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        172,
-        54
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014040,
-      "nombre": "Slarm",
-      "npc_type": 19,
-      "sprite": 42107,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        193,
-        70
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014041,
-      "nombre": "Slarm",
-      "npc_type": 19,
-      "sprite": 42107,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        161,
-        54
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014042,
-      "nombre": "Slarm",
-      "npc_type": 19,
-      "sprite": 42107,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        154,
-        47
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014043,
-      "nombre": "Slarm",
-      "npc_type": 19,
-      "sprite": 42107,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        181,
-        59
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014044,
-      "nombre": "Slarm",
-      "npc_type": 19,
-      "sprite": 42107,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        193,
-        39
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014045,
-      "nombre": "Slarm",
-      "npc_type": 19,
-      "sprite": 42107,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        189,
-        36
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014046,
-      "nombre": "Slarm",
-      "npc_type": 19,
-      "sprite": 42107,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        192,
-        58
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014047,
-      "nombre": "Slarm",
-      "npc_type": 19,
-      "sprite": 42107,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        182,
-        51
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014048,
-      "nombre": "Slarm",
-      "npc_type": 19,
-      "sprite": 42107,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        159,
-        48
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014049,
-      "nombre": "Slarm",
-      "npc_type": 19,
-      "sprite": 42107,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        177,
-        62
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014050,
-      "nombre": "Slarm",
-      "npc_type": 19,
-      "sprite": 42107,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        177,
-        50
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014051,
-      "nombre": "Slarm",
-      "npc_type": 19,
-      "sprite": 42107,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        176,
-        39
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014052,
-      "nombre": "Slarm",
-      "npc_type": 19,
-      "sprite": 42107,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        141,
-        33
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014053,
-      "nombre": "Slarm",
-      "npc_type": 19,
-      "sprite": 42107,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        167,
-        28
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014054,
-      "nombre": "Slarm",
-      "npc_type": 19,
-      "sprite": 42107,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        178,
-        26
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014055,
-      "nombre": "Slarm",
-      "npc_type": 19,
-      "sprite": 42107,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        128,
-        33
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014056,
-      "nombre": "Slarm",
-      "npc_type": 19,
-      "sprite": 42107,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        124,
-        25
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014057,
-      "nombre": "Slarm",
-      "npc_type": 19,
-      "sprite": 42107,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        147,
-        26
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014058,
-      "nombre": "Slarm",
-      "npc_type": 19,
-      "sprite": 42107,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        137,
-        38
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014059,
-      "nombre": "Slarm",
-      "npc_type": 19,
-      "sprite": 42107,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        132,
-        23
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014060,
-      "nombre": "Slarm",
-      "npc_type": 19,
-      "sprite": 42107,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        121,
-        27
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014061,
-      "nombre": "Slarm",
-      "npc_type": 19,
-      "sprite": 42107,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        160,
-        30
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014062,
-      "nombre": "Slarm",
-      "npc_type": 19,
-      "sprite": 42107,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        123,
-        30
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014063,
-      "nombre": "Slarm",
-      "npc_type": 19,
-      "sprite": 42107,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        108,
-        28
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014064,
-      "nombre": "Slarm",
-      "npc_type": 19,
-      "sprite": 42107,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        180,
-        14
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014065,
-      "nombre": "Slarm",
-      "npc_type": 19,
-      "sprite": 42107,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        126,
-        35
-      ],
-      "direccion": 0,
-      "visible": 0
-    },
-    {
-      "entity_id": 1014066,
-      "nombre": "Slarm",
-      "npc_type": 19,
-      "sprite": 42107,
-      "klass": 1,
-      "monstruo": true,
-      "tile": [
-        127,
-        22
-      ],
-      "direccion": 0,
-      "visible": 0
-    }
-  ],
-  "recursos": [
-    {
-      "entity_id": 102065,
-      "capa": 0,
-      "px": [
-        145,
-        2032
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60162,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102066,
-      "capa": 0,
-      "px": [
-        357,
-        1920
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60162,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102067,
-      "capa": 2,
-      "px": [
-        751,
-        2505
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60162,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102068,
-      "capa": 2,
-      "px": [
-        1141,
-        2399
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60162,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102069,
-      "capa": 2,
-      "px": [
-        612,
-        2149
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60162,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102070,
-      "capa": 0,
-      "px": [
-        1893,
-        1248
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60008,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102071,
-      "capa": 0,
-      "px": [
-        1796,
-        1308
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60008,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102072,
-      "capa": 2,
-      "px": [
-        2464,
-        934
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60008,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102073,
-      "capa": 0,
-      "px": [
-        2369,
-        988
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60009,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102074,
-      "capa": 0,
-      "px": [
-        2473,
-        865
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60007,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102075,
-      "capa": 0,
-      "px": [
-        1823,
-        1267
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60007,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102076,
-      "capa": 0,
-      "px": [
-        1983,
-        1157
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60009,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102077,
-      "capa": 0,
-      "px": [
-        1929,
-        1230
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60106,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102078,
-      "capa": 0,
-      "px": [
-        1795,
-        1306
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60106,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102079,
-      "capa": 0,
-      "px": [
-        1853,
-        1238
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60105,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102080,
-      "capa": 0,
-      "px": [
-        2023,
-        1181
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60105,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102081,
-      "capa": 0,
-      "px": [
-        2380,
-        962
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60105,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102082,
-      "capa": 0,
-      "px": [
-        2247,
-        1008
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60106,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102083,
-      "capa": 0,
-      "px": [
-        2500,
-        849
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60106,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102084,
-      "capa": 0,
-      "px": [
-        575,
-        2104
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60163,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102085,
-      "capa": 0,
-      "px": [
-        600,
-        2427
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60163,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102086,
-      "capa": 2,
-      "px": [
-        1118,
-        2350
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60163,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102087,
-      "capa": 0,
-      "px": [
-        978,
-        2453
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60163,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102088,
-      "capa": 0,
-      "px": [
-        252,
-        1922
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60163,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102089,
-      "capa": 0,
-      "px": [
-        534,
-        2035
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60161,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102090,
-      "capa": 0,
-      "px": [
-        177,
-        1966
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60161,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102091,
-      "capa": 0,
-      "px": [
-        659,
-        2479
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60161,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102092,
-      "capa": 2,
-      "px": [
-        990,
-        2359
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60161,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102093,
-      "capa": 2,
-      "px": [
-        461,
-        1943
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60161,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102094,
-      "capa": 2,
-      "px": [
-        3368,
-        610
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60112,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102095,
-      "capa": 0,
-      "px": [
-        4043,
-        951
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60112,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102096,
-      "capa": 2,
-      "px": [
-        4292,
-        628
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60112,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102097,
-      "capa": 0,
-      "px": [
-        4026,
-        497
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60112,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102098,
-      "capa": 2,
-      "px": [
-        4464,
-        680
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60112,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102099,
-      "capa": 0,
-      "px": [
-        3965,
-        845
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60123,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102100,
-      "capa": 0,
-      "px": [
-        4082,
-        497
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60123,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102101,
-      "capa": 2,
-      "px": [
-        3988,
-        480
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60123,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102102,
-      "capa": 0,
-      "px": [
-        3466,
-        729
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60123,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102103,
-      "capa": 2,
-      "px": [
-        3377,
-        703
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60123,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102104,
-      "capa": 0,
-      "px": [
-        4183,
-        531
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60176,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102105,
-      "capa": 0,
-      "px": [
-        3881,
-        842
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60176,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102106,
-      "capa": 2,
-      "px": [
-        3538,
-        753
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60176,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102107,
-      "capa": 0,
-      "px": [
-        3917,
-        643
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60176,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102108,
-      "capa": 0,
-      "px": [
-        3620,
-        346
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60176,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102109,
-      "capa": 0,
-      "px": [
-        5073,
-        2249
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60032,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102110,
-      "capa": 0,
-      "px": [
-        5343,
-        2177
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60032,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102111,
-      "capa": 0,
-      "px": [
-        5312,
-        2033
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60032,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102112,
-      "capa": 0,
-      "px": [
-        5537,
-        1882
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60032,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102113,
-      "capa": 2,
-      "px": [
-        5691,
-        2247
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60032,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102114,
-      "capa": 0,
-      "px": [
-        4942,
-        1831
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60032,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102115,
-      "capa": 0,
-      "px": [
-        5279,
-        1724
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60032,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102116,
-      "capa": 0,
-      "px": [
-        5481,
-        2207
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60032,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102117,
-      "capa": 0,
-      "px": [
-        5433,
-        2136
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60032,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102118,
-      "capa": 0,
-      "px": [
-        5591,
-        1610
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60032,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102119,
-      "capa": 0,
-      "px": [
-        2823,
-        3581
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60086,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102120,
-      "capa": 0,
-      "px": [
-        3580,
-        3570
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60086,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102121,
-      "capa": 2,
-      "px": [
-        3333,
-        3611
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60086,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102122,
-      "capa": 0,
-      "px": [
-        3842,
-        3341
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60086,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102123,
-      "capa": 0,
-      "px": [
-        3672,
-        3377
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60086,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102124,
-      "capa": 2,
-      "px": [
-        3180,
-        3251
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60086,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102125,
-      "capa": 2,
-      "px": [
-        6240,
-        639
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60001,
-      "cola": "00004080030000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102126,
-      "capa": 0,
-      "px": [
-        5886,
-        3571
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60001,
-      "cola": "00004080030000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102127,
-      "capa": 2,
-      "px": [
-        3005,
-        1639
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60050,
-      "cola": "00000000000000",
-      "medio": "0000000027000000000000001a000000"
-    },
-    {
-      "entity_id": 102128,
-      "capa": 0,
-      "px": [
-        3296,
-        2691
-      ],
-      "marca": 0,
-      "orient": 6,
-      "sprite": 60051,
-      "cola": "00002280140000",
-      "medio": "006f70706572284d2900000000000000"
-    },
-    {
-      "entity_id": 102129,
-      "capa": 0,
-      "px": [
-        4451,
-        2109
-      ],
-      "marca": 220,
-      "orient": 6,
-      "sprite": 60052,
-      "cola": "00002280140000",
-      "medio": "00000000180000000000000000000000"
-    },
-    {
-      "entity_id": 102130,
-      "capa": 0,
-      "px": [
-        3343,
-        1532
-      ],
-      "marca": 0,
-      "orient": 6,
-      "sprite": 60053,
-      "cola": "00002280140000",
-      "medio": "006f70706572284d2900000000000000"
-    },
-    {
-      "entity_id": 102131,
-      "capa": 0,
-      "px": [
-        2213,
-        2138
-      ],
-      "marca": 0,
-      "orient": 6,
-      "sprite": 60054,
-      "cola": "00002280140000",
-      "medio": "000000ba156f77650000000000000000"
-    }
-  ]
+ "_nota": "West Playground (stage 43), de una captura de Celestia del 22/09/2026. Se guardan los DATOS, no los bytes: sus 0x0008 miden 62 y 64 y los nuestros 63, y reenviar sus bytes tal cual ya hizo caer al cliente una vez. El npc_type se busca por NOMBRE en nuestro monster.xml. Los 0x000E si miden 43 en los dos, asi que se reconstruyen campo a campo y salen identicos al original.",
+ "stage": 43,
+ "spawns": [
+  {
+   "entity_id": 29360,
+   "nombre": "Aurora Totem",
+   "npc_type": 241,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    103,
+    83
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 29361,
+   "nombre": "Dark City Totem",
+   "npc_type": 241,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    139,
+    65
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 29362,
+   "nombre": "Iron Totem",
+   "npc_type": 241,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    104,
+    47
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 29363,
+   "nombre": "Breeze Totem",
+   "npc_type": 241,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    69,
+    66
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 122225,
+   "nombre": "Cupid",
+   "npc_type": 6,
+   "sprite": 40006,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    140,
+    52
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 1013917,
+   "nombre": "Wind Elf",
+   "npc_type": 1,
+   "sprite": 42055,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    101,
+    73
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013918,
+   "nombre": "Wind Elf",
+   "npc_type": 1,
+   "sprite": 42055,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    87,
+    66
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013919,
+   "nombre": "Wind Elf",
+   "npc_type": 1,
+   "sprite": 42055,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    77,
+    62
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013920,
+   "nombre": "Wind Elf",
+   "npc_type": 1,
+   "sprite": 42055,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    89,
+    75
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013921,
+   "nombre": "Wind Elf",
+   "npc_type": 1,
+   "sprite": 42055,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    92,
+    65
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013922,
+   "nombre": "Wind Elf",
+   "npc_type": 1,
+   "sprite": 42055,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    85,
+    67
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013923,
+   "nombre": "Wind Elf",
+   "npc_type": 1,
+   "sprite": 42055,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    109,
+    72
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013924,
+   "nombre": "Wind Elf",
+   "npc_type": 1,
+   "sprite": 42055,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    83,
+    60
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013925,
+   "nombre": "Wind Elf",
+   "npc_type": 1,
+   "sprite": 42055,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    110,
+    72
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013926,
+   "nombre": "Wind Elf",
+   "npc_type": 1,
+   "sprite": 42055,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    87,
+    68
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013927,
+   "nombre": "Wind Elf",
+   "npc_type": 1,
+   "sprite": 42055,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    97,
+    72
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013928,
+   "nombre": "Wind Elf",
+   "npc_type": 1,
+   "sprite": 42055,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    87,
+    61
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013929,
+   "nombre": "Wind Elf",
+   "npc_type": 1,
+   "sprite": 42055,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    86,
+    60
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013930,
+   "nombre": "Wind Elf",
+   "npc_type": 1,
+   "sprite": 42055,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    86,
+    63
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013931,
+   "nombre": "Wind Elf",
+   "npc_type": 1,
+   "sprite": 42055,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    98,
+    79
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013932,
+   "nombre": "Wind Elf",
+   "npc_type": 1,
+   "sprite": 42055,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    113,
+    55
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013933,
+   "nombre": "Wind Elf",
+   "npc_type": 1,
+   "sprite": 42055,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    124,
+    75
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013934,
+   "nombre": "Wind Elf",
+   "npc_type": 1,
+   "sprite": 42055,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    97,
+    57
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013935,
+   "nombre": "Wind Elf",
+   "npc_type": 1,
+   "sprite": 42055,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    105,
+    61
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013936,
+   "nombre": "Wind Elf",
+   "npc_type": 1,
+   "sprite": 42055,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    81,
+    47
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013937,
+   "nombre": "Wind Elf",
+   "npc_type": 1,
+   "sprite": 42055,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    122,
+    60
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013938,
+   "nombre": "Wind Elf",
+   "npc_type": 1,
+   "sprite": 42055,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    97,
+    32
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013939,
+   "nombre": "Wind Elf",
+   "npc_type": 1,
+   "sprite": 42055,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    117,
+    67
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013940,
+   "nombre": "Wind Elf",
+   "npc_type": 1,
+   "sprite": 42055,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    103,
+    49
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013941,
+   "nombre": "Wind Elf",
+   "npc_type": 1,
+   "sprite": 42055,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    107,
+    64
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013942,
+   "nombre": "Wind Elf",
+   "npc_type": 1,
+   "sprite": 42055,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    79,
+    41
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013943,
+   "nombre": "Wind Elf",
+   "npc_type": 1,
+   "sprite": 42055,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    97,
+    31
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013944,
+   "nombre": "Wind Elf",
+   "npc_type": 1,
+   "sprite": 42055,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    105,
+    52
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013945,
+   "nombre": "Wind Elf",
+   "npc_type": 1,
+   "sprite": 42055,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    77,
+    42
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013946,
+   "nombre": "Wind Elf",
+   "npc_type": 1,
+   "sprite": 42055,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    118,
+    76
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013947,
+   "nombre": "Fire Elf",
+   "npc_type": 2,
+   "sprite": 42056,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    81,
+    83
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013948,
+   "nombre": "Fire Elf",
+   "npc_type": 2,
+   "sprite": 42056,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    97,
+    103
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013949,
+   "nombre": "Fire Elf",
+   "npc_type": 2,
+   "sprite": 42056,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    75,
+    98
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013950,
+   "nombre": "Fire Elf",
+   "npc_type": 2,
+   "sprite": 42056,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    78,
+    84
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013951,
+   "nombre": "Fire Elf",
+   "npc_type": 2,
+   "sprite": 42056,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    66,
+    85
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013952,
+   "nombre": "Fire Elf",
+   "npc_type": 2,
+   "sprite": 42056,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    60,
+    86
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013953,
+   "nombre": "Fire Elf",
+   "npc_type": 2,
+   "sprite": 42056,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    81,
+    103
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013954,
+   "nombre": "Fire Elf",
+   "npc_type": 2,
+   "sprite": 42056,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    83,
+    97
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013955,
+   "nombre": "Fire Elf",
+   "npc_type": 2,
+   "sprite": 42056,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    79,
+    94
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013956,
+   "nombre": "Fire Elf",
+   "npc_type": 2,
+   "sprite": 42056,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    57,
+    85
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013957,
+   "nombre": "Fire Elf",
+   "npc_type": 2,
+   "sprite": 42056,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    19,
+    69
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013958,
+   "nombre": "Fire Elf",
+   "npc_type": 2,
+   "sprite": 42056,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    28,
+    78
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013959,
+   "nombre": "Fire Elf",
+   "npc_type": 2,
+   "sprite": 42056,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    37,
+    84
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013960,
+   "nombre": "Fire Elf",
+   "npc_type": 2,
+   "sprite": 42056,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    21,
+    75
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013961,
+   "nombre": "Fire Elf",
+   "npc_type": 2,
+   "sprite": 42056,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    24,
+    76
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013962,
+   "nombre": "Fire Elf",
+   "npc_type": 2,
+   "sprite": 42056,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    49,
+    89
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013963,
+   "nombre": "Fire Elf",
+   "npc_type": 2,
+   "sprite": 42056,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    20,
+    69
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013964,
+   "nombre": "Fire Elf",
+   "npc_type": 2,
+   "sprite": 42056,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    68
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013965,
+   "nombre": "Fire Elf",
+   "npc_type": 2,
+   "sprite": 42056,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    19,
+    70
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013966,
+   "nombre": "Fire Elf",
+   "npc_type": 2,
+   "sprite": 42056,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    52,
+    82
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013967,
+   "nombre": "Water Elf",
+   "npc_type": 3,
+   "sprite": 42057,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    66,
+    49
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013968,
+   "nombre": "Water Elf",
+   "npc_type": 3,
+   "sprite": 42057,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    62
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013969,
+   "nombre": "Water Elf",
+   "npc_type": 3,
+   "sprite": 42057,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    42,
+    65
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013970,
+   "nombre": "Water Elf",
+   "npc_type": 3,
+   "sprite": 42057,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    35,
+    72
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013971,
+   "nombre": "Water Elf",
+   "npc_type": 3,
+   "sprite": 42057,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    69,
+    44
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013972,
+   "nombre": "Water Elf",
+   "npc_type": 3,
+   "sprite": 42057,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    31,
+    66
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013973,
+   "nombre": "Water Elf",
+   "npc_type": 3,
+   "sprite": 42057,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    38,
+    63
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013974,
+   "nombre": "Water Elf",
+   "npc_type": 3,
+   "sprite": 42057,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    42,
+    61
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013975,
+   "nombre": "Water Elf",
+   "npc_type": 3,
+   "sprite": 42057,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    70,
+    50
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013976,
+   "nombre": "Water Elf",
+   "npc_type": 3,
+   "sprite": 42057,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    74,
+    45
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013977,
+   "nombre": "Water Elf",
+   "npc_type": 3,
+   "sprite": 42057,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    104,
+    26
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013978,
+   "nombre": "Water Elf",
+   "npc_type": 3,
+   "sprite": 42057,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    83,
+    31
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013979,
+   "nombre": "Water Elf",
+   "npc_type": 3,
+   "sprite": 42057,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    75,
+    39
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013980,
+   "nombre": "Water Elf",
+   "npc_type": 3,
+   "sprite": 42057,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    100,
+    20
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013981,
+   "nombre": "Water Elf",
+   "npc_type": 3,
+   "sprite": 42057,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    80,
+    43
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013982,
+   "nombre": "Water Elf",
+   "npc_type": 3,
+   "sprite": 42057,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    74,
+    49
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013983,
+   "nombre": "Water Elf",
+   "npc_type": 3,
+   "sprite": 42057,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    97,
+    33
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013984,
+   "nombre": "Water Elf",
+   "npc_type": 3,
+   "sprite": 42057,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    105,
+    18
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013985,
+   "nombre": "Water Elf",
+   "npc_type": 3,
+   "sprite": 42057,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    81,
+    41
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013986,
+   "nombre": "Water Elf",
+   "npc_type": 3,
+   "sprite": 42057,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    106,
+    23
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013987,
+   "nombre": "Earth Elf",
+   "npc_type": 4,
+   "sprite": 42058,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    104,
+    110
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013988,
+   "nombre": "Earth Elf",
+   "npc_type": 4,
+   "sprite": 42058,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    114,
+    101
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013989,
+   "nombre": "Earth Elf",
+   "npc_type": 4,
+   "sprite": 42058,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    108,
+    105
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013990,
+   "nombre": "Earth Elf",
+   "npc_type": 4,
+   "sprite": 42058,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    112,
+    105
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013991,
+   "nombre": "Earth Elf",
+   "npc_type": 4,
+   "sprite": 42058,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    123,
+    92
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013992,
+   "nombre": "Earth Elf",
+   "npc_type": 4,
+   "sprite": 42058,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    106,
+    109
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013993,
+   "nombre": "Earth Elf",
+   "npc_type": 4,
+   "sprite": 42058,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    112,
+    98
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013994,
+   "nombre": "Earth Elf",
+   "npc_type": 4,
+   "sprite": 42058,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    115,
+    92
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013995,
+   "nombre": "Earth Elf",
+   "npc_type": 4,
+   "sprite": 42058,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    121,
+    99
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013996,
+   "nombre": "Earth Elf",
+   "npc_type": 4,
+   "sprite": 42058,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    113,
+    94
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013997,
+   "nombre": "Earth Elf",
+   "npc_type": 4,
+   "sprite": 42058,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    113,
+    98
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013998,
+   "nombre": "Earth Elf",
+   "npc_type": 4,
+   "sprite": 42058,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    112,
+    105
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1013999,
+   "nombre": "Earth Elf",
+   "npc_type": 4,
+   "sprite": 42058,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    108,
+    96
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014000,
+   "nombre": "Earth Elf",
+   "npc_type": 4,
+   "sprite": 42058,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    102,
+    110
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014001,
+   "nombre": "Earth Elf",
+   "npc_type": 4,
+   "sprite": 42058,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    104,
+    111
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014002,
+   "nombre": "Earth Elf",
+   "npc_type": 4,
+   "sprite": 42058,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    180,
+    69
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014003,
+   "nombre": "Earth Elf",
+   "npc_type": 4,
+   "sprite": 42058,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    175,
+    72
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014004,
+   "nombre": "Earth Elf",
+   "npc_type": 4,
+   "sprite": 42058,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    176,
+    74
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014005,
+   "nombre": "Earth Elf",
+   "npc_type": 4,
+   "sprite": 42058,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    162,
+    74
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014006,
+   "nombre": "Earth Elf",
+   "npc_type": 4,
+   "sprite": 42058,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    149,
+    92
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014007,
+   "nombre": "Earth Elf",
+   "npc_type": 4,
+   "sprite": 42058,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    170,
+    66
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014008,
+   "nombre": "Earth Elf",
+   "npc_type": 4,
+   "sprite": 42058,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    175,
+    69
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014009,
+   "nombre": "Earth Elf",
+   "npc_type": 4,
+   "sprite": 42058,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    172,
+    76
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014010,
+   "nombre": "Earth Elf",
+   "npc_type": 4,
+   "sprite": 42058,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    173,
+    72
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014011,
+   "nombre": "Earth Elf",
+   "npc_type": 4,
+   "sprite": 42058,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    172,
+    66
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014012,
+   "nombre": "Earth Elf",
+   "npc_type": 4,
+   "sprite": 42058,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    179,
+    67
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014013,
+   "nombre": "Earth Elf",
+   "npc_type": 4,
+   "sprite": 42058,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    180,
+    74
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014014,
+   "nombre": "Earth Elf",
+   "npc_type": 4,
+   "sprite": 42058,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    179,
+    70
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014015,
+   "nombre": "Earth Elf",
+   "npc_type": 4,
+   "sprite": 42058,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    173,
+    66
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014016,
+   "nombre": "Earth Elf",
+   "npc_type": 4,
+   "sprite": 42058,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    170,
+    75
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014017,
+   "nombre": "Lily",
+   "npc_type": 7,
+   "sprite": 42041,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    166,
+    55
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014018,
+   "nombre": "Lily",
+   "npc_type": 7,
+   "sprite": 42041,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    162,
+    48
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014019,
+   "nombre": "Lily",
+   "npc_type": 7,
+   "sprite": 42041,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    177,
+    51
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014020,
+   "nombre": "Lily",
+   "npc_type": 7,
+   "sprite": 42041,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    183,
+    35
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014021,
+   "nombre": "Lily",
+   "npc_type": 7,
+   "sprite": 42041,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    182,
+    69
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014022,
+   "nombre": "Lily",
+   "npc_type": 7,
+   "sprite": 42041,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    152,
+    55
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014023,
+   "nombre": "Lily",
+   "npc_type": 7,
+   "sprite": 42041,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    171,
+    75
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014024,
+   "nombre": "Lily",
+   "npc_type": 7,
+   "sprite": 42041,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    189,
+    47
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014025,
+   "nombre": "Lily",
+   "npc_type": 7,
+   "sprite": 42041,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    165,
+    61
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014026,
+   "nombre": "Lily",
+   "npc_type": 7,
+   "sprite": 42041,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    195,
+    71
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014027,
+   "nombre": "Lily",
+   "npc_type": 7,
+   "sprite": 42041,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    96,
+    9
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014028,
+   "nombre": "Lily",
+   "npc_type": 7,
+   "sprite": 42041,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    110,
+    8
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014029,
+   "nombre": "Lily",
+   "npc_type": 7,
+   "sprite": 42041,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    91,
+    38
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014030,
+   "nombre": "Lily",
+   "npc_type": 7,
+   "sprite": 42041,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    122,
+    13
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014031,
+   "nombre": "Lily",
+   "npc_type": 7,
+   "sprite": 42041,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    112,
+    35
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014032,
+   "nombre": "Lily",
+   "npc_type": 7,
+   "sprite": 42041,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    103,
+    31
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014033,
+   "nombre": "Lily",
+   "npc_type": 7,
+   "sprite": 42041,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    137,
+    25
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014034,
+   "nombre": "Lily",
+   "npc_type": 7,
+   "sprite": 42041,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    98,
+    22
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014035,
+   "nombre": "Lily",
+   "npc_type": 7,
+   "sprite": 42041,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    103,
+    31
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014036,
+   "nombre": "Lily",
+   "npc_type": 7,
+   "sprite": 42041,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    110,
+    8
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014037,
+   "nombre": "Slarm",
+   "npc_type": 19,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    163,
+    47
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014038,
+   "nombre": "Slarm",
+   "npc_type": 19,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    175,
+    39
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014039,
+   "nombre": "Slarm",
+   "npc_type": 19,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    172,
+    54
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014040,
+   "nombre": "Slarm",
+   "npc_type": 19,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    193,
+    70
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014041,
+   "nombre": "Slarm",
+   "npc_type": 19,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    161,
+    54
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014042,
+   "nombre": "Slarm",
+   "npc_type": 19,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    154,
+    47
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014043,
+   "nombre": "Slarm",
+   "npc_type": 19,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    181,
+    59
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014044,
+   "nombre": "Slarm",
+   "npc_type": 19,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    193,
+    39
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014045,
+   "nombre": "Slarm",
+   "npc_type": 19,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    189,
+    36
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014046,
+   "nombre": "Slarm",
+   "npc_type": 19,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    192,
+    58
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014047,
+   "nombre": "Slarm",
+   "npc_type": 19,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    182,
+    51
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014048,
+   "nombre": "Slarm",
+   "npc_type": 19,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    159,
+    48
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014049,
+   "nombre": "Slarm",
+   "npc_type": 19,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    177,
+    62
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014050,
+   "nombre": "Slarm",
+   "npc_type": 19,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    177,
+    50
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014051,
+   "nombre": "Slarm",
+   "npc_type": 19,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    176,
+    39
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014052,
+   "nombre": "Slarm",
+   "npc_type": 19,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    141,
+    33
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014053,
+   "nombre": "Slarm",
+   "npc_type": 19,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    167,
+    28
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014054,
+   "nombre": "Slarm",
+   "npc_type": 19,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    178,
+    26
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014055,
+   "nombre": "Slarm",
+   "npc_type": 19,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    128,
+    33
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014056,
+   "nombre": "Slarm",
+   "npc_type": 19,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    124,
+    25
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014057,
+   "nombre": "Slarm",
+   "npc_type": 19,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    147,
+    26
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014058,
+   "nombre": "Slarm",
+   "npc_type": 19,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    137,
+    38
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014059,
+   "nombre": "Slarm",
+   "npc_type": 19,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    132,
+    23
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014060,
+   "nombre": "Slarm",
+   "npc_type": 19,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    121,
+    27
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014061,
+   "nombre": "Slarm",
+   "npc_type": 19,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    160,
+    30
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014062,
+   "nombre": "Slarm",
+   "npc_type": 19,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    123,
+    30
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014063,
+   "nombre": "Slarm",
+   "npc_type": 19,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    108,
+    28
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014064,
+   "nombre": "Slarm",
+   "npc_type": 19,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    180,
+    14
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014065,
+   "nombre": "Slarm",
+   "npc_type": 19,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    126,
+    35
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1014066,
+   "nombre": "Slarm",
+   "npc_type": 19,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    127,
+    22
+   ],
+   "direccion": 0,
+   "visible": 0
+  }
+ ],
+ "recursos": [
+  {
+   "entity_id": 102065,
+   "capa": 0,
+   "px": [
+    145,
+    2032
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60162,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000",
+   "nombre_visible": "Copper(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 102066,
+   "capa": 0,
+   "px": [
+    357,
+    1920
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60162,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000",
+   "nombre_visible": "Copper(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 102067,
+   "capa": 2,
+   "px": [
+    751,
+    2505
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60162,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000",
+   "nombre_visible": "Copper(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 102068,
+   "capa": 2,
+   "px": [
+    1141,
+    2399
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60162,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000",
+   "nombre_visible": "Copper(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 102069,
+   "capa": 2,
+   "px": [
+    612,
+    2149
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60162,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000",
+   "nombre_visible": "Copper(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 102070,
+   "capa": 0,
+   "px": [
+    1893,
+    1248
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60008,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000",
+   "nombre_visible": "Wild Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 102071,
+   "capa": 0,
+   "px": [
+    1796,
+    1308
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60008,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000",
+   "nombre_visible": "Wild Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 102072,
+   "capa": 2,
+   "px": [
+    2464,
+    934
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60008,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000",
+   "nombre_visible": "Wild Alga(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 102073,
+   "capa": 0,
+   "px": [
+    2369,
+    988
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60009,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000",
+   "nombre_visible": "Wild Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 102074,
+   "capa": 0,
+   "px": [
+    2473,
+    865
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60007,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000",
+   "nombre_visible": "Wild Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 102075,
+   "capa": 0,
+   "px": [
+    1823,
+    1267
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60007,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000",
+   "nombre_visible": "Wild Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 102076,
+   "capa": 0,
+   "px": [
+    1983,
+    1157
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60009,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000",
+   "nombre_visible": "Wild Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 102077,
+   "capa": 0,
+   "px": [
+    1929,
+    1230
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60106,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000",
+   "material": "Wild Alga(M)",
+   "nombre_visible": "Wild Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 102078,
+   "capa": 0,
+   "px": [
+    1795,
+    1306
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60106,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000",
+   "material": "Wild Alga(M)",
+   "nombre_visible": "Wild Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 102079,
+   "capa": 0,
+   "px": [
+    1853,
+    1238
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60105,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000",
+   "material": "Wild Alga(S)",
+   "nombre_visible": "Wild Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 102080,
+   "capa": 0,
+   "px": [
+    2023,
+    1181
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60105,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000",
+   "material": "Wild Alga(S)",
+   "nombre_visible": "Wild Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 102081,
+   "capa": 0,
+   "px": [
+    2380,
+    962
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60105,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000",
+   "material": "Wild Alga(S)",
+   "nombre_visible": "Wild Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 102082,
+   "capa": 0,
+   "px": [
+    2247,
+    1008
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60106,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000",
+   "material": "Wild Alga(M)",
+   "nombre_visible": "Wild Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 102083,
+   "capa": 0,
+   "px": [
+    2500,
+    849
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60106,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000",
+   "material": "Wild Alga(M)",
+   "nombre_visible": "Wild Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 102084,
+   "capa": 0,
+   "px": [
+    575,
+    2104
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60163,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000",
+   "nombre_visible": "Copper(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 102085,
+   "capa": 0,
+   "px": [
+    600,
+    2427
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60163,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000",
+   "nombre_visible": "Copper(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 102086,
+   "capa": 2,
+   "px": [
+    1118,
+    2350
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60163,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000",
+   "nombre_visible": "Copper(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 102087,
+   "capa": 0,
+   "px": [
+    978,
+    2453
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60163,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000",
+   "nombre_visible": "Copper(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 102088,
+   "capa": 0,
+   "px": [
+    252,
+    1922
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60163,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000",
+   "nombre_visible": "Copper(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 102089,
+   "capa": 0,
+   "px": [
+    534,
+    2035
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60161,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000",
+   "material_posibles": [
+    "Big Obsidian",
+    "Obsidian (L)"
+   ],
+   "nombre_visible": "Copper(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 102090,
+   "capa": 0,
+   "px": [
+    177,
+    1966
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60161,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000",
+   "material_posibles": [
+    "Big Obsidian",
+    "Obsidian (L)"
+   ],
+   "nombre_visible": "Copper(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 102091,
+   "capa": 0,
+   "px": [
+    659,
+    2479
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60161,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000",
+   "material_posibles": [
+    "Big Obsidian",
+    "Obsidian (L)"
+   ],
+   "nombre_visible": "Copper(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 102092,
+   "capa": 2,
+   "px": [
+    990,
+    2359
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60161,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000",
+   "material_posibles": [
+    "Big Obsidian",
+    "Obsidian (L)"
+   ],
+   "nombre_visible": "Copper(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 102093,
+   "capa": 2,
+   "px": [
+    461,
+    1943
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60161,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000",
+   "material_posibles": [
+    "Big Obsidian",
+    "Obsidian (L)"
+   ],
+   "nombre_visible": "Copper(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 102094,
+   "capa": 2,
+   "px": [
+    3368,
+    610
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60112,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000",
+   "material": "Poplar(S)",
+   "nombre_visible": "Poplar(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 102095,
+   "capa": 0,
+   "px": [
+    4043,
+    951
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60112,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000",
+   "material": "Poplar(S)",
+   "nombre_visible": "Poplar(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 102096,
+   "capa": 2,
+   "px": [
+    4292,
+    628
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60112,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000",
+   "material": "Poplar(S)",
+   "nombre_visible": "Poplar(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 102097,
+   "capa": 0,
+   "px": [
+    4026,
+    497
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60112,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000",
+   "material": "Poplar(S)",
+   "nombre_visible": "Poplar(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 102098,
+   "capa": 2,
+   "px": [
+    4464,
+    680
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60112,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000",
+   "material": "Poplar(S)",
+   "nombre_visible": "Poplar(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 102099,
+   "capa": 0,
+   "px": [
+    3965,
+    845
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60123,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000",
+   "material": "Poplar(M)",
+   "nombre_visible": "Poplar(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 102100,
+   "capa": 0,
+   "px": [
+    4082,
+    497
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60123,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000",
+   "material": "Poplar(M)",
+   "nombre_visible": "Poplar(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 102101,
+   "capa": 2,
+   "px": [
+    3988,
+    480
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60123,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000",
+   "material": "Poplar(M)",
+   "nombre_visible": "Poplar(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 102102,
+   "capa": 0,
+   "px": [
+    3466,
+    729
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60123,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000",
+   "material": "Poplar(M)",
+   "nombre_visible": "Poplar(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 102103,
+   "capa": 2,
+   "px": [
+    3377,
+    703
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60123,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000",
+   "material": "Poplar(M)",
+   "nombre_visible": "Poplar(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 102104,
+   "capa": 0,
+   "px": [
+    4183,
+    531
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60176,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000",
+   "material_posibles": [
+    "Grapefruit(L)",
+    "Poplar(L)",
+    "Teak(L)"
+   ],
+   "nombre_visible": "Poplar(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 102105,
+   "capa": 0,
+   "px": [
+    3881,
+    842
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60176,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000",
+   "material_posibles": [
+    "Grapefruit(L)",
+    "Poplar(L)",
+    "Teak(L)"
+   ],
+   "nombre_visible": "Poplar(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 102106,
+   "capa": 2,
+   "px": [
+    3538,
+    753
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60176,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000",
+   "material_posibles": [
+    "Grapefruit(L)",
+    "Poplar(L)",
+    "Teak(L)"
+   ],
+   "nombre_visible": "Poplar(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 102107,
+   "capa": 0,
+   "px": [
+    3917,
+    643
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60176,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000",
+   "material_posibles": [
+    "Grapefruit(L)",
+    "Poplar(L)",
+    "Teak(L)"
+   ],
+   "nombre_visible": "Poplar(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 102108,
+   "capa": 0,
+   "px": [
+    3620,
+    346
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60176,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000",
+   "material_posibles": [
+    "Grapefruit(L)",
+    "Poplar(L)",
+    "Teak(L)"
+   ],
+   "nombre_visible": "Poplar(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 102109,
+   "capa": 0,
+   "px": [
+    5073,
+    2249
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60032,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000",
+   "material": "Lavender(L)",
+   "nombre_visible": "Horseradish(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 102110,
+   "capa": 0,
+   "px": [
+    5343,
+    2177
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60032,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000",
+   "material": "Lavender(L)",
+   "nombre_visible": "Horseradish(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 102111,
+   "capa": 0,
+   "px": [
+    5312,
+    2033
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60032,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000",
+   "material": "Lavender(L)",
+   "nombre_visible": "Horseradish(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 102112,
+   "capa": 0,
+   "px": [
+    5537,
+    1882
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60032,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000",
+   "material": "Lavender(L)",
+   "nombre_visible": "Horseradish(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 102113,
+   "capa": 2,
+   "px": [
+    5691,
+    2247
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60032,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000",
+   "material": "Lavender(L)",
+   "nombre_visible": "Horseradish(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 102114,
+   "capa": 0,
+   "px": [
+    4942,
+    1831
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60032,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000",
+   "material": "Lavender(L)",
+   "nombre_visible": "Horseradish(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 102115,
+   "capa": 0,
+   "px": [
+    5279,
+    1724
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60032,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000",
+   "material": "Lavender(L)",
+   "nombre_visible": "Horseradish(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 102116,
+   "capa": 0,
+   "px": [
+    5481,
+    2207
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60032,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000",
+   "material": "Lavender(L)",
+   "nombre_visible": "Horseradish(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 102117,
+   "capa": 0,
+   "px": [
+    5433,
+    2136
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60032,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000",
+   "material": "Lavender(L)",
+   "nombre_visible": "Horseradish(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 102118,
+   "capa": 0,
+   "px": [
+    5591,
+    1610
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60032,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000",
+   "material": "Lavender(L)",
+   "nombre_visible": "Horseradish(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 102119,
+   "capa": 0,
+   "px": [
+    2823,
+    3581
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60086,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000",
+   "material_posibles": [
+    "Beastkin Den(S)",
+    "BeastkinDen(S)"
+   ],
+   "nombre_visible": "Beast Den(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 102120,
+   "capa": 0,
+   "px": [
+    3580,
+    3570
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60086,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000",
+   "material_posibles": [
+    "Beastkin Den(S)",
+    "BeastkinDen(S)"
+   ],
+   "nombre_visible": "Beast Den(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 102121,
+   "capa": 2,
+   "px": [
+    3333,
+    3611
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60086,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000",
+   "material_posibles": [
+    "Beastkin Den(S)",
+    "BeastkinDen(S)"
+   ],
+   "nombre_visible": "Beast Den(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 102122,
+   "capa": 0,
+   "px": [
+    3842,
+    3341
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60086,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000",
+   "material_posibles": [
+    "Beastkin Den(S)",
+    "BeastkinDen(S)"
+   ],
+   "nombre_visible": "Beast Den(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 102123,
+   "capa": 0,
+   "px": [
+    3672,
+    3377
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60086,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000",
+   "material_posibles": [
+    "Beastkin Den(S)",
+    "BeastkinDen(S)"
+   ],
+   "nombre_visible": "Beast Den(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 102124,
+   "capa": 2,
+   "px": [
+    3180,
+    3251
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60086,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000",
+   "material_posibles": [
+    "Beastkin Den(S)",
+    "BeastkinDen(S)"
+   ],
+   "nombre_visible": "Beast Den(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 102125,
+   "capa": 2,
+   "px": [
+    6240,
+    639
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "medio": "0000000027000000000000001a000000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 102126,
+   "capa": 0,
+   "px": [
+    5886,
+    3571
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "medio": "0000000027000000000000001a000000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 102127,
+   "capa": 2,
+   "px": [
+    3005,
+    1639
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60050,
+   "cola": "00000000000000",
+   "medio": "0000000027000000000000001a000000"
+  },
+  {
+   "entity_id": 102128,
+   "capa": 0,
+   "px": [
+    3296,
+    2691
+   ],
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60051,
+   "cola": "00002280140000",
+   "medio": "006f70706572284d2900000000000000",
+   "que_es": "Aurora Totem"
+  },
+  {
+   "entity_id": 102129,
+   "capa": 0,
+   "px": [
+    4451,
+    2109
+   ],
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60052,
+   "cola": "00002280140000",
+   "medio": "00000000180000000000000000000000",
+   "que_es": "Dark City Totem"
+  },
+  {
+   "entity_id": 102130,
+   "capa": 0,
+   "px": [
+    3343,
+    1532
+   ],
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60053,
+   "cola": "00002280140000",
+   "medio": "006f70706572284d2900000000000000",
+   "que_es": "Iron Totem"
+  },
+  {
+   "entity_id": 102131,
+   "capa": 0,
+   "px": [
+    2213,
+    2138
+   ],
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60054,
+   "cola": "00002280140000",
+   "medio": "000000ba156f77650000000000000000",
+   "que_es": "Breeze Totem"
+  }
+ ]
 }

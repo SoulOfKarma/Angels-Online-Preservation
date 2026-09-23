@@ -1,0 +1,2833 @@
+{
+ "_nota": "Deep Trench (stage 363), de dos capturas de Celestia del 23/09/2026. Zona de Desolate Sea, de un update tardio: el usuario dice que no sale en el mapa del cliente de Celestia pero el servidor lo tiene andando.",
+ "stage": 363,
+ "spawns": [
+  {
+   "entity_id": 123902,
+   "nombre": "Shaw",
+   "npc_type": 14988,
+   "sprite": 40660,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    211,
+    74
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123903,
+   "nombre": "Skinny",
+   "npc_type": 24502,
+   "sprite": 40183,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    138,
+    162
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 1063337,
+   "nombre": "Day Starry",
+   "npc_type": 23116,
+   "sprite": 111045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    16,
+    148
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1063338,
+   "nombre": "Day Starry",
+   "npc_type": 23116,
+   "sprite": 111045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    14,
+    156
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1063339,
+   "nombre": "Day Starry",
+   "npc_type": 23116,
+   "sprite": 111045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    19,
+    142
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1063340,
+   "nombre": "Day Starry",
+   "npc_type": 23116,
+   "sprite": 111045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    23,
+    149
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1063341,
+   "nombre": "Day Starry",
+   "npc_type": 23116,
+   "sprite": 111045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    11,
+    147
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1063342,
+   "nombre": "Day Starry",
+   "npc_type": 23116,
+   "sprite": 111045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    23,
+    107
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1063343,
+   "nombre": "Day Starry",
+   "npc_type": 23116,
+   "sprite": 111045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    20,
+    127
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1063344,
+   "nombre": "Day Starry",
+   "npc_type": 23116,
+   "sprite": 111045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    34,
+    105
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1063345,
+   "nombre": "Day Starry",
+   "npc_type": 23116,
+   "sprite": 111045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    22,
+    113
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1063346,
+   "nombre": "Day Starry",
+   "npc_type": 23116,
+   "sprite": 111045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    18,
+    116
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1063347,
+   "nombre": "Day Starry",
+   "npc_type": 23116,
+   "sprite": 111045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    17,
+    133
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1063348,
+   "nombre": "Day Starry",
+   "npc_type": 23116,
+   "sprite": 111045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    46,
+    129
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1063349,
+   "nombre": "Day Starry",
+   "npc_type": 23116,
+   "sprite": 111045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    29,
+    134
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1063350,
+   "nombre": "Day Starry",
+   "npc_type": 23116,
+   "sprite": 111045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    23,
+    125
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1063351,
+   "nombre": "Day Starry",
+   "npc_type": 23116,
+   "sprite": 111045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    40,
+    127
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1063352,
+   "nombre": "Day Starry",
+   "npc_type": 23116,
+   "sprite": 111045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    52,
+    102
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1063353,
+   "nombre": "Day Starry",
+   "npc_type": 23116,
+   "sprite": 111045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    26,
+    125
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1063354,
+   "nombre": "Day Starry",
+   "npc_type": 23116,
+   "sprite": 111045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    41,
+    96
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1063355,
+   "nombre": "Day Starry",
+   "npc_type": 23116,
+   "sprite": 111045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    36,
+    110
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1063356,
+   "nombre": "Day Starry",
+   "npc_type": 23116,
+   "sprite": 111045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    25,
+    115
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1063357,
+   "nombre": "Day Starry",
+   "npc_type": 23116,
+   "sprite": 111045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    31,
+    85
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1063358,
+   "nombre": "Day Starry",
+   "npc_type": 23116,
+   "sprite": 111045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    37,
+    68
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1063359,
+   "nombre": "Day Starry",
+   "npc_type": 23116,
+   "sprite": 111045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    25,
+    94
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1063360,
+   "nombre": "Day Starry",
+   "npc_type": 23116,
+   "sprite": 111045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    23,
+    81
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1063361,
+   "nombre": "Day Starry",
+   "npc_type": 23116,
+   "sprite": 111045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    25,
+    72
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1063362,
+   "nombre": "Day Starry",
+   "npc_type": 23116,
+   "sprite": 111045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    29,
+    42
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1063363,
+   "nombre": "Day Starry",
+   "npc_type": 23116,
+   "sprite": 111045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    26,
+    50
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1063364,
+   "nombre": "Day Starry",
+   "npc_type": 23116,
+   "sprite": 111045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    16,
+    56
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1063365,
+   "nombre": "Day Starry",
+   "npc_type": 23116,
+   "sprite": 111045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    26,
+    62
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1063366,
+   "nombre": "Day Starry",
+   "npc_type": 23116,
+   "sprite": 111045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    26,
+    51
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1063367,
+   "nombre": "Night Starry",
+   "npc_type": 23117,
+   "sprite": 111089,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    47,
+    90
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1063368,
+   "nombre": "Night Starry",
+   "npc_type": 23117,
+   "sprite": 111089,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    56,
+    79
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1063369,
+   "nombre": "Night Starry",
+   "npc_type": 23117,
+   "sprite": 111089,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    52,
+    101
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1063370,
+   "nombre": "Night Starry",
+   "npc_type": 23117,
+   "sprite": 111089,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    74,
+    79
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1063371,
+   "nombre": "Night Starry",
+   "npc_type": 23117,
+   "sprite": 111089,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    68,
+    82
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1063372,
+   "nombre": "Night Starry",
+   "npc_type": 23117,
+   "sprite": 111089,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    41,
+    71
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1063373,
+   "nombre": "Night Starry",
+   "npc_type": 23117,
+   "sprite": 111089,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    48,
+    60
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1063374,
+   "nombre": "Night Starry",
+   "npc_type": 23117,
+   "sprite": 111089,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    50,
+    70
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1063375,
+   "nombre": "Night Starry",
+   "npc_type": 23117,
+   "sprite": 111089,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    45,
+    45
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1063376,
+   "nombre": "Night Starry",
+   "npc_type": 23117,
+   "sprite": 111089,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    40,
+    81
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1063377,
+   "nombre": "Night Starry",
+   "npc_type": 23117,
+   "sprite": 111089,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    41,
+    52
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1063378,
+   "nombre": "Night Starry",
+   "npc_type": 23117,
+   "sprite": 111089,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    61,
+    31
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1063379,
+   "nombre": "Night Starry",
+   "npc_type": 23117,
+   "sprite": 111089,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    48,
+    42
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1063380,
+   "nombre": "Night Starry",
+   "npc_type": 23117,
+   "sprite": 111089,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    72,
+    30
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1063381,
+   "nombre": "Night Starry",
+   "npc_type": 23117,
+   "sprite": 111089,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    62,
+    28
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1063382,
+   "nombre": "Night Starry",
+   "npc_type": 23117,
+   "sprite": 111089,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    37,
+    20
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1063383,
+   "nombre": "Night Starry",
+   "npc_type": 23117,
+   "sprite": 111089,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    28,
+    23
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1063384,
+   "nombre": "Night Starry",
+   "npc_type": 23117,
+   "sprite": 111089,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    37,
+    18
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1063385,
+   "nombre": "Night Starry",
+   "npc_type": 23117,
+   "sprite": 111089,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    34,
+    26
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1063386,
+   "nombre": "Night Starry",
+   "npc_type": 23117,
+   "sprite": 111089,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    27,
+    21
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1063387,
+   "nombre": "Night Starry",
+   "npc_type": 23117,
+   "sprite": 111089,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    68,
+    9
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1063388,
+   "nombre": "Night Starry",
+   "npc_type": 23117,
+   "sprite": 111089,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    71,
+    22
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1063389,
+   "nombre": "Night Starry",
+   "npc_type": 23117,
+   "sprite": 111089,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    72,
+    11
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1063390,
+   "nombre": "Night Starry",
+   "npc_type": 23117,
+   "sprite": 111089,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    49,
+    13
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1063391,
+   "nombre": "Night Starry",
+   "npc_type": 23117,
+   "sprite": 111089,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    62,
+    14
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1063392,
+   "nombre": "Night Starry",
+   "npc_type": 23117,
+   "sprite": 111089,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    91,
+    36
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1063393,
+   "nombre": "Night Starry",
+   "npc_type": 23117,
+   "sprite": 111089,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    81,
+    34
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1063394,
+   "nombre": "Night Starry",
+   "npc_type": 23117,
+   "sprite": 111089,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    102,
+    32
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1063395,
+   "nombre": "Night Starry",
+   "npc_type": 23117,
+   "sprite": 111089,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    101,
+    41
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1063396,
+   "nombre": "Night Starry",
+   "npc_type": 23117,
+   "sprite": 111089,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    101,
+    19
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1063397,
+   "nombre": "Pale Gator",
+   "npc_type": 23118,
+   "sprite": 111096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    42,
+    161
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063398,
+   "nombre": "Pale Gator",
+   "npc_type": 23118,
+   "sprite": 111096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    50,
+    155
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063399,
+   "nombre": "Pale Gator",
+   "npc_type": 23118,
+   "sprite": 111096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    46,
+    150
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063400,
+   "nombre": "Pale Gator",
+   "npc_type": 23118,
+   "sprite": 111096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    60,
+    157
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063401,
+   "nombre": "Pale Gator",
+   "npc_type": 23118,
+   "sprite": 111096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    64,
+    162
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063402,
+   "nombre": "Pale Gator",
+   "npc_type": 23118,
+   "sprite": 111096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    74,
+    150
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063403,
+   "nombre": "Pale Gator",
+   "npc_type": 23118,
+   "sprite": 111096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    75,
+    142
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063404,
+   "nombre": "Pale Gator",
+   "npc_type": 23118,
+   "sprite": 111096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    58,
+    139
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063405,
+   "nombre": "Pale Gator",
+   "npc_type": 23118,
+   "sprite": 111096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    82,
+    142
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063406,
+   "nombre": "Pale Gator",
+   "npc_type": 23118,
+   "sprite": 111096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    74,
+    137
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063407,
+   "nombre": "Pale Gator",
+   "npc_type": 23118,
+   "sprite": 111096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    71,
+    167
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063408,
+   "nombre": "Pale Gator",
+   "npc_type": 23118,
+   "sprite": 111096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    76,
+    163
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063409,
+   "nombre": "Pale Gator",
+   "npc_type": 23118,
+   "sprite": 111096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    85,
+    148
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063410,
+   "nombre": "Pale Gator",
+   "npc_type": 23118,
+   "sprite": 111096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    83,
+    158
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063411,
+   "nombre": "Pale Gator",
+   "npc_type": 23118,
+   "sprite": 111096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    66,
+    162
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063412,
+   "nombre": "Pale Gator",
+   "npc_type": 23118,
+   "sprite": 111096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    95,
+    138
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063413,
+   "nombre": "Pale Gator",
+   "npc_type": 23118,
+   "sprite": 111096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    101,
+    155
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063414,
+   "nombre": "Pale Gator",
+   "npc_type": 23118,
+   "sprite": 111096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    104,
+    138
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063415,
+   "nombre": "Pale Gator",
+   "npc_type": 23118,
+   "sprite": 111096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    94,
+    145
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063416,
+   "nombre": "Pale Gator",
+   "npc_type": 23118,
+   "sprite": 111096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    96,
+    149
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063417,
+   "nombre": "Pale Gator",
+   "npc_type": 23118,
+   "sprite": 111096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    134,
+    155
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063418,
+   "nombre": "Pale Gator",
+   "npc_type": 23118,
+   "sprite": 111096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    111,
+    155
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063419,
+   "nombre": "Pale Gator",
+   "npc_type": 23118,
+   "sprite": 111096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    120,
+    170
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063420,
+   "nombre": "Pale Gator",
+   "npc_type": 23118,
+   "sprite": 111096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    136,
+    166
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063421,
+   "nombre": "Pale Gator",
+   "npc_type": 23118,
+   "sprite": 111096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    112,
+    162
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063422,
+   "nombre": "Pale Gator",
+   "npc_type": 23118,
+   "sprite": 111096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    141,
+    133
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063423,
+   "nombre": "Pale Gator",
+   "npc_type": 23118,
+   "sprite": 111096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    112,
+    133
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063424,
+   "nombre": "Pale Gator",
+   "npc_type": 23118,
+   "sprite": 111096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    107,
+    147
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063425,
+   "nombre": "Pale Gator",
+   "npc_type": 23118,
+   "sprite": 111096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    119,
+    144
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063426,
+   "nombre": "Pale Gator",
+   "npc_type": 23118,
+   "sprite": 111096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    129,
+    130
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063427,
+   "nombre": "Pale Gator",
+   "npc_type": 23118,
+   "sprite": 111096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    140,
+    158
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063428,
+   "nombre": "Pale Gator",
+   "npc_type": 23118,
+   "sprite": 111096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    155,
+    163
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063429,
+   "nombre": "Pale Gator",
+   "npc_type": 23118,
+   "sprite": 111096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    144,
+    142
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063430,
+   "nombre": "Pale Gator",
+   "npc_type": 23118,
+   "sprite": 111096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    162,
+    150
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063431,
+   "nombre": "Pale Gator",
+   "npc_type": 23118,
+   "sprite": 111096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    149,
+    160
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063432,
+   "nombre": "Green Gator",
+   "npc_type": 23119,
+   "sprite": 111097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    177,
+    163
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063433,
+   "nombre": "Green Gator",
+   "npc_type": 23119,
+   "sprite": 111097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    171,
+    162
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063434,
+   "nombre": "Green Gator",
+   "npc_type": 23119,
+   "sprite": 111097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    172,
+    147
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063435,
+   "nombre": "Green Gator",
+   "npc_type": 23119,
+   "sprite": 111097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    167,
+    157
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063436,
+   "nombre": "Green Gator",
+   "npc_type": 23119,
+   "sprite": 111097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    181,
+    155
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063437,
+   "nombre": "Green Gator",
+   "npc_type": 23119,
+   "sprite": 111097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    201,
+    157
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063438,
+   "nombre": "Green Gator",
+   "npc_type": 23119,
+   "sprite": 111097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    211,
+    159
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063439,
+   "nombre": "Green Gator",
+   "npc_type": 23119,
+   "sprite": 111097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    196,
+    151
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063440,
+   "nombre": "Green Gator",
+   "npc_type": 23119,
+   "sprite": 111097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    204,
+    157
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063441,
+   "nombre": "Green Gator",
+   "npc_type": 23119,
+   "sprite": 111097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    195,
+    166
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063442,
+   "nombre": "Green Gator",
+   "npc_type": 23119,
+   "sprite": 111097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    215,
+    159
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063443,
+   "nombre": "Green Gator",
+   "npc_type": 23119,
+   "sprite": 111097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    214,
+    165
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063444,
+   "nombre": "Green Gator",
+   "npc_type": 23119,
+   "sprite": 111097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    232,
+    154
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063445,
+   "nombre": "Green Gator",
+   "npc_type": 23119,
+   "sprite": 111097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    236,
+    157
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063446,
+   "nombre": "Green Gator",
+   "npc_type": 23119,
+   "sprite": 111097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    229,
+    165
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063447,
+   "nombre": "Green Gator",
+   "npc_type": 23119,
+   "sprite": 111097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    281,
+    147
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063448,
+   "nombre": "Green Gator",
+   "npc_type": 23119,
+   "sprite": 111097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    284,
+    139
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063449,
+   "nombre": "Green Gator",
+   "npc_type": 23119,
+   "sprite": 111097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    275,
+    140
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063450,
+   "nombre": "Green Gator",
+   "npc_type": 23119,
+   "sprite": 111097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    282,
+    132
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063451,
+   "nombre": "Green Gator",
+   "npc_type": 23119,
+   "sprite": 111097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    269,
+    138
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063452,
+   "nombre": "Green Gator",
+   "npc_type": 23119,
+   "sprite": 111097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    278,
+    118
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063453,
+   "nombre": "Green Gator",
+   "npc_type": 23119,
+   "sprite": 111097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    267,
+    135
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063454,
+   "nombre": "Green Gator",
+   "npc_type": 23119,
+   "sprite": 111097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    286,
+    126
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063455,
+   "nombre": "Green Gator",
+   "npc_type": 23119,
+   "sprite": 111097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    275,
+    137
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063456,
+   "nombre": "Green Gator",
+   "npc_type": 23119,
+   "sprite": 111097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    268,
+    124
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063457,
+   "nombre": "Green Gator",
+   "npc_type": 23119,
+   "sprite": 111097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    253,
+    118
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063458,
+   "nombre": "Green Gator",
+   "npc_type": 23119,
+   "sprite": 111097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    264,
+    124
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063459,
+   "nombre": "Green Gator",
+   "npc_type": 23119,
+   "sprite": 111097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    258,
+    105
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063460,
+   "nombre": "Green Gator",
+   "npc_type": 23119,
+   "sprite": 111097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    263,
+    112
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063461,
+   "nombre": "Green Gator",
+   "npc_type": 23119,
+   "sprite": 111097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    269,
+    115
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063462,
+   "nombre": "Green Gator",
+   "npc_type": 23119,
+   "sprite": 111097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    258,
+    154
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063463,
+   "nombre": "Green Gator",
+   "npc_type": 23119,
+   "sprite": 111097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    242,
+    166
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063464,
+   "nombre": "Green Gator",
+   "npc_type": 23119,
+   "sprite": 111097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    252,
+    154
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063465,
+   "nombre": "Green Gator",
+   "npc_type": 23119,
+   "sprite": 111097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    257,
+    157
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063466,
+   "nombre": "Green Gator",
+   "npc_type": 23119,
+   "sprite": 111097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    242,
+    157
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  },
+  {
+   "entity_id": 1063467,
+   "nombre": "Silver Sentinel",
+   "npc_type": 23120,
+   "sprite": 111099,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    122,
+    54
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1063468,
+   "nombre": "Silver Sentinel",
+   "npc_type": 23120,
+   "sprite": 111099,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    94,
+    67
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1063469,
+   "nombre": "Silver Sentinel",
+   "npc_type": 23120,
+   "sprite": 111099,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    120,
+    54
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1063470,
+   "nombre": "Silver Sentinel",
+   "npc_type": 23120,
+   "sprite": 111099,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    130,
+    59
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1063471,
+   "nombre": "Silver Sentinel",
+   "npc_type": 23120,
+   "sprite": 111099,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    112,
+    41
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1063472,
+   "nombre": "Silver Sentinel",
+   "npc_type": 23120,
+   "sprite": 111099,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    133,
+    37
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1063473,
+   "nombre": "Silver Sentinel",
+   "npc_type": 23120,
+   "sprite": 111099,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    121,
+    35
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1063474,
+   "nombre": "Silver Sentinel",
+   "npc_type": 23120,
+   "sprite": 111099,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    125,
+    51
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1063475,
+   "nombre": "Silver Sentinel",
+   "npc_type": 23120,
+   "sprite": 111099,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    144,
+    52
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1063476,
+   "nombre": "Silver Sentinel",
+   "npc_type": 23120,
+   "sprite": 111099,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    144,
+    47
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1063477,
+   "nombre": "Silver Sentinel",
+   "npc_type": 23120,
+   "sprite": 111099,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    171,
+    66
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1063478,
+   "nombre": "Silver Sentinel",
+   "npc_type": 23120,
+   "sprite": 111099,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    160,
+    68
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1063479,
+   "nombre": "Silver Sentinel",
+   "npc_type": 23120,
+   "sprite": 111099,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    173,
+    72
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1063480,
+   "nombre": "Silver Sentinel",
+   "npc_type": 23120,
+   "sprite": 111099,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    175,
+    60
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1063481,
+   "nombre": "Silver Sentinel",
+   "npc_type": 23120,
+   "sprite": 111099,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    158,
+    60
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1063482,
+   "nombre": "Silver Sentinel",
+   "npc_type": 23120,
+   "sprite": 111099,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    131,
+    72
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1063483,
+   "nombre": "Silver Sentinel",
+   "npc_type": 23120,
+   "sprite": 111099,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    131,
+    66
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1063484,
+   "nombre": "Silver Sentinel",
+   "npc_type": 23120,
+   "sprite": 111099,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    145,
+    86
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1063485,
+   "nombre": "Silver Sentinel",
+   "npc_type": 23120,
+   "sprite": 111099,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    159,
+    70
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1063486,
+   "nombre": "Silver Sentinel",
+   "npc_type": 23120,
+   "sprite": 111099,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    137,
+    80
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1063487,
+   "nombre": "Silver Sentinel",
+   "npc_type": 23120,
+   "sprite": 111099,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    158,
+    87
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1063488,
+   "nombre": "Silver Sentinel",
+   "npc_type": 23120,
+   "sprite": 111099,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    167,
+    91
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1063489,
+   "nombre": "Silver Sentinel",
+   "npc_type": 23120,
+   "sprite": 111099,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    194,
+    92
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1063490,
+   "nombre": "Silver Sentinel",
+   "npc_type": 23120,
+   "sprite": 111099,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    188,
+    87
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1063491,
+   "nombre": "Silver Sentinel",
+   "npc_type": 23120,
+   "sprite": 111099,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    174,
+    92
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1063492,
+   "nombre": "Silver Sentinel",
+   "npc_type": 23120,
+   "sprite": 111099,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    180,
+    72
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1063493,
+   "nombre": "Silver Sentinel",
+   "npc_type": 23120,
+   "sprite": 111099,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    211,
+    80
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1063494,
+   "nombre": "Silver Sentinel",
+   "npc_type": 23120,
+   "sprite": 111099,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    216,
+    89
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1063495,
+   "nombre": "Silver Sentinel",
+   "npc_type": 23120,
+   "sprite": 111099,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    192,
+    76
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1063496,
+   "nombre": "Silver Sentinel",
+   "npc_type": 23120,
+   "sprite": 111099,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    208,
+    81
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1063497,
+   "nombre": "Silver Sentinel",
+   "npc_type": 23120,
+   "sprite": 111099,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    211,
+    97
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1063498,
+   "nombre": "Silver Sentinel",
+   "npc_type": 23120,
+   "sprite": 111099,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    214,
+    103
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1063499,
+   "nombre": "Silver Sentinel",
+   "npc_type": 23120,
+   "sprite": 111099,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    215,
+    114
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1063500,
+   "nombre": "Silver Sentinel",
+   "npc_type": 23120,
+   "sprite": 111099,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    240,
+    114
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1063501,
+   "nombre": "Silver Sentinel",
+   "npc_type": 23120,
+   "sprite": 111099,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    233,
+    109
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1063502,
+   "nombre": "Silver Sentinel",
+   "npc_type": 23120,
+   "sprite": 111099,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    247,
+    93
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1063503,
+   "nombre": "Silver Sentinel",
+   "npc_type": 23120,
+   "sprite": 111099,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    237,
+    85
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1063504,
+   "nombre": "Silver Sentinel",
+   "npc_type": 23120,
+   "sprite": 111099,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    253,
+    104
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1063505,
+   "nombre": "Silver Sentinel",
+   "npc_type": 23120,
+   "sprite": 111099,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    253,
+    96
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1063506,
+   "nombre": "Silver Sentinel",
+   "npc_type": 23120,
+   "sprite": 111099,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    231,
+    86
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1063507,
+   "nombre": "E-Day Starry",
+   "npc_type": 23121,
+   "sprite": 111045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    260,
+    45
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 340
+  },
+  {
+   "entity_id": 1063508,
+   "nombre": "E-Day Starry",
+   "npc_type": 23121,
+   "sprite": 111045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    235,
+    46
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 340
+  },
+  {
+   "entity_id": 1063509,
+   "nombre": "E-Day Starry",
+   "npc_type": 23121,
+   "sprite": 111045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    247,
+    51
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 340
+  },
+  {
+   "entity_id": 1063510,
+   "nombre": "E-Day Starry",
+   "npc_type": 23121,
+   "sprite": 111045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    251,
+    49
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 340
+  },
+  {
+   "entity_id": 1063511,
+   "nombre": "E-Day Starry",
+   "npc_type": 23121,
+   "sprite": 111045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    241,
+    35
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 340
+  },
+  {
+   "entity_id": 1063512,
+   "nombre": "E-Pale Gator",
+   "npc_type": 23122,
+   "sprite": 111096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    269,
+    12
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 342
+  },
+  {
+   "entity_id": 1063513,
+   "nombre": "E-Pale Gator",
+   "npc_type": 23122,
+   "sprite": 111096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    245,
+    28
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 342
+  },
+  {
+   "entity_id": 1063514,
+   "nombre": "E-Pale Gator",
+   "npc_type": 23122,
+   "sprite": 111096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    279,
+    31
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 342
+  },
+  {
+   "entity_id": 1063515,
+   "nombre": "E-Pale Gator",
+   "npc_type": 23122,
+   "sprite": 111096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    263,
+    46
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 342
+  },
+  {
+   "entity_id": 1063516,
+   "nombre": "E-Pale Gator",
+   "npc_type": 23122,
+   "sprite": 111096,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    275,
+    22
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 342
+  },
+  {
+   "entity_id": 1063517,
+   "nombre": "Bloated Starry",
+   "npc_type": 23123,
+   "sprite": 111046,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    104,
+    101
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1063518,
+   "nombre": "Aqua Gator",
+   "npc_type": 23124,
+   "sprite": 111098,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    261,
+    151
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  }
+ ],
+ "recursos": [
+  {
+   "entity_id": 119718,
+   "capa": 0,
+   "px": [
+    514,
+    5516
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 119719,
+   "capa": 0,
+   "px": [
+    9247,
+    172
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 119720,
+   "capa": 0,
+   "px": [
+    6720,
+    2239
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60305,
+   "cola": "00004080140000"
+  },
+  {
+   "entity_id": 119721,
+   "capa": 0,
+   "px": [
+    7136,
+    1951
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60305,
+   "cola": "00004080140000"
+  },
+  {
+   "entity_id": 119722,
+   "capa": 0,
+   "px": [
+    7584,
+    1663
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60305,
+   "cola": "00004080140000"
+  }
+ ]
+}

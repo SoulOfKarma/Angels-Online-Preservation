@@ -130,6 +130,21 @@
     "dibujar": false,
     "nota": "Dense Forest -> Cryptic Moon Swamp. El tile lo dio el usuario y coincide con el tornado capturado en (245,35). La llegada es la casilla donde aparecio en la captura.",
     "preguntar": false
+   },
+   {
+    "entity": 101132,
+    "tile": [
+     10,
+     142
+    ],
+    "destino": 18,
+    "llegada": [
+     235,
+     7
+    ],
+    "dibujar": false,
+    "nota": "Dense Forest -> Mushroom Forest. El tile lo dio el usuario y encaja con el tornado capturado en (8,143); la llegada (235,7) es donde aparecio en la captura.",
+    "preguntar": false
    }
   ],
   "30": [
@@ -147,6 +162,2291 @@
     "dibujar": false,
     "nota": "Cryptic Moon Swamp -> Dense Forest. El tornado ya viene en la plantilla; de los cuatro capturados -- (14,6), (3,151), (239,13) y (230,156) -- se usa el de (3,151), que es el que queda junto al punto de llegada (10,154) y el que el usuario situo 'por 4,150'. La llegada en Dense Forest va AL LADO del tornado de (245,35), no encima, para no hacer bucle.",
     "preguntar": false
+   }
+  ],
+  "18": [
+   {
+    "entity": 101600,
+    "tile": [
+     244,
+     3
+    ],
+    "destino": 23,
+    "llegada": [
+     14,
+     139
+    ],
+    "dibujar": false,
+    "nota": "Mushroom Forest -> Dense Forest. De los cuatro tornados capturados -- (5,240), (244,3), (228,243) y (15,8) -- se usa el de (244,3), que es el que el usuario situo 'por 240,7' y el que queda junto al punto de llegada (235,7). La vuelta a (14,139) es la casilla que dio, al lado del tornado de Dense Forest y no encima, para no hacer bucle.",
+    "preguntar": false
+   },
+   {
+    "entity": 100867,
+    "tile": [
+     5,
+     240
+    ],
+    "destino": 13,
+    "llegada": [
+     306,
+     58
+    ],
+    "radio": 2,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Mushroom Forest -> Jade Vale. El tornado YA viene en mushroom_forest.json (objeto 100867, sprite 60001). Radio 2: el cambio de mapa se disparo con el jugador en (6,238)."
+   },
+   {
+    "entity": 100869,
+    "tile": [
+     228,
+     243
+    ],
+    "destino": 22,
+    "llegada": [
+     29,
+     11
+    ],
+    "radio": 3,
+    "nota": "Mushroom Forest -> Mysterious Garden. Tornado 100869, el tercero de Mushroom, que quedaba sin destino. El salto se disparo desde (226,241). La llegada (29,11) la eligio el usuario; Celestia deja en (20,12).",
+    "dibujar": false,
+    "preguntar": false
+   }
+  ],
+  "13": [
+   {
+    "entity": 100608,
+    "tile": [
+     316,
+     55
+    ],
+    "destino": 18,
+    "llegada": [
+     6,
+     235
+    ],
+    "radio": 2,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Jade Vale -> Mushroom Forest. Tornado 100608 de jade_vale.json. La llegada (6,235) es la posicion exacta que mando Celestia al volver; la ida deja en (306,58), tambien medida."
+   },
+   {
+    "entity": 121583,
+    "tile": [
+     265,
+     172
+    ],
+    "destino": 231,
+    "llegada": [
+     282,
+     15
+    ],
+    "radio": 2,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Jade Vale -> Samara Woods. Tornado 121583 de jade_vale.json. El salto se disparo con el jugador en (263,173), a dos casillas. La llegada (282,15) la eligio el usuario; Celestia deja en (283,13)."
+   },
+   {
+    "entity": 100609,
+    "tile": [
+     4,
+     169
+    ],
+    "destino": 9,
+    "llegada": [
+     294,
+     51
+    ],
+    "radio": 2,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Jade Vale -> South of Mirror Lake. Tornado 100609 de jade_vale.json; el salto se disparo desde (6,170). La llegada (294,51) es la que mando Celestia, medida."
+   }
+  ],
+  "231": [
+   {
+    "entity": 116797,
+    "tile": [
+     285,
+     8
+    ],
+    "destino": 13,
+    "llegada": [
+     258,
+     173
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Samara Woods -> Jade Vale. Tornado 116797 de samara_woods.json. Radio 3: el salto se disparo desde (283,11). La llegada (258,173) es la que mando Celestia, medida."
+   }
+  ],
+  "9": [
+   {
+    "entity": 100434,
+    "tile": [
+     295,
+     43
+    ],
+    "destino": 13,
+    "llegada": [
+     10,
+     171
+    ],
+    "radio": 2,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "South of Mirror Lake -> Jade Vale. Tornado 100434, el unico de los tres que cae junto a la llegada (294,51). OJO: la vuelta NO esta medida, no hay captura del regreso. (10,171) es una casilla por la que el jugador paso de verdad y queda fuera del radio del tornado de Jade, asi que no hace bucle; si Celestia deja en otro sitio, corregir con una captura del regreso."
+   },
+   {
+    "entity": 100433,
+    "tile": [
+     289,
+     180
+    ],
+    "destino": 12,
+    "llegada": [
+     13,
+     10
+    ],
+    "radio": 4,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "South of Mirror Lake -> North of Mirror Lake. Tornado 100433. Radio 4 porque los dos saltos medidos salieron desde (288,180) y (285,178). La llegada (13,10) la eligio el usuario; Celestia deja en (14,13)."
+   },
+   {
+    "entity": 100432,
+    "tile": [
+     6,
+     179
+    ],
+    "destino": 7,
+    "llegada": [
+     286,
+     15
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "South of Mirror Lake -> Sunflower Plain. Tornado 100432; el salto se disparo desde (7,176). La llegada (286,15) es la que mando Celestia, medida."
+   }
+  ],
+  "12": [
+   {
+    "entity": 100536,
+    "tile": [
+     8,
+     6
+    ],
+    "destino": 9,
+    "llegada": [
+     288,
+     174
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "North of Mirror Lake -> South of Mirror Lake. Tornado 100536; el salto se disparo desde (10,9). La llegada (288,174) es la que mando Celestia, medida."
+   },
+   {
+    "entity": 100537,
+    "tile": [
+     282,
+     181
+    ],
+    "destino": 16,
+    "llegada": [
+     16,
+     13
+    ],
+    "radio": 2,
+    "nota": "North of Mirror Lake -> Thorn Wasteland. Tornado 100537, el segundo de North, que quedaba sin destino. La ida no esta medida -- el usuario llego hasta (277,179) y no cruzo --, pero la vuelta si. (16,13) la eligio el usuario.",
+    "dibujar": false,
+    "preguntar": false
+   }
+  ],
+  "7": [
+   {
+    "entity": 100314,
+    "tile": [
+     294,
+     14
+    ],
+    "destino": 9,
+    "llegada": [
+     12,
+     175
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Sunflower Plain -> South of Mirror Lake. Tornado 100314, el unico de los tres que cae junto a la llegada (286,15). La vuelta NO esta medida -- el usuario se quedo en Sunflower -- pero (12,175) SI: es donde Celestia lo dejo al volver de Sunflower en la captura anterior."
+   },
+   {
+    "entity": 100313,
+    "tile": [
+     249,
+     181
+    ],
+    "destino": 8,
+    "llegada": [
+     18,
+     13
+    ],
+    "radio": 2,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Sunflower Plain -> Crashing Hillock. Tornado 100313; el salto se disparo desde (249,179). La llegada (18,13) la pidio el usuario y coincide con una de las dos que mando Celestia (la otra: (12,13))."
+   },
+   {
+    "entity": 100312,
+    "tile": [
+     5,
+     181
+    ],
+    "destino": 6,
+    "llegada": [
+     252,
+     6
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Sunflower Plain -> Spike Farm. Tornado 100312, el ultimo de Sunflower sin destino. El MOVE_REQ vino de (12,180), a siete casillas, con el paso acabando en (6,180), a una: lo coge el portal armado. Celestia deja en (252,6) y en (253,9); se usa la primera."
+   }
+  ],
+  "8": [
+   {
+    "entity": 100375,
+    "tile": [
+     12,
+     6
+    ],
+    "destino": 7,
+    "llegada": [
+     247,
+     177
+    ],
+    "radio": 2,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Crashing Hillock -> Sunflower Plain. Tornado 100375; el salto se disparo desde (12,8). La llegada (247,177) es la que mando Celestia, medida."
+   },
+   {
+    "entity": 100376,
+    "tile": [
+     295,
+     168
+    ],
+    "destino": 11,
+    "llegada": [
+     12,
+     19
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Crashing Hillock -> Thunder Ruins. Tornado 100376; el salto se disparo desde (292,167). La llegada (12,19) la pidio el usuario; Celestia deja en (15,17), dos casillas mas alla."
+   }
+  ],
+  "11": [
+   {
+    "entity": 100484,
+    "tile": [
+     5,
+     15
+    ],
+    "destino": 8,
+    "llegada": [
+     288,
+     167
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Thunder Ruins -> Crashing Hillock. Tornado 100484, el unico de los tres que cae junto a la llegada (15,17). OJO: la vuelta NO esta medida, el usuario no llego a cruzar. Se sabe ademas que en Celestia (9,17) NO dispara -- paso por ahi y no viajo --, asi que el radio real es menor que 4. La llegada (288,167) la eligio el usuario y queda a 7 casillas del tornado de Hillock: no hace bucle."
+   },
+   {
+    "entity": 100485,
+    "tile": [
+     311,
+     3
+    ],
+    "destino": 16,
+    "llegada": [
+     12,
+     160
+    ],
+    "radio": 2,
+    "nota": "Thunder Ruins -> Thorn Wasteland. Tornado 100485; el salto se disparo desde (310,4). La llegada (12,160) es la que mando Celestia, medida.",
+    "dibujar": false,
+    "preguntar": false
+   },
+   {
+    "entity": 100486,
+    "tile": [
+     316,
+     171
+    ],
+    "destino": 15,
+    "llegada": [
+     18,
+     11
+    ],
+    "radio": 4,
+    "nota": "Thunder Ruins -> Mysterious Wetland. Tornado 100486, el ultimo de Thunder. YA ESTA MEDIDO: el MOVE_REQ vino de (312,171), a cuatro casillas -- de ahi el radio 4 --, con el paso acabando en (315,171), a una. La llegada (18,11) es la que mando Celestia; antes estaba puesta a ojo en (16,10), que quedaba a dos de la real.",
+    "dibujar": false,
+    "preguntar": false
+   }
+  ],
+  "16": [
+   {
+    "entity": 100722,
+    "tile": [
+     4,
+     162
+    ],
+    "destino": 11,
+    "llegada": [
+     306,
+     6
+    ],
+    "radio": 2,
+    "nota": "Thorn Wasteland -> Thunder Ruins. Tornado 100722, el que cae junto a la llegada (12,160). La vuelta no esta medida; (306,6) la eligio el usuario y queda a 5 casillas del tornado de Thunder, o sea fuera de su radio.",
+    "dibujar": false,
+    "preguntar": false
+   },
+   {
+    "entity": 100720,
+    "tile": [
+     10,
+     9
+    ],
+    "destino": 12,
+    "llegada": [
+     272,
+     181
+    ],
+    "radio": 2,
+    "nota": "Thorn Wasteland -> North of Mirror Lake. Tornado 100720; el salto se disparo desde (11,10). La llegada (272,181) es la que mando Celestia, medida.",
+    "dibujar": false,
+    "preguntar": false
+   },
+   {
+    "entity": 100721,
+    "tile": [
+     291,
+     16
+    ],
+    "destino": 21,
+    "llegada": [
+     18,
+     176
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Thorn Wasteland -> Dragon Graveyard. Tornado 100721; el salto se disparo desde (288,16). La llegada (18,176) es la que mando Celestia, medida, y coincide con la que pidio el usuario."
+   },
+   {
+    "entity": 100719,
+    "tile": [
+     296,
+     123
+    ],
+    "destino": 20,
+    "llegada": [
+     16,
+     9
+    ],
+    "radio": 4,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Thorn Wasteland -> Foggy Forest. Tornado 100719. Radio 4: el MOVE_REQ mas cercano antes de viajar vino de (293,119). La llegada (16,9) la mando Celestia las dos veces igual."
+   }
+  ],
+  "21": [
+   {
+    "entity": 101008,
+    "tile": [
+     9,
+     178
+    ],
+    "destino": 16,
+    "llegada": [
+     284,
+     20
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Dragon Graveyard -> Thorn Wasteland. Tornado 101008, el que cae junto a la llegada (18,176); los otros CINCO de este mapa siguen sin destino conocido. La vuelta no esta medida; (284,20) la eligio el usuario y queda a 7 casillas del tornado de Thorn, o sea fuera de su radio."
+   },
+   {
+    "entity": 101009,
+    "tile": [
+     6,
+     36
+    ],
+    "destino": 17,
+    "llegada": [
+     274,
+     169
+    ],
+    "radio": 3,
+    "nota": "Dragon Graveyard -> Quiet Vale. Tornado 101009; los dos saltos medidos salieron de (9,34) y (9,35). La llegada (274,169) es la que mando Celestia (la otra vez: (269,173)).",
+    "dibujar": false,
+    "preguntar": false
+   },
+   {
+    "entity": 101006,
+    "tile": [
+     295,
+     5
+    ],
+    "destino": 28,
+    "llegada": [
+     21,
+     178
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Dragon Graveyard -> Megalith Plain. Tornado 101006; el salto se disparo desde (293,8). La llegada (21,178) la mando Celestia (en otra vuelta: (19,174))."
+   },
+   {
+    "entity": 101011,
+    "tile": [
+     107,
+     97
+    ],
+    "destino": 161,
+    "llegada": [
+     28,
+     14
+    ],
+    "radio": 4,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Dragon Graveyard -> Lost Cove. Tornado 101011, el del centro del mapa. Radio 4 porque la ULTIMA casilla que informo el cliente antes de viajar fue (111,96), a cuatro del tornado; con radio 3 el portal no habria disparado ahi. La llegada (28,14) es la que mando Celestia. Ninguna de las cuatro llegadas a Dragon -- (18,176), (13,38), (289,13) y (287,9) -- cae cerca, asi que el radio ancho no hace bucle."
+   },
+   {
+    "entity": 101007,
+    "tile": [
+     169,
+     175
+    ],
+    "destino": 67,
+    "llegada": [
+     20,
+     178
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Dragon Graveyard -> Sad Abyss. Tornado 101007. El cliente informo (171,173), a DOS casillas, y ahi salto: con la posicion actual basta, no hace falta mirar el destino del paso. La llegada (20,178) es la que mando Celestia."
+   },
+   {
+    "entity": 101010,
+    "tile": [
+     276,
+     183
+    ],
+    "destino": 27,
+    "llegada": [
+     10,
+     23
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Dragon Graveyard -> Deity Palace Ruins. Tornado 101010, el ultimo de Dragon que quedaba sin destino. El salto se disparo desde (273,181). La llegada (10,23) la mando Celestia (otra vuelta: (12,19))."
+   }
+  ],
+  "17": [
+   {
+    "entity": 100796,
+    "tile": [
+     278,
+     174
+    ],
+    "destino": 21,
+    "llegada": [
+     13,
+     38
+    ],
+    "radio": 3,
+    "nota": "Quiet Vale -> Dragon Graveyard. Tornado 100796; el jugador estaba en (275,171) al saltar. La llegada (13,38) la eligio el usuario; Celestia deja en (20,35).",
+    "dibujar": false,
+    "preguntar": false
+   },
+   {
+    "entity": 100797,
+    "tile": [
+     291,
+     2
+    ],
+    "destino": 22,
+    "llegada": [
+     15,
+     182
+    ],
+    "radio": 3,
+    "nota": "Quiet Vale -> Mysterious Garden. Tornado 100797; los dos saltos medidos salieron de (288,4). La llegada (15,182) la eligio el usuario; Celestia deja en (10,187) y (14,195).",
+    "dibujar": false,
+    "preguntar": false
+   }
+  ],
+  "22": [
+   {
+    "entity": 101064,
+    "tile": [
+     7,
+     193
+    ],
+    "destino": 17,
+    "llegada": [
+     283,
+     6
+    ],
+    "radio": 3,
+    "nota": "Mysterious Garden -> Quiet Vale. Tornado 101064; el salto se disparo desde (9,190). La llegada (283,6) la eligio el usuario; Celestia deja en (285,9).",
+    "dibujar": false,
+    "preguntar": false
+   },
+   {
+    "entity": 101063,
+    "tile": [
+     24,
+     4
+    ],
+    "destino": 18,
+    "llegada": [
+     224,
+     240
+    ],
+    "radio": 2,
+    "nota": "Mysterious Garden -> Mushroom Forest. Tornado 101063; los dos saltos medidos salieron de (25,5) y (25,6), a una casilla. La llegada (224,240) la eligio el usuario; Celestia deja en (233,240) y (218,243).",
+    "dibujar": false,
+    "preguntar": false
+   },
+   {
+    "entity": 101065,
+    "tile": [
+     297,
+     205
+    ],
+    "destino": 28,
+    "llegada": [
+     28,
+     11
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Mysterious Garden -> Megalith Plain. Tornado 101065, el tercero de Garden, que quedaba sin destino. El salto se disparo desde (294,204) y la llegada (28,11) es la que mando Celestia. LOS DOS SENTIDOS MEDIDOS: el usuario entro y salio."
+   }
+  ],
+  "28": [
+   {
+    "entity": 101336,
+    "tile": [
+     23,
+     3
+    ],
+    "destino": 22,
+    "llegada": [
+     288,
+     205
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Megalith Plain -> Mysterious Garden. Tornado 101336; el salto se disparo desde (25,6) y la llegada (288,205) la mando Celestia dos veces. Quedan sin destino los tornados (292,176) y (10,179)."
+   },
+   {
+    "entity": 101335,
+    "tile": [
+     10,
+     179
+    ],
+    "destino": 21,
+    "llegada": [
+     289,
+     13
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Megalith Plain -> Dragon Graveyard. Tornado 101335; el salto se disparo desde (13,180). La llegada (289,13) la mando Celestia (en otra vuelta: (293,15)). LOS DOS SENTIDOS MEDIDOS."
+   },
+   {
+    "entity": 101334,
+    "tile": [
+     292,
+     176
+    ],
+    "destino": 34,
+    "llegada": [
+     19,
+     18
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Megalith Plain -> Scrap Iron Village. Tornado 101334, el TERCERO y ultimo de Megalith Plain: con este queda completo. El MOVE_REQ vino de (286,176), a seis casillas, con el paso acabando en (291,176), a una. LOS DOS SENTIDOS MEDIDOS. Este enlace une la rama de Steel (Gebuer/Burning/Wishing/Scrap) con la vieja de Dragon Graveyard, que ya estaba poblada."
+   }
+  ],
+  "161": [
+   {
+    "entity": 114109,
+    "tile": [
+     13,
+     12
+    ],
+    "destino": 21,
+    "llegada": [
+     108,
+     90
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "inventado": true,
+    "nota": "Lost Cove -> Dragon Graveyard. ESTE PORTAL NO ESTA MEDIDO Y PUEDE QUE EN CELESTIA NO EXISTA: el usuario salio de Lost Cove con una superwing, no por un tornado. Se pone para no dejar al jugador encerrado; si se comprueba que no teletransporta, se borra esta entrada. El tornado 114109 es el que cae junto a la llegada (28,14); el otro, (275,162), esta en la otra punta. La llegada (108,90) la eligio el usuario: deja AL LADO del tornado (107,97) por el que se entra a Lost Cove, no en la entrada de Dragon. Antes estaba en (287,9), que es la llegada del portal de Megalith: era un error mio."
+   }
+  ],
+  "67": [
+   {
+    "entity": 105326,
+    "tile": [
+     12,
+     182
+    ],
+    "destino": 21,
+    "llegada": [
+     178,
+     175
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Sad Abyss -> Dragon Graveyard. Tornado 105326; el jugador iba a (13,181), pegado al tornado. La llegada (178,175) es la que mando Celestia. LOS DOS SENTIDOS MEDIDOS. Queda sin destino el otro tornado, (295,7)."
+   }
+  ],
+  "27": [
+   {
+    "entity": 101271,
+    "tile": [
+     4,
+     17
+    ],
+    "destino": 21,
+    "llegada": [
+     269,
+     180
+    ],
+    "radio": 4,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Deity Palace Ruins -> Dragon Graveyard. Tornado 101271. Radio 4 porque la ultima casilla informada fue (8,17). La llegada (269,180) es la que mando Celestia. LOS DOS SENTIDOS MEDIDOS. Quedan sin destino (287,168) y (271,1)."
+   },
+   {
+    "entity": 101272,
+    "tile": [
+     287,
+     168
+    ],
+    "destino": 128,
+    "llegada": [
+     16,
+     12
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Deity Palace Ruins -> Dragon Field. Tornado 101272; el salto se disparo desde (285,166). La llegada (16,12) es la que mando Celestia. Queda sin destino (271,1)."
+   }
+  ],
+  "128": [
+   {
+    "entity": 112507,
+    "tile": [
+     12,
+     4
+    ],
+    "destino": 27,
+    "llegada": [
+     281,
+     164
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Dragon Field -> Deity Palace Ruins. Tornado 112507; el salto se disparo desde (14,7). La llegada (281,164) es la que mando Celestia. LOS DOS SENTIDOS MEDIDOS. Queda sin destino (292,165). OJO: el stage 128 no tiene nada que ver con la quest 128 de Breeze Woods; coinciden el numero y nada mas."
+   },
+   {
+    "entity": 112508,
+    "tile": [
+     292,
+     165
+    ],
+    "destino": 129,
+    "llegada": [
+     17,
+     21
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Dragon Field -> Hermit Wetland. Tornado 112508; el salto se disparo desde (290,163). La llegada (17,21) la mando Celestia dos veces igual."
+   }
+  ],
+  "129": [
+   {
+    "entity": 112540,
+    "tile": [
+     6,
+     18
+    ],
+    "destino": 128,
+    "llegada": [
+     289,
+     160
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Hermit Wetland -> Dragon Field. Tornado 112540; el salto se disparo desde (8,20). La llegada (289,160) es la que mando Celestia. LOS DOS SENTIDOS MEDIDOS. Queda sin destino (286,163). OJO: el stage 129 no es la quest 129 de Iron Castle; coincide el numero y nada mas."
+   },
+   {
+    "entity": 112541,
+    "tile": [
+     286,
+     163
+    ],
+    "destino": 130,
+    "llegada": [
+     17,
+     14
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Hermit Wetland -> Flower Corridor. Tornado 112541, el que le quedaba sin destino. El salto se disparo desde (286,161). La llegada (17,14) la mando Celestia (la otra vuelta: (9,14))."
+   }
+  ],
+  "130": [
+   {
+    "entity": 112603,
+    "tile": [
+     12,
+     7
+    ],
+    "destino": 129,
+    "llegada": [
+     286,
+     155
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Flower Corridor -> Hermit Wetland. Tornado 112603; el salto se disparo desde (11,9). La llegada (286,155) es la que mando Celestia. LOS DOS SENTIDOS MEDIDOS. Queda sin destino (295,172). OJO: el stage 130 no es la quest 130 de Breeze Woods."
+   },
+   {
+    "entity": 112602,
+    "tile": [
+     295,
+     172
+    ],
+    "destino": 131,
+    "llegada": [
+     20,
+     12
+    ],
+    "radio": 4,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Flower Corridor -> Sunshine Palace. Tornado 112602. Radio 4: en una pasada el MOVE_REQ vino desde (294,168), a cuatro casillas. En la otra el jugador pidio un paso que TERMINABA en (294,173), a una del tornado, y no volvio a avisar: ese caso lo cubre el portal armado. La llegada (20,12) la mando Celestia las dos veces igual."
+   }
+  ],
+  "131": [
+   {
+    "entity": 112669,
+    "tile": [
+     12,
+     5
+    ],
+    "destino": 130,
+    "llegada": [
+     286,
+     173
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Sunshine Palace -> Flower Corridor. Su UNICO tornado: Sunshine es un callejon sin salida. Medido dos veces: el ultimo MOVE_REQ vino desde (14,8), a TRES casillas, y en la otra pasada desde (19,10) con destino (13,6). De las dos llegadas que da Celestia -- (294,168) y (286,173) -- se usa la segunda, que queda a nueve casillas del tornado de Flower y no depende del guardia de \"ya pisado\"."
+   }
+  ],
+  "20": [
+   {
+    "entity": 100984,
+    "tile": [
+     7,
+     2
+    ],
+    "destino": 16,
+    "llegada": [
+     294,
+     117
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Foggy Forest -> Thorn Wasteland. Tornado 100984; el ultimo MOVE_REQ vino de (14,6), a siete casillas, con el paso terminando en (10,1), a tres: lo coge el portal armado. La llegada (294,117) es la que mando Celestia. LOS DOS SENTIDOS MEDIDOS. Quedan sin destino (6,169) y (278,168)."
+   },
+   {
+    "entity": 100982,
+    "tile": [
+     6,
+     169
+    ],
+    "destino": 15,
+    "llegada": [
+     281,
+     15
+    ],
+    "radio": 3,
+    "nota": "Foggy Forest -> Mysterious Wetland. Tornado 100982; medido dos veces, con MOVE_REQ desde (8,168) a dos casillas y desde (12,167) con el paso acabando en (9,171). La llegada (281,15) la mando Celestia las dos veces igual.",
+    "dibujar": false,
+    "preguntar": false
+   },
+   {
+    "entity": 100983,
+    "tile": [
+     278,
+     168
+    ],
+    "destino": 19,
+    "llegada": [
+     12,
+     31
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Foggy Forest -> Fungus Forest South. Tornado 100983, el TERCERO y ultimo de Foggy Forest: con este queda completo. El MOVE_REQ vino de (275,167), a tres casillas. La llegada (12,31) la mando Celestia las dos veces igual."
+   }
+  ],
+  "15": [
+   {
+    "entity": 100687,
+    "tile": [
+     292,
+     13
+    ],
+    "destino": 20,
+    "llegada": [
+     16,
+     168
+    ],
+    "radio": 3,
+    "nota": "Mysterious Wetland -> Foggy Forest. Tornado 100687; el MOVE_REQ vino de (281,15), a once casillas, con el paso acabando en (291,14), a una: lo coge el portal armado. La llegada (16,168) es la que mando Celestia. OJO: el otro punto de Foggy, (16,9), es la llegada desde Thorn, no de aqui.",
+    "dibujar": false,
+    "preguntar": false
+   },
+   {
+    "entity": 100686,
+    "tile": [
+     10,
+     4
+    ],
+    "destino": 11,
+    "llegada": [
+     311,
+     167
+    ],
+    "radio": 3,
+    "nota": "Mysterious Wetland -> Thunder Ruins. Tornado 100686; el MOVE_REQ vino de (13,7), a tres casillas. La llegada (311,167) es la que mando Celestia.",
+    "dibujar": false,
+    "preguntar": false
+   }
+  ],
+  "6": [
+   {
+    "entity": 100249,
+    "tile": [
+     262,
+     2
+    ],
+    "destino": 7,
+    "llegada": [
+     11,
+     175
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Spike Farm -> Sunflower Plain. Tornado 100249; el MOVE_REQ vino de (254,6), a ocho casillas, con el paso acabando en (261,3), a una. Celestia deja en (11,175) y en (16,181). LOS DOS SENTIDOS MEDIDOS. Quedan sin destino (45,6) y (4,142)."
+   },
+   {
+    "entity": 100250,
+    "tile": [
+     4,
+     142
+    ],
+    "destino": 3,
+    "llegada": [
+     335,
+     22
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Spike Farm -> Aurora City. Tornado 100250. El MOVE_REQ vino de (5,137), a cinco casillas, con el paso acabando en (5,141), a una: lo coge el portal armado. Celestia deja en (335,22) y en (337,25)."
+   },
+   {
+    "entity": 100248,
+    "tile": [
+     45,
+     6
+    ],
+    "destino": 4,
+    "llegada": [
+     82,
+     181
+    ],
+    "radio": 4,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Spike Farm -> Dawn Harbor. Tornado 100248, con el que Spike Farm queda completo. Radio 4: el MOVE_REQ vino de (49,10). La llegada (82,181) la mando Celestia las dos veces igual."
+   }
+  ],
+  "3": [
+   {
+    "entity": 100069,
+    "tile": [
+     346,
+     20
+    ],
+    "destino": 6,
+    "llegada": [
+     5,
+     137
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Aurora City -> Spike Farm. Tornado 100069; el MOVE_REQ vino de (343,21), a tres casillas. La llegada (5,137) es la que mando Celestia. LOS DOS SENTIDOS MEDIDOS. Queda sin destino (39,186). Aurora City es la ciudad de la faccion Aurora, ya apuntada como stage 3 en CIUDAD_DE_FACCION: esta captura lo confirma."
+   }
+  ],
+  "4": [
+   {
+    "entity": 100134,
+    "tile": [
+     88,
+     184
+    ],
+    "destino": 6,
+    "llegada": [
+     57,
+     11
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Dawn Harbor -> Spike Farm. Tornado 100134; el MOVE_REQ vino de (82,181), a SEIS casillas, con el paso acabando en (87,183), a una: lo coge el portal armado. El radio se deja en 3 a proposito, porque (82,181) es tambien la casilla donde Celestia DEJA al llegar: con radio 6 se saldria solo. LOS DOS SENTIDOS MEDIDOS. Quedan sin destino (262,2), (6,73), (173,14) y (115,59)."
+   },
+   {
+    "entity": 100136,
+    "tile": [
+     6,
+     73
+    ],
+    "destino": 192,
+    "llegada": [
+     276,
+     35
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Dawn Harbor -> Port Cherube. Tornado 100136. El MOVE_REQ vino de (11,74), a cinco casillas, con el primer tramo acabando en (8,73), a dos: lo coge el portal armado. La llegada (276,35) la mando Celestia las dos veces igual."
+   },
+   {
+    "entity": 121582,
+    "tile": [
+     115,
+     59
+    ],
+    "destino": 318,
+    "llegada": [
+     286,
+     9
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Dawn Harbor -> Emerald Coast. Tornado 121582. El MOVE_REQ vino de (120,65), a seis casillas, con el paso acabando en (116,60), a una: lo coge el portal armado. Celestia deja en (286,9) y en (291,12)."
+   },
+   {
+    "entity": 121581,
+    "tile": [
+     173,
+     14
+    ],
+    "destino": 257,
+    "llegada": [
+     286,
+     9
+    ],
+    "radio": 4,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Dawn Harbor -> Mariam Waterway. Tornado 121581. Radio 4: el MOVE_REQ vino de (177,17). La llegada (286,9) la mando Celestia las dos veces. OJO: la llegada a Emerald Coast es tambien (286,9), pero en otro mapa; coincidencia, no error."
+   },
+   {
+    "entity": 100135,
+    "tile": [
+     262,
+     2
+    ],
+    "destino": 2,
+    "llegada": [
+     280,
+     177
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Dawn Harbor -> Riprap Coast. Tornado 100135, el quinto y ultimo de Dawn Harbor: con este el mapa queda completo. El MOVE_REQ vino de (267,7), a cinco casillas, con el paso acabando en (263,3), a una."
+   }
+  ],
+  "192": [
+   {
+    "entity": 115324,
+    "tile": [
+     281,
+     28
+    ],
+    "destino": 4,
+    "llegada": [
+     10,
+     81
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Port Cherube -> Dawn Harbor. Tornado 115324; el MOVE_REQ vino de (276,35), a siete casillas, con el paso acabando en (280,29), a una. La llegada (10,81) es la que mando Celestia. LOS DOS SENTIDOS MEDIDOS. Quedan sin destino (280,162) y (21,167)."
+   }
+  ],
+  "318": [
+   {
+    "entity": 118989,
+    "tile": [
+     295,
+     3
+    ],
+    "destino": 4,
+    "llegada": [
+     123,
+     67
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Emerald Coast -> Dawn Harbor. Tornado 118989; el MOVE_REQ vino de (286,9), a NUEVE casillas, con el paso acabando en (294,4), a una. La llegada (123,67) es la que mando Celestia. LOS DOS SENTIDOS MEDIDOS. Queda sin destino (292,174)."
+   }
+  ],
+  "257": [
+   {
+    "entity": 117919,
+    "tile": [
+     294,
+     3
+    ],
+    "destino": 4,
+    "llegada": [
+     180,
+     20
+    ],
+    "radio": 4,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Mariam Waterway -> Dawn Harbor. Tornado 117919; el MOVE_REQ vino de (290,7), a cuatro casillas. La llegada (180,20) es la que mando Celestia. LOS DOS SENTIDOS MEDIDOS. Quedan sin destino (294,175) y (4,175)."
+   }
+  ],
+  "2": [
+   {
+    "entity": 100060,
+    "tile": [
+     283,
+     181
+    ],
+    "destino": 4,
+    "llegada": [
+     268,
+     7
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Riprap Coast -> Dawn Harbor. Tornado 100060. El radio se deja en 3 A PROPOSITO aunque el MOVE_REQ viniera de (280,177), a cuatro: esa misma (280,177) es donde Celestia DEJA al llegar, asi que con radio 4 el jugador se saldria solo. El salto lo coge el portal armado, porque el paso acaba en (282,180), a una casilla. LOS DOS SENTIDOS MEDIDOS. Queda sin destino (291,4)."
+   },
+   {
+    "entity": 100061,
+    "tile": [
+     291,
+     4
+    ],
+    "destino": 5,
+    "llegada": [
+     53,
+     146
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Riprap Coast -> Cherry Village. Tornado 100061, el segundo y ultimo de Riprap: con este el mapa queda completo. El MOVE_REQ vino de (286,10), a seis casillas, con el paso acabando en (290,5), a una."
+   }
+  ],
+  "5": [
+   {
+    "entity": 100183,
+    "tile": [
+     43,
+     146
+    ],
+    "destino": 2,
+    "llegada": [
+     290,
+     9
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Cherry Village -> Riprap Coast. Tornado 100183; el MOVE_REQ vino de (46,146), a tres casillas. La llegada (290,9) es la que mando Celestia. LOS DOS SENTIDOS MEDIDOS. Queda sin destino (15,69)."
+   },
+   {
+    "entity": 100184,
+    "tile": [
+     15,
+     69
+    ],
+    "destino": 87,
+    "llegada": [
+     235,
+     94
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Cherry Village -> Puqi Village. Tornado 100184, el segundo y ultimo de Cherry: con este queda completo. El MOVE_REQ vino de (21,74), a seis casillas, con el paso acabando en (16,70), a una. Celestia deja en (235,94) y en (233,92)."
+   }
+  ],
+  "87": [
+   {
+    "entity": 106683,
+    "tile": [
+     242,
+     87
+    ],
+    "destino": 5,
+    "llegada": [
+     28,
+     81
+    ],
+    "radio": 4,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Puqi Village -> Cherry Village. Tornado 106683; el MOVE_REQ vino de (238,91), a cuatro casillas. La llegada (28,81) es la que mando Celestia. LOS DOS SENTIDOS MEDIDOS. Queda sin destino (5,68)."
+   },
+   {
+    "entity": 106682,
+    "tile": [
+     5,
+     68
+    ],
+    "destino": 86,
+    "llegada": [
+     289,
+     140
+    ],
+    "radio": 3,
+    "nota": "Puqi Village -> Golden Beach. Tornado 106682, el segundo y ultimo de Puqi: con este queda completo. El MOVE_REQ vino de (7,69), a dos casillas.",
+    "dibujar": false,
+    "preguntar": false
+   }
+  ],
+  "86": [
+   {
+    "entity": 106633,
+    "tile": [
+     295,
+     142
+    ],
+    "destino": 87,
+    "llegada": [
+     18,
+     75
+    ],
+    "radio": 3,
+    "nota": "Golden Beach -> Puqi Village. Tornado 106633; el MOVE_REQ vino de (289,140), a seis casillas, con el paso acabando en (294,141), a una. El radio se deja en 3 porque (289,140) es tambien la casilla de llegada desde Puqi.",
+    "dibujar": false,
+    "preguntar": false
+   },
+   {
+    "entity": 106681,
+    "tile": [
+     220,
+     26
+    ],
+    "destino": 85,
+    "llegada": [
+     18,
+     171
+    ],
+    "radio": 3,
+    "requiere_buceo": "buceo_costero",
+    "nota": "Golden Beach -> Colorful Coral Reefs. Tornado 106681. OJO: este portal NO es libre. En Celestia no deja pasar sin el Neritic Diving Skill, que se aprende hablando con DivingCoach Nira en (233,41) de este mismo mapa; ver plantillas/buceo.json. Nuestro servidor todavia NO comprueba ese flag: de momento deja pasar a cualquiera. El MOVE_REQ vino de (213,31), con el paso acabando en (222,26), a dos.",
+    "dibujar": false,
+    "preguntar": false
+   },
+   {
+    "entity": 106679,
+    "tile": [
+     4,
+     84
+    ],
+    "destino": 88,
+    "llegada": [
+     291,
+     99
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Golden Beach -> Palm Base. Tornado 106679, el tercero y ultimo de Golden Beach: con este queda completo. El MOVE_REQ vino de (5,82), a dos casillas. El radio se deja en 3 porque la llegada desde Palm Base es (5,80), a CUATRO de este tornado: con radio 4 se saldria solo al aterrizar."
+   }
+  ],
+  "85": [
+   {
+    "entity": 106507,
+    "tile": [
+     12,
+     171
+    ],
+    "destino": 86,
+    "llegada": [
+     213,
+     31
+    ],
+    "radio": 3,
+    "nota": "Colorful Coral Reefs -> Golden Beach. Tornado 106507, el que cae junto a la llegada (18,171). LA VUELTA NO ESTA MEDIDA: el usuario no cruzo en ese sentido. (213,31) es una casilla por la que paso de verdad, a siete del tornado de Golden Beach, asi que no hace bucle; corregir al capturar el regreso. Queda sin destino el otro tornado, (288,9).",
+    "dibujar": false,
+    "preguntar": false
+   },
+   {
+    "entity": 106506,
+    "tile": [
+     288,
+     9
+    ],
+    "destino": 84,
+    "llegada": [
+     21,
+     165
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Colorful Coral Reefs -> Blue Sea. Tornado 106506, el segundo y ultimo de Coral Reefs: con este queda completo. El MOVE_REQ vino de (282,14), a seis casillas, con el paso acabando en (287,10), a una. La llegada (21,165) es la que mando Celestia."
+   }
+  ],
+  "84": [
+   {
+    "entity": 106405,
+    "tile": [
+     17,
+     169
+    ],
+    "destino": 85,
+    "llegada": [
+     282,
+     14
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Blue Sea -> Colorful Coral Reefs. Su UNICO tornado: Blue Sea es el final de esta rama de Atlantis. LA VUELTA NO ESTA MEDIDA, el usuario no cruzo de vuelta. (282,14) es una casilla por la que paso de verdad, a seis del tornado de Coral Reefs, asi que no hace bucle; corregir al capturar el regreso. El radio se deja en 3 porque la llegada (21,165) esta a CUATRO casillas de este mismo tornado: con radio 4 se saldria solo al aterrizar."
+   }
+  ],
+  "88": [
+   {
+    "entity": 106699,
+    "tile": [
+     296,
+     92
+    ],
+    "destino": 86,
+    "llegada": [
+     5,
+     80
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Palm Base -> Golden Beach. Tornado 106699; el MOVE_REQ vino de (291,99), a siete casillas, con el paso acabando en (294,94), a dos. La llegada (5,80) es la que mando Celestia. LOS DOS SENTIDOS MEDIDOS. Palm Base tiene CUATRO tornados: quedan sin destino (154,39), (9,117) y (223,83)."
+   },
+   {
+    "entity": 106711,
+    "tile": [
+     223,
+     83
+    ],
+    "destino": 363,
+    "llegada": [
+     20,
+     167
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Palm Base -> Deep Trench. Tornado 106711. El MOVE_REQ vino de (220,82), a tres casillas. Celestia deja en (20,167) y en (16,167)."
+   },
+   {
+    "entity": 106693,
+    "tile": [
+     154,
+     39
+    ],
+    "destino": 89,
+    "llegada": [
+     228,
+     255
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Palm Base -> Wave Harbor. Tornado 106693. El MOVE_REQ vino de (154,45), a seis casillas, con el paso acabando en (154,40), a una. La llegada (228,255) es la que mando Celestia."
+   },
+   {
+    "entity": 106694,
+    "tile": [
+     9,
+     117
+    ],
+    "destino": 92,
+    "llegada": [
+     247,
+     44
+    ],
+    "radio": 4,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Palm Base -> Shining Coast. Tornado 106694, el CUARTO y ultimo de Palm Base: con este la ciudad de Atlantis queda completa. El MOVE_REQ vino de (13,115), a cuatro casillas. La llegada (247,44) la mando Celestia las dos veces igual."
+   }
+  ],
+  "363": [
+   {
+    "entity": 119718,
+    "tile": [
+     16,
+     172
+    ],
+    "destino": 88,
+    "llegada": [
+     212,
+     82
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Deep Trench -> Palm Base. Tornado 119718; el MOVE_REQ vino de (20,167), a cinco casillas, con el paso acabando en (17,171), a una. La llegada (212,82) es la que mando Celestia. LOS DOS SENTIDOS MEDIDOS. Queda sin destino (288,5)."
+   }
+  ],
+  "89": [
+   {
+    "entity": 106713,
+    "tile": [
+     235,
+     255
+    ],
+    "destino": 88,
+    "llegada": [
+     156,
+     47
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Wave Harbor -> Palm Base. Tornado 106713. YA ESTA MEDIDO: el MOVE_REQ vino de (233,253), a dos casillas, con el paso acabando en (234,254), a una. La llegada (156,47) es la que mando Celestia; antes estaba puesta a ojo en (154,45), que quedaba a dos de la real. Queda sin destino el otro tornado, (27,29)."
+   },
+   {
+    "entity": 106712,
+    "tile": [
+     27,
+     29
+    ],
+    "destino": 90,
+    "llegada": [
+     279,
+     170
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Wave Harbor -> Blue Ocean. Tornado 106712, el segundo y ultimo de Wave Harbor: con este queda completo. El MOVE_REQ vino de (29,31), a dos casillas. La llegada (279,170) la mando Celestia las dos veces igual."
+   }
+  ],
+  "90": [
+   {
+    "entity": 106959,
+    "tile": [
+     285,
+     173
+    ],
+    "destino": 89,
+    "llegada": [
+     34,
+     39
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Blue Ocean -> Wave Harbor. Tornado 106959; el MOVE_REQ vino de (282,171), a tres casillas. La llegada (34,39) es la que mando Celestia. LOS DOS SENTIDOS MEDIDOS. Quedan sin destino (18,4) y (294,14)."
+   },
+   {
+    "entity": 106957,
+    "tile": [
+     18,
+     4
+    ],
+    "destino": 91,
+    "llegada": [
+     272,
+     161
+    ],
+    "radio": 4,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Blue Ocean -> Sunken Ruins. Tornado 106957. El MOVE_REQ vino de (22,7), a cuatro casillas, con el paso acabando en (19,5), a una. La llegada (272,161) es la que mando Celestia."
+   }
+  ],
+  "91": [
+   {
+    "entity": 107185,
+    "tile": [
+     279,
+     161
+    ],
+    "destino": 90,
+    "llegada": [
+     19,
+     11
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Sunken Ruins -> Blue Ocean. Su UNICO tornado. La llegada (19,11) es la que mando Celestia. LOS DOS SENTIDOS MEDIDOS. A Blue Ocean le queda el tornado (294,14) sin destino; el dialogo de la instancia Lost Region tambien sale desde Blue Ocean, ver plantillas/instancias.json."
+   }
+  ],
+  "92": [
+   {
+    "entity": 107336,
+    "tile": [
+     244,
+     37
+    ],
+    "destino": 88,
+    "llegada": [
+     15,
+     114
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Shining Coast -> Palm Base. Tornado 107336; el MOVE_REQ vino de (239,38), a cinco casillas, con el paso acabando en (243,38), a una. La llegada (15,114) es la que mando Celestia. LOS DOS SENTIDOS MEDIDOS. Queda sin destino (30,41)."
+   },
+   {
+    "entity": 107337,
+    "tile": [
+     30,
+     41
+    ],
+    "destino": 93,
+    "llegada": [
+     282,
+     172
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Shining Coast -> Dream Ocean. Tornado 107337, el segundo y ultimo de Shining Coast: con este queda completo. El MOVE_REQ vino de (31,47), a seis casillas, con el paso acabando en (31,42), a una."
+   }
+  ],
+  "93": [
+   {
+    "entity": 107441,
+    "tile": [
+     290,
+     173
+    ],
+    "destino": 92,
+    "llegada": [
+     33,
+     49
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Dream Ocean -> Shining Coast. Tornado 107441; el MOVE_REQ vino de (287,172), a tres casillas. La llegada (33,49) es la que mando Celestia. LOS DOS SENTIDOS MEDIDOS. Quedan sin destino (6,174) y (7,5)."
+   },
+   {
+    "entity": 107442,
+    "tile": [
+     7,
+     5
+    ],
+    "destino": 95,
+    "llegada": [
+     277,
+     173
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Dream Ocean -> Quiet Ocean. Tornado 107442. El MOVE_REQ vino de (9,12), a siete casillas, con el paso acabando en (8,5), a una: lo coge el portal armado. La llegada (277,173) la mando Celestia las dos veces igual."
+   },
+   {
+    "entity": 107440,
+    "tile": [
+     6,
+     174
+    ],
+    "destino": 94,
+    "llegada": [
+     287,
+     13
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Dream Ocean -> Raging Reefs. Tornado 107440, el TERCERO y ultimo de Dream Ocean: con este queda completo. El MOVE_REQ vino de (11,171), a cinco casillas, con el paso acabando en (7,173), a una. La llegada (287,13) es la que mando Celestia. LOS DOS SENTIDOS MEDIDOS."
+   }
+  ],
+  "95": [
+   {
+    "entity": 107706,
+    "tile": [
+     285,
+     174
+    ],
+    "destino": 93,
+    "llegada": [
+     9,
+     14
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Quiet Ocean -> Dream Ocean. Tornado 107706; el MOVE_REQ vino de (277,173), a OCHO casillas, con el paso acabando en (284,173), a una. La llegada (9,14) es la que mando Celestia. LOS DOS SENTIDOS MEDIDOS. Queda sin destino (13,180)."
+   },
+   {
+    "entity": 107705,
+    "tile": [
+     13,
+     180
+    ],
+    "destino": 96,
+    "llegada": [
+     277,
+     9
+    ],
+    "radio": 2,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Quiet Ocean -> Coral Vale. Tornado 107705, el segundo y ultimo de Quiet Ocean: con este queda completo. OJO AL RADIO: Celestia deja en (10,178) al volver de Coral Vale, que esta a TRES casillas de este mismo tornado. Con radio 3 el jugador se saldria solo al aterrizar, asi que se deja en 2 y el salto lo coge el portal armado (el paso acaba en (12,179), a una casilla)."
+   }
+  ],
+  "96": [
+   {
+    "entity": 107800,
+    "tile": [
+     285,
+     5
+    ],
+    "destino": 95,
+    "llegada": [
+     10,
+     178
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Coral Vale -> Quiet Ocean. Tornado 107800; el MOVE_REQ vino de (277,9), a OCHO casillas, con el paso acabando en (284,6), a una. La llegada (10,178) es la que mando Celestia. LOS DOS SENTIDOS MEDIDOS. Quedan sin destino (272,170) y (33,155)."
+   },
+   {
+    "entity": 107801,
+    "tile": [
+     272,
+     170
+    ],
+    "destino": 94,
+    "llegada": [
+     16,
+     17
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Coral Vale -> Raging Reefs. Tornado 107801. El MOVE_REQ vino de (267,166), a cinco casillas, con el paso acabando en (275,170), a tres. Celestia deja en (16,17) y en (13,19)."
+   }
+  ],
+  "94": [
+   {
+    "entity": 107565,
+    "tile": [
+     10,
+     12
+    ],
+    "destino": 96,
+    "llegada": [
+     267,
+     166
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Raging Reefs -> Coral Vale. Tornado 107565; el MOVE_REQ vino de (16,17), a seis casillas, con el paso acabando en (11,13), a una. La llegada (267,166) es la que mando Celestia. LOS DOS SENTIDOS MEDIDOS. Queda sin destino (288,6)."
+   },
+   {
+    "entity": 107564,
+    "tile": [
+     288,
+     6
+    ],
+    "destino": 93,
+    "llegada": [
+     11,
+     171
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Raging Reefs -> Dream Ocean. Tornado 107564, el segundo y ultimo de Raging Reefs: con este queda completo. El MOVE_REQ vino de (287,13), a siete casillas, con el paso acabando en (287,7), a una. Celestia deja en (11,171) y en (15,174)."
+   }
+  ],
+  "19": [
+   {
+    "entity": 100933,
+    "tile": [
+     5,
+     26
+    ],
+    "destino": 20,
+    "llegada": [
+     271,
+     166
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Fungus Forest South -> Foggy Forest. Tornado 100933; el MOVE_REQ vino de (12,31), a siete casillas, con el paso acabando en (6,27), a una. La llegada (271,166) es la que mando Celestia. LOS DOS SENTIDOS MEDIDOS. Quedan sin destino (272,162) y (11,162)."
+   },
+   {
+    "entity": 100932,
+    "tile": [
+     272,
+     162
+    ],
+    "destino": 25,
+    "llegada": [
+     16,
+     14
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Fungus Forest South -> Fungus Forest North. Tornado 100932. El MOVE_REQ vino de (267,162), a cinco casillas, con el paso acabando en (271,162), a una. La llegada (16,14) la mando Celestia las dos veces igual."
+   },
+   {
+    "entity": 100934,
+    "tile": [
+     11,
+     162
+    ],
+    "destino": 32,
+    "llegada": [
+     292,
+     23
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Fungus Forest South -> Shadowy Path. Tornado 100934, el TERCERO y ultimo de Fungus South: con este queda completo. El MOVE_REQ vino de (14,161), a tres casillas. La llegada (292,23) la mando Celestia las dos veces igual."
+   }
+  ],
+  "25": [
+   {
+    "entity": 101182,
+    "tile": [
+     14,
+     6
+    ],
+    "destino": 19,
+    "llegada": [
+     264,
+     161
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Fungus Forest North -> Fungus Forest South. Tornado 101182; el MOVE_REQ vino de (16,14), a OCHO casillas, con el paso acabando en (15,7), a una. La llegada (264,161) es la que mando Celestia. LOS DOS SENTIDOS MEDIDOS. Queda sin destino (343,7), que es el unico tornado visto hasta ahora con x por encima de 320: este mapa es mas ancho de lo normal."
+   },
+   {
+    "entity": 101183,
+    "tile": [
+     343,
+     7
+    ],
+    "destino": 36,
+    "llegada": [
+     31,
+     262
+    ],
+    "radio": 4,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Fungus Forest North -> Gebuer Vale. Tornado 101183, el segundo y ultimo de Fungus North: con este queda completo. Radio 4: el MOVE_REQ vino de (344,11). La llegada (31,262) la mando Celestia las dos veces igual."
+   }
+  ],
+  "36": [
+   {
+    "entity": 101731,
+    "tile": [
+     28,
+     265
+    ],
+    "destino": 25,
+    "llegada": [
+     339,
+     14
+    ],
+    "radio": 2,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Gebuer Vale -> Fungus Forest North. Tornado 101731. OJO AL RADIO: Celestia deja en (31,262) al llegar, que esta a TRES casillas de este mismo tornado; con radio 3 el jugador se saldria solo al aterrizar, asi que se deja en 2 y el salto lo coge el portal armado (el paso acaba en (29,264), a una). LOS DOS SENTIDOS MEDIDOS. Quedan sin destino (52,3), (243,137) y (240,67)."
+   },
+   {
+    "entity": 101732,
+    "tile": [
+     52,
+     3
+    ],
+    "destino": 33,
+    "llegada": [
+     284,
+     170
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Gebuer Vale -> Burning Desert. Tornado 101732. El MOVE_REQ vino de (56,9), a seis casillas, con el paso acabando en (53,4), a una. La llegada (284,170) la mando Celestia las dos veces igual."
+   }
+  ],
+  "33": [
+   {
+    "entity": 101555,
+    "tile": [
+     288,
+     173
+    ],
+    "destino": 36,
+    "llegada": [
+     56,
+     9
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Burning Desert -> Gebuer Vale. Tornado 101555; el MOVE_REQ vino de (284,168), a cinco casillas, con el paso acabando en (287,172), a una. La llegada (56,9) es la que mando Celestia. LOS DOS SENTIDOS MEDIDOS. Queda sin destino (294,5)."
+   },
+   {
+    "entity": 101554,
+    "tile": [
+     294,
+     5
+    ],
+    "destino": 37,
+    "llegada": [
+     14,
+     165
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Burning Desert -> Wishing Tear. Tornado 101554, el segundo y ultimo de Burning Desert: con este queda completo. El MOVE_REQ vino de (289,14), a NUEVE casillas, con el paso acabando en (293,6), a una: lo coge el portal armado."
+   }
+  ],
+  "37": [
+   {
+    "entity": 101799,
+    "tile": [
+     9,
+     171
+    ],
+    "destino": 33,
+    "llegada": [
+     289,
+     14
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Wishing Tear -> Burning Desert. Tornado 101799; el MOVE_REQ vino de (14,165), a seis casillas, con el paso acabando en (10,170), a una. La llegada (289,14) es la que mando Celestia. LOS DOS SENTIDOS MEDIDOS. Wishing Tear tiene CUATRO tornados: quedan sin destino (5,29), (269,32) y (257,162)."
+   },
+   {
+    "entity": 101800,
+    "tile": [
+     257,
+     162
+    ],
+    "destino": 38,
+    "llegada": [
+     38,
+     10
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Wishing Tear -> Iron Castle. Tornado 101800. El MOVE_REQ vino de (249,161), a ocho casillas, con el paso acabando en (259,162), a dos. Celestia deja en (38,10) y en (44,7)."
+   },
+   {
+    "entity": 101798,
+    "tile": [
+     269,
+     32
+    ],
+    "destino": 39,
+    "llegada": [
+     12,
+     161
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Wishing Tear -> Cactus Plain. Tornado 101798. El MOVE_REQ vino de (262,34), a siete casillas, con el paso acabando en (268,33), a una. Celestia deja en (12,161) y en (10,159)."
+   },
+   {
+    "entity": 101797,
+    "tile": [
+     5,
+     29
+    ],
+    "destino": 34,
+    "llegada": [
+     287,
+     177
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Wishing Tear -> Scrap Iron Village. Tornado 101797, el CUARTO y ultimo de Wishing Tear: con este queda completo. El MOVE_REQ vino de (13,33), a OCHO casillas, con el paso acabando en (6,30), a una: lo coge el portal armado."
+   }
+  ],
+  "38": [
+   {
+    "entity": 101803,
+    "tile": [
+     34,
+     2
+    ],
+    "destino": 37,
+    "llegada": [
+     249,
+     161
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Iron Castle -> Wishing Tear. Tornado 101803; el MOVE_REQ vino de (36,5), a dos casillas. La llegada (249,161) es la que mando Celestia. LOS DOS SENTIDOS MEDIDOS. Queda sin destino (336,170)."
+   }
+  ],
+  "39": [
+   {
+    "entity": 101889,
+    "tile": [
+     5,
+     162
+    ],
+    "destino": 37,
+    "llegada": [
+     262,
+     34
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Cactus Plain -> Wishing Tear. Tornado 101889; el MOVE_REQ vino de (8,161), a tres casillas. La llegada (262,34) es la que mando Celestia. LOS DOS SENTIDOS MEDIDOS. Quedan sin destino (275,177) y (295,102)."
+   },
+   {
+    "entity": 101890,
+    "tile": [
+     275,
+     177
+    ],
+    "destino": 120,
+    "llegada": [
+     33,
+     17
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Cactus Plain -> Crescent Valley. Tornado 101890. El MOVE_REQ vino de (266,176), a NUEVE casillas, con el paso acabando en (274,176), a una: lo coge el portal armado. Celestia deja en (33,17) y en (27,20)."
+   },
+   {
+    "entity": 101891,
+    "tile": [
+     295,
+     102
+    ],
+    "destino": 169,
+    "llegada": [
+     14,
+     18
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Cactus Plain -> Karang Desert. Tornado 101891, el TERCERO y ultimo de Cactus Plain: con este queda completo. El MOVE_REQ vino de (288,98), a siete casillas, con el paso acabando en (294,101), a una. Celestia deja en (14,18) y en (15,14)."
+   }
+  ],
+  "120": [
+   {
+    "entity": 110612,
+    "tile": [
+     20,
+     11
+    ],
+    "destino": 39,
+    "llegada": [
+     264,
+     176
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Crescent Valley -> Cactus Plain. Tornado 110612; el MOVE_REQ vino de (22,14), a tres casillas. La llegada (264,176) es la que mando Celestia. LOS DOS SENTIDOS MEDIDOS. Queda sin destino (281,12)."
+   }
+  ],
+  "169": [
+   {
+    "entity": 114588,
+    "tile": [
+     5,
+     13
+    ],
+    "destino": 39,
+    "llegada": [
+     288,
+     98
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Karang Desert -> Cactus Plain. Tornado 114588; el MOVE_REQ vino de (8,15), a tres casillas. La llegada (288,98) es la que mando Celestia. LOS DOS SENTIDOS MEDIDOS. Queda sin destino (286,173)."
+   }
+  ],
+  "34": [
+   {
+    "entity": 101624,
+    "tile": [
+     290,
+     182
+    ],
+    "destino": 37,
+    "llegada": [
+     13,
+     33
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Scrap Iron Village -> Wishing Tear. Tornado 101624; el MOVE_REQ vino de (287,177), a cinco casillas, con el paso acabando en (289,181), a una. La llegada (13,33) es la que mando Celestia. LOS DOS SENTIDOS MEDIDOS. Quedan sin destino (17,10) y (33,175)."
+   },
+   {
+    "entity": 101625,
+    "tile": [
+     17,
+     10
+    ],
+    "destino": 28,
+    "llegada": [
+     286,
+     176
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Scrap Iron Village -> Megalith Plain. Tornado 101625. El MOVE_REQ vino de (19,18), a OCHO casillas, con el paso acabando en (18,11), a una: lo coge el portal armado. La llegada (286,176) la mando Celestia las dos veces igual."
+   }
+  ],
+  "32": [
+   {
+    "entity": 101531,
+    "tile": [
+     296,
+     18
+    ],
+    "destino": 19,
+    "llegada": [
+     16,
+     159
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Shadowy Path -> Fungus Forest South. Tornado 101531; el MOVE_REQ vino de (292,23), a cinco casillas, con el paso acabando en (295,19), a una. La llegada (16,159) es la que mando Celestia. LOS DOS SENTIDOS MEDIDOS. Quedan sin destino (8,194) y (312,203). Mapa grande: llega a x=312 y a y=203."
+   },
+   {
+    "entity": 101530,
+    "tile": [
+     312,
+     203
+    ],
+    "destino": 26,
+    "llegada": [
+     18,
+     18
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Shadowy Path -> Dark City. Tornado 101530. El MOVE_REQ vino de (310,198), a cinco casillas, con el paso acabando en (311,202), a una. Celestia deja en (18,18) y en (9,17)."
+   },
+   {
+    "entity": 101529,
+    "tile": [
+     8,
+     194
+    ],
+    "destino": 31,
+    "llegada": [
+     326,
+     27
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Shadowy Path -> Bottomless Pit. Tornado 101529, el TERCERO y ultimo de Shadowy Path: con este queda completo. El MOVE_REQ vino de (11,190), a cuatro casillas, con el paso acabando en (5,197), a tres. La llegada (326,27) la mando Celestia las dos veces."
+   }
+  ],
+  "26": [
+   {
+    "entity": 101185,
+    "tile": [
+     7,
+     9
+    ],
+    "destino": 32,
+    "llegada": [
+     310,
+     198
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Dark City -> Shadowy Path. Tornado 101185; el MOVE_REQ vino de (12,12), a cinco casillas, con el paso acabando en (8,10), a una. La llegada (310,198) es la que mando Celestia. LOS DOS SENTIDOS MEDIDOS. Queda sin destino (211,111)."
+   }
+  ],
+  "31": [
+   {
+    "entity": 101465,
+    "tile": [
+     328,
+     21
+    ],
+    "destino": 32,
+    "llegada": [
+     11,
+     190
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Bottomless Pit -> Shadowy Path. Tornado 101465; el MOVE_REQ vino de (326,27), a seis casillas, con el paso acabando en (327,22), a una. La llegada (11,190) es la que mando Celestia. LOS DOS SENTIDOS MEDIDOS. Bottomless Pit tiene CUATRO tornados: quedan sin destino (302,194), (8,54) y (158,97)."
+   },
+   {
+    "entity": 121588,
+    "tile": [
+     158,
+     97
+    ],
+    "destino": 333,
+    "llegada": [
+     144,
+     86
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Bottomless Pit -> Ancient Landing (Abyston). Tornado 121588. El MOVE_REQ vino de (160,91), a seis casillas, con el paso acabando en (159,96), a una. Celestia deja en (144,86) y en (161,86). OJO: en stage.xml el mapa se llama solo \"Ancient Landing\"; el usuario lo llama Abyston, que debe ser el nombre de la zona."
+   },
+   {
+    "entity": 101464,
+    "tile": [
+     302,
+     194
+    ],
+    "destino": 14,
+    "llegada": [
+     43,
+     9
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Bottomless Pit -> Degula Maze. Tornado 101464. El MOVE_REQ vino de (297,192), a cinco casillas, con el paso acabando en (301,193), a una. Celestia deja en (43,9) y en (49,6)."
+   },
+   {
+    "entity": 101466,
+    "tile": [
+     8,
+     54
+    ],
+    "destino": 137,
+    "llegada": [
+     235,
+     16
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Bottomless Pit -> Vine Front. Tornado 101466, el CUARTO y ultimo de Bottomless Pit: con este queda completo. El MOVE_REQ vino de (15,49), a siete casillas, con el paso acabando en (9,53), a una. La llegada (235,16) es la que mando Celestia."
+   }
+  ],
+  "333": [
+   {
+    "entity": 119257,
+    "tile": [
+     152,
+     91
+    ],
+    "destino": 31,
+    "llegada": [
+     160,
+     91
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Ancient Landing -> Bottomless Pit. Tornado 119257; el MOVE_REQ vino de (144,86), a OCHO casillas, con el paso acabando en (151,90), a una. La llegada (160,91) es la que mando Celestia. LOS DOS SENTIDOS MEDIDOS. Queda sin destino (292,17)."
+   }
+  ],
+  "14": [
+   {
+    "entity": 100643,
+    "tile": [
+     44,
+     3
+    ],
+    "destino": 31,
+    "llegada": [
+     296,
+     192
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Degula Maze -> Bottomless Pit. Tornado 100643; el MOVE_REQ vino de (45,6), a tres casillas. La llegada (296,192) es la que mando Celestia. LOS DOS SENTIDOS MEDIDOS. Queda sin destino (300,175)."
+   },
+   {
+    "entity": 100644,
+    "tile": [
+     300,
+     175
+    ],
+    "destino": 35,
+    "llegada": [
+     10,
+     30
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Degula Maze -> Memory Cave. Tornado 100644, el segundo y ultimo de Degula: con este queda completo. El MOVE_REQ vino de (299,170), a cinco casillas, con el paso acabando en (299,174), a una. Celestia deja en (10,30) y en (7,29)."
+   }
+  ],
+  "35": [
+   {
+    "entity": 101666,
+    "tile": [
+     7,
+     24
+    ],
+    "destino": 14,
+    "llegada": [
+     299,
+     170
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Memory Cave -> Degula Maze. Tornado 101666; el MOVE_REQ vino de (12,29), a cinco casillas, con el paso acabando en (8,25), a una. La llegada (299,170) es la que mando Celestia. LOS DOS SENTIDOS MEDIDOS. Queda sin destino (147,179)."
+   },
+   {
+    "entity": 101667,
+    "tile": [
+     147,
+     179
+    ],
+    "destino": 209,
+    "llegada": [
+     242,
+     13
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Memory Cave -> Feather Leaf Forest. Tornado 101667, el segundo y ultimo de Memory Cave: con este queda completo. El MOVE_REQ vino de (152,178), a cinco casillas, con el paso acabando en (148,178), a una."
+   }
+  ],
+  "209": [
+   {
+    "entity": 115818,
+    "tile": [
+     243,
+     4
+    ],
+    "destino": 35,
+    "llegada": [
+     153,
+     179
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Feather Leaf Forest -> Memory Cave. Tornado 115818; el MOVE_REQ vino de (237,9), a seis casillas, con el paso acabando en (242,5), a una. La llegada (153,179) es la que mando Celestia. LOS DOS SENTIDOS MEDIDOS. Queda sin destino (6,273)."
+   }
+  ],
+  "137": [
+   {
+    "entity": 112831,
+    "tile": [
+     239,
+     7
+    ],
+    "destino": 31,
+    "llegada": [
+     18,
+     51
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Vine Front -> Bottomless Pit. Tornado 112831. YA ESTA MEDIDO: el MOVE_REQ vino de (238,14), a siete casillas, con el paso acabando en (238,8), a una. La llegada (18,51) es la que mando Celestia; antes estaba puesta a ojo en (15,49), a tres de la real. Quedan sin destino (236,282) y (5,282), los dos abajo del todo."
    }
   ]
  },

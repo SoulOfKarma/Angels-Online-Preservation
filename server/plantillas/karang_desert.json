@@ -1,0 +1,4766 @@
+{
+ "_nota": "Karang Desert (stage 169), de dos capturas de Celestia del 23/09/2026. Zona de Pharaoh.",
+ "stage": 169,
+ "spawns": [
+  {
+   "entity_id": 123001,
+   "nombre": "Nel",
+   "npc_type": 8864,
+   "sprite": 40067,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    25,
+    13
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123002,
+   "nombre": "Walter",
+   "npc_type": 8876,
+   "sprite": 40250,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    146,
+    74
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123003,
+   "nombre": "Vendor Eros",
+   "npc_type": 8879,
+   "sprite": 40345,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    291,
+    121
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123004,
+   "nombre": "Assc. Vendor Rem",
+   "npc_type": 8886,
+   "sprite": 40346,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    76,
+    115
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123005,
+   "nombre": "Nuke",
+   "npc_type": 8887,
+   "sprite": 40029,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    293,
+    119
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 1032019,
+   "nombre": "Karang Robbers",
+   "npc_type": 8556,
+   "sprite": 43259,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    19,
+    95
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 84
+  },
+  {
+   "entity_id": 1032020,
+   "nombre": "Karang Robbers",
+   "npc_type": 8556,
+   "sprite": 43259,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    25,
+    100
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 84
+  },
+  {
+   "entity_id": 1032021,
+   "nombre": "Karang Robbers",
+   "npc_type": 8556,
+   "sprite": 43259,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    25,
+    109
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 84
+  },
+  {
+   "entity_id": 1032022,
+   "nombre": "Karang Robbers",
+   "npc_type": 8556,
+   "sprite": 43259,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    20,
+    92
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 84
+  },
+  {
+   "entity_id": 1032023,
+   "nombre": "Karang Robbers",
+   "npc_type": 8556,
+   "sprite": 43259,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    20,
+    122
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 84
+  },
+  {
+   "entity_id": 1032024,
+   "nombre": "Karang Robbers",
+   "npc_type": 8556,
+   "sprite": 43259,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    10,
+    92
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 84
+  },
+  {
+   "entity_id": 1032025,
+   "nombre": "Karang Robbers",
+   "npc_type": 8556,
+   "sprite": 43259,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    24,
+    75
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 84
+  },
+  {
+   "entity_id": 1032026,
+   "nombre": "Karang Robbers",
+   "npc_type": 8556,
+   "sprite": 43259,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    9,
+    82
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 84
+  },
+  {
+   "entity_id": 1032027,
+   "nombre": "Karang Robbers",
+   "npc_type": 8556,
+   "sprite": 43259,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    22,
+    64
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 84
+  },
+  {
+   "entity_id": 1032028,
+   "nombre": "Karang Robbers",
+   "npc_type": 8556,
+   "sprite": 43259,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    23,
+    75
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 84
+  },
+  {
+   "entity_id": 1032029,
+   "nombre": "Karang Robbers",
+   "npc_type": 8556,
+   "sprite": 43259,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    19,
+    38
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 84
+  },
+  {
+   "entity_id": 1032030,
+   "nombre": "Karang Robbers",
+   "npc_type": 8556,
+   "sprite": 43259,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    35,
+    44
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 84
+  },
+  {
+   "entity_id": 1032031,
+   "nombre": "Karang Robbers",
+   "npc_type": 8556,
+   "sprite": 43259,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    21,
+    39
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 84
+  },
+  {
+   "entity_id": 1032032,
+   "nombre": "Karang Robbers",
+   "npc_type": 8556,
+   "sprite": 43259,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    23,
+    55
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 84
+  },
+  {
+   "entity_id": 1032033,
+   "nombre": "Karang Robbers",
+   "npc_type": 8556,
+   "sprite": 43259,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    17,
+    52
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 84
+  },
+  {
+   "entity_id": 1032034,
+   "nombre": "Karang Robbers",
+   "npc_type": 8556,
+   "sprite": 43259,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    48,
+    38
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 84
+  },
+  {
+   "entity_id": 1032035,
+   "nombre": "Karang Robbers",
+   "npc_type": 8556,
+   "sprite": 43259,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    46,
+    53
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 84
+  },
+  {
+   "entity_id": 1032036,
+   "nombre": "Karang Robbers",
+   "npc_type": 8556,
+   "sprite": 43259,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    53,
+    37
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 84
+  },
+  {
+   "entity_id": 1032037,
+   "nombre": "Karang Robbers",
+   "npc_type": 8556,
+   "sprite": 43259,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    45,
+    48
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 84
+  },
+  {
+   "entity_id": 1032038,
+   "nombre": "Karang Robbers",
+   "npc_type": 8556,
+   "sprite": 43259,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    48,
+    42
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 84
+  },
+  {
+   "entity_id": 1032039,
+   "nombre": "Desert Gangster",
+   "npc_type": 8557,
+   "sprite": 43260,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    46,
+    17
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 84
+  },
+  {
+   "entity_id": 1032040,
+   "nombre": "Desert Gangster",
+   "npc_type": 8557,
+   "sprite": 43260,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    50,
+    16
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 84
+  },
+  {
+   "entity_id": 1032041,
+   "nombre": "Desert Gangster",
+   "npc_type": 8557,
+   "sprite": 43260,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    57,
+    19
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 84
+  },
+  {
+   "entity_id": 1032042,
+   "nombre": "Desert Gangster",
+   "npc_type": 8557,
+   "sprite": 43260,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    48,
+    19
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 84
+  },
+  {
+   "entity_id": 1032043,
+   "nombre": "Desert Gangster",
+   "npc_type": 8557,
+   "sprite": 43260,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    63,
+    33
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 84
+  },
+  {
+   "entity_id": 1032044,
+   "nombre": "Desert Gangster",
+   "npc_type": 8557,
+   "sprite": 43260,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    70,
+    32
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 84
+  },
+  {
+   "entity_id": 1032045,
+   "nombre": "Desert Gangster",
+   "npc_type": 8557,
+   "sprite": 43260,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    86,
+    30
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 84
+  },
+  {
+   "entity_id": 1032046,
+   "nombre": "Desert Gangster",
+   "npc_type": 8557,
+   "sprite": 43260,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    77,
+    27
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 84
+  },
+  {
+   "entity_id": 1032047,
+   "nombre": "Desert Gangster",
+   "npc_type": 8557,
+   "sprite": 43260,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    88,
+    29
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 84
+  },
+  {
+   "entity_id": 1032048,
+   "nombre": "Desert Gangster",
+   "npc_type": 8557,
+   "sprite": 43260,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    79,
+    31
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 84
+  },
+  {
+   "entity_id": 1032049,
+   "nombre": "Desert Gangster",
+   "npc_type": 8557,
+   "sprite": 43260,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    94,
+    32
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 84
+  },
+  {
+   "entity_id": 1032050,
+   "nombre": "Desert Gangster",
+   "npc_type": 8557,
+   "sprite": 43260,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    117,
+    42
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 84
+  },
+  {
+   "entity_id": 1032051,
+   "nombre": "Desert Gangster",
+   "npc_type": 8557,
+   "sprite": 43260,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    115,
+    36
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 84
+  },
+  {
+   "entity_id": 1032052,
+   "nombre": "Desert Gangster",
+   "npc_type": 8557,
+   "sprite": 43260,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    103,
+    45
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 84
+  },
+  {
+   "entity_id": 1032053,
+   "nombre": "Desert Gangster",
+   "npc_type": 8557,
+   "sprite": 43260,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    95,
+    38
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 84
+  },
+  {
+   "entity_id": 1032054,
+   "nombre": "Desert Gangster",
+   "npc_type": 8557,
+   "sprite": 43260,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    154,
+    39
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 84
+  },
+  {
+   "entity_id": 1032055,
+   "nombre": "Desert Gangster",
+   "npc_type": 8557,
+   "sprite": 43260,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    122,
+    36
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 84
+  },
+  {
+   "entity_id": 1032056,
+   "nombre": "Desert Gangster",
+   "npc_type": 8557,
+   "sprite": 43260,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    142,
+    34
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 84
+  },
+  {
+   "entity_id": 1032057,
+   "nombre": "Desert Gangster",
+   "npc_type": 8557,
+   "sprite": 43260,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    138,
+    38
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 84
+  },
+  {
+   "entity_id": 1032058,
+   "nombre": "Desert Gangster",
+   "npc_type": 8557,
+   "sprite": 43260,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    125,
+    36
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 84
+  },
+  {
+   "entity_id": 1032059,
+   "nombre": "Venomous Sand Sc",
+   "npc_type": 8558,
+   "sprite": 43261,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    76,
+    101
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1032060,
+   "nombre": "Venomous Sand Sc",
+   "npc_type": 8558,
+   "sprite": 43261,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    54,
+    115
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1032061,
+   "nombre": "Venomous Sand Sc",
+   "npc_type": 8558,
+   "sprite": 43261,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    75,
+    109
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1032062,
+   "nombre": "Venomous Sand Sc",
+   "npc_type": 8558,
+   "sprite": 43261,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    53,
+    113
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1032063,
+   "nombre": "Venomous Sand Sc",
+   "npc_type": 8558,
+   "sprite": 43261,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    70,
+    106
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1032064,
+   "nombre": "Venomous Sand Sc",
+   "npc_type": 8558,
+   "sprite": 43261,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    78,
+    101
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1032065,
+   "nombre": "Venomous Sand Sc",
+   "npc_type": 8558,
+   "sprite": 43261,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    87,
+    89
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1032066,
+   "nombre": "Venomous Sand Sc",
+   "npc_type": 8558,
+   "sprite": 43261,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    87,
+    98
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1032067,
+   "nombre": "Venomous Sand Sc",
+   "npc_type": 8558,
+   "sprite": 43261,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    77,
+    96
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1032068,
+   "nombre": "Venomous Sand Sc",
+   "npc_type": 8558,
+   "sprite": 43261,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    93,
+    96
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1032069,
+   "nombre": "Venomous Sand Sc",
+   "npc_type": 8558,
+   "sprite": 43261,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    131,
+    76
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1032070,
+   "nombre": "Venomous Sand Sc",
+   "npc_type": 8558,
+   "sprite": 43261,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    140,
+    71
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1032071,
+   "nombre": "Venomous Sand Sc",
+   "npc_type": 8558,
+   "sprite": 43261,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    148,
+    66
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1032072,
+   "nombre": "Venomous Sand Sc",
+   "npc_type": 8558,
+   "sprite": 43261,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    157,
+    59
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1032073,
+   "nombre": "Venomous Sand Sc",
+   "npc_type": 8558,
+   "sprite": 43261,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    157,
+    57
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1032074,
+   "nombre": "Toxic Giant Sand",
+   "npc_type": 8559,
+   "sprite": 43262,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    215,
+    55
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 87
+  },
+  {
+   "entity_id": 1032075,
+   "nombre": "Toxic Giant Sand",
+   "npc_type": 8559,
+   "sprite": 43262,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    227,
+    45
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 87
+  },
+  {
+   "entity_id": 1032076,
+   "nombre": "Toxic Giant Sand",
+   "npc_type": 8559,
+   "sprite": 43262,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    226,
+    35
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 87
+  },
+  {
+   "entity_id": 1032077,
+   "nombre": "Toxic Giant Sand",
+   "npc_type": 8559,
+   "sprite": 43262,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    229,
+    38
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 87
+  },
+  {
+   "entity_id": 1032078,
+   "nombre": "Toxic Giant Sand",
+   "npc_type": 8559,
+   "sprite": 43262,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    215,
+    49
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 87
+  },
+  {
+   "entity_id": 1032079,
+   "nombre": "Toxic Giant Sand",
+   "npc_type": 8559,
+   "sprite": 43262,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    171,
+    47
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 87
+  },
+  {
+   "entity_id": 1032080,
+   "nombre": "Toxic Giant Sand",
+   "npc_type": 8559,
+   "sprite": 43262,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    177,
+    39
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 87
+  },
+  {
+   "entity_id": 1032081,
+   "nombre": "Toxic Giant Sand",
+   "npc_type": 8559,
+   "sprite": 43262,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    156,
+    39
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 87
+  },
+  {
+   "entity_id": 1032082,
+   "nombre": "Toxic Giant Sand",
+   "npc_type": 8559,
+   "sprite": 43262,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    175,
+    32
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 87
+  },
+  {
+   "entity_id": 1032083,
+   "nombre": "Toxic Giant Sand",
+   "npc_type": 8559,
+   "sprite": 43262,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    184,
+    20
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 87
+  },
+  {
+   "entity_id": 1032084,
+   "nombre": "Toxic Giant Sand",
+   "npc_type": 8559,
+   "sprite": 43262,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    172,
+    53
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 87
+  },
+  {
+   "entity_id": 1032085,
+   "nombre": "Toxic Giant Sand",
+   "npc_type": 8559,
+   "sprite": 43262,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    187,
+    61
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 87
+  },
+  {
+   "entity_id": 1032086,
+   "nombre": "Toxic Giant Sand",
+   "npc_type": 8559,
+   "sprite": 43262,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    205,
+    57
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 87
+  },
+  {
+   "entity_id": 1032087,
+   "nombre": "Toxic Giant Sand",
+   "npc_type": 8559,
+   "sprite": 43262,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    182,
+    62
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 87
+  },
+  {
+   "entity_id": 1032088,
+   "nombre": "Toxic Giant Sand",
+   "npc_type": 8559,
+   "sprite": 43262,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    182,
+    58
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 87
+  },
+  {
+   "entity_id": 1032089,
+   "nombre": "Palm Tree Stonem",
+   "npc_type": 8560,
+   "sprite": 43263,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    248,
+    174
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 88
+  },
+  {
+   "entity_id": 1032090,
+   "nombre": "Palm Tree Stonem",
+   "npc_type": 8560,
+   "sprite": 43263,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    242,
+    172
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 88
+  },
+  {
+   "entity_id": 1032091,
+   "nombre": "Palm Tree Stonem",
+   "npc_type": 8560,
+   "sprite": 43263,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    251,
+    169
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 88
+  },
+  {
+   "entity_id": 1032092,
+   "nombre": "Palm Tree Stonem",
+   "npc_type": 8560,
+   "sprite": 43263,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    254,
+    167
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 88
+  },
+  {
+   "entity_id": 1032093,
+   "nombre": "Palm Tree Stonem",
+   "npc_type": 8560,
+   "sprite": 43263,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    271,
+    168
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 88
+  },
+  {
+   "entity_id": 1032094,
+   "nombre": "Palm Tree Stonem",
+   "npc_type": 8560,
+   "sprite": 43263,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    257,
+    133
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 88
+  },
+  {
+   "entity_id": 1032095,
+   "nombre": "Palm Tree Stonem",
+   "npc_type": 8560,
+   "sprite": 43263,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    261,
+    132
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 88
+  },
+  {
+   "entity_id": 1032096,
+   "nombre": "Palm Tree Stonem",
+   "npc_type": 8560,
+   "sprite": 43263,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    260,
+    135
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 88
+  },
+  {
+   "entity_id": 1032097,
+   "nombre": "Palm Tree Stonem",
+   "npc_type": 8560,
+   "sprite": 43263,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    242,
+    132
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 88
+  },
+  {
+   "entity_id": 1032098,
+   "nombre": "Palm Tree Stonem",
+   "npc_type": 8560,
+   "sprite": 43263,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    257,
+    126
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 88
+  },
+  {
+   "entity_id": 1032099,
+   "nombre": "Palm Tree Stonem",
+   "npc_type": 8560,
+   "sprite": 43263,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    270,
+    166
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 88
+  },
+  {
+   "entity_id": 1032100,
+   "nombre": "Palm Tree Stonem",
+   "npc_type": 8560,
+   "sprite": 43263,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    272,
+    155
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 88
+  },
+  {
+   "entity_id": 1032101,
+   "nombre": "Palm Tree Stonem",
+   "npc_type": 8560,
+   "sprite": 43263,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    262,
+    163
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 88
+  },
+  {
+   "entity_id": 1032102,
+   "nombre": "Palm Tree Stonem",
+   "npc_type": 8560,
+   "sprite": 43263,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    271,
+    158
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 88
+  },
+  {
+   "entity_id": 1032103,
+   "nombre": "Palm Tree Stonem",
+   "npc_type": 8560,
+   "sprite": 43263,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    267,
+    154
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 88
+  },
+  {
+   "entity_id": 1032104,
+   "nombre": "Papyrus Golem",
+   "npc_type": 8561,
+   "sprite": 43264,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    252,
+    44
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 89
+  },
+  {
+   "entity_id": 1032105,
+   "nombre": "Papyrus Golem",
+   "npc_type": 8561,
+   "sprite": 43264,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    265,
+    60
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 89
+  },
+  {
+   "entity_id": 1032106,
+   "nombre": "Papyrus Golem",
+   "npc_type": 8561,
+   "sprite": 43264,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    258,
+    49
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 89
+  },
+  {
+   "entity_id": 1032107,
+   "nombre": "Papyrus Golem",
+   "npc_type": 8561,
+   "sprite": 43264,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    259,
+    60
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 89
+  },
+  {
+   "entity_id": 1032108,
+   "nombre": "Papyrus Golem",
+   "npc_type": 8561,
+   "sprite": 43264,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    254,
+    62
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 89
+  },
+  {
+   "entity_id": 1032109,
+   "nombre": "Papyrus Golem",
+   "npc_type": 8561,
+   "sprite": 43264,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    272,
+    76
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 89
+  },
+  {
+   "entity_id": 1032110,
+   "nombre": "Papyrus Golem",
+   "npc_type": 8561,
+   "sprite": 43264,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    276,
+    80
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 89
+  },
+  {
+   "entity_id": 1032111,
+   "nombre": "Papyrus Golem",
+   "npc_type": 8561,
+   "sprite": 43264,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    266,
+    60
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 89
+  },
+  {
+   "entity_id": 1032112,
+   "nombre": "Papyrus Golem",
+   "npc_type": 8561,
+   "sprite": 43264,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    285,
+    69
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 89
+  },
+  {
+   "entity_id": 1032113,
+   "nombre": "Papyrus Golem",
+   "npc_type": 8561,
+   "sprite": 43264,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    258,
+    57
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 89
+  },
+  {
+   "entity_id": 1032114,
+   "nombre": "Papyrus Golem",
+   "npc_type": 8561,
+   "sprite": 43264,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    266,
+    86
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 89
+  },
+  {
+   "entity_id": 1032115,
+   "nombre": "Papyrus Golem",
+   "npc_type": 8561,
+   "sprite": 43264,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    268,
+    103
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 89
+  },
+  {
+   "entity_id": 1032116,
+   "nombre": "Papyrus Golem",
+   "npc_type": 8561,
+   "sprite": 43264,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    269,
+    85
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 89
+  },
+  {
+   "entity_id": 1032117,
+   "nombre": "Papyrus Golem",
+   "npc_type": 8561,
+   "sprite": 43264,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    275,
+    96
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 89
+  },
+  {
+   "entity_id": 1032118,
+   "nombre": "Papyrus Golem",
+   "npc_type": 8561,
+   "sprite": 43264,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    276,
+    105
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 89
+  },
+  {
+   "entity_id": 1032119,
+   "nombre": "Papyrus Golem",
+   "npc_type": 8561,
+   "sprite": 43264,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    285,
+    118
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 89
+  },
+  {
+   "entity_id": 1032120,
+   "nombre": "Papyrus Golem",
+   "npc_type": 8561,
+   "sprite": 43264,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    278,
+    112
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 89
+  },
+  {
+   "entity_id": 1032121,
+   "nombre": "Papyrus Golem",
+   "npc_type": 8561,
+   "sprite": 43264,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    276,
+    114
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 89
+  },
+  {
+   "entity_id": 1032122,
+   "nombre": "Papyrus Golem",
+   "npc_type": 8561,
+   "sprite": 43264,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    282,
+    114
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 89
+  },
+  {
+   "entity_id": 1032123,
+   "nombre": "Papyrus Golem",
+   "npc_type": 8561,
+   "sprite": 43264,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    271,
+    113
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 89
+  },
+  {
+   "entity_id": 1032124,
+   "nombre": "White Eagle Mask",
+   "npc_type": 8562,
+   "sprite": 43252,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    100,
+    85
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032125,
+   "nombre": "White Eagle Mask",
+   "npc_type": 8562,
+   "sprite": 43252,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    94,
+    94
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032126,
+   "nombre": "White Eagle Mask",
+   "npc_type": 8562,
+   "sprite": 43252,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    113,
+    79
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032127,
+   "nombre": "White Eagle Mask",
+   "npc_type": 8562,
+   "sprite": 43252,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    104,
+    91
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032128,
+   "nombre": "White Eagle Mask",
+   "npc_type": 8562,
+   "sprite": 43252,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    96,
+    91
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032129,
+   "nombre": "White Eagle Mask",
+   "npc_type": 8562,
+   "sprite": 43252,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    118,
+    71
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032130,
+   "nombre": "White Eagle Mask",
+   "npc_type": 8562,
+   "sprite": 43252,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    122,
+    81
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032131,
+   "nombre": "White Eagle Mask",
+   "npc_type": 8562,
+   "sprite": 43252,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    122,
+    77
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032132,
+   "nombre": "White Eagle Mask",
+   "npc_type": 8562,
+   "sprite": 43252,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    129,
+    77
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032133,
+   "nombre": "White Eagle Mask",
+   "npc_type": 8562,
+   "sprite": 43252,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    126,
+    67
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032134,
+   "nombre": "White Eagle Mask",
+   "npc_type": 8562,
+   "sprite": 43252,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    126,
+    95
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032135,
+   "nombre": "White Eagle Mask",
+   "npc_type": 8562,
+   "sprite": 43252,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    110,
+    88
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032136,
+   "nombre": "White Eagle Mask",
+   "npc_type": 8562,
+   "sprite": 43252,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    131,
+    109
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032137,
+   "nombre": "White Eagle Mask",
+   "npc_type": 8562,
+   "sprite": 43252,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    119,
+    96
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032138,
+   "nombre": "White Eagle Mask",
+   "npc_type": 8562,
+   "sprite": 43252,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    120,
+    95
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032139,
+   "nombre": "White Eagle Mask",
+   "npc_type": 8562,
+   "sprite": 43252,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    169,
+    103
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032140,
+   "nombre": "White Eagle Mask",
+   "npc_type": 8562,
+   "sprite": 43252,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    191,
+    103
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032141,
+   "nombre": "White Eagle Mask",
+   "npc_type": 8562,
+   "sprite": 43252,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    180,
+    98
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032142,
+   "nombre": "White Eagle Mask",
+   "npc_type": 8562,
+   "sprite": 43252,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    167,
+    96
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032143,
+   "nombre": "White Eagle Mask",
+   "npc_type": 8562,
+   "sprite": 43252,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    166,
+    95
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032144,
+   "nombre": "White Eagle Mask",
+   "npc_type": 8562,
+   "sprite": 43252,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    164,
+    99
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032145,
+   "nombre": "White Eagle Mask",
+   "npc_type": 8562,
+   "sprite": 43252,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    195,
+    98
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032146,
+   "nombre": "White Eagle Mask",
+   "npc_type": 8562,
+   "sprite": 43252,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    183,
+    98
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032147,
+   "nombre": "White Eagle Mask",
+   "npc_type": 8562,
+   "sprite": 43252,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    164,
+    99
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032148,
+   "nombre": "White Eagle Mask",
+   "npc_type": 8562,
+   "sprite": 43252,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    176,
+    89
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032149,
+   "nombre": "White Eagle Mask",
+   "npc_type": 8562,
+   "sprite": 43252,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    172,
+    102
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032150,
+   "nombre": "White Eagle Mask",
+   "npc_type": 8562,
+   "sprite": 43252,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    177,
+    99
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032151,
+   "nombre": "White Eagle Mask",
+   "npc_type": 8562,
+   "sprite": 43252,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    167,
+    97
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032152,
+   "nombre": "White Eagle Mask",
+   "npc_type": 8562,
+   "sprite": 43252,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    187,
+    98
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032153,
+   "nombre": "White Eagle Mask",
+   "npc_type": 8562,
+   "sprite": 43252,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    169,
+    91
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032154,
+   "nombre": "White Eagle Mask",
+   "npc_type": 8562,
+   "sprite": 43252,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    156,
+    109
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032155,
+   "nombre": "White Eagle Mask",
+   "npc_type": 8562,
+   "sprite": 43252,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    164,
+    108
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032156,
+   "nombre": "White Eagle Mask",
+   "npc_type": 8562,
+   "sprite": 43252,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    152,
+    112
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032157,
+   "nombre": "White Eagle Mask",
+   "npc_type": 8562,
+   "sprite": 43252,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    168,
+    105
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032158,
+   "nombre": "White Eagle Mask",
+   "npc_type": 8562,
+   "sprite": 43252,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    167,
+    104
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032159,
+   "nombre": "Green Owl Mask",
+   "npc_type": 8563,
+   "sprite": 43253,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    130,
+    109
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032160,
+   "nombre": "Green Owl Mask",
+   "npc_type": 8563,
+   "sprite": 43253,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    132,
+    115
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032161,
+   "nombre": "Green Owl Mask",
+   "npc_type": 8563,
+   "sprite": 43253,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    144,
+    123
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032162,
+   "nombre": "Green Owl Mask",
+   "npc_type": 8563,
+   "sprite": 43253,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    123,
+    125
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032163,
+   "nombre": "Green Owl Mask",
+   "npc_type": 8563,
+   "sprite": 43253,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    135,
+    121
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032164,
+   "nombre": "Green Owl Mask",
+   "npc_type": 8563,
+   "sprite": 43253,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    162,
+    135
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032165,
+   "nombre": "Green Owl Mask",
+   "npc_type": 8563,
+   "sprite": 43253,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    164,
+    137
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032166,
+   "nombre": "Green Owl Mask",
+   "npc_type": 8563,
+   "sprite": 43253,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    163,
+    140
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032167,
+   "nombre": "Green Owl Mask",
+   "npc_type": 8563,
+   "sprite": 43253,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    181,
+    131
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032168,
+   "nombre": "Green Owl Mask",
+   "npc_type": 8563,
+   "sprite": 43253,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    178,
+    141
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032169,
+   "nombre": "Green Owl Mask",
+   "npc_type": 8563,
+   "sprite": 43253,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    143,
+    118
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032170,
+   "nombre": "Green Owl Mask",
+   "npc_type": 8563,
+   "sprite": 43253,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    151,
+    113
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032171,
+   "nombre": "Green Owl Mask",
+   "npc_type": 8563,
+   "sprite": 43253,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    140,
+    101
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032172,
+   "nombre": "Green Owl Mask",
+   "npc_type": 8563,
+   "sprite": 43253,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    138,
+    105
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032173,
+   "nombre": "Green Owl Mask",
+   "npc_type": 8563,
+   "sprite": 43253,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    150,
+    106
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032174,
+   "nombre": "Green Owl Mask",
+   "npc_type": 8563,
+   "sprite": 43253,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    166,
+    126
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032175,
+   "nombre": "Green Owl Mask",
+   "npc_type": 8563,
+   "sprite": 43253,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    166,
+    119
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032176,
+   "nombre": "Green Owl Mask",
+   "npc_type": 8563,
+   "sprite": 43253,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    165,
+    124
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032177,
+   "nombre": "Green Owl Mask",
+   "npc_type": 8563,
+   "sprite": 43253,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    169,
+    123
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032178,
+   "nombre": "Green Owl Mask",
+   "npc_type": 8563,
+   "sprite": 43253,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    164,
+    125
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032179,
+   "nombre": "Green Owl Mask",
+   "npc_type": 8563,
+   "sprite": 43253,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    192,
+    132
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032180,
+   "nombre": "Green Owl Mask",
+   "npc_type": 8563,
+   "sprite": 43253,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    174,
+    133
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032181,
+   "nombre": "Green Owl Mask",
+   "npc_type": 8563,
+   "sprite": 43253,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    189,
+    128
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032182,
+   "nombre": "Green Owl Mask",
+   "npc_type": 8563,
+   "sprite": 43253,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    179,
+    128
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032183,
+   "nombre": "Green Owl Mask",
+   "npc_type": 8563,
+   "sprite": 43253,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    181,
+    134
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032184,
+   "nombre": "Green Owl Mask",
+   "npc_type": 8563,
+   "sprite": 43253,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    181,
+    52
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032185,
+   "nombre": "Green Owl Mask",
+   "npc_type": 8563,
+   "sprite": 43253,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    173,
+    42
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032186,
+   "nombre": "Green Owl Mask",
+   "npc_type": 8563,
+   "sprite": 43253,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    163,
+    42
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032187,
+   "nombre": "Green Owl Mask",
+   "npc_type": 8563,
+   "sprite": 43253,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    180,
+    35
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032188,
+   "nombre": "Green Owl Mask",
+   "npc_type": 8563,
+   "sprite": 43253,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    162,
+    44
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 90
+  },
+  {
+   "entity_id": 1032189,
+   "nombre": "Yellow Sand baby",
+   "npc_type": 8564,
+   "sprite": 43186,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    36,
+    136
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1032190,
+   "nombre": "Yellow Sand baby",
+   "npc_type": 8564,
+   "sprite": 43186,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    34,
+    127
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1032191,
+   "nombre": "Yellow Sand baby",
+   "npc_type": 8564,
+   "sprite": 43186,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    26,
+    129
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1032192,
+   "nombre": "Yellow Sand baby",
+   "npc_type": 8564,
+   "sprite": 43186,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    11,
+    135
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1032193,
+   "nombre": "Yellow Sand baby",
+   "npc_type": 8564,
+   "sprite": 43186,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    35,
+    131
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1032194,
+   "nombre": "Yellow Sand baby",
+   "npc_type": 8564,
+   "sprite": 43186,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    14,
+    140
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1032195,
+   "nombre": "Yellow Sand baby",
+   "npc_type": 8564,
+   "sprite": 43186,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    9,
+    149
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1032196,
+   "nombre": "Yellow Sand baby",
+   "npc_type": 8564,
+   "sprite": 43186,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    9,
+    155
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1032197,
+   "nombre": "Yellow Sand baby",
+   "npc_type": 8564,
+   "sprite": 43186,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    10,
+    149
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1032198,
+   "nombre": "Yellow Sand baby",
+   "npc_type": 8564,
+   "sprite": 43186,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    13,
+    166
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1032199,
+   "nombre": "Yellow Sand baby",
+   "npc_type": 8564,
+   "sprite": 43186,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    72,
+    143
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1032200,
+   "nombre": "Yellow Sand baby",
+   "npc_type": 8564,
+   "sprite": 43186,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    70,
+    144
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1032201,
+   "nombre": "Yellow Sand baby",
+   "npc_type": 8564,
+   "sprite": 43186,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    47,
+    135
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1032202,
+   "nombre": "Yellow Sand baby",
+   "npc_type": 8564,
+   "sprite": 43186,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    72,
+    143
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1032203,
+   "nombre": "Yellow Sand baby",
+   "npc_type": 8564,
+   "sprite": 43186,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    56,
+    133
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1032204,
+   "nombre": "Yellow Sand baby",
+   "npc_type": 8564,
+   "sprite": 43186,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    54,
+    162
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1032205,
+   "nombre": "Yellow Sand baby",
+   "npc_type": 8564,
+   "sprite": 43186,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    33,
+    172
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1032206,
+   "nombre": "Yellow Sand baby",
+   "npc_type": 8564,
+   "sprite": 43186,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    31,
+    173
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1032207,
+   "nombre": "Yellow Sand baby",
+   "npc_type": 8564,
+   "sprite": 43186,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    19,
+    163
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1032208,
+   "nombre": "Yellow Sand baby",
+   "npc_type": 8564,
+   "sprite": 43186,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    48,
+    165
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1032209,
+   "nombre": "Yellow Sand baby",
+   "npc_type": 8564,
+   "sprite": 43186,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    74,
+    166
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1032210,
+   "nombre": "Yellow Sand baby",
+   "npc_type": 8564,
+   "sprite": 43186,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    91,
+    149
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1032211,
+   "nombre": "Yellow Sand baby",
+   "npc_type": 8564,
+   "sprite": 43186,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    62,
+    159
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1032212,
+   "nombre": "Yellow Sand baby",
+   "npc_type": 8564,
+   "sprite": 43186,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    73,
+    150
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1032213,
+   "nombre": "Yellow Sand baby",
+   "npc_type": 8564,
+   "sprite": 43186,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    67,
+    154
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1032214,
+   "nombre": "Blue Sand baby",
+   "npc_type": 8565,
+   "sprite": 43218,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    123,
+    144
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1032215,
+   "nombre": "Blue Sand baby",
+   "npc_type": 8565,
+   "sprite": 43218,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    107,
+    137
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1032216,
+   "nombre": "Blue Sand baby",
+   "npc_type": 8565,
+   "sprite": 43218,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    111,
+    144
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1032217,
+   "nombre": "Blue Sand baby",
+   "npc_type": 8565,
+   "sprite": 43218,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    90,
+    126
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1032218,
+   "nombre": "Blue Sand baby",
+   "npc_type": 8565,
+   "sprite": 43218,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    94,
+    131
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1032219,
+   "nombre": "Blue Sand baby",
+   "npc_type": 8565,
+   "sprite": 43218,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    136,
+    159
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1032220,
+   "nombre": "Blue Sand baby",
+   "npc_type": 8565,
+   "sprite": 43218,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    117,
+    166
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1032221,
+   "nombre": "Blue Sand baby",
+   "npc_type": 8565,
+   "sprite": 43218,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    111,
+    164
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1032222,
+   "nombre": "Blue Sand baby",
+   "npc_type": 8565,
+   "sprite": 43218,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    100,
+    164
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1032223,
+   "nombre": "Blue Sand baby",
+   "npc_type": 8565,
+   "sprite": 43218,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    92,
+    163
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1032224,
+   "nombre": "Blue Sand baby",
+   "npc_type": 8565,
+   "sprite": 43218,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    147,
+    167
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1032225,
+   "nombre": "Blue Sand baby",
+   "npc_type": 8565,
+   "sprite": 43218,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    159,
+    155
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1032226,
+   "nombre": "Blue Sand baby",
+   "npc_type": 8565,
+   "sprite": 43218,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    141,
+    159
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1032227,
+   "nombre": "Blue Sand baby",
+   "npc_type": 8565,
+   "sprite": 43218,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    169,
+    154
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1032228,
+   "nombre": "Blue Sand baby",
+   "npc_type": 8565,
+   "sprite": 43218,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    137,
+    150
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1032229,
+   "nombre": "Blue Sand baby",
+   "npc_type": 8565,
+   "sprite": 43218,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    186,
+    152
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1032230,
+   "nombre": "Blue Sand baby",
+   "npc_type": 8565,
+   "sprite": 43218,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    181,
+    152
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1032231,
+   "nombre": "Blue Sand baby",
+   "npc_type": 8565,
+   "sprite": 43218,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    179,
+    161
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1032232,
+   "nombre": "Blue Sand baby",
+   "npc_type": 8565,
+   "sprite": 43218,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    188,
+    152
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1032233,
+   "nombre": "Blue Sand baby",
+   "npc_type": 8565,
+   "sprite": 43218,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    205,
+    152
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1032234,
+   "nombre": "Blue Sand baby",
+   "npc_type": 8565,
+   "sprite": 43218,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    214,
+    135
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1032235,
+   "nombre": "Blue Sand baby",
+   "npc_type": 8565,
+   "sprite": 43218,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    230,
+    119
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1032236,
+   "nombre": "Blue Sand baby",
+   "npc_type": 8565,
+   "sprite": 43218,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    202,
+    148
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1032237,
+   "nombre": "Blue Sand baby",
+   "npc_type": 8565,
+   "sprite": 43218,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    212,
+    130
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1032238,
+   "nombre": "Blue Sand baby",
+   "npc_type": 8565,
+   "sprite": 43218,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    206,
+    142
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1032239,
+   "nombre": "Sand Scorpion Ki",
+   "npc_type": 8566,
+   "sprite": 43265,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    169,
+    35
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 94
+  },
+  {
+   "entity_id": 1032240,
+   "nombre": "Ivy King Gabrose",
+   "npc_type": 8567,
+   "sprite": 43266,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    271,
+    70
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 96
+  },
+  {
+   "entity_id": 1032241,
+   "nombre": "Lime Sand King B",
+   "npc_type": 8568,
+   "sprite": 43219,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    80,
+    123
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 99
+  },
+  {
+   "entity_id": 1032242,
+   "nombre": "Blessed Star Ham",
+   "npc_type": 8650,
+   "sprite": 0,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    265,
+    139
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 4294967295
+  },
+  {
+   "entity_id": 1032243,
+   "nombre": "Blessed Star Ham",
+   "npc_type": 8650,
+   "sprite": 0,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    258,
+    139
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 4294967295
+  },
+  {
+   "entity_id": 1032244,
+   "nombre": "Blessed Star Ham",
+   "npc_type": 8650,
+   "sprite": 0,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    279,
+    144
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 4294967295
+  },
+  {
+   "entity_id": 1032245,
+   "nombre": "Blessed Star Ham",
+   "npc_type": 8650,
+   "sprite": 0,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    281,
+    150
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 4294967295
+  },
+  {
+   "entity_id": 1032246,
+   "nombre": "Blessed Star Ham",
+   "npc_type": 8650,
+   "sprite": 0,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    271,
+    144
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 4294967295
+  }
+ ],
+ "recursos": [
+  {
+   "entity_id": 114588,
+   "capa": 0,
+   "px": [
+    186,
+    435
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 114589,
+   "capa": 0,
+   "px": [
+    9181,
+    5550
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 114590,
+   "capa": 2,
+   "px": [
+    6106,
+    5079
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60361,
+   "cola": "00000000000000",
+   "nombre_visible": "Chili Bush(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material": "Chili Bush(S)"
+  },
+  {
+   "entity_id": 114591,
+   "capa": 0,
+   "px": [
+    6221,
+    4896
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60361,
+   "cola": "00000000000000",
+   "nombre_visible": "Chili Bush(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material": "Chili Bush(S)"
+  },
+  {
+   "entity_id": 114592,
+   "capa": 0,
+   "px": [
+    5095,
+    4936
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60361,
+   "cola": "00000000000000",
+   "nombre_visible": "Chili Bush(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material": "Chili Bush(S)"
+  },
+  {
+   "entity_id": 114593,
+   "capa": 2,
+   "px": [
+    5873,
+    5147
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60361,
+   "cola": "00000000000000",
+   "nombre_visible": "Chili Bush(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material": "Chili Bush(S)"
+  },
+  {
+   "entity_id": 114594,
+   "capa": 0,
+   "px": [
+    6052,
+    4692
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60360,
+   "cola": "00000000000000",
+   "nombre_visible": "Chili Bush(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material": "Chili Bush(M)"
+  },
+  {
+   "entity_id": 114595,
+   "capa": 2,
+   "px": [
+    5815,
+    5178
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60360,
+   "cola": "00000000000000",
+   "nombre_visible": "Chili Bush(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material": "Chili Bush(M)"
+  },
+  {
+   "entity_id": 114596,
+   "capa": 0,
+   "px": [
+    5446,
+    5295
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60360,
+   "cola": "00000000000000",
+   "nombre_visible": "Chili Bush(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material": "Chili Bush(M)"
+  },
+  {
+   "entity_id": 114597,
+   "capa": 0,
+   "px": [
+    5572,
+    5236
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60359,
+   "cola": "00000000000000",
+   "nombre_visible": "Chili Bush(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Chili Bush",
+    "Chili Bush(L)",
+    "Water Trumpet(L)"
+   ]
+  },
+  {
+   "entity_id": 114598,
+   "capa": 0,
+   "px": [
+    4955,
+    5263
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60359,
+   "cola": "00000000000000",
+   "nombre_visible": "Chili Bush(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Chili Bush",
+    "Chili Bush(L)",
+    "Water Trumpet(L)"
+   ]
+  },
+  {
+   "entity_id": 114599,
+   "capa": 2,
+   "px": [
+    5211,
+    5149
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60359,
+   "cola": "00000000000000",
+   "nombre_visible": "Chili Bush(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Chili Bush",
+    "Chili Bush(L)",
+    "Water Trumpet(L)"
+   ]
+  },
+  {
+   "entity_id": 114600,
+   "capa": 2,
+   "px": [
+    5798,
+    4832
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60359,
+   "cola": "00000000000000",
+   "nombre_visible": "Chili Bush(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Chili Bush",
+    "Chili Bush(L)",
+    "Water Trumpet(L)"
+   ]
+  },
+  {
+   "entity_id": 114601,
+   "capa": 0,
+   "px": [
+    4841,
+    5344
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60360,
+   "cola": "00000000000000",
+   "nombre_visible": "Chili Bush(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material": "Chili Bush(M)"
+  },
+  {
+   "entity_id": 114602,
+   "capa": 0,
+   "px": [
+    6319,
+    2070
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60343,
+   "cola": "00000000000000",
+   "nombre_visible": "Graphite(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material": "Graphite(S)"
+  },
+  {
+   "entity_id": 114603,
+   "capa": 2,
+   "px": [
+    6257,
+    1806
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60343,
+   "cola": "00000000000000",
+   "nombre_visible": "Graphite(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002",
+   "material": "Graphite(S)"
+  },
+  {
+   "entity_id": 114604,
+   "capa": 2,
+   "px": [
+    6677,
+    1523
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60343,
+   "cola": "00000000000000",
+   "nombre_visible": "Graphite(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002",
+   "material": "Graphite(S)"
+  },
+  {
+   "entity_id": 114605,
+   "capa": 2,
+   "px": [
+    6811,
+    1524
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60343,
+   "cola": "00000000000000",
+   "nombre_visible": "Graphite(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002",
+   "material": "Graphite(S)"
+  },
+  {
+   "entity_id": 114606,
+   "capa": 0,
+   "px": [
+    7314,
+    1684
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60342,
+   "cola": "00000000000000",
+   "nombre_visible": "Graphite(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material": "Graphite(M)"
+  },
+  {
+   "entity_id": 114607,
+   "capa": 0,
+   "px": [
+    6801,
+    1915
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60342,
+   "cola": "00000000000000",
+   "nombre_visible": "Graphite(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material": "Graphite(M)"
+  },
+  {
+   "entity_id": 114608,
+   "capa": 3,
+   "px": [
+    6523,
+    1725
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60342,
+   "cola": "00000000000000",
+   "nombre_visible": "Graphite(M)",
+   "estado": 3,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material": "Graphite(M)"
+  },
+  {
+   "entity_id": 114609,
+   "capa": 2,
+   "px": [
+    6156,
+    2183
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60342,
+   "cola": "00000000000000",
+   "nombre_visible": "Graphite(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002",
+   "material": "Graphite(M)"
+  },
+  {
+   "entity_id": 114610,
+   "capa": 0,
+   "px": [
+    6682,
+    2035
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60341,
+   "cola": "00000000000000",
+   "nombre_visible": "Graphite(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material_posibles": [
+    "Blotstone Mine",
+    "Graphite",
+    "Graphite(L)"
+   ]
+  },
+  {
+   "entity_id": 114611,
+   "capa": 2,
+   "px": [
+    5846,
+    2160
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60341,
+   "cola": "00000000000000",
+   "nombre_visible": "Graphite(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002",
+   "material_posibles": [
+    "Blotstone Mine",
+    "Graphite",
+    "Graphite(L)"
+   ]
+  },
+  {
+   "entity_id": 114612,
+   "capa": 0,
+   "px": [
+    7023,
+    1844
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60341,
+   "cola": "00000000000000",
+   "nombre_visible": "Graphite(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material_posibles": [
+    "Blotstone Mine",
+    "Graphite",
+    "Graphite(L)"
+   ]
+  },
+  {
+   "entity_id": 114613,
+   "capa": 2,
+   "px": [
+    7036,
+    1425
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60341,
+   "cola": "00000000000000",
+   "nombre_visible": "Graphite(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002",
+   "material_posibles": [
+    "Blotstone Mine",
+    "Graphite",
+    "Graphite(L)"
+   ]
+  },
+  {
+   "entity_id": 114614,
+   "capa": 0,
+   "px": [
+    3227,
+    1082
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60355,
+   "cola": "00000000000000",
+   "nombre_visible": "Wing Den(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Wing Den(S)",
+    "Winged Beast Den(S)"
+   ]
+  },
+  {
+   "entity_id": 114615,
+   "capa": 0,
+   "px": [
+    4643,
+    1326
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60355,
+   "cola": "00000000000000",
+   "nombre_visible": "Wing Den(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Wing Den(S)",
+    "Winged Beast Den(S)"
+   ]
+  },
+  {
+   "entity_id": 114616,
+   "capa": 2,
+   "px": [
+    4498,
+    1289
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60355,
+   "cola": "00000000000000",
+   "nombre_visible": "Wing Den(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Wing Den(S)",
+    "Winged Beast Den(S)"
+   ]
+  },
+  {
+   "entity_id": 114617,
+   "capa": 0,
+   "px": [
+    3654,
+    1144
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60355,
+   "cola": "00000000000000",
+   "nombre_visible": "Wing Den(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Wing Den(S)",
+    "Winged Beast Den(S)"
+   ]
+  },
+  {
+   "entity_id": 114618,
+   "capa": 0,
+   "px": [
+    3020,
+    1309
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60354,
+   "cola": "00000000000000",
+   "nombre_visible": "Wing Den(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material": "Wing Den(M)"
+  },
+  {
+   "entity_id": 114619,
+   "capa": 2,
+   "px": [
+    4231,
+    1345
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60354,
+   "cola": "00000000000000",
+   "nombre_visible": "Wing Den(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material": "Wing Den(M)"
+  },
+  {
+   "entity_id": 114620,
+   "capa": 2,
+   "px": [
+    4030,
+    1187
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60354,
+   "cola": "00000000000000",
+   "nombre_visible": "Wing Den(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material": "Wing Den(M)"
+  },
+  {
+   "entity_id": 114621,
+   "capa": 2,
+   "px": [
+    3599,
+    1482
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60354,
+   "cola": "00000000000000",
+   "nombre_visible": "Wing Den(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material": "Wing Den(M)"
+  },
+  {
+   "entity_id": 114622,
+   "capa": 0,
+   "px": [
+    4672,
+    1061
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60353,
+   "cola": "00000000000000",
+   "nombre_visible": "Wing Den(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Wing Den",
+    "Wing Den(L)"
+   ]
+  },
+  {
+   "entity_id": 114623,
+   "capa": 2,
+   "px": [
+    2856,
+    1198
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60353,
+   "cola": "00000000000000",
+   "nombre_visible": "Wing Den(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Wing Den",
+    "Wing Den(L)"
+   ]
+  },
+  {
+   "entity_id": 114624,
+   "capa": 0,
+   "px": [
+    3799,
+    1410
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60353,
+   "cola": "00000000000000",
+   "nombre_visible": "Wing Den(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Wing Den",
+    "Wing Den(L)"
+   ]
+  },
+  {
+   "entity_id": 114625,
+   "capa": 2,
+   "px": [
+    1728,
+    4854
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60340,
+   "cola": "00000000000000",
+   "nombre_visible": "Catfish Fish(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000004",
+   "material_posibles": [
+    "Deep-sea Fish(S)",
+    "DeepSeaFish(L)",
+    "DeepSeaFish(M)",
+    "DeepSeaFish(S)",
+    "Tropic Alga(S)",
+    "Tropic Fish(L)",
+    "Tropic Fish(M)",
+    "Tropic Fish(S)",
+    "Tropic Shoal(S)"
+   ]
+  },
+  {
+   "entity_id": 114626,
+   "capa": 2,
+   "px": [
+    3291,
+    1453
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60353,
+   "cola": "00000000000000",
+   "nombre_visible": "Wing Den(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Wing Den",
+    "Wing Den(L)"
+   ]
+  },
+  {
+   "entity_id": 114627,
+   "capa": 0,
+   "px": [
+    795,
+    4781
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60365,
+   "cola": "00000000000000",
+   "nombre_visible": "Catfish Fish(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004",
+   "material_posibles": [
+    "Barbel Catfish(S)",
+    "Catfish Fish",
+    "Catfish Fish(L)",
+    "Catfish Fish(M)",
+    "Catfish Fish(S)"
+   ]
+  },
+  {
+   "entity_id": 114628,
+   "capa": 0,
+   "px": [
+    1726,
+    5016
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60365,
+   "cola": "00000000000000",
+   "nombre_visible": "Catfish Fish(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004",
+   "material_posibles": [
+    "Barbel Catfish(S)",
+    "Catfish Fish",
+    "Catfish Fish(L)",
+    "Catfish Fish(M)",
+    "Catfish Fish(S)"
+   ]
+  },
+  {
+   "entity_id": 114629,
+   "capa": 0,
+   "px": [
+    1340,
+    4502
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60340,
+   "cola": "00000000000000",
+   "nombre_visible": "Catfish Fish(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004",
+   "material_posibles": [
+    "Deep-sea Fish(S)",
+    "DeepSeaFish(L)",
+    "DeepSeaFish(M)",
+    "DeepSeaFish(S)",
+    "Tropic Alga(S)",
+    "Tropic Fish(L)",
+    "Tropic Fish(M)",
+    "Tropic Fish(S)",
+    "Tropic Shoal(S)"
+   ]
+  },
+  {
+   "entity_id": 114630,
+   "capa": 0,
+   "px": [
+    1793,
+    4795
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60365,
+   "cola": "00000000000000",
+   "nombre_visible": "Catfish Fish(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004",
+   "material_posibles": [
+    "Barbel Catfish(S)",
+    "Catfish Fish",
+    "Catfish Fish(L)",
+    "Catfish Fish(M)",
+    "Catfish Fish(S)"
+   ]
+  },
+  {
+   "entity_id": 114631,
+   "capa": 2,
+   "px": [
+    1516,
+    5022
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60365,
+   "cola": "00000000000000",
+   "nombre_visible": "Catfish Fish(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000004",
+   "material_posibles": [
+    "Barbel Catfish(S)",
+    "Catfish Fish",
+    "Catfish Fish(L)",
+    "Catfish Fish(M)",
+    "Catfish Fish(S)"
+   ]
+  },
+  {
+   "entity_id": 114632,
+   "capa": 0,
+   "px": [
+    1439,
+    4464
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60365,
+   "cola": "00000000000000",
+   "nombre_visible": "Catfish Fish(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004",
+   "material_posibles": [
+    "Barbel Catfish(S)",
+    "Catfish Fish",
+    "Catfish Fish(L)",
+    "Catfish Fish(M)",
+    "Catfish Fish(S)"
+   ]
+  },
+  {
+   "entity_id": 114633,
+   "capa": 2,
+   "px": [
+    1735,
+    4643
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60365,
+   "cola": "00000000000000",
+   "nombre_visible": "Catfish Fish(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000004",
+   "material_posibles": [
+    "Barbel Catfish(S)",
+    "Catfish Fish",
+    "Catfish Fish(L)",
+    "Catfish Fish(M)",
+    "Catfish Fish(S)"
+   ]
+  },
+  {
+   "entity_id": 114634,
+   "capa": 0,
+   "px": [
+    1036,
+    4481
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60365,
+   "cola": "00000000000000",
+   "nombre_visible": "Catfish Fish(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004",
+   "material_posibles": [
+    "Barbel Catfish(S)",
+    "Catfish Fish",
+    "Catfish Fish(L)",
+    "Catfish Fish(M)",
+    "Catfish Fish(S)"
+   ]
+  },
+  {
+   "entity_id": 114635,
+   "capa": 0,
+   "px": [
+    1168,
+    5012
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60340,
+   "cola": "00000000000000",
+   "nombre_visible": "Catfish Fish(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004",
+   "material_posibles": [
+    "Deep-sea Fish(S)",
+    "DeepSeaFish(L)",
+    "DeepSeaFish(M)",
+    "DeepSeaFish(S)",
+    "Tropic Alga(S)",
+    "Tropic Fish(L)",
+    "Tropic Fish(M)",
+    "Tropic Fish(S)",
+    "Tropic Shoal(S)"
+   ]
+  },
+  {
+   "entity_id": 114636,
+   "capa": 2,
+   "px": [
+    1416,
+    5043
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60340,
+   "cola": "00000000000000",
+   "nombre_visible": "Catfish Fish(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000004",
+   "material_posibles": [
+    "Deep-sea Fish(S)",
+    "DeepSeaFish(L)",
+    "DeepSeaFish(M)",
+    "DeepSeaFish(S)",
+    "Tropic Alga(S)",
+    "Tropic Fish(L)",
+    "Tropic Fish(M)",
+    "Tropic Fish(S)",
+    "Tropic Shoal(S)"
+   ]
+  },
+  {
+   "entity_id": 114637,
+   "capa": 2,
+   "px": [
+    758,
+    4648
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60365,
+   "cola": "00000000000000",
+   "nombre_visible": "Catfish Fish(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000004",
+   "material_posibles": [
+    "Barbel Catfish(S)",
+    "Catfish Fish",
+    "Catfish Fish(L)",
+    "Catfish Fish(M)",
+    "Catfish Fish(S)"
+   ]
+  },
+  {
+   "entity_id": 114638,
+   "capa": 2,
+   "px": [
+    1325,
+    5614
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60349,
+   "cola": "00000000000000",
+   "nombre_visible": "Cypresses(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001",
+   "material": "Cypresses(S)"
+  },
+  {
+   "entity_id": 114639,
+   "capa": 0,
+   "px": [
+    681,
+    5133
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60349,
+   "cola": "00000000000000",
+   "nombre_visible": "Cypresses(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material": "Cypresses(S)"
+  },
+  {
+   "entity_id": 114640,
+   "capa": 0,
+   "px": [
+    246,
+    5132
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60349,
+   "cola": "00000000000000",
+   "nombre_visible": "Cypresses(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material": "Cypresses(S)"
+  },
+  {
+   "entity_id": 114641,
+   "capa": 0,
+   "px": [
+    519,
+    5501
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60348,
+   "cola": "00000000000000",
+   "nombre_visible": "Cypresses(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material": "Cypresses(M)"
+  },
+  {
+   "entity_id": 114642,
+   "capa": 2,
+   "px": [
+    504,
+    4824
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60349,
+   "cola": "00000000000000",
+   "nombre_visible": "Cypresses(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001",
+   "material": "Cypresses(S)"
+  },
+  {
+   "entity_id": 114643,
+   "capa": 0,
+   "px": [
+    1716,
+    5541
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60348,
+   "cola": "00000000000000",
+   "nombre_visible": "Cypresses(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material": "Cypresses(M)"
+  },
+  {
+   "entity_id": 114644,
+   "capa": 2,
+   "px": [
+    1102,
+    5599
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60348,
+   "cola": "00000000000000",
+   "nombre_visible": "Cypresses(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001",
+   "material": "Cypresses(M)"
+  },
+  {
+   "entity_id": 114645,
+   "capa": 0,
+   "px": [
+    417,
+    4964
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60348,
+   "cola": "00000000000000",
+   "nombre_visible": "Cypresses(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material": "Cypresses(M)"
+  },
+  {
+   "entity_id": 114646,
+   "capa": 0,
+   "px": [
+    799,
+    5588
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60347,
+   "cola": "00000000000000",
+   "nombre_visible": "Cypresses(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material_posibles": [
+    "Cypresses",
+    "Cypresses(L)",
+    "Sictus(L)"
+   ]
+  },
+  {
+   "entity_id": 114647,
+   "capa": 0,
+   "px": [
+    198,
+    5414
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60347,
+   "cola": "00000000000000",
+   "nombre_visible": "Cypresses(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material_posibles": [
+    "Cypresses",
+    "Cypresses(L)",
+    "Sictus(L)"
+   ]
+  },
+  {
+   "entity_id": 114648,
+   "capa": 2,
+   "px": [
+    1425,
+    5545
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60347,
+   "cola": "00000000000000",
+   "nombre_visible": "Cypresses(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001",
+   "material_posibles": [
+    "Cypresses",
+    "Cypresses(L)",
+    "Sictus(L)"
+   ]
+  },
+  {
+   "entity_id": 114649,
+   "capa": 0,
+   "px": [
+    143,
+    4878
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60347,
+   "cola": "00000000000000",
+   "nombre_visible": "Cypresses(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material_posibles": [
+    "Cypresses",
+    "Cypresses(L)",
+    "Sictus(L)"
+   ]
+  }
+ ]
+}

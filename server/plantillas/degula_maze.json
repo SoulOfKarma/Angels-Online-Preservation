@@ -1,0 +1,2477 @@
+{
+ "_nota": "Degula Maze (stage 14), de dos capturas de Celestia del 23/09/2026. Territorio de la faccion Shadow. OJO CON EL NOMBRE: el usuario lo llamo \"Adegula Maze\" y stage.xml dice \"Degula Maze\"; ademas la quest 362 de la cadena del Spy Angel de Shadow lo llama \"De Naqoura Maze\". Son el mismo sitio: solo hay dos mapas con Maze en el nombre (el 14 y el 211 Illusory Maze), este es territorio Shadow y AQUI ESTA ASMODE, que es justo lo que pide esa quest.",
+ "stage": 14,
+ "spawns": [
+  {
+   "entity_id": 28897,
+   "nombre": "Dark City Totem",
+   "npc_type": 1938,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    17,
+    173
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 121758,
+   "nombre": "N.Field Helper",
+   "npc_type": 1723,
+   "sprite": 40018,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    216,
+    168
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 121759,
+   "nombre": "E.Field Helper",
+   "npc_type": 1719,
+   "sprite": 40018,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    214,
+    31
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 121760,
+   "nombre": "Melonland Worker",
+   "npc_type": 1721,
+   "sprite": 40018,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    39,
+    46
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 121761,
+   "nombre": "Manager Pandora",
+   "npc_type": 1718,
+   "sprite": 40021,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    48,
+    165
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 121762,
+   "nombre": "Executive Order",
+   "npc_type": 1722,
+   "sprite": 40106,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    84,
+    58
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 121763,
+   "nombre": "Degula Duke",
+   "npc_type": 1720,
+   "sprite": 40023,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    21,
+    175
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 121764,
+   "nombre": "Asmode",
+   "npc_type": 1869,
+   "sprite": 40019,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    54,
+    15
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 1011140,
+   "nombre": "Little Eye",
+   "npc_type": 101,
+   "sprite": 42013,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    86,
+    61
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011141,
+   "nombre": "Little Eye",
+   "npc_type": 101,
+   "sprite": 42013,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    107,
+    62
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011142,
+   "nombre": "Little Eye",
+   "npc_type": 101,
+   "sprite": 42013,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    53,
+    39
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011143,
+   "nombre": "Little Eye",
+   "npc_type": 101,
+   "sprite": 42013,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    58,
+    39
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011144,
+   "nombre": "Little Eye",
+   "npc_type": 101,
+   "sprite": 42013,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    79,
+    65
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011145,
+   "nombre": "Little Eye",
+   "npc_type": 101,
+   "sprite": 42013,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    84,
+    75
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011146,
+   "nombre": "Little Eye",
+   "npc_type": 101,
+   "sprite": 42013,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    90,
+    49
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011147,
+   "nombre": "Little Eye",
+   "npc_type": 101,
+   "sprite": 42013,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    96,
+    61
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011148,
+   "nombre": "Little Eye",
+   "npc_type": 101,
+   "sprite": 42013,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    73,
+    80
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011149,
+   "nombre": "Little Eye",
+   "npc_type": 101,
+   "sprite": 42013,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    65,
+    40
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011150,
+   "nombre": "Little Eye",
+   "npc_type": 101,
+   "sprite": 42013,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    131,
+    27
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011151,
+   "nombre": "Little Eye",
+   "npc_type": 101,
+   "sprite": 42013,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    27,
+    95
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011152,
+   "nombre": "Little Eye",
+   "npc_type": 101,
+   "sprite": 42013,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    140,
+    67
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011153,
+   "nombre": "Little Eye",
+   "npc_type": 101,
+   "sprite": 42013,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    18,
+    88
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011154,
+   "nombre": "Little Eye",
+   "npc_type": 101,
+   "sprite": 42013,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    34,
+    79
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011155,
+   "nombre": "Little Eye",
+   "npc_type": 101,
+   "sprite": 42013,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    37,
+    102
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011156,
+   "nombre": "Little Eye",
+   "npc_type": 101,
+   "sprite": 42013,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    90,
+    102
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011157,
+   "nombre": "Little Eye",
+   "npc_type": 101,
+   "sprite": 42013,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    57,
+    84
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011158,
+   "nombre": "Little Eye",
+   "npc_type": 101,
+   "sprite": 42013,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    75,
+    112
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011159,
+   "nombre": "Little Eye",
+   "npc_type": 101,
+   "sprite": 42013,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    94,
+    108
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011160,
+   "nombre": "Little Eye",
+   "npc_type": 101,
+   "sprite": 42013,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    11,
+    89
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011161,
+   "nombre": "Little Eye",
+   "npc_type": 101,
+   "sprite": 42013,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    76,
+    108
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011162,
+   "nombre": "Little Eye",
+   "npc_type": 101,
+   "sprite": 42013,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    134,
+    68
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011163,
+   "nombre": "Little Eye",
+   "npc_type": 101,
+   "sprite": 42013,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    31,
+    91
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011164,
+   "nombre": "Little Eye",
+   "npc_type": 101,
+   "sprite": 42013,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    36,
+    109
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011165,
+   "nombre": "Little Eye",
+   "npc_type": 101,
+   "sprite": 42013,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    145,
+    91
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011166,
+   "nombre": "Little Eye",
+   "npc_type": 101,
+   "sprite": 42013,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    98,
+    134
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011167,
+   "nombre": "Little Eye",
+   "npc_type": 101,
+   "sprite": 42013,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    132,
+    96
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011168,
+   "nombre": "Little Eye",
+   "npc_type": 101,
+   "sprite": 42013,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    58,
+    159
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011169,
+   "nombre": "Little Eye",
+   "npc_type": 101,
+   "sprite": 42013,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    130,
+    102
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011170,
+   "nombre": "Little Eye",
+   "npc_type": 101,
+   "sprite": 42013,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    175,
+    97
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011171,
+   "nombre": "Little Eye",
+   "npc_type": 101,
+   "sprite": 42013,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    100,
+    136
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011172,
+   "nombre": "Little Eye",
+   "npc_type": 101,
+   "sprite": 42013,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    91,
+    113
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011173,
+   "nombre": "Little Eye",
+   "npc_type": 101,
+   "sprite": 42013,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    46,
+    155
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011174,
+   "nombre": "Little Eye",
+   "npc_type": 101,
+   "sprite": 42013,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    151,
+    89
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011175,
+   "nombre": "Little Eye",
+   "npc_type": 101,
+   "sprite": 42013,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    66,
+    158
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011176,
+   "nombre": "Little Eye",
+   "npc_type": 101,
+   "sprite": 42013,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    140,
+    106
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011177,
+   "nombre": "Little Eye",
+   "npc_type": 101,
+   "sprite": 42013,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    57,
+    159
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011178,
+   "nombre": "Little Eye",
+   "npc_type": 101,
+   "sprite": 42013,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    94,
+    117
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011179,
+   "nombre": "Little Eye",
+   "npc_type": 101,
+   "sprite": 42013,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    128,
+    94
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011180,
+   "nombre": "One-eyed Bat",
+   "npc_type": 102,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    259,
+    23
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011181,
+   "nombre": "One-eyed Bat",
+   "npc_type": 102,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    230,
+    58
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011182,
+   "nombre": "One-eyed Bat",
+   "npc_type": 102,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    237,
+    67
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011183,
+   "nombre": "One-eyed Bat",
+   "npc_type": 102,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    221,
+    48
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011184,
+   "nombre": "One-eyed Bat",
+   "npc_type": 102,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    233,
+    53
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011185,
+   "nombre": "One-eyed Bat",
+   "npc_type": 102,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    203,
+    50
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011186,
+   "nombre": "One-eyed Bat",
+   "npc_type": 102,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    253,
+    23
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011187,
+   "nombre": "One-eyed Bat",
+   "npc_type": 102,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    223,
+    27
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011188,
+   "nombre": "One-eyed Bat",
+   "npc_type": 102,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    240,
+    50
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011189,
+   "nombre": "One-eyed Bat",
+   "npc_type": 102,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    225,
+    53
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011190,
+   "nombre": "One-eyed Bat",
+   "npc_type": 102,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    184,
+    36
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011191,
+   "nombre": "One-eyed Bat",
+   "npc_type": 102,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    156,
+    60
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011192,
+   "nombre": "One-eyed Bat",
+   "npc_type": 102,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    183,
+    58
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011193,
+   "nombre": "One-eyed Bat",
+   "npc_type": 102,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    134,
+    28
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011194,
+   "nombre": "One-eyed Bat",
+   "npc_type": 102,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    152,
+    24
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011195,
+   "nombre": "One-eyed Bat",
+   "npc_type": 102,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    137,
+    34
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011196,
+   "nombre": "One-eyed Bat",
+   "npc_type": 102,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    175,
+    42
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011197,
+   "nombre": "One-eyed Bat",
+   "npc_type": 102,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    183,
+    57
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011198,
+   "nombre": "One-eyed Bat",
+   "npc_type": 102,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    145,
+    56
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011199,
+   "nombre": "One-eyed Bat",
+   "npc_type": 102,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    153,
+    28
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011200,
+   "nombre": "One-eyed Bat",
+   "npc_type": 102,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    160,
+    29
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011201,
+   "nombre": "One-eyed Bat",
+   "npc_type": 102,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    183,
+    43
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011202,
+   "nombre": "One-eyed Bat",
+   "npc_type": 102,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    132,
+    33
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011203,
+   "nombre": "One-eyed Bat",
+   "npc_type": 102,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    147,
+    58
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011204,
+   "nombre": "One-eyed Bat",
+   "npc_type": 102,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    183,
+    60
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011205,
+   "nombre": "One-eyed Bat",
+   "npc_type": 102,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    150,
+    118
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011206,
+   "nombre": "One-eyed Bat",
+   "npc_type": 102,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    191,
+    95
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011207,
+   "nombre": "One-eyed Bat",
+   "npc_type": 102,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    232,
+    98
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011208,
+   "nombre": "One-eyed Bat",
+   "npc_type": 102,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    157,
+    74
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011209,
+   "nombre": "One-eyed Bat",
+   "npc_type": 102,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    164,
+    99
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011210,
+   "nombre": "One-eyed Bat",
+   "npc_type": 102,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    130,
+    104
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011211,
+   "nombre": "One-eyed Bat",
+   "npc_type": 102,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    155,
+    75
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011212,
+   "nombre": "One-eyed Bat",
+   "npc_type": 102,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    129,
+    104
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011213,
+   "nombre": "One-eyed Bat",
+   "npc_type": 102,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    193,
+    87
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011214,
+   "nombre": "One-eyed Bat",
+   "npc_type": 102,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    155,
+    124
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011215,
+   "nombre": "One-eyed Bat",
+   "npc_type": 102,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    225,
+    91
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011216,
+   "nombre": "One-eyed Bat",
+   "npc_type": 102,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    162,
+    104
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011217,
+   "nombre": "One-eyed Bat",
+   "npc_type": 102,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    151,
+    117
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011218,
+   "nombre": "One-eyed Bat",
+   "npc_type": 102,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    172,
+    92
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011219,
+   "nombre": "One-eyed Bat",
+   "npc_type": 102,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    224,
+    99
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1011220,
+   "nombre": "Evil Leech",
+   "npc_type": 103,
+   "sprite": 42029,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    252,
+    90
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1011221,
+   "nombre": "Evil Leech",
+   "npc_type": 103,
+   "sprite": 42029,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    209,
+    107
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1011222,
+   "nombre": "Evil Leech",
+   "npc_type": 103,
+   "sprite": 42029,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    247,
+    104
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1011223,
+   "nombre": "Evil Leech",
+   "npc_type": 103,
+   "sprite": 42029,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    280,
+    108
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1011224,
+   "nombre": "Evil Leech",
+   "npc_type": 103,
+   "sprite": 42029,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    275,
+    86
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1011225,
+   "nombre": "Evil Leech",
+   "npc_type": 103,
+   "sprite": 42029,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    270,
+    80
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1011226,
+   "nombre": "Evil Leech",
+   "npc_type": 103,
+   "sprite": 42029,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    247,
+    98
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1011227,
+   "nombre": "Evil Leech",
+   "npc_type": 103,
+   "sprite": 42029,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    244,
+    92
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1011228,
+   "nombre": "Evil Leech",
+   "npc_type": 103,
+   "sprite": 42029,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    266,
+    78
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1011229,
+   "nombre": "Evil Leech",
+   "npc_type": 103,
+   "sprite": 42029,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    212,
+    111
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1011230,
+   "nombre": "Evil Leech",
+   "npc_type": 103,
+   "sprite": 42029,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    153,
+    139
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1011231,
+   "nombre": "Evil Leech",
+   "npc_type": 103,
+   "sprite": 42029,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    134,
+    154
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1011232,
+   "nombre": "Evil Leech",
+   "npc_type": 103,
+   "sprite": 42029,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    129,
+    125
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1011233,
+   "nombre": "Evil Leech",
+   "npc_type": 103,
+   "sprite": 42029,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    210,
+    138
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1011234,
+   "nombre": "Evil Leech",
+   "npc_type": 103,
+   "sprite": 42029,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    168,
+    152
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1011235,
+   "nombre": "Evil Leech",
+   "npc_type": 103,
+   "sprite": 42029,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    162,
+    149
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1011236,
+   "nombre": "Evil Leech",
+   "npc_type": 103,
+   "sprite": 42029,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    202,
+    123
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1011237,
+   "nombre": "Evil Leech",
+   "npc_type": 103,
+   "sprite": 42029,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    159,
+    169
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1011238,
+   "nombre": "Evil Leech",
+   "npc_type": 103,
+   "sprite": 42029,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    200,
+    122
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1011239,
+   "nombre": "Evil Leech",
+   "npc_type": 103,
+   "sprite": 42029,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    131,
+    118
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1011240,
+   "nombre": "Evil Leech",
+   "npc_type": 103,
+   "sprite": 42029,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    155,
+    167
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1011241,
+   "nombre": "Evil Leech",
+   "npc_type": 103,
+   "sprite": 42029,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    130,
+    154
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1011242,
+   "nombre": "Evil Leech",
+   "npc_type": 103,
+   "sprite": 42029,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    199,
+    146
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1011243,
+   "nombre": "Evil Leech",
+   "npc_type": 103,
+   "sprite": 42029,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    155,
+    132
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1011244,
+   "nombre": "Evil Leech",
+   "npc_type": 103,
+   "sprite": 42029,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    176,
+    157
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1011245,
+   "nombre": "Evil Leech",
+   "npc_type": 103,
+   "sprite": 42029,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    239,
+    175
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1011246,
+   "nombre": "Evil Leech",
+   "npc_type": 103,
+   "sprite": 42029,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    220,
+    141
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1011247,
+   "nombre": "Evil Leech",
+   "npc_type": 103,
+   "sprite": 42029,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    225,
+    122
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1011248,
+   "nombre": "Evil Leech",
+   "npc_type": 103,
+   "sprite": 42029,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    230,
+    167
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1011249,
+   "nombre": "Evil Leech",
+   "npc_type": 103,
+   "sprite": 42029,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    221,
+    155
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1011250,
+   "nombre": "Evil Leech",
+   "npc_type": 103,
+   "sprite": 42029,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    228,
+    154
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1011251,
+   "nombre": "Evil Leech",
+   "npc_type": 103,
+   "sprite": 42029,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    239,
+    163
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1011252,
+   "nombre": "Evil Leech",
+   "npc_type": 103,
+   "sprite": 42029,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    196,
+    143
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1011253,
+   "nombre": "Evil Leech",
+   "npc_type": 103,
+   "sprite": 42029,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    213,
+    157
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1011254,
+   "nombre": "Evil Leech",
+   "npc_type": 103,
+   "sprite": 42029,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    248,
+    174
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1011255,
+   "nombre": "Bloody Pound",
+   "npc_type": 104,
+   "sprite": 42131,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    272,
+    80
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 31
+  },
+  {
+   "entity_id": 1011256,
+   "nombre": "Eye Bershala",
+   "npc_type": 105,
+   "sprite": 42132,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    282,
+    13
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 28
+  }
+ ],
+ "recursos": [
+  {
+   "entity_id": 100612,
+   "capa": 0,
+   "px": [
+    1167,
+    1273
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60182,
+   "cola": "00000000000000",
+   "nombre_visible": "Walnut(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 100613,
+   "capa": 0,
+   "px": [
+    905,
+    1320
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60182,
+   "cola": "00000000000000",
+   "nombre_visible": "Walnut(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 100614,
+   "capa": 0,
+   "px": [
+    507,
+    1538
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60182,
+   "cola": "00000000000000",
+   "nombre_visible": "Walnut(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 100615,
+   "capa": 2,
+   "px": [
+    573,
+    1780
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60182,
+   "cola": "00000000000000",
+   "nombre_visible": "Walnut(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 100616,
+   "capa": 0,
+   "px": [
+    826,
+    1686
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60182,
+   "cola": "00000000000000",
+   "nombre_visible": "Walnut(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 100617,
+   "capa": 0,
+   "px": [
+    413,
+    1614
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60183,
+   "cola": "00000000000000",
+   "nombre_visible": "Walnut(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 100618,
+   "capa": 2,
+   "px": [
+    601,
+    1467
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60183,
+   "cola": "00000000000000",
+   "nombre_visible": "Walnut(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 100619,
+   "capa": 2,
+   "px": [
+    632,
+    1119
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60183,
+   "cola": "00000000000000",
+   "nombre_visible": "Walnut(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 100620,
+   "capa": 0,
+   "px": [
+    1030,
+    1090
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60183,
+   "cola": "00000000000000",
+   "nombre_visible": "Walnut(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 100621,
+   "capa": 0,
+   "px": [
+    1166,
+    1174
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60183,
+   "cola": "00000000000000",
+   "nombre_visible": "Walnut(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 100622,
+   "capa": 0,
+   "px": [
+    603,
+    1184
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60179,
+   "cola": "00000000000000",
+   "nombre_visible": "Walnut(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material_posibles": [
+    "Big Violet",
+    "Wisteria(L)"
+   ]
+  },
+  {
+   "entity_id": 100623,
+   "capa": 0,
+   "px": [
+    1093,
+    1120
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60179,
+   "cola": "00000000000000",
+   "nombre_visible": "Walnut(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material_posibles": [
+    "Big Violet",
+    "Wisteria(L)"
+   ]
+  },
+  {
+   "entity_id": 100624,
+   "capa": 0,
+   "px": [
+    739,
+    1751
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60179,
+   "cola": "00000000000000",
+   "nombre_visible": "Walnut(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material_posibles": [
+    "Big Violet",
+    "Wisteria(L)"
+   ]
+  },
+  {
+   "entity_id": 100625,
+   "capa": 0,
+   "px": [
+    338,
+    1581
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60179,
+   "cola": "00000000000000",
+   "nombre_visible": "Walnut(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material_posibles": [
+    "Big Violet",
+    "Wisteria(L)"
+   ]
+  },
+  {
+   "entity_id": 100626,
+   "capa": 2,
+   "px": [
+    285,
+    1278
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60179,
+   "cola": "00000000000000",
+   "nombre_visible": "Walnut(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001",
+   "material_posibles": [
+    "Big Violet",
+    "Wisteria(L)"
+   ]
+  },
+  {
+   "entity_id": 100627,
+   "capa": 0,
+   "px": [
+    8135,
+    4343
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60220,
+   "cola": "00000000000000",
+   "nombre_visible": "RainbowBush(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 100628,
+   "capa": 2,
+   "px": [
+    8423,
+    4417
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60220,
+   "cola": "00000000000000",
+   "nombre_visible": "RainbowBush(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 100629,
+   "capa": 0,
+   "px": [
+    7856,
+    4281
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60220,
+   "cola": "00000000000000",
+   "nombre_visible": "RainbowBush(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 100630,
+   "capa": 2,
+   "px": [
+    8762,
+    4673
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60220,
+   "cola": "00000000000000",
+   "nombre_visible": "RainbowBush(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 100631,
+   "capa": 0,
+   "px": [
+    8658,
+    4647
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60220,
+   "cola": "00000000000000",
+   "nombre_visible": "RainbowBush(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 100632,
+   "capa": 2,
+   "px": [
+    8645,
+    4386
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60220,
+   "cola": "00000000000000",
+   "nombre_visible": "RainbowBush(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 100633,
+   "capa": 2,
+   "px": [
+    8838,
+    4498
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60220,
+   "cola": "00000000000000",
+   "nombre_visible": "RainbowBush(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 100634,
+   "capa": 0,
+   "px": [
+    8282,
+    4514
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60220,
+   "cola": "00000000000000",
+   "nombre_visible": "RainbowBush(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 100635,
+   "capa": 0,
+   "px": [
+    8086,
+    4461
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60220,
+   "cola": "00000000000000",
+   "nombre_visible": "RainbowBush(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 100636,
+   "capa": 0,
+   "px": [
+    8873,
+    4609
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60220,
+   "cola": "00000000000000",
+   "nombre_visible": "RainbowBush(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 100637,
+   "capa": 0,
+   "px": [
+    2959,
+    1037
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60132,
+   "cola": "00000000000000",
+   "nombre_visible": "OldBeastDen(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 100638,
+   "capa": 2,
+   "px": [
+    2576,
+    1135
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60132,
+   "cola": "00000000000000",
+   "nombre_visible": "OldBeastDen(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 100639,
+   "capa": 0,
+   "px": [
+    3448,
+    1427
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60132,
+   "cola": "00000000000000",
+   "nombre_visible": "OldBeastDen(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 100640,
+   "capa": 0,
+   "px": [
+    2801,
+    870
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60132,
+   "cola": "00000000000000",
+   "nombre_visible": "OldBeastDen(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 100641,
+   "capa": 2,
+   "px": [
+    2293,
+    1036
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60132,
+   "cola": "00000000000000",
+   "nombre_visible": "OldBeastDen(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 100642,
+   "capa": 0,
+   "px": [
+    3670,
+    1172
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60132,
+   "cola": "00000000000000",
+   "nombre_visible": "OldBeastDen(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 100643,
+   "capa": 0,
+   "px": [
+    1408,
+    121
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 100644,
+   "capa": 0,
+   "px": [
+    9627,
+    5614
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 100645,
+   "capa": 2,
+   "px": [
+    4609,
+    3058
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60146,
+   "cola": "00004080140000"
+  },
+  {
+   "entity_id": 100646,
+   "capa": 2,
+   "px": [
+    553,
+    5557
+   ],
+   "medio": "00000000180000000000000000000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60052,
+   "cola": "00002280140000",
+   "que_es": "Dark City Totem"
+  }
+ ]
+}

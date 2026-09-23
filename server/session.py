@@ -89,9 +89,15 @@ class Session:
         self.salida.clear()
         return out
 
-    def enviar_inmediato(self, *submsgs):
-        """Envia submensajes a la red de inmediato sin esperar al drenaje del bucle principal."""
-        self.enviar(*submsgs)
+    def volcar(self):
+        """Saca a la red lo que haya en el buffer, sin anadir nada.
+
+        Hace falta porque `enviar` solo ACUMULA: el buffer se vaciaba al
+        atender un paquete del cliente, asi que todo lo que generaba el
+        servidor por su cuenta -- el paseo de los monstruos, sobre todo --
+        se quedaba esperando a que el jugador se moviera. Se veia clavado:
+        los bichos solo andaban cuando andabas tu.
+        """
         out = self.drenar()
         if out and getattr(self, 'writer', None):
             try:
@@ -100,6 +106,11 @@ class Session:
                 self.writer.write(out)
             except Exception:
                 pass
+
+    def enviar_inmediato(self, *submsgs):
+        """Envia submensajes a la red de inmediato sin esperar al drenaje del bucle principal."""
+        self.enviar(*submsgs)
+        self.volcar()
 
     # ---------------------------------------------------------------- entrada
 

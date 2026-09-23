@@ -1,0 +1,4347 @@
+{
+ "_nota": "Golden Beach (stage 86), de dos capturas de Celestia del 23/09/2026. Aqui esta Diving Coach Nira, que ensena el Neritic Diving Skill: sin el, los portales al agua no dejan pasar.",
+ "stage": 86,
+ "spawns": [
+  {
+   "entity_id": 122343,
+   "nombre": "Lifeguard zhi",
+   "npc_type": 2258,
+   "sprite": 40031,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    212,
+    34
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122344,
+   "nombre": "DivingCoach Nira",
+   "npc_type": 2183,
+   "sprite": 40181,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    233,
+    41
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122345,
+   "nombre": "Traveller Landy",
+   "npc_type": 2199,
+   "sprite": 40007,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    35,
+    65
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122346,
+   "nombre": "Shoreman",
+   "npc_type": 2164,
+   "sprite": 40050,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    106,
+    35
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122347,
+   "nombre": "Roger",
+   "npc_type": 2639,
+   "sprite": 40183,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    126,
+    33
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 1018730,
+   "nombre": "Puqi Crab",
+   "npc_type": 1174,
+   "sprite": 42419,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    49,
+    125
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 47
+  },
+  {
+   "entity_id": 1018731,
+   "nombre": "Puqi Crab",
+   "npc_type": 1174,
+   "sprite": 42419,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    45,
+    72
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 47
+  },
+  {
+   "entity_id": 1018732,
+   "nombre": "Puqi Crab",
+   "npc_type": 1174,
+   "sprite": 42419,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    26,
+    140
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 47
+  },
+  {
+   "entity_id": 1018733,
+   "nombre": "Puqi Crab",
+   "npc_type": 1174,
+   "sprite": 42419,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    11,
+    109
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 47
+  },
+  {
+   "entity_id": 1018734,
+   "nombre": "Puqi Crab",
+   "npc_type": 1174,
+   "sprite": 42419,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    21,
+    123
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 47
+  },
+  {
+   "entity_id": 1018735,
+   "nombre": "Puqi Crab",
+   "npc_type": 1174,
+   "sprite": 42419,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    41,
+    122
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 47
+  },
+  {
+   "entity_id": 1018736,
+   "nombre": "Puqi Crab",
+   "npc_type": 1174,
+   "sprite": 42419,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    46,
+    68
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 47
+  },
+  {
+   "entity_id": 1018737,
+   "nombre": "Puqi Crab",
+   "npc_type": 1174,
+   "sprite": 42419,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    21,
+    145
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 47
+  },
+  {
+   "entity_id": 1018738,
+   "nombre": "Puqi Crab",
+   "npc_type": 1174,
+   "sprite": 42419,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    23,
+    128
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 47
+  },
+  {
+   "entity_id": 1018739,
+   "nombre": "Puqi Crab",
+   "npc_type": 1174,
+   "sprite": 42419,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    16,
+    105
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 47
+  },
+  {
+   "entity_id": 1018740,
+   "nombre": "Puqi Crab",
+   "npc_type": 1174,
+   "sprite": 42419,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    20,
+    147
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 47
+  },
+  {
+   "entity_id": 1018741,
+   "nombre": "Puqi Crab",
+   "npc_type": 1174,
+   "sprite": 42419,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    51,
+    68
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 47
+  },
+  {
+   "entity_id": 1018742,
+   "nombre": "Puqi Crab",
+   "npc_type": 1174,
+   "sprite": 42419,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    27,
+    121
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 47
+  },
+  {
+   "entity_id": 1018743,
+   "nombre": "Puqi Crab",
+   "npc_type": 1174,
+   "sprite": 42419,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    8,
+    111
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 47
+  },
+  {
+   "entity_id": 1018744,
+   "nombre": "Puqi Crab",
+   "npc_type": 1174,
+   "sprite": 42419,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    47,
+    123
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 47
+  },
+  {
+   "entity_id": 1018745,
+   "nombre": "Puqi Crab",
+   "npc_type": 1174,
+   "sprite": 42419,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    18,
+    109
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 47
+  },
+  {
+   "entity_id": 1018746,
+   "nombre": "Puqi Crab",
+   "npc_type": 1174,
+   "sprite": 42419,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    0,
+    123
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 47
+  },
+  {
+   "entity_id": 1018747,
+   "nombre": "Puqi Crab",
+   "npc_type": 1174,
+   "sprite": 42419,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    38,
+    91
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 47
+  },
+  {
+   "entity_id": 1018748,
+   "nombre": "Puqi Crab",
+   "npc_type": 1174,
+   "sprite": 42419,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    47,
+    142
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 47
+  },
+  {
+   "entity_id": 1018749,
+   "nombre": "Puqi Crab",
+   "npc_type": 1174,
+   "sprite": 42419,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    90
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 47
+  },
+  {
+   "entity_id": 1018750,
+   "nombre": "Puqi Crab",
+   "npc_type": 1174,
+   "sprite": 42419,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    18,
+    101
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 47
+  },
+  {
+   "entity_id": 1018751,
+   "nombre": "Puqi Crab",
+   "npc_type": 1174,
+   "sprite": 42419,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    0,
+    126
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 47
+  },
+  {
+   "entity_id": 1018752,
+   "nombre": "Puqi Crab",
+   "npc_type": 1174,
+   "sprite": 42419,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    47,
+    143
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 47
+  },
+  {
+   "entity_id": 1018753,
+   "nombre": "Puqi Crab",
+   "npc_type": 1174,
+   "sprite": 42419,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    42,
+    89
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 47
+  },
+  {
+   "entity_id": 1018754,
+   "nombre": "Puqi Crab",
+   "npc_type": 1174,
+   "sprite": 42419,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    26,
+    103
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 47
+  },
+  {
+   "entity_id": 1018755,
+   "nombre": "Puqi Crab",
+   "npc_type": 1174,
+   "sprite": 42419,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    210,
+    140
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 47
+  },
+  {
+   "entity_id": 1018756,
+   "nombre": "Puqi Crab",
+   "npc_type": 1174,
+   "sprite": 42419,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    252,
+    145
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 47
+  },
+  {
+   "entity_id": 1018757,
+   "nombre": "Puqi Crab",
+   "npc_type": 1174,
+   "sprite": 42419,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    196,
+    140
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 47
+  },
+  {
+   "entity_id": 1018758,
+   "nombre": "Puqi Crab",
+   "npc_type": 1174,
+   "sprite": 42419,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    229,
+    133
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 47
+  },
+  {
+   "entity_id": 1018759,
+   "nombre": "Puqi Crab",
+   "npc_type": 1174,
+   "sprite": 42419,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    260,
+    141
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 47
+  },
+  {
+   "entity_id": 1018760,
+   "nombre": "Puqi Crab",
+   "npc_type": 1174,
+   "sprite": 42419,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    212,
+    132
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 47
+  },
+  {
+   "entity_id": 1018761,
+   "nombre": "Puqi Crab",
+   "npc_type": 1174,
+   "sprite": 42419,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    243,
+    145
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 47
+  },
+  {
+   "entity_id": 1018762,
+   "nombre": "Puqi Crab",
+   "npc_type": 1174,
+   "sprite": 42419,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    201,
+    142
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 47
+  },
+  {
+   "entity_id": 1018763,
+   "nombre": "Puqi Crab",
+   "npc_type": 1174,
+   "sprite": 42419,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    252,
+    129
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 47
+  },
+  {
+   "entity_id": 1018764,
+   "nombre": "Puqi Crab",
+   "npc_type": 1174,
+   "sprite": 42419,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    228,
+    138
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 47
+  },
+  {
+   "entity_id": 1018765,
+   "nombre": "Puqi Turtle",
+   "npc_type": 1175,
+   "sprite": 42420,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    11,
+    136
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 49
+  },
+  {
+   "entity_id": 1018766,
+   "nombre": "Puqi Turtle",
+   "npc_type": 1175,
+   "sprite": 42420,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    7,
+    155
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 49
+  },
+  {
+   "entity_id": 1018767,
+   "nombre": "Puqi Turtle",
+   "npc_type": 1175,
+   "sprite": 42420,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    20,
+    118
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 49
+  },
+  {
+   "entity_id": 1018768,
+   "nombre": "Puqi Turtle",
+   "npc_type": 1175,
+   "sprite": 42420,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    59,
+    83
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 49
+  },
+  {
+   "entity_id": 1018769,
+   "nombre": "Puqi Turtle",
+   "npc_type": 1175,
+   "sprite": 42420,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    13,
+    137
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 49
+  },
+  {
+   "entity_id": 1018770,
+   "nombre": "Puqi Turtle",
+   "npc_type": 1175,
+   "sprite": 42420,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    17,
+    123
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 49
+  },
+  {
+   "entity_id": 1018771,
+   "nombre": "Puqi Turtle",
+   "npc_type": 1175,
+   "sprite": 42420,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    14,
+    153
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 49
+  },
+  {
+   "entity_id": 1018772,
+   "nombre": "Puqi Turtle",
+   "npc_type": 1175,
+   "sprite": 42420,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    68,
+    84
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 49
+  },
+  {
+   "entity_id": 1018773,
+   "nombre": "Puqi Turtle",
+   "npc_type": 1175,
+   "sprite": 42420,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    12,
+    127
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 49
+  },
+  {
+   "entity_id": 1018774,
+   "nombre": "Puqi Turtle",
+   "npc_type": 1175,
+   "sprite": 42420,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    15,
+    115
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 49
+  },
+  {
+   "entity_id": 1018775,
+   "nombre": "Puqi Turtle",
+   "npc_type": 1175,
+   "sprite": 42420,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    6,
+    115
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 49
+  },
+  {
+   "entity_id": 1018776,
+   "nombre": "Puqi Turtle",
+   "npc_type": 1175,
+   "sprite": 42420,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    26,
+    153
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 49
+  },
+  {
+   "entity_id": 1018777,
+   "nombre": "Puqi Turtle",
+   "npc_type": 1175,
+   "sprite": 42420,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    19,
+    134
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 49
+  },
+  {
+   "entity_id": 1018778,
+   "nombre": "Puqi Turtle",
+   "npc_type": 1175,
+   "sprite": 42420,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    29,
+    99
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 49
+  },
+  {
+   "entity_id": 1018779,
+   "nombre": "Puqi Turtle",
+   "npc_type": 1175,
+   "sprite": 42420,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    26,
+    136
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 49
+  },
+  {
+   "entity_id": 1018780,
+   "nombre": "Puqi Turtle",
+   "npc_type": 1175,
+   "sprite": 42420,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    28,
+    98
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 49
+  },
+  {
+   "entity_id": 1018781,
+   "nombre": "Puqi Turtle",
+   "npc_type": 1175,
+   "sprite": 42420,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    5,
+    111
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 49
+  },
+  {
+   "entity_id": 1018782,
+   "nombre": "Puqi Turtle",
+   "npc_type": 1175,
+   "sprite": 42420,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    28,
+    156
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 49
+  },
+  {
+   "entity_id": 1018783,
+   "nombre": "Puqi Turtle",
+   "npc_type": 1175,
+   "sprite": 42420,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    4,
+    116
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 49
+  },
+  {
+   "entity_id": 1018784,
+   "nombre": "Puqi Turtle",
+   "npc_type": 1175,
+   "sprite": 42420,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    30,
+    153
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 49
+  },
+  {
+   "entity_id": 1018785,
+   "nombre": "Puqi Turtle",
+   "npc_type": 1175,
+   "sprite": 42420,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    136,
+    100
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 49
+  },
+  {
+   "entity_id": 1018786,
+   "nombre": "Puqi Turtle",
+   "npc_type": 1175,
+   "sprite": 42420,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    127,
+    115
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 49
+  },
+  {
+   "entity_id": 1018787,
+   "nombre": "Puqi Turtle",
+   "npc_type": 1175,
+   "sprite": 42420,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    175,
+    118
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 49
+  },
+  {
+   "entity_id": 1018788,
+   "nombre": "Puqi Turtle",
+   "npc_type": 1175,
+   "sprite": 42420,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    141,
+    119
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 49
+  },
+  {
+   "entity_id": 1018789,
+   "nombre": "Puqi Turtle",
+   "npc_type": 1175,
+   "sprite": 42420,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    158,
+    119
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 49
+  },
+  {
+   "entity_id": 1018790,
+   "nombre": "Puqi Turtle",
+   "npc_type": 1175,
+   "sprite": 42420,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    184,
+    99
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 49
+  },
+  {
+   "entity_id": 1018791,
+   "nombre": "Puqi Turtle",
+   "npc_type": 1175,
+   "sprite": 42420,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    158,
+    103
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 49
+  },
+  {
+   "entity_id": 1018792,
+   "nombre": "Puqi Turtle",
+   "npc_type": 1175,
+   "sprite": 42420,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    157,
+    114
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 49
+  },
+  {
+   "entity_id": 1018793,
+   "nombre": "Puqi Turtle",
+   "npc_type": 1175,
+   "sprite": 42420,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    179,
+    111
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 49
+  },
+  {
+   "entity_id": 1018794,
+   "nombre": "Puqi Turtle",
+   "npc_type": 1175,
+   "sprite": 42420,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    161,
+    106
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 49
+  },
+  {
+   "entity_id": 1018795,
+   "nombre": "Puqi Local",
+   "npc_type": 1176,
+   "sprite": 42421,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    74,
+    68
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 51
+  },
+  {
+   "entity_id": 1018796,
+   "nombre": "Puqi Local",
+   "npc_type": 1176,
+   "sprite": 42421,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    76,
+    87
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 51
+  },
+  {
+   "entity_id": 1018797,
+   "nombre": "Puqi Local",
+   "npc_type": 1176,
+   "sprite": 42421,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    103,
+    56
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 51
+  },
+  {
+   "entity_id": 1018798,
+   "nombre": "Puqi Local",
+   "npc_type": 1176,
+   "sprite": 42421,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    69,
+    85
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 51
+  },
+  {
+   "entity_id": 1018799,
+   "nombre": "Puqi Local",
+   "npc_type": 1176,
+   "sprite": 42421,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    89,
+    82
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 51
+  },
+  {
+   "entity_id": 1018800,
+   "nombre": "Puqi Local",
+   "npc_type": 1176,
+   "sprite": 42421,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    50,
+    76
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 51
+  },
+  {
+   "entity_id": 1018801,
+   "nombre": "Puqi Local",
+   "npc_type": 1176,
+   "sprite": 42421,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    37,
+    74
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 51
+  },
+  {
+   "entity_id": 1018802,
+   "nombre": "Puqi Local",
+   "npc_type": 1176,
+   "sprite": 42421,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    102,
+    55
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 51
+  },
+  {
+   "entity_id": 1018803,
+   "nombre": "Puqi Local",
+   "npc_type": 1176,
+   "sprite": 42421,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    60,
+    78
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 51
+  },
+  {
+   "entity_id": 1018804,
+   "nombre": "Puqi Local",
+   "npc_type": 1176,
+   "sprite": 42421,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    92,
+    75
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 51
+  },
+  {
+   "entity_id": 1018805,
+   "nombre": "Puqi Local",
+   "npc_type": 1176,
+   "sprite": 42421,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    78,
+    74
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 51
+  },
+  {
+   "entity_id": 1018806,
+   "nombre": "Puqi Local",
+   "npc_type": 1176,
+   "sprite": 42421,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    68,
+    75
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 51
+  },
+  {
+   "entity_id": 1018807,
+   "nombre": "Puqi Local",
+   "npc_type": 1176,
+   "sprite": 42421,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    80,
+    82
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 51
+  },
+  {
+   "entity_id": 1018808,
+   "nombre": "Puqi Local",
+   "npc_type": 1176,
+   "sprite": 42421,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    33,
+    76
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 51
+  },
+  {
+   "entity_id": 1018809,
+   "nombre": "Puqi Local",
+   "npc_type": 1176,
+   "sprite": 42421,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    97,
+    58
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 51
+  },
+  {
+   "entity_id": 1018810,
+   "nombre": "Puqi Local",
+   "npc_type": 1176,
+   "sprite": 42421,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    96,
+    74
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 51
+  },
+  {
+   "entity_id": 1018811,
+   "nombre": "Puqi Local",
+   "npc_type": 1176,
+   "sprite": 42421,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    73,
+    77
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 51
+  },
+  {
+   "entity_id": 1018812,
+   "nombre": "Puqi Local",
+   "npc_type": 1176,
+   "sprite": 42421,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    50,
+    80
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 51
+  },
+  {
+   "entity_id": 1018813,
+   "nombre": "Puqi Local",
+   "npc_type": 1176,
+   "sprite": 42421,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    83,
+    86
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 51
+  },
+  {
+   "entity_id": 1018814,
+   "nombre": "Puqi Local",
+   "npc_type": 1176,
+   "sprite": 42421,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    81,
+    65
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 51
+  },
+  {
+   "entity_id": 1018815,
+   "nombre": "Puqi Local",
+   "npc_type": 1176,
+   "sprite": 42421,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    168,
+    163
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 51
+  },
+  {
+   "entity_id": 1018816,
+   "nombre": "Puqi Local",
+   "npc_type": 1176,
+   "sprite": 42421,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    172,
+    151
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 51
+  },
+  {
+   "entity_id": 1018817,
+   "nombre": "Puqi Local",
+   "npc_type": 1176,
+   "sprite": 42421,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    143,
+    147
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 51
+  },
+  {
+   "entity_id": 1018818,
+   "nombre": "Puqi Local",
+   "npc_type": 1176,
+   "sprite": 42421,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    122,
+    132
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 51
+  },
+  {
+   "entity_id": 1018819,
+   "nombre": "Puqi Local",
+   "npc_type": 1176,
+   "sprite": 42421,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    132,
+    151
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 51
+  },
+  {
+   "entity_id": 1018820,
+   "nombre": "Puqi Local",
+   "npc_type": 1176,
+   "sprite": 42421,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    121,
+    153
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 51
+  },
+  {
+   "entity_id": 1018821,
+   "nombre": "Puqi Local",
+   "npc_type": 1176,
+   "sprite": 42421,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    144,
+    148
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 51
+  },
+  {
+   "entity_id": 1018822,
+   "nombre": "Puqi Local",
+   "npc_type": 1176,
+   "sprite": 42421,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    166,
+    173
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 51
+  },
+  {
+   "entity_id": 1018823,
+   "nombre": "Puqi Local",
+   "npc_type": 1176,
+   "sprite": 42421,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    119,
+    135
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 51
+  },
+  {
+   "entity_id": 1018824,
+   "nombre": "Puqi Local",
+   "npc_type": 1176,
+   "sprite": 42421,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    160,
+    149
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 51
+  },
+  {
+   "entity_id": 1018825,
+   "nombre": "Puqi Local",
+   "npc_type": 1176,
+   "sprite": 42421,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    172,
+    169
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 51
+  },
+  {
+   "entity_id": 1018826,
+   "nombre": "Puqi Local",
+   "npc_type": 1176,
+   "sprite": 42421,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    160,
+    153
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 51
+  },
+  {
+   "entity_id": 1018827,
+   "nombre": "Puqi Local",
+   "npc_type": 1176,
+   "sprite": 42421,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    140,
+    144
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 51
+  },
+  {
+   "entity_id": 1018828,
+   "nombre": "Puqi Local",
+   "npc_type": 1176,
+   "sprite": 42421,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    117,
+    130
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 51
+  },
+  {
+   "entity_id": 1018829,
+   "nombre": "Puqi Local",
+   "npc_type": 1176,
+   "sprite": 42421,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    133,
+    150
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 51
+  },
+  {
+   "entity_id": 1018830,
+   "nombre": "Puqi Warrior",
+   "npc_type": 1177,
+   "sprite": 42422,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    108,
+    139
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 52
+  },
+  {
+   "entity_id": 1018831,
+   "nombre": "Puqi Warrior",
+   "npc_type": 1177,
+   "sprite": 42422,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    112,
+    168
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 52
+  },
+  {
+   "entity_id": 1018832,
+   "nombre": "Puqi Warrior",
+   "npc_type": 1177,
+   "sprite": 42422,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    126,
+    177
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 52
+  },
+  {
+   "entity_id": 1018833,
+   "nombre": "Puqi Warrior",
+   "npc_type": 1177,
+   "sprite": 42422,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    150,
+    171
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 52
+  },
+  {
+   "entity_id": 1018834,
+   "nombre": "Puqi Warrior",
+   "npc_type": 1177,
+   "sprite": 42422,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    155,
+    157
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 52
+  },
+  {
+   "entity_id": 1018835,
+   "nombre": "Puqi Warrior",
+   "npc_type": 1177,
+   "sprite": 42422,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    161,
+    162
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 52
+  },
+  {
+   "entity_id": 1018836,
+   "nombre": "Puqi Warrior",
+   "npc_type": 1177,
+   "sprite": 42422,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    114,
+    166
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 52
+  },
+  {
+   "entity_id": 1018837,
+   "nombre": "Puqi Warrior",
+   "npc_type": 1177,
+   "sprite": 42422,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    121,
+    174
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 52
+  },
+  {
+   "entity_id": 1018838,
+   "nombre": "Puqi Warrior",
+   "npc_type": 1177,
+   "sprite": 42422,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    106,
+    139
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 52
+  },
+  {
+   "entity_id": 1018839,
+   "nombre": "Puqi Warrior",
+   "npc_type": 1177,
+   "sprite": 42422,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    150,
+    167
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 52
+  },
+  {
+   "entity_id": 1018840,
+   "nombre": "Puqi Warrior",
+   "npc_type": 1177,
+   "sprite": 42422,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    131,
+    169
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 52
+  },
+  {
+   "entity_id": 1018841,
+   "nombre": "Puqi Warrior",
+   "npc_type": 1177,
+   "sprite": 42422,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    114,
+    162
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 52
+  },
+  {
+   "entity_id": 1018842,
+   "nombre": "Puqi Warrior",
+   "npc_type": 1177,
+   "sprite": 42422,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    159,
+    153
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 52
+  },
+  {
+   "entity_id": 1018843,
+   "nombre": "Puqi Warrior",
+   "npc_type": 1177,
+   "sprite": 42422,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    106,
+    140
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 52
+  },
+  {
+   "entity_id": 1018844,
+   "nombre": "Puqi Warrior",
+   "npc_type": 1177,
+   "sprite": 42422,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    158,
+    170
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 52
+  },
+  {
+   "entity_id": 1018845,
+   "nombre": "Color Crab",
+   "npc_type": 1178,
+   "sprite": 42377,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    98,
+    55
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 53
+  },
+  {
+   "entity_id": 1018846,
+   "nombre": "Color Crab",
+   "npc_type": 1178,
+   "sprite": 42377,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    2,
+    40
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 53
+  },
+  {
+   "entity_id": 1018847,
+   "nombre": "Color Crab",
+   "npc_type": 1178,
+   "sprite": 42377,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    44,
+    28
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 53
+  },
+  {
+   "entity_id": 1018848,
+   "nombre": "Color Crab",
+   "npc_type": 1178,
+   "sprite": 42377,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    58,
+    21
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 53
+  },
+  {
+   "entity_id": 1018849,
+   "nombre": "Color Crab",
+   "npc_type": 1178,
+   "sprite": 42377,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    1,
+    45
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 53
+  },
+  {
+   "entity_id": 1018850,
+   "nombre": "Color Crab",
+   "npc_type": 1178,
+   "sprite": 42377,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    57,
+    23
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 53
+  },
+  {
+   "entity_id": 1018851,
+   "nombre": "Color Crab",
+   "npc_type": 1178,
+   "sprite": 42377,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    37,
+    32
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 53
+  },
+  {
+   "entity_id": 1018852,
+   "nombre": "Color Crab",
+   "npc_type": 1178,
+   "sprite": 42377,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    96,
+    45
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 53
+  },
+  {
+   "entity_id": 1018853,
+   "nombre": "Color Crab",
+   "npc_type": 1178,
+   "sprite": 42377,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    41,
+    28
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 53
+  },
+  {
+   "entity_id": 1018854,
+   "nombre": "Color Crab",
+   "npc_type": 1178,
+   "sprite": 42377,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    96,
+    55
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 53
+  },
+  {
+   "entity_id": 1018855,
+   "nombre": "Color Crab",
+   "npc_type": 1178,
+   "sprite": 42377,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    230,
+    61
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 53
+  },
+  {
+   "entity_id": 1018856,
+   "nombre": "Color Crab",
+   "npc_type": 1178,
+   "sprite": 42377,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    267,
+    116
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 53
+  },
+  {
+   "entity_id": 1018857,
+   "nombre": "Color Crab",
+   "npc_type": 1178,
+   "sprite": 42377,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    264,
+    54
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 53
+  },
+  {
+   "entity_id": 1018858,
+   "nombre": "Color Crab",
+   "npc_type": 1178,
+   "sprite": 42377,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    175,
+    88
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 53
+  },
+  {
+   "entity_id": 1018859,
+   "nombre": "Color Crab",
+   "npc_type": 1178,
+   "sprite": 42377,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    193,
+    69
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 53
+  },
+  {
+   "entity_id": 1018860,
+   "nombre": "Color Crab",
+   "npc_type": 1178,
+   "sprite": 42377,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    275,
+    78
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 53
+  },
+  {
+   "entity_id": 1018861,
+   "nombre": "Color Crab",
+   "npc_type": 1178,
+   "sprite": 42377,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    214,
+    63
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 53
+  },
+  {
+   "entity_id": 1018862,
+   "nombre": "Color Crab",
+   "npc_type": 1178,
+   "sprite": 42377,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    234,
+    91
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 53
+  },
+  {
+   "entity_id": 1018863,
+   "nombre": "Color Crab",
+   "npc_type": 1178,
+   "sprite": 42377,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    239,
+    94
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 53
+  },
+  {
+   "entity_id": 1018864,
+   "nombre": "Color Crab",
+   "npc_type": 1178,
+   "sprite": 42377,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    184,
+    64
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 53
+  },
+  {
+   "entity_id": 1018865,
+   "nombre": "Color Crab",
+   "npc_type": 1178,
+   "sprite": 42377,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    180,
+    87
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 53
+  },
+  {
+   "entity_id": 1018866,
+   "nombre": "Color Crab",
+   "npc_type": 1178,
+   "sprite": 42377,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    227,
+    62
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 53
+  },
+  {
+   "entity_id": 1018867,
+   "nombre": "Color Crab",
+   "npc_type": 1178,
+   "sprite": 42377,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    225,
+    56
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 53
+  },
+  {
+   "entity_id": 1018868,
+   "nombre": "Color Crab",
+   "npc_type": 1178,
+   "sprite": 42377,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    252,
+    61
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 53
+  },
+  {
+   "entity_id": 1018869,
+   "nombre": "Color Crab",
+   "npc_type": 1178,
+   "sprite": 42377,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    255,
+    107
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 53
+  },
+  {
+   "entity_id": 1018870,
+   "nombre": "Color Crab",
+   "npc_type": 1178,
+   "sprite": 42377,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    278,
+    82
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 53
+  },
+  {
+   "entity_id": 1018871,
+   "nombre": "Color Crab",
+   "npc_type": 1178,
+   "sprite": 42377,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    236,
+    70
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 53
+  },
+  {
+   "entity_id": 1018872,
+   "nombre": "Color Crab",
+   "npc_type": 1178,
+   "sprite": 42377,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    262,
+    63
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 53
+  },
+  {
+   "entity_id": 1018873,
+   "nombre": "Color Crab",
+   "npc_type": 1178,
+   "sprite": 42377,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    235,
+    88
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 53
+  },
+  {
+   "entity_id": 1018874,
+   "nombre": "Color Crab",
+   "npc_type": 1178,
+   "sprite": 42377,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    281,
+    79
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 53
+  },
+  {
+   "entity_id": 1018875,
+   "nombre": "Color Whelk",
+   "npc_type": 1179,
+   "sprite": 42383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    84,
+    36
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 54
+  },
+  {
+   "entity_id": 1018876,
+   "nombre": "Color Whelk",
+   "npc_type": 1179,
+   "sprite": 42383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    50,
+    12
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 54
+  },
+  {
+   "entity_id": 1018877,
+   "nombre": "Color Whelk",
+   "npc_type": 1179,
+   "sprite": 42383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    8,
+    43
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 54
+  },
+  {
+   "entity_id": 1018878,
+   "nombre": "Color Whelk",
+   "npc_type": 1179,
+   "sprite": 42383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    126,
+    57
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 54
+  },
+  {
+   "entity_id": 1018879,
+   "nombre": "Color Whelk",
+   "npc_type": 1179,
+   "sprite": 42383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    129,
+    64
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 54
+  },
+  {
+   "entity_id": 1018880,
+   "nombre": "Color Whelk",
+   "npc_type": 1179,
+   "sprite": 42383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    86,
+    40
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 54
+  },
+  {
+   "entity_id": 1018881,
+   "nombre": "Color Whelk",
+   "npc_type": 1179,
+   "sprite": 42383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    41,
+    14
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 54
+  },
+  {
+   "entity_id": 1018882,
+   "nombre": "Color Whelk",
+   "npc_type": 1179,
+   "sprite": 42383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    9,
+    38
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 54
+  },
+  {
+   "entity_id": 1018883,
+   "nombre": "Color Whelk",
+   "npc_type": 1179,
+   "sprite": 42383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    4,
+    34
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 54
+  },
+  {
+   "entity_id": 1018884,
+   "nombre": "Color Whelk",
+   "npc_type": 1179,
+   "sprite": 42383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    122,
+    65
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 54
+  },
+  {
+   "entity_id": 1018885,
+   "nombre": "Color Whelk",
+   "npc_type": 1179,
+   "sprite": 42383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    204,
+    69
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 54
+  },
+  {
+   "entity_id": 1018886,
+   "nombre": "Color Whelk",
+   "npc_type": 1179,
+   "sprite": 42383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    273,
+    70
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 54
+  },
+  {
+   "entity_id": 1018887,
+   "nombre": "Color Whelk",
+   "npc_type": 1179,
+   "sprite": 42383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    271,
+    95
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 54
+  },
+  {
+   "entity_id": 1018888,
+   "nombre": "Color Whelk",
+   "npc_type": 1179,
+   "sprite": 42383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    220,
+    88
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 54
+  },
+  {
+   "entity_id": 1018889,
+   "nombre": "Color Whelk",
+   "npc_type": 1179,
+   "sprite": 42383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    235,
+    71
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 54
+  },
+  {
+   "entity_id": 1018890,
+   "nombre": "Color Whelk",
+   "npc_type": 1179,
+   "sprite": 42383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    207,
+    46
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 54
+  },
+  {
+   "entity_id": 1018891,
+   "nombre": "Color Whelk",
+   "npc_type": 1179,
+   "sprite": 42383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    251,
+    93
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 54
+  },
+  {
+   "entity_id": 1018892,
+   "nombre": "Color Whelk",
+   "npc_type": 1179,
+   "sprite": 42383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    200,
+    83
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 54
+  },
+  {
+   "entity_id": 1018893,
+   "nombre": "Color Whelk",
+   "npc_type": 1179,
+   "sprite": 42383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    275,
+    97
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 54
+  },
+  {
+   "entity_id": 1018894,
+   "nombre": "Color Whelk",
+   "npc_type": 1179,
+   "sprite": 42383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    199,
+    81
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 54
+  },
+  {
+   "entity_id": 1018895,
+   "nombre": "Color Whelk",
+   "npc_type": 1179,
+   "sprite": 42383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    206,
+    40
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 54
+  },
+  {
+   "entity_id": 1018896,
+   "nombre": "Color Whelk",
+   "npc_type": 1179,
+   "sprite": 42383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    218,
+    88
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 54
+  },
+  {
+   "entity_id": 1018897,
+   "nombre": "Color Whelk",
+   "npc_type": 1179,
+   "sprite": 42383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    256,
+    96
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 54
+  },
+  {
+   "entity_id": 1018898,
+   "nombre": "Color Whelk",
+   "npc_type": 1179,
+   "sprite": 42383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    207,
+    67
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 54
+  },
+  {
+   "entity_id": 1018899,
+   "nombre": "Color Whelk",
+   "npc_type": 1179,
+   "sprite": 42383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    243,
+    78
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 54
+  },
+  {
+   "entity_id": 1018900,
+   "nombre": "Color Whelk",
+   "npc_type": 1179,
+   "sprite": 42383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    261,
+    80
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 54
+  },
+  {
+   "entity_id": 1018901,
+   "nombre": "Color Whelk",
+   "npc_type": 1179,
+   "sprite": 42383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    201,
+    67
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 54
+  },
+  {
+   "entity_id": 1018902,
+   "nombre": "Color Whelk",
+   "npc_type": 1179,
+   "sprite": 42383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    214,
+    90
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 54
+  },
+  {
+   "entity_id": 1018903,
+   "nombre": "Color Whelk",
+   "npc_type": 1179,
+   "sprite": 42383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    189,
+    85
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 54
+  },
+  {
+   "entity_id": 1018904,
+   "nombre": "Color Whelk",
+   "npc_type": 1179,
+   "sprite": 42383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    276,
+    86
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 54
+  },
+  {
+   "entity_id": 1018905,
+   "nombre": "Pontiff Hululu",
+   "npc_type": 1217,
+   "sprite": 42438,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    167,
+    167
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 59
+  }
+ ],
+ "recursos": [
+  {
+   "entity_id": 106590,
+   "capa": 0,
+   "px": [
+    9397,
+    3821
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60130,
+   "cola": "00000000000000",
+   "nombre_visible": "Leafy Bush(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 106591,
+   "capa": 2,
+   "px": [
+    9407,
+    3769
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60130,
+   "cola": "00000000000000",
+   "nombre_visible": "Leafy Bush(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 106592,
+   "capa": 2,
+   "px": [
+    9194,
+    3770
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60130,
+   "cola": "00000000000000",
+   "nombre_visible": "Leafy Bush(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 106593,
+   "capa": 0,
+   "px": [
+    9451,
+    3420
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60130,
+   "cola": "00000000000000",
+   "nombre_visible": "Leafy Bush(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 106594,
+   "capa": 0,
+   "px": [
+    9042,
+    3692
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60130,
+   "cola": "00000000000000",
+   "nombre_visible": "Leafy Bush(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 106595,
+   "capa": 0,
+   "px": [
+    9303,
+    3343
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60130,
+   "cola": "00000000000000",
+   "nombre_visible": "Leafy Bush(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 106596,
+   "capa": 0,
+   "px": [
+    9273,
+    3366
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60130,
+   "cola": "00000000000000",
+   "nombre_visible": "Leafy Bush(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 106597,
+   "capa": 0,
+   "px": [
+    8936,
+    3542
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60130,
+   "cola": "00000000000000",
+   "nombre_visible": "Leafy Bush(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 106598,
+   "capa": 0,
+   "px": [
+    9027,
+    3589
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60130,
+   "cola": "00000000000000",
+   "nombre_visible": "Leafy Bush(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 106599,
+   "capa": 0,
+   "px": [
+    5677,
+    1635
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60130,
+   "cola": "00000000000000",
+   "nombre_visible": "Leafy Bush(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 106600,
+   "capa": 0,
+   "px": [
+    5978,
+    1386
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60130,
+   "cola": "00000000000000",
+   "nombre_visible": "Leafy Bush(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 106601,
+   "capa": 2,
+   "px": [
+    6161,
+    1067
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60130,
+   "cola": "00000000000000",
+   "nombre_visible": "Leafy Bush(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 106602,
+   "capa": 0,
+   "px": [
+    5619,
+    1511
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60130,
+   "cola": "00000000000000",
+   "nombre_visible": "Leafy Bush(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 106603,
+   "capa": 2,
+   "px": [
+    6049,
+    1350
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60130,
+   "cola": "00000000000000",
+   "nombre_visible": "Leafy Bush(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 106604,
+   "capa": 0,
+   "px": [
+    4872,
+    2200
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60006,
+   "cola": "00000000000000",
+   "nombre_visible": "Bright Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004",
+   "material": "Bright Alga(S)"
+  },
+  {
+   "entity_id": 106605,
+   "capa": 2,
+   "px": [
+    4899,
+    2173
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60007,
+   "cola": "00000000000000",
+   "nombre_visible": "Bright Alga(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 106606,
+   "capa": 0,
+   "px": [
+    4922,
+    2185
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60007,
+   "cola": "00000000000000",
+   "nombre_visible": "Bright Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 106607,
+   "capa": 0,
+   "px": [
+    4997,
+    2044
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60006,
+   "cola": "00000000000000",
+   "nombre_visible": "Bright Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004",
+   "material": "Bright Alga(S)"
+  },
+  {
+   "entity_id": 106608,
+   "capa": 2,
+   "px": [
+    5061,
+    2021
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60006,
+   "cola": "00000000000000",
+   "nombre_visible": "Bright Alga(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000004",
+   "material": "Bright Alga(S)"
+  },
+  {
+   "entity_id": 106609,
+   "capa": 2,
+   "px": [
+    7577,
+    5345
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60158,
+   "cola": "00000000000000",
+   "nombre_visible": "Steel(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002",
+   "material_posibles": [
+    "Big Copper",
+    "Copper (L)",
+    "Copper(S)"
+   ]
+  },
+  {
+   "entity_id": 106610,
+   "capa": 2,
+   "px": [
+    7879,
+    5027
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60112,
+   "cola": "00000000000000",
+   "nombre_visible": "Melaleuca(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001",
+   "material": "Poplar(S)"
+  },
+  {
+   "entity_id": 106611,
+   "capa": 0,
+   "px": [
+    2125,
+    4648
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60006,
+   "cola": "00000000000000",
+   "nombre_visible": "Bright Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004",
+   "material": "Bright Alga(S)"
+  },
+  {
+   "entity_id": 106612,
+   "capa": 0,
+   "px": [
+    7480,
+    5094
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60123,
+   "cola": "00000000000000",
+   "nombre_visible": "Melaleuca(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material": "Poplar(M)"
+  },
+  {
+   "entity_id": 106613,
+   "capa": 0,
+   "px": [
+    5026,
+    1858
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60006,
+   "cola": "00000000000000",
+   "nombre_visible": "Bright Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004",
+   "material": "Bright Alga(S)"
+  },
+  {
+   "entity_id": 106614,
+   "capa": 0,
+   "px": [
+    5284,
+    1845
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60008,
+   "cola": "00000000000000",
+   "nombre_visible": "Bright Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 106615,
+   "capa": 2,
+   "px": [
+    2524,
+    4114
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60006,
+   "cola": "00000000000000",
+   "nombre_visible": "Bright Alga(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000004",
+   "material": "Bright Alga(S)"
+  },
+  {
+   "entity_id": 106616,
+   "capa": 0,
+   "px": [
+    2251,
+    4545
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60009,
+   "cola": "00000000000000",
+   "nombre_visible": "Bright Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 106617,
+   "capa": 0,
+   "px": [
+    5820,
+    1284
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60130,
+   "cola": "00000000000000",
+   "nombre_visible": "Leafy Bush(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 106618,
+   "capa": 2,
+   "px": [
+    2361,
+    4422
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60009,
+   "cola": "00000000000000",
+   "nombre_visible": "Bright Alga(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 106619,
+   "capa": 0,
+   "px": [
+    2484,
+    4248
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60007,
+   "cola": "00000000000000",
+   "nombre_visible": "Bright Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 106620,
+   "capa": 2,
+   "px": [
+    2516,
+    4247
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60007,
+   "cola": "00000000000000",
+   "nombre_visible": "Bright Alga(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 106621,
+   "capa": 0,
+   "px": [
+    2487,
+    4291
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60009,
+   "cola": "00000000000000",
+   "nombre_visible": "Bright Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 106622,
+   "capa": 0,
+   "px": [
+    2355,
+    4394
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60007,
+   "cola": "00000000000000",
+   "nombre_visible": "Bright Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 106623,
+   "capa": 0,
+   "px": [
+    2381,
+    3970
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60007,
+   "cola": "00000000000000",
+   "nombre_visible": "Bright Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 106624,
+   "capa": 0,
+   "px": [
+    2241,
+    3787
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60007,
+   "cola": "00000000000000",
+   "nombre_visible": "Bright Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 106625,
+   "capa": 0,
+   "px": [
+    2135,
+    3643
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60007,
+   "cola": "00000000000000",
+   "nombre_visible": "Bright Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 106626,
+   "capa": 2,
+   "px": [
+    5752,
+    1312
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60130,
+   "cola": "00000000000000",
+   "nombre_visible": "Leafy Bush(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 106627,
+   "capa": 0,
+   "px": [
+    2243,
+    3740
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60009,
+   "cola": "00000000000000",
+   "nombre_visible": "Bright Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 106628,
+   "capa": 0,
+   "px": [
+    2361,
+    3938
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60009,
+   "cola": "00000000000000",
+   "nombre_visible": "Bright Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 106629,
+   "capa": 0,
+   "px": [
+    199,
+    5527
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60158,
+   "cola": "00000000000000",
+   "nombre_visible": "Steel(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material_posibles": [
+    "Big Copper",
+    "Copper (L)",
+    "Copper(S)"
+   ]
+  },
+  {
+   "entity_id": 106630,
+   "capa": 2,
+   "px": [
+    440,
+    5663
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60158,
+   "cola": "00000000000000",
+   "nombre_visible": "Steel(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002",
+   "material_posibles": [
+    "Big Copper",
+    "Copper (L)",
+    "Copper(S)"
+   ]
+  },
+  {
+   "entity_id": 106631,
+   "capa": 2,
+   "px": [
+    2040,
+    1685
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60117,
+   "cola": "00000000000000",
+   "nombre_visible": "BeastkinDen(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 106632,
+   "capa": 2,
+   "px": [
+    2482,
+    1758
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60117,
+   "cola": "00000000000000",
+   "nombre_visible": "BeastkinDen(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 106633,
+   "capa": 0,
+   "px": [
+    9442,
+    4564
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 106634,
+   "capa": 0,
+   "px": [
+    614,
+    5692
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60158,
+   "cola": "00000000000000",
+   "nombre_visible": "Steel(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material_posibles": [
+    "Big Copper",
+    "Copper (L)",
+    "Copper(S)"
+   ]
+  },
+  {
+   "entity_id": 106635,
+   "capa": 0,
+   "px": [
+    724,
+    5630
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60122,
+   "cola": "00000000000000",
+   "nombre_visible": "Steel(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material": "Copper(M)"
+  },
+  {
+   "entity_id": 106636,
+   "capa": 2,
+   "px": [
+    376,
+    5597
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60122,
+   "cola": "00000000000000",
+   "nombre_visible": "Steel(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002",
+   "material": "Copper(M)"
+  },
+  {
+   "entity_id": 106637,
+   "capa": 0,
+   "px": [
+    670,
+    5657
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60110,
+   "cola": "00000000000000",
+   "nombre_visible": "Steel(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material": "Copper(L)"
+  },
+  {
+   "entity_id": 106638,
+   "capa": 2,
+   "px": [
+    506,
+    5649
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60110,
+   "cola": "00000000000000",
+   "nombre_visible": "Steel(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002",
+   "material": "Copper(L)"
+  },
+  {
+   "entity_id": 106639,
+   "capa": 2,
+   "px": [
+    311,
+    5597
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60110,
+   "cola": "00000000000000",
+   "nombre_visible": "Steel(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002",
+   "material": "Copper(L)"
+  },
+  {
+   "entity_id": 106640,
+   "capa": 0,
+   "px": [
+    7287,
+    5423
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60110,
+   "cola": "00000000000000",
+   "nombre_visible": "Steel(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material": "Copper(L)"
+  },
+  {
+   "entity_id": 106641,
+   "capa": 2,
+   "px": [
+    7850,
+    5360
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60110,
+   "cola": "00000000000000",
+   "nombre_visible": "Steel(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002",
+   "material": "Copper(L)"
+  },
+  {
+   "entity_id": 106642,
+   "capa": 2,
+   "px": [
+    7771,
+    5354
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60122,
+   "cola": "00000000000000",
+   "nombre_visible": "Steel(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002",
+   "material": "Copper(M)"
+  },
+  {
+   "entity_id": 106643,
+   "capa": 0,
+   "px": [
+    7322,
+    5451
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60122,
+   "cola": "00000000000000",
+   "nombre_visible": "Steel(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material": "Copper(M)"
+  },
+  {
+   "entity_id": 106644,
+   "capa": 0,
+   "px": [
+    7406,
+    5421
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60158,
+   "cola": "00000000000000",
+   "nombre_visible": "Steel(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material_posibles": [
+    "Big Copper",
+    "Copper (L)",
+    "Copper(S)"
+   ]
+  },
+  {
+   "entity_id": 106645,
+   "capa": 0,
+   "px": [
+    7884,
+    5296
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60122,
+   "cola": "00000000000000",
+   "nombre_visible": "Steel(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material": "Copper(M)"
+  },
+  {
+   "entity_id": 106646,
+   "capa": 0,
+   "px": [
+    7718,
+    5332
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60110,
+   "cola": "00000000000000",
+   "nombre_visible": "Steel(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material": "Copper(L)"
+  },
+  {
+   "entity_id": 106647,
+   "capa": 2,
+   "px": [
+    6717,
+    3475
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60117,
+   "cola": "00000000000000",
+   "nombre_visible": "BeastkinDen(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 106648,
+   "capa": 2,
+   "px": [
+    7405,
+    3566
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60117,
+   "cola": "00000000000000",
+   "nombre_visible": "BeastkinDen(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 106649,
+   "capa": 0,
+   "px": [
+    7512,
+    3808
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60117,
+   "cola": "00000000000000",
+   "nombre_visible": "BeastkinDen(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 106650,
+   "capa": 2,
+   "px": [
+    7793,
+    3930
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60117,
+   "cola": "00000000000000",
+   "nombre_visible": "BeastkinDen(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 106651,
+   "capa": 0,
+   "px": [
+    8063,
+    3724
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60117,
+   "cola": "00000000000000",
+   "nombre_visible": "BeastkinDen(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 106652,
+   "capa": 2,
+   "px": [
+    7669,
+    3829
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60117,
+   "cola": "00000000000000",
+   "nombre_visible": "BeastkinDen(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 106653,
+   "capa": 2,
+   "px": [
+    7104,
+    3769
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60117,
+   "cola": "00000000000000",
+   "nombre_visible": "BeastkinDen(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 106654,
+   "capa": 0,
+   "px": [
+    6990,
+    3719
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60117,
+   "cola": "00000000000000",
+   "nombre_visible": "BeastkinDen(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 106655,
+   "capa": 2,
+   "px": [
+    1744,
+    1633
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60117,
+   "cola": "00000000000000",
+   "nombre_visible": "BeastkinDen(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 106656,
+   "capa": 0,
+   "px": [
+    1339,
+    1636
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60117,
+   "cola": "00000000000000",
+   "nombre_visible": "BeastkinDen(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 106657,
+   "capa": 2,
+   "px": [
+    1087,
+    1717
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60117,
+   "cola": "00000000000000",
+   "nombre_visible": "BeastkinDen(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 106658,
+   "capa": 0,
+   "px": [
+    2365,
+    1688
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60117,
+   "cola": "00000000000000",
+   "nombre_visible": "BeastkinDen(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 106659,
+   "capa": 0,
+   "px": [
+    1216,
+    1753
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60117,
+   "cola": "00000000000000",
+   "nombre_visible": "BeastkinDen(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 106660,
+   "capa": 0,
+   "px": [
+    1685,
+    1606
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60117,
+   "cola": "00000000000000",
+   "nombre_visible": "BeastkinDen(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 106661,
+   "capa": 0,
+   "px": [
+    980,
+    1587
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60178,
+   "cola": "00000000000000",
+   "nombre_visible": "Melaleuca(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material_posibles": [
+    "Big Walnut",
+    "Walnut(L)"
+   ]
+  },
+  {
+   "entity_id": 106662,
+   "capa": 2,
+   "px": [
+    1438,
+    1586
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60178,
+   "cola": "00000000000000",
+   "nombre_visible": "Melaleuca(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001",
+   "material_posibles": [
+    "Big Walnut",
+    "Walnut(L)"
+   ]
+  },
+  {
+   "entity_id": 106663,
+   "capa": 0,
+   "px": [
+    848,
+    1676
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60112,
+   "cola": "00000000000000",
+   "nombre_visible": "Melaleuca(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material": "Poplar(S)"
+  },
+  {
+   "entity_id": 106664,
+   "capa": 0,
+   "px": [
+    1272,
+    1657
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60112,
+   "cola": "00000000000000",
+   "nombre_visible": "Melaleuca(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material": "Poplar(S)"
+  },
+  {
+   "entity_id": 106665,
+   "capa": 0,
+   "px": [
+    2023,
+    1599
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60123,
+   "cola": "00000000000000",
+   "nombre_visible": "Melaleuca(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material": "Poplar(M)"
+  },
+  {
+   "entity_id": 106666,
+   "capa": 2,
+   "px": [
+    1585,
+    1513
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60123,
+   "cola": "00000000000000",
+   "nombre_visible": "Melaleuca(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001",
+   "material": "Poplar(M)"
+  },
+  {
+   "entity_id": 106667,
+   "capa": 2,
+   "px": [
+    1583,
+    1549
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60112,
+   "cola": "00000000000000",
+   "nombre_visible": "Melaleuca(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001",
+   "material": "Poplar(S)"
+  },
+  {
+   "entity_id": 106668,
+   "capa": 0,
+   "px": [
+    2074,
+    1700
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60112,
+   "cola": "00000000000000",
+   "nombre_visible": "Melaleuca(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material": "Poplar(S)"
+  },
+  {
+   "entity_id": 106669,
+   "capa": 0,
+   "px": [
+    2263,
+    1680
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60178,
+   "cola": "00000000000000",
+   "nombre_visible": "Melaleuca(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material_posibles": [
+    "Big Walnut",
+    "Walnut(L)"
+   ]
+  },
+  {
+   "entity_id": 106670,
+   "capa": 0,
+   "px": [
+    6884,
+    5264
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60178,
+   "cola": "00000000000000",
+   "nombre_visible": "Melaleuca(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material_posibles": [
+    "Big Walnut",
+    "Walnut(L)"
+   ]
+  },
+  {
+   "entity_id": 106671,
+   "capa": 2,
+   "px": [
+    6960,
+    4956
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60178,
+   "cola": "00000000000000",
+   "nombre_visible": "Melaleuca(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001",
+   "material_posibles": [
+    "Big Walnut",
+    "Walnut(L)"
+   ]
+  },
+  {
+   "entity_id": 106672,
+   "capa": 2,
+   "px": [
+    7440,
+    5047
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60178,
+   "cola": "00000000000000",
+   "nombre_visible": "Melaleuca(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001",
+   "material_posibles": [
+    "Big Walnut",
+    "Walnut(L)"
+   ]
+  },
+  {
+   "entity_id": 106673,
+   "capa": 0,
+   "px": [
+    7116,
+    5295
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60123,
+   "cola": "00000000000000",
+   "nombre_visible": "Melaleuca(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material": "Poplar(M)"
+  },
+  {
+   "entity_id": 106674,
+   "capa": 2,
+   "px": [
+    6691,
+    5089
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60123,
+   "cola": "00000000000000",
+   "nombre_visible": "Melaleuca(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001",
+   "material": "Poplar(M)"
+  },
+  {
+   "entity_id": 106675,
+   "capa": 0,
+   "px": [
+    6144,
+    744
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60130,
+   "cola": "00000000000000",
+   "nombre_visible": "Leafy Bush(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 106676,
+   "capa": 2,
+   "px": [
+    6365,
+    818
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60130,
+   "cola": "00000000000000",
+   "nombre_visible": "Leafy Bush(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 106677,
+   "capa": 0,
+   "px": [
+    7165,
+    5336
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60112,
+   "cola": "00000000000000",
+   "nombre_visible": "Melaleuca(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material": "Poplar(S)"
+  },
+  {
+   "entity_id": 106678,
+   "capa": 2,
+   "px": [
+    6679,
+    5166
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60112,
+   "cola": "00000000000000",
+   "nombre_visible": "Melaleuca(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001",
+   "material": "Poplar(S)"
+  },
+  {
+   "entity_id": 106679,
+   "capa": 2,
+   "px": [
+    134,
+    2695
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 106680,
+   "capa": 0,
+   "px": [
+    5671,
+    4494
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080030000"
+  },
+  {
+   "entity_id": 106681,
+   "capa": 2,
+   "px": [
+    7062,
+    838
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "que_es": "tornado (portal)"
+  }
+ ]
+}

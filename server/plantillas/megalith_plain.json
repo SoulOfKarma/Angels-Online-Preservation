@@ -1,0 +1,3084 @@
+{
+ "_nota": "Megalith Plain (stage 28), de una captura de Celestia del 23/09/2026 de solo 5 segundos: entrar y salir. Todo el mapa llega en el primer segundo.",
+ "stage": 28,
+ "spawns": [
+  {
+   "entity_id": 121917,
+   "nombre": "Badge Master",
+   "npc_type": 1969,
+   "sprite": 40042,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    127,
+    67
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 121918,
+   "nombre": "Exploring Member",
+   "npc_type": 1923,
+   "sprite": 40126,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    226,
+    177
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 121919,
+   "nombre": "Archaeologist",
+   "npc_type": 1950,
+   "sprite": 40076,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    268,
+    167
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 121920,
+   "nombre": "Patrolman Wulfer",
+   "npc_type": 1951,
+   "sprite": 40032,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    46,
+    25
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 121921,
+   "nombre": "Angel Inspector",
+   "npc_type": 1918,
+   "sprite": 40045,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    53,
+    158
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 121922,
+   "nombre": "Terra Keeper",
+   "npc_type": 2087,
+   "sprite": 40049,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    153,
+    102
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 1012498,
+   "nombre": "Green Wolf",
+   "npc_type": 149,
+   "sprite": 42063,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    209,
+    94
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012499,
+   "nombre": "Green Wolf",
+   "npc_type": 149,
+   "sprite": 42063,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    214,
+    78
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012500,
+   "nombre": "Green Wolf",
+   "npc_type": 149,
+   "sprite": 42063,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    224,
+    101
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012501,
+   "nombre": "Green Wolf",
+   "npc_type": 149,
+   "sprite": 42063,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    208,
+    97
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012502,
+   "nombre": "Green Wolf",
+   "npc_type": 149,
+   "sprite": 42063,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    216,
+    71
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012503,
+   "nombre": "Green Wolf",
+   "npc_type": 149,
+   "sprite": 42063,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    223,
+    101
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012504,
+   "nombre": "Green Wolf",
+   "npc_type": 149,
+   "sprite": 42063,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    225,
+    101
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012505,
+   "nombre": "Green Wolf",
+   "npc_type": 149,
+   "sprite": 42063,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    222,
+    73
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012506,
+   "nombre": "Green Wolf",
+   "npc_type": 149,
+   "sprite": 42063,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    209,
+    97
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012507,
+   "nombre": "Green Wolf",
+   "npc_type": 149,
+   "sprite": 42063,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    206,
+    100
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012508,
+   "nombre": "Green Wolf",
+   "npc_type": 149,
+   "sprite": 42063,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    230,
+    101
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012509,
+   "nombre": "Green Wolf",
+   "npc_type": 149,
+   "sprite": 42063,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    217,
+    73
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012510,
+   "nombre": "Green Wolf",
+   "npc_type": 149,
+   "sprite": 42063,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    212,
+    100
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012511,
+   "nombre": "Green Wolf",
+   "npc_type": 149,
+   "sprite": 42063,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    232,
+    112
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012512,
+   "nombre": "Green Wolf",
+   "npc_type": 149,
+   "sprite": 42063,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    224,
+    72
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012513,
+   "nombre": "Green Wolf",
+   "npc_type": 149,
+   "sprite": 42063,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    160,
+    163
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012514,
+   "nombre": "Green Wolf",
+   "npc_type": 149,
+   "sprite": 42063,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    206,
+    138
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012515,
+   "nombre": "Green Wolf",
+   "npc_type": 149,
+   "sprite": 42063,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    229,
+    142
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012516,
+   "nombre": "Green Wolf",
+   "npc_type": 149,
+   "sprite": 42063,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    193,
+    128
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012517,
+   "nombre": "Green Wolf",
+   "npc_type": 149,
+   "sprite": 42063,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    232,
+    151
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012518,
+   "nombre": "Green Wolf",
+   "npc_type": 149,
+   "sprite": 42063,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    216,
+    162
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012519,
+   "nombre": "Green Wolf",
+   "npc_type": 149,
+   "sprite": 42063,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    237,
+    156
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012520,
+   "nombre": "Green Wolf",
+   "npc_type": 149,
+   "sprite": 42063,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    193,
+    158
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012521,
+   "nombre": "Green Wolf",
+   "npc_type": 149,
+   "sprite": 42063,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    140,
+    169
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012522,
+   "nombre": "Green Wolf",
+   "npc_type": 149,
+   "sprite": 42063,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    201,
+    155
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012523,
+   "nombre": "Green Wolf",
+   "npc_type": 149,
+   "sprite": 42063,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    224,
+    142
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012524,
+   "nombre": "Green Wolf",
+   "npc_type": 149,
+   "sprite": 42063,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    195,
+    132
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012525,
+   "nombre": "Green Wolf",
+   "npc_type": 149,
+   "sprite": 42063,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    207,
+    158
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012526,
+   "nombre": "Green Wolf",
+   "npc_type": 149,
+   "sprite": 42063,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    212,
+    149
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012527,
+   "nombre": "Green Wolf",
+   "npc_type": 149,
+   "sprite": 42063,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    242,
+    165
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012528,
+   "nombre": "Green Wolf",
+   "npc_type": 149,
+   "sprite": 42063,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    80,
+    57
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012529,
+   "nombre": "Green Wolf",
+   "npc_type": 149,
+   "sprite": 42063,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    88,
+    77
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012530,
+   "nombre": "Green Wolf",
+   "npc_type": 149,
+   "sprite": 42063,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    61,
+    97
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012531,
+   "nombre": "Green Wolf",
+   "npc_type": 149,
+   "sprite": 42063,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    81,
+    71
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012532,
+   "nombre": "Green Wolf",
+   "npc_type": 149,
+   "sprite": 42063,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    74,
+    88
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012533,
+   "nombre": "Green Wolf",
+   "npc_type": 149,
+   "sprite": 42063,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    66,
+    79
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012534,
+   "nombre": "Green Wolf",
+   "npc_type": 149,
+   "sprite": 42063,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    92,
+    56
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012535,
+   "nombre": "Green Wolf",
+   "npc_type": 149,
+   "sprite": 42063,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    72,
+    52
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012536,
+   "nombre": "Green Wolf",
+   "npc_type": 149,
+   "sprite": 42063,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    48,
+    80
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012537,
+   "nombre": "Green Wolf",
+   "npc_type": 149,
+   "sprite": 42063,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    75,
+    87
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012538,
+   "nombre": "Green Wolf",
+   "npc_type": 149,
+   "sprite": 42063,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    84,
+    57
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012539,
+   "nombre": "Green Wolf",
+   "npc_type": 149,
+   "sprite": 42063,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    63,
+    84
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012540,
+   "nombre": "Green Wolf",
+   "npc_type": 149,
+   "sprite": 42063,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    91,
+    78
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012541,
+   "nombre": "Green Wolf",
+   "npc_type": 149,
+   "sprite": 42063,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    74,
+    57
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012542,
+   "nombre": "Green Wolf",
+   "npc_type": 149,
+   "sprite": 42063,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    97,
+    63
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1012543,
+   "nombre": "Tusk Boar",
+   "npc_type": 150,
+   "sprite": 42066,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    184,
+    118
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012544,
+   "nombre": "Tusk Boar",
+   "npc_type": 150,
+   "sprite": 42066,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    181,
+    99
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012545,
+   "nombre": "Tusk Boar",
+   "npc_type": 150,
+   "sprite": 42066,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    233,
+    128
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012546,
+   "nombre": "Tusk Boar",
+   "npc_type": 150,
+   "sprite": 42066,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    230,
+    86
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012547,
+   "nombre": "Tusk Boar",
+   "npc_type": 150,
+   "sprite": 42066,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    228,
+    94
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012548,
+   "nombre": "Tusk Boar",
+   "npc_type": 150,
+   "sprite": 42066,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    254,
+    99
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012549,
+   "nombre": "Tusk Boar",
+   "npc_type": 150,
+   "sprite": 42066,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    286,
+    112
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012550,
+   "nombre": "Tusk Boar",
+   "npc_type": 150,
+   "sprite": 42066,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    229,
+    123
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012551,
+   "nombre": "Tusk Boar",
+   "npc_type": 150,
+   "sprite": 42066,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    178,
+    87
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012552,
+   "nombre": "Tusk Boar",
+   "npc_type": 150,
+   "sprite": 42066,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    293,
+    107
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012553,
+   "nombre": "Tusk Boar",
+   "npc_type": 150,
+   "sprite": 42066,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    246,
+    113
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012554,
+   "nombre": "Tusk Boar",
+   "npc_type": 150,
+   "sprite": 42066,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    269,
+    106
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012555,
+   "nombre": "Tusk Boar",
+   "npc_type": 150,
+   "sprite": 42066,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    206,
+    75
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012556,
+   "nombre": "Tusk Boar",
+   "npc_type": 150,
+   "sprite": 42066,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    267,
+    108
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012557,
+   "nombre": "Tusk Boar",
+   "npc_type": 150,
+   "sprite": 42066,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    223,
+    120
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012558,
+   "nombre": "Tusk Boar",
+   "npc_type": 150,
+   "sprite": 42066,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    10,
+    111
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012559,
+   "nombre": "Tusk Boar",
+   "npc_type": 150,
+   "sprite": 42066,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    56,
+    109
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012560,
+   "nombre": "Tusk Boar",
+   "npc_type": 150,
+   "sprite": 42066,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    85
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012561,
+   "nombre": "Tusk Boar",
+   "npc_type": 150,
+   "sprite": 42066,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    60,
+    104
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012562,
+   "nombre": "Tusk Boar",
+   "npc_type": 150,
+   "sprite": 42066,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    43,
+    108
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012563,
+   "nombre": "Tusk Boar",
+   "npc_type": 150,
+   "sprite": 42066,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    42,
+    119
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012564,
+   "nombre": "Tusk Boar",
+   "npc_type": 150,
+   "sprite": 42066,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    12,
+    107
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012565,
+   "nombre": "Tusk Boar",
+   "npc_type": 150,
+   "sprite": 42066,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    67,
+    103
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012566,
+   "nombre": "Tusk Boar",
+   "npc_type": 150,
+   "sprite": 42066,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    63,
+    111
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012567,
+   "nombre": "Tusk Boar",
+   "npc_type": 150,
+   "sprite": 42066,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    42,
+    88
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012568,
+   "nombre": "Tusk Boar",
+   "npc_type": 150,
+   "sprite": 42066,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    38,
+    106
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012569,
+   "nombre": "Tusk Boar",
+   "npc_type": 150,
+   "sprite": 42066,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    59,
+    115
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012570,
+   "nombre": "Tusk Boar",
+   "npc_type": 150,
+   "sprite": 42066,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    47,
+    96
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012571,
+   "nombre": "Tusk Boar",
+   "npc_type": 150,
+   "sprite": 42066,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    15,
+    114
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012572,
+   "nombre": "Tusk Boar",
+   "npc_type": 150,
+   "sprite": 42066,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    64,
+    115
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012573,
+   "nombre": "Tusk Boar",
+   "npc_type": 150,
+   "sprite": 42066,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    155,
+    32
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012574,
+   "nombre": "Tusk Boar",
+   "npc_type": 150,
+   "sprite": 42066,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    125,
+    36
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012575,
+   "nombre": "Tusk Boar",
+   "npc_type": 150,
+   "sprite": 42066,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    119,
+    43
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012576,
+   "nombre": "Tusk Boar",
+   "npc_type": 150,
+   "sprite": 42066,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    114,
+    32
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012577,
+   "nombre": "Tusk Boar",
+   "npc_type": 150,
+   "sprite": 42066,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    137,
+    17
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012578,
+   "nombre": "Tusk Boar",
+   "npc_type": 150,
+   "sprite": 42066,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    115,
+    90
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012579,
+   "nombre": "Tusk Boar",
+   "npc_type": 150,
+   "sprite": 42066,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    114,
+    33
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012580,
+   "nombre": "Tusk Boar",
+   "npc_type": 150,
+   "sprite": 42066,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    122,
+    42
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012581,
+   "nombre": "Tusk Boar",
+   "npc_type": 150,
+   "sprite": 42066,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    155,
+    33
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012582,
+   "nombre": "Tusk Boar",
+   "npc_type": 150,
+   "sprite": 42066,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    118,
+    45
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012583,
+   "nombre": "Tusk Boar",
+   "npc_type": 150,
+   "sprite": 42066,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    123,
+    82
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012584,
+   "nombre": "Tusk Boar",
+   "npc_type": 150,
+   "sprite": 42066,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    139,
+    18
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012585,
+   "nombre": "Tusk Boar",
+   "npc_type": 150,
+   "sprite": 42066,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    149,
+    32
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012586,
+   "nombre": "Tusk Boar",
+   "npc_type": 150,
+   "sprite": 42066,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    129,
+    33
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012587,
+   "nombre": "Tusk Boar",
+   "npc_type": 150,
+   "sprite": 42066,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    121,
+    42
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 32
+  },
+  {
+   "entity_id": 1012588,
+   "nombre": "Plain Titan",
+   "npc_type": 151,
+   "sprite": 42167,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    235,
+    43
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012589,
+   "nombre": "Plain Titan",
+   "npc_type": 151,
+   "sprite": 42167,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    209,
+    31
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012590,
+   "nombre": "Plain Titan",
+   "npc_type": 151,
+   "sprite": 42167,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    280,
+    19
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012591,
+   "nombre": "Plain Titan",
+   "npc_type": 151,
+   "sprite": 42167,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    222,
+    50
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012592,
+   "nombre": "Plain Titan",
+   "npc_type": 151,
+   "sprite": 42167,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    276,
+    17
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012593,
+   "nombre": "Plain Titan",
+   "npc_type": 151,
+   "sprite": 42167,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    254,
+    46
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012594,
+   "nombre": "Plain Titan",
+   "npc_type": 151,
+   "sprite": 42167,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    184,
+    66
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012595,
+   "nombre": "Plain Titan",
+   "npc_type": 151,
+   "sprite": 42167,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    268,
+    28
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012596,
+   "nombre": "Plain Titan",
+   "npc_type": 151,
+   "sprite": 42167,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    286,
+    16
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012597,
+   "nombre": "Plain Titan",
+   "npc_type": 151,
+   "sprite": 42167,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    227,
+    52
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012598,
+   "nombre": "Plain Titan",
+   "npc_type": 151,
+   "sprite": 42167,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    114,
+    173
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012599,
+   "nombre": "Plain Titan",
+   "npc_type": 151,
+   "sprite": 42167,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    119,
+    132
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012600,
+   "nombre": "Plain Titan",
+   "npc_type": 151,
+   "sprite": 42167,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    135,
+    176
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012601,
+   "nombre": "Plain Titan",
+   "npc_type": 151,
+   "sprite": 42167,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    146,
+    155
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012602,
+   "nombre": "Plain Titan",
+   "npc_type": 151,
+   "sprite": 42167,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    121,
+    164
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012603,
+   "nombre": "Plain Titan",
+   "npc_type": 151,
+   "sprite": 42167,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    106,
+    172
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012604,
+   "nombre": "Plain Titan",
+   "npc_type": 151,
+   "sprite": 42167,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    101,
+    168
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012605,
+   "nombre": "Plain Titan",
+   "npc_type": 151,
+   "sprite": 42167,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    133,
+    176
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012606,
+   "nombre": "Plain Titan",
+   "npc_type": 151,
+   "sprite": 42167,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    117,
+    135
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012607,
+   "nombre": "Plain Titan",
+   "npc_type": 151,
+   "sprite": 42167,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    112,
+    171
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012608,
+   "nombre": "Plain Titan",
+   "npc_type": 151,
+   "sprite": 42167,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    200,
+    44
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012609,
+   "nombre": "Plain Titan",
+   "npc_type": 151,
+   "sprite": 42167,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    196,
+    27
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012610,
+   "nombre": "Plain Titan",
+   "npc_type": 151,
+   "sprite": 42167,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    218,
+    14
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012611,
+   "nombre": "Plain Titan",
+   "npc_type": 151,
+   "sprite": 42167,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    195,
+    10
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012612,
+   "nombre": "Plain Titan",
+   "npc_type": 151,
+   "sprite": 42167,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    201,
+    53
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012613,
+   "nombre": "Plain Titan",
+   "npc_type": 151,
+   "sprite": 42167,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    188,
+    80
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012614,
+   "nombre": "Plain Titan",
+   "npc_type": 151,
+   "sprite": 42167,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    220,
+    15
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012615,
+   "nombre": "Plain Titan",
+   "npc_type": 151,
+   "sprite": 42167,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    196,
+    13
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012616,
+   "nombre": "Plain Titan",
+   "npc_type": 151,
+   "sprite": 42167,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    234,
+    13
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012617,
+   "nombre": "Plain Titan",
+   "npc_type": 151,
+   "sprite": 42167,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    200,
+    22
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012618,
+   "nombre": "Green Wolf Tusk",
+   "npc_type": 152,
+   "sprite": 42169,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    222,
+    170
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  },
+  {
+   "entity_id": 1012619,
+   "nombre": "Mount Saby",
+   "npc_type": 153,
+   "sprite": 42170,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    13,
+    98
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 37
+  },
+  {
+   "entity_id": 1012620,
+   "nombre": "Giant Chief",
+   "npc_type": 154,
+   "sprite": 42168,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    240,
+    23
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 39
+  }
+ ],
+ "recursos": [
+  {
+   "entity_id": 101274,
+   "capa": 0,
+   "px": [
+    2118,
+    5171
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60010,
+   "cola": "00000000000000",
+   "nombre_visible": "Obsidian(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 101275,
+   "capa": 2,
+   "px": [
+    2109,
+    4893
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60010,
+   "cola": "00000000000000",
+   "nombre_visible": "Obsidian(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 101276,
+   "capa": 0,
+   "px": [
+    1948,
+    5253
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60010,
+   "cola": "00000000000000",
+   "nombre_visible": "Obsidian(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 101277,
+   "capa": 0,
+   "px": [
+    2798,
+    4967
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60010,
+   "cola": "00000000000000",
+   "nombre_visible": "Obsidian(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 101278,
+   "capa": 0,
+   "px": [
+    2405,
+    5085
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60010,
+   "cola": "00000000000000",
+   "nombre_visible": "Obsidian(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 101279,
+   "capa": 0,
+   "px": [
+    9231,
+    4495
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60118,
+   "cola": "00000000000000",
+   "material_posibles": [
+    "Beast Den(S)",
+    "Old Beast Den(S)",
+    "OldBeastDen(S)"
+   ],
+   "nombre_visible": "Bandit Den(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 101280,
+   "capa": 0,
+   "px": [
+    9315,
+    4386
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60118,
+   "cola": "00000000000000",
+   "material_posibles": [
+    "Beast Den(S)",
+    "Old Beast Den(S)",
+    "OldBeastDen(S)"
+   ],
+   "nombre_visible": "Bandit Den(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 101281,
+   "capa": 0,
+   "px": [
+    9042,
+    4660
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60118,
+   "cola": "00000000000000",
+   "material_posibles": [
+    "Beast Den(S)",
+    "Old Beast Den(S)",
+    "OldBeastDen(S)"
+   ],
+   "nombre_visible": "Bandit Den(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 101282,
+   "capa": 0,
+   "px": [
+    8992,
+    4762
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60118,
+   "cola": "00000000000000",
+   "material_posibles": [
+    "Beast Den(S)",
+    "Old Beast Den(S)",
+    "OldBeastDen(S)"
+   ],
+   "nombre_visible": "Bandit Den(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 101283,
+   "capa": 2,
+   "px": [
+    8743,
+    4550
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60118,
+   "cola": "00000000000000",
+   "material_posibles": [
+    "Beast Den(S)",
+    "Old Beast Den(S)",
+    "OldBeastDen(S)"
+   ],
+   "nombre_visible": "Bandit Den(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 101284,
+   "capa": 2,
+   "px": [
+    8600,
+    4463
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60118,
+   "cola": "00000000000000",
+   "material_posibles": [
+    "Beast Den(S)",
+    "Old Beast Den(S)",
+    "OldBeastDen(S)"
+   ],
+   "nombre_visible": "Bandit Den(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 101285,
+   "capa": 0,
+   "px": [
+    2866,
+    4959
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60011,
+   "cola": "00000000000000",
+   "nombre_visible": "Obsidian(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 101286,
+   "capa": 2,
+   "px": [
+    2657,
+    4985
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60011,
+   "cola": "00000000000000",
+   "nombre_visible": "Obsidian(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 101287,
+   "capa": 0,
+   "px": [
+    2048,
+    4924
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60011,
+   "cola": "00000000000000",
+   "nombre_visible": "Obsidian(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 101288,
+   "capa": 0,
+   "px": [
+    1903,
+    5301
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60011,
+   "cola": "00000000000000",
+   "nombre_visible": "Obsidian(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 101289,
+   "capa": 2,
+   "px": [
+    2108,
+    5230
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60011,
+   "cola": "00000000000000",
+   "nombre_visible": "Obsidian(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 101290,
+   "capa": 0,
+   "px": [
+    2032,
+    5271
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60012,
+   "cola": "00000000000000",
+   "material_posibles": [
+    "Big Tin",
+    "Tin (L)"
+   ],
+   "nombre_visible": "Obsidian(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 101291,
+   "capa": 2,
+   "px": [
+    2516,
+    5100
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60012,
+   "cola": "00000000000000",
+   "material_posibles": [
+    "Big Tin",
+    "Tin (L)"
+   ],
+   "nombre_visible": "Obsidian(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 101292,
+   "capa": 0,
+   "px": [
+    2590,
+    5033
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60012,
+   "cola": "00000000000000",
+   "material_posibles": [
+    "Big Tin",
+    "Tin (L)"
+   ],
+   "nombre_visible": "Obsidian(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 101293,
+   "capa": 0,
+   "px": [
+    1997,
+    4966
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60012,
+   "cola": "00000000000000",
+   "material_posibles": [
+    "Big Tin",
+    "Tin (L)"
+   ],
+   "nombre_visible": "Obsidian(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 101294,
+   "capa": 0,
+   "px": [
+    2950,
+    4932
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60012,
+   "cola": "00000000000000",
+   "material_posibles": [
+    "Big Tin",
+    "Tin (L)"
+   ],
+   "nombre_visible": "Obsidian(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 101295,
+   "capa": 0,
+   "px": [
+    466,
+    893
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60076,
+   "cola": "00000000000000",
+   "nombre_visible": "Meteor Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101296,
+   "capa": 0,
+   "px": [
+    680,
+    1063
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60076,
+   "cola": "00000000000000",
+   "nombre_visible": "Meteor Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101297,
+   "capa": 0,
+   "px": [
+    319,
+    784
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60077,
+   "cola": "00000000000000",
+   "material_posibles": [
+    "Crystal Alga(S)",
+    "CrystalAlga(S)"
+   ],
+   "nombre_visible": "Meteor Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101298,
+   "capa": 0,
+   "px": [
+    969,
+    1161
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60077,
+   "cola": "00000000000000",
+   "material_posibles": [
+    "Crystal Alga(S)",
+    "CrystalAlga(S)"
+   ],
+   "nombre_visible": "Meteor Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101299,
+   "capa": 0,
+   "px": [
+    829,
+    1156
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60076,
+   "cola": "00000000000000",
+   "nombre_visible": "Meteor Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101300,
+   "capa": 0,
+   "px": [
+    1038,
+    1170
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60189,
+   "cola": "00000000000000",
+   "nombre_visible": "Meteor Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101301,
+   "capa": 0,
+   "px": [
+    614,
+    961
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60190,
+   "cola": "00000000000000",
+   "nombre_visible": "Meteor Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101302,
+   "capa": 0,
+   "px": [
+    537,
+    947
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60106,
+   "cola": "00000000000000",
+   "material": "Wild Alga(M)",
+   "nombre_visible": "Meteor Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101303,
+   "capa": 0,
+   "px": [
+    661,
+    1048
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60106,
+   "cola": "00000000000000",
+   "material": "Wild Alga(M)",
+   "nombre_visible": "Meteor Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101304,
+   "capa": 0,
+   "px": [
+    550,
+    1133
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60105,
+   "cola": "00000000000000",
+   "material": "Wild Alga(S)",
+   "nombre_visible": "Meteor Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101305,
+   "capa": 0,
+   "px": [
+    540,
+    1002
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60107,
+   "cola": "00000000000000",
+   "material": "Wild Alga(L)",
+   "nombre_visible": "Meteor Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101306,
+   "capa": 0,
+   "px": [
+    922,
+    1219
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60107,
+   "cola": "00000000000000",
+   "material": "Wild Alga(L)",
+   "nombre_visible": "Meteor Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101307,
+   "capa": 0,
+   "px": [
+    747,
+    1190
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60107,
+   "cola": "00000000000000",
+   "material": "Wild Alga(L)",
+   "nombre_visible": "Meteor Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101308,
+   "capa": 0,
+   "px": [
+    904,
+    1160
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60106,
+   "cola": "00000000000000",
+   "material": "Wild Alga(M)",
+   "nombre_visible": "Meteor Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101309,
+   "capa": 0,
+   "px": [
+    4908,
+    1507
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60101,
+   "cola": "00000000000000",
+   "nombre_visible": "Viburnum(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 101310,
+   "capa": 0,
+   "px": [
+    5174,
+    1474
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60101,
+   "cola": "00000000000000",
+   "nombre_visible": "Viburnum(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 101311,
+   "capa": 2,
+   "px": [
+    5523,
+    1567
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60101,
+   "cola": "00000000000000",
+   "nombre_visible": "Viburnum(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 101312,
+   "capa": 0,
+   "px": [
+    5096,
+    1907
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60101,
+   "cola": "00000000000000",
+   "nombre_visible": "Viburnum(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 101313,
+   "capa": 2,
+   "px": [
+    4612,
+    1574
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60101,
+   "cola": "00000000000000",
+   "nombre_visible": "Viburnum(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 101314,
+   "capa": 0,
+   "px": [
+    5305,
+    1751
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60125,
+   "cola": "00000000000000",
+   "nombre_visible": "Viburnum(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 101315,
+   "capa": 2,
+   "px": [
+    5235,
+    1781
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60125,
+   "cola": "00000000000000",
+   "nombre_visible": "Viburnum(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 101316,
+   "capa": 0,
+   "px": [
+    5468,
+    1539
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60125,
+   "cola": "00000000000000",
+   "nombre_visible": "Viburnum(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 101317,
+   "capa": 0,
+   "px": [
+    5251,
+    1471
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60125,
+   "cola": "00000000000000",
+   "nombre_visible": "Viburnum(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 101318,
+   "capa": 2,
+   "px": [
+    4801,
+    1589
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60125,
+   "cola": "00000000000000",
+   "nombre_visible": "Viburnum(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 101319,
+   "capa": 0,
+   "px": [
+    5442,
+    1896
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60178,
+   "cola": "00000000000000",
+   "material_posibles": [
+    "Big Walnut",
+    "Walnut(L)"
+   ],
+   "nombre_visible": "Viburnum(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 101320,
+   "capa": 0,
+   "px": [
+    4732,
+    1624
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60178,
+   "cola": "00000000000000",
+   "material_posibles": [
+    "Big Walnut",
+    "Walnut(L)"
+   ],
+   "nombre_visible": "Viburnum(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 101321,
+   "capa": 2,
+   "px": [
+    5055,
+    1554
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60178,
+   "cola": "00000000000000",
+   "material_posibles": [
+    "Big Walnut",
+    "Walnut(L)"
+   ],
+   "nombre_visible": "Viburnum(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 101322,
+   "capa": 0,
+   "px": [
+    5549,
+    1404
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60178,
+   "cola": "00000000000000",
+   "material_posibles": [
+    "Big Walnut",
+    "Walnut(L)"
+   ],
+   "nombre_visible": "Viburnum(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 101323,
+   "capa": 0,
+   "px": [
+    5597,
+    1636
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60178,
+   "cola": "00000000000000",
+   "material_posibles": [
+    "Big Walnut",
+    "Walnut(L)"
+   ],
+   "nombre_visible": "Viburnum(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 101324,
+   "capa": 0,
+   "px": [
+    455,
+    4449
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60113,
+   "cola": "00000000000000",
+   "nombre_visible": "Bright Bush(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 101325,
+   "capa": 0,
+   "px": [
+    182,
+    4508
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60113,
+   "cola": "00000000000000",
+   "nombre_visible": "Bright Bush(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 101326,
+   "capa": 2,
+   "px": [
+    189,
+    4589
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60113,
+   "cola": "00000000000000",
+   "nombre_visible": "Bright Bush(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 101327,
+   "capa": 0,
+   "px": [
+    623,
+    4450
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60113,
+   "cola": "00000000000000",
+   "nombre_visible": "Bright Bush(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 101328,
+   "capa": 0,
+   "px": [
+    963,
+    4351
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60113,
+   "cola": "00000000000000",
+   "nombre_visible": "Bright Bush(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 101329,
+   "capa": 2,
+   "px": [
+    845,
+    4242
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60113,
+   "cola": "00000000000000",
+   "nombre_visible": "Bright Bush(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 101330,
+   "capa": 0,
+   "px": [
+    1211,
+    4342
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60113,
+   "cola": "00000000000000",
+   "nombre_visible": "Bright Bush(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 101331,
+   "capa": 2,
+   "px": [
+    1130,
+    4269
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60113,
+   "cola": "00000000000000",
+   "nombre_visible": "Bright Bush(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 101332,
+   "capa": 0,
+   "px": [
+    1070,
+    4133
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60113,
+   "cola": "00000000000000",
+   "nombre_visible": "Bright Bush(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 101333,
+   "capa": 0,
+   "px": [
+    225,
+    4140
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60113,
+   "cola": "00000000000000",
+   "nombre_visible": "Bright Bush(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 101334,
+   "capa": 0,
+   "px": [
+    9365,
+    5661
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 101335,
+   "capa": 0,
+   "px": [
+    350,
+    5738
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 101336,
+   "capa": 0,
+   "px": [
+    757,
+    123
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "que_es": "tornado (portal)"
+  }
+ ]
+}

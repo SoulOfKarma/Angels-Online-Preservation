@@ -1,0 +1,2301 @@
+{
+ "_nota": "Dragon Graveyard (stage 21), de una captura de Celestia del 23/09/2026. Seis tornados: es un nudo de la red de mapas, solo uno esta enlazado por ahora.",
+ "stage": 21,
+ "spawns": [
+  {
+   "entity_id": 121799,
+   "nombre": "Cupid",
+   "npc_type": 1502,
+   "sprite": 40006,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    256,
+    182
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 121800,
+   "nombre": "Super Smith",
+   "npc_type": 1934,
+   "sprite": 40075,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    274,
+    163
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 121801,
+   "nombre": "Super Master",
+   "npc_type": 1935,
+   "sprite": 40035,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    266,
+    147
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 121802,
+   "nombre": "Bow Expert",
+   "npc_type": 1933,
+   "sprite": 40160,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    242,
+    150
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 121803,
+   "nombre": "Weapon Expert",
+   "npc_type": 1932,
+   "sprite": 40158,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    240,
+    137
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 121804,
+   "nombre": "Earth Priest",
+   "npc_type": 1930,
+   "sprite": 40039,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    244,
+    180
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 121805,
+   "nombre": "Wraith Priest",
+   "npc_type": 1931,
+   "sprite": 40077,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    229,
+    166
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 121806,
+   "nombre": "Warrior Gegen",
+   "npc_type": 1975,
+   "sprite": 40032,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    291,
+    170
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 121807,
+   "nombre": "Paladin Gerison",
+   "npc_type": 1976,
+   "sprite": 40013,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    39,
+    172
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 121808,
+   "nombre": "Mad Mike",
+   "npc_type": 1977,
+   "sprite": 40017,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    244,
+    14
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 121809,
+   "nombre": "Angel Agent",
+   "npc_type": 2684,
+   "sprite": 40112,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    96,
+    145
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 121810,
+   "nombre": "Chef Boship",
+   "npc_type": 2097,
+   "sprite": 40064,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    158,
+    15
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 121811,
+   "nombre": "Terra Keeper",
+   "npc_type": 2087,
+   "sprite": 40049,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    152,
+    111
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 1011945,
+   "nombre": "Ancient Soldier",
+   "npc_type": 185,
+   "sprite": 42197,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    240,
+    64
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 39
+  },
+  {
+   "entity_id": 1011946,
+   "nombre": "Ancient Soldier",
+   "npc_type": 185,
+   "sprite": 42197,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    267,
+    30
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 39
+  },
+  {
+   "entity_id": 1011947,
+   "nombre": "Ancient Soldier",
+   "npc_type": 185,
+   "sprite": 42197,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    212,
+    49
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 39
+  },
+  {
+   "entity_id": 1011948,
+   "nombre": "Ancient Soldier",
+   "npc_type": 185,
+   "sprite": 42197,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    209,
+    59
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 39
+  },
+  {
+   "entity_id": 1011949,
+   "nombre": "Ancient Soldier",
+   "npc_type": 185,
+   "sprite": 42197,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    268,
+    37
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 39
+  },
+  {
+   "entity_id": 1011950,
+   "nombre": "Ancient Soldier",
+   "npc_type": 185,
+   "sprite": 42197,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    239,
+    32
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 39
+  },
+  {
+   "entity_id": 1011951,
+   "nombre": "Ancient Soldier",
+   "npc_type": 185,
+   "sprite": 42197,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    197,
+    88
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 39
+  },
+  {
+   "entity_id": 1011952,
+   "nombre": "Ancient Soldier",
+   "npc_type": 185,
+   "sprite": 42197,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    248,
+    24
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 39
+  },
+  {
+   "entity_id": 1011953,
+   "nombre": "Ancient Soldier",
+   "npc_type": 185,
+   "sprite": 42197,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    218,
+    46
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 39
+  },
+  {
+   "entity_id": 1011954,
+   "nombre": "Ancient Soldier",
+   "npc_type": 185,
+   "sprite": 42197,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    240,
+    38
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 39
+  },
+  {
+   "entity_id": 1011955,
+   "nombre": "Ancient Soldier",
+   "npc_type": 185,
+   "sprite": 42197,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    198,
+    17
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 39
+  },
+  {
+   "entity_id": 1011956,
+   "nombre": "Ancient Soldier",
+   "npc_type": 185,
+   "sprite": 42197,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    167,
+    42
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 39
+  },
+  {
+   "entity_id": 1011957,
+   "nombre": "Ancient Soldier",
+   "npc_type": 185,
+   "sprite": 42197,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    132,
+    68
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 39
+  },
+  {
+   "entity_id": 1011958,
+   "nombre": "Ancient Soldier",
+   "npc_type": 185,
+   "sprite": 42197,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    168,
+    59
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 39
+  },
+  {
+   "entity_id": 1011959,
+   "nombre": "Ancient Soldier",
+   "npc_type": 185,
+   "sprite": 42197,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    130,
+    21
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 39
+  },
+  {
+   "entity_id": 1011960,
+   "nombre": "Ancient Soldier",
+   "npc_type": 185,
+   "sprite": 42197,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    180,
+    18
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 39
+  },
+  {
+   "entity_id": 1011961,
+   "nombre": "Ancient Soldier",
+   "npc_type": 185,
+   "sprite": 42197,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    158,
+    39
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 39
+  },
+  {
+   "entity_id": 1011962,
+   "nombre": "Ancient Soldier",
+   "npc_type": 185,
+   "sprite": 42197,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    133,
+    23
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 39
+  },
+  {
+   "entity_id": 1011963,
+   "nombre": "Ancient Soldier",
+   "npc_type": 185,
+   "sprite": 42197,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    160,
+    56
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 39
+  },
+  {
+   "entity_id": 1011964,
+   "nombre": "Ancient Soldier",
+   "npc_type": 185,
+   "sprite": 42197,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    175,
+    28
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 39
+  },
+  {
+   "entity_id": 1011965,
+   "nombre": "Ancient Soldier",
+   "npc_type": 185,
+   "sprite": 42197,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    197,
+    103
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 39
+  },
+  {
+   "entity_id": 1011966,
+   "nombre": "Ancient Soldier",
+   "npc_type": 185,
+   "sprite": 42197,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    212,
+    77
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 39
+  },
+  {
+   "entity_id": 1011967,
+   "nombre": "Ancient Soldier",
+   "npc_type": 185,
+   "sprite": 42197,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    270,
+    94
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 39
+  },
+  {
+   "entity_id": 1011968,
+   "nombre": "Ancient Soldier",
+   "npc_type": 185,
+   "sprite": 42197,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    199,
+    94
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 39
+  },
+  {
+   "entity_id": 1011969,
+   "nombre": "Ancient Soldier",
+   "npc_type": 185,
+   "sprite": 42197,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    251,
+    99
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 39
+  },
+  {
+   "entity_id": 1011970,
+   "nombre": "Ancient Soldier",
+   "npc_type": 185,
+   "sprite": 42197,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    244,
+    106
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 39
+  },
+  {
+   "entity_id": 1011971,
+   "nombre": "Ancient Soldier",
+   "npc_type": 185,
+   "sprite": 42197,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    209,
+    76
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 39
+  },
+  {
+   "entity_id": 1011972,
+   "nombre": "Ancient Soldier",
+   "npc_type": 185,
+   "sprite": 42197,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    265,
+    95
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 39
+  },
+  {
+   "entity_id": 1011973,
+   "nombre": "Ancient Soldier",
+   "npc_type": 185,
+   "sprite": 42197,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    247,
+    100
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 39
+  },
+  {
+   "entity_id": 1011974,
+   "nombre": "Ancient Soldier",
+   "npc_type": 185,
+   "sprite": 42197,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    244,
+    107
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 39
+  },
+  {
+   "entity_id": 1011975,
+   "nombre": "Desert Cooer",
+   "npc_type": 186,
+   "sprite": 42199,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    184,
+    84
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 42
+  },
+  {
+   "entity_id": 1011976,
+   "nombre": "Desert Cooer",
+   "npc_type": 186,
+   "sprite": 42199,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    69,
+    120
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 42
+  },
+  {
+   "entity_id": 1011977,
+   "nombre": "Desert Cooer",
+   "npc_type": 186,
+   "sprite": 42199,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    119,
+    120
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 42
+  },
+  {
+   "entity_id": 1011978,
+   "nombre": "Desert Cooer",
+   "npc_type": 186,
+   "sprite": 42199,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    73,
+    114
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 42
+  },
+  {
+   "entity_id": 1011979,
+   "nombre": "Desert Cooer",
+   "npc_type": 186,
+   "sprite": 42199,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    170,
+    98
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 42
+  },
+  {
+   "entity_id": 1011980,
+   "nombre": "Desert Cooer",
+   "npc_type": 186,
+   "sprite": 42199,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    120,
+    134
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 42
+  },
+  {
+   "entity_id": 1011981,
+   "nombre": "Desert Cooer",
+   "npc_type": 186,
+   "sprite": 42199,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    109,
+    123
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 42
+  },
+  {
+   "entity_id": 1011982,
+   "nombre": "Desert Cooer",
+   "npc_type": 186,
+   "sprite": 42199,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    109,
+    129
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 42
+  },
+  {
+   "entity_id": 1011983,
+   "nombre": "Desert Cooer",
+   "npc_type": 186,
+   "sprite": 42199,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    186,
+    87
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 42
+  },
+  {
+   "entity_id": 1011984,
+   "nombre": "Desert Cooer",
+   "npc_type": 186,
+   "sprite": 42199,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    77,
+    117
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 42
+  },
+  {
+   "entity_id": 1011985,
+   "nombre": "Desert Cooer",
+   "npc_type": 186,
+   "sprite": 42199,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    109,
+    129
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 42
+  },
+  {
+   "entity_id": 1011986,
+   "nombre": "Desert Cooer",
+   "npc_type": 186,
+   "sprite": 42199,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    178,
+    95
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 42
+  },
+  {
+   "entity_id": 1011987,
+   "nombre": "Desert Cooer",
+   "npc_type": 186,
+   "sprite": 42199,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    105,
+    129
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 42
+  },
+  {
+   "entity_id": 1011988,
+   "nombre": "Desert Cooer",
+   "npc_type": 186,
+   "sprite": 42199,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    180,
+    88
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 42
+  },
+  {
+   "entity_id": 1011989,
+   "nombre": "Desert Cooer",
+   "npc_type": 186,
+   "sprite": 42199,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    196,
+    83
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 42
+  },
+  {
+   "entity_id": 1011990,
+   "nombre": "Desert Cooer",
+   "npc_type": 186,
+   "sprite": 42199,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    146,
+    131
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 42
+  },
+  {
+   "entity_id": 1011991,
+   "nombre": "Desert Cooer",
+   "npc_type": 186,
+   "sprite": 42199,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    142,
+    135
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 42
+  },
+  {
+   "entity_id": 1011992,
+   "nombre": "Desert Cooer",
+   "npc_type": 186,
+   "sprite": 42199,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    145,
+    139
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 42
+  },
+  {
+   "entity_id": 1011993,
+   "nombre": "Desert Cooer",
+   "npc_type": 186,
+   "sprite": 42199,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    100,
+    165
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 42
+  },
+  {
+   "entity_id": 1011994,
+   "nombre": "Desert Cooer",
+   "npc_type": 186,
+   "sprite": 42199,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    147,
+    148
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 42
+  },
+  {
+   "entity_id": 1011995,
+   "nombre": "Desert Cooer",
+   "npc_type": 186,
+   "sprite": 42199,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    144,
+    141
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 42
+  },
+  {
+   "entity_id": 1011996,
+   "nombre": "Desert Cooer",
+   "npc_type": 186,
+   "sprite": 42199,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    142,
+    137
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 42
+  },
+  {
+   "entity_id": 1011997,
+   "nombre": "Desert Cooer",
+   "npc_type": 186,
+   "sprite": 42199,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    150,
+    145
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 42
+  },
+  {
+   "entity_id": 1011998,
+   "nombre": "Desert Cooer",
+   "npc_type": 186,
+   "sprite": 42199,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    144,
+    140
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 42
+  },
+  {
+   "entity_id": 1011999,
+   "nombre": "Desert Cooer",
+   "npc_type": 186,
+   "sprite": 42199,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    163,
+    107
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 42
+  },
+  {
+   "entity_id": 1012000,
+   "nombre": "Desert Cooer",
+   "npc_type": 186,
+   "sprite": 42199,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    258,
+    128
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 42
+  },
+  {
+   "entity_id": 1012001,
+   "nombre": "Desert Cooer",
+   "npc_type": 186,
+   "sprite": 42199,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    265,
+    133
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 42
+  },
+  {
+   "entity_id": 1012002,
+   "nombre": "Desert Cooer",
+   "npc_type": 186,
+   "sprite": 42199,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    276,
+    130
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 42
+  },
+  {
+   "entity_id": 1012003,
+   "nombre": "Desert Cooer",
+   "npc_type": 186,
+   "sprite": 42199,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    284,
+    155
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 42
+  },
+  {
+   "entity_id": 1012004,
+   "nombre": "Desert Cooer",
+   "npc_type": 186,
+   "sprite": 42199,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    285,
+    126
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 42
+  },
+  {
+   "entity_id": 1012005,
+   "nombre": "Desert Cooer",
+   "npc_type": 186,
+   "sprite": 42199,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    278,
+    152
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 42
+  },
+  {
+   "entity_id": 1012006,
+   "nombre": "Desert Cooer",
+   "npc_type": 186,
+   "sprite": 42199,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    274,
+    145
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 42
+  },
+  {
+   "entity_id": 1012007,
+   "nombre": "Desert Cooer",
+   "npc_type": 186,
+   "sprite": 42199,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    275,
+    124
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 42
+  },
+  {
+   "entity_id": 1012008,
+   "nombre": "Desert Cooer",
+   "npc_type": 186,
+   "sprite": 42199,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    266,
+    137
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 42
+  },
+  {
+   "entity_id": 1012009,
+   "nombre": "Desert Cooer",
+   "npc_type": 186,
+   "sprite": 42199,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    280,
+    139
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 42
+  },
+  {
+   "entity_id": 1012010,
+   "nombre": "Hook Barft",
+   "npc_type": 187,
+   "sprite": 42045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    106,
+    33
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 44
+  },
+  {
+   "entity_id": 1012011,
+   "nombre": "Hook Barft",
+   "npc_type": 187,
+   "sprite": 42045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    118,
+    52
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 44
+  },
+  {
+   "entity_id": 1012012,
+   "nombre": "Hook Barft",
+   "npc_type": 187,
+   "sprite": 42045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    86,
+    64
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 44
+  },
+  {
+   "entity_id": 1012013,
+   "nombre": "Hook Barft",
+   "npc_type": 187,
+   "sprite": 42045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    92,
+    51
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 44
+  },
+  {
+   "entity_id": 1012014,
+   "nombre": "Hook Barft",
+   "npc_type": 187,
+   "sprite": 42045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    82,
+    54
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 44
+  },
+  {
+   "entity_id": 1012015,
+   "nombre": "Hook Barft",
+   "npc_type": 187,
+   "sprite": 42045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    105,
+    88
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 44
+  },
+  {
+   "entity_id": 1012016,
+   "nombre": "Hook Barft",
+   "npc_type": 187,
+   "sprite": 42045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    113,
+    10
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 44
+  },
+  {
+   "entity_id": 1012017,
+   "nombre": "Hook Barft",
+   "npc_type": 187,
+   "sprite": 42045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    94,
+    34
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 44
+  },
+  {
+   "entity_id": 1012018,
+   "nombre": "Hook Barft",
+   "npc_type": 187,
+   "sprite": 42045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    106,
+    55
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 44
+  },
+  {
+   "entity_id": 1012019,
+   "nombre": "Hook Barft",
+   "npc_type": 187,
+   "sprite": 42045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    113,
+    52
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 44
+  },
+  {
+   "entity_id": 1012020,
+   "nombre": "Hook Barft",
+   "npc_type": 187,
+   "sprite": 42045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    40,
+    84
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 44
+  },
+  {
+   "entity_id": 1012021,
+   "nombre": "Hook Barft",
+   "npc_type": 187,
+   "sprite": 42045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    22,
+    48
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 44
+  },
+  {
+   "entity_id": 1012022,
+   "nombre": "Hook Barft",
+   "npc_type": 187,
+   "sprite": 42045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    53,
+    100
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 44
+  },
+  {
+   "entity_id": 1012023,
+   "nombre": "Hook Barft",
+   "npc_type": 187,
+   "sprite": 42045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    50,
+    86
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 44
+  },
+  {
+   "entity_id": 1012024,
+   "nombre": "Hook Barft",
+   "npc_type": 187,
+   "sprite": 42045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    91,
+    130
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 44
+  },
+  {
+   "entity_id": 1012025,
+   "nombre": "Hook Barft",
+   "npc_type": 187,
+   "sprite": 42045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    70,
+    112
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 44
+  },
+  {
+   "entity_id": 1012026,
+   "nombre": "Hook Barft",
+   "npc_type": 187,
+   "sprite": 42045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    40,
+    72
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 44
+  },
+  {
+   "entity_id": 1012027,
+   "nombre": "Hook Barft",
+   "npc_type": 187,
+   "sprite": 42045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    41,
+    101
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 44
+  },
+  {
+   "entity_id": 1012028,
+   "nombre": "Hook Barft",
+   "npc_type": 187,
+   "sprite": 42045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    51,
+    83
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 44
+  },
+  {
+   "entity_id": 1012029,
+   "nombre": "Hook Barft",
+   "npc_type": 187,
+   "sprite": 42045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    33,
+    85
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 44
+  },
+  {
+   "entity_id": 1012030,
+   "nombre": "Hook Barft",
+   "npc_type": 187,
+   "sprite": 42045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    69,
+    159
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 44
+  },
+  {
+   "entity_id": 1012031,
+   "nombre": "Hook Barft",
+   "npc_type": 187,
+   "sprite": 42045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    21,
+    126
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 44
+  },
+  {
+   "entity_id": 1012032,
+   "nombre": "Hook Barft",
+   "npc_type": 187,
+   "sprite": 42045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    47,
+    136
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 44
+  },
+  {
+   "entity_id": 1012033,
+   "nombre": "Hook Barft",
+   "npc_type": 187,
+   "sprite": 42045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    53,
+    169
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 44
+  },
+  {
+   "entity_id": 1012034,
+   "nombre": "Hook Barft",
+   "npc_type": 187,
+   "sprite": 42045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    147
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 44
+  },
+  {
+   "entity_id": 1012035,
+   "nombre": "Hook Barft",
+   "npc_type": 187,
+   "sprite": 42045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    21,
+    142
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 44
+  },
+  {
+   "entity_id": 1012036,
+   "nombre": "Hook Barft",
+   "npc_type": 187,
+   "sprite": 42045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    27,
+    143
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 44
+  },
+  {
+   "entity_id": 1012037,
+   "nombre": "Hook Barft",
+   "npc_type": 187,
+   "sprite": 42045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    21,
+    125
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 44
+  },
+  {
+   "entity_id": 1012038,
+   "nombre": "Hook Barft",
+   "npc_type": 187,
+   "sprite": 42045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    37,
+    152
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 44
+  },
+  {
+   "entity_id": 1012039,
+   "nombre": "Hook Barft",
+   "npc_type": 187,
+   "sprite": 42045,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    51,
+    142
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 44
+  },
+  {
+   "entity_id": 1012040,
+   "nombre": "Silent Hero",
+   "npc_type": 188,
+   "sprite": 42198,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    285,
+    75
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 44
+  },
+  {
+   "entity_id": 1012041,
+   "nombre": "Death Cyclone",
+   "npc_type": 190,
+   "sprite": 42201,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    90,
+    7
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 49
+  }
+ ],
+ "recursos": [
+  {
+   "entity_id": 100985,
+   "capa": 0,
+   "px": [
+    7110,
+    4910
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60086,
+   "cola": "00000000000000",
+   "material_posibles": [
+    "Beastkin Den(S)",
+    "BeastkinDen(S)"
+   ],
+   "nombre_visible": "BeastkinDen(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 100986,
+   "capa": 2,
+   "px": [
+    6370,
+    4942
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60086,
+   "cola": "00000000000000",
+   "material_posibles": [
+    "Beastkin Den(S)",
+    "BeastkinDen(S)"
+   ],
+   "nombre_visible": "BeastkinDen(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 100987,
+   "capa": 0,
+   "px": [
+    6415,
+    4352
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60086,
+   "cola": "00000000000000",
+   "material_posibles": [
+    "Beastkin Den(S)",
+    "BeastkinDen(S)"
+   ],
+   "nombre_visible": "BeastkinDen(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 100988,
+   "capa": 2,
+   "px": [
+    6649,
+    4237
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60086,
+   "cola": "00000000000000",
+   "material_posibles": [
+    "Beastkin Den(S)",
+    "BeastkinDen(S)"
+   ],
+   "nombre_visible": "BeastkinDen(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 100989,
+   "capa": 0,
+   "px": [
+    6706,
+    4905
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60086,
+   "cola": "00000000000000",
+   "material_posibles": [
+    "Beastkin Den(S)",
+    "BeastkinDen(S)"
+   ],
+   "nombre_visible": "BeastkinDen(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 100990,
+   "capa": 0,
+   "px": [
+    6191,
+    4858
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60086,
+   "cola": "00000000000000",
+   "material_posibles": [
+    "Beastkin Den(S)",
+    "BeastkinDen(S)"
+   ],
+   "nombre_visible": "BeastkinDen(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 100991,
+   "capa": 0,
+   "px": [
+    1492,
+    762
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60110,
+   "cola": "00000000000000",
+   "material": "Copper(L)",
+   "nombre_visible": "Steel(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 100992,
+   "capa": 2,
+   "px": [
+    1402,
+    954
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60110,
+   "cola": "00000000000000",
+   "material": "Copper(L)",
+   "nombre_visible": "Steel(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 100993,
+   "capa": 2,
+   "px": [
+    1335,
+    596
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60110,
+   "cola": "00000000000000",
+   "material": "Copper(L)",
+   "nombre_visible": "Steel(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 100994,
+   "capa": 0,
+   "px": [
+    1730,
+    333
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60110,
+   "cola": "00000000000000",
+   "material": "Copper(L)",
+   "nombre_visible": "Steel(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 100995,
+   "capa": 0,
+   "px": [
+    1758,
+    565
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60110,
+   "cola": "00000000000000",
+   "material": "Copper(L)",
+   "nombre_visible": "Steel(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 100996,
+   "capa": 0,
+   "px": [
+    1230,
+    910
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60122,
+   "cola": "00000000000000",
+   "material": "Copper(M)",
+   "nombre_visible": "Steel(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 100997,
+   "capa": 0,
+   "px": [
+    1245,
+    710
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60122,
+   "cola": "00000000000000",
+   "material": "Copper(M)",
+   "nombre_visible": "Steel(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 100998,
+   "capa": 2,
+   "px": [
+    1774,
+    514
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60122,
+   "cola": "00000000000000",
+   "material": "Copper(M)",
+   "nombre_visible": "Steel(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 100999,
+   "capa": 0,
+   "px": [
+    1617,
+    328
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60122,
+   "cola": "00000000000000",
+   "material": "Copper(M)",
+   "nombre_visible": "Steel(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 101000,
+   "capa": 2,
+   "px": [
+    1940,
+    507
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60122,
+   "cola": "00000000000000",
+   "material": "Copper(M)",
+   "nombre_visible": "Steel(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 101001,
+   "capa": 0,
+   "px": [
+    1315,
+    921
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60158,
+   "cola": "00000000000000",
+   "material_posibles": [
+    "Big Copper",
+    "Copper (L)",
+    "Copper(S)"
+   ],
+   "nombre_visible": "Steel(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 101002,
+   "capa": 2,
+   "px": [
+    1559,
+    716
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60158,
+   "cola": "00000000000000",
+   "material_posibles": [
+    "Big Copper",
+    "Copper (L)",
+    "Copper(S)"
+   ],
+   "nombre_visible": "Steel(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 101003,
+   "capa": 0,
+   "px": [
+    1268,
+    635
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60158,
+   "cola": "00000000000000",
+   "material_posibles": [
+    "Big Copper",
+    "Copper (L)",
+    "Copper(S)"
+   ],
+   "nombre_visible": "Steel(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 101004,
+   "capa": 0,
+   "px": [
+    1844,
+    489
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60158,
+   "cola": "00000000000000",
+   "material_posibles": [
+    "Big Copper",
+    "Copper (L)",
+    "Copper(S)"
+   ],
+   "nombre_visible": "Steel(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 101005,
+   "capa": 2,
+   "px": [
+    1527,
+    354
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60158,
+   "cola": "00000000000000",
+   "material_posibles": [
+    "Big Copper",
+    "Copper (L)",
+    "Copper(S)"
+   ],
+   "nombre_visible": "Steel(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 101006,
+   "capa": 0,
+   "px": [
+    9440,
+    191
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 101007,
+   "capa": 0,
+   "px": [
+    5439,
+    5611
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 101008,
+   "capa": 0,
+   "px": [
+    303,
+    5716
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 101009,
+   "capa": 0,
+   "px": [
+    219,
+    1156
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 101010,
+   "capa": 0,
+   "px": [
+    8843,
+    5860
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 101011,
+   "capa": 0,
+   "px": [
+    3454,
+    3107
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 101012,
+   "capa": 2,
+   "px": [
+    4951,
+    544
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60069,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 101013,
+   "capa": 0,
+   "px": [
+    3322,
+    586
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60155,
+   "cola": "00004080140000"
+  },
+  {
+   "entity_id": 101014,
+   "capa": 0,
+   "px": [
+    4256,
+    2591
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60236,
+   "cola": "00004080110000"
+  },
+  {
+   "entity_id": 101015,
+   "capa": 0,
+   "px": [
+    5088,
+    3519
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60236,
+   "cola": "00004080110000"
+  },
+  {
+   "entity_id": 101016,
+   "capa": 0,
+   "px": [
+    4586,
+    3325
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60236,
+   "cola": "00004080110000"
+  },
+  {
+   "entity_id": 101017,
+   "capa": 0,
+   "px": [
+    5056,
+    3231
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60236,
+   "cola": "00004080110000"
+  },
+  {
+   "entity_id": 101018,
+   "capa": 0,
+   "px": [
+    4576,
+    3615
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60236,
+   "cola": "00004080110000"
+  },
+  {
+   "entity_id": 101019,
+   "capa": 0,
+   "px": [
+    5376,
+    3295
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60236,
+   "cola": "00004080110000"
+  },
+  {
+   "entity_id": 101020,
+   "capa": 0,
+   "px": [
+    4224,
+    3583
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60236,
+   "cola": "00004080110000"
+  },
+  {
+   "entity_id": 101021,
+   "capa": 0,
+   "px": [
+    5664,
+    3935
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60236,
+   "cola": "00004080110000"
+  },
+  {
+   "entity_id": 101022,
+   "capa": 0,
+   "px": [
+    4032,
+    2847
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60236,
+   "cola": "00004080110000"
+  },
+  {
+   "entity_id": 101023,
+   "capa": 0,
+   "px": [
+    5696,
+    4255
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60236,
+   "cola": "00004080110000"
+  }
+ ]
+}

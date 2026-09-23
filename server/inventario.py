@@ -46,6 +46,12 @@ RANURA_CUERPO = 2           # la unica ranura de equipo MEDIDA en el trafico
 # varias casillas y la mochila puede crecer. Nada de esto supone un tamano
 # maximo: el inventario es un diccionario de ranura a item.
 PRIMERA_RANURA_BOLSA = 20
+
+# El cliente reparte sus items en item, item2 ... item9, una por update.
+# Consultando solo `item`, todo lo que vino en un update posterior quedaba
+# como si no existiera: sin ranura, sin peso y sin bonos.
+TABLAS_ITEM = ('item', 'item2', 'item3', 'item4', 'item5', 'item6',
+               'item7', 'item8', 'item9')
 _P = None
 
 
@@ -62,7 +68,13 @@ def peso_de(item_id: int) -> int:
         if db.exists():
             try:
                 con = sqlite3.connect(db)
-                for iid, w in con.execute('select id, weight from item'):
+                filas = []
+                for _t in TABLAS_ITEM:
+                    try:
+                        filas += list(con.execute('select id, weight from %s' % _t))
+                    except Exception:
+                        continue
+                for iid, w in filas:
                     try:
                         _PESOS[int(iid)] = int(float(w or 0))
                     except (TypeError, ValueError):
@@ -209,9 +221,15 @@ def _bonus(item_id: int) -> dict:
         _BON = {}
         if db.exists():
             con = sqlite3.connect(db)
-            for i, d, ac, ag, av in con.execute(
-                    'select id, def, accuracy, agility, atk_avg from item '
-                    "where id glob '[0-9]*'"):
+            _filas_b = []
+            for _t in TABLAS_ITEM:
+                try:
+                    _filas_b += list(con.execute(
+                        'select id, def, accuracy, agility, atk_avg from %s '
+                        "where id glob '[0-9]*'" % _t))
+                except Exception:
+                    continue
+            for i, d, ac, ag, av in _filas_b:
                 # Algunos valores vienen con decimales en item.xml.
                 def _n(x):
                     try:
@@ -527,9 +545,15 @@ def _tabla():
         if db.exists():
             con = sqlite3.connect(db)
             campos = ','.join(f'"{c}"' for c in COLUMNAS_EQUIPO)
-            for fila in con.execute(
-                    f'select id,"耐久","物品類別",{campos} from item '
-                    "where id glob '[0-9]*'"):
+            _filas_e = []
+            for _t in TABLAS_ITEM:
+                try:
+                    _filas_e += list(con.execute(
+                        f'select id,"耐久","物品類別",{campos} from {_t} '
+                        "where id glob '[0-9]*'"))
+                except Exception:
+                    continue
+            for fila in _filas_e:
                 try:
                     d = int(fila[1]) if fila[1] else 0
                 except ValueError:
@@ -563,6 +587,56 @@ def es_mascota(item_id: int) -> bool:
 _SLOT_CACHE = None
 _PET_SPRITE_CACHE = {}
 
+def fila_item(con, columnas: str, item_id: int):
+    """Busca un item en TODAS las tablas de items, no solo en la primera.
+
+    El cliente reparte sus items en item, item2 ... item9, una por update.
+    Consultando solo `item`, cualquier cosa de un update posterior quedaba
+    como si no existiera: sin ranura, sin peso y sin bonos.
+    """
+    for tabla in TABLAS_ITEM:
+        try:
+            fila = con.execute(
+                'select %s from %s where id=?' % (columnas, tabla),
+                (str(item_id),)).fetchone()
+        except Exception:
+            continue
+        if fila:
+            return fila
+    return None
+
+
+_VEL_MONTURA = {}
+
+
+def velocidad_de_montura(item_id: int) -> int:
+    """El move_speed de una montura, en por ciento, o 0 si no lo es.
+
+    Medido en Celestia quitando y poniendo la montura al mismo personaje: a
+    pie 122, con la Earthy Piglet 226 y con la 40441 212. Las DOS declaran
+    move_speed=60, asi que con esta columna sola no salen esos numeros: lo que
+    aporta una montura depende de su propia instancia -- son mascotas con
+    nivel --, y eso no viaja en item.xml. Se usa el porcentaje porque es lo
+    unico que los datos del cliente sostienen; ver la nota de app.py.
+    """
+    if item_id in _VEL_MONTURA:
+        return _VEL_MONTURA[item_id]
+    v = 0
+    if ranura_equipo_de(item_id) == 10:
+        import sqlite3
+        db = pathlib.Path(__file__).parent.parent / 'corpus' / 'content.db'
+        if db.exists():
+            try:
+                con = sqlite3.connect(db)
+                fila = fila_item(con, 'move_speed', item_id)
+                if fila and fila[0]:
+                    v = int(float(fila[0]))
+            except Exception:
+                v = 0
+    _VEL_MONTURA[item_id] = v
+    return v
+
+
 def ranura_equipo_de(item_id: int):
     """Devuelve la ranura de equipamiento donde se coloca el item, o None si no es equipable."""
     global _SLOT_CACHE
@@ -573,13 +647,31 @@ def ranura_equipo_de(item_id: int):
         if db.exists():
             con = sqlite3.connect(db)
             campos = ','.join(f'"{c}"' for c in COLUMNAS_EQUIPO)
-            for fila in con.execute(
-                    f'select id,"物品類別",{campos} from item '
-                    "where id glob '[0-9]*'"):
+            # Los items estan repartidos en item, item2 ... item9, una por
+            # update del cliente. Mirando solo la primera, todo lo que vino
+            # en un update posterior quedaba sin ranura y no se podia
+            # equipar: la montura Galactic Moped, por ejemplo, vive en item5.
+            filas = []
+            for _tabla in ('item', 'item2', 'item3', 'item4', 'item5',
+                           'item6', 'item7', 'item8', 'item9'):
+                try:
+                    filas += list(con.execute(
+                        f'select id,"物品類別",{campos} from {_tabla} '
+                        "where id glob '[0-9]*'"))
+                except Exception:
+                    continue
+            for fila in filas:
                 iid = int(fila[0])
                 cat = fila[1]
                 rhand, lhand, head, acc, body, hands, feet, back, pet = [v == '是' for v in fila[2:]]
-                if cat == '寵物' or pet:
+                # Las MONTURAS van a la ranura 10, no a la 9. Medido: el
+                # cliente manda 0x0012 con origen 41 y destino 10 al subirse
+                # a una, y el servidor contesta con el acuse de la 10.
+                # Mandandolas a la 9, que es la de mascota, en vez de montar
+                # se invocaba un bicho al lado.
+                if cat == '座騎':
+                    _SLOT_CACHE[iid] = 10
+                elif cat == '寵物' or pet:
                     _SLOT_CACHE[iid] = 9
                 elif rhand:
                     _SLOT_CACHE[iid] = 3
@@ -614,7 +706,7 @@ def es_arma_dos_manos(item_id: int) -> bool:
     if db.exists():
         try:
             con = sqlite3.connect(db)
-            row = con.execute('select "物品類別" from item where id=?', (str(item_id),)).fetchone()
+            row = fila_item(con, '"物品類別"', item_id)
             if row and row[0]:
                 cat = str(row[0])
                 res = any(k in cat for k in ('槍', '弓', '雙手'))
@@ -636,7 +728,7 @@ def sprite_de_mascota(item_id: int) -> int:
     if db.exists():
         try:
             con = sqlite3.connect(db)
-            row = con.execute('select "動態資料1" from item where id=?', (str(item_id),)).fetchone()
+            row = fila_item(con, '"動態資料1"', item_id)
             if row and row[0]:
                 pet_id = str(row[0]).strip()
                 import xml.etree.ElementTree as ET
@@ -673,7 +765,7 @@ def recompensas_caja(item_id: int):
         return None
     try:
         con = sqlite3.connect(db)
-        row = con.execute('select "動態資料1", "物品類別", "基本名稱" from item where id=?', (str(item_id),)).fetchone()
+        row = fila_item(con, '"動態資料1", "物品類別", "基本名稱"', item_id)
         if not row:
             return None
         drop_id = str(row[0]).strip() if row[0] else None
@@ -891,7 +983,7 @@ def efecto_consumible(item_id: int):
         return None
     try:
         con = sqlite3.connect(db)
-        row = con.execute('select "動態資料1", "常駐法術", "物品類別", "基本名稱", "說明" from item where id=?', (str(item_id),)).fetchone()
+        row = fila_item(con, '"動態資料1", "常駐法術", "物品類別", "基本名稱", "說明"', item_id)
         if not row:
             return None
         d1, mid, cat, name, desc = str(row[0] or ''), str(row[1] or ''), str(row[2] or ''), str(row[3] or ''), str(row[4] or '')
@@ -933,7 +1025,7 @@ def es_tarjeta_coleccion(item_id: int) -> bool:
         return False
     try:
         con = sqlite3.connect(db)
-        r = con.execute('select "物品類別", "基本名稱" from item where id=?', (str(item_id),)).fetchone()
+        r = fila_item(con, '"物品類別", "基本名稱"', item_id)
         if r:
             return r[0] == '卡片' or 'Card' in str(r[1] or '')
         return False

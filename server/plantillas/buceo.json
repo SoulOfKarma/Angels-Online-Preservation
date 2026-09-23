@@ -1,0 +1,114 @@
+{
+ "_nota": "El buceo NO es un portal mas: es una PUERTA CON ESTADO. Los mapas submarinos solo dejan pasar si el personaje ya aprendio la habilidad, y eso se aprende hablando una vez con un entrenador. Hay dos niveles, cada uno con su entrenador y su conjunto de mapas. Los textos y los ids de dialogo estan MEDIDOS en la captura de Celestia del 23/09/2026 (sesion mundo_165638) y cruzados con msg.xml del cliente, que da el texto exacto. Los dos flags hay que guardarlos en el personaje, como se hizo con hablo_michael.",
+ "niveles": [
+  {
+   "flag": "buceo_costero",
+   "habilidad": "Neritic Diving Skill",
+   "entrenador": "DivingCoach Nira",
+   "npc_type_candidatos": [
+    2166,
+    2183
+   ],
+   "sprite": 40181,
+   "mapa": "Golden Beach",
+   "stage": 86,
+   "tile": [
+    233,
+    41
+   ],
+   "retrato": 181,
+   "abre": [
+    {
+     "mapa": "Colorful Coral Reefs",
+     "stage": 85
+    }
+   ],
+   "guion": {
+    "aviso_cartel": 70141,
+    "pregunta": 70415,
+    "opciones": [
+     70416,
+     70417
+    ],
+    "acciones": [
+     "0x0f4253",
+     "0x00000000"
+    ],
+    "al_aceptar": [
+     70418,
+     70419
+    ],
+    "al_terminar": [
+     70420,
+     70421
+    ]
+   },
+   "textos": {
+    "70141": "At the end of the beach is a shallow sea area. But you cannot go much further unless you are good at diving... You'd better learn basic Diving Skills from a [Diving Trainer]! A trainer called [Nila] was seen on the [Golden Beach] not long ago. Go and see!",
+    "70415": "I am Basic Diving Coach Nira in charge of training adventurers. Have you come here to learn the [Diving Skill]?",
+    "70416": "Yes!",
+    "70417": "No!",
+    "70418": "No problem, let's begin our lessons! Come on!",
+    "70419": "After several hours of hard training, you have finally learned the [Neritic Diving Skill]!",
+    "70420": "Great! Your learning ability and physical strength are both excellent. From now on, you can [feel safe in shallow sea.]",
+    "70421": "Your learning ability is strong. You are now able to feel safe in shallow sea. I cannot teach you any more. If you want to learn Abyssal Diving Skill, why not find my brother [Dipsey Hunter] in the [Blue Sea]."
+   },
+   "_medido": "Los siete ids salen de la captura; los textos, de msg.xml. El 70421 es el que sale cuando YA se tiene la habilidad: es el de 'no te puedo ensenar mas'. El 70420 es el de recien aprendida."
+  },
+  {
+   "flag": "buceo_abisal",
+   "habilidad": "Abyssal Diving Skill",
+   "entrenador": "Dipsey Hunter",
+   "npc_type_candidatos": [
+    2185
+   ],
+   "sprite": 40106,
+   "mapa": "Blue Sea",
+   "stage": 84,
+   "tile": [
+    124,
+    38
+   ],
+   "abre": [],
+   "guion": {
+    "pregunta": 70613,
+    "opciones": [
+     70614,
+     70615
+    ],
+    "acciones": [
+     "0x0f424b",
+     "0x0f424c"
+    ],
+    "al_aceptar": [
+     70617,
+     70618
+    ],
+    "al_terminar": [
+     70619,
+     70620
+    ],
+    "al_rechazar": [
+     70616
+    ],
+    "si_ya_la_tiene": [
+     70621
+    ]
+   },
+   "_medido": "Los ids salen de la captura (sesion mundo_170542) y los textos de msg.xml. El 70615 es la rama de RECHAZO y lleva al 70616, que te echa. El 70621 sale cuando ya tienes la habilidad. Todavia no se sabe que mapas abre este segundo nivel.",
+   "retrato": 181,
+   "textos": {
+    "70613": "Well done, dude! You must have learned Diving Skill from my younger brother so you can dive here using simple equipment. The stance and tools are similar too.",
+    "70614": "I want to learn the Abyssal Diving Skill.",
+    "70615": "You don't need to know who I learned from.",
+    "70616": "Hey man, I gave you such a warm greeting. But your cool response really cut me. ... Just go away, and don't bother me again.",
+    "70617": "What! You wanna be extreme too! Great! Since you have interest and are my brother's student, I will give you the real no holds barred training. ...",
+    "70618": "After half-day of exhaustive training, you have learned all of the Diving Skills from Dipsey Hunter",
+    "70619": "Dude, you were totally born to dive! There's nothing more I can teach you. ... Now dive down deep in the ocean and see what she is hiding down there.",
+    "70620": "(igual que el 70619)",
+    "70621": "Gee, you have mastered all of the Abyssal Diving Skills. Why didn't you tell me earlier. I guess it doesn't really matter. You need to pay me now."
+   }
+  }
+ ],
+ "pendiente": "El usuario dijo que hay TRES mapas que obligan a bajar; de momento solo tenemos Colorful Coral Reefs (85). Faltan los otros dos y el segundo nivel entero."
+}

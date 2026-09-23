@@ -1,0 +1,117 @@
+{
+ "_nota": "Equipo (party) y lista de amigos, medidos el 23/09/2026 con DOS cuentas a la vez en Celestia. Los nombres de personaje van como <A> (quien invita, lider) y <B> (el invitado). Todo lo de aqui sale de los bytes; lo que no se pudo confirmar esta marcado como suposicion.",
+ "equipo": {
+  "_flujo_medido": [
+   "c2s 0x0019  <A> busca a <B> por nombre",
+   "s2c 0x002A  a <A>: la invitacion queda pendiente",
+   "s2c 0x0029  a <B>: le salta el aviso de invitacion",
+   "c2s 0x001B  <B> responde",
+   "s2c 0x002A  a <B>: los datos de <A>",
+   "s2c 0x0023  a <B>",
+   "c2s 0x0017  <A> manda la invitacion de equipo",
+   "c2s 0x0018  <B> acepta",
+   "s2c 0x0024  a los dos: el equipo entero",
+   "s2c 0x0025  un miembro anadido, uno por cada integrante",
+   "s2c 0x0124  aviso de estado del miembro",
+   "s2c 0x0026  cada ~3 s: donde esta y como esta cada miembro"
+  ],
+  "0x0019": {
+   "c2s": true,
+   "largo": 21,
+   "formato": "[nombre asciiz][nombre de servidor asciiz][relleno]",
+   "_que_es": "Invitacion escribiendo el nombre en el panel Team."
+  },
+  "0x0017": {
+   "c2s": true,
+   "largo": 18,
+   "formato": "[nombre asciiz][u16 0][u16 x][u16 0][u16 y][u8 0][u8 MODO]",
+   "_que_es": "Invitar a equipo desde el menu del boton derecho.",
+   "modo": {
+    "0": "share  -- exp, oro y botin se reparten entre todos",
+    "1": "alone  -- se lo queda quien lo consigue"
+   },
+   "_medido": "El ULTIMO BYTE del paquete es el modo, y esta confirmado con un lote que el usuario etiqueto a ciegas: mando cuatro invitaciones seguidas, las dos primeras en [share] y las dos ultimas en [alone], y los bytes salieron 0,0,1,1. Corte limpio.\nOJO AL ORDENAR LAS CAPTURAS: con dos cuentas las sesiones se SOLAPAN, asi que el orden por fecha de fichero o por el reloj interno de cada sesion enganya. Hay que sumar la hora del nombre del fichero al t de cada linea. Ordenando mal, estas mismas cuatro invitaciones parecian no cuadrar.\nLos dos numeros centrales cambian en cada invitacion aunque sea al mismo jugador y en el mismo modo: por el rango son coordenadas en pixeles, seguramente de donde se pincho. No hacen falta para nada."
+  },
+  "0x0018": {
+   "c2s": true,
+   "largo": 5,
+   "formato": "[u8 subcomando][u32 argumento]",
+   "subcomandos": {
+    "1": "aceptar la invitacion (arg 0)",
+    "2": "expulsar (arg = char del expulsado)",
+    "3": "pasar el liderazgo (arg = char del nuevo lider)",
+    "4": "salir del equipo (arg 0)"
+   },
+   "_medido": "El 3 esta confirmado por su efecto: despues de mandarlo, el ultimo byte del 0x0124 de los dos miembros se INTERCAMBIA (0<->1), o sea que ese byte es quien es el lider."
+  },
+  "0x0024": {
+   "s2c": true,
+   "largo": "88 con 1 miembro, 166 con 2",
+   "formato": "[u32 id_equipo][u8 0][u32 lider][u8 n_miembros] + n x [u32 char][...][nombre 16]",
+   "_medido": "COMPROBADO: dos equipos distintos de dos miembros son iguales byte a byte SALVO el id del equipo (offset 0). O sea que el modo de reparto NO viaja aqui."
+  },
+  "0x0025": {
+   "s2c": true,
+   "largo": "26 con nombre, 9 sin el",
+   "formato": "[u8 subcomando][u32 id_equipo][u32 char][nombre 16]",
+   "subcomandos": {
+    "1": "miembro anadido",
+    "2": "miembro expulsado (nombre en blanco)",
+    "3": "liderazgo cambiado",
+    "4": "miembro se ha ido",
+    "5": "equipo disuelto (9 bytes, sin miembro)"
+   },
+   "_medido": "Al irse uno de los dos miembros llega el 4 y justo detras el 5: con uno solo el equipo se disuelve."
+  },
+  "0x0026": {
+   "s2c": true,
+   "largo": 78,
+   "cada": "~3 segundos",
+   "formato": "[u32 entidad][u32 char][nombre 16][u8 0][u32 STAGE][u16 tile_x][u16 tile_y][u8 vida %]",
+   "_medido": "COMPROBADO POR TRES CAMINOS: los stage salen 29 (Breeze Woods) y 90 (Blue Ocean), que son mapas reales; el tile (286,19) coincide con el minimapa de la captura de pantalla; y el porcentaje sube 52-55-64-73-79-82-88-97-100, que es la regeneracion de vida. Es lo que alimenta las barras del panel de equipo.",
+   "_ojo": "el campo del nombre ocupa 17 bytes (8..24), no 16: el offset 24 es un cero de relleno y el stage empieza en el 25. Leyendolo como 16 salian stages imposibles tipo 7424."
+  },
+  "0x0029": {
+   "s2c": true,
+   "largo": 23,
+   "formato": "[u32 quien_invita][u16 0][nombre 10][u32 quien_invita][u32 invitado]",
+   "_que_es": "el aviso de invitacion que le sale al invitado"
+  },
+  "0x002A": {
+   "s2c": true,
+   "largo": 84,
+   "formato": "[u32 yo][u16 0][u32 el_otro][relleno][nombre del otro][...]"
+  },
+  "0x0023": {
+   "s2c": true,
+   "largo": 22,
+   "_que_es": "sin identificar"
+  },
+  "_dos_formas_de_invitar": "Hay DOS caminos y cada uno usa su opcode: el 0x0017 sale del menu del boton derecho sobre el jugador, y el 0x0019 del panel Team, donde se escribe el nombre a mano (su cola lleva el nombre del servidor, \"r064.SHP\"). El menu del boton derecho ofrece \"Team up [share]\" y \"Team up [alone]\" como dos entradas distintas, asi que EL MODO SE ELIGE AL INVITAR, no despues."
+ },
+ "amigos": {
+  "0x0122": {
+   "c2s": "[u32 0][u8 6]  -- el 6 es el subcomando 'dame la lista'",
+   "s2c_vacia": "[u32 yo][u8 6][u16 0]  -- cero amigos",
+   "s2c_con_uno": "[u32 yo][u8 6][u16 n] + n x entrada",
+   "entrada": "[u8 0x63][u8 0][u16 char_id][u8 1 = conectado?][...][u32 sello de tiempo][nombre]",
+   "_medido": "el u16 del offset 9 sale 286, que es el char_id del amigo: eso si esta confirmado. El 0x63 y el 0xa4 de mas adelante NO se sabe que son; el nivel del amigo es 221 y no aparece ninguno de los dos, asi que el panel de detalle (genero, nivel, faccion, trabajo, rango) NO viene en este mensaje y debe pedirse aparte al pinchar."
+  },
+  "0x0124": {
+   "s2c": true,
+   "largo": 36,
+   "formato": "[u32 entidad][u16 0][u8 4][u32 id_equipo][u8 0x0e][nombre 16][...][u32 entidad][u8 1][u8 0][u8 indice]",
+   "_que_es": "llega junto con los mensajes de equipo, no al anadir un amigo. El ultimo byte vale 0 para el lider y 1 para el otro miembro, asi que parece el indice dentro del equipo. SUPOSICION."
+  }
+ },
+ "pendiente": [
+  "El panel de detalle del amigo (nivel, faccion, trabajo, rango, cumpleanos) no esta en el 0x0122: falta el mensaje que lo pide al pinchar.",
+  "El 0x0023 sigue sin identificar; llega antes de cada aceptacion.",
+  "Los campos 0x63 y 0xa4 de la entrada de amigo, sin identificar."
+ ],
+ "0x0126": {
+  "s2c": true,
+  "largo": 94,
+  "_que_es": "Anuncio de logro al canal: el texto trae \"Player <nombre> has completed Achievement ...\". Es el mismo que se ve en el chat general."
+ }
+}

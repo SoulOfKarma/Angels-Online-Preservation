@@ -1,0 +1,148 @@
+{
+ "_nota": "Instancias (Lost Region). Capturado en Celestia el 23/09/2026 desde Blue Ocean (stage 90). NO se pudo entrar: el servidor respondio que no. Aun asi el dialogo, los dos modos y los mensajes de rechazo quedaron medidos.",
+ "entrada": {
+  "mapa": "Blue Ocean",
+  "stage": 90,
+  "dialogo": 65385,
+  "retrato": 0,
+  "opciones": [
+   65386,
+   65387
+  ],
+  "acciones": [
+   "0x0f4274",
+   "0x0f4275"
+  ],
+  "textos": {
+   "65385": "Noises of fighting come from the front. You have gotten very close to the Lost Region.",
+   "65386": "I want to enter the Lost Region",
+   "65387": "I want to enter the Horrible Lost Region",
+   "65388": "Not enough Mile points"
+  },
+  "_que_significa": "Son los DOS MODOS de la instancia: la normal y la Horrible, que es la version dura. El 65388 no llego a salir, pero estando en la misma tanda de mensajes dice que la entrada CUESTA Mile points: hay un requisito de moneda ademas del de equipo."
+ },
+ "rechazos": {
+  "1889": "You are not in a team or the instance server is full.",
+  "837": "You are not in a team in the map. You will return to the renascence place after %s seconds.",
+  "_donde": "string.xml del cliente, no msg.xml: el texto NO viaja por la red, solo su id.",
+  "_medido": "El 1889 es el que contesto Celestia al elegir la primera opcion, con el jugador EN EQUIPO de dos. O sea que en ESE servidor la instancia no esta levantada, no que faltara el equipo. El 837 no se llego a ver, pero cuenta lo que pasa DENTRO: si te quedas sin equipo en el mapa, la instancia te devuelve al punto de resurreccion pasados unos segundos; esa es la regla de salida forzosa."
+ },
+ "pendiente": [
+  "LAS POSICIONES Y LAS CANTIDADES. Es lo unico que no hay forma de sacar sin entrar: el cliente no asocia monstruos a mapas (monster.xml solo tiene estadisticas) y la wiki describe las zonas pero NO da coordenadas. Quien aparece donde lo decide el servidor y llega en el 0x0008.",
+  "Cuantos Mile points cuesta entrar y de donde salen.",
+  "El camino de salida al terminar la instancia.",
+  "Los objetos de mapa y los tornados de dentro."
+ ],
+ "mapas": {
+  "98": {
+   "nombre": "Lost Region",
+   "fichero": "map\\map098.mpc"
+  },
+  "101": {
+   "nombre": "Horrible Lost Region",
+   "fichero": "map\\map101.mpc"
+  }
+ },
+ "banderas_de_stage": {
+  "no_mostrar_minimapa": true,
+  "no_marcable": true,
+  "espacio_paralelo": 15,
+  "espacio_dinamico": true,
+  "tipo_de_asignacion": "por equipo (隊伍)",
+  "_que_explica": "Que la instancia no salga en el minimapa es COSA DEL CLIENTE: lo dice stage.xml, no hay que reproducir nada. Blue Ocean, el mapa de al lado, no lleva ninguna de las tres banderas. El 15 del espacio paralelo parece ser cuantas copias simultaneas admite, lo que encaja con el rechazo \"or the instance server is full\". El \"por equipo\" confirma la regla de entrada desde los datos, no solo desde el mensaje de error."
+ },
+ "bestiario": {
+  "_fuente": "Wiki local (bestiary_by-area.html), CRUZADA con monster.xml del cliente: nivel, HP y exp coinciden en las ocho, y sus npc_type salen consecutivos del 1249 al 1256, que es el bloque de Lost Region. Eso da confianza en la lista.",
+  "lost_region_normales": [
+   {
+    "nombre": "Linberd Sender",
+    "npc_type": 1249,
+    "nivel": 77,
+    "hp": 6090
+   },
+   {
+    "nombre": "Angel Fishguard",
+    "npc_type": 1250,
+    "nivel": 82,
+    "hp": 6538
+   },
+   {
+    "nombre": "Merman Guard",
+    "npc_type": 1251,
+    "nivel": 84,
+    "hp": 6720
+   },
+   {
+    "nombre": "Mermaid",
+    "npc_type": 1252,
+    "nivel": 87,
+    "hp": 6996
+   },
+   {
+    "nombre": "Fishguard Leader",
+    "npc_type": 1253,
+    "nivel": 87,
+    "hp": 6996
+   },
+   {
+    "nombre": "Mermaid Hunter",
+    "npc_type": 1254,
+    "nivel": 93,
+    "hp": 7556
+   },
+   {
+    "nombre": "Slip Angel Fish",
+    "npc_type": 1255,
+    "nivel": 93,
+    "hp": 7556
+   },
+   {
+    "nombre": "Linberd Captain",
+    "npc_type": 1256,
+    "nivel": 94,
+    "hp": 7650
+   }
+  ],
+  "lost_region_jefes": [
+   {
+    "nombre": "Hicalu Machine",
+    "npc_type": 1391,
+    "nivel": 85,
+    "hp": 33311
+   },
+   {
+    "nombre": "Hicalu Machine",
+    "npc_type": 1257,
+    "nivel": 95,
+    "hp": 60232
+   },
+   {
+    "nombre": "Hicalu 1",
+    "npc_type": 1228,
+    "nivel": 100,
+    "hp": 91944
+   }
+  ],
+  "horrible_lost_region_jefes": [
+   {
+    "nombre": "Hicalu Machine",
+    "npc_type": 3521,
+    "nivel": 85,
+    "hp": 149900
+   },
+   {
+    "nombre": "Hicalu Machine",
+    "npc_type": 3522,
+    "nivel": 95,
+    "hp": 170888
+   },
+   {
+    "nombre": "Hicalu 1",
+    "npc_type": 3523,
+    "nivel": 100,
+    "hp": 185022
+   }
+  ],
+  "_ojo": "Hay TRES \"Hicalu Machine\" con el mismo nombre y npc_type distinto, y la version Horrible usa otros tres ids (3521-3523) con cinco veces mas HP. Buscar por nombre daria el equivocado: hay que ir por npc_type."
+ }
+}

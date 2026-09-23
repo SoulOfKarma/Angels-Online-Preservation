@@ -1,0 +1,6095 @@
+{
+ "_nota": "Blue Ocean (stage 90), de dos capturas de Celestia del 23/09/2026.",
+ "stage": 90,
+ "spawns": [
+  {
+   "entity_id": 30112,
+   "nombre": "Aurora Totem",
+   "npc_type": 1937,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    218,
+    169
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 30113,
+   "nombre": "Dark City Totem",
+   "npc_type": 1938,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    200,
+    164
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 30114,
+   "nombre": "Iron Totem",
+   "npc_type": 1939,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    204,
+    172
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 30115,
+   "nombre": "Breeze Totem",
+   "npc_type": 1940,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    186,
+    167
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 122408,
+   "nombre": "Cupid",
+   "npc_type": 1862,
+   "sprite": 40006,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    184,
+    153
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122409,
+   "nombre": "Scholar Lubo",
+   "npc_type": 2186,
+   "sprite": 40056,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    191,
+    171
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122410,
+   "nombre": "Watt. Lightening",
+   "npc_type": 2247,
+   "sprite": 40009,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    44,
+    93
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122411,
+   "nombre": "Skill Researcher",
+   "npc_type": 2295,
+   "sprite": 40108,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    167,
+    151
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122412,
+   "nombre": "Spell Researcher",
+   "npc_type": 2294,
+   "sprite": 40158,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    178,
+    155
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 1019142,
+   "nombre": "Octopus Scholar",
+   "npc_type": 1193,
+   "sprite": 42427,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    66,
+    82
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 82
+  },
+  {
+   "entity_id": 1019143,
+   "nombre": "Octopus Scholar",
+   "npc_type": 1193,
+   "sprite": 42427,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    16,
+    116
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 82
+  },
+  {
+   "entity_id": 1019144,
+   "nombre": "Octopus Scholar",
+   "npc_type": 1193,
+   "sprite": 42427,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    24,
+    133
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 82
+  },
+  {
+   "entity_id": 1019145,
+   "nombre": "Octopus Scholar",
+   "npc_type": 1193,
+   "sprite": 42427,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    89,
+    83
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 82
+  },
+  {
+   "entity_id": 1019146,
+   "nombre": "Octopus Scholar",
+   "npc_type": 1193,
+   "sprite": 42427,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    65,
+    97
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 82
+  },
+  {
+   "entity_id": 1019147,
+   "nombre": "Octopus Scholar",
+   "npc_type": 1193,
+   "sprite": 42427,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    118,
+    92
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 82
+  },
+  {
+   "entity_id": 1019148,
+   "nombre": "Octopus Scholar",
+   "npc_type": 1193,
+   "sprite": 42427,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    18,
+    131
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 82
+  },
+  {
+   "entity_id": 1019149,
+   "nombre": "Octopus Scholar",
+   "npc_type": 1193,
+   "sprite": 42427,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    96,
+    93
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 82
+  },
+  {
+   "entity_id": 1019150,
+   "nombre": "Octopus Scholar",
+   "npc_type": 1193,
+   "sprite": 42427,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    160,
+    105
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 82
+  },
+  {
+   "entity_id": 1019151,
+   "nombre": "Octopus Scholar",
+   "npc_type": 1193,
+   "sprite": 42427,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    95,
+    85
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 82
+  },
+  {
+   "entity_id": 1019152,
+   "nombre": "Octopus Scholar",
+   "npc_type": 1193,
+   "sprite": 42427,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    83,
+    75
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 82
+  },
+  {
+   "entity_id": 1019153,
+   "nombre": "Octopus Scholar",
+   "npc_type": 1193,
+   "sprite": 42427,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    86,
+    91
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 82
+  },
+  {
+   "entity_id": 1019154,
+   "nombre": "Octopus Scholar",
+   "npc_type": 1193,
+   "sprite": 42427,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    169,
+    106
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 82
+  },
+  {
+   "entity_id": 1019155,
+   "nombre": "Octopus Scholar",
+   "npc_type": 1193,
+   "sprite": 42427,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    26,
+    130
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 82
+  },
+  {
+   "entity_id": 1019156,
+   "nombre": "Octopus Scholar",
+   "npc_type": 1193,
+   "sprite": 42427,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    98,
+    88
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 82
+  },
+  {
+   "entity_id": 1019157,
+   "nombre": "Giant Octopus",
+   "npc_type": 1195,
+   "sprite": 42428,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    112,
+    92
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 84
+  },
+  {
+   "entity_id": 1019158,
+   "nombre": "Giant Octopus",
+   "npc_type": 1195,
+   "sprite": 42428,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    69,
+    85
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 84
+  },
+  {
+   "entity_id": 1019159,
+   "nombre": "Giant Octopus",
+   "npc_type": 1195,
+   "sprite": 42428,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    132,
+    95
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 84
+  },
+  {
+   "entity_id": 1019160,
+   "nombre": "Giant Octopus",
+   "npc_type": 1195,
+   "sprite": 42428,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    50,
+    115
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 84
+  },
+  {
+   "entity_id": 1019161,
+   "nombre": "Giant Octopus",
+   "npc_type": 1195,
+   "sprite": 42428,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    83,
+    92
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 84
+  },
+  {
+   "entity_id": 1019162,
+   "nombre": "Giant Octopus",
+   "npc_type": 1195,
+   "sprite": 42428,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    89,
+    88
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 84
+  },
+  {
+   "entity_id": 1019163,
+   "nombre": "Giant Octopus",
+   "npc_type": 1195,
+   "sprite": 42428,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    42,
+    138
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 84
+  },
+  {
+   "entity_id": 1019164,
+   "nombre": "Giant Octopus",
+   "npc_type": 1195,
+   "sprite": 42428,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    180,
+    110
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 84
+  },
+  {
+   "entity_id": 1019165,
+   "nombre": "Giant Octopus",
+   "npc_type": 1195,
+   "sprite": 42428,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    23,
+    116
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 84
+  },
+  {
+   "entity_id": 1019166,
+   "nombre": "Giant Octopus",
+   "npc_type": 1195,
+   "sprite": 42428,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    154,
+    105
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 84
+  },
+  {
+   "entity_id": 1019167,
+   "nombre": "Giant Octopus",
+   "npc_type": 1195,
+   "sprite": 42428,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    24,
+    123
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 84
+  },
+  {
+   "entity_id": 1019168,
+   "nombre": "Giant Octopus",
+   "npc_type": 1195,
+   "sprite": 42428,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    38,
+    125
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 84
+  },
+  {
+   "entity_id": 1019169,
+   "nombre": "Giant Octopus",
+   "npc_type": 1195,
+   "sprite": 42428,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    21,
+    110
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 84
+  },
+  {
+   "entity_id": 1019170,
+   "nombre": "Giant Octopus",
+   "npc_type": 1195,
+   "sprite": 42428,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    42,
+    128
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 84
+  },
+  {
+   "entity_id": 1019171,
+   "nombre": "Giant Octopus",
+   "npc_type": 1195,
+   "sprite": 42428,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    91,
+    81
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 84
+  },
+  {
+   "entity_id": 1019172,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    100,
+    161
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019173,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    25,
+    166
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019174,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    9,
+    163
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019175,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    40,
+    147
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019176,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    70,
+    166
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019177,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    83,
+    163
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019178,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    98,
+    168
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019179,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    26,
+    132
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019180,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    26,
+    162
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019181,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    28,
+    172
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019182,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    89,
+    164
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019183,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    81,
+    166
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019184,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    40,
+    166
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019185,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    51,
+    147
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019186,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    97,
+    161
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019187,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    92,
+    166
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019188,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    6,
+    164
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019189,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    99,
+    168
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019190,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    23,
+    162
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019191,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    85,
+    157
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019192,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    77,
+    171
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019193,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    31,
+    174
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019194,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    79,
+    164
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019195,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    31,
+    165
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019196,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    95,
+    158
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019197,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    47,
+    143
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019198,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    96,
+    165
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019199,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    25,
+    170
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019200,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    48,
+    151
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019201,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    21,
+    129
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019202,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    289,
+    116
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019203,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    283,
+    110
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019204,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    242,
+    110
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019205,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    241,
+    107
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019206,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    275,
+    114
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019207,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    265,
+    90
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019208,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    258,
+    106
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019209,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    275,
+    106
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019210,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    257,
+    88
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019211,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    290,
+    111
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019212,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    277,
+    96
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019213,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    260,
+    88
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019214,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    267,
+    119
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019215,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    279,
+    78
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019216,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    256,
+    113
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019217,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    221,
+    151
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019218,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    235,
+    155
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019219,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    267,
+    152
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019220,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    267,
+    155
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019221,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    256,
+    149
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019222,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    223,
+    149
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019223,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    207,
+    135
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019224,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    278,
+    152
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019225,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    177,
+    138
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019226,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    264,
+    162
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019227,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    225,
+    139
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019228,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    260,
+    156
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019229,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    184,
+    145
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019230,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    255,
+    166
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019231,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    252,
+    156
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019232,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    261,
+    155
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019233,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    192,
+    130
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019234,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    247,
+    145
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019235,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    284,
+    156
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019236,
+   "nombre": "Angel Fish",
+   "npc_type": 1198,
+   "sprite": 42402,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    209,
+    144
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 86
+  },
+  {
+   "entity_id": 1019237,
+   "nombre": "Sea Shark",
+   "npc_type": 1200,
+   "sprite": 42389,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    250,
+    66
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 89
+  },
+  {
+   "entity_id": 1019238,
+   "nombre": "Sea Shark",
+   "npc_type": 1200,
+   "sprite": 42389,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    274,
+    87
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 89
+  },
+  {
+   "entity_id": 1019239,
+   "nombre": "Sea Shark",
+   "npc_type": 1200,
+   "sprite": 42389,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    266,
+    57
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 89
+  },
+  {
+   "entity_id": 1019240,
+   "nombre": "Sea Shark",
+   "npc_type": 1200,
+   "sprite": 42389,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    273,
+    69
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 89
+  },
+  {
+   "entity_id": 1019241,
+   "nombre": "Sea Shark",
+   "npc_type": 1200,
+   "sprite": 42389,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    281,
+    59
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 89
+  },
+  {
+   "entity_id": 1019242,
+   "nombre": "Sea Shark",
+   "npc_type": 1200,
+   "sprite": 42389,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    143,
+    61
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 89
+  },
+  {
+   "entity_id": 1019243,
+   "nombre": "Sea Shark",
+   "npc_type": 1200,
+   "sprite": 42389,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    264,
+    35
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 89
+  },
+  {
+   "entity_id": 1019244,
+   "nombre": "Sea Shark",
+   "npc_type": 1200,
+   "sprite": 42389,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    248,
+    44
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 89
+  },
+  {
+   "entity_id": 1019245,
+   "nombre": "Sea Shark",
+   "npc_type": 1200,
+   "sprite": 42389,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    228,
+    80
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 89
+  },
+  {
+   "entity_id": 1019246,
+   "nombre": "Sea Shark",
+   "npc_type": 1200,
+   "sprite": 42389,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    191,
+    62
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 89
+  },
+  {
+   "entity_id": 1019247,
+   "nombre": "Sea Shark",
+   "npc_type": 1200,
+   "sprite": 42389,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    222,
+    54
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 89
+  },
+  {
+   "entity_id": 1019248,
+   "nombre": "Sea Shark",
+   "npc_type": 1200,
+   "sprite": 42389,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    274,
+    72
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 89
+  },
+  {
+   "entity_id": 1019249,
+   "nombre": "Sea Shark",
+   "npc_type": 1200,
+   "sprite": 42389,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    260,
+    70
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 89
+  },
+  {
+   "entity_id": 1019250,
+   "nombre": "Sea Shark",
+   "npc_type": 1200,
+   "sprite": 42389,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    272,
+    65
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 89
+  },
+  {
+   "entity_id": 1019251,
+   "nombre": "Sea Shark",
+   "npc_type": 1200,
+   "sprite": 42389,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    265,
+    93
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 89
+  },
+  {
+   "entity_id": 1019252,
+   "nombre": "Death Sailor",
+   "npc_type": 1205,
+   "sprite": 42398,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    119,
+    52
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1019253,
+   "nombre": "Death Sailor",
+   "npc_type": 1205,
+   "sprite": 42398,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    145,
+    8
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1019254,
+   "nombre": "Death Sailor",
+   "npc_type": 1205,
+   "sprite": 42398,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    124,
+    22
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1019255,
+   "nombre": "Death Sailor",
+   "npc_type": 1205,
+   "sprite": 42398,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    67,
+    18
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1019256,
+   "nombre": "Death Sailor",
+   "npc_type": 1205,
+   "sprite": 42398,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    142,
+    18
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1019257,
+   "nombre": "Death Sailor",
+   "npc_type": 1205,
+   "sprite": 42398,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    141,
+    39
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1019258,
+   "nombre": "Death Sailor",
+   "npc_type": 1205,
+   "sprite": 42398,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    55,
+    24
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1019259,
+   "nombre": "Death Sailor",
+   "npc_type": 1205,
+   "sprite": 42398,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    101,
+    20
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1019260,
+   "nombre": "Death Sailor",
+   "npc_type": 1205,
+   "sprite": 42398,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    59,
+    18
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1019261,
+   "nombre": "Death Sailor",
+   "npc_type": 1205,
+   "sprite": 42398,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    119,
+    50
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1019262,
+   "nombre": "Death Sailor",
+   "npc_type": 1205,
+   "sprite": 42398,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    154,
+    18
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1019263,
+   "nombre": "Death Sailor",
+   "npc_type": 1205,
+   "sprite": 42398,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    59,
+    32
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1019264,
+   "nombre": "Death Sailor",
+   "npc_type": 1205,
+   "sprite": 42398,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    110,
+    22
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1019265,
+   "nombre": "Death Sailor",
+   "npc_type": 1205,
+   "sprite": 42398,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    124,
+    26
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1019266,
+   "nombre": "Death Sailor",
+   "npc_type": 1205,
+   "sprite": 42398,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    146,
+    39
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 92
+  },
+  {
+   "entity_id": 1019267,
+   "nombre": "Rage Shark",
+   "npc_type": 1206,
+   "sprite": 42390,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    281,
+    65
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 93
+  },
+  {
+   "entity_id": 1019268,
+   "nombre": "Rage Shark",
+   "npc_type": 1206,
+   "sprite": 42390,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    255,
+    16
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 93
+  },
+  {
+   "entity_id": 1019269,
+   "nombre": "Rage Shark",
+   "npc_type": 1206,
+   "sprite": 42390,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    255,
+    61
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 93
+  },
+  {
+   "entity_id": 1019270,
+   "nombre": "Rage Shark",
+   "npc_type": 1206,
+   "sprite": 42390,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    245,
+    78
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 93
+  },
+  {
+   "entity_id": 1019271,
+   "nombre": "Rage Shark",
+   "npc_type": 1206,
+   "sprite": 42390,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    209,
+    62
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 93
+  },
+  {
+   "entity_id": 1019272,
+   "nombre": "Rage Shark",
+   "npc_type": 1206,
+   "sprite": 42390,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    257,
+    97
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 93
+  },
+  {
+   "entity_id": 1019273,
+   "nombre": "Rage Shark",
+   "npc_type": 1206,
+   "sprite": 42390,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    219,
+    48
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 93
+  },
+  {
+   "entity_id": 1019274,
+   "nombre": "Rage Shark",
+   "npc_type": 1206,
+   "sprite": 42390,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    268,
+    50
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 93
+  },
+  {
+   "entity_id": 1019275,
+   "nombre": "Rage Shark",
+   "npc_type": 1206,
+   "sprite": 42390,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    162,
+    47
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 93
+  },
+  {
+   "entity_id": 1019276,
+   "nombre": "Rage Shark",
+   "npc_type": 1206,
+   "sprite": 42390,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    244,
+    55
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 93
+  },
+  {
+   "entity_id": 1019277,
+   "nombre": "Rage Shark",
+   "npc_type": 1206,
+   "sprite": 42390,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    239,
+    64
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 93
+  },
+  {
+   "entity_id": 1019278,
+   "nombre": "Rage Shark",
+   "npc_type": 1206,
+   "sprite": 42390,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    285,
+    52
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 93
+  },
+  {
+   "entity_id": 1019279,
+   "nombre": "Rage Shark",
+   "npc_type": 1206,
+   "sprite": 42390,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    222,
+    62
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 93
+  },
+  {
+   "entity_id": 1019280,
+   "nombre": "Rage Shark",
+   "npc_type": 1206,
+   "sprite": 42390,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    262,
+    87
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 93
+  },
+  {
+   "entity_id": 1019281,
+   "nombre": "Rage Shark",
+   "npc_type": 1206,
+   "sprite": 42390,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    269,
+    56
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 93
+  },
+  {
+   "entity_id": 1019282,
+   "nombre": "Death Sail",
+   "npc_type": 1208,
+   "sprite": 42399,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    119,
+    52
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 94
+  },
+  {
+   "entity_id": 1019283,
+   "nombre": "Death Sail",
+   "npc_type": 1208,
+   "sprite": 42399,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    127,
+    12
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 94
+  },
+  {
+   "entity_id": 1019284,
+   "nombre": "Death Sail",
+   "npc_type": 1208,
+   "sprite": 42399,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    84,
+    26
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 94
+  },
+  {
+   "entity_id": 1019285,
+   "nombre": "Death Sail",
+   "npc_type": 1208,
+   "sprite": 42399,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    138,
+    10
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 94
+  },
+  {
+   "entity_id": 1019286,
+   "nombre": "Death Sail",
+   "npc_type": 1208,
+   "sprite": 42399,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    49,
+    41
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 94
+  },
+  {
+   "entity_id": 1019287,
+   "nombre": "Death Sail",
+   "npc_type": 1208,
+   "sprite": 42399,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    146,
+    50
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 94
+  },
+  {
+   "entity_id": 1019288,
+   "nombre": "Death Sail",
+   "npc_type": 1208,
+   "sprite": 42399,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    65,
+    27
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 94
+  },
+  {
+   "entity_id": 1019289,
+   "nombre": "Death Sail",
+   "npc_type": 1208,
+   "sprite": 42399,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    97,
+    21
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 94
+  },
+  {
+   "entity_id": 1019290,
+   "nombre": "Death Sail",
+   "npc_type": 1208,
+   "sprite": 42399,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    134,
+    24
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 94
+  },
+  {
+   "entity_id": 1019291,
+   "nombre": "Death Sail",
+   "npc_type": 1208,
+   "sprite": 42399,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    124,
+    26
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 94
+  },
+  {
+   "entity_id": 1019292,
+   "nombre": "Death Sail",
+   "npc_type": 1208,
+   "sprite": 42399,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    130,
+    11
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 94
+  },
+  {
+   "entity_id": 1019293,
+   "nombre": "Death Sail",
+   "npc_type": 1208,
+   "sprite": 42399,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    68,
+    21
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 94
+  },
+  {
+   "entity_id": 1019294,
+   "nombre": "Death Sail",
+   "npc_type": 1208,
+   "sprite": 42399,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    137,
+    39
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 94
+  },
+  {
+   "entity_id": 1019295,
+   "nombre": "Death Sail",
+   "npc_type": 1208,
+   "sprite": 42399,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    45,
+    37
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 94
+  },
+  {
+   "entity_id": 1019296,
+   "nombre": "Death Sail",
+   "npc_type": 1208,
+   "sprite": 42399,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    106,
+    39
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 94
+  },
+  {
+   "entity_id": 1019297,
+   "nombre": "Octopus Oliss",
+   "npc_type": 1223,
+   "sprite": 42388,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    31,
+    113
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 94
+  },
+  {
+   "entity_id": 1019298,
+   "nombre": "Rage Denio",
+   "npc_type": 1224,
+   "sprite": 42391,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    288,
+    68
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 99
+  }
+ ],
+ "recursos": [
+  {
+   "entity_id": 106957,
+   "capa": 0,
+   "px": [
+    576,
+    159
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 106958,
+   "capa": 2,
+   "px": [
+    9408,
+    479
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 106959,
+   "capa": 0,
+   "px": [
+    9120,
+    5567
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 106960,
+   "capa": 0,
+   "px": [
+    2732,
+    4253
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60187,
+   "cola": "00000000000000",
+   "nombre_visible": "Tropic Fish(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 106961,
+   "capa": 0,
+   "px": [
+    2779,
+    4248
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60188,
+   "cola": "00000000000000",
+   "nombre_visible": "Tropic Fish(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 106962,
+   "capa": 0,
+   "px": [
+    2993,
+    4191
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60188,
+   "cola": "00000000000000",
+   "nombre_visible": "Tropic Fish(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 106963,
+   "capa": 2,
+   "px": [
+    2438,
+    4333
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60188,
+   "cola": "00000000000000",
+   "nombre_visible": "Tropic Fish(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 106964,
+   "capa": 0,
+   "px": [
+    2398,
+    4346
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60188,
+   "cola": "00000000000000",
+   "nombre_visible": "Tropic Fish(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 106965,
+   "capa": 0,
+   "px": [
+    2187,
+    4409
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60188,
+   "cola": "00000000000000",
+   "nombre_visible": "Tropic Fish(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 106966,
+   "capa": 0,
+   "px": [
+    2038,
+    4309
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60188,
+   "cola": "00000000000000",
+   "nombre_visible": "Tropic Fish(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 106967,
+   "capa": 0,
+   "px": [
+    1813,
+    4146
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60188,
+   "cola": "00000000000000",
+   "nombre_visible": "Tropic Fish(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 106968,
+   "capa": 2,
+   "px": [
+    1936,
+    4281
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60188,
+   "cola": "00000000000000",
+   "nombre_visible": "Tropic Fish(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 106969,
+   "capa": 0,
+   "px": [
+    2362,
+    1448
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60187,
+   "cola": "00000000000000",
+   "nombre_visible": "Tropic Fish(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 106970,
+   "capa": 2,
+   "px": [
+    2344,
+    1426
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60187,
+   "cola": "00000000000000",
+   "nombre_visible": "Tropic Fish(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 106971,
+   "capa": 2,
+   "px": [
+    2520,
+    1279
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60187,
+   "cola": "00000000000000",
+   "nombre_visible": "Tropic Fish(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 106972,
+   "capa": 0,
+   "px": [
+    2633,
+    1152
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60188,
+   "cola": "00000000000000",
+   "nombre_visible": "Tropic Fish(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 106973,
+   "capa": 2,
+   "px": [
+    2832,
+    1152
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60188,
+   "cola": "00000000000000",
+   "nombre_visible": "Tropic Fish(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 106974,
+   "capa": 0,
+   "px": [
+    2956,
+    1223
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60187,
+   "cola": "00000000000000",
+   "nombre_visible": "Tropic Fish(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 106975,
+   "capa": 2,
+   "px": [
+    3890,
+    5008
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60309,
+   "cola": "00000000000000",
+   "nombre_visible": "Aerolite(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002",
+   "material_posibles": [
+    "Aerolite(L)",
+    "Big Aerolite"
+   ]
+  },
+  {
+   "entity_id": 106976,
+   "capa": 0,
+   "px": [
+    4103,
+    5093
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60309,
+   "cola": "00000000000000",
+   "nombre_visible": "Aerolite(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material_posibles": [
+    "Aerolite(L)",
+    "Big Aerolite"
+   ]
+  },
+  {
+   "entity_id": 106977,
+   "capa": 2,
+   "px": [
+    4665,
+    5103
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60309,
+   "cola": "00000000000000",
+   "nombre_visible": "Aerolite(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002",
+   "material_posibles": [
+    "Aerolite(L)",
+    "Big Aerolite"
+   ]
+  },
+  {
+   "entity_id": 106978,
+   "capa": 0,
+   "px": [
+    4221,
+    5051
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60310,
+   "cola": "00000000000000",
+   "nombre_visible": "Aerolite(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material": "Aerolite(M)"
+  },
+  {
+   "entity_id": 106979,
+   "capa": 2,
+   "px": [
+    4809,
+    5016
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60310,
+   "cola": "00000000000000",
+   "nombre_visible": "Aerolite(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002",
+   "material": "Aerolite(M)"
+  },
+  {
+   "entity_id": 106980,
+   "capa": 0,
+   "px": [
+    4635,
+    5059
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60311,
+   "cola": "00000000000000",
+   "nombre_visible": "Aerolite(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material": "Aerolite(S)"
+  },
+  {
+   "entity_id": 106981,
+   "capa": 0,
+   "px": [
+    4119,
+    5012
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60311,
+   "cola": "00000000000000",
+   "nombre_visible": "Aerolite(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material": "Aerolite(S)"
+  },
+  {
+   "entity_id": 106982,
+   "capa": 2,
+   "px": [
+    3943,
+    5027
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60311,
+   "cola": "00000000000000",
+   "nombre_visible": "Aerolite(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002",
+   "material": "Aerolite(S)"
+  },
+  {
+   "entity_id": 106983,
+   "capa": 0,
+   "px": [
+    4450,
+    5012
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60309,
+   "cola": "00000000000000",
+   "nombre_visible": "Aerolite(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material_posibles": [
+    "Aerolite(L)",
+    "Big Aerolite"
+   ]
+  },
+  {
+   "entity_id": 106984,
+   "capa": 0,
+   "px": [
+    4841,
+    4990
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60311,
+   "cola": "00000000000000",
+   "nombre_visible": "Aerolite(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material": "Aerolite(S)"
+  },
+  {
+   "entity_id": 106985,
+   "capa": 0,
+   "px": [
+    6389,
+    742
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60309,
+   "cola": "00000000000000",
+   "nombre_visible": "Aerolite(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material_posibles": [
+    "Aerolite(L)",
+    "Big Aerolite"
+   ]
+  },
+  {
+   "entity_id": 106986,
+   "capa": 2,
+   "px": [
+    6579,
+    638
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60309,
+   "cola": "00000000000000",
+   "nombre_visible": "Aerolite(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002",
+   "material_posibles": [
+    "Aerolite(L)",
+    "Big Aerolite"
+   ]
+  },
+  {
+   "entity_id": 106987,
+   "capa": 0,
+   "px": [
+    5957,
+    612
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60310,
+   "cola": "00000000000000",
+   "nombre_visible": "Aerolite(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material": "Aerolite(M)"
+  },
+  {
+   "entity_id": 106988,
+   "capa": 2,
+   "px": [
+    6469,
+    739
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60310,
+   "cola": "00000000000000",
+   "nombre_visible": "Aerolite(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002",
+   "material": "Aerolite(M)"
+  },
+  {
+   "entity_id": 106989,
+   "capa": 0,
+   "px": [
+    6277,
+    708
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60311,
+   "cola": "00000000000000",
+   "nombre_visible": "Aerolite(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material": "Aerolite(S)"
+  },
+  {
+   "entity_id": 106990,
+   "capa": 2,
+   "px": [
+    6307,
+    683
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60311,
+   "cola": "00000000000000",
+   "nombre_visible": "Aerolite(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002",
+   "material": "Aerolite(S)"
+  },
+  {
+   "entity_id": 106991,
+   "capa": 0,
+   "px": [
+    6478,
+    531
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60310,
+   "cola": "00000000000000",
+   "nombre_visible": "Aerolite(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material": "Aerolite(M)"
+  },
+  {
+   "entity_id": 106992,
+   "capa": 0,
+   "px": [
+    6085,
+    626
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60309,
+   "cola": "00000000000000",
+   "nombre_visible": "Aerolite(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material_posibles": [
+    "Aerolite(L)",
+    "Big Aerolite"
+   ]
+  },
+  {
+   "entity_id": 106993,
+   "capa": 0,
+   "px": [
+    6187,
+    638
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60311,
+   "cola": "00000000000000",
+   "nombre_visible": "Aerolite(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material": "Aerolite(S)"
+  },
+  {
+   "entity_id": 106994,
+   "capa": 0,
+   "px": [
+    6137,
+    2606
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60327,
+   "cola": "00000000000000",
+   "nombre_visible": "Thyme Bush(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Thyme Bush(L)",
+    "Thyme Bush(M)",
+    "Thyme Bush(S)"
+   ]
+  },
+  {
+   "entity_id": 106995,
+   "capa": 2,
+   "px": [
+    6207,
+    2574
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60327,
+   "cola": "00000000000000",
+   "nombre_visible": "Thyme Bush(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Thyme Bush(L)",
+    "Thyme Bush(M)",
+    "Thyme Bush(S)"
+   ]
+  },
+  {
+   "entity_id": 106996,
+   "capa": 0,
+   "px": [
+    5965,
+    2429
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60327,
+   "cola": "00000000000000",
+   "nombre_visible": "Thyme Bush(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Thyme Bush(L)",
+    "Thyme Bush(M)",
+    "Thyme Bush(S)"
+   ]
+  },
+  {
+   "entity_id": 106997,
+   "capa": 2,
+   "px": [
+    5797,
+    2372
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60327,
+   "cola": "00000000000000",
+   "nombre_visible": "Thyme Bush(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Thyme Bush(L)",
+    "Thyme Bush(M)",
+    "Thyme Bush(S)"
+   ]
+  },
+  {
+   "entity_id": 106998,
+   "capa": 0,
+   "px": [
+    5924,
+    2353
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60327,
+   "cola": "00000000000000",
+   "nombre_visible": "Thyme Bush(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Thyme Bush(L)",
+    "Thyme Bush(M)",
+    "Thyme Bush(S)"
+   ]
+  },
+  {
+   "entity_id": 106999,
+   "capa": 0,
+   "px": [
+    5546,
+    2372
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60327,
+   "cola": "00000000000000",
+   "nombre_visible": "Thyme Bush(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Thyme Bush(L)",
+    "Thyme Bush(M)",
+    "Thyme Bush(S)"
+   ]
+  },
+  {
+   "entity_id": 107000,
+   "capa": 2,
+   "px": [
+    5377,
+    2329
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60327,
+   "cola": "00000000000000",
+   "nombre_visible": "Thyme Bush(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Thyme Bush(L)",
+    "Thyme Bush(M)",
+    "Thyme Bush(S)"
+   ]
+  },
+  {
+   "entity_id": 107001,
+   "capa": 2,
+   "px": [
+    5430,
+    2289
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60327,
+   "cola": "00000000000000",
+   "nombre_visible": "Thyme Bush(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Thyme Bush(L)",
+    "Thyme Bush(M)",
+    "Thyme Bush(S)"
+   ]
+  },
+  {
+   "entity_id": 107002,
+   "capa": 0,
+   "px": [
+    5108,
+    2357
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60327,
+   "cola": "00000000000000",
+   "nombre_visible": "Thyme Bush(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Thyme Bush(L)",
+    "Thyme Bush(M)",
+    "Thyme Bush(S)"
+   ]
+  },
+  {
+   "entity_id": 107003,
+   "capa": 2,
+   "px": [
+    5049,
+    2307
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60327,
+   "cola": "00000000000000",
+   "nombre_visible": "Thyme Bush(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Thyme Bush(L)",
+    "Thyme Bush(M)",
+    "Thyme Bush(S)"
+   ]
+  },
+  {
+   "entity_id": 107004,
+   "capa": 0,
+   "px": [
+    4419,
+    4497
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60327,
+   "cola": "00000000000000",
+   "nombre_visible": "Thyme Bush(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Thyme Bush(L)",
+    "Thyme Bush(M)",
+    "Thyme Bush(S)"
+   ]
+  },
+  {
+   "entity_id": 107005,
+   "capa": 0,
+   "px": [
+    4460,
+    4464
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60327,
+   "cola": "00000000000000",
+   "nombre_visible": "Thyme Bush(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Thyme Bush(L)",
+    "Thyme Bush(M)",
+    "Thyme Bush(S)"
+   ]
+  },
+  {
+   "entity_id": 107006,
+   "capa": 2,
+   "px": [
+    4829,
+    4364
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60327,
+   "cola": "00000000000000",
+   "nombre_visible": "Thyme Bush(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Thyme Bush(L)",
+    "Thyme Bush(M)",
+    "Thyme Bush(S)"
+   ]
+  },
+  {
+   "entity_id": 107007,
+   "capa": 0,
+   "px": [
+    4933,
+    4395
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60327,
+   "cola": "00000000000000",
+   "nombre_visible": "Thyme Bush(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Thyme Bush(L)",
+    "Thyme Bush(M)",
+    "Thyme Bush(S)"
+   ]
+  },
+  {
+   "entity_id": 107008,
+   "capa": 2,
+   "px": [
+    4643,
+    4423
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60327,
+   "cola": "00000000000000",
+   "nombre_visible": "Thyme Bush(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Thyme Bush(L)",
+    "Thyme Bush(M)",
+    "Thyme Bush(S)"
+   ]
+  },
+  {
+   "entity_id": 107009,
+   "capa": 0,
+   "px": [
+    5055,
+    4340
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60327,
+   "cola": "00000000000000",
+   "nombre_visible": "Thyme Bush(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Thyme Bush(L)",
+    "Thyme Bush(M)",
+    "Thyme Bush(S)"
+   ]
+  },
+  {
+   "entity_id": 107010,
+   "capa": 2,
+   "px": [
+    4098,
+    4566
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60327,
+   "cola": "00000000000000",
+   "nombre_visible": "Thyme Bush(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Thyme Bush(L)",
+    "Thyme Bush(M)",
+    "Thyme Bush(S)"
+   ]
+  },
+  {
+   "entity_id": 107011,
+   "capa": 2,
+   "px": [
+    806,
+    1933
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60321,
+   "cola": "00000000000000",
+   "nombre_visible": "Bone Den(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material": "Bone Den(L)"
+  },
+  {
+   "entity_id": 107012,
+   "capa": 0,
+   "px": [
+    1315,
+    2028
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60322,
+   "cola": "00000000000000",
+   "nombre_visible": "Bone Den(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material": "Bone Den(M)"
+  },
+  {
+   "entity_id": 107013,
+   "capa": 0,
+   "px": [
+    1508,
+    1944
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60323,
+   "cola": "00000000000000",
+   "nombre_visible": "Bone Den(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Bone Den(S)",
+    "Bonepoker Den(S)"
+   ]
+  },
+  {
+   "entity_id": 107014,
+   "capa": 0,
+   "px": [
+    1109,
+    1987
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60323,
+   "cola": "00000000000000",
+   "nombre_visible": "Bone Den(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Bone Den(S)",
+    "Bonepoker Den(S)"
+   ]
+  },
+  {
+   "entity_id": 107015,
+   "capa": 2,
+   "px": [
+    654,
+    1893
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60322,
+   "cola": "00000000000000",
+   "nombre_visible": "Bone Den(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material": "Bone Den(M)"
+  },
+  {
+   "entity_id": 107016,
+   "capa": 2,
+   "px": [
+    901,
+    1961
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60323,
+   "cola": "00000000000000",
+   "nombre_visible": "Bone Den(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Bone Den(S)",
+    "Bonepoker Den(S)"
+   ]
+  },
+  {
+   "entity_id": 107017,
+   "capa": 0,
+   "px": [
+    1630,
+    1921
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60321,
+   "cola": "00000000000000",
+   "nombre_visible": "Bone Den(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material": "Bone Den(L)"
+  },
+  {
+   "entity_id": 107018,
+   "capa": 2,
+   "px": [
+    3246,
+    4302
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60321,
+   "cola": "00000000000000",
+   "nombre_visible": "Bone Den(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material": "Bone Den(L)"
+  },
+  {
+   "entity_id": 107019,
+   "capa": 2,
+   "px": [
+    3614,
+    4241
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60322,
+   "cola": "00000000000000",
+   "nombre_visible": "Bone Den(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material": "Bone Den(M)"
+  },
+  {
+   "entity_id": 107020,
+   "capa": 2,
+   "px": [
+    3329,
+    4328
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60323,
+   "cola": "00000000000000",
+   "nombre_visible": "Bone Den(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Bone Den(S)",
+    "Bonepoker Den(S)"
+   ]
+  },
+  {
+   "entity_id": 107021,
+   "capa": 0,
+   "px": [
+    3766,
+    4327
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60323,
+   "cola": "00000000000000",
+   "nombre_visible": "Bone Den(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Bone Den(S)",
+    "Bonepoker Den(S)"
+   ]
+  },
+  {
+   "entity_id": 107022,
+   "capa": 2,
+   "px": [
+    3526,
+    4770
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60321,
+   "cola": "00000000000000",
+   "nombre_visible": "Bone Den(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material": "Bone Den(L)"
+  },
+  {
+   "entity_id": 107023,
+   "capa": 2,
+   "px": [
+    3119,
+    4623
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60322,
+   "cola": "00000000000000",
+   "nombre_visible": "Bone Den(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material": "Bone Den(M)"
+  },
+  {
+   "entity_id": 107024,
+   "capa": 2,
+   "px": [
+    3620,
+    4769
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60323,
+   "cola": "00000000000000",
+   "nombre_visible": "Bone Den(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Bone Den(S)",
+    "Bonepoker Den(S)"
+   ]
+  },
+  {
+   "entity_id": 107025,
+   "capa": 0,
+   "px": [
+    4741,
+    5040
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60315,
+   "cola": "00000000000000",
+   "nombre_visible": "Beech(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material_posibles": [
+    "Beech(L)",
+    "Big Beech"
+   ]
+  },
+  {
+   "entity_id": 107026,
+   "capa": 2,
+   "px": [
+    4326,
+    5052
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60315,
+   "cola": "00000000000000",
+   "nombre_visible": "Beech(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001",
+   "material_posibles": [
+    "Beech(L)",
+    "Big Beech"
+   ]
+  },
+  {
+   "entity_id": 107027,
+   "capa": 2,
+   "px": [
+    5118,
+    5096
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60315,
+   "cola": "00000000000000",
+   "nombre_visible": "Beech(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001",
+   "material_posibles": [
+    "Beech(L)",
+    "Big Beech"
+   ]
+  },
+  {
+   "entity_id": 107028,
+   "capa": 0,
+   "px": [
+    5562,
+    5130
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60315,
+   "cola": "00000000000000",
+   "nombre_visible": "Beech(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material_posibles": [
+    "Beech(L)",
+    "Big Beech"
+   ]
+  },
+  {
+   "entity_id": 107029,
+   "capa": 0,
+   "px": [
+    5614,
+    5089
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60316,
+   "cola": "00000000000000",
+   "nombre_visible": "Beech(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material": "Beech(M)"
+  },
+  {
+   "entity_id": 107030,
+   "capa": 2,
+   "px": [
+    5291,
+    5014
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60316,
+   "cola": "00000000000000",
+   "nombre_visible": "Beech(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001",
+   "material": "Beech(M)"
+  },
+  {
+   "entity_id": 107031,
+   "capa": 0,
+   "px": [
+    5463,
+    5055
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60317,
+   "cola": "00000000000000",
+   "nombre_visible": "Beech(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material": "Beech(S)"
+  },
+  {
+   "entity_id": 107032,
+   "capa": 2,
+   "px": [
+    4984,
+    5013
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60317,
+   "cola": "00000000000000",
+   "nombre_visible": "Beech(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001",
+   "material": "Beech(S)"
+  },
+  {
+   "entity_id": 107033,
+   "capa": 2,
+   "px": [
+    5344,
+    4996
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60317,
+   "cola": "00000000000000",
+   "nombre_visible": "Beech(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001",
+   "material": "Beech(S)"
+  },
+  {
+   "entity_id": 107034,
+   "capa": 0,
+   "px": [
+    4359,
+    5020
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60316,
+   "cola": "00000000000000",
+   "nombre_visible": "Beech(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material": "Beech(M)"
+  },
+  {
+   "entity_id": 107035,
+   "capa": 0,
+   "px": [
+    737,
+    1755
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60315,
+   "cola": "00000000000000",
+   "nombre_visible": "Beech(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material_posibles": [
+    "Beech(L)",
+    "Big Beech"
+   ]
+  },
+  {
+   "entity_id": 107036,
+   "capa": 2,
+   "px": [
+    657,
+    1561
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60315,
+   "cola": "00000000000000",
+   "nombre_visible": "Beech(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001",
+   "material_posibles": [
+    "Beech(L)",
+    "Big Beech"
+   ]
+  },
+  {
+   "entity_id": 107037,
+   "capa": 0,
+   "px": [
+    543,
+    1379
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60315,
+   "cola": "00000000000000",
+   "nombre_visible": "Beech(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material_posibles": [
+    "Beech(L)",
+    "Big Beech"
+   ]
+  },
+  {
+   "entity_id": 107038,
+   "capa": 0,
+   "px": [
+    743,
+    1630
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60316,
+   "cola": "00000000000000",
+   "nombre_visible": "Beech(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material": "Beech(M)"
+  },
+  {
+   "entity_id": 107039,
+   "capa": 2,
+   "px": [
+    673,
+    1401
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60316,
+   "cola": "00000000000000",
+   "nombre_visible": "Beech(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001",
+   "material": "Beech(M)"
+  },
+  {
+   "entity_id": 107040,
+   "capa": 0,
+   "px": [
+    840,
+    1290
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60316,
+   "cola": "00000000000000",
+   "nombre_visible": "Beech(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material": "Beech(M)"
+  },
+  {
+   "entity_id": 107041,
+   "capa": 2,
+   "px": [
+    777,
+    1327
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60317,
+   "cola": "00000000000000",
+   "nombre_visible": "Beech(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001",
+   "material": "Beech(S)"
+  },
+  {
+   "entity_id": 107042,
+   "capa": 2,
+   "px": [
+    702,
+    1793
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60317,
+   "cola": "00000000000000",
+   "nombre_visible": "Beech(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001",
+   "material": "Beech(S)"
+  },
+  {
+   "entity_id": 107043,
+   "capa": 0,
+   "px": [
+    703,
+    1662
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60317,
+   "cola": "00000000000000",
+   "nombre_visible": "Beech(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material": "Beech(S)"
+  },
+  {
+   "entity_id": 107044,
+   "capa": 0,
+   "px": [
+    6976,
+    5452
+   ],
+   "medio": "006f70706572284d2900000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60051,
+   "cola": "00002280140000",
+   "que_es": "Aurora Totem"
+  },
+  {
+   "entity_id": 107045,
+   "capa": 2,
+   "px": [
+    6415,
+    5291
+   ],
+   "medio": "00000000180000000000000000000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60052,
+   "cola": "00002280140000",
+   "que_es": "Dark City Totem"
+  },
+  {
+   "entity_id": 107046,
+   "capa": 2,
+   "px": [
+    6542,
+    5529
+   ],
+   "medio": "006f70706572284d2900000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60053,
+   "cola": "00002280140000",
+   "que_es": "Iron Totem"
+  },
+  {
+   "entity_id": 107047,
+   "capa": 0,
+   "px": [
+    5948,
+    5388
+   ],
+   "medio": "000000ba156f77650000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60054,
+   "cola": "00002280140000",
+   "que_es": "Breeze Totem"
+  },
+  {
+   "entity_id": 107048,
+   "capa": 0,
+   "px": [
+    8664,
+    1129
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60337,
+   "cola": "00000000000000",
+   "nombre_visible": "Mutant Beech",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 107049,
+   "capa": 0,
+   "px": [
+    8748,
+    1104
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60339,
+   "cola": "00000000000000",
+   "nombre_visible": "Thyme Bush",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 107050,
+   "capa": 0,
+   "px": [
+    8841,
+    1329
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60340,
+   "cola": "00000000000000",
+   "nombre_visible": "Tropic Fish",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004",
+   "material_posibles": [
+    "Deep-sea Fish(S)",
+    "DeepSeaFish(L)",
+    "DeepSeaFish(M)",
+    "DeepSeaFish(S)",
+    "Tropic Alga(S)",
+    "Tropic Fish(L)",
+    "Tropic Fish(M)",
+    "Tropic Fish(S)",
+    "Tropic Shoal(S)"
+   ]
+  },
+  {
+   "entity_id": 107051,
+   "capa": 0,
+   "px": [
+    8866,
+    1309
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60006,
+   "cola": "00000000000000",
+   "nombre_visible": "Tropic Fish",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004",
+   "material": "Bright Alga(S)"
+  },
+  {
+   "entity_id": 107052,
+   "capa": 0,
+   "px": [
+    8878,
+    1342
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60007,
+   "cola": "00000000000000",
+   "nombre_visible": "Tropic Fish",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 107053,
+   "capa": 2,
+   "px": [
+    8805,
+    1333
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60009,
+   "cola": "00000000000000",
+   "nombre_visible": "Tropic Fish",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 107054,
+   "capa": 0,
+   "px": [
+    9182,
+    1456
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60336,
+   "cola": "00000000000000",
+   "nombre_visible": "MutantAerolite",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 107055,
+   "capa": 2,
+   "px": [
+    9063,
+    961
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60336,
+   "cola": "00000000000000",
+   "nombre_visible": "MutantAerolite",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 107056,
+   "capa": 0,
+   "px": [
+    9279,
+    1224
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60338,
+   "cola": "00000000000000",
+   "nombre_visible": "Mutant BoneDen",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 107057,
+   "capa": 2,
+   "px": [
+    9207,
+    752
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60338,
+   "cola": "00000000000000",
+   "nombre_visible": "Mutant BoneDen",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 107058,
+   "capa": 2,
+   "px": [
+    9077,
+    788
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60339,
+   "cola": "00000000000000",
+   "nombre_visible": "Thyme Bush",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 107059,
+   "capa": 0,
+   "px": [
+    8783,
+    595
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60340,
+   "cola": "00000000000000",
+   "nombre_visible": "Tropic Fish",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004",
+   "material_posibles": [
+    "Deep-sea Fish(S)",
+    "DeepSeaFish(L)",
+    "DeepSeaFish(M)",
+    "DeepSeaFish(S)",
+    "Tropic Alga(S)",
+    "Tropic Fish(L)",
+    "Tropic Fish(M)",
+    "Tropic Fish(S)",
+    "Tropic Shoal(S)"
+   ]
+  },
+  {
+   "entity_id": 107060,
+   "capa": 2,
+   "px": [
+    8826,
+    572
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60340,
+   "cola": "00000000000000",
+   "nombre_visible": "Tropic Fish",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000004",
+   "material_posibles": [
+    "Deep-sea Fish(S)",
+    "DeepSeaFish(L)",
+    "DeepSeaFish(M)",
+    "DeepSeaFish(S)",
+    "Tropic Alga(S)",
+    "Tropic Fish(L)",
+    "Tropic Fish(M)",
+    "Tropic Fish(S)",
+    "Tropic Shoal(S)"
+   ]
+  },
+  {
+   "entity_id": 107061,
+   "capa": 0,
+   "px": [
+    8820,
+    599
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60009,
+   "cola": "00000000000000",
+   "nombre_visible": "Tropic Fish",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 107062,
+   "capa": 0,
+   "px": [
+    8761,
+    625
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60007,
+   "cola": "00000000000000",
+   "nombre_visible": "Tropic Fish",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 107063,
+   "capa": 0,
+   "px": [
+    8805,
+    621
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60008,
+   "cola": "00000000000000",
+   "nombre_visible": "Tropic Fish",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 107064,
+   "capa": 0,
+   "px": [
+    8651,
+    688
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60337,
+   "cola": "00000000000000",
+   "nombre_visible": "Mutant Beech",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 107065,
+   "capa": 0,
+   "px": [
+    7048,
+    4500
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107066,
+   "capa": 0,
+   "px": [
+    7045,
+    4478
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107067,
+   "capa": 0,
+   "px": [
+    7046,
+    4460
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107068,
+   "capa": 0,
+   "px": [
+    7044,
+    4540
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107069,
+   "capa": 0,
+   "px": [
+    7044,
+    4562
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107070,
+   "capa": 0,
+   "px": [
+    7037,
+    4316
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107071,
+   "capa": 0,
+   "px": [
+    6819,
+    4737
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107072,
+   "capa": 0,
+   "px": [
+    7045,
+    4379
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107073,
+   "capa": 0,
+   "px": [
+    7042,
+    4357
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107074,
+   "capa": 0,
+   "px": [
+    7043,
+    4339
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107075,
+   "capa": 0,
+   "px": [
+    7042,
+    4420
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107076,
+   "capa": 0,
+   "px": [
+    7041,
+    4441
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107077,
+   "capa": 0,
+   "px": [
+    7043,
+    4399
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107078,
+   "capa": 0,
+   "px": [
+    6837,
+    4717
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107079,
+   "capa": 0,
+   "px": [
+    6860,
+    4697
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107080,
+   "capa": 0,
+   "px": [
+    6881,
+    4681
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107081,
+   "capa": 0,
+   "px": [
+    6904,
+    4662
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107082,
+   "capa": 0,
+   "px": [
+    6927,
+    4649
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107083,
+   "capa": 0,
+   "px": [
+    6951,
+    4642
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107084,
+   "capa": 0,
+   "px": [
+    2199,
+    4777
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107085,
+   "capa": 0,
+   "px": [
+    2201,
+    4735
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107086,
+   "capa": 0,
+   "px": [
+    2195,
+    4713
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107087,
+   "capa": 0,
+   "px": [
+    2196,
+    4689
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107088,
+   "capa": 0,
+   "px": [
+    2198,
+    4800
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107089,
+   "capa": 0,
+   "px": [
+    2197,
+    4824
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107090,
+   "capa": 0,
+   "px": [
+    2163,
+    2027
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107091,
+   "capa": 0,
+   "px": [
+    2197,
+    4540
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107092,
+   "capa": 0,
+   "px": [
+    2195,
+    4517
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107093,
+   "capa": 0,
+   "px": [
+    2186,
+    2006
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107094,
+   "capa": 0,
+   "px": [
+    2144,
+    2047
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107095,
+   "capa": 0,
+   "px": [
+    2199,
+    4647
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107096,
+   "capa": 0,
+   "px": [
+    2201,
+    4605
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107097,
+   "capa": 0,
+   "px": [
+    2195,
+    4583
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107098,
+   "capa": 0,
+   "px": [
+    2196,
+    4559
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107099,
+   "capa": 0,
+   "px": [
+    7046,
+    4520
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107100,
+   "capa": 0,
+   "px": [
+    2207,
+    1984
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107101,
+   "capa": 0,
+   "px": [
+    6798,
+    4718
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107102,
+   "capa": 0,
+   "px": [
+    2222,
+    1971
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107103,
+   "capa": 0,
+   "px": [
+    6816,
+    4698
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107104,
+   "capa": 0,
+   "px": [
+    2243,
+    1949
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107105,
+   "capa": 0,
+   "px": [
+    6839,
+    4678
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107106,
+   "capa": 0,
+   "px": [
+    6860,
+    4662
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107107,
+   "capa": 0,
+   "px": [
+    6883,
+    4643
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107108,
+   "capa": 0,
+   "px": [
+    2199,
+    4755
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107109,
+   "capa": 0,
+   "px": [
+    2198,
+    4670
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107110,
+   "capa": 0,
+   "px": [
+    2199,
+    4625
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107111,
+   "capa": 0,
+   "px": [
+    6906,
+    4625
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107112,
+   "capa": 0,
+   "px": [
+    6933,
+    4612
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107113,
+   "capa": 0,
+   "px": [
+    6859,
+    4735
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107114,
+   "capa": 0,
+   "px": [
+    6882,
+    4716
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107115,
+   "capa": 0,
+   "px": [
+    6904,
+    4699
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107116,
+   "capa": 0,
+   "px": [
+    6925,
+    4685
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107117,
+   "capa": 0,
+   "px": [
+    6949,
+    4672
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107118,
+   "capa": 0,
+   "px": [
+    6972,
+    4655
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107119,
+   "capa": 0,
+   "px": [
+    6839,
+    4758
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107120,
+   "capa": 0,
+   "px": [
+    7068,
+    4485
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107121,
+   "capa": 0,
+   "px": [
+    7068,
+    4463
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107122,
+   "capa": 0,
+   "px": [
+    7068,
+    4439
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107123,
+   "capa": 0,
+   "px": [
+    7066,
+    4533
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107124,
+   "capa": 0,
+   "px": [
+    7067,
+    4554
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107125,
+   "capa": 0,
+   "px": [
+    6994,
+    4392
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107126,
+   "capa": 0,
+   "px": [
+    7068,
+    4341
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107127,
+   "capa": 0,
+   "px": [
+    7065,
+    4315
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107128,
+   "capa": 0,
+   "px": [
+    7051,
+    4297
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107129,
+   "capa": 0,
+   "px": [
+    7066,
+    4392
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107130,
+   "capa": 0,
+   "px": [
+    7065,
+    4417
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107131,
+   "capa": 0,
+   "px": [
+    7069,
+    4367
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107132,
+   "capa": 0,
+   "px": [
+    7069,
+    4509
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107133,
+   "capa": 0,
+   "px": [
+    7020,
+    4460
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107134,
+   "capa": 0,
+   "px": [
+    7016,
+    4434
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107135,
+   "capa": 0,
+   "px": [
+    7017,
+    4405
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107136,
+   "capa": 0,
+   "px": [
+    7021,
+    4511
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107137,
+   "capa": 0,
+   "px": [
+    7021,
+    4536
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107138,
+   "capa": 0,
+   "px": [
+    6994,
+    4418
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107139,
+   "capa": 0,
+   "px": [
+    7001,
+    4498
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107140,
+   "capa": 0,
+   "px": [
+    7000,
+    4472
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107141,
+   "capa": 0,
+   "px": [
+    6997,
+    4444
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107142,
+   "capa": 0,
+   "px": [
+    7016,
+    4353
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107143,
+   "capa": 0,
+   "px": [
+    7016,
+    4378
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107144,
+   "capa": 0,
+   "px": [
+    7018,
+    4330
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107145,
+   "capa": 0,
+   "px": [
+    7021,
+    4485
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107146,
+   "capa": 0,
+   "px": [
+    2174,
+    4761
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107147,
+   "capa": 0,
+   "px": [
+    2171,
+    4709
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107148,
+   "capa": 0,
+   "px": [
+    2172,
+    4681
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107149,
+   "capa": 0,
+   "px": [
+    2174,
+    4653
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107150,
+   "capa": 0,
+   "px": [
+    2171,
+    4788
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107151,
+   "capa": 0,
+   "px": [
+    2173,
+    4811
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107152,
+   "capa": 0,
+   "px": [
+    2130,
+    4570
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107153,
+   "capa": 0,
+   "px": [
+    2148,
+    4588
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107154,
+   "capa": 0,
+   "px": [
+    2170,
+    4599
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107155,
+   "capa": 0,
+   "px": [
+    2173,
+    4546
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107156,
+   "capa": 0,
+   "px": [
+    2159,
+    4526
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107157,
+   "capa": 0,
+   "px": [
+    2139,
+    4548
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107158,
+   "capa": 0,
+   "px": [
+    2174,
+    4735
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107159,
+   "capa": 0,
+   "px": [
+    2176,
+    4627
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107160,
+   "capa": 0,
+   "px": [
+    2171,
+    4572
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107161,
+   "capa": 0,
+   "px": [
+    2148,
+    4684
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107162,
+   "capa": 0,
+   "px": [
+    2148,
+    4705
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107163,
+   "capa": 0,
+   "px": [
+    2150,
+    4727
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107164,
+   "capa": 0,
+   "px": [
+    2151,
+    4750
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107165,
+   "capa": 0,
+   "px": [
+    2148,
+    4610
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107166,
+   "capa": 0,
+   "px": [
+    2150,
+    4637
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107167,
+   "capa": 0,
+   "px": [
+    2188,
+    2046
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107168,
+   "capa": 0,
+   "px": [
+    2211,
+    2025
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107169,
+   "capa": 0,
+   "px": [
+    2148,
+    4797
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107170,
+   "capa": 0,
+   "px": [
+    2169,
+    2066
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107171,
+   "capa": 0,
+   "px": [
+    2232,
+    2003
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107172,
+   "capa": 0,
+   "px": [
+    2247,
+    1990
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107173,
+   "capa": 0,
+   "px": [
+    2150,
+    4659
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107174,
+   "capa": 0,
+   "px": [
+    2148,
+    4774
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107175,
+   "capa": 0,
+   "px": [
+    2154,
+    4818
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107176,
+   "capa": 0,
+   "px": [
+    2268,
+    1968
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107177,
+   "capa": 0,
+   "px": [
+    2142,
+    2007
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107178,
+   "capa": 0,
+   "px": [
+    2165,
+    1986
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107179,
+   "capa": 0,
+   "px": [
+    2123,
+    2027
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107180,
+   "capa": 0,
+   "px": [
+    2186,
+    1964
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107181,
+   "capa": 0,
+   "px": [
+    2201,
+    1951
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107182,
+   "capa": 0,
+   "px": [
+    2222,
+    1929
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107183,
+   "capa": 0,
+   "px": [
+    2147,
+    2086
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  },
+  {
+   "entity_id": 107184,
+   "capa": 0,
+   "px": [
+    2291,
+    1959
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080000000"
+  }
+ ]
+}

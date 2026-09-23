@@ -1,0 +1,2376 @@
+{
+ "_nota": "Burning Desert (stage 33), de dos capturas de Celestia del 23/09/2026. Territorio de la faccion Steel (Iron Totem).",
+ "stage": 33,
+ "spawns": [
+  {
+   "entity_id": 29202,
+   "nombre": "Iron Totem",
+   "npc_type": 1939,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    40,
+    158
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 122025,
+   "nombre": "Dinot",
+   "npc_type": 1673,
+   "sprite": 40037,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    146,
+    133
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122026,
+   "nombre": "Surgeon",
+   "npc_type": 1672,
+   "sprite": 40039,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    175,
+    143
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122027,
+   "nombre": "Chief",
+   "npc_type": 1671,
+   "sprite": 40037,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    166,
+    151
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122028,
+   "nombre": "Cupid",
+   "npc_type": 1862,
+   "sprite": 40006,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    177,
+    170
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122029,
+   "nombre": "Asmode",
+   "npc_type": 1870,
+   "sprite": 40037,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    286,
+    21
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122030,
+   "nombre": "General Allie",
+   "npc_type": 1667,
+   "sprite": 40037,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    37,
+    160
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122031,
+   "nombre": "Desert Merchant",
+   "npc_type": 1674,
+   "sprite": 40039,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    27,
+    148
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122032,
+   "nombre": "Spy Sungier",
+   "npc_type": 1675,
+   "sprite": 40037,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    264,
+    167
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122033,
+   "nombre": "Pestle Aider",
+   "npc_type": 1678,
+   "sprite": 40038,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    39,
+    161
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122034,
+   "nombre": "Myth Scholar",
+   "npc_type": 1677,
+   "sprite": 40039,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    56,
+    162
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 1012992,
+   "nombre": "Toxic Spider",
+   "npc_type": 71,
+   "sprite": 42083,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    249,
+    138
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1012993,
+   "nombre": "Toxic Spider",
+   "npc_type": 71,
+   "sprite": 42083,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    278,
+    103
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1012994,
+   "nombre": "Toxic Spider",
+   "npc_type": 71,
+   "sprite": 42083,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    244,
+    117
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1012995,
+   "nombre": "Toxic Spider",
+   "npc_type": 71,
+   "sprite": 42083,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    261,
+    116
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1012996,
+   "nombre": "Toxic Spider",
+   "npc_type": 71,
+   "sprite": 42083,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    269,
+    124
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1012997,
+   "nombre": "Toxic Spider",
+   "npc_type": 71,
+   "sprite": 42083,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    242,
+    117
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1012998,
+   "nombre": "Toxic Spider",
+   "npc_type": 71,
+   "sprite": 42083,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    246,
+    131
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1012999,
+   "nombre": "Toxic Spider",
+   "npc_type": 71,
+   "sprite": 42083,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    271,
+    92
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013000,
+   "nombre": "Toxic Spider",
+   "npc_type": 71,
+   "sprite": 42083,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    254,
+    134
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013001,
+   "nombre": "Toxic Spider",
+   "npc_type": 71,
+   "sprite": 42083,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    246,
+    114
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013002,
+   "nombre": "Toxic Spider",
+   "npc_type": 71,
+   "sprite": 42083,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    250,
+    102
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013003,
+   "nombre": "Toxic Spider",
+   "npc_type": 71,
+   "sprite": 42083,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    248,
+    65
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013004,
+   "nombre": "Toxic Spider",
+   "npc_type": 71,
+   "sprite": 42083,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    277,
+    96
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013005,
+   "nombre": "Toxic Spider",
+   "npc_type": 71,
+   "sprite": 42083,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    232,
+    83
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013006,
+   "nombre": "Toxic Spider",
+   "npc_type": 71,
+   "sprite": 42083,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    207,
+    94
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013007,
+   "nombre": "Toxic Spider",
+   "npc_type": 71,
+   "sprite": 42083,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    247,
+    68
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013008,
+   "nombre": "Toxic Spider",
+   "npc_type": 71,
+   "sprite": 42083,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    212,
+    92
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013009,
+   "nombre": "Toxic Spider",
+   "npc_type": 71,
+   "sprite": 42083,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    232,
+    83
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013010,
+   "nombre": "Toxic Spider",
+   "npc_type": 71,
+   "sprite": 42083,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    253,
+    95
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013011,
+   "nombre": "Toxic Spider",
+   "npc_type": 71,
+   "sprite": 42083,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    277,
+    97
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013012,
+   "nombre": "Toxic Spider",
+   "npc_type": 71,
+   "sprite": 42083,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    238,
+    66
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013013,
+   "nombre": "Toxic Spider",
+   "npc_type": 71,
+   "sprite": 42083,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    209,
+    86
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013014,
+   "nombre": "Toxic Spider",
+   "npc_type": 71,
+   "sprite": 42083,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    244,
+    105
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013015,
+   "nombre": "Toxic Spider",
+   "npc_type": 71,
+   "sprite": 42083,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    240,
+    84
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013016,
+   "nombre": "Toxic Spider",
+   "npc_type": 71,
+   "sprite": 42083,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    281,
+    88
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013017,
+   "nombre": "Toxic Spider",
+   "npc_type": 71,
+   "sprite": 42083,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    293,
+    44
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013018,
+   "nombre": "Toxic Spider",
+   "npc_type": 71,
+   "sprite": 42083,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    283,
+    58
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013019,
+   "nombre": "Toxic Spider",
+   "npc_type": 71,
+   "sprite": 42083,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    218,
+    47
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013020,
+   "nombre": "Toxic Spider",
+   "npc_type": 71,
+   "sprite": 42083,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    242,
+    54
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013021,
+   "nombre": "Toxic Spider",
+   "npc_type": 71,
+   "sprite": 42083,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    254,
+    52
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013022,
+   "nombre": "Toxic Spider",
+   "npc_type": 71,
+   "sprite": 42083,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    232,
+    60
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013023,
+   "nombre": "Toxic Spider",
+   "npc_type": 71,
+   "sprite": 42083,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    215,
+    54
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013024,
+   "nombre": "Toxic Spider",
+   "npc_type": 71,
+   "sprite": 42083,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    286,
+    48
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013025,
+   "nombre": "Toxic Spider",
+   "npc_type": 71,
+   "sprite": 42083,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    247,
+    53
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013026,
+   "nombre": "Toxic Spider",
+   "npc_type": 71,
+   "sprite": 42083,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    282,
+    64
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013027,
+   "nombre": "Toxic Spider",
+   "npc_type": 71,
+   "sprite": 42083,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    257,
+    43
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013028,
+   "nombre": "Toxic Spider",
+   "npc_type": 71,
+   "sprite": 42083,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    231,
+    56
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013029,
+   "nombre": "Toxic Spider",
+   "npc_type": 71,
+   "sprite": 42083,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    216,
+    58
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013030,
+   "nombre": "Toxic Spider",
+   "npc_type": 71,
+   "sprite": 42083,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    289,
+    60
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013031,
+   "nombre": "Toxic Spider",
+   "npc_type": 71,
+   "sprite": 42083,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    290,
+    38
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013032,
+   "nombre": "Mummy",
+   "npc_type": 72,
+   "sprite": 42027,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    65,
+    108
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013033,
+   "nombre": "Mummy",
+   "npc_type": 72,
+   "sprite": 42027,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    27,
+    90
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013034,
+   "nombre": "Mummy",
+   "npc_type": 72,
+   "sprite": 42027,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    32,
+    120
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013035,
+   "nombre": "Mummy",
+   "npc_type": 72,
+   "sprite": 42027,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    49,
+    113
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013036,
+   "nombre": "Mummy",
+   "npc_type": 72,
+   "sprite": 42027,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    73,
+    104
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013037,
+   "nombre": "Mummy",
+   "npc_type": 72,
+   "sprite": 42027,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    21,
+    126
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013038,
+   "nombre": "Mummy",
+   "npc_type": 72,
+   "sprite": 42027,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    51,
+    109
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013039,
+   "nombre": "Mummy",
+   "npc_type": 72,
+   "sprite": 42027,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    23,
+    92
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013040,
+   "nombre": "Mummy",
+   "npc_type": 72,
+   "sprite": 42027,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    40,
+    120
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013041,
+   "nombre": "Mummy",
+   "npc_type": 72,
+   "sprite": 42027,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    23,
+    116
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013042,
+   "nombre": "Mummy",
+   "npc_type": 72,
+   "sprite": 42027,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    27,
+    93
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013043,
+   "nombre": "Mummy",
+   "npc_type": 72,
+   "sprite": 42027,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    68,
+    101
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013044,
+   "nombre": "Mummy",
+   "npc_type": 72,
+   "sprite": 42027,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    40,
+    121
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013045,
+   "nombre": "Mummy",
+   "npc_type": 72,
+   "sprite": 42027,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    28,
+    98
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013046,
+   "nombre": "Mummy",
+   "npc_type": 72,
+   "sprite": 42027,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    69,
+    97
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013047,
+   "nombre": "Mummy",
+   "npc_type": 72,
+   "sprite": 42027,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    11,
+    94
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013048,
+   "nombre": "Mummy",
+   "npc_type": 72,
+   "sprite": 42027,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    94,
+    15
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013049,
+   "nombre": "Mummy",
+   "npc_type": 72,
+   "sprite": 42027,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    23,
+    63
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013050,
+   "nombre": "Mummy",
+   "npc_type": 72,
+   "sprite": 42027,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    14,
+    73
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013051,
+   "nombre": "Mummy",
+   "npc_type": 72,
+   "sprite": 42027,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    14,
+    86
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013052,
+   "nombre": "Mummy",
+   "npc_type": 72,
+   "sprite": 42027,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    11,
+    86
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013053,
+   "nombre": "Mummy",
+   "npc_type": 72,
+   "sprite": 42027,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    26,
+    61
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013054,
+   "nombre": "Mummy",
+   "npc_type": 72,
+   "sprite": 42027,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    101,
+    7
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013055,
+   "nombre": "Mummy",
+   "npc_type": 72,
+   "sprite": 42027,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    91,
+    12
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013056,
+   "nombre": "Mummy",
+   "npc_type": 72,
+   "sprite": 42027,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    6,
+    84
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013057,
+   "nombre": "Mummy",
+   "npc_type": 72,
+   "sprite": 42027,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    16,
+    88
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013058,
+   "nombre": "Mummy",
+   "npc_type": 72,
+   "sprite": 42027,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    20,
+    54
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013059,
+   "nombre": "Mummy",
+   "npc_type": 72,
+   "sprite": 42027,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    19,
+    68
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013060,
+   "nombre": "Mummy",
+   "npc_type": 72,
+   "sprite": 42027,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    10,
+    85
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013061,
+   "nombre": "Mummy",
+   "npc_type": 72,
+   "sprite": 42027,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    103,
+    12
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013062,
+   "nombre": "Mummy",
+   "npc_type": 72,
+   "sprite": 42027,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    186,
+    16
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013063,
+   "nombre": "Mummy",
+   "npc_type": 72,
+   "sprite": 42027,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    194,
+    35
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013064,
+   "nombre": "Mummy",
+   "npc_type": 72,
+   "sprite": 42027,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    204,
+    21
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013065,
+   "nombre": "Mummy",
+   "npc_type": 72,
+   "sprite": 42027,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    200,
+    37
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013066,
+   "nombre": "Mummy",
+   "npc_type": 72,
+   "sprite": 42027,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    207,
+    11
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013067,
+   "nombre": "Mummy",
+   "npc_type": 72,
+   "sprite": 42027,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    185,
+    20
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013068,
+   "nombre": "Mummy",
+   "npc_type": 72,
+   "sprite": 42027,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    191,
+    43
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013069,
+   "nombre": "Mummy",
+   "npc_type": 72,
+   "sprite": 42027,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    219,
+    20
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013070,
+   "nombre": "Mummy",
+   "npc_type": 72,
+   "sprite": 42027,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    174,
+    20
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013071,
+   "nombre": "Mummy",
+   "npc_type": 72,
+   "sprite": 42027,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    208,
+    26
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 23
+  },
+  {
+   "entity_id": 1013072,
+   "nombre": "Mummy Leader",
+   "npc_type": 73,
+   "sprite": 42028,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    129,
+    60
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1013073,
+   "nombre": "Mummy Leader",
+   "npc_type": 73,
+   "sprite": 42028,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    106,
+    51
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1013074,
+   "nombre": "Mummy Leader",
+   "npc_type": 73,
+   "sprite": 42028,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    143,
+    45
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1013075,
+   "nombre": "Mummy Leader",
+   "npc_type": 73,
+   "sprite": 42028,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    102,
+    33
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1013076,
+   "nombre": "Mummy Leader",
+   "npc_type": 73,
+   "sprite": 42028,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    132,
+    36
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1013077,
+   "nombre": "Mummy Leader",
+   "npc_type": 73,
+   "sprite": 42028,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    99,
+    45
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1013078,
+   "nombre": "Mummy Leader",
+   "npc_type": 73,
+   "sprite": 42028,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    105,
+    32
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1013079,
+   "nombre": "Mummy Leader",
+   "npc_type": 73,
+   "sprite": 42028,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    129,
+    28
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1013080,
+   "nombre": "Mummy Leader",
+   "npc_type": 73,
+   "sprite": 42028,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    119,
+    57
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1013081,
+   "nombre": "Mummy Leader",
+   "npc_type": 73,
+   "sprite": 42028,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    136,
+    41
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1013082,
+   "nombre": "Mummy Leader",
+   "npc_type": 73,
+   "sprite": 42028,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    131,
+    31
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1013083,
+   "nombre": "Mummy Leader",
+   "npc_type": 73,
+   "sprite": 42028,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    118,
+    61
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1013084,
+   "nombre": "Mummy Leader",
+   "npc_type": 73,
+   "sprite": 42028,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    96,
+    54
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1013085,
+   "nombre": "Mummy Leader",
+   "npc_type": 73,
+   "sprite": 42028,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    141,
+    41
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1013086,
+   "nombre": "Mummy Leader",
+   "npc_type": 73,
+   "sprite": 42028,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    106,
+    42
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1013087,
+   "nombre": "Mummy Leader",
+   "npc_type": 73,
+   "sprite": 42028,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    89,
+    53
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1013088,
+   "nombre": "Mummy Leader",
+   "npc_type": 73,
+   "sprite": 42028,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    84,
+    74
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1013089,
+   "nombre": "Mummy Leader",
+   "npc_type": 73,
+   "sprite": 42028,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    58,
+    73
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1013090,
+   "nombre": "Mummy Leader",
+   "npc_type": 73,
+   "sprite": 42028,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    104,
+    83
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1013091,
+   "nombre": "Mummy Leader",
+   "npc_type": 73,
+   "sprite": 42028,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    52,
+    58
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1013092,
+   "nombre": "Mummy Leader",
+   "npc_type": 73,
+   "sprite": 42028,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    88,
+    61
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1013093,
+   "nombre": "Mummy Leader",
+   "npc_type": 73,
+   "sprite": 42028,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    106,
+    79
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1013094,
+   "nombre": "Mummy Leader",
+   "npc_type": 73,
+   "sprite": 42028,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    64,
+    71
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1013095,
+   "nombre": "Mummy Leader",
+   "npc_type": 73,
+   "sprite": 42028,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    55,
+    52
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1013096,
+   "nombre": "Mummy Leader",
+   "npc_type": 73,
+   "sprite": 42028,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    90,
+    73
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1013097,
+   "nombre": "Mummy Leader",
+   "npc_type": 73,
+   "sprite": 42028,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    89,
+    57
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1013098,
+   "nombre": "Mummy Leader",
+   "npc_type": 73,
+   "sprite": 42028,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    44,
+    57
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1013099,
+   "nombre": "Mummy Leader",
+   "npc_type": 73,
+   "sprite": 42028,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    109,
+    84
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1013100,
+   "nombre": "Mummy Leader",
+   "npc_type": 73,
+   "sprite": 42028,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    61,
+    69
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1013101,
+   "nombre": "Mummy Leader",
+   "npc_type": 73,
+   "sprite": 42028,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    86,
+    69
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1013102,
+   "nombre": "Undying Lord",
+   "npc_type": 75,
+   "sprite": 42137,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    141,
+    36
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 28
+  }
+ ],
+ "recursos": [
+  {
+   "entity_id": 101533,
+   "capa": 2,
+   "px": [
+    3427,
+    5353
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60110,
+   "cola": "00000000000000",
+   "nombre_visible": "Iron(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002",
+   "material": "Copper(L)"
+  },
+  {
+   "entity_id": 101534,
+   "capa": 2,
+   "px": [
+    3219,
+    5170
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60110,
+   "cola": "00000000000000",
+   "nombre_visible": "Iron(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002",
+   "material": "Copper(L)"
+  },
+  {
+   "entity_id": 101535,
+   "capa": 2,
+   "px": [
+    3854,
+    5482
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60110,
+   "cola": "00000000000000",
+   "nombre_visible": "Iron(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002",
+   "material": "Copper(L)"
+  },
+  {
+   "entity_id": 101536,
+   "capa": 0,
+   "px": [
+    3957,
+    5483
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60110,
+   "cola": "00000000000000",
+   "nombre_visible": "Iron(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material": "Copper(L)"
+  },
+  {
+   "entity_id": 101537,
+   "capa": 0,
+   "px": [
+    3431,
+    5429
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60110,
+   "cola": "00000000000000",
+   "nombre_visible": "Iron(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material": "Copper(L)"
+  },
+  {
+   "entity_id": 101538,
+   "capa": 0,
+   "px": [
+    4028,
+    5506
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60122,
+   "cola": "00000000000000",
+   "nombre_visible": "Iron(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material": "Copper(M)"
+  },
+  {
+   "entity_id": 101539,
+   "capa": 2,
+   "px": [
+    3571,
+    5458
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60122,
+   "cola": "00000000000000",
+   "nombre_visible": "Iron(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002",
+   "material": "Copper(M)"
+  },
+  {
+   "entity_id": 101540,
+   "capa": 0,
+   "px": [
+    3309,
+    5259
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60122,
+   "cola": "00000000000000",
+   "nombre_visible": "Iron(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material": "Copper(M)"
+  },
+  {
+   "entity_id": 101541,
+   "capa": 0,
+   "px": [
+    3789,
+    5501
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60122,
+   "cola": "00000000000000",
+   "nombre_visible": "Iron(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material": "Copper(M)"
+  },
+  {
+   "entity_id": 101542,
+   "capa": 0,
+   "px": [
+    3167,
+    5040
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60122,
+   "cola": "00000000000000",
+   "nombre_visible": "Iron(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material": "Copper(M)"
+  },
+  {
+   "entity_id": 101543,
+   "capa": 0,
+   "px": [
+    3469,
+    5473
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60158,
+   "cola": "00000000000000",
+   "nombre_visible": "Iron(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material_posibles": [
+    "Big Copper",
+    "Copper (L)",
+    "Copper(S)"
+   ]
+  },
+  {
+   "entity_id": 101544,
+   "capa": 2,
+   "px": [
+    3715,
+    5532
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60158,
+   "cola": "00000000000000",
+   "nombre_visible": "Iron(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002",
+   "material_posibles": [
+    "Big Copper",
+    "Copper (L)",
+    "Copper(S)"
+   ]
+  },
+  {
+   "entity_id": 101545,
+   "capa": 0,
+   "px": [
+    3366,
+    5306
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60158,
+   "cola": "00000000000000",
+   "nombre_visible": "Iron(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material_posibles": [
+    "Big Copper",
+    "Copper (L)",
+    "Copper(S)"
+   ]
+  },
+  {
+   "entity_id": 101546,
+   "capa": 0,
+   "px": [
+    3214,
+    5096
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60158,
+   "cola": "00000000000000",
+   "nombre_visible": "Iron(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material_posibles": [
+    "Big Copper",
+    "Copper (L)",
+    "Copper(S)"
+   ]
+  },
+  {
+   "entity_id": 101547,
+   "capa": 2,
+   "px": [
+    4085,
+    5555
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60158,
+   "cola": "00000000000000",
+   "nombre_visible": "Iron(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002",
+   "material_posibles": [
+    "Big Copper",
+    "Copper (L)",
+    "Copper(S)"
+   ]
+  },
+  {
+   "entity_id": 101548,
+   "capa": 2,
+   "px": [
+    142,
+    682
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60086,
+   "cola": "00000000000000",
+   "nombre_visible": "OldBeastDen(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Beastkin Den(S)",
+    "BeastkinDen(S)"
+   ]
+  },
+  {
+   "entity_id": 101549,
+   "capa": 2,
+   "px": [
+    107,
+    578
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60086,
+   "cola": "00000000000000",
+   "nombre_visible": "OldBeastDen(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Beastkin Den(S)",
+    "BeastkinDen(S)"
+   ]
+  },
+  {
+   "entity_id": 101550,
+   "capa": 0,
+   "px": [
+    966,
+    1135
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60086,
+   "cola": "00000000000000",
+   "nombre_visible": "OldBeastDen(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Beastkin Den(S)",
+    "BeastkinDen(S)"
+   ]
+  },
+  {
+   "entity_id": 101551,
+   "capa": 0,
+   "px": [
+    1059,
+    1000
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60086,
+   "cola": "00000000000000",
+   "nombre_visible": "OldBeastDen(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Beastkin Den(S)",
+    "BeastkinDen(S)"
+   ]
+  },
+  {
+   "entity_id": 101552,
+   "capa": 0,
+   "px": [
+    1442,
+    723
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60086,
+   "cola": "00000000000000",
+   "nombre_visible": "OldBeastDen(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Beastkin Den(S)",
+    "BeastkinDen(S)"
+   ]
+  },
+  {
+   "entity_id": 101553,
+   "capa": 2,
+   "px": [
+    268,
+    823
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60086,
+   "cola": "00000000000000",
+   "nombre_visible": "OldBeastDen(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Beastkin Den(S)",
+    "BeastkinDen(S)"
+   ]
+  },
+  {
+   "entity_id": 101554,
+   "capa": 0,
+   "px": [
+    9430,
+    171
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 101555,
+   "capa": 0,
+   "px": [
+    9246,
+    5548
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 101556,
+   "capa": 0,
+   "px": [
+    9265,
+    3244
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60095,
+   "cola": "00004080140000"
+  },
+  {
+   "entity_id": 101557,
+   "capa": 0,
+   "px": [
+    9314,
+    3281
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60095,
+   "cola": "00004080140000"
+  },
+  {
+   "entity_id": 101558,
+   "capa": 2,
+   "px": [
+    1600,
+    2394
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60097,
+   "cola": "00004080140000"
+  },
+  {
+   "entity_id": 101559,
+   "capa": 0,
+   "px": [
+    9378,
+    3062
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60098,
+   "cola": "00004080140000"
+  },
+  {
+   "entity_id": 101560,
+   "capa": 0,
+   "px": [
+    7361,
+    2945
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60098,
+   "cola": "00004080140000"
+  },
+  {
+   "entity_id": 101561,
+   "capa": 0,
+   "px": [
+    9243,
+    1947
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60098,
+   "cola": "00004080140000"
+  },
+  {
+   "entity_id": 101562,
+   "capa": 0,
+   "px": [
+    9215,
+    4222
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60098,
+   "cola": "00004080140000"
+  },
+  {
+   "entity_id": 101563,
+   "capa": 0,
+   "px": [
+    1281,
+    5081
+   ],
+   "medio": "006f70706572284d2900000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60053,
+   "cola": "00002280140000",
+   "que_es": "Iron Totem"
+  }
+ ]
+}

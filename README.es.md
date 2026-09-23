@@ -37,11 +37,18 @@ una suposición, lo dice.
   de ataque, morir y revivir, botín, experiencia y experiencia de habilidad
 - Monstruos: cadencia de ataque propia de cada uno, persecución, paseo,
   reaparición y efectos de sangrado y aturdimiento
-- Tres mapas poblados a partir de capturas: Angel Lyceum (52 NPC, 81
-  monstruos, 158 recursos), East Playground (170 monstruos, 66 recursos) y
-  West Playground (150 monstruos, 67 recursos), mas el Fighting Palace con
-  Angel Raphael y los cuarenta tótems
-- Portales entre el Lyceum y los dos playgrounds, con sus menús
+- **68 mapas poblados a partir de capturas**: 9.276 monstruos, 818 NPC y
+  4.389 objetos de mapa, 3.406 de ellos con su recurso identificado. Cada
+  monstruo, NPC y recurso sale de una captura; nada está inventado
+- **Heart of Eden completo** y **Atlantis completo salvo las instancias**,
+  más buena parte de Pharaoh, East Orient, Floating y los territorios de las
+  cuatro facciones
+- **144 portales**, casi todos medidos en los dos sentidos: la casilla del
+  tornado sale de la captura, y también aquella donde el servidor real deja
+  al jugador al cruzar
+- Las cuatro ciudades de facción con su casilla de llegada, las cuatro
+  medidas: Aurora City, Breeze Woods, Iron Castle y Dark City
+- Los portales entre el Lyceum y los dos playgrounds, con sus menús
 - Cupid fija el punto de revivir donde estás parado
 - Animación y ritmo de ataque por arma, medidos: lanza, bastón, espada, daga
   y dos armas de una mano mandan cada uno su propio par de valores
@@ -80,6 +87,16 @@ una suposición, lo dice.
 Hace falta **Python 3.10 o superior** y el cliente de Angels Online
 instalado. Probado con el cliente **8.5.1.0**; las capturas de las que sale
 el protocolo se tomaron con un **8.6.0.8**, y los dos hablan lo mismo.
+
+IGG cerró el juego en febrero de 2026, así que el cliente ya no se puede
+descargar de ellos. Esta es la copia con la que se desarrolla y se prueba
+este proyecto:
+
+**[Cliente de Angels Online 8.5.1.0](https://drive.google.com/file/d/13IOcTJUkX7LfsznZ8tobyu5c5MuXjpZK/view?usp=sharing)**
+
+Es el cliente de IGG, sin modificar. Está aquí porque un protocolo que no se
+puede ejecutar contra nada no sirve de mucho, y porque sin él no se puede
+reproducir ninguna de las mediciones de este repositorio.
 
 1. Apuntá el cliente a tu máquina. En su `server.xml`:
 

@@ -16,6 +16,7 @@ tools/diagnosticar.py lo entiende sin cambios.
 """
 import asyncio
 import argparse
+import collections
 import os
 import re
 import datetime
@@ -57,6 +58,7 @@ class Grab:
         # acumular, los frames partidos se pierden -- en la primera captura se
         # perdieron cuatro bloques de 4 a 5 KB, justo los mas grandes.
         self.pendiente = {'c2s': b'', 's2c': b''}
+        self.corto = None                 # que sentido colgo primero
 
     def guardar_clave(self, k):
         self.clave = k
@@ -101,7 +103,32 @@ class Grab:
                     self.orden.write(chr(10))
                 self.orden.flush()
             off += h['wire']
-        self.pendiente[sentido] = datos[off:]
+        resto = datos[off:]
+        if len(resto) > 1 << 20:
+            # Solo pasa si el descifrado se desincronizo: los headers dejan de
+            # tener sentido, el bucle sale por el break y el resto se acumula
+            # sin fin. Mejor perder la anotacion que comerse la memoria.
+            log.warning('[%s] buffer de anotacion desbordado (%d KB); '
+                        'se descarta y se sigue', sentido, len(resto) >> 10)
+            resto = b''
+        self.pendiente[sentido] = resto
+
+    def fin(self, sentido, motivo):
+        """Anota quien corto y cuando. Sin esto, cuando la sesion se caia no
+        habia forma de saber si colgo el cliente o el servidor real."""
+        cuando = round(time.time() - self.t0, 3)
+        quien = 'el cliente' if sentido == 'c2s' else 'el servidor real'
+        if not self.corto:
+            self.corto = sentido
+            log.info('[%s] corto %s a los %s s -- %s',
+                     self.base, quien, cuando, motivo)
+        try:
+            self.orden.write(json.dumps({'t': cuando, 'dir': sentido,
+                                         'opcode': -2, 'len': 0,
+                                         'fin': motivo}) + chr(10))
+            self.orden.flush()
+        except Exception:
+            pass
 
     def cerrar(self):
         for f in (self.c2s, self.s2c, self.orden):
@@ -121,7 +148,7 @@ def reescribir_redirect(datos, clave, host_nuevo, puerto_nuevo, aviso):
     - **0x000C CAMBIO DE MAPA**, en la sesion de mundo:
       `[u32 stage][u16 puerto][ip asciiz]`. Celestia lo usa para mudar al
       cliente a OTRO servidor al cambiar de mapa: en la captura del West
-      Playground llega con el puerto 30001 y la ip 35.236.242.228. Como no se
+      Playground llega con el puerto 30001 y OTRA ip distinta. Como no se
       reescribia, el cliente se reconectaba directo al servidor real y la
       grabacion se cortaba en seco justo al cambiar de mapa.
 
@@ -133,7 +160,6 @@ def reescribir_redirect(datos, clave, host_nuevo, puerto_nuevo, aviso):
     while off + HDR <= len(datos):
         h = decode_header(datos, off)
         if h['length'] == 0 or off + h['wire'] > len(datos):
-            salida.extend(datos[off:])
             break
         crudo = datos[off + HDR: off + h['wire']]
         cuerpo = XorStatic(clave).decrypt(crudo) if h['encrypted'] else crudo
@@ -187,7 +213,16 @@ def reescribir_redirect(datos, clave, host_nuevo, puerto_nuevo, aviso):
         else:
             salida += datos[off: off + h['wire']]
         off += h['wire']
-    return bytes(salida)
+    # LO QUE SOBRA SE DEVUELVE SIEMPRE. Esto es lo que botaba al jugador:
+    # read() corta donde quiere, asi que un trozo puede terminar con un frame
+    # a medias -- o con menos de HDR bytes, y ahi el `while` ni entra. Esos
+    # bytes sueltos no se copiaban a la salida: se PERDIAN. Al cliente le
+    # llegaba el flujo corrido dos o tres bytes, el framing se desincronizaba
+    # y a partir de ahi todo era basura, asi que cerraba la conexion. Por eso
+    # pasaba "despues de un rato" y en momentos al azar: hace falta que una
+    # lectura caiga justo sobre un header, y eso es mas probable cuanto mas
+    # trafico hay, que es justo cuando se caia.
+    return bytes(salida) + datos[off:]
 
 
 class Proxy:
@@ -196,18 +231,54 @@ class Proxy:
         self.puerto = puerto
         self.wpuerto_local = wpuerto_local
         self.fport = fport
-        self.mundo_real = None      # (ip, puerto) que dijo el servidor real
+        # DOS CLIENTES A LA VEZ. Antes esto era UNA sola casilla, y con dos
+        # cuentas abiertas el redirect de la segunda pisaba el de la primera:
+        # la conexion de mundo de una acababa yendo al destino de la otra. Y
+        # no es un caso raro, porque Celestia manda un puerto propio en CADA
+        # cambio de mapa, asi que dos jugadores moviendose se pisan todo el
+        # rato.
+        #
+        # Ahora es una COLA: cada redirect encola su destino y cada conexion
+        # de mundo saca el mas antiguo. Funciona porque el cliente se conecta
+        # justo despues de recibir su redirect, asi que el orden se respeta.
+        self.pendientes = collections.deque(maxlen=16)
+        self.mundo_real = None      # el ultimo, solo de reserva y para el log
 
     async def tuberia(self, lector, escritor, grab, sentido, transformar=None):
+        """Reenvia un sentido. GRABAR NUNCA PUEDE CORTAR LA PARTIDA.
+
+        Antes la grabacion vivia dentro del bucle sin proteccion: escribir el
+        .bin, descifrar para el .jsonl o serializar el json podian lanzar, la
+        excepcion se escapaba del `except` de abajo -- que solo atrapa errores
+        de conexion -- y el `finally` cerraba el socket. O sea: un solo
+        paquete que no se pudiera anotar botaba al jugador, despues de un rato
+        y sin motivo aparente. Ya habia pasado con la reescritura y se parcheo
+        solo ahi; el resto del camino de captura seguia igual de expuesto.
+
+        Ahora cada paso de captura va en su propio try y lo unico que puede
+        terminar el bucle es el socket.
+        """
         f = grab.c2s if sentido == 'c2s' else grab.s2c
+        motivo = 'fin de flujo'
         try:
             while True:
                 d = await lector.read(65536)
                 if not d:
                     break
-                f.write(d)
-                f.flush()
-                grab.anotar(sentido, d)
+
+                try:
+                    f.write(d)
+                    f.flush()
+                except Exception as e:
+                    log.warning('[%s] no pude guardar el .bin (%s); '
+                                'la sesion sigue', sentido, e)
+
+                try:
+                    grab.anotar(sentido, d)
+                except Exception as e:
+                    log.warning('[%s] no pude anotar un paquete (%s); '
+                                'la sesion sigue', sentido, e)
+
                 if sentido == 's2c' and grab.clave is None:
                     try:
                         h = decode_header(d, 0)
@@ -217,17 +288,35 @@ class Proxy:
                             log.info('  clave de sesion: ' + k.hex(' '))
                     except Exception:
                         pass
+
                 if transformar and grab.clave is not None:
-                    d = transformar(d, grab.clave)
+                    try:
+                        d = transformar(d, grab.clave)
+                    except Exception as e:
+                        log.warning('[%s] no se pudo reescribir un paquete '
+                                    '(%s); se deja pasar sin tocar',
+                                    sentido, e)
+
                 escritor.write(d)
                 await escritor.drain()
-        except (ConnectionResetError, asyncio.IncompleteReadError, BrokenPipeError):
+        except (ConnectionResetError, asyncio.IncompleteReadError,
+                BrokenPipeError, ConnectionAbortedError, OSError) as e:
+            motivo = type(e).__name__ + ': ' + str(e)
+        except asyncio.CancelledError:
+            raise
+        except Exception as e:
+            # Que no se pierda en silencio: si alguna vez vuelve a aparecer
+            # algo que no sea de red, queda con nombre y apellido en el log.
+            motivo = 'ERROR NO DE RED ' + type(e).__name__ + ': ' + str(e)
+            log.exception('[%s] la tuberia murio por algo que no es la red',
+                          sentido)
+        grab.fin(sentido, motivo)
+        # Propagar el cierre al otro extremo: sin esto el sentido contrario
+        # se queda leyendo y el gather de maneja() no vuelve nunca.
+        try:
+            escritor.close()
+        except Exception:
             pass
-        finally:
-            try:
-                escritor.close()
-            except Exception:
-                pass
 
     async def maneja(self, lector, escritor, puerto_destino, etiqueta,
                      reescribe, host_destino=None):
@@ -248,6 +337,7 @@ class Proxy:
 
         def aviso(ip, pt, stage=None):
             self.mundo_real = (ip, pt)
+            self.pendientes.append((ip, pt))
             if stage is None:
                 log.info('  REDIRECT del servidor: %s:%s', ip, pt)
             else:
@@ -261,9 +351,13 @@ class Proxy:
                 return reescribir_redirect(d, k, '127.0.0.1',
                                            self.wpuerto_local, aviso)
 
+        # return_exceptions: si un sentido revienta, el otro igual se cierra
+        # y la captura se guarda. Sin esto el gather propagaba y se perdia el
+        # grab.cerrar() de abajo, dejando el .jsonl a medio escribir.
         await asyncio.gather(
             self.tuberia(lector, wl, grab, 'c2s'),
             self.tuberia(rl, escritor, grab, 's2c', t),
+            return_exceptions=True,
         )
         grab.cerrar()
         log.info('[%s] cerrada -> logs/proxy/%s_*.bin', etiqueta, grab.base)
@@ -278,11 +372,19 @@ class Proxy:
         log.info('LOGIN    127.0.0.1:%s -> %s:%s', self.puerto, self.destino, self.puerto)
 
         async def mundo(l, e):
-            if not self.mundo_real:
+            # El mas antiguo de la cola: es el del cliente que acaba de
+            # recibir su redirect. Si la cola esta vacia se usa el ultimo
+            # conocido, que es lo que se hacia siempre.
+            if self.pendientes:
+                ip, pt = self.pendientes.popleft()
+            elif self.mundo_real:
+                ip, pt = self.mundo_real
+                log.warning('conexion de mundo sin redirect en cola; se usa '
+                            'el ultimo destino conocido %s:%s', ip, pt)
+            else:
                 log.warning('llego una conexion de mundo sin redirect previo')
                 e.close()
                 return
-            ip, pt = self.mundo_real
             self.destino_mundo = ip
             # reescribe=True tambien aqui: la sesion de mundo es la que
             # trae el 0x000C del cambio de mapa. Sin esto el cliente se iba

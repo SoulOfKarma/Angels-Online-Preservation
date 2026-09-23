@@ -36,10 +36,16 @@ a guess, it says so.
   attack effects, dying and reviving, loot, experience and skill experience
 - Monsters: per-monster attack cadence, chasing, wandering, respawn, and
   bleed and stun effects
-- Three maps fully populated from captures: Angel Lyceum (52 NPCs, 81
-  monsters, 158 resources), East Playground (170 monsters, 66 resources) and
-  West Playground (150 monsters, 67 resources), plus the Fighting Palace with
-  Angel Raphael and the forty totems
+- **68 maps populated from captures**: 9,276 monsters, 818 NPCs and 4,389 map
+  objects, 3,406 of them with their resource name resolved. Every monster, NPC
+  and resource comes from a capture; none of it is made up
+- **Heart of Eden is complete** and **Atlantis is complete except for the
+  instances**, plus a good part of Pharaoh, East Orient, Floating and the four
+  faction territories
+- **144 portals**, almost all measured in both directions: the tornado's tile
+  comes from the capture, and so does the tile the real server drops you on
+- The four faction cities with their arrival tile, all four measured: Aurora
+  City, Breeze Woods, Iron Castle and Dark City
 - Portals between the Lyceum and both playgrounds, with their menus
 - Cupid sets your revival point where you are standing
 - Per-weapon attack animation and rhythm, measured: spear, staff, sword,
@@ -78,6 +84,15 @@ a guess, it says so.
 You need **Python 3.10 or newer** and the Angels Online client installed.
 Tested against client **8.5.1.0**; the captures the protocol comes from were
 taken with an **8.6.0.8**, and both speak the same thing.
+
+IGG took the game down in February 2026, so the client is no longer available
+from them. This is the copy this project is developed and tested against:
+
+**[Angels Online client 8.5.1.0](https://drive.google.com/file/d/13IOcTJUkX7LfsznZ8tobyu5c5MuXjpZK/view?usp=sharing)**
+
+It is IGG's client, unmodified. It is here because a protocol you cannot run
+against anything is not much use, and because without it none of the
+measurements in this repository can be reproduced.
 
 1. Point the client at your machine, in its `server.xml`:
 

@@ -281,7 +281,13 @@ def _monster_spawn(entity_id, npc_type, nombre, tile, sprite=0):
     sprite_id = sprite or SPRITES.get(npc_type, 42107)
     b[32] = 0
     b[33] = 4 if npc_type == 19 else 1
-    struct.pack_into('<H', b, 34, sprite_id)
+    # EL SPRITE ES U32, NO U16. Lo escribiamos en 16 bits y cualquier sprite
+    # por encima de 65535 salia truncado: el Saddy de Emerald Coast es el
+    # 110564 y se convertia en 45028. Comprobado en los bytes de Celestia,
+    # donde los offsets 34..37 traen e4 af 01 00, que es el 110564 entero.
+    # El _npc_spawn de al lado ya lo hacia bien; eran las dos funciones
+    # escribiendo el mismo campo con distinto tamano.
+    struct.pack_into('<I', b, 34, sprite_id)
     struct.pack_into('<H', b, 38, 7)
     struct.pack_into('<I', b, 40, 1)  # klass 1 = monster
     b[44] = 4 if npc_type == 19 else 3
@@ -346,6 +352,47 @@ def objeto_de_mapa(r) -> bytes:
     cola = bytes.fromhex(r.get('cola', ''))[:7]
     b[36:36 + len(cola)] = cola
     return struct.pack('<H', 0x000E) + bytes(b)
+
+
+def objeto_nombrado(r):
+    """El 0x000F: el cartel con el NOMBRE del recurso, o None si no se capturo.
+
+    Es el mismo mensaje que el 0x000E y con los mismos campos en los mismos
+    sitios, con dos diferencias: en los offsets 16..31 -- donde el 0x000E lleva
+    un relleno constante -- va el NOMBRE en ascii, y mide 44 bytes en vez de
+    43. Comprobado entidad por entidad en las capturas: para un mismo recurso
+    los dos mensajes solo se distinguen en esos 16 bytes y en el 32.
+
+    Mandando solo el 0x000E el recurso se dibuja pero no tiene cartel: el
+    cliente no tiene de donde sacar el nombre. Por eso al pasar el raton por
+    una veta no salia "Bone Den(L)" como en Celestia.
+    """
+    nombre = r.get('nombre_visible')
+    if not nombre:
+        return None
+    # Las plantillas viejas (lyceum) guardan el 0x000E entero en 'hex' en vez
+    # de sus campos sueltos; de ahi salen la posicion y el sprite.
+    px, spr = r.get('px'), r.get('sprite')
+    if (px is None or spr is None) and r.get('hex'):
+        crudo = bytes.fromhex(r['hex'])
+        if px is None:
+            px = list(struct.unpack_from('<II', crudo, 8))
+        if spr is None:
+            spr = struct.unpack_from('<H', crudo, 34)[0]
+    if px is None or spr is None:
+        return None
+    b = bytearray(44)
+    struct.pack_into('<I', b, 0, int(r['entity_id']))
+    struct.pack_into('<I', b, 4, int(r.get('estado', r.get('capa', 0))))
+    struct.pack_into('<II', b, 8, int(px[0]), int(px[1]))
+    n = str(nombre).encode('ascii', 'replace')[:16]
+    b[16:16 + len(n)] = n
+    b[32] = int(r.get('marca_nombre', r.get('marca', 0))) & 0xFF
+    b[33] = int(r.get('orient', 6)) & 0xFF
+    struct.pack_into('<H', b, 34, int(spr))
+    cola = bytes.fromhex(r.get('cola_nombre', ''))[:8]
+    b[36:36 + len(cola)] = cola
+    return struct.pack('<H', 0x000F) + bytes(b)
 
 
 def _totem_objeto(entity_id: int, nombre: str, tile) -> bytes:
@@ -530,6 +577,85 @@ def portales_de(stage: int):
     return salida
 
 
+# UNA SOLA TABLA de plantillas de mapa. Antes habia TRES listas
+# paralelas -- esta, la de _nombre_entidad y la de la IA de monstruos --
+# y cada mapa nuevo habia que anadirlo a las tres a mano. Fallo cuatro
+# veces: el mapa se dibujaba pero salia SIN monstruos moviendose,
+# porque la entrada se habia colado dos veces en la misma lista y
+# faltaba en la de la IA. El Lyceum y el Fighting Palace NO van aqui:
+# se tratan aparte y cada consumidor los anade si los necesita.
+PLANTILLAS_POR_STAGE = {
+    2   : 'riprap_coast.json',
+    3   : 'aurora_city.json',
+    4   : 'dawn_harbor.json',
+    5   : 'cherry_village.json',
+    6   : 'spike_farm.json',
+    7   : 'sunflower_plain.json',
+    8   : 'crashing_hillock.json',
+    9   : 'south_mirror_lake.json',
+    11  : 'thunder_ruins.json',
+    12  : 'north_mirror_lake.json',
+    13  : 'jade_vale.json',
+    15  : 'mysterious_wetland.json',
+    16  : 'thorn_wasteland.json',
+    17  : 'quiet_vale.json',
+    18  : 'mushroom_forest.json',
+    19  : 'fungus_forest_south.json',
+    20  : 'foggy_forest.json',
+    21  : 'dragon_graveyard.json',
+    22  : 'mysterious_garden.json',
+    23  : 'dense_forest.json',
+    25  : 'fungus_forest_north.json',
+    27  : 'deity_palace_ruins.json',
+    28  : 'megalith_plain.json',
+    29  : 'breeze_woods.json',
+    30  : 'cryptic_moon_swamp.json',
+    36  : 'gebuer_vale.json',
+    33  : 'burning_desert.json',
+    37  : 'wishing_tear.json',
+    38  : 'iron_castle.json',
+    39  : 'cactus_plain.json',
+    120 : 'crescent_valley.json',
+    169 : 'karang_desert.json',
+    34  : 'scrap_iron_village.json',
+    32  : 'shadowy_path.json',
+    26  : 'dark_city.json',
+    31  : 'bottomless_pit.json',
+    333 : 'ancient_landing_abyston.json',
+    14  : 'degula_maze.json',
+    35  : 'memory_cave.json',
+    209 : 'feather_leaf_forest.json',
+    137 : 'vine_front.json',
+    42  : 'east_playground.json',
+    43  : 'west_playground.json',
+    58  : 'graduation_palace.json',
+    67  : 'sad_abyss.json',
+    84  : 'blue_sea.json',
+    85  : 'colorful_coral_reefs.json',
+    86  : 'golden_beach.json',
+    87  : 'puqi_village.json',
+    88  : 'palm_base.json',
+    89  : 'wave_harbor.json',
+    90  : 'blue_ocean.json',
+    91  : 'sunken_ruins.json',
+    92  : 'shining_coast.json',
+    93  : 'dream_ocean.json',
+    94  : 'raging_reefs.json',
+    95  : 'quiet_ocean.json',
+    96  : 'coral_vale.json',
+    128 : 'dragon_field.json',
+    129 : 'hermit_wetland.json',
+    130 : 'flower_corridor.json',
+    131 : 'sunshine_palace.json',
+    161 : 'lost_cove.json',
+    192 : 'port_cherube.json',
+    231 : 'samara_woods.json',
+    257 : 'mariam_waterway.json',
+    318 : 'emerald_coast.json',
+    363 : 'deep_trench.json',
+}
+
+
 def poblar(stage: int):
     """NPC, monstruos, portales y totems propios del mapa."""
     salida = npc_de_los_xml(stage)
@@ -574,9 +700,7 @@ def poblar(stage: int):
     # Los dos playgrounds, sacados de capturas de Celestia recorriendo el mapa
     # entero. Se reconstruyen desde los DATOS con nuestros propios
     # constructores, no se reenvian sus bytes.
-    _pg = {43: 'west_playground.json', 42: 'east_playground.json',
-           58: 'graduation_palace.json', 29: 'breeze_woods.json',
-           23: 'dense_forest.json', 30: 'cryptic_moon_swamp.json'}
+    _pg = PLANTILLAS_POR_STAGE
     f43 = PLANTILLAS / _pg[stage] if stage in _pg else None
     if f43 is not None and f43.exists():
         d43 = json.loads(f43.read_text(encoding='utf-8'))
@@ -593,7 +717,13 @@ def poblar(stage: int):
                                      visible=e.get('visible', 1)))
             if 'Totem' in e['nombre']:
                 TOTEMS_PUESTOS[e['entity_id']] = e['nombre']
-        salida += [objeto_de_mapa(r) for r in d43.get('recursos', [])]
+        for r in d43.get('recursos', []):
+            salida.append(objeto_de_mapa(r))
+            # Y su cartel, si se capturo: sin el 0x000F el recurso se ve pero
+            # no tiene nombre al pasar el raton.
+            _cartel = objeto_nombrado(r)
+            if _cartel is not None:
+                salida.append(_cartel)
         log.info('Playground %d: %d spawns (%d monstruos) y %d recursos',
                  stage, len(d43['spawns']),
                  sum(1 for e in d43['spawns'] if e.get('monstruo')),
@@ -618,12 +748,22 @@ def poblar(stage: int):
 # El numero de cada faccion tal como lo lee el cliente en la ficha. El unico
 # MEDIDO es el de Breeze Woods (2) contra el de sin faccion (5); los otros
 # tres son suposicion y hay que comprobarlos eligiendo esas facciones.
+# El codigo que va en el offset 62 de la ficha. Es el indice de la faccion en
+# string.xml, que las lista seguidas a partir del 1030:
+#
+#   1030 Neutrally   1031 Aurora   1032 Beasts   1033 Steel   1034 Shadow   1035 Heaven
+#
+# O sea codigo = id - 1030. Los DOS valores que teniamos medidos encajan:
+# Beasts sale 2 y Heaven sale 5, que es justo lo que manda Celestia. Antes
+# aqui habia 'Holy', 'Evil' y 'Chaos', inventados por nosotros, y ademas con
+# los codigos 3 y 4 cruzados: el 3 es Steel (Iron Castle) y el 4 Shadow
+# (Dark City), no al reves.
 CODIGO_FACCION = {
     'Heaven': 5, 'Graduated': 5, 'Neutral': 5, 'Neutrally': 5,
+    'Aurora': 1,        # Aurora City
     'Beasts': 2,        # Breeze Woods, medido
-    'Holy': 1,          # Aurora, sin confirmar
-    'Evil': 3,          # Dark City, sin confirmar
-    'Chaos': 4,         # Iron Castle, sin confirmar
+    'Steel': 3,         # Iron Castle
+    'Shadow': 4,        # Dark City
 }
 
 

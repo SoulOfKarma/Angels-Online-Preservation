@@ -1,0 +1,2476 @@
+{
+ "_nota": "Memory Cave (stage 35), de dos capturas de Celestia del 23/09/2026. Territorio de la faccion Shadow.",
+ "stage": 35,
+ "spawns": [
+  {
+   "entity_id": 29233,
+   "nombre": "Dark City Totem",
+   "npc_type": 1938,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    278,
+    176
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 122041,
+   "nombre": "Badge Expert",
+   "npc_type": 1968,
+   "sprite": 40042,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    271,
+    174
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122042,
+   "nombre": "Graveyard Worker",
+   "npc_type": 1727,
+   "sprite": 40106,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    292,
+    161
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122043,
+   "nombre": "Lady",
+   "npc_type": 1728,
+   "sprite": 40021,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    80,
+    85
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122044,
+   "nombre": "Sword Expert",
+   "npc_type": 1886,
+   "sprite": 40153,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    203,
+    125
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122045,
+   "nombre": "Senior Master",
+   "npc_type": 1853,
+   "sprite": 40140,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    231,
+    129
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122046,
+   "nombre": "Senior Smith",
+   "npc_type": 1852,
+   "sprite": 40139,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    226,
+    126
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122047,
+   "nombre": "Cupid",
+   "npc_type": 1862,
+   "sprite": 40006,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    308,
+    159
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122048,
+   "nombre": "Executive Clerk",
+   "npc_type": 1729,
+   "sprite": 40107,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    283,
+    166
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122049,
+   "nombre": "Sad Father",
+   "npc_type": 1726,
+   "sprite": 40018,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    213,
+    95
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122050,
+   "nombre": "Axe Expert",
+   "npc_type": 1900,
+   "sprite": 40154,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    201,
+    124
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122051,
+   "nombre": "Spear Expert",
+   "npc_type": 1901,
+   "sprite": 40155,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    197,
+    122
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122052,
+   "nombre": "Bow Expert",
+   "npc_type": 1902,
+   "sprite": 40156,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    194,
+    120
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122053,
+   "nombre": "Armament Seller",
+   "npc_type": 1913,
+   "sprite": 40106,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    214,
+    120
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122054,
+   "nombre": "Bowset Seller",
+   "npc_type": 1914,
+   "sprite": 40107,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    211,
+    116
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122055,
+   "nombre": "Life Mage",
+   "npc_type": 1622,
+   "sprite": 40082,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    229,
+    141
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122056,
+   "nombre": "Wraith Mage",
+   "npc_type": 1623,
+   "sprite": 40083,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    241,
+    133
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122057,
+   "nombre": "Chaos Mage",
+   "npc_type": 1624,
+   "sprite": 40084,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    242,
+    147
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122058,
+   "nombre": "Earth Mage",
+   "npc_type": 1625,
+   "sprite": 40085,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    257,
+    140
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122059,
+   "nombre": "Mage Gear Seller",
+   "npc_type": 1915,
+   "sprite": 40138,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    249,
+    151
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122060,
+   "nombre": "Repair Slave",
+   "npc_type": 1683,
+   "sprite": 40137,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    272,
+    149
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122061,
+   "nombre": "Bank Clerk",
+   "npc_type": 1638,
+   "sprite": 40140,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    260,
+    156
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122062,
+   "nombre": "Bank Clerk",
+   "npc_type": 1638,
+   "sprite": 40140,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    303,
+    176
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122063,
+   "nombre": "Executive Chief",
+   "npc_type": 1730,
+   "sprite": 40107,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    301,
+    170
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 1013211,
+   "nombre": "Decrusader",
+   "npc_type": 106,
+   "sprite": 42017,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    252,
+    125
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1013212,
+   "nombre": "Decrusader",
+   "npc_type": 106,
+   "sprite": 42017,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    186,
+    119
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1013213,
+   "nombre": "Decrusader",
+   "npc_type": 106,
+   "sprite": 42017,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    193,
+    107
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1013214,
+   "nombre": "Decrusader",
+   "npc_type": 106,
+   "sprite": 42017,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    282,
+    131
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1013215,
+   "nombre": "Decrusader",
+   "npc_type": 106,
+   "sprite": 42017,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    195,
+    98
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1013216,
+   "nombre": "Decrusader",
+   "npc_type": 106,
+   "sprite": 42017,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    259,
+    129
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1013217,
+   "nombre": "Decrusader",
+   "npc_type": 106,
+   "sprite": 42017,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    277,
+    144
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1013218,
+   "nombre": "Decrusader",
+   "npc_type": 106,
+   "sprite": 42017,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    183,
+    116
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1013219,
+   "nombre": "Decrusader",
+   "npc_type": 106,
+   "sprite": 42017,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    194,
+    98
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1013220,
+   "nombre": "Decrusader",
+   "npc_type": 106,
+   "sprite": 42017,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    179,
+    121
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1013221,
+   "nombre": "Decrusader",
+   "npc_type": 106,
+   "sprite": 42017,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    217,
+    154
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1013222,
+   "nombre": "Decrusader",
+   "npc_type": 106,
+   "sprite": 42017,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    228,
+    153
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1013223,
+   "nombre": "Decrusader",
+   "npc_type": 106,
+   "sprite": 42017,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    237,
+    157
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1013224,
+   "nombre": "Decrusader",
+   "npc_type": 106,
+   "sprite": 42017,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    229,
+    157
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1013225,
+   "nombre": "Decrusader",
+   "npc_type": 106,
+   "sprite": 42017,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    167,
+    114
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1013226,
+   "nombre": "Decrusader",
+   "npc_type": 106,
+   "sprite": 42017,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    209,
+    148
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1013227,
+   "nombre": "Decrusader",
+   "npc_type": 106,
+   "sprite": 42017,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    238,
+    166
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1013228,
+   "nombre": "Decrusader",
+   "npc_type": 106,
+   "sprite": 42017,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    166,
+    116
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1013229,
+   "nombre": "Decrusader",
+   "npc_type": 106,
+   "sprite": 42017,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    217,
+    157
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1013230,
+   "nombre": "Decrusader",
+   "npc_type": 106,
+   "sprite": 42017,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    221,
+    157
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1013231,
+   "nombre": "Decrusader",
+   "npc_type": 106,
+   "sprite": 42017,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    109,
+    39
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1013232,
+   "nombre": "Decrusader",
+   "npc_type": 106,
+   "sprite": 42017,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    70,
+    65
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1013233,
+   "nombre": "Decrusader",
+   "npc_type": 106,
+   "sprite": 42017,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    113,
+    69
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1013234,
+   "nombre": "Decrusader",
+   "npc_type": 106,
+   "sprite": 42017,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    42,
+    77
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1013235,
+   "nombre": "Decrusader",
+   "npc_type": 106,
+   "sprite": 42017,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    76,
+    29
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1013236,
+   "nombre": "Decrusader",
+   "npc_type": 106,
+   "sprite": 42017,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    97,
+    42
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1013237,
+   "nombre": "Decrusader",
+   "npc_type": 106,
+   "sprite": 42017,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    64,
+    54
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1013238,
+   "nombre": "Decrusader",
+   "npc_type": 106,
+   "sprite": 42017,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    102,
+    78
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1013239,
+   "nombre": "Decrusader",
+   "npc_type": 106,
+   "sprite": 42017,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    37,
+    65
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1013240,
+   "nombre": "Decrusader",
+   "npc_type": 106,
+   "sprite": 42017,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    67,
+    27
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 26
+  },
+  {
+   "entity_id": 1013241,
+   "nombre": "Porky Man",
+   "npc_type": 107,
+   "sprite": 42018,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    234,
+    40
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1013242,
+   "nombre": "Porky Man",
+   "npc_type": 107,
+   "sprite": 42018,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    214,
+    42
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1013243,
+   "nombre": "Porky Man",
+   "npc_type": 107,
+   "sprite": 42018,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    257,
+    65
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1013244,
+   "nombre": "Porky Man",
+   "npc_type": 107,
+   "sprite": 42018,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    240,
+    20
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1013245,
+   "nombre": "Porky Man",
+   "npc_type": 107,
+   "sprite": 42018,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    232,
+    28
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1013246,
+   "nombre": "Porky Man",
+   "npc_type": 107,
+   "sprite": 42018,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    258,
+    61
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1013247,
+   "nombre": "Porky Man",
+   "npc_type": 107,
+   "sprite": 42018,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    243,
+    43
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1013248,
+   "nombre": "Porky Man",
+   "npc_type": 107,
+   "sprite": 42018,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    226,
+    44
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1013249,
+   "nombre": "Porky Man",
+   "npc_type": 107,
+   "sprite": 42018,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    251,
+    70
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1013250,
+   "nombre": "Porky Man",
+   "npc_type": 107,
+   "sprite": 42018,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    226,
+    51
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1013251,
+   "nombre": "Porky Man",
+   "npc_type": 107,
+   "sprite": 42018,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    236,
+    88
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1013252,
+   "nombre": "Porky Man",
+   "npc_type": 107,
+   "sprite": 42018,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    270,
+    69
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1013253,
+   "nombre": "Porky Man",
+   "npc_type": 107,
+   "sprite": 42018,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    253,
+    72
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1013254,
+   "nombre": "Porky Man",
+   "npc_type": 107,
+   "sprite": 42018,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    232,
+    99
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1013255,
+   "nombre": "Porky Man",
+   "npc_type": 107,
+   "sprite": 42018,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    210,
+    89
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1013256,
+   "nombre": "Porky Man",
+   "npc_type": 107,
+   "sprite": 42018,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    230,
+    91
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1013257,
+   "nombre": "Porky Man",
+   "npc_type": 107,
+   "sprite": 42018,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    209,
+    90
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1013258,
+   "nombre": "Porky Man",
+   "npc_type": 107,
+   "sprite": 42018,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    235,
+    92
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1013259,
+   "nombre": "Porky Man",
+   "npc_type": 107,
+   "sprite": 42018,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    257,
+    76
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1013260,
+   "nombre": "Porky Man",
+   "npc_type": 107,
+   "sprite": 42018,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    271,
+    60
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1013261,
+   "nombre": "Porky Man",
+   "npc_type": 107,
+   "sprite": 42018,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    192,
+    97
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1013262,
+   "nombre": "Porky Man",
+   "npc_type": 107,
+   "sprite": 42018,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    161,
+    83
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1013263,
+   "nombre": "Porky Man",
+   "npc_type": 107,
+   "sprite": 42018,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    179,
+    81
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1013264,
+   "nombre": "Porky Man",
+   "npc_type": 107,
+   "sprite": 42018,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    190,
+    99
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1013265,
+   "nombre": "Porky Man",
+   "npc_type": 107,
+   "sprite": 42018,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    184,
+    74
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1013266,
+   "nombre": "Porky Man",
+   "npc_type": 107,
+   "sprite": 42018,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    150,
+    91
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1013267,
+   "nombre": "Porky Man",
+   "npc_type": 107,
+   "sprite": 42018,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    192,
+    93
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1013268,
+   "nombre": "Porky Man",
+   "npc_type": 107,
+   "sprite": 42018,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    159,
+    93
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1013269,
+   "nombre": "Porky Man",
+   "npc_type": 107,
+   "sprite": 42018,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    175,
+    79
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1013270,
+   "nombre": "Porky Man",
+   "npc_type": 107,
+   "sprite": 42018,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    193,
+    94
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1013271,
+   "nombre": "Magic Cat",
+   "npc_type": 108,
+   "sprite": 42016,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    77,
+    142
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1013272,
+   "nombre": "Magic Cat",
+   "npc_type": 108,
+   "sprite": 42016,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    67,
+    156
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1013273,
+   "nombre": "Magic Cat",
+   "npc_type": 108,
+   "sprite": 42016,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    78,
+    123
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1013274,
+   "nombre": "Magic Cat",
+   "npc_type": 108,
+   "sprite": 42016,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    87,
+    140
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1013275,
+   "nombre": "Magic Cat",
+   "npc_type": 108,
+   "sprite": 42016,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    86,
+    142
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1013276,
+   "nombre": "Magic Cat",
+   "npc_type": 108,
+   "sprite": 42016,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    73,
+    130
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1013277,
+   "nombre": "Magic Cat",
+   "npc_type": 108,
+   "sprite": 42016,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    67,
+    128
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1013278,
+   "nombre": "Magic Cat",
+   "npc_type": 108,
+   "sprite": 42016,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    61,
+    151
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1013279,
+   "nombre": "Magic Cat",
+   "npc_type": 108,
+   "sprite": 42016,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    98,
+    141
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1013280,
+   "nombre": "Magic Cat",
+   "npc_type": 108,
+   "sprite": 42016,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    69,
+    154
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1013281,
+   "nombre": "Magic Cat",
+   "npc_type": 108,
+   "sprite": 42016,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    38,
+    103
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1013282,
+   "nombre": "Magic Cat",
+   "npc_type": 108,
+   "sprite": 42016,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    59,
+    133
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1013283,
+   "nombre": "Magic Cat",
+   "npc_type": 108,
+   "sprite": 42016,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    38,
+    138
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1013284,
+   "nombre": "Magic Cat",
+   "npc_type": 108,
+   "sprite": 42016,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    42,
+    112
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1013285,
+   "nombre": "Magic Cat",
+   "npc_type": 108,
+   "sprite": 42016,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    41,
+    106
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1013286,
+   "nombre": "Magic Cat",
+   "npc_type": 108,
+   "sprite": 42016,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    138
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1013287,
+   "nombre": "Magic Cat",
+   "npc_type": 108,
+   "sprite": 42016,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    59,
+    133
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1013288,
+   "nombre": "Magic Cat",
+   "npc_type": 108,
+   "sprite": 42016,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    41,
+    95
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1013289,
+   "nombre": "Magic Cat",
+   "npc_type": 108,
+   "sprite": 42016,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    40,
+    131
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1013290,
+   "nombre": "Magic Cat",
+   "npc_type": 108,
+   "sprite": 42016,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    40,
+    118
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1013291,
+   "nombre": "Magic Cat",
+   "npc_type": 108,
+   "sprite": 42016,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    120,
+    77
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1013292,
+   "nombre": "Magic Cat",
+   "npc_type": 108,
+   "sprite": 42016,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    141,
+    83
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1013293,
+   "nombre": "Magic Cat",
+   "npc_type": 108,
+   "sprite": 42016,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    169,
+    89
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1013294,
+   "nombre": "Magic Cat",
+   "npc_type": 108,
+   "sprite": 42016,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    166,
+    82
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1013295,
+   "nombre": "Magic Cat",
+   "npc_type": 108,
+   "sprite": 42016,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    113,
+    84
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1013296,
+   "nombre": "Magic Cat",
+   "npc_type": 108,
+   "sprite": 42016,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    150,
+    81
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1013297,
+   "nombre": "Magic Cat",
+   "npc_type": 108,
+   "sprite": 42016,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    165,
+    87
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1013298,
+   "nombre": "Magic Cat",
+   "npc_type": 108,
+   "sprite": 42016,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    148,
+    85
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1013299,
+   "nombre": "Magic Cat",
+   "npc_type": 108,
+   "sprite": 42016,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    115,
+    76
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1013300,
+   "nombre": "Magic Cat",
+   "npc_type": 108,
+   "sprite": 42016,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    147,
+    81
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 29
+  },
+  {
+   "entity_id": 1013301,
+   "nombre": "Evil Cat Yese",
+   "npc_type": 110,
+   "sprite": 42139,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    33,
+    149
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 34
+  }
+ ],
+ "recursos": [
+  {
+   "entity_id": 101627,
+   "capa": 0,
+   "px": [
+    4016,
+    4015
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60162,
+   "cola": "00000000000000",
+   "nombre_visible": "Obsidian(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 101628,
+   "capa": 0,
+   "px": [
+    4342,
+    4169
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60162,
+   "cola": "00000000000000",
+   "nombre_visible": "Obsidian(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 101629,
+   "capa": 0,
+   "px": [
+    4584,
+    4260
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60162,
+   "cola": "00000000000000",
+   "nombre_visible": "Obsidian(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 101630,
+   "capa": 0,
+   "px": [
+    5186,
+    4333
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60162,
+   "cola": "00000000000000",
+   "nombre_visible": "Obsidian(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 101631,
+   "capa": 0,
+   "px": [
+    4989,
+    4321
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60162,
+   "cola": "00000000000000",
+   "nombre_visible": "Obsidian(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 101632,
+   "capa": 0,
+   "px": [
+    4419,
+    4273
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60163,
+   "cola": "00000000000000",
+   "nombre_visible": "Obsidian(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 101633,
+   "capa": 0,
+   "px": [
+    4057,
+    4049
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60163,
+   "cola": "00000000000000",
+   "nombre_visible": "Obsidian(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 101634,
+   "capa": 0,
+   "px": [
+    4626,
+    4292
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60163,
+   "cola": "00000000000000",
+   "nombre_visible": "Obsidian(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 101635,
+   "capa": 2,
+   "px": [
+    5341,
+    4276
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60163,
+   "cola": "00000000000000",
+   "nombre_visible": "Obsidian(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 101636,
+   "capa": 2,
+   "px": [
+    4168,
+    4128
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60163,
+   "cola": "00000000000000",
+   "nombre_visible": "Obsidian(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 101637,
+   "capa": 0,
+   "px": [
+    4631,
+    4350
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60161,
+   "cola": "00000000000000",
+   "nombre_visible": "Obsidian(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material_posibles": [
+    "Big Obsidian",
+    "Obsidian (L)"
+   ]
+  },
+  {
+   "entity_id": 101638,
+   "capa": 2,
+   "px": [
+    5255,
+    4291
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60161,
+   "cola": "00000000000000",
+   "nombre_visible": "Obsidian(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002",
+   "material_posibles": [
+    "Big Obsidian",
+    "Obsidian (L)"
+   ]
+  },
+  {
+   "entity_id": 101639,
+   "capa": 0,
+   "px": [
+    5070,
+    4354
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60161,
+   "cola": "00000000000000",
+   "nombre_visible": "Obsidian(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material_posibles": [
+    "Big Obsidian",
+    "Obsidian (L)"
+   ]
+  },
+  {
+   "entity_id": 101640,
+   "capa": 0,
+   "px": [
+    4347,
+    4224
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60161,
+   "cola": "00000000000000",
+   "nombre_visible": "Obsidian(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material_posibles": [
+    "Big Obsidian",
+    "Obsidian (L)"
+   ]
+  },
+  {
+   "entity_id": 101641,
+   "capa": 2,
+   "px": [
+    4119,
+    4090
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60161,
+   "cola": "00000000000000",
+   "nombre_visible": "Obsidian(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002",
+   "material_posibles": [
+    "Big Obsidian",
+    "Obsidian (L)"
+   ]
+  },
+  {
+   "entity_id": 101642,
+   "capa": 0,
+   "px": [
+    4606,
+    3513
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60195,
+   "cola": "00000000000000",
+   "nombre_visible": "Meteor Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004",
+   "material": "White Alga(S)"
+  },
+  {
+   "entity_id": 101643,
+   "capa": 2,
+   "px": [
+    4699,
+    3450
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60195,
+   "cola": "00000000000000",
+   "nombre_visible": "Meteor Alga(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000004",
+   "material": "White Alga(S)"
+  },
+  {
+   "entity_id": 101644,
+   "capa": 0,
+   "px": [
+    4254,
+    3636
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60195,
+   "cola": "00000000000000",
+   "nombre_visible": "Meteor Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004",
+   "material": "White Alga(S)"
+  },
+  {
+   "entity_id": 101645,
+   "capa": 0,
+   "px": [
+    4285,
+    3764
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60197,
+   "cola": "00000000000000",
+   "nombre_visible": "Meteor Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004",
+   "material": "Meteor Alga(S)"
+  },
+  {
+   "entity_id": 101646,
+   "capa": 0,
+   "px": [
+    4421,
+    3525
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60197,
+   "cola": "00000000000000",
+   "nombre_visible": "Meteor Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004",
+   "material": "Meteor Alga(S)"
+  },
+  {
+   "entity_id": 101647,
+   "capa": 0,
+   "px": [
+    4332,
+    3782
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60196,
+   "cola": "00000000000000",
+   "nombre_visible": "Meteor Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101648,
+   "capa": 0,
+   "px": [
+    3546,
+    3692
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60212,
+   "cola": "00000000000000",
+   "nombre_visible": "Meteor Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101649,
+   "capa": 0,
+   "px": [
+    3504,
+    3690
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60195,
+   "cola": "00000000000000",
+   "nombre_visible": "Meteor Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004",
+   "material": "White Alga(S)"
+  },
+  {
+   "entity_id": 101650,
+   "capa": 0,
+   "px": [
+    3451,
+    3729
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60212,
+   "cola": "00000000000000",
+   "nombre_visible": "Meteor Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101651,
+   "capa": 0,
+   "px": [
+    4266,
+    3772
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60212,
+   "cola": "00000000000000",
+   "nombre_visible": "Meteor Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101652,
+   "capa": 0,
+   "px": [
+    4295,
+    3644
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60216,
+   "cola": "00000000000000",
+   "nombre_visible": "Meteor Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101653,
+   "capa": 0,
+   "px": [
+    4376,
+    3550
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60216,
+   "cola": "00000000000000",
+   "nombre_visible": "Meteor Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101654,
+   "capa": 0,
+   "px": [
+    4646,
+    3491
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60212,
+   "cola": "00000000000000",
+   "nombre_visible": "Meteor Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101655,
+   "capa": 2,
+   "px": [
+    4711,
+    3455
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60212,
+   "cola": "00000000000000",
+   "nombre_visible": "Meteor Alga(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 101656,
+   "capa": 0,
+   "px": [
+    778,
+    2097
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60233,
+   "cola": "00000000000000",
+   "nombre_visible": "Bright Bush(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material": "Angel Bush(L)"
+  },
+  {
+   "entity_id": 101657,
+   "capa": 0,
+   "px": [
+    845,
+    1997
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60233,
+   "cola": "00000000000000",
+   "nombre_visible": "Bright Bush(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material": "Angel Bush(L)"
+  },
+  {
+   "entity_id": 101658,
+   "capa": 2,
+   "px": [
+    861,
+    2284
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60233,
+   "cola": "00000000000000",
+   "nombre_visible": "Bright Bush(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material": "Angel Bush(L)"
+  },
+  {
+   "entity_id": 101659,
+   "capa": 0,
+   "px": [
+    729,
+    2382
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60233,
+   "cola": "00000000000000",
+   "nombre_visible": "Bright Bush(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material": "Angel Bush(L)"
+  },
+  {
+   "entity_id": 101660,
+   "capa": 2,
+   "px": [
+    724,
+    2230
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60233,
+   "cola": "00000000000000",
+   "nombre_visible": "Bright Bush(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material": "Angel Bush(L)"
+  },
+  {
+   "entity_id": 101661,
+   "capa": 0,
+   "px": [
+    1141,
+    2540
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60233,
+   "cola": "00000000000000",
+   "nombre_visible": "Bright Bush(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material": "Angel Bush(L)"
+  },
+  {
+   "entity_id": 101662,
+   "capa": 2,
+   "px": [
+    1253,
+    2687
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60233,
+   "cola": "00000000000000",
+   "nombre_visible": "Bright Bush(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material": "Angel Bush(L)"
+  },
+  {
+   "entity_id": 101663,
+   "capa": 0,
+   "px": [
+    1317,
+    2658
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60233,
+   "cola": "00000000000000",
+   "nombre_visible": "Bright Bush(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material": "Angel Bush(L)"
+  },
+  {
+   "entity_id": 101664,
+   "capa": 0,
+   "px": [
+    1052,
+    2490
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60233,
+   "cola": "00000000000000",
+   "nombre_visible": "Bright Bush(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material": "Angel Bush(L)"
+  },
+  {
+   "entity_id": 101665,
+   "capa": 0,
+   "px": [
+    1139,
+    2143
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60233,
+   "cola": "00000000000000",
+   "nombre_visible": "Bright Bush(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material": "Angel Bush(L)"
+  },
+  {
+   "entity_id": 101666,
+   "capa": 0,
+   "px": [
+    233,
+    777
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 101667,
+   "capa": 0,
+   "px": [
+    4730,
+    5752
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 101668,
+   "capa": 0,
+   "px": [
+    6453,
+    1326
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60146,
+   "cola": "00004080140000"
+  },
+  {
+   "entity_id": 101669,
+   "capa": 0,
+   "px": [
+    2716,
+    4742
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60155,
+   "cola": "00004080140000"
+  },
+  {
+   "entity_id": 101670,
+   "capa": 0,
+   "px": [
+    8906,
+    5662
+   ],
+   "medio": "00000000180000000000000000000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60052,
+   "cola": "00002280140000",
+   "que_es": "Dark City Totem"
+  }
+ ]
+}

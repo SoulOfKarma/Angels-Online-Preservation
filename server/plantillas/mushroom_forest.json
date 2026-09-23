@@ -1,0 +1,2987 @@
+{
+ "_nota": "Mushroom Forest (stage 18), de cuatro capturas de Celestia del 23/09/2026 recorriendo el mapa. Se guardan los DATOS y el npc_type se busca por NOMBRE en monster.xml.",
+ "stage": 18,
+ "spawns": [
+  {
+   "entity_id": 28963,
+   "nombre": "Breeze Totem",
+   "npc_type": 241,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    142,
+    189
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 121783,
+   "nombre": "Botany Assistant",
+   "npc_type": 25,
+   "sprite": 40025,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    184,
+    53
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 121784,
+   "nombre": "Tailman Fei",
+   "npc_type": 26,
+   "sprite": 40026,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    38,
+    206
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 121785,
+   "nombre": "Robber Hork",
+   "npc_type": 29,
+   "sprite": 40029,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    37,
+    47
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 121786,
+   "nombre": "Tailman Pan",
+   "npc_type": 26,
+   "sprite": 40026,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    212,
+    22
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 121787,
+   "nombre": "Newbie Wizard",
+   "npc_type": 31,
+   "sprite": 40031,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    176,
+    51
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 121788,
+   "nombre": "Tailman Hei",
+   "npc_type": 26,
+   "sprite": 40026,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    207,
+    237
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 121789,
+   "nombre": "Cupid",
+   "npc_type": 6,
+   "sprite": 40006,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    172,
+    45
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 1011626,
+   "nombre": "Red Mushroom",
+   "npc_type": 118,
+   "sprite": 42039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    135,
+    33
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011627,
+   "nombre": "Red Mushroom",
+   "npc_type": 118,
+   "sprite": 42039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    177,
+    48
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011628,
+   "nombre": "Red Mushroom",
+   "npc_type": 118,
+   "sprite": 42039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    155,
+    30
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011629,
+   "nombre": "Red Mushroom",
+   "npc_type": 118,
+   "sprite": 42039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    129,
+    46
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011630,
+   "nombre": "Red Mushroom",
+   "npc_type": 118,
+   "sprite": 42039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    184,
+    32
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011631,
+   "nombre": "Red Mushroom",
+   "npc_type": 118,
+   "sprite": 42039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    157,
+    28
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011632,
+   "nombre": "Red Mushroom",
+   "npc_type": 118,
+   "sprite": 42039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    128,
+    34
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011633,
+   "nombre": "Red Mushroom",
+   "npc_type": 118,
+   "sprite": 42039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    182,
+    41
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011634,
+   "nombre": "Red Mushroom",
+   "npc_type": 118,
+   "sprite": 42039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    159,
+    40
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011635,
+   "nombre": "Red Mushroom",
+   "npc_type": 118,
+   "sprite": 42039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    182,
+    42
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011636,
+   "nombre": "Red Mushroom",
+   "npc_type": 118,
+   "sprite": 42039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    115,
+    48
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011637,
+   "nombre": "Red Mushroom",
+   "npc_type": 118,
+   "sprite": 42039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    101,
+    35
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011638,
+   "nombre": "Red Mushroom",
+   "npc_type": 118,
+   "sprite": 42039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    134,
+    64
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011639,
+   "nombre": "Red Mushroom",
+   "npc_type": 118,
+   "sprite": 42039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    137,
+    65
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011640,
+   "nombre": "Red Mushroom",
+   "npc_type": 118,
+   "sprite": 42039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    99,
+    32
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011641,
+   "nombre": "Red Mushroom",
+   "npc_type": 118,
+   "sprite": 42039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    102,
+    49
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011642,
+   "nombre": "Red Mushroom",
+   "npc_type": 118,
+   "sprite": 42039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    100,
+    33
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011643,
+   "nombre": "Red Mushroom",
+   "npc_type": 118,
+   "sprite": 42039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    139,
+    79
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011644,
+   "nombre": "Red Mushroom",
+   "npc_type": 118,
+   "sprite": 42039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    114,
+    53
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011645,
+   "nombre": "Red Mushroom",
+   "npc_type": 118,
+   "sprite": 42039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    100,
+    31
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011646,
+   "nombre": "Red Mushroom",
+   "npc_type": 118,
+   "sprite": 42039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    144,
+    70
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011647,
+   "nombre": "Red Mushroom",
+   "npc_type": 118,
+   "sprite": 42039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    110,
+    49
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011648,
+   "nombre": "Red Mushroom",
+   "npc_type": 118,
+   "sprite": 42039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    139,
+    72
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011649,
+   "nombre": "Red Mushroom",
+   "npc_type": 118,
+   "sprite": 42039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    111,
+    31
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011650,
+   "nombre": "Red Mushroom",
+   "npc_type": 118,
+   "sprite": 42039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    103,
+    47
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011651,
+   "nombre": "Red Mushroom",
+   "npc_type": 118,
+   "sprite": 42039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    188,
+    122
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011652,
+   "nombre": "Red Mushroom",
+   "npc_type": 118,
+   "sprite": 42039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    202,
+    90
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011653,
+   "nombre": "Red Mushroom",
+   "npc_type": 118,
+   "sprite": 42039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    243,
+    87
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011654,
+   "nombre": "Red Mushroom",
+   "npc_type": 118,
+   "sprite": 42039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    166,
+    109
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011655,
+   "nombre": "Red Mushroom",
+   "npc_type": 118,
+   "sprite": 42039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    207,
+    117
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011656,
+   "nombre": "Red Mushroom",
+   "npc_type": 118,
+   "sprite": 42039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    209,
+    97
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011657,
+   "nombre": "Red Mushroom",
+   "npc_type": 118,
+   "sprite": 42039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    159,
+    113
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011658,
+   "nombre": "Red Mushroom",
+   "npc_type": 118,
+   "sprite": 42039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    238,
+    92
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011659,
+   "nombre": "Red Mushroom",
+   "npc_type": 118,
+   "sprite": 42039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    182,
+    123
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011660,
+   "nombre": "Red Mushroom",
+   "npc_type": 118,
+   "sprite": 42039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    197,
+    111
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011661,
+   "nombre": "Red Mushroom",
+   "npc_type": 118,
+   "sprite": 42039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    158,
+    110
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011662,
+   "nombre": "Red Mushroom",
+   "npc_type": 118,
+   "sprite": 42039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    237,
+    85
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011663,
+   "nombre": "Red Mushroom",
+   "npc_type": 118,
+   "sprite": 42039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    201,
+    116
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011664,
+   "nombre": "Red Mushroom",
+   "npc_type": 118,
+   "sprite": 42039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    209,
+    85
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011665,
+   "nombre": "Red Mushroom",
+   "npc_type": 118,
+   "sprite": 42039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    172,
+    122
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011666,
+   "nombre": "Purple Mushroom",
+   "npc_type": 119,
+   "sprite": 42040,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    66,
+    186
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011667,
+   "nombre": "Purple Mushroom",
+   "npc_type": 119,
+   "sprite": 42040,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    72,
+    152
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011668,
+   "nombre": "Purple Mushroom",
+   "npc_type": 119,
+   "sprite": 42040,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    95,
+    165
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011669,
+   "nombre": "Purple Mushroom",
+   "npc_type": 119,
+   "sprite": 42040,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    99,
+    171
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011670,
+   "nombre": "Purple Mushroom",
+   "npc_type": 119,
+   "sprite": 42040,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    66,
+    146
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011671,
+   "nombre": "Purple Mushroom",
+   "npc_type": 119,
+   "sprite": 42040,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    69,
+    183
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011672,
+   "nombre": "Purple Mushroom",
+   "npc_type": 119,
+   "sprite": 42040,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    65,
+    182
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011673,
+   "nombre": "Purple Mushroom",
+   "npc_type": 119,
+   "sprite": 42040,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    71,
+    143
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011674,
+   "nombre": "Purple Mushroom",
+   "npc_type": 119,
+   "sprite": 42040,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    92,
+    166
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011675,
+   "nombre": "Purple Mushroom",
+   "npc_type": 119,
+   "sprite": 42040,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    68,
+    147
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011676,
+   "nombre": "Purple Mushroom",
+   "npc_type": 119,
+   "sprite": 42040,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    57,
+    69
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011677,
+   "nombre": "Purple Mushroom",
+   "npc_type": 119,
+   "sprite": 42040,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    112,
+    7
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011678,
+   "nombre": "Purple Mushroom",
+   "npc_type": 119,
+   "sprite": 42040,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    59,
+    14
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011679,
+   "nombre": "Purple Mushroom",
+   "npc_type": 119,
+   "sprite": 42040,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    50,
+    82
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011680,
+   "nombre": "Purple Mushroom",
+   "npc_type": 119,
+   "sprite": 42040,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    54,
+    79
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011681,
+   "nombre": "Purple Mushroom",
+   "npc_type": 119,
+   "sprite": 42040,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    63,
+    42
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011682,
+   "nombre": "Purple Mushroom",
+   "npc_type": 119,
+   "sprite": 42040,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    45,
+    76
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011683,
+   "nombre": "Purple Mushroom",
+   "npc_type": 119,
+   "sprite": 42040,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    118,
+    8
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011684,
+   "nombre": "Purple Mushroom",
+   "npc_type": 119,
+   "sprite": 42040,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    61,
+    67
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011685,
+   "nombre": "Purple Mushroom",
+   "npc_type": 119,
+   "sprite": 42040,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    62,
+    17
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011686,
+   "nombre": "Purple Mushroom",
+   "npc_type": 119,
+   "sprite": 42040,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    54,
+    64
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011687,
+   "nombre": "Purple Mushroom",
+   "npc_type": 119,
+   "sprite": 42040,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    113,
+    14
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011688,
+   "nombre": "Purple Mushroom",
+   "npc_type": 119,
+   "sprite": 42040,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    77,
+    26
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011689,
+   "nombre": "Purple Mushroom",
+   "npc_type": 119,
+   "sprite": 42040,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    115,
+    13
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011690,
+   "nombre": "Purple Mushroom",
+   "npc_type": 119,
+   "sprite": 42040,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    56,
+    22
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011691,
+   "nombre": "Purple Mushroom",
+   "npc_type": 119,
+   "sprite": 42040,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    42,
+    147
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011692,
+   "nombre": "Purple Mushroom",
+   "npc_type": 119,
+   "sprite": 42040,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    58,
+    173
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011693,
+   "nombre": "Purple Mushroom",
+   "npc_type": 119,
+   "sprite": 42040,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    32,
+    150
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011694,
+   "nombre": "Purple Mushroom",
+   "npc_type": 119,
+   "sprite": 42040,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    56,
+    172
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011695,
+   "nombre": "Purple Mushroom",
+   "npc_type": 119,
+   "sprite": 42040,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    36,
+    156
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011696,
+   "nombre": "Purple Mushroom",
+   "npc_type": 119,
+   "sprite": 42040,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    49,
+    141
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011697,
+   "nombre": "Purple Mushroom",
+   "npc_type": 119,
+   "sprite": 42040,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    26,
+    158
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011698,
+   "nombre": "Purple Mushroom",
+   "npc_type": 119,
+   "sprite": 42040,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    61,
+    167
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011699,
+   "nombre": "Purple Mushroom",
+   "npc_type": 119,
+   "sprite": 42040,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    50,
+    142
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011700,
+   "nombre": "Purple Mushroom",
+   "npc_type": 119,
+   "sprite": 42040,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    54,
+    165
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011701,
+   "nombre": "Purple Mushroom",
+   "npc_type": 119,
+   "sprite": 42040,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    43,
+    143
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011702,
+   "nombre": "Purple Mushroom",
+   "npc_type": 119,
+   "sprite": 42040,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    30,
+    152
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011703,
+   "nombre": "Purple Mushroom",
+   "npc_type": 119,
+   "sprite": 42040,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    65,
+    173
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011704,
+   "nombre": "Purple Mushroom",
+   "npc_type": 119,
+   "sprite": 42040,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    26,
+    150
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011705,
+   "nombre": "Purple Mushroom",
+   "npc_type": 119,
+   "sprite": 42040,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    50,
+    141
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011706,
+   "nombre": "Mane Boar",
+   "npc_type": 120,
+   "sprite": 42065,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    138,
+    201
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011707,
+   "nombre": "Mane Boar",
+   "npc_type": 120,
+   "sprite": 42065,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    178,
+    205
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011708,
+   "nombre": "Mane Boar",
+   "npc_type": 120,
+   "sprite": 42065,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    90,
+    227
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011709,
+   "nombre": "Mane Boar",
+   "npc_type": 120,
+   "sprite": 42065,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    127,
+    223
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011710,
+   "nombre": "Mane Boar",
+   "npc_type": 120,
+   "sprite": 42065,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    96,
+    213
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011711,
+   "nombre": "Mane Boar",
+   "npc_type": 120,
+   "sprite": 42065,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    128,
+    224
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011712,
+   "nombre": "Mane Boar",
+   "npc_type": 120,
+   "sprite": 42065,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    183,
+    215
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011713,
+   "nombre": "Mane Boar",
+   "npc_type": 120,
+   "sprite": 42065,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    143,
+    199
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011714,
+   "nombre": "Mane Boar",
+   "npc_type": 120,
+   "sprite": 42065,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    169,
+    211
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011715,
+   "nombre": "Mane Boar",
+   "npc_type": 120,
+   "sprite": 42065,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    98,
+    222
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011716,
+   "nombre": "Mane Boar",
+   "npc_type": 120,
+   "sprite": 42065,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    203,
+    206
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011717,
+   "nombre": "Mane Boar",
+   "npc_type": 120,
+   "sprite": 42065,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    197,
+    179
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011718,
+   "nombre": "Mane Boar",
+   "npc_type": 120,
+   "sprite": 42065,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    204,
+    204
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011719,
+   "nombre": "Mane Boar",
+   "npc_type": 120,
+   "sprite": 42065,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    203,
+    175
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011720,
+   "nombre": "Mane Boar",
+   "npc_type": 120,
+   "sprite": 42065,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    208,
+    196
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011721,
+   "nombre": "Mane Boar",
+   "npc_type": 120,
+   "sprite": 42065,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    205,
+    202
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011722,
+   "nombre": "Mane Boar",
+   "npc_type": 120,
+   "sprite": 42065,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    200,
+    198
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011723,
+   "nombre": "Mane Boar",
+   "npc_type": 120,
+   "sprite": 42065,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    212,
+    208
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011724,
+   "nombre": "Mane Boar",
+   "npc_type": 120,
+   "sprite": 42065,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    205,
+    182
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011725,
+   "nombre": "Mane Boar",
+   "npc_type": 120,
+   "sprite": 42065,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    206,
+    212
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011726,
+   "nombre": "Mane Boar",
+   "npc_type": 120,
+   "sprite": 42065,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    196,
+    174
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011727,
+   "nombre": "Mane Boar",
+   "npc_type": 120,
+   "sprite": 42065,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    207,
+    205
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011728,
+   "nombre": "Mane Boar",
+   "npc_type": 120,
+   "sprite": 42065,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    212,
+    195
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011729,
+   "nombre": "Mane Boar",
+   "npc_type": 120,
+   "sprite": 42065,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    196,
+    187
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011730,
+   "nombre": "Mane Boar",
+   "npc_type": 120,
+   "sprite": 42065,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    214,
+    204
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011731,
+   "nombre": "Mane Boar",
+   "npc_type": 120,
+   "sprite": 42065,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    154,
+    149
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011732,
+   "nombre": "Mane Boar",
+   "npc_type": 120,
+   "sprite": 42065,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    142,
+    124
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011733,
+   "nombre": "Mane Boar",
+   "npc_type": 120,
+   "sprite": 42065,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    187,
+    133
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011734,
+   "nombre": "Mane Boar",
+   "npc_type": 120,
+   "sprite": 42065,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    136,
+    127
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011735,
+   "nombre": "Mane Boar",
+   "npc_type": 120,
+   "sprite": 42065,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    147,
+    132
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011736,
+   "nombre": "Mane Boar",
+   "npc_type": 120,
+   "sprite": 42065,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    159,
+    150
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011737,
+   "nombre": "Mane Boar",
+   "npc_type": 120,
+   "sprite": 42065,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    149,
+    130
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011738,
+   "nombre": "Mane Boar",
+   "npc_type": 120,
+   "sprite": 42065,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    187,
+    138
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011739,
+   "nombre": "Mane Boar",
+   "npc_type": 120,
+   "sprite": 42065,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    154,
+    159
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011740,
+   "nombre": "Mane Boar",
+   "npc_type": 120,
+   "sprite": 42065,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    134,
+    131
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011741,
+   "nombre": "Mane Boar",
+   "npc_type": 120,
+   "sprite": 42065,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    162,
+    146
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011742,
+   "nombre": "Mane Boar",
+   "npc_type": 120,
+   "sprite": 42065,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    188,
+    142
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011743,
+   "nombre": "Mane Boar",
+   "npc_type": 120,
+   "sprite": 42065,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    136,
+    132
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011744,
+   "nombre": "Mane Boar",
+   "npc_type": 120,
+   "sprite": 42065,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    150,
+    152
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011745,
+   "nombre": "Mane Boar",
+   "npc_type": 120,
+   "sprite": 42065,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    150,
+    161
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011746,
+   "nombre": "Iron Mane Blaic",
+   "npc_type": 121,
+   "sprite": 42152,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    86,
+    230
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1011747,
+   "nombre": "Yellow Mushroom",
+   "npc_type": 122,
+   "sprite": 42153,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    139,
+    29
+   ],
+   "direccion": 0,
+   "visible": 0
+  },
+  {
+   "entity_id": 1071124,
+   "nombre": "Death's Head 1",
+   "npc_type": 210,
+   "sprite": 42142,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    152,
+    72
+   ],
+   "direccion": 0,
+   "visible": 0
+  }
+ ],
+ "recursos": [
+  {
+   "entity_id": 100808,
+   "capa": 0,
+   "px": [
+    6731,
+    5078
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60142,
+   "cola": "00000000000000",
+   "nombre_visible": "White Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 100809,
+   "capa": 0,
+   "px": [
+    6960,
+    4979
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60142,
+   "cola": "00000000000000",
+   "nombre_visible": "White Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 100810,
+   "capa": 2,
+   "px": [
+    6579,
+    5122
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60142,
+   "cola": "00000000000000",
+   "nombre_visible": "White Alga(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 100811,
+   "capa": 2,
+   "px": [
+    7107,
+    4865
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60142,
+   "cola": "00000000000000",
+   "nombre_visible": "White Alga(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 100812,
+   "capa": 0,
+   "px": [
+    7036,
+    4941
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60193,
+   "cola": "00000000000000",
+   "nombre_visible": "White Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 100813,
+   "capa": 0,
+   "px": [
+    6792,
+    5042
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60194,
+   "cola": "00000000000000",
+   "nombre_visible": "White Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 100814,
+   "capa": 0,
+   "px": [
+    6649,
+    5130
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60193,
+   "cola": "00000000000000",
+   "nombre_visible": "White Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 100815,
+   "capa": 0,
+   "px": [
+    6691,
+    5091
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60105,
+   "cola": "00000000000000",
+   "material": "Wild Alga(S)",
+   "nombre_visible": "White Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 100816,
+   "capa": 0,
+   "px": [
+    6791,
+    5093
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60106,
+   "cola": "00000000000000",
+   "material": "Wild Alga(M)",
+   "nombre_visible": "White Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 100817,
+   "capa": 0,
+   "px": [
+    6606,
+    5160
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60106,
+   "cola": "00000000000000",
+   "material": "Wild Alga(M)",
+   "nombre_visible": "White Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 100818,
+   "capa": 0,
+   "px": [
+    7077,
+    4908
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60106,
+   "cola": "00000000000000",
+   "material": "Wild Alga(M)",
+   "nombre_visible": "White Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 100819,
+   "capa": 0,
+   "px": [
+    6996,
+    4992
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60105,
+   "cola": "00000000000000",
+   "material": "Wild Alga(S)",
+   "nombre_visible": "White Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 100820,
+   "capa": 0,
+   "px": [
+    7194,
+    4911
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60107,
+   "cola": "00000000000000",
+   "material": "Wild Alga(L)",
+   "nombre_visible": "White Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 100821,
+   "capa": 0,
+   "px": [
+    6915,
+    5065
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60107,
+   "cola": "00000000000000",
+   "material": "Wild Alga(L)",
+   "nombre_visible": "White Alga(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 100822,
+   "capa": 0,
+   "px": [
+    6921,
+    6751
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60112,
+   "cola": "00000000000000",
+   "material": "Poplar(S)",
+   "nombre_visible": "Teak(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 100823,
+   "capa": 2,
+   "px": [
+    7226,
+    6585
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60112,
+   "cola": "00000000000000",
+   "material": "Poplar(S)",
+   "nombre_visible": "Teak(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 100824,
+   "capa": 0,
+   "px": [
+    7805,
+    6320
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60112,
+   "cola": "00000000000000",
+   "material": "Poplar(S)",
+   "nombre_visible": "Teak(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 100825,
+   "capa": 2,
+   "px": [
+    7538,
+    6489
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60112,
+   "cola": "00000000000000",
+   "material": "Poplar(S)",
+   "nombre_visible": "Teak(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 100826,
+   "capa": 0,
+   "px": [
+    7291,
+    6057
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60112,
+   "cola": "00000000000000",
+   "material": "Poplar(S)",
+   "nombre_visible": "Teak(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 100827,
+   "capa": 2,
+   "px": [
+    6970,
+    6636
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60123,
+   "cola": "00000000000000",
+   "material": "Poplar(M)",
+   "nombre_visible": "Teak(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 100828,
+   "capa": 0,
+   "px": [
+    7636,
+    6353
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60123,
+   "cola": "00000000000000",
+   "material": "Poplar(M)",
+   "nombre_visible": "Teak(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 100829,
+   "capa": 0,
+   "px": [
+    7250,
+    6190
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60123,
+   "cola": "00000000000000",
+   "material": "Poplar(M)",
+   "nombre_visible": "Teak(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 100830,
+   "capa": 2,
+   "px": [
+    7282,
+    6556
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60123,
+   "cola": "00000000000000",
+   "material": "Poplar(M)",
+   "nombre_visible": "Teak(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 100831,
+   "capa": 0,
+   "px": [
+    7513,
+    6094
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60123,
+   "cola": "00000000000000",
+   "material": "Poplar(M)",
+   "nombre_visible": "Teak(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 100832,
+   "capa": 0,
+   "px": [
+    7658,
+    6145
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60176,
+   "cola": "00000000000000",
+   "material_posibles": [
+    "Grapefruit(L)",
+    "Poplar(L)",
+    "Teak(L)"
+   ],
+   "nombre_visible": "Teak(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 100833,
+   "capa": 0,
+   "px": [
+    7463,
+    6511
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60176,
+   "cola": "00000000000000",
+   "material_posibles": [
+    "Grapefruit(L)",
+    "Poplar(L)",
+    "Teak(L)"
+   ],
+   "nombre_visible": "Teak(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 100834,
+   "capa": 0,
+   "px": [
+    7626,
+    6370
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60176,
+   "cola": "00000000000000",
+   "material_posibles": [
+    "Grapefruit(L)",
+    "Poplar(L)",
+    "Teak(L)"
+   ],
+   "nombre_visible": "Teak(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 100835,
+   "capa": 0,
+   "px": [
+    7208,
+    6202
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60176,
+   "cola": "00000000000000",
+   "material_posibles": [
+    "Grapefruit(L)",
+    "Poplar(L)",
+    "Teak(L)"
+   ],
+   "nombre_visible": "Teak(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 100836,
+   "capa": 2,
+   "px": [
+    7026,
+    6638
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60176,
+   "cola": "00000000000000",
+   "material_posibles": [
+    "Grapefruit(L)",
+    "Poplar(L)",
+    "Teak(L)"
+   ],
+   "nombre_visible": "Teak(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 100837,
+   "capa": 0,
+   "px": [
+    1201,
+    766
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60010,
+   "cola": "00000000000000",
+   "nombre_visible": "Tin(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 100838,
+   "capa": 2,
+   "px": [
+    1337,
+    701
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60010,
+   "cola": "00000000000000",
+   "nombre_visible": "Tin(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 100839,
+   "capa": 0,
+   "px": [
+    553,
+    884
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60010,
+   "cola": "00000000000000",
+   "nombre_visible": "Tin(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 100840,
+   "capa": 0,
+   "px": [
+    956,
+    1036
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60010,
+   "cola": "00000000000000",
+   "nombre_visible": "Tin(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 100841,
+   "capa": 0,
+   "px": [
+    541,
+    1147
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60011,
+   "cola": "00000000000000",
+   "nombre_visible": "Tin(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 100842,
+   "capa": 2,
+   "px": [
+    557,
+    1024
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60011,
+   "cola": "00000000000000",
+   "nombre_visible": "Tin(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 100843,
+   "capa": 0,
+   "px": [
+    697,
+    907
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60011,
+   "cola": "00000000000000",
+   "nombre_visible": "Tin(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 100844,
+   "capa": 0,
+   "px": [
+    1029,
+    1031
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60011,
+   "cola": "00000000000000",
+   "nombre_visible": "Tin(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 100845,
+   "capa": 2,
+   "px": [
+    1217,
+    917
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60011,
+   "cola": "00000000000000",
+   "nombre_visible": "Tin(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 100846,
+   "capa": 0,
+   "px": [
+    604,
+    1230
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60012,
+   "cola": "00000000000000",
+   "material_posibles": [
+    "Big Tin",
+    "Tin (L)"
+   ],
+   "nombre_visible": "Tin(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 100847,
+   "capa": 0,
+   "px": [
+    464,
+    1057
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60012,
+   "cola": "00000000000000",
+   "material_posibles": [
+    "Big Tin",
+    "Tin (L)"
+   ],
+   "nombre_visible": "Tin(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 100848,
+   "capa": 2,
+   "px": [
+    1195,
+    975
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60012,
+   "cola": "00000000000000",
+   "material_posibles": [
+    "Big Tin",
+    "Tin (L)"
+   ],
+   "nombre_visible": "Tin(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 100849,
+   "capa": 0,
+   "px": [
+    1267,
+    746
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60012,
+   "cola": "00000000000000",
+   "material_posibles": [
+    "Big Tin",
+    "Tin (L)"
+   ],
+   "nombre_visible": "Tin(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 100850,
+   "capa": 0,
+   "px": [
+    624,
+    864
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60012,
+   "cola": "00000000000000",
+   "material_posibles": [
+    "Big Tin",
+    "Tin (L)"
+   ],
+   "nombre_visible": "Tin(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 100851,
+   "capa": 0,
+   "px": [
+    7426,
+    4061
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60129,
+   "cola": "00000000000000",
+   "material": "Leafy Bush(L)",
+   "nombre_visible": "Lavender(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 100852,
+   "capa": 0,
+   "px": [
+    7259,
+    3993
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60129,
+   "cola": "00000000000000",
+   "material": "Leafy Bush(L)",
+   "nombre_visible": "Lavender(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 100853,
+   "capa": 2,
+   "px": [
+    7166,
+    4008
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60129,
+   "cola": "00000000000000",
+   "material": "Leafy Bush(L)",
+   "nombre_visible": "Lavender(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 100854,
+   "capa": 2,
+   "px": [
+    7829,
+    4170
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60129,
+   "cola": "00000000000000",
+   "material": "Leafy Bush(L)",
+   "nombre_visible": "Lavender(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 100855,
+   "capa": 0,
+   "px": [
+    7386,
+    3630
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60129,
+   "cola": "00000000000000",
+   "material": "Leafy Bush(L)",
+   "nombre_visible": "Lavender(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 100856,
+   "capa": 0,
+   "px": [
+    7482,
+    3819
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60129,
+   "cola": "00000000000000",
+   "material": "Leafy Bush(L)",
+   "nombre_visible": "Lavender(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 100857,
+   "capa": 0,
+   "px": [
+    7861,
+    4002
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60129,
+   "cola": "00000000000000",
+   "material": "Leafy Bush(L)",
+   "nombre_visible": "Lavender(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 100858,
+   "capa": 0,
+   "px": [
+    7622,
+    4084
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60129,
+   "cola": "00000000000000",
+   "material": "Leafy Bush(L)",
+   "nombre_visible": "Lavender(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 100859,
+   "capa": 0,
+   "px": [
+    7013,
+    3732
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60129,
+   "cola": "00000000000000",
+   "material": "Leafy Bush(L)",
+   "nombre_visible": "Lavender(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 100860,
+   "capa": 2,
+   "px": [
+    6997,
+    4033
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60129,
+   "cola": "00000000000000",
+   "material": "Leafy Bush(L)",
+   "nombre_visible": "Lavender(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 100861,
+   "capa": 0,
+   "px": [
+    3204,
+    2820
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60205,
+   "cola": "00000000000000",
+   "nombre_visible": "Monster Den(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 100862,
+   "capa": 0,
+   "px": [
+    3144,
+    2878
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60208,
+   "cola": "00000000000000",
+   "nombre_visible": "Monster Den(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 100863,
+   "capa": 2,
+   "px": [
+    2789,
+    2887
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60208,
+   "cola": "00000000000000",
+   "nombre_visible": "Monster Den(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 100864,
+   "capa": 0,
+   "px": [
+    2794,
+    3271
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60205,
+   "cola": "00000000000000",
+   "nombre_visible": "Monster Den(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 100865,
+   "capa": 0,
+   "px": [
+    2909,
+    3118
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60208,
+   "cola": "00000000000000",
+   "nombre_visible": "Monster Den(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 100866,
+   "capa": 2,
+   "px": [
+    2425,
+    3241
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60205,
+   "cola": "00000000000000",
+   "nombre_visible": "Monster Den(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 100867,
+   "capa": 0,
+   "px": [
+    180,
+    7691
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 100868,
+   "capa": 0,
+   "px": [
+    7814,
+    120
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 100869,
+   "capa": 0,
+   "px": [
+    7304,
+    7796
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 100870,
+   "capa": 0,
+   "px": [
+    492,
+    279
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 100871,
+   "capa": 0,
+   "px": [
+    4550,
+    6092
+   ],
+   "medio": "000000ba156f77650000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60054,
+   "cola": "00002280140000",
+   "que_es": "Breeze Totem"
+  }
+ ]
+}
