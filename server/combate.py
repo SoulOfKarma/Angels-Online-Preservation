@@ -304,8 +304,10 @@ class Monstruo:
         self.muerto_en = None
         radio = max(1, min(getattr(self, 'move_range', 0) or 0,
                            RANGO_PASEO_MIN))
-        self.tile_x = self.spawn_x + _r.randint(-radio, radio)
-        self.tile_y = self.spawn_y + _r.randint(-radio, radio)
+        # Nunca negativas: un bicho con el punto de origen cerca del borde
+        # reaparecia fuera del mapa y el constructor del movimiento reventaba.
+        self.tile_x = max(0, self.spawn_x + _r.randint(-radio, radio))
+        self.tile_y = max(0, self.spawn_y + _r.randint(-radio, radio))
         self.tile = [self.tile_x, self.tile_y]
         self.en_combate_con = None
         self.ultimo_ataque = 0.0
@@ -915,11 +917,13 @@ PAUSA_PASEO_MAX = 0.90
 # Antes el dano del monstruo se aplicaba en el acto mientras el cliente aun
 # reproducia el golpe, por eso los numeros no cuadraban con la animacion.
 def retraso_golpe_monstruo(m) -> float:
-    """Lo mismo que su ciclo: el numero cae al terminar la animacion, que es
-    justo cuando arranca el golpe siguiente. Si se calculara aparte de la
-    cadencia, un bicho acelerado por su velocidad de ataque recibiria el
-    golpe siguiente antes de que aterrizara el dano del anterior."""
-    return cadencia_monstruo(m)
+    """Tiempo hasta el impacto visual del monstruo.
+
+    La cadencia controla cuando puede empezar el siguiente ataque; no cuanto
+    tarda en llegar el dano. Usar la cadencia aqui dejaba el golpe del Slarm
+    pendiente durante 2 segundos, bastante despues de su animacion de 740 ms.
+    """
+    return max(0.1, anim_de_monstruo(getattr(m, 'nombre', '')) / 1000.0)
 
 
 def alcance_arma(item_id: int = 0) -> int:

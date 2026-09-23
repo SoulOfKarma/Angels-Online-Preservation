@@ -82,6 +82,72 @@
     "nota": "East PlaygroundA1 -> Lyceum. Posicion medida en el juego.",
     "preguntar": false
    }
+  ],
+  "29": [
+   {
+    "entity": 101338,
+    "tile": [
+     4,
+     18
+    ],
+    "destino": 23,
+    "llegada": [
+     218,
+     122
+    ],
+    "dibujar": false,
+    "nota": "Breeze Woods -> Dense Forest. El tornado YA viene dibujado en breeze_woods.json (objeto 101338, sprite 60001): dibujando otro encima salian dos. Hay un segundo tornado capturado en (323,182) del que todavia no se sabe a donde va.",
+    "preguntar": false
+   }
+  ],
+  "23": [
+   {
+    "entity": 101133,
+    "tile": [
+     223,
+     127
+    ],
+    "destino": 29,
+    "llegada": [
+     10,
+     20
+    ],
+    "dibujar": false,
+    "nota": "Dense Forest -> Breeze Woods. El tile (223,127) y la llegada (10,20) los dio el usuario probando en el juego. La llegada NO puede ser la casilla del tornado de Breeze (4,18): apareciendo encima, el portal dispara otra vez y se hace un bucle.",
+    "preguntar": false
+   },
+   {
+    "entity": 101134,
+    "tile": [
+     244,
+     36
+    ],
+    "destino": 30,
+    "llegada": [
+     10,
+     154
+    ],
+    "dibujar": false,
+    "nota": "Dense Forest -> Cryptic Moon Swamp. El tile lo dio el usuario y coincide con el tornado capturado en (245,35). La llegada es la casilla donde aparecio en la captura.",
+    "preguntar": false
+   }
+  ],
+  "30": [
+   {
+    "entity": 101500,
+    "tile": [
+     3,
+     151
+    ],
+    "destino": 23,
+    "llegada": [
+     242,
+     38
+    ],
+    "dibujar": false,
+    "nota": "Cryptic Moon Swamp -> Dense Forest. El tornado ya viene en la plantilla; de los cuatro capturados -- (14,6), (3,151), (239,13) y (230,156) -- se usa el de (3,151), que es el que queda junto al punto de llegada (10,154) y el que el usuario situo 'por 4,150'. La llegada en Dense Forest va AL LADO del tornado de (245,35), no encima, para no hacer bucle.",
+    "preguntar": false
+   }
   ]
  },
  "sprite": 60001,

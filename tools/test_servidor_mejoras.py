@@ -63,17 +63,23 @@ val_portrait = struct.unpack_from('<H', res_pet_talk, 6)[0] # mid=LE32@2, val=LE
 print("Pet Expert 'Tell me about pets' portrait val:", val_portrait)
 assert val_portrait == 48, f"Esperaba portrait 48, obtuve {val_portrait}"
 
-# Angels' Tutor 10110 -> 10123
-res_tutor_quit = dialogos.respuesta_a(10110, entidad=25, val=4)[0]
-mid_tutor = struct.unpack_from('<I', res_tutor_quit, 2)[0]
-print("Angels' Tutor opcion 10110 lleva a mid:", mid_tutor)
-assert mid_tutor == 10123, f"Esperaba mid 10123, obtuve {mid_tutor}"
+# Angels' Tutor 10110 -> DOS lineas: el 10123 suelto y el 10124 con las dos
+# opciones. Medido en la captura del 22/09; antes solo se mandaba el 10123.
+res_quit = dialogos.respuesta_a(10110, entidad=25, val=4)
+mids = [struct.unpack_from('<I', p, 2)[0] for p in res_quit]
+print("Angels' Tutor opcion 10110 lleva a:", mids)
+assert mids == [10123, 10124], f"Esperaba [10123, 10124], obtuve {mids}"
+# Y el 10124 sale byte a byte como el capturado, con su accion por opcion.
+assert res_quit[1][2:].hex() == '8c27000002000002008d2700008e27000093430f0071420f00'
 
 # Angels' Tutor confirmar Yes 10125 -> 10130
 res_tutor_yes = dialogos.respuesta_a(10125, entidad=25, val=4)[0]
 mid_tutor_grad = struct.unpack_from('<I', res_tutor_yes, 2)[0]
 print("Angels' Tutor confirmar 10125 lleva a mid:", mid_tutor_grad)
-assert mid_tutor_grad == 10130, f"Esperaba mid 10130, obtuve {mid_tutor_grad}"
+# Medido en la captura del 22/09: confirmar lleva al 10127 ("What a pity! ...
+# I now will transport you to Graduation Palace"), no al 10130, que es el
+# saludo de Michael y ya pertenece al otro mapa.
+assert mid_tutor_grad == 10127, f"Esperaba mid 10127, obtuve {mid_tutor_grad}"
 
 print("\nTODOS LOS TESTS PASARON EXITOSAMENTE!")
 

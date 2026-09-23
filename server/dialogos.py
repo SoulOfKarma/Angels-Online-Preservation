@@ -18,7 +18,7 @@ Forma de la linea (0x0012):
     +4  LE16  valor             3 para Raphael, 2 para el Tutor, 52 para Aide
     +6  U8    cuantas cadenas vienen despues
     +7  U8    cuantas opciones de menu vienen despues
-    +8  U8    0
+    +8  U8    0 SIEMPRE, lleve cadenas u opciones
     +9        primero las cadenas (terminadas en NUL), despues las opciones
               (LE32 con el id de dialogo de cada una)
 
@@ -169,17 +169,79 @@ def _propios():
     return _PROPIOS
 
 
-def armar_linea(mid: int, val: int = 4, opts: list = None, strings: list = None) -> bytes:
-    """Construye un sub-mensaje 0x0012 completo."""
+def armar_linea(mid: int, val: int = 4, opts: list = None, strings: list = None,
+                acciones: list = None) -> bytes:
+    """Construye un sub-mensaje 0x0012 completo.
+
+    `acciones` son los LE32 que van DESPUES de las opciones, uno por opcion.
+    En la captura del Angels' Tutor el 10102 lleva sus dos opciones y detras
+    0x0f4272 y 0x0f4391, y el 10124 lleva 0x0f4393 y 0x0f4271. Nunca los
+    mandabamos; los dialogos de tienda funcionan sin ellos, pero el del tutor
+    los trae y conviene reproducirlos.
+    """
     opts = opts or []
     strings = strings or []
+    acciones = acciones or []
     cadenas_b = b''.join(s.encode('ascii', 'replace') + b'\x00' for s in strings)
+    # El byte de relleno del +8 va SIEMPRE, con opciones o sin ellas. Se
+    # llego a quitarlo creyendo que faltaba en las lineas con cadenas, por
+    # haber copiado a mano un hex recortado de la captura; con eso todas las
+    # lineas quedaban un byte corridas y el cliente se cerraba con un error.
+    # Comprobado con las seis lineas del Angels' Tutor: en las seis el byte 8
+    # es 0x00.
     hdr = struct.pack('<IHBBB', mid, val, len(strings), len(opts), 0)
-    body = cadenas_b + b''.join(struct.pack('<I', o) for o in opts)
+    # El orden es opciones, acciones y AL FINAL las cadenas. Comprobado con
+    # el 10201 del Aurora Angel, que lleva las dos cosas: cuatro opciones,
+    # cuatro acciones y detras "1" y el nombre del jugador. Poniendo las
+    # cadenas delante, una linea con las dos quedaba ilegible para el
+    # cliente.
+    body = (b''.join(struct.pack('<I', o) for o in opts)
+            + b''.join(struct.pack('<I', a) for a in acciones)
+            + cadenas_b)
     return struct.pack('<H', 0x0012) + hdr + body
 
 
-def propio(nombre: str, faccion: str = "Heaven"):
+# nombre -> (retrato, mensaje tras hablar con Michael, opciones, acciones)
+# El Angel que vive en cada ciudad, con su menu propio. Solo esta medido el
+# de Breeze Woods; los de las otras tres ciudades haran falta capturarlos.
+# El Angel que vive en cada ciudad. Tiene TRES estados, medidos con el de
+# Breeze Woods:
+#
+#   sin registrar (con la mision de registro pendiente)
+#       50001, retrato 112, dos cadenas y CINCO opciones; la primera es
+#       "I have come here to register!"
+#   ya registrado
+#       el mismo 50001 pero con CUATRO: desaparece la de registrarse
+#   rango alto
+#       55803, otro mensaje distinto
+#
+# Solo esta medido el de Breeze Woods; las otras tres ciudades usan sus
+# propios numeros y hay que capturarlas.
+ANGEL_DE_CIUDAD = {
+    29: {
+        'sin_registrar': (50001, (50002, 50003, 50004, 50018, 50005),
+                          (0x0f4258, 0x0f4252, 0x0f4254, 0x0f4260, 0)),
+        'registrado': (50001, (50003, 50004, 50018, 50005),
+                       (0x0f4252, 0x0f4254, 0x0f425d, 0)),
+        'mision_registro': 130,
+    },
+}
+
+ANGELES_FACCION = {
+    'Aurora Angel':     (5,  10201, (10207, 10208, 10205, 10206),
+                         (0x0f4252, 0x0f4253, 0x0f4254, 0)),
+    'Dark City Angel':  (49, 10202, (10209, 10210, 10205, 10206),
+                         (0x0f425d, 0x0f425e, 0x0f425f, 0)),
+    'IronCastle Angel': (53, 10203, (10211, 10212, 10205, 10206),
+                         (0x0f426a, 0x0f426b, 0x0f426c, 0)),
+    'BreezeWood Angel': (52, 10204, (10213, 10214, 10205, 10206),
+                         (0x0f4276, 0x0f4277, 0x0f4278, 0)),
+}
+
+
+def propio(nombre: str, faccion: str = "Heaven", jugador: str = "",
+           visto_michael: bool = False, stage: int = 0,
+           registrado: bool = False):
     """Una linea de dialogo para ese NPC, o None si no se le conoce ninguna."""
     if nombre == 'Director Wolay':
         if faccion in ("Heaven", "Neutral", "Neutrally", "Graduated"):
@@ -190,8 +252,61 @@ def propio(nombre: str, faccion: str = "Heaven"):
         return [armar_linea(5100, 4, [5101, 12105])[2:]]
     if 'Cupid' in nombre:
         return [armar_linea(5745, 6, [5746, 5747, 5748])[2:]]
+    # --- Graduation Palace -------------------------------------------
+    # Los cuatro Angeles de faccion tienen DOS dialogos, medidos en la
+    # captura del 22/09:
+    #   antes de hablar con Michael  -> 10242 para los cuatro, cambiando
+    #                                   solo el retrato, con las dos cadenas
+    #   despues                      -> el suyo, con cuatro opciones
+    # El retrato y el mensaje de cada uno:
+    #   Aurora 5/10201, Dark City 49/10202, IronCastle 53/10203,
+    #   BreezeWood 52/10204
+    # Las dos primeras opciones de cada uno son "hablame de la ciudad" y
+    # "hablame del totem"; las dos ultimas, 10205 (unirse) y 10206 (salir),
+    # son iguales para los cuatro.
+    # El Angel de una ciudad NO es el del Graduation Palace: tiene su propio
+    # dialogo. Medido con el BreezeWood Angel de Breeze Woods: msg 55803,
+    # retrato 112, cuatro opciones 20003, 20004, 20018 y 20005. La tercera es
+    # "Send me back to the Angel Lyceum".
+    if stage in ANGEL_DE_CIUDAD and nombre in ANGELES_FACCION:
+        _cfg = ANGEL_DE_CIUDAD[stage]
+        _clave = 'registrado' if registrado else 'sin_registrar'
+        _msg, _ops, _acc = _cfg[_clave]
+        return [armar_linea(_msg, 112, list(_ops),
+                            ['1', jugador or '?'], list(_acc))[2:]]
+    if nombre in ANGELES_FACCION:
+        _retrato, _msg, _ops, _acc = ANGELES_FACCION[nombre]
+        # El cambio de dialogo depende de haber hablado con MICHAEL, no de
+        # la faccion: al llegar al Graduation Palace el personaje ya viene
+        # como "Graduated", asi que atandolo a la faccion se veia siempre el
+        # segundo dialogo sin haber hablado con el.
+        if visto_michael:
+            # Solo el de Aurora lleva las cadenas con el nombre; los otros
+            # tres van sin ninguna. Asi esta en la captura.
+            _cad = ['1', jugador or '?'] if _msg == 10201 else []
+            return [armar_linea(_msg, _retrato, list(_ops),
+                                _cad, list(_acc))[2:]]
+        return [armar_linea(10242, _retrato, [], ['1', jugador or '?'])[2:]]
+    if nombre == 'Michael':
+        # Cinco lineas seguidas. La primera y la ultima llevan el nombre.
+        return [armar_linea(10130, 1, [], ['1', jugador or '?'])[2:],
+                armar_linea(10131, 1, [])[2:],
+                armar_linea(10132, 1, [])[2:],
+                armar_linea(10133, 1, [])[2:],
+                armar_linea(10134, 1, [], ['1', jugador or '?'])[2:]]
+
     if "Angels' Tutor" in nombre:
-        return [armar_linea(10101, 4, [10107, 10108, 10109, 10110])[2:]]
+        # Dos lineas seguidas, copiadas de la captura:
+        #   10101  val 2, dos cadenas ("1" y el nombre), sin opciones
+        #   10102  val 2, opciones 10135 y 10110 + una accion por opcion
+        # Van las DOS opciones con sus dos acciones, exactamente como el
+        # servidor real. Se probo recortarlo a la de salir y fue un error:
+        # el cliente elige por INDICE, y con una sola opcion "Quit" pasaba a
+        # ser la 0 mientras el cliente manda la 1. La otra opcion (10135) no
+        # lleva a ningun lado aqui, asi que cierra el cuadro.
+        return [armar_linea(10101, 2, [], ['1', jugador or '?'])[2:],
+                armar_linea(10102, 2, [10135, 10110],
+                            acciones=[0x0f4272, 0x0f4391])[2:]]
     if 'Jack' in nombre:
         return [armar_linea(5235, 4, [20001, 20002])[2:]]
     if 'Shiva' in nombre:
@@ -248,7 +363,10 @@ RESPUESTAS = {
     # Angels' Tutor
     10107: 10112,   # Score Regulation
     10108: 10115,   # Top Student Training
-    10125: 10130,   # Quit training confirm Yes -> 10130
+    # Medido: al decir que si llega el 10127 ("What a pity! ... I now will
+    # transport you to Graduation Palace"), no el 10130. El 10130 es el
+    # saludo de Michael, que ya es del otro mapa.
+    10125: 10127,   # Quit training, confirmar -> 10127
     10119: 10121,   # Graduate confirm Yes -> 10121
 }
 
@@ -290,13 +408,14 @@ def opciones_de(linea: bytes):
     if len(linea) < 9 or not linea[7]:
         return []
     n = linea[7]
-    base = 9 + linea[6]        # detras de las cadenas, si las hay
+    base = 9                   # las opciones van siempre justo tras la cabecera
     if len(linea) < base + 4 * n:
         return []
     return [struct.unpack_from('<I', linea, base + 4 * k)[0] for k in range(n)]
 
 
-def respuesta_a(opcion_id: int, entidad: int = 0, val: int = 4):
+def respuesta_a(opcion_id: int, entidad: int = 0, val: int = 4,
+                nombre: str = '', stage: int = 0):
     """Devuelve tupla de sub-mensajes: apertura de tienda y/o cierre/continuacion de dialogo."""
     if opcion_id in TIENDAS_POR_OPCION:
         if opcion_id == 12103 and entidad in TIENDAS_POR_ENTIDAD:
@@ -317,27 +436,75 @@ def respuesta_a(opcion_id: int, entidad: int = 0, val: int = 4):
     if opcion_id in (6104, 6111, 6119, 5665, 5793) or 5802 <= opcion_id <= 5812:
         return (struct.pack('<H', 0x0012) + FIN,)
 
-    # Opcion 10110: "Quit the training" con Angels' Tutor
+    # Opcion 10110: "Quit the training" con Angels' Tutor.
+    # La confirmacion es el 10124 con val 2, no el 10123: medido en la
+    # captura, 8c270000 02 0000 02 00 | 8d270000 8e270000, o sea msg 10124,
+    # val 2, dos opciones 10125 (si) y 10126 (no).
     if opcion_id == 10110:
-        pkg_pregunta = armar_linea(10123, val, [10125, 10126])
-        return (pkg_pregunta,)
+        # Son DOS lineas, medidas en la captura: primero el 10123 suelto
+        # (val 2, sin cadenas ni opciones) y despues el 10124 con las dos
+        # opciones 10125 (si) y 10126 (no). Mandabamos solo el 10123.
+        return (armar_linea(10123, 2, []),
+                armar_linea(10124, 2, [10125, 10126],
+                            acciones=[0x0f4393, 0x0f4271]))
 
     # Opcion 10109: "Graduation" con Angels' Tutor
     if opcion_id == 10109:
         pkg_pregunta = armar_linea(10118, val, [10119, 10120])
         return (pkg_pregunta,)
 
-    # Opcion 10205: "I decided to be an Angel Protector" en un totem
+    # Opcion 10205: "I decided to be an Angel Protector".
+    #
+    # La confirmacion depende de la FACCION del NPC con el que hablas. La
+    # tabla iba por id de totem y los cuatro Angeles del Graduation Palace no
+    # estaban en ella, asi que con cualquiera de ellos salia la de Aurora.
+    # Ahora va por nombre, que sirve para los totems y para los Angeles.
+    #
+    # Medido con el BreezeWood Angel: msg 10234, retrato 52, opciones 10235 y
+    # 10236, y una accion 0x0f427d. De las otras tres no hay captura de la
+    # accion, asi que van sin ella.
     if opcion_id == 10205:
-        preguntas = {
-            41: 10231, 150: 10231,  # Aurora
-            44: 10232, 122: 10232,  # Dark City
-            43: 10233, 121: 10233,  # Iron Castle
-            45: 10234, 120: 10234,  # Breeze Woods
+        por_nombre = {
+            'aurora': (10231, ()),
+            'dark city': (10232, ()),
+            'iron': (10233, ()),
+            'breeze': (10234, (0x0f427d, 0)),
         }
-        mid = preguntas.get(entidad, 10231)
-        pkg_pregunta = armar_linea(mid, val, [10235, 10236])
-        return (pkg_pregunta,)
+        mid, acc = 10231, ()
+        _n = (nombre or '').lower()
+        for clave, (m, a) in por_nombre.items():
+            if clave in _n:
+                mid, acc = m, a
+                break
+        return (armar_linea(mid, val, [10235, 10236], None, list(acc)),)
+
+    # Opcion 50002: "I have come here to register!" con el Angel de la
+    # ciudad. Medido: cinco lineas seguidas y al final las misiones nuevas y
+    # la de registro completada.
+    if opcion_id == 50002:
+        return tuple(armar_linea(m, 112) for m in
+                     (50006, 50007, 50008, 50009, 50010, 50017))
+
+    # Opcion 20018: "Send me back to the Angel Lyceum" del Angel de una
+    # ciudad. Medido: contesta con el 50019 y al cerrarse el cuadro cambia al
+    # mapa 41.
+    #
+    # Hay DOS numeros para la misma opcion segun el menu del que salga: el
+    # de rango alto (55803) la lleva como 20018 y los de registro (50001)
+    # como 50018. Solo estaba puesto el primero, asi que despues de
+    # registrarse el boton no hacia nada.
+    if opcion_id in (20018, 50018):
+        return (armar_linea(50019, 112),)
+
+    # Opcion 10235: confirmar que si. NO cierra el cuadro: quedan dos lineas
+    # mas antes del viaje. Medido con el BreezeWood Angel:
+    #   c2s 10 -> 10240  "I will send you to the Breeze Woods..."
+    #   c2s 01 -> 10241  "At last, the Lyceum leader Michael..."
+    #   c2s 01 -> las misiones, el cierre y el cambio de mapa
+    # Aqui se contestaba con el cierre directamente y por eso el NPC
+    # teletransportaba en el acto, sin decir nada.
+    if opcion_id == 10235:
+        return (armar_linea(10240, val), armar_linea(10241, val))
 
     # Almacen / Banco (Bao Clerk y Chief Director)
     if opcion_id in (5030, 5237):
@@ -364,12 +531,15 @@ def respuesta_a(opcion_id: int, entidad: int = 0, val: int = 4):
         pkg_repair = struct.pack('<HBB', 0x004F, 1, 0)
         return (pkg_repair, pkg_cierre)
 
-    # Cupid: 5747 ("Set the place for your revival.") -> Checkpoint / Savepoint
+    # Cupid: 5747 ("Set the place for your revival.") fija donde revives.
+    #
+    # Son DOS lineas de dialogo, 5751 y 5752, y NADA en el chat. Aqui se
+    # mandaba un aviso escrito a mano ("Revival point has been set to X!")
+    # que el juego no manda: el texto real sale del propio 5751, que dice
+    # "Now, your [renascence place] is registered here...".
     if opcion_id == 5747:
-        pkg_cierre = struct.pack('<H', 0x0012) + FIN
-        import clases as _c
-        pkg_aviso = _c.aviso("Revival point has been set to Angel Lyceum!", tipo=0, msg_id=_c.MSG_ITEM)
-        return (pkg_aviso, pkg_cierre)
+        return (armar_linea(5751, val), armar_linea(5752, val))
+
     if opcion_id == 5746:
         # Descripcion de ayuda
         return (armar_linea(5749, val, []),)

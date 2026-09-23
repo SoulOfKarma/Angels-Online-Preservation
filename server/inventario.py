@@ -116,7 +116,8 @@ def vaciar_ranura(dueno: int, ranura: int) -> bytes:
     return struct.pack('<HIBBIH', 0x001B, 1, 2, 1, dueno, ranura)
 
 
-def ranura_de_instancia(instancias, instancia: bytes):
+def ranura_de_instancia(instancias, instancia: bytes, bolsa=None,
+                        char_id: int = 0):
     """A que casilla corresponde ese id de instancia de ocho bytes.
 
     Al vender, el cliente NO manda la casilla: manda el id de instancia del
@@ -131,6 +132,18 @@ def ranura_de_instancia(instancias, instancia: bytes):
     for ranura, inst in (instancias or {}).items():
         if bytes(inst)[:8] == instancia[:8]:
             return int(ranura)
+    # Respaldo: la derivacion vieja, instancia_de(char_id, item_id).
+    #
+    # La secuencia de entrada al mundo manda el inventario SIN instancias, y
+    # entonces cada entrada cae en esa derivacion. El cliente se queda con
+    # esos ocho bytes y los devuelve al vender, mientras que aqui se buscaba
+    # solo en el mapa de instancias nuevas: no casaba ninguna y no se vendia
+    # nada. Se reconocio comparando: el cliente mandaba ...5af6ad6a y
+    # instancia_de(char, 2) termina exactamente en 5af6ad6a.
+    if bolsa and char_id:
+        for ranura, item_id in bolsa.items():
+            if instancia_de(char_id, int(item_id)) == instancia[:8]:
+                return int(ranura)
     return None
 
 

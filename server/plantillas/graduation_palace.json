@@ -1,0 +1,186 @@
+{
+  "_nota": "Graduation Palace (stage 58), de la captura de Celestia del 22/09/2026. Michael y los cuatro Angeles de faccion, mas los cuatro totems, que van como NPC (el nombre) y como objeto de mapa (el dibujo), igual que en el Lyceum.",
+  "stage": 58,
+  "spawns": [
+    {
+      "entity_id": 29600,
+      "nombre": "Aurora Totem",
+      "npc_type": 241,
+      "sprite": 60241,
+      "klass": 200,
+      "monstruo": false,
+      "tile": [
+        21,
+        20
+      ],
+      "direccion": 6,
+      "visible": 0
+    },
+    {
+      "entity_id": 29601,
+      "nombre": "Dark City Totem",
+      "npc_type": 241,
+      "sprite": 60241,
+      "klass": 200,
+      "monstruo": false,
+      "tile": [
+        15,
+        16
+      ],
+      "direccion": 6,
+      "visible": 0
+    },
+    {
+      "entity_id": 29602,
+      "nombre": "Iron Totem",
+      "npc_type": 241,
+      "sprite": 60241,
+      "klass": 200,
+      "monstruo": false,
+      "tile": [
+        37,
+        16
+      ],
+      "direccion": 6,
+      "visible": 0
+    },
+    {
+      "entity_id": 29603,
+      "nombre": "Breeze Totem",
+      "npc_type": 241,
+      "sprite": 60241,
+      "klass": 200,
+      "monstruo": false,
+      "tile": [
+        31,
+        20
+      ],
+      "direccion": 6,
+      "visible": 0
+    },
+    {
+      "entity_id": 122271,
+      "nombre": "Michael",
+      "npc_type": 1,
+      "sprite": 40001,
+      "klass": 199,
+      "monstruo": false,
+      "tile": [
+        26,
+        13
+      ],
+      "direccion": 6,
+      "visible": 1
+    },
+    {
+      "entity_id": 122272,
+      "nombre": "Dark City Angel",
+      "npc_type": 49,
+      "sprite": 40049,
+      "klass": 199,
+      "monstruo": false,
+      "tile": [
+        18,
+        16
+      ],
+      "direccion": 6,
+      "visible": 1
+    },
+    {
+      "entity_id": 122273,
+      "nombre": "BreezeWood Angel",
+      "npc_type": 52,
+      "sprite": 40052,
+      "klass": 199,
+      "monstruo": false,
+      "tile": [
+        29,
+        19
+      ],
+      "direccion": 6,
+      "visible": 1
+    },
+    {
+      "entity_id": 122274,
+      "nombre": "IronCastle Angel",
+      "npc_type": 53,
+      "sprite": 40053,
+      "klass": 199,
+      "monstruo": false,
+      "tile": [
+        34,
+        16
+      ],
+      "direccion": 6,
+      "visible": 1
+    },
+    {
+      "entity_id": 122275,
+      "nombre": "Aurora Angel",
+      "npc_type": 5,
+      "sprite": 40005,
+      "klass": 199,
+      "monstruo": false,
+      "tile": [
+        24,
+        19
+      ],
+      "direccion": 6,
+      "visible": 1
+    }
+  ],
+  "recursos": [
+    {
+      "entity_id": 102258,
+      "capa": 2,
+      "px": [
+        681,
+        674
+      ],
+      "medio": "006f70706572284d2900000000000000",
+      "marca": 0,
+      "orient": 6,
+      "sprite": 60051,
+      "cola": "00002280140000"
+    },
+    {
+      "entity_id": 102259,
+      "capa": 2,
+      "px": [
+        467,
+        549
+      ],
+      "medio": "00000000180000000000000000000000",
+      "marca": 220,
+      "orient": 6,
+      "sprite": 60052,
+      "cola": "00002280140000"
+    },
+    {
+      "entity_id": 102260,
+      "capa": 0,
+      "px": [
+        1199,
+        538
+      ],
+      "medio": "006f70706572284d2900000000000000",
+      "marca": 0,
+      "orient": 6,
+      "sprite": 60053,
+      "cola": "00002280140000"
+    },
+    {
+      "entity_id": 102261,
+      "capa": 0,
+      "px": [
+        1005,
+        674
+      ],
+      "medio": "000000ba156f77650000000000000000",
+      "marca": 0,
+      "orient": 6,
+      "sprite": 60054,
+      "cola": "00002280140000"
+    }
+  ]
+}

@@ -55,6 +55,9 @@ class Personaje:
     # Cuantas unidades hay en cada casilla. La que no esta aqui lleva una.
     cantidades: dict = field(default_factory=dict)  # {ranura: cantidad}
     # Donde revive, fijado con Cupid. En cero = el punto por defecto.
+    # Si ya hablo con Michael en el Graduation Palace: los Angeles de
+    # faccion cambian de dialogo.
+    hablo_michael: bool = False
     checkpoint_stage: int = 0
     checkpoint_x: int = 0
     checkpoint_y: int = 0
@@ -154,8 +157,13 @@ def secuencia(p: Personaje):
             import inventario as _inv
             # Con la cantidad de cada cosa: el oro vive en la ranura 0 y su
             # item_id siempre es 1 (ITEM_ORO) y su cantidad es p.oro.
+            # Con la cantidad REAL de cada casilla: aqui iba un 1 fijo, asi
+            # que una pila de diez pociones se veia como una sola hasta que
+            # algo mandara un refresco. El oro vive en la ranura 0 y su
+            # cantidad es p.oro.
             _items = [(int(r), _inv.ITEM_ORO if int(r) == _inv.RANURA_ORO else int(it),
-                       p.oro if int(r) == _inv.RANURA_ORO else 1)
+                       p.oro if int(r) == _inv.RANURA_ORO
+                       else max(1, int((p.cantidades or {}).get(int(r), 1))))
                       for r, it in p.inventario.items()]
             salida.append(_inv.completo(p.char_id, _items))
 
@@ -257,14 +265,20 @@ PLAYGROUND_MONSTERS = {
 }
 
 
-def _monster_spawn(entity_id, npc_type, nombre, tile):
-    """Arma un NPC_SPAWN (0x0008) 100% identico a la captura real."""
+def _monster_spawn(entity_id, npc_type, nombre, tile, sprite=0):
+    """Arma un NPC_SPAWN (0x0008) de un monstruo.
+
+    El sprite va TAL COMO SE CAPTURO. Antes salia de una tabla escrita a
+    mano con seis tipos y todo lo demas caia en el 42107, que es el del
+    Slarm: por eso en el Dense Forest las Wild Lily, los Nest Tree Elf, los
+    Forest Monkey y los dos jefes aparecian todos como Slarms.
+    """
     b = bytearray(63)
     struct.pack_into('<IIII', b, 0, entity_id, 0, tile[0], tile[1])
     n = str(nombre).encode('ascii', 'replace')[:16]
     b[16:16 + len(n)] = n
     SPRITES = {19: 42107, 7: 42041, 1: 42055, 2: 42056, 3: 42057, 4: 42058, 224: 42107}
-    sprite_id = SPRITES.get(npc_type, 42107)
+    sprite_id = sprite or SPRITES.get(npc_type, 42107)
     b[32] = 0
     b[33] = 4 if npc_type == 19 else 1
     struct.pack_into('<H', b, 34, sprite_id)
@@ -441,7 +455,7 @@ def _npc_spawn(entity_id, npc_type, nombre, tile, sprite=0, klass=200,
     valores y el NPC no gira.
     """
     if klass == 1:
-        return _monster_spawn(entity_id, npc_type, nombre, tile)
+        return _monster_spawn(entity_id, npc_type, nombre, tile, sprite)
     b = bytearray(63)
     # El offset 4 decide si el nombre queda flotando sobre la entidad. En la
     # captura vale 1 SOLO en los NPC de verdad (Cupid); los totems y todos
@@ -560,7 +574,9 @@ def poblar(stage: int):
     # Los dos playgrounds, sacados de capturas de Celestia recorriendo el mapa
     # entero. Se reconstruyen desde los DATOS con nuestros propios
     # constructores, no se reenvian sus bytes.
-    _pg = {43: 'west_playground.json', 42: 'east_playground.json'}
+    _pg = {43: 'west_playground.json', 42: 'east_playground.json',
+           58: 'graduation_palace.json', 29: 'breeze_woods.json',
+           23: 'dense_forest.json', 30: 'cryptic_moon_swamp.json'}
     f43 = PLANTILLAS / _pg[stage] if stage in _pg else None
     if f43 is not None and f43.exists():
         d43 = json.loads(f43.read_text(encoding='utf-8'))
@@ -597,6 +613,18 @@ def poblar(stage: int):
     salida += [struct.pack('<H', 0x000E) + bytes.fromhex(e['hex'])
                for e in d.get('recursos', [])]
     return salida
+
+
+# El numero de cada faccion tal como lo lee el cliente en la ficha. El unico
+# MEDIDO es el de Breeze Woods (2) contra el de sin faccion (5); los otros
+# tres son suposicion y hay que comprobarlos eligiendo esas facciones.
+CODIGO_FACCION = {
+    'Heaven': 5, 'Graduated': 5, 'Neutral': 5, 'Neutrally': 5,
+    'Beasts': 2,        # Breeze Woods, medido
+    'Holy': 1,          # Aurora, sin confirmar
+    'Evil': 3,          # Dark City, sin confirmar
+    'Chaos': 4,         # Iron Castle, sin confirmar
+}
 
 
 def _ficha(p, base):
@@ -644,7 +672,16 @@ def _ficha(p, base):
             sk[i] = {'skill_id': 0, 'level': 0, 'level2': 0,
                      'cero': b'\x00' * 4, 'exp': 0, 'idx': 0}
         d['skills'] = sk
-    return m.build(**d)
+    crudo = bytearray(m.build(**d))
+    # La FACCION va en el offset 60 de la ficha (62 contando el opcode).
+    # Comparando la ficha del mismo personaje antes y despues de elegir
+    # faccion, de 4096 bytes solo cambian seis: la casilla, dos de otra cosa
+    # y este, que pasa de 5 (Heaven) a 2 (Beasts, la de Breeze Woods).
+    # Nunca lo escribiamos, asi que el cliente seguia mostrando "Heaven"
+    # aunque el servidor tuviera guardada la faccion correcta.
+    if len(crudo) > 62:
+        crudo[62] = CODIGO_FACCION.get(getattr(p, 'faction', ''), 5)
+    return bytes(crudo)
 
 
 def _quests(p, base):

@@ -9,6 +9,7 @@ Uso:
 """
 import asyncio
 import argparse
+import os
 import logging
 import random
 import sys
@@ -110,11 +111,28 @@ def _nombre_entidad(ses, entity_id: int) -> str:
     if entity_id in _lg.TOTEMS_PUESTOS:
         return _lg.TOTEMS_PUESTOS[entity_id]
     import json
-    f = pathlib.Path(__file__).parent / 'plantillas' / 'lyceum.json'
-    if f.exists():
-        for e in json.loads(f.read_text(encoding='utf-8'))['spawns']:
-            if e['entity_id'] == entity_id:
-                return e['nombre']
+    # Se busca en la plantilla del mapa en el que esta el jugador, no solo en
+    # la del Lyceum. Mirando una sola, los NPC del Graduation Palace y de los
+    # dos playgrounds no se resolvian por nombre y se quedaban mudos: el
+    # dialogo se busca POR NOMBRE.
+    _plant = pathlib.Path(__file__).parent / 'plantillas'
+    _st = getattr(getattr(ses, 'personaje', None), 'stage', None)
+    _archivos = []
+    _por_stage = {41: 'lyceum.json', 42: 'east_playground.json',
+                  43: 'west_playground.json', 58: 'graduation_palace.json',
+                  57: 'fighting_palace.json', 29: 'breeze_woods.json',
+                  23: 'dense_forest.json', 30: 'cryptic_moon_swamp.json'}
+    if _st in _por_stage:
+        _archivos.append(_por_stage[_st])
+    if 'lyceum.json' not in _archivos:
+        _archivos.append('lyceum.json')
+    for _nom_arch in _archivos:
+        f = _plant / _nom_arch
+        if not f.exists():
+            continue
+        for e in json.loads(f.read_text(encoding='utf-8')).get('spawns', []):
+            if e.get('entity_id') == entity_id:
+                return e.get('nombre', '')
     # Si es un NPC de quest de los xmls (entity_id >= 900)
     f_mapas = pathlib.Path(__file__).parent / 'plantillas' / 'npc_por_mapa.json'
     if f_mapas.exists() and entity_id >= 900 and getattr(ses, 'personaje', None):
@@ -136,7 +154,9 @@ def _monstruos_de(stage: int):
     # monstruos de seis clases, asi que su IA sale de aqui igual que la del
     # Lyceum: pasean, persiguen, pegan y reaparecen.
     por_stage = {41: 'lyceum.json', 43: 'west_playground.json',
-                 42: 'east_playground.json'}
+                 42: 'east_playground.json', 58: 'graduation_palace.json',
+                 29: 'breeze_woods.json', 23: 'dense_forest.json',
+                 30: 'cryptic_moon_swamp.json'}
     nombre = por_stage.get(stage)
     if not nombre:
         # Los mapas que aun no tienen plantilla usan la lista escrita a mano.
@@ -458,6 +478,142 @@ def _max_sp_info(p):
                 break
     bars = 2 + (res_rank // 25)
     return bars, bars * 1000
+
+
+# La salida del Lyceum. "Quit the training" con Angels' Tutor lleva al
+# Graduation Palace, y alli cada Angel de faccion manda a su ciudad. Los dos
+# puntos estan MEDIDOS en la ficha 0x0002 que llega tras cada cambio de mapa:
+# Graduation Palace (26,7) y Breeze Woods (321,97), que es el (321,98) que se
+# ve en el minimapa.
+# Velocidad a la que camina el personaje, en el campo 'speed' del 0x0005.
+# Estaba escrita a mano en 110 dentro del manejador de movimiento. Se puede
+# subir con AO_VELOCIDAD mientras no haya monturas; el valor original del
+# juego es 110, y los monstruos caminan a 75.
+VELOCIDAD_JUGADOR = int(os.environ.get('AO_VELOCIDAD', '110'))
+
+# Donde deja el Angel de una ciudad al mandarte de vuelta: al lado de
+# Director Wolay, en el Angel Lyceum. La casilla la midio el usuario.
+TILE_VUELTA_LYCEUM = (128, 62)
+
+STAGE_GRADUACION = 58
+TILE_GRADUACION = (26, 7)
+
+# Las otras tres ciudades salen del "Birth Place" de jumpmap.xml, que es el
+# punto analogo; solo el de Breeze Woods esta medido en el juego.
+# El nombre que el cliente ENSEÑA en el campo Faction no es el de la ciudad.
+# En stage.xml cada ciudad trae su faccion en chino: Aurora 光明 (luz), Dark
+# City 黑暗 (oscuridad), Breeze Woods 大地 (tierra) e Iron Castle 渾沌 (caos).
+# El unico confirmado en el juego es el de Breeze Woods, que sale como
+# "Beasts"; los otros tres son la traduccion mas probable y hay que
+# comprobarlos eligiendo esas facciones.
+NOMBRE_DE_FACCION = {
+    'Breeze Woods': 'Beasts',      # medido
+    'Aurora': 'Holy',              # sin confirmar
+    'Dark City': 'Evil',           # sin confirmar
+    'Iron Castle': 'Chaos',        # sin confirmar
+}
+
+CIUDAD_DE_FACCION = {
+    "Breeze Woods": (29, (321, 97)),
+    "Aurora": (3, (206, 173)),
+    "Dark City": (26, (213, 45)),
+    "Iron Castle": (38, (74, 149)),
+}
+
+
+def _ya_registrado(ses) -> bool:
+    """Si el personaje ya se registro con el Angel de su ciudad.
+
+    Se sabe porque la mision de registro (130 en Breeze Woods) ya no esta
+    pendiente: al registrarse se marca completada y se dan las dos
+    siguientes.
+    """
+    import dialogos as _dlg
+    p = getattr(ses, 'personaje', None)
+    if not p:
+        return False
+    cfg = _dlg.ANGEL_DE_CIUDAD.get(getattr(p, 'stage', 0))
+    if not cfg:
+        return False
+    q = cfg['mision_registro']
+    for qid, paso in (p.quests or []):
+        if qid == q:
+            return paso > 0
+    return True
+
+
+# Las ranuras de equipo cuyo contenido se le anuncia al cliente para que
+# dibuje al personaje. Medido: el servidor real manda una linea por cada una
+# de la 1 a la 7 y la 10, con el item o con 0 si esta vacia.
+RANURAS_VISIBLES = (1, 2, 3, 4, 5, 6, 7, 10)
+
+
+def _apariencia(ses):
+    """Los 0x001D code 1 que le dicen al cliente que lleva puesto.
+
+    Sin esto el personaje se dibuja con la apariencia por defecto -- en ropa
+    interior -- por mucho que el inventario diga otra cosa: el panel de
+    equipo y la figura de la ID Card se alimentan de mensajes distintos.
+    """
+    import combate as _cb
+    p = getattr(ses, 'personaje', None)
+    if not p:
+        return []
+    bolsa = getattr(ses, 'inventario', None) or {}
+    ent = p.entity_id
+    return [_cb.equipar_visual(ent, r, int(bolsa.get(r, 0) or 0))
+            for r in RANURAS_VISIBLES]
+
+
+def _cerrar_viaje(ses, addr, stage, tile, nombre_dest):
+    """Ejecuta lo que dejo pendiente un dialogo al cerrarse el cuadro.
+
+    Medido en la captura: al confirmar la faccion quedan DOS lineas mas de
+    dialogo, y solo cuando se cierra el cuadro llegan las misiones y el
+    cambio de mapa. Todo eso va junto y en este orden.
+    """
+    import clases as _cl, time as _tm
+    p = ses.personaje
+    if not p:
+        return
+    paquetes = []
+
+    # Las misiones: primero la de registro de la ciudad y despues la 103
+    # marcada como completada.
+    fac = getattr(ses, 'misiones_al_llegar', None)
+    if fac:
+        ses.misiones_al_llegar = None
+        qreg = _cl.QUEST_POR_FACCION.get(fac)
+        if qreg:
+            if qreg not in [x[0] for x in (p.quests or [])]:
+                p.quests = list(p.quests or []) + [(qreg, 0)]
+            paquetes += [_cl.mision(p.char_id, qreg, 0),
+                         _cl.aviso(_cl.nombre_de_quest(qreg), tipo=0,
+                                   msg_id=_cl.MSG_QUEST)]
+        paquetes.append(_cl.mision(p.char_id, _cl.QUEST_ELEGIR_PAIS, 1,
+                                   int(_tm.time())))
+
+    # La faccion se aplica al llegar, que es cuando el cliente la cambia.
+    nueva = getattr(ses, 'faccion_al_llegar', None)
+    if nueva:
+        ses.faccion_al_llegar = None
+        p.faction = nueva
+        if getattr(ses, 'usuario', None):
+            cuentas.guardar_faccion(ses.usuario, p.char_id, nueva)
+        log.info(f"[{addr}] faccion al llegar: {nueva}")
+
+    p.stage = stage
+    p.tile_x, p.tile_y = tile
+    ses.monstruos = _monstruos_de(stage)
+    # El cambio de mapa va AL FINAL: el cliente vuelve a pedir la ficha del
+    # personaje al llegar, y esa ficha ya lleva la faccion nueva en su
+    # offset 60. Si se mandara antes, la pediria con la vieja.
+    paquetes.append(_cl.cambiar_mapa(stage))
+    ses.enviar(*paquetes)
+    if getattr(ses, 'usuario', None):
+        cuentas.guardar_mapa(ses.usuario, p.char_id, stage, *tile)
+    log.info(f"[{addr}] al cerrarse el dialogo: {nombre_dest} "
+             f"(stage {stage}) casilla {tile}")
 
 
 def _vida_max(p) -> int:
@@ -973,6 +1129,8 @@ class Servidor:
                 if _hech:
                     ses.enviar(_cl.otorgar_hechizos(
                         p.entity_id, [n for n, _ in _hech]))
+            # Y que el cliente dibuje al personaje con lo que lleva puesto.
+            ses.enviar(*_apariencia(ses))
             # Iniciar tarea asincrona de IA para que los monstruos paseen por el mapa y ataquen
             async def _ia_monstruos():
                 import random, time
@@ -1116,6 +1274,10 @@ class Servidor:
                                 else:
                                     # Fuera de rango: avanzar hacia el jugador solo si NO es estatico (como Lily)
                                     if not getattr(m, 'es_estatico', False):
+                                        # No encadenar trayectorias cada tick: el cliente
+                                        # aun esta interpolando el paso anterior.
+                                        if ahora < getattr(m, 'proximo_paso', 0):
+                                            continue
                                         step_x = 1 if p.tile_x > m.tile_x else (-1 if p.tile_x < m.tile_x else 0)
                                         step_y = 1 if p.tile_y > m.tile_y else (-1 if p.tile_y < m.tile_y else 0)
                                         cur_x, cur_y = m.tile_x * 32, m.tile_y * 32
@@ -1123,9 +1285,15 @@ class Servidor:
                                         m.tile_y += step_y
                                         m.tile[0], m.tile[1] = m.tile_x, m.tile_y
                                         dst_x, dst_y = m.tile_x * 32, m.tile_y * 32
+                                        _pasos = max(abs(step_x), abs(step_y)) or 1
+                                        m.proximo_paso = (ahora
+                                                          + _pasos * _cb.SEGUNDOS_POR_CASILLA)
+                                        _velocidad = max(
+                                            1, round(32 * _pasos / _cb.SEGUNDOS_POR_CASILLA))
                                         ses.enviar(MOVE.build(entity_id=m.entity_id,
                                                               cur_x=cur_x, cur_y=cur_y,
-                                                              dst_x=dst_x, dst_y=dst_y, speed=m.move_speed or 50))
+                                                              dst_x=dst_x, dst_y=dst_y,
+                                                              speed=_velocidad))
                             else:
                                 # 2. Monstruo libre: pasear, salvo los
                                 # estaticos. Las Lily son plantas: no se
@@ -1160,6 +1328,13 @@ class Servidor:
                                     # vez de quedarse parado esperando.
                                     new_x = m.spawn_x + random.randint(-_rango, _rango)
                                     new_y = m.spawn_y + random.randint(-_rango, _rango)
+                                # Nunca fuera del mapa: con el bicho cerca
+                                # del borde, el paso al azar daba casillas
+                                # negativas y el constructor del 0x0005
+                                # reventaba con "dst_x=-32 fuera de rango",
+                                # lo que tiraba la IA entera del mapa.
+                                new_x = max(0, new_x)
+                                new_y = max(0, new_y)
                                 _pasos = max(abs(new_x - m.tile_x),
                                              abs(new_y - m.tile_y)) or 1
                                 m.proximo_paso = (ahora
@@ -1983,7 +2158,8 @@ class Servidor:
                 inst = cuerpo[off:off + 8]
                 cant = struct.unpack_from('<I', cuerpo, off + 8)[0]
                 off += 12
-                ranura = _iv.ranura_de_instancia(_instancias(ses), inst)
+                ranura = _iv.ranura_de_instancia(_instancias(ses), inst,
+                                                 bolsa, cid)
                 if ranura is None or _iv.es_equipo(ranura):
                     log.warning(f"[{addr}] venta: instancia {inst.hex()} "
                                 f"no esta en la mochila")
@@ -2309,6 +2485,7 @@ class Servidor:
                 ], _dueno(ses))]
                 if inv.es_equipo(org) or inv.es_equipo(dst):
                     salida.append(_stats_ses(ses))
+                    salida.extend(_apariencia(ses))
                 ses.enviar(*salida)
                 if ses.personaje and getattr(ses, 'usuario', None):
                     cuentas.guardar_inventario(ses.usuario, ses.personaje.char_id, bolsa,
@@ -2323,6 +2500,7 @@ class Servidor:
             salida.extend(_refrescar(ses, [org, dst]))
             if inv.es_equipo(org) or inv.es_equipo(dst):
                 salida.append(_stats_ses(ses))
+                salida.extend(_apariencia(ses))
             # Gestion de mascota en ranura 9
             if dst == 9:
                 sp = inv.sprite_de_mascota(it)
@@ -2650,7 +2828,13 @@ class Servidor:
                 # Fuera del tutorial, cada NPC tiene su propia linea, sacada
                 # de msg.xml por su nombre.
                 faccion = ses.personaje.faction if ses.personaje else "Heaven"
-                g2 = dialogos.propio(_nombre_entidad(ses, ent), faccion=faccion)
+                g2 = dialogos.propio(
+                    _nombre_entidad(ses, ent), faccion=faccion,
+                    jugador=getattr(ses.personaje, 'nombre', '') if ses.personaje else '',
+                    visto_michael=bool(getattr(ses.personaje, 'hablo_michael', False)
+                                       if ses.personaje else False),
+                    stage=getattr(ses.personaje, 'stage', 0) if ses.personaje else 0,
+                    registrado=_ya_registrado(ses))
                 if g2:
                     nom2 = ses.personaje.nombre if ses.personaje else 'Jugador'
                     ses.dlg_ent, ses.dlg_guion, ses.dlg_paso = ent, g2, 1
@@ -2708,10 +2892,30 @@ class Servidor:
             # Elegir una opcion del cuadro, no pasar de linea.
             _v = d.get('valor', 1) if d else 1
             if dialogos.es_opcion(_v):
-                _ops = dialogos.opciones_de(g[paso - 1]) if 0 < paso <= len(g) else []
+                # Se buscan las opciones en la ULTIMA linea del guion que
+                # tenga, no en la de 'paso - 1'. Una respuesta puede ser
+                # varias lineas -- la de dejar el entrenamiento son dos, el
+                # 10123 suelto y el 10124 con las opciones -- y mirando solo
+                # una caia en la que no tiene ninguna.
+                _ops = []
+                for _l in reversed(g[:paso] if 0 < paso <= len(g) else g):
+                    _ops = dialogos.opciones_de(_l)
+                    if _ops:
+                        break
                 _i = dialogos.indice_opcion(_v)
-                _el = _ops[_i] if _i < len(_ops) else None
+                _el = _ops[_i] if 0 <= _i < len(_ops) else None
                 val = getattr(ses, 'dlg_val', 4)
+                if _el is None:
+                    # Sin opcion que corresponda no hay nada que hacer: se
+                    # cierra el cuadro. Antes se seguia de largo y el
+                    # servidor reventaba comparando None con un numero, lo
+                    # que tiraba la conexion del jugador.
+                    log.warning(f"[{addr}] opcion {_v} sin correspondencia "
+                                f"(hay {len(_ops)} opciones); se cierra el "
+                                f"dialogo")
+                    ses.dlg_ent = None
+                    ses.enviar(struct.pack('<H', 0x0012) + dialogos.FIN)
+                    return
 
                 # Casos especiales de opciones en Guide Palace:
                 # 1. Interface Tutor: 5241 ("OK") -> Inicia explicacion paso a paso
@@ -2751,30 +2955,98 @@ class Servidor:
                     log.info(f"[{addr}] Raphael: abandono tutorial -> enviado a Angel Lyceum (41)")
                     return
 
-                submsgs = dialogos.respuesta_a(_el, entidad=ent, val=val) if _el else (struct.pack('<H', 0x0012) + dialogos.FIN,)
-                ses.enviar(*submsgs)
+                submsgs = dialogos.respuesta_a(
+                    _el, entidad=ent, val=val,
+                    nombre=_nombre_entidad(ses, ent),
+                    stage=getattr(ses.personaje, 'stage', 0)
+                    if ses.personaje else 0) if _el else (struct.pack('<H', 0x0012) + dialogos.FIN,)
+                # Solo la PRIMERA linea de dialogo. El cliente espera una,
+                # pide "siguiente" con 0x000B valor 1, y recien entonces le
+                # llega la que sigue. Medido: al elegir "Quit the training"
+                # el servidor manda el 10123, el cliente contesta 01, y
+                # despues llega el 10124 con las opciones. Mandando las dos
+                # de golpe el cuadro se quedaba sin hacer nada.
+                _dialogo_visto = False
+                _envio = []
+                for _p in submsgs:
+                    _es_dlg = len(_p) > 2 and _p[:2] == struct.pack('<H', 0x0012)
+                    if _es_dlg and _dialogo_visto:
+                        continue
+                    if _es_dlg:
+                        _dialogo_visto = True
+                    _envio.append(_p)
+                ses.enviar(*_envio)
+
 
 
                 # Elecciones especiales
                 if _el == 10125 and ses.personaje:
-                    # Quit training con Angels' Tutor -> graduado / habilitado para elegir faccion
+                    # "Quit the training": el traslado NO va aqui. Medido:
+                    # al decir que si el servidor manda el 10127, el cliente
+                    # pide la linea siguiente, llega el cierre del cuadro y
+                    # RECIEN ENTONCES el cambio de mapa. Mandandolo en este
+                    # momento el traslado caia en mitad del dialogo y el
+                    # cuadro se quedaba colgado.
+                    ses.viaje_pendiente = (STAGE_GRADUACION, TILE_GRADUACION,
+                                           'Graduation Palace')
                     ses.personaje.faction = "Graduated"
                     if getattr(ses, 'usuario', None):
-                        cuentas.guardar_faccion(ses.usuario, ses.personaje.char_id, "Graduated")
-                    log.info(f"[{addr}] {ses.personaje.nombre} completo o abandono el entrenamiento; listo para faccion")
+                        cuentas.guardar_faccion(ses.usuario,
+                                                ses.personaje.char_id, "Graduated")
+                    log.info(f"[{addr}] {ses.personaje.nombre} confirmo dejar "
+                             f"el entrenamiento; viaja al cerrarse el dialogo")
                 elif _el == 10235 and ses.personaje:
-                    # Confirmar en totem (Aurora, Dark City, Iron Castle, Breeze Woods)
-                    totem_faccion = {
-                        41: "Aurora", 150: "Aurora",
-                        44: "Dark City", 122: "Dark City",
-                        43: "Iron Castle", 121: "Iron Castle",
-                        45: "Breeze Woods", 120: "Breeze Woods",
+                    # Confirmar la faccion. Se decide por el NOMBRE del NPC,
+                    # no por su id: antes habia una lista de ids de totems
+                    # escrita a mano y los cuatro Angeles del Graduation
+                    # Palace no estaban en ella, asi que confirmar con
+                    # cualquiera de ellos asignaba Aurora por defecto.
+                    _nom_npc = _nombre_entidad(ses, ent) or ''
+                    FACCION_POR_NOMBRE = {
+                        'Aurora': "Aurora",
+                        'Dark City': "Dark City",
+                        'Iron': "Iron Castle",
+                        'Breeze': "Breeze Woods",
                     }
-                    nueva_fac = totem_faccion.get(ent, "Aurora")
-                    ses.personaje.faction = nueva_fac
-                    if getattr(ses, 'usuario', None):
-                        cuentas.guardar_faccion(ses.usuario, ses.personaje.char_id, nueva_fac)
-                    log.info(f"[{addr}] {ses.personaje.nombre} eligio faccion: {nueva_fac}")
+                    nueva_fac = "Aurora"
+                    for _clave, _fac in FACCION_POR_NOMBRE.items():
+                        if _clave.lower() in _nom_npc.lower():
+                            nueva_fac = _fac
+                            break
+                    else:
+                        log.warning(f"[{addr}] confirmar faccion con "
+                                    f"'{_nom_npc}': no se reconoce, se usa "
+                                    f"Aurora")
+                    import clases as _cl5
+                    _pj = ses.personaje
+                    _pj.faction = nueva_fac
+                    # Y al aceptar te lleva a la ciudad de esa faccion. El
+                    # traslado faltaba: se quedaba en el Graduation Palace.
+                    _dst, _tile = CIUDAD_DE_FACCION.get(nueva_fac,
+                                                        CIUDAD_DE_FACCION["Aurora"])
+                    # El viaje espera a que se cierre el cuadro, igual que el
+                    # del Graduation Palace. Medido: se elige "Yes", pasan
+                    # dos lineas mas, llegan las misiones y RECIEN ENTONCES
+                    # el cambio de mapa.
+                    # La faccion se aplica AL LLEGAR a la ciudad, que es
+                    # cuando el cliente la cambia de "Heaven" a la suya. Y lo
+                    # que se guarda es el nombre de la FACCION, no el de la
+                    # ciudad: el campo pasa a decir "Beasts", no "Breeze
+                    # Woods".
+                    _fac_nombre = NOMBRE_DE_FACCION.get(nueva_fac, nueva_fac)
+                    ses.viaje_pendiente = (_dst, _tile, _fac_nombre)
+                    ses.faccion_al_llegar = _fac_nombre
+                    # Se completa "Choosing country" y se da la de registro
+                    # de esa ciudad, como en la captura: primero el 0x0022 de
+                    # la nueva mision y despues el de la 103 con el paso 1 y
+                    # el sello de la hora.
+                    # Las misiones se mandan JUNTO CON EL VIAJE, al
+                    # cerrarse el cuadro; aqui todavia quedan dos lineas de
+                    # dialogo por delante.
+                    ses.misiones_al_llegar = nueva_fac
+                    log.info(f"[{addr}] {_pj.nombre} eligio {nueva_fac}: "
+                             f"viaja al stage {_dst} casilla {_tile} cuando "
+                             f"se cierre el dialogo")
                 elif _el == 5747 and ses.personaje:
                     # Cupid: fija donde se revive.
                     #
@@ -2834,15 +3106,50 @@ class Servidor:
                     if getattr(ses, 'usuario', None):
                         cuentas.guardar_mapa(ses.usuario, ses.personaje.char_id, 43, 186, 27)
                     log.info(f"[{addr}] West Portal: al West Playground (stage 43)")
+                elif _el == 50002 and ses.personaje:
+                    # "I have come here to register!": completa la mision de
+                    # registro y da las dos siguientes. Medido con el Angel
+                    # de Breeze Woods: llegan la 136 "Knowing Breeze Woods",
+                    # la 140 "Reaching higher level" y la 130 con el paso 1.
+                    import clases as _clr, time as _tmr
+                    _pjr = ses.personaje
+                    _nuevas_q = (136, 140)
+                    _paqr = []
+                    for _q in _nuevas_q:
+                        if _q not in [x[0] for x in (_pjr.quests or [])]:
+                            _pjr.quests = list(_pjr.quests or []) + [(_q, 0)]
+                        _paqr += [_clr.mision(_pjr.char_id, _q, 0),
+                                  _clr.aviso(_clr.nombre_de_quest(_q), tipo=0,
+                                             msg_id=_clr.MSG_QUEST)]
+                    _pjr.quests = [(q, 1 if q == 130 else pa)
+                                   for q, pa in (_pjr.quests or [])]
+                    _paqr.append(_clr.mision(_pjr.char_id, 130, 1,
+                                             int(_tmr.time())))
+                    ses.enviar(*_paqr)
+                    log.info(f"[{addr}] {_pjr.nombre} se registro con el Angel "
+                             f"de su ciudad: misiones 136 y 140, la 130 "
+                             f"completada")
+                elif _el in (20018, 50018) and ses.personaje:
+                    # "Send me back to the Angel Lyceum" del Angel de una
+                    # ciudad. Medido: contesta con el 50019 y el cambio de
+                    # mapa llega al cerrarse el cuadro, no en el acto.
+                    ses.viaje_pendiente = (41, TILE_VUELTA_LYCEUM,
+                                           'Angel Lyceum')
+                    log.info(f"[{addr}] {ses.personaje.nombre} vuelve al "
+                             f"Angel Lyceum cuando se cierre el dialogo")
                 elif _el == 5080 and ses.personaje:
                     # Director Wolay: retorno a la ciudad de faccion elegida
-                    ciudades_faccion = {
-                        "Aurora": (3, (150, 150)),
-                        "Dark City": (26, (150, 150)),
-                        "Iron Castle": (38, (41, 9)),
-                        "Breeze Woods": (29, (150, 150)),
+                    # La faccion guardada ya no es el nombre de la ciudad
+                    # ("Breeze Woods") sino el de la faccion ("Beasts"), asi
+                    # que esta tabla, que iba por el nombre viejo, no
+                    # encontraba ninguna y mandaba a todos a Aurora. Se usa
+                    # el mismo destino que al elegirla con el Angel.
+                    CIUDAD_POR_FACCION = {
+                        NOMBRE_DE_FACCION[c]: CIUDAD_DE_FACCION[c]
+                        for c in CIUDAD_DE_FACCION if c in NOMBRE_DE_FACCION
                     }
-                    st_dest, tile_dest = ciudades_faccion.get(ses.personaje.faction, (3, (150, 150)))
+                    st_dest, tile_dest = CIUDAD_POR_FACCION.get(
+                        ses.personaje.faction, CIUDAD_DE_FACCION["Aurora"])
                     import clases as _cl3
                     ses.personaje.stage = st_dest
                     ses.personaje.tile_x, ses.personaje.tile_y = tile_dest
@@ -2886,9 +3193,25 @@ class Servidor:
                 )
                 if termina:
                     ses.dlg_ent = None
+                    # El cuadro se cierra aqui mismo, asi que lo que dejo
+                    # pedido la opcion -- el viaje, la faccion y las misiones
+                    # -- se hace ahora. Antes quedaba apuntado para un cierre
+                    # que ya habia pasado y el personaje no se movia.
+                    _v2 = getattr(ses, 'viaje_pendiente', None)
+                    if _v2 and ses.personaje:
+                        ses.viaje_pendiente = None
+                        _st2, _tile2, _nom2 = _v2
+                        _cerrar_viaje(ses, addr, _st2, _tile2, _nom2)
                 else:
                     ses.dlg_ent = ent
-                    ses.dlg_guion = [submsgs[0][2:]]
+                    # TODAS las lineas de dialogo de la respuesta, no solo la
+                    # primera. Guardando una sola, una respuesta de varias
+                    # lineas se quedaba trunca: al elegir "Quit the training"
+                    # el guion quedaba en [10123] y el "siguiente" cerraba el
+                    # cuadro en vez de mandar el 10124 con las opciones.
+                    ses.dlg_guion = [m[2:] for m in submsgs
+                                     if len(m) > 2
+                                     and struct.unpack_from('<H', m, 0)[0] == 0x0012]
                     ses.dlg_paso = 1
                     if len(submsgs[0]) >= 8:
                         ses.dlg_val = struct.unpack_from('<H', submsgs[0], 6)[0]
@@ -2915,12 +3238,48 @@ class Servidor:
                                    _cantidades(ses))
                 log.info(f"[{addr}] Raphael: entregados guantes (slot {s_glov}) y zapatos (slot {s_shoe})")
 
+            # El cliente manda el 0x000B repetido -- en la captura llegan dos
+            # seguidos con 210 ms de diferencia -- y el servidor REAL contesta
+            # al primero con la linea y al segundo cerrando el cuadro. Se
+            # probo ignorar el repetido cuando la linea tiene opciones y fue
+            # un invento: aqui se reproduce lo medido, que es cerrar.
+            # Michael da la mision "Choosing country" JUSTO ANTES de su
+            # ultima linea, no al cerrarse el cuadro. Medido: el 0x0022 llega
+            # a los 53.05 y el 10134 a los 53.23, y el cierre recien a los
+            # 54.29.
+            if (ses.personaje and paso == len(g) - 1
+                    and _nombre_entidad(ses, ent) == 'Michael'
+                    and not getattr(ses.personaje, 'hablo_michael', False)):
+                import clases as _cl7
+                ses.personaje.hablo_michael = True
+                _q = _cl7.QUEST_ELEGIR_PAIS
+                if _q not in [x[0] for x in (ses.personaje.quests or [])]:
+                    ses.personaje.quests = list(ses.personaje.quests or []) + [(_q, 0)]
+                ses.enviar(_cl7.mision(ses.personaje.char_id, _q, 0),
+                           _cl7.aviso(_cl7.nombre_de_quest(_q), tipo=0,
+                                      msg_id=_cl7.MSG_QUEST))
+                log.info(f"[{addr}] Michael: mision {_q} "
+                         f"'{_cl7.nombre_de_quest(_q)}'; los Angeles de "
+                         f"faccion pasan a su segundo dialogo")
+
             ses.enviar(dialogos.linea_de(g, paso, nom))
             if paso < len(g):
                 ses.dlg_paso = paso + 1
                 log.debug(f"[{addr}] dialogo {ent}: linea {paso + 1}")
             else:
                 ses.dlg_ent = None
+                # Viaje aplazado: el traslado que dejo pedido una opcion del
+                # dialogo se hace AHORA, cuando el cuadro se cierra. Es el
+                # orden del servidor real: 10127, cierre, y despues el
+                # cambio de mapa.
+                # Hablar con Michael desbloquea el segundo dialogo de los
+                # cuatro Angeles de faccion.
+                _viaje = getattr(ses, 'viaje_pendiente', None)
+                if _viaje and ses.personaje:
+                    ses.viaje_pendiente = None
+                    _st, _tile, _nom_dest = _viaje
+                    _cerrar_viaje(ses, addr, _st, _tile, _nom_dest)
+                    return
                 # Fin de dialogo en Guide Palace (stage 51):
                 if ses.personaje and ses.personaje.stage == MAPA_DEL_TUTORIAL:
                     if ent == 19:
@@ -3051,7 +3410,8 @@ class Servidor:
             ses.enviar(ACK.build(),
                        MOVE.build(entity_id=ses.entity_id or 1001,
                                   cur_x=d['cur_x'], cur_y=d['cur_y'],
-                                  dst_x=dst['x'], dst_y=dst['y'], speed=110))
+                                  dst_x=dst['x'], dst_y=dst['y'],
+                                  speed=VELOCIDAD_JUGADOR))
             # Anotar donde queda. Las coordenadas del cliente van en pixeles y
             # el tile mide 32: 2640 -> 82 y 2672 -> 83, que es justo el punto
             # de aparicion de Guide Palace. Se guarda al desconectar, no en
@@ -3093,11 +3453,14 @@ class Servidor:
                 # hacia el tornado desde lejos el dialogo saltaba de
                 # inmediato, con el personaje todavia a media pantalla; eso
                 # lo cubre el radio 1, que exige estar encima.
+                # SOLO la casilla donde el cliente dice que esta AHORA. Se
+                # probo mirar tambien la de destino para que funcionara
+                # clicando encima del tornado, y fue un error: al clicarlo
+                # desde lejos el viaje salia en el acto, sin caminar. El
+                # cliente informa su posicion mientras camina, asi que al
+                # pisarlo de verdad llega igual.
                 tx, ty = d['cur_x'] // 32, d['cur_y'] // 32
-                _dx, _dy = dst['x'] // 32, dst['y'] // 32
-                _por = _portal_en(ses.personaje.stage, _dx, _dy)
-                if _por is None:
-                    _por = _portal_en(ses.personaje.stage, tx, ty)
+                _por = _portal_en(ses.personaje.stage, tx, ty)
                 # Se recuerda en que portal se esta parado y solo se abre el
                 # menu al ENTRAR. Antes bastaba con que dlg_ent estuviera
                 # libre, pero si el cliente cierra el cuadro por su cuenta

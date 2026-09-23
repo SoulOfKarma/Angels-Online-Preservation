@@ -189,6 +189,85 @@ def parsear_eleccion(cuerpo: bytes):
     return [b for b in cuerpo[:6] if b]
 
 
+MSG_QUEST = 510            # "You accept the quest [X]"
+
+# Las cuatro misiones de registro, una por ciudad, y la de elegir pais.
+QUEST_ELEGIR_PAIS = 103
+QUEST_POR_FACCION = {
+    'Aurora': 127,
+    'Dark City': 128,
+    'Iron Castle': 129,
+    'Breeze Woods': 130,
+}
+
+
+_NOMBRES_QUEST = None
+
+
+_NOMBRES_MAPA = None
+
+
+def nombre_de_mapa(stage: int) -> str:
+    """El nombre del mapa, de la tabla stage de los datos del cliente."""
+    global _NOMBRES_MAPA
+    if _NOMBRES_MAPA is None:
+        import sqlite3
+        _NOMBRES_MAPA = {}
+        db = pathlib.Path(__file__).parent.parent / 'corpus' / 'content.db'
+        if db.exists():
+            try:
+                con = sqlite3.connect(db)
+                con.text_factory = str
+                for fila in con.execute('select * from stage'):
+                    try:
+                        _NOMBRES_MAPA[int(fila[0])] = str(fila[1] or '')
+                    except (TypeError, ValueError):
+                        continue
+                con.close()
+            except Exception:
+                pass
+    return _NOMBRES_MAPA.get(int(stage or 0), '')
+
+
+def nombre_de_quest(qid: int) -> str:
+    """El nombre de la mision, de la tabla quest de los datos del cliente."""
+    global _NOMBRES_QUEST
+    if _NOMBRES_QUEST is None:
+        import sqlite3
+        _NOMBRES_QUEST = {}
+        db = pathlib.Path(__file__).parent.parent / 'corpus' / 'content.db'
+        if db.exists():
+            try:
+                con = sqlite3.connect(db)
+                con.text_factory = str
+                # La columna 1 es el nombre. Se lee por POSICION porque su
+                # nombre quedo ilegible al montar la base de datos.
+                for fila in con.execute('select * from quest'):
+                    i, n = fila[0], fila[1]
+                    try:
+                        _NOMBRES_QUEST[int(i)] = str(n or '')
+                    except (TypeError, ValueError):
+                        continue
+                con.close()
+            except Exception:
+                pass
+    return _NOMBRES_QUEST.get(int(qid), 'Quest %d' % qid)
+
+
+def mision(char_id: int, quest_id: int, paso: int = 0, sello: int = 0) -> bytes:
+    """0x0022: otorga o actualiza UNA mision.
+
+    Medido en la captura del Graduation Palace:
+        01000000 482a1600 6700 00 00000000 00000000 482a01
+    es decir [u32 n=1][u32 personaje][u16 quest][u8 paso][u32 sello]
+    [u32 0][u16 los 16 bits bajos del personaje][u8 1]. Al completarla
+    llega la misma con el paso en 1 y el sello con la hora.
+    """
+    return (struct.pack('<HIIHBII', 0x0022, 1, char_id, quest_id, paso,
+                        sello, 0)
+            + struct.pack('<HB', char_id & 0xFFFF, 1))
+
+
 def aviso(texto: str, tipo: int = 7, msg_id: int = MSG_HABILIDAD) -> bytes:
     """Sub-mensaje 0x000D: el cartel de 'aprendiste X' / 'obtuviste X'.
 
