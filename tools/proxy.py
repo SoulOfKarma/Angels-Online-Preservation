@@ -146,11 +146,15 @@ def reescribir_redirect(datos, clave, host_nuevo, puerto_nuevo, aviso):
     - **0x0004 REDIRECT**, en la sesion de login: manda al cliente del login
       al mundo.
     - **0x000C CAMBIO DE MAPA**, en la sesion de mundo:
-      `[u32 stage][u16 puerto][ip asciiz]`. Celestia lo usa para mudar al
-      cliente a OTRO servidor al cambiar de mapa: en la captura del West
-      Playground llega con el puerto 30001 y OTRA ip distinta. Como no se
-      reescribia, el cliente se reconectaba directo al servidor real y la
-      grabacion se cortaba en seco justo al cambiar de mapa.
+      `[u32 stage][u16 puerto][ip asciiz]`. Ese campo de ip trae la
+      DIRECCION DEL SERVIDOR REAL, en texto: el servidor privado la usa para
+      mudar al cliente a OTRA maquina al cambiar de mapa, no solo a otro
+      puerto. En la captura del West Playground llega con el puerto 30001 y
+      una ip que aqui no se reproduce, porque es la del servidor de terceros
+      donde se grabo. No hace falta saber cual es para entender nada: lo
+      unico que importa es que el campo existe y hay que reescribirlo.
+      Sin reescribirlo, el cliente se reconectaba directo al servidor real y
+      la grabacion se cortaba en seco justo al cambiar de mapa.
 
     Hay que rehacer el frame entero: el checksum se calcula sobre el texto en
     claro y viaja en el header, asi que no alcanza con parchear los bytes.
