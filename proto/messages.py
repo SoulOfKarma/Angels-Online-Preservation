@@ -281,6 +281,23 @@ Msg(0x0003, 's2c', 'ENTIDAD_COLOCAR', [
         "asi que esta lectura vale para el privado; en IGG el primer campo "
         "podria ser otra cosa.")
 
+VarMsg(0x0179, 's2c', 'APARIENCIA', [
+    Count('n', of='grupos'),
+    U32('unk_04'), U32('unk_08'), U8('flag'),
+    Array('grupos', [Count('cuantos', of='sprites'),
+                     Array('sprites', [U32('sprite')])]),
+], note="LA APARIENCIA DEL PERSONAJE: es lo que dibuja la figura de la ID "
+        "Card. Medido en Celestia el 24/09/2026 con la Card abierta "
+        "cambiando piezas. Salen dos variantes: 327 bytes al entrar y 170 en "
+        "cada equipado. La de 327 traia los grupos [40289,40288,40287], "
+        "[40292,40291,40290], [40295,40294,40293] y [6144,0,0], con el resto "
+        "vacios; son ids del rango de sprites de personaje y el usuario "
+        "confirma que cambian con la ropa y el Fashion. "
+        "Antes estaba anotado como 'sale identico siempre': era FALSO. "
+        "NUESTRO SERVIDOR NO LO MANDA, y por eso la ID Card dibuja al "
+        "personaje por defecto. PENDIENTE la tabla item -> sprite: esos ids "
+        "no son el item_id ni el 原型外觀 de item.xml.")
+
 Msg(0x0151, 'c2s', 'ANGELS_GO', [U32('destino')],
     note="Teletransporte de las Superwing (item 25832). El numero es el "
          "編號 de jumpmap.xml, no un stage: la tabla trae 355 destinos con "

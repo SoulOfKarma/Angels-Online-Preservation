@@ -2287,8 +2287,47 @@ pero las **8 y 9 van con 4**. Nosotros escribimos 2 siempre. Ninguno de
 nuestros personajes usa esas dos ranuras, así que no explica lo de la card,
 pero es un dato que habrá que respetar cuando se toquen.
 
-### Lo que falta para cerrarlo
+### ENCONTRADO: es el 0x0179, y no lo mandamos nunca
 
-Una captura de Celestia con la **ID Card abierta** quitándose y poniéndose
-una prenda cuyo requisito de habilidad sea 2 o más. Es el único caso que
-separa las hipótesis.
+La captura con la ID Card abierta cambiando piezas (Celestia, 24/09/2026)
+lo resolvió. Lo que se había anotado antes -- "el 0x0179 sale idéntico
+después de cada equipado" -- **era falso**: en esa sesión salen DOS
+contenidos distintos, uno de 327 bytes al entrar y otro de 170 en cada
+equipado.
+
+El de 327 lleva ids del rango 40287..40295, que es el de los sprites de
+personaje, en tres grupos de tres. El usuario lo confirma: esos ids cambian
+según la ropa y el Fashion que lleves.
+
+Estructura, ya decodificada:
+
+    [u32 n=8][u32 0][u32 7][u8 flag=1]
+    y luego n grupos de  [u32 cuantos][cuantos x u32 sprite]
+
+En la captura los grupos salieron así:
+
+    grupo 0   vacio
+    grupo 1   40289, 40288, 40287
+    grupo 2   40292, 40291, 40290
+    grupo 3   40295, 40294, 40293
+    grupo 4   6144, 0, 0
+    grupos 5-7  vacios
+
+**Nuestro servidor no manda el 0x0179 en ningun momento.** No aparece ni en
+`server/`, ni en `proto/messages.py`: el cliente nunca recibe la apariencia
+y por eso la ID Card dibuja la figura por defecto.
+
+Ojo con la correlacion del requisito de habilidad de la tabla de arriba:
+encajaba sin excepcion en diez piezas, pero con esto pasa a ser probablemente
+**una coincidencia**, no la causa. No merece mas tiempo hasta descartar el
+0x0179.
+
+### Lo que falta
+
+Saber de donde sale cada sprite. Los ids 40287..40295 no son los item_id ni
+el `原型外觀` de `item.xml` (que son numeros de tres cifras), asi que hay
+una tabla intermedia por encontrar. Los items que ese personaje llevaba
+puestos en las ranuras 1, 2, 5, 6 y 10 -- 32760, 32761, 32762, 32763 y
+40441 -- **no estan en el item.xml de los paks extraidos**, asi que son de
+un update mas nuevo. Hace falta una captura con ropa que si este en los
+paks para poder cruzar item -> sprite.
