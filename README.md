@@ -36,17 +36,27 @@ a guess, it says so.
   attack effects, dying and reviving, loot, experience and skill experience
 - Monsters: per-monster attack cadence, chasing, wandering, respawn, and
   bleed and stun effects
-- **74 maps populated from captures**: 10,494 monsters, 896 NPCs and 4,779 map
-  objects, 3,768 of them with their resource name resolved. Every monster, NPC
-  and resource comes from a capture; none of it is made up
-- **Heart of Eden is complete**, **Atlantis is complete except for the
-  instances** and **Floating is complete**: its five maps (Roam Battlefield,
-  Sky Pumice, Winding Flower Corridor, Airship Station and Bouleuterion) have
-  every tornado measured, and Season Garden only has its instance entrance
+- **95 maps populated from captures**: 14,917 monsters, 1,149 NPCs and 8,951
+  map objects, 5,029 of them with their resource name resolved. Every monster,
+  NPC and resource comes from a capture; none of it is made up
+- **Whole zones are closed**, meaning every tornado in them has been crossed
+  and measured: **Heart of Eden**, **Floating** (6 maps), **the desert ring**
+  (Crescent Valley, Desert Racetrack, Ghost Village, Troop Outpost, Ancient
+  Front, Fantastic Sand City, Nightmare Palace) and **Candyland** (7 maps).
+  **Atlantis is complete except for the instances**, and the forest chain
+  (Cryptic Moon Swamp to Giant Wooden Stairs, 8 maps) only has two tornados
   left. Plus a good part of Pharaoh, East Orient and the four faction
   territories
-- **162 portals**, almost all measured in both directions: the tornado's tile
-  comes from the capture, and so does the tile the real server drops you on
+- **208 portals**, almost all measured in both directions: the tornado's tile
+  comes from the capture, and so does the tile the real server drops you on.
+  Most of them were crossed **twice in each direction**, which is how we found
+  out that some portals do not always drop you on the same tile
+- **Angels GO!, the Superwing teleport**, works: `0x0151` carries the entry id
+  from the client's own `jumpmap.xml`, a Superwing is spent, and the answer
+  splits in two, both measured -- a `0x0003` when the destination is on the
+  map you are already on, a `0x0007` plus `0x000C` when it is another map.
+  The table has **355 destinations** and **140 of them are live**, the ones
+  that land on a populated map; the rest are refused without spending the item
 - The four faction cities with their arrival tile, all four measured: Aurora
   City, Breeze Woods, Iron Castle and Dark City. Picking a faction leaves you
   next to that city's Angel, three or four tiles away, in all four
@@ -99,9 +109,16 @@ a guess, it says so.
 - The diving gate is **documented but not enforced**: both trainers, their
   dialogue and the two skills are captured, but the portal into the
   underwater maps still lets anyone through
-- Instances (Lost Region and Horrible Lost Region): the entry dialogue, the
-  two modes and the rejection messages are captured, but nobody has been
-  inside. Their monsters are known from the wiki; their positions are not
+- Instances: nobody has been inside any of them. **Five entrances are
+  identified and left switched off** -- Nightmare Palace, Half-beast Hamlet,
+  Giant Wooden Stairs (which has two tornados leading to the same place) and
+  Chocolate Forest. They sit in `portales.json` with their tile and their
+  entity but with a null destination, and the server skips them, so standing
+  on one does nothing. For Lost Region and Horrible Lost Region the entry
+  dialogue, the two modes and the rejection messages are captured; their
+  monsters are known from the wiki, their positions are not. Careful with one
+  thing: that two-mode dialogue is **not** how instances are entered in
+  general -- most ask nothing at all
 - Parties and the friend list: the protocol is documented from a two-account
   capture, but the server does not implement either yet
 

@@ -281,6 +281,18 @@ Msg(0x0003, 's2c', 'ENTIDAD_COLOCAR', [
         "asi que esta lectura vale para el privado; en IGG el primer campo "
         "podria ser otra cosa.")
 
+Msg(0x0151, 'c2s', 'ANGELS_GO', [U32('destino')],
+    note="Teletransporte de las Superwing (item 25832). El numero es el "
+         "編號 de jumpmap.xml, no un stage: la tabla trae 355 destinos con "
+         "su escenario y su casilla. Medido en Celestia el 24/09/2026 en "
+         "Nightmare Palace: el id 120 dejo en (34,219) y el 119 en (20,23), "
+         "que es justo lo que dice jumpmap.xml para esos dos. "
+         "El servidor contesta 0x0012, un 0x001B con la Superwing a una "
+         "unidad menos, 0x0042 y 0x0013, y ahi se bifurca: si el destino "
+         "esta en el MISMO mapa cierra con un 0x0003 y no manda 0x000C; "
+         "si es OTRO mapa cierra con un 0x0007 de 5B y el 0x000C, como un "
+         "tornado, y no manda el 0x0003. Los dos casos medidos.")
+
 Msg(0x0016, 's2c', 'ENTIDAD_DIRECCION', [U32('entity_id'), U8('direccion')],
     note="Hacia donde mira el sprite. Mismos valores que el 0x0007 del "
          "cliente. El 0x0016 c2s es otra cosa, todavia sin identificar.")

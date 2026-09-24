@@ -1,0 +1,4054 @@
+{
+ "_nota": "Angels GO!, el teletransporte de las Superwing. MEDIDO en Celestia el 24/09/2026 en Nightmare Palace (stage 126), dos usos seguidos.\n\nEl cliente manda  c2s 0x0151 = [u32 id]  y el id es el 編號 de jumpmap.xml. El servidor contesta, en este orden:\n  s2c 0x0012  7B   acuse\n  s2c 0x001B  90B  la casilla de la Superwing con una unidad menos\n  s2c 0x0042  105B los stats\n  s2c 0x0013  10B  un atributo\n  s2c 0x0003  12B  ENTIDAD_COLOCAR: [u32 entidad][u32 tile_x][u32 tile_y]\n\nLos cuatro primeros mensajes salen siempre; lo que cambia es el final:\n  MISMO MAPA   se cierra con el 0x0003 y NO viaja ningun 0x000C\n  OTRO MAPA    se cierra con un 0x0007 de 5B y el 0x000C, como un tornado,\n               y NO viaja el 0x0003\nLos dos casos estan MEDIDOS.\n\nTres pruebas, tres aciertos: el id 120 dejo en (34,219), el 119 en (20,23) y el 109 en (32,20) del stage 120, y jumpmap.xml da exactamente esas casillas para esos ids. La tabla del cliente es correcta y no hace falta medir destino por destino.\n\nLa Superwing es el item 25832. Estaba en la casilla 54 y la cantidad bajo de 24 a 23 con el primer uso y a 22 con el segundo: UNA por viaje, sea cual sea la distancia, como dice el texto del objeto.\n\nEl servidor NO implementa esto todavia: aqui solo estan los datos y el formato.",
+ "opcode_peticion": "0x0151",
+ "item_superwing": 25832,
+ "medido": [
+  {
+   "id": 120,
+   "tile": [
+    34,
+    219
+   ],
+   "stage": 126,
+   "punto": "Instance Entry Point"
+  },
+  {
+   "id": 119,
+   "tile": [
+    20,
+    23
+   ],
+   "stage": 126,
+   "punto": "Entrance"
+  },
+  {
+   "id": 109,
+   "tile": [
+    32,
+    20
+   ],
+   "stage": 120,
+   "punto": null,
+   "nota": "Entre mapas: de Fantastic Sand City (125) a Crescent Valley (120)."
+  }
+ ],
+ "destinos": {
+  "1": {
+   "stage": 41,
+   "tile": [
+    152,
+    74
+   ],
+   "punto": null,
+   "categorias": [
+    12
+   ]
+  },
+  "2": {
+   "stage": 42,
+   "tile": [
+    11,
+    113
+   ],
+   "punto": null,
+   "categorias": [
+    12
+   ]
+  },
+  "3": {
+   "stage": 43,
+   "tile": [
+    189,
+    24
+   ],
+   "punto": null,
+   "categorias": [
+    12
+   ]
+  },
+  "4": {
+   "stage": 3,
+   "tile": [
+    337,
+    25
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    2,
+    13,
+    14
+   ]
+  },
+  "5": {
+   "stage": 3,
+   "tile": [
+    206,
+    173
+   ],
+   "punto": "Birth Place",
+   "categorias": [
+    2,
+    13,
+    14
+   ]
+  },
+  "6": {
+   "stage": 26,
+   "tile": [
+    16,
+    11
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    2,
+    13,
+    15
+   ]
+  },
+  "7": {
+   "stage": 26,
+   "tile": [
+    213,
+    45
+   ],
+   "punto": "Birth Place",
+   "categorias": [
+    2,
+    13,
+    15
+   ]
+  },
+  "8": {
+   "stage": 29,
+   "tile": [
+    13,
+    24
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    2,
+    13,
+    16
+   ]
+  },
+  "9": {
+   "stage": 29,
+   "tile": [
+    319,
+    78
+   ],
+   "punto": "Birth Place",
+   "categorias": [
+    2,
+    13,
+    16
+   ]
+  },
+  "10": {
+   "stage": 38,
+   "tile": [
+    41,
+    9
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    2,
+    13,
+    17
+   ]
+  },
+  "11": {
+   "stage": 38,
+   "tile": [
+    74,
+    149
+   ],
+   "punto": "Birth Place",
+   "categorias": [
+    2,
+    13,
+    17
+   ]
+  },
+  "12": {
+   "stage": 6,
+   "tile": [
+    10,
+    137
+   ],
+   "punto": null,
+   "categorias": [
+    2,
+    14
+   ]
+  },
+  "13": {
+   "stage": 7,
+   "tile": [
+    15,
+    177
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    2,
+    14
+   ]
+  },
+  "14": {
+   "stage": 7,
+   "tile": [
+    79,
+    174
+   ],
+   "punto": "Birth Place",
+   "categorias": [
+    2,
+    14
+   ]
+  },
+  "15": {
+   "stage": 4,
+   "tile": [
+    83,
+    178
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    2,
+    14
+   ]
+  },
+  "16": {
+   "stage": 4,
+   "tile": [
+    179,
+    162
+   ],
+   "punto": "Birth Place",
+   "categorias": [
+    2,
+    14
+   ]
+  },
+  "17": {
+   "stage": 2,
+   "tile": [
+    276,
+    178
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    2,
+    14
+   ]
+  },
+  "18": {
+   "stage": 5,
+   "tile": [
+    52,
+    142
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    2,
+    14
+   ]
+  },
+  "19": {
+   "stage": 5,
+   "tile": [
+    211,
+    63
+   ],
+   "punto": "Birth Place",
+   "categorias": [
+    2,
+    14
+   ]
+  },
+  "20": {
+   "stage": 32,
+   "tile": [
+    306,
+    199
+   ],
+   "punto": null,
+   "categorias": [
+    2,
+    15
+   ]
+  },
+  "21": {
+   "stage": 19,
+   "tile": [
+    16,
+    159
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    2,
+    15
+   ]
+  },
+  "22": {
+   "stage": 19,
+   "tile": [
+    185,
+    60
+   ],
+   "punto": "Birth Place",
+   "categorias": [
+    2,
+    15
+   ]
+  },
+  "23": {
+   "stage": 31,
+   "tile": [
+    322,
+    25
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    2,
+    15
+   ]
+  },
+  "24": {
+   "stage": 31,
+   "tile": [
+    169,
+    94
+   ],
+   "punto": "Birth Place",
+   "categorias": [
+    2,
+    15
+   ]
+  },
+  "25": {
+   "stage": 14,
+   "tile": [
+    46,
+    9
+   ],
+   "punto": null,
+   "categorias": [
+    2,
+    15
+   ]
+  },
+  "26": {
+   "stage": 35,
+   "tile": [
+    12,
+    27
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    2,
+    15
+   ]
+  },
+  "27": {
+   "stage": 35,
+   "tile": [
+    305,
+    159
+   ],
+   "punto": "Birth Place",
+   "categorias": [
+    2,
+    15
+   ]
+  },
+  "28": {
+   "stage": 23,
+   "tile": [
+    218,
+    122
+   ],
+   "punto": null,
+   "categorias": [
+    2,
+    16
+   ]
+  },
+  "29": {
+   "stage": 18,
+   "tile": [
+    235,
+    6
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    2,
+    16
+   ]
+  },
+  "30": {
+   "stage": 18,
+   "tile": [
+    174,
+    44
+   ],
+   "punto": "Birth Place",
+   "categorias": [
+    2,
+    16
+   ]
+  },
+  "31": {
+   "stage": 30,
+   "tile": [
+    8,
+    150
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    2,
+    16
+   ]
+  },
+  "32": {
+   "stage": 30,
+   "tile": [
+    56,
+    151
+   ],
+   "punto": "Birth Place",
+   "categorias": [
+    2,
+    16
+   ]
+  },
+  "33": {
+   "stage": 13,
+   "tile": [
+    308,
+    61
+   ],
+   "punto": null,
+   "categorias": [
+    2,
+    16
+   ]
+  },
+  "34": {
+   "stage": 22,
+   "tile": [
+    29,
+    12
+   ],
+   "punto": null,
+   "categorias": [
+    2,
+    16
+   ]
+  },
+  "35": {
+   "stage": 37,
+   "tile": [
+    251,
+    160
+   ],
+   "punto": null,
+   "categorias": [
+    2,
+    17
+   ]
+  },
+  "36": {
+   "stage": 34,
+   "tile": [
+    285,
+    178
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    2,
+    17
+   ]
+  },
+  "37": {
+   "stage": 34,
+   "tile": [
+    179,
+    103
+   ],
+   "punto": "Birth Place",
+   "categorias": [
+    2,
+    17
+   ]
+  },
+  "38": {
+   "stage": 33,
+   "tile": [
+    289,
+    13
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    2,
+    17
+   ]
+  },
+  "39": {
+   "stage": 33,
+   "tile": [
+    175,
+    170
+   ],
+   "punto": "Birth Place",
+   "categorias": [
+    2,
+    17
+   ]
+  },
+  "40": {
+   "stage": 39,
+   "tile": [
+    10,
+    159
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    2,
+    17
+   ]
+  },
+  "41": {
+   "stage": 39,
+   "tile": [
+    12,
+    140
+   ],
+   "punto": "Birth Place",
+   "categorias": [
+    2,
+    17
+   ]
+  },
+  "42": {
+   "stage": 36,
+   "tile": [
+    56,
+    9
+   ],
+   "punto": null,
+   "categorias": [
+    2,
+    17
+   ]
+  },
+  "43": {
+   "stage": 8,
+   "tile": [
+    18,
+    13
+   ],
+   "punto": null,
+   "categorias": [
+    2,
+    18
+   ]
+  },
+  "44": {
+   "stage": 12,
+   "tile": [
+    14,
+    13
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    2,
+    18
+   ]
+  },
+  "45": {
+   "stage": 12,
+   "tile": [
+    92,
+    134
+   ],
+   "punto": "Birth Place",
+   "categorias": [
+    2,
+    18
+   ]
+  },
+  "46": {
+   "stage": 9,
+   "tile": [
+    12,
+    175
+   ],
+   "punto": null,
+   "categorias": [
+    2,
+    18
+   ]
+  },
+  "47": {
+   "stage": 17,
+   "tile": [
+    272,
+    171
+   ],
+   "punto": null,
+   "categorias": [
+    2,
+    18
+   ]
+  },
+  "48": {
+   "stage": 15,
+   "tile": [
+    18,
+    11
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    2,
+    18
+   ]
+  },
+  "49": {
+   "stage": 15,
+   "tile": [
+    33,
+    161
+   ],
+   "punto": "Birth Place",
+   "categorias": [
+    2,
+    18
+   ]
+  },
+  "50": {
+   "stage": 21,
+   "tile": [
+    289,
+    13
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    2,
+    18
+   ]
+  },
+  "51": {
+   "stage": 21,
+   "tile": [
+    255,
+    180
+   ],
+   "punto": "Birth Place",
+   "categorias": [
+    2,
+    18
+   ]
+  },
+  "52": {
+   "stage": 16,
+   "tile": [
+    17,
+    16
+   ],
+   "punto": null,
+   "categorias": [
+    2,
+    18
+   ]
+  },
+  "53": {
+   "stage": 11,
+   "tile": [
+    14,
+    20
+   ],
+   "punto": null,
+   "categorias": [
+    2,
+    18
+   ]
+  },
+  "54": {
+   "stage": 25,
+   "tile": [
+    20,
+    12
+   ],
+   "punto": null,
+   "categorias": [
+    2
+   ]
+  },
+  "55": {
+   "stage": 20,
+   "tile": [
+    274,
+    164
+   ],
+   "punto": null,
+   "categorias": [
+    2
+   ]
+  },
+  "56": {
+   "stage": 28,
+   "tile": [
+    286,
+    171
+   ],
+   "punto": null,
+   "categorias": [
+    2
+   ]
+  },
+  "57": {
+   "stage": 27,
+   "tile": [
+    10,
+    23
+   ],
+   "punto": null,
+   "categorias": [
+    2
+   ]
+  },
+  "58": {
+   "stage": 128,
+   "tile": [
+    22,
+    12
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    2,
+    6
+   ]
+  },
+  "59": {
+   "stage": 128,
+   "tile": [
+    272,
+    159
+   ],
+   "punto": "Birth Place",
+   "categorias": [
+    2,
+    6
+   ]
+  },
+  "60": {
+   "stage": 129,
+   "tile": [
+    15,
+    25
+   ],
+   "punto": null,
+   "categorias": [
+    2,
+    6
+   ]
+  },
+  "61": {
+   "stage": 130,
+   "tile": [
+    17,
+    14
+   ],
+   "punto": null,
+   "categorias": [
+    2,
+    6
+   ]
+  },
+  "62": {
+   "stage": 131,
+   "tile": [
+    20,
+    12
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    2,
+    6
+   ]
+  },
+  "63": {
+   "stage": 131,
+   "tile": [
+    165,
+    136
+   ],
+   "punto": "Revival Totem",
+   "categorias": [
+    2,
+    6
+   ]
+  },
+  "64": {
+   "stage": 67,
+   "tile": [
+    20,
+    178
+   ],
+   "punto": null,
+   "categorias": [
+    3
+   ]
+  },
+  "65": {
+   "stage": 68,
+   "tile": [
+    24,
+    124
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    3
+   ]
+  },
+  "66": {
+   "stage": 68,
+   "tile": [
+    27,
+    24
+   ],
+   "punto": "Birth Place",
+   "categorias": [
+    3
+   ]
+  },
+  "67": {
+   "stage": 69,
+   "tile": [
+    21,
+    163
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    3
+   ]
+  },
+  "68": {
+   "stage": 69,
+   "tile": [
+    245,
+    167
+   ],
+   "punto": "Instance Entry Point",
+   "categorias": [
+    3,
+    19
+   ]
+  },
+  "69": {
+   "stage": 70,
+   "tile": [
+    22,
+    153
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    3
+   ]
+  },
+  "70": {
+   "stage": 70,
+   "tile": [
+    7,
+    17
+   ],
+   "punto": "Birth Place",
+   "categorias": [
+    3
+   ]
+  },
+  "71": {
+   "stage": 70,
+   "tile": [
+    25,
+    30
+   ],
+   "punto": "Revival Totem",
+   "categorias": [
+    3
+   ]
+  },
+  "72": {
+   "stage": 71,
+   "tile": [
+    19,
+    17
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    3
+   ]
+  },
+  "73": {
+   "stage": 71,
+   "tile": [
+    244,
+    20
+   ],
+   "punto": "Instance Entry Point",
+   "categorias": [
+    3,
+    19
+   ]
+  },
+  "74": {
+   "stage": 72,
+   "tile": [
+    24,
+    29
+   ],
+   "punto": null,
+   "categorias": [
+    3
+   ]
+  },
+  "75": {
+   "stage": 80,
+   "tile": [
+    12,
+    10
+   ],
+   "punto": null,
+   "categorias": [
+    12,
+    20
+   ]
+  },
+  "76": {
+   "stage": 84,
+   "tile": [
+    21,
+    165
+   ],
+   "punto": null,
+   "categorias": [
+    4
+   ]
+  },
+  "77": {
+   "stage": 85,
+   "tile": [
+    17,
+    168
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    4
+   ]
+  },
+  "78": {
+   "stage": 85,
+   "tile": [
+    30,
+    32
+   ],
+   "punto": "Birth Place",
+   "categorias": [
+    4
+   ]
+  },
+  "79": {
+   "stage": 86,
+   "tile": [
+    289,
+    140
+   ],
+   "punto": null,
+   "categorias": [
+    4
+   ]
+  },
+  "80": {
+   "stage": 87,
+   "tile": [
+    235,
+    94
+   ],
+   "punto": null,
+   "categorias": [
+    4
+   ]
+  },
+  "81": {
+   "stage": 88,
+   "tile": [
+    291,
+    99
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    4
+   ]
+  },
+  "82": {
+   "stage": 88,
+   "tile": [
+    157,
+    73
+   ],
+   "punto": "Birth Place",
+   "categorias": [
+    4
+   ]
+  },
+  "83": {
+   "stage": 89,
+   "tile": [
+    230,
+    251
+   ],
+   "punto": null,
+   "categorias": [
+    4
+   ]
+  },
+  "84": {
+   "stage": 90,
+   "tile": [
+    279,
+    170
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    4
+   ]
+  },
+  "85": {
+   "stage": 90,
+   "tile": [
+    289,
+    18
+   ],
+   "punto": "Instance Entry Point",
+   "categorias": [
+    4,
+    19
+   ]
+  },
+  "86": {
+   "stage": 91,
+   "tile": [
+    272,
+    161
+   ],
+   "punto": null,
+   "categorias": [
+    4
+   ]
+  },
+  "87": {
+   "stage": 92,
+   "tile": [
+    237,
+    42
+   ],
+   "punto": null,
+   "categorias": [
+    4
+   ]
+  },
+  "88": {
+   "stage": 93,
+   "tile": [
+    285,
+    169
+   ],
+   "punto": null,
+   "categorias": [
+    4
+   ]
+  },
+  "89": {
+   "stage": 94,
+   "tile": [
+    282,
+    12
+   ],
+   "punto": null,
+   "categorias": [
+    4
+   ]
+  },
+  "90": {
+   "stage": 95,
+   "tile": [
+    280,
+    170
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    4
+   ]
+  },
+  "91": {
+   "stage": 95,
+   "tile": [
+    84,
+    148
+   ],
+   "punto": "Revival Totem",
+   "categorias": [
+    4
+   ]
+  },
+  "92": {
+   "stage": 96,
+   "tile": [
+    280,
+    11
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    4
+   ]
+  },
+  "93": {
+   "stage": 96,
+   "tile": [
+    35,
+    151
+   ],
+   "punto": "Instance Entry Point",
+   "categorias": [
+    4,
+    19
+   ]
+  },
+  "94": {
+   "stage": 102,
+   "tile": [
+    22,
+    161
+   ],
+   "punto": null,
+   "categorias": [
+    5
+   ]
+  },
+  "95": {
+   "stage": 103,
+   "tile": [
+    235,
+    256
+   ],
+   "punto": null,
+   "categorias": [
+    5
+   ]
+  },
+  "96": {
+   "stage": 104,
+   "tile": [
+    16,
+    159
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    5
+   ]
+  },
+  "97": {
+   "stage": 104,
+   "tile": [
+    234,
+    97
+   ],
+   "punto": "Birth Place",
+   "categorias": [
+    5
+   ]
+  },
+  "98": {
+   "stage": 104,
+   "tile": [
+    198,
+    159
+   ],
+   "punto": "Revival Totem",
+   "categorias": [
+    5
+   ]
+  },
+  "99": {
+   "stage": 105,
+   "tile": [
+    13,
+    169
+   ],
+   "punto": null,
+   "categorias": [
+    5
+   ]
+  },
+  "100": {
+   "stage": 106,
+   "tile": [
+    11,
+    12
+   ],
+   "punto": null,
+   "categorias": [
+    5
+   ]
+  },
+  "101": {
+   "stage": 107,
+   "tile": [
+    282,
+    13
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    5
+   ]
+  },
+  "102": {
+   "stage": 107,
+   "tile": [
+    283,
+    162
+   ],
+   "punto": "Instance Entry Point",
+   "categorias": [
+    5,
+    19
+   ]
+  },
+  "103": {
+   "stage": 108,
+   "tile": [
+    14,
+    13
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    5
+   ]
+  },
+  "104": {
+   "stage": 108,
+   "tile": [
+    128,
+    74
+   ],
+   "punto": "Birth Place",
+   "categorias": [
+    5
+   ]
+  },
+  "105": {
+   "stage": 108,
+   "tile": [
+    212,
+    63
+   ],
+   "punto": "Revival Totem",
+   "categorias": [
+    5
+   ]
+  },
+  "106": {
+   "stage": 109,
+   "tile": [
+    19,
+    6
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    5
+   ]
+  },
+  "107": {
+   "stage": 109,
+   "tile": [
+    287,
+    166
+   ],
+   "punto": "Instance Entry Point",
+   "categorias": [
+    5,
+    19
+   ]
+  },
+  "108": {
+   "stage": 114,
+   "tile": [
+    26,
+    36
+   ],
+   "punto": null,
+   "categorias": [
+    20
+   ]
+  },
+  "109": {
+   "stage": 120,
+   "tile": [
+    32,
+    20
+   ],
+   "punto": null,
+   "categorias": [
+    6
+   ]
+  },
+  "110": {
+   "stage": 121,
+   "tile": [
+    18,
+    164
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    6
+   ]
+  },
+  "111": {
+   "stage": 121,
+   "tile": [
+    90,
+    22
+   ],
+   "punto": "Birth Place",
+   "categorias": [
+    6
+   ]
+  },
+  "112": {
+   "stage": 121,
+   "tile": [
+    68,
+    12
+   ],
+   "punto": "Revival Totem",
+   "categorias": [
+    6
+   ]
+  },
+  "113": {
+   "stage": 122,
+   "tile": [
+    16,
+    20
+   ],
+   "punto": null,
+   "categorias": [
+    6
+   ]
+  },
+  "114": {
+   "stage": 123,
+   "tile": [
+    13,
+    167
+   ],
+   "punto": null,
+   "categorias": [
+    6
+   ]
+  },
+  "115": {
+   "stage": 124,
+   "tile": [
+    24,
+    18
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    6
+   ]
+  },
+  "116": {
+   "stage": 124,
+   "tile": [
+    281,
+    22
+   ],
+   "punto": "Birth Place",
+   "categorias": [
+    6
+   ]
+  },
+  "117": {
+   "stage": 124,
+   "tile": [
+    261,
+    30
+   ],
+   "punto": "Revival Totem",
+   "categorias": [
+    6
+   ]
+  },
+  "118": {
+   "stage": 125,
+   "tile": [
+    30,
+    18
+   ],
+   "punto": null,
+   "categorias": [
+    6
+   ]
+  },
+  "119": {
+   "stage": 126,
+   "tile": [
+    20,
+    23
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    6
+   ]
+  },
+  "120": {
+   "stage": 126,
+   "tile": [
+    34,
+    219
+   ],
+   "punto": "Instance Entry Point",
+   "categorias": [
+    6,
+    19
+   ]
+  },
+  "121": {
+   "stage": 137,
+   "tile": [
+    235,
+    16
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    7
+   ]
+  },
+  "122": {
+   "stage": 137,
+   "tile": [
+    76,
+    159
+   ],
+   "punto": "Revival Totem",
+   "categorias": [
+    7
+   ]
+  },
+  "123": {
+   "stage": 138,
+   "tile": [
+    240,
+    10
+   ],
+   "punto": null,
+   "categorias": [
+    7
+   ]
+  },
+  "124": {
+   "stage": 139,
+   "tile": [
+    278,
+    17
+   ],
+   "punto": null,
+   "categorias": [
+    7
+   ]
+  },
+  "125": {
+   "stage": 140,
+   "tile": [
+    11,
+    15
+   ],
+   "punto": null,
+   "categorias": [
+    7
+   ]
+  },
+  "126": {
+   "stage": 146,
+   "tile": [
+    290,
+    9
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    7
+   ]
+  },
+  "127": {
+   "stage": 146,
+   "tile": [
+    121,
+    151
+   ],
+   "punto": "Birth Place",
+   "categorias": [
+    7
+   ]
+  },
+  "128": {
+   "stage": 146,
+   "tile": [
+    110,
+    141
+   ],
+   "punto": "Revival Totem",
+   "categorias": [
+    7
+   ]
+  },
+  "129": {
+   "stage": 147,
+   "tile": [
+    282,
+    25
+   ],
+   "punto": null,
+   "categorias": [
+    7
+   ]
+  },
+  "130": {
+   "stage": 148,
+   "tile": [
+    139,
+    90
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    7
+   ]
+  },
+  "131": {
+   "stage": 148,
+   "tile": [
+    282,
+    169
+   ],
+   "punto": "Instance Entry Point",
+   "categorias": [
+    7,
+    19
+   ]
+  },
+  "132": {
+   "stage": 151,
+   "tile": [
+    258,
+    165
+   ],
+   "punto": null,
+   "categorias": [
+    8
+   ]
+  },
+  "133": {
+   "stage": 152,
+   "tile": [
+    268,
+    164
+   ],
+   "punto": null,
+   "categorias": [
+    8
+   ]
+  },
+  "134": {
+   "stage": 153,
+   "tile": [
+    260,
+    149
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    8
+   ]
+  },
+  "135": {
+   "stage": 153,
+   "tile": [
+    79,
+    145
+   ],
+   "punto": "Birth Place",
+   "categorias": [
+    8
+   ]
+  },
+  "136": {
+   "stage": 153,
+   "tile": [
+    95,
+    134
+   ],
+   "punto": "Revival Totem",
+   "categorias": [
+    8
+   ]
+  },
+  "137": {
+   "stage": 154,
+   "tile": [
+    32,
+    153
+   ],
+   "punto": null,
+   "categorias": [
+    8
+   ]
+  },
+  "138": {
+   "stage": 155,
+   "tile": [
+    281,
+    168
+   ],
+   "punto": null,
+   "categorias": [
+    8
+   ]
+  },
+  "139": {
+   "stage": 156,
+   "tile": [
+    15,
+    168
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    8
+   ]
+  },
+  "140": {
+   "stage": 156,
+   "tile": [
+    211,
+    123
+   ],
+   "punto": "Birth Place",
+   "categorias": [
+    8
+   ]
+  },
+  "141": {
+   "stage": 156,
+   "tile": [
+    36,
+    15
+   ],
+   "punto": "Revival Totem",
+   "categorias": [
+    8
+   ]
+  },
+  "142": {
+   "stage": 157,
+   "tile": [
+    134,
+    78
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    8
+   ]
+  },
+  "143": {
+   "stage": 157,
+   "tile": [
+    258,
+    135
+   ],
+   "punto": "Instance Entry Point",
+   "categorias": [
+    8,
+    19
+   ]
+  },
+  "144": {
+   "stage": 161,
+   "tile": [
+    28,
+    14
+   ],
+   "punto": null,
+   "categorias": [
+    9
+   ]
+  },
+  "145": {
+   "stage": 162,
+   "tile": [
+    31,
+    19
+   ],
+   "punto": null,
+   "categorias": [
+    9
+   ]
+  },
+  "146": {
+   "stage": 163,
+   "tile": [
+    264,
+    23
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    9
+   ]
+  },
+  "147": {
+   "stage": 163,
+   "tile": [
+    110,
+    12
+   ],
+   "punto": "Birth Place",
+   "categorias": [
+    9
+   ]
+  },
+  "148": {
+   "stage": 163,
+   "tile": [
+    177,
+    111
+   ],
+   "punto": "Revival Totem",
+   "categorias": [
+    9
+   ]
+  },
+  "149": {
+   "stage": 164,
+   "tile": [
+    265,
+    164
+   ],
+   "punto": null,
+   "categorias": [
+    9
+   ]
+  },
+  "150": {
+   "stage": 165,
+   "tile": [
+    284,
+    41
+   ],
+   "punto": null,
+   "categorias": [
+    9
+   ]
+  },
+  "151": {
+   "stage": 166,
+   "tile": [
+    18,
+    16
+   ],
+   "punto": null,
+   "categorias": [
+    9
+   ]
+  },
+  "152": {
+   "stage": 167,
+   "tile": [
+    17,
+    167
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    9
+   ]
+  },
+  "153": {
+   "stage": 167,
+   "tile": [
+    264,
+    159
+   ],
+   "punto": "Instance Entry Point",
+   "categorias": [
+    9,
+    19
+   ]
+  },
+  "154": {
+   "stage": 169,
+   "tile": [
+    15,
+    14
+   ],
+   "punto": null,
+   "categorias": [
+    10
+   ]
+  },
+  "155": {
+   "stage": 170,
+   "tile": [
+    22,
+    12
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    10
+   ]
+  },
+  "156": {
+   "stage": 170,
+   "tile": [
+    71,
+    149
+   ],
+   "punto": "Birth Place",
+   "categorias": [
+    10
+   ]
+  },
+  "157": {
+   "stage": 170,
+   "tile": [
+    229,
+    73
+   ],
+   "punto": "Revival Totem",
+   "categorias": [
+    10
+   ]
+  },
+  "158": {
+   "stage": 171,
+   "tile": [
+    14,
+    171
+   ],
+   "punto": null,
+   "categorias": [
+    10
+   ]
+  },
+  "159": {
+   "stage": 172,
+   "tile": [
+    282,
+    15
+   ],
+   "punto": null,
+   "categorias": [
+    10
+   ]
+  },
+  "160": {
+   "stage": 173,
+   "tile": [
+    22,
+    8
+   ],
+   "punto": null,
+   "categorias": [
+    10
+   ]
+  },
+  "161": {
+   "stage": 174,
+   "tile": [
+    277,
+    17
+   ],
+   "punto": null,
+   "categorias": [
+    10
+   ]
+  },
+  "162": {
+   "stage": 175,
+   "tile": [
+    17,
+    14
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    10
+   ]
+  },
+  "163": {
+   "stage": 175,
+   "tile": [
+    285,
+    169
+   ],
+   "punto": "Instance Entry Point",
+   "categorias": [
+    10,
+    19
+   ]
+  },
+  "164": {
+   "stage": 192,
+   "tile": [
+    273,
+    33
+   ],
+   "punto": null,
+   "categorias": [
+    11
+   ]
+  },
+  "165": {
+   "stage": 193,
+   "tile": [
+    46,
+    22
+   ],
+   "punto": null,
+   "categorias": [
+    11
+   ]
+  },
+  "166": {
+   "stage": 194,
+   "tile": [
+    25,
+    10
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    11
+   ]
+  },
+  "167": {
+   "stage": 194,
+   "tile": [
+    242,
+    37
+   ],
+   "punto": "Birth Place",
+   "categorias": [
+    11
+   ]
+  },
+  "168": {
+   "stage": 194,
+   "tile": [
+    164,
+    78
+   ],
+   "punto": "Revival Totem",
+   "categorias": [
+    11
+   ]
+  },
+  "169": {
+   "stage": 195,
+   "tile": [
+    222,
+    19
+   ],
+   "punto": null,
+   "categorias": [
+    11
+   ]
+  },
+  "170": {
+   "stage": 196,
+   "tile": [
+    12,
+    17
+   ],
+   "punto": null,
+   "categorias": [
+    11
+   ]
+  },
+  "171": {
+   "stage": 197,
+   "tile": [
+    33,
+    148
+   ],
+   "punto": null,
+   "categorias": [
+    11
+   ]
+  },
+  "172": {
+   "stage": 198,
+   "tile": [
+    31,
+    158
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    11
+   ]
+  },
+  "173": {
+   "stage": 198,
+   "tile": [
+    281,
+    165
+   ],
+   "punto": "Instance Entry Point",
+   "categorias": [
+    11,
+    19
+   ]
+  },
+  "174": {
+   "stage": 209,
+   "tile": [
+    237,
+    11
+   ],
+   "punto": null,
+   "categorias": [
+    21
+   ]
+  },
+  "175": {
+   "stage": 210,
+   "tile": [
+    278,
+    18
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    21
+   ]
+  },
+  "176": {
+   "stage": 210,
+   "tile": [
+    151,
+    99
+   ],
+   "punto": "Birth Place",
+   "categorias": [
+    21
+   ]
+  },
+  "177": {
+   "stage": 210,
+   "tile": [
+    134,
+    87
+   ],
+   "punto": "Revival Totem",
+   "categorias": [
+    21
+   ]
+  },
+  "178": {
+   "stage": 211,
+   "tile": [
+    24,
+    10
+   ],
+   "punto": null,
+   "categorias": [
+    21
+   ]
+  },
+  "179": {
+   "stage": 212,
+   "tile": [
+    285,
+    170
+   ],
+   "punto": null,
+   "categorias": [
+    21
+   ]
+  },
+  "180": {
+   "stage": 213,
+   "tile": [
+    238,
+    19
+   ],
+   "punto": null,
+   "categorias": [
+    21
+   ]
+  },
+  "181": {
+   "stage": 214,
+   "tile": [
+    279,
+    8
+   ],
+   "punto": null,
+   "categorias": [
+    21
+   ]
+  },
+  "182": {
+   "stage": 215,
+   "tile": [
+    10,
+    9
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    21
+   ]
+  },
+  "183": {
+   "stage": 215,
+   "tile": [
+    28,
+    169
+   ],
+   "punto": "Instance Entry Point",
+   "categorias": [
+    21,
+    19
+   ]
+  },
+  "184": {
+   "stage": 222,
+   "tile": [
+    24,
+    14
+   ],
+   "punto": null,
+   "categorias": [
+    22
+   ]
+  },
+  "185": {
+   "stage": 223,
+   "tile": [
+    18,
+    164
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    22
+   ]
+  },
+  "186": {
+   "stage": 223,
+   "tile": [
+    159,
+    106
+   ],
+   "punto": "Birth Place",
+   "categorias": [
+    22
+   ]
+  },
+  "187": {
+   "stage": 223,
+   "tile": [
+    180,
+    140
+   ],
+   "punto": "Revival Totem",
+   "categorias": [
+    22
+   ]
+  },
+  "188": {
+   "stage": 224,
+   "tile": [
+    18,
+    10
+   ],
+   "punto": null,
+   "categorias": [
+    22
+   ]
+  },
+  "189": {
+   "stage": 225,
+   "tile": [
+    286,
+    9
+   ],
+   "punto": null,
+   "categorias": [
+    22
+   ]
+  },
+  "190": {
+   "stage": 226,
+   "tile": [
+    15,
+    25
+   ],
+   "punto": null,
+   "categorias": [
+    22
+   ]
+  },
+  "191": {
+   "stage": 227,
+   "tile": [
+    284,
+    10
+   ],
+   "punto": null,
+   "categorias": [
+    22
+   ]
+  },
+  "192": {
+   "stage": 228,
+   "tile": [
+    281,
+    30
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    22
+   ]
+  },
+  "193": {
+   "stage": 228,
+   "tile": [
+    10,
+    165
+   ],
+   "punto": "Instance Entry Point",
+   "categorias": [
+    22,
+    19
+   ]
+  },
+  "194": {
+   "stage": 231,
+   "tile": [
+    283,
+    13
+   ],
+   "punto": null,
+   "categorias": [
+    23
+   ]
+  },
+  "195": {
+   "stage": 232,
+   "tile": [
+    11,
+    11
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    23
+   ]
+  },
+  "196": {
+   "stage": 232,
+   "tile": [
+    128,
+    146
+   ],
+   "punto": "Birth Place",
+   "categorias": [
+    23
+   ]
+  },
+  "197": {
+   "stage": 232,
+   "tile": [
+    161,
+    99
+   ],
+   "punto": "Revival Totem",
+   "categorias": [
+    23
+   ]
+  },
+  "198": {
+   "stage": 233,
+   "tile": [
+    286,
+    33
+   ],
+   "punto": null,
+   "categorias": [
+    23
+   ]
+  },
+  "199": {
+   "stage": 234,
+   "tile": [
+    9,
+    8
+   ],
+   "punto": null,
+   "categorias": [
+    23
+   ]
+  },
+  "200": {
+   "stage": 235,
+   "tile": [
+    287,
+    12
+   ],
+   "punto": null,
+   "categorias": [
+    23
+   ]
+  },
+  "201": {
+   "stage": 236,
+   "tile": [
+    13,
+    16
+   ],
+   "punto": null,
+   "categorias": [
+    23
+   ]
+  },
+  "202": {
+   "stage": 237,
+   "tile": [
+    11,
+    10
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    23
+   ]
+  },
+  "203": {
+   "stage": 237,
+   "tile": [
+    20,
+    160
+   ],
+   "punto": "Instance Entry Point",
+   "categorias": [
+    23,
+    19
+   ]
+  },
+  "204": {
+   "stage": 245,
+   "tile": [
+    233,
+    11
+   ],
+   "punto": null,
+   "categorias": [
+    24
+   ]
+  },
+  "205": {
+   "stage": 246,
+   "tile": [
+    53,
+    14
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    24
+   ]
+  },
+  "206": {
+   "stage": 246,
+   "tile": [
+    87,
+    158
+   ],
+   "punto": "Birth Place",
+   "categorias": [
+    24
+   ]
+  },
+  "207": {
+   "stage": 246,
+   "tile": [
+    119,
+    102
+   ],
+   "punto": "Revival Totem",
+   "categorias": [
+    24
+   ]
+  },
+  "208": {
+   "stage": 247,
+   "tile": [
+    8,
+    11
+   ],
+   "punto": null,
+   "categorias": [
+    24
+   ]
+  },
+  "209": {
+   "stage": 248,
+   "tile": [
+    281,
+    5
+   ],
+   "punto": null,
+   "categorias": [
+    24
+   ]
+  },
+  "210": {
+   "stage": 249,
+   "tile": [
+    286,
+    8
+   ],
+   "punto": null,
+   "categorias": [
+    24
+   ]
+  },
+  "211": {
+   "stage": 250,
+   "tile": [
+    226,
+    9
+   ],
+   "punto": null,
+   "categorias": [
+    24
+   ]
+  },
+  "212": {
+   "stage": 251,
+   "tile": [
+    20,
+    9
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    24
+   ]
+  },
+  "213": {
+   "stage": 251,
+   "tile": [
+    283,
+    168
+   ],
+   "punto": "Instance Entry Point",
+   "categorias": [
+    24,
+    19
+   ]
+  },
+  "214": {
+   "stage": 257,
+   "tile": [
+    286,
+    9
+   ],
+   "punto": null,
+   "categorias": [
+    25
+   ]
+  },
+  "215": {
+   "stage": 258,
+   "tile": [
+    13,
+    8
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    25
+   ]
+  },
+  "216": {
+   "stage": 258,
+   "tile": [
+    147,
+    135
+   ],
+   "punto": "Spawn Point",
+   "categorias": [
+    25
+   ]
+  },
+  "217": {
+   "stage": 258,
+   "tile": [
+    204,
+    115
+   ],
+   "punto": "Revival Totem",
+   "categorias": [
+    25
+   ]
+  },
+  "218": {
+   "stage": 259,
+   "tile": [
+    266,
+    145
+   ],
+   "punto": null,
+   "categorias": [
+    25
+   ]
+  },
+  "219": {
+   "stage": 260,
+   "tile": [
+    280,
+    12
+   ],
+   "punto": null,
+   "categorias": [
+    25
+   ]
+  },
+  "220": {
+   "stage": 261,
+   "tile": [
+    286,
+    8
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    25
+   ]
+  },
+  "221": {
+   "stage": 261,
+   "tile": [
+    289,
+    171
+   ],
+   "punto": "Instance Entry Point",
+   "categorias": [
+    25,
+    19
+   ]
+  },
+  "222": {
+   "stage": 262,
+   "tile": [
+    286,
+    8
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    25
+   ]
+  },
+  "223": {
+   "stage": 262,
+   "tile": [
+    289,
+    171
+   ],
+   "punto": "Instance Entry Point",
+   "categorias": [
+    25,
+    19
+   ]
+  },
+  "224": {
+   "stage": 274,
+   "tile": [
+    281,
+    14
+   ],
+   "punto": null,
+   "categorias": [
+    26
+   ]
+  },
+  "225": {
+   "stage": 275,
+   "tile": [
+    280,
+    168
+   ],
+   "punto": null,
+   "categorias": [
+    26
+   ]
+  },
+  "226": {
+   "stage": 276,
+   "tile": [
+    284,
+    162
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    26
+   ]
+  },
+  "227": {
+   "stage": 276,
+   "tile": [
+    193,
+    92
+   ],
+   "punto": "Spawn Point",
+   "categorias": [
+    26
+   ]
+  },
+  "228": {
+   "stage": 276,
+   "tile": [
+    158,
+    102
+   ],
+   "punto": "Revival Totem",
+   "categorias": [
+    26
+   ]
+  },
+  "229": {
+   "stage": 277,
+   "tile": [
+    21,
+    171
+   ],
+   "punto": null,
+   "categorias": [
+    26
+   ]
+  },
+  "230": {
+   "stage": 278,
+   "tile": [
+    286,
+    163
+   ],
+   "punto": null,
+   "categorias": [
+    26
+   ]
+  },
+  "231": {
+   "stage": 279,
+   "tile": [
+    285,
+    11
+   ],
+   "punto": null,
+   "categorias": [
+    26
+   ]
+  },
+  "232": {
+   "stage": 280,
+   "tile": [
+    36,
+    170
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    26
+   ]
+  },
+  "233": {
+   "stage": 280,
+   "tile": [
+    271,
+    8
+   ],
+   "punto": "Instance Entrance",
+   "categorias": [
+    26,
+    19
+   ]
+  },
+  "234": {
+   "stage": 285,
+   "tile": [
+    12,
+    166
+   ],
+   "punto": null,
+   "categorias": [
+    27
+   ]
+  },
+  "235": {
+   "stage": 286,
+   "tile": [
+    22,
+    14
+   ],
+   "punto": null,
+   "categorias": [
+    27
+   ]
+  },
+  "236": {
+   "stage": 287,
+   "tile": [
+    15,
+    161
+   ],
+   "punto": null,
+   "categorias": [
+    27
+   ]
+  },
+  "237": {
+   "stage": 288,
+   "tile": [
+    17,
+    167
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    27
+   ]
+  },
+  "238": {
+   "stage": 288,
+   "tile": [
+    130,
+    103
+   ],
+   "punto": "Spawn Point",
+   "categorias": [
+    27
+   ]
+  },
+  "239": {
+   "stage": 288,
+   "tile": [
+    163,
+    110
+   ],
+   "punto": "Revival Totem",
+   "categorias": [
+    27
+   ]
+  },
+  "240": {
+   "stage": 289,
+   "tile": [
+    16,
+    168
+   ],
+   "punto": null,
+   "categorias": [
+    27
+   ]
+  },
+  "241": {
+   "stage": 290,
+   "tile": [
+    279,
+    170
+   ],
+   "punto": null,
+   "categorias": [
+    27
+   ]
+  },
+  "242": {
+   "stage": 291,
+   "tile": [
+    31,
+    13
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    27
+   ]
+  },
+  "243": {
+   "stage": 291,
+   "tile": [
+    31,
+    171
+   ],
+   "punto": "Instance Entrance",
+   "categorias": [
+    27,
+    19
+   ]
+  },
+  "244": {
+   "stage": 295,
+   "tile": [
+    12,
+    12
+   ],
+   "punto": null,
+   "categorias": [
+    28
+   ]
+  },
+  "245": {
+   "stage": 296,
+   "tile": [
+    17,
+    14
+   ],
+   "punto": null,
+   "categorias": [
+    28
+   ]
+  },
+  "246": {
+   "stage": 297,
+   "tile": [
+    14,
+    166
+   ],
+   "punto": null,
+   "categorias": [
+    28
+   ]
+  },
+  "247": {
+   "stage": 298,
+   "tile": [
+    13,
+    17
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    28
+   ]
+  },
+  "248": {
+   "stage": 298,
+   "tile": [
+    171,
+    113
+   ],
+   "punto": "Spawn Point",
+   "categorias": [
+    28
+   ]
+  },
+  "249": {
+   "stage": 298,
+   "tile": [
+    150,
+    121
+   ],
+   "punto": "Revival Totem",
+   "categorias": [
+    28
+   ]
+  },
+  "250": {
+   "stage": 299,
+   "tile": [
+    20,
+    170
+   ],
+   "punto": null,
+   "categorias": [
+    28
+   ]
+  },
+  "251": {
+   "stage": 300,
+   "tile": [
+    282,
+    7
+   ],
+   "punto": null,
+   "categorias": [
+    28
+   ]
+  },
+  "252": {
+   "stage": 301,
+   "tile": [
+    289,
+    12
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    28
+   ]
+  },
+  "253": {
+   "stage": 301,
+   "tile": [
+    289,
+    159
+   ],
+   "punto": "Instance Entrance",
+   "categorias": [
+    28,
+    19
+   ]
+  },
+  "254": {
+   "stage": 306,
+   "tile": [
+    15,
+    171
+   ],
+   "punto": null,
+   "categorias": [
+    29
+   ]
+  },
+  "255": {
+   "stage": 307,
+   "tile": [
+    13,
+    168
+   ],
+   "punto": null,
+   "categorias": [
+    29
+   ]
+  },
+  "256": {
+   "stage": 308,
+   "tile": [
+    11,
+    12
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    29
+   ]
+  },
+  "257": {
+   "stage": 308,
+   "tile": [
+    165,
+    81
+   ],
+   "punto": "Spawn Point",
+   "categorias": [
+    29
+   ]
+  },
+  "258": {
+   "stage": 308,
+   "tile": [
+    198,
+    92
+   ],
+   "punto": "Revival Totem",
+   "categorias": [
+    29
+   ]
+  },
+  "259": {
+   "stage": 309,
+   "tile": [
+    13,
+    169
+   ],
+   "punto": null,
+   "categorias": [
+    29
+   ]
+  },
+  "260": {
+   "stage": 310,
+   "tile": [
+    289,
+    14
+   ],
+   "punto": null,
+   "categorias": [
+    29
+   ]
+  },
+  "261": {
+   "stage": 311,
+   "tile": [
+    13,
+    170
+   ],
+   "punto": null,
+   "categorias": [
+    29
+   ]
+  },
+  "262": {
+   "stage": 312,
+   "tile": [
+    10,
+    10
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    29
+   ]
+  },
+  "263": {
+   "stage": 312,
+   "tile": [
+    17,
+    166
+   ],
+   "punto": "Instance Entrance",
+   "categorias": [
+    29,
+    19
+   ]
+  },
+  "264": {
+   "stage": 318,
+   "tile": [
+    288,
+    7
+   ],
+   "punto": null,
+   "categorias": [
+    30
+   ]
+  },
+  "265": {
+   "stage": 319,
+   "tile": [
+    18,
+    11
+   ],
+   "punto": null,
+   "categorias": [
+    30
+   ]
+  },
+  "266": {
+   "stage": 320,
+   "tile": [
+    287,
+    14
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    30
+   ]
+  },
+  "267": {
+   "stage": 320,
+   "tile": [
+    109,
+    78
+   ],
+   "punto": "Spawn Point",
+   "categorias": [
+    30
+   ]
+  },
+  "268": {
+   "stage": 320,
+   "tile": [
+    144,
+    90
+   ],
+   "punto": "Revival Totem",
+   "categorias": [
+    30
+   ]
+  },
+  "269": {
+   "stage": 321,
+   "tile": [
+    280,
+    169
+   ],
+   "punto": null,
+   "categorias": [
+    30
+   ]
+  },
+  "270": {
+   "stage": 322,
+   "tile": [
+    14,
+    5
+   ],
+   "punto": null,
+   "categorias": [
+    30
+   ]
+  },
+  "271": {
+   "stage": 323,
+   "tile": [
+    287,
+    9
+   ],
+   "punto": null,
+   "categorias": [
+    30
+   ]
+  },
+  "272": {
+   "stage": 324,
+   "tile": [
+    284,
+    167
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    30
+   ]
+  },
+  "273": {
+   "stage": 324,
+   "tile": [
+    29,
+    164
+   ],
+   "punto": "Instance Entrance",
+   "categorias": [
+    30,
+    19
+   ]
+  },
+  "274": {
+   "stage": 333,
+   "tile": [
+    165,
+    88
+   ],
+   "punto": null,
+   "categorias": [
+    31
+   ]
+  },
+  "275": {
+   "stage": 334,
+   "tile": [
+    25,
+    161
+   ],
+   "punto": null,
+   "categorias": [
+    31
+   ]
+  },
+  "276": {
+   "stage": 335,
+   "tile": [
+    18,
+    11
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    31
+   ]
+  },
+  "277": {
+   "stage": 335,
+   "tile": [
+    263,
+    155
+   ],
+   "punto": "Spawn Point",
+   "categorias": [
+    31
+   ]
+  },
+  "278": {
+   "stage": 335,
+   "tile": [
+    211,
+    134
+   ],
+   "punto": "Revival Totem",
+   "categorias": [
+    31
+   ]
+  },
+  "279": {
+   "stage": 336,
+   "tile": [
+    20,
+    167
+   ],
+   "punto": null,
+   "categorias": [
+    31
+   ]
+  },
+  "280": {
+   "stage": 337,
+   "tile": [
+    281,
+    24
+   ],
+   "punto": null,
+   "categorias": [
+    31
+   ]
+  },
+  "281": {
+   "stage": 338,
+   "tile": [
+    13,
+    11
+   ],
+   "punto": null,
+   "categorias": [
+    31
+   ]
+  },
+  "282": {
+   "stage": 339,
+   "tile": [
+    285,
+    11
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    31
+   ]
+  },
+  "283": {
+   "stage": 339,
+   "tile": [
+    282,
+    164
+   ],
+   "punto": "Instance Entrance",
+   "categorias": [
+    31,
+    19
+   ]
+  },
+  "284": {
+   "stage": 345,
+   "tile": [
+    21,
+    18
+   ],
+   "punto": null,
+   "categorias": [
+    32
+   ]
+  },
+  "285": {
+   "stage": 346,
+   "tile": [
+    13,
+    169
+   ],
+   "punto": null,
+   "categorias": [
+    32
+   ]
+  },
+  "286": {
+   "stage": 347,
+   "tile": [
+    29,
+    24
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    32
+   ]
+  },
+  "287": {
+   "stage": 347,
+   "tile": [
+    111,
+    115
+   ],
+   "punto": "Spawn Point",
+   "categorias": [
+    32
+   ]
+  },
+  "288": {
+   "stage": 347,
+   "tile": [
+    158,
+    79
+   ],
+   "punto": "Revival Totem",
+   "categorias": [
+    32
+   ]
+  },
+  "289": {
+   "stage": 348,
+   "tile": [
+    284,
+    23
+   ],
+   "punto": null,
+   "categorias": [
+    32
+   ]
+  },
+  "290": {
+   "stage": 349,
+   "tile": [
+    20,
+    17
+   ],
+   "punto": null,
+   "categorias": [
+    32
+   ]
+  },
+  "291": {
+   "stage": 350,
+   "tile": [
+    282,
+    8
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    32
+   ]
+  },
+  "292": {
+   "stage": 350,
+   "tile": [
+    22,
+    165
+   ],
+   "punto": "Instance Entrance",
+   "categorias": [
+    32,
+    19
+   ]
+  },
+  "293": {
+   "stage": 354,
+   "tile": [
+    278,
+    160
+   ],
+   "punto": null,
+   "categorias": [
+    33
+   ]
+  },
+  "294": {
+   "stage": 355,
+   "tile": [
+    290,
+    24
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    33
+   ]
+  },
+  "295": {
+   "stage": 355,
+   "tile": [
+    142,
+    111
+   ],
+   "punto": "Spawn Point",
+   "categorias": [
+    33
+   ]
+  },
+  "296": {
+   "stage": 355,
+   "tile": [
+    158,
+    79
+   ],
+   "punto": "Revival Totem",
+   "categorias": [
+    33
+   ]
+  },
+  "297": {
+   "stage": 356,
+   "tile": [
+    285,
+    161
+   ],
+   "punto": null,
+   "categorias": [
+    33
+   ]
+  },
+  "298": {
+   "stage": 357,
+   "tile": [
+    26,
+    8
+   ],
+   "punto": null,
+   "categorias": [
+    33
+   ]
+  },
+  "299": {
+   "stage": 358,
+   "tile": [
+    23,
+    13
+   ],
+   "punto": null,
+   "categorias": [
+    33
+   ]
+  },
+  "300": {
+   "stage": 359,
+   "tile": [
+    277,
+    19
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    33
+   ]
+  },
+  "301": {
+   "stage": 359,
+   "tile": [
+    284,
+    167
+   ],
+   "punto": "Instance Entrance",
+   "categorias": [
+    33,
+    19
+   ]
+  },
+  "302": {
+   "stage": 363,
+   "tile": [
+    22,
+    166
+   ],
+   "punto": null,
+   "categorias": [
+    34
+   ]
+  },
+  "303": {
+   "stage": 364,
+   "tile": [
+    13,
+    169
+   ],
+   "punto": null,
+   "categorias": [
+    34
+   ]
+  },
+  "304": {
+   "stage": 365,
+   "tile": [
+    14,
+    11
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    34
+   ]
+  },
+  "305": {
+   "stage": 365,
+   "tile": [
+    141,
+    71
+   ],
+   "punto": "Spawn Point",
+   "categorias": [
+    34
+   ]
+  },
+  "306": {
+   "stage": 365,
+   "tile": [
+    188,
+    82
+   ],
+   "punto": "Revival Totem",
+   "categorias": [
+    34
+   ]
+  },
+  "307": {
+   "stage": 366,
+   "tile": [
+    28,
+    161
+   ],
+   "punto": null,
+   "categorias": [
+    34
+   ]
+  },
+  "308": {
+   "stage": 367,
+   "tile": [
+    285,
+    8
+   ],
+   "punto": null,
+   "categorias": [
+    34
+   ]
+  },
+  "309": {
+   "stage": 368,
+   "tile": [
+    24,
+    7
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    34
+   ]
+  },
+  "310": {
+   "stage": 368,
+   "tile": [
+    111,
+    116
+   ],
+   "punto": "Instance Entrance",
+   "categorias": [
+    34,
+    19
+   ]
+  },
+  "311": {
+   "stage": 381,
+   "tile": [
+    269,
+    24
+   ],
+   "punto": null,
+   "categorias": [
+    35
+   ]
+  },
+  "312": {
+   "stage": 382,
+   "tile": [
+    282,
+    166
+   ],
+   "punto": null,
+   "categorias": [
+    35
+   ]
+  },
+  "313": {
+   "stage": 383,
+   "tile": [
+    17,
+    15
+   ],
+   "punto": null,
+   "categorias": [
+    35
+   ]
+  },
+  "314": {
+   "stage": 384,
+   "tile": [
+    16,
+    13
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    35
+   ]
+  },
+  "315": {
+   "stage": 384,
+   "tile": [
+    127,
+    72
+   ],
+   "punto": "Spawn Point",
+   "categorias": [
+    35
+   ]
+  },
+  "316": {
+   "stage": 384,
+   "tile": [
+    119,
+    118
+   ],
+   "punto": "Revival Totem",
+   "categorias": [
+    35
+   ]
+  },
+  "317": {
+   "stage": 385,
+   "tile": [
+    285,
+    13
+   ],
+   "punto": null,
+   "categorias": [
+    35
+   ]
+  },
+  "318": {
+   "stage": 386,
+   "tile": [
+    285,
+    169
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    35
+   ]
+  },
+  "319": {
+   "stage": 386,
+   "tile": [
+    21,
+    165
+   ],
+   "punto": "Instance Entrance",
+   "categorias": [
+    35,
+    19
+   ]
+  },
+  "320": {
+   "stage": 389,
+   "tile": [
+    277,
+    19
+   ],
+   "punto": null,
+   "categorias": [
+    36
+   ]
+  },
+  "321": {
+   "stage": 390,
+   "tile": [
+    11,
+    13
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    36
+   ]
+  },
+  "322": {
+   "stage": 390,
+   "tile": [
+    146,
+    89
+   ],
+   "punto": "Spawn Point",
+   "categorias": [
+    36
+   ]
+  },
+  "323": {
+   "stage": 390,
+   "tile": [
+    133,
+    130
+   ],
+   "punto": "Revival Totem",
+   "categorias": [
+    36
+   ]
+  },
+  "324": {
+   "stage": 391,
+   "tile": [
+    285,
+    13
+   ],
+   "punto": null,
+   "categorias": [
+    36
+   ]
+  },
+  "325": {
+   "stage": 392,
+   "tile": [
+    23,
+    10
+   ],
+   "punto": null,
+   "categorias": [
+    36
+   ]
+  },
+  "326": {
+   "stage": 393,
+   "tile": [
+    287,
+    15
+   ],
+   "punto": null,
+   "categorias": [
+    36
+   ]
+  },
+  "327": {
+   "stage": 394,
+   "tile": [
+    288,
+    167
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    36
+   ]
+  },
+  "328": {
+   "stage": 394,
+   "tile": [
+    10,
+    170
+   ],
+   "punto": "Instance Entrance",
+   "categorias": [
+    36,
+    19
+   ]
+  },
+  "329": {
+   "stage": 397,
+   "tile": [
+    24,
+    168
+   ],
+   "punto": null,
+   "categorias": [
+    37
+   ]
+  },
+  "330": {
+   "stage": 398,
+   "tile": [
+    269,
+    143
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    37
+   ]
+  },
+  "331": {
+   "stage": 398,
+   "tile": [
+    178,
+    97
+   ],
+   "punto": "Spawn Point",
+   "categorias": [
+    37
+   ]
+  },
+  "332": {
+   "stage": 398,
+   "tile": [
+    154,
+    56
+   ],
+   "punto": "Revival Totem",
+   "categorias": [
+    37
+   ]
+  },
+  "333": {
+   "stage": 399,
+   "tile": [
+    13,
+    160
+   ],
+   "punto": null,
+   "categorias": [
+    37
+   ]
+  },
+  "334": {
+   "stage": 400,
+   "tile": [
+    278,
+    168
+   ],
+   "punto": null,
+   "categorias": [
+    37
+   ]
+  },
+  "335": {
+   "stage": 401,
+   "tile": [
+    11,
+    168
+   ],
+   "punto": null,
+   "categorias": [
+    37
+   ]
+  },
+  "336": {
+   "stage": 402,
+   "tile": [
+    13,
+    13
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    37
+   ]
+  },
+  "337": {
+   "stage": 402,
+   "tile": [
+    280,
+    161
+   ],
+   "punto": "Instance Entrance",
+   "categorias": [
+    37,
+    19
+   ]
+  },
+  "338": {
+   "stage": 405,
+   "tile": [
+    172,
+    103
+   ],
+   "punto": null,
+   "categorias": [
+    38
+   ]
+  },
+  "339": {
+   "stage": 406,
+   "tile": [
+    275,
+    11
+   ],
+   "punto": null,
+   "categorias": [
+    38
+   ]
+  },
+  "340": {
+   "stage": 407,
+   "tile": [
+    15,
+    8
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    38
+   ]
+  },
+  "341": {
+   "stage": 407,
+   "tile": [
+    182,
+    93
+   ],
+   "punto": "Spawn Point",
+   "categorias": [
+    38
+   ]
+  },
+  "342": {
+   "stage": 407,
+   "tile": [
+    139,
+    74
+   ],
+   "punto": "Revival Totem",
+   "categorias": [
+    38
+   ]
+  },
+  "343": {
+   "stage": 408,
+   "tile": [
+    285,
+    10
+   ],
+   "punto": null,
+   "categorias": [
+    38
+   ]
+  },
+  "344": {
+   "stage": 409,
+   "tile": [
+    237,
+    141
+   ],
+   "punto": null,
+   "categorias": [
+    38
+   ]
+  },
+  "345": {
+   "stage": 410,
+   "tile": [
+    11,
+    9
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    38
+   ]
+  },
+  "346": {
+   "stage": 410,
+   "tile": [
+    83,
+    169
+   ],
+   "punto": "Instance Entrance",
+   "categorias": [
+    38,
+    19
+   ]
+  },
+  "347": {
+   "stage": 416,
+   "tile": [
+    279,
+    144
+   ],
+   "punto": null,
+   "categorias": [
+    39
+   ]
+  },
+  "348": {
+   "stage": 417,
+   "tile": [
+    284,
+    14
+   ],
+   "punto": null,
+   "categorias": [
+    39
+   ]
+  },
+  "349": {
+   "stage": 418,
+   "tile": [
+    278,
+    163
+   ],
+   "punto": null,
+   "categorias": [
+    39
+   ]
+  },
+  "350": {
+   "stage": 419,
+   "tile": [
+    280,
+    17
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    39
+   ]
+  },
+  "351": {
+   "stage": 419,
+   "tile": [
+    233,
+    90
+   ],
+   "punto": "Spawn Point",
+   "categorias": [
+    39
+   ]
+  },
+  "352": {
+   "stage": 419,
+   "tile": [
+    238,
+    106
+   ],
+   "punto": "Revival Totem",
+   "categorias": [
+    39
+   ]
+  },
+  "353": {
+   "stage": 420,
+   "tile": [
+    25,
+    12
+   ],
+   "punto": "Entrance",
+   "categorias": [
+    39
+   ]
+  },
+  "354": {
+   "stage": 420,
+   "tile": [
+    274,
+    165
+   ],
+   "punto": "Instance Entrance",
+   "categorias": [
+    39,
+    19
+   ]
+  },
+  "355": {
+   "stage": 421,
+   "tile": [
+    54,
+    145
+   ],
+   "punto": null,
+   "categorias": [
+    39
+   ]
+  }
+ },
+ "secuencia": {
+  "siempre": [
+   "0x0012 acuse",
+   "0x001B la Superwing con una unidad menos",
+   "0x0042 stats",
+   "0x0013 atributo"
+  ],
+  "mismo_mapa": [
+   "0x0003 [u32 entidad][u32 tile_x][u32 tile_y]"
+  ],
+  "otro_mapa": [
+   "0x0007 5B",
+   "0x000C cambio de mapa"
+  ]
+ }
+}

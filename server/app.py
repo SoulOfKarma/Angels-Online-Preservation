@@ -85,10 +85,57 @@ def _portales():
     return _PORTALES
 
 
+# LOS MAPAS QUE TIENEN PLANTILLA. Es login.PLANTILLAS_POR_STAGE mas los dos
+# que se tratan aparte. Estaba escrito a mano en tres sitios distintos y ya
+# se pago caro una vez: cada copia que se olvidaba dejaba un mapa entero sin
+# IA. Aqui esta una sola vez.
+MAPAS_APARTE = {41: 'lyceum.json', 57: 'fighting_palace.json'}
+
+
+def mapas_poblados():
+    import login as _lgp
+    return {**_lgp.PLANTILLAS_POR_STAGE, **MAPAS_APARTE}
+
+
+ITEM_SUPERWING = 25832
+_ANGELS_GO = None
+
+
+def _angels_go():
+    """La tabla de destinos del Angels GO!, de plantillas/angels_go.json.
+
+    Es el 編號 de jumpmap.xml del cliente. Medido tres veces en Celestia --
+    los ids 120, 119 y 109 -- y las tres la casilla de llegada fue
+    exactamente la que declara esa tabla, asi que vale entera sin medir
+    destino por destino.
+    """
+    global _ANGELS_GO
+    import json
+    if _ANGELS_GO is None:
+        f = pathlib.Path(__file__).parent / 'plantillas' / 'angels_go.json'
+        _ANGELS_GO = (json.loads(f.read_text(encoding='utf-8')).get('destinos', {})
+                      if f.exists() else {})
+    return _ANGELS_GO
+
+
+def _ranura_de_item(ses, item_id: int):
+    """La primera casilla de la mochila que lleva ese item, o None."""
+    for r, iid in sorted(getattr(ses, 'inventario', {}).items()):
+        if int(iid) == int(item_id) and int(r) >= 20:
+            return int(r)
+    return None
+
+
 def _portal_en(stage, tx, ty):
     """El tornado que se esta pisando, o None."""
     cfg = _portales()
     for por in cfg.get('mapas', {}).get(str(stage), []):
+        # TORNADO ANOTADO PERO SIN MEDIR. Los que llevan a una instancia estan
+        # en el json para no perder su casilla y su entidad, pero con destino
+        # en null. Devolverlos haria que el servidor intentara viajar al stage
+        # None. Se saltan hasta que alguien capture el cruce.
+        if por.get('destino') is None:
+            continue
         # Radio propio si lo trae. El radio 1 global pide estar justo encima,
         # y eso no vale para todos: el tornado de Mushroom hacia Jade Vale
         # dispara desde dos casillas antes -- medido, el jugador se quedo en
@@ -124,8 +171,7 @@ def _nombre_entidad(ses, entity_id: int) -> str:
     _st = getattr(getattr(ses, 'personaje', None), 'stage', None)
     _archivos = []
     # La tabla comun mas los dos que se tratan aparte.
-    _por_stage = {**_lgm.PLANTILLAS_POR_STAGE,
-                  41: 'lyceum.json', 57: 'fighting_palace.json'}
+    _por_stage = mapas_poblados()
     if _st in _por_stage:
         _archivos.append(_por_stage[_st])
     if 'lyceum.json' not in _archivos:
@@ -157,7 +203,7 @@ def _monstruos_de(stage: int):
     # Cada mapa poblado tiene su plantilla. El West Playground trae 150
     # monstruos de seis clases, asi que su IA sale de aqui igual que la del
     # Lyceum: pasean, persiguen, pegan y reaparecen.
-    por_stage = {**_lg.PLANTILLAS_POR_STAGE, 41: 'lyceum.json'}
+    por_stage = mapas_poblados()
     nombre = por_stage.get(stage)
     if not nombre:
         # Los mapas que aun no tienen plantilla usan la lista escrita a mano.
@@ -2696,6 +2742,71 @@ class Servidor:
         # --- usar item (clic derecho) --------------------------------
         # C -> S 0x002E [U8 ranura][LE32 target]
         # Usar / equipar lo que hay en una casilla. Medido: [u32 casilla][u8 0].
+        # ANGELS GO! -- el teletransporte de las Superwing.
+        #   C -> S 0x0151 [u32 id]
+        # El id es el 編號 de jumpmap.xml, NO un stage: la tabla trae 355
+        # destinos con su escenario y su casilla. Medido tres veces en
+        # Celestia (ids 120, 119 y 109) y las tres la llegada fue la que
+        # declara esa tabla.
+        #
+        # La respuesta se bifurca, y las dos ramas estan medidas:
+        #   mismo mapa  0x0012, 0x001B, 0x0042, 0x0013, 0x0003  (sin 0x000C)
+        #   otro mapa   0x0012, 0x001B, 0x0042, 0x0013, 0x0007, 0x000C
+        if opcode == 0x0151 and ses.rol == 'mundo' and len(cuerpo) >= 4:
+            import clases as _cgo
+            if not ses.personaje:
+                return
+            ido = struct.unpack_from('<I', cuerpo, 0)[0]
+            d = _angels_go().get(str(ido))
+            if d is None:
+                log.warning(f"[{addr}] Angels GO! a un destino que no esta "
+                            f"en jumpmap.xml: {ido}")
+                return
+            dst, lleg = int(d['stage']), list(d['tile'])
+            # Solo a los mapas que tenemos poblados. Mandarlo a un stage sin
+            # plantilla lo dejaria en un mapa vacio y sin forma de salir.
+            if dst not in mapas_poblados():
+                log.info(f"[{addr}] Angels GO! id {ido} -> stage {dst}, que "
+                         f"todavia no esta poblado; no se viaja")
+                return
+            ranura = _ranura_de_item(ses, ITEM_SUPERWING)
+            if ranura is None:
+                log.info(f"[{addr}] Angels GO! sin Superwing en la mochila")
+                return
+            _sacar(ses, ranura, 1)
+            yo = ses.personaje.entity_id
+            salida = [struct.pack('<H', 0x0012) + bytes(7)]
+            salida += _refrescar(ses, [ranura])
+            salida.append(_stats_ses(ses))
+            ses.personaje.tile_x, ses.personaje.tile_y = lleg
+            if dst == ses.personaje.stage:
+                # MISMO MAPA: el salto se hace entero con el 0x0003 y el
+                # cliente no recarga nada.
+                salida.append(struct.pack('<HIII', 0x0003, yo, lleg[0], lleg[1]))
+                ses.enviar(*salida)
+                # Si cae dentro de un tornado, se marca pisado para no viajar
+                # al primer paso, igual que al llegar por portal.
+                _en = _portal_en(dst, *lleg)
+                ses.portal_pisado = tuple(_en['tile']) if _en else None
+            else:
+                # OTRO MAPA: se cierra como un tornado.
+                salida.append(struct.pack('<HIB', 0x0007, yo, 1))
+                ses.personaje.stage = dst
+                ses.monstruos = _monstruos_de(dst)
+                _en = _portal_en(dst, *lleg)
+                ses.portal_pisado = tuple(_en['tile']) if _en else None
+                ses.mapa_cambiado_en = time.time()
+                salida.append(_cgo.cambiar_mapa(dst))
+                ses.enviar(*salida)
+            cid = ses.personaje.char_id
+            _guardar_bolsa(ses, cid)
+            if getattr(ses, 'usuario', None):
+                cuentas.guardar_mapa(ses.usuario, cid, dst, *lleg)
+            log.info(f"[{addr}] Angels GO! id {ido} -> stage {dst} tile "
+                     f"{lleg} ({d.get('punto') or 'sin nombre'}), "
+                     f"Superwing de la casilla {ranura}")
+            return
+
         if opcode == 0x002E and ses.rol == 'mundo' and len(cuerpo) >= 4:
             import inventario as inv
             import clases as _c

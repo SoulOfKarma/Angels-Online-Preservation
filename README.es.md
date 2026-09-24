@@ -37,18 +37,28 @@ una suposición, lo dice.
   de ataque, morir y revivir, botín, experiencia y experiencia de habilidad
 - Monstruos: cadencia de ataque propia de cada uno, persecución, paseo,
   reaparición y efectos de sangrado y aturdimiento
-- **74 mapas poblados a partir de capturas**: 10.494 monstruos, 896 NPC y
-  4.779 objetos de mapa, 3.768 de ellos con su recurso identificado. Cada
+- **95 mapas poblados a partir de capturas**: 14.917 monstruos, 1.149 NPC y
+  8.951 objetos de mapa, 5.029 de ellos con su recurso identificado. Cada
   monstruo, NPC y recurso sale de una captura; nada está inventado
-- **Heart of Eden completo**, **Atlantis completo salvo las instancias** y
-  **Floating completo**: sus cinco mapas (Roam Battlefield, Sky Pumice,
-  Winding Flower Corridor, Airship Station y Bouleuterion) tienen todos sus
-  tornados medidos, y a Season Garden solo le falta la entrada de su
-  instancia. Más buena parte de Pharaoh, East Orient y los territorios de las
-  cuatro facciones
-- **162 portales**, casi todos medidos en los dos sentidos: la casilla del
+- **Hay zonas enteras cerradas**, es decir con todos sus tornados cruzados y
+  medidos: **Heart of Eden**, **Floating** (6 mapas), **el anillo del
+  desierto** (Crescent Valley, Desert Racetrack, Ghost Village, Troop
+  Outpost, Ancient Front, Fantastic Sand City, Nightmare Palace) y
+  **Candyland** (7 mapas). **Atlantis está completo salvo las instancias**, y
+  a la cadena del bosque (de Cryptic Moon Swamp a Giant Wooden Stairs, 8
+  mapas) solo le quedan dos tornados. Más buena parte de Pharaoh, East Orient
+  y los territorios de las cuatro facciones
+- **208 portales**, casi todos medidos en los dos sentidos: la casilla del
   tornado sale de la captura, y también aquella donde el servidor real deja
-  al jugador al cruzar
+  al jugador al cruzar. La mayoría se cruzaron **dos veces en cada sentido**,
+  que es como se descubrió que algunos portales no dejan siempre en la misma
+  casilla
+- **El Angels GO!, el teletransporte de las Superwing**, funciona: el `0x0151`
+  lleva el id de la tabla `jumpmap.xml` del propio cliente, se gasta una
+  Superwing y la respuesta se bifurca, con las dos ramas medidas: un `0x0003`
+  si el destino está en el mapa donde ya estás, y un `0x0007` más `0x000C` si
+  es otro mapa. La tabla tiene **355 destinos** y **140 están activos**, los
+  que caen en un mapa poblado; el resto se rechazan sin gastar el objeto
 - Las cuatro ciudades de facción con su casilla de llegada, las cuatro
   medidas: Aurora City, Breeze Woods, Iron Castle y Dark City. Al elegir
   facción el juego deja al jugador al lado del Ángel de esa ciudad, a tres o
@@ -103,9 +113,16 @@ una suposición, lo dice.
 - La puerta del buceo está **documentada pero no se aplica**: los dos
   entrenadores, sus diálogos y las dos habilidades están capturados, pero el
   portal a los mapas submarinos deja pasar a cualquiera
-- Las instancias (Lost Region y Horrible Lost Region): el diálogo de entrada,
-  los dos modos y los mensajes de rechazo están capturados, pero nadie ha
-  entrado. Sus monstruos se saben por la wiki; sus posiciones no
+- Las instancias: nadie ha entrado en ninguna. **Hay cinco entradas
+  identificadas y dejadas apagadas**: Nightmare Palace, Half-beast Hamlet,
+  Giant Wooden Stairs (que tiene dos tornados al mismo sitio) y Chocolate
+  Forest. Están en `portales.json` con su casilla y su entidad pero con el
+  destino en null, y el servidor se las salta, así que pisarlas no hace nada.
+  De Lost Region y Horrible Lost Region están capturados el diálogo de
+  entrada, los dos modos y los mensajes de rechazo; sus monstruos se saben
+  por la wiki, sus posiciones no. Ojo con una cosa: ese diálogo de dos modos
+  **no** es como se entra a las instancias en general, la mayoría no pregunta
+  nada
 - Los equipos y la lista de amigos: el protocolo está documentado desde una
   captura con dos cuentas, pero el servidor todavía no implementa ninguno
 
