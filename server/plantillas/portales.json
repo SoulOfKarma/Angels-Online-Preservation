@@ -2064,7 +2064,23 @@
     "radio": 3,
     "dibujar": false,
     "preguntar": false,
-    "nota": "Gebuer Vale -> Goldhill por el tornado 121590. El MOVE_REQ salio de (237,139), que es la propia casilla de llegada, a seis, y su primer tramo acabo en (242,138), a una. Las llegadas fueron (24,14) y (26,13); se usa la primera, que ademas es la que jumpmap.xml da para el id 184 del Angels GO!. LOS DOS SENTIDOS MEDIDOS. A Gebuer Vale le queda suelto el tornado 121591 en (240,67); sus otros dos van a Fungus Forest North y Burning Desert."
+    "nota": "Gebuer Vale -> Goldhill por el tornado 121590. El MOVE_REQ salio de (237,139), que es la propia casilla de llegada, a seis, y su primer tramo acabo en (242,138), a una. Las llegadas fueron (24,14) y (26,13); se usa la primera, que ademas es la que jumpmap.xml da para el id 184 del Angels GO!. LOS DOS SENTIDOS MEDIDOS. Gebuer Vale tiene CUATRO tornados y los cuatro estan medidos: van a Fungus Forest North, Burning Desert, Goldhill y Brilliant Boneyard."
+   },
+   {
+    "entity": 121591,
+    "tile": [
+     240,
+     67
+    ],
+    "destino": 285,
+    "llegada": [
+     9,
+     164
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Gebuer Vale -> Brilliant Boneyard por el tornado 121591. Cruzado dos veces: los tramos acabaron en (239,68) y (239,67), los dos a una casilla. Las llegadas fueron (9,164) y (6,167); se usa la primera. LOS DOS SENTIDOS MEDIDOS. Con esto Gebuer Vale queda cerrado."
    }
   ],
   "33": [
@@ -5269,6 +5285,58 @@
      165
     ],
     "nota": "INSTANCIA, SIN CRUZAR. El usuario la situa aqui y jumpmap.xml lo respalda sin ambiguedad: declara un punto (id 292) en (22,165), a SEIS casillas de este tornado y a 267 del otro del mapa. OJO CON EL NOMBRE: aqui el cliente lo llama \"Instance Entrance\", no \"Instance Entry Point\" como en las ocho anteriores. Son dos etiquetas para lo mismo, asi que al buscar entradas de instancia en jumpmap.xml hay que mirar las DOS. Destino y llegada van en null y _portal_en se lo salta."
+   }
+  ],
+  "285": [
+   {
+    "entity": 118511,
+    "tile": [
+     9,
+     172
+    ],
+    "destino": 36,
+    "llegada": [
+     233,
+     69
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Brilliant Boneyard -> Gebuer Vale por el tornado 118511, el del suroeste. El MOVE_REQ salio de (13,168), a cuatro casillas, y su primer tramo acabo en (10,171), a una. Las dos llegadas de este mapa, (9,164) y (6,167), quedan a ocho y a cinco. Las llegadas de vuelta a Gebuer, (233,69) y (234,65), quedan a siete y a seis de su tornado. Brilliant Boneyard tiene TRES tornados: queda sin destino el 118513 en (292,13)."
+   },
+   {
+    "entity": 118512,
+    "tile": [
+     285,
+     172
+    ],
+    "destino": 286,
+    "llegada": [
+     24,
+     13
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Brilliant Boneyard -> Ivory Forest por el tornado 118512, el del sureste. Cruzado dos veces y las dos el primer tramo acabo en (286,171), pegado al tornado. La llegada fue (24,13) las DOS veces, sin dispersion. LOS DOS SENTIDOS MEDIDOS."
+   }
+  ],
+  "286": [
+   {
+    "entity": 118514,
+    "tile": [
+     11,
+     5
+    ],
+    "destino": 285,
+    "llegada": [
+     287,
+     166
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Ivory Forest -> Brilliant Boneyard por el tornado 118514, el del noroeste. El MOVE_REQ salio de (14,8), a tres casillas, y su primer tramo acabo en (12,6), a una. La llegada de este mapa, (24,13), queda a trece. La llegada (287,166) queda a seis del tornado de ida de Brilliant Boneyard. El otro tornado del mapa, el 118515 en (291,6), sigue sin destino."
    }
   ]
  },

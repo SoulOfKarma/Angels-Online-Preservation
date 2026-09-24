@@ -36,9 +36,9 @@ a guess, it says so.
   attack effects, dying and reviving, loot, experience and skill experience
 - Monsters: per-monster attack cadence, chasing, wandering, respawn, and
   bleed and stun effects
-- **95 maps populated from captures**: 14,917 monsters, 1,149 NPCs and 8,951
-  map objects, 5,029 of them with their resource name resolved. Every monster,
-  NPC and resource comes from a capture; none of it is made up
+- **134 maps populated from captures**: 23,222 monsters, 1,563 NPCs and
+  10,955 map objects, 6,891 of them with their resource name resolved. Every
+  monster, NPC and resource comes from a capture; none of it is made up
 - **Whole zones are closed**, meaning every tornado in them has been crossed
   and measured: **Heart of Eden**, **Floating** (6 maps), **the desert ring**
   (Crescent Valley, Desert Racetrack, Ghost Village, Troop Outpost, Ancient
@@ -47,15 +47,28 @@ a guess, it says so.
   (Cryptic Moon Swamp to Giant Wooden Stairs, 8 maps) only has two tornados
   left. Plus a good part of Pharaoh, East Orient and the four faction
   territories
-- **208 portals**, almost all measured in both directions: the tornado's tile
+- **301 portals**, almost all measured in both directions: the tornado's tile
   comes from the capture, and so does the tile the real server drops you on.
   Most of them were crossed **twice in each direction**, which is how we found
   out that some portals do not always drop you on the same tile
+- **Portals that lead somewhere else on the same map** work: seven of them,
+  in Forbidden Sector, Hidden Grove and Teddy Amusement. They do **not**
+  reload the map -- measured over 1,401 seconds without a single `0x000C`.
+  The server answers `0x0016`, a `0x0012` of seven zeros and a `0x0003` that
+  just moves the character
+- **Portals can carry their own menu.** Teddy Amusement's hub asks "Move to
+  which area?" and sends you to one of two spots on the same map. Each portal
+  brings its own message id and its own option-to-tile table, so a new one is
+  data, not code
+- **12 more portals are recorded but switched off**: nine instance entrances,
+  the one Lost Cove portal that was never measured, and the Niro River
+  tornado to Clink Harbor -- that map exists in `stage.xml` but the live
+  server has no content for it
 - **Angels GO!, the Superwing teleport**, works: `0x0151` carries the entry id
   from the client's own `jumpmap.xml`, a Superwing is spent, and the answer
   splits in two, both measured -- a `0x0003` when the destination is on the
   map you are already on, a `0x0007` plus `0x000C` when it is another map.
-  The table has **355 destinations** and **140 of them are live**, the ones
+  The table has **355 destinations** and **197 of them are live**, the ones
   that land on a populated map; the rest are refused without spending the
   item. A character who does not belong to one of the four factions cannot
   use a Superwing at all -- measured on a level 12 still in "Heaven"

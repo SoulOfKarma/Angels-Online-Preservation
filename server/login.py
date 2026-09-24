@@ -632,6 +632,8 @@ PLANTILLAS_POR_STAGE = {
     156 : 'strawberry_garden.json',
     36  : 'gebuer_vale.json',
     222 : 'goldhill.json',
+    285 : 'brilliant_boneyard.json',
+    286 : 'ivory_forest.json',
     223 : 'steam_town.json',
     224 : 'yeeha_bar.json',
     225 : 'agysical_tunnel.json',
