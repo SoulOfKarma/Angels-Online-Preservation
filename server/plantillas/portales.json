@@ -846,6 +846,22 @@
     "preguntar": false,
     "inventado": true,
     "nota": "Lost Cove -> Dragon Graveyard. ESTE PORTAL NO ESTA MEDIDO Y PUEDE QUE EN CELESTIA NO EXISTA: el usuario salio de Lost Cove con una superwing, no por un tornado. Se pone para no dejar al jugador encerrado; si se comprueba que no teletransporta, se borra esta entrada. El tornado 114109 es el que cae junto a la llegada (28,14); el otro, (275,162), esta en la otra punta. La llegada (108,90) la eligio el usuario: deja AL LADO del tornado (107,97) por el que se entra a Lost Cove, no en la entrada de Dragon. Antes estaba en (287,9), que es la llegada del portal de Megalith: era un error mio."
+   },
+   {
+    "entity": 114110,
+    "tile": [
+     275,
+     162
+    ],
+    "destino": 162,
+    "llegada": [
+     28,
+     21
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Lost Cove -> Rock Forest por el tornado 114110, el del sureste. Cruzado dos veces: los MOVE_REQ salieron de (267,158) y (273,161) y los dos tramos acabaron en (274,161), pegados al tornado. La llegada fue (28,21) las DOS veces, sin dispersion. LOS DOS SENTIDOS MEDIDOS. Este es el PRIMER portal medido de Lost Cove: el otro que tiene este mapa, el 114109 en (13,12) hacia el stage 21, sigue estando INVENTADO."
    }
   ],
   "67": [
@@ -3617,6 +3633,212 @@
     "dibujar": false,
     "preguntar": false,
     "nota": "Strawberry Garden -> Fruit Town por el tornado 113900, el del suroeste. Cruzado dos veces: los tramos acabaron los dos en (10,172), pegados al tornado. Las llegadas fueron (289,22) y (281,23); se usa la primera. Este enlace CIERRA el circuito de Candyland: Fruit Town, Chocolate Village, Chocolate Forest y Strawberry Garden forman un anillo, no una cadena. OJO con el punto del cliente: jumpmap.xml pone el \"Entrance\" del stage 156 (id 139) en (15,168), pero la llegada REAL de este portal es (15,172), cuatro casillas mas abajo. En los ocho casos anteriores el punto del cliente y la llegada del tornado coincidian exactamente; este es el primero en que NO. Asi que jumpmap.xml vale para el Angels GO!, que es para lo que es, pero no se puede dar por hecho que sus casillas sean las de los tornados."
+   }
+  ],
+  "162": [
+   {
+    "entity": 114172,
+    "tile": [
+     21,
+     14
+    ],
+    "destino": 161,
+    "llegada": [
+     265,
+     157
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Rock Forest -> Lost Cove por el tornado 114172, el del noroeste. El MOVE_REQ salio de (23,16), a dos casillas, y su primer tramo acabo en (22,15), a una. La llegada de este mapa, (28,21), queda a siete. La llegada (265,157) queda a diez del tornado de ida de Lost Cove."
+   },
+   {
+    "entity": 114171,
+    "tile": [
+     5,
+     173
+    ],
+    "destino": 163,
+    "llegada": [
+     266,
+     26
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Rock Forest -> Hoca Village por el tornado 114171, el del suroeste. Cruzado dos veces y las dos el primer tramo acabo en (6,172), pegado al tornado. Las llegadas fueron (266,26) y (262,19); se usa la primera. LOS DOS SENTIDOS MEDIDOS. Con esto Rock Forest queda cerrado."
+   }
+  ],
+  "163": [
+   {
+    "entity": 114236,
+    "tile": [
+     284,
+     7
+    ],
+    "destino": 162,
+    "llegada": [
+     26,
+     155
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Hoca Village -> Rock Forest por el tornado 114236, el del noreste. El MOVE_REQ salio de (276,13), a ocho casillas, y su primer tramo acabo en (283,8), a una. Las dos llegadas de este mapa, (266,26) y (262,19), quedan a diecinueve y veintidos, muy lejos. La llegada (26,155) queda a veintiuna del tornado de ida de Rock Forest. Hoca Village tiene CUATRO tornados y los cuatro estan medidos: van a Rock Forest, Rex Point, Raven Riverpoint y Hunter's Ridge. Es el nudo de Dinoland."
+   },
+   {
+    "entity": 114234,
+    "tile": [
+     11,
+     5
+    ],
+    "destino": 164,
+    "llegada": [
+     268,
+     162
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Hoca Village -> Rex Point por el tornado 114234, el del noroeste. Cruzado dos veces y las dos el primer tramo acabo en (12,6), pegado al tornado. Las llegadas fueron (268,162) y (265,164); se usa la primera. LOS DOS SENTIDOS MEDIDOS."
+   },
+   {
+    "entity": 114235,
+    "tile": [
+     50,
+     163
+    ],
+    "destino": 165,
+    "llegada": [
+     281,
+     37
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Hoca Village -> Raven Riverpoint por el tornado 114235. Cruzado dos veces: los tramos acabaron en (53,164) y (49,162), a TRES y a una casilla. Las llegadas fueron (281,37) y (290,43); se usa la primera. Radio 3 y no mas: la llegada de vuelta a este mapa, (49,158), queda a CINCO, que es poco margen. LOS DOS SENTIDOS MEDIDOS."
+   },
+   {
+    "entity": 114233,
+    "tile": [
+     272,
+     158
+    ],
+    "destino": 166,
+    "llegada": [
+     18,
+     16
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Hoca Village -> Hunter's Ridge por el tornado 114233, el del sureste. Cruzado dos veces: los tramos acabaron en (272,157) y (271,159), los dos a una casilla. Las llegadas fueron (18,16) y (13,19); se usa la primera. LOS DOS SENTIDOS MEDIDOS. Con esto Hoca Village queda cerrado."
+   }
+  ],
+  "164": [
+   {
+    "entity": 114312,
+    "tile": [
+     274,
+     168
+    ],
+    "destino": 163,
+    "llegada": [
+     32,
+     22
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Rex Point -> Hoca Village por el tornado 114312. El MOVE_REQ salio de (271,165), a tres casillas, y su primer tramo acabo en (273,167), a una. Las dos llegadas de este mapa, (268,162) y (265,164), quedan a seis y a nueve. Rex Point tiene UN SOLO tornado: es un callejon sin salida, el primero que vemos asi. Todos los demas mapas medidos tienen dos o mas. Queda CERRADO con este unico portal."
+   }
+  ],
+  "165": [
+   {
+    "entity": 114362,
+    "tile": [
+     290,
+     34
+    ],
+    "destino": 163,
+    "llegada": [
+     49,
+     158
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Raven Riverpoint -> Hoca Village por el tornado 114362. El MOVE_REQ salio de (288,35), a dos casillas, y su primer tramo acabo en (289,35), a una. Las dos llegadas de este mapa, (281,37) y (290,43), quedan a nueve las dos. Raven Riverpoint tiene UN SOLO tornado, como Rex Point: es otro callejon sin salida. Queda CERRADO con este unico portal."
+   }
+  ],
+  "166": [
+   {
+    "entity": 114423,
+    "tile": [
+     11,
+     10
+    ],
+    "destino": 163,
+    "llegada": [
+     262,
+     160
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Hunter's Ridge -> Hoca Village por el tornado 114423, el del noroeste. El MOVE_REQ salio de (14,13), a tres casillas, y su primer tramo acabo en (12,11), a una. Las dos llegadas de este mapa, (18,16) y (13,19), quedan a siete y a nueve. La llegada (262,160) queda a diez del tornado de ida de Hoca Village."
+   },
+   {
+    "entity": 114424,
+    "tile": [
+     290,
+     10
+    ],
+    "destino": 167,
+    "llegada": [
+     19,
+     171
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Hunter's Ridge -> Shilly Desert por el tornado 114424, el del noreste. Cruzado dos veces y las dos el primer tramo acabo en (289,11), pegado al tornado. La llegada fue (19,171) las DOS veces, sin dispersion. LOS DOS SENTIDOS MEDIDOS. Con esto Hunter's Ridge queda cerrado."
+   }
+  ],
+  "167": [
+   {
+    "entity": 114486,
+    "tile": [
+     11,
+     172
+    ],
+    "destino": 166,
+    "llegada": [
+     282,
+     15
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Shilly Desert -> Hunter's Ridge por el tornado 114486, el del suroeste. El MOVE_REQ salio de (19,171), que es la propia casilla de llegada, a ocho, y su primer tramo acabo en (12,171), a una. La llegada (282,15) queda a ocho del tornado de ida."
+   },
+   {
+    "entity": 114485,
+    "tile": [
+     273,
+     162
+    ],
+    "destino": null,
+    "llegada": null,
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "sin_medir": true,
+    "punto_del_cliente": [
+     264,
+     159
+    ],
+    "nota": "INSTANCIA, SIN CRUZAR. El usuario avisa de que aqui esta la entrada a una instancia y jumpmap.xml lo respalda: declara un \"Instance Entry Point\" (id 153) en (264,159), a NUEVE casillas de este tornado, que ademas es el unico de los dos del mapa que cae por esa zona; el otro esta a 253. Destino y llegada van en null y _portal_en se lo salta."
    }
   ]
  },
