@@ -2331,3 +2331,46 @@ puestos en las ranuras 1, 2, 5, 6 y 10 -- 32760, 32761, 32762, 32763 y
 40441 -- **no estan en el item.xml de los paks extraidos**, asi que son de
 un update mas nuevo. Hace falta una captura con ropa que si este en los
 paks para poder cruzar item -> sprite.
+
+## EL "ONLINE": QUE PASA CUANDO ENTRA OTRO JUGADOR (24/09/2026)
+
+Medido en Celestia, en Hidden Grove, cuando entro un segundo jugador en el
+mismo mapa. Estos son los mensajes que llegan por él, y ninguno lo manda
+nuestro servidor todavía.
+
+### `0x0001` — el jugador aparece
+
+128 bytes. **No confundir con el `0x0001` del login**, que es la ficha de la
+ranura recién creada: es el mismo opcode en otro contexto.
+
+La cabecera es la de siempre, igual que el `0x0008` y la ficha `0x0002`:
+
+| off | campo                      |
+| --- | -------------------------- |
+| 0   | entidad                    |
+| 8   | casilla x                  |
+| 12  | casilla y                  |
+| 16  | nombre, 16 bytes           |
+| 64..100 | **diez item_id: el equipo** |
+
+Lo importante son esos diez números. Son **item_id**, no sprites: así es
+como el cliente sabe con qué dibujar al otro jugador. En la captura salieron
+76901, 76902, 75922, 75921, 75913, 76904, 75919, 60909, 7541 y 75356, y
+**solo el 7541 está en el `item.xml` de los paks extraídos** — es "Pan's
+Rescue", un arco. Los otros nueve son de updates más nuevos.
+
+Esto choca con lo del `0x0179`, que dibuja la figura de la ID Card del
+**propio** personaje y va por **sprite** (40287..40295). Son dos mecanismos
+distintos para dos cosas distintas.
+
+### Los otros mensajes
+
+- **`0x0043`** (68 B): el anuncio de logros de otros jugadores, en texto
+  plano. Empieza con la entidad y un `03`.
+- **`0x0128`**: el chat público. **No se vuelca ni se guarda**: lleva lo que
+  escriben jugadores reales.
+
+### Lo que falta
+
+Qué manda el servidor cuando el otro jugador **se va**, y si el equipo se
+reenvía al cambiarlo estando ambos en el mapa. Nada de eso está capturado.

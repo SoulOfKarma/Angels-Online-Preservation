@@ -1,0 +1,4385 @@
+{
+ "_nota": "",
+ "stage": 226,
+ "spawns": [
+  {
+   "entity_id": 32288,
+   "nombre": "Aurora Totem",
+   "npc_type": 1937,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    220,
+    103
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 32289,
+   "nombre": "Dark City Totem",
+   "npc_type": 1938,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    238,
+    95
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 32290,
+   "nombre": "Iron Totem",
+   "npc_type": 1939,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    233,
+    97
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 32291,
+   "nombre": "Breeze Totem",
+   "npc_type": 1940,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    227,
+    101
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 123233,
+   "nombre": "Yahk",
+   "npc_type": 11132,
+   "sprite": 40406,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    240,
+    40
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123234,
+   "nombre": "Mayat",
+   "npc_type": 11127,
+   "sprite": 40238,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    113,
+    50
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123235,
+   "nombre": "Zasha",
+   "npc_type": 11128,
+   "sprite": 40235,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    48,
+    59
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123236,
+   "nombre": "Runego",
+   "npc_type": 11148,
+   "sprite": 40190,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    145,
+    59
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123237,
+   "nombre": "Runeson",
+   "npc_type": 11149,
+   "sprite": 40275,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    47,
+    162
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123238,
+   "nombre": "Runet",
+   "npc_type": 11150,
+   "sprite": 40299,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    255,
+    125
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123239,
+   "nombre": "Runek",
+   "npc_type": 11151,
+   "sprite": 40300,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    197,
+    31
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123240,
+   "nombre": "Nilo",
+   "npc_type": 11152,
+   "sprite": 40399,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    166,
+    80
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123241,
+   "nombre": "Cupid",
+   "npc_type": 1502,
+   "sprite": 40006,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    243,
+    91
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123242,
+   "nombre": "Iradox",
+   "npc_type": 11110,
+   "sprite": 40403,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    226,
+    40
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123243,
+   "nombre": "Wild Game Chef",
+   "npc_type": 11111,
+   "sprite": 40406,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    88,
+    30
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 1041730,
+   "nombre": "Firefly Imp",
+   "npc_type": 11815,
+   "sprite": 43605,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    66,
+    40
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 164
+  },
+  {
+   "entity_id": 1041731,
+   "nombre": "Firefly Imp",
+   "npc_type": 11815,
+   "sprite": 43605,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    70,
+    27
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 164
+  },
+  {
+   "entity_id": 1041732,
+   "nombre": "Firefly Imp",
+   "npc_type": 11815,
+   "sprite": 43605,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    61,
+    25
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 164
+  },
+  {
+   "entity_id": 1041733,
+   "nombre": "Firefly Imp",
+   "npc_type": 11815,
+   "sprite": 43605,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    69,
+    46
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 164
+  },
+  {
+   "entity_id": 1041734,
+   "nombre": "Firefly Imp",
+   "npc_type": 11815,
+   "sprite": 43605,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    73,
+    26
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 164
+  },
+  {
+   "entity_id": 1041735,
+   "nombre": "Firefly Imp",
+   "npc_type": 11815,
+   "sprite": 43605,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    55,
+    37
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 164
+  },
+  {
+   "entity_id": 1041736,
+   "nombre": "Firefly Imp",
+   "npc_type": 11815,
+   "sprite": 43605,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    51,
+    16
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 164
+  },
+  {
+   "entity_id": 1041737,
+   "nombre": "Firefly Imp",
+   "npc_type": 11815,
+   "sprite": 43605,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    54,
+    26
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 164
+  },
+  {
+   "entity_id": 1041738,
+   "nombre": "Firefly Imp",
+   "npc_type": 11815,
+   "sprite": 43605,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    54,
+    35
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 164
+  },
+  {
+   "entity_id": 1041739,
+   "nombre": "Firefly Imp",
+   "npc_type": 11815,
+   "sprite": 43605,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    36,
+    18
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 164
+  },
+  {
+   "entity_id": 1041740,
+   "nombre": "Firefly Imp",
+   "npc_type": 11815,
+   "sprite": 43605,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    26,
+    43
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 164
+  },
+  {
+   "entity_id": 1041741,
+   "nombre": "Firefly Imp",
+   "npc_type": 11815,
+   "sprite": 43605,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    30
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 164
+  },
+  {
+   "entity_id": 1041742,
+   "nombre": "Firefly Imp",
+   "npc_type": 11815,
+   "sprite": 43605,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    45,
+    35
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 164
+  },
+  {
+   "entity_id": 1041743,
+   "nombre": "Firefly Imp",
+   "npc_type": 11815,
+   "sprite": 43605,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    23,
+    48
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 164
+  },
+  {
+   "entity_id": 1041744,
+   "nombre": "Firefly Imp",
+   "npc_type": 11815,
+   "sprite": 43605,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    53,
+    31
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 164
+  },
+  {
+   "entity_id": 1041745,
+   "nombre": "Firefly Imp",
+   "npc_type": 11815,
+   "sprite": 43605,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    37,
+    43
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 164
+  },
+  {
+   "entity_id": 1041746,
+   "nombre": "Firefly Imp",
+   "npc_type": 11815,
+   "sprite": 43605,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    35,
+    56
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 164
+  },
+  {
+   "entity_id": 1041747,
+   "nombre": "Firefly Imp",
+   "npc_type": 11815,
+   "sprite": 43605,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    45,
+    53
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 164
+  },
+  {
+   "entity_id": 1041748,
+   "nombre": "Firefly Imp",
+   "npc_type": 11815,
+   "sprite": 43605,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    44,
+    53
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 164
+  },
+  {
+   "entity_id": 1041749,
+   "nombre": "Firefly Imp",
+   "npc_type": 11815,
+   "sprite": 43605,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    37,
+    46
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 164
+  },
+  {
+   "entity_id": 1041750,
+   "nombre": "Mageflame Elder",
+   "npc_type": 11816,
+   "sprite": 43607,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    82,
+    56
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 165
+  },
+  {
+   "entity_id": 1041751,
+   "nombre": "Mageflame Elder",
+   "npc_type": 11816,
+   "sprite": 43607,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    82,
+    58
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 165
+  },
+  {
+   "entity_id": 1041752,
+   "nombre": "Mageflame Elder",
+   "npc_type": 11816,
+   "sprite": 43607,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    84,
+    63
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 165
+  },
+  {
+   "entity_id": 1041753,
+   "nombre": "Mageflame Elder",
+   "npc_type": 11816,
+   "sprite": 43607,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    75,
+    63
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 165
+  },
+  {
+   "entity_id": 1041754,
+   "nombre": "Mageflame Elder",
+   "npc_type": 11816,
+   "sprite": 43607,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    83,
+    63
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 165
+  },
+  {
+   "entity_id": 1041755,
+   "nombre": "Mageflame Elder",
+   "npc_type": 11816,
+   "sprite": 43607,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    104,
+    73
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 165
+  },
+  {
+   "entity_id": 1041756,
+   "nombre": "Mageflame Elder",
+   "npc_type": 11816,
+   "sprite": 43607,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    111,
+    63
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 165
+  },
+  {
+   "entity_id": 1041757,
+   "nombre": "Mageflame Elder",
+   "npc_type": 11816,
+   "sprite": 43607,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    95,
+    65
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 165
+  },
+  {
+   "entity_id": 1041758,
+   "nombre": "Mageflame Elder",
+   "npc_type": 11816,
+   "sprite": 43607,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    104,
+    64
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 165
+  },
+  {
+   "entity_id": 1041759,
+   "nombre": "Mageflame Elder",
+   "npc_type": 11816,
+   "sprite": 43607,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    92,
+    61
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 165
+  },
+  {
+   "entity_id": 1041760,
+   "nombre": "Mageflame Elder",
+   "npc_type": 11816,
+   "sprite": 43607,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    125,
+    55
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 165
+  },
+  {
+   "entity_id": 1041761,
+   "nombre": "Mageflame Elder",
+   "npc_type": 11816,
+   "sprite": 43607,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    117,
+    54
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 165
+  },
+  {
+   "entity_id": 1041762,
+   "nombre": "Mageflame Elder",
+   "npc_type": 11816,
+   "sprite": 43607,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    122,
+    53
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 165
+  },
+  {
+   "entity_id": 1041763,
+   "nombre": "Mageflame Elder",
+   "npc_type": 11816,
+   "sprite": 43607,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    115,
+    52
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 165
+  },
+  {
+   "entity_id": 1041764,
+   "nombre": "Mageflame Elder",
+   "npc_type": 11816,
+   "sprite": 43607,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    123,
+    63
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 165
+  },
+  {
+   "entity_id": 1041765,
+   "nombre": "Mageflame Elder",
+   "npc_type": 11816,
+   "sprite": 43607,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    139,
+    59
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 165
+  },
+  {
+   "entity_id": 1041766,
+   "nombre": "Mageflame Elder",
+   "npc_type": 11816,
+   "sprite": 43607,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    134,
+    62
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 165
+  },
+  {
+   "entity_id": 1041767,
+   "nombre": "Mageflame Elder",
+   "npc_type": 11816,
+   "sprite": 43607,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    145,
+    70
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 165
+  },
+  {
+   "entity_id": 1041768,
+   "nombre": "Mageflame Elder",
+   "npc_type": 11816,
+   "sprite": 43607,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    138,
+    60
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 165
+  },
+  {
+   "entity_id": 1041769,
+   "nombre": "Mageflame Elder",
+   "npc_type": 11816,
+   "sprite": 43607,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    138,
+    60
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 165
+  },
+  {
+   "entity_id": 1041770,
+   "nombre": "Beanie Sprout",
+   "npc_type": 11817,
+   "sprite": 43530,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    148,
+    162
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 166
+  },
+  {
+   "entity_id": 1041771,
+   "nombre": "Beanie Sprout",
+   "npc_type": 11817,
+   "sprite": 43530,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    146,
+    160
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 166
+  },
+  {
+   "entity_id": 1041772,
+   "nombre": "Beanie Sprout",
+   "npc_type": 11817,
+   "sprite": 43530,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    150,
+    167
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 166
+  },
+  {
+   "entity_id": 1041773,
+   "nombre": "Beanie Sprout",
+   "npc_type": 11817,
+   "sprite": 43530,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    149,
+    161
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 166
+  },
+  {
+   "entity_id": 1041774,
+   "nombre": "Beanie Sprout",
+   "npc_type": 11817,
+   "sprite": 43530,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    147,
+    162
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 166
+  },
+  {
+   "entity_id": 1041775,
+   "nombre": "Beanie Sprout",
+   "npc_type": 11817,
+   "sprite": 43530,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    186,
+    167
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 166
+  },
+  {
+   "entity_id": 1041776,
+   "nombre": "Beanie Sprout",
+   "npc_type": 11817,
+   "sprite": 43530,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    177,
+    162
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 166
+  },
+  {
+   "entity_id": 1041777,
+   "nombre": "Beanie Sprout",
+   "npc_type": 11817,
+   "sprite": 43530,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    183,
+    162
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 166
+  },
+  {
+   "entity_id": 1041778,
+   "nombre": "Beanie Sprout",
+   "npc_type": 11817,
+   "sprite": 43530,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    167,
+    159
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 166
+  },
+  {
+   "entity_id": 1041779,
+   "nombre": "Beanie Sprout",
+   "npc_type": 11817,
+   "sprite": 43530,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    155,
+    162
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 166
+  },
+  {
+   "entity_id": 1041780,
+   "nombre": "Beanie Sprout",
+   "npc_type": 11817,
+   "sprite": 43530,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    212,
+    139
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 166
+  },
+  {
+   "entity_id": 1041781,
+   "nombre": "Beanie Sprout",
+   "npc_type": 11817,
+   "sprite": 43530,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    220,
+    138
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 166
+  },
+  {
+   "entity_id": 1041782,
+   "nombre": "Beanie Sprout",
+   "npc_type": 11817,
+   "sprite": 43530,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    214,
+    141
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 166
+  },
+  {
+   "entity_id": 1041783,
+   "nombre": "Beanie Sprout",
+   "npc_type": 11817,
+   "sprite": 43530,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    199,
+    151
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 166
+  },
+  {
+   "entity_id": 1041784,
+   "nombre": "Beanie Sprout",
+   "npc_type": 11817,
+   "sprite": 43530,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    202,
+    146
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 166
+  },
+  {
+   "entity_id": 1041785,
+   "nombre": "Graystone Sprout",
+   "npc_type": 11818,
+   "sprite": 43580,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    271,
+    157
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 167
+  },
+  {
+   "entity_id": 1041786,
+   "nombre": "Graystone Sprout",
+   "npc_type": 11818,
+   "sprite": 43580,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    258,
+    152
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 167
+  },
+  {
+   "entity_id": 1041787,
+   "nombre": "Graystone Sprout",
+   "npc_type": 11818,
+   "sprite": 43580,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    254,
+    151
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 167
+  },
+  {
+   "entity_id": 1041788,
+   "nombre": "Graystone Sprout",
+   "npc_type": 11818,
+   "sprite": 43580,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    263,
+    164
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 167
+  },
+  {
+   "entity_id": 1041789,
+   "nombre": "Graystone Sprout",
+   "npc_type": 11818,
+   "sprite": 43580,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    252,
+    163
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 167
+  },
+  {
+   "entity_id": 1041790,
+   "nombre": "Graystone Sprout",
+   "npc_type": 11818,
+   "sprite": 43580,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    255,
+    154
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 167
+  },
+  {
+   "entity_id": 1041791,
+   "nombre": "Graystone Sprout",
+   "npc_type": 11818,
+   "sprite": 43580,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    239,
+    143
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 167
+  },
+  {
+   "entity_id": 1041792,
+   "nombre": "Graystone Sprout",
+   "npc_type": 11818,
+   "sprite": 43580,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    252,
+    141
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 167
+  },
+  {
+   "entity_id": 1041793,
+   "nombre": "Graystone Sprout",
+   "npc_type": 11818,
+   "sprite": 43580,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    246,
+    145
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 167
+  },
+  {
+   "entity_id": 1041794,
+   "nombre": "Graystone Sprout",
+   "npc_type": 11818,
+   "sprite": 43580,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    246,
+    140
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 167
+  },
+  {
+   "entity_id": 1041795,
+   "nombre": "Graystone Sprout",
+   "npc_type": 11818,
+   "sprite": 43580,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    282,
+    148
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 167
+  },
+  {
+   "entity_id": 1041796,
+   "nombre": "Graystone Sprout",
+   "npc_type": 11818,
+   "sprite": 43580,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    279,
+    149
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 167
+  },
+  {
+   "entity_id": 1041797,
+   "nombre": "Graystone Sprout",
+   "npc_type": 11818,
+   "sprite": 43580,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    273,
+    143
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 167
+  },
+  {
+   "entity_id": 1041798,
+   "nombre": "Graystone Sprout",
+   "npc_type": 11818,
+   "sprite": 43580,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    278,
+    147
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 167
+  },
+  {
+   "entity_id": 1041799,
+   "nombre": "Graystone Sprout",
+   "npc_type": 11818,
+   "sprite": 43580,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    283,
+    139
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 167
+  },
+  {
+   "entity_id": 1041800,
+   "nombre": "Graystone Sprout",
+   "npc_type": 11818,
+   "sprite": 43580,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    285,
+    132
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 167
+  },
+  {
+   "entity_id": 1041801,
+   "nombre": "Graystone Sprout",
+   "npc_type": 11818,
+   "sprite": 43580,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    288,
+    133
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 167
+  },
+  {
+   "entity_id": 1041802,
+   "nombre": "Graystone Sprout",
+   "npc_type": 11818,
+   "sprite": 43580,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    281,
+    127
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 167
+  },
+  {
+   "entity_id": 1041803,
+   "nombre": "Graystone Sprout",
+   "npc_type": 11818,
+   "sprite": 43580,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    278,
+    140
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 167
+  },
+  {
+   "entity_id": 1041804,
+   "nombre": "Graystone Sprout",
+   "npc_type": 11818,
+   "sprite": 43580,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    271,
+    121
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 167
+  },
+  {
+   "entity_id": 1041805,
+   "nombre": "Brown Shoe Detec",
+   "npc_type": 11819,
+   "sprite": 43601,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    287,
+    42
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 168
+  },
+  {
+   "entity_id": 1041806,
+   "nombre": "Brown Shoe Detec",
+   "npc_type": 11819,
+   "sprite": 43601,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    292,
+    52
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 168
+  },
+  {
+   "entity_id": 1041807,
+   "nombre": "Brown Shoe Detec",
+   "npc_type": 11819,
+   "sprite": 43601,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    274,
+    48
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 168
+  },
+  {
+   "entity_id": 1041808,
+   "nombre": "Brown Shoe Detec",
+   "npc_type": 11819,
+   "sprite": 43601,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    264,
+    35
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 168
+  },
+  {
+   "entity_id": 1041809,
+   "nombre": "Brown Shoe Detec",
+   "npc_type": 11819,
+   "sprite": 43601,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    274,
+    39
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 168
+  },
+  {
+   "entity_id": 1041810,
+   "nombre": "Brown Shoe Detec",
+   "npc_type": 11819,
+   "sprite": 43601,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    256,
+    42
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 168
+  },
+  {
+   "entity_id": 1041811,
+   "nombre": "Brown Shoe Detec",
+   "npc_type": 11819,
+   "sprite": 43601,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    251,
+    53
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 168
+  },
+  {
+   "entity_id": 1041812,
+   "nombre": "Brown Shoe Detec",
+   "npc_type": 11819,
+   "sprite": 43601,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    253,
+    51
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 168
+  },
+  {
+   "entity_id": 1041813,
+   "nombre": "Brown Shoe Detec",
+   "npc_type": 11819,
+   "sprite": 43601,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    263,
+    50
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 168
+  },
+  {
+   "entity_id": 1041814,
+   "nombre": "Brown Shoe Detec",
+   "npc_type": 11819,
+   "sprite": 43601,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    268,
+    41
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 168
+  },
+  {
+   "entity_id": 1041815,
+   "nombre": "Brown Shoe Detec",
+   "npc_type": 11819,
+   "sprite": 43601,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    241,
+    60
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 168
+  },
+  {
+   "entity_id": 1041816,
+   "nombre": "Brown Shoe Detec",
+   "npc_type": 11819,
+   "sprite": 43601,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    235,
+    70
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 168
+  },
+  {
+   "entity_id": 1041817,
+   "nombre": "Brown Shoe Detec",
+   "npc_type": 11819,
+   "sprite": 43601,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    225,
+    76
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 168
+  },
+  {
+   "entity_id": 1041818,
+   "nombre": "Brown Shoe Detec",
+   "npc_type": 11819,
+   "sprite": 43601,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    236,
+    76
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 168
+  },
+  {
+   "entity_id": 1041819,
+   "nombre": "Brown Shoe Detec",
+   "npc_type": 11819,
+   "sprite": 43601,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    228,
+    73
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 168
+  },
+  {
+   "entity_id": 1041820,
+   "nombre": "Brown Shoe Detec",
+   "npc_type": 11819,
+   "sprite": 43601,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    236,
+    86
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 168
+  },
+  {
+   "entity_id": 1041821,
+   "nombre": "Brown Shoe Detec",
+   "npc_type": 11819,
+   "sprite": 43601,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    260,
+    87
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 168
+  },
+  {
+   "entity_id": 1041822,
+   "nombre": "Brown Shoe Detec",
+   "npc_type": 11819,
+   "sprite": 43601,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    251,
+    84
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 168
+  },
+  {
+   "entity_id": 1041823,
+   "nombre": "Brown Shoe Detec",
+   "npc_type": 11819,
+   "sprite": 43601,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    241,
+    84
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 168
+  },
+  {
+   "entity_id": 1041824,
+   "nombre": "Brown Shoe Detec",
+   "npc_type": 11819,
+   "sprite": 43601,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    247,
+    81
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 168
+  },
+  {
+   "entity_id": 1041825,
+   "nombre": "Purple Shoe Dete",
+   "npc_type": 11820,
+   "sprite": 43602,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    240,
+    31
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 169
+  },
+  {
+   "entity_id": 1041826,
+   "nombre": "Purple Shoe Dete",
+   "npc_type": 11820,
+   "sprite": 43602,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    242,
+    42
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 169
+  },
+  {
+   "entity_id": 1041827,
+   "nombre": "Purple Shoe Dete",
+   "npc_type": 11820,
+   "sprite": 43602,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    256,
+    28
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 169
+  },
+  {
+   "entity_id": 1041828,
+   "nombre": "Purple Shoe Dete",
+   "npc_type": 11820,
+   "sprite": 43602,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    244,
+    29
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 169
+  },
+  {
+   "entity_id": 1041829,
+   "nombre": "Purple Shoe Dete",
+   "npc_type": 11820,
+   "sprite": 43602,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    244,
+    30
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 169
+  },
+  {
+   "entity_id": 1041830,
+   "nombre": "Purple Shoe Dete",
+   "npc_type": 11820,
+   "sprite": 43602,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    234,
+    21
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 169
+  },
+  {
+   "entity_id": 1041831,
+   "nombre": "Purple Shoe Dete",
+   "npc_type": 11820,
+   "sprite": 43602,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    208,
+    21
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 169
+  },
+  {
+   "entity_id": 1041832,
+   "nombre": "Purple Shoe Dete",
+   "npc_type": 11820,
+   "sprite": 43602,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    226,
+    24
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 169
+  },
+  {
+   "entity_id": 1041833,
+   "nombre": "Purple Shoe Dete",
+   "npc_type": 11820,
+   "sprite": 43602,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    228,
+    34
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 169
+  },
+  {
+   "entity_id": 1041834,
+   "nombre": "Purple Shoe Dete",
+   "npc_type": 11820,
+   "sprite": 43602,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    216,
+    25
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 169
+  },
+  {
+   "entity_id": 1041835,
+   "nombre": "Purple Shoe Dete",
+   "npc_type": 11820,
+   "sprite": 43602,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    193,
+    26
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 169
+  },
+  {
+   "entity_id": 1041836,
+   "nombre": "Purple Shoe Dete",
+   "npc_type": 11820,
+   "sprite": 43602,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    205,
+    24
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 169
+  },
+  {
+   "entity_id": 1041837,
+   "nombre": "Purple Shoe Dete",
+   "npc_type": 11820,
+   "sprite": 43602,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    194,
+    22
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 169
+  },
+  {
+   "entity_id": 1041838,
+   "nombre": "Purple Shoe Dete",
+   "npc_type": 11820,
+   "sprite": 43602,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    206,
+    29
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 169
+  },
+  {
+   "entity_id": 1041839,
+   "nombre": "Purple Shoe Dete",
+   "npc_type": 11820,
+   "sprite": 43602,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    206,
+    20
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 169
+  },
+  {
+   "entity_id": 1041840,
+   "nombre": "Purple Shoe Dete",
+   "npc_type": 11820,
+   "sprite": 43602,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    173,
+    34
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 169
+  },
+  {
+   "entity_id": 1041841,
+   "nombre": "Purple Shoe Dete",
+   "npc_type": 11820,
+   "sprite": 43602,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    173,
+    19
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 169
+  },
+  {
+   "entity_id": 1041842,
+   "nombre": "Purple Shoe Dete",
+   "npc_type": 11820,
+   "sprite": 43602,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    175,
+    35
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 169
+  },
+  {
+   "entity_id": 1041843,
+   "nombre": "Purple Shoe Dete",
+   "npc_type": 11820,
+   "sprite": 43602,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    168,
+    25
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 169
+  },
+  {
+   "entity_id": 1041844,
+   "nombre": "Purple Shoe Dete",
+   "npc_type": 11820,
+   "sprite": 43602,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    187,
+    33
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 169
+  },
+  {
+   "entity_id": 1041845,
+   "nombre": "Lakeside Doll",
+   "npc_type": 11821,
+   "sprite": 43570,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    213,
+    100
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 171
+  },
+  {
+   "entity_id": 1041846,
+   "nombre": "Lakeside Doll",
+   "npc_type": 11821,
+   "sprite": 43570,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    210,
+    113
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 171
+  },
+  {
+   "entity_id": 1041847,
+   "nombre": "Lakeside Doll",
+   "npc_type": 11821,
+   "sprite": 43570,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    212,
+    103
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 171
+  },
+  {
+   "entity_id": 1041848,
+   "nombre": "Lakeside Doll",
+   "npc_type": 11821,
+   "sprite": 43570,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    211,
+    97
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 171
+  },
+  {
+   "entity_id": 1041849,
+   "nombre": "Lakeside Doll",
+   "npc_type": 11821,
+   "sprite": 43570,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    208,
+    111
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 171
+  },
+  {
+   "entity_id": 1041850,
+   "nombre": "Lakeside Doll",
+   "npc_type": 11821,
+   "sprite": 43570,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    226,
+    124
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 171
+  },
+  {
+   "entity_id": 1041851,
+   "nombre": "Lakeside Doll",
+   "npc_type": 11821,
+   "sprite": 43570,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    215,
+    117
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 171
+  },
+  {
+   "entity_id": 1041852,
+   "nombre": "Lakeside Doll",
+   "npc_type": 11821,
+   "sprite": 43570,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    231,
+    133
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 171
+  },
+  {
+   "entity_id": 1041853,
+   "nombre": "Lakeside Doll",
+   "npc_type": 11821,
+   "sprite": 43570,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    230,
+    120
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 171
+  },
+  {
+   "entity_id": 1041854,
+   "nombre": "Lakeside Doll",
+   "npc_type": 11821,
+   "sprite": 43570,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    209,
+    115
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 171
+  },
+  {
+   "entity_id": 1041855,
+   "nombre": "Lakeside Doll",
+   "npc_type": 11821,
+   "sprite": 43570,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    248,
+    111
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 171
+  },
+  {
+   "entity_id": 1041856,
+   "nombre": "Lakeside Doll",
+   "npc_type": 11821,
+   "sprite": 43570,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    249,
+    116
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 171
+  },
+  {
+   "entity_id": 1041857,
+   "nombre": "Lakeside Doll",
+   "npc_type": 11821,
+   "sprite": 43570,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    253,
+    114
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 171
+  },
+  {
+   "entity_id": 1041858,
+   "nombre": "Lakeside Doll",
+   "npc_type": 11821,
+   "sprite": 43570,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    239,
+    130
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 171
+  },
+  {
+   "entity_id": 1041859,
+   "nombre": "Lakeside Doll",
+   "npc_type": 11821,
+   "sprite": 43570,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    260,
+    127
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 171
+  },
+  {
+   "entity_id": 1041860,
+   "nombre": "Woodsorrel Skate",
+   "npc_type": 11822,
+   "sprite": 43522,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    143,
+    128
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 171
+  },
+  {
+   "entity_id": 1041861,
+   "nombre": "Woodsorrel Skate",
+   "npc_type": 11822,
+   "sprite": 43522,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    157,
+    115
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 171
+  },
+  {
+   "entity_id": 1041862,
+   "nombre": "Woodsorrel Skate",
+   "npc_type": 11822,
+   "sprite": 43522,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    145,
+    109
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 171
+  },
+  {
+   "entity_id": 1041863,
+   "nombre": "Woodsorrel Skate",
+   "npc_type": 11822,
+   "sprite": 43522,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    150,
+    128
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 171
+  },
+  {
+   "entity_id": 1041864,
+   "nombre": "Woodsorrel Skate",
+   "npc_type": 11822,
+   "sprite": 43522,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    138,
+    119
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 171
+  },
+  {
+   "entity_id": 1041865,
+   "nombre": "Woodsorrel Skate",
+   "npc_type": 11822,
+   "sprite": 43522,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    123,
+    103
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 171
+  },
+  {
+   "entity_id": 1041866,
+   "nombre": "Woodsorrel Skate",
+   "npc_type": 11822,
+   "sprite": 43522,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    125,
+    114
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 171
+  },
+  {
+   "entity_id": 1041867,
+   "nombre": "Woodsorrel Skate",
+   "npc_type": 11822,
+   "sprite": 43522,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    138,
+    102
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 171
+  },
+  {
+   "entity_id": 1041868,
+   "nombre": "Woodsorrel Skate",
+   "npc_type": 11822,
+   "sprite": 43522,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    130,
+    104
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 171
+  },
+  {
+   "entity_id": 1041869,
+   "nombre": "Woodsorrel Skate",
+   "npc_type": 11822,
+   "sprite": 43522,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    124,
+    101
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 171
+  },
+  {
+   "entity_id": 1041870,
+   "nombre": "Woodsorrel Skate",
+   "npc_type": 11822,
+   "sprite": 43522,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    158,
+    85
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 171
+  },
+  {
+   "entity_id": 1041871,
+   "nombre": "Woodsorrel Skate",
+   "npc_type": 11822,
+   "sprite": 43522,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    132,
+    97
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 171
+  },
+  {
+   "entity_id": 1041872,
+   "nombre": "Woodsorrel Skate",
+   "npc_type": 11822,
+   "sprite": 43522,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    150,
+    81
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 171
+  },
+  {
+   "entity_id": 1041873,
+   "nombre": "Woodsorrel Skate",
+   "npc_type": 11822,
+   "sprite": 43522,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    157,
+    78
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 171
+  },
+  {
+   "entity_id": 1041874,
+   "nombre": "Woodsorrel Skate",
+   "npc_type": 11822,
+   "sprite": 43522,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    148,
+    103
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 171
+  },
+  {
+   "entity_id": 1041875,
+   "nombre": "Woodsorrel Skate",
+   "npc_type": 11822,
+   "sprite": 43522,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    172,
+    108
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 171
+  },
+  {
+   "entity_id": 1041876,
+   "nombre": "Woodsorrel Skate",
+   "npc_type": 11822,
+   "sprite": 43522,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    154,
+    103
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 171
+  },
+  {
+   "entity_id": 1041877,
+   "nombre": "Woodsorrel Skate",
+   "npc_type": 11822,
+   "sprite": 43522,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    161,
+    120
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 171
+  },
+  {
+   "entity_id": 1041878,
+   "nombre": "Woodsorrel Skate",
+   "npc_type": 11822,
+   "sprite": 43522,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    164,
+    94
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 171
+  },
+  {
+   "entity_id": 1041879,
+   "nombre": "Woodsorrel Skate",
+   "npc_type": 11822,
+   "sprite": 43522,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    171,
+    102
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 171
+  },
+  {
+   "entity_id": 1041880,
+   "nombre": "Eagle Eye Shoote",
+   "npc_type": 11823,
+   "sprite": 43536,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    131,
+    162
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 172
+  },
+  {
+   "entity_id": 1041881,
+   "nombre": "Eagle Eye Shoote",
+   "npc_type": 11823,
+   "sprite": 43536,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    118,
+    153
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 172
+  },
+  {
+   "entity_id": 1041882,
+   "nombre": "Eagle Eye Shoote",
+   "npc_type": 11823,
+   "sprite": 43536,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    129,
+    159
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 172
+  },
+  {
+   "entity_id": 1041883,
+   "nombre": "Eagle Eye Shoote",
+   "npc_type": 11823,
+   "sprite": 43536,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    122,
+    159
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 172
+  },
+  {
+   "entity_id": 1041884,
+   "nombre": "Eagle Eye Shoote",
+   "npc_type": 11823,
+   "sprite": 43536,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    117,
+    150
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 172
+  },
+  {
+   "entity_id": 1041885,
+   "nombre": "Eagle Eye Shoote",
+   "npc_type": 11823,
+   "sprite": 43536,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    94,
+    147
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 172
+  },
+  {
+   "entity_id": 1041886,
+   "nombre": "Eagle Eye Shoote",
+   "npc_type": 11823,
+   "sprite": 43536,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    101,
+    149
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 172
+  },
+  {
+   "entity_id": 1041887,
+   "nombre": "Eagle Eye Shoote",
+   "npc_type": 11823,
+   "sprite": 43536,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    112,
+    151
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 172
+  },
+  {
+   "entity_id": 1041888,
+   "nombre": "Eagle Eye Shoote",
+   "npc_type": 11823,
+   "sprite": 43536,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    90,
+    143
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 172
+  },
+  {
+   "entity_id": 1041889,
+   "nombre": "Eagle Eye Shoote",
+   "npc_type": 11823,
+   "sprite": 43536,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    99,
+    139
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 172
+  },
+  {
+   "entity_id": 1041890,
+   "nombre": "Eagle Eye Shoote",
+   "npc_type": 11823,
+   "sprite": 43536,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    71,
+    129
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 172
+  },
+  {
+   "entity_id": 1041891,
+   "nombre": "Eagle Eye Shoote",
+   "npc_type": 11823,
+   "sprite": 43536,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    89,
+    134
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 172
+  },
+  {
+   "entity_id": 1041892,
+   "nombre": "Eagle Eye Shoote",
+   "npc_type": 11823,
+   "sprite": 43536,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    73,
+    128
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 172
+  },
+  {
+   "entity_id": 1041893,
+   "nombre": "Eagle Eye Shoote",
+   "npc_type": 11823,
+   "sprite": 43536,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    84,
+    140
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 172
+  },
+  {
+   "entity_id": 1041894,
+   "nombre": "Eagle Eye Shoote",
+   "npc_type": 11823,
+   "sprite": 43536,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    85,
+    141
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 172
+  },
+  {
+   "entity_id": 1041895,
+   "nombre": "Eagle Eye Shoote",
+   "npc_type": 11823,
+   "sprite": 43536,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    66,
+    132
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 172
+  },
+  {
+   "entity_id": 1041896,
+   "nombre": "Eagle Eye Shoote",
+   "npc_type": 11823,
+   "sprite": 43536,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    61,
+    132
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 172
+  },
+  {
+   "entity_id": 1041897,
+   "nombre": "Eagle Eye Shoote",
+   "npc_type": 11823,
+   "sprite": 43536,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    67,
+    127
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 172
+  },
+  {
+   "entity_id": 1041898,
+   "nombre": "Eagle Eye Shoote",
+   "npc_type": 11823,
+   "sprite": 43536,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    75,
+    132
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 172
+  },
+  {
+   "entity_id": 1041899,
+   "nombre": "Eagle Eye Shoote",
+   "npc_type": 11823,
+   "sprite": 43536,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    63,
+    127
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 172
+  },
+  {
+   "entity_id": 1041900,
+   "nombre": "Violet Shooter",
+   "npc_type": 11824,
+   "sprite": 43589,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    64,
+    161
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 173
+  },
+  {
+   "entity_id": 1041901,
+   "nombre": "Violet Shooter",
+   "npc_type": 11824,
+   "sprite": 43589,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    80,
+    167
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 173
+  },
+  {
+   "entity_id": 1041902,
+   "nombre": "Violet Shooter",
+   "npc_type": 11824,
+   "sprite": 43589,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    64,
+    163
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 173
+  },
+  {
+   "entity_id": 1041903,
+   "nombre": "Violet Shooter",
+   "npc_type": 11824,
+   "sprite": 43589,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    66,
+    161
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 173
+  },
+  {
+   "entity_id": 1041904,
+   "nombre": "Violet Shooter",
+   "npc_type": 11824,
+   "sprite": 43589,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    69,
+    167
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 173
+  },
+  {
+   "entity_id": 1041905,
+   "nombre": "Violet Shooter",
+   "npc_type": 11824,
+   "sprite": 43589,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    64,
+    150
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 173
+  },
+  {
+   "entity_id": 1041906,
+   "nombre": "Violet Shooter",
+   "npc_type": 11824,
+   "sprite": 43589,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    64,
+    152
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 173
+  },
+  {
+   "entity_id": 1041907,
+   "nombre": "Violet Shooter",
+   "npc_type": 11824,
+   "sprite": 43589,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    48,
+    146
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 173
+  },
+  {
+   "entity_id": 1041908,
+   "nombre": "Violet Shooter",
+   "npc_type": 11824,
+   "sprite": 43589,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    61,
+    160
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 173
+  },
+  {
+   "entity_id": 1041909,
+   "nombre": "Violet Shooter",
+   "npc_type": 11824,
+   "sprite": 43589,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    52,
+    151
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 173
+  },
+  {
+   "entity_id": 1041910,
+   "nombre": "Violet Shooter",
+   "npc_type": 11824,
+   "sprite": 43589,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    26,
+    140
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 173
+  },
+  {
+   "entity_id": 1041911,
+   "nombre": "Violet Shooter",
+   "npc_type": 11824,
+   "sprite": 43589,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    26,
+    135
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 173
+  },
+  {
+   "entity_id": 1041912,
+   "nombre": "Violet Shooter",
+   "npc_type": 11824,
+   "sprite": 43589,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    27,
+    137
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 173
+  },
+  {
+   "entity_id": 1041913,
+   "nombre": "Violet Shooter",
+   "npc_type": 11824,
+   "sprite": 43589,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    33,
+    136
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 173
+  },
+  {
+   "entity_id": 1041914,
+   "nombre": "Violet Shooter",
+   "npc_type": 11824,
+   "sprite": 43589,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    18,
+    145
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 173
+  },
+  {
+   "entity_id": 1041915,
+   "nombre": "Violet Shooter",
+   "npc_type": 11824,
+   "sprite": 43589,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    20,
+    146
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 173
+  },
+  {
+   "entity_id": 1041916,
+   "nombre": "Violet Shooter",
+   "npc_type": 11824,
+   "sprite": 43589,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    14,
+    139
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 173
+  },
+  {
+   "entity_id": 1041917,
+   "nombre": "Violet Shooter",
+   "npc_type": 11824,
+   "sprite": 43589,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    21,
+    146
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 173
+  },
+  {
+   "entity_id": 1041918,
+   "nombre": "Violet Shooter",
+   "npc_type": 11824,
+   "sprite": 43589,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    8,
+    147
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 173
+  },
+  {
+   "entity_id": 1041919,
+   "nombre": "Violet Shooter",
+   "npc_type": 11824,
+   "sprite": 43589,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    4,
+    135
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 173
+  },
+  {
+   "entity_id": 1041920,
+   "nombre": "Mouthy Natkle",
+   "npc_type": 11825,
+   "sprite": 43531,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    265,
+    163
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 174
+  },
+  {
+   "entity_id": 1041921,
+   "nombre": "Commander Greens",
+   "npc_type": 11826,
+   "sprite": 43572,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    158,
+    115
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 176
+  },
+  {
+   "entity_id": 1041922,
+   "nombre": "Indiana Bette",
+   "npc_type": 11827,
+   "sprite": 43537,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    52,
+    121
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 179
+  }
+ ],
+ "recursos": [
+  {
+   "entity_id": 116575,
+   "capa": 2,
+   "px": [
+    879,
+    5173
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 116576,
+   "capa": 2,
+   "px": [
+    3776,
+    5215
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60481,
+   "cola": "00000000000000",
+   "nombre_visible": "Thistle Sage(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Porcupia Foilage",
+    "Thistle Sage(S)"
+   ]
+  },
+  {
+   "entity_id": 116577,
+   "capa": 0,
+   "px": [
+    3904,
+    5311
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60482,
+   "cola": "00000000000000",
+   "nombre_visible": "Thistle Sage(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material": "Thistle Sage(M)"
+  },
+  {
+   "entity_id": 116578,
+   "capa": 0,
+   "px": [
+    4960,
+    5311
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60483,
+   "cola": "00000000000000",
+   "nombre_visible": "Thistle Sage(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material": "Thistle Sage(L)"
+  },
+  {
+   "entity_id": 116579,
+   "capa": 0,
+   "px": [
+    3970,
+    5319
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60481,
+   "cola": "00000000000000",
+   "nombre_visible": "Thistle Sage(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Porcupia Foilage",
+    "Thistle Sage(S)"
+   ]
+  },
+  {
+   "entity_id": 116580,
+   "capa": 2,
+   "px": [
+    4866,
+    5383
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60481,
+   "cola": "00000000000000",
+   "nombre_visible": "Thistle Sage(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Porcupia Foilage",
+    "Thistle Sage(S)"
+   ]
+  },
+  {
+   "entity_id": 116581,
+   "capa": 0,
+   "px": [
+    4194,
+    5127
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60481,
+   "cola": "00000000000000",
+   "nombre_visible": "Thistle Sage(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Porcupia Foilage",
+    "Thistle Sage(S)"
+   ]
+  },
+  {
+   "entity_id": 116582,
+   "capa": 0,
+   "px": [
+    4450,
+    5415
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60482,
+   "cola": "00000000000000",
+   "nombre_visible": "Thistle Sage(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material": "Thistle Sage(M)"
+  },
+  {
+   "entity_id": 116583,
+   "capa": 2,
+   "px": [
+    4546,
+    5191
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60482,
+   "cola": "00000000000000",
+   "nombre_visible": "Thistle Sage(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material": "Thistle Sage(M)"
+  },
+  {
+   "entity_id": 116584,
+   "capa": 0,
+   "px": [
+    4514,
+    5415
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60482,
+   "cola": "00000000000000",
+   "nombre_visible": "Thistle Sage(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material": "Thistle Sage(M)"
+  },
+  {
+   "entity_id": 116585,
+   "capa": 2,
+   "px": [
+    3714,
+    5191
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60483,
+   "cola": "00000000000000",
+   "nombre_visible": "Thistle Sage(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material": "Thistle Sage(L)"
+  },
+  {
+   "entity_id": 116586,
+   "capa": 0,
+   "px": [
+    4162,
+    5415
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60483,
+   "cola": "00000000000000",
+   "nombre_visible": "Thistle Sage(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material": "Thistle Sage(L)"
+  },
+  {
+   "entity_id": 116587,
+   "capa": 2,
+   "px": [
+    4802,
+    5383
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60483,
+   "cola": "00000000000000",
+   "nombre_visible": "Thistle Sage(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material": "Thistle Sage(L)"
+  },
+  {
+   "entity_id": 116588,
+   "capa": 2,
+   "px": [
+    8544,
+    5407
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60477,
+   "cola": "00000000000000",
+   "nombre_visible": "Tamanka Maculata",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000004",
+   "material_posibles": [
+    "Tamanka Maculata",
+    "Tutank Fish"
+   ]
+  },
+  {
+   "entity_id": 116589,
+   "capa": 0,
+   "px": [
+    8640,
+    5394
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60477,
+   "cola": "00000000000000",
+   "nombre_visible": "Tamanka Maculata",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004",
+   "material_posibles": [
+    "Tamanka Maculata",
+    "Tutank Fish"
+   ]
+  },
+  {
+   "entity_id": 116590,
+   "capa": 0,
+   "px": [
+    8736,
+    5394
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60477,
+   "cola": "00000000000000",
+   "nombre_visible": "Tamanka Maculata",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004",
+   "material_posibles": [
+    "Tamanka Maculata",
+    "Tutank Fish"
+   ]
+  },
+  {
+   "entity_id": 116591,
+   "capa": 2,
+   "px": [
+    8896,
+    5266
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60477,
+   "cola": "00000000000000",
+   "nombre_visible": "Tamanka Maculata",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000004",
+   "material_posibles": [
+    "Tamanka Maculata",
+    "Tutank Fish"
+   ]
+  },
+  {
+   "entity_id": 116592,
+   "capa": 0,
+   "px": [
+    8800,
+    5362
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60477,
+   "cola": "00000000000000",
+   "nombre_visible": "Tamanka Maculata",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004",
+   "material_posibles": [
+    "Tamanka Maculata",
+    "Tutank Fish"
+   ]
+  },
+  {
+   "entity_id": 116593,
+   "capa": 0,
+   "px": [
+    8896,
+    5330
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60477,
+   "cola": "00000000000000",
+   "nombre_visible": "Tamanka Maculata",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004",
+   "material_posibles": [
+    "Tamanka Maculata",
+    "Tutank Fish"
+   ]
+  },
+  {
+   "entity_id": 116594,
+   "capa": 2,
+   "px": [
+    8992,
+    5266
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60477,
+   "cola": "00000000000000",
+   "nombre_visible": "Tamanka Maculata",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000004",
+   "material_posibles": [
+    "Tamanka Maculata",
+    "Tutank Fish"
+   ]
+  },
+  {
+   "entity_id": 116595,
+   "capa": 2,
+   "px": [
+    9024,
+    5170
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60477,
+   "cola": "00000000000000",
+   "nombre_visible": "Tamanka Maculata",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000004",
+   "material_posibles": [
+    "Tamanka Maculata",
+    "Tutank Fish"
+   ]
+  },
+  {
+   "entity_id": 116596,
+   "capa": 0,
+   "px": [
+    9088,
+    5138
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60477,
+   "cola": "00000000000000",
+   "nombre_visible": "Tamanka Maculata",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004",
+   "material_posibles": [
+    "Tamanka Maculata",
+    "Tutank Fish"
+   ]
+  },
+  {
+   "entity_id": 116597,
+   "capa": 2,
+   "px": [
+    9280,
+    5138
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60477,
+   "cola": "00000000000000",
+   "nombre_visible": "Tamanka Maculata",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000004",
+   "material_posibles": [
+    "Tamanka Maculata",
+    "Tutank Fish"
+   ]
+  },
+  {
+   "entity_id": 116598,
+   "capa": 2,
+   "px": [
+    9216,
+    5202
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60477,
+   "cola": "00000000000000",
+   "nombre_visible": "Tamanka Maculata",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000004",
+   "material_posibles": [
+    "Tamanka Maculata",
+    "Tutank Fish"
+   ]
+  },
+  {
+   "entity_id": 116599,
+   "capa": 0,
+   "px": [
+    9152,
+    5202
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60477,
+   "cola": "00000000000000",
+   "nombre_visible": "Tamanka Maculata",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004",
+   "material_posibles": [
+    "Tamanka Maculata",
+    "Tutank Fish"
+   ]
+  },
+  {
+   "entity_id": 116600,
+   "capa": 0,
+   "px": [
+    4945,
+    4440
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60484,
+   "cola": "00000000000000",
+   "nombre_visible": "Maple(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material_posibles": [
+    "Crimson Maplewood",
+    "Maple(S)"
+   ]
+  },
+  {
+   "entity_id": 116601,
+   "capa": 2,
+   "px": [
+    5257,
+    3840
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60485,
+   "cola": "00000000000000",
+   "nombre_visible": "Maple(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001",
+   "material": "Maple(M)"
+  },
+  {
+   "entity_id": 116602,
+   "capa": 0,
+   "px": [
+    5187,
+    3889
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60486,
+   "cola": "00000000000000",
+   "nombre_visible": "Maple(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material": "Maple(L)"
+  },
+  {
+   "entity_id": 116603,
+   "capa": 0,
+   "px": [
+    4373,
+    4235
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60484,
+   "cola": "00000000000000",
+   "nombre_visible": "Maple(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material_posibles": [
+    "Crimson Maplewood",
+    "Maple(S)"
+   ]
+  },
+  {
+   "entity_id": 116604,
+   "capa": 0,
+   "px": [
+    4120,
+    4079
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60484,
+   "cola": "00000000000000",
+   "nombre_visible": "Maple(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material_posibles": [
+    "Crimson Maplewood",
+    "Maple(S)"
+   ]
+  },
+  {
+   "entity_id": 116605,
+   "capa": 0,
+   "px": [
+    5052,
+    3943
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60484,
+   "cola": "00000000000000",
+   "nombre_visible": "Maple(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material_posibles": [
+    "Crimson Maplewood",
+    "Maple(S)"
+   ]
+  },
+  {
+   "entity_id": 116606,
+   "capa": 0,
+   "px": [
+    3884,
+    4103
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60486,
+   "cola": "00000000000000",
+   "nombre_visible": "Maple(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material": "Maple(L)"
+  },
+  {
+   "entity_id": 116607,
+   "capa": 0,
+   "px": [
+    4643,
+    4331
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60486,
+   "cola": "00000000000000",
+   "nombre_visible": "Maple(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material": "Maple(L)"
+  },
+  {
+   "entity_id": 116608,
+   "capa": 0,
+   "px": [
+    4803,
+    4445
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60486,
+   "cola": "00000000000000",
+   "nombre_visible": "Maple(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material": "Maple(L)"
+  },
+  {
+   "entity_id": 116609,
+   "capa": 2,
+   "px": [
+    4180,
+    4193
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60485,
+   "cola": "00000000000000",
+   "nombre_visible": "Maple(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001",
+   "material": "Maple(M)"
+  },
+  {
+   "entity_id": 116610,
+   "capa": 2,
+   "px": [
+    4935,
+    3926
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60485,
+   "cola": "00000000000000",
+   "nombre_visible": "Maple(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001",
+   "material": "Maple(M)"
+  },
+  {
+   "entity_id": 116611,
+   "capa": 0,
+   "px": [
+    4786,
+    4063
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60485,
+   "cola": "00000000000000",
+   "nombre_visible": "Maple(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001",
+   "material": "Maple(M)"
+  },
+  {
+   "entity_id": 116612,
+   "capa": 0,
+   "px": [
+    9440,
+    1887
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60478,
+   "cola": "00000000000000",
+   "nombre_visible": "Meteor Mine(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material_posibles": [
+    "Meteor Mine(S)",
+    "Starcore Ore"
+   ]
+  },
+  {
+   "entity_id": 116613,
+   "capa": 0,
+   "px": [
+    9472,
+    1855
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60479,
+   "cola": "00000000000000",
+   "nombre_visible": "Meteor Mine(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material": "Meteor Mine(M)"
+  },
+  {
+   "entity_id": 116614,
+   "capa": 0,
+   "px": [
+    9472,
+    1631
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60480,
+   "cola": "00000000000000",
+   "nombre_visible": "Meteor Mine(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material": "Meteor Mine(L)"
+  },
+  {
+   "entity_id": 116615,
+   "capa": 2,
+   "px": [
+    8719,
+    2060
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60478,
+   "cola": "00000000000000",
+   "nombre_visible": "Meteor Mine(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002",
+   "material_posibles": [
+    "Meteor Mine(S)",
+    "Starcore Ore"
+   ]
+  },
+  {
+   "entity_id": 116616,
+   "capa": 2,
+   "px": [
+    9103,
+    1932
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60478,
+   "cola": "00000000000000",
+   "nombre_visible": "Meteor Mine(S)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002",
+   "material_posibles": [
+    "Meteor Mine(S)",
+    "Starcore Ore"
+   ]
+  },
+  {
+   "entity_id": 116617,
+   "capa": 0,
+   "px": [
+    8879,
+    2060
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60478,
+   "cola": "00000000000000",
+   "nombre_visible": "Meteor Mine(S)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material_posibles": [
+    "Meteor Mine(S)",
+    "Starcore Ore"
+   ]
+  },
+  {
+   "entity_id": 116618,
+   "capa": 0,
+   "px": [
+    9103,
+    2060
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60480,
+   "cola": "00000000000000",
+   "nombre_visible": "Meteor Mine(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material": "Meteor Mine(L)"
+  },
+  {
+   "entity_id": 116619,
+   "capa": 2,
+   "px": [
+    8655,
+    1964
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60480,
+   "cola": "00000000000000",
+   "nombre_visible": "Meteor Mine(L)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002",
+   "material": "Meteor Mine(L)"
+  },
+  {
+   "entity_id": 116620,
+   "capa": 0,
+   "px": [
+    9071,
+    1900
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60480,
+   "cola": "00000000000000",
+   "nombre_visible": "Meteor Mine(L)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material": "Meteor Mine(L)"
+  },
+  {
+   "entity_id": 116621,
+   "capa": 0,
+   "px": [
+    9135,
+    2028
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60479,
+   "cola": "00000000000000",
+   "nombre_visible": "Meteor Mine(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material": "Meteor Mine(M)"
+  },
+  {
+   "entity_id": 116622,
+   "capa": 0,
+   "px": [
+    8655,
+    2028
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60479,
+   "cola": "00000000000000",
+   "nombre_visible": "Meteor Mine(M)",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002",
+   "material": "Meteor Mine(M)"
+  },
+  {
+   "entity_id": 116623,
+   "capa": 2,
+   "px": [
+    8847,
+    2028
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60479,
+   "cola": "00000000000000",
+   "nombre_visible": "Meteor Mine(M)",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002",
+   "material": "Meteor Mine(M)"
+  },
+  {
+   "entity_id": 116624,
+   "capa": 0,
+   "px": [
+    2816,
+    767
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60476,
+   "cola": "00000000000000",
+   "nombre_visible": "Papyrus",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Paper Reed",
+    "Papyrus"
+   ]
+  },
+  {
+   "entity_id": 116625,
+   "capa": 0,
+   "px": [
+    2867,
+    760
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60476,
+   "cola": "00000000000000",
+   "nombre_visible": "Papyrus",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Paper Reed",
+    "Papyrus"
+   ]
+  },
+  {
+   "entity_id": 116626,
+   "capa": 0,
+   "px": [
+    2707,
+    568
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60476,
+   "cola": "00000000000000",
+   "nombre_visible": "Papyrus",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Paper Reed",
+    "Papyrus"
+   ]
+  },
+  {
+   "entity_id": 116627,
+   "capa": 2,
+   "px": [
+    2227,
+    536
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60476,
+   "cola": "00000000000000",
+   "nombre_visible": "Papyrus",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Paper Reed",
+    "Papyrus"
+   ]
+  },
+  {
+   "entity_id": 116628,
+   "capa": 0,
+   "px": [
+    2387,
+    472
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60476,
+   "cola": "00000000000000",
+   "nombre_visible": "Papyrus",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Paper Reed",
+    "Papyrus"
+   ]
+  },
+  {
+   "entity_id": 116629,
+   "capa": 0,
+   "px": [
+    2579,
+    984
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60476,
+   "cola": "00000000000000",
+   "nombre_visible": "Papyrus",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Paper Reed",
+    "Papyrus"
+   ]
+  },
+  {
+   "entity_id": 116630,
+   "capa": 2,
+   "px": [
+    2451,
+    856
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60476,
+   "cola": "00000000000000",
+   "nombre_visible": "Papyrus",
+   "estado": 2,
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Paper Reed",
+    "Papyrus"
+   ]
+  },
+  {
+   "entity_id": 116631,
+   "capa": 0,
+   "px": [
+    2387,
+    1112
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60476,
+   "cola": "00000000000000",
+   "nombre_visible": "Papyrus",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Paper Reed",
+    "Papyrus"
+   ]
+  },
+  {
+   "entity_id": 116632,
+   "capa": 0,
+   "px": [
+    1843,
+    472
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60476,
+   "cola": "00000000000000",
+   "nombre_visible": "Papyrus",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Paper Reed",
+    "Papyrus"
+   ]
+  },
+  {
+   "entity_id": 116633,
+   "capa": 0,
+   "px": [
+    2643,
+    728
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60476,
+   "cola": "00000000000000",
+   "nombre_visible": "Papyrus",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Paper Reed",
+    "Papyrus"
+   ]
+  },
+  {
+   "entity_id": 116634,
+   "capa": 0,
+   "px": [
+    2419,
+    856
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60476,
+   "cola": "00000000000000",
+   "nombre_visible": "Papyrus",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Paper Reed",
+    "Papyrus"
+   ]
+  },
+  {
+   "entity_id": 116635,
+   "capa": 0,
+   "px": [
+    2195,
+    760
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60476,
+   "cola": "00000000000000",
+   "nombre_visible": "Papyrus",
+   "estado": 0,
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003",
+   "material_posibles": [
+    "Paper Reed",
+    "Papyrus"
+   ]
+  },
+  {
+   "entity_id": 116636,
+   "capa": 0,
+   "px": [
+    256,
+    735
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 116637,
+   "capa": 0,
+   "px": [
+    7053,
+    3328
+   ],
+   "medio": "006f70706572284d2900000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60051,
+   "cola": "00002280140000",
+   "que_es": "Aurora Totem"
+  },
+  {
+   "entity_id": 116638,
+   "capa": 0,
+   "px": [
+    7620,
+    3063
+   ],
+   "medio": "00000000180000000000000000000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60052,
+   "cola": "00002280140000",
+   "que_es": "Dark City Totem"
+  },
+  {
+   "entity_id": 116639,
+   "capa": 0,
+   "px": [
+    7441,
+    3146
+   ],
+   "medio": "006f70706572284d2900000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60053,
+   "cola": "00002280140000",
+   "que_es": "Iron Totem"
+  },
+  {
+   "entity_id": 116640,
+   "capa": 0,
+   "px": [
+    7250,
+    3251
+   ],
+   "medio": "000000ba156f77650000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60054,
+   "cola": "00002280140000",
+   "que_es": "Breeze Totem"
+  }
+ ]
+}

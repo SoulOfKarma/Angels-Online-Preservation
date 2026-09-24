@@ -149,7 +149,7 @@
   ],
   "30": [
    {
-    "entity": 101500,
+    "entity": 101425,
     "tile": [
      3,
      151
@@ -160,7 +160,7 @@
      38
     ],
     "dibujar": false,
-    "nota": "Cryptic Moon Swamp -> Dense Forest. El tornado ya viene en la plantilla; de los cuatro capturados -- (14,6), (3,151), (239,13) y (230,156) -- se usa el de (3,151), que es el que queda junto al punto de llegada (10,154) y el que el usuario situo 'por 4,150'. La llegada en Dense Forest va AL LADO del tornado de (245,35), no encima, para no hacer bucle.",
+    "nota": "Cryptic Moon Swamp -> Dense Forest. El tornado ya viene en la plantilla; de los cuatro capturados -- (14,6), (3,151), (239,13) y (230,156) -- se usa el de (3,151), que es el que queda junto al punto de llegada (10,154) y el que el usuario situo 'por 4,150'. La llegada en Dense Forest va AL LADO del tornado de (245,35), no encima, para no hacer bucle. CORREGIDO: este portal llevaba escrita la entidad 101500, que no es la del tornado que hay en esa casilla. La buena es la 101425, sacada de la plantilla del mapa. Funcionaba igual porque _portal_en busca por CASILLA y no por entidad, asi que el error estaba latente.",
     "preguntar": false
    },
    {
@@ -178,11 +178,27 @@
     "dibujar": false,
     "preguntar": false,
     "nota": "Cryptic Moon Swamp -> River Valley por el tornado 101426, el del noreste. Cruzado dos veces: los primeros tramos acabaron en (240,14) y (241,12), a una y dos casillas. Las llegadas fueron (20,157) y (26,162); se usa la primera. LOS DOS SENTIDOS MEDIDOS. A Cryptic le siguen faltando los tornados 101424 en (14,6) y 121587 en (230,156)."
+   },
+   {
+    "entity": 121587,
+    "tile": [
+     230,
+     156
+    ],
+    "destino": 345,
+    "llegada": [
+     21,
+     18
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Cryptic Moon Swamp -> Hidden Grove por el tornado 121587, el del sureste. El MOVE_REQ salio de (229,154), a dos casillas, y su primer tramo acabo en (229,155), a una. Las llegadas fueron (21,18) y (12,12); se usa la primera. LOS DOS SENTIDOS MEDIDOS. A Cryptic Moon Swamp le queda suelto el tornado 101424 en (14,6); sus otros tres van a Dense Forest, River Valley y aqui."
    }
   ],
   "18": [
    {
-    "entity": 101600,
+    "entity": 100868,
     "tile": [
      244,
      3
@@ -193,7 +209,7 @@
      139
     ],
     "dibujar": false,
-    "nota": "Mushroom Forest -> Dense Forest. De los cuatro tornados capturados -- (5,240), (244,3), (228,243) y (15,8) -- se usa el de (244,3), que es el que el usuario situo 'por 240,7' y el que queda junto al punto de llegada (235,7). La vuelta a (14,139) es la casilla que dio, al lado del tornado de Dense Forest y no encima, para no hacer bucle.",
+    "nota": "Mushroom Forest -> Dense Forest. De los cuatro tornados capturados -- (5,240), (244,3), (228,243) y (15,8) -- se usa el de (244,3), que es el que el usuario situo 'por 240,7' y el que queda junto al punto de llegada (235,7). La vuelta a (14,139) es la casilla que dio, al lado del tornado de Dense Forest y no encima, para no hacer bucle. CORREGIDO: este portal llevaba escrita la entidad 101600, que no es la del tornado que hay en esa casilla. La buena es la 100868, sacada de la plantilla del mapa. Funcionaba igual porque _portal_en busca por CASILLA y no por entidad, asi que el error estaba latente.",
     "preguntar": false
    },
    {
@@ -1286,6 +1302,38 @@
     "dibujar": false,
     "preguntar": false,
     "nota": "Port Cherube -> Dawn Harbor. Tornado 115324; el MOVE_REQ vino de (276,35), a siete casillas, con el paso acabando en (280,29), a una. La llegada (10,81) es la que mando Celestia. LOS DOS SENTIDOS MEDIDOS. Quedan sin destino (280,162) y (21,167)."
+   },
+   {
+    "entity": 115322,
+    "tile": [
+     280,
+     162
+    ],
+    "destino": 193,
+    "llegada": [
+     46,
+     22
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Port Cherube -> Emerald Shores por el tornado 115322, el del sureste. Cruzado dos veces y las dos el primer tramo acabo en (279,161), pegado al tornado. Las llegadas fueron (46,22) y (43,24); se usa la primera. LOS DOS SENTIDOS MEDIDOS."
+   },
+   {
+    "entity": 115323,
+    "tile": [
+     21,
+     167
+    ],
+    "destino": 195,
+    "llegada": [
+     217,
+     17
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Port Cherube -> Hazelnut Ridge por el tornado 115323, el del suroeste. Cruzado dos veces y las dos el primer tramo acabo en (22,166), pegado al tornado. Las llegadas fueron (217,17) y (222,19); se usa la primera. Radio 3 y no mas: la llegada de vuelta a este mapa, (22,163), queda a CUATRO. LOS DOS SENTIDOS MEDIDOS. Con esto Port Cherube queda cerrado: sus tres tornados van a Dawn Harbor, Emerald Shores y aqui."
    }
   ],
   "318": [
@@ -2001,6 +2049,22 @@
     "dibujar": false,
     "preguntar": false,
     "nota": "Gebuer Vale -> Burning Desert. Tornado 101732. El MOVE_REQ vino de (56,9), a seis casillas, con el paso acabando en (53,4), a una. La llegada (284,170) la mando Celestia las dos veces igual."
+   },
+   {
+    "entity": 121590,
+    "tile": [
+     243,
+     137
+    ],
+    "destino": 222,
+    "llegada": [
+     24,
+     14
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Gebuer Vale -> Goldhill por el tornado 121590. El MOVE_REQ salio de (237,139), que es la propia casilla de llegada, a seis, y su primer tramo acabo en (242,138), a una. Las llegadas fueron (24,14) y (26,13); se usa la primera, que ademas es la que jumpmap.xml da para el id 184 del Angels GO!. LOS DOS SENTIDOS MEDIDOS. A Gebuer Vale le queda suelto el tornado 121591 en (240,67); sus otros dos van a Fungus Forest North y Burning Desert."
    }
   ],
   "33": [
@@ -2221,6 +2285,22 @@
     "dibujar": false,
     "preguntar": false,
     "nota": "Karang Desert -> Cactus Plain. Tornado 114588; el MOVE_REQ vino de (8,15), a tres casillas. La llegada (288,98) es la que mando Celestia. LOS DOS SENTIDOS MEDIDOS. Queda sin destino (286,173)."
+   },
+   {
+    "entity": 114589,
+    "tile": [
+     286,
+     173
+    ],
+    "destino": 170,
+    "llegada": [
+     25,
+     10
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Karang Desert -> Pharaoh Village por el tornado 114589, el del sureste. Cruzado dos veces y las dos el primer tramo acabo en (285,172), pegado al tornado. Las llegadas fueron (25,10) y (22,12); se usa la primera. LOS DOS SENTIDOS MEDIDOS. Con esto Karang Desert queda cerrado: sus dos tornados van a Cactus Plain y aqui."
    }
   ],
   "34": [
@@ -2493,6 +2573,22 @@
     "dibujar": false,
     "preguntar": false,
     "nota": "Feather Leaf Forest -> Memory Cave. Tornado 115818; el MOVE_REQ vino de (237,9), a seis casillas, con el paso acabando en (242,5), a una. La llegada (153,179) es la que mando Celestia. LOS DOS SENTIDOS MEDIDOS. Queda sin destino (6,273)."
+   },
+   {
+    "entity": 115817,
+    "tile": [
+     6,
+     273
+    ],
+    "destino": 210,
+    "llegada": [
+     278,
+     18
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Feather Leaf Forest -> Snowball Village por el tornado 115817, el del fondo del mapa; Feather Leaf Forest es de los ALTOS, llega a y=273. El MOVE_REQ salio de (11,270) con el tramo acabando en (7,272), a una casilla. Las llegadas fueron (278,18) y (274,15); se usa la primera, que ademas es la que jumpmap.xml da como \"Entrance\" del stage 210 (id 175). Radio 3 y no mas: la llegada de vuelta a este mapa, (11,270), queda a CINCO. LOS DOS SENTIDOS MEDIDOS. Con esto Feather Leaf Forest queda cerrado."
    }
   ],
   "137": [
@@ -3839,6 +3935,1340 @@
      159
     ],
     "nota": "INSTANCIA, SIN CRUZAR. El usuario avisa de que aqui esta la entrada a una instancia y jumpmap.xml lo respalda: declara un \"Instance Entry Point\" (id 153) en (264,159), a NUEVE casillas de este tornado, que ademas es el unico de los dos del mapa que cae por esa zona; el otro esta a 253. Destino y llegada van en null y _portal_en se lo salta."
+   }
+  ],
+  "170": [
+   {
+    "entity": 114651,
+    "tile": [
+     15,
+     5
+    ],
+    "destino": 169,
+    "llegada": [
+     282,
+     166
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Pharaoh Village -> Karang Desert por el tornado 114651, el del noroeste. El MOVE_REQ salio de (23,9), a ocho casillas, y su primer tramo acabo en (16,6), a una. Las dos llegadas de este mapa, (25,10) y (22,12), quedan a diez y a siete. La llegada (282,166) queda a siete del tornado de ida de Karang Desert. Pharaoh Village tiene TRES tornados y los tres estan medidos: van a Karang Desert, Niro River y Dune Oasis."
+   },
+   {
+    "entity": 114650,
+    "tile": [
+     294,
+     58
+    ],
+    "destino": 171,
+    "llegada": [
+     10,
+     168
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Pharaoh Village -> Niro River por el tornado 114650, el del este. Cruzado dos veces y las dos el primer tramo acabo JUSTO ENCIMA del tornado, en (294,58). La llegada fue (10,168) las DOS veces, sin dispersion. LOS DOS SENTIDOS MEDIDOS."
+   },
+   {
+    "entity": 114652,
+    "tile": [
+     7,
+     171
+    ],
+    "destino": 172,
+    "llegada": [
+     279,
+     13
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Pharaoh Village -> Dune Oasis por el tornado 114652, el del suroeste. Cruzado dos veces y las dos el primer tramo acabo en (8,170), pegado al tornado. La llegada fue (279,13) las DOS veces, sin dispersion. LOS DOS SENTIDOS MEDIDOS. Con esto Pharaoh Village queda cerrado."
+   }
+  ],
+  "171": [
+   {
+    "entity": 114724,
+    "tile": [
+     7,
+     173
+    ],
+    "destino": 170,
+    "llegada": [
+     292,
+     67
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Niro River -> Pharaoh Village por el tornado 114724, el del suroeste. El MOVE_REQ salio de (10,168), que es la propia casilla de llegada, a CINCO, y su primer tramo acabo en (8,172), a una. Radio 3 y no mas: con 5 la llegada caeria dentro y el jugador rebotaria al aterrizar. La llegada (292,67) queda a nueve del tornado de ida. El otro tornado del mapa, el 114730 en (17,41), esta MEDIDO pero DESACTIVADO: ver su propia entrada."
+   },
+   {
+    "entity": 114730,
+    "tile": [
+     17,
+     41
+    ],
+    "destino": null,
+    "llegada": [
+     285,
+     145
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "sin_medir": false,
+    "desactivado": true,
+    "destino_medido": 416,
+    "nota": "Niro River -> CLINK HARBOR (stage 416), MEDIDO pero DESACTIVADO a proposito. El MOVE_REQ salio de (20,43), a tres casillas, y su primer tramo acabo en (18,42), a una; las llegadas fueron (285,145) y (279,144). jumpmap.xml lo respalda: su id 347 da para el stage 416 la casilla (279,144), que es una de las dos medidas. El destino va en null y no en 416 porque EN CELESTIA ESE MAPA NO ESTA HECHO: manda 7 entidades y nada mas, todas NPC (klass 199) y todas amontonadas en la esquina (1..6, 1..5), que es la firma de un escenario declarado pero sin poblar. Son Wanderer Miro, Bella Bulu, Gamma, Supervisor Ofur y los tres Check Point (West, South, East). Al jugador se le queda el mapa roto; el usuario lo describio como \"mapa bug\" y dice que Clink Harbor no existe todavia en esta version. Desde el 416 sale ademas un tornado hacia el stage 389, tampoco conocido. ACTIVARLO cuando alguna version traiga el mapa poblado: entonces basta con poner destino 416 y llegada (285,145). Mientras tanto _portal_en se lo salta y pisarlo no hace nada, que es mejor que mandar al jugador a un escenario del que no puede salir."
+   }
+  ],
+  "172": [
+   {
+    "entity": 114787,
+    "tile": [
+     289,
+     9
+    ],
+    "destino": 170,
+    "llegada": [
+     14,
+     166
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Dune Oasis -> Pharaoh Village por el tornado 114787, el del noreste. El MOVE_REQ salio de (281,12), a ocho casillas, y su primer tramo acabo en (288,10), a una. La llegada de este mapa, (279,13), queda a diez. La llegada (14,166) queda a siete del tornado de ida de Pharaoh Village. Dune Oasis tiene TRES tornados y los tres estan medidos: van a Pharaoh Village, Cave of Falling Sand y Goldbrick Road."
+   },
+   {
+    "entity": 114786,
+    "tile": [
+     288,
+     168
+    ],
+    "destino": 173,
+    "llegada": [
+     25,
+     4
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Dune Oasis -> Cave of Falling Sand por el tornado 114786, el del sureste. Cruzado dos veces: los tramos acabaron en (287,168) y (287,167), los dos a una casilla. La llegada fue (25,4) las DOS veces, sin dispersion. LOS DOS SENTIDOS MEDIDOS."
+   },
+   {
+    "entity": 114785,
+    "tile": [
+     9,
+     174
+    ],
+    "destino": 174,
+    "llegada": [
+     277,
+     17
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Dune Oasis -> Goldbrick Road por el tornado 114785, el del suroeste. Cruzado dos veces y las dos el primer tramo acabo en (10,173), pegado al tornado. Las llegadas fueron (277,17) y (282,18); se usa la primera. Radio 3 y no mas: la llegada de vuelta a este mapa, (14,169), queda a CINCO. LOS DOS SENTIDOS MEDIDOS. Con esto Dune Oasis queda cerrado."
+   }
+  ],
+  "173": [
+   {
+    "entity": 114849,
+    "tile": [
+     11,
+     4
+    ],
+    "destino": 172,
+    "llegada": [
+     284,
+     161
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Cave of Falling Sand -> Dune Oasis por el tornado 114849, el del noroeste. El MOVE_REQ salio de (13,4), a dos casillas, y su primer tramo acabo en (12,4), a una. La llegada de este mapa, (25,4), queda a catorce. La llegada (284,161) queda a siete del tornado de ida de Dune Oasis. Este mapa es ALTO, como Secret Den: llega hasta y=273, donde esta su otro tornado, el 114848, ya medido."
+   },
+   {
+    "entity": 114848,
+    "tile": [
+     9,
+     273
+    ],
+    "destino": 175,
+    "llegada": [
+     283,
+     14
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Cave of Falling Sand -> Ancient Tombs por el tornado 114848, el del fondo de la cueva. El MOVE_REQ salio de (12,268), a cinco casillas, y su primer tramo acabo en (10,272), a una. Las dos llegadas de este mapa, (14,261) y (19,264), quedan a doce y a diez. La llegada (283,14) queda a diez del tornado de ida de Ancient Tombs. Con esto Cave of Falling Sand queda cerrado."
+   }
+  ],
+  "174": [
+   {
+    "entity": 114911,
+    "tile": [
+     287,
+     9
+    ],
+    "destino": 172,
+    "llegada": [
+     14,
+     169
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Goldbrick Road -> Dune Oasis por el tornado 114911, el del noreste. El MOVE_REQ salio de (277,17), que es la propia casilla de llegada, a diez, y su primer tramo acabo en (286,10), a una. La otra llegada, (282,18), queda a nueve."
+   },
+   {
+    "entity": 114910,
+    "tile": [
+     271,
+     157
+    ],
+    "destino": 175,
+    "llegada": [
+     14,
+     16
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Goldbrick Road -> Ancient Tombs por el tornado 114910, el del sureste. Cruzado dos veces: los tramos acabaron en (270,158) y (270,157), los dos a una casilla. La llegada fue (14,16) las DOS veces, sin dispersion. LOS DOS SENTIDOS MEDIDOS. Con esto Goldbrick Road queda cerrado."
+   }
+  ],
+  "175": [
+   {
+    "entity": 114973,
+    "tile": [
+     6,
+     7
+    ],
+    "destino": 174,
+    "llegada": [
+     263,
+     156
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Ancient Tombs -> Goldbrick Road por el tornado 114973, el del noroeste. El MOVE_REQ salio de (9,9), a tres casillas, y su primer tramo acabo en (7,8), a una. La llegada de este mapa, (14,16), queda a nueve. La llegada (263,156) queda a ocho del tornado de ida de Goldbrick Road. Ancient Tombs tiene TRES tornados: el 114972 es la entrada de una instancia y los otros dos estan medidos."
+   },
+   {
+    "entity": 114972,
+    "tile": [
+     292,
+     173
+    ],
+    "destino": null,
+    "llegada": null,
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "sin_medir": true,
+    "punto_del_cliente": [
+     285,
+     169
+    ],
+    "nota": "INSTANCIA, SIN CRUZAR. El usuario avisa de que en Ancient Tombs hay una instancia y jumpmap.xml lo respalda sin ambiguedad: declara un \"Instance Entry Point\" (id 163) en (285,169), a SIETE casillas de este tornado y a 160 del otro libre del mapa. Destino y llegada van en null y _portal_en se lo salta."
+   },
+   {
+    "entity": 114974,
+    "tile": [
+     293,
+     9
+    ],
+    "destino": 173,
+    "llegada": [
+     14,
+     261
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Ancient Tombs -> Cave of Falling Sand por el tornado 114974, el del noreste. Cruzado dos veces y las dos el primer tramo acabo en (292,10), pegado al tornado. Las llegadas fueron (14,261) y (19,264); se usa la primera. LOS DOS SENTIDOS MEDIDOS. Este enlace CIERRA el circuito de Egipto: Pharaoh Village, Dune Oasis, Cave of Falling Sand, Goldbrick Road y Ancient Tombs forman un anillo, no una cadena."
+   }
+  ],
+  "193": [
+   {
+    "entity": 115385,
+    "tile": [
+     41,
+     17
+    ],
+    "destino": 192,
+    "llegada": [
+     276,
+     159
+    ],
+    "radio": 4,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Emerald Shores -> Port Cherube por el tornado 115385, el del noroeste. El MOVE_REQ salio de (46,22), que es la propia casilla de llegada, a CINCO, y su primer tramo acabo en (42,18), a una. Radio 4 y no mas: con 5 la llegada caeria dentro y el jugador rebotaria al aterrizar; la otra llegada, (43,24), queda a siete. Emerald Shores es un mapa ALTO, como Secret Den y Cave of Falling Sand: llega hasta y=267, donde esta su otro tornado, el 115386, ya medido."
+   },
+   {
+    "entity": 115386,
+    "tile": [
+     9,
+     267
+    ],
+    "destino": 194,
+    "llegada": [
+     282,
+     8
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Emerald Shores -> Angelic Cave por el tornado 115386, el del fondo del mapa. El MOVE_REQ salio de (13,264), que es la propia casilla de llegada, a cuatro, y su primer tramo acabo en (10,266), a una. Radio 3 y no mas: con 4 la llegada caeria dentro y el jugador rebotaria al aterrizar. La llegada (282,8) queda a nueve del tornado de ida de Angelic Cave. Con esto Emerald Shores queda cerrado. Este enlace CIERRA el circuito de East Orient: Port Cherube, Emerald Shores, Angelic Cave y Hazelnut Ridge forman un anillo."
+   }
+  ],
+  "195": [
+   {
+    "entity": 115515,
+    "tile": [
+     225,
+     13
+    ],
+    "destino": 192,
+    "llegada": [
+     22,
+     163
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Hazelnut Ridge -> Port Cherube por el tornado 115515, el del noreste. El MOVE_REQ salio de (217,17), que es la propia casilla de llegada, a ocho, y su primer tramo acabo en (224,14), a una. La otra llegada, (222,19), queda a seis. Hazelnut Ridge es otro mapa ALTO: llega hasta y=252, donde esta su otro tornado, el 115516, ya medido."
+   },
+   {
+    "entity": 115516,
+    "tile": [
+     204,
+     252
+    ],
+    "destino": 194,
+    "llegada": [
+     28,
+     7
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Hazelnut Ridge -> Angelic Cave por el tornado 115516, el del fondo del mapa. Cruzado dos veces: los tramos acabaron en (204,251) y (206,253), a una y dos casillas. Las llegadas fueron (28,7) y (22,11); se usa la primera. LOS DOS SENTIDOS MEDIDOS. Con esto Hazelnut Ridge queda cerrado."
+   }
+  ],
+  "194": [
+   {
+    "entity": 115447,
+    "tile": [
+     19,
+     5
+    ],
+    "destino": 195,
+    "llegada": [
+     198,
+     247
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Angelic Cave -> Hazelnut Ridge por el tornado 115447, el del noroeste. El MOVE_REQ salio de (28,7), que es la propia casilla de llegada, a nueve, y su primer tramo acabo en (20,6), a una. La otra llegada, (22,11), queda a seis. La llegada (198,247) queda a seis del tornado de ida de Hazelnut Ridge. Angelic Cave tiene TRES tornados y los tres estan medidos: van a Hazelnut Ridge, Emerald Shores y Gaia Valley."
+   },
+   {
+    "entity": 115448,
+    "tile": [
+     291,
+     5
+    ],
+    "destino": 193,
+    "llegada": [
+     13,
+     264
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Angelic Cave -> Emerald Shores por el tornado 115448, el del noreste. El MOVE_REQ salio de (285,9), a seis casillas, y su primer tramo acabo en (290,6), a una. La llegada (13,264) queda a CUATRO del tornado de vuelta de Emerald Shores, que va con radio 3: poco margen, no subirlo. OJO: este par se cruzo UNA sola vez en cada sentido, no dos como casi todos los demas. LOS DOS SENTIDOS MEDIDOS."
+   },
+   {
+    "entity": 115449,
+    "tile": [
+     291,
+     173
+    ],
+    "destino": 196,
+    "llegada": [
+     7,
+     17
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Angelic Cave -> Gaia Valley por el tornado 115449, el del sureste. Cruzado dos veces: un tramo acabo JUSTO ENCIMA del tornado, en (291,173), y el otro en (290,172), a una casilla. Las llegadas fueron (7,17) y (12,17); se usa la primera. LOS DOS SENTIDOS MEDIDOS. Con esto Angelic Cave queda cerrado, y con el todo East Orient."
+   }
+  ],
+  "196": [
+   {
+    "entity": 115577,
+    "tile": [
+     5,
+     11
+    ],
+    "destino": 194,
+    "llegada": [
+     285,
+     171
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Gaia Valley -> Angelic Cave por el tornado 115577, el del noroeste. El MOVE_REQ salio de (6,13), a dos casillas, y su primer tramo acabo en (6,12), a una. Las dos llegadas de este mapa, (7,17) y (12,17), quedan a seis y a siete. La llegada (285,171) queda a seis del tornado de ida de Angelic Cave."
+   },
+   {
+    "entity": 115578,
+    "tile": [
+     269,
+     17
+    ],
+    "destino": 197,
+    "llegada": [
+     33,
+     148
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Gaia Valley -> Dyna City por el tornado 115578, el del noreste. Se cruzo dos veces pero solo UNA sirve para medir: en la otra el ultimo MOVE_REQ que se decodifico fue de (242,50) a (243,40), a 26 casillas del tornado, o sea a mitad de camino. La buena salio de (267,21) con el tramo acabando en (270,16), a una casilla. Las llegadas fueron (33,148) y (37,150); se usa la primera. LOS DOS SENTIDOS MEDIDOS. Con esto Gaia Valley queda cerrado."
+   }
+  ],
+  "197": [
+   {
+    "entity": 115639,
+    "tile": [
+     27,
+     152
+    ],
+    "destino": 196,
+    "llegada": [
+     266,
+     24
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Dyna City -> Gaia Valley por el tornado 115639, el del suroeste. El MOVE_REQ salio de (32,149), a cinco casillas, y su primer tramo acabo en (28,151), a una. Las dos llegadas de este mapa, (33,148) y (37,150), quedan a seis y a diez. La llegada (266,24) queda a siete del tornado de ida de Gaia Valley."
+   },
+   {
+    "entity": 115640,
+    "tile": [
+     264,
+     22
+    ],
+    "destino": 198,
+    "llegada": [
+     31,
+     158
+    ],
+    "radio": 4,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Dyna City -> Butterfly Garden por el tornado 115640, el del noreste. La llegada fue (31,158) las DOS veces, sin dispersion. RADIO 4, no 3: aqui ninguno de los dos tramos cae a tres o menos. El primer cruce salio de (262,21), a DOS casillas, con el tramo acabando en (273,23), a nueve; el segundo salio de (259,24), a cinco, con el tramo en (268,22), a CUATRO. O sea que con radio 3 el segundo cruce no dispararia por ningun lado. Con 4 disparan los dos y la llegada de vuelta a este mapa, (255,25), queda a nueve, fuera. LOS DOS SENTIDOS MEDIDOS."
+   }
+  ],
+  "198": [
+   {
+    "entity": 115701,
+    "tile": [
+     24,
+     161
+    ],
+    "destino": 197,
+    "llegada": [
+     255,
+     25
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Butterfly Garden -> Dyna City por el tornado 115701, el del suroeste. El MOVE_REQ salio de (30,158), a seis casillas, y su primer tramo acabo en (22,162), a dos. La llegada de este mapa, (31,158), queda a siete."
+   },
+   {
+    "entity": 115702,
+    "tile": [
+     288,
+     170
+    ],
+    "destino": null,
+    "llegada": null,
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "sin_medir": true,
+    "punto_del_cliente": [
+     281,
+     165
+    ],
+    "nota": "INSTANCIA, SIN CRUZAR. El usuario avisa de que en Butterfly Garden hay una instancia y jumpmap.xml lo respalda sin ambiguedad: declara un \"Instance Entry Point\" (id 173) en (281,165), a SIETE casillas de este tornado y a 257 del otro del mapa. Destino y llegada van en null y _portal_en se lo salta."
+   }
+  ],
+  "210": [
+   {
+    "entity": 115880,
+    "tile": [
+     285,
+     12
+    ],
+    "destino": 209,
+    "llegada": [
+     11,
+     270
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Snowball Village -> Feather Leaf Forest. El MOVE_REQ salio de (280,16), a cinco casillas, y su primer tramo acabo en (284,13), a una. Las dos llegadas de este mapa, (278,18) y (274,15), quedan a siete y a once. Snowball Village tiene TRES tornados y los tres estan medidos: van a Feather Leaf Forest, Radiant Cave e Illusory Maze. Es el nudo de la zona de nieve."
+   },
+   {
+    "entity": 115879,
+    "tile": [
+     6,
+     22
+    ],
+    "destino": 212,
+    "llegada": [
+     280,
+     170
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Snowball Village -> Radiant Cave por el tornado 115879, el del noroeste. Cruzado dos veces: los tramos acabaron en (7,23) y (8,23), a una y dos casillas. La llegada fue (280,170) las DOS veces, sin dispersion. LOS DOS SENTIDOS MEDIDOS."
+   },
+   {
+    "entity": 115881,
+    "tile": [
+     289,
+     174
+    ],
+    "destino": 211,
+    "llegada": [
+     24,
+     10
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Snowball Village -> Illusory Maze por el tornado 115881, el del sureste. El MOVE_REQ salio de (283,175), a seis casillas, y su primer tramo acabo en (288,175), a una. Las dos llegadas de este mapa, (280,175) y (283,172), quedan a nueve y a seis. Este enlace CIERRA el circuito de la zona de nieve: Snowball Village, Radiant Cave, Subzero Market, Silver Wing, Iceberg Lake e Illusory Maze forman un anillo, no una cadena."
+   }
+  ],
+  "212": [
+   {
+    "entity": 116014,
+    "tile": [
+     294,
+     175
+    ],
+    "destino": 210,
+    "llegada": [
+     18,
+     23
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Radiant Cave -> Snowball Village por el tornado 116014, el del sureste. El MOVE_REQ salio de (290,173), a cuatro casillas, y su primer tramo acabo en (292,175), a dos. La llegada de este mapa, (280,170), queda a catorce. La llegada (18,23) queda a doce del tornado de ida de Snowball Village."
+   },
+   {
+    "entity": 116013,
+    "tile": [
+     4,
+     172
+    ],
+    "destino": 214,
+    "llegada": [
+     279,
+     8
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Radiant Cave -> Subzero Market por el tornado 116013, el del suroeste. Cruzado dos veces: los tramos acabaron en (3,170) y (5,171), a dos y una casilla. La llegada fue (279,8) las DOS veces, sin dispersion. LOS DOS SENTIDOS MEDIDOS. Con esto Radiant Cave queda cerrado."
+   }
+  ],
+  "214": [
+   {
+    "entity": 116139,
+    "tile": [
+     290,
+     3
+    ],
+    "destino": 212,
+    "llegada": [
+     8,
+     166
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Subzero Market -> Radiant Cave por el tornado 116139, el del noreste. El MOVE_REQ salio de (288,4), a dos casillas, y su primer tramo acabo en (289,4), a una. La llegada de este mapa, (279,8), queda a once. La llegada (8,166) queda a seis del tornado de ida de Radiant Cave."
+   },
+   {
+    "entity": 116140,
+    "tile": [
+     287,
+     170
+    ],
+    "destino": 215,
+    "llegada": [
+     10,
+     9
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Subzero Market -> Silver Wing Cable Car Station por el tornado 116140, el del sureste. Se cruzo dos veces pero solo UNA sirve para medir el disparo: en la otra el ultimo MOVE_REQ decodificado fue de (151,106) a (153,113), en mitad del mapa. La buena salio de (281,168) con el tramo acabando en (286,169), a una casilla. Las llegadas fueron (10,9) y (6,11); se usa la primera. LOS DOS SENTIDOS MEDIDOS. Con esto Subzero Market queda cerrado."
+   }
+  ],
+  "215": [
+   {
+    "entity": 116203,
+    "tile": [
+     5,
+     3
+    ],
+    "destino": 214,
+    "llegada": [
+     278,
+     167
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Silver Wing Cable Car Station -> Subzero Market por el tornado 116203, el del noroeste. El MOVE_REQ salio de (8,8), a cinco casillas, y su primer tramo acabo en (6,6), a tres. Las dos llegadas de este mapa, (10,9) y (6,11), quedan a seis y a ocho. La llegada (278,167) queda a nueve del tornado de ida de Subzero Market. Este mapa tiene TRES tornados: el 116201 es la entrada de una instancia y el 116202 lleva a Iceberg Lake."
+   },
+   {
+    "entity": 116202,
+    "tile": [
+     282,
+     175
+    ],
+    "destino": 213,
+    "llegada": [
+     16,
+     19
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Silver Wing Cable Car Station -> Iceberg Lake por el tornado 116202, el del sureste. Cruzado dos veces: los tramos acabaron en (281,174) y (282,174), los dos a una casilla. Las llegadas fueron (16,19) y (12,20); se usa la primera. LOS DOS SENTIDOS MEDIDOS."
+   },
+   {
+    "entity": 116201,
+    "tile": [
+     20,
+     175
+    ],
+    "destino": null,
+    "llegada": null,
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "sin_medir": true,
+    "punto_del_cliente": [
+     28,
+     169
+    ],
+    "nota": "INSTANCIA, SIN CRUZAR. El usuario avisa de que la instancia de esta zona esta en Silver Wing, y jumpmap.xml lo respalda sin ambiguedad: declara un \"Instance Entry Point\" (id 183) en (28,169), a OCHO casillas de este tornado y a 254 del otro del borde sur. Destino y llegada van en null y _portal_en se lo salta. Con esto Silver Wing queda cerrado."
+   }
+  ],
+  "213": [
+   {
+    "entity": 116075,
+    "tile": [
+     5,
+     12
+    ],
+    "destino": 215,
+    "llegada": [
+     282,
+     168
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Iceberg Lake -> Silver Wing Cable Car Station por el tornado 116075, el del noroeste. El MOVE_REQ salio de (12,17), a siete casillas, y su primer tramo acabo en (6,13), a una. Las dos llegadas de este mapa, (16,19) y (12,20), quedan a once y a ocho. La llegada (282,168) queda a siete del tornado de ida de Silver Wing. Iceberg Lake es otro mapa ALTO: llega a y=208, donde esta la NPC Tia."
+   },
+   {
+    "entity": 116076,
+    "tile": [
+     244,
+     12
+    ],
+    "destino": 211,
+    "llegada": [
+     15,
+     270
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Iceberg Lake -> Illusory Maze por el tornado 116076, el del noreste. Cruzado dos veces: un tramo acabo JUSTO ENCIMA del tornado, en (244,12), y el otro en (243,13), a una casilla. Las llegadas fueron (15,270) y (10,268); se usa la primera. LOS DOS SENTIDOS MEDIDOS. Con esto Iceberg Lake queda cerrado."
+   }
+  ],
+  "211": [
+   {
+    "entity": 115947,
+    "tile": [
+     5,
+     274
+    ],
+    "destino": 213,
+    "llegada": [
+     235,
+     16
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Illusory Maze -> Iceberg Lake por el tornado 115947, el del fondo del mapa. El MOVE_REQ salio de (8,273), a tres casillas, y su primer tramo acabo en (6,273), a una. Las dos llegadas de este mapa, (15,270) y (10,268), quedan a diez y a seis. La llegada (235,16) queda a nueve del tornado de ida de Iceberg Lake. Illusory Maze es otro mapa ALTO: llega a y=274."
+   },
+   {
+    "entity": 115946,
+    "tile": [
+     19,
+     3
+    ],
+    "destino": 210,
+    "llegada": [
+     280,
+     175
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Illusory Maze -> Snowball Village por el tornado 115946, el del noroeste. Cruzado dos veces y las dos el primer tramo acabo en (20,4), pegado al tornado. Las llegadas fueron (280,175) y (283,172); se usa la primera. LOS DOS SENTIDOS MEDIDOS. Con esto Illusory Maze queda cerrado."
+   }
+  ],
+  "222": [
+   {
+    "entity": 116322,
+    "tile": [
+     20,
+     10
+    ],
+    "destino": 36,
+    "llegada": [
+     237,
+     139
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Goldhill -> Gebuer Vale por el tornado 116322, el del noroeste. El MOVE_REQ salio de (24,14), que es la propia casilla de llegada, a cuatro, y su primer tramo acabo en (21,11), a una. Radio 3 y no mas: con 4 la llegada caeria dentro y el jugador rebotaria al aterrizar; la otra llegada, (26,13), queda a seis."
+   },
+   {
+    "entity": 116323,
+    "tile": [
+     284,
+     50
+    ],
+    "destino": 223,
+    "llegada": [
+     15,
+     166
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Goldhill -> Steam Town por el tornado 116323, el del este. Se cruzo dos veces pero solo UNA sirve para medir el disparo: en la otra ni la casilla informada (273,53) ni el tramo (275,51) llegan al tornado, se quedan a once y a nueve, porque el ultimo MOVE_REQ que se decodifico fue a mitad de camino. La buena salio de (280,48) con el tramo acabando en (285,50), a una casilla. La llegada fue (15,166) las DOS veces, sin dispersion. Radio 3 y no mas: la llegada de vuelta a este mapa, (280,48), queda a CUATRO. LOS DOS SENTIDOS MEDIDOS. Con esto Goldhill queda cerrado."
+   }
+  ],
+  "223": [
+   {
+    "entity": 116427,
+    "tile": [
+     11,
+     169
+    ],
+    "destino": 222,
+    "llegada": [
+     280,
+     48
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Steam Town -> Goldhill por el tornado 116427, el del suroeste. El MOVE_REQ salio de (15,166), que es la propia casilla de llegada, a CUATRO, y su primer tramo acabo en (12,168), a una. Radio 3 y no mas: con 4 la llegada caeria dentro y el jugador rebotaria al aterrizar."
+   },
+   {
+    "entity": 116433,
+    "tile": [
+     277,
+     161
+    ],
+    "destino": 224,
+    "llegada": [
+     13,
+     12
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Steam Town -> Yeeha Bar por el tornado 116433, el del sureste. Cruzado dos veces y las dos el primer tramo acabo en (276,160), pegado al tornado. Las llegadas fueron (13,12) y (16,11); se usa la primera. Radio 3 y no mas: la llegada de vuelta a este mapa, (272,160), queda a CINCO. LOS DOS SENTIDOS MEDIDOS. Con esto Steam Town queda cerrado."
+   }
+  ],
+  "224": [
+   {
+    "entity": 116450,
+    "tile": [
+     10,
+     7
+    ],
+    "destino": 223,
+    "llegada": [
+     272,
+     160
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Yeeha Bar -> Steam Town por el tornado 116450, el del noroeste. El MOVE_REQ salio de (12,11), a cuatro casillas, y su primer tramo acabo en (11,8), a una. Las dos llegadas de este mapa, (13,12) y (16,11), quedan a cinco y a seis."
+   },
+   {
+    "entity": 116451,
+    "tile": [
+     7,
+     170
+    ],
+    "destino": 225,
+    "llegada": [
+     291,
+     8
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Yeeha Bar -> Agysical Tunnel por el tornado 116451, el del suroeste. Cruzado dos veces y las dos el primer tramo acabo en (8,169), pegado al tornado. La llegada fue (291,8) las DOS veces, sin dispersion. LOS DOS SENTIDOS MEDIDOS. Con esto Yeeha Bar queda cerrado."
+   }
+  ],
+  "225": [
+   {
+    "entity": 116512,
+    "tile": [
+     294,
+     3
+    ],
+    "destino": 224,
+    "llegada": [
+     13,
+     167
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Agysical Tunnel -> Yeeha Bar por el tornado 116512, el del noreste. El MOVE_REQ salio de (292,5), a dos casillas, y su primer tramo acabo en (293,4), a una. Radio 3 y no mas: la llegada de este mapa, (291,8), queda a CINCO. La llegada (13,167) queda a seis del tornado de ida de Yeeha Bar. Agysical Tunnel tiene TRES tornados y los tres estan medidos: van a Yeeha Bar, Sunset Valley y Forbidden Sector."
+   },
+   {
+    "entity": 116513,
+    "tile": [
+     282,
+     159
+    ],
+    "destino": 226,
+    "llegada": [
+     7,
+     30
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Agysical Tunnel -> Sunset Valley por el tornado 116513, el del sureste. Cruzado TRES veces, y las tres el primer tramo acabo en la misma casilla, (281,158), pegada al tornado: es el portal mejor medido de todos. Las llegadas, en cambio, salieron dispersas: (7,30), (11,18) y (14,27). Se usa la primera. Radio 3 y no mas: la llegada de vuelta a este mapa, (278,156), queda a CUATRO. LOS DOS SENTIDOS MEDIDOS."
+   },
+   {
+    "entity": 116574,
+    "tile": [
+     10,
+     174
+    ],
+    "destino": 228,
+    "llegada": [
+     282,
+     33
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Agysical Tunnel -> Forbidden Sector por el tornado 116574, el del suroeste. Cruzado dos veces y las dos el primer tramo acabo en (11,173), pegado al tornado. Las llegadas fueron (282,33) y (280,29); se usa la primera. LOS DOS SENTIDOS MEDIDOS. Con esto Agysical Tunnel queda cerrado."
+   }
+  ],
+  "226": [
+   {
+    "entity": 116636,
+    "tile": [
+     8,
+     22
+    ],
+    "destino": 225,
+    "llegada": [
+     274,
+     158
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Sunset Valley -> Agysical Tunnel por el tornado 116636. Cruzado dos veces: una salio de (7,27) con el tramo en (9,21), a una casilla, y la otra de (10,21), a dos, con el tramo en (8,25), a tres. RADIO 3 EXACTO, ni mas ni menos: por abajo no llega a cubrir el segundo cruce, y por arriba una de las tres llegadas de este mapa, (11,18), queda a CUATRO y el jugador rebotaria al aterrizar."
+   },
+   {
+    "entity": 116575,
+    "tile": [
+     27,
+     161
+    ],
+    "destino": 227,
+    "llegada": [
+     284,
+     10
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Sunset Valley -> Desolate Ruins por el tornado 116575, el del suroeste. El MOVE_REQ salio de (31,157), que es la propia casilla de llegada, a cuatro, y su primer tramo acabo en (28,160), a una. Radio 3 y no mas: con 4 la llegada caeria dentro y el jugador rebotaria al aterrizar. Las llegadas fueron (284,10) y (282,6); se usa la primera, que ademas es la que jumpmap.xml da para el id 191 del Angels GO!. LOS DOS SENTIDOS MEDIDOS. Con esto Sunset Valley queda cerrado."
+   }
+  ],
+  "228": [
+   {
+    "entity": 116705,
+    "tile": [
+     288,
+     31
+    ],
+    "destino": 225,
+    "llegada": [
+     17,
+     172
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Forbidden Sector -> Agysical Tunnel por el tornado 116705, el del noreste. El MOVE_REQ salio de (282,33), que es la propia casilla de llegada, a seis, y su primer tramo acabo en (287,32), a una. La otra llegada, (280,29), queda a ocho. FORBIDDEN SECTOR TIENE SEIS TORNADOS, el maximo visto hasta ahora; el que mas tenia antes eran cuatro. El 116704 es la entrada de una instancia, y el 116703 y el 116707 se conectan ENTRE SI dentro del propio mapa. Dos de ellos, el 116703 y el 116707, estan en MITAD del mapa."
+   },
+   {
+    "entity": 116706,
+    "tile": [
+     24,
+     8
+    ],
+    "destino": 354,
+    "llegada": [
+     278,
+     160
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Forbidden Sector -> Whispering Hill por el tornado 116706, el del noroeste. Cruzado dos veces: los tramos acabaron en (25,7) y (25,9), los dos a una casilla. Las llegadas fueron (278,160) y (284,154); se usa la primera. LOS DOS SENTIDOS MEDIDOS. OJO con el salto de numeracion: Whispering Hill es el stage 354, muy lejos del 228. Los mapas contiguos en el mundo no llevan stages contiguos."
+   },
+   {
+    "entity": 116704,
+    "tile": [
+     5,
+     169
+    ],
+    "destino": null,
+    "llegada": null,
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "sin_medir": true,
+    "punto_del_cliente": [
+     10,
+     165
+    ],
+    "nota": "INSTANCIA, SIN CRUZAR. El usuario la situa \"en (14,164) aprox\" y jumpmap.xml lo respalda: declara un \"Instance Entry Point\" (id 193) en (10,165), a CINCO casillas de este tornado y a nueve de donde la situa el usuario. Los otros tres tornados libres del mapa estan a 183, 212 y 273 de ese punto, asi que no hay ambiguedad. Destino y llegada van en null y _portal_en se lo salta."
+   },
+   {
+    "entity": 116708,
+    "tile": [
+     287,
+     175
+    ],
+    "destino": 227,
+    "llegada": [
+     15,
+     11
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Forbidden Sector -> Desolate Ruins por el tornado 116708, el del sureste. El MOVE_REQ salio de (284,174), a tres casillas, y su primer tramo acabo en (286,174), a una. Las dos llegadas de este mapa, (279,174) las dos veces, quedan a ocho."
+   },
+   {
+    "entity": 116703,
+    "tile": [
+     226,
+     143
+    ],
+    "destino": 228,
+    "llegada": [
+     195,
+     69
+    ],
+    "radio": 3,
+    "direccion": 5,
+    "mismo_mapa": true,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "PORTAL INTERNO: lleva a otro punto del MISMO mapa, no a otro escenario. Es el primero de este tipo en todo el json. Medido con SEIS cruces, tres por sentido, y en 1401 segundos de sesion no viajo ni un solo 0x000C: el mapa NO se recarga. El servidor manda 0x0016 con la direccion, un 0x0012 de siete ceros y un 0x0003 que recoloca al personaje. Visualmente no son tornados sino tubos de teletransporte, aunque su sprite es el 60001 de siempre: el cliente lo dibuja segun el tema del mapa. Este es el del SUR. Los tres tramos acabaron en (227,145), (227,144) y (224,143), a dos, una y dos casillas. Las llegadas fueron (195,69) dos veces y (191,76) una; se usa la primera. La direccion medida al aparecer en el norte es 5. Las llegadas quedan a seis del tornado de vuelta, fuera de su radio. OJO CON LA DIRECCION: al principio se anoto como si fuera fija por portal, pero NO lo es. En los cinco cruces de Hidden Grove el mismo portal dio 0, 1 y 1, el otro dio 3, y en un cruce NO vino ningun 0x0016. Parece reflejar como llegaba el jugador, no una propiedad del portal. Lo que se manda aqui es un valor medido y vale como adorno; no hay que fiarse de el."
+   },
+   {
+    "entity": 116707,
+    "tile": [
+     197,
+     75
+    ],
+    "destino": 228,
+    "llegada": [
+     239,
+     149
+    ],
+    "radio": 3,
+    "direccion": 1,
+    "mismo_mapa": true,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "PORTAL INTERNO: lleva a otro punto del MISMO mapa, no a otro escenario. Es el primero de este tipo en todo el json. Medido con SEIS cruces, tres por sentido, y en 1401 segundos de sesion no viajo ni un solo 0x000C: el mapa NO se recarga. El servidor manda 0x0016 con la direccion, un 0x0012 de siete ceros y un 0x0003 que recoloca al personaje. Visualmente no son tornados sino tubos de teletransporte, aunque su sprite es el 60001 de siempre: el cliente lo dibuja segun el tema del mapa. Este es el del NORTE. Los tres tramos acabaron en (196,74), (197,74) y (200,76), a una, una y tres casillas. Las llegadas fueron (239,149) una vez y (235,153) dos; se usa la primera. La direccion medida al aparecer en el sur es 1. Las llegadas quedan a trece y a diez del tornado de vuelta. OJO CON LA DIRECCION: al principio se anoto como si fuera fija por portal, pero NO lo es. En los cinco cruces de Hidden Grove el mismo portal dio 0, 1 y 1, el otro dio 3, y en un cruce NO vino ningun 0x0016. Parece reflejar como llegaba el jugador, no una propiedad del portal. Lo que se manda aqui es un valor medido y vale como adorno; no hay que fiarse de el."
+   }
+  ],
+  "354": [
+   {
+    "entity": 119582,
+    "tile": [
+     289,
+     162
+    ],
+    "destino": 228,
+    "llegada": [
+     45,
+     9
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Whispering Hill -> Forbidden Sector por el tornado 119582, el del sureste. El MOVE_REQ salio de (287,161), a dos casillas, y su primer tramo acabo en (288,161), a una. Las dos llegadas de este mapa, (278,160) y (284,154), quedan a once y a ocho. El otro tornado del mapa, el 119581 en (5,175), sigue sin destino."
+   }
+  ],
+  "227": [
+   {
+    "entity": 116641,
+    "tile": [
+     289,
+     6
+    ],
+    "destino": 226,
+    "llegada": [
+     31,
+     157
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Desolate Ruins -> Sunset Valley por el tornado 116641, el del noreste. El MOVE_REQ salio de (284,10), que es la propia casilla de llegada, a cinco, y su primer tramo acabo en (288,7), a una. La otra llegada, (282,6), queda a siete."
+   },
+   {
+    "entity": 116642,
+    "tile": [
+     11,
+     6
+    ],
+    "destino": 228,
+    "llegada": [
+     279,
+     174
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Desolate Ruins -> Forbidden Sector por el tornado 116642, el del noroeste. Cruzado dos veces: los tramos acabaron en (12,7) y (11,8), a una y dos casillas. La llegada fue (279,174) las DOS veces, sin dispersion. Radio 3 y no mas: la llegada de vuelta a este mapa, (15,11), queda a CINCO. LOS DOS SENTIDOS MEDIDOS. Con esto Desolate Ruins queda cerrado."
+   }
+  ],
+  "345": [
+   {
+    "entity": 119469,
+    "tile": [
+     5,
+     5
+    ],
+    "destino": 30,
+    "llegada": [
+     229,
+     150
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Hidden Grove -> Cryptic Moon Swamp por el tornado 119469, el del noroeste. El MOVE_REQ salio de (9,8), a cuatro casillas, y su primer tramo acabo en (6,6), a una. Las dos llegadas de este mapa, (21,18) y (12,12), quedan a dieciseis y a siete. La llegada (229,150) queda a seis del tornado de ida de Cryptic. Hidden Grove tiene CUATRO tornados: el 119471 y el 119472 se conectan ENTRE SI dentro del mapa, igual que los tubos de Forbidden Sector, y el 119470 va a Forest of Whispers. Queda cerrado."
+   },
+   {
+    "entity": 119472,
+    "tile": [
+     218,
+     167
+    ],
+    "destino": 345,
+    "llegada": [
+     272,
+     163
+    ],
+    "radio": 3,
+    "direccion": 1,
+    "mismo_mapa": true,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "PORTAL INTERNO: lleva a otro punto del MISMO mapa. Es el segundo par de este tipo, despues de los dos tubos de Forbidden Sector. Cinco cruces y ni un solo 0x000C: el mapa no se recarga, se manda 0x0016 con una direccion, un 0x0012 de siete ceros y un 0x0003 que recoloca. Este es el del OESTE. Cruzado tres veces, con los tramos en (217,167), (217,166) y (217,166), todos a una casilla. Las llegadas salieron dispersas: (272,163), (274,168) y (265,161); se usa la primera. Las tres quedan a siete, nueve y ocho del portal de vuelta, fuera de su radio. OJO CON LA DIRECCION: al principio se anoto como si fuera fija por portal, pero NO lo es. En los cinco cruces de Hidden Grove el mismo portal dio 0, 1 y 1, el otro dio 3, y en un cruce NO vino ningun 0x0016. Parece reflejar como llegaba el jugador, no una propiedad del portal. Lo que se manda aqui es un valor medido y vale como adorno; no hay que fiarse de el."
+   },
+   {
+    "entity": 119471,
+    "tile": [
+     265,
+     169
+    ],
+    "destino": 345,
+    "llegada": [
+     215,
+     156
+    ],
+    "radio": 3,
+    "direccion": 3,
+    "mismo_mapa": true,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "PORTAL INTERNO: lleva a otro punto del MISMO mapa. Es el segundo par de este tipo, despues de los dos tubos de Forbidden Sector. Cinco cruces y ni un solo 0x000C: el mapa no se recarga, se manda 0x0016 con una direccion, un 0x0012 de siete ceros y un 0x0003 que recoloca. Este es el del ESTE. Cruzado dos veces, las dos con el tramo en (266,168), a una casilla, y las dos dejando en la MISMA casilla, (215,156), que queda a once del portal de vuelta. OJO CON LA DIRECCION: al principio se anoto como si fuera fija por portal, pero NO lo es. En los cinco cruces de Hidden Grove el mismo portal dio 0, 1 y 1, el otro dio 3, y en un cruce NO vino ningun 0x0016. Parece reflejar como llegaba el jugador, no una propiedad del portal. Lo que se manda aqui es un valor medido y vale como adorno; no hay que fiarse de el."
+   },
+   {
+    "entity": 119470,
+    "tile": [
+     281,
+     3
+    ],
+    "destino": 346,
+    "llegada": [
+     7,
+     168
+    ],
+    "radio": 4,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Hidden Grove -> Forest of Whispers por el tornado 119470, el del noreste. RADIO 4, no 3: los dos tramos acabaron en (281,4), a una casilla, y en (285,3), a CUATRO, y la casilla informada del segundo cruce, (276,6), queda a cinco. Con radio 3 ese segundo cruce no dispararia por ningun lado. La llegada de vuelta a este mapa, (274,7), queda a siete, fuera. Las llegadas fueron (7,168) y (20,170); se usa la primera. LOS DOS SENTIDOS MEDIDOS. Con esto Hidden Grove queda cerrado."
+   }
+  ],
+  "346": [
+   {
+    "entity": 119473,
+    "tile": [
+     10,
+     175
+    ],
+    "destino": 345,
+    "llegada": [
+     274,
+     7
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Forest of Whispers -> Hidden Grove por el tornado 119473, el del suroeste. El MOVE_REQ salio de (7,168), que es la propia casilla de llegada, a siete, y su primer tramo acabo en (9,174), a una. La otra llegada, (20,170), queda a diez."
+   },
+   {
+    "entity": 119474,
+    "tile": [
+     294,
+     171
+    ],
+    "destino": 347,
+    "llegada": [
+     23,
+     23
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Forest of Whispers -> Teddy Amusement por el tornado 119474, el del sureste. Cruzado dos veces: los tramos acabaron en (293,172) y (293,170), los dos a una casilla. La llegada fue (23,23) las DOS veces, sin dispersion. LOS DOS SENTIDOS MEDIDOS. Con esto Forest of Whispers queda cerrado."
+   }
+  ],
+  "347": [
+   {
+    "entity": 119478,
+    "tile": [
+     19,
+     17
+    ],
+    "destino": 346,
+    "llegada": [
+     287,
+     165
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Teddy Amusement -> Forest of Whispers por el tornado 119478, el del noroeste. El MOVE_REQ salio de (23,23), que es la propia casilla de llegada, a seis, y su primer tramo acabo en (20,18), a una. La llegada (287,165) queda a siete del tornado de ida de Forest of Whispers. TEDDY AMUSEMENT TIENE SEIS TORNADOS, como Forbidden Sector. Los tres centrales forman un NUDO con menu: el 119481 pregunta y manda al 119476 o al 119475. El 119479 va a Foodie Paradise y queda sin cruzar el 119477 en (13,163)."
+   },
+   {
+    "entity": 119481,
+    "tile": [
+     144,
+     90
+    ],
+    "destino": 347,
+    "llegada": null,
+    "radio": 3,
+    "mismo_mapa": true,
+    "preguntar": true,
+    "dibujar": false,
+    "msg": 513008,
+    "opciones": [
+     513009,
+     513010
+    ],
+    "destinos": {
+     "513009": {
+      "llegada": [
+       123,
+       115
+      ]
+     },
+     "513010": {
+      "llegada": [
+       195,
+       98
+      ]
+     }
+    },
+    "nota": "NUDO CON MENU, dentro del mismo mapa. Es el primero que junta las dos cosas: pregunta antes de viajar Y no recarga el mapa. Medido en Teddy Amusement el 24/09/2026. Al pisarlo sale el dialogo 513008, \"Move to which area?\", con dos opciones: la 513009 \"Left Paw (Cupid, Banker, Resource Manager)\" con accion 0x0F42C3, que deja en (123,115) junto al tornado 119476, y la 513010 \"Right Paw (Magic, Recipes, Merchant)\" con accion 0x0F42C4, que deja en (195,98) junto al 119475. Disparos medidos: los tramos acabaron en (146,87) y (145,89), a tres y a una casilla, y en un tercer cruce disparo la casilla informada (141,87), a tres. Radio 3. OJO: la vuelta desde el Right Paw deja en (141,87), que queda a TRES de este tornado, o sea DENTRO de su radio; y la del Left Paw en (145,85), a cinco. Por eso al llegar hay que marcar la casilla como pisada, cosa que _viajar_dentro_del_mapa ya hace. En Celestia el menu vuelve a salir en cuanto el jugador se mueve, y eso es lo esperado. DIFERENCIA con lo capturado: el menu de Celestia trae, ademas de las dos opciones, dos codigos de accion (0x0F42C3 y 0x0F42C4) que nuestro dialogos.armar_linea no escribe. El menu del Lyceum funciona igual sin ellos, asi que se dejan fuera; si algun dia el cliente no responde a una opcion, mirar aqui primero."
+   },
+   {
+    "entity": 119476,
+    "tile": [
+     128,
+     110
+    ],
+    "destino": 347,
+    "llegada": [
+     145,
+     85
+    ],
+    "radio": 3,
+    "mismo_mapa": true,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Left Paw -> vuelve al nudo. Portal interno de Teddy Amusement: devuelve a (145,85), a cinco casillas del nudo 119481. Aqui es donde estan el Cupid, el Park Banker y el Resource Manager. La ida se mide desde el nudo, no desde aqui: de este lado solo se midio la llegada."
+   },
+   {
+    "entity": 119475,
+    "tile": [
+     192,
+     103
+    ],
+    "destino": 347,
+    "llegada": [
+     141,
+     87
+    ],
+    "radio": 3,
+    "mismo_mapa": true,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Right Paw -> vuelve al nudo. Portal interno de Teddy Amusement: devuelve a (141,87), a TRES casillas del nudo 119481, o sea dentro de su radio. Aqui estan Magic, Recipes y Merchant. La ida se mide desde el nudo."
+   },
+   {
+    "entity": 119479,
+    "tile": [
+     286,
+     167
+    ],
+    "destino": 349,
+    "llegada": [
+     26,
+     16
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Teddy Amusement -> Foodie Paradise por el tornado 119479, el del sureste. Cruzado dos veces: los tramos acabaron en (286,168) y (285,166), los dos a una casilla. Las llegadas fueron (26,16) y (21,21); se usa la primera. Radio 3 y no mas: la llegada de vuelta a este mapa, (281,165), queda a CINCO. LOS DOS SENTIDOS MEDIDOS."
+   }
+  ],
+  "349": [
+   {
+    "entity": 119492,
+    "tile": [
+     11,
+     9
+    ],
+    "destino": 347,
+    "llegada": [
+     281,
+     165
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Foodie Paradise -> Teddy Amusement por el tornado 119492, el del noroeste. El MOVE_REQ salio de (21,14), a diez casillas, y su primer tramo acabo en (12,10), a una. Las dos llegadas de este mapa, (26,16) y (21,21), quedan a quince y a doce."
+   },
+   {
+    "entity": 119493,
+    "tile": [
+     9,
+     169
+    ],
+    "destino": 350,
+    "llegada": [
+     288,
+     9
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Foodie Paradise -> Forbidden Dusk por el tornado 119493, el del suroeste. Cruzado dos veces: los tramos acabaron en (10,168) y (9,168), los dos a una casilla. Las llegadas fueron (288,9) y (280,6); se usa la primera. LOS DOS SENTIDOS MEDIDOS. Con esto Foodie Paradise queda cerrado."
+   }
+  ],
+  "350": [
+   {
+    "entity": 119495,
+    "tile": [
+     289,
+     3
+    ],
+    "destino": 349,
+    "llegada": [
+     14,
+     157
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Forbidden Dusk -> Foodie Paradise por el tornado 119495, el del noreste. El MOVE_REQ salio de (288,6), a tres casillas, y su primer tramo acabo en (288,4), a una. Las dos llegadas de este mapa, (288,9) y (280,6), quedan a seis y a nueve. La llegada (14,157) queda a doce del tornado de ida de Foodie Paradise."
+   },
+   {
+    "entity": 119496,
+    "tile": [
+     16,
+     169
+    ],
+    "destino": null,
+    "llegada": null,
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "sin_medir": true,
+    "punto_del_cliente": [
+     22,
+     165
+    ],
+    "nota": "INSTANCIA, SIN CRUZAR. El usuario la situa aqui y jumpmap.xml lo respalda sin ambiguedad: declara un punto (id 292) en (22,165), a SEIS casillas de este tornado y a 267 del otro del mapa. OJO CON EL NOMBRE: aqui el cliente lo llama \"Instance Entrance\", no \"Instance Entry Point\" como en las ocho anteriores. Son dos etiquetas para lo mismo, asi que al buscar entradas de instancia en jumpmap.xml hay que mirar las DOS. Destino y llegada van en null y _portal_en se lo salta."
    }
   ]
  },

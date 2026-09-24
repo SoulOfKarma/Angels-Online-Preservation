@@ -714,10 +714,52 @@ def _apariencia(ses):
             for r in RANURAS_VISIBLES]
 
 
+def _viajar_dentro_del_mapa(ses, addr, por, motivo=''):
+    """Un portal que lleva a OTRO punto del MISMO mapa.
+
+    Medido en Forbidden Sector el 24/09/2026, seis cruces entre sus dos
+    tubos de teletransporte, el 116703 en (226,143) y el 116707 en (197,75).
+    En 1401 segundos de sesion no viajo NI UN 0x000C: el mapa no se recarga.
+    Lo que manda el servidor real es:
+
+        s2c 0x0016  [u32 entidad][u8 direccion]   hacia donde queda mirando
+        s2c 0x0012  siete bytes a cero            cierra el cuadro
+        s2c 0x0003  [u32 entidad][u32 x][u32 y]   lo recoloca
+
+    Ojo con el 0x0012: aqui son SIETE ceros, no los nueve de dialogos.FIN.
+
+    La direccion salio 5 al aparecer en el extremo norte y 1 en el sur, asi
+    que va por portal en el campo 'direccion'; si no lo trae, no se manda.
+    """
+    lleg = por['llegada']
+    yo = ses.personaje.entity_id
+    fuera = []
+    d = por.get('direccion')
+    if d is not None:
+        fuera.append(struct.pack('<HIB', 0x0016, yo, int(d)))
+    fuera.append(struct.pack('<H', 0x0012) + bytes(7))
+    fuera.append(struct.pack('<HIII', 0x0003, yo, lleg[0], lleg[1]))
+    ses.personaje.tile_x, ses.personaje.tile_y = lleg
+    ses.enviar(*fuera)
+    # Si la casilla de llegada cae dentro del radio de OTRO portal del mismo
+    # mapa, se marca como pisada: si no, el jugador rebotaria al primer paso.
+    _en = _portal_en(ses.personaje.stage, *lleg)
+    ses.portal_pisado = tuple(_en['tile']) if _en else None
+    if getattr(ses, 'usuario', None):
+        cuentas.guardar_mapa(ses.usuario, ses.personaje.char_id,
+                             ses.personaje.stage, *lleg)
+    log.info(f"[{addr}] portal interno: sigue en stage "
+             f"{ses.personaje.stage}, ahora en {lleg} {motivo}")
+
+
 def _viajar_por_portal(ses, addr, por, motivo=''):
     """Manda al jugador por un tornado que no pregunta."""
     import clases as _cl3
     dst, lleg = por['destino'], por['llegada']
+    # MISMO MAPA: no se recarga nada, solo se recoloca al personaje.
+    if dst == getattr(ses.personaje, 'stage', None):
+        _viajar_dentro_del_mapa(ses, addr, por, motivo)
+        return
     ses.personaje.stage = dst
     ses.personaje.tile_x, ses.personaje.tile_y = lleg
     ses.monstruos = _monstruos_de(dst)
@@ -3407,6 +3449,22 @@ class Servidor:
                     if getattr(ses, 'usuario', None):
                         cuentas.guardar_mapa(ses.usuario, ses.personaje.char_id, 42, 11, 113)
                     log.info(f"[{addr}] East Portal: al East Playground (stage 42)")
+                elif (getattr(ses, 'dlg_portal', None)
+                      and str(_el) in (ses.dlg_portal.get('destinos') or {})
+                      and ses.personaje):
+                    # DESTINO PROPIO DEL PORTAL. Antes cada menu de portal
+                    # habia que escribirlo a mano aqui con su rango de ids;
+                    # asi el nudo de Teddy Amusement, que manda a dos puntos
+                    # del MISMO mapa, no se podia expresar. Ahora el portal
+                    # trae {'destinos': {'<id de opcion>': {...}}} y se
+                    # resuelve solo.
+                    _d = ses.dlg_portal['destinos'][str(_el)]
+                    _falso = dict(ses.dlg_portal)
+                    _falso['destino'] = _d.get('destino', ses.personaje.stage)
+                    _falso['llegada'] = _d['llegada']
+                    _falso['direccion'] = _d.get('direccion')
+                    _viajar_por_portal(ses, addr, _falso,
+                                       'por la opcion %d' % _el)
                 elif 5807 <= _el <= 5811 and ses.personaje:
                     # West Playground A1..A5
                     import clases as _cl3
@@ -3846,7 +3904,11 @@ class Servidor:
                     # Lyceum al West ofrece A1..A5 del West y el del
                     # East los suyos.
                     _ops = _por.get('opciones') or _cfg['opciones']
-                    sub = _dlg.armar_linea(_cfg['msg'], 0, _ops)
+                    # El mensaje tambien puede ser propio del portal: el
+                    # del Lyceum usa el 5801 global, pero el nudo de
+                    # Teddy Amusement trae el suyo, el 513008.
+                    sub = _dlg.armar_linea(_por.get('msg') or _cfg['msg'],
+                                           0, _ops)
                     ses.dlg_ent = _por['entity']
                     ses.dlg_guion = [sub[2:]]
                     ses.dlg_paso = 1

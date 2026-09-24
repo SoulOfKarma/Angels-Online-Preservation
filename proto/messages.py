@@ -281,6 +281,30 @@ Msg(0x0003, 's2c', 'ENTIDAD_COLOCAR', [
         "asi que esta lectura vale para el privado; en IGG el primer campo "
         "podria ser otra cosa.")
 
+Msg(0x0001, 's2c', 'JUGADOR_ENTRA', [
+    U32('entity_id'), U32('unk_04'), U32('tile_x'), U32('tile_y'),
+    Str('nombre', 16), Bytes('unk_32', 20), U32('unk_52'), U32('unk_56'),
+    U32('unk_60'),
+    U32('eq0'), U32('eq1'), U32('eq2'), U32('eq3'), U32('eq4'),
+    U32('eq5'), U32('eq6'), U32('eq7'), U32('eq8'), U32('eq9'),
+    Bytes('cola', 24),
+], note="OTRO JUGADOR aparece en el mapa. 128 bytes. Medido en Celestia el "
+        "24/09/2026, cuando entro un segundo jugador en Hidden Grove. "
+        "No confundir con el 0x0001 del LOGIN, que es la ficha de la ranura "
+        "recien creada: es el mismo opcode en otro contexto. "
+        "La cabecera es la de siempre -- entidad@0, casilla@8/12, nombre@16 "
+        "en 16 bytes --, igual que el 0x0008 y la ficha 0x0002. "
+        "Lo interesante son los DIEZ numeros de @64 a @100: son ITEM_ID, el "
+        "equipo del jugador, que es como el cliente sabe con que dibujarlo. "
+        "En la captura salieron 76901, 76902, 75922, 75921, 75913, 76904, "
+        "75919, 60909, 7541 y 75356, y solo el 7541 esta en el item.xml de "
+        "los paks extraidos: es 'Pan's Rescue', un arco. Los otros nueve "
+        "son de updates mas nuevos. "
+        "OJO: esto es POR ITEM_ID, mientras que el 0x0179, que dibuja la "
+        "figura de la ID Card del propio personaje, va por SPRITE (40287.."
+        "40295). Son dos mecanismos distintos. "
+        "Nuestro servidor no manda este mensaje: no hay multijugador.")
+
 VarMsg(0x0179, 's2c', 'APARIENCIA', [
     Count('n', of='grupos'),
     U32('unk_04'), U32('unk_08'), U8('flag'),
