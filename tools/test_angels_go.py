@@ -43,10 +43,11 @@ print("  %d de %d destinos, en %d escenarios poblados"
 assert len(listos) > 100
 
 
-def _pj(stage, tile):
+def _pj(stage, tile, faccion='Beasts'):
     p = login.Personaje(char_id=282, nombre="Karma", stage=stage,
                         tile_x=tile[0], tile_y=tile[1], hp=500, hp_max=500,
                         mp=200, mp_max=200, exp=10000, nivel=11)
+    p.faction = faccion
     p.entity_id = 286
     return p
 
@@ -54,8 +55,8 @@ def _pj(stage, tile):
 class _Ses:
     rol = 'mundo'
     usuario = None
-    def __init__(self, stage, tile, superwings=2):
-        self.personaje = _pj(stage, tile)
+    def __init__(self, stage, tile, superwings=2, faccion='Beasts'):
+        self.personaje = _pj(stage, tile, faccion)
         self.inventario = {54: app.ITEM_SUPERWING}
         self.cantidades = {54: superwings}
         self.monstruos = []
@@ -139,7 +140,28 @@ ops = _viajar(s, 1)
 print("  id 1 -> Angel Lyceum:", [hex(o) for o in ops])
 assert ops[-1] == 0x000C and s.personaje.stage == 41
 
-print("\n=== 7. La llegada no rebota por un tornado ===")
+print("\n=== 7. Sin faccion no hay Superwing ===")
+# Medido en Celestia: un personaje de nivel 12 con la ficha en "Heaven",
+# o sea sin haber elegido faccion en el Graduation Palace, NO puede usar
+# las Superwing. El rechazo va ANTES de tocar el inventario: no se gasta
+# el objeto.
+for fac in ('Heaven', 'Graduated', 'Neutrally', ''):
+    s = _Ses(126, (13, 23), faccion=fac)
+    _viajar(s, 119)
+    assert s.enviado == [], fac
+    assert s.cantidades[54] == 2, "no debe gastar Superwing: " + fac
+    assert (s.personaje.tile_x, s.personaje.tile_y) == (13, 23)
+print("  Heaven, Graduated, Neutrally y vacio: no viajan ni gastan nada")
+
+for fac in ('Aurora', 'Beasts', 'Steel', 'Shadow'):
+    s = _Ses(126, (13, 23), faccion=fac)
+    ops = _viajar(s, 119)
+    assert ops and ops[-1] == 0x0003, fac
+    assert s.cantidades[54] == 1, fac
+print("  las cuatro facciones de verdad si viajan")
+assert app.tiene_faccion(None) is False
+
+print("\n=== 8. La llegada no rebota por un tornado ===")
 # El id 119 deja en (20,23) de Nightmare Palace, a ocho del tornado 112227,
 # asi que no hay portal que pisar; pero si lo hubiera, tiene que quedar
 # marcado como pisado y no disparar.

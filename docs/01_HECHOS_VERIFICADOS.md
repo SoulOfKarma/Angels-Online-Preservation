@@ -2229,3 +2229,66 @@ Descartado por medicion, no hace falta repetirlo:
 
 PENDIENTE: una captura con la ID Card ABIERTA quitandose y poniendose una
 prenda del cuerpo, para aislar el mensaje que redibuja la figura.
+
+## LA FIGURA DE LA ID CARD (24/09/2026)
+
+El muñeco del mundo sale vestido y el de la ID Card sale en ropa interior.
+Esto es lo que se ha podido acotar; **no está arreglado**.
+
+### La regla de la apariencia, según el juego original
+
+La dio el usuario, que lo conoce del juego vivo. **No está medida**:
+
+> Si el personaje tiene Fashion, se muestra el Fashion. Si lo tiene por
+> partes, se mezcla pieza a pieza. Si no tiene Fashion, se muestra el set de
+> Gear, o lo que lleve puesto.
+
+O sea que la apariencia sale de DOS juegos de ranuras, no de uno: la pestaña
+`Fashion` pisa a la de `Gear` pieza por pieza. Nuestro servidor no tiene
+ranuras de Fashion, así que para nosotros la regla se reduce al Gear.
+
+### Lo que NO es
+
+Lo que mandamos está bien y se descarta por medición:
+
+- Los tres personajes de prueba mandan la entrada de inventario **idéntica**
+  para la prenda que sí se dibuja y para la que no: `off 34` = la entidad,
+  `off 53` = la entidad, `off 57` = 2 (cuerpo). No es el estado de puesto.
+- El árbol de habilidades `0x001C` sí lleva el nivel real de Garment (6 y 10
+  en los dos personajes), así que el cliente no está a ciegas.
+- En las capturas de Celestia **no viaja ni un solo `0x001D` de kind 1**, así
+  que la apariencia de la ficha no se alimenta de ese mensaje.
+- Ya estaban descartados antes el `0x0149`, el `0x0179` y la ficha `0x0002`.
+
+### La pista buena: el requisito de habilidad de la pieza
+
+Cruzando las tres ID Card contra `item.xml`, lo que se dibuja y lo que no
+casa **exactamente** con el `技能等限` de la pieza, sin una sola excepción:
+
+| item | prenda                    | skill | nivel | ¿se dibuja? |
+| ---- | ------------------------- | ----- | ----- | ----------- |
+| 26   | Students' Uniform         | -     | -     | SÍ          |
+| 30   | Students' shoes           | -     | -     | SÍ          |
+| 14   | Stick                     | -     | -     | SÍ          |
+| 95   | Heavy Shoes               | 33    | 1     | SÍ          |
+| 1838 | Fiend Cuff                | 33    | 2     | NO          |
+| 1840 | Fiend Forehead Protection | 33    | 3     | NO          |
+| 1841 | Fiend Leather Jacket      | 33    | 4     | NO          |
+
+Requisito 0 o 1 se dibuja; 2 o más no. Y eso pasa **aunque el personaje
+tenga Garment a 6 o a 10**, así que o el cliente compara contra otro sitio
+donde nosotros dejamos un 1, o la causa es otra que se le parece mucho.
+
+### Una diferencia con Celestia que queda sin explicar
+
+En el inventario real de Celestia el byte del contenedor (`off 57`) **no es
+2 para todas las ranuras de equipo**: las ranuras 1-7 y 10-12 van con 2,
+pero las **8 y 9 van con 4**. Nosotros escribimos 2 siempre. Ninguno de
+nuestros personajes usa esas dos ranuras, así que no explica lo de la card,
+pero es un dato que habrá que respetar cuando se toquen.
+
+### Lo que falta para cerrarlo
+
+Una captura de Celestia con la **ID Card abierta** quitándose y poniéndose
+una prenda cuyo requisito de habilidad sea 2 o más. Es el único caso que
+separa las hipótesis.

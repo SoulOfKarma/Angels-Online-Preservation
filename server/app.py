@@ -118,6 +118,26 @@ def _angels_go():
     return _ANGELS_GO
 
 
+# Las CUATRO facciones de verdad, por su codigo en la ficha. El 5 es
+# "Heaven", que es con lo que se sale del Lyceum antes de elegir, y el 0 es
+# "Neutrally": ninguno de los dos es una faccion, son el estado de no tener.
+FACCIONES_REALES = (1, 2, 3, 4)   # Aurora, Beasts, Steel, Shadow
+
+
+def tiene_faccion(p) -> bool:
+    """Si el personaje pertenece a una de las cuatro facciones.
+
+    Medido en Celestia: un personaje de nivel 12 con la ficha en "Heaven"
+    NO puede usar las Superwing. Hay que elegir faccion en el Graduation
+    Palace primero.
+    """
+    import login as _lgf
+    if p is None:
+        return False
+    return (_lgf.CODIGO_FACCION.get(getattr(p, 'faction', ''), 5)
+            in FACCIONES_REALES)
+
+
 def _ranura_de_item(ses, item_id: int):
     """La primera casilla de la mochila que lleva ese item, o None."""
     for r, iid in sorted(getattr(ses, 'inventario', {}).items()):
@@ -2768,6 +2788,15 @@ class Servidor:
             if dst not in mapas_poblados():
                 log.info(f"[{addr}] Angels GO! id {ido} -> stage {dst}, que "
                          f"todavia no esta poblado; no se viaja")
+                return
+            # SIN FACCION NO HAY SUPERWING. Medido: un personaje en
+            # "Heaven", o sea sin haber elegido en el Graduation Palace, no
+            # puede usarlas. Va antes de tocar el inventario para que ni
+            # siquiera se gaste el objeto.
+            if not tiene_faccion(ses.personaje):
+                log.info(f"[{addr}] Angels GO! rechazado: el personaje esta "
+                         f"en '{getattr(ses.personaje, 'faction', '?')}' y no "
+                         f"pertenece a ninguna de las cuatro facciones")
                 return
             ranura = _ranura_de_item(ses, ITEM_SUPERWING)
             if ranura is None:

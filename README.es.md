@@ -58,7 +58,9 @@ una suposición, lo dice.
   Superwing y la respuesta se bifurca, con las dos ramas medidas: un `0x0003`
   si el destino está en el mapa donde ya estás, y un `0x0007` más `0x000C` si
   es otro mapa. La tabla tiene **355 destinos** y **140 están activos**, los
-  que caen en un mapa poblado; el resto se rechazan sin gastar el objeto
+  que caen en un mapa poblado; el resto se rechazan sin gastar el objeto. Un
+  personaje que no pertenezca a una de las cuatro facciones no puede usarlas
+  siquiera: medido con uno de nivel 12 todavía en «Heaven»
 - Las cuatro ciudades de facción con su casilla de llegada, las cuatro
   medidas: Aurora City, Breeze Woods, Iron Castle y Dark City. Al elegir
   facción el juego deja al jugador al lado del Ángel de esa ciudad, a tres o

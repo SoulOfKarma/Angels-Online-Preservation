@@ -56,7 +56,9 @@ a guess, it says so.
   splits in two, both measured -- a `0x0003` when the destination is on the
   map you are already on, a `0x0007` plus `0x000C` when it is another map.
   The table has **355 destinations** and **140 of them are live**, the ones
-  that land on a populated map; the rest are refused without spending the item
+  that land on a populated map; the rest are refused without spending the
+  item. A character who does not belong to one of the four factions cannot
+  use a Superwing at all -- measured on a level 12 still in "Heaven"
 - The four faction cities with their arrival tile, all four measured: Aurora
   City, Breeze Woods, Iron Castle and Dark City. Picking a faction leaves you
   next to that city's Angel, three or four tiles away, in all four
