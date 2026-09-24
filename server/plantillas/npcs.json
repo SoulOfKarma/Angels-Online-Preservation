@@ -1,0 +1,1542 @@
+{
+ "32": {
+  "nombre": "Militia Chief",
+  "stage": 23,
+  "mapa": "dense_forest",
+  "dialogo": {
+   "mid": 50601,
+   "val": 32,
+   "opciones": [
+    50602,
+    50603,
+    50604,
+    50605
+   ],
+   "acciones": [
+    1000047,
+    1000049,
+    1000051,
+    0
+   ]
+  },
+  "texto": "I'm Militia Chief of Breeze Woods. To prevent the [/c$2Magic Eye /c*] from sneaking in, regular patrol is important. But I don't know whether the soldiers are defending their posts.",
+  "textos_opciones": [
+   "What is the Breeze Woods Militia Army?",
+   "What are the Magic Eye?",
+   "Do you need my help?",
+   "Leave"
+  ]
+ },
+ "34": {
+  "nombre": "Jungle Priest",
+  "stage": 23,
+  "mapa": "dense_forest",
+  "dialogo": {
+   "mid": 5236,
+   "val": 34,
+   "opciones": [
+    5237,
+    5238
+   ],
+   "acciones": [
+    1000072,
+    1000073
+   ]
+  },
+  "texto": "Which warehouse do you want to use?",
+  "textos_opciones": [
+   "I wish to use my own warehouse.",
+   "I wish to use the corporation's warehouse."
+  ]
+ },
+ "25": {
+  "nombre": "Merchant Wushor",
+  "stage": 23,
+  "mapa": "dense_forest",
+  "dialogo": {
+   "mid": 50501,
+   "val": 25,
+   "opciones": [
+    50502,
+    50503
+   ],
+   "acciones": [
+    1000032,
+    0
+   ]
+  },
+  "texto": "The idea of preserving health has surged in Breeze Woods recently. Are you interested in Healthcare Products? I sell unique Healthcare Products made from all natural materials. My products are popular with customers! But I'm really too busy so that I require someone to help me.",
+  "textos_opciones": [
+   "What do you need them to do?",
+   "Leave"
+  ]
+ },
+ "33": {
+  "nombre": "Herbalist Hebu",
+  "stage": 23,
+  "mapa": "dense_forest",
+  "dialogo": {
+   "mid": 5775,
+   "val": 33,
+   "opciones": [
+    5190,
+    5191
+   ],
+   "acciones": [
+    1000212,
+    0
+   ]
+  },
+  "tienda": 35,
+  "texto": "I have some liquid medicine which can you to regain your physical strength and energy, would you like some?",
+  "textos_opciones": [
+   "I wish to look at your goods.",
+   "No, not now."
+  ],
+  "articulos": [
+   2,
+   1228,
+   66,
+   67,
+   1352,
+   1353,
+   1354,
+   1355,
+   1905,
+   1202,
+   1203,
+   1204,
+   1205,
+   1206,
+   1207,
+   1208,
+   1209,
+   1210
+  ]
+ },
+ "1872": {
+  "nombre": "Porter Shiwala",
+  "stage": 41,
+  "mapa": "lyceum",
+  "dialogo": {
+   "mid": 5795,
+   "val": 44,
+   "opciones": [
+    5797,
+    5798,
+    5799
+   ],
+   "acciones": [
+    1000287,
+    1000288,
+    0
+   ]
+  },
+  "texto": "In order to avoid the traffic jam at the Lyceum, the leader of the Lyceum Michael had created different spaces. By using these I can transport you to many other places.",
+  "textos_opciones": [
+   "Angel Lyceum",
+   "Angel Lyceum",
+   "Quit."
+  ]
+ },
+ "1549": {
+  "nombre": "Director Wolay",
+  "stage": 41,
+  "mapa": "lyceum",
+  "dialogo": {
+   "mid": 5801,
+   "val": 0,
+   "opciones": [
+    5807,
+    5808,
+    5809,
+    5810,
+    5811,
+    5812
+   ],
+   "acciones": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    0
+   ]
+  },
+  "texto": "Where are you going?",
+  "textos_opciones": [
+   "West Playground",
+   "West Playground",
+   "West Playground",
+   "West Playground",
+   "West Playground",
+   "Quit."
+  ]
+ },
+ "1552": {
+  "nombre": "Repair Angel",
+  "stage": 41,
+  "mapa": "lyceum",
+  "dialogo": {
+   "mid": 5100,
+   "val": 5,
+   "opciones": [
+    5101,
+    5102
+   ],
+   "acciones": [
+    1000019,
+    0
+   ]
+  },
+  "texto": "Hello, I'm the Repair Angel; I can mend any equipment for free in the Angel Lyceum.",
+  "textos_opciones": [
+   "Repair the equipment.",
+   "Quit."
+  ]
+ },
+ "1896": {
+  "nombre": "Badge Angel",
+  "stage": 41,
+  "mapa": "lyceum",
+  "dialogo": {
+   "mid": 5123,
+   "val": 42,
+   "opciones": [
+    5124,
+    5125
+   ],
+   "acciones": [
+    1000272,
+    0
+   ]
+  },
+  "texto": "Are you sure you want to exchange with me?(It needs one Copper Monster Badge)",
+  "textos_opciones": [
+   "Yes.",
+   "Let me see."
+  ]
+ },
+ "1862": {
+  "nombre": "Cupid",
+  "stage": 41,
+  "mapa": "lyceum",
+  "dialogo": {
+   "mid": 5745,
+   "val": 6,
+   "opciones": [
+    5746,
+    5747,
+    5748
+   ],
+   "acciones": [
+    1000251,
+    1000252,
+    0
+   ]
+  },
+  "texto": "Hi! I'm the loveliest of all the Angels in Heaven, my name is Cupid. Do you need my help?",
+  "textos_opciones": [
+   "What kind of help?",
+   "Set the place for your revival.",
+   "Quit."
+  ]
+ },
+ "1895": {
+  "nombre": "Angels' Tutor",
+  "stage": 41,
+  "mapa": "lyceum",
+  "dialogo": {
+   "mid": 10134,
+   "val": 1,
+   "opciones": [],
+   "acciones": []
+  },
+  "texto": "Goodbye, /c$2%1/c*, choose the city you want to go!",
+  "textos_opciones": []
+ },
+ "1779": {
+  "nombre": "Scroll Seller",
+  "stage": 41,
+  "mapa": "lyceum",
+  "dialogo": {
+   "mid": 5628,
+   "val": 4,
+   "opciones": [
+    5190,
+    5191
+   ],
+   "acciones": [
+    1000143,
+    0
+   ]
+  },
+  "tienda": 17,
+  "texto": "Hello, Little Angel, I'm the Angel Merchant who sells the Skill Scroll, if you want to learn some skills, you can buy one from me.",
+  "textos_opciones": [
+   "I wish to look at your goods.",
+   "No, not now."
+  ],
+  "articulos": [
+   2661,
+   2662,
+   2666,
+   2438,
+   2439,
+   2490,
+   2491,
+   2542,
+   2543,
+   2594,
+   2595
+  ]
+ },
+ "1506": {
+  "nombre": "Skill Angel",
+  "stage": 41,
+  "mapa": "lyceum",
+  "dialogo": {
+   "mid": 5023,
+   "val": 4,
+   "opciones": [
+    5024,
+    5820,
+    5793
+   ],
+   "acciones": [
+    1000266,
+    1000351,
+    0
+   ]
+  },
+  "texto": "I'm the Skill Angel, are you satisfied with your skill distribution? If you have any problems during your studies, you must tell me.",
+  "textos_opciones": [
+   "I wish to change my skill.",
+   "The limit of changing skill.",
+   "Quit."
+  ]
+ },
+ "1551": {
+  "nombre": "Chief Director",
+  "stage": 41,
+  "mapa": "lyceum",
+  "dialogo": {
+   "mid": 5029,
+   "val": 51,
+   "opciones": [
+    5030,
+    5032,
+    5033
+   ],
+   "acciones": [
+    1000390,
+    1000392,
+    0
+   ]
+  },
+  "texto": "Hello there, Little Angel, I'm the Chief Director ! There is a warehouse for each of the freshman in the campus; do you wish to use it now?",
+  "textos_opciones": [
+   "How do I use it?",
+   "Yes I would like to use the warehouse.",
+   "Not right now, thank-you."
+  ]
+ },
+ "1501": {
+  "nombre": "Michael",
+  "stage": 41,
+  "mapa": "lyceum",
+  "dialogo": {
+   "mid": 12401,
+   "val": 1,
+   "opciones": [
+    12302,
+    12304
+   ],
+   "acciones": [
+    1000007,
+    0
+   ]
+  },
+  "tienda": 37,
+  "texto": "Congratulations! You have finished the most difficult training in the Angel Lyceum, go to find your [/c$2Angels' Tutor/c*] if you are ready to leave.",
+  "textos_opciones": [
+   "Introduction to Angel Lyceum",
+   "Quit"
+  ],
+  "articulos": [
+   1386
+  ]
+ },
+ "2670": {
+  "nombre": "Lonely Earth Elf",
+  "stage": 121,
+  "mapa": "desert_racetrack",
+  "dialogo": {
+   "mid": 89501,
+   "val": 1085,
+   "opciones": [
+    89502,
+    89503
+   ],
+   "acciones": [
+    1000093,
+    0
+   ]
+  },
+  "texto": "Oh, Goodness me! All of the four elves are up to no good! Oh, no, don't do that...",
+  "textos_opciones": [
+   "What's up?",
+   "I'm leaving"
+  ]
+ },
+ "47": {
+  "nombre": "Heaven General",
+  "stage": 29,
+  "mapa": "breeze_woods",
+  "dialogo": {
+   "mid": 5920,
+   "val": 47,
+   "opciones": [
+    5921,
+    5922,
+    5923,
+    5959,
+    5924
+   ],
+   "acciones": [
+    1000320,
+    1000323,
+    1000329,
+    1000368,
+    0
+   ]
+  },
+  "tienda": 71,
+  "texto": "I'm the Heaven General. I have been ordered by Michael to come here to wait for the elites and give the prizes to them.",
+  "textos_opciones": [
+   "Tell me the qualification for the prize.",
+   "I wish to get the prize.",
+   "Send me to the League Manor.",
+   "I wish to buy the Status Badge.",
+   "Quit."
+  ],
+  "articulos": [
+   3735,
+   3736,
+   3737,
+   3738,
+   3739,
+   3740,
+   3741,
+   3742,
+   3743
+  ]
+ },
+ "1555": {
+  "nombre": "Magic Seller",
+  "stage": 41,
+  "mapa": "lyceum",
+  "dialogo": {
+   "mid": 5235,
+   "val": 4,
+   "opciones": [
+    5190,
+    5191
+   ],
+   "acciones": [
+    1000470,
+    0
+   ]
+  },
+  "tienda": 18,
+  "texto": "Hello, Little Angel, I'm the Angel Merchant who sells the magic scrolls. If you want to learn more magic, you can buy one.",
+  "textos_opciones": [
+   "I wish to look at your goods.",
+   "No, not now."
+  ],
+  "articulos": [
+   431,
+   432,
+   435,
+   436,
+   446,
+   451,
+   459,
+   464,
+   2182,
+   2183,
+   2186,
+   2187,
+   2190,
+   2194,
+   2195,
+   2199,
+   2204,
+   2264,
+   2265,
+   2276,
+   2281,
+   2286,
+   2346,
+   2347,
+   2350,
+   2351,
+   2358,
+   2363,
+   2368,
+   2373
+  ]
+ },
+ "1910": {
+  "nombre": "Bao Clerk",
+  "stage": 41,
+  "mapa": "lyceum",
+  "dialogo": {
+   "mid": 5132,
+   "val": 3,
+   "opciones": [
+    5133,
+    5131,
+    5378,
+    5379,
+    5025
+   ],
+   "acciones": [
+    1000349,
+    1000350,
+    1001045,
+    1001046,
+    0
+   ]
+  },
+  "texto": "Welcome to Angels Online! If you want to [/c$2exchange the dummy treasure/c*] or take the [/c$2missing prop/c*] back, come and find me!",
+  "textos_opciones": [
+   "Choose the dummy treasure.",
+   "Choose the missing prop.",
+   "Exchange Exceptional Pack Box",
+   "Exchange Powerful Newbie Equipment Box",
+   "Quit."
+  ]
+ },
+ "1553": {
+  "nombre": "House Pickets",
+  "stage": 41,
+  "mapa": "lyceum",
+  "dialogo": {
+   "mid": 7546,
+   "val": 53,
+   "opciones": [
+    7547,
+    7548
+   ],
+   "acciones": [
+    1000682,
+    0
+   ]
+  },
+  "texto": "Hello, little Angel, I can teleport you to the Sign-up Office, my name is /c$2 Battlefield Angel/c*. Are you ready to start your adventure?",
+  "textos_opciones": [
+   "Yes, please teleport me to [Sign-up Office]",
+   "No, I am not ready. "
+  ]
+ },
+ "1541": {
+  "nombre": "Mine Professor",
+  "stage": 41,
+  "mapa": "lyceum",
+  "dialogo": {
+   "mid": 5236,
+   "val": 34,
+   "opciones": [
+    5237,
+    5238
+   ],
+   "acciones": [
+    1000072,
+    1000073
+   ]
+  },
+  "texto": "Which warehouse do you want to use?",
+  "textos_opciones": [
+   "I wish to use my own warehouse.",
+   "I wish to use the corporation's warehouse."
+  ]
+ },
+ "1940": {
+  "nombre": "Breeze Totem",
+  "stage": 41,
+  "mapa": "lyceum",
+  "dialogo": {
+   "mid": 5713,
+   "val": 30,
+   "opciones": [
+    5686,
+    5687,
+    5688,
+    5689,
+    5690
+   ],
+   "acciones": [
+    1000104,
+    1000106,
+    1000107,
+    1000108,
+    0
+   ]
+  },
+  "texto": "Look at what you are wearing; I guess that you can see far into your own future! There are many people and things for you to experience outside the Manor of Breeze Woods.",
+  "textos_opciones": [
+   "about Breeze Woods",
+   "Breeze Woods-rim",
+   "The monsters in different places.",
+   "the battle and the quest",
+   "Quit."
+  ]
+ },
+ "1929": {
+  "nombre": "Angel Colonel",
+  "stage": 41,
+  "mapa": "lyceum",
+  "dialogo": {
+   "mid": 80000,
+   "val": 53,
+   "opciones": [
+    80001,
+    80002,
+    80003,
+    80004,
+    80005
+   ],
+   "acciones": [
+    1000396,
+    1000397,
+    1000398,
+    1000399,
+    0
+   ]
+  },
+  "texto": "Angel, we are now holding an activity called [/c$2Angel Protector DNA/c*].You will have the chance to meet new friends and get gifts or rewards",
+  "textos_opciones": [
+   "What is Angel Protector DNA?",
+   "How do I take part in this activity?",
+   "Apply to participate.",
+   "Match",
+   "I'm leaving"
+  ]
+ },
+ "1550": {
+  "nombre": "Ironsmith",
+  "stage": 41,
+  "mapa": "lyceum",
+  "dialogo": {
+   "mid": 5234,
+   "val": 4,
+   "opciones": [
+    5190,
+    5191
+   ],
+   "acciones": [
+    1000469,
+    0
+   ]
+  },
+  "tienda": 16,
+  "texto": "Hello, Little Angel, I'm the Angel Merchant who sells the manufacture recipes. If you want to learn how to make things then you can buy one.",
+  "textos_opciones": [
+   "I wish to look at your goods.",
+   "No, not now."
+  ],
+  "articulos": [
+   72,
+   73,
+   74,
+   75,
+   76,
+   97,
+   98,
+   99,
+   279,
+   280,
+   281,
+   282,
+   283,
+   284,
+   801,
+   802,
+   803,
+   1005,
+   1006,
+   1007,
+   1008,
+   3124,
+   3130,
+   3142,
+   3148,
+   1009,
+   1010,
+   1011,
+   1012,
+   1013,
+   1014,
+   1015,
+   3160,
+   3166,
+   3178,
+   3184,
+   1016,
+   1017,
+   1018,
+   1019,
+   1020,
+   1021,
+   1022,
+   3125,
+   3131,
+   3143,
+   3149
+  ]
+ },
+ "7937": {
+  "nombre": "Gurkha Expert(W)",
+  "stage": 163,
+  "mapa": "hoca_village",
+  "dialogo": {
+   "mid": 7985,
+   "val": 16,
+   "opciones": [
+    7982,
+    5242
+   ],
+   "acciones": [
+    1000022,
+    0
+   ]
+  },
+  "tienda": 113,
+  "texto": "I know many strategies and skills for fighting. If you want to be a powerful warrior like me, you can learn these things from me.",
+  "textos_opciones": [
+   "Can you show me what skills you have?",
+   "No, thanks."
+  ],
+  "articulos": [
+   18847,
+   18848,
+   18849,
+   18850,
+   18852,
+   18853,
+   18854,
+   18855,
+   18857,
+   18858,
+   18859,
+   18860,
+   18862,
+   18863,
+   18864,
+   18865,
+   18867,
+   18868,
+   18869,
+   18870,
+   18872,
+   18873,
+   18874,
+   18875,
+   18877,
+   18878,
+   18879,
+   18880,
+   18882,
+   18883,
+   18884,
+   18885,
+   18887,
+   18888,
+   18889,
+   18890,
+   18892,
+   18893,
+   18894,
+   18895
+  ]
+ },
+ "7936": {
+  "nombre": "Gurkha Expert(S)",
+  "stage": 163,
+  "mapa": "hoca_village",
+  "dialogo": {
+   "mid": 7987,
+   "val": 70,
+   "opciones": [
+    7982,
+    5242
+   ],
+   "acciones": [
+    1000021,
+    0
+   ]
+  },
+  "tienda": 112,
+  "texto": "I know many strategies and skills for spellcasting. If you want to be a wise and powerful magic user like me, I can teach you.",
+  "textos_opciones": [
+   "Can you show me what skills you have?",
+   "No, thanks."
+  ],
+  "articulos": [
+   18807,
+   18808,
+   18809,
+   18810,
+   18812,
+   18813,
+   18814,
+   18815,
+   18817,
+   18818,
+   18819,
+   18820,
+   18822,
+   18823,
+   18824,
+   18825,
+   18827,
+   18828,
+   18829,
+   18830,
+   18832,
+   18833,
+   18834,
+   18835,
+   18837,
+   18838,
+   18839,
+   18840,
+   18842,
+   18843,
+   18844,
+   18845
+  ]
+ },
+ "7994": {
+  "nombre": "Landlord Doo",
+  "stage": 163,
+  "mapa": "hoca_village",
+  "dialogo": {
+   "mid": 27902,
+   "val": 180,
+   "opciones": [
+    27903,
+    27904
+   ],
+   "acciones": [
+    1000148,
+    0
+   ]
+  },
+  "texto": "Poor little thing. I'm the richest Doo, who is admired by all villagers! I was bored with the local delicacies but no one could get special dishes for me! Do you like to have a try? I'll give you repayment more than you can get by working all the year!",
+  "textos_opciones": [
+   "Have a try",
+   "I'm poor but I'm not humble in my will. Ignore this bounder..."
+  ]
+ },
+ "7938": {
+  "nombre": "Gurkha Smith",
+  "stage": 163,
+  "mapa": "hoca_village",
+  "dialogo": {
+   "mid": 5260,
+   "val": 180,
+   "opciones": [
+    7982,
+    7983
+   ],
+   "acciones": [
+    1000023,
+    0
+   ]
+  },
+  "tienda": 114,
+  "texto": "I have many kinds of the scrolls for the high-level weapon, do you want to take a look at it?",
+  "textos_opciones": [
+   "Can you show me what skills you have?",
+   "No, thanks."
+  ],
+  "articulos": [
+   19501,
+   19502,
+   19503,
+   19504,
+   19435,
+   19436,
+   19437,
+   19438,
+   19439,
+   19440,
+   19441,
+   19442,
+   19443,
+   19444,
+   19445,
+   19497,
+   19498,
+   19499,
+   19500,
+   19458,
+   19459,
+   19460,
+   19461,
+   19462,
+   19463,
+   19464,
+   19465,
+   19466,
+   19467,
+   19468,
+   19469,
+   19470,
+   19471,
+   19472,
+   19473,
+   19474,
+   19475
+  ]
+ },
+ "7939": {
+  "nombre": "Gurkha Master",
+  "stage": 163,
+  "mapa": "hoca_village",
+  "dialogo": {
+   "mid": 5261,
+   "val": 1133,
+   "opciones": [
+    7982,
+    7983
+   ],
+   "acciones": [
+    1000024,
+    0
+   ]
+  },
+  "tienda": 115,
+  "texto": "I have many kinds of the scrolls for the high-level art, sewing and Cooking Recipe, do you want to take a look at it?",
+  "textos_opciones": [
+   "Can you show me what skills you have?",
+   "No, thanks."
+  ],
+  "articulos": [
+   19493,
+   19494,
+   19495,
+   19496,
+   19487,
+   19488,
+   19489,
+   19490,
+   19491,
+   19492,
+   19505,
+   19506,
+   19507,
+   19508,
+   19446,
+   19447,
+   19448,
+   19449,
+   19450,
+   19451,
+   19452,
+   19453,
+   19454,
+   19455,
+   19456,
+   19457,
+   19509,
+   19510,
+   19511,
+   19512,
+   19476,
+   19477,
+   19478,
+   19479,
+   19480,
+   19481,
+   19482,
+   19483,
+   19484,
+   19485,
+   19486
+  ]
+ },
+ "7935": {
+  "nombre": "Gurkha Repairer",
+  "stage": 163,
+  "mapa": "hoca_village",
+  "dialogo": {
+   "mid": 5226,
+   "val": 38,
+   "opciones": [
+    5227,
+    5242
+   ],
+   "acciones": [
+    1000020,
+    0
+   ]
+  },
+  "texto": "Anything broken can be repaired by my nimble hands, there is nothing I can't mend.",
+  "textos_opciones": [
+   "OK, I wish to repair this equipment.",
+   "No, thanks."
+  ]
+ },
+ "7993": {
+  "nombre": "Lady Gurkha",
+  "stage": 163,
+  "mapa": "hoca_village",
+  "dialogo": {
+   "mid": 27802,
+   "val": 1126,
+   "opciones": [
+    27803,
+    27804
+   ],
+   "acciones": [
+    1000129,
+    0
+   ]
+  },
+  "texto": "Wait a minute, Sir! I'm a mother worrying about her children. They are so piquent now and wander around the Dino Arena all day long. It seems that you are very powerful, so could you help me to bring them back? I'm afraid they would become bad children!",
+  "textos_opciones": [
+   "Help her",
+   "Ignore her"
+  ]
+ },
+ "6": {
+  "nombre": "Cupid",
+  "stage": 42,
+  "mapa": "east_playground",
+  "dialogo": {
+   "mid": 5745,
+   "val": 6,
+   "opciones": [
+    5746,
+    5747,
+    5748
+   ],
+   "acciones": [
+    1000203,
+    1000204,
+    0
+   ]
+  },
+  "texto": "Hi! I'm the loveliest of all the Angels in Heaven, my name is Cupid. Do you need my help?",
+  "textos_opciones": [
+   "What kind of help?",
+   "Set the place for your revival.",
+   "Quit."
+  ]
+ },
+ "1504": {
+  "nombre": "Shopkeeper",
+  "stage": 41,
+  "mapa": "lyceum",
+  "dialogo": {
+   "mid": 12101,
+   "val": 4,
+   "opciones": [
+    12103,
+    12105
+   ],
+   "acciones": [
+    1000015,
+    0
+   ]
+  },
+  "tienda": 1,
+  "texto": "Hello, I am the Shopkeeper! In my shop I have weapons and equipment of every kind imaginable. It is my aim to help all of the students to be successful at their studies.",
+  "textos_opciones": [
+   "Tell me about the buying and selling of goods",
+   "Quit"
+  ],
+  "articulos": [
+   20,
+   21,
+   22,
+   63,
+   10,
+   14,
+   15,
+   16,
+   18,
+   23,
+   145,
+   157,
+   584,
+   4,
+   5,
+   6,
+   7,
+   8,
+   1424,
+   1425,
+   1426,
+   1427,
+   1428,
+   9,
+   1417,
+   1418,
+   1419,
+   1420,
+   1421,
+   1422,
+   1423,
+   147,
+   138,
+   78,
+   79,
+   80,
+   81,
+   82,
+   83,
+   84,
+   85,
+   86,
+   87,
+   88,
+   89,
+   90,
+   260,
+   261,
+   1212,
+   1220,
+   1339,
+   361,
+   2,
+   1228,
+   66,
+   67
+  ]
+ },
+ "1941": {
+  "nombre": "C. Plan Seller",
+  "stage": 41,
+  "mapa": "lyceum",
+  "dialogo": {
+   "mid": 5234,
+   "val": 4,
+   "opciones": [
+    5190,
+    5191
+   ],
+   "acciones": [
+    37,
+    0
+   ]
+  },
+  "tienda": 68,
+  "texto": "Hello, Little Angel, I'm the Angel Merchant who sells the manufacture recipes. If you want to learn how to make things then you can buy one.",
+  "textos_opciones": [
+   "I wish to look at your goods.",
+   "No, not now."
+  ],
+  "articulos": [
+   1086,
+   1087,
+   1088,
+   3136,
+   3154,
+   1089,
+   1090,
+   1091,
+   1092,
+   1093,
+   3172,
+   3190,
+   1094,
+   1095,
+   1096,
+   1097,
+   1098,
+   1099,
+   3137,
+   3155,
+   1154,
+   1155,
+   1156,
+   1157,
+   1158,
+   1159,
+   1160,
+   1161,
+   2029,
+   2030,
+   2031,
+   2032,
+   2033,
+   2099,
+   2100,
+   2101,
+   2102,
+   2103,
+   2104,
+   2105,
+   2106,
+   2107,
+   2108,
+   2109,
+   2110,
+   2111
+  ]
+ },
+ "11049": {
+  "nombre": "Magic Teacher",
+  "stage": 41,
+  "mapa": "lyceum",
+  "dialogo": {
+   "mid": 514813,
+   "val": 0,
+   "opciones": [
+    5954,
+    5955
+   ],
+   "acciones": [
+    1001066,
+    0
+   ]
+  },
+  "texto": "Are you going to the /c$2Angel House Area/c*?",
+  "textos_opciones": [
+   "yes",
+   "no"
+  ]
+ },
+ "2009": {
+  "nombre": "Marriage Angel",
+  "stage": 41,
+  "mapa": "lyceum",
+  "dialogo": {
+   "mid": 61329,
+   "val": 112,
+   "opciones": [
+    61330,
+    61331,
+    61332
+   ],
+   "acciones": [
+    1000253,
+    1000626,
+    0
+   ]
+  },
+  "texto": "Little Angel, have you found your beloved? As long as you accepted and completed the test from Heaven, you can step into the church and stay together forever.",
+  "textos_opciones": [
+   "About marriage detail, process &amp; benefit",
+   "I accept the marriage task.",
+   "Quit"
+  ]
+ },
+ "6883": {
+  "nombre": "Assassin Master",
+  "stage": 41,
+  "mapa": "lyceum",
+  "dialogo": {
+   "mid": 8037,
+   "val": 47,
+   "opciones": [
+    8038,
+    8039,
+    8040,
+    8041
+   ],
+   "acciones": [
+    1000793,
+    1000806,
+    1000810,
+    0
+   ]
+  },
+  "texto": "Hi, I am the [Assassin] tutor. Should you have any problems regarding Assassins and their work, then please feel free to ask.",
+  "textos_opciones": [
+   "What is an [Assassin] ?",
+   "How can I become an [Assassin]?",
+   "What is a good build for an [Assassin]？",
+   "I'm leaving"
+  ]
+ },
+ "2001": {
+  "nombre": "Pet Expert",
+  "stage": 41,
+  "mapa": "lyceum",
+  "dialogo": {
+   "mid": 6100,
+   "val": 48,
+   "opciones": [
+    6101,
+    6102,
+    6103,
+    5020
+   ],
+   "acciones": [
+    1000418,
+    1000419,
+    1000420,
+    0
+   ]
+  },
+  "tienda": 69,
+  "texto": "I'm the Pet Merchant, I sell many kinds of props and feedstuffs you can take a look around if you are interested!",
+  "textos_opciones": [
+   "Tell me about the pets",
+   "Let me take a look at your shop",
+   "What do you know about pet revival",
+   "Quit."
+  ],
+  "articulos": [
+   3374,
+   3375,
+   3396,
+   3397,
+   3398,
+   3399
+  ]
+ },
+ "2183": {
+  "nombre": "DivingCoach Nira",
+  "stage": 86,
+  "mapa": "golden_beach",
+  "dialogo": {
+   "mid": 70415,
+   "val": 181,
+   "opciones": [
+    70416,
+    70417
+   ],
+   "acciones": [
+    1000019,
+    0
+   ]
+  },
+  "texto": "I am Basic Diving Trainer Nile in charge of training adventurers. Have you come here to learn the /c$2Diving Skill/c*?",
+  "textos_opciones": [
+   "Yes!",
+   "No!"
+  ]
+ },
+ "1554": {
+  "nombre": "Gaoler Angel",
+  "stage": 41,
+  "mapa": "lyceum",
+  "dialogo": {
+   "mid": 5801,
+   "val": 0,
+   "opciones": [
+    5807,
+    5808,
+    5809,
+    5810,
+    5811,
+    5812
+   ],
+   "acciones": [
+    1000319,
+    1000320,
+    1000321,
+    1000322,
+    1000323,
+    0
+   ]
+  },
+  "texto": "Where are you going?",
+  "textos_opciones": [
+   "West Playground",
+   "West Playground",
+   "West Playground",
+   "West Playground",
+   "West Playground",
+   "Quit."
+  ]
+ },
+ "1": {
+  "nombre": "Michael",
+  "stage": 58,
+  "mapa": "graduation_palace",
+  "dialogo": {
+   "mid": 10134,
+   "val": 1,
+   "opciones": [],
+   "acciones": []
+  },
+  "texto": "Goodbye, /c$2%1/c*, choose the city you want to go!",
+  "textos_opciones": []
+ },
+ "52": {
+  "nombre": "BreezeWood Angel",
+  "stage": 58,
+  "mapa": "graduation_palace",
+  "dialogo": {
+   "mid": 10234,
+   "val": 52,
+   "opciones": [
+    10235,
+    10236
+   ],
+   "acciones": [
+    1000061,
+    0
+   ]
+  },
+  "texto": "Do you want to be the Angel Protector of the Breeze Woods?",
+  "textos_opciones": [
+   "Yes.",
+   "Let me think about it."
+  ]
+ },
+ "112": {
+  "nombre": "BreezeWood Angel",
+  "stage": 29,
+  "mapa": "breeze_woods",
+  "dialogo": {
+   "mid": 50001,
+   "val": 112,
+   "opciones": [
+    50003,
+    50004,
+    50018,
+    50005
+   ],
+   "acciones": [
+    1000018,
+    1000020,
+    1000029,
+    0
+   ]
+  },
+  "texto": "/c$2%1/c* Hello! You are welcome to become the Angel Protector of Breeze Woods. I'm the Angel who will help you to become an Angel Protector of highest level...",
+  "textos_opciones": [
+   "Tell me about the Angel Protector's mission?",
+   "Tell me about the Angel Honor?",
+   "Go back to the Angel Lyceum",
+   "Leave"
+  ]
+ },
+ "2185": {
+  "nombre": "Dipsey Hunter",
+  "stage": 84,
+  "mapa": "blue_sea",
+  "dialogo": {
+   "mid": 70613,
+   "val": 181,
+   "opciones": [
+    70614,
+    70615
+   ],
+   "acciones": [
+    1000011,
+    1000012
+   ]
+  },
+  "texto": "Well done, dude! You must have learned Diving Skill from my younger brother so you can dive here using simple equipment. The stance and tools are similar too.",
+  "textos_opciones": [
+   "I want to learn the Abyssal Diving Skill.",
+   "You don't need to know who I learned from."
+  ]
+ },
+ "2333": {
+  "nombre": "Urs(Sword)",
+  "stage": 91,
+  "mapa": "sunken_ruins",
+  "dialogo": {
+   "mid": 65356,
+   "val": 116,
+   "opciones": [],
+   "acciones": []
+  },
+  "texto": "Weapon: [/c$2Blue Crystal/c*]/c$2* 200/c* and [/c$2Energy Source/c*]/c$2* 800/c*.",
+  "textos_opciones": []
+ },
+ "49": {
+  "nombre": "Dark City Angel",
+  "stage": 58,
+  "mapa": "graduation_palace",
+  "dialogo": {
+   "mid": 10202,
+   "val": 49,
+   "opciones": [
+    10209,
+    10210,
+    10205,
+    10206
+   ],
+   "acciones": [
+    1000029,
+    1000030,
+    1000031,
+    0
+   ]
+  },
+  "texto": "Hello, /c$2%1/c*,I'm the Angel Protector from Dark City, do you want to join us?",
+  "textos_opciones": [
+   "Tell me about the Dark City.",
+   "Tell me about the Dark City Totem.",
+   "I decided to be an Angel Protector.",
+   "Quit."
+  ]
+ },
+ "5": {
+  "nombre": "Aurora Angel",
+  "stage": 58,
+  "mapa": "graduation_palace",
+  "dialogo": {
+   "mid": 10201,
+   "val": 5,
+   "opciones": [
+    10207,
+    10208,
+    10205,
+    10206
+   ],
+   "acciones": [
+    1000018,
+    1000019,
+    1000020,
+    0
+   ]
+  },
+  "texto": "Hello, /c$2%1/c*,I'm the Angel Protector from Aurora City, do you want to join us?",
+  "textos_opciones": [
+   "Tell me about the Aurora City.",
+   "Tell me about the Aurora Totem.",
+   "I decided to be an Angel Protector.",
+   "Quit."
+  ]
+ },
+ "53": {
+  "nombre": "IronCastle Angel",
+  "stage": 58,
+  "mapa": "graduation_palace",
+  "dialogo": {
+   "mid": 10203,
+   "val": 53,
+   "opciones": [
+    10211,
+    10212,
+    10205,
+    10206
+   ],
+   "acciones": [
+    1000042,
+    1000043,
+    1000044,
+    0
+   ]
+  },
+  "texto": "Hello, /c$2%1/c*,I'm the Angel Protector from Iron Castle, do you want to join us?",
+  "textos_opciones": [
+   "Tell me about the Iron Castle.",
+   "Tell me about the Iron Totem.",
+   "I decided to be an Angel Protector.",
+   "Quit."
+  ]
+ }
+}
