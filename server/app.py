@@ -1427,7 +1427,21 @@ class Servidor:
                             # Un jugador muerto no recibe mas golpes: si no,
                             # la IA lo seguia matando y la ventana de muerte
                             # se reabria una y otra vez.
-                            break
+                            #
+                            # CONTINUE, NO BREAK. Con 'break' se salia del
+                            # while y la tarea de IA moria para siempre: el
+                            # jugador revivia y ya NINGUN monstruo volvia a
+                            # moverse en toda la sesion, en ningun mapa. Y no
+                            # dejaba rastro, porque no es una excepcion y el
+                            # reinicio del except no llegaba a dispararse.
+                            # Lo encontro el usuario: le mato un Bloody Croc
+                            # en Lost Trail y a partir de ahi los bichos de
+                            # Buzzing Stopover estaban clavados.
+                            # Saltandose el tick se consigue lo mismo -- ni
+                            # golpes ni paseo mientras esta muerto -- y la IA
+                            # se reanuda sola al revivir, que pone
+                            # ses.muerto = False.
+                            continue
                         for m in list(ses.monstruos.values()):
                             if not getattr(m, 'vivo', True):
                                 continue
