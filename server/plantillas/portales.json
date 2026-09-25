@@ -6782,14 +6782,15 @@
      288,
      14
     ],
-    "destino": null,
-    "llegada": null,
+    "destino": 401,
+    "llegada": [
+     12,
+     172
+    ],
     "radio": 3,
     "dibujar": false,
     "preguntar": false,
-    "sin_medir": true,
-    "desactivado": true,
-    "nota": "Segundo tornado de Majestic Mansion, esquina noreste. NO SE CRUZO. El usuario dice que este es el que va a VERDANT SHRINE (stage 401), que seria la cuarta parada de Sun Sea Maze, pero no esta medido. Queda anotado para cruzarlo."
+    "nota": "Majestic Mansion -> Verdant Shrine (stage 401). ACTIVADO el 25/09/2026. Era el ultimo tornado sin cruzar de la cadena. Tornado capturado en (288,14). Medido dos veces: los dos tramos acabaron en (287,15), a una casilla; las llegadas fueron (12,172) y (6,169). Se usa la primera. Radio 3: la llegada de vuelta desde Verdant Shrine es (282,21), a SIETE de este tornado."
    }
   ],
   "400": [
@@ -6808,6 +6809,64 @@
     "dibujar": true,
     "preguntar": false,
     "nota": "Warm Villa -> Majestic Mansion. ES EL UNICO PASO DEL MAPA: Warm Villa es un callejon sin salida, confirmado por el usuario al recorrerlo entero y respaldado por la captura, que entre sus 110 objetos no trae NI UN sprite 60001. El objeto mas cercano a esta casilla es un 60034 en (284,167), que es decorado. Se dibuja a mano con entity 708 (serie: 700-702 Lyceum, 703 Clink Harbor, 704 Neon Sky Corridor, 705 Jade Vale, 706 Floral Alley, 707 Majestic Mansion) y LA POSICION ES APROXIMADA: es la casilla donde dispara, que puede estar a una o dos del dibujo real. Medido una vez: el tramo acabo justo en (289,171) y se llego a (19,14). RADIO 3 Y NO MAS: las llegadas desde Majestic Mansion son (282,171) y (290,167), a SIETE y a CUATRO; con radio 4 la segunda caeria dentro y el jugador rebotaria al aterrizar."
+   }
+  ],
+  "401": [
+   {
+    "entity": 709,
+    "tile": [
+     6,
+     174
+    ],
+    "destino": 399,
+    "llegada": [
+     282,
+     21
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Verdant Shrine -> Majestic Mansion. SIN TORNADO CAPTURADO: el mapa se recorrio entero y su UNICO sprite 60001 esta en (286,169), que es el que va al 402. Se dibuja a mano con entity 709 (serie: 700-702 Lyceum, 703 Clink Harbor, 704 Neon Sky Corridor, 705 Jade Vale, 706 Floral Alley, 707 Majestic Mansion, 708 Warm Villa) y LA POSICION ES APROXIMADA: es la casilla donde dispara. Medido una vez: el tramo acabo justo en (6,174) y se llego a (282,21). Radio 3: las llegadas desde Majestic Mansion son (12,172) y (6,169), a SEIS y a CINCO, asi que el techo es 4 y 3 deja margen."
+   },
+   {
+    "entity": 1525155246,
+    "tile": [
+     286,
+     169
+    ],
+    "destino": null,
+    "llegada": [
+     10,
+     10
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "sin_medir": false,
+    "desactivado": true,
+    "destino_medido": 402,
+    "nota": "Verdant Shrine -> SEASIDE GROTTO (stage 402), MEDIDO pero DESACTIVADO a la espera de la plantilla del 402, que el usuario esta recorriendo. Tornado capturado en (286,169). Medido TRES veces: los tramos acabaron en (286,169), (286,168) y (285,168), a cero y a una casilla; las llegadas fueron (10,10) dos veces y (13,7) una. La vuelta 402 -> 401 sale con el tramo acabando en (6,4) las dos veces y llega a (286,165) y (282,166). RADIO 3 Y NO MAS: esas dos llegadas estan a CUATRO de este tornado. ACTIVARLO poniendo destino 402."
+   }
+  ],
+  "402": [
+   {
+    "entity": null,
+    "tile": [
+     6,
+     4
+    ],
+    "destino": null,
+    "llegada": [
+     286,
+     165
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "sin_medir": false,
+    "desactivado": true,
+    "destino_medido": 401,
+    "nota": "Seaside Grotto -> Verdant Shrine. MEDIDO pero DESACTIVADO junto con su par. Medido dos veces: los dos tramos acabaron justo en (6,4) y se llego a (286,165) y (282,166). Radio 3: las llegadas desde Verdant Shrine son (10,10) y (13,7), a SEIS y a SIETE, asi que hay holgura. No se sabe si hay tornado; comprobarlo al poblar el mapa. AVISO: el usuario dice que en Seaside Grotto hay una INSTANCIA. Al poblarlo habra que identificar su entrada y dejarla desactivada, como las otras 15 del proyecto."
    }
   ]
  },
