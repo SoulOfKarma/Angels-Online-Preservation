@@ -1,5 +1,5 @@
 {
- "_nota": "Floating Station (stage 397), de la region Sun Sea Maze, capturado el 25/09/2026 en el cliente OFICIAL de Taiwan (8.7.5.7). En Celestia este mapa no existe poblado. Se separo con tools/separar_por_mapa.py y se juntaron los cuatro tramos de 397 de cuatro sesiones distintas, porque aqui cada cambio de mapa abre conexion nueva.",
+ "_nota": "Floating Station (stage 397), primera parada de Sun Sea Maze, capturado el 25/09/2026 en el cliente OFICIAL de Taiwan (8.7.5.7). Se separo con tools/separar_por_mapa.py y se juntaron cuatro tramos de cuatro sesiones distintas, porque aqui cada cambio de mapa abre conexion nueva. CRASHEABA nuestro cliente al entrar: la culpa era un spawn con sprite 999, que no es un id de grafico. Ver _descartados. El resto de sus 1.015 hermanos de las plantillas de Taiwan usan 40xxx, 60xxx o 110xxx.",
  "stage": 397,
  "spawns": [
   {
@@ -2814,22 +2814,6 @@
    "nombre_original": "八爪怪腕"
   },
   {
-   "entity_id": 3404270563,
-   "nombre": "Stunt Man",
-   "npc_type": 6269,
-   "sprite": 999,
-   "klass": 1,
-   "monstruo": true,
-   "tile": [
-    55,
-    119
-   ],
-   "direccion": 6,
-   "visible": 0,
-   "nivel": 354,
-   "nombre_original": "菲特斯諾"
-  },
-  {
    "entity_id": 3406892043,
    "nombre": "Floaty Pink",
    "npc_type": 23449,
@@ -5245,6 +5229,25 @@
    "orient": 6,
    "sprite": 60005,
    "cola": "00000000000000"
+  }
+ ],
+ "_descartados": [
+  {
+   "entity_id": 3404270563,
+   "nombre": "Stunt Man",
+   "npc_type": 6269,
+   "sprite": 999,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    55,
+    119
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 354,
+   "nombre_original": "菲特斯諾",
+   "_motivo": "sprite 999: no es un id de grafico; el cliente no puede dibujarlo"
   }
  ]
 }

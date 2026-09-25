@@ -186,6 +186,38 @@ def recurso_a_datos(e, b, mats, cartel=None):
     return d
 
 
+def filtrar_irrepresentables(spawns):
+    """Saca los spawns que nuestro cliente no puede dibujar.
+
+    El cliente de Taiwan es de una rama posterior y manda alguna entidad que
+    el nuestro no sabe representar. Mandarsela igual lo CRASHEA al entrar al
+    mapa, y el fallo no dice nada: la ventana se cierra y ya.
+
+    Lo que los delata es el sprite. En los 1.016 spawns de los siete mapas
+    sacados de Taiwan los graficos caen en tres grupos -- 40xxx los NPC, 60xxx
+    los totems y 110xxx los monstruos -- y aparecio UNO con sprite 999, que no
+    es un id de grafico de nada. Traia ademas un entity_id de 3.404 millones,
+    muy por encima de los 439 millones del resto de su mapa, y su npc_type
+    (6269) es en nuestros datos una ficha vacia: tiene nombre y sprite pero no
+    tiene ni HP ni ataque, o sea que en nuestra version ese bicho no existe de
+    verdad. El nombre que manda Taiwan tampoco coincide con el nuestro para
+    ese id, asi que en su version el id significa otra cosa.
+
+    No se borran en silencio: se devuelven aparte y se guardan en la plantilla
+    bajo _descartados, para que quede constancia de que existen y por que no
+    se sirven.
+    """
+    buenos, fuera = [], []
+    for e in spawns:
+        if e.get('sprite', 0) < 10000:
+            fuera.append(dict(e, _motivo='sprite %s: no es un id de grafico; '
+                                         'el cliente no puede dibujarlo'
+                                         % e.get('sprite')))
+        else:
+            buenos.append(e)
+    return buenos, fuera
+
+
 def traducir_nombres(spawns):
     """Pasa los nombres chinos a los ingleses que ya tenemos, por npc_type.
 
@@ -238,8 +270,11 @@ def main():
           for e, b in sorted(recursos.items())]
 
     traducir_nombres(ds)
+    ds, descartados = filtrar_irrepresentables(ds)
 
     salida = {'_nota': a.nota, 'stage': a.stage, 'spawns': ds, 'recursos': dr}
+    if descartados:
+        salida['_descartados'] = descartados
     f = RAIZ / 'server' / 'plantillas' / (a.nombre + '.json')
     f.write_text(json.dumps(salida, ensure_ascii=False, indent=1),
                  encoding='utf-8')
