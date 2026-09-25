@@ -3177,21 +3177,6 @@
    "direccion": 0,
    "visible": 0,
    "nivel": 124
-  },
-  {
-   "entity_id": 1071213,
-   "nombre": "Death's Head 1",
-   "npc_type": 210,
-   "sprite": 42142,
-   "klass": 1,
-   "monstruo": true,
-   "tile": [
-    152,
-    72
-   ],
-   "direccion": 0,
-   "visible": 0,
-   "nivel": 1
   }
  ],
  "recursos": [
@@ -4470,6 +4455,24 @@
    "estado": 0,
    "marca_nombre": 109,
    "cola_nombre": "0000000000000004"
+  }
+ ],
+ "_descartados": [
+  {
+   "entity_id": 1071213,
+   "nombre": "Death's Head 1",
+   "npc_type": 210,
+   "sprite": 42142,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    152,
+    72
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 1,
+   "_motivo": "invocacion de otro jugador: estaba sola en su bloque de entity_id, a 45168 del bloque vecino, y su npc_type lo invoca \"Summon Skeleton I\". Las entidades de un mapa se crean juntas al cargarlo y salen en ids contiguos; esta se creo durante la partida."
   }
  ]
 }
