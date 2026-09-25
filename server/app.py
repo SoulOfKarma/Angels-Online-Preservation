@@ -146,6 +146,55 @@ def _ranura_de_item(ses, item_id: int):
     return None
 
 
+
+def _estatuas(stage):
+    """Las estatuas que teletransportan de plantillas/portales.json.
+
+    Mecanismo medido en Seaside Grotto, y distinto de todo lo demas. No es el
+    0x0016 de los portales internos de Lost Trail ni el menu de los de
+    Bearscape: aqui hay que HABLARLE al objeto.
+
+        c2s 0x0005 [u32 entidad][u16 0]   <- clic sobre la estatua
+        s2c 0x0012 con el mensaje y dos opciones, Yes y No
+        c2s 0x000B [0a]                   <- se elige la primera, Yes
+        s2c 0x0003 [u32 yo][u32 x][u32 y] <- y aparece al otro lado
+
+    El 0x0a es 10, que es PRIMERA_OPCION, o sea el indice 0: la opcion "Yes".
+    Se confirmo contando: el 0x000B aparece en las cinco veces que hubo salto
+    y falta en las tres que no. Antes se habia mirado el 0x000F, que resulta
+    ser un latido -- sale 95 veces por sesion -- y no tenia nada que ver.
+
+    El mensaje avisa de que forzar la barrera cuesta vida, y el usuario lo
+    confirmo en el juego.
+    """
+    return (_portales().get('teletransportes_por_dialogo') or {}).get(str(stage)) or []
+
+
+def _estatua_con_entidad(stage, ent):
+    """La estatua cuyo id coincide, o None. Compara por ENTIDAD y no por
+    casilla, porque el clic llega con la entidad y nuestro servidor reenvia
+    los objetos con su id original."""
+    for e in _estatuas(stage):
+        if ent in ((e.get('estatuas') or {}).get('entidades') or []):
+            return e
+    return None
+
+
+def _dialogo_de_estatua(e):
+    """El 0x0012 tal como lo manda el servidor real: cabecera de nueve bytes,
+    luego los ids de opcion y luego las acciones."""
+    ops = list(e.get('opciones') or [])
+    acc = list(e.get('acciones') or [0] * len(ops))
+    b = bytearray(9)
+    struct.pack_into('<I', b, 0, int(e['msg']))
+    b[7] = len(ops)
+    for o in ops:
+        b += struct.pack('<I', int(o))
+    for a in acc[:len(ops)]:
+        b += struct.pack('<I', int(a))
+    return struct.pack('<H', 0x0012) + bytes(b)
+
+
 def _portal_en(stage, tx, ty):
     """El tornado que se esta pisando, o None."""
     cfg = _portales()
@@ -3108,6 +3157,18 @@ class Servidor:
         if opcode == 0x0005 and ses.rol == 'mundo' and len(cuerpo) >= 4:
             import dialogos
             ent = struct.unpack_from('<I', cuerpo, 0)[0]
+            # ESTATUA QUE TELETRANSPORTA. Va lo primero porque no es un NPC ni
+            # un monstruo: es un objeto de mapa, y el resto del manejador ni
+            # lo reconoceria.
+            if ses.personaje:
+                _est = _estatua_con_entidad(ses.personaje.stage, ent)
+                if _est is not None:
+                    ses.dlg_estatua = _est
+                    ses.dlg_ent = None
+                    ses.enviar(_dialogo_de_estatua(_est))
+                    log.info(f"[{addr}] estatua {ent}: se ofrece el salto a "
+                             f"{_est.get('llegada')}")
+                    return
             # Si ya se cumplio lo que pedia el tramo actual, se avanza ANTES
             # de hablar: en el juego, en cuanto llevas el examen encima
             # Raphael te suelta el "Good for you!" y no repite lo anterior.
@@ -3249,6 +3310,23 @@ class Servidor:
             ses.dlg_paso = 1
             log.info(f"[{addr}] dialogo con la entidad {ent} (etapa {etapa}): "
                      f"linea 1 de {len(g)}")
+            return
+
+        if opcode == 0x000B and ses.rol == 'mundo' and getattr(ses, 'dlg_estatua', None):
+            import dialogos as _dlg_e
+            _est = ses.dlg_estatua
+            ses.dlg_estatua = None
+            _v = d.get('valor', 0) if d else 0
+            _i = _dlg_e.indice_opcion(_v) if _dlg_e.es_opcion(_v) else -1
+            ses.enviar(struct.pack('<H', 0x0012) + _dlg_e.FIN)
+            if _i != 0 or not ses.personaje or not _est.get('llegada'):
+                log.info(f"[{addr}] estatua: se responde que no (opcion {_i})")
+                return
+            _x, _y = _est['llegada']
+            ses.personaje.tile_x, ses.personaje.tile_y = _x, _y
+            ses.enviar(struct.pack('<HIII', 0x0003,
+                                   ses.personaje.entity_id, _x, _y))
+            log.info(f"[{addr}] estatua: aceptado, salta a ({_x},{_y})")
             return
 
         if opcode == 0x000B and ses.rol == 'mundo' and getattr(ses, 'dlg_ent', None):
