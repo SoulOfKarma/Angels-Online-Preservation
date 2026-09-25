@@ -54,6 +54,43 @@ def medidas_del_mapa(stage):
     return None
 
 
+RADIO = 38   # casillas; medido, ver ruta_de_barrido()
+
+
+def ruta_de_barrido(ancho, alto, margen=10):
+    """Lineas rectas que cubren el mapa entero, en serpiente.
+
+    El servidor manda el 0x0008 de una entidad cuando entra en el radio de
+    vision del jugador, y ese radio esta MEDIDO: sobre 232 spawns de una
+    sesion de Floating Station, la distancia del bicho al jugador en el
+    momento de aparecer fue como maximo 38 casillas, con percentil 95 en 36
+    y mediana 31. Solo 13 de los 232 llegaron a menos de 20.
+
+    Ese ultimo dato es el que importa: los bichos aparecen EN EL BORDE del
+    radio, no al lado. Asi que caminar despacio por el centro de una zona no
+    aporta nada -- ya los tenias desde lejos -- y lo que rinde es recorrer
+    lineas separadas casi dos radios, no vagar.
+
+    Con radio 38 cada linea cubre 76 casillas de alto, asi que un mapa de
+    300x180 se cubre con TRES pasadas horizontales y unas 900 casillas de
+    caminata, en vez de las vueltas que hacen falta a ojo.
+    """
+    paso = int(RADIO * 1.75)
+    ys = []
+    y = RADIO
+    while y < alto:
+        ys.append(min(y, alto - margen))
+        y += paso
+    if not ys or ys[-1] < alto - RADIO:
+        ys.append(max(alto - margen, RADIO))
+    puntos = []
+    for i, y in enumerate(dict.fromkeys(ys)):
+        xs = (margen, ancho - margen)
+        puntos.append((xs[i % 2], y))
+        puntos.append((xs[(i + 1) % 2], y))
+    return puntos
+
+
 def recorrido(sesiones, lado):
     """Celdas por las que paso el jugador, segun sus MOVE_REQ.
 
@@ -143,6 +180,9 @@ def main():
     ap.add_argument('--sesiones', nargs='*', default=None,
                     help='capturas del mismo mapa; marca por donde se paso, '
                          'para separar "vacio de verdad" de "no se fue"')
+    ap.add_argument('--ruta', action='store_true',
+                    help='imprime el recorrido en lineas rectas que cubre el '
+                         'mapa entero con el radio de vision del servidor')
     a = ap.parse_args()
 
     q = pathlib.Path(a.plantilla)
@@ -173,6 +213,16 @@ def main():
     cuenta = celdas(d, a.celda)
     paso = recorrido(a.sesiones, a.celda) if a.sesiones else None
     dibujar(cuenta, ancho, alto, a.celda, paso)
+
+    if a.ruta:
+        pts = ruta_de_barrido(ancho, alto)
+        largo = sum(abs(pts[i + 1][0] - pts[i][0]) + abs(pts[i + 1][1] - pts[i][1])
+                    for i in range(len(pts) - 1))
+        print(f'\n    RECORRIDO en linea recta (radio de vision {RADIO} casillas):')
+        for i, (x, y) in enumerate(pts, 1):
+            print(f'      {i:>2}. caminar a ({x},{y})')
+        print(f'    {len(pts)} puntos, unas {largo} casillas. Cubre el mapa entero.')
+        print('    La coordenada es la del minimapa, arriba a la derecha.')
 
     cols = (ancho + a.celda - 1) // a.celda
     filas = (alto + a.celda - 1) // a.celda
