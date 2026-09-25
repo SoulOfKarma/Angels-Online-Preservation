@@ -36,7 +36,7 @@ a guess, it says so.
   attack effects, dying and reviving, loot, experience and skill experience
 - Monsters: per-monster attack cadence, chasing, wandering, respawn, and
   bleed and stun effects
-- **152 maps populated from captures**: 27,289 monsters, 1,784 NPCs and
+- **152 maps populated from captures**: 27,377 monsters, 1,696 NPCs and
   11,834 map objects, 7,671 of them with their resource name resolved. Every
   monster, NPC and resource comes from a capture; none of it is made up
 - **Whole zones are closed**, meaning every tornado in them has been crossed

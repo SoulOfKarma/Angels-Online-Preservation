@@ -37,7 +37,7 @@ una suposición, lo dice.
   de ataque, morir y revivir, botín, experiencia y experiencia de habilidad
 - Monstruos: cadencia de ataque propia de cada uno, persecución, paseo,
   reaparición y efectos de sangrado y aturdimiento
-- **152 mapas poblados a partir de capturas**: 27.289 monstruos, 1.784 NPC y
+- **152 mapas poblados a partir de capturas**: 27.377 monstruos, 1.696 NPC y
   11.834 objetos de mapa, 7.671 de ellos con su recurso identificado. Cada
   monstruo, NPC y recurso sale de una captura; nada está inventado
 - **Hay zonas enteras cerradas**, es decir con todos sus tornados cruzados y

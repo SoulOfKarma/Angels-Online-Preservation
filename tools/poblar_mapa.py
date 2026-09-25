@@ -18,6 +18,7 @@ nuestro 63, asi que reenviar sus bytes rompe el cliente.
 """
 import argparse
 import collections
+import glob
 import json
 import pathlib
 import re
@@ -102,11 +103,50 @@ def spawn_a_datos(e, b):
     # como monstruos se les daba IA de combate y se les buscaban estadisticas
     # que no tienen.
     es_mob = klass not in (0, 199, 200)
+    # PERO EL KLASS MIENTE. Hay monstruos que llegan con klass 199, o sea
+    # marcados como NPC: los Bloody Croc y Moody Croc de Lost Trail, los
+    # Stealth Searcher de Forbidden Sector, los Draconan de Ninja Land... 88
+    # spawns en ocho mapas. Se colaban como NPC y se quedaban sin IA.
+    # Quien manda es el cliente: npc.xml va del 1500 al 24893 y monster.xml
+    # del 1 al 23860, y NO comparten ni un solo id. Asi que de 1500 para
+    # arriba se sabe con certeza cual es cual.
+    # Por debajo de 1500 no se toca: npc.xml no llega ahi, y los NPC del
+    # Lyceum usan numeros de dos y tres cifras que chocan con monster.xml.
+    if npc_type >= 1500:
+        _m, _n = _clases_del_cliente()
+        if npc_type in _n:
+            es_mob = False
+        elif npc_type in _m:
+            es_mob = True
     return {'entity_id': e, 'nombre': nom, 'npc_type': npc_type,
             'sprite': sprite, 'klass': 1 if es_mob else klass,
             'monstruo': es_mob, 'tile': tile,
             'direccion': b[33], 'visible': visible,
             **({'nivel': klass} if es_mob else {})}
+
+
+_CLASES = None
+
+
+def _clases_del_cliente():
+    """(monstruos, npcs) por npc_type, sacados de monster.xml y npc.xml."""
+    global _CLASES
+    if _CLASES is None:
+        mons, npcs = set(), set()
+        for f in sorted(glob.glob(str(PAKS / '*/setting/eng/monster.xml'))):
+            for m in re.finditer(r'<npc([^>]*?)/>',
+                                 open(f, encoding='utf-8', errors='replace').read()):
+                a = dict(re.findall(r'(\S+?)="([^"]*)"', m.group(1)))
+                if a.get('編號') and a.get('陣營') == '怪物陣營':
+                    mons.add(int(a['編號']))
+        for f in sorted(glob.glob(str(PAKS / '*/setting/eng/npc.xml'))):
+            for m in re.finditer(r'<npc([^>]*?)/>',
+                                 open(f, encoding='utf-8', errors='replace').read()):
+                a = dict(re.findall(r'(\S+?)="([^"]*)"', m.group(1)))
+                if a.get('編號'):
+                    npcs.add(int(a['編號']))
+        _CLASES = (mons, npcs)
+    return _CLASES
 
 
 def recurso_a_datos(e, b, mats, cartel=None):
