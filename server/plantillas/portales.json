@@ -6474,10 +6474,10 @@
   ],
   "418": [
    {
-    "entity": null,
+    "entity": 613221542,
     "tile": [
-     291,
-     168
+     292,
+     169
     ],
     "destino": 417,
     "llegada": [
@@ -6487,15 +6487,15 @@
     "radio": 2,
     "dibujar": false,
     "preguntar": false,
-    "nota": "Black Market District -> Neon Sky Corridor. SIN TORNADO: el mapa se recorrio entero y entre sus 105 objetos NO hay un solo sprite 60001. Es el UNICO paso del mapa: el usuario lo recorrio completo y confirmo que es un callejon sin salida. Medido dos veces: los tramos acabaron en (291,168) y (291,169), y se llego a (16,9) y (13,6). RADIO 2, NO 3: la llegada desde el 417 es (288,168), que esta a TRES de esta casilla; con radio 3 caeria justo dentro y el jugador rebotaria al aterrizar. Con 2 los dos tramos medidos, a cero y a una, siguen entrando. entity en null porque no hay objeto. SOBRE EL NOMBRE 'BORDE': se llamo asi al principio y era una suposicion mal fundada. El mapa mide 300x180, o sea que el borde real esta en x=299, y ademas en Black Market hay entidades hasta x=293, MAS ALLA de la casilla del portal. Asi que ni es el borde del mapa ni es el limite de lo transitable. Lo UNICO comprobado es esto: el warp funciona y NO HAY TORNADO. El usuario lo verifico en juego -- cruzo y no se dibuja nada -- y coincide con la captura, donde no hay ningun objeto cerca de la casilla. Que dispara el cambio de mapa no se sabe; puede ser un portal invisible. Para nuestro servidor da igual: _portal_en busca por casilla y la entrada lleva dibujar=false, que es exactamente lo que se ve en el original."
+    "nota": "CORREGIDO el 25/09/2026: este portal se habia dado por INVISIBLE y no lo era. El tornado existe, esta en (292,169) con entity 613221542, y aparece en la plantilla del mapa como sprite 60001, asi que el servidor ya lo dibuja solo, sin necesidad de dibujar=true. No salia porque la plantilla del mapa se habia generado con una captura incompleta y se quedo vieja; al regenerarla con el recorrido completo aparecio. La casilla del portal se movio de (291,168), que era donde acababa el tramo medido, a la del tornado, que esta a una y es lo que hace el resto del proyecto. Radio 2: cubre los tramos medidos y deja fuera la casilla de llegada del sentido contrario."
    }
   ],
   "419": [
    {
-    "entity": null,
+    "entity": 1525091335,
     "tile": [
-     286,
-     5
+     287,
+     4
     ],
     "destino": 417,
     "llegada": [
@@ -6506,7 +6506,7 @@
     "dibujar": false,
     "preguntar": false,
     "sin_medir": false,
-    "nota": "Commercial Street -> Neon Sky Corridor. ACTIVADO el 25/09/2026. CRUCE SIN TORNADO, ya confirmado: el mapa se poblo y entre sus 63 objetos no hay ninguno a menos de diez casillas de (286,5); el unico sprite 60001 del mapa esta en (281,162) y va al 420. Medido una vez: el tramo acabo en (286,5) y se llego a (17,170). Radio 3: la llegada desde el 417 es (280,17), a DOCE. entity en null porque no hay objeto al que apuntar. SOBRE EL NOMBRE 'BORDE': se llamo asi al principio y era una suposicion mal fundada. El mapa mide 300x180, o sea que el borde real esta en x=299, y ademas en Black Market hay entidades hasta x=293, MAS ALLA de la casilla del portal. Asi que ni es el borde del mapa ni es el limite de lo transitable. Lo UNICO comprobado es esto: el warp funciona y NO HAY TORNADO. El usuario lo verifico en juego -- cruzo y no se dibuja nada -- y coincide con la captura, donde no hay ningun objeto cerca de la casilla. Que dispara el cambio de mapa no se sabe; puede ser un portal invisible. Para nuestro servidor da igual: _portal_en busca por casilla y la entrada lleva dibujar=false, que es exactamente lo que se ve en el original."
+    "nota": "CORREGIDO el 25/09/2026: este portal se habia dado por INVISIBLE y no lo era. El tornado existe, esta en (287,4) con entity 1525091335, y aparece en la plantilla del mapa como sprite 60001, asi que el servidor ya lo dibuja solo, sin necesidad de dibujar=true. No salia porque la plantilla del mapa se habia generado con una captura incompleta y se quedo vieja; al regenerarla con el recorrido completo aparecio. La casilla del portal se movio de (286,5), que era donde acababa el tramo medido, a la del tornado, que esta a una y es lo que hace el resto del proyecto. Radio 3: cubre los tramos medidos y deja fuera la casilla de llegada del sentido contrario."
    },
    {
     "entity": 1525156872,
@@ -6527,10 +6527,10 @@
   ],
   "420": [
    {
-    "entity": null,
+    "entity": 853412513,
     "tile": [
-     22,
-     6
+     21,
+     5
     ],
     "destino": 419,
     "llegada": [
@@ -6541,7 +6541,7 @@
     "dibujar": false,
     "preguntar": false,
     "sin_medir": false,
-    "nota": "Bling Plaza -> Commercial Street. ACTIVADO el 25/09/2026. CRUCE SIN TORNADO, confirmado: el mapa se recorrio entero y entre sus 127 objetos no hay NINGUNO a menos de diez casillas de (22,6). Los dos unicos sprites 60001 del mapa estan en (291,5) y (282,173), ambos en el lado opuesto. Medido una vez: el tramo acabo justo en (22,6) y se llego a (275,160). Radio 3: las llegadas desde el 419 son (30,9) y (21,13), a OCHO y a SIETE. SOBRE EL NOMBRE 'BORDE': se llamo asi al principio y era una suposicion mal fundada. El mapa mide 300x180, o sea que el borde real esta en x=299, y ademas en Black Market hay entidades hasta x=293, MAS ALLA de la casilla del portal. Asi que ni es el borde del mapa ni es el limite de lo transitable. Lo UNICO comprobado es esto: el warp funciona y NO HAY TORNADO. El usuario lo verifico en juego -- cruzo y no se dibuja nada -- y coincide con la captura, donde no hay ningun objeto cerca de la casilla. Que dispara el cambio de mapa no se sabe; puede ser un portal invisible. Para nuestro servidor da igual: _portal_en busca por casilla y la entrada lleva dibujar=false, que es exactamente lo que se ve en el original."
+    "nota": "CORREGIDO el 25/09/2026: este portal se habia dado por INVISIBLE y no lo era. El tornado existe, esta en (21,5) con entity 853412513, y aparece en la plantilla del mapa como sprite 60001, asi que el servidor ya lo dibuja solo, sin necesidad de dibujar=true. No salia porque la plantilla del mapa se habia generado con una captura incompleta y se quedo vieja; al regenerarla con el recorrido completo aparecio. La casilla del portal se movio de (22,6), que era donde acababa el tramo medido, a la del tornado, que esta a una y es lo que hace el resto del proyecto. Radio 3: cubre los tramos medidos y deja fuera la casilla de llegada del sentido contrario."
    },
    {
     "entity": 853478050,
