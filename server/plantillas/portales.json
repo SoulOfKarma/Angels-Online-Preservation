@@ -6766,7 +6766,7 @@
      15,
      8
     ],
-    "destino": null,
+    "destino": 400,
     "llegada": [
      282,
      171
@@ -6774,10 +6774,7 @@
     "radio": 3,
     "dibujar": false,
     "preguntar": false,
-    "sin_medir": false,
-    "desactivado": true,
-    "destino_medido": 400,
-    "nota": "Majestic Mansion -> WARM VILLA (stage 400), MEDIDO pero DESACTIVADO a la espera de la plantilla del 400. Tornado capturado en (15,8). Medido dos veces: los dos tramos acabaron en (16,9), a una casilla; las llegadas fueron (282,171) y (290,167). La vuelta 400 -> 399 sale con el tramo acabando en (289,171) y llega a (19,14). Radio 3: esa llegada esta a SEIS de este tornado. ACTIVARLO poniendo destino 400."
+    "nota": "Majestic Mansion -> Warm Villa (stage 400). ACTIVADO el 25/09/2026. Tornado capturado en (15,8), va en los recursos de la plantilla. Medido dos veces: los dos tramos acabaron en (16,9), a una casilla; las llegadas fueron (282,171) y (290,167). Se usa la primera, que deja al jugador a SIETE del paso de vuelta en vez de a cuatro. Radio 3: la llegada de vuelta desde Warm Villa es (19,14), a SEIS de este tornado."
    },
    {
     "entity": 949879759,
@@ -6797,23 +6794,20 @@
   ],
   "400": [
    {
-    "entity": null,
+    "entity": 708,
     "tile": [
      289,
      171
     ],
-    "destino": null,
+    "destino": 399,
     "llegada": [
      19,
      14
     ],
     "radio": 3,
-    "dibujar": false,
+    "dibujar": true,
     "preguntar": false,
-    "sin_medir": false,
-    "desactivado": true,
-    "destino_medido": 399,
-    "nota": "Warm Villa -> Majestic Mansion. MEDIDO pero DESACTIVADO junto con su par. Medido una vez: el tramo acabo justo en (289,171) y se llego a (19,14). RADIO 3 Y NO MAS: las llegadas desde el 399 son (282,171) y (290,167), a SIETE y a CUATRO. No se sabe si hay tornado; comprobarlo al poblar el mapa, que el usuario esta recorriendo ahora."
+    "nota": "Warm Villa -> Majestic Mansion. ES EL UNICO PASO DEL MAPA: Warm Villa es un callejon sin salida, confirmado por el usuario al recorrerlo entero y respaldado por la captura, que entre sus 110 objetos no trae NI UN sprite 60001. El objeto mas cercano a esta casilla es un 60034 en (284,167), que es decorado. Se dibuja a mano con entity 708 (serie: 700-702 Lyceum, 703 Clink Harbor, 704 Neon Sky Corridor, 705 Jade Vale, 706 Floral Alley, 707 Majestic Mansion) y LA POSICION ES APROXIMADA: es la casilla donde dispara, que puede estar a una o dos del dibujo real. Medido una vez: el tramo acabo justo en (289,171) y se llego a (19,14). RADIO 3 Y NO MAS: las llegadas desde Majestic Mansion son (282,171) y (290,167), a SIETE y a CUATRO; con radio 4 la segunda caeria dentro y el jugador rebotaria al aterrizar."
    }
   ]
  },

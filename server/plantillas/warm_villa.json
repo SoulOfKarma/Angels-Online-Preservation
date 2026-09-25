@@ -1,0 +1,3436 @@
+{
+ "_nota": "Warm Villa (stage 400), cuarta parada de Sun Sea Maze, capturado el 25/09/2026 en el cliente OFICIAL de Taiwan (8.7.5.7). Las sesiones se encadenaron con tools/procesar_capturas.py, que deduce en que mapa empieza cada una en vez de adivinarlo.",
+ "stage": 400,
+ "spawns": [
+  {
+   "entity_id": 627772557,
+   "nombre": "Sheriff Hirojiro",
+   "npc_type": 24718,
+   "sprite": 40401,
+   "klass": 400,
+   "monstruo": false,
+   "tile": [
+    26,
+    34
+   ],
+   "direccion": 1,
+   "visible": 1,
+   "nombre_original": "警長廣次郎"
+  },
+  {
+   "entity_id": 631901388,
+   "nombre": "Deputy Tanaka",
+   "npc_type": 24729,
+   "sprite": 40570,
+   "klass": 400,
+   "monstruo": false,
+   "tile": [
+    242,
+    125
+   ],
+   "direccion": 6,
+   "visible": 1,
+   "nombre_original": "副手田中"
+  },
+  {
+   "entity_id": 632032462,
+   "nombre": "E-Frothy White",
+   "npc_type": 23484,
+   "sprite": 111353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    83,
+    19
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 411,
+   "nombre_original": "菁英-白沫煙怪"
+  },
+  {
+   "entity_id": 632097999,
+   "nombre": "E-Frothy White",
+   "npc_type": 23484,
+   "sprite": 111353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    81,
+    13
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 411,
+   "nombre_original": "菁英-白沫煙怪"
+  },
+  {
+   "entity_id": 632163536,
+   "nombre": "E-Frothy White",
+   "npc_type": 23484,
+   "sprite": 111353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    100,
+    10
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 411,
+   "nombre_original": "菁英-白沫煙怪"
+  },
+  {
+   "entity_id": 632229073,
+   "nombre": "E-Frothy White",
+   "npc_type": 23484,
+   "sprite": 111353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    76,
+    18
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 411,
+   "nombre_original": "菁英-白沫煙怪"
+  },
+  {
+   "entity_id": 632294610,
+   "nombre": "E-Frothy White",
+   "npc_type": 23484,
+   "sprite": 111353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    103,
+    29
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 411,
+   "nombre_original": "菁英-白沫煙怪"
+  },
+  {
+   "entity_id": 632360147,
+   "nombre": "E-White Lava",
+   "npc_type": 23485,
+   "sprite": 111360,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    44,
+    40
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 413,
+   "nombre_original": "菁英-白淨火山泥"
+  },
+  {
+   "entity_id": 632425684,
+   "nombre": "E-White Lava",
+   "npc_type": 23485,
+   "sprite": 111360,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    32,
+    63
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 413,
+   "nombre_original": "菁英-白淨火山泥"
+  },
+  {
+   "entity_id": 632491221,
+   "nombre": "E-White Lava",
+   "npc_type": 23485,
+   "sprite": 111360,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    50,
+    54
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 413,
+   "nombre_original": "菁英-白淨火山泥"
+  },
+  {
+   "entity_id": 632556758,
+   "nombre": "E-White Lava",
+   "npc_type": 23485,
+   "sprite": 111360,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    70,
+    48
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 413,
+   "nombre_original": "菁英-白淨火山泥"
+  },
+  {
+   "entity_id": 632622295,
+   "nombre": "E-White Lava",
+   "npc_type": 23485,
+   "sprite": 111360,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    75,
+    50
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 413,
+   "nombre_original": "菁英-白淨火山泥"
+  },
+  {
+   "entity_id": 632687832,
+   "nombre": "White Lava",
+   "npc_type": 23483,
+   "sprite": 111360,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    241,
+    18
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 409,
+   "nombre_original": "白淨火山泥"
+  },
+  {
+   "entity_id": 632753369,
+   "nombre": "White Lava",
+   "npc_type": 23483,
+   "sprite": 111360,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    251,
+    30
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 409,
+   "nombre_original": "白淨火山泥"
+  },
+  {
+   "entity_id": 632818906,
+   "nombre": "White Lava",
+   "npc_type": 23483,
+   "sprite": 111360,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    239,
+    14
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 409,
+   "nombre_original": "白淨火山泥"
+  },
+  {
+   "entity_id": 632884443,
+   "nombre": "White Lava",
+   "npc_type": 23483,
+   "sprite": 111360,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    229,
+    13
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 409,
+   "nombre_original": "白淨火山泥"
+  },
+  {
+   "entity_id": 632949980,
+   "nombre": "White Lava",
+   "npc_type": 23483,
+   "sprite": 111360,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    230,
+    10
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 409,
+   "nombre_original": "白淨火山泥"
+  },
+  {
+   "entity_id": 633015517,
+   "nombre": "White Lava",
+   "npc_type": 23483,
+   "sprite": 111360,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    219,
+    38
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 409,
+   "nombre_original": "白淨火山泥"
+  },
+  {
+   "entity_id": 633081054,
+   "nombre": "White Lava",
+   "npc_type": 23483,
+   "sprite": 111360,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    196,
+    17
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 409,
+   "nombre_original": "白淨火山泥"
+  },
+  {
+   "entity_id": 633146591,
+   "nombre": "White Lava",
+   "npc_type": 23483,
+   "sprite": 111360,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    213,
+    13
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 409,
+   "nombre_original": "白淨火山泥"
+  },
+  {
+   "entity_id": 633212128,
+   "nombre": "White Lava",
+   "npc_type": 23483,
+   "sprite": 111360,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    214,
+    23
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 409,
+   "nombre_original": "白淨火山泥"
+  },
+  {
+   "entity_id": 633277665,
+   "nombre": "White Lava",
+   "npc_type": 23483,
+   "sprite": 111360,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    199,
+    15
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 409,
+   "nombre_original": "白淨火山泥"
+  },
+  {
+   "entity_id": 633343202,
+   "nombre": "Mighty Jax",
+   "npc_type": 23486,
+   "sprite": 111354,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    143,
+    71
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 415,
+   "nombre_original": "重擊鐵拳蓋倫"
+  },
+  {
+   "entity_id": 633539813,
+   "nombre": "White Lava",
+   "npc_type": 23483,
+   "sprite": 111360,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    165,
+    27
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 409,
+   "nombre_original": "白淨火山泥"
+  },
+  {
+   "entity_id": 633736424,
+   "nombre": "White Lava",
+   "npc_type": 23483,
+   "sprite": 111360,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    168,
+    10
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 409,
+   "nombre_original": "白淨火山泥"
+  },
+  {
+   "entity_id": 633867498,
+   "nombre": "White Lava",
+   "npc_type": 23483,
+   "sprite": 111360,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    169,
+    10
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 409,
+   "nombre_original": "白淨火山泥"
+  },
+  {
+   "entity_id": 633998572,
+   "nombre": "White Lava",
+   "npc_type": 23483,
+   "sprite": 111360,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    181,
+    24
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 409,
+   "nombre_original": "白淨火山泥"
+  },
+  {
+   "entity_id": 634064109,
+   "nombre": "White Lava",
+   "npc_type": 23483,
+   "sprite": 111360,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    238,
+    73
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 409,
+   "nombre_original": "白淨火山泥"
+  },
+  {
+   "entity_id": 634260720,
+   "nombre": "White Lava",
+   "npc_type": 23483,
+   "sprite": 111360,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    228,
+    65
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 409,
+   "nombre_original": "白淨火山泥"
+  },
+  {
+   "entity_id": 634326257,
+   "nombre": "White Lava",
+   "npc_type": 23483,
+   "sprite": 111360,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    235,
+    75
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 409,
+   "nombre_original": "白淨火山泥"
+  },
+  {
+   "entity_id": 634391794,
+   "nombre": "White Lava",
+   "npc_type": 23483,
+   "sprite": 111360,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    196,
+    43
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 409,
+   "nombre_original": "白淨火山泥"
+  },
+  {
+   "entity_id": 634457331,
+   "nombre": "White Lava",
+   "npc_type": 23483,
+   "sprite": 111360,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    210,
+    51
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 409,
+   "nombre_original": "白淨火山泥"
+  },
+  {
+   "entity_id": 634522868,
+   "nombre": "White Lava",
+   "npc_type": 23483,
+   "sprite": 111360,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    191,
+    47
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 409,
+   "nombre_original": "白淨火山泥"
+  },
+  {
+   "entity_id": 634588405,
+   "nombre": "White Lava",
+   "npc_type": 23483,
+   "sprite": 111360,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    219,
+    55
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 409,
+   "nombre_original": "白淨火山泥"
+  },
+  {
+   "entity_id": 634653942,
+   "nombre": "White Lava",
+   "npc_type": 23483,
+   "sprite": 111360,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    192,
+    46
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 409,
+   "nombre_original": "白淨火山泥"
+  },
+  {
+   "entity_id": 634719479,
+   "nombre": "Ageless Ghost",
+   "npc_type": 23482,
+   "sprite": 111359,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    292,
+    98
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 407,
+   "nombre_original": "萬年骸骨精"
+  },
+  {
+   "entity_id": 634850553,
+   "nombre": "Ageless Ghost",
+   "npc_type": 23482,
+   "sprite": 111359,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    293,
+    107
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 407,
+   "nombre_original": "萬年骸骨精"
+  },
+  {
+   "entity_id": 634916090,
+   "nombre": "Ageless Ghost",
+   "npc_type": 23482,
+   "sprite": 111359,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    285,
+    115
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 407,
+   "nombre_original": "萬年骸骨精"
+  },
+  {
+   "entity_id": 634981627,
+   "nombre": "Ageless Ghost",
+   "npc_type": 23482,
+   "sprite": 111359,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    282,
+    115
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 407,
+   "nombre_original": "萬年骸骨精"
+  },
+  {
+   "entity_id": 635702534,
+   "nombre": "Ageless Ghost",
+   "npc_type": 23482,
+   "sprite": 111359,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    266,
+    38
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 407,
+   "nombre_original": "萬年骸骨精"
+  },
+  {
+   "entity_id": 635833608,
+   "nombre": "Ageless Ghost",
+   "npc_type": 23482,
+   "sprite": 111359,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    269,
+    33
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 407,
+   "nombre_original": "萬年骸骨精"
+  },
+  {
+   "entity_id": 635964682,
+   "nombre": "Ageless Ghost",
+   "npc_type": 23482,
+   "sprite": 111359,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    275,
+    43
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 407,
+   "nombre_original": "萬年骸骨精"
+  },
+  {
+   "entity_id": 636030219,
+   "nombre": "Ageless Ghost",
+   "npc_type": 23482,
+   "sprite": 111359,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    251,
+    50
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 407,
+   "nombre_original": "萬年骸骨精"
+  },
+  {
+   "entity_id": 637078811,
+   "nombre": "Milk Bath",
+   "npc_type": 23481,
+   "sprite": 111358,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    32,
+    155
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 405,
+   "nombre_original": "牛奶浴"
+  },
+  {
+   "entity_id": 637144348,
+   "nombre": "Milk Bath",
+   "npc_type": 23481,
+   "sprite": 111358,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    15,
+    143
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 405,
+   "nombre_original": "牛奶浴"
+  },
+  {
+   "entity_id": 637209885,
+   "nombre": "Milk Bath",
+   "npc_type": 23481,
+   "sprite": 111358,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    37,
+    159
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 405,
+   "nombre_original": "牛奶浴"
+  },
+  {
+   "entity_id": 637275422,
+   "nombre": "Milk Bath",
+   "npc_type": 23481,
+   "sprite": 111358,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    38,
+    158
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 405,
+   "nombre_original": "牛奶浴"
+  },
+  {
+   "entity_id": 637340959,
+   "nombre": "Milk Bath",
+   "npc_type": 23481,
+   "sprite": 111358,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    50,
+    167
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 405,
+   "nombre_original": "牛奶浴"
+  },
+  {
+   "entity_id": 637668644,
+   "nombre": "Milk Bath",
+   "npc_type": 23481,
+   "sprite": 111358,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    77,
+    156
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 405,
+   "nombre_original": "牛奶浴"
+  },
+  {
+   "entity_id": 637930792,
+   "nombre": "Milk Bath",
+   "npc_type": 23481,
+   "sprite": 111358,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    79,
+    157
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 405,
+   "nombre_original": "牛奶浴"
+  },
+  {
+   "entity_id": 638127403,
+   "nombre": "Milk Bath",
+   "npc_type": 23481,
+   "sprite": 111358,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    118,
+    155
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 405,
+   "nombre_original": "牛奶浴"
+  },
+  {
+   "entity_id": 638192940,
+   "nombre": "Milk Bath",
+   "npc_type": 23481,
+   "sprite": 111358,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    131,
+    164
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 405,
+   "nombre_original": "牛奶浴"
+  },
+  {
+   "entity_id": 638258477,
+   "nombre": "Milk Bath",
+   "npc_type": 23481,
+   "sprite": 111358,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    119,
+    162
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 405,
+   "nombre_original": "牛奶浴"
+  },
+  {
+   "entity_id": 638324014,
+   "nombre": "Milk Bath",
+   "npc_type": 23481,
+   "sprite": 111358,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    35,
+    151
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 405,
+   "nombre_original": "牛奶浴"
+  },
+  {
+   "entity_id": 638389551,
+   "nombre": "Milk Bath",
+   "npc_type": 23481,
+   "sprite": 111358,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    65,
+    143
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 405,
+   "nombre_original": "牛奶浴"
+  },
+  {
+   "entity_id": 638455088,
+   "nombre": "Milk Bath",
+   "npc_type": 23481,
+   "sprite": 111358,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    59,
+    149
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 405,
+   "nombre_original": "牛奶浴"
+  },
+  {
+   "entity_id": 638520625,
+   "nombre": "Milk Bath",
+   "npc_type": 23481,
+   "sprite": 111358,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    60,
+    154
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 405,
+   "nombre_original": "牛奶浴"
+  },
+  {
+   "entity_id": 638586162,
+   "nombre": "Milk Bath",
+   "npc_type": 23481,
+   "sprite": 111358,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    59,
+    146
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 405,
+   "nombre_original": "牛奶浴"
+  },
+  {
+   "entity_id": 638782773,
+   "nombre": "Milk Bath",
+   "npc_type": 23481,
+   "sprite": 111358,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    107,
+    139
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 405,
+   "nombre_original": "牛奶浴"
+  },
+  {
+   "entity_id": 639307069,
+   "nombre": "Murky Blob",
+   "npc_type": 23478,
+   "sprite": 111352,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    260,
+    139
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 400,
+   "nombre_original": "汙染泡泡"
+  },
+  {
+   "entity_id": 639372606,
+   "nombre": "Murky Blob",
+   "npc_type": 23478,
+   "sprite": 111352,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    256,
+    136
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 400,
+   "nombre_original": "汙染泡泡"
+  },
+  {
+   "entity_id": 639503680,
+   "nombre": "Murky Blob",
+   "npc_type": 23478,
+   "sprite": 111352,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    273,
+    132
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 400,
+   "nombre_original": "汙染泡泡"
+  },
+  {
+   "entity_id": 639896902,
+   "nombre": "Murky Blob",
+   "npc_type": 23478,
+   "sprite": 111352,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    249,
+    121
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 400,
+   "nombre_original": "汙染泡泡"
+  },
+  {
+   "entity_id": 639962439,
+   "nombre": "Murky Blob",
+   "npc_type": 23478,
+   "sprite": 111352,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    219,
+    111
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 400,
+   "nombre_original": "汙染泡泡"
+  },
+  {
+   "entity_id": 640093513,
+   "nombre": "Murky Blob",
+   "npc_type": 23478,
+   "sprite": 111352,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    230,
+    110
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 400,
+   "nombre_original": "汙染泡泡"
+  },
+  {
+   "entity_id": 640159050,
+   "nombre": "Murky Blob",
+   "npc_type": 23478,
+   "sprite": 111352,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    218,
+    114
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 400,
+   "nombre_original": "汙染泡泡"
+  },
+  {
+   "entity_id": 640552272,
+   "nombre": "Murky Blob",
+   "npc_type": 23478,
+   "sprite": 111352,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    201,
+    52
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 400,
+   "nombre_original": "汙染泡泡"
+  },
+  {
+   "entity_id": 640683346,
+   "nombre": "Murky Blob",
+   "npc_type": 23478,
+   "sprite": 111352,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    208,
+    94
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 400,
+   "nombre_original": "汙染泡泡"
+  },
+  {
+   "entity_id": 640748883,
+   "nombre": "Murky Blob",
+   "npc_type": 23478,
+   "sprite": 111352,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    214,
+    86
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 400,
+   "nombre_original": "汙染泡泡"
+  },
+  {
+   "entity_id": 640945494,
+   "nombre": "Murky Blob",
+   "npc_type": 23478,
+   "sprite": 111352,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    176,
+    58
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 400,
+   "nombre_original": "汙染泡泡"
+  },
+  {
+   "entity_id": 641011031,
+   "nombre": "Murky Blob",
+   "npc_type": 23478,
+   "sprite": 111352,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    191,
+    65
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 400,
+   "nombre_original": "汙染泡泡"
+  },
+  {
+   "entity_id": 641076568,
+   "nombre": "Murky Blob",
+   "npc_type": 23478,
+   "sprite": 111352,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    180,
+    60
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 400,
+   "nombre_original": "汙染泡泡"
+  },
+  {
+   "entity_id": 641142105,
+   "nombre": "Murky Blob",
+   "npc_type": 23478,
+   "sprite": 111352,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    162,
+    59
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 400,
+   "nombre_original": "汙染泡泡"
+  },
+  {
+   "entity_id": 641207642,
+   "nombre": "Murky Blob",
+   "npc_type": 23478,
+   "sprite": 111352,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    182,
+    59
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 400,
+   "nombre_original": "汙染泡泡"
+  },
+  {
+   "entity_id": 641273179,
+   "nombre": "Murky Blob",
+   "npc_type": 23478,
+   "sprite": 111352,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    134,
+    45
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 400,
+   "nombre_original": "汙染泡泡"
+  },
+  {
+   "entity_id": 641338716,
+   "nombre": "Murky Blob",
+   "npc_type": 23478,
+   "sprite": 111352,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    152,
+    50
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 400,
+   "nombre_original": "汙染泡泡"
+  },
+  {
+   "entity_id": 641404253,
+   "nombre": "Murky Blob",
+   "npc_type": 23478,
+   "sprite": 111352,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    148,
+    45
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 400,
+   "nombre_original": "汙染泡泡"
+  },
+  {
+   "entity_id": 641469790,
+   "nombre": "Murky Blob",
+   "npc_type": 23478,
+   "sprite": 111352,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    158,
+    58
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 400,
+   "nombre_original": "汙染泡泡"
+  },
+  {
+   "entity_id": 641535327,
+   "nombre": "Murky Blob",
+   "npc_type": 23478,
+   "sprite": 111352,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    134,
+    43
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 400,
+   "nombre_original": "汙染泡泡"
+  },
+  {
+   "entity_id": 641600864,
+   "nombre": "Carbon Spring",
+   "npc_type": 23480,
+   "sprite": 111357,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    176,
+    162
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 403,
+   "nombre_original": "碳酸泉"
+  },
+  {
+   "entity_id": 641928549,
+   "nombre": "Carbon Spring",
+   "npc_type": 23480,
+   "sprite": 111357,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    159,
+    145
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 403,
+   "nombre_original": "碳酸泉"
+  },
+  {
+   "entity_id": 641994086,
+   "nombre": "Carbon Spring",
+   "npc_type": 23480,
+   "sprite": 111357,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    155,
+    145
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 403,
+   "nombre_original": "碳酸泉"
+  },
+  {
+   "entity_id": 642125160,
+   "nombre": "Carbon Spring",
+   "npc_type": 23480,
+   "sprite": 111357,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    151,
+    148
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 403,
+   "nombre_original": "碳酸泉"
+  },
+  {
+   "entity_id": 642190697,
+   "nombre": "Carbon Spring",
+   "npc_type": 23480,
+   "sprite": 111357,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    167,
+    157
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 403,
+   "nombre_original": "碳酸泉"
+  },
+  {
+   "entity_id": 642256234,
+   "nombre": "Carbon Spring",
+   "npc_type": 23480,
+   "sprite": 111357,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    120,
+    134
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 403,
+   "nombre_original": "碳酸泉"
+  },
+  {
+   "entity_id": 642714993,
+   "nombre": "Carbon Spring",
+   "npc_type": 23480,
+   "sprite": 111357,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    97,
+    113
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 403,
+   "nombre_original": "碳酸泉"
+  },
+  {
+   "entity_id": 642780530,
+   "nombre": "Carbon Spring",
+   "npc_type": 23480,
+   "sprite": 111357,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    103,
+    109
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 403,
+   "nombre_original": "碳酸泉"
+  },
+  {
+   "entity_id": 642911604,
+   "nombre": "Carbon Spring",
+   "npc_type": 23480,
+   "sprite": 111357,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    72,
+    107
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 403,
+   "nombre_original": "碳酸泉"
+  },
+  {
+   "entity_id": 642977141,
+   "nombre": "Carbon Spring",
+   "npc_type": 23480,
+   "sprite": 111357,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    66,
+    95
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 403,
+   "nombre_original": "碳酸泉"
+  },
+  {
+   "entity_id": 643042678,
+   "nombre": "Carbon Spring",
+   "npc_type": 23480,
+   "sprite": 111357,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    71,
+    93
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 403,
+   "nombre_original": "碳酸泉"
+  },
+  {
+   "entity_id": 643108215,
+   "nombre": "Carbon Spring",
+   "npc_type": 23480,
+   "sprite": 111357,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    79,
+    110
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 403,
+   "nombre_original": "碳酸泉"
+  },
+  {
+   "entity_id": 643173752,
+   "nombre": "Carbon Spring",
+   "npc_type": 23480,
+   "sprite": 111357,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    67,
+    96
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 403,
+   "nombre_original": "碳酸泉"
+  },
+  {
+   "entity_id": 643435900,
+   "nombre": "Carbon Spring",
+   "npc_type": 23480,
+   "sprite": 111357,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    48,
+    88
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 403,
+   "nombre_original": "碳酸泉"
+  },
+  {
+   "entity_id": 643763585,
+   "nombre": "Carbon Spring",
+   "npc_type": 23480,
+   "sprite": 111357,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    7,
+    94
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 403,
+   "nombre_original": "碳酸泉"
+  },
+  {
+   "entity_id": 643829122,
+   "nombre": "Carbon Spring",
+   "npc_type": 23480,
+   "sprite": 111357,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    8,
+    99
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 403,
+   "nombre_original": "碳酸泉"
+  },
+  {
+   "entity_id": 644156807,
+   "nombre": "Carbon Spring",
+   "npc_type": 23480,
+   "sprite": 111357,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    51,
+    118
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 403,
+   "nombre_original": "碳酸泉"
+  },
+  {
+   "entity_id": 644222344,
+   "nombre": "Frothy White",
+   "npc_type": 23479,
+   "sprite": 111353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    217,
+    157
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 401,
+   "nombre_original": "白沫煙怪"
+  },
+  {
+   "entity_id": 644287881,
+   "nombre": "Frothy White",
+   "npc_type": 23479,
+   "sprite": 111353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    223,
+    154
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 401,
+   "nombre_original": "白沫煙怪"
+  },
+  {
+   "entity_id": 644353418,
+   "nombre": "Frothy White",
+   "npc_type": 23479,
+   "sprite": 111353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    219,
+    158
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 401,
+   "nombre_original": "白沫煙怪"
+  },
+  {
+   "entity_id": 644418955,
+   "nombre": "Frothy White",
+   "npc_type": 23479,
+   "sprite": 111353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    231,
+    156
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 401,
+   "nombre_original": "白沫煙怪"
+  },
+  {
+   "entity_id": 644484492,
+   "nombre": "Frothy White",
+   "npc_type": 23479,
+   "sprite": 111353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    235,
+    147
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 401,
+   "nombre_original": "白沫煙怪"
+  },
+  {
+   "entity_id": 644615566,
+   "nombre": "Frothy White",
+   "npc_type": 23479,
+   "sprite": 111353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    209,
+    148
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 401,
+   "nombre_original": "白沫煙怪"
+  },
+  {
+   "entity_id": 644877714,
+   "nombre": "Frothy White",
+   "npc_type": 23479,
+   "sprite": 111353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    202,
+    131
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 401,
+   "nombre_original": "白沫煙怪"
+  },
+  {
+   "entity_id": 644943251,
+   "nombre": "Frothy White",
+   "npc_type": 23479,
+   "sprite": 111353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    189,
+    130
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 401,
+   "nombre_original": "白沫煙怪"
+  },
+  {
+   "entity_id": 645074325,
+   "nombre": "Frothy White",
+   "npc_type": 23479,
+   "sprite": 111353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    189,
+    132
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 401,
+   "nombre_original": "白沫煙怪"
+  },
+  {
+   "entity_id": 645139862,
+   "nombre": "Frothy White",
+   "npc_type": 23479,
+   "sprite": 111353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    179,
+    136
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 401,
+   "nombre_original": "白沫煙怪"
+  },
+  {
+   "entity_id": 645205399,
+   "nombre": "Frothy White",
+   "npc_type": 23479,
+   "sprite": 111353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    150,
+    120
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 401,
+   "nombre_original": "白沫煙怪"
+  },
+  {
+   "entity_id": 645270936,
+   "nombre": "Frothy White",
+   "npc_type": 23479,
+   "sprite": 111353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    156,
+    112
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 401,
+   "nombre_original": "白沫煙怪"
+  },
+  {
+   "entity_id": 645336473,
+   "nombre": "Frothy White",
+   "npc_type": 23479,
+   "sprite": 111353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    164,
+    105
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 401,
+   "nombre_original": "白沫煙怪"
+  },
+  {
+   "entity_id": 645402010,
+   "nombre": "Frothy White",
+   "npc_type": 23479,
+   "sprite": 111353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    146,
+    119
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 401,
+   "nombre_original": "白沫煙怪"
+  },
+  {
+   "entity_id": 645533084,
+   "nombre": "Frothy White",
+   "npc_type": 23479,
+   "sprite": 111353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    131,
+    112
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 401,
+   "nombre_original": "白沫煙怪"
+  },
+  {
+   "entity_id": 645598621,
+   "nombre": "Frothy White",
+   "npc_type": 23479,
+   "sprite": 111353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    132,
+    107
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 401,
+   "nombre_original": "白沫煙怪"
+  },
+  {
+   "entity_id": 645664158,
+   "nombre": "Frothy White",
+   "npc_type": 23479,
+   "sprite": 111353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    119,
+    103
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 401,
+   "nombre_original": "白沫煙怪"
+  },
+  {
+   "entity_id": 645729695,
+   "nombre": "Frothy White",
+   "npc_type": 23479,
+   "sprite": 111353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    135,
+    121
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 401,
+   "nombre_original": "白沫煙怪"
+  },
+  {
+   "entity_id": 645795232,
+   "nombre": "Frothy White",
+   "npc_type": 23479,
+   "sprite": 111353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    136,
+    105
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 401,
+   "nombre_original": "白沫煙怪"
+  },
+  {
+   "entity_id": 645860769,
+   "nombre": "Frothy White",
+   "npc_type": 23479,
+   "sprite": 111353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    99,
+    89
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 401,
+   "nombre_original": "白沫煙怪"
+  },
+  {
+   "entity_id": 645926306,
+   "nombre": "Frothy White",
+   "npc_type": 23479,
+   "sprite": 111353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    107,
+    93
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 401,
+   "nombre_original": "白沫煙怪"
+  },
+  {
+   "entity_id": 645991843,
+   "nombre": "Frothy White",
+   "npc_type": 23479,
+   "sprite": 111353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    108,
+    105
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 401,
+   "nombre_original": "白沫煙怪"
+  },
+  {
+   "entity_id": 646057380,
+   "nombre": "Frothy White",
+   "npc_type": 23479,
+   "sprite": 111353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    106,
+    88
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 401,
+   "nombre_original": "白沫煙怪"
+  },
+  {
+   "entity_id": 646122917,
+   "nombre": "Frothy White",
+   "npc_type": 23479,
+   "sprite": 111353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    95,
+    110
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 401,
+   "nombre_original": "白沫煙怪"
+  },
+  {
+   "entity_id": 646188454,
+   "nombre": "Frothy White",
+   "npc_type": 23479,
+   "sprite": 111353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    68,
+    82
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 401,
+   "nombre_original": "白沫煙怪"
+  },
+  {
+   "entity_id": 646253991,
+   "nombre": "Frothy White",
+   "npc_type": 23479,
+   "sprite": 111353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    83,
+    81
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 401,
+   "nombre_original": "白沫煙怪"
+  },
+  {
+   "entity_id": 646319528,
+   "nombre": "Frothy White",
+   "npc_type": 23479,
+   "sprite": 111353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    82,
+    80
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 401,
+   "nombre_original": "白沫煙怪"
+  },
+  {
+   "entity_id": 646385065,
+   "nombre": "Frothy White",
+   "npc_type": 23479,
+   "sprite": 111353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    63,
+    87
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 401,
+   "nombre_original": "白沫煙怪"
+  },
+  {
+   "entity_id": 646450602,
+   "nombre": "Frothy White",
+   "npc_type": 23479,
+   "sprite": 111353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    92,
+    64
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 401,
+   "nombre_original": "白沫煙怪"
+  }
+ ],
+ "recursos": [
+  {
+   "entity_id": 613354417,
+   "capa": 0,
+   "px": [
+    9109,
+    5358
+   ],
+   "medio": "00000000250000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 613551028,
+   "capa": 0,
+   "px": [
+    8338,
+    4364
+   ],
+   "medio": "0000000070034080dc004040a0003080",
+   "marca": 165,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 613813176,
+   "capa": 0,
+   "px": [
+    8085,
+    3984
+   ],
+   "medio": "00000000230000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 613878713,
+   "capa": 0,
+   "px": [
+    8333,
+    4048
+   ],
+   "medio": "003b0a004303c43d0a006803529d0000",
+   "marca": 76,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 614140861,
+   "capa": 0,
+   "px": [
+    7115,
+    3599
+   ],
+   "medio": "00000000250000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 614206398,
+   "capa": 0,
+   "px": [
+    7346,
+    3696
+   ],
+   "medio": "00cfa95aa74ab3bd00df000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 614271935,
+   "capa": 0,
+   "px": [
+    7600,
+    3662
+   ],
+   "medio": "00cfa95aa74ab3bd00df000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 614665157,
+   "capa": 0,
+   "px": [
+    6994,
+    2320
+   ],
+   "medio": "00000000220000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 614992842,
+   "capa": 0,
+   "px": [
+    6540,
+    2998
+   ],
+   "medio": "0070a849ace2c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 615058379,
+   "capa": 0,
+   "px": [
+    6640,
+    2832
+   ],
+   "medio": "000000001e0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 615123916,
+   "capa": 0,
+   "px": [
+    6029,
+    1940
+   ],
+   "medio": "00cfa95aa74ab3bd00e1c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 615189453,
+   "capa": 0,
+   "px": [
+    5806,
+    2097
+   ],
+   "medio": "00a4b2a7abacc37ebef0c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 615254990,
+   "capa": 0,
+   "px": [
+    5552,
+    1998
+   ],
+   "medio": "00000000230000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 615320527,
+   "capa": 0,
+   "px": [
+    5386,
+    1868
+   ],
+   "medio": "00a4a849ace2c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 615386064,
+   "capa": 0,
+   "px": [
+    5234,
+    1708
+   ],
+   "medio": "006ab5b5b4b9bef0b746000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 615451601,
+   "capa": 0,
+   "px": [
+    4809,
+    1613
+   ],
+   "medio": "006ab5b5b4b9bef0b746000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 615517138,
+   "capa": 0,
+   "px": [
+    4531,
+    1527
+   ],
+   "medio": "00000000290000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 615582675,
+   "capa": 0,
+   "px": [
+    4269,
+    1590
+   ],
+   "medio": "000000001d0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 615648212,
+   "capa": 0,
+   "px": [
+    4078,
+    1709
+   ],
+   "medio": "000000001f0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 615713749,
+   "capa": 0,
+   "px": [
+    4109,
+    1908
+   ],
+   "medio": "00a4aeefacf5bcd8a4ec000011000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 615779286,
+   "capa": 0,
+   "px": [
+    7695,
+    4723
+   ],
+   "medio": "00000000230000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 615844823,
+   "capa": 0,
+   "px": [
+    7406,
+    4847
+   ],
+   "medio": "00000000230000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 615910360,
+   "capa": 0,
+   "px": [
+    7154,
+    4971
+   ],
+   "medio": "00000000210000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 615975897,
+   "capa": 0,
+   "px": [
+    6896,
+    4906
+   ],
+   "medio": "006aa849ace2c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 616041434,
+   "capa": 0,
+   "px": [
+    7051,
+    4722
+   ],
+   "medio": "00000000230000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 616106971,
+   "capa": 0,
+   "px": [
+    6673,
+    4749
+   ],
+   "medio": "006ab5b5b4b9bef0b746000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 616172508,
+   "capa": 0,
+   "px": [
+    6799,
+    4588
+   ],
+   "medio": "00fcb344c37ea5de00df000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 616500193,
+   "capa": 0,
+   "px": [
+    6250,
+    4114
+   ],
+   "medio": "00000000190000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 616565730,
+   "capa": 0,
+   "px": [
+    5963,
+    4081
+   ],
+   "medio": "000000002c0000004400100043001200",
+   "marca": 106,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 616762341,
+   "capa": 0,
+   "px": [
+    5425,
+    3500
+   ],
+   "medio": "000000001b0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 616827878,
+   "capa": 0,
+   "px": [
+    5231,
+    3631
+   ],
+   "medio": "00000000230000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 616893415,
+   "capa": 0,
+   "px": [
+    5038,
+    3728
+   ],
+   "medio": "006eacf5c35400000079796f756f0000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 617090026,
+   "capa": 0,
+   "px": [
+    4433,
+    3565
+   ],
+   "medio": "00000000250000000079796f756f0000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 617417711,
+   "capa": 0,
+   "px": [
+    3631,
+    3149
+   ],
+   "medio": "00a4ac50aed6c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 617483248,
+   "capa": 0,
+   "px": [
+    3379,
+    2994
+   ],
+   "medio": "00a4ac50aed6c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 617614322,
+   "capa": 0,
+   "px": [
+    3150,
+    3054
+   ],
+   "medio": "00000000270000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 617679859,
+   "capa": 0,
+   "px": [
+    3103,
+    2828
+   ],
+   "medio": "00a4b2a7abacc37ebef0c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 617745396,
+   "capa": 0,
+   "px": [
+    2350,
+    2484
+   ],
+   "medio": "00000000260000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 617810933,
+   "capa": 0,
+   "px": [
+    2555,
+    2644
+   ],
+   "medio": "00000000220000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 617876470,
+   "capa": 0,
+   "px": [
+    2797,
+    2511
+   ],
+   "medio": "00000000190000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 617942007,
+   "capa": 0,
+   "px": [
+    3019,
+    2348
+   ],
+   "medio": "00a4ac50aed6c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 618007544,
+   "capa": 0,
+   "px": [
+    2921,
+    2167
+   ],
+   "medio": "000000002b0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 618073081,
+   "capa": 0,
+   "px": [
+    4261,
+    2659
+   ],
+   "medio": "00000000230000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60037,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 618138618,
+   "capa": 0,
+   "px": [
+    4783,
+    2314
+   ],
+   "medio": "00000000200000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60037,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 618531840,
+   "capa": 0,
+   "px": [
+    5454,
+    5007
+   ],
+   "medio": "00a4a4d1a8cfaff3aae1c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 618597377,
+   "capa": 0,
+   "px": [
+    5326,
+    4721
+   ],
+   "medio": "000000002b0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 618662914,
+   "capa": 0,
+   "px": [
+    5136,
+    4563
+   ],
+   "medio": "00000000160000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 618728451,
+   "capa": 0,
+   "px": [
+    4817,
+    4909
+   ],
+   "medio": "00000000270000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 618793988,
+   "capa": 0,
+   "px": [
+    5106,
+    4942
+   ],
+   "medio": "00cfa95aa74ab3bd00ec000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 618859525,
+   "capa": 0,
+   "px": [
+    4817,
+    4591
+   ],
+   "medio": "00cfa95aa74ab3bd00e1c24f009d0000",
+   "marca": 76,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 619449358,
+   "capa": 0,
+   "px": [
+    3218,
+    3759
+   ],
+   "medio": "00a4b2a7abacc37ebef0c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 619514895,
+   "capa": 0,
+   "px": [
+    3019,
+    3661
+   ],
+   "medio": "0070a4d1a8cfaff3aae1c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 619580432,
+   "capa": 0,
+   "px": [
+    1073,
+    4879
+   ],
+   "medio": "00c8b2efaff300000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 619645969,
+   "capa": 0,
+   "px": [
+    2544,
+    3444
+   ],
+   "medio": "000000002b0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 619711506,
+   "capa": 0,
+   "px": [
+    2322,
+    3316
+   ],
+   "medio": "00a4a849ace2c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 619777043,
+   "capa": 0,
+   "px": [
+    2066,
+    3186
+   ],
+   "medio": "006ab2a7abacc37ebef0c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 619842580,
+   "capa": 0,
+   "px": [
+    2093,
+    2987
+   ],
+   "medio": "0070a4d1a8cfaff3aae1c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 619973654,
+   "capa": 0,
+   "px": [
+    1325,
+    2895
+   ],
+   "medio": "00000000250000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 620301339,
+   "capa": 0,
+   "px": [
+    235,
+    3217
+   ],
+   "medio": "00000000200000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 620629024,
+   "capa": 0,
+   "px": [
+    1682,
+    3827
+   ],
+   "medio": "006ab5b5b4b9bef0b746000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 620760098,
+   "capa": 0,
+   "px": [
+    2262,
+    3786
+   ],
+   "medio": "00000000190000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 621284394,
+   "capa": 0,
+   "px": [
+    1159,
+    4465
+   ],
+   "medio": "0043afbbaff300000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 621349931,
+   "capa": 0,
+   "px": [
+    884,
+    4628
+   ],
+   "medio": "00000000170000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 621743153,
+   "capa": 0,
+   "px": [
+    3120,
+    303
+   ],
+   "medio": "00000000170000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 622136375,
+   "capa": 0,
+   "px": [
+    2674,
+    5042
+   ],
+   "medio": "000000002b0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 622726208,
+   "capa": 0,
+   "px": [
+    4620,
+    5260
+   ],
+   "medio": "00a4a849ace2c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 622791745,
+   "capa": 0,
+   "px": [
+    1648,
+    4747
+   ],
+   "medio": "000000002a0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 622857282,
+   "capa": 0,
+   "px": [
+    1840,
+    4878
+   ],
+   "medio": "00000000250000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 622922819,
+   "capa": 0,
+   "px": [
+    1426,
+    4625
+   ],
+   "medio": "000000001e0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 622988356,
+   "capa": 0,
+   "px": [
+    2065,
+    4785
+   ],
+   "medio": "00180d003a15060a0000611516bd0b00",
+   "marca": 76,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 623512652,
+   "capa": 0,
+   "px": [
+    8975,
+    3568
+   ],
+   "medio": "000000002b0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 623643726,
+   "capa": 0,
+   "px": [
+    9388,
+    3313
+   ],
+   "medio": "0070a849ace2c471afdf004f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 624036948,
+   "capa": 0,
+   "px": [
+    6706,
+    686
+   ],
+   "medio": "00a4aeefacf5bcd8a4ec000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 624692318,
+   "capa": 0,
+   "px": [
+    8658,
+    1199
+   ],
+   "medio": "000000002b0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 624757855,
+   "capa": 0,
+   "px": [
+    8435,
+    1102
+   ],
+   "medio": "006aa849ace2c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 624823392,
+   "capa": 0,
+   "px": [
+    7926,
+    1584
+   ],
+   "medio": "00a4aeefacf5bcd8a4ec000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 625085540,
+   "capa": 0,
+   "px": [
+    7789,
+    1420
+   ],
+   "medio": "000000001b0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 625609836,
+   "capa": 0,
+   "px": [
+    7527,
+    2197
+   ],
+   "medio": "00000000250000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 625675373,
+   "capa": 0,
+   "px": [
+    7311,
+    2097
+   ],
+   "medio": "00000000260000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 625740910,
+   "capa": 0,
+   "px": [
+    7058,
+    1998
+   ],
+   "medio": "00a4b2a7abacc37ebef0c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 625806447,
+   "capa": 0,
+   "px": [
+    6804,
+    1868
+   ],
+   "medio": "00000000170000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 625871984,
+   "capa": 0,
+   "px": [
+    6548,
+    1774
+   ],
+   "medio": "002e0c006115a9d20a003a157bcc0200",
+   "marca": 76,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 625937521,
+   "capa": 0,
+   "px": [
+    6316,
+    1650
+   ],
+   "medio": "00a4aeefacf5bcd8a4ec000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 626003058,
+   "capa": 0,
+   "px": [
+    6029,
+    1460
+   ],
+   "medio": "00000000250000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 626330743,
+   "capa": 0,
+   "px": [
+    5238,
+    781
+   ],
+   "medio": "00a4b5b5b4b9bef0b746004f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 626527354,
+   "capa": 0,
+   "px": [
+    5550,
+    301
+   ],
+   "medio": "0070b5b5b4b9bef0b746000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 626592891,
+   "capa": 0,
+   "px": [
+    5810,
+    270
+   ],
+   "medio": "0070b5b5b4b9bef0b746000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 626789502,
+   "capa": 0,
+   "px": [
+    8013,
+    846
+   ],
+   "medio": "0070b2a7abacc37ebef0c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 626855039,
+   "capa": 0,
+   "px": [
+    7825,
+    750
+   ],
+   "medio": "006aa849ace2c471afdf00006e000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 626920576,
+   "capa": 0,
+   "px": [
+    7600,
+    652
+   ],
+   "medio": "00000000190000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 626986113,
+   "capa": 0,
+   "px": [
+    7402,
+    555
+   ],
+   "medio": "00000000210000000079796f756f0000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 627051650,
+   "capa": 0,
+   "px": [
+    7186,
+    488
+   ],
+   "medio": "00000000250000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 627117187,
+   "capa": 0,
+   "px": [
+    6864,
+    1388
+   ],
+   "medio": "00000000250000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 627182724,
+   "capa": 0,
+   "px": [
+    7028,
+    1134
+   ],
+   "medio": "00000000230000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 627248261,
+   "capa": 0,
+   "px": [
+    6542,
+    4464
+   ],
+   "medio": "00a4a849ace2c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 627313798,
+   "capa": 0,
+   "px": [
+    6647,
+    944
+   ],
+   "medio": "00000000160000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 627379335,
+   "capa": 0,
+   "px": [
+    6391,
+    763
+   ],
+   "medio": "000000001d0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 627444872,
+   "capa": 0,
+   "px": [
+    8466,
+    624
+   ],
+   "medio": "000000002b000000f00000006e000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60037,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 627510409,
+   "capa": 0,
+   "px": [
+    8850,
+    689
+   ],
+   "medio": "00c8b2efaff300000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60037,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 627575946,
+   "capa": 0,
+   "px": [
+    8977,
+    978
+   ],
+   "medio": "00a4b2a7abacc37ebef0c24f00001400",
+   "marca": 49,
+   "orient": 6,
+   "sprite": 60037,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 627838094,
+   "capa": 0,
+   "px": [
+    3575,
+    819
+   ],
+   "medio": "0070a849ace2c471afdf004f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 627903631,
+   "capa": 0,
+   "px": [
+    3118,
+    1104
+   ],
+   "medio": "00000000190000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 627969168,
+   "capa": 0,
+   "px": [
+    2480,
+    656
+   ],
+   "medio": "00cfa95aa74ab3bd0000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 628034705,
+   "capa": 0,
+   "px": [
+    4076,
+    558
+   ],
+   "medio": "000000002c0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 628100242,
+   "capa": 0,
+   "px": [
+    1261,
+    1327
+   ],
+   "medio": "000000002a0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 628165779,
+   "capa": 0,
+   "px": [
+    1743,
+    1810
+   ],
+   "medio": "006ab5b5b4b9bef0b746000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 628231316,
+   "capa": 0,
+   "px": [
+    1103,
+    2061
+   ],
+   "medio": "006ab2a7abacc37ebef0c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 628296853,
+   "capa": 0,
+   "px": [
+    525,
+    1552
+   ],
+   "medio": "00a4a849ace2c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 628362390,
+   "capa": 0,
+   "px": [
+    2286,
+    1489
+   ],
+   "medio": "00000000170000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 631835851,
+   "capa": 0,
+   "px": [
+    2768,
+    3504
+   ],
+   "medio": "000000002b0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  }
+ ]
+}
