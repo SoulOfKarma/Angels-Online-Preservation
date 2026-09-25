@@ -325,6 +325,22 @@
     "dibujar": false,
     "preguntar": false,
     "nota": "Jade Vale -> South of Mirror Lake. Tornado 100609 de jade_vale.json; el salto se disparo desde (6,170). La llegada (294,51) es la que mando Celestia, medida."
+   },
+   {
+    "entity": 705,
+    "tile": [
+     313,
+     128
+    ],
+    "destino": 397,
+    "llegada": [
+     19,
+     165
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Jade Vale -> Floating Station (stage 397), region Sun Sea Maze. ESTE TORNADO NO EXISTE EN CELESTIA: jade_vale.json, que salio de alli, trae TRES tornados -- (316,55) al 18, (265,172) al 231 y (4,169) al 9 -- y ninguno cerca de aqui; el mas proximo queda a 48 casillas. Es la primera vez que se ve que la version de Taiwan aniade una conexion a un mapa que ya teniamos, no solo mapas nuevos. Conviene tenerlo presente: puede haber mas tornados asi en mapas viejos dados por cerrados. Medido dos veces: los tramos acabaron en (313,128) y (313,126), y se llego las dos veces a (19,165). RADIO 3 Y NO MAS: las llegadas desde Floating Station son (309,130) y (311,123), a CUATRO y a CINCO; con radio 4 la primera caeria dentro y el jugador rebotaria. El minimo es 2, para cubrir el tramo de (313,126), asi que queda encajado entre 2 y 3. SE DIBUJA A MANO con entity 705, siguiendo la serie de los que van asi (700-702 en el Lyceum, 703 en Clink Harbor, 704 en Neon Sky Corridor): no hay objeto capturado, porque las sesiones por Jade Vale fueron de paso y no trajeron ni un 0x000E. LA POSICION ES APROXIMADA, es la casilla donde DISPARA el portal y no necesariamente donde esta el dibujo; ya se vio en el 417 que pueden separarse una o dos casillas. Para afinarla, pararse encima del tornado en el cliente oficial y leer el minimapa."
    }
   ],
   "231": [
@@ -6641,6 +6657,64 @@
     "sin_medir": true,
     "desactivado": true,
     "nota": "Tornado de Ultimate Arena que NO SE PUDO CRUZAR. El usuario recorrio el mapa entero e intento pasar por los cuatro tornados; solo funciono el de (46,149), el que vuelve a Bling Plaza. Estos tres no dejaron pasar, asi que se sospecha un REQUISITO -- mision, nivel o algun objeto -- y no un fallo. No estan medidos: no se sabe adonde van ni por donde se llega. El jumpmap.xml no ayuda aqui, porque su unico destino para el stage 421 es el id 355, que es la casilla de llegada (54,145) desde Bling Plaza, no una salida. Los otros dos estan pegados entre si, (246,46) y (254,42), a ocho casillas; el tercero esta solo en el centro del mapa."
+   }
+  ],
+  "397": [
+   {
+    "entity": 428673185,
+    "tile": [
+     12,
+     171
+    ],
+    "destino": 13,
+    "llegada": [
+     309,
+     130
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Floating Station -> Jade Vale. El tornado SI esta capturado, en (12,171), y va en los recursos de la plantilla, asi que el servidor lo dibuja solo. Medido dos veces: los dos tramos acabaron en (13,170), a UNA casilla del tornado; las llegadas fueron (309,130) y (311,123). Radio 3: la llegada de vuelta desde Jade Vale es (19,165), a SIETE, holgadamente fuera."
+   },
+   {
+    "entity": 428738722,
+    "tile": [
+     4,
+     9
+    ],
+    "destino": null,
+    "llegada": [
+     274,
+     149
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "sin_medir": false,
+    "desactivado": true,
+    "destino_medido": 398,
+    "nota": "Floating Station -> FLORAL ALLEY (stage 398), MEDIDO pero DESACTIVADO: no hay plantilla del 398. Se cruzo solo para medir y se volvio a los TRES SEGUNDOS, asi que ese tramo trajo cero spawns y cero objetos. El tornado si esta capturado, en (4,9). Medido una vez: el tramo acabo en (5,9), a una casilla, y se llego a (274,149). La vuelta 398 -> 397 sale con el tramo acabando en (271,153) y llega a (11,11). Radio 3: esa llegada de vuelta esta a SIETE del tornado. ACTIVARLO poniendo destino 398 cuando se pueble el mapa."
+   }
+  ],
+  "398": [
+   {
+    "entity": null,
+    "tile": [
+     271,
+     153
+    ],
+    "destino": null,
+    "llegada": [
+     11,
+     11
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "sin_medir": false,
+    "desactivado": true,
+    "destino_medido": 397,
+    "nota": "Floral Alley -> Floating Station. MEDIDO pero DESACTIVADO junto con su par. Medido una vez: el tramo acabo en (271,153) y se llego a (11,11). No se sabe si hay tornado: solo se estuvo tres segundos en el mapa y no llego ningun objeto. RADIO 3 Y NO MAS: la llegada desde el 397 es (274,149), a CUATRO de esta casilla. Comprobar la posicion real al poblar el mapa."
    }
   ]
  },

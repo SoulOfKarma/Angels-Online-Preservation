@@ -1,0 +1,5250 @@
+{
+ "_nota": "Floating Station (stage 397), de la region Sun Sea Maze, capturado el 25/09/2026 en el cliente OFICIAL de Taiwan (8.7.5.7). En Celestia este mapa no existe poblado. Se separo con tools/separar_por_mapa.py y se juntaron los cuatro tramos de 397 de cuatro sesiones distintas, porque aqui cada cambio de mapa abre conexion nueva.",
+ "stage": 397,
+ "spawns": [
+  {
+   "entity_id": 439028031,
+   "nombre": "Kamenosuke",
+   "npc_type": 24678,
+   "sprite": 40739,
+   "klass": 400,
+   "monstruo": false,
+   "tile": [
+    262,
+    166
+   ],
+   "direccion": 5,
+   "visible": 1,
+   "nombre_original": "龜之助"
+  },
+  {
+   "entity_id": 439093568,
+   "nombre": "Chef Ishida",
+   "npc_type": 24711,
+   "sprite": 40008,
+   "klass": 400,
+   "monstruo": false,
+   "tile": [
+    217,
+    141
+   ],
+   "direccion": 6,
+   "visible": 1,
+   "nombre_original": "石田主廚"
+  },
+  {
+   "entity_id": 446826934,
+   "nombre": "Attendant",
+   "npc_type": 24691,
+   "sprite": 40743,
+   "klass": 400,
+   "monstruo": false,
+   "tile": [
+    147,
+    82
+   ],
+   "direccion": 5,
+   "visible": 1,
+   "nombre_original": "站務員"
+  },
+  {
+   "entity_id": 446958008,
+   "nombre": "Tobio",
+   "npc_type": 24712,
+   "sprite": 40676,
+   "klass": 400,
+   "monstruo": false,
+   "tile": [
+    232,
+    96
+   ],
+   "direccion": 6,
+   "visible": 1,
+   "nombre_original": "小巴"
+  },
+  {
+   "entity_id": 447023545,
+   "nombre": "Helper Hayasaka",
+   "npc_type": 24727,
+   "sprite": 40310,
+   "klass": 400,
+   "monstruo": false,
+   "tile": [
+    53,
+    87
+   ],
+   "direccion": 6,
+   "visible": 1,
+   "nombre_original": "協助者早阪"
+  },
+  {
+   "entity_id": 447089082,
+   "nombre": "E-Red Octo",
+   "npc_type": 23455,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    202,
+    20
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 383,
+   "nombre_original": "菁英-鹽水章魚"
+  },
+  {
+   "entity_id": 447154619,
+   "nombre": "E-Red Octo",
+   "npc_type": 23455,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    209,
+    18
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 383,
+   "nombre_original": "菁英-鹽水章魚"
+  },
+  {
+   "entity_id": 447220156,
+   "nombre": "E-Red Octo",
+   "npc_type": 23455,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    216,
+    13
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 383,
+   "nombre_original": "菁英-鹽水章魚"
+  },
+  {
+   "entity_id": 447285693,
+   "nombre": "E-Red Octo",
+   "npc_type": 23455,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    191,
+    22
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 383,
+   "nombre_original": "菁英-鹽水章魚"
+  },
+  {
+   "entity_id": 447351230,
+   "nombre": "E-Red Octo",
+   "npc_type": 23455,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    229,
+    31
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 383,
+   "nombre_original": "菁英-鹽水章魚"
+  },
+  {
+   "entity_id": 450038247,
+   "nombre": "E-Blue Jagshark",
+   "npc_type": 23454,
+   "sprite": 111331,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    284,
+    66
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 381,
+   "nombre_original": "菁英-藍皮鉅齒鯊"
+  },
+  {
+   "entity_id": 450103784,
+   "nombre": "E-Blue Jagshark",
+   "npc_type": 23454,
+   "sprite": 111331,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    272,
+    68
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 381,
+   "nombre_original": "菁英-藍皮鉅齒鯊"
+  },
+  {
+   "entity_id": 450234858,
+   "nombre": "E-Blue Jagshark",
+   "npc_type": 23454,
+   "sprite": 111331,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    268,
+    44
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 381,
+   "nombre_original": "菁英-藍皮鉅齒鯊"
+  },
+  {
+   "entity_id": 450300395,
+   "nombre": "E-Blue Jagshark",
+   "npc_type": 23454,
+   "sprite": 111331,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    250,
+    34
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 381,
+   "nombre_original": "菁英-藍皮鉅齒鯊"
+  },
+  {
+   "entity_id": 453052949,
+   "nombre": "Baby Octo",
+   "npc_type": 23457,
+   "sprite": 111380,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    206,
+    125
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 385,
+   "nombre_original": "金寶寶"
+  },
+  {
+   "entity_id": 3350792083,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    190,
+    44
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3355314136,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    218,
+    56
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3355379673,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    206,
+    39
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3355510747,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    220,
+    51
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3366389889,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    49,
+    69
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3367110796,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    84,
+    86
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3367438481,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    105,
+    94
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3367504018,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    96,
+    102
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3370584538,
+   "nombre": "Fierce Roughskin",
+   "npc_type": 23448,
+   "sprite": 111326,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    65,
+    162
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 370,
+   "nombre_original": "兇兇海蜇皮"
+  },
+  {
+   "entity_id": 3370781149,
+   "nombre": "Fierce Roughskin",
+   "npc_type": 23448,
+   "sprite": 111326,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    36,
+    152
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 370,
+   "nombre_original": "兇兇海蜇皮"
+  },
+  {
+   "entity_id": 3370846686,
+   "nombre": "Fierce Roughskin",
+   "npc_type": 23448,
+   "sprite": 111326,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    36,
+    152
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 370,
+   "nombre_original": "兇兇海蜇皮"
+  },
+  {
+   "entity_id": 3370912223,
+   "nombre": "Fierce Roughskin",
+   "npc_type": 23448,
+   "sprite": 111326,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    54,
+    154
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 370,
+   "nombre_original": "兇兇海蜇皮"
+  },
+  {
+   "entity_id": 3371043297,
+   "nombre": "Fierce Roughskin",
+   "npc_type": 23448,
+   "sprite": 111326,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    38,
+    155
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 370,
+   "nombre_original": "兇兇海蜇皮"
+  },
+  {
+   "entity_id": 3371108834,
+   "nombre": "Fierce Roughskin",
+   "npc_type": 23448,
+   "sprite": 111326,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    43,
+    146
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 370,
+   "nombre_original": "兇兇海蜇皮"
+  },
+  {
+   "entity_id": 3371174371,
+   "nombre": "Floaty Pink",
+   "npc_type": 23449,
+   "sprite": 111327,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    15,
+    132
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 371,
+   "nombre_original": "粉粉飄飄"
+  },
+  {
+   "entity_id": 3371305445,
+   "nombre": "Floaty Pink",
+   "npc_type": 23449,
+   "sprite": 111327,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    23,
+    138
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 371,
+   "nombre_original": "粉粉飄飄"
+  },
+  {
+   "entity_id": 3371436525,
+   "nombre": "Floaty Pink",
+   "npc_type": 23449,
+   "sprite": 111327,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    31,
+    142
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 371,
+   "nombre_original": "粉粉飄飄"
+  },
+  {
+   "entity_id": 3372288506,
+   "nombre": "Floaty Pink",
+   "npc_type": 23449,
+   "sprite": 111327,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    24,
+    96
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 371,
+   "nombre_original": "粉粉飄飄"
+  },
+  {
+   "entity_id": 3372616191,
+   "nombre": "Floaty Pink",
+   "npc_type": 23449,
+   "sprite": 111327,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    26,
+    84
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 371,
+   "nombre_original": "粉粉飄飄"
+  },
+  {
+   "entity_id": 3374058006,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    198,
+    43
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3374123543,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    200,
+    47
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3374254617,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    149,
+    30
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3375827505,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    151,
+    23
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3376089653,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    69,
+    60
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3376286264,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    74,
+    68
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3376417338,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    46,
+    43
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3376613949,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    36,
+    72
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3376810560,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    46,
+    48
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3376941634,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    62
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3377072708,
+   "nombre": "Floaty Pink",
+   "npc_type": 23449,
+   "sprite": 111327,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    11,
+    100
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 371,
+   "nombre_original": "粉粉飄飄"
+  },
+  {
+   "entity_id": 3377138245,
+   "nombre": "Floaty Pink",
+   "npc_type": 23449,
+   "sprite": 111327,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    21,
+    113
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 371,
+   "nombre_original": "粉粉飄飄"
+  },
+  {
+   "entity_id": 3377203782,
+   "nombre": "Floaty Pink",
+   "npc_type": 23449,
+   "sprite": 111327,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    15,
+    95
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 371,
+   "nombre_original": "粉粉飄飄"
+  },
+  {
+   "entity_id": 3377269319,
+   "nombre": "Floaty Pink",
+   "npc_type": 23449,
+   "sprite": 111327,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    17,
+    104
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 371,
+   "nombre_original": "粉粉飄飄"
+  },
+  {
+   "entity_id": 3377400393,
+   "nombre": "Floaty Pink",
+   "npc_type": 23449,
+   "sprite": 111327,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    43,
+    109
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 371,
+   "nombre_original": "粉粉飄飄"
+  },
+  {
+   "entity_id": 3377531467,
+   "nombre": "Floaty Pink",
+   "npc_type": 23449,
+   "sprite": 111327,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    42,
+    111
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 371,
+   "nombre_original": "粉粉飄飄"
+  },
+  {
+   "entity_id": 3377597004,
+   "nombre": "Floaty Pink",
+   "npc_type": 23449,
+   "sprite": 111327,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    24,
+    114
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 371,
+   "nombre_original": "粉粉飄飄"
+  },
+  {
+   "entity_id": 3377662541,
+   "nombre": "Floaty Pink",
+   "npc_type": 23449,
+   "sprite": 111327,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    34,
+    107
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 371,
+   "nombre_original": "粉粉飄飄"
+  },
+  {
+   "entity_id": 3377728078,
+   "nombre": "Floaty Pink",
+   "npc_type": 23449,
+   "sprite": 111327,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    43,
+    118
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 371,
+   "nombre_original": "粉粉飄飄"
+  },
+  {
+   "entity_id": 3377990226,
+   "nombre": "Floaty Pink",
+   "npc_type": 23449,
+   "sprite": 111327,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    74,
+    120
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 371,
+   "nombre_original": "粉粉飄飄"
+  },
+  {
+   "entity_id": 3378055763,
+   "nombre": "Floaty Pink",
+   "npc_type": 23449,
+   "sprite": 111327,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    66,
+    119
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 371,
+   "nombre_original": "粉粉飄飄"
+  },
+  {
+   "entity_id": 3378448985,
+   "nombre": "Fierce Roughskin",
+   "npc_type": 23448,
+   "sprite": 111326,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    52,
+    153
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 370,
+   "nombre_original": "兇兇海蜇皮"
+  },
+  {
+   "entity_id": 3378776670,
+   "nombre": "Fierce Roughskin",
+   "npc_type": 23448,
+   "sprite": 111326,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    57,
+    153
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 370,
+   "nombre_original": "兇兇海蜇皮"
+  },
+  {
+   "entity_id": 3378907744,
+   "nombre": "Fierce Roughskin",
+   "npc_type": 23448,
+   "sprite": 111326,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    110,
+    149
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 370,
+   "nombre_original": "兇兇海蜇皮"
+  },
+  {
+   "entity_id": 3379104355,
+   "nombre": "Fierce Roughskin",
+   "npc_type": 23448,
+   "sprite": 111326,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    100,
+    132
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 370,
+   "nombre_original": "兇兇海蜇皮"
+  },
+  {
+   "entity_id": 3379169892,
+   "nombre": "Fierce Roughskin",
+   "npc_type": 23448,
+   "sprite": 111326,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    116,
+    146
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 370,
+   "nombre_original": "兇兇海蜇皮"
+  },
+  {
+   "entity_id": 3379300966,
+   "nombre": "Fierce Roughskin",
+   "npc_type": 23448,
+   "sprite": 111326,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    134,
+    154
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 370,
+   "nombre_original": "兇兇海蜇皮"
+  },
+  {
+   "entity_id": 3379366503,
+   "nombre": "Fierce Roughskin",
+   "npc_type": 23448,
+   "sprite": 111326,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    126,
+    146
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 370,
+   "nombre_original": "兇兇海蜇皮"
+  },
+  {
+   "entity_id": 3379432040,
+   "nombre": "Fierce Roughskin",
+   "npc_type": 23448,
+   "sprite": 111326,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    132,
+    153
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 370,
+   "nombre_original": "兇兇海蜇皮"
+  },
+  {
+   "entity_id": 3379628651,
+   "nombre": "Fierce Roughskin",
+   "npc_type": 23448,
+   "sprite": 111326,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    114,
+    142
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 370,
+   "nombre_original": "兇兇海蜇皮"
+  },
+  {
+   "entity_id": 3380218484,
+   "nombre": "Purple Shark",
+   "npc_type": 23450,
+   "sprite": 111330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    197,
+    153
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 373,
+   "nombre_original": "紫鰭惡鯊"
+  },
+  {
+   "entity_id": 3380284021,
+   "nombre": "Purple Shark",
+   "npc_type": 23450,
+   "sprite": 111330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    196,
+    152
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 373,
+   "nombre_original": "紫鰭惡鯊"
+  },
+  {
+   "entity_id": 3380546169,
+   "nombre": "Purple Shark",
+   "npc_type": 23450,
+   "sprite": 111330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    222,
+    154
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 373,
+   "nombre_original": "紫鰭惡鯊"
+  },
+  {
+   "entity_id": 3381004928,
+   "nombre": "Purple Shark",
+   "npc_type": 23450,
+   "sprite": 111330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    219,
+    145
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 373,
+   "nombre_original": "紫鰭惡鯊"
+  },
+  {
+   "entity_id": 3382184594,
+   "nombre": "Blue Jagshark",
+   "npc_type": 23451,
+   "sprite": 111331,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    270,
+    120
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 375,
+   "nombre_original": "藍皮鉅齒鯊"
+  },
+  {
+   "entity_id": 3382577816,
+   "nombre": "Blue Jagshark",
+   "npc_type": 23451,
+   "sprite": 111331,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    280,
+    94
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 375,
+   "nombre_original": "藍皮鉅齒鯊"
+  },
+  {
+   "entity_id": 3383167649,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    266,
+    78
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3384019630,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    230,
+    60
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3384085167,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    219,
+    64
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3384871611,
+   "nombre": "Purple Shark",
+   "npc_type": 23450,
+   "sprite": 111330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    227,
+    143
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 373,
+   "nombre_original": "紫鰭惡鯊"
+  },
+  {
+   "entity_id": 3386182351,
+   "nombre": "Blue Jagshark",
+   "npc_type": 23451,
+   "sprite": 111331,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    276,
+    120
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 375,
+   "nombre_original": "藍皮鉅齒鯊"
+  },
+  {
+   "entity_id": 3386575573,
+   "nombre": "Purple Shark",
+   "npc_type": 23450,
+   "sprite": 111330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    247,
+    163
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 373,
+   "nombre_original": "紫鰭惡鯊"
+  },
+  {
+   "entity_id": 3386706647,
+   "nombre": "Purple Shark",
+   "npc_type": 23450,
+   "sprite": 111330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    247,
+    154
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 373,
+   "nombre_original": "紫鰭惡鯊"
+  },
+  {
+   "entity_id": 3386772184,
+   "nombre": "Purple Shark",
+   "npc_type": 23450,
+   "sprite": 111330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    256,
+    157
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 373,
+   "nombre_original": "紫鰭惡鯊"
+  },
+  {
+   "entity_id": 3386837721,
+   "nombre": "Purple Shark",
+   "npc_type": 23450,
+   "sprite": 111330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    241,
+    158
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 373,
+   "nombre_original": "紫鰭惡鯊"
+  },
+  {
+   "entity_id": 3386968795,
+   "nombre": "Purple Shark",
+   "npc_type": 23450,
+   "sprite": 111330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    249,
+    163
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 373,
+   "nombre_original": "紫鰭惡鯊"
+  },
+  {
+   "entity_id": 3387034332,
+   "nombre": "Purple Shark",
+   "npc_type": 23450,
+   "sprite": 111330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    261,
+    174
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 373,
+   "nombre_original": "紫鰭惡鯊"
+  },
+  {
+   "entity_id": 3387099869,
+   "nombre": "Purple Shark",
+   "npc_type": 23450,
+   "sprite": 111330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    251,
+    167
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 373,
+   "nombre_original": "紫鰭惡鯊"
+  },
+  {
+   "entity_id": 3387165406,
+   "nombre": "Blue Jagshark",
+   "npc_type": 23451,
+   "sprite": 111331,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    277,
+    160
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 375,
+   "nombre_original": "藍皮鉅齒鯊"
+  },
+  {
+   "entity_id": 3387230943,
+   "nombre": "Blue Jagshark",
+   "npc_type": 23451,
+   "sprite": 111331,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    292,
+    147
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 375,
+   "nombre_original": "藍皮鉅齒鯊"
+  },
+  {
+   "entity_id": 3387296480,
+   "nombre": "Purple Shark",
+   "npc_type": 23450,
+   "sprite": 111330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    274,
+    171
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 373,
+   "nombre_original": "紫鰭惡鯊"
+  },
+  {
+   "entity_id": 3387362017,
+   "nombre": "Blue Jagshark",
+   "npc_type": 23451,
+   "sprite": 111331,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    289,
+    153
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 375,
+   "nombre_original": "藍皮鉅齒鯊"
+  },
+  {
+   "entity_id": 3387427554,
+   "nombre": "Blue Jagshark",
+   "npc_type": 23451,
+   "sprite": 111331,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    283,
+    164
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 375,
+   "nombre_original": "藍皮鉅齒鯊"
+  },
+  {
+   "entity_id": 3387493091,
+   "nombre": "Blue Jagshark",
+   "npc_type": 23451,
+   "sprite": 111331,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    295,
+    156
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 375,
+   "nombre_original": "藍皮鉅齒鯊"
+  },
+  {
+   "entity_id": 3387558628,
+   "nombre": "Blue Jagshark",
+   "npc_type": 23451,
+   "sprite": 111331,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    263,
+    141
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 375,
+   "nombre_original": "藍皮鉅齒鯊"
+  },
+  {
+   "entity_id": 3387624165,
+   "nombre": "Blue Jagshark",
+   "npc_type": 23451,
+   "sprite": 111331,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    277,
+    119
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 375,
+   "nombre_original": "藍皮鉅齒鯊"
+  },
+  {
+   "entity_id": 3387689702,
+   "nombre": "Blue Jagshark",
+   "npc_type": 23451,
+   "sprite": 111331,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    275,
+    137
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 375,
+   "nombre_original": "藍皮鉅齒鯊"
+  },
+  {
+   "entity_id": 3387755239,
+   "nombre": "Blue Jagshark",
+   "npc_type": 23451,
+   "sprite": 111331,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    265,
+    137
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 375,
+   "nombre_original": "藍皮鉅齒鯊"
+  },
+  {
+   "entity_id": 3389262590,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    243,
+    68
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3389524738,
+   "nombre": "Blue Jagshark",
+   "npc_type": 23451,
+   "sprite": 111331,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    268,
+    95
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 375,
+   "nombre_original": "藍皮鉅齒鯊"
+  },
+  {
+   "entity_id": 3390901015,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    108,
+    86
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3390966552,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    104,
+    91
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3391163163,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    137,
+    132
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3391359774,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    143,
+    127
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3391425311,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    131,
+    120
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3391687459,
+   "nombre": "Purple Shark",
+   "npc_type": 23450,
+   "sprite": 111330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    162,
+    146
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 373,
+   "nombre_original": "紫鰭惡鯊"
+  },
+  {
+   "entity_id": 3391752996,
+   "nombre": "Purple Shark",
+   "npc_type": 23450,
+   "sprite": 111330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    178,
+    148
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 373,
+   "nombre_original": "紫鰭惡鯊"
+  },
+  {
+   "entity_id": 3391884070,
+   "nombre": "Purple Shark",
+   "npc_type": 23450,
+   "sprite": 111330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    187,
+    142
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 373,
+   "nombre_original": "紫鰭惡鯊"
+  },
+  {
+   "entity_id": 3391949607,
+   "nombre": "Purple Shark",
+   "npc_type": 23450,
+   "sprite": 111330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    155,
+    157
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 373,
+   "nombre_original": "紫鰭惡鯊"
+  },
+  {
+   "entity_id": 3392015144,
+   "nombre": "Purple Shark",
+   "npc_type": 23450,
+   "sprite": 111330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    178,
+    145
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 373,
+   "nombre_original": "紫鰭惡鯊"
+  },
+  {
+   "entity_id": 3392080681,
+   "nombre": "Purple Shark",
+   "npc_type": 23450,
+   "sprite": 111330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    168,
+    153
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 373,
+   "nombre_original": "紫鰭惡鯊"
+  },
+  {
+   "entity_id": 3392211755,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    188,
+    121
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3392277292,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    192,
+    116
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3392342829,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    186,
+    120
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3392736051,
+   "nombre": "Blue Jagshark",
+   "npc_type": 23451,
+   "sprite": 111331,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    265,
+    95
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 375,
+   "nombre_original": "藍皮鉅齒鯊"
+  },
+  {
+   "entity_id": 3392801588,
+   "nombre": "Blue Jagshark",
+   "npc_type": 23451,
+   "sprite": 111331,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    264,
+    94
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 375,
+   "nombre_original": "藍皮鉅齒鯊"
+  },
+  {
+   "entity_id": 3392932662,
+   "nombre": "Blue Jagshark",
+   "npc_type": 23451,
+   "sprite": 111331,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    253,
+    80
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 375,
+   "nombre_original": "藍皮鉅齒鯊"
+  },
+  {
+   "entity_id": 3392998199,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    222,
+    100
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3393194810,
+   "nombre": "Blue Jagshark",
+   "npc_type": 23451,
+   "sprite": 111331,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    245,
+    119
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 375,
+   "nombre_original": "藍皮鉅齒鯊"
+  },
+  {
+   "entity_id": 3393260347,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    247,
+    79
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3393391421,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    180,
+    74
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3393456958,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    207,
+    88
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3393522495,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    196,
+    85
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3393588032,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    230,
+    98
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3393653569,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    202,
+    88
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3393719106,
+   "nombre": "Putridox V",
+   "npc_type": 20355,
+   "sprite": 110412,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    150,
+    131
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 300,
+   "nombre_original": "死骸騎士Ⅴ"
+  },
+  {
+   "entity_id": 3393784643,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    188,
+    81
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3393850180,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    182,
+    83
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3393915717,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    161,
+    77
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3393981254,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    172,
+    68
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3394046791,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    158,
+    72
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3394112328,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    148,
+    82
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3394177865,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    156,
+    67
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3394243402,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    116,
+    94
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3394308939,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    125,
+    82
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3394374476,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    126,
+    85
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3394440013,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    150,
+    78
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3394505550,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    122,
+    95
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3394571087,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    129,
+    108
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3394702161,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    122,
+    107
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3394898772,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    128,
+    108
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3395226457,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    190,
+    113
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3395750753,
+   "nombre": "Purple Shark",
+   "npc_type": 23450,
+   "sprite": 111330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    183,
+    148
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 373,
+   "nombre_original": "紫鰭惡鯊"
+  },
+  {
+   "entity_id": 3398241159,
+   "nombre": "Purple Shark",
+   "npc_type": 23450,
+   "sprite": 111330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    193,
+    152
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 373,
+   "nombre_original": "紫鰭惡鯊"
+  },
+  {
+   "entity_id": 3398306696,
+   "nombre": "Purple Shark",
+   "npc_type": 23450,
+   "sprite": 111330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    165,
+    146
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 373,
+   "nombre_original": "紫鰭惡鯊"
+  },
+  {
+   "entity_id": 3398372233,
+   "nombre": "Purple Shark",
+   "npc_type": 23450,
+   "sprite": 111330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    166,
+    152
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 373,
+   "nombre_original": "紫鰭惡鯊"
+  },
+  {
+   "entity_id": 3398437770,
+   "nombre": "Purple Shark",
+   "npc_type": 23450,
+   "sprite": 111330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    168,
+    144
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 373,
+   "nombre_original": "紫鰭惡鯊"
+  },
+  {
+   "entity_id": 3398568844,
+   "nombre": "Purple Shark",
+   "npc_type": 23450,
+   "sprite": 111330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    167,
+    151
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 373,
+   "nombre_original": "紫鰭惡鯊"
+  },
+  {
+   "entity_id": 3398634381,
+   "nombre": "Purple Shark",
+   "npc_type": 23450,
+   "sprite": 111330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    167,
+    139
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 373,
+   "nombre_original": "紫鰭惡鯊"
+  },
+  {
+   "entity_id": 3398699918,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    148,
+    132
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3398765455,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    154,
+    130
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3398830992,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    137,
+    124
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3399027603,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    142,
+    130
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3399158677,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    126,
+    109
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3399945121,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    94,
+    93
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3400141732,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    59,
+    80
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3400207269,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    37,
+    64
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3400272806,
+   "nombre": "Putridox V",
+   "npc_type": 20355,
+   "sprite": 110412,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    63,
+    43
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 300,
+   "nombre_original": "死骸騎士Ⅴ"
+  },
+  {
+   "entity_id": 3400403880,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    63,
+    43
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3400469417,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    64,
+    42
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3400534954,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    50,
+    40
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3400600491,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    72,
+    60
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3400666028,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    77,
+    65
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3400731565,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    78,
+    37
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3400797102,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    76,
+    53
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3400862639,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    77,
+    42
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3400928176,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    101,
+    43
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3400993713,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    83,
+    41
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3401059250,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    88,
+    48
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3401124787,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    136,
+    33
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3401190324,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    152,
+    24
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3401255861,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    143,
+    34
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3401321398,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    124,
+    36
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3401386935,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    152,
+    25
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3401518009,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    81,
+    59
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3401583546,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    61,
+    59
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3401649083,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    61,
+    52
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3401714620,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    59,
+    46
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3401780157,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    51,
+    42
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3401845694,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    52,
+    47
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3401911231,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    70,
+    57
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3402042305,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    86,
+    59
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3404270563,
+   "nombre": "Stunt Man",
+   "npc_type": 6269,
+   "sprite": 999,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    55,
+    119
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 354,
+   "nombre_original": "菲特斯諾"
+  },
+  {
+   "entity_id": 3406892043,
+   "nombre": "Floaty Pink",
+   "npc_type": 23449,
+   "sprite": 111327,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    30,
+    144
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 371,
+   "nombre_original": "粉粉飄飄"
+  },
+  {
+   "entity_id": 3407088654,
+   "nombre": "Fierce Roughskin",
+   "npc_type": 23448,
+   "sprite": 111326,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    41,
+    159
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 370,
+   "nombre_original": "兇兇海蜇皮"
+  },
+  {
+   "entity_id": 3407285265,
+   "nombre": "Fierce Roughskin",
+   "npc_type": 23448,
+   "sprite": 111326,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    37,
+    147
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 370,
+   "nombre_original": "兇兇海蜇皮"
+  },
+  {
+   "entity_id": 3407350802,
+   "nombre": "Floaty Pink",
+   "npc_type": 23449,
+   "sprite": 111327,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    33,
+    147
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 371,
+   "nombre_original": "粉粉飄飄"
+  },
+  {
+   "entity_id": 3407416339,
+   "nombre": "Fierce Roughskin",
+   "npc_type": 23448,
+   "sprite": 111326,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    41,
+    152
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 370,
+   "nombre_original": "兇兇海蜇皮"
+  },
+  {
+   "entity_id": 3407481876,
+   "nombre": "Fierce Roughskin",
+   "npc_type": 23448,
+   "sprite": 111326,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    37,
+    153
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 370,
+   "nombre_original": "兇兇海蜇皮"
+  },
+  {
+   "entity_id": 3407547413,
+   "nombre": "Fierce Roughskin",
+   "npc_type": 23448,
+   "sprite": 111326,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    38,
+    152
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 370,
+   "nombre_original": "兇兇海蜇皮"
+  }
+ ],
+ "recursos": [
+  {
+   "entity_id": 428673185,
+   "capa": 0,
+   "px": [
+    412,
+    5477
+   ],
+   "medio": "0043afbbaff300000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00000481030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 428738722,
+   "capa": 0,
+   "px": [
+    140,
+    290
+   ],
+   "medio": "00000000250000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00000481030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 428935333,
+   "capa": 0,
+   "px": [
+    603,
+    5428
+   ],
+   "medio": "000000002a0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 429000870,
+   "capa": 0,
+   "px": [
+    241,
+    433
+   ],
+   "medio": "000000001a0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 429066407,
+   "capa": 0,
+   "px": [
+    366,
+    365
+   ],
+   "medio": "00000000280000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 429131944,
+   "capa": 0,
+   "px": [
+    375,
+    469
+   ],
+   "medio": "00000000070000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 429525166,
+   "capa": 0,
+   "px": [
+    2189,
+    5102
+   ],
+   "medio": "00000000200000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 429721777,
+   "capa": 0,
+   "px": [
+    2287,
+    4943
+   ],
+   "medio": "00cfa95aa74ab3bd00e1c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 429787314,
+   "capa": 0,
+   "px": [
+    1778,
+    5022
+   ],
+   "medio": "00cfa95aa74ab3bd0000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 429852851,
+   "capa": 0,
+   "px": [
+    1998,
+    5020
+   ],
+   "medio": "00000000230000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 430180536,
+   "capa": 0,
+   "px": [
+    657,
+    4334
+   ],
+   "medio": "0070a4d1a8cfaff3aae1c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 430246073,
+   "capa": 0,
+   "px": [
+    818,
+    4432
+   ],
+   "medio": "00000000200000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 430311610,
+   "capa": 0,
+   "px": [
+    1009,
+    4494
+   ],
+   "medio": "0070b2a7abacc37ebef0c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 430377147,
+   "capa": 0,
+   "px": [
+    1106,
+    4721
+   ],
+   "medio": "00000000270000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 430442684,
+   "capa": 0,
+   "px": [
+    875,
+    4272
+   ],
+   "medio": "006ab5b5b4b9bef0b746000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 430508221,
+   "capa": 0,
+   "px": [
+    4305,
+    4975
+   ],
+   "medio": "000000001a0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 430573758,
+   "capa": 0,
+   "px": [
+    4176,
+    4817
+   ],
+   "medio": "00c8b2efaff300000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 430639295,
+   "capa": 0,
+   "px": [
+    3693,
+    4881
+   ],
+   "medio": "00a4a4d1a8cfaff3aae1c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 430966980,
+   "capa": 0,
+   "px": [
+    3408,
+    4431
+   ],
+   "medio": "00000000230000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 431032517,
+   "capa": 0,
+   "px": [
+    3184,
+    4367
+   ],
+   "medio": "00000000250000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 431098054,
+   "capa": 0,
+   "px": [
+    2990,
+    4461
+   ],
+   "medio": "00a4a4d1a8cfaff3aae1c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 431229128,
+   "capa": 0,
+   "px": [
+    1233,
+    3440
+   ],
+   "medio": "0070a849ace2c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 431360202,
+   "capa": 0,
+   "px": [
+    1390,
+    3568
+   ],
+   "medio": "006aa849ace2c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 431425739,
+   "capa": 0,
+   "px": [
+    1553,
+    3695
+   ],
+   "medio": "00000000210000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 431491276,
+   "capa": 0,
+   "px": [
+    559,
+    3312
+   ],
+   "medio": "0070b2a7abacc37ebef0c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 431556813,
+   "capa": 0,
+   "px": [
+    367,
+    3184
+   ],
+   "medio": "00000000210000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 431622350,
+   "capa": 0,
+   "px": [
+    717,
+    3153
+   ],
+   "medio": "00a4a849ace2c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 431687887,
+   "capa": 0,
+   "px": [
+    720,
+    3471
+   ],
+   "medio": "00000000230000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 431753424,
+   "capa": 0,
+   "px": [
+    913,
+    3311
+   ],
+   "medio": "000000002b0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 432015572,
+   "capa": 0,
+   "px": [
+    1583,
+    5072
+   ],
+   "medio": "00000000250000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 432081109,
+   "capa": 0,
+   "px": [
+    1230,
+    4818
+   ],
+   "medio": "006aa849ace2c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 432146646,
+   "capa": 0,
+   "px": [
+    1438,
+    4891
+   ],
+   "medio": "00a4a849ace2c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 432408794,
+   "capa": 0,
+   "px": [
+    2802,
+    4528
+   ],
+   "medio": "00000000250000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 432539868,
+   "capa": 0,
+   "px": [
+    3603,
+    4527
+   ],
+   "medio": "0070a4d1a8cfaff3aae1c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 432605405,
+   "capa": 0,
+   "px": [
+    3828,
+    4719
+   ],
+   "medio": "006aaeefacf5bcd8a4ec000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 432670942,
+   "capa": 0,
+   "px": [
+    3954,
+    4913
+   ],
+   "medio": "000000001a0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 432802016,
+   "capa": 0,
+   "px": [
+    3475,
+    4909
+   ],
+   "medio": "0070aeefacf5bcd8a4ec000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 433391849,
+   "capa": 0,
+   "px": [
+    2383,
+    4016
+   ],
+   "medio": "00000000230000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 433457386,
+   "capa": 0,
+   "px": [
+    2510,
+    4146
+   ],
+   "medio": "006aabd5b9d2a56abe79796f756f0000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 433653997,
+   "capa": 0,
+   "px": [
+    588,
+    2862
+   ],
+   "medio": "0070a4d1a8cfaff3aae1c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 434309367,
+   "capa": 0,
+   "px": [
+    944,
+    2289
+   ],
+   "medio": "000000003b0010003b0012003c001400",
+   "marca": 49,
+   "orient": 6,
+   "sprite": 60037,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 434440441,
+   "capa": 0,
+   "px": [
+    1488,
+    2132
+   ],
+   "medio": "00a4a849ace2c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 434505978,
+   "capa": 0,
+   "px": [
+    1578,
+    2384
+   ],
+   "medio": "00a4a849ace2c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 434571515,
+   "capa": 0,
+   "px": [
+    1780,
+    2543
+   ],
+   "medio": "006ab5b5b4b9bef0b7460003f80e0400",
+   "marca": 171,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 434637052,
+   "capa": 0,
+   "px": [
+    752,
+    2418
+   ],
+   "medio": "00a4a849ace2c471afdf000080a30400",
+   "marca": 123,
+   "orient": 6,
+   "sprite": 60037,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 434702589,
+   "capa": 0,
+   "px": [
+    8657,
+    3856
+   ],
+   "medio": "00000000210000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 434833663,
+   "capa": 0,
+   "px": [
+    2669,
+    1421
+   ],
+   "medio": "0070a849ace2c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 435161348,
+   "capa": 0,
+   "px": [
+    2417,
+    2862
+   ],
+   "medio": "00cfa95aa74ab3bd0000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 435226885,
+   "capa": 0,
+   "px": [
+    2644,
+    2929
+   ],
+   "medio": "000000001c0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 435292422,
+   "capa": 0,
+   "px": [
+    2861,
+    3022
+   ],
+   "medio": "00000000210000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 435357959,
+   "capa": 0,
+   "px": [
+    3087,
+    3122
+   ],
+   "medio": "00000000160000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 435423496,
+   "capa": 0,
+   "px": [
+    3313,
+    3148
+   ],
+   "medio": "00000000200000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 435489033,
+   "capa": 0,
+   "px": [
+    3410,
+    2960
+   ],
+   "medio": "000000001d0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 435554570,
+   "capa": 0,
+   "px": [
+    3538,
+    3229
+   ],
+   "medio": "0070b5b5b4b9bef0b746000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 435620107,
+   "capa": 0,
+   "px": [
+    3695,
+    3055
+   ],
+   "medio": "00000000160000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 435685644,
+   "capa": 0,
+   "px": [
+    3761,
+    3377
+   ],
+   "medio": "00a4b5b5b4b9bef0b74600031b5f0000",
+   "marca": 76,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 435751181,
+   "capa": 0,
+   "px": [
+    3955,
+    3505
+   ],
+   "medio": "00a4b5b5b4b9bef0b74600031b5f0000",
+   "marca": 76,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 435816718,
+   "capa": 0,
+   "px": [
+    4146,
+    3636
+   ],
+   "medio": "0070b5b5b4b9bef0b746000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 435882255,
+   "capa": 0,
+   "px": [
+    4303,
+    3797
+   ],
+   "medio": "00000000160000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 435947792,
+   "capa": 0,
+   "px": [
+    4494,
+    3955
+   ],
+   "medio": "00000000250000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 436078866,
+   "capa": 0,
+   "px": [
+    4530,
+    4173
+   ],
+   "medio": "00000000190000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 436144403,
+   "capa": 0,
+   "px": [
+    7026,
+    4849
+   ],
+   "medio": "00000000230000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 436275477,
+   "capa": 0,
+   "px": [
+    5135,
+    4306
+   ],
+   "medio": "006aabd5b9d2a56abef0004f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 436341014,
+   "capa": 0,
+   "px": [
+    5329,
+    4047
+   ],
+   "medio": "00000000230000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 436406551,
+   "capa": 0,
+   "px": [
+    5519,
+    3941
+   ],
+   "medio": "000000002c0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 436472088,
+   "capa": 0,
+   "px": [
+    5714,
+    3823
+   ],
+   "medio": "00000000190000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 436537625,
+   "capa": 0,
+   "px": [
+    5929,
+    3692
+   ],
+   "medio": "00cfa95aa74ab3bd0000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 436603162,
+   "capa": 0,
+   "px": [
+    6093,
+    3821
+   ],
+   "medio": "0070a4d1a8cfaff3aae1c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 436668699,
+   "capa": 0,
+   "px": [
+    3949,
+    2897
+   ],
+   "medio": "00000000200000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 436734236,
+   "capa": 0,
+   "px": [
+    3636,
+    2865
+   ],
+   "medio": "00000000190000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 436799773,
+   "capa": 0,
+   "px": [
+    4145,
+    2770
+   ],
+   "medio": "000000001d0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 436865310,
+   "capa": 0,
+   "px": [
+    4367,
+    2700
+   ],
+   "medio": "00000000200000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 436930847,
+   "capa": 0,
+   "px": [
+    4593,
+    2545
+   ],
+   "medio": "000000001f0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 437061921,
+   "capa": 0,
+   "px": [
+    1233,
+    2161
+   ],
+   "medio": "0070a849ace2c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 437127458,
+   "capa": 0,
+   "px": [
+    1650,
+    1616
+   ],
+   "medio": "00000000170000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 437192995,
+   "capa": 0,
+   "px": [
+    1811,
+    1747
+   ],
+   "medio": "000000003b0010003b0012003c001400",
+   "marca": 49,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 437258532,
+   "capa": 0,
+   "px": [
+    2002,
+    1775
+   ],
+   "medio": "00a4b5b5b4b9bef0b746000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 437324069,
+   "capa": 0,
+   "px": [
+    1681,
+    1328
+   ],
+   "medio": "006aa4d1a8cfaff3aae1c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 437389606,
+   "capa": 0,
+   "px": [
+    2037,
+    1464
+   ],
+   "medio": "0070a4d1a8cfaff3aae1c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 437455143,
+   "capa": 0,
+   "px": [
+    2225,
+    1684
+   ],
+   "medio": "0070b5b5b4b9bef0b746000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 437520680,
+   "capa": 0,
+   "px": [
+    2223,
+    1966
+   ],
+   "medio": "006ab5b5b4b9bef0b7460003f80e0400",
+   "marca": 171,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 437586217,
+   "capa": 0,
+   "px": [
+    2451,
+    2061
+   ],
+   "medio": "00a4a849ace2c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 437651754,
+   "capa": 0,
+   "px": [
+    2409,
+    1613
+   ],
+   "medio": "0070a849ace2c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 437717291,
+   "capa": 0,
+   "px": [
+    2574,
+    1866
+   ],
+   "medio": "00000000170000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 437782828,
+   "capa": 0,
+   "px": [
+    7471,
+    1874
+   ],
+   "medio": "00cfa95aa74ab3bd00df000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 437848365,
+   "capa": 0,
+   "px": [
+    7088,
+    1938
+   ],
+   "medio": "0070aeefacf5bcd8a4ec004f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 437913902,
+   "capa": 0,
+   "px": [
+    4785,
+    4274
+   ],
+   "medio": "0070aeefacf5bcd8a4ec00031b5f0000",
+   "marca": 76,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 438044976,
+   "capa": 0,
+   "px": [
+    2410,
+    1264
+   ],
+   "medio": "00a4a849ace2c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 438110513,
+   "capa": 0,
+   "px": [
+    6542,
+    1488
+   ],
+   "medio": "0070b5b5b4b9bef0b746000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 438176050,
+   "capa": 0,
+   "px": [
+    3223,
+    1461
+   ],
+   "medio": "00000000260000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 438241587,
+   "capa": 0,
+   "px": [
+    3444,
+    1294
+   ],
+   "medio": "000000001d0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 438307124,
+   "capa": 0,
+   "px": [
+    6798,
+    1615
+   ],
+   "medio": "00a4a4d1a8cfaff3aae1c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 438372661,
+   "capa": 0,
+   "px": [
+    6250,
+    1393
+   ],
+   "medio": "0070b5b5b4b9bef0b746000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 438438198,
+   "capa": 0,
+   "px": [
+    5907,
+    1205
+   ],
+   "medio": "000000001c0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 438503735,
+   "capa": 0,
+   "px": [
+    5603,
+    873
+   ],
+   "medio": "0070b5b5b4b9bef0b746000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 438569272,
+   "capa": 0,
+   "px": [
+    6544,
+    3251
+   ],
+   "medio": "00cfa95aa74ab3bd0000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60037,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 438634809,
+   "capa": 0,
+   "px": [
+    3732,
+    1007
+   ],
+   "medio": "006ab5b5b4b9bef0b746000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 438700346,
+   "capa": 0,
+   "px": [
+    4085,
+    1160
+   ],
+   "medio": "006aa849ace2c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 438765883,
+   "capa": 0,
+   "px": [
+    4310,
+    1004
+   ],
+   "medio": "000000002a0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 438831420,
+   "capa": 0,
+   "px": [
+    4940,
+    879
+   ],
+   "medio": "006aaeefacf5bcd8a4ec000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 438896957,
+   "capa": 0,
+   "px": [
+    4588,
+    1010
+   ],
+   "medio": "00000000270000003b01000015010000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 438962494,
+   "capa": 0,
+   "px": [
+    4911,
+    2259
+   ],
+   "medio": "0070aeefacf5bcd8a4ec004f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 439159105,
+   "capa": 0,
+   "px": [
+    5897,
+    2600
+   ],
+   "medio": "00000000290000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60305,
+   "cola": "00000280140000"
+  },
+  {
+   "entity_id": 439224642,
+   "capa": 0,
+   "px": [
+    3229,
+    3055
+   ],
+   "medio": "00000000170000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60305,
+   "cola": "00000280140000"
+  },
+  {
+   "entity_id": 439290179,
+   "capa": 0,
+   "px": [
+    5845,
+    2545
+   ],
+   "medio": "0070aeefacf5bcd8a4ec004f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 439355716,
+   "capa": 0,
+   "px": [
+    5746,
+    2383
+   ],
+   "medio": "000000001d0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 439421253,
+   "capa": 0,
+   "px": [
+    6059,
+    2643
+   ],
+   "medio": "00000000210000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 439486790,
+   "capa": 0,
+   "px": [
+    6304,
+    2702
+   ],
+   "medio": "006aaeefacf5bcd8a4ec000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 439552327,
+   "capa": 0,
+   "px": [
+    6544,
+    2831
+   ],
+   "medio": "00000000290000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 440011086,
+   "capa": 0,
+   "px": [
+    5007,
+    5170
+   ],
+   "medio": "00000000070000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 440076623,
+   "capa": 0,
+   "px": [
+    5136,
+    5007
+   ],
+   "medio": "00a4a849ace2c471afdf004f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 440142160,
+   "capa": 0,
+   "px": [
+    5262,
+    4784
+   ],
+   "medio": "00a4abd5b9d2a56abef0004f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 440207697,
+   "capa": 0,
+   "px": [
+    5392,
+    4961
+   ],
+   "medio": "00000000000000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 440273234,
+   "capa": 0,
+   "px": [
+    5265,
+    4499
+   ],
+   "medio": "00000000240000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 440338771,
+   "capa": 0,
+   "px": [
+    5451,
+    4620
+   ],
+   "medio": "006aabd5b9d2a56abef0004f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 440404308,
+   "capa": 0,
+   "px": [
+    5743,
+    4720
+   ],
+   "medio": "006aaeefacf5bcd8a4ec000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 440469845,
+   "capa": 0,
+   "px": [
+    5968,
+    4849
+   ],
+   "medio": "000000002b0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 440535382,
+   "capa": 0,
+   "px": [
+    6183,
+    4918
+   ],
+   "medio": "0070aeefacf5bcd8a4ec000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 440600919,
+   "capa": 0,
+   "px": [
+    6348,
+    5043
+   ],
+   "medio": "0070aeefacf5bcd8a4ec000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 440731993,
+   "capa": 0,
+   "px": [
+    6514,
+    4885
+   ],
+   "medio": "00000e000000060000000a00000002b9",
+   "marca": 156,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 440863067,
+   "capa": 0,
+   "px": [
+    6955,
+    4655
+   ],
+   "medio": "000000002b0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 440928604,
+   "capa": 0,
+   "px": [
+    7120,
+    4530
+   ],
+   "medio": "00000e000000060000000a00000002b9",
+   "marca": 156,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 440994141,
+   "capa": 0,
+   "px": [
+    4818,
+    2446
+   ],
+   "medio": "0070a4f5c5ecb3bdc4a6000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 441059678,
+   "capa": 0,
+   "px": [
+    5146,
+    2356
+   ],
+   "medio": "00000000220000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 441321826,
+   "capa": 0,
+   "px": [
+    7756,
+    5070
+   ],
+   "medio": "000000002a0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 441387363,
+   "capa": 0,
+   "px": [
+    7921,
+    5214
+   ],
+   "medio": "00a4a849ace2c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 441452900,
+   "capa": 0,
+   "px": [
+    8145,
+    5293
+   ],
+   "medio": "00a4a849ace2c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 441518437,
+   "capa": 0,
+   "px": [
+    8690,
+    5328
+   ],
+   "medio": "00a4a849ace2c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 441583974,
+   "capa": 0,
+   "px": [
+    8366,
+    5229
+   ],
+   "medio": "006aa849ace2c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 441649511,
+   "capa": 0,
+   "px": [
+    8881,
+    5231
+   ],
+   "medio": "00000000290000006900000011000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 441715048,
+   "capa": 0,
+   "px": [
+    8078,
+    5069
+   ],
+   "medio": "0070a849ace2c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 441780585,
+   "capa": 0,
+   "px": [
+    9042,
+    5043
+   ],
+   "medio": "00000000230000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 441846122,
+   "capa": 0,
+   "px": [
+    9263,
+    5075
+   ],
+   "medio": "00000000260000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 441911659,
+   "capa": 0,
+   "px": [
+    9260,
+    4787
+   ],
+   "medio": "000000002c0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 441977196,
+   "capa": 0,
+   "px": [
+    9073,
+    4688
+   ],
+   "medio": "00a4a849ace2c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 442042733,
+   "capa": 0,
+   "px": [
+    8845,
+    4625
+   ],
+   "medio": "00000000280000002800020050000040",
+   "marca": 65,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 442108270,
+   "capa": 0,
+   "px": [
+    8721,
+    4432
+   ],
+   "medio": "00000000160000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 442173807,
+   "capa": 0,
+   "px": [
+    8497,
+    4274
+   ],
+   "medio": "000000001d0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 442239344,
+   "capa": 0,
+   "px": [
+    8108,
+    4177
+   ],
+   "medio": "00a4a849ace2c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 442370418,
+   "capa": 0,
+   "px": [
+    8242,
+    3990
+   ],
+   "medio": "00a4a849ace2c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 442435955,
+   "capa": 0,
+   "px": [
+    7857,
+    4362
+   ],
+   "medio": "006ab5b5b4b9bef0b746000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 442567029,
+   "capa": 0,
+   "px": [
+    7794,
+    3732
+   ],
+   "medio": "00cfa95aa74ab3bd00e1c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 442829177,
+   "capa": 0,
+   "px": [
+    6418,
+    3527
+   ],
+   "medio": "0070a4f5c5ecb3bdc4a6000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60037,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 442960251,
+   "capa": 0,
+   "px": [
+    9140,
+    3372
+   ],
+   "medio": "00000000270000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 443091325,
+   "capa": 0,
+   "px": [
+    9039,
+    3118
+   ],
+   "medio": "0070b5b5b4b9bef0b746000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 443156862,
+   "capa": 0,
+   "px": [
+    8753,
+    3052
+   ],
+   "medio": "00000000260000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 443287936,
+   "capa": 0,
+   "px": [
+    8401,
+    2932
+   ],
+   "medio": "00000000220000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 443353473,
+   "capa": 0,
+   "px": [
+    8206,
+    2959
+   ],
+   "medio": "000000001d0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 443419010,
+   "capa": 0,
+   "px": [
+    8018,
+    2604
+   ],
+   "medio": "000000001f0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 443484547,
+   "capa": 0,
+   "px": [
+    8145,
+    2765
+   ],
+   "medio": "006aa4d1a8cfaff3aae1c24f00001400",
+   "marca": 49,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 443550084,
+   "capa": 0,
+   "px": [
+    9059,
+    1860
+   ],
+   "medio": "0043afbbaff300000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 443615621,
+   "capa": 0,
+   "px": [
+    8817,
+    2113
+   ],
+   "medio": "00cfa95aa74ab3bd00df000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 443746695,
+   "capa": 0,
+   "px": [
+    8455,
+    1376
+   ],
+   "medio": "00000000270000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 443812232,
+   "capa": 0,
+   "px": [
+    8048,
+    1206
+   ],
+   "medio": "00000000190000000079796f756f0000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 443877769,
+   "capa": 0,
+   "px": [
+    7669,
+    970
+   ],
+   "medio": "00cfa95aa74ab3bd004600006e000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 443943306,
+   "capa": 0,
+   "px": [
+    7371,
+    813
+   ],
+   "medio": "00cfa95aa74ab3bd0000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 444008843,
+   "capa": 0,
+   "px": [
+    7043,
+    604
+   ],
+   "medio": "00000000200000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 444074380,
+   "capa": 0,
+   "px": [
+    6582,
+    432
+   ],
+   "medio": "0070a4d1a8cfaff3aae1c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 444139917,
+   "capa": 0,
+   "px": [
+    6244,
+    623
+   ],
+   "medio": "006aa4d1a8cfaff3aae1c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 444205454,
+   "capa": 0,
+   "px": [
+    8561,
+    2411
+   ],
+   "medio": "00000000200000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 444270991,
+   "capa": 0,
+   "px": [
+    2895,
+    1491
+   ],
+   "medio": "00000000280000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 444402065,
+   "capa": 0,
+   "px": [
+    8048,
+    2286
+   ],
+   "medio": "00000000250000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 444467602,
+   "capa": 0,
+   "px": [
+    6798,
+    2932
+   ],
+   "medio": "00cfa95aa74ab3bd0000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 444533139,
+   "capa": 0,
+   "px": [
+    6956,
+    3345
+   ],
+   "medio": "0070b2a7abacc37ebef0c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 444598676,
+   "capa": 0,
+   "px": [
+    7092,
+    3084
+   ],
+   "medio": "00cfa95aa74ab3bd0000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 444795287,
+   "capa": 0,
+   "px": [
+    7726,
+    2673
+   ],
+   "medio": "00000000200000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 446499249,
+   "capa": 0,
+   "px": [
+    8500,
+    3981
+   ],
+   "medio": "000000002c0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 446564786,
+   "capa": 0,
+   "px": [
+    7630,
+    3952
+   ],
+   "medio": "000000002a0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 446630323,
+   "capa": 0,
+   "px": [
+    7664,
+    2289
+   ],
+   "medio": "00cfa95aa74ab3bd0046000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 446695860,
+   "capa": 0,
+   "px": [
+    5331,
+    2219
+   ],
+   "medio": "000000001d0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 446761397,
+   "capa": 0,
+   "px": [
+    5451,
+    2383
+   ],
+   "medio": "00000000160000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 446892471,
+   "capa": 0,
+   "px": [
+    2400,
+    1406
+   ],
+   "medio": "006aa849ace2c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60305,
+   "cola": "00000280140000"
+  },
+  {
+   "entity_id": 1980303265,
+   "capa": 0,
+   "px": [
+    1428,
+    5227
+   ],
+   "medio": "00a1a4a1b3bd00000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1980434339,
+   "capa": 0,
+   "px": [
+    1505,
+    5228
+   ],
+   "medio": "00000000280000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1980499876,
+   "capa": 0,
+   "px": [
+    1542,
+    5170
+   ],
+   "medio": "000000001a0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1980565413,
+   "capa": 0,
+   "px": [
+    1402,
+    5164
+   ],
+   "medio": "000000001a0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1980630950,
+   "capa": 0,
+   "px": [
+    1472,
+    5152
+   ],
+   "medio": "00000000c90000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  }
+ ]
+}
