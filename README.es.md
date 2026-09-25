@@ -215,7 +215,7 @@ dejar el nombre en inglés.
 
 ### Lo que se aprendió de paso
 
-**Hay pasos de mapa sin tornado.** Cuatro de los doce portales de la cadena no
+**Hay pasos de mapa sin tornado.** Cinco de los trece portales de la cadena no
 tienen ningún objeto dibujado: se camina hasta la casilla y se cambia de mapa,
 sin que se vea nada. Está comprobado en el juego y en la captura, donde no hay
 ningún objeto cerca. **Qué dispara el cambio no se sabe**; podría ser un portal

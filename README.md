@@ -210,7 +210,7 @@ decodes Big5 -- ASCII-compatible, so nothing earlier changes -- and matches the
 
 ### What was learned along the way
 
-**Some map transitions have no tornado.** Four of the chain's twelve portals
+**Some map transitions have no tornado.** Five of the chain's thirteen portals
 have no drawn object at all: you walk onto the tile and the map changes, with
 nothing visible. Confirmed both in game and in the capture, where no object
 sits anywhere near. **What triggers it is unknown**; it could be an invisible
