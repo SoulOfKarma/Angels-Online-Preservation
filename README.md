@@ -36,6 +36,14 @@ a guess, it says so.
   attack effects, dying and reviving, loot, experience and skill experience
 - Monsters: per-monster attack cadence, chasing, wandering, respawn, and
   bleed and stun effects
+- **Telling monsters from NPCs does not rely on the `klass` byte alone.**
+  The live server sends some monsters with the NPC marker 199 -- 88 spawns
+  across eight maps, which ended up as friendly NPCs with no AI. The client's
+  own data settles it: `npc.xml` runs from 1500 to 24893 and `monster.xml`
+  from 1 to 23860, and they share **no id at all**, so above 1500 the answer
+  is certain. Below 1500 the `klass` still decides, because `npc.xml` does not
+  reach down there and the old Lyceum NPCs use two- and three-digit numbers
+  that collide with `monster.xml`
 - **152 maps populated from captures**: 27,377 monsters, 1,696 NPCs and
   11,834 map objects, 7,671 of them with their resource name resolved. Every
   monster, NPC and resource comes from a capture; none of it is made up

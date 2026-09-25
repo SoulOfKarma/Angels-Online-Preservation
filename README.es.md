@@ -37,6 +37,14 @@ una suposición, lo dice.
   de ataque, morir y revivir, botín, experiencia y experiencia de habilidad
 - Monstruos: cadencia de ataque propia de cada uno, persecución, paseo,
   reaparición y efectos de sangrado y aturdimiento
+- **Separar monstruos de NPC no depende solo del byte `klass`.** El servidor
+  vivo manda algunos monstruos con la marca de NPC, el 199 — 88 spawns en
+  ocho mapas, que acababan como NPC amistosos y sin IA. Lo zanjan los datos
+  del propio cliente: `npc.xml` va del 1500 al 24893 y `monster.xml` del 1 al
+  23860, y **no comparten ni un solo id**, así que por encima de 1500 la
+  respuesta es segura. Por debajo sigue mandando el `klass`, porque `npc.xml`
+  no llega ahí y los NPC antiguos del Lyceum usan números de dos y tres
+  cifras que chocan con los de `monster.xml`
 - **152 mapas poblados a partir de capturas**: 27.377 monstruos, 1.696 NPC y
   11.834 objetos de mapa, 7.671 de ellos con su recurso identificado. Cada
   monstruo, NPC y recurso sale de una captura; nada está inventado
