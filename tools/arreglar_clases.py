@@ -63,18 +63,27 @@ def main():
             t = e.get('npc_type')
             if t is None or t < DESDE:
                 continue
-            if not e.get('monstruo') and t in mons and t not in npcs:
-                e['monstruo'] = True
-                e['klass_original'] = e.get('klass')
-                e['nombre_cliente'] = mons[t].get('名稱')
-                cambios[(e['nombre'], t, e.get('klass'))] = \
-                    cambios.get((e['nombre'], t, e.get('klass')), 0) + 1
+            if t not in mons or t in npcs:
+                continue
+            if e.get('monstruo') and e.get('klass') not in (0, 199, 200):
+                continue        # ya estaba bien
+            # No basta con marcarlo como monstruo: el klass del 0x0008 es lo
+            # que el cliente usa para PINTARLO, y con 199 lo sigue dibujando
+            # azul, como un NPC. Los monstruos van con klass 1 y el nivel
+            # aparte, igual que los que ya salian bien.
+            k = e.get('klass_original', e.get('klass'))
+            e['monstruo'] = True
+            e['klass_original'] = k
+            e['klass'] = 1
+            e['nivel'] = int(mons[t].get('等級') or 1)
+            e['nombre_cliente'] = mons[t].get('名稱')
+            cambios[(e['nombre'], t, k, e['nivel'])] =                 cambios.get((e['nombre'], t, k, e['nivel']), 0) + 1
         if cambios:
             p.write_text(json.dumps(d, ensure_ascii=False, indent=1),
                          encoding='utf-8')
-            for (nom, t, k), n in sorted(cambios.items()):
-                print('  stage %-4d %-26s %-20s type=%-6d klass=%-4s x%d'
-                      % (st, fn[:-5][:26], nom[:20], t, k, n))
+            for (nom, t, k, lv), n in sorted(cambios.items()):
+                print('  stage %-4d %-24s %-18s type=%-6d klass %s -> 1, nivel %-4d x%d'
+                      % (st, fn[:-5][:24], nom[:18], t, k, lv, n))
                 total += n
     print('\n%d spawns pasados de NPC a monstruo' % total)
 
