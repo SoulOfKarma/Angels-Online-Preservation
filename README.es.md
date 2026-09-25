@@ -45,9 +45,12 @@ una suposición, lo dice.
   respuesta es segura. Por debajo sigue mandando el `klass`, porque `npc.xml`
   no llega ahí y los NPC antiguos del Lyceum usan números de dos y tres
   cifras que chocan con los de `monster.xml`
-- **152 mapas poblados a partir de capturas**: 27.377 monstruos, 1.696 NPC y
-  11.834 objetos de mapa, 7.671 de ellos con su recurso identificado. Cada
+- **158 mapas poblados a partir de capturas**: 28.165 monstruos, 1.725 NPC y
+  12.557 objetos de mapa, 7.671 de ellos con su recurso identificado. Cada
   monstruo, NPC y recurso sale de una captura; nada está inventado
+- **Seis mapas no salen de Celestia, sino del servidor oficial de Taiwán.**
+  Es la única excepción a "todo sale de capturas de Celestia", y está
+  explicada más abajo en *La excepción de Night City Code*
 - **Hay zonas enteras cerradas**, es decir con todos sus tornados cruzados y
   medidos: **Heart of Eden**, **Floating** (6 mapas), **el anillo del
   desierto** (Crescent Valley, Desert Racetrack, Ghost Village, Troop
@@ -56,7 +59,7 @@ una suposición, lo dice.
   a la cadena del bosque (de Cryptic Moon Swamp a Giant Wooden Stairs, 8
   mapas) solo le quedan dos tornados. Más buena parte de Pharaoh, East Orient
   y los territorios de las cuatro facciones
-- **359 portales**, casi todos medidos en los dos sentidos: la casilla del
+- **388 portales**, 370 activos, casi todos medidos en los dos sentidos: la casilla del
   tornado sale de la captura, y también aquella donde el servidor real deja
   al jugador al cruzar. La mayoría se cruzaron **dos veces en cada sentido**,
   que es como se descubrió que algunos portales no dejan siempre en la misma
@@ -152,6 +155,86 @@ una suposición, lo dice.
   nada
 - Los equipos y la lista de amigos: el protocolo está documentado desde una
   captura con dos cuentas, pero el servidor todavía no implementa ninguno
+
+---
+
+## La excepción de Night City Code
+
+Todo el resto del proyecto sale de capturas de **un solo** servidor privado.
+Seis mapas no: **Night City Code**, los stages 416 a 421 — Clink Harbor, Neon
+Sky Corridor, Black Market District, Commercial Street, Bling Plaza y Ultimate
+Arena. Esos salen del **cliente oficial de Taiwán**, y conviene saber por qué y
+qué implica.
+
+### Por qué hizo falta otro servidor
+
+El mapa estaba en los datos del cliente desde el parche 25, y un tornado de
+Niro River llevaba hasta él. Pero al cruzarlo, el servidor mandaba **7
+entidades y nada más**, todas NPC, todas amontonadas en la esquina (1..6,
+1..5). Es la firma de un escenario **declarado pero sin poblar**: existe en la
+tabla, no tiene contenido. El portal quedó medido pero desactivado, con una
+nota que decía «activarlo cuando alguna versión traiga el mapa poblado».
+
+El cliente oficial de Taiwán trae esa versión. Al cruzar el mismo tornado, su
+servidor manda **171 entidades** repartidas por todo el mapa, con monstruos de
+verdad. El mapa existe; lo que faltaba era un servidor que lo sirviera.
+
+### Qué se tomó y qué no
+
+Sigue valiendo la regla de siempre: **se toman los DATOS, nunca los bytes
+crudos**. Aquí se pudo porque los dos hablan lo mismo donde importa: el
+`0x0008` de spawn mide **63 bytes en las dos versiones**, con los campos en los
+mismos sitios, y el `MOVE_REQ` también. Se decodifica con el mismo código.
+
+Donde **no** coinciden, y hay que tenerlo presente:
+
+- El `0x000C` de cambio de mapa llega de **20 bytes sin la cadena de IP** que
+  lleva el nuestro. El stage se lee igual, en el offset 0, pero el puerto de
+  destino ya no está donde lo esperamos
+- Aparecen **tres mensajes que no conocemos**: `0x018A`, muy frecuente y casi
+  siempre de ocho bytes; `0x006D`, con el cuerpo vacío; y `0x0142`, de un solo
+  byte. Ninguno está en `proto/messages.py`
+
+Los nombres vienen en **Big5**, no en inglés. No hubo que traducir nada a mano:
+el `npc_type` es el mismo en las dos versiones y nuestro `content.db`, sacado
+de los XML del cliente, ya trae el nombre inglés de cada id. Se cruza por ahí.
+
+### Dos cosas que cambiaron en las herramientas
+
+**`tools/separar_por_mapa.py`** (nueva). En el otro servidor cada cambio de
+mapa abría conexión nueva, así que cada archivo de captura era de un solo mapa.
+Aquí el `0x000C` llega **dentro de la misma sesión**: una sola conexión trajo
+seis mapas seguidos. Pasársela entera a `poblar_mapa.py` metería los bichos de
+un mapa en la plantilla de otro, en silencio. Esta herramienta corta por cambio
+de mapa antes de poblar.
+
+**`tools/poblar_mapa.py`** decodificaba los nombres como ASCII y con Big5
+quedaban ilegibles. Ahora decodifica Big5 —que es compatible con ASCII, así que
+lo anterior no cambia— y además cruza el `npc_type` contra `content.db` para
+dejar el nombre en inglés.
+
+### Lo que se aprendió de paso
+
+**Hay pasos de mapa sin tornado.** Cuatro de los doce portales de la cadena no
+tienen ningún objeto dibujado: se camina hasta la casilla y se cambia de mapa,
+sin que se vea nada. Está comprobado en el juego y en la captura, donde no hay
+ningún objeto cerca. **Qué dispara el cambio no se sabe**; podría ser un portal
+invisible. Se llamaron «cruce por borde» al principio y era una suposición
+equivocada: los mapas miden 300×180 y esas casillas están a unas ocho del
+borde, con entidades incluso más allá.
+
+**Un mapa puede necesitar varias pasadas.** Commercial Street dio 71 monstruos
+en el primer recorrido, 109 en el segundo y 125 en el tercero. No cambió el
+mapa: una captura solo trae lo que se tuvo a la vista, y las primeras pasadas
+dejaron zonas sin cubrir.
+
+### Lo que falta de esta región
+
+El stage **422 (Secret Peak)** sigue sin poblar. Quedan además la **entrada de
+instancia** de Bling Plaza, identificada por el `jumpmap.xml` —es el único de
+los nueve destinos de la cadena que lleva una clase extra— y **tres tornados
+de Ultimate Arena** que no dejaron pasar, probablemente por algún requisito de
+misión o de nivel.
 
 ---
 

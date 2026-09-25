@@ -4058,7 +4058,7 @@
      17,
      41
     ],
-    "destino": null,
+    "destino": 416,
     "llegada": [
      285,
      145
@@ -4067,9 +4067,7 @@
     "dibujar": false,
     "preguntar": false,
     "sin_medir": false,
-    "desactivado": true,
-    "destino_medido": 416,
-    "nota": "Niro River -> CLINK HARBOR (stage 416), MEDIDO pero DESACTIVADO a proposito. El MOVE_REQ salio de (20,43), a tres casillas, y su primer tramo acabo en (18,42), a una; las llegadas fueron (285,145) y (279,144). jumpmap.xml lo respalda: su id 347 da para el stage 416 la casilla (279,144), que es una de las dos medidas. El destino va en null y no en 416 porque EN CELESTIA ESE MAPA NO ESTA HECHO: manda 7 entidades y nada mas, todas NPC (klass 199) y todas amontonadas en la esquina (1..6, 1..5), que es la firma de un escenario declarado pero sin poblar. Son Wanderer Miro, Bella Bulu, Gamma, Supervisor Ofur y los tres Check Point (West, South, East). Al jugador se le queda el mapa roto; el usuario lo describio como \"mapa bug\" y dice que Clink Harbor no existe todavia en esta version. Desde el 416 sale ademas un tornado hacia el stage 389, tampoco conocido. ACTIVARLO cuando alguna version traiga el mapa poblado: entonces basta con poner destino 416 y llegada (285,145). Mientras tanto _portal_en se lo salta y pisarlo no hace nada, que es mejor que mandar al jugador a un escenario del que no puede salir."
+    "nota": "Niro River -> Clink Harbor (stage 416). ACTIVADO el 25/09/2026. El MOVE_REQ salio de (20,43), a tres casillas, y su primer tramo acabo en (18,42), a una; las llegadas medidas en Celestia fueron (285,145) y (279,144), y jumpmap.xml lo respalda con su id 347, que da (279,144). Estuvo DESACTIVADO hasta hoy porque EN CELESTIA el 416 no esta poblado: mandaba 7 entidades, todas NPC, amontonadas en la esquina (1..6,1..5). Se activo al comprobar en el cliente oficial de Taiwan (8.7.5.7) que el mapa SI existe y esta lleno: 171 entidades, ocho especies de nivel 390 a 403. La plantilla clink_harbor.json sale de esa captura. OJO: es contenido de nivel 390."
    }
   ],
   "172": [
@@ -6387,6 +6385,246 @@
      168
     ],
     "nota": "INSTANCIA, SIN CRUZAR. El usuario la situa aqui y jumpmap.xml lo respalda sin ambiguedad: declara un \"Instance Entry Point\" (id 213) en (283,168), a SEIS casillas de este tornado y a 271 del otro del mapa. Ademas hay un NPC llamado \"Angel Inspector\" en (282,172), justo al lado, que encaja con una entrada de instancia. Destino y llegada van en null y _portal_en se lo salta."
+   }
+  ],
+  "416": [
+   {
+    "entity": 2120548825,
+    "tile": [
+     28,
+     163
+    ],
+    "destino": 417,
+    "llegada": [
+     290,
+     15
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "sin_medir": false,
+    "nota": "Clink Harbor -> Neon Sky Corridor (stage 417). ACTIVADO el 25/09/2026, medido dos veces en el cliente de Taiwan: los tramos de salida acabaron en (28,162) y (29,164), las dos a una casilla del tornado (28,163); las llegadas fueron (290,15) y (284,14). Radio 3: cubre las dos salidas y deja fuera la llegada de vuelta desde el 417, que es (35,165) y esta a siete. Este es el UNICO tornado de Clink Harbor: se recorrio el mapa entero y entre 141 objetos hay un solo sprite 60001. La vuelta a Niro River tiene que salir por otro lado, quiza por el NPC South Check point (24835) en (189,86). El entity es del espacio de ids de Taiwan y no coincidira con el nuestro; _portal_en busca por casilla."
+   }
+  ],
+  "417": [
+   {
+    "entity": null,
+    "tile": [
+     290,
+     9
+    ],
+    "destino": 416,
+    "llegada": [
+     35,
+     165
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Neon Sky Corridor -> Clink Harbor. SIN TORNADO VISIBLE: se busco en TODA la sesion y no hay un solo 0x000E cuyo tile caiga a menos de diez casillas de (290,9). Medido una vez: el tramo de salida acabo justo en (290,9) saliendo de (290,13..15), y se llego a (35,165). Radio 3: la llegada desde el 416 es (290,15), a seis, asi que queda fuera y no rebota. entity en null porque no hay objeto al que apuntar. SOBRE EL NOMBRE 'BORDE': se llamo asi al principio y era una suposicion mal fundada. El mapa mide 300x180, o sea que el borde real esta en x=299, y ademas en Black Market hay entidades hasta x=293, MAS ALLA de la casilla del portal. Asi que ni es el borde del mapa ni es el limite de lo transitable. Lo UNICO comprobado es esto: el warp funciona y NO HAY TORNADO. El usuario lo verifico en juego -- cruzo y no se dibuja nada -- y coincide con la captura, donde no hay ningun objeto cerca de la casilla. Que dispara el cambio de mapa no se sabe; puede ser un portal invisible. Para nuestro servidor da igual: _portal_en busca por casilla y la entrada lleva dibujar=false, que es exactamente lo que se ve en el original."
+   },
+   {
+    "entity": 949356139,
+    "tile": [
+     9,
+     4
+    ],
+    "destino": 418,
+    "llegada": [
+     278,
+     163
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Neon Sky Corridor -> Black Market District (stage 418). ACTIVADO el 25/09/2026. Medido dos veces en el cliente de Taiwan: los tramos de salida acabaron en (10,5) y (8,4), las dos a UNA casilla del tornado (9,4); las llegadas fueron (278,163) y (288,168). RADIO AJUSTADO Y APRETADO: la llegada de vuelta desde el 418 es (13,6), que esta a CUATRO de este tornado, asi que el radio no puede pasar de 3 o el jugador rebotaria nada mas aterrizar. Queda una sola casilla de margen. Con 3 las dos salidas medidas, ambas a una, entran de sobra."
+   },
+   {
+    "entity": 949421676,
+    "tile": [
+     10,
+     174
+    ],
+    "destino": 419,
+    "llegada": [
+     280,
+     17
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Neon Sky Corridor -> Commercial Street (stage 419). ACTIVADO el 25/09/2026. Es el tornado de la esquina suroeste que primero quedo anotado como 'no se cruzo nunca'. Medido DOS VECES con resultado identico: el tramo de salida acabo las dos en (11,173), a UNA casilla del tornado (10,174), y se llego las dos a (280,17). Radio 3: la llegada de vuelta desde el 419 es (17,170), a SIETE, holgadamente fuera. Commercial Street tiene LAS DOS COSAS: servicios -- banquero, Cupido, analistas y los CUATRO totems de faccion -- y ademas 109 monstruos, con el jefe Frenzied Monkey Oliver. El usuario murio alli, asi que los bichos son AGRESIVOS. No confundirla con una ciudad segura. NOTA SOBRE LA CUENTA: el primer recorrido dio 71 monstruos y el segundo los subio a 109. No cambio el mapa: la primera pasada dejo zonas sin cubrir. Es el recordatorio de siempre de que una captura solo trae lo que se tuvo a la vista."
+   }
+  ],
+  "418": [
+   {
+    "entity": null,
+    "tile": [
+     291,
+     168
+    ],
+    "destino": 417,
+    "llegada": [
+     13,
+     6
+    ],
+    "radio": 2,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Black Market District -> Neon Sky Corridor. SIN TORNADO: el mapa se recorrio entero y entre sus 105 objetos NO hay un solo sprite 60001. Es el UNICO paso del mapa: el usuario lo recorrio completo y confirmo que es un callejon sin salida. Medido dos veces: los tramos acabaron en (291,168) y (291,169), y se llego a (16,9) y (13,6). RADIO 2, NO 3: la llegada desde el 417 es (288,168), que esta a TRES de esta casilla; con radio 3 caeria justo dentro y el jugador rebotaria al aterrizar. Con 2 los dos tramos medidos, a cero y a una, siguen entrando. entity en null porque no hay objeto. SOBRE EL NOMBRE 'BORDE': se llamo asi al principio y era una suposicion mal fundada. El mapa mide 300x180, o sea que el borde real esta en x=299, y ademas en Black Market hay entidades hasta x=293, MAS ALLA de la casilla del portal. Asi que ni es el borde del mapa ni es el limite de lo transitable. Lo UNICO comprobado es esto: el warp funciona y NO HAY TORNADO. El usuario lo verifico en juego -- cruzo y no se dibuja nada -- y coincide con la captura, donde no hay ningun objeto cerca de la casilla. Que dispara el cambio de mapa no se sabe; puede ser un portal invisible. Para nuestro servidor da igual: _portal_en busca por casilla y la entrada lleva dibujar=false, que es exactamente lo que se ve en el original."
+   }
+  ],
+  "419": [
+   {
+    "entity": null,
+    "tile": [
+     286,
+     5
+    ],
+    "destino": 417,
+    "llegada": [
+     17,
+     170
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "sin_medir": false,
+    "nota": "Commercial Street -> Neon Sky Corridor. ACTIVADO el 25/09/2026. CRUCE SIN TORNADO, ya confirmado: el mapa se poblo y entre sus 63 objetos no hay ninguno a menos de diez casillas de (286,5); el unico sprite 60001 del mapa esta en (281,162) y va al 420. Medido una vez: el tramo acabo en (286,5) y se llego a (17,170). Radio 3: la llegada desde el 417 es (280,17), a DOCE. entity en null porque no hay objeto al que apuntar. SOBRE EL NOMBRE 'BORDE': se llamo asi al principio y era una suposicion mal fundada. El mapa mide 300x180, o sea que el borde real esta en x=299, y ademas en Black Market hay entidades hasta x=293, MAS ALLA de la casilla del portal. Asi que ni es el borde del mapa ni es el limite de lo transitable. Lo UNICO comprobado es esto: el warp funciona y NO HAY TORNADO. El usuario lo verifico en juego -- cruzo y no se dibuja nada -- y coincide con la captura, donde no hay ningun objeto cerca de la casilla. Que dispara el cambio de mapa no se sabe; puede ser un portal invisible. Para nuestro servidor da igual: _portal_en busca por casilla y la entrada lleva dibujar=false, que es exactamente lo que se ve en el original."
+   },
+   {
+    "entity": 1525156872,
+    "tile": [
+     281,
+     162
+    ],
+    "destino": 420,
+    "llegada": [
+     30,
+     9
+    ],
+    "radio": 4,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Commercial Street -> Bling Plaza (stage 420). ACTIVADO el 25/09/2026. Es el UNICO tornado de Commercial Street. Medido dos veces: los tramos acabaron en (284,163), a TRES del tornado (281,162), y en (280,161), a una; las llegadas fueron (30,9) y (21,13). RADIO 4, no 3: hace falta 3 como minimo para cubrir el tramo de (284,163), y el techo lo pone la llegada de vuelta desde el 420, que es (275,160) y esta a SEIS. Queda encajado entre 3 y 5; se elige 4 para tener margen por los dos lados."
+   }
+  ],
+  "420": [
+   {
+    "entity": null,
+    "tile": [
+     22,
+     6
+    ],
+    "destino": 419,
+    "llegada": [
+     275,
+     160
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "sin_medir": false,
+    "nota": "Bling Plaza -> Commercial Street. ACTIVADO el 25/09/2026. CRUCE SIN TORNADO, confirmado: el mapa se recorrio entero y entre sus 127 objetos no hay NINGUNO a menos de diez casillas de (22,6). Los dos unicos sprites 60001 del mapa estan en (291,5) y (282,173), ambos en el lado opuesto. Medido una vez: el tramo acabo justo en (22,6) y se llego a (275,160). Radio 3: las llegadas desde el 419 son (30,9) y (21,13), a OCHO y a SIETE. SOBRE EL NOMBRE 'BORDE': se llamo asi al principio y era una suposicion mal fundada. El mapa mide 300x180, o sea que el borde real esta en x=299, y ademas en Black Market hay entidades hasta x=293, MAS ALLA de la casilla del portal. Asi que ni es el borde del mapa ni es el limite de lo transitable. Lo UNICO comprobado es esto: el warp funciona y NO HAY TORNADO. El usuario lo verifico en juego -- cruzo y no se dibuja nada -- y coincide con la captura, donde no hay ningun objeto cerca de la casilla. Que dispara el cambio de mapa no se sabe; puede ser un portal invisible. Para nuestro servidor da igual: _portal_en busca por casilla y la entrada lleva dibujar=false, que es exactamente lo que se ve en el original."
+   },
+   {
+    "entity": 853478050,
+    "tile": [
+     291,
+     5
+    ],
+    "destino": 421,
+    "llegada": [
+     52,
+     145
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Bling Plaza -> Ultimate Arena (stage 421). ACTIVADO el 25/09/2026. Medido dos veces: los tramos acabaron en (290,6) y (292,7), a UNA y a DOS del tornado (291,5); las llegadas fueron (52,145) y (54,150). jumpmap.xml lo respalda: su id 355 da para el stage 421 la casilla (54,145), pegada a las dos medidas. Radio 3: cubre los dos tramos y deja fuera la llegada de vuelta desde el 421, que es (283,14) y esta a NUEVE."
+   },
+   {
+    "entity": 853543587,
+    "tile": [
+     282,
+     173
+    ],
+    "destino": null,
+    "llegada": null,
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "sin_medir": true,
+    "desactivado": true,
+    "punto_del_cliente": [
+     274,
+     165
+    ],
+    "nota": "Segundo tornado de Bling Plaza. El usuario lo identifico en juego como ENTRADA DE INSTANCIA y no se cruzo, asi que no esta medido. Lo respalda el jumpmap.xml: su id 354 apunta al stage 420 en la casilla (274,165), a OCHO de este tornado, y es el UNICO de los nueve destinos de toda la cadena (ids 347 a 355) que lleva una clase extra: ademas del 39 que comparten todos, trae un 19. Los otros ocho solo traen el 39. Esa clase de mas es lo que lo distingue. Queda DESACTIVADO como las otras 14 entradas de instancia del proyecto: las instancias no estan implementadas."
+   }
+  ],
+  "421": [
+   {
+    "entity": 1225263550,
+    "tile": [
+     46,
+     149
+    ],
+    "destino": 420,
+    "llegada": [
+     283,
+     14
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "sin_medir": false,
+    "nota": "Ultimate Arena -> Bling Plaza. ACTIVADO el 25/09/2026. El tornado esta en (46,149): al poblar el mapa aparecio a UNA casilla del tramo medido (47,148), que antes era lo unico que se sabia. Medido una vez: el tramo acabo en (47,148) y se llego a (283,14). RADIO 3: las llegadas desde el 420 son (52,145) y (54,150), a SEIS y a OCHO de esta casilla, asi que el techo real es 5; se deja en 3 porque el unico tramo medido estaba a una y no hace falta mas. NO es cruce por borde, aqui si hay tornado, a diferencia de los cuatro pasos por borde del 417, 418, 419 y 420."
+   },
+   {
+    "entity": 1243482836,
+    "tile": [
+     246,
+     46
+    ],
+    "destino": null,
+    "llegada": null,
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "sin_medir": true,
+    "desactivado": true,
+    "nota": "Tornado de Ultimate Arena que NO SE PUDO CRUZAR. El usuario recorrio el mapa entero e intento pasar por los cuatro tornados; solo funciono el de (46,149), el que vuelve a Bling Plaza. Estos tres no dejaron pasar, asi que se sospecha un REQUISITO -- mision, nivel o algun objeto -- y no un fallo. No estan medidos: no se sabe adonde van ni por donde se llega. El jumpmap.xml no ayuda aqui, porque su unico destino para el stage 421 es el id 355, que es la casilla de llegada (54,145) desde Bling Plaza, no una salida. Los otros dos estan pegados entre si, (246,46) y (254,42), a ocho casillas; el tercero esta solo en el centro del mapa."
+   },
+   {
+    "entity": 1243548373,
+    "tile": [
+     254,
+     42
+    ],
+    "destino": null,
+    "llegada": null,
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "sin_medir": true,
+    "desactivado": true,
+    "nota": "Tornado de Ultimate Arena que NO SE PUDO CRUZAR. El usuario recorrio el mapa entero e intento pasar por los cuatro tornados; solo funciono el de (46,149), el que vuelve a Bling Plaza. Estos tres no dejaron pasar, asi que se sospecha un REQUISITO -- mision, nivel o algun objeto -- y no un fallo. No estan medidos: no se sabe adonde van ni por donde se llega. El jumpmap.xml no ayuda aqui, porque su unico destino para el stage 421 es el id 355, que es la casilla de llegada (54,145) desde Bling Plaza, no una salida. Los otros dos estan pegados entre si, (246,46) y (254,42), a ocho casillas; el tercero esta solo en el centro del mapa."
+   },
+   {
+    "entity": 1244662502,
+    "tile": [
+     168,
+     117
+    ],
+    "destino": null,
+    "llegada": null,
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "sin_medir": true,
+    "desactivado": true,
+    "nota": "Tornado de Ultimate Arena que NO SE PUDO CRUZAR. El usuario recorrio el mapa entero e intento pasar por los cuatro tornados; solo funciono el de (46,149), el que vuelve a Bling Plaza. Estos tres no dejaron pasar, asi que se sospecha un REQUISITO -- mision, nivel o algun objeto -- y no un fallo. No estan medidos: no se sabe adonde van ni por donde se llega. El jumpmap.xml no ayuda aqui, porque su unico destino para el stage 421 es el id 355, que es la casilla de llegada (54,145) desde Bling Plaza, no una salida. Los otros dos estan pegados entre si, (246,46) y (254,42), a ocho casillas; el tercero esta solo en el centro del mapa."
    }
   ]
  },

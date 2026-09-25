@@ -1,0 +1,4624 @@
+{
+ "_nota": "Clink Harbor (stage 416), capturado el 25/09/2026 en el cliente OFICIAL de Taiwan (8.7.5.7), no en Celestia: alli el mapa esta declarado pero sin poblar y solo manda 7 NPC amontonados en una esquina. Se recorrio entero. OBSERVADO EN JUEGO: los monstruos son PASIVOS, no atacan salvo que se les pegue; un personaje de nivel 1 lo recorrio sin morir. Igual pegan 174.838 de ataque medio y tienen tres millones de HP. El 0x0008 de Taiwan mide 63 bytes, el mismo que el nuestro, y el MOVE_REQ tambien. Los entity_id son del espacio de Taiwan y no significan nada para nuestro servidor.",
+ "stage": 416,
+ "spawns": [
+  {
+   "entity_id": 592710326,
+   "nombre": "Hardworking Pig",
+   "npc_type": 23765,
+   "sprite": 111492,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    268,
+    120
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 390,
+   "nombre_original": "勤務豬"
+  },
+  {
+   "entity_id": 593627844,
+   "nombre": "Hardworking Pig",
+   "npc_type": 23765,
+   "sprite": 111492,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    252,
+    147
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 390,
+   "nombre_original": "勤務豬"
+  },
+  {
+   "entity_id": 604048227,
+   "nombre": "Hardworking Pig",
+   "npc_type": 23765,
+   "sprite": 111492,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    252,
+    162
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 390,
+   "nombre_original": "勤務豬"
+  },
+  {
+   "entity_id": 604506986,
+   "nombre": "Hardworking Pig",
+   "npc_type": 23765,
+   "sprite": 111492,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    261,
+    143
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 390,
+   "nombre_original": "勤務豬"
+  },
+  {
+   "entity_id": 604834671,
+   "nombre": "Hardworking Pig",
+   "npc_type": 23765,
+   "sprite": 111492,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    261,
+    143
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 390,
+   "nombre_original": "勤務豬"
+  },
+  {
+   "entity_id": 605227893,
+   "nombre": "Hardworking Pig",
+   "npc_type": 23765,
+   "sprite": 111492,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    270,
+    137
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 390,
+   "nombre_original": "勤務豬"
+  },
+  {
+   "entity_id": 605293430,
+   "nombre": "Hardworking Pig",
+   "npc_type": 23765,
+   "sprite": 111492,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    281,
+    131
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 390,
+   "nombre_original": "勤務豬"
+  },
+  {
+   "entity_id": 605424504,
+   "nombre": "Hardworking Pig",
+   "npc_type": 23765,
+   "sprite": 111492,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    270,
+    137
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 390,
+   "nombre_original": "勤務豬"
+  },
+  {
+   "entity_id": 605555578,
+   "nombre": "Hardworking Pig",
+   "npc_type": 23765,
+   "sprite": 111492,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    266,
+    120
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 390,
+   "nombre_original": "勤務豬"
+  },
+  {
+   "entity_id": 607259540,
+   "nombre": "Hardworking Pig",
+   "npc_type": 23765,
+   "sprite": 111492,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    252,
+    162
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 390,
+   "nombre_original": "勤務豬"
+  },
+  {
+   "entity_id": 607587225,
+   "nombre": "Hardworking Pig",
+   "npc_type": 23765,
+   "sprite": 111492,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    252,
+    162
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 390,
+   "nombre_original": "勤務豬"
+  },
+  {
+   "entity_id": 618466367,
+   "nombre": "Hardworking Pig",
+   "npc_type": 23765,
+   "sprite": 111492,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    281,
+    131
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 390,
+   "nombre_original": "勤務豬"
+  },
+  {
+   "entity_id": 618925126,
+   "nombre": "Hardworking Pig",
+   "npc_type": 23765,
+   "sprite": 111492,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    281,
+    131
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 390,
+   "nombre_original": "勤務豬"
+  },
+  {
+   "entity_id": 619187274,
+   "nombre": "Hardworking Pig",
+   "npc_type": 23765,
+   "sprite": 111492,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    281,
+    131
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 390,
+   "nombre_original": "勤務豬"
+  },
+  {
+   "entity_id": 619449422,
+   "nombre": "Pig Warrior",
+   "npc_type": 23766,
+   "sprite": 111493,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    243,
+    109
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 391,
+   "nombre_original": "豬力士"
+  },
+  {
+   "entity_id": 619646033,
+   "nombre": "Hardworking Pig",
+   "npc_type": 23765,
+   "sprite": 111492,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    261,
+    143
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 390,
+   "nombre_original": "勤務豬"
+  },
+  {
+   "entity_id": 621218921,
+   "nombre": "Hardworking Pig",
+   "npc_type": 23765,
+   "sprite": 111492,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    261,
+    143
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 390,
+   "nombre_original": "勤務豬"
+  },
+  {
+   "entity_id": 626003122,
+   "nombre": "Pig Warrior",
+   "npc_type": 23766,
+   "sprite": 111493,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    181,
+    62
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 391,
+   "nombre_original": "豬力士"
+  },
+  {
+   "entity_id": 627641547,
+   "nombre": "Hardworking Pig",
+   "npc_type": 23765,
+   "sprite": 111492,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    255,
+    133
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 390,
+   "nombre_original": "勤務豬"
+  },
+  {
+   "entity_id": 627772621,
+   "nombre": "Pig Warrior",
+   "npc_type": 23766,
+   "sprite": 111493,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    269,
+    90
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 391,
+   "nombre_original": "豬力士"
+  },
+  {
+   "entity_id": 627838158,
+   "nombre": "Pig Warrior",
+   "npc_type": 23766,
+   "sprite": 111493,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    264,
+    102
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 391,
+   "nombre_original": "豬力士"
+  },
+  {
+   "entity_id": 627903695,
+   "nombre": "Pig Warrior",
+   "npc_type": 23766,
+   "sprite": 111493,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    268,
+    103
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 391,
+   "nombre_original": "豬力士"
+  },
+  {
+   "entity_id": 628165843,
+   "nombre": "Hardworking Pig",
+   "npc_type": 23765,
+   "sprite": 111492,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    267,
+    120
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 390,
+   "nombre_original": "勤務豬"
+  },
+  {
+   "entity_id": 628231380,
+   "nombre": "Pig Warrior",
+   "npc_type": 23766,
+   "sprite": 111493,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    277,
+    96
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 391,
+   "nombre_original": "豬力士"
+  },
+  {
+   "entity_id": 628296917,
+   "nombre": "Pig Warrior",
+   "npc_type": 23766,
+   "sprite": 111493,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    273,
+    99
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 391,
+   "nombre_original": "豬力士"
+  },
+  {
+   "entity_id": 628493528,
+   "nombre": "Hardworking Pig",
+   "npc_type": 23765,
+   "sprite": 111492,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    270,
+    120
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 390,
+   "nombre_original": "勤務豬"
+  },
+  {
+   "entity_id": 628559065,
+   "nombre": "Hardworking Pig",
+   "npc_type": 23765,
+   "sprite": 111492,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    281,
+    131
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 390,
+   "nombre_original": "勤務豬"
+  },
+  {
+   "entity_id": 628624602,
+   "nombre": "Hardworking Pig",
+   "npc_type": 23765,
+   "sprite": 111492,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    264,
+    120
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 390,
+   "nombre_original": "勤務豬"
+  },
+  {
+   "entity_id": 628755676,
+   "nombre": "Hardworking Pig",
+   "npc_type": 23765,
+   "sprite": 111492,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    281,
+    131
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 390,
+   "nombre_original": "勤務豬"
+  },
+  {
+   "entity_id": 628821213,
+   "nombre": "Hardworking Pig",
+   "npc_type": 23765,
+   "sprite": 111492,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    262,
+    99
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 390,
+   "nombre_original": "勤務豬"
+  },
+  {
+   "entity_id": 629083361,
+   "nombre": "Hardworking Pig",
+   "npc_type": 23765,
+   "sprite": 111492,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    245,
+    85
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 390,
+   "nombre_original": "勤務豬"
+  },
+  {
+   "entity_id": 630197490,
+   "nombre": "Hardworking Pig",
+   "npc_type": 23765,
+   "sprite": 111492,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    252,
+    162
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 390,
+   "nombre_original": "勤務豬"
+  },
+  {
+   "entity_id": 630656249,
+   "nombre": "Pig Warrior",
+   "npc_type": 23766,
+   "sprite": 111493,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    250,
+    107
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 391,
+   "nombre_original": "豬力士"
+  },
+  {
+   "entity_id": 630721786,
+   "nombre": "Pig Warrior",
+   "npc_type": 23766,
+   "sprite": 111493,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    244,
+    110
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 391,
+   "nombre_original": "豬力士"
+  },
+  {
+   "entity_id": 634588469,
+   "nombre": "Pig Warrior",
+   "npc_type": 23766,
+   "sprite": 111493,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    227,
+    73
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 391,
+   "nombre_original": "豬力士"
+  },
+  {
+   "entity_id": 634719543,
+   "nombre": "Pig Warrior",
+   "npc_type": 23766,
+   "sprite": 111493,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    222,
+    76
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 391,
+   "nombre_original": "豬力士"
+  },
+  {
+   "entity_id": 634916154,
+   "nombre": "Pig Warrior",
+   "npc_type": 23766,
+   "sprite": 111493,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    204,
+    62
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 391,
+   "nombre_original": "豬力士"
+  },
+  {
+   "entity_id": 634981691,
+   "nombre": "Pig Warrior",
+   "npc_type": 23766,
+   "sprite": 111493,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    206,
+    60
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 391,
+   "nombre_original": "豬力士"
+  },
+  {
+   "entity_id": 638455152,
+   "nombre": "Pig Warrior",
+   "npc_type": 23766,
+   "sprite": 111493,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    240,
+    115
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 391,
+   "nombre_original": "豬力士"
+  },
+  {
+   "entity_id": 638782837,
+   "nombre": "Hardworking Pig",
+   "npc_type": 23765,
+   "sprite": 111492,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    243,
+    155
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 390,
+   "nombre_original": "勤務豬"
+  },
+  {
+   "entity_id": 639044985,
+   "nombre": "Hardworking Pig",
+   "npc_type": 23765,
+   "sprite": 111492,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    251,
+    87
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 390,
+   "nombre_original": "勤務豬"
+  },
+  {
+   "entity_id": 639896966,
+   "nombre": "Hardworking Pig",
+   "npc_type": 23765,
+   "sprite": 111492,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    252,
+    162
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 390,
+   "nombre_original": "勤務豬"
+  },
+  {
+   "entity_id": 644025797,
+   "nombre": "Pig Warrior",
+   "npc_type": 23766,
+   "sprite": 111493,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    176,
+    70
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 391,
+   "nombre_original": "豬力士"
+  },
+  {
+   "entity_id": 644546564,
+   "nombre": "Pig Warrior",
+   "npc_type": 23766,
+   "sprite": 111493,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    185,
+    61
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 391,
+   "nombre_original": "豬力士"
+  },
+  {
+   "entity_id": 647757877,
+   "nombre": "Pig Warrior",
+   "npc_type": 23766,
+   "sprite": 111493,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    126,
+    83
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 391,
+   "nombre_original": "豬力士"
+  },
+  {
+   "entity_id": 647823414,
+   "nombre": "Pig Warrior",
+   "npc_type": 23766,
+   "sprite": 111493,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    138,
+    102
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 391,
+   "nombre_original": "豬力士"
+  },
+  {
+   "entity_id": 648020025,
+   "nombre": "Pig Warrior",
+   "npc_type": 23766,
+   "sprite": 111493,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    132,
+    89
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 391,
+   "nombre_original": "豬力士"
+  },
+  {
+   "entity_id": 648085562,
+   "nombre": "Pig Warrior",
+   "npc_type": 23766,
+   "sprite": 111493,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    134,
+    87
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 391,
+   "nombre_original": "豬力士"
+  },
+  {
+   "entity_id": 648413247,
+   "nombre": "Pig Warrior",
+   "npc_type": 23766,
+   "sprite": 111493,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    129,
+    80
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 391,
+   "nombre_original": "豬力士"
+  },
+  {
+   "entity_id": 649003080,
+   "nombre": "Pig Warrior",
+   "npc_type": 23766,
+   "sprite": 111493,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    178,
+    97
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 391,
+   "nombre_original": "豬力士"
+  },
+  {
+   "entity_id": 649265228,
+   "nombre": "Pig Warrior",
+   "npc_type": 23766,
+   "sprite": 111493,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    193,
+    85
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 391,
+   "nombre_original": "豬力士"
+  },
+  {
+   "entity_id": 649330765,
+   "nombre": "Fiery Automaton",
+   "npc_type": 23769,
+   "sprite": 111507,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    60,
+    107
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 397,
+   "nombre_original": "火紅智能"
+  },
+  {
+   "entity_id": 649527376,
+   "nombre": "Pig Warrior",
+   "npc_type": 23766,
+   "sprite": 111493,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    191,
+    79
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 391,
+   "nombre_original": "豬力士"
+  },
+  {
+   "entity_id": 649592913,
+   "nombre": "Pig Warrior",
+   "npc_type": 23766,
+   "sprite": 111493,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    166,
+    100
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 391,
+   "nombre_original": "豬力士"
+  },
+  {
+   "entity_id": 649920599,
+   "nombre": "Pig Warrior",
+   "npc_type": 23766,
+   "sprite": 111493,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    180,
+    90
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 391,
+   "nombre_original": "豬力士"
+  },
+  {
+   "entity_id": 650182747,
+   "nombre": "Hardworking Pig",
+   "npc_type": 23765,
+   "sprite": 111492,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    219,
+    95
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 390,
+   "nombre_original": "勤務豬"
+  },
+  {
+   "entity_id": 650707043,
+   "nombre": "Hardworking Pig",
+   "npc_type": 23765,
+   "sprite": 111492,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    207,
+    101
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 390,
+   "nombre_original": "勤務豬"
+  },
+  {
+   "entity_id": 650838117,
+   "nombre": "Hardworking Pig",
+   "npc_type": 23765,
+   "sprite": 111492,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    192,
+    95
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 390,
+   "nombre_original": "勤務豬"
+  },
+  {
+   "entity_id": 652017783,
+   "nombre": "Fiery Automaton",
+   "npc_type": 23769,
+   "sprite": 111507,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    78,
+    107
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 397,
+   "nombre_original": "火紅智能"
+  },
+  {
+   "entity_id": 652279931,
+   "nombre": "Fiery Automaton",
+   "npc_type": 23769,
+   "sprite": 111507,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    62,
+    100
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 397,
+   "nombre_original": "火紅智能"
+  },
+  {
+   "entity_id": 655294638,
+   "nombre": "Pig Warrior",
+   "npc_type": 23766,
+   "sprite": 111493,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    203,
+    65
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 391,
+   "nombre_original": "豬力士"
+  },
+  {
+   "entity_id": 655556786,
+   "nombre": "Pig Warrior",
+   "npc_type": 23766,
+   "sprite": 111493,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    215,
+    68
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 391,
+   "nombre_original": "豬力士"
+  },
+  {
+   "entity_id": 655818934,
+   "nombre": "Pig Warrior",
+   "npc_type": 23766,
+   "sprite": 111493,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    220,
+    71
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 391,
+   "nombre_original": "豬力士"
+  },
+  {
+   "entity_id": 656081086,
+   "nombre": "Pig Warrior",
+   "npc_type": 23766,
+   "sprite": 111493,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    204,
+    65
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 391,
+   "nombre_original": "豬力士"
+  },
+  {
+   "entity_id": 656343235,
+   "nombre": "Pig Warrior",
+   "npc_type": 23766,
+   "sprite": 111493,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    227,
+    73
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 391,
+   "nombre_original": "豬力士"
+  },
+  {
+   "entity_id": 658243832,
+   "nombre": "Hardworking Pig",
+   "npc_type": 23765,
+   "sprite": 111492,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    244,
+    83
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 390,
+   "nombre_original": "勤務豬"
+  },
+  {
+   "entity_id": 661782830,
+   "nombre": "Hardworking Pig",
+   "npc_type": 23765,
+   "sprite": 111492,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    213,
+    141
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 390,
+   "nombre_original": "勤務豬"
+  },
+  {
+   "entity_id": 662044978,
+   "nombre": "Hardworking Pig",
+   "npc_type": 23765,
+   "sprite": 111492,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    210,
+    170
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 390,
+   "nombre_original": "勤務豬"
+  },
+  {
+   "entity_id": 662307126,
+   "nombre": "Hardworking Pig",
+   "npc_type": 23765,
+   "sprite": 111492,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    197,
+    160
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 390,
+   "nombre_original": "勤務豬"
+  },
+  {
+   "entity_id": 664207699,
+   "nombre": "Pig Warrior",
+   "npc_type": 23766,
+   "sprite": 111493,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    212,
+    120
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 391,
+   "nombre_original": "豬力士"
+  },
+  {
+   "entity_id": 665452902,
+   "nombre": "Hardworking Pig",
+   "npc_type": 23765,
+   "sprite": 111492,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    238,
+    79
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 390,
+   "nombre_original": "勤務豬"
+  },
+  {
+   "entity_id": 667943308,
+   "nombre": "Fiery Automaton",
+   "npc_type": 23769,
+   "sprite": 111507,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    63,
+    95
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 397,
+   "nombre_original": "火紅智能"
+  },
+  {
+   "entity_id": 668008845,
+   "nombre": "Fiery Automaton",
+   "npc_type": 23769,
+   "sprite": 111507,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    68,
+    95
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 397,
+   "nombre_original": "火紅智能"
+  },
+  {
+   "entity_id": 668139919,
+   "nombre": "Fiery Automaton",
+   "npc_type": 23769,
+   "sprite": 111507,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    47,
+    106
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 397,
+   "nombre_original": "火紅智能"
+  },
+  {
+   "entity_id": 668205456,
+   "nombre": "Fiery Automaton",
+   "npc_type": 23769,
+   "sprite": 111507,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    43,
+    107
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 397,
+   "nombre_original": "火紅智能"
+  },
+  {
+   "entity_id": 668336530,
+   "nombre": "Fiery Automaton",
+   "npc_type": 23769,
+   "sprite": 111507,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    59,
+    100
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 397,
+   "nombre_original": "火紅智能"
+  },
+  {
+   "entity_id": 668926363,
+   "nombre": "Fiery Automaton",
+   "npc_type": 23769,
+   "sprite": 111507,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    31,
+    120
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 397,
+   "nombre_original": "火紅智能"
+  },
+  {
+   "entity_id": 669188511,
+   "nombre": "Fiery Automaton",
+   "npc_type": 23769,
+   "sprite": 111507,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    45,
+    120
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 397,
+   "nombre_original": "火紅智能"
+  },
+  {
+   "entity_id": 669450659,
+   "nombre": "Fiery Automaton",
+   "npc_type": 23769,
+   "sprite": 111507,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    58,
+    132
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 397,
+   "nombre_original": "火紅智能"
+  },
+  {
+   "entity_id": 669712807,
+   "nombre": "Fiery Automaton",
+   "npc_type": 23769,
+   "sprite": 111507,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    60,
+    131
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 397,
+   "nombre_original": "火紅智能"
+  },
+  {
+   "entity_id": 670630325,
+   "nombre": "Fiery Automaton",
+   "npc_type": 23769,
+   "sprite": 111507,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    100,
+    115
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 397,
+   "nombre_original": "火紅智能"
+  },
+  {
+   "entity_id": 672989928,
+   "nombre": "Hardworking Pig",
+   "npc_type": 23765,
+   "sprite": 111492,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    192,
+    96
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 390,
+   "nombre_original": "勤務豬"
+  },
+  {
+   "entity_id": 673383166,
+   "nombre": "Hardworking Pig",
+   "npc_type": 23765,
+   "sprite": 111492,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    173,
+    118
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 390,
+   "nombre_original": "勤務豬"
+  },
+  {
+   "entity_id": 673579777,
+   "nombre": "Hardworking Pig",
+   "npc_type": 23765,
+   "sprite": 111492,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    175,
+    119
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 390,
+   "nombre_original": "勤務豬"
+  },
+  {
+   "entity_id": 674169610,
+   "nombre": "Hardworking Pig",
+   "npc_type": 23765,
+   "sprite": 111492,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    195,
+    168
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 390,
+   "nombre_original": "勤務豬"
+  },
+  {
+   "entity_id": 674497295,
+   "nombre": "Hardworking Pig",
+   "npc_type": 23765,
+   "sprite": 111492,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    190,
+    161
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 390,
+   "nombre_original": "勤務豬"
+  },
+  {
+   "entity_id": 674693906,
+   "nombre": "Pig Warrior",
+   "npc_type": 23766,
+   "sprite": 111493,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    135,
+    105
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 391,
+   "nombre_original": "豬力士"
+  },
+  {
+   "entity_id": 674759443,
+   "nombre": "Fiery Automaton",
+   "npc_type": 23769,
+   "sprite": 111507,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    106,
+    114
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 397,
+   "nombre_original": "火紅智能"
+  },
+  {
+   "entity_id": 674956054,
+   "nombre": "Pig Warrior",
+   "npc_type": 23766,
+   "sprite": 111493,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    122,
+    95
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 391,
+   "nombre_original": "豬力士"
+  },
+  {
+   "entity_id": 675087128,
+   "nombre": "Fiery Automaton",
+   "npc_type": 23769,
+   "sprite": 111507,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    100,
+    115
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 397,
+   "nombre_original": "火紅智能"
+  },
+  {
+   "entity_id": 675480350,
+   "nombre": "Icy Automaton",
+   "npc_type": 23770,
+   "sprite": 111508,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    111,
+    117
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 399,
+   "nombre_original": "冰藍智能"
+  },
+  {
+   "entity_id": 675545887,
+   "nombre": "Icy Automaton",
+   "npc_type": 23770,
+   "sprite": 111508,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    100,
+    128
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 399,
+   "nombre_original": "冰藍智能"
+  },
+  {
+   "entity_id": 675611424,
+   "nombre": "Icy Automaton",
+   "npc_type": 23770,
+   "sprite": 111508,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    111,
+    117
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 399,
+   "nombre_original": "冰藍智能"
+  },
+  {
+   "entity_id": 676856643,
+   "nombre": "Pig Warrior",
+   "npc_type": 23766,
+   "sprite": 111493,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    159,
+    105
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 391,
+   "nombre_original": "豬力士"
+  },
+  {
+   "entity_id": 676922180,
+   "nombre": "Icy Automaton",
+   "npc_type": 23770,
+   "sprite": 111508,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    156,
+    137
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 399,
+   "nombre_original": "冰藍智能"
+  },
+  {
+   "entity_id": 676987717,
+   "nombre": "Pig Warrior",
+   "npc_type": 23766,
+   "sprite": 111493,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    182,
+    96
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 391,
+   "nombre_original": "豬力士"
+  },
+  {
+   "entity_id": 677774161,
+   "nombre": "Icy Automaton",
+   "npc_type": 23770,
+   "sprite": 111508,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    146,
+    133
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 399,
+   "nombre_original": "冰藍智能"
+  },
+  {
+   "entity_id": 679150438,
+   "nombre": "Icy Automaton",
+   "npc_type": 23770,
+   "sprite": 111508,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    81,
+    142
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 399,
+   "nombre_original": "冰藍智能"
+  },
+  {
+   "entity_id": 679609197,
+   "nombre": "Icy Automaton",
+   "npc_type": 23770,
+   "sprite": 111508,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    111,
+    117
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 399,
+   "nombre_original": "冰藍智能"
+  },
+  {
+   "entity_id": 680330104,
+   "nombre": "Icy Automaton",
+   "npc_type": 23770,
+   "sprite": 111508,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    105,
+    158
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 399,
+   "nombre_original": "冰藍智能"
+  },
+  {
+   "entity_id": 681509770,
+   "nombre": "Icy Automaton",
+   "npc_type": 23770,
+   "sprite": 111508,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    131,
+    132
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 399,
+   "nombre_original": "冰藍智能"
+  },
+  {
+   "entity_id": 682492825,
+   "nombre": "Icy Automaton",
+   "npc_type": 23770,
+   "sprite": 111508,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    131,
+    149
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 399,
+   "nombre_original": "冰藍智能"
+  },
+  {
+   "entity_id": 682558362,
+   "nombre": "Icy Automaton",
+   "npc_type": 23770,
+   "sprite": 111508,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    124,
+    130
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 399,
+   "nombre_original": "冰藍智能"
+  },
+  {
+   "entity_id": 682623899,
+   "nombre": "Icy Automaton",
+   "npc_type": 23770,
+   "sprite": 111508,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    131,
+    149
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 399,
+   "nombre_original": "冰藍智能"
+  },
+  {
+   "entity_id": 682754973,
+   "nombre": "Icy Automaton",
+   "npc_type": 23770,
+   "sprite": 111508,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    120,
+    121
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 399,
+   "nombre_original": "冰藍智能"
+  },
+  {
+   "entity_id": 683017121,
+   "nombre": "Icy Automaton",
+   "npc_type": 23770,
+   "sprite": 111508,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    115,
+    127
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 399,
+   "nombre_original": "冰藍智能"
+  },
+  {
+   "entity_id": 683082658,
+   "nombre": "Icy Automaton",
+   "npc_type": 23770,
+   "sprite": 111508,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    126,
+    123
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 399,
+   "nombre_original": "冰藍智能"
+  },
+  {
+   "entity_id": 683148195,
+   "nombre": "Icy Automaton",
+   "npc_type": 23770,
+   "sprite": 111508,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    100,
+    128
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 399,
+   "nombre_original": "冰藍智能"
+  },
+  {
+   "entity_id": 683410343,
+   "nombre": "Icy Automaton",
+   "npc_type": 23770,
+   "sprite": 111508,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    111,
+    117
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 399,
+   "nombre_original": "冰藍智能"
+  },
+  {
+   "entity_id": 683475880,
+   "nombre": "Icy Automaton",
+   "npc_type": 23770,
+   "sprite": 111508,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    108,
+    127
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 399,
+   "nombre_original": "冰藍智能"
+  },
+  {
+   "entity_id": 683606954,
+   "nombre": "Fiery Automaton",
+   "npc_type": 23769,
+   "sprite": 111507,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    106,
+    114
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 397,
+   "nombre_original": "火紅智能"
+  },
+  {
+   "entity_id": 692978746,
+   "nombre": "Fiery Automaton",
+   "npc_type": 23769,
+   "sprite": 111507,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    52,
+    132
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 397,
+   "nombre_original": "火紅智能"
+  },
+  {
+   "entity_id": 693109820,
+   "nombre": "Fiery Automaton",
+   "npc_type": 23769,
+   "sprite": 111507,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    50,
+    132
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 397,
+   "nombre_original": "火紅智能"
+  },
+  {
+   "entity_id": 693240894,
+   "nombre": "Fiery Automaton",
+   "npc_type": 23769,
+   "sprite": 111507,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    59,
+    133
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 397,
+   "nombre_original": "火紅智能"
+  },
+  {
+   "entity_id": 1587021004,
+   "nombre": "Load Bearer",
+   "npc_type": 23767,
+   "sprite": 111504,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    97,
+    82
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 393,
+   "nombre_original": "背負者"
+  },
+  {
+   "entity_id": 2138112741,
+   "nombre": "Bella Bulu",
+   "npc_type": 24808,
+   "sprite": 40772,
+   "klass": 400,
+   "monstruo": false,
+   "tile": [
+    209,
+    148
+   ],
+   "direccion": 7,
+   "visible": 1,
+   "nombre_original": "貝利波魯"
+  },
+  {
+   "entity_id": 2138899185,
+   "nombre": "South Check point",
+   "npc_type": 24835,
+   "sprite": 40218,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    189,
+    86
+   ],
+   "direccion": 6,
+   "visible": 1,
+   "nombre_original": "南巡視點"
+  },
+  {
+   "entity_id": 2139095796,
+   "nombre": "E-Hardworking Pig",
+   "npc_type": 23771,
+   "sprite": 111492,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    234,
+    24
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 401,
+   "nombre_original": "菁英-勤務豬"
+  },
+  {
+   "entity_id": 2139161333,
+   "nombre": "E-Hardworking Pig",
+   "npc_type": 23771,
+   "sprite": 111492,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    236,
+    34
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 401,
+   "nombre_original": "菁英-勤務豬"
+  },
+  {
+   "entity_id": 2139226870,
+   "nombre": "E-Hardworking Pig",
+   "npc_type": 23771,
+   "sprite": 111492,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    217,
+    24
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 401,
+   "nombre_original": "菁英-勤務豬"
+  },
+  {
+   "entity_id": 2139292407,
+   "nombre": "E-Hardworking Pig",
+   "npc_type": 23771,
+   "sprite": 111492,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    250,
+    41
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 401,
+   "nombre_original": "菁英-勤務豬"
+  },
+  {
+   "entity_id": 2139357944,
+   "nombre": "E-Hardworking Pig",
+   "npc_type": 23771,
+   "sprite": 111492,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    210,
+    17
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 401,
+   "nombre_original": "菁英-勤務豬"
+  },
+  {
+   "entity_id": 2139423481,
+   "nombre": "E-Fiery Automaton",
+   "npc_type": 23772,
+   "sprite": 111507,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    253,
+    19
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 403,
+   "nombre_original": "菁英-火紅智能"
+  },
+  {
+   "entity_id": 2139489018,
+   "nombre": "E-Fiery Automaton",
+   "npc_type": 23772,
+   "sprite": 111507,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    254,
+    17
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 403,
+   "nombre_original": "菁英-火紅智能"
+  },
+  {
+   "entity_id": 2139554555,
+   "nombre": "E-Fiery Automaton",
+   "npc_type": 23772,
+   "sprite": 111507,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    280,
+    44
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 403,
+   "nombre_original": "菁英-火紅智能"
+  },
+  {
+   "entity_id": 2139620092,
+   "nombre": "E-Fiery Automaton",
+   "npc_type": 23772,
+   "sprite": 111507,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    248,
+    8
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 403,
+   "nombre_original": "菁英-火紅智能"
+  },
+  {
+   "entity_id": 2139685629,
+   "nombre": "E-Fiery Automaton",
+   "npc_type": 23772,
+   "sprite": 111507,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    272,
+    23
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 403,
+   "nombre_original": "菁英-火紅智能"
+  },
+  {
+   "entity_id": 2142044961,
+   "nombre": "Load Bearer",
+   "npc_type": 23767,
+   "sprite": 111504,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    172,
+    37
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 393,
+   "nombre_original": "背負者"
+  },
+  {
+   "entity_id": 2142110498,
+   "nombre": "Load Bearer",
+   "npc_type": 23767,
+   "sprite": 111504,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    172,
+    26
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 393,
+   "nombre_original": "背負者"
+  },
+  {
+   "entity_id": 2142176035,
+   "nombre": "Load Bearer",
+   "npc_type": 23767,
+   "sprite": 111504,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    197,
+    34
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 393,
+   "nombre_original": "背負者"
+  },
+  {
+   "entity_id": 2142241572,
+   "nombre": "Load Bearer",
+   "npc_type": 23767,
+   "sprite": 111504,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    193,
+    30
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 393,
+   "nombre_original": "背負者"
+  },
+  {
+   "entity_id": 2142307109,
+   "nombre": "Load Bearer",
+   "npc_type": 23767,
+   "sprite": 111504,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    184,
+    26
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 393,
+   "nombre_original": "背負者"
+  },
+  {
+   "entity_id": 2142372646,
+   "nombre": "Load Bearer",
+   "npc_type": 23767,
+   "sprite": 111504,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    252,
+    56
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 393,
+   "nombre_original": "背負者"
+  },
+  {
+   "entity_id": 2142438183,
+   "nombre": "Load Bearer",
+   "npc_type": 23767,
+   "sprite": 111504,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    230,
+    48
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 393,
+   "nombre_original": "背負者"
+  },
+  {
+   "entity_id": 2142503720,
+   "nombre": "Load Bearer",
+   "npc_type": 23767,
+   "sprite": 111504,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    271,
+    66
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 393,
+   "nombre_original": "背負者"
+  },
+  {
+   "entity_id": 2142569257,
+   "nombre": "Load Bearer",
+   "npc_type": 23767,
+   "sprite": 111504,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    259,
+    68
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 393,
+   "nombre_original": "背負者"
+  },
+  {
+   "entity_id": 2142634794,
+   "nombre": "Load Bearer",
+   "npc_type": 23767,
+   "sprite": 111504,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    242,
+    49
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 393,
+   "nombre_original": "背負者"
+  },
+  {
+   "entity_id": 2142765868,
+   "nombre": "Load Bearer",
+   "npc_type": 23767,
+   "sprite": 111504,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    130,
+    13
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 393,
+   "nombre_original": "背負者"
+  },
+  {
+   "entity_id": 2142831405,
+   "nombre": "Load Bearer",
+   "npc_type": 23767,
+   "sprite": 111504,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    135,
+    16
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 393,
+   "nombre_original": "背負者"
+  },
+  {
+   "entity_id": 2142962479,
+   "nombre": "Load Bearer",
+   "npc_type": 23767,
+   "sprite": 111504,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    142,
+    9
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 393,
+   "nombre_original": "背負者"
+  },
+  {
+   "entity_id": 2143159090,
+   "nombre": "Load Bearer",
+   "npc_type": 23767,
+   "sprite": 111504,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    102,
+    79
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 393,
+   "nombre_original": "背負者"
+  },
+  {
+   "entity_id": 2693466283,
+   "nombre": "Load Bearer",
+   "npc_type": 23767,
+   "sprite": 111504,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    160,
+    42
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 393,
+   "nombre_original": "背負者"
+  },
+  {
+   "entity_id": 2693728431,
+   "nombre": "Load Bearer",
+   "npc_type": 23767,
+   "sprite": 111504,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    153,
+    47
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 393,
+   "nombre_original": "背負者"
+  },
+  {
+   "entity_id": 2693793968,
+   "nombre": "Load Bearer",
+   "npc_type": 23767,
+   "sprite": 111504,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    145,
+    55
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 393,
+   "nombre_original": "背負者"
+  },
+  {
+   "entity_id": 2694252727,
+   "nombre": "Load Bearer",
+   "npc_type": 23767,
+   "sprite": 111504,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    108,
+    81
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 393,
+   "nombre_original": "背負者"
+  },
+  {
+   "entity_id": 2699561224,
+   "nombre": "Load Bearer",
+   "npc_type": 23767,
+   "sprite": 111504,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    101,
+    81
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 393,
+   "nombre_original": "背負者"
+  },
+  {
+   "entity_id": 2700871964,
+   "nombre": "Load Bearer",
+   "npc_type": 23767,
+   "sprite": 111504,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    139,
+    56
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 393,
+   "nombre_original": "背負者"
+  },
+  {
+   "entity_id": 3613786194,
+   "nombre": "Load Bearer",
+   "npc_type": 23767,
+   "sprite": 111504,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    106,
+    81
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 393,
+   "nombre_original": "背負者"
+  },
+  {
+   "entity_id": 3618308247,
+   "nombre": "Transport Worker",
+   "npc_type": 23768,
+   "sprite": 111505,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    65,
+    18
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 395,
+   "nombre_original": "運物工"
+  },
+  {
+   "entity_id": 3618898080,
+   "nombre": "Transport Worker",
+   "npc_type": 23768,
+   "sprite": 111505,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    95,
+    17
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 395,
+   "nombre_original": "運物工"
+  },
+  {
+   "entity_id": 3619225765,
+   "nombre": "Transport Worker",
+   "npc_type": 23768,
+   "sprite": 111505,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    79,
+    26
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 395,
+   "nombre_original": "運物工"
+  },
+  {
+   "entity_id": 3619684524,
+   "nombre": "Load Bearer",
+   "npc_type": 23767,
+   "sprite": 111504,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    159,
+    39
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 393,
+   "nombre_original": "背負者"
+  },
+  {
+   "entity_id": 3620405431,
+   "nombre": "Transport Worker",
+   "npc_type": 23768,
+   "sprite": 111505,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    18,
+    74
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 395,
+   "nombre_original": "運物工"
+  },
+  {
+   "entity_id": 3620667579,
+   "nombre": "Transport Worker",
+   "npc_type": 23768,
+   "sprite": 111505,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    43,
+    83
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 395,
+   "nombre_original": "運物工"
+  },
+  {
+   "entity_id": 3620733116,
+   "nombre": "Transport Worker",
+   "npc_type": 23768,
+   "sprite": 111505,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    13,
+    88
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 395,
+   "nombre_original": "運物工"
+  },
+  {
+   "entity_id": 3621060801,
+   "nombre": "Transport Worker",
+   "npc_type": 23768,
+   "sprite": 111505,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    87
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 395,
+   "nombre_original": "運物工"
+  },
+  {
+   "entity_id": 3621257412,
+   "nombre": "Transport Worker",
+   "npc_type": 23768,
+   "sprite": 111505,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    18,
+    61
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 395,
+   "nombre_original": "運物工"
+  },
+  {
+   "entity_id": 3621519560,
+   "nombre": "Transport Worker",
+   "npc_type": 23768,
+   "sprite": 111505,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    54,
+    36
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395,
+   "nombre_original": "運物工"
+  },
+  {
+   "entity_id": 3621650634,
+   "nombre": "Transport Worker",
+   "npc_type": 23768,
+   "sprite": 111505,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    52,
+    46
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 395,
+   "nombre_original": "運物工"
+  },
+  {
+   "entity_id": 3621781708,
+   "nombre": "Transport Worker",
+   "npc_type": 23768,
+   "sprite": 111505,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    85,
+    18
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 395,
+   "nombre_original": "運物工"
+  },
+  {
+   "entity_id": 3621912782,
+   "nombre": "Transport Worker",
+   "npc_type": 23768,
+   "sprite": 111505,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    73,
+    14
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 395,
+   "nombre_original": "運物工"
+  },
+  {
+   "entity_id": 3621978319,
+   "nombre": "Transport Worker",
+   "npc_type": 23768,
+   "sprite": 111505,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    24,
+    46
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395,
+   "nombre_original": "運物工"
+  },
+  {
+   "entity_id": 3622240467,
+   "nombre": "Transport Worker",
+   "npc_type": 23768,
+   "sprite": 111505,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    11,
+    32
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 395,
+   "nombre_original": "運物工"
+  },
+  {
+   "entity_id": 3622502615,
+   "nombre": "Transport Worker",
+   "npc_type": 23768,
+   "sprite": 111505,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    19,
+    40
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 395,
+   "nombre_original": "運物工"
+  },
+  {
+   "entity_id": 3622633689,
+   "nombre": "Transport Worker",
+   "npc_type": 23768,
+   "sprite": 111505,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    22,
+    34
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 395,
+   "nombre_original": "運物工"
+  },
+  {
+   "entity_id": 3622699226,
+   "nombre": "Transport Worker",
+   "npc_type": 23768,
+   "sprite": 111505,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    48,
+    62
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 395,
+   "nombre_original": "運物工"
+  },
+  {
+   "entity_id": 3623092448,
+   "nombre": "Load Bearer",
+   "npc_type": 23767,
+   "sprite": 111504,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    93,
+    45
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 393,
+   "nombre_original": "背負者"
+  },
+  {
+   "entity_id": 3623223522,
+   "nombre": "Load Bearer",
+   "npc_type": 23767,
+   "sprite": 111504,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    112,
+    34
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 393,
+   "nombre_original": "背負者"
+  },
+  {
+   "entity_id": 3623420133,
+   "nombre": "Load Bearer",
+   "npc_type": 23767,
+   "sprite": 111504,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    66,
+    63
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 393,
+   "nombre_original": "背負者"
+  },
+  {
+   "entity_id": 3623485670,
+   "nombre": "Load Bearer",
+   "npc_type": 23767,
+   "sprite": 111504,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    66,
+    58
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 393,
+   "nombre_original": "背負者"
+  },
+  {
+   "entity_id": 3623551207,
+   "nombre": "Load Bearer",
+   "npc_type": 23767,
+   "sprite": 111504,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    89,
+    50
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 393,
+   "nombre_original": "背負者"
+  },
+  {
+   "entity_id": 3623747818,
+   "nombre": "Transport Worker",
+   "npc_type": 23768,
+   "sprite": 111505,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    112,
+    30
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 395,
+   "nombre_original": "運物工"
+  },
+  {
+   "entity_id": 3623813355,
+   "nombre": "Transport Worker",
+   "npc_type": 23768,
+   "sprite": 111505,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    99,
+    24
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 395,
+   "nombre_original": "運物工"
+  },
+  {
+   "entity_id": 3623878892,
+   "nombre": "Transport Worker",
+   "npc_type": 23768,
+   "sprite": 111505,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    98,
+    18
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 395,
+   "nombre_original": "運物工"
+  }
+ ],
+ "recursos": [
+  {
+   "entity_id": 2120548825,
+   "capa": 0,
+   "px": [
+    923,
+    5232
+   ],
+   "medio": "006ab4b3b4d4aff3c24f0000d4351800",
+   "marca": 87,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00000481000000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 2120614362,
+   "capa": 0,
+   "px": [
+    820,
+    5125
+   ],
+   "medio": "00000000190000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2120679899,
+   "capa": 0,
+   "px": [
+    1040,
+    5159
+   ],
+   "medio": "00000000250000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2120745436,
+   "capa": 0,
+   "px": [
+    1123,
+    5284
+   ],
+   "medio": "00000000250000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2121794028,
+   "capa": 0,
+   "px": [
+    7729,
+    4208
+   ],
+   "medio": "00d0b8adb241aff300df00003c610200",
+   "marca": 4,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2121990639,
+   "capa": 0,
+   "px": [
+    7985,
+    4816
+   ],
+   "medio": "00a4b160ab43a56abef0000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2122318324,
+   "capa": 0,
+   "px": [
+    6860,
+    4615
+   ],
+   "medio": "008b0d006703b86b00003a1541280200",
+   "marca": 76,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2122383861,
+   "capa": 0,
+   "px": [
+    6894,
+    5392
+   ],
+   "medio": "006aaeb7c3c7aff3c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2122449398,
+   "capa": 0,
+   "px": [
+    6461,
+    5346
+   ],
+   "medio": "006ab4b3b4d4aff3c24f004f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2122514935,
+   "capa": 0,
+   "px": [
+    6096,
+    5170
+   ],
+   "medio": "006aa6d0c37ebef0c24f004600000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2122580472,
+   "capa": 0,
+   "px": [
+    5742,
+    4976
+   ],
+   "medio": "00a4b4b3b4d4aff3c24f00001f8f0100",
+   "marca": 4,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2122646009,
+   "capa": 0,
+   "px": [
+    5391,
+    4805
+   ],
+   "medio": "00a4e36eacf5c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2122711546,
+   "capa": 0,
+   "px": [
+    6417,
+    4235
+   ],
+   "medio": "0070b4b3b4d4aff3c24f004f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2122908157,
+   "capa": 0,
+   "px": [
+    5663,
+    4590
+   ],
+   "medio": "00d0b8adb241aff3004f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2122973694,
+   "capa": 0,
+   "px": [
+    5617,
+    3826
+   ],
+   "medio": "00d0b8adb241aff300df004600c00900",
+   "marca": 4,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2123039231,
+   "capa": 0,
+   "px": [
+    6127,
+    3102
+   ],
+   "medio": "0070e36eacf5c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2123104768,
+   "capa": 0,
+   "px": [
+    6284,
+    3440
+   ],
+   "medio": "00a4a6d0c37ebef0c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2123170305,
+   "capa": 0,
+   "px": [
+    6639,
+    3249
+   ],
+   "medio": "0000007a0e0f0004db0000009bd50600",
+   "marca": 4,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2123235842,
+   "capa": 0,
+   "px": [
+    5934,
+    3632
+   ],
+   "medio": "00d0b8adb241aff3004f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2123301379,
+   "capa": 0,
+   "px": [
+    7021,
+    3057
+   ],
+   "medio": "000000001c0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2123825675,
+   "capa": 0,
+   "px": [
+    4079,
+    2511
+   ],
+   "medio": "00000000210000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2123891212,
+   "capa": 0,
+   "px": [
+    3920,
+    3058
+   ],
+   "medio": "000000001d0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2123956749,
+   "capa": 0,
+   "px": [
+    4335,
+    3376
+   ],
+   "medio": "0070a46aa4fdb7a6bef0b74600000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2124022286,
+   "capa": 0,
+   "px": [
+    4752,
+    3509
+   ],
+   "medio": "006aaeb7c3c7aff3c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2124087823,
+   "capa": 0,
+   "px": [
+    5168,
+    3793
+   ],
+   "medio": "00a4b4b3b4d4aff3c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2124153360,
+   "capa": 0,
+   "px": [
+    5761,
+    2895
+   ],
+   "medio": "006ae36eacf5c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2124218897,
+   "capa": 0,
+   "px": [
+    5310,
+    2621
+   ],
+   "medio": "00000000260000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2124284434,
+   "capa": 0,
+   "px": [
+    5005,
+    3303
+   ],
+   "medio": "000000001a0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2124349971,
+   "capa": 0,
+   "px": [
+    5368,
+    3089
+   ],
+   "medio": "00000000290000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2124415508,
+   "capa": 0,
+   "px": [
+    6223,
+    2609
+   ],
+   "medio": "006aabd5ac66bef0b746000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2124481045,
+   "capa": 0,
+   "px": [
+    5368,
+    2224
+   ],
+   "medio": "000000001b0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2124546582,
+   "capa": 0,
+   "px": [
+    4688,
+    2594
+   ],
+   "medio": "00a4c16ca4e2c37ea5de000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2124612119,
+   "capa": 0,
+   "px": [
+    4304,
+    2797
+   ],
+   "medio": "00a4a6d0c37ebef0c24f004f00d50700",
+   "marca": 4,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2124677656,
+   "capa": 0,
+   "px": [
+    5744,
+    2030
+   ],
+   "medio": "00000000410000802d0000801e000040",
+   "marca": 2,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2124743193,
+   "capa": 0,
+   "px": [
+    5040,
+    2415
+   ],
+   "medio": "00d0b8adb241aff30000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2124808730,
+   "capa": 0,
+   "px": [
+    6640,
+    2416
+   ],
+   "medio": "000000f371020004aa150000f5a80100",
+   "marca": 4,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2124874267,
+   "capa": 0,
+   "px": [
+    6894,
+    2158
+   ],
+   "medio": "006ab160ab43a56abef0000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2124939804,
+   "capa": 0,
+   "px": [
+    6124,
+    1837
+   ],
+   "medio": "006ab260aefcb3bdb873000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2125005341,
+   "capa": 0,
+   "px": [
+    6505,
+    1969
+   ],
+   "medio": "000000002b0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2125070878,
+   "capa": 0,
+   "px": [
+    7281,
+    2337
+   ],
+   "medio": "00000000190000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2125136415,
+   "capa": 0,
+   "px": [
+    6735,
+    4048
+   ],
+   "medio": "00000000260000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2125333026,
+   "capa": 0,
+   "px": [
+    7837,
+    3520
+   ],
+   "medio": "000000002c0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2125398563,
+   "capa": 0,
+   "px": [
+    8204,
+    3409
+   ],
+   "medio": "00000000190000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2125464100,
+   "capa": 0,
+   "px": [
+    8623,
+    3153
+   ],
+   "medio": "000000001b0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2125529637,
+   "capa": 0,
+   "px": [
+    7981,
+    2737
+   ],
+   "medio": "00000000280000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2125595174,
+   "capa": 0,
+   "px": [
+    7641,
+    2553
+   ],
+   "medio": "0070c16ca4e2c37ea5de000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2125726248,
+   "capa": 0,
+   "px": [
+    8368,
+    2926
+   ],
+   "medio": "006ab4b3b4d4aff3c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2126185007,
+   "capa": 0,
+   "px": [
+    8441,
+    2078
+   ],
+   "medio": "00a6b9d2bbccc54bc471afdf00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2126250544,
+   "capa": 0,
+   "px": [
+    6747,
+    1184
+   ],
+   "medio": "0070b0b8bfe1c37ea5de0015985b0e00",
+   "marca": 210,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2126316081,
+   "capa": 0,
+   "px": [
+    7179,
+    1406
+   ],
+   "medio": "00000000240000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2126381618,
+   "capa": 0,
+   "px": [
+    7582,
+    1600
+   ],
+   "medio": "006ae36eacf5c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2126447155,
+   "capa": 0,
+   "px": [
+    7983,
+    1840
+   ],
+   "medio": "00a6b9d2bbccc54bc471afdf00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2126512692,
+   "capa": 0,
+   "px": [
+    5246,
+    708
+   ],
+   "medio": "00d0b8adb241aff30000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2126643766,
+   "capa": 0,
+   "px": [
+    4495,
+    432
+   ],
+   "medio": "00d0b8adb241aff30000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2126709303,
+   "capa": 0,
+   "px": [
+    4176,
+    624
+   ],
+   "medio": "006ab260aefcb3bdb873000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2126774840,
+   "capa": 0,
+   "px": [
+    3885,
+    813
+   ],
+   "medio": "00a4abd5ac66bef0b746000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2126840377,
+   "capa": 0,
+   "px": [
+    3728,
+    2351
+   ],
+   "medio": "00a4b160ab43a56abef00003796a0000",
+   "marca": 103,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2126905914,
+   "capa": 0,
+   "px": [
+    2895,
+    2687
+   ],
+   "medio": "00a6b3a65ec1e7aabab8dc20b148ab48",
+   "marca": 181,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2126971451,
+   "capa": 0,
+   "px": [
+    2580,
+    2577
+   ],
+   "medio": "000000002b0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2127036988,
+   "capa": 0,
+   "px": [
+    3279,
+    2463
+   ],
+   "medio": "006abb42c452c471afdf004f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2127102525,
+   "capa": 0,
+   "px": [
+    2257,
+    2402
+   ],
+   "medio": "00d0b8adb241aff300f0000016810600",
+   "marca": 4,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2127168062,
+   "capa": 0,
+   "px": [
+    2168,
+    2030
+   ],
+   "medio": "000000002c0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2127233599,
+   "capa": 0,
+   "px": [
+    2480,
+    1810
+   ],
+   "medio": "000000001f0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2127299136,
+   "capa": 0,
+   "px": [
+    3473,
+    1235
+   ],
+   "medio": "006ab4b3b4d4aff3c24f004600000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2127364673,
+   "capa": 0,
+   "px": [
+    2798,
+    1616
+   ],
+   "medio": "00d0b8adb241aff30000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2127430210,
+   "capa": 0,
+   "px": [
+    3153,
+    1439
+   ],
+   "medio": "00a4b260aefcb3bdb87300001b000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2127495747,
+   "capa": 0,
+   "px": [
+    3664,
+    1454
+   ],
+   "medio": "006abb42c452c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2127561284,
+   "capa": 0,
+   "px": [
+    3983,
+    1664
+   ],
+   "medio": "00000000180000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2127626821,
+   "capa": 0,
+   "px": [
+    4306,
+    1839
+   ],
+   "medio": "0070b4b3b4d4aff3c24f000048d10700",
+   "marca": 4,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2127692358,
+   "capa": 0,
+   "px": [
+    4671,
+    1729
+   ],
+   "medio": "0070c16ca4e2c37ea5de000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2127757895,
+   "capa": 0,
+   "px": [
+    5006,
+    1518
+   ],
+   "medio": "00d0b8adb241aff30000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2127888969,
+   "capa": 0,
+   "px": [
+    5523,
+    1360
+   ],
+   "medio": "000000001e0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2127954506,
+   "capa": 0,
+   "px": [
+    5507,
+    940
+   ],
+   "medio": "00000000260000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2128020043,
+   "capa": 0,
+   "px": [
+    5945,
+    765
+   ],
+   "medio": "00d0b8adb241aff300df000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2128085580,
+   "capa": 0,
+   "px": [
+    6351,
+    1007
+   ],
+   "medio": "00d0b8adb241aff300110000b7210700",
+   "marca": 4,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2128544339,
+   "capa": 0,
+   "px": [
+    846,
+    3120
+   ],
+   "medio": "0070aeb7c3c7aff3c24f00009d160a00",
+   "marca": 4,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2128609876,
+   "capa": 0,
+   "px": [
+    686,
+    2831
+   ],
+   "medio": "0070a6d0c37ebef0c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2128675413,
+   "capa": 0,
+   "px": [
+    1008,
+    2814
+   ],
+   "medio": "000000002b0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2128740950,
+   "capa": 0,
+   "px": [
+    1262,
+    2705
+   ],
+   "medio": "006ab0b8bfe1c37ea5de000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2128872024,
+   "capa": 0,
+   "px": [
+    1013,
+    2435
+   ],
+   "medio": "006ab0b8bfe1c37ea5de000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2128937561,
+   "capa": 0,
+   "px": [
+    398,
+    2046
+   ],
+   "medio": "000000001d0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2129003098,
+   "capa": 0,
+   "px": [
+    715,
+    2226
+   ],
+   "medio": "004ea5d6b3bd0071afdf0011fdf40400",
+   "marca": 31,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2129199709,
+   "capa": 0,
+   "px": [
+    1614,
+    1744
+   ],
+   "medio": "006ab4b3b4d4aff3c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2129265246,
+   "capa": 0,
+   "px": [
+    1356,
+    1549
+   ],
+   "medio": "00000096220d0004db000000b7e90400",
+   "marca": 4,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2129330783,
+   "capa": 0,
+   "px": [
+    2127,
+    1072
+   ],
+   "medio": "00000000210000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2129396320,
+   "capa": 0,
+   "px": [
+    1711,
+    1283
+   ],
+   "medio": "006abbccc54bc471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2129527394,
+   "capa": 0,
+   "px": [
+    2413,
+    910
+   ],
+   "medio": "00a4b4b3b4d4aff3c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2129592931,
+   "capa": 0,
+   "px": [
+    3057,
+    622
+   ],
+   "medio": "0070aeb7c3c7aff3c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2129658468,
+   "capa": 0,
+   "px": [
+    3342,
+    717
+   ],
+   "medio": "00000000260000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2129724005,
+   "capa": 0,
+   "px": [
+    3618,
+    929
+   ],
+   "medio": "0070abd5b9d2a56abef0000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2129789542,
+   "capa": 0,
+   "px": [
+    2671,
+    721
+   ],
+   "medio": "00d0b8adb241aff30000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2129855079,
+   "capa": 0,
+   "px": [
+    2479,
+    593
+   ],
+   "medio": "0070b4b3b4d4aff3c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2129920616,
+   "capa": 0,
+   "px": [
+    2222,
+    463
+   ],
+   "medio": "00a4bb42c452c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2130248301,
+   "capa": 0,
+   "px": [
+    336,
+    1134
+   ],
+   "medio": "00a4a6d0c37ebef0c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2130313838,
+   "capa": 0,
+   "px": [
+    720,
+    1360
+   ],
+   "medio": "00a4b0d2aa69aefcaff3c24f00810600",
+   "marca": 4,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2130379375,
+   "capa": 0,
+   "px": [
+    768,
+    1823
+   ],
+   "medio": "006ab0b8bfe1c37ea5de000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2130444912,
+   "capa": 0,
+   "px": [
+    1039,
+    1583
+   ],
+   "medio": "000000002b0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2131755652,
+   "capa": 0,
+   "px": [
+    1588,
+    3439
+   ],
+   "medio": "00a6b9d2b6c0aaf7c471afdf00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2131821189,
+   "capa": 0,
+   "px": [
+    1712,
+    3409
+   ],
+   "medio": "00d0b8adb241aff300f0000092f20100",
+   "marca": 4,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2131886726,
+   "capa": 0,
+   "px": [
+    1872,
+    3281
+   ],
+   "medio": "000000002b0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2132083337,
+   "capa": 0,
+   "px": [
+    2127,
+    3410
+   ],
+   "medio": "0070b4b3b4d4aff3c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2132214411,
+   "capa": 0,
+   "px": [
+    2223,
+    3121
+   ],
+   "medio": "000000001a0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2132279948,
+   "capa": 0,
+   "px": [
+    2062,
+    3217
+   ],
+   "medio": "000000001c0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2132345485,
+   "capa": 0,
+   "px": [
+    2448,
+    3546
+   ],
+   "medio": "0049f368a84f20051277ae7fd64e2605",
+   "marca": 4,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2132411022,
+   "capa": 0,
+   "px": [
+    2353,
+    3697
+   ],
+   "medio": "00000000220000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2132673170,
+   "capa": 0,
+   "px": [
+    2033,
+    4338
+   ],
+   "medio": "006ab4b3b4d4aff3c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2132738707,
+   "capa": 0,
+   "px": [
+    2160,
+    4238
+   ],
+   "medio": "00a4b4b3b4d4aff3c24f004f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2133000855,
+   "capa": 0,
+   "px": [
+    2575,
+    3631
+   ],
+   "medio": "006aa87babf3b3bd005e797f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2133131929,
+   "capa": 0,
+   "px": [
+    2736,
+    3312
+   ],
+   "medio": "002900003131342e34322e36372e3136",
+   "marca": 57,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2133263003,
+   "capa": 0,
+   "px": [
+    2895,
+    3439
+   ],
+   "medio": "000000636c060004a300000016c20300",
+   "marca": 4,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2133394077,
+   "capa": 0,
+   "px": [
+    3183,
+    3538
+   ],
+   "medio": "00000000280000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2133525151,
+   "capa": 0,
+   "px": [
+    3406,
+    3664
+   ],
+   "medio": "0070bb42c452c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2133590688,
+   "capa": 0,
+   "px": [
+    3216,
+    3697
+   ],
+   "medio": "0070a46aa4fdb7a6bef0b74600000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2134311595,
+   "capa": 0,
+   "px": [
+    3566,
+    3758
+   ],
+   "medio": "00a4c16ca4e2c37ea5de000098370500",
+   "marca": 4,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2134442669,
+   "capa": 0,
+   "px": [
+    3472,
+    4078
+   ],
+   "medio": "006abb42c452c471afdf0000cd7b0e00",
+   "marca": 4,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2134508206,
+   "capa": 0,
+   "px": [
+    3631,
+    3918
+   ],
+   "medio": "0070bb42c452c471afdf004f00000040",
+   "marca": 2,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2134573743,
+   "capa": 0,
+   "px": [
+    3696,
+    4079
+   ],
+   "medio": "0070b260aefcb3bdb873000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2134966965,
+   "capa": 0,
+   "px": [
+    4143,
+    4271
+   ],
+   "medio": "00d0b8adb241aff300df004600000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2135163576,
+   "capa": 0,
+   "px": [
+    4338,
+    4305
+   ],
+   "medio": "0000008c2f030004ca00000000790400",
+   "marca": 4,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2135229113,
+   "capa": 0,
+   "px": [
+    4686,
+    4274
+   ],
+   "medio": "00000000250000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2135294650,
+   "capa": 0,
+   "px": [
+    4910,
+    4397
+   ],
+   "medio": "00000000250000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2135360187,
+   "capa": 0,
+   "px": [
+    4751,
+    4431
+   ],
+   "medio": "000000001d0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2135425724,
+   "capa": 0,
+   "px": [
+    4430,
+    4430
+   ],
+   "medio": "006aaeb7c3c7aff3c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2135491261,
+   "capa": 0,
+   "px": [
+    4623,
+    4496
+   ],
+   "medio": "0070b0d2aa69aefcaff3c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2135556798,
+   "capa": 0,
+   "px": [
+    4526,
+    4623
+   ],
+   "medio": "0070b4b3b4d4aff3c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2135622335,
+   "capa": 0,
+   "px": [
+    4302,
+    4528
+   ],
+   "medio": "00d0b8adb241aff3004f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2135753409,
+   "capa": 0,
+   "px": [
+    4367,
+    4687
+   ],
+   "medio": "006ab4b3b4d4aff3c24f004f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2136474316,
+   "capa": 0,
+   "px": [
+    2544,
+    4558
+   ],
+   "medio": "000000001d0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2136867538,
+   "capa": 0,
+   "px": [
+    6991,
+    592
+   ],
+   "medio": "0070abd5ac66bef0b746000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2136933075,
+   "capa": 0,
+   "px": [
+    6671,
+    399
+   ],
+   "medio": "00000000170000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2136998612,
+   "capa": 0,
+   "px": [
+    7311,
+    750
+   ],
+   "medio": "00000000200000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2137064149,
+   "capa": 0,
+   "px": [
+    7663,
+    909
+   ],
+   "medio": "006ae36eacf5c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2137129686,
+   "capa": 0,
+   "px": [
+    7984,
+    1104
+   ],
+   "medio": "006ae36eacf5c471afdf004f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2137260760,
+   "capa": 0,
+   "px": [
+    8974,
+    1488
+   ],
+   "medio": "00a4abd5ac66bef0b746000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2137326297,
+   "capa": 0,
+   "px": [
+    8592,
+    1232
+   ],
+   "medio": "00000000160000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2137391834,
+   "capa": 0,
+   "px": [
+    8656,
+    689
+   ],
+   "medio": "006abb42c452c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2137457371,
+   "capa": 0,
+   "px": [
+    8304,
+    560
+   ],
+   "medio": "006abb42c452c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2137522908,
+   "capa": 0,
+   "px": [
+    7919,
+    368
+   ],
+   "medio": "00000000280000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2137653982,
+   "capa": 0,
+   "px": [
+    3407,
+    5006
+   ],
+   "medio": "00a4bb42c452c471afdf000087ea0300",
+   "marca": 4,
+   "orient": 6,
+   "sprite": 60037,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2137719519,
+   "capa": 0,
+   "px": [
+    3581,
+    5041
+   ],
+   "medio": "00000000290000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60037,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 2138637037,
+   "capa": 0,
+   "px": [
+    7245,
+    2981
+   ],
+   "medio": "006ae36eacf5c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60305,
+   "cola": "00000280140000"
+  }
+ ]
+}

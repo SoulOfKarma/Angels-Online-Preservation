@@ -44,9 +44,12 @@ a guess, it says so.
   is certain. Below 1500 the `klass` still decides, because `npc.xml` does not
   reach down there and the old Lyceum NPCs use two- and three-digit numbers
   that collide with `monster.xml`
-- **152 maps populated from captures**: 27,377 monsters, 1,696 NPCs and
-  11,834 map objects, 7,671 of them with their resource name resolved. Every
+- **158 maps populated from captures**: 28,165 monsters, 1,725 NPCs and
+  12,557 map objects, 7,671 of them with their resource name resolved. Every
   monster, NPC and resource comes from a capture; none of it is made up
+- **Six maps do not come from Celestia, but from the official Taiwan
+  server.** It is the only exception to "everything comes from Celestia
+  captures", and it is explained below in *The Night City Code exception*
 - **Whole zones are closed**, meaning every tornado in them has been crossed
   and measured: **Heart of Eden**, **Floating** (6 maps), **the desert ring**
   (Crescent Valley, Desert Racetrack, Ghost Village, Troop Outpost, Ancient
@@ -55,7 +58,7 @@ a guess, it says so.
   (Cryptic Moon Swamp to Giant Wooden Stairs, 8 maps) only has two tornados
   left. Plus a good part of Pharaoh, East Orient and the four faction
   territories
-- **359 portals**, almost all measured in both directions: the tornado's tile
+- **388 portals**, 370 of them active, almost all measured in both directions: the tornado's tile
   comes from the capture, and so does the tile the real server drops you on.
   Most of them were crossed **twice in each direction**, which is how we found
   out that some portals do not always drop you on the same tile
@@ -148,6 +151,85 @@ a guess, it says so.
   general -- most ask nothing at all
 - Parties and the friend list: the protocol is documented from a two-account
   capture, but the server does not implement either yet
+
+---
+
+## The Night City Code exception
+
+Everything else in this project comes from captures of **a single** private
+server. Six maps do not: **Night City Code**, stages 416 to 421 -- Clink
+Harbor, Neon Sky Corridor, Black Market District, Commercial Street, Bling
+Plaza and Ultimate Arena. Those come from the **official Taiwan client**, and
+it is worth knowing why and what it implies.
+
+### Why another server was needed
+
+The map had been in the client data since patch 25, and a tornado in Niro
+River led to it. But crossing it, the server sent **7 entities and nothing
+else**, all NPCs, all bunched in the (1..6, 1..5) corner. That is the
+signature of a stage **declared but not populated**: it exists in the table,
+it has no content. The portal sat measured but disabled, with a note saying
+"enable it when some version brings the map populated".
+
+The official Taiwan client is that version. Crossing the same tornado, its
+server sends **171 entities** spread across the whole map, with real monsters.
+The map exists; what was missing was a server that served it.
+
+### What was taken and what was not
+
+The standing rule still holds: **take the DATA, never the raw bytes**. It
+worked here because both speak the same language where it matters -- the
+`0x0008` spawn message is **63 bytes in both versions**, with the fields in
+the same places, and so is `MOVE_REQ`. The same code decodes it.
+
+Where they do **not** match, and it needs keeping in mind:
+
+- The `0x000C` map change arrives as **20 bytes with no IP string**, unlike
+  ours. The stage still reads at offset 0, but the destination port is no
+  longer where we expect it
+- **Three messages we do not know** show up: `0x018A`, frequent and almost
+  always eight bytes; `0x006D`, with an empty body; and `0x0142`, a single
+  byte. None of them are in `proto/messages.py`
+
+Names arrive in **Big5**, not English. Nothing had to be translated by hand:
+the `npc_type` is the same in both versions, and our `content.db`, extracted
+from the client XMLs, already carries the English name for every id. They are
+matched through that.
+
+### Two things that changed in the tools
+
+**`tools/separar_por_mapa.py`** (new). On the other server every map change
+opened a fresh connection, so each capture file covered a single map. Here the
+`0x000C` arrives **inside the same session**: one connection brought six maps
+in a row. Handing it whole to `poblar_mapa.py` would put one map's monsters
+into another map's template, silently. This tool cuts by map change first.
+
+**`tools/poblar_mapa.py`** decoded names as ASCII, which mangles Big5. It now
+decodes Big5 -- ASCII-compatible, so nothing earlier changes -- and matches the
+`npc_type` against `content.db` to leave the name in English.
+
+### What was learned along the way
+
+**Some map transitions have no tornado.** Four of the chain's twelve portals
+have no drawn object at all: you walk onto the tile and the map changes, with
+nothing visible. Confirmed both in game and in the capture, where no object
+sits anywhere near. **What triggers it is unknown**; it could be an invisible
+portal. They were first called "edge crossings" and that was a wrong guess:
+the maps are 300x180 and those tiles sit some eight columns short of the edge,
+with entities even further out.
+
+**A map can need several passes.** Commercial Street gave 71 monsters on the
+first walk, 109 on the second and 125 on the third. The map did not change: a
+capture only brings what you had in view, and the early passes left areas
+uncovered.
+
+### What is still missing from this region
+
+Stage **422 (Secret Peak)** is still unpopulated. There is also Bling Plaza's
+**instance entrance**, identified through `jumpmap.xml` -- it is the only one
+of the chain's nine destinations carrying an extra class -- and **three
+tornados in Ultimate Arena** that would not let the player through, most
+likely gated by a quest or a level.
 
 ---
 

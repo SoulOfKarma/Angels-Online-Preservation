@@ -1,0 +1,3407 @@
+{
+ "_nota": "Commercial Street (stage 419), capturado el 25/09/2026 en el cliente OFICIAL de Taiwan (8.7.5.7). Hicieron falta TRES recorridos: el primero dio 71 monstruos, el segundo 109 y el tercero los de abajo. Es el mapa que mas pasadas necesito de toda la cadena. OJO: mezcla servicios y combate. Tiene banquero, Cupido, analistas, mecanico, vendedor y los CUATRO totems de faccion, pero tambien monstruos agresivos con el jefe Frenzied Monkey Oliver: el usuario murio aqui. No es una ciudad segura. Se separo con tools/separar_por_mapa.py.",
+ "stage": 419,
+ "spawns": [
+  {
+   "entity_id": 1543441695,
+   "nombre": "Spell Analyst",
+   "npc_type": 24802,
+   "sprite": 40668,
+   "klass": 400,
+   "monstruo": false,
+   "tile": [
+    266,
+    70
+   ],
+   "direccion": 5,
+   "visible": 1,
+   "nombre_original": "商街法術研究員"
+  },
+  {
+   "entity_id": 1543507232,
+   "nombre": "Technique Analyst",
+   "npc_type": 24803,
+   "sprite": 40670,
+   "klass": 400,
+   "monstruo": false,
+   "tile": [
+    241,
+    80
+   ],
+   "direccion": 5,
+   "visible": 1,
+   "nombre_original": "商街招式研究員"
+  },
+  {
+   "entity_id": 1543572769,
+   "nombre": "Street Vendor",
+   "npc_type": 24805,
+   "sprite": 40392,
+   "klass": 400,
+   "monstruo": false,
+   "tile": [
+    277,
+    57
+   ],
+   "direccion": 5,
+   "visible": 1,
+   "nombre_original": "商街雜物商"
+  },
+  {
+   "entity_id": 1543638306,
+   "nombre": "Street Mechanic",
+   "npc_type": 24804,
+   "sprite": 40315,
+   "klass": 400,
+   "monstruo": false,
+   "tile": [
+    220,
+    69
+   ],
+   "direccion": 5,
+   "visible": 1,
+   "nombre_original": "商街維修員"
+  },
+  {
+   "entity_id": 1543703843,
+   "nombre": "Street Banker",
+   "npc_type": 24806,
+   "sprite": 40073,
+   "klass": 400,
+   "monstruo": false,
+   "tile": [
+    225,
+    58
+   ],
+   "direccion": 5,
+   "visible": 1,
+   "nombre_original": "商街銀行員"
+  },
+  {
+   "entity_id": 1543769380,
+   "nombre": "Cupid",
+   "npc_type": 1502,
+   "sprite": 40006,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    233,
+    94
+   ],
+   "direccion": 6,
+   "visible": 1,
+   "nombre_original": "邱比特"
+  },
+  {
+   "entity_id": 1544097065,
+   "nombre": "Iron Totem",
+   "npc_type": 1939,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    245,
+    105
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nombre_original": "鐵輪堡圖騰"
+  },
+  {
+   "entity_id": 1544162602,
+   "nombre": "Dark City Totem",
+   "npc_type": 1938,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    238,
+    102
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nombre_original": "永夜城圖騰"
+  },
+  {
+   "entity_id": 1544228139,
+   "nombre": "Breeze Totem",
+   "npc_type": 1940,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    237,
+    110
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nombre_original": "和風林圖騰"
+  },
+  {
+   "entity_id": 1544293676,
+   "nombre": "Aurora Totem",
+   "npc_type": 1937,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    232,
+    106
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nombre_original": "聖光城圖騰"
+  },
+  {
+   "entity_id": 1544883509,
+   "nombre": "Ryaiden",
+   "npc_type": 24830,
+   "sprite": 40782,
+   "klass": 400,
+   "monstruo": false,
+   "tile": [
+    180,
+    121
+   ],
+   "direccion": 7,
+   "visible": 1,
+   "nombre_original": "瑞瑟登"
+  },
+  {
+   "entity_id": 1545014583,
+   "nombre": "Neus",
+   "npc_type": 24814,
+   "sprite": 40039,
+   "klass": 400,
+   "monstruo": false,
+   "tile": [
+    51,
+    117
+   ],
+   "direccion": 7,
+   "visible": 1,
+   "nombre_original": "紐爾斯"
+  },
+  {
+   "entity_id": 1545080120,
+   "nombre": "Greenwich",
+   "npc_type": 24815,
+   "sprite": 40743,
+   "klass": 400,
+   "monstruo": false,
+   "tile": [
+    269,
+    155
+   ],
+   "direccion": 5,
+   "visible": 1,
+   "nombre_original": "格林尼"
+  },
+  {
+   "entity_id": 1545145657,
+   "nombre": "Noble Morgan",
+   "npc_type": 24845,
+   "sprite": 40108,
+   "klass": 400,
+   "monstruo": false,
+   "tile": [
+    244,
+    48
+   ],
+   "direccion": 6,
+   "visible": 1,
+   "nombre_original": "貴族摩根"
+  },
+  {
+   "entity_id": 1545473342,
+   "nombre": "Cyan Mist Dragon",
+   "npc_type": 23795,
+   "sprite": 111525,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    175,
+    11
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 420,
+   "nombre_original": "青藍迷影龍"
+  },
+  {
+   "entity_id": 1546259786,
+   "nombre": "Can Claw",
+   "npc_type": 23797,
+   "sprite": 111527,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    12,
+    51
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 423,
+   "nombre_original": "罐形爪"
+  },
+  {
+   "entity_id": 1546325323,
+   "nombre": "Can Claw",
+   "npc_type": 23797,
+   "sprite": 111527,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    12,
+    56
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 423,
+   "nombre_original": "罐形爪"
+  },
+  {
+   "entity_id": 1546456397,
+   "nombre": "Can Claw",
+   "npc_type": 23797,
+   "sprite": 111527,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    28,
+    61
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 423,
+   "nombre_original": "罐形爪"
+  },
+  {
+   "entity_id": 1546587471,
+   "nombre": "Can Claw",
+   "npc_type": 23797,
+   "sprite": 111527,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    35,
+    61
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423,
+   "nombre_original": "罐形爪"
+  },
+  {
+   "entity_id": 1546718545,
+   "nombre": "Can Claw",
+   "npc_type": 23797,
+   "sprite": 111527,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    28,
+    62
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 423,
+   "nombre_original": "罐形爪"
+  },
+  {
+   "entity_id": 1546784082,
+   "nombre": "Can Claw",
+   "npc_type": 23797,
+   "sprite": 111527,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    24,
+    55
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 423,
+   "nombre_original": "罐形爪"
+  },
+  {
+   "entity_id": 1547439452,
+   "nombre": "Can Claw",
+   "npc_type": 23797,
+   "sprite": 111527,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    60,
+    47
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 423,
+   "nombre_original": "罐形爪"
+  },
+  {
+   "entity_id": 1547504989,
+   "nombre": "Can Claw",
+   "npc_type": 23797,
+   "sprite": 111527,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    83,
+    59
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 423,
+   "nombre_original": "罐形爪"
+  },
+  {
+   "entity_id": 1547570526,
+   "nombre": "Can Claw",
+   "npc_type": 23797,
+   "sprite": 111527,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    63,
+    71
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 423,
+   "nombre_original": "罐形爪"
+  },
+  {
+   "entity_id": 1547636063,
+   "nombre": "Can Claw",
+   "npc_type": 23797,
+   "sprite": 111527,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    94,
+    60
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 423,
+   "nombre_original": "罐形爪"
+  },
+  {
+   "entity_id": 1547767137,
+   "nombre": "Can Claw",
+   "npc_type": 23797,
+   "sprite": 111527,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    83,
+    59
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 423,
+   "nombre_original": "罐形爪"
+  },
+  {
+   "entity_id": 1547832674,
+   "nombre": "Can Claw",
+   "npc_type": 23797,
+   "sprite": 111527,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    106,
+    60
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 423,
+   "nombre_original": "罐形爪"
+  },
+  {
+   "entity_id": 1548025859,
+   "nombre": "Can Claw",
+   "npc_type": 23797,
+   "sprite": 111527,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    91,
+    59
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 423,
+   "nombre_original": "罐形爪"
+  },
+  {
+   "entity_id": 1548156933,
+   "nombre": "Can Claw",
+   "npc_type": 23797,
+   "sprite": 111527,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    97,
+    75
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 423,
+   "nombre_original": "罐形爪"
+  },
+  {
+   "entity_id": 1548222470,
+   "nombre": "Can Claw",
+   "npc_type": 23797,
+   "sprite": 111527,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    99,
+    81
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 423,
+   "nombre_original": "罐形爪"
+  },
+  {
+   "entity_id": 1548288007,
+   "nombre": "Can Claw",
+   "npc_type": 23797,
+   "sprite": 111527,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    72,
+    71
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 423,
+   "nombre_original": "罐形爪"
+  },
+  {
+   "entity_id": 1548353544,
+   "nombre": "Can Claw",
+   "npc_type": 23797,
+   "sprite": 111527,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    72,
+    75
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 423,
+   "nombre_original": "罐形爪"
+  },
+  {
+   "entity_id": 1548419081,
+   "nombre": "Can Claw",
+   "npc_type": 23797,
+   "sprite": 111527,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    71,
+    67
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 423,
+   "nombre_original": "罐形爪"
+  },
+  {
+   "entity_id": 1548681229,
+   "nombre": "Cyan Mist Dragon",
+   "npc_type": 23795,
+   "sprite": 111525,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    151,
+    39
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 420,
+   "nombre_original": "青藍迷影龍"
+  },
+  {
+   "entity_id": 1548812303,
+   "nombre": "Cyan Mist Dragon",
+   "npc_type": 23795,
+   "sprite": 111525,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    131,
+    57
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 420,
+   "nombre_original": "青藍迷影龍"
+  },
+  {
+   "entity_id": 1548943377,
+   "nombre": "Cyan Mist Dragon",
+   "npc_type": 23795,
+   "sprite": 111525,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    138,
+    59
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 420,
+   "nombre_original": "青藍迷影龍"
+  },
+  {
+   "entity_id": 1549074451,
+   "nombre": "Cyan Mist Dragon",
+   "npc_type": 23795,
+   "sprite": 111525,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    132,
+    42
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 420,
+   "nombre_original": "青藍迷影龍"
+  },
+  {
+   "entity_id": 1549139988,
+   "nombre": "Cyan Mist Dragon",
+   "npc_type": 23795,
+   "sprite": 111525,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    209,
+    35
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 420,
+   "nombre_original": "青藍迷影龍"
+  },
+  {
+   "entity_id": 1549205525,
+   "nombre": "Cyan Mist Dragon",
+   "npc_type": 23795,
+   "sprite": 111525,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    208,
+    44
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 420,
+   "nombre_original": "青藍迷影龍"
+  },
+  {
+   "entity_id": 1549271062,
+   "nombre": "Cyan Mist Dragon",
+   "npc_type": 23795,
+   "sprite": 111525,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    218,
+    32
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 420,
+   "nombre_original": "青藍迷影龍"
+  },
+  {
+   "entity_id": 1549336599,
+   "nombre": "Cyan Mist Dragon",
+   "npc_type": 23795,
+   "sprite": 111525,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    219,
+    38
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 420,
+   "nombre_original": "青藍迷影龍"
+  },
+  {
+   "entity_id": 1549402136,
+   "nombre": "Cyan Mist Dragon",
+   "npc_type": 23795,
+   "sprite": 111525,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    208,
+    36
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 420,
+   "nombre_original": "青藍迷影龍"
+  },
+  {
+   "entity_id": 1549467673,
+   "nombre": "Cyan Mist Dragon",
+   "npc_type": 23795,
+   "sprite": 111525,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    199,
+    48
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 420,
+   "nombre_original": "青藍迷影龍"
+  },
+  {
+   "entity_id": 1549533210,
+   "nombre": "Cyan Mist Dragon",
+   "npc_type": 23795,
+   "sprite": 111525,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    196,
+    49
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 420,
+   "nombre_original": "青藍迷影龍"
+  },
+  {
+   "entity_id": 1549598747,
+   "nombre": "Cyan Mist Dragon",
+   "npc_type": 23795,
+   "sprite": 111525,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    177,
+    50
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 420,
+   "nombre_original": "青藍迷影龍"
+  },
+  {
+   "entity_id": 1549664284,
+   "nombre": "Cyan Mist Dragon",
+   "npc_type": 23795,
+   "sprite": 111525,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    200,
+    47
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 420,
+   "nombre_original": "青藍迷影龍"
+  },
+  {
+   "entity_id": 1549729821,
+   "nombre": "Cyan Mist Dragon",
+   "npc_type": 23795,
+   "sprite": 111525,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    178,
+    57
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 420,
+   "nombre_original": "青藍迷影龍"
+  },
+  {
+   "entity_id": 1550057506,
+   "nombre": "Cyan Mist Dragon",
+   "npc_type": 23795,
+   "sprite": 111525,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    184,
+    48
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 420,
+   "nombre_original": "青藍迷影龍"
+  },
+  {
+   "entity_id": 1550450728,
+   "nombre": "Amethyst Dragon",
+   "npc_type": 23796,
+   "sprite": 111526,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    131,
+    54
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 421,
+   "nombre_original": "紫金變幻龍"
+  },
+  {
+   "entity_id": 1550516265,
+   "nombre": "Amethyst Dragon",
+   "npc_type": 23796,
+   "sprite": 111526,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    145,
+    59
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 421,
+   "nombre_original": "紫金變幻龍"
+  },
+  {
+   "entity_id": 1550581802,
+   "nombre": "Amethyst Dragon",
+   "npc_type": 23796,
+   "sprite": 111526,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    131,
+    54
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421,
+   "nombre_original": "紫金變幻龍"
+  },
+  {
+   "entity_id": 1550647339,
+   "nombre": "Amethyst Dragon",
+   "npc_type": 23796,
+   "sprite": 111526,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    137,
+    59
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 421,
+   "nombre_original": "紫金變幻龍"
+  },
+  {
+   "entity_id": 1550712876,
+   "nombre": "Amethyst Dragon",
+   "npc_type": 23796,
+   "sprite": 111526,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    147,
+    59
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 421,
+   "nombre_original": "紫金變幻龍"
+  },
+  {
+   "entity_id": 1550909487,
+   "nombre": "Amethyst Dragon",
+   "npc_type": 23796,
+   "sprite": 111526,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    125,
+    60
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 421,
+   "nombre_original": "紫金變幻龍"
+  },
+  {
+   "entity_id": 1551040561,
+   "nombre": "Amethyst Dragon",
+   "npc_type": 23796,
+   "sprite": 111526,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    113,
+    59
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 421,
+   "nombre_original": "紫金變幻龍"
+  },
+  {
+   "entity_id": 1551237172,
+   "nombre": "Amethyst Dragon",
+   "npc_type": 23796,
+   "sprite": 111526,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    71,
+    44
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 421,
+   "nombre_original": "紫金變幻龍"
+  },
+  {
+   "entity_id": 1551302709,
+   "nombre": "Amethyst Dragon",
+   "npc_type": 23796,
+   "sprite": 111526,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    71,
+    46
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 421,
+   "nombre_original": "紫金變幻龍"
+  },
+  {
+   "entity_id": 1551433783,
+   "nombre": "Amethyst Dragon",
+   "npc_type": 23796,
+   "sprite": 111526,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    108,
+    24
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 421,
+   "nombre_original": "紫金變幻龍"
+  },
+  {
+   "entity_id": 1551499320,
+   "nombre": "Amethyst Dragon",
+   "npc_type": 23796,
+   "sprite": 111526,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    111,
+    23
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421,
+   "nombre_original": "紫金變幻龍"
+  },
+  {
+   "entity_id": 1551564857,
+   "nombre": "Amethyst Dragon",
+   "npc_type": 23796,
+   "sprite": 111526,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    113,
+    19
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421,
+   "nombre_original": "紫金變幻龍"
+  },
+  {
+   "entity_id": 1551827005,
+   "nombre": "Amethyst Dragon",
+   "npc_type": 23796,
+   "sprite": 111526,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    60,
+    28
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 421,
+   "nombre_original": "紫金變幻龍"
+  },
+  {
+   "entity_id": 1551892542,
+   "nombre": "Amethyst Dragon",
+   "npc_type": 23796,
+   "sprite": 111526,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    71,
+    22
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 421,
+   "nombre_original": "紫金變幻龍"
+  },
+  {
+   "entity_id": 1552089153,
+   "nombre": "Amethyst Dragon",
+   "npc_type": 23796,
+   "sprite": 111526,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    48,
+    17
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 421,
+   "nombre_original": "紫金變幻龍"
+  },
+  {
+   "entity_id": 1552220227,
+   "nombre": "Amethyst Dragon",
+   "npc_type": 23796,
+   "sprite": 111526,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    48,
+    19
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 421,
+   "nombre_original": "紫金變幻龍"
+  },
+  {
+   "entity_id": 1552416838,
+   "nombre": "Loop Hand",
+   "npc_type": 23798,
+   "sprite": 111528,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    98,
+    83
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 425,
+   "nombre_original": "開環手"
+  },
+  {
+   "entity_id": 1552482375,
+   "nombre": "Loop Hand",
+   "npc_type": 23798,
+   "sprite": 111528,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    95,
+    86
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 425,
+   "nombre_original": "開環手"
+  },
+  {
+   "entity_id": 1552547912,
+   "nombre": "Loop Hand",
+   "npc_type": 23798,
+   "sprite": 111528,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    111,
+    84
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 425,
+   "nombre_original": "開環手"
+  },
+  {
+   "entity_id": 1552613449,
+   "nombre": "Loop Hand",
+   "npc_type": 23798,
+   "sprite": 111528,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    97,
+    83
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 425,
+   "nombre_original": "開環手"
+  },
+  {
+   "entity_id": 1552678986,
+   "nombre": "Loop Hand",
+   "npc_type": 23798,
+   "sprite": 111528,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    87,
+    79
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 425,
+   "nombre_original": "開環手"
+  },
+  {
+   "entity_id": 1552744523,
+   "nombre": "Lightless Racer",
+   "npc_type": 23799,
+   "sprite": 111496,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    187,
+    96
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 427,
+   "nombre_original": "無光車手"
+  },
+  {
+   "entity_id": 1552810060,
+   "nombre": "Lightless Racer",
+   "npc_type": 23799,
+   "sprite": 111496,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    181,
+    84
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 427,
+   "nombre_original": "無光車手"
+  },
+  {
+   "entity_id": 1553006671,
+   "nombre": "Lightless Racer",
+   "npc_type": 23799,
+   "sprite": 111496,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    181,
+    84
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 427,
+   "nombre_original": "無光車手"
+  },
+  {
+   "entity_id": 1553072208,
+   "nombre": "Lightless Racer",
+   "npc_type": 23799,
+   "sprite": 111496,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    160,
+    91
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 427,
+   "nombre_original": "無光車手"
+  },
+  {
+   "entity_id": 1553137745,
+   "nombre": "Lightless Racer",
+   "npc_type": 23799,
+   "sprite": 111496,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    161,
+    91
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 427,
+   "nombre_original": "無光車手"
+  },
+  {
+   "entity_id": 1553399893,
+   "nombre": "Lightless Racer",
+   "npc_type": 23799,
+   "sprite": 111496,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    119,
+    112
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 427,
+   "nombre_original": "無光車手"
+  },
+  {
+   "entity_id": 1553596504,
+   "nombre": "Lightless Racer",
+   "npc_type": 23799,
+   "sprite": 111496,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    136,
+    105
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 427,
+   "nombre_original": "無光車手"
+  },
+  {
+   "entity_id": 1553858652,
+   "nombre": "Loop Hand",
+   "npc_type": 23798,
+   "sprite": 111528,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    84,
+    95
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 425,
+   "nombre_original": "開環手"
+  },
+  {
+   "entity_id": 1553924189,
+   "nombre": "Loop Hand",
+   "npc_type": 23798,
+   "sprite": 111528,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    74,
+    110
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 425,
+   "nombre_original": "開環手"
+  },
+  {
+   "entity_id": 1554055263,
+   "nombre": "Loop Hand",
+   "npc_type": 23798,
+   "sprite": 111528,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    72,
+    106
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 425,
+   "nombre_original": "開環手"
+  },
+  {
+   "entity_id": 1554186337,
+   "nombre": "Loop Hand",
+   "npc_type": 23798,
+   "sprite": 111528,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    60,
+    67
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 425,
+   "nombre_original": "開環手"
+  },
+  {
+   "entity_id": 1554251874,
+   "nombre": "Loop Hand",
+   "npc_type": 23798,
+   "sprite": 111528,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    61,
+    71
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 425,
+   "nombre_original": "開環手"
+  },
+  {
+   "entity_id": 1554317411,
+   "nombre": "Loop Hand",
+   "npc_type": 23798,
+   "sprite": 111528,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    67,
+    71
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 425,
+   "nombre_original": "開環手"
+  },
+  {
+   "entity_id": 1554382948,
+   "nombre": "Loop Hand",
+   "npc_type": 23798,
+   "sprite": 111528,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    56,
+    72
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 425,
+   "nombre_original": "開環手"
+  },
+  {
+   "entity_id": 1554710633,
+   "nombre": "Loop Hand",
+   "npc_type": 23798,
+   "sprite": 111528,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    71,
+    84
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 425,
+   "nombre_original": "開環手"
+  },
+  {
+   "entity_id": 1554841707,
+   "nombre": "Loop Hand",
+   "npc_type": 23798,
+   "sprite": 111528,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    52,
+    98
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 425,
+   "nombre_original": "開環手"
+  },
+  {
+   "entity_id": 1554972781,
+   "nombre": "Loop Hand",
+   "npc_type": 23798,
+   "sprite": 111528,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    57,
+    99
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 425,
+   "nombre_original": "開環手"
+  },
+  {
+   "entity_id": 1555038318,
+   "nombre": "Loop Hand",
+   "npc_type": 23798,
+   "sprite": 111528,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    60,
+    95
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 425,
+   "nombre_original": "開環手"
+  },
+  {
+   "entity_id": 1555103855,
+   "nombre": "Loop Hand",
+   "npc_type": 23798,
+   "sprite": 111528,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    31,
+    83
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 425,
+   "nombre_original": "開環手"
+  },
+  {
+   "entity_id": 1555169392,
+   "nombre": "Loop Hand",
+   "npc_type": 23798,
+   "sprite": 111528,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    31,
+    86
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 425,
+   "nombre_original": "開環手"
+  },
+  {
+   "entity_id": 1555300466,
+   "nombre": "Loop Hand",
+   "npc_type": 23798,
+   "sprite": 111528,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    48,
+    94
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 425,
+   "nombre_original": "開環手"
+  },
+  {
+   "entity_id": 1555431540,
+   "nombre": "Loop Hand",
+   "npc_type": 23798,
+   "sprite": 111528,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    43,
+    108
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 425,
+   "nombre_original": "開環手"
+  },
+  {
+   "entity_id": 1555562614,
+   "nombre": "Loop Hand",
+   "npc_type": 23798,
+   "sprite": 111528,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    65,
+    109
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 425,
+   "nombre_original": "開環手"
+  },
+  {
+   "entity_id": 1555628151,
+   "nombre": "Loop Hand",
+   "npc_type": 23798,
+   "sprite": 111528,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    60,
+    111
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 425,
+   "nombre_original": "開環手"
+  },
+  {
+   "entity_id": 1555693688,
+   "nombre": "Loop Hand",
+   "npc_type": 23798,
+   "sprite": 111528,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    28,
+    101
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 425,
+   "nombre_original": "開環手"
+  },
+  {
+   "entity_id": 1555759225,
+   "nombre": "Loop Hand",
+   "npc_type": 23798,
+   "sprite": 111528,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    25,
+    103
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 425,
+   "nombre_original": "開環手"
+  },
+  {
+   "entity_id": 1555955836,
+   "nombre": "Loop Hand",
+   "npc_type": 23798,
+   "sprite": 111528,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    12,
+    96
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 425,
+   "nombre_original": "開環手"
+  },
+  {
+   "entity_id": 1556086910,
+   "nombre": "Lightless Racer",
+   "npc_type": 23799,
+   "sprite": 111496,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    124,
+    120
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 427,
+   "nombre_original": "無光車手"
+  },
+  {
+   "entity_id": 1556152447,
+   "nombre": "Lightless Racer",
+   "npc_type": 23799,
+   "sprite": 111496,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    119,
+    113
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 427,
+   "nombre_original": "無光車手"
+  },
+  {
+   "entity_id": 1556283521,
+   "nombre": "Lightless Racer",
+   "npc_type": 23799,
+   "sprite": 111496,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    111,
+    120
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 427,
+   "nombre_original": "無光車手"
+  },
+  {
+   "entity_id": 1556611206,
+   "nombre": "Lightless Racer",
+   "npc_type": 23799,
+   "sprite": 111496,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    95,
+    126
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 427,
+   "nombre_original": "無光車手"
+  },
+  {
+   "entity_id": 1556742280,
+   "nombre": "Lightless Racer",
+   "npc_type": 23799,
+   "sprite": 111496,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    80,
+    130
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 427,
+   "nombre_original": "無光車手"
+  },
+  {
+   "entity_id": 1556807817,
+   "nombre": "Lightless Racer",
+   "npc_type": 23799,
+   "sprite": 111496,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    83,
+    135
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 427,
+   "nombre_original": "無光車手"
+  },
+  {
+   "entity_id": 1556873354,
+   "nombre": "Lightless Racer",
+   "npc_type": 23799,
+   "sprite": 111496,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    77,
+    136
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 427,
+   "nombre_original": "無光車手"
+  },
+  {
+   "entity_id": 1556938891,
+   "nombre": "Lightless Racer",
+   "npc_type": 23799,
+   "sprite": 111496,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    86,
+    132
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 427,
+   "nombre_original": "無光車手"
+  },
+  {
+   "entity_id": 1557004428,
+   "nombre": "Lightless Racer",
+   "npc_type": 23799,
+   "sprite": 111496,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    78,
+    142
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 427,
+   "nombre_original": "無光車手"
+  },
+  {
+   "entity_id": 1557069965,
+   "nombre": "E-Night Raging Monkey",
+   "npc_type": 23802,
+   "sprite": 111497,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    20,
+    154
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 433,
+   "nombre_original": "菁英-暗夜飆猴"
+  },
+  {
+   "entity_id": 1557135502,
+   "nombre": "E-Night Raging Monkey",
+   "npc_type": 23802,
+   "sprite": 111497,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    26,
+    161
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 433,
+   "nombre_original": "菁英-暗夜飆猴"
+  },
+  {
+   "entity_id": 1557201039,
+   "nombre": "E-Night Raging Monkey",
+   "npc_type": 23802,
+   "sprite": 111497,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    28,
+    157
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 433,
+   "nombre_original": "菁英-暗夜飆猴"
+  },
+  {
+   "entity_id": 1557266576,
+   "nombre": "E-Night Raging Monkey",
+   "npc_type": 23802,
+   "sprite": 111497,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    23,
+    154
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 433,
+   "nombre_original": "菁英-暗夜飆猴"
+  },
+  {
+   "entity_id": 1557332113,
+   "nombre": "E-Night Raging Monkey",
+   "npc_type": 23802,
+   "sprite": 111497,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    17,
+    158
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 433,
+   "nombre_original": "菁英-暗夜飆猴"
+  },
+  {
+   "entity_id": 1557397650,
+   "nombre": "Frenzied Monkey Oliver",
+   "npc_type": 23804,
+   "sprite": 111498,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    148,
+    148
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 435,
+   "nombre_original": "花火狂猴奧利弗"
+  },
+  {
+   "entity_id": 1557463187,
+   "nombre": "E-Amethyst Dragon",
+   "npc_type": 23801,
+   "sprite": 111526,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    63,
+    165
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 431,
+   "nombre_original": "菁英-紫金變幻龍"
+  },
+  {
+   "entity_id": 1557528724,
+   "nombre": "E-Amethyst Dragon",
+   "npc_type": 23801,
+   "sprite": 111526,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    54,
+    164
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 431,
+   "nombre_original": "菁英-紫金變幻龍"
+  },
+  {
+   "entity_id": 1557594261,
+   "nombre": "E-Amethyst Dragon",
+   "npc_type": 23801,
+   "sprite": 111526,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    50,
+    163
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 431,
+   "nombre_original": "菁英-紫金變幻龍"
+  },
+  {
+   "entity_id": 1557659798,
+   "nombre": "E-Amethyst Dragon",
+   "npc_type": 23801,
+   "sprite": 111526,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    42,
+    155
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 431,
+   "nombre_original": "菁英-紫金變幻龍"
+  },
+  {
+   "entity_id": 1557725335,
+   "nombre": "E-Amethyst Dragon",
+   "npc_type": 23801,
+   "sprite": 111526,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    55,
+    161
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 431,
+   "nombre_original": "菁英-紫金變幻龍"
+  },
+  {
+   "entity_id": 1557856409,
+   "nombre": "Night Raging Monkey",
+   "npc_type": 23800,
+   "sprite": 111497,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    100,
+    156
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 429,
+   "nombre_original": "暗夜飆猴"
+  },
+  {
+   "entity_id": 1557987483,
+   "nombre": "Night Raging Monkey",
+   "npc_type": 23800,
+   "sprite": 111497,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    104,
+    147
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 429,
+   "nombre_original": "暗夜飆猴"
+  },
+  {
+   "entity_id": 1558315168,
+   "nombre": "Night Raging Monkey",
+   "npc_type": 23800,
+   "sprite": 111497,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    119,
+    158
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 429,
+   "nombre_original": "暗夜飆猴"
+  },
+  {
+   "entity_id": 1558511779,
+   "nombre": "Night Raging Monkey",
+   "npc_type": 23800,
+   "sprite": 111497,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    137,
+    155
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 429,
+   "nombre_original": "暗夜飆猴"
+  },
+  {
+   "entity_id": 1558577316,
+   "nombre": "Night Raging Monkey",
+   "npc_type": 23800,
+   "sprite": 111497,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    120,
+    163
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 429,
+   "nombre_original": "暗夜飆猴"
+  },
+  {
+   "entity_id": 1558642853,
+   "nombre": "Night Raging Monkey",
+   "npc_type": 23800,
+   "sprite": 111497,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    138,
+    154
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 429,
+   "nombre_original": "暗夜飆猴"
+  },
+  {
+   "entity_id": 1558905001,
+   "nombre": "Night Raging Monkey",
+   "npc_type": 23800,
+   "sprite": 111497,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    132,
+    135
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 429,
+   "nombre_original": "暗夜飆猴"
+  },
+  {
+   "entity_id": 1559036075,
+   "nombre": "Night Raging Monkey",
+   "npc_type": 23800,
+   "sprite": 111497,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    115,
+    131
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 429,
+   "nombre_original": "暗夜飆猴"
+  },
+  {
+   "entity_id": 1559298223,
+   "nombre": "Night Raging Monkey",
+   "npc_type": 23800,
+   "sprite": 111497,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    137,
+    128
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 429,
+   "nombre_original": "暗夜飆猴"
+  },
+  {
+   "entity_id": 1559429297,
+   "nombre": "Night Raging Monkey",
+   "npc_type": 23800,
+   "sprite": 111497,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    160,
+    117
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 429,
+   "nombre_original": "暗夜飆猴"
+  },
+  {
+   "entity_id": 1559494834,
+   "nombre": "Night Raging Monkey",
+   "npc_type": 23800,
+   "sprite": 111497,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    156,
+    119
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 429,
+   "nombre_original": "暗夜飆猴"
+  },
+  {
+   "entity_id": 1559560371,
+   "nombre": "Night Raging Monkey",
+   "npc_type": 23800,
+   "sprite": 111497,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    186,
+    113
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 429,
+   "nombre_original": "暗夜飆猴"
+  },
+  {
+   "entity_id": 1559625908,
+   "nombre": "Night Raging Monkey",
+   "npc_type": 23800,
+   "sprite": 111497,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    159,
+    122
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 429,
+   "nombre_original": "暗夜飆猴"
+  },
+  {
+   "entity_id": 1559691445,
+   "nombre": "Night Raging Monkey",
+   "npc_type": 23800,
+   "sprite": 111497,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    188,
+    112
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 429,
+   "nombre_original": "暗夜飆猴"
+  },
+  {
+   "entity_id": 1560674500,
+   "nombre": "Can Claw",
+   "npc_type": 23797,
+   "sprite": 111527,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    18,
+    61
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 423,
+   "nombre_original": "罐形爪"
+  },
+  {
+   "entity_id": 1560936648,
+   "nombre": "Can Claw",
+   "npc_type": 23797,
+   "sprite": 111527,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    67,
+    48
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 423,
+   "nombre_original": "罐形爪"
+  },
+  {
+   "entity_id": 1561133259,
+   "nombre": "Can Claw",
+   "npc_type": 23797,
+   "sprite": 111527,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    63,
+    48
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423,
+   "nombre_original": "罐形爪"
+  },
+  {
+   "entity_id": 1561198796,
+   "nombre": "Can Claw",
+   "npc_type": 23797,
+   "sprite": 111527,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    41,
+    60
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 423,
+   "nombre_original": "罐形爪"
+  },
+  {
+   "entity_id": 1561854166,
+   "nombre": "Cyan Mist Dragon",
+   "npc_type": 23795,
+   "sprite": 111525,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    162,
+    38
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 420,
+   "nombre_original": "青藍迷影龍"
+  },
+  {
+   "entity_id": 1561985240,
+   "nombre": "Cyan Mist Dragon",
+   "npc_type": 23795,
+   "sprite": 111525,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    168,
+    37
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 420,
+   "nombre_original": "青藍迷影龍"
+  },
+  {
+   "entity_id": 1562050777,
+   "nombre": "Cyan Mist Dragon",
+   "npc_type": 23795,
+   "sprite": 111525,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    184,
+    50
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 420,
+   "nombre_original": "青藍迷影龍"
+  },
+  {
+   "entity_id": 1562116314,
+   "nombre": "Cyan Mist Dragon",
+   "npc_type": 23795,
+   "sprite": 111525,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    177,
+    50
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 420,
+   "nombre_original": "青藍迷影龍"
+  },
+  {
+   "entity_id": 1562247388,
+   "nombre": "Cyan Mist Dragon",
+   "npc_type": 23795,
+   "sprite": 111525,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    161,
+    36
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 420,
+   "nombre_original": "青藍迷影龍"
+  }
+ ],
+ "recursos": [
+  {
+   "entity_id": 1525091335,
+   "capa": 0,
+   "px": [
+    9206,
+    141
+   ],
+   "medio": "00a4b5b7ac66bef0b746000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00000481030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 1525156872,
+   "capa": 0,
+   "px": [
+    9008,
+    5209
+   ],
+   "medio": "006aa87babf3b3bd004f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00000481030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 1525222409,
+   "capa": 0,
+   "px": [
+    8839,
+    477
+   ],
+   "medio": "0000006b0e0b0004fe0000003bca1100",
+   "marca": 4,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1525287946,
+   "capa": 0,
+   "px": [
+    8623,
+    542
+   ],
+   "medio": "000000001e0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1525353483,
+   "capa": 0,
+   "px": [
+    8969,
+    574
+   ],
+   "medio": "006ab5b7ac66bef0b746000071da1100",
+   "marca": 4,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1525419020,
+   "capa": 0,
+   "px": [
+    8620,
+    5120
+   ],
+   "medio": "006ab4b3b4d4aff3c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1525484557,
+   "capa": 0,
+   "px": [
+    8823,
+    5141
+   ],
+   "medio": "006abbccc54bc471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1525550094,
+   "capa": 0,
+   "px": [
+    8759,
+    5020
+   ],
+   "medio": "00000006ee020004410300001c4a0000",
+   "marca": 4,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1526336538,
+   "capa": 0,
+   "px": [
+    6956,
+    1103
+   ],
+   "medio": "00a4b4b3b4d4aff3c24f004f00d50100",
+   "marca": 4,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1526402075,
+   "capa": 0,
+   "px": [
+    6797,
+    1202
+   ],
+   "medio": "0070b4b3b4d4aff3c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1526467612,
+   "capa": 0,
+   "px": [
+    6610,
+    1291
+   ],
+   "medio": "006abb42c452c471afdf004f00cb0b00",
+   "marca": 4,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1526664223,
+   "capa": 0,
+   "px": [
+    6126,
+    1550
+   ],
+   "medio": "00000000170000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1526729760,
+   "capa": 0,
+   "px": [
+    5967,
+    1618
+   ],
+   "medio": "00d0b8adb241aff30000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1526860834,
+   "capa": 0,
+   "px": [
+    5806,
+    1677
+   ],
+   "medio": "000000001b0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1527122982,
+   "capa": 0,
+   "px": [
+    5296,
+    1067
+   ],
+   "medio": "000000001b0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1527188519,
+   "capa": 0,
+   "px": [
+    5325,
+    1234
+   ],
+   "medio": "000000001b0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1527254056,
+   "capa": 0,
+   "px": [
+    5101,
+    978
+   ],
+   "medio": "000000001b69aefc0000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1527319593,
+   "capa": 0,
+   "px": [
+    4944,
+    1101
+   ],
+   "medio": "00000000280000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1527385130,
+   "capa": 0,
+   "px": [
+    5009,
+    1227
+   ],
+   "medio": "000000001b0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1527450667,
+   "capa": 0,
+   "px": [
+    4848,
+    1299
+   ],
+   "medio": "00d0b8adb241aff30000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1527516204,
+   "capa": 0,
+   "px": [
+    4691,
+    1362
+   ],
+   "medio": "0070b5b7ac66bef0b746000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1527909426,
+   "capa": 0,
+   "px": [
+    4912,
+    2099
+   ],
+   "medio": "00a4b5b7ac66bef0b746000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1527974963,
+   "capa": 0,
+   "px": [
+    4721,
+    2029
+   ],
+   "medio": "0070b5b7ac66bef0b746000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1528892481,
+   "capa": 0,
+   "px": [
+    3505,
+    721
+   ],
+   "medio": "0070b0d2aa69aefcaff3c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1528958018,
+   "capa": 0,
+   "px": [
+    3725,
+    752
+   ],
+   "medio": "0070afeec37ebef0c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1529547851,
+   "capa": 0,
+   "px": [
+    2767,
+    401
+   ],
+   "medio": "0070a6d0c37ebef0c24f004f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1530661980,
+   "capa": 0,
+   "px": [
+    524,
+    1937
+   ],
+   "medio": "0070a6d0c37ebef0c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1530858591,
+   "capa": 0,
+   "px": [
+    688,
+    2000
+   ],
+   "medio": "00a4a6d0c37ebef0c24f00b669a6acc2",
+   "marca": 195,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1530989665,
+   "capa": 0,
+   "px": [
+    945,
+    1998
+   ],
+   "medio": "00a4a6d0c37ebef0c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1531055202,
+   "capa": 0,
+   "px": [
+    1136,
+    2066
+   ],
+   "medio": "00d0b8adb241aff3004f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1531776109,
+   "capa": 0,
+   "px": [
+    1295,
+    1937
+   ],
+   "medio": "00000000260000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1532497016,
+   "capa": 0,
+   "px": [
+    3121,
+    2318
+   ],
+   "medio": "006ab5b7ac66bef0b746000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1532562553,
+   "capa": 0,
+   "px": [
+    2966,
+    2446
+   ],
+   "medio": "006ab260aefcb3bdb873000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1532628090,
+   "capa": 0,
+   "px": [
+    2768,
+    2543
+   ],
+   "medio": "00a4bbccc54bc471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1532824701,
+   "capa": 0,
+   "px": [
+    2959,
+    2675
+   ],
+   "medio": "00a4b260aefcb3bdb873000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1532890238,
+   "capa": 0,
+   "px": [
+    3279,
+    2899
+   ],
+   "medio": "006ab4b3b4d4aff3c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1532955775,
+   "capa": 0,
+   "px": [
+    3089,
+    2827
+   ],
+   "medio": "00a4b4b3b4d4aff3c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1533021312,
+   "capa": 0,
+   "px": [
+    3152,
+    3057
+   ],
+   "medio": "000000001d0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1533086849,
+   "capa": 0,
+   "px": [
+    2925,
+    3055
+   ],
+   "medio": "0070b4b3b4d4aff3c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1533283460,
+   "capa": 0,
+   "px": [
+    2288,
+    3474
+   ],
+   "medio": "00000000200000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1533414534,
+   "capa": 0,
+   "px": [
+    2450,
+    3566
+   ],
+   "medio": "006ab4b3b4d4aff3c24f0000bf600d00",
+   "marca": 4,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1534332052,
+   "capa": 0,
+   "px": [
+    1900,
+    3147
+   ],
+   "medio": "000000002f0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1534725274,
+   "capa": 0,
+   "px": [
+    1041,
+    2715
+   ],
+   "medio": "006aabd5b9d2a56abef00000faff0d00",
+   "marca": 176,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1534790811,
+   "capa": 0,
+   "px": [
+    2031,
+    3631
+   ],
+   "medio": "006abbccc54bc471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1534856348,
+   "capa": 0,
+   "px": [
+    2194,
+    3566
+   ],
+   "medio": "00a4bb42c452c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1534921885,
+   "capa": 0,
+   "px": [
+    1584,
+    3678
+   ],
+   "medio": "00d0b8adb241aff30000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1534987422,
+   "capa": 0,
+   "px": [
+    1137,
+    3377
+   ],
+   "medio": "0070b4b3b4d4aff3c24f0000475c0600",
+   "marca": 4,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1535052959,
+   "capa": 0,
+   "px": [
+    1395,
+    3575
+   ],
+   "medio": "000000ce3e0f0004db000000280e0700",
+   "marca": 4,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1535380644,
+   "capa": 0,
+   "px": [
+    815,
+    2831
+   ],
+   "medio": "006aa87babf3b3bd00df000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1535511718,
+   "capa": 0,
+   "px": [
+    5874,
+    2862
+   ],
+   "medio": "00000000220000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1535708329,
+   "capa": 0,
+   "px": [
+    5999,
+    2944
+   ],
+   "medio": "00000000260000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1535773866,
+   "capa": 0,
+   "px": [
+    5262,
+    2896
+   ],
+   "medio": "0070e36eacf5c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1535904940,
+   "capa": 0,
+   "px": [
+    5107,
+    2960
+   ],
+   "medio": "00000042e100000421150000a84a0c00",
+   "marca": 4,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1536101551,
+   "capa": 0,
+   "px": [
+    4497,
+    3280
+   ],
+   "medio": "00a4a46aa4fdb7a6bef0b74600000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1536167088,
+   "capa": 0,
+   "px": [
+    4303,
+    3375
+   ],
+   "medio": "00000000280000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1536232625,
+   "capa": 0,
+   "px": [
+    4082,
+    3455
+   ],
+   "medio": "006aabd5b9d2a56abef0000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1536298162,
+   "capa": 0,
+   "px": [
+    3957,
+    3729
+   ],
+   "medio": "006aabd5b9d2a56abef0004f00110000",
+   "marca": 58,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1536363699,
+   "capa": 0,
+   "px": [
+    3886,
+    3598
+   ],
+   "medio": "00a4afeec37ebef0c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1537215680,
+   "capa": 0,
+   "px": [
+    3057,
+    4112
+   ],
+   "medio": "0070a6d0c37ebef0c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1537346754,
+   "capa": 0,
+   "px": [
+    2450,
+    4398
+   ],
+   "medio": "0070b4b3b4d4aff3c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1537412291,
+   "capa": 0,
+   "px": [
+    2611,
+    4335
+   ],
+   "medio": "006ab4b3b4d4aff3c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1537674439,
+   "capa": 0,
+   "px": [
+    3119,
+    4751
+   ],
+   "medio": "00a4aeb7c3c7aff3c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1537739976,
+   "capa": 0,
+   "px": [
+    3279,
+    4876
+   ],
+   "medio": "006aaeb7c3c7aff3c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1537871050,
+   "capa": 0,
+   "px": [
+    3154,
+    4978
+   ],
+   "medio": "006aaeb7c3c7aff3c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1537936587,
+   "capa": 0,
+   "px": [
+    3440,
+    4896
+   ],
+   "medio": "00a4afeec37ebef0c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1538919642,
+   "capa": 0,
+   "px": [
+    4399,
+    4211
+   ],
+   "medio": "0070b4b3b4d4aff3c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1539050716,
+   "capa": 0,
+   "px": [
+    4526,
+    4336
+   ],
+   "medio": "0070a46aa4fdb7a6bef0b74600000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1539116253,
+   "capa": 0,
+   "px": [
+    4560,
+    4142
+   ],
+   "medio": "00000000190000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1539312864,
+   "capa": 0,
+   "px": [
+    5229,
+    3810
+   ],
+   "medio": "00d0b8adb241aff300f3c24f00a00700",
+   "marca": 4,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1539378401,
+   "capa": 0,
+   "px": [
+    5486,
+    3697
+   ],
+   "medio": "00000000160000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1539443938,
+   "capa": 0,
+   "px": [
+    5777,
+    3727
+   ],
+   "medio": "006aa87babf3b3bd00de000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1539509475,
+   "capa": 0,
+   "px": [
+    5681,
+    3597
+   ],
+   "medio": "000000002b0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1539575012,
+   "capa": 0,
+   "px": [
+    1937,
+    5391
+   ],
+   "medio": "000000001d0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1539640549,
+   "capa": 0,
+   "px": [
+    1840,
+    5139
+   ],
+   "medio": "0070b4b3b4d4aff3c24f0000a29b0a00",
+   "marca": 4,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1539706086,
+   "capa": 0,
+   "px": [
+    1648,
+    5389
+   ],
+   "medio": "00a4b4b3b4d4aff3c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1539771623,
+   "capa": 0,
+   "px": [
+    2126,
+    5235
+   ],
+   "medio": "00000000220000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1539837160,
+   "capa": 0,
+   "px": [
+    1519,
+    5169
+   ],
+   "medio": "00d0b8adb241aff3004f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1539902697,
+   "capa": 0,
+   "px": [
+    497,
+    4845
+   ],
+   "medio": "0070bbccc54bc471afdf0000de880100",
+   "marca": 4,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1539968234,
+   "capa": 0,
+   "px": [
+    720,
+    5041
+   ],
+   "medio": "006abbccc54bc471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1540033771,
+   "capa": 0,
+   "px": [
+    719,
+    4722
+   ],
+   "medio": "00a4b0d2aa69aefcaff3c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1540099308,
+   "capa": 0,
+   "px": [
+    915,
+    4847
+   ],
+   "medio": "0070b0d2aa69aefcaff3c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1540164845,
+   "capa": 0,
+   "px": [
+    1043,
+    5103
+   ],
+   "medio": "00a4b0d2aa69aefcaff3c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1540230382,
+   "capa": 0,
+   "px": [
+    4851,
+    4910
+   ],
+   "medio": "00d0b8adb241aff300f3c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60037,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1540295919,
+   "capa": 0,
+   "px": [
+    4912,
+    4754
+   ],
+   "medio": "000000001c0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60037,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1540361456,
+   "capa": 0,
+   "px": [
+    5105,
+    4718
+   ],
+   "medio": "00d0b8adb241aff30000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60037,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 1543834917,
+   "capa": 0,
+   "px": [
+    7439,
+    3446
+   ],
+   "medio": "006aa6d0c37ebef0c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60051,
+   "cola": "00002280140000",
+   "que_es": "Aurora Totem"
+  },
+  {
+   "entity_id": 1543900454,
+   "capa": 0,
+   "px": [
+    7650,
+    3280
+   ],
+   "medio": "00000000280000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60052,
+   "cola": "00002280140000",
+   "que_es": "Dark City Totem"
+  },
+  {
+   "entity_id": 1543965991,
+   "capa": 0,
+   "px": [
+    7862,
+    3399
+   ],
+   "medio": "00000000170000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60053,
+   "cola": "00002280140000",
+   "que_es": "Iron Totem"
+  },
+  {
+   "entity_id": 1544031528,
+   "capa": 0,
+   "px": [
+    7620,
+    3557
+   ],
+   "medio": "00d0b8adb241aff30000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60054,
+   "cola": "00002280140000",
+   "que_es": "Breeze Totem"
+  },
+  {
+   "entity_id": 1544752435,
+   "capa": 0,
+   "px": [
+    6826,
+    2894
+   ],
+   "medio": "00d0b8adb241aff300df000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60305,
+   "cola": "00000280140000"
+  },
+  {
+   "entity_id": 1544817972,
+   "capa": 0,
+   "px": [
+    9102,
+    2607
+   ],
+   "medio": "006aaeb7c3c7aff3c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60305,
+   "cola": "00000280000000"
+  }
+ ]
+}

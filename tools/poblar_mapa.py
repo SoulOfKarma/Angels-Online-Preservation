@@ -22,6 +22,7 @@ import glob
 import json
 import pathlib
 import re
+import sqlite3
 import struct
 import sys
 
@@ -88,8 +89,20 @@ def leer(sesiones):
     return spawns, recursos, carteles
 
 
+def nombre_del_spawn(crudo):
+    """Nombre de los 16 bytes del 0x0008, venga de donde venga.
+
+    Celestia manda los nombres en ingles ASCII, asi que hasta ahora bastaba
+    con decodificar ascii. El cliente oficial de Taiwan los manda en BIG5 y
+    ascii los destroza: 'Hardworking Pig' salia como una fila de rombos.
+    Big5 es compatible con ascii por debajo de 0x80, asi que decodificarlo
+    siempre da lo mismo para los nombres ingleses y ademas arregla los chinos.
+    """
+    return crudo.split(b'\x00')[0].decode('big5', 'replace')
+
+
 def spawn_a_datos(e, b):
-    nom = b[16:32].split(b'\x00')[0].decode('ascii', 'replace')
+    nom = nombre_del_spawn(b[16:32])
     visible = struct.unpack_from('<I', b, 4)[0]
     tile = list(struct.unpack_from('<II', b, 8))
     sprite = struct.unpack_from('<I', b, 34)[0]
@@ -173,6 +186,42 @@ def recurso_a_datos(e, b, mats, cartel=None):
     return d
 
 
+def traducir_nombres(spawns):
+    """Pasa los nombres chinos a los ingleses que ya tenemos, por npc_type.
+
+    El cliente de Taiwan manda los nombres en chino; el de Celestia, en
+    ingles. Las plantillas del proyecto estan todas en ingles, asi que un
+    mapa capturado en Taiwan quedaria con los bichos en chino y no se podria
+    comparar con el resto ni buscar por nombre.
+
+    No hay que traducir nada a mano: el npc_type es el mismo en las dos
+    versiones y nuestro content.db, sacado de los XML del cliente, ya trae el
+    nombre ingles de cada id. Se cruza por ahi. El chino original se guarda en
+    nombre_original por si hiciera falta.
+    """
+    db = RAIZ / 'corpus' / 'content.db'
+    if not db.exists():
+        return 0
+    con = sqlite3.connect(db)
+    cambiados = 0
+    for e in spawns:
+        if e['nombre'].isascii():
+            continue                       # ya viene en ingles (Celestia)
+        t = str(e['npc_type'])
+        fila = (con.execute('select name from monster where id=?', (t,)).fetchone()
+                if e['monstruo'] else None)
+        if fila is None:
+            fila = con.execute('select name from npc where id=?', (t,)).fetchone()
+        if fila is None:
+            fila = con.execute('select name from monster where id=?', (t,)).fetchone()
+        if fila and fila[0] and fila[0] != e['nombre']:
+            e['nombre_original'] = e['nombre']
+            e['nombre'] = fila[0]
+            cambiados += 1
+    con.close()
+    return cambiados
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--stage', type=int, required=True)
@@ -187,6 +236,8 @@ def main():
     ds = [spawn_a_datos(e, b) for e, b in sorted(spawns.items())]
     dr = [recurso_a_datos(e, b, mats, carteles.get(e))
           for e, b in sorted(recursos.items())]
+
+    traducir_nombres(ds)
 
     salida = {'_nota': a.nota, 'stage': a.stage, 'spawns': ds, 'recursos': dr}
     f = RAIZ / 'server' / 'plantillas' / (a.nombre + '.json')

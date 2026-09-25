@@ -1,0 +1,4292 @@
+{
+ "_nota": "Bling Plaza (stage 420), capturado el 25/09/2026 en el cliente OFICIAL de Taiwan (8.7.5.7), en dos pasadas. Tiene los CUATRO totems de faccion mas tres NPC, y aun asi muchos monstruos: como Commercial Street, mezcla servicios y combate, no es una ciudad segura. Dos tornados: el de (291,5) va a Ultimate Arena (421) y el de (282,173) es la entrada de una instancia, sin cruzar. La vuelta a Commercial Street NO es tornado, es cruce por borde en (22,6). Se separo con tools/separar_por_mapa.py.",
+ "stage": 420,
+ "spawns": [
+  {
+   "entity_id": 871435188,
+   "nombre": "Iron Totem",
+   "npc_type": 1939,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    282,
+    132
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nombre_original": "鐵輪堡圖騰"
+  },
+  {
+   "entity_id": 871500725,
+   "nombre": "Dark City Totem",
+   "npc_type": 1938,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    278,
+    127
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nombre_original": "永夜城圖騰"
+  },
+  {
+   "entity_id": 871566262,
+   "nombre": "Breeze Totem",
+   "npc_type": 1940,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    273,
+    135
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nombre_original": "和風林圖騰"
+  },
+  {
+   "entity_id": 871631799,
+   "nombre": "Aurora Totem",
+   "npc_type": 1937,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    268,
+    130
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nombre_original": "聖光城圖騰"
+  },
+  {
+   "entity_id": 872287169,
+   "nombre": "Lambert",
+   "npc_type": 24816,
+   "sprite": 40009,
+   "klass": 400,
+   "monstruo": false,
+   "tile": [
+    138,
+    120
+   ],
+   "direccion": 5,
+   "visible": 1,
+   "nombre_original": "蘭伯特"
+  },
+  {
+   "entity_id": 872549317,
+   "nombre": "Sebastian",
+   "npc_type": 24820,
+   "sprite": 40780,
+   "klass": 400,
+   "monstruo": false,
+   "tile": [
+    228,
+    113
+   ],
+   "direccion": 6,
+   "visible": 1,
+   "nombre_original": "賽巴斯"
+  },
+  {
+   "entity_id": 872745928,
+   "nombre": "Shana",
+   "npc_type": 24823,
+   "sprite": 40024,
+   "klass": 400,
+   "monstruo": false,
+   "tile": [
+    229,
+    169
+   ],
+   "direccion": 7,
+   "visible": 1,
+   "nombre_original": "莎娜"
+  },
+  {
+   "entity_id": 872811465,
+   "nombre": "Arthur",
+   "npc_type": 24824,
+   "sprite": 40022,
+   "klass": 400,
+   "monstruo": false,
+   "tile": [
+    287,
+    20
+   ],
+   "direccion": 5,
+   "visible": 1,
+   "nombre_original": "亞瑟"
+  },
+  {
+   "entity_id": 873008076,
+   "nombre": "Peach Blossom Warrior",
+   "npc_type": 23805,
+   "sprite": 111530,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    45,
+    19
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 430,
+   "nombre_original": "桃花槍戰士"
+  },
+  {
+   "entity_id": 873073613,
+   "nombre": "Peach Blossom Warrior",
+   "npc_type": 23805,
+   "sprite": 111530,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    42,
+    29
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 430,
+   "nombre_original": "桃花槍戰士"
+  },
+  {
+   "entity_id": 873335761,
+   "nombre": "Peach Blossom Warrior",
+   "npc_type": 23805,
+   "sprite": 111530,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    72,
+    10
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 430,
+   "nombre_original": "桃花槍戰士"
+  },
+  {
+   "entity_id": 873401298,
+   "nombre": "Peach Blossom Warrior",
+   "npc_type": 23805,
+   "sprite": 111530,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    55,
+    7
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 430,
+   "nombre_original": "桃花槍戰士"
+  },
+  {
+   "entity_id": 873466835,
+   "nombre": "Peach Blossom Warrior",
+   "npc_type": 23805,
+   "sprite": 111530,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    59,
+    12
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 430,
+   "nombre_original": "桃花槍戰士"
+  },
+  {
+   "entity_id": 873532372,
+   "nombre": "Peach Blossom Warrior",
+   "npc_type": 23805,
+   "sprite": 111530,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    76,
+    10
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 430,
+   "nombre_original": "桃花槍戰士"
+  },
+  {
+   "entity_id": 873597909,
+   "nombre": "Peach Blossom Warrior",
+   "npc_type": 23805,
+   "sprite": 111530,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    84,
+    29
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 430,
+   "nombre_original": "桃花槍戰士"
+  },
+  {
+   "entity_id": 873794520,
+   "nombre": "Peach Blossom Warrior",
+   "npc_type": 23805,
+   "sprite": 111530,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    98,
+    16
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 430,
+   "nombre_original": "桃花槍戰士"
+  },
+  {
+   "entity_id": 873925594,
+   "nombre": "Peach Blossom Warrior",
+   "npc_type": 23805,
+   "sprite": 111530,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    108,
+    33
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 430,
+   "nombre_original": "桃花槍戰士"
+  },
+  {
+   "entity_id": 873991131,
+   "nombre": "Peach Blossom Warrior",
+   "npc_type": 23805,
+   "sprite": 111530,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    120,
+    24
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 430,
+   "nombre_original": "桃花槍戰士"
+  },
+  {
+   "entity_id": 874056668,
+   "nombre": "Peach Blossom Warrior",
+   "npc_type": 23805,
+   "sprite": 111530,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    125,
+    24
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 430,
+   "nombre_original": "桃花槍戰士"
+  },
+  {
+   "entity_id": 874318816,
+   "nombre": "Peach Blossom Warrior",
+   "npc_type": 23805,
+   "sprite": 111530,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    87,
+    40
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 430,
+   "nombre_original": "桃花槍戰士"
+  },
+  {
+   "entity_id": 874384353,
+   "nombre": "Peach Blossom Warrior",
+   "npc_type": 23805,
+   "sprite": 111530,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    90,
+    44
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 430,
+   "nombre_original": "桃花槍戰士"
+  },
+  {
+   "entity_id": 874843112,
+   "nombre": "Peach Blossom Warrior",
+   "npc_type": 23805,
+   "sprite": 111530,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    53,
+    51
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 430,
+   "nombre_original": "桃花槍戰士"
+  },
+  {
+   "entity_id": 874908649,
+   "nombre": "Block Gun Cavalry",
+   "npc_type": 23807,
+   "sprite": 111532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    130,
+    24
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 433,
+   "nombre_original": "方塊槍騎"
+  },
+  {
+   "entity_id": 874974186,
+   "nombre": "Block Gun Cavalry",
+   "npc_type": 23807,
+   "sprite": 111532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    149,
+    12
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 433,
+   "nombre_original": "方塊槍騎"
+  },
+  {
+   "entity_id": 875039723,
+   "nombre": "Block Gun Cavalry",
+   "npc_type": 23807,
+   "sprite": 111532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    133,
+    8
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 433,
+   "nombre_original": "方塊槍騎"
+  },
+  {
+   "entity_id": 875105260,
+   "nombre": "Block Gun Cavalry",
+   "npc_type": 23807,
+   "sprite": 111532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    156,
+    24
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 433,
+   "nombre_original": "方塊槍騎"
+  },
+  {
+   "entity_id": 875170797,
+   "nombre": "Block Gun Cavalry",
+   "npc_type": 23807,
+   "sprite": 111532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    146,
+    19
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 433,
+   "nombre_original": "方塊槍騎"
+  },
+  {
+   "entity_id": 875236334,
+   "nombre": "Block Gun Cavalry",
+   "npc_type": 23807,
+   "sprite": 111532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    167,
+    19
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 433,
+   "nombre_original": "方塊槍騎"
+  },
+  {
+   "entity_id": 875301871,
+   "nombre": "Block Gun Cavalry",
+   "npc_type": 23807,
+   "sprite": 111532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    162,
+    14
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 433,
+   "nombre_original": "方塊槍騎"
+  },
+  {
+   "entity_id": 875367408,
+   "nombre": "Block Gun Cavalry",
+   "npc_type": 23807,
+   "sprite": 111532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    182,
+    9
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 433,
+   "nombre_original": "方塊槍騎"
+  },
+  {
+   "entity_id": 875432945,
+   "nombre": "Block Gun Cavalry",
+   "npc_type": 23807,
+   "sprite": 111532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    173,
+    13
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 433,
+   "nombre_original": "方塊槍騎"
+  },
+  {
+   "entity_id": 875498482,
+   "nombre": "Block Gun Cavalry",
+   "npc_type": 23807,
+   "sprite": 111532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    161,
+    19
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 433,
+   "nombre_original": "方塊槍騎"
+  },
+  {
+   "entity_id": 875564019,
+   "nombre": "Block Gun Cavalry",
+   "npc_type": 23807,
+   "sprite": 111532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    216,
+    23
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 433,
+   "nombre_original": "方塊槍騎"
+  },
+  {
+   "entity_id": 875629556,
+   "nombre": "Block Gun Cavalry",
+   "npc_type": 23807,
+   "sprite": 111532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    205,
+    19
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 433,
+   "nombre_original": "方塊槍騎"
+  },
+  {
+   "entity_id": 875695093,
+   "nombre": "Block Gun Cavalry",
+   "npc_type": 23807,
+   "sprite": 111532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    213,
+    16
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 433,
+   "nombre_original": "方塊槍騎"
+  },
+  {
+   "entity_id": 875826167,
+   "nombre": "Block Gun Cavalry",
+   "npc_type": 23807,
+   "sprite": 111532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    200,
+    14
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 433,
+   "nombre_original": "方塊槍騎"
+  },
+  {
+   "entity_id": 875891704,
+   "nombre": "Block Gun Cavalry",
+   "npc_type": 23807,
+   "sprite": 111532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    251,
+    9
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 433,
+   "nombre_original": "方塊槍騎"
+  },
+  {
+   "entity_id": 875957241,
+   "nombre": "Block Gun Cavalry",
+   "npc_type": 23807,
+   "sprite": 111532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    242,
+    9
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 433,
+   "nombre_original": "方塊槍騎"
+  },
+  {
+   "entity_id": 876022778,
+   "nombre": "Block Gun Cavalry",
+   "npc_type": 23807,
+   "sprite": 111532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    244,
+    22
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 433,
+   "nombre_original": "方塊槍騎"
+  },
+  {
+   "entity_id": 876088315,
+   "nombre": "Block Gun Cavalry",
+   "npc_type": 23807,
+   "sprite": 111532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    230,
+    18
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 433,
+   "nombre_original": "方塊槍騎"
+  },
+  {
+   "entity_id": 876219389,
+   "nombre": "Block Gun Cavalry",
+   "npc_type": 23807,
+   "sprite": 111532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    268,
+    30
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 433,
+   "nombre_original": "方塊槍騎"
+  },
+  {
+   "entity_id": 876284926,
+   "nombre": "Block Gun Cavalry",
+   "npc_type": 23807,
+   "sprite": 111532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    282,
+    49
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 433,
+   "nombre_original": "方塊槍騎"
+  },
+  {
+   "entity_id": 876350463,
+   "nombre": "Block Gun Cavalry",
+   "npc_type": 23807,
+   "sprite": 111532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    282,
+    54
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 433,
+   "nombre_original": "方塊槍騎"
+  },
+  {
+   "entity_id": 876416000,
+   "nombre": "Block Gun Cavalry",
+   "npc_type": 23807,
+   "sprite": 111532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    281,
+    35
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 433,
+   "nombre_original": "方塊槍騎"
+  },
+  {
+   "entity_id": 876481537,
+   "nombre": "Block Gun Cavalry",
+   "npc_type": 23807,
+   "sprite": 111532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    263,
+    31
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 433,
+   "nombre_original": "方塊槍騎"
+  },
+  {
+   "entity_id": 876547074,
+   "nombre": "Block Gun Cavalry",
+   "npc_type": 23807,
+   "sprite": 111532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    224,
+    47
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 433,
+   "nombre_original": "方塊槍騎"
+  },
+  {
+   "entity_id": 876612611,
+   "nombre": "Block Gun Cavalry",
+   "npc_type": 23807,
+   "sprite": 111532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    215,
+    36
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 433,
+   "nombre_original": "方塊槍騎"
+  },
+  {
+   "entity_id": 876678148,
+   "nombre": "Block Gun Cavalry",
+   "npc_type": 23807,
+   "sprite": 111532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    231,
+    43
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 433,
+   "nombre_original": "方塊槍騎"
+  },
+  {
+   "entity_id": 876809222,
+   "nombre": "Block Gun Cavalry",
+   "npc_type": 23807,
+   "sprite": 111532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    230,
+    45
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 433,
+   "nombre_original": "方塊槍騎"
+  },
+  {
+   "entity_id": 876874759,
+   "nombre": "Poker Iron Blood Soldier",
+   "npc_type": 23806,
+   "sprite": 111531,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    17,
+    76
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 431,
+   "nombre_original": "撲克鐵血兵"
+  },
+  {
+   "entity_id": 876940296,
+   "nombre": "Poker Iron Blood Soldier",
+   "npc_type": 23806,
+   "sprite": 111531,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    15,
+    71
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 431,
+   "nombre_original": "撲克鐵血兵"
+  },
+  {
+   "entity_id": 877005833,
+   "nombre": "Poker Iron Blood Soldier",
+   "npc_type": 23806,
+   "sprite": 111531,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    18,
+    66
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 431,
+   "nombre_original": "撲克鐵血兵"
+  },
+  {
+   "entity_id": 877071370,
+   "nombre": "Poker Iron Blood Soldier",
+   "npc_type": 23806,
+   "sprite": 111531,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    21,
+    72
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 431,
+   "nombre_original": "撲克鐵血兵"
+  },
+  {
+   "entity_id": 877136907,
+   "nombre": "Poker Iron Blood Soldier",
+   "npc_type": 23806,
+   "sprite": 111531,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    22,
+    61
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 431,
+   "nombre_original": "撲克鐵血兵"
+  },
+  {
+   "entity_id": 877267981,
+   "nombre": "Poker Iron Blood Soldier",
+   "npc_type": 23806,
+   "sprite": 111531,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    55,
+    102
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 431,
+   "nombre_original": "撲克鐵血兵"
+  },
+  {
+   "entity_id": 877333518,
+   "nombre": "Poker Iron Blood Soldier",
+   "npc_type": 23806,
+   "sprite": 111531,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    19,
+    73
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 431,
+   "nombre_original": "撲克鐵血兵"
+  },
+  {
+   "entity_id": 877464592,
+   "nombre": "Poker Iron Blood Soldier",
+   "npc_type": 23806,
+   "sprite": 111531,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    43,
+    96
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 431,
+   "nombre_original": "撲克鐵血兵"
+  },
+  {
+   "entity_id": 877726740,
+   "nombre": "Poker Iron Blood Soldier",
+   "npc_type": 23806,
+   "sprite": 111531,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    52,
+    50
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 431,
+   "nombre_original": "撲克鐵血兵"
+  },
+  {
+   "entity_id": 877792277,
+   "nombre": "Poker Iron Blood Soldier",
+   "npc_type": 23806,
+   "sprite": 111531,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    55,
+    72
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 431,
+   "nombre_original": "撲克鐵血兵"
+  },
+  {
+   "entity_id": 877857814,
+   "nombre": "Poker Iron Blood Soldier",
+   "npc_type": 23806,
+   "sprite": 111531,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    98,
+    122
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 431,
+   "nombre_original": "撲克鐵血兵"
+  },
+  {
+   "entity_id": 877923351,
+   "nombre": "Poker Iron Blood Soldier",
+   "npc_type": 23806,
+   "sprite": 111531,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    59,
+    100
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 431,
+   "nombre_original": "撲克鐵血兵"
+  },
+  {
+   "entity_id": 877988888,
+   "nombre": "Poker Iron Blood Soldier",
+   "npc_type": 23806,
+   "sprite": 111531,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    95,
+    114
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 431,
+   "nombre_original": "撲克鐵血兵"
+  },
+  {
+   "entity_id": 878054425,
+   "nombre": "Poker Iron Blood Soldier",
+   "npc_type": 23806,
+   "sprite": 111531,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    77,
+    105
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 431,
+   "nombre_original": "撲克鐵血兵"
+  },
+  {
+   "entity_id": 878119962,
+   "nombre": "Poker Iron Blood Soldier",
+   "npc_type": 23806,
+   "sprite": 111531,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    97,
+    106
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 431,
+   "nombre_original": "撲克鐵血兵"
+  },
+  {
+   "entity_id": 878251036,
+   "nombre": "Poker Iron Blood Soldier",
+   "npc_type": 23806,
+   "sprite": 111531,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    89,
+    79
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 431,
+   "nombre_original": "撲克鐵血兵"
+  },
+  {
+   "entity_id": 878316573,
+   "nombre": "Poker Iron Blood Soldier",
+   "npc_type": 23806,
+   "sprite": 111531,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    82,
+    79
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 431,
+   "nombre_original": "撲克鐵血兵"
+  },
+  {
+   "entity_id": 878382110,
+   "nombre": "Poker Iron Blood Soldier",
+   "npc_type": 23806,
+   "sprite": 111531,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    78,
+    80
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 431,
+   "nombre_original": "撲克鐵血兵"
+  },
+  {
+   "entity_id": 878513184,
+   "nombre": "Poker Iron Blood Soldier",
+   "npc_type": 23806,
+   "sprite": 111531,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    120,
+    107
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 431,
+   "nombre_original": "撲克鐵血兵"
+  },
+  {
+   "entity_id": 878578721,
+   "nombre": "Poker Iron Blood Soldier",
+   "npc_type": 23806,
+   "sprite": 111531,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    104,
+    88
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 431,
+   "nombre_original": "撲克鐵血兵"
+  },
+  {
+   "entity_id": 878644258,
+   "nombre": "Poker Iron Blood Soldier",
+   "npc_type": 23806,
+   "sprite": 111531,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    108,
+    95
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 431,
+   "nombre_original": "撲克鐵血兵"
+  },
+  {
+   "entity_id": 878709795,
+   "nombre": "Poker Iron Blood Soldier",
+   "npc_type": 23806,
+   "sprite": 111531,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    123,
+    107
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 431,
+   "nombre_original": "撲克鐵血兵"
+  },
+  {
+   "entity_id": 878775332,
+   "nombre": "Poker Iron Blood Soldier",
+   "npc_type": 23806,
+   "sprite": 111531,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    118,
+    102
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 431,
+   "nombre_original": "撲克鐵血兵"
+  },
+  {
+   "entity_id": 878840869,
+   "nombre": "Magic Shield Bear Teddy",
+   "npc_type": 23813,
+   "sprite": 111534,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    183,
+    37
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 445,
+   "nombre_original": "肉靶魔熊泰迪"
+  },
+  {
+   "entity_id": 878906406,
+   "nombre": "Popcorn Kernel Spirit",
+   "npc_type": 23809,
+   "sprite": 111535,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    243,
+    58
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 437,
+   "nombre_original": "爆裂玉米精靈"
+  },
+  {
+   "entity_id": 878971943,
+   "nombre": "Popcorn Kernel Spirit",
+   "npc_type": 23809,
+   "sprite": 111535,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    222,
+    47
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 437,
+   "nombre_original": "爆裂玉米精靈"
+  },
+  {
+   "entity_id": 879430702,
+   "nombre": "Popcorn Kernel Spirit",
+   "npc_type": 23809,
+   "sprite": 111535,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    201,
+    83
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 437,
+   "nombre_original": "爆裂玉米精靈"
+  },
+  {
+   "entity_id": 879561776,
+   "nombre": "Popcorn Kernel Spirit",
+   "npc_type": 23809,
+   "sprite": 111535,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    220,
+    84
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 437,
+   "nombre_original": "爆裂玉米精靈"
+  },
+  {
+   "entity_id": 879692850,
+   "nombre": "Popcorn Kernel Spirit",
+   "npc_type": 23809,
+   "sprite": 111535,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    202,
+    91
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 437,
+   "nombre_original": "爆裂玉米精靈"
+  },
+  {
+   "entity_id": 879758387,
+   "nombre": "Popcorn Kernel Spirit",
+   "npc_type": 23809,
+   "sprite": 111535,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    228,
+    91
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 437,
+   "nombre_original": "爆裂玉米精靈"
+  },
+  {
+   "entity_id": 879889461,
+   "nombre": "Popcorn Kernel Spirit",
+   "npc_type": 23809,
+   "sprite": 111535,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    269,
+    79
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 437,
+   "nombre_original": "爆裂玉米精靈"
+  },
+  {
+   "entity_id": 879954998,
+   "nombre": "Popcorn Kernel Spirit",
+   "npc_type": 23809,
+   "sprite": 111535,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    281,
+    62
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 437,
+   "nombre_original": "爆裂玉米精靈"
+  },
+  {
+   "entity_id": 880020535,
+   "nombre": "Popcorn Kernel Spirit",
+   "npc_type": 23809,
+   "sprite": 111535,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    290,
+    54
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 437,
+   "nombre_original": "爆裂玉米精靈"
+  },
+  {
+   "entity_id": 880086072,
+   "nombre": "Popcorn Kernel Spirit",
+   "npc_type": 23809,
+   "sprite": 111535,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    281,
+    68
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 437,
+   "nombre_original": "爆裂玉米精靈"
+  },
+  {
+   "entity_id": 880151609,
+   "nombre": "Popcorn Kernel Spirit",
+   "npc_type": 23809,
+   "sprite": 111535,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    284,
+    75
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 437,
+   "nombre_original": "爆裂玉米精靈"
+  },
+  {
+   "entity_id": 880413757,
+   "nombre": "Popcorn Kernel Spirit",
+   "npc_type": 23809,
+   "sprite": 111535,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    240,
+    101
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 437,
+   "nombre_original": "爆裂玉米精靈"
+  },
+  {
+   "entity_id": 880479294,
+   "nombre": "Popcorn Kernel Spirit",
+   "npc_type": 23809,
+   "sprite": 111535,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    240,
+    88
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 437,
+   "nombre_original": "爆裂玉米精靈"
+  },
+  {
+   "entity_id": 880544831,
+   "nombre": "Popcorn Kernel Spirit",
+   "npc_type": 23809,
+   "sprite": 111535,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    163,
+    129
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 437,
+   "nombre_original": "爆裂玉米精靈"
+  },
+  {
+   "entity_id": 880610368,
+   "nombre": "Popcorn Kernel Spirit",
+   "npc_type": 23809,
+   "sprite": 111535,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    187,
+    119
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 437,
+   "nombre_original": "爆裂玉米精靈"
+  },
+  {
+   "entity_id": 880675905,
+   "nombre": "Popcorn Kernel Spirit",
+   "npc_type": 23809,
+   "sprite": 111535,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    161,
+    132
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 437,
+   "nombre_original": "爆裂玉米精靈"
+  },
+  {
+   "entity_id": 880806979,
+   "nombre": "Popcorn Kernel Spirit",
+   "npc_type": 23809,
+   "sprite": 111535,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    171,
+    132
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 437,
+   "nombre_original": "爆裂玉米精靈"
+  },
+  {
+   "entity_id": 880872516,
+   "nombre": "Popcorn Kernel Spirit",
+   "npc_type": 23809,
+   "sprite": 111535,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    139,
+    128
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 437,
+   "nombre_original": "爆裂玉米精靈"
+  },
+  {
+   "entity_id": 880938053,
+   "nombre": "Popcorn Kernel Spirit",
+   "npc_type": 23809,
+   "sprite": 111535,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    142,
+    134
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 437,
+   "nombre_original": "爆裂玉米精靈"
+  },
+  {
+   "entity_id": 881003590,
+   "nombre": "Popcorn Kernel Spirit",
+   "npc_type": 23809,
+   "sprite": 111535,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    123,
+    124
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 437,
+   "nombre_original": "爆裂玉米精靈"
+  },
+  {
+   "entity_id": 881069127,
+   "nombre": "Popcorn Kernel Spirit",
+   "npc_type": 23809,
+   "sprite": 111535,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    151,
+    127
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 437,
+   "nombre_original": "爆裂玉米精靈"
+  },
+  {
+   "entity_id": 881134664,
+   "nombre": "Popcorn Kernel Spirit",
+   "npc_type": 23809,
+   "sprite": 111535,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    131,
+    126
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 437,
+   "nombre_original": "爆裂玉米精靈"
+  },
+  {
+   "entity_id": 881200201,
+   "nombre": "Popcorn Kernel Spirit",
+   "npc_type": 23809,
+   "sprite": 111535,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    203,
+    111
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 437,
+   "nombre_original": "爆裂玉米精靈"
+  },
+  {
+   "entity_id": 881396812,
+   "nombre": "Popcorn Kernel Spirit",
+   "npc_type": 23809,
+   "sprite": 111535,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    188,
+    119
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 437,
+   "nombre_original": "爆裂玉米精靈"
+  },
+  {
+   "entity_id": 881724497,
+   "nombre": "Plum Blossom Commando",
+   "npc_type": 23808,
+   "sprite": 111533,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    180,
+    60
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 435,
+   "nombre_original": "梅花突擊兵"
+  },
+  {
+   "entity_id": 881986645,
+   "nombre": "Plum Blossom Commando",
+   "npc_type": 23808,
+   "sprite": 111533,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    164,
+    47
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 435,
+   "nombre_original": "梅花突擊兵"
+  },
+  {
+   "entity_id": 882248793,
+   "nombre": "Plum Blossom Commando",
+   "npc_type": 23808,
+   "sprite": 111533,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    178,
+    84
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 435,
+   "nombre_original": "梅花突擊兵"
+  },
+  {
+   "entity_id": 882314330,
+   "nombre": "Plum Blossom Commando",
+   "npc_type": 23808,
+   "sprite": 111533,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    141,
+    85
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 435,
+   "nombre_original": "梅花突擊兵"
+  },
+  {
+   "entity_id": 882379867,
+   "nombre": "Plum Blossom Commando",
+   "npc_type": 23808,
+   "sprite": 111533,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    138,
+    83
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 435,
+   "nombre_original": "梅花突擊兵"
+  },
+  {
+   "entity_id": 882576478,
+   "nombre": "Plum Blossom Commando",
+   "npc_type": 23808,
+   "sprite": 111533,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    112,
+    47
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 435,
+   "nombre_original": "梅花突擊兵"
+  },
+  {
+   "entity_id": 882707552,
+   "nombre": "Plum Blossom Commando",
+   "npc_type": 23808,
+   "sprite": 111533,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    135,
+    39
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 435,
+   "nombre_original": "梅花突擊兵"
+  },
+  {
+   "entity_id": 882773089,
+   "nombre": "Plum Blossom Commando",
+   "npc_type": 23808,
+   "sprite": 111533,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    119,
+    47
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 435,
+   "nombre_original": "梅花突擊兵"
+  },
+  {
+   "entity_id": 883035237,
+   "nombre": "Plum Blossom Commando",
+   "npc_type": 23808,
+   "sprite": 111533,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    102,
+    71
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 435,
+   "nombre_original": "梅花突擊兵"
+  },
+  {
+   "entity_id": 883166311,
+   "nombre": "Plum Blossom Commando",
+   "npc_type": 23808,
+   "sprite": 111533,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    167,
+    104
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 435,
+   "nombre_original": "梅花突擊兵"
+  },
+  {
+   "entity_id": 883231848,
+   "nombre": "Plum Blossom Commando",
+   "npc_type": 23808,
+   "sprite": 111533,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    149,
+    111
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 435,
+   "nombre_original": "梅花突擊兵"
+  },
+  {
+   "entity_id": 883362922,
+   "nombre": "Plum Blossom Commando",
+   "npc_type": 23808,
+   "sprite": 111533,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    154,
+    99
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 435,
+   "nombre_original": "梅花突擊兵"
+  },
+  {
+   "entity_id": 883428459,
+   "nombre": "Plum Blossom Commando",
+   "npc_type": 23808,
+   "sprite": 111533,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    148,
+    103
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 435,
+   "nombre_original": "梅花突擊兵"
+  },
+  {
+   "entity_id": 883493996,
+   "nombre": "Popcorn Maniac",
+   "npc_type": 23810,
+   "sprite": 111536,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    180,
+    170
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 439,
+   "nombre_original": "爆米花狂徒"
+  },
+  {
+   "entity_id": 883559533,
+   "nombre": "Popcorn Maniac",
+   "npc_type": 23810,
+   "sprite": 111536,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    163,
+    170
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 439,
+   "nombre_original": "爆米花狂徒"
+  },
+  {
+   "entity_id": 883625070,
+   "nombre": "Popcorn Maniac",
+   "npc_type": 23810,
+   "sprite": 111536,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    165,
+    164
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 439,
+   "nombre_original": "爆米花狂徒"
+  },
+  {
+   "entity_id": 883690607,
+   "nombre": "Popcorn Maniac",
+   "npc_type": 23810,
+   "sprite": 111536,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    177,
+    166
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 439,
+   "nombre_original": "爆米花狂徒"
+  },
+  {
+   "entity_id": 883756144,
+   "nombre": "Popcorn Maniac",
+   "npc_type": 23810,
+   "sprite": 111536,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    188,
+    164
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 439,
+   "nombre_original": "爆米花狂徒"
+  },
+  {
+   "entity_id": 883821681,
+   "nombre": "Popcorn Maniac",
+   "npc_type": 23810,
+   "sprite": 111536,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    130,
+    156
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 439,
+   "nombre_original": "爆米花狂徒"
+  },
+  {
+   "entity_id": 883887218,
+   "nombre": "Popcorn Maniac",
+   "npc_type": 23810,
+   "sprite": 111536,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    154,
+    166
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 439,
+   "nombre_original": "爆米花狂徒"
+  },
+  {
+   "entity_id": 884018292,
+   "nombre": "Popcorn Maniac",
+   "npc_type": 23810,
+   "sprite": 111536,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    144,
+    164
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 439,
+   "nombre_original": "爆米花狂徒"
+  },
+  {
+   "entity_id": 884083829,
+   "nombre": "Popcorn Maniac",
+   "npc_type": 23810,
+   "sprite": 111536,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    150,
+    167
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 439,
+   "nombre_original": "爆米花狂徒"
+  },
+  {
+   "entity_id": 884149366,
+   "nombre": "Popcorn Maniac",
+   "npc_type": 23810,
+   "sprite": 111536,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    227,
+    142
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 439,
+   "nombre_original": "爆米花狂徒"
+  },
+  {
+   "entity_id": 884280440,
+   "nombre": "Popcorn Maniac",
+   "npc_type": 23810,
+   "sprite": 111536,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    215,
+    127
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 439,
+   "nombre_original": "爆米花狂徒"
+  },
+  {
+   "entity_id": 884411514,
+   "nombre": "Popcorn Maniac",
+   "npc_type": 23810,
+   "sprite": 111536,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    234,
+    140
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 439,
+   "nombre_original": "爆米花狂徒"
+  },
+  {
+   "entity_id": 884477051,
+   "nombre": "Popcorn Maniac",
+   "npc_type": 23810,
+   "sprite": 111536,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    201,
+    152
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 439,
+   "nombre_original": "爆米花狂徒"
+  },
+  {
+   "entity_id": 884542588,
+   "nombre": "Popcorn Maniac",
+   "npc_type": 23810,
+   "sprite": 111536,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    202,
+    153
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 439,
+   "nombre_original": "爆米花狂徒"
+  },
+  {
+   "entity_id": 884608125,
+   "nombre": "Popcorn Maniac",
+   "npc_type": 23810,
+   "sprite": 111536,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    208,
+    154
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 439,
+   "nombre_original": "爆米花狂徒"
+  },
+  {
+   "entity_id": 884673662,
+   "nombre": "Popcorn Maniac",
+   "npc_type": 23810,
+   "sprite": 111536,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    208,
+    151
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 439,
+   "nombre_original": "爆米花狂徒"
+  },
+  {
+   "entity_id": 884804736,
+   "nombre": "Popcorn Maniac",
+   "npc_type": 23810,
+   "sprite": 111536,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    239,
+    162
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 439,
+   "nombre_original": "爆米花狂徒"
+  },
+  {
+   "entity_id": 885066884,
+   "nombre": "Popcorn Maniac",
+   "npc_type": 23810,
+   "sprite": 111536,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    226,
+    156
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 439,
+   "nombre_original": "爆米花狂徒"
+  },
+  {
+   "entity_id": 885132421,
+   "nombre": "Popcorn Maniac",
+   "npc_type": 23810,
+   "sprite": 111536,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    239,
+    148
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 439,
+   "nombre_original": "爆米花狂徒"
+  },
+  {
+   "entity_id": 885263495,
+   "nombre": "Popcorn Maniac",
+   "npc_type": 23810,
+   "sprite": 111536,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    246,
+    155
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 439,
+   "nombre_original": "爆米花狂徒"
+  },
+  {
+   "entity_id": 885329032,
+   "nombre": "Popcorn Maniac",
+   "npc_type": 23810,
+   "sprite": 111536,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    252,
+    153
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 439,
+   "nombre_original": "爆米花狂徒"
+  },
+  {
+   "entity_id": 885394569,
+   "nombre": "Popcorn Maniac",
+   "npc_type": 23810,
+   "sprite": 111536,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    239,
+    147
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 439,
+   "nombre_original": "爆米花狂徒"
+  },
+  {
+   "entity_id": 885460106,
+   "nombre": "Popcorn Maniac",
+   "npc_type": 23810,
+   "sprite": 111536,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    251,
+    139
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 439,
+   "nombre_original": "爆米花狂徒"
+  },
+  {
+   "entity_id": 885591180,
+   "nombre": "Popcorn Maniac",
+   "npc_type": 23810,
+   "sprite": 111536,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    254,
+    156
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 439,
+   "nombre_original": "爆米花狂徒"
+  },
+  {
+   "entity_id": 885787791,
+   "nombre": "Popcorn Maniac",
+   "npc_type": 23810,
+   "sprite": 111536,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    261,
+    129
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 439,
+   "nombre_original": "爆米花狂徒"
+  },
+  {
+   "entity_id": 885853328,
+   "nombre": "Popcorn Maniac",
+   "npc_type": 23810,
+   "sprite": 111536,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    250,
+    129
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 439,
+   "nombre_original": "爆米花狂徒"
+  },
+  {
+   "entity_id": 885918865,
+   "nombre": "Popcorn Maniac",
+   "npc_type": 23810,
+   "sprite": 111536,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    262,
+    120
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 439,
+   "nombre_original": "爆米花狂徒"
+  },
+  {
+   "entity_id": 885984402,
+   "nombre": "Popcorn Maniac",
+   "npc_type": 23810,
+   "sprite": 111536,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    266,
+    119
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 439,
+   "nombre_original": "爆米花狂徒"
+  },
+  {
+   "entity_id": 886049939,
+   "nombre": "Popcorn Maniac",
+   "npc_type": 23810,
+   "sprite": 111536,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    259,
+    129
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 439,
+   "nombre_original": "爆米花狂徒"
+  },
+  {
+   "entity_id": 886115476,
+   "nombre": "E-Peach Blossom Warrior",
+   "npc_type": 23811,
+   "sprite": 111530,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    22,
+    128
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 441,
+   "nombre_original": "菁英-桃花槍戰士"
+  },
+  {
+   "entity_id": 886181013,
+   "nombre": "E-Peach Blossom Warrior",
+   "npc_type": 23811,
+   "sprite": 111530,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    127
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 441,
+   "nombre_original": "菁英-桃花槍戰士"
+  },
+  {
+   "entity_id": 886246550,
+   "nombre": "E-Peach Blossom Warrior",
+   "npc_type": 23811,
+   "sprite": 111530,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    24,
+    134
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 441,
+   "nombre_original": "菁英-桃花槍戰士"
+  },
+  {
+   "entity_id": 886312087,
+   "nombre": "E-Peach Blossom Warrior",
+   "npc_type": 23811,
+   "sprite": 111530,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    28,
+    129
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 441,
+   "nombre_original": "菁英-桃花槍戰士"
+  },
+  {
+   "entity_id": 886377624,
+   "nombre": "E-Peach Blossom Warrior",
+   "npc_type": 23811,
+   "sprite": 111530,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    48,
+    128
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 441,
+   "nombre_original": "菁英-桃花槍戰士"
+  },
+  {
+   "entity_id": 886443161,
+   "nombre": "E-Poker Iron Blood Soldier",
+   "npc_type": 23812,
+   "sprite": 111531,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    64,
+    159
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 443,
+   "nombre_original": "菁英-撲克鐵血兵"
+  },
+  {
+   "entity_id": 886508698,
+   "nombre": "E-Poker Iron Blood Soldier",
+   "npc_type": 23812,
+   "sprite": 111531,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    48,
+    161
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 443,
+   "nombre_original": "菁英-撲克鐵血兵"
+  },
+  {
+   "entity_id": 886574235,
+   "nombre": "E-Poker Iron Blood Soldier",
+   "npc_type": 23812,
+   "sprite": 111531,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    70,
+    160
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 443,
+   "nombre_original": "菁英-撲克鐵血兵"
+  },
+  {
+   "entity_id": 886639772,
+   "nombre": "E-Poker Iron Blood Soldier",
+   "npc_type": 23812,
+   "sprite": 111531,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    70,
+    139
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 443,
+   "nombre_original": "菁英-撲克鐵血兵"
+  },
+  {
+   "entity_id": 886705309,
+   "nombre": "E-Poker Iron Blood Soldier",
+   "npc_type": 23812,
+   "sprite": 111531,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    51,
+    167
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 443,
+   "nombre_original": "菁英-撲克鐵血兵"
+  },
+  {
+   "entity_id": 886770846,
+   "nombre": "Emerald Star Lilyph",
+   "npc_type": 23814,
+   "sprite": 111537,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    105,
+    166
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 445,
+   "nombre_original": "翠綠星光莉莉芙"
+  }
+ ],
+ "recursos": [
+  {
+   "entity_id": 853412513,
+   "capa": 0,
+   "px": [
+    683,
+    169
+   ],
+   "medio": "00a4e36eacf5c471afdf004f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00000481000000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 853478050,
+   "capa": 0,
+   "px": [
+    9341,
+    171
+   ],
+   "medio": "006ab260aefcb3bdb873000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00000481000000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 853543587,
+   "capa": 0,
+   "px": [
+    9048,
+    5548
+   ],
+   "medio": "00000000250000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00000481000000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 853674661,
+   "capa": 0,
+   "px": [
+    695,
+    430
+   ],
+   "medio": "00000000210000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 853805735,
+   "capa": 0,
+   "px": [
+    9101,
+    311
+   ],
+   "medio": "006ac16ca4e2c37ea5de004600000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 853871272,
+   "capa": 0,
+   "px": [
+    9202,
+    395
+   ],
+   "medio": "00a4afeec37ebef0c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 853936809,
+   "capa": 0,
+   "px": [
+    9071,
+    458
+   ],
+   "medio": "000000001f0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 854002346,
+   "capa": 0,
+   "px": [
+    8870,
+    5410
+   ],
+   "medio": "006aa46aa4fdb7a6bef0b74600500200",
+   "marca": 4,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 854067883,
+   "capa": 0,
+   "px": [
+    8838,
+    5183
+   ],
+   "medio": "0070b4b3b4d4aff3c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 854133420,
+   "capa": 0,
+   "px": [
+    8703,
+    5286
+   ],
+   "medio": "00d0b8adb241aff300f0000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 854264494,
+   "capa": 0,
+   "px": [
+    1390,
+    811
+   ],
+   "medio": "00d0b8adb241aff3004f004f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 854395568,
+   "capa": 0,
+   "px": [
+    1203,
+    1007
+   ],
+   "medio": "00d0b8adb241aff300df000033e60e00",
+   "marca": 4,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 854461105,
+   "capa": 0,
+   "px": [
+    1522,
+    1070
+   ],
+   "medio": "0070e36eacf5c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 854592179,
+   "capa": 0,
+   "px": [
+    1712,
+    432
+   ],
+   "medio": "00d0b8adb241aff300de000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 854657716,
+   "capa": 0,
+   "px": [
+    1901,
+    495
+   ],
+   "medio": "00d0b8adb241aff300de000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 854854327,
+   "capa": 0,
+   "px": [
+    2580,
+    780
+   ],
+   "medio": "00000000280000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 855182012,
+   "capa": 0,
+   "px": [
+    3436,
+    757
+   ],
+   "medio": "006ab4b3b4d4aff3c24f00f0b7460000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 855247549,
+   "capa": 0,
+   "px": [
+    3667,
+    685
+   ],
+   "medio": "00a4b4b3b4d4aff3c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 855444160,
+   "capa": 0,
+   "px": [
+    3499,
+    915
+   ],
+   "medio": "006ab0d2aa69aefcaff3c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 855509697,
+   "capa": 0,
+   "px": [
+    2635,
+    1388
+   ],
+   "medio": "004ea5d6b3bd00000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 855575234,
+   "capa": 0,
+   "px": [
+    3027,
+    1352
+   ],
+   "medio": "004ea5d6b3bd00000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 855640771,
+   "capa": 0,
+   "px": [
+    2795,
+    1264
+   ],
+   "medio": "004ea5d6b3bd00f0b746000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 855771845,
+   "capa": 0,
+   "px": [
+    3120,
+    1072
+   ],
+   "medio": "006ab0d2aa69aefcaff3c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 855837382,
+   "capa": 0,
+   "px": [
+    2420,
+    1504
+   ],
+   "medio": "0070b5b7ac66bef0b746000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 856165067,
+   "capa": 0,
+   "px": [
+    883,
+    1677
+   ],
+   "medio": "00a4b4b3b4d4aff3c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 856230604,
+   "capa": 0,
+   "px": [
+    940,
+    1937
+   ],
+   "medio": "000000ed9d0c0004db000000476d0400",
+   "marca": 4,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 856296141,
+   "capa": 0,
+   "px": [
+    725,
+    2094
+   ],
+   "medio": "006ab4b3b4d4aff3c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 856361678,
+   "capa": 0,
+   "px": [
+    813,
+    2292
+   ],
+   "medio": "00d0b8adb241aff30000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 856427215,
+   "capa": 0,
+   "px": [
+    525,
+    2386
+   ],
+   "medio": "000000cf00030004ca000000b8660400",
+   "marca": 4,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 856492752,
+   "capa": 0,
+   "px": [
+    855,
+    2544
+   ],
+   "medio": "006ab0b8bfe1c37ea5de000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 856754900,
+   "capa": 0,
+   "px": [
+    1810,
+    3087
+   ],
+   "medio": "000000001f0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 856885974,
+   "capa": 0,
+   "px": [
+    1804,
+    1781
+   ],
+   "medio": "00a4a6d0c37ebef0c24f00001f2b0c00",
+   "marca": 176,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 857148122,
+   "capa": 0,
+   "px": [
+    2064,
+    3244
+   ],
+   "medio": "000000001f0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 857213659,
+   "capa": 0,
+   "px": [
+    2387,
+    3374
+   ],
+   "medio": "00a4afeec37ebef0c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 857279196,
+   "capa": 0,
+   "px": [
+    2731,
+    3443
+   ],
+   "medio": "006ab4b3b4d4aff3c24f004600660400",
+   "marca": 4,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 857344733,
+   "capa": 0,
+   "px": [
+    3092,
+    3501
+   ],
+   "medio": "006ae36eacf5c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 857410270,
+   "capa": 0,
+   "px": [
+    3271,
+    3819
+   ],
+   "medio": "00d0b8adb241aff30000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 857606881,
+   "capa": 0,
+   "px": [
+    2480,
+    2609
+   ],
+   "medio": "0070afeec37ebef0c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 857672418,
+   "capa": 0,
+   "px": [
+    2639,
+    2733
+   ],
+   "medio": "006abb42c452c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 857737955,
+   "capa": 0,
+   "px": [
+    2894,
+    2829
+   ],
+   "medio": "0070b4b3b4d4aff3c24f004600390400",
+   "marca": 4,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 857803492,
+   "capa": 0,
+   "px": [
+    3249,
+    3089
+   ],
+   "medio": "000000002b0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 857869029,
+   "capa": 0,
+   "px": [
+    3473,
+    3244
+   ],
+   "medio": "006ab4b3b4d4aff3c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 857934566,
+   "capa": 0,
+   "px": [
+    4338,
+    3663
+   ],
+   "medio": "006ab4b3b4d4aff3c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 858000103,
+   "capa": 0,
+   "px": [
+    3761,
+    3339
+   ],
+   "medio": "0070b4b3b4d4aff3c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 858065640,
+   "capa": 0,
+   "px": [
+    4116,
+    3535
+   ],
+   "medio": "0070aeb7c3c7aff3c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 858196714,
+   "capa": 0,
+   "px": [
+    4462,
+    592
+   ],
+   "medio": "00a4c16ca4e2c37ea5de000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 858262251,
+   "capa": 0,
+   "px": [
+    4722,
+    493
+   ],
+   "medio": "00000000160000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 858327788,
+   "capa": 0,
+   "px": [
+    5007,
+    718
+   ],
+   "medio": "00d0b8adb241aff3004f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 858393325,
+   "capa": 0,
+   "px": [
+    4978,
+    433
+   ],
+   "medio": "000000001d0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 858458862,
+   "capa": 0,
+   "px": [
+    5197,
+    595
+   ],
+   "medio": "00d0b8adb241aff300de000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 858524399,
+   "capa": 0,
+   "px": [
+    5359,
+    754
+   ],
+   "medio": "00d0b8adb241aff3004f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 858589936,
+   "capa": 0,
+   "px": [
+    5483,
+    558
+   ],
+   "medio": "00000000210000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 858655473,
+   "capa": 0,
+   "px": [
+    5682,
+    651
+   ],
+   "medio": "00000000270000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 858721010,
+   "capa": 0,
+   "px": [
+    5786,
+    399
+   ],
+   "medio": "00a4b4b3b4d4aff3c24f004f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 858786547,
+   "capa": 0,
+   "px": [
+    5941,
+    530
+   ],
+   "medio": "006ab4b3b4d4aff3c24f004f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 858852084,
+   "capa": 0,
+   "px": [
+    6190,
+    492
+   ],
+   "medio": "0070b4b3b4d4aff3c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 858917621,
+   "capa": 0,
+   "px": [
+    6479,
+    428
+   ],
+   "medio": "006ab0b8bfe1c37ea5de000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 858983158,
+   "capa": 0,
+   "px": [
+    6823,
+    522
+   ],
+   "medio": "0070a6d0c37ebef0c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 859114232,
+   "capa": 0,
+   "px": [
+    7672,
+    560
+   ],
+   "medio": "00a4a6d0c37ebef0c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 859179769,
+   "capa": 0,
+   "px": [
+    7344,
+    781
+   ],
+   "medio": "00000000270000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 859245306,
+   "capa": 0,
+   "px": [
+    7916,
+    301
+   ],
+   "medio": "00d0b8adb241aff30046000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 859310843,
+   "capa": 0,
+   "px": [
+    8303,
+    461
+   ],
+   "medio": "000000001a0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 859376380,
+   "capa": 0,
+   "px": [
+    8626,
+    655
+   ],
+   "medio": "000000001a0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 859441917,
+   "capa": 0,
+   "px": [
+    9038,
+    1651
+   ],
+   "medio": "00000000170000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 859507454,
+   "capa": 0,
+   "px": [
+    8913,
+    1390
+   ],
+   "medio": "00000000260000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 859572991,
+   "capa": 0,
+   "px": [
+    8630,
+    1200
+   ],
+   "medio": "006ab0d2aa69aefcaff3c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 859638528,
+   "capa": 0,
+   "px": [
+    8267,
+    1107
+   ],
+   "medio": "00d0b8adb241aff3000000004d820200",
+   "marca": 4,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 859704065,
+   "capa": 0,
+   "px": [
+    7885,
+    1143
+   ],
+   "medio": "00a4abd5ac66bef0b746000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 859835139,
+   "capa": 0,
+   "px": [
+    7346,
+    1457
+   ],
+   "medio": "00000000210000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 859900676,
+   "capa": 0,
+   "px": [
+    6866,
+    1230
+   ],
+   "medio": "00a4a6d0c37ebef0c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 859966213,
+   "capa": 0,
+   "px": [
+    6674,
+    1070
+   ],
+   "medio": "00a4a6d0c37ebef0c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 860097287,
+   "capa": 0,
+   "px": [
+    6159,
+    1423
+   ],
+   "medio": "00a4afeec37ebef0c24f004f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60037,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 860162824,
+   "capa": 0,
+   "px": [
+    6393,
+    1521
+   ],
+   "medio": "0070b0d2aa69aefcaff3c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60037,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 860228361,
+   "capa": 0,
+   "px": [
+    5934,
+    1313
+   ],
+   "medio": "0070afeec37ebef0c24f004f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60037,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 860293898,
+   "capa": 0,
+   "px": [
+    5099,
+    3375
+   ],
+   "medio": "00a6b9d2bbccc54bc471afdf00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 860359435,
+   "capa": 0,
+   "px": [
+    5327,
+    3154
+   ],
+   "medio": "000000001d0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 860490509,
+   "capa": 0,
+   "px": [
+    4850,
+    3445
+   ],
+   "medio": "0070e36eacf5c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 860687120,
+   "capa": 0,
+   "px": [
+    5326,
+    2381
+   ],
+   "medio": "00a4e36eacf5c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 860752657,
+   "capa": 0,
+   "px": [
+    5099,
+    2547
+   ],
+   "medio": "0070bb42c452c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 861735712,
+   "capa": 0,
+   "px": [
+    4493,
+    1394
+   ],
+   "medio": "00401e0d5450022b37084f5a00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 861801249,
+   "capa": 0,
+   "px": [
+    3625,
+    1525
+   ],
+   "medio": "0070b4b3b4d4aff3c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 862260008,
+   "capa": 0,
+   "px": [
+    776,
+    4144
+   ],
+   "medio": "0070b4b3b4d4aff3c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 862325545,
+   "capa": 0,
+   "px": [
+    1042,
+    4271
+   ],
+   "medio": "00a4b4b3b4d4aff3c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 862391082,
+   "capa": 0,
+   "px": [
+    1011,
+    3663
+   ],
+   "medio": "00a6b9d2a46aa4fdb7a6bef0b7460000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 862456619,
+   "capa": 0,
+   "px": [
+    1361,
+    4270
+   ],
+   "medio": "000000001d0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 862522156,
+   "capa": 0,
+   "px": [
+    1378,
+    3952
+   ],
+   "medio": "000000001e0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 862587693,
+   "capa": 0,
+   "px": [
+    1200,
+    5036
+   ],
+   "medio": "006aabd5b9d2a56abef0000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 862653230,
+   "capa": 0,
+   "px": [
+    2351,
+    4400
+   ],
+   "medio": "0070bb42c452c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 862718767,
+   "capa": 0,
+   "px": [
+    1679,
+    5324
+   ],
+   "medio": "000000002d41aff30000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 862784304,
+   "capa": 0,
+   "px": [
+    2291,
+    5328
+   ],
+   "medio": "00000000270000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 862849841,
+   "capa": 0,
+   "px": [
+    2864,
+    4655
+   ],
+   "medio": "0070aeb7c3c7aff3c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 863439674,
+   "capa": 0,
+   "px": [
+    6283,
+    2711
+   ],
+   "medio": "0070b4b3b4d4aff3c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 863701822,
+   "capa": 0,
+   "px": [
+    6804,
+    3153
+   ],
+   "medio": "000000001f0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 863898433,
+   "capa": 0,
+   "px": [
+    8920,
+    2287
+   ],
+   "medio": "000000001b0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 863963970,
+   "capa": 0,
+   "px": [
+    8693,
+    2384
+   ],
+   "medio": "00a4b4b3b4d4aff3c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 864029507,
+   "capa": 0,
+   "px": [
+    8407,
+    2485
+   ],
+   "medio": "0070e36eacf5c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 864095044,
+   "capa": 0,
+   "px": [
+    8175,
+    2606
+   ],
+   "medio": "0070b4b3b4d4aff3c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 864160581,
+   "capa": 0,
+   "px": [
+    9039,
+    1966
+   ],
+   "medio": "006ab4b3b4d4aff3c24f004f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 864226118,
+   "capa": 0,
+   "px": [
+    7853,
+    2736
+   ],
+   "medio": "006ab4b3b4d4aff3c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 864357192,
+   "capa": 0,
+   "px": [
+    7790,
+    3214
+   ],
+   "medio": "006ab5b5aed6c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 864553803,
+   "capa": 0,
+   "px": [
+    6511,
+    3408
+   ],
+   "medio": "00a4a6d0c37ebef0c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 864619340,
+   "capa": 0,
+   "px": [
+    6286,
+    3567
+   ],
+   "medio": "0070a6d0c37ebef0c24f0000bb7d0300",
+   "marca": 4,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 864881488,
+   "capa": 0,
+   "px": [
+    5521,
+    4240
+   ],
+   "medio": "0070abd5ac66bef0b746000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 865078099,
+   "capa": 0,
+   "px": [
+    5168,
+    4082
+   ],
+   "medio": "000000001e0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 865143636,
+   "capa": 0,
+   "px": [
+    5334,
+    4397
+   ],
+   "medio": "006aaeb7c3c7aff3c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 865209173,
+   "capa": 0,
+   "px": [
+    4945,
+    4242
+   ],
+   "medio": "00000000170000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 865274710,
+   "capa": 0,
+   "px": [
+    4529,
+    4240
+   ],
+   "medio": "00a4b4b3b4d4aff3c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 865340247,
+   "capa": 0,
+   "px": [
+    4238,
+    4225
+   ],
+   "medio": "0070b4b3b4d4aff3c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 865405784,
+   "capa": 0,
+   "px": [
+    3947,
+    4237
+   ],
+   "medio": "0070aeb7c3c7aff3c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 865471321,
+   "capa": 0,
+   "px": [
+    6733,
+    3920
+   ],
+   "medio": "00000000250000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 865536858,
+   "capa": 0,
+   "px": [
+    6895,
+    4112
+   ],
+   "medio": "00000000200000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 865602395,
+   "capa": 0,
+   "px": [
+    7151,
+    4398
+   ],
+   "medio": "00a4b4b3b4d4aff3c24f004f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 865667932,
+   "capa": 0,
+   "px": [
+    7374,
+    4558
+   ],
+   "medio": "0070abd5b9d2a56abef0000095a60c00",
+   "marca": 4,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 865733469,
+   "capa": 0,
+   "px": [
+    7026,
+    4622
+   ],
+   "medio": "0070b4b3b4d4aff3c24f0000bbff0700",
+   "marca": 176,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 865799006,
+   "capa": 0,
+   "px": [
+    6663,
+    4749
+   ],
+   "medio": "0000000bff010004ca000000f4640300",
+   "marca": 4,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 865864543,
+   "capa": 0,
+   "px": [
+    6797,
+    4911
+   ],
+   "medio": "00000000280000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 865930080,
+   "capa": 0,
+   "px": [
+    6441,
+    4915
+   ],
+   "medio": "00a4a6d0c37ebef0c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 866126691,
+   "capa": 0,
+   "px": [
+    3505,
+    5207
+   ],
+   "medio": "00a4afeec37ebef0c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60037,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 866192228,
+   "capa": 0,
+   "px": [
+    3280,
+    5391
+   ],
+   "medio": "00d0b8adb241aff300df00df00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60037,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 866257765,
+   "capa": 0,
+   "px": [
+    3091,
+    5235
+   ],
+   "medio": "0070b4b3b4d4aff3c24f000010030400",
+   "marca": 4,
+   "orient": 6,
+   "sprite": 60037,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 866323302,
+   "capa": 0,
+   "px": [
+    7219,
+    4816
+   ],
+   "medio": "00000000290000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 866716524,
+   "capa": 0,
+   "px": [
+    8080,
+    5039
+   ],
+   "medio": "006ab4b3b4d4aff3c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 867175283,
+   "capa": 0,
+   "px": [
+    8145,
+    4560
+   ],
+   "medio": "00a4b4b3b4d4aff3c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 867306357,
+   "capa": 0,
+   "px": [
+    8654,
+    3741
+   ],
+   "medio": "006abb42c452c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 867371894,
+   "capa": 0,
+   "px": [
+    8177,
+    4142
+   ],
+   "medio": "000000001a0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 867437431,
+   "capa": 0,
+   "px": [
+    9038,
+    3568
+   ],
+   "medio": "00000000250000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 867502968,
+   "capa": 0,
+   "px": [
+    8394,
+    3852
+   ],
+   "medio": "00000000220000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 867568505,
+   "capa": 0,
+   "px": [
+    7791,
+    4171
+   ],
+   "medio": "0070b4b3b4d4aff3c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 867634042,
+   "capa": 0,
+   "px": [
+    5488,
+    5408
+   ],
+   "medio": "006aabd5ac66bef0b746000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 867699579,
+   "capa": 0,
+   "px": [
+    6026,
+    5166
+   ],
+   "medio": "006ab4b3b4d4aff3c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 867765116,
+   "capa": 0,
+   "px": [
+    5839,
+    5249
+   ],
+   "medio": "00a4b4b3b4d4aff3c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 867830653,
+   "capa": 0,
+   "px": [
+    5617,
+    5293
+   ],
+   "medio": "0070abd5ac66bef0b746000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 867896190,
+   "capa": 0,
+   "px": [
+    5298,
+    5362
+   ],
+   "medio": "0070abd5b9d2a56abef000003f030200",
+   "marca": 4,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 867961727,
+   "capa": 0,
+   "px": [
+    4974,
+    5262
+   ],
+   "medio": "00a4aeb7c3c7aff3c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 868027264,
+   "capa": 0,
+   "px": [
+    5101,
+    5486
+   ],
+   "medio": "00a4abd5b9d2a56abef0000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 868092801,
+   "capa": 0,
+   "px": [
+    4752,
+    5393
+   ],
+   "medio": "006aa87babf3b3bd004f000014000200",
+   "marca": 4,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 868158338,
+   "capa": 0,
+   "px": [
+    4432,
+    5292
+   ],
+   "medio": "006aafeec37ebef0c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 868223875,
+   "capa": 0,
+   "px": [
+    4241,
+    5152
+   ],
+   "medio": "000000001f0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 871173040,
+   "capa": 0,
+   "px": [
+    8759,
+    4376
+   ],
+   "medio": "00a4b4b3b4d4aff3c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60054,
+   "cola": "00002280000000",
+   "que_es": "Breeze Totem"
+  },
+  {
+   "entity_id": 871238577,
+   "capa": 0,
+   "px": [
+    9044,
+    4238
+   ],
+   "medio": "00a4a46aa4fdb7a6bef0b74600000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60053,
+   "cola": "00002280000000",
+   "que_es": "Iron Totem"
+  },
+  {
+   "entity_id": 871304114,
+   "capa": 0,
+   "px": [
+    8914,
+    4097
+   ],
+   "medio": "00a4b0d2aa69aefcaff3c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60052,
+   "cola": "00002280000000",
+   "que_es": "Dark City Totem"
+  },
+  {
+   "entity_id": 871369651,
+   "capa": 0,
+   "px": [
+    8609,
+    4205
+   ],
+   "medio": "006ab4b3b4d4aff3c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60051,
+   "cola": "00002280000000",
+   "que_es": "Aurora Totem"
+  },
+  {
+   "entity_id": 872090558,
+   "capa": 0,
+   "px": [
+    7525,
+    3586
+   ],
+   "medio": "00a4aeb7c3c7aff3c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60305,
+   "cola": "00000280140000"
+  },
+  {
+   "entity_id": 872156095,
+   "capa": 0,
+   "px": [
+    4680,
+    3683
+   ],
+   "medio": "0070b260aefcb3bdb873000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60305,
+   "cola": "00000280140000"
+  },
+  {
+   "entity_id": 872877002,
+   "capa": 0,
+   "px": [
+    3694,
+    4055
+   ],
+   "medio": "0070bb42c452c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  }
+ ]
+}
