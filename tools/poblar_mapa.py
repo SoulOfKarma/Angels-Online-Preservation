@@ -165,9 +165,17 @@ def _clases_del_cliente():
 def recurso_a_datos(e, b, mats, cartel=None):
     px = list(struct.unpack_from('<II', b, 8))
     sprite = struct.unpack_from('<H', b, 34)[0]
+    # CRUDO: el cuerpo entero tal cual llego. Los campos sueltos se siguen
+    # guardando porque son legibles y se usan para buscar, pero lo que el
+    # servidor reenvia es esto. Rearmar por campos parecia equivalente y no
+    # lo es: el cuerpo tiene bytes que no sabemos interpretar y que al
+    # reconstruir se perdian, y ademas alguno cambia con el tiempo, asi que
+    # dos capturas del mismo objeto no dan lo mismo. Con el crudo, lo que ve
+    # el jugador es exactamente lo que mandaba el servidor original.
     d = {'entity_id': e, 'capa': struct.unpack_from('<I', b, 4)[0],
          'px': px, 'medio': b[16:32].hex(), 'marca': b[32],
-         'orient': b[33], 'sprite': sprite, 'cola': b[36:43].hex()}
+         'orient': b[33], 'sprite': sprite, 'cola': b[36:43].hex(),
+         'crudo': b[:43].hex()}
     if cartel is not None:
         nombre = cartel[16:32].split(bytes(1))[0].decode('ascii', 'replace')
         if nombre.strip():

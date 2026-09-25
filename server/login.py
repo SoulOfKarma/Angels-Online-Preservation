@@ -338,6 +338,17 @@ def objeto_de_mapa(r) -> bytes:
     0, la capa en el 4, la posicion en PIXELES en el 8 y el 12, y el sprite
     en el 34.
     """
+    # SI HAY CRUDO, SE MANDA TAL CUAL. Rearmar por campos parecia
+    # equivalente y no lo es: comprobado contra Seaside Grotto, los objetos
+    # reconstruidos NO coinciden byte a byte con los que mandaba el servidor
+    # original -- en unos difiere un byte y en otros trece. El cuerpo lleva
+    # informacion que no sabemos leer, y al rearmarlo se perdia. El usuario
+    # lo vio en pantalla antes que la comparacion: las estatuas salian con
+    # la base bien y el resto mal.
+    if r.get('crudo'):
+        crudo = bytes.fromhex(r['crudo'])[:43]
+        if len(crudo) == 43:
+            return struct.pack('<H', 0x000E) + crudo
     b = bytearray(43)
     struct.pack_into('<I', b, 0, int(r['entity_id']))
     struct.pack_into('<I', b, 4, int(r.get('capa', 0)))
