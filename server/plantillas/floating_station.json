@@ -1,5 +1,5 @@
 {
- "_nota": "Floating Station (stage 397), primera parada de Sun Sea Maze, capturado el 25/09/2026 en el cliente OFICIAL de Taiwan (8.7.5.7). Se separo con tools/separar_por_mapa.py y se juntaron cuatro tramos de cuatro sesiones distintas, porque aqui cada cambio de mapa abre conexion nueva. CRASHEABA nuestro cliente al entrar: la culpa era un spawn con sprite 999, que no es un id de grafico. Ver _descartados. El resto de sus 1.015 hermanos de las plantillas de Taiwan usan 40xxx, 60xxx o 110xxx.",
+ "_nota": "Floating Station (stage 397), primera parada de Sun Sea Maze, capturado el 25/09/2026 en el cliente OFICIAL de Taiwan (8.7.5.7). Dos recorridos: el primero dejo el mapa al 70% de celdas con contenido y tools/cobertura_mapa.py senalo siete huecos sin pisar. OJO AL JUNTAR SESIONES: hay que comprobar que todas sean de Taiwan. El 0x0008 de Taiwan mide 63 bytes y sus entity_id van por los cientos de millones; los de Celestia miden 62 o 64 y sus ids por el millon. Una sesion de Celestia se colo en la carpeta de tramos y metio veinte Pyramid Cat y veinte Four-armed Sand en este mapa de pulpos. Traia ademas un spawn con sprite 999 que CRASHEABA nuestro cliente; ver _descartados.",
  "stage": 397,
  "spawns": [
   {
@@ -190,6 +190,22 @@
    "nombre_original": "菁英-藍皮鉅齒鯊"
   },
   {
+   "entity_id": 450169321,
+   "nombre": "E-Blue Jagshark",
+   "npc_type": 23454,
+   "sprite": 111331,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    278,
+    53
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 381,
+   "nombre_original": "菁英-藍皮鉅齒鯊"
+  },
+  {
    "entity_id": 450234858,
    "nombre": "E-Blue Jagshark",
    "npc_type": 23454,
@@ -220,6 +236,22 @@
    "visible": 0,
    "nivel": 381,
    "nombre_original": "菁英-藍皮鉅齒鯊"
+  },
+  {
+   "entity_id": 450365932,
+   "nombre": "Spiky Dammie",
+   "npc_type": 23456,
+   "sprite": 111328,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    26,
+    68
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 385,
+   "nombre_original": "帶刺守衛大美"
   },
   {
    "entity_id": 453052949,
@@ -1193,6 +1225,22 @@
     120
    ],
    "direccion": 3,
+   "visible": 0,
+   "nivel": 375,
+   "nombre_original": "藍皮鉅齒鯊"
+  },
+  {
+   "entity_id": 3386378962,
+   "nombre": "Blue Jagshark",
+   "npc_type": 23451,
+   "sprite": 111331,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    228,
+    120
+   ],
+   "direccion": 1,
    "visible": 0,
    "nivel": 375,
    "nombre_original": "藍皮鉅齒鯊"
@@ -2924,6 +2972,2966 @@
    "visible": 0,
    "nivel": 370,
    "nombre_original": "兇兇海蜇皮"
+  },
+  {
+   "entity_id": 3410627652,
+   "nombre": "Putridox V",
+   "npc_type": 20355,
+   "sprite": 110412,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    47,
+    153
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 300,
+   "nombre_original": "死骸騎士Ⅴ"
+  },
+  {
+   "entity_id": 3414822020,
+   "nombre": "Fierce Roughskin",
+   "npc_type": 23448,
+   "sprite": 111326,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    47,
+    152
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 370,
+   "nombre_original": "兇兇海蜇皮"
+  },
+  {
+   "entity_id": 3414953094,
+   "nombre": "Fierce Roughskin",
+   "npc_type": 23448,
+   "sprite": 111326,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    47,
+    156
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 370,
+   "nombre_original": "兇兇海蜇皮"
+  },
+  {
+   "entity_id": 3415018631,
+   "nombre": "Fierce Roughskin",
+   "npc_type": 23448,
+   "sprite": 111326,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    148
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 370,
+   "nombre_original": "兇兇海蜇皮"
+  },
+  {
+   "entity_id": 3415084168,
+   "nombre": "Fierce Roughskin",
+   "npc_type": 23448,
+   "sprite": 111326,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    42,
+    159
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 370,
+   "nombre_original": "兇兇海蜇皮"
+  },
+  {
+   "entity_id": 3415149705,
+   "nombre": "Fierce Roughskin",
+   "npc_type": 23448,
+   "sprite": 111326,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    46,
+    159
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 370,
+   "nombre_original": "兇兇海蜇皮"
+  },
+  {
+   "entity_id": 3415215242,
+   "nombre": "Fierce Roughskin",
+   "npc_type": 23448,
+   "sprite": 111326,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    47,
+    158
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 370,
+   "nombre_original": "兇兇海蜇皮"
+  },
+  {
+   "entity_id": 3415280779,
+   "nombre": "Floaty Pink",
+   "npc_type": 23449,
+   "sprite": 111327,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    37,
+    150
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 371,
+   "nombre_original": "粉粉飄飄"
+  },
+  {
+   "entity_id": 3415477390,
+   "nombre": "Floaty Pink",
+   "npc_type": 23449,
+   "sprite": 111327,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    33,
+    144
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 371,
+   "nombre_original": "粉粉飄飄"
+  },
+  {
+   "entity_id": 3419212999,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    195,
+    120
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3419802832,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    190,
+    35
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3419999443,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    259,
+    71
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3424652570,
+   "nombre": "Blue Jagshark",
+   "npc_type": 23451,
+   "sprite": 111331,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    220,
+    119
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 375,
+   "nombre_original": "藍皮鉅齒鯊"
+  },
+  {
+   "entity_id": 3427536198,
+   "nombre": "Floaty Pink",
+   "npc_type": 23449,
+   "sprite": 111327,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    36,
+    148
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 371,
+   "nombre_original": "粉粉飄飄"
+  },
+  {
+   "entity_id": 3427601735,
+   "nombre": "Fierce Roughskin",
+   "npc_type": 23448,
+   "sprite": 111326,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    41,
+    150
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 370,
+   "nombre_original": "兇兇海蜇皮"
+  },
+  {
+   "entity_id": 3427667272,
+   "nombre": "Floaty Pink",
+   "npc_type": 23449,
+   "sprite": 111327,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    33,
+    149
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 371,
+   "nombre_original": "粉粉飄飄"
+  },
+  {
+   "entity_id": 3427732809,
+   "nombre": "Fierce Roughskin",
+   "npc_type": 23448,
+   "sprite": 111326,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    37,
+    161
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 370,
+   "nombre_original": "兇兇海蜇皮"
+  },
+  {
+   "entity_id": 3427863883,
+   "nombre": "Fierce Roughskin",
+   "npc_type": 23448,
+   "sprite": 111326,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    41,
+    149
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 370,
+   "nombre_original": "兇兇海蜇皮"
+  },
+  {
+   "entity_id": 3427994957,
+   "nombre": "Fierce Roughskin",
+   "npc_type": 23448,
+   "sprite": 111326,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    42,
+    159
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 370,
+   "nombre_original": "兇兇海蜇皮"
+  },
+  {
+   "entity_id": 3429698919,
+   "nombre": "Floaty Pink",
+   "npc_type": 23449,
+   "sprite": 111327,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    36,
+    148
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 371,
+   "nombre_original": "粉粉飄飄"
+  },
+  {
+   "entity_id": 3429764456,
+   "nombre": "Floaty Pink",
+   "npc_type": 23449,
+   "sprite": 111327,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    37,
+    149
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 371,
+   "nombre_original": "粉粉飄飄"
+  },
+  {
+   "entity_id": 3429829993,
+   "nombre": "Floaty Pink",
+   "npc_type": 23449,
+   "sprite": 111327,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    34,
+    148
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 371,
+   "nombre_original": "粉粉飄飄"
+  },
+  {
+   "entity_id": 3429895530,
+   "nombre": "Floaty Pink",
+   "npc_type": 23449,
+   "sprite": 111327,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    31,
+    144
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 371,
+   "nombre_original": "粉粉飄飄"
+  },
+  {
+   "entity_id": 3429961067,
+   "nombre": "Fierce Roughskin",
+   "npc_type": 23448,
+   "sprite": 111326,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    42,
+    159
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 370,
+   "nombre_original": "兇兇海蜇皮"
+  },
+  {
+   "entity_id": 3430026604,
+   "nombre": "Fierce Roughskin",
+   "npc_type": 23448,
+   "sprite": 111326,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    41,
+    149
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 370,
+   "nombre_original": "兇兇海蜇皮"
+  },
+  {
+   "entity_id": 3430157678,
+   "nombre": "Fierce Roughskin",
+   "npc_type": 23448,
+   "sprite": 111326,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    45,
+    151
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 370,
+   "nombre_original": "兇兇海蜇皮"
+  },
+  {
+   "entity_id": 3430223215,
+   "nombre": "Fierce Roughskin",
+   "npc_type": 23448,
+   "sprite": 111326,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    40,
+    160
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 370,
+   "nombre_original": "兇兇海蜇皮"
+  },
+  {
+   "entity_id": 3430288752,
+   "nombre": "Fierce Roughskin",
+   "npc_type": 23448,
+   "sprite": 111326,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    38,
+    147
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 370,
+   "nombre_original": "兇兇海蜇皮"
+  },
+  {
+   "entity_id": 3434810805,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    187,
+    120
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3439660543,
+   "nombre": "Floaty Pink",
+   "npc_type": 23449,
+   "sprite": 111327,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    18,
+    81
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 371,
+   "nombre_original": "粉粉飄飄"
+  },
+  {
+   "entity_id": 3442347560,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    191,
+    121
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3444969040,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    144,
+    127
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3445231188,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    130,
+    114
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3445296725,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    147,
+    136
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3445362262,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    146,
+    123
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3445427799,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    141,
+    127
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3453095628,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    143,
+    120
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3454930664,
+   "nombre": "Putridox V",
+   "npc_type": 20355,
+   "sprite": 110412,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    33,
+    144
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 300,
+   "nombre_original": "死骸騎士Ⅴ"
+  },
+  {
+   "entity_id": 3455192812,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    146,
+    31
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3455258349,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    139,
+    31
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3455323886,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    120,
+    31
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3455389423,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    156,
+    34
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3455454960,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    122,
+    34
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3455520497,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    98,
+    48
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3455586034,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    85,
+    39
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3455651571,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    108,
+    48
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3455717108,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    84,
+    49
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3455782645,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    112,
+    48
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3456896774,
+   "nombre": "Floaty Pink",
+   "npc_type": 23449,
+   "sprite": 111327,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    18,
+    108
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 371,
+   "nombre_original": "粉粉飄飄"
+  },
+  {
+   "entity_id": 3457355533,
+   "nombre": "Floaty Pink",
+   "npc_type": 23449,
+   "sprite": 111327,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    38,
+    124
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 371,
+   "nombre_original": "粉粉飄飄"
+  },
+  {
+   "entity_id": 3457421070,
+   "nombre": "Floaty Pink",
+   "npc_type": 23449,
+   "sprite": 111327,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    24,
+    137
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 371,
+   "nombre_original": "粉粉飄飄"
+  },
+  {
+   "entity_id": 3457683218,
+   "nombre": "Fierce Roughskin",
+   "npc_type": 23448,
+   "sprite": 111326,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    47,
+    156
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 370,
+   "nombre_original": "兇兇海蜇皮"
+  },
+  {
+   "entity_id": 3457748755,
+   "nombre": "Fierce Roughskin",
+   "npc_type": 23448,
+   "sprite": 111326,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    37,
+    160
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 370,
+   "nombre_original": "兇兇海蜇皮"
+  },
+  {
+   "entity_id": 3457814292,
+   "nombre": "Fierce Roughskin",
+   "npc_type": 23448,
+   "sprite": 111326,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    47,
+    159
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 370,
+   "nombre_original": "兇兇海蜇皮"
+  },
+  {
+   "entity_id": 3457879829,
+   "nombre": "Floaty Pink",
+   "npc_type": 23449,
+   "sprite": 111327,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    31,
+    144
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 371,
+   "nombre_original": "粉粉飄飄"
+  },
+  {
+   "entity_id": 3457945366,
+   "nombre": "Fierce Roughskin",
+   "npc_type": 23448,
+   "sprite": 111326,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    43,
+    159
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 370,
+   "nombre_original": "兇兇海蜇皮"
+  },
+  {
+   "entity_id": 3458010903,
+   "nombre": "Fierce Roughskin",
+   "npc_type": 23448,
+   "sprite": 111326,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    36,
+    157
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 370,
+   "nombre_original": "兇兇海蜇皮"
+  },
+  {
+   "entity_id": 3460435772,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    145,
+    132
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3460566846,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    197,
+    115
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3460632383,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    199,
+    126
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3465875343,
+   "nombre": "Fierce Roughskin",
+   "npc_type": 23448,
+   "sprite": 111326,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    52,
+    159
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 370,
+   "nombre_original": "兇兇海蜇皮"
+  },
+  {
+   "entity_id": 3466203028,
+   "nombre": "Fierce Roughskin",
+   "npc_type": 23448,
+   "sprite": 111326,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    47,
+    155
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 370,
+   "nombre_original": "兇兇海蜇皮"
+  },
+  {
+   "entity_id": 3466268565,
+   "nombre": "Fierce Roughskin",
+   "npc_type": 23448,
+   "sprite": 111326,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    58,
+    156
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 370,
+   "nombre_original": "兇兇海蜇皮"
+  },
+  {
+   "entity_id": 3466399639,
+   "nombre": "Fierce Roughskin",
+   "npc_type": 23448,
+   "sprite": 111326,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    41,
+    158
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 370,
+   "nombre_original": "兇兇海蜇皮"
+  },
+  {
+   "entity_id": 3466465176,
+   "nombre": "Fierce Roughskin",
+   "npc_type": 23448,
+   "sprite": 111326,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    45,
+    159
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 370,
+   "nombre_original": "兇兇海蜇皮"
+  },
+  {
+   "entity_id": 3466530713,
+   "nombre": "Fierce Roughskin",
+   "npc_type": 23448,
+   "sprite": 111326,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    35,
+    157
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 370,
+   "nombre_original": "兇兇海蜇皮"
+  },
+  {
+   "entity_id": 3466596250,
+   "nombre": "Fierce Roughskin",
+   "npc_type": 23448,
+   "sprite": 111326,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    38,
+    159
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 370,
+   "nombre_original": "兇兇海蜇皮"
+  },
+  {
+   "entity_id": 3466661787,
+   "nombre": "Floaty Pink",
+   "npc_type": 23449,
+   "sprite": 111327,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    26,
+    129
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 371,
+   "nombre_original": "粉粉飄飄"
+  },
+  {
+   "entity_id": 3466727324,
+   "nombre": "Floaty Pink",
+   "npc_type": 23449,
+   "sprite": 111327,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    16,
+    130
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 371,
+   "nombre_original": "粉粉飄飄"
+  },
+  {
+   "entity_id": 3466858398,
+   "nombre": "Floaty Pink",
+   "npc_type": 23449,
+   "sprite": 111327,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    32,
+    146
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 371,
+   "nombre_original": "粉粉飄飄"
+  },
+  {
+   "entity_id": 3466923935,
+   "nombre": "Floaty Pink",
+   "npc_type": 23449,
+   "sprite": 111327,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    32,
+    141
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 371,
+   "nombre_original": "粉粉飄飄"
+  },
+  {
+   "entity_id": 3469086656,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    133,
+    80
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3469217730,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    165,
+    68
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3469283267,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    175,
+    80
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3469479878,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    195,
+    78
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3469545415,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    173,
+    67
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3469610952,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    198,
+    84
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3469676489,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    200,
+    79
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3469742026,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    175,
+    79
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3469938637,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    205,
+    86
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3470397396,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    232,
+    62
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3470659544,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    239,
+    56
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3470987229,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    220,
+    102
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3471904747,
+   "nombre": "Blue Jagshark",
+   "npc_type": 23451,
+   "sprite": 111331,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    217,
+    125
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 375,
+   "nombre_original": "藍皮鉅齒鯊"
+  },
+  {
+   "entity_id": 3471970284,
+   "nombre": "Blue Jagshark",
+   "npc_type": 23451,
+   "sprite": 111331,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    231,
+    119
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 375,
+   "nombre_original": "藍皮鉅齒鯊"
+  },
+  {
+   "entity_id": 3474198542,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    233,
+    63
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3475378208,
+   "nombre": "Purple Shark",
+   "npc_type": 23450,
+   "sprite": 111330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    225,
+    143
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 373,
+   "nombre_original": "紫鰭惡鯊"
+  },
+  {
+   "entity_id": 3475705893,
+   "nombre": "Blue Jagshark",
+   "npc_type": 23451,
+   "sprite": 111331,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    254,
+    123
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 375,
+   "nombre_original": "藍皮鉅齒鯊"
+  },
+  {
+   "entity_id": 3475836967,
+   "nombre": "Blue Jagshark",
+   "npc_type": 23451,
+   "sprite": 111331,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    243,
+    114
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 375,
+   "nombre_original": "藍皮鉅齒鯊"
+  },
+  {
+   "entity_id": 3476099115,
+   "nombre": "Blue Jagshark",
+   "npc_type": 23451,
+   "sprite": 111331,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    259,
+    94
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 375,
+   "nombre_original": "藍皮鉅齒鯊"
+  },
+  {
+   "entity_id": 3476164652,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    203,
+    88
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3476361263,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    222,
+    63
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3476426800,
+   "nombre": "Blue Jagshark",
+   "npc_type": 23451,
+   "sprite": 111331,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    263,
+    94
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 375,
+   "nombre_original": "藍皮鉅齒鯊"
+  },
+  {
+   "entity_id": 3476557874,
+   "nombre": "Blue Jagshark",
+   "npc_type": 23451,
+   "sprite": 111331,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    285,
+    115
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 375,
+   "nombre_original": "藍皮鉅齒鯊"
+  },
+  {
+   "entity_id": 3476754485,
+   "nombre": "Blue Jagshark",
+   "npc_type": 23451,
+   "sprite": 111331,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    272,
+    114
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 375,
+   "nombre_original": "藍皮鉅齒鯊"
+  },
+  {
+   "entity_id": 3476820022,
+   "nombre": "Blue Jagshark",
+   "npc_type": 23451,
+   "sprite": 111331,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    279,
+    121
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 375,
+   "nombre_original": "藍皮鉅齒鯊"
+  },
+  {
+   "entity_id": 3476885559,
+   "nombre": "Blue Jagshark",
+   "npc_type": 23451,
+   "sprite": 111331,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    272,
+    124
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 375,
+   "nombre_original": "藍皮鉅齒鯊"
+  },
+  {
+   "entity_id": 3477082170,
+   "nombre": "Blue Jagshark",
+   "npc_type": 23451,
+   "sprite": 111331,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    274,
+    137
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 375,
+   "nombre_original": "藍皮鉅齒鯊"
+  },
+  {
+   "entity_id": 3477672003,
+   "nombre": "Purple Shark",
+   "npc_type": 23450,
+   "sprite": 111330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    275,
+    160
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 373,
+   "nombre_original": "紫鰭惡鯊"
+  },
+  {
+   "entity_id": 3478130762,
+   "nombre": "Purple Shark",
+   "npc_type": 23450,
+   "sprite": 111330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    217,
+    143
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 373,
+   "nombre_original": "紫鰭惡鯊"
+  },
+  {
+   "entity_id": 3478392910,
+   "nombre": "Purple Shark",
+   "npc_type": 23450,
+   "sprite": 111330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    196,
+    158
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 373,
+   "nombre_original": "紫鰭惡鯊"
+  },
+  {
+   "entity_id": 3478523984,
+   "nombre": "Purple Shark",
+   "npc_type": 23450,
+   "sprite": 111330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    192,
+    152
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 373,
+   "nombre_original": "紫鰭惡鯊"
+  },
+  {
+   "entity_id": 3478589521,
+   "nombre": "Purple Shark",
+   "npc_type": 23450,
+   "sprite": 111330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    201,
+    161
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 373,
+   "nombre_original": "紫鰭惡鯊"
+  },
+  {
+   "entity_id": 3478655058,
+   "nombre": "Purple Shark",
+   "npc_type": 23450,
+   "sprite": 111330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    171,
+    146
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 373,
+   "nombre_original": "紫鰭惡鯊"
+  },
+  {
+   "entity_id": 3478720595,
+   "nombre": "Purple Shark",
+   "npc_type": 23450,
+   "sprite": 111330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    169,
+    151
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 373,
+   "nombre_original": "紫鰭惡鯊"
+  },
+  {
+   "entity_id": 3478786132,
+   "nombre": "Purple Shark",
+   "npc_type": 23450,
+   "sprite": 111330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    182,
+    147
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 373,
+   "nombre_original": "紫鰭惡鯊"
+  },
+  {
+   "entity_id": 3478851669,
+   "nombre": "Purple Shark",
+   "npc_type": 23450,
+   "sprite": 111330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    174,
+    142
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 373,
+   "nombre_original": "紫鰭惡鯊"
+  },
+  {
+   "entity_id": 3478917206,
+   "nombre": "Purple Shark",
+   "npc_type": 23450,
+   "sprite": 111330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    170,
+    155
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 373,
+   "nombre_original": "紫鰭惡鯊"
+  },
+  {
+   "entity_id": 3478982743,
+   "nombre": "Purple Shark",
+   "npc_type": 23450,
+   "sprite": 111330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    153,
+    162
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 373,
+   "nombre_original": "紫鰭惡鯊"
+  },
+  {
+   "entity_id": 3479048280,
+   "nombre": "Purple Shark",
+   "npc_type": 23450,
+   "sprite": 111330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    164,
+    160
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 373,
+   "nombre_original": "紫鰭惡鯊"
+  },
+  {
+   "entity_id": 3479113817,
+   "nombre": "Purple Shark",
+   "npc_type": 23450,
+   "sprite": 111330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    158,
+    161
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 373,
+   "nombre_original": "紫鰭惡鯊"
+  },
+  {
+   "entity_id": 3479507039,
+   "nombre": "Fierce Roughskin",
+   "npc_type": 23448,
+   "sprite": 111326,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    118,
+    148
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 370,
+   "nombre_original": "兇兇海蜇皮"
+  },
+  {
+   "entity_id": 3479896065,
+   "nombre": "Fierce Roughskin",
+   "npc_type": 23448,
+   "sprite": 111326,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    112,
+    142
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 370,
+   "nombre_original": "兇兇海蜇皮"
+  },
+  {
+   "entity_id": 3480158213,
+   "nombre": "Fierce Roughskin",
+   "npc_type": 23448,
+   "sprite": 111326,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    111,
+    149
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 370,
+   "nombre_original": "兇兇海蜇皮"
+  },
+  {
+   "entity_id": 3480616972,
+   "nombre": "Floaty Pink",
+   "npc_type": 23449,
+   "sprite": 111327,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    59,
+    126
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 371,
+   "nombre_original": "粉粉飄飄"
+  },
+  {
+   "entity_id": 3480682509,
+   "nombre": "Floaty Pink",
+   "npc_type": 23449,
+   "sprite": 111327,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    65,
+    120
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 371,
+   "nombre_original": "粉粉飄飄"
+  },
+  {
+   "entity_id": 3480879120,
+   "nombre": "Floaty Pink",
+   "npc_type": 23449,
+   "sprite": 111327,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    32,
+    125
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 371,
+   "nombre_original": "粉粉飄飄"
+  },
+  {
+   "entity_id": 3480944657,
+   "nombre": "Floaty Pink",
+   "npc_type": 23449,
+   "sprite": 111327,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    44,
+    124
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 371,
+   "nombre_original": "粉粉飄飄"
+  },
+  {
+   "entity_id": 3481010194,
+   "nombre": "Floaty Pink",
+   "npc_type": 23449,
+   "sprite": 111327,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    46,
+    112
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 371,
+   "nombre_original": "粉粉飄飄"
+  },
+  {
+   "entity_id": 3481075731,
+   "nombre": "Floaty Pink",
+   "npc_type": 23449,
+   "sprite": 111327,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    24,
+    115
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 371,
+   "nombre_original": "粉粉飄飄"
+  },
+  {
+   "entity_id": 3481141268,
+   "nombre": "Floaty Pink",
+   "npc_type": 23449,
+   "sprite": 111327,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    125
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 371,
+   "nombre_original": "粉粉飄飄"
+  },
+  {
+   "entity_id": 3481206805,
+   "nombre": "Floaty Pink",
+   "npc_type": 23449,
+   "sprite": 111327,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    34,
+    125
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 371,
+   "nombre_original": "粉粉飄飄"
+  },
+  {
+   "entity_id": 3481272342,
+   "nombre": "Floaty Pink",
+   "npc_type": 23449,
+   "sprite": 111327,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    33,
+    108
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 371,
+   "nombre_original": "粉粉飄飄"
+  },
+  {
+   "entity_id": 3481337879,
+   "nombre": "Floaty Pink",
+   "npc_type": 23449,
+   "sprite": 111327,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    45,
+    115
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 371,
+   "nombre_original": "粉粉飄飄"
+  },
+  {
+   "entity_id": 3481403416,
+   "nombre": "Floaty Pink",
+   "npc_type": 23449,
+   "sprite": 111327,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    31,
+    110
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 371,
+   "nombre_original": "粉粉飄飄"
+  },
+  {
+   "entity_id": 3481468953,
+   "nombre": "Floaty Pink",
+   "npc_type": 23449,
+   "sprite": 111327,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    22,
+    110
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 371,
+   "nombre_original": "粉粉飄飄"
+  },
+  {
+   "entity_id": 3481600027,
+   "nombre": "Floaty Pink",
+   "npc_type": 23449,
+   "sprite": 111327,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    27,
+    125
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 371,
+   "nombre_original": "粉粉飄飄"
+  },
+  {
+   "entity_id": 3481993249,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    63,
+    69
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3482517545,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    52,
+    40
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3482583082,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    56,
+    54
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3482648619,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    77,
+    52
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3482714156,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    56,
+    48
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3482779693,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    73,
+    59
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3482845230,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    68,
+    52
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3482910767,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    74,
+    71
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3482976304,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    70,
+    50
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3483107378,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    87,
+    87
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3483172915,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    56,
+    73
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3483238452,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    36,
+    64
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3483303989,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    37,
+    57
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3483369526,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    54,
+    57
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3483435063,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    47,
+    38
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3485597784,
+   "nombre": "Fierce Roughskin",
+   "npc_type": 23448,
+   "sprite": 111326,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    94,
+    141
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 370,
+   "nombre_original": "兇兇海蜇皮"
+  },
+  {
+   "entity_id": 3486122080,
+   "nombre": "Fierce Roughskin",
+   "npc_type": 23448,
+   "sprite": 111326,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    130,
+    155
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 370,
+   "nombre_original": "兇兇海蜇皮"
+  },
+  {
+   "entity_id": 3486580839,
+   "nombre": "Fierce Roughskin",
+   "npc_type": 23448,
+   "sprite": 111326,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    127,
+    155
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 370,
+   "nombre_original": "兇兇海蜇皮"
+  },
+  {
+   "entity_id": 3486974061,
+   "nombre": "Purple Shark",
+   "npc_type": 23450,
+   "sprite": 111330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    163,
+    134
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 373,
+   "nombre_original": "紫鰭惡鯊"
+  },
+  {
+   "entity_id": 3487170672,
+   "nombre": "Purple Shark",
+   "npc_type": 23450,
+   "sprite": 111330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    172,
+    141
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 373,
+   "nombre_original": "紫鰭惡鯊"
+  },
+  {
+   "entity_id": 3487629431,
+   "nombre": "Putridox V",
+   "npc_type": 20355,
+   "sprite": 110412,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    204,
+    95
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 300,
+   "nombre_original": "死骸騎士Ⅴ"
+  },
+  {
+   "entity_id": 3487891579,
+   "nombre": "Purple Shark",
+   "npc_type": 23450,
+   "sprite": 111330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    227,
+    141
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 373,
+   "nombre_original": "紫鰭惡鯊"
+  },
+  {
+   "entity_id": 3488022653,
+   "nombre": "Purple Shark",
+   "npc_type": 23450,
+   "sprite": 111330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    220,
+    141
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 373,
+   "nombre_original": "紫鰭惡鯊"
+  },
+  {
+   "entity_id": 3488219264,
+   "nombre": "Blue Jagshark",
+   "npc_type": 23451,
+   "sprite": 111331,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    249,
+    125
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 375,
+   "nombre_original": "藍皮鉅齒鯊"
+  },
+  {
+   "entity_id": 3488678023,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    211,
+    96
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3489005708,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    185,
+    77
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3489202319,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    217,
+    104
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3489267856,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    218,
+    106
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3489333393,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    188,
+    80
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3489398930,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    167,
+    66
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3489464467,
+   "nombre": "Wringy Octo",
+   "npc_type": 23453,
+   "sprite": 111383,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    201,
+    85
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 379,
+   "nombre_original": "八爪怪腕"
+  },
+  {
+   "entity_id": 3489530004,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    171,
+    75
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3489595541,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    166,
+    68
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3489661078,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    160,
+    75
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3489726615,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    147,
+    74
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3489792152,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    137,
+    85
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3489857689,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    129,
+    84
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3489923226,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    122,
+    92
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3489988763,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    112,
+    88
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3490054300,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    115,
+    86
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3490119837,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    111,
+    97
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3490185374,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    118,
+    93
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3490250911,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    99,
+    96
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3490316448,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    97,
+    100
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3490381985,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    110,
+    101
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3490447522,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    72,
+    89
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3490513059,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    86,
+    93
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3490578596,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    81,
+    93
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3490644133,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    86,
+    94
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3490709670,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    92,
+    94
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3490775207,
+   "nombre": "Saltwater Octo",
+   "npc_type": 23452,
+   "sprite": 111379,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    47,
+    76
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 377,
+   "nombre_original": "鹽水章魚"
+  },
+  {
+   "entity_id": 3490840744,
+   "nombre": "Floaty Pink",
+   "npc_type": 23449,
+   "sprite": 111327,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    19,
+    105
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 371,
+   "nombre_original": "粉粉飄飄"
+  },
+  {
+   "entity_id": 3490906281,
+   "nombre": "Floaty Pink",
+   "npc_type": 23449,
+   "sprite": 111327,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    18,
+    105
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 371,
+   "nombre_original": "粉粉飄飄"
+  },
+  {
+   "entity_id": 3490971818,
+   "nombre": "Floaty Pink",
+   "npc_type": 23449,
+   "sprite": 111327,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    14,
+    101
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 371,
+   "nombre_original": "粉粉飄飄"
+  },
+  {
+   "entity_id": 3491037355,
+   "nombre": "Floaty Pink",
+   "npc_type": 23449,
+   "sprite": 111327,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    20,
+    100
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 371,
+   "nombre_original": "粉粉飄飄"
+  },
+  {
+   "entity_id": 3491102892,
+   "nombre": "Floaty Pink",
+   "npc_type": 23449,
+   "sprite": 111327,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    16,
+    86
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 371,
+   "nombre_original": "粉粉飄飄"
+  },
+  {
+   "entity_id": 3491168429,
+   "nombre": "Floaty Pink",
+   "npc_type": 23449,
+   "sprite": 111327,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    19,
+    106
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 371,
+   "nombre_original": "粉粉飄飄"
+  },
+  {
+   "entity_id": 3491430577,
+   "nombre": "Floaty Pink",
+   "npc_type": 23449,
+   "sprite": 111327,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    32,
+    81
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 371,
+   "nombre_original": "粉粉飄飄"
   }
  ],
  "recursos": [
@@ -2948,7 +5956,7 @@
     140,
     290
    ],
-   "medio": "00000000250000000000000000000000",
+   "medio": "00a4b5b5b4b9bef0b746000000000000",
    "marca": 0,
    "orient": 6,
    "sprite": 60001,
@@ -2975,7 +5983,7 @@
     241,
     433
    ],
-   "medio": "000000001a0000000000000000000000",
+   "medio": "000000001b0000000000000000000000",
    "marca": 0,
    "orient": 6,
    "sprite": 60034,
@@ -2988,7 +5996,7 @@
     366,
     365
    ],
-   "medio": "00000000280000000000000000000000",
+   "medio": "006ab5b5b4b9bef0b746000000000000",
    "marca": 0,
    "orient": 6,
    "sprite": 60034,
@@ -3001,8 +6009,8 @@
     375,
     469
    ],
-   "medio": "00000000070000000000000000000000",
-   "marca": 0,
+   "medio": "000000002c0000004400100043001200",
+   "marca": 106,
    "orient": 6,
    "sprite": 60034,
    "cola": "00000000000000"
@@ -3411,6 +6419,71 @@
    "cola": "00000000000000"
   },
   {
+   "entity_id": 432933090,
+   "capa": 0,
+   "px": [
+    945,
+    3988
+   ],
+   "medio": "0070a849ace2c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 432998627,
+   "capa": 0,
+   "px": [
+    1165,
+    4112
+   ],
+   "medio": "00cfa95aa74ab3bd00ec000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 433064164,
+   "capa": 0,
+   "px": [
+    1360,
+    4077
+   ],
+   "medio": "00000000270000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 433129701,
+   "capa": 0,
+   "px": [
+    1550,
+    4017
+   ],
+   "medio": "000000001f0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 433195238,
+   "capa": 0,
+   "px": [
+    1457,
+    3857
+   ],
+   "medio": "000000002b0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
    "entity_id": 433391849,
    "capa": 0,
    "px": [
@@ -3538,6 +6611,32 @@
    "marca": 0,
    "orient": 6,
    "sprite": 60035,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 435030274,
+   "capa": 0,
+   "px": [
+    2032,
+    2669
+   ],
+   "medio": "00000000210000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 435095811,
+   "capa": 0,
+   "px": [
+    2225,
+    2771
+   ],
+   "medio": "006ab5b5b4b9bef0b74600003c001400",
+   "marca": 49,
+   "orient": 6,
+   "sprite": 60034,
    "cola": "00000000000000"
   },
   {
@@ -3710,6 +6809,19 @@
    "cola": "00000000000000"
   },
   {
+   "entity_id": 436013329,
+   "capa": 0,
+   "px": [
+    4685,
+    4048
+   ],
+   "medio": "00000000260000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
    "entity_id": 436078866,
    "capa": 0,
    "px": [
@@ -3730,6 +6842,19 @@
     4849
    ],
    "medio": "00000000230000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 436209940,
+   "capa": 0,
+   "px": [
+    4945,
+    4140
+   ],
+   "medio": "00000000210000000000000000000000",
    "marca": 0,
    "orient": 6,
    "sprite": 60005,
@@ -3876,6 +7001,19 @@
    "marca": 0,
    "orient": 6,
    "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 436996384,
+   "capa": 0,
+   "px": [
+    1938,
+    2413
+   ],
+   "medio": "00a4b5b5b4b9bef0b746000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
    "cola": "00000000000000"
   },
   {
@@ -4347,6 +7485,19 @@
    "cola": "00000000000000"
   },
   {
+   "entity_id": 439945549,
+   "capa": 0,
+   "px": [
+    4818,
+    5292
+   ],
+   "medio": "00cfa95aa74ab3bd00e1c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
    "entity_id": 440011086,
    "capa": 0,
    "px": [
@@ -4763,6 +7914,19 @@
    "cola": "00000000000000"
   },
   {
+   "entity_id": 442501492,
+   "capa": 0,
+   "px": [
+    8078,
+    3825
+   ],
+   "medio": "00000000190000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
    "entity_id": 442567029,
    "capa": 0,
    "px": [
@@ -4771,6 +7935,19 @@
    ],
    "medio": "00cfa95aa74ab3bd00e1c24f00000000",
    "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 442632566,
+   "capa": 0,
+   "px": [
+    7377,
+    3825
+   ],
+   "medio": "0000000070034080dc004040a0003080",
+   "marca": 165,
    "orient": 6,
    "sprite": 60038,
    "cola": "00000000000000"
@@ -4786,6 +7963,19 @@
    "marca": 0,
    "orient": 6,
    "sprite": 60037,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 442894714,
+   "capa": 0,
+   "px": [
+    9073,
+    3626
+   ],
+   "medio": "00000000170000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
    "cola": "00000000000000"
   },
   {
@@ -4900,6 +8090,19 @@
     2113
    ],
    "medio": "00cfa95aa74ab3bd00df000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 443681158,
+   "capa": 0,
+   "px": [
+    8791,
+    1573
+   ],
+   "medio": "006aaeefacf5bcd8a4ec000000000000",
    "marca": 0,
    "orient": 6,
    "sprite": 60005,
@@ -5075,6 +8278,19 @@
    "cola": "00000000000000"
   },
   {
+   "entity_id": 444664213,
+   "capa": 0,
+   "px": [
+    7505,
+    2924
+   ],
+   "medio": "00000000170000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
    "entity_id": 444795287,
    "capa": 0,
    "px": [
@@ -5085,6 +8301,19 @@
    "marca": 0,
    "orient": 6,
    "sprite": 60036,
+   "cola": "00000000000000"
+  },
+  {
+   "entity_id": 446433712,
+   "capa": 0,
+   "px": [
+    8850,
+    3757
+   ],
+   "medio": "00000000250000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
    "cola": "00000000000000"
   },
   {
@@ -5242,6 +8471,40 @@
    "tile": [
     55,
     119
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 354,
+   "nombre_original": "菲特斯諾",
+   "_motivo": "sprite 999: no es un id de grafico; el cliente no puede dibujarlo"
+  },
+  {
+   "entity_id": 3427011902,
+   "nombre": "Stunt Man",
+   "npc_type": 6269,
+   "sprite": 999,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    32,
+    144
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 354,
+   "nombre_original": "菲特斯諾",
+   "_motivo": "sprite 999: no es un id de grafico; el cliente no puede dibujarlo"
+  },
+  {
+   "entity_id": 3487039598,
+   "nombre": "Stunt Man",
+   "npc_type": 6269,
+   "sprite": 999,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    251,
+    88
    ],
    "direccion": 6,
    "visible": 0,
