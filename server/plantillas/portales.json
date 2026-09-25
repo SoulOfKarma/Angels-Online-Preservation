@@ -6834,7 +6834,7 @@
      286,
      169
     ],
-    "destino": null,
+    "destino": 402,
     "llegada": [
      10,
      10
@@ -6842,34 +6842,109 @@
     "radio": 3,
     "dibujar": false,
     "preguntar": false,
-    "sin_medir": false,
-    "desactivado": true,
-    "destino_medido": 402,
-    "nota": "Verdant Shrine -> SEASIDE GROTTO (stage 402), MEDIDO pero DESACTIVADO a la espera de la plantilla del 402, que el usuario esta recorriendo. Tornado capturado en (286,169). Medido TRES veces: los tramos acabaron en (286,169), (286,168) y (285,168), a cero y a una casilla; las llegadas fueron (10,10) dos veces y (13,7) una. La vuelta 402 -> 401 sale con el tramo acabando en (6,4) las dos veces y llega a (286,165) y (282,166). RADIO 3 Y NO MAS: esas dos llegadas estan a CUATRO de este tornado. ACTIVARLO poniendo destino 402."
+    "nota": "Verdant Shrine -> Seaside Grotto (stage 402). ACTIVADO el 25/09/2026. Tornado capturado en (286,169). Medido TRES veces: los tramos acabaron en (286,169), (286,168) y (285,168); las llegadas fueron (10,10) dos veces y (13,7) una. RADIO 3 Y NO MAS: las llegadas de vuelta desde el 402 son (286,165) y (282,166), las dos a CUATRO de este tornado."
    }
   ],
   "402": [
    {
-    "entity": null,
+    "entity": 710,
     "tile": [
      6,
      4
     ],
-    "destino": null,
+    "destino": 401,
     "llegada": [
      286,
      165
     ],
     "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Seaside Grotto -> Verdant Shrine. SIN TORNADO CAPTURADO: los dos sprites 60001 del mapa estan en (292,173) y (245,137), los dos en la esquina opuesta. Se dibuja a mano con entity 710 (serie 700-710) y la posicion es APROXIMADA. Medido dos veces: los dos tramos acabaron justo en (6,4) y se llego a (286,165) y (282,166). Radio 3: las llegadas desde Verdant Shrine son (10,10) y (13,7), a SEIS y a SIETE."
+   },
+   {
+    "entity": 872612998,
+    "tile": [
+     245,
+     137
+    ],
+    "destino": null,
+    "llegada": null,
+    "radio": 3,
     "dibujar": false,
     "preguntar": false,
-    "sin_medir": false,
+    "sin_medir": true,
     "desactivado": true,
-    "destino_medido": 401,
-    "nota": "Seaside Grotto -> Verdant Shrine. MEDIDO pero DESACTIVADO junto con su par. Medido dos veces: los dos tramos acabaron justo en (6,4) y se llego a (286,165) y (282,166). Radio 3: las llegadas desde Verdant Shrine son (10,10) y (13,7), a SEIS y a SIETE, asi que hay holgura. No se sabe si hay tornado; comprobarlo al poblar el mapa. AVISO: el usuario dice que en Seaside Grotto hay una INSTANCIA. Al poblarlo habra que identificar su entrada y dejarla desactivada, como las otras 15 del proyecto."
+    "mismo_mapa": true,
+    "nota": "Tornado de vuelta del teletransporte de las ESFERAS, dentro del propio Seaside Grotto. El usuario lo situa en torno a (244,138) y dice que devuelve a la zona de las esferas, en (212,130). NO ESTA MEDIDO: para cruzarlo no hace falta 0x000C, asi que no deja rastro de cambio de mapa, y en esta sesion no se aisló su 0x0003. Queda anotado para medirlo cruzandolo y mirando a donde salta el jugador. Ver la entrada del dialogo 516358 para el sentido de ida."
+   },
+   {
+    "entity": 853410657,
+    "tile": [
+     292,
+     173
+    ],
+    "destino": null,
+    "llegada": null,
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "sin_medir": true,
+    "desactivado": true,
+    "punto_del_cliente": [
+     280,
+     161
+    ],
+    "nota": "Entrada de INSTANCIA de Seaside Grotto, avisada por el usuario y respaldada por el cliente. El jumpmap.xml trae DOS destinos para el stage 402: el id 336 en (13,13) con la clase 37 a secas, y el id 337 en (280,161) con clase 37 MAS UNA 19. Esa clase de mas es la misma senal que delató la entrada de instancia de Bling Plaza, y el punto (280,161) queda a DOCE casillas de este tornado, una distancia parecida a las ocho de aquel. No se cruzo. Queda DESACTIVADA como las otras 15 entradas de instancia del proyecto."
    }
   ]
  },
  "sprite": 60001,
- "plantilla_hex": "8a00000002000000340300003a10000000000000000000000000000000000000000661ea00000481030000"
+ "plantilla_hex": "8a00000002000000340300003a10000000000000000000000000000000000000000661ea00000481030000",
+ "teletransportes_por_dialogo": {
+  "402": [
+   {
+    "msg": 516358,
+    "opciones": [
+     516031,
+     516032
+    ],
+    "acciones": [
+     1000044,
+     0
+    ],
+    "estatuas": {
+     "sprite": 60305,
+     "tiles": [
+      [
+       206,
+       135
+      ],
+      [
+       215,
+       131
+      ],
+      [
+       223,
+       126
+      ]
+     ],
+     "entidades": [
+      871695480,
+      871761017,
+      871826554
+     ]
+    },
+    "llegada": [
+     244,
+     143
+    ],
+    "vuelve_por": [
+     245,
+     137
+    ],
+    "nota": "LAS TRES ESTATUAS DE SEASIDE GROTTO. Mecanismo NUEVO para el proyecto. El usuario lo compara con los menus de portal de Bearscape, y se parece en que sale un dialogo, pero el disparador es distinto: alli se pisa un portal y aqui hay que HABLARLE A LA ESTATUA. SECUENCIA MEDIDA: el cliente manda c2s 0x0005 con [u32 entidad][u16 0] -- el clic sobre el objeto -- y el servidor contesta con el 0x0012 del msg 516358, que dice que hay una barrera y que un angel puede forzarla A CAMBIO DE RECIBIR DANO, con las opciones 516031 'Yes' y 516032 'No'. El Yes lleva la accion 1000044, el No lleva 0. Al aceptar, el jugador pierde vida y aparece al otro lado. NO es el 0x0016 de los portales internos de Lost Trail y Branch Way: se busco y no hay NI UN 0x0016 en toda la sesion. Tampoco hay 0x000B; el clic va por 0x0005. MEDIDO: el jugador estaba en (214,133) y aparecio en (244,143). El dialogo salio cinco veces, desde tres estatuas distintas, las tres de sprite 60305: (206,135), (215,131) y (223,126). Son las tres que el usuario conto. La vuelta NO es por dialogo sino por el tornado (245,137), anotado aparte y sin medir. OJO CON EL SPRITE 60305: aparece tambien en Clink Harbor (1), Neon Sky Corridor (4) y Bling Plaza (2), asi que puede ser el objeto interactivo generico y no algo propio de este mapa. Conviene probar a hacerles clic en esos mapas. NUESTRO SERVIDOR NO LO IMPLEMENTA: haria falta contestar al 0x0005 sobre esas entidades con el 0x0012, y al recibir la opcion 516031 restar vida y mover al jugador."
+   }
+  ]
+ }
 }
