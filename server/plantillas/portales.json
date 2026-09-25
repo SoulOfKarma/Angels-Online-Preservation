@@ -6424,10 +6424,10 @@
   ],
   "417": [
    {
-    "entity": null,
+    "entity": 704,
     "tile": [
-     290,
-     9
+     291,
+     8
     ],
     "destino": 416,
     "llegada": [
@@ -6435,9 +6435,9 @@
      165
     ],
     "radio": 3,
-    "dibujar": false,
+    "dibujar": true,
     "preguntar": false,
-    "nota": "Neon Sky Corridor -> Clink Harbor. SIN TORNADO VISIBLE: se busco en TODA la sesion y no hay un solo 0x000E cuyo tile caiga a menos de diez casillas de (290,9). Medido una vez: el tramo de salida acabo justo en (290,9) saliendo de (290,13..15), y se llego a (35,165). Radio 3: la llegada desde el 416 es (290,15), a seis, asi que queda fuera y no rebota. entity en null porque no hay objeto al que apuntar. SOBRE EL NOMBRE 'BORDE': se llamo asi al principio y era una suposicion mal fundada. El mapa mide 300x180, o sea que el borde real esta en x=299, y ademas en Black Market hay entidades hasta x=293, MAS ALLA de la casilla del portal. Asi que ni es el borde del mapa ni es el limite de lo transitable. Lo UNICO comprobado es esto: el warp funciona y NO HAY TORNADO. El usuario lo verifico en juego -- cruzo y no se dibuja nada -- y coincide con la captura, donde no hay ningun objeto cerca de la casilla. Que dispara el cambio de mapa no se sabe; puede ser un portal invisible. Para nuestro servidor da igual: _portal_en busca por casilla y la entrada lleva dibujar=false, que es exactamente lo que se ve en el original."
+    "nota": "Neon Sky Corridor -> Clink Harbor. SE DIBUJA A MANO. El servidor NO manda este tornado: se comprobo con una sesion nueva y completa de 185 KB, con su propio 0x000C al 417, en la que el servidor mando DOS objetos de mapa en todo el recorrido y ninguno con sprite 60001. Aun asi el cliente lo dibuja, asi que lo mas probable es que este dentro del propio archivo de mapa (map417.mpc) y no sea un objeto que el servidor envie. Como no se puede capturar, la posicion la dio el usuario leyendola del minimapa en el cliente oficial: (291,8). Primero dio (289,10) aproximado y luego lo corrigio a (291,8), que ademas deja mas margen. Antes estaba en (290,9), que es donde acabo el tramo del MOVE_REQ al cruzar, o sea donde el portal DISPARA. Se movio a la del tornado porque no son lo mismo: el punto donde dispara no tiene por que ser donde esta dibujado. La diferencia es de una casilla, dentro del radio, asi que sigue funcionando igual. Radio 3: el tramo medido (290,9) queda a UNA, y las dos llegadas desde Clink Harbor, (290,15) y (284,14), quedan las dos a SIETE, o sea holgadamente fuera. El techo real es 6. El entity 704 va a mano y sigue la serie de los que tambien se dibujan: 700, 701 y 702 en el Lyceum y 703 en Clink Harbor."
    },
    {
     "entity": 949356139,
