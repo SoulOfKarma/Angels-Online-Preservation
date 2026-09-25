@@ -186,7 +186,7 @@ def recurso_a_datos(e, b, mats, cartel=None):
     return d
 
 
-TOLERANCIA = 3   # casillas; ver quitar_repetidos_de_otra_sesion()
+TOLERANCIA = 0   # casillas; MEDIDO, ver quitar_repetidos_de_otra_sesion()
 
 
 def quitar_repetidos_de_otra_sesion(spawns):
@@ -208,9 +208,21 @@ def quitar_repetidos_de_otra_sesion(spawns):
     del mismo npc_type a TOLERANCIA casillas o menos se consideran el mismo
     bicho, que se movio entre una sesion y otra. Se queda el primero.
 
-    No es exacto -- dos bichos distintos del mismo tipo pegados se fusionan --
-    pero el error va del lado seguro: es mejor un monstruo de menos que un
-    mapa lleno de duplicados. Para no perder nada, lo quitado se guarda.
+    LA TOLERANCIA VA EN 0, O SEA SOLO LA MISMA CASILLA EXACTA, y eso esta
+    medido. Se probo con 3 y borraba POBLACION REAL: aplicada a mapas de
+    Celestia, que salen de UNA sola sesion y por tanto no pueden tener
+    duplicados, se cargaba el 23% de niro_river, el 18% de karang_desert y el
+    16% de pharaoh_village. Los monstruos del mismo tipo se paran juntos de
+    forma legitima, asi que la cercania NO distingue un duplicado de un
+    vecino. El usuario lo noto antes que la medicion: dijo que faltaban
+    bichos en Majestic Mansion, Warm Villa y Floral Alley.
+
+    Con 0 esto ya casi no hace nada, y esta bien que asi sea: la conclusion
+    de verdad es que JUNTAR SESIONES DEL MISMO MAPA NO ES FIABLE. Un bicho
+    visto en dos sesiones tiene ids distintos y ademas se ha movido, asi que
+    no hay forma de reconocerlo. Lo correcto es recorrer el mapa entero en
+    UNA sola sesion y poblar con esa; si hace falta mas cobertura, conviene
+    un recorrido mas largo, no dos recorridos sumados.
     """
     buenos, fuera = [], []
     porTipo = collections.defaultdict(list)
