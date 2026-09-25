@@ -2374,3 +2374,65 @@ distintos para dos cosas distintas.
 
 Qué manda el servidor cuando el otro jugador **se va**, y si el equipo se
 reenvía al cambiarlo estando ambos en el mapa. Nada de eso está capturado.
+
+## EL CICLO DE DÍA Y NOCHE (25/09/2026)
+
+**Nuestro servidor no lo tiene.** No hay nada: ni mensaje, ni temporizador,
+ni se usa el campo de brillo que trae el cliente. Esto es lo que se sabe por
+si alguien lo implementa.
+
+### Lo que el cliente declara, y es sólido
+
+`stage.xml` trae **dos pistas de música por escenario**, `配樂檔1` y
+`配樂檔2`. De los 445 escenarios, **solo cuatro tienen la segunda**, y son
+exactamente las cuatro ciudades de facción:
+
+| stage | mapa          | 配樂檔1 | 配樂檔2 |
+| ----- | ------------- | ------- | ------- |
+| 3     | Aurora City   | 03.ogg  | 04.ogg  |
+| 26    | Dark City     | 05.ogg  | 06.ogg  |
+| 29    | Breeze Woods  | 09.ogg  | 10.ogg  |
+| 38    | Iron Castle   | 07.ogg  | 08.ogg  |
+
+También trae `亮度` (brillo) por escenario. De nuestros 154 poblados: 99 con
+255 (luz plena), **31 con −1**, y el resto con valores fijos bajos (180, 96,
+128, 200) que son cuevas y mazmorras. El **−1 es casi seguro "automático"**,
+o sea los que siguen el ciclo.
+
+Y el sistema afecta a qué aparece, no solo al aspecto. El mensaje **513761**,
+de un evento de Halloween, lo dice con horas:
+
+> De día, **[06:00 AM ~ 06:00 PM]**, aparece el Halloween Pumpkin Ghost; de
+> noche, **[06:00 PM ~ 06:00 AM]**, aparece el Halloween Golden Cloth Ghost.
+
+### El periodo: 30 minutos, según el usuario
+
+El usuario lo recuerda del juego original como **un cambio cada 30 minutos**,
+y encaja con el mensaje de arriba: si el reloj del juego corre **24 veces más
+rápido** que el real, un día completo dura una hora real y cada mitad —las
+doce horas de día y las doce de noche— sale a **30 minutos**. Las horas del
+mensaje serían horas DE JUEGO, no del reloj real.
+
+Al principio se leyó ese mensaje como si fueran horas reales, o sea doce y
+doce de verdad. **Era una suposición y probablemente esté mal**: el dato del
+usuario y el del cliente cuadran solos con el reloj acelerado.
+
+### Lo que NO se ha podido confirmar
+
+Que el servidor lo mande. Se buscó en las capturas de Celestia un mensaje
+periódico y **no hay ninguno**: en tres sesiones largas, de **404, 232 y 211
+minutos**, ningún opcode s2c aparece con un espaciado de entre 20 y 40
+minutos. Con 404 minutos se habrían visto trece ciclos.
+
+Eso deja dos posibilidades y no se pueden separar con lo que hay:
+
+- **Celestia no implementa el ciclo**, y por eso no se ve nada. El recuerdo
+  del usuario es del juego de IGG, no de este servidor privado.
+- **Lo lleva el cliente solo**, con su propio reloj, y no hace falta paquete.
+
+El `0x0014`, que sería el candidato natural a llevar la hora, sale **byte a
+byte idéntico en 60 sesiones**, así que no es.
+
+Para cerrarlo haría falta mirar en Celestia si una ciudad llega a oscurecerse
+o a cambiar de música; si no lo hace nunca, es que ese servidor no lo tiene y
+habrá que sacar el ciclo de otra versión.
