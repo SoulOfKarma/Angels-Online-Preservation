@@ -6716,7 +6716,7 @@
      283,
      6
     ],
-    "destino": null,
+    "destino": 399,
     "llegada": [
      21,
      169
@@ -6724,15 +6724,65 @@
     "radio": 3,
     "dibujar": false,
     "preguntar": false,
-    "sin_medir": false,
-    "desactivado": true,
-    "destino_medido": 399,
-    "nota": "Floral Alley -> MAJESTIC MANSION (stage 399), MEDIDO pero DESACTIVADO: no hay plantilla del 399, solo se cruzo y ese tramo trajo UN spawn. El tornado si esta capturado, en (283,6). Medido dos veces: los dos tramos acabaron en (282,7), a una casilla. La llegada fue (21,169). Radio 3: la llegada de vuelta desde el 399 es (275,11), a OCHO del tornado. ACTIVARLO poniendo destino 399."
+    "nota": "Floral Alley -> Majestic Mansion (stage 399). ACTIVADO el 25/09/2026. Tornado capturado en (283,6), va en los recursos de la plantilla. Medido dos veces: los dos tramos acabaron en (282,7), a una casilla. Las llegadas fueron (21,169) y (25,170). Radio 3: las llegadas de vuelta desde el 399 son (275,11) y (290,17), a OCHO y a ONCE. OJO: este mapa tiene DOS tornados que van al mismo 399, este y el de (294,14). No es un error."
    },
    {
     "entity": 2120552391,
     "tile": [
      294,
+     14
+    ],
+    "destino": 399,
+    "llegada": [
+     21,
+     169
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Floral Alley -> Majestic Mansion (stage 399), por el SEGUNDO tornado. Estaba anotado como 'no se cruzo, no se sabe adonde va'; se cruzo y va al mismo sitio que el de (283,6). Los dos mapas estan unidos por DOS tornados, como ya pasaba en Giant Wooden Stairs. Medido una vez: el tramo acabo en (293,15), a una casilla, y se llego a (21,169), la misma casilla que por el otro tornado. RADIO 3 Y NO MAS: la llegada de vuelta desde el 399 es (290,17), a CUATRO de aqui."
+   }
+  ],
+  "399": [
+   {
+    "entity": 707,
+    "tile": [
+     19,
+     171
+    ],
+    "destino": 398,
+    "llegada": [
+     290,
+     17
+    ],
+    "radio": 1,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Majestic Mansion -> Floral Alley. SIN TORNADO CAPTURADO: el mapa se recorrio entero y sus dos sprites 60001 estan en (15,8) y (288,14). Se dibuja a mano con entity 707 (serie: 700-702 Lyceum, 703 Clink Harbor, 704 Neon Sky Corridor, 705 Jade Vale, 706 Floral Alley) y la posicion es APROXIMADA, la casilla donde dispara. RADIO 1, EL MAS APRETADO DEL PROYECTO, Y YA CONFIRMADO CON TRES MEDIDAS: las llegadas desde Floral Alley son (21,169) dos veces y (25,170) una, y la primera esta a DOS casillas de aqui. Con radio 2 el jugador rebotaria al aterrizar. Los dos tramos de salida medidos acabaron JUSTO encima, a cero, asi que con 1 sigue disparando -- pero no hay margen ninguno. Se elige la llegada (290,17) y no (275,11) porque la primera deja al jugador a once del tornado de vuelta y la segunda a ocho: mas lejos, mas seguro."
+   },
+   {
+    "entity": 949289926,
+    "tile": [
+     15,
+     8
+    ],
+    "destino": null,
+    "llegada": [
+     282,
+     171
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "sin_medir": false,
+    "desactivado": true,
+    "destino_medido": 400,
+    "nota": "Majestic Mansion -> WARM VILLA (stage 400), MEDIDO pero DESACTIVADO a la espera de la plantilla del 400. Tornado capturado en (15,8). Medido dos veces: los dos tramos acabaron en (16,9), a una casilla; las llegadas fueron (282,171) y (290,167). La vuelta 400 -> 399 sale con el tramo acabando en (289,171) y llega a (19,14). Radio 3: esa llegada esta a SEIS de este tornado. ACTIVARLO poniendo destino 400."
+   },
+   {
+    "entity": 949879759,
+    "tile": [
+     288,
      14
     ],
     "destino": null,
@@ -6742,28 +6792,28 @@
     "preguntar": false,
     "sin_medir": true,
     "desactivado": true,
-    "nota": "Segundo tornado de Floral Alley, en la esquina noreste. NO SE CRUZO, asi que no se sabe adonde va. Queda anotado para medirlo. El mapa tiene por tanto tres pasos conocidos: este, el tornado (283,6) al 399 y el paso sin tornado de (269,153) de vuelta al 397."
+    "nota": "Segundo tornado de Majestic Mansion, esquina noreste. NO SE CRUZO. El usuario dice que este es el que va a VERDANT SHRINE (stage 401), que seria la cuarta parada de Sun Sea Maze, pero no esta medido. Queda anotado para cruzarlo."
    }
   ],
-  "399": [
+  "400": [
    {
     "entity": null,
     "tile": [
-     19,
+     289,
      171
     ],
     "destino": null,
     "llegada": [
-     275,
-     11
+     19,
+     14
     ],
-    "radio": 1,
+    "radio": 3,
     "dibujar": false,
     "preguntar": false,
     "sin_medir": false,
     "desactivado": true,
-    "destino_medido": 398,
-    "nota": "Majestic Mansion -> Floral Alley. MEDIDO pero DESACTIVADO junto con su par. Medido una vez: el tramo acabo justo en (19,171) y se llego a (275,11). RADIO 1, Y ES EL MAS APRETADO DE TODO EL PROYECTO: la llegada desde Floral Alley es (21,169), a solo DOS casillas de aqui, asi que con radio 2 el jugador rebotaria en el instante de aterrizar. Con 1 el tramo medido, que acabo justo encima, sigue disparando, pero no hay margen: al poblar el 399 conviene volver a medirlo y comprobar si la llegada cae siempre en la misma casilla, porque en este mismo par ya se vio que el 397 deja al jugador en tres casillas distintas. No se sabe si hay tornado: ese tramo trajo un solo spawn y ningun objeto."
+    "destino_medido": 399,
+    "nota": "Warm Villa -> Majestic Mansion. MEDIDO pero DESACTIVADO junto con su par. Medido una vez: el tramo acabo justo en (289,171) y se llego a (19,14). RADIO 3 Y NO MAS: las llegadas desde el 399 son (282,171) y (290,167), a SIETE y a CUATRO. No se sabe si hay tornado; comprobarlo al poblar el mapa, que el usuario esta recorriendo ahora."
    }
   ]
  },

@@ -739,6 +739,7 @@ PLANTILLAS_POR_STAGE = {
     363 : 'deep_trench.json',
     397 : 'floating_station.json',
     398 : 'floral_alley.json',
+    399 : 'majestic_mansion.json',
     416 : 'clink_harbor.json',
     417 : 'neon_sky_corridor.json',
     418 : 'black_market_district.json',
