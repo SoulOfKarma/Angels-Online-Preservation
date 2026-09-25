@@ -145,6 +145,22 @@
     "dibujar": false,
     "nota": "Dense Forest -> Mushroom Forest. El tile lo dio el usuario y encaja con el tornado capturado en (8,143); la llegada (235,7) es donde aparecio en la captura.",
     "preguntar": false
+   },
+   {
+    "entity": 121584,
+    "tile": [
+     11,
+     20
+    ],
+    "destino": 245,
+    "llegada": [
+     233,
+     11
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Dense Forest -> Sweet Orchard por el tornado 121584, el del noroeste. El MOVE_REQ salio de (9,25), a cinco casillas, y su primer tramo acabo en (12,20), a una. Las llegadas fueron (233,11) y (235,14); se usa la primera. LOS DOS SENTIDOS MEDIDOS. Con esto Dense Forest queda cerrado: sus cuatro tornados van a Mushroom Forest, Breeze Woods, Cryptic Moon Swamp y aqui."
    }
   ],
   "30": [
@@ -327,6 +343,22 @@
     "dibujar": false,
     "preguntar": false,
     "nota": "Samara Woods -> Jade Vale. Tornado 116797 de samara_woods.json. Radio 3: el salto se disparo desde (283,11). La llegada (258,173) es la que mando Celestia, medida."
+   },
+   {
+    "entity": 116798,
+    "tile": [
+     290,
+     158
+    ],
+    "destino": 232,
+    "llegada": [
+     11,
+     11
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Samara Woods -> Edo City por el tornado 116798, el del sureste. El MOVE_REQ salio de (280,158), que es la propia casilla de llegada, a diez, y su primer tramo acabo en (289,158), a una. Las llegadas fueron (11,11) y (6,11); se usa la primera. LOS DOS SENTIDOS MEDIDOS. Con esto Samara Woods queda cerrado: su otro tornado va a Jade Vale."
    }
   ],
   "9": [
@@ -5302,7 +5334,7 @@
     "radio": 3,
     "dibujar": false,
     "preguntar": false,
-    "nota": "Brilliant Boneyard -> Gebuer Vale por el tornado 118511, el del suroeste. El MOVE_REQ salio de (13,168), a cuatro casillas, y su primer tramo acabo en (10,171), a una. Las dos llegadas de este mapa, (9,164) y (6,167), quedan a ocho y a cinco. Las llegadas de vuelta a Gebuer, (233,69) y (234,65), quedan a siete y a seis de su tornado. Brilliant Boneyard tiene TRES tornados: queda sin destino el 118513 en (292,13)."
+    "nota": "Brilliant Boneyard -> Gebuer Vale por el tornado 118511, el del suroeste. El MOVE_REQ salio de (13,168), a cuatro casillas, y su primer tramo acabo en (10,171), a una. Las dos llegadas de este mapa, (9,164) y (6,167), quedan a ocho y a cinco. Las llegadas de vuelta a Gebuer, (233,69) y (234,65), quedan a siete y a seis de su tornado. Brilliant Boneyard tiene TRES tornados y los tres estan medidos: van a Gebuer Vale, Ivory Forest y Razorex Temple."
    },
    {
     "entity": 118512,
@@ -5319,6 +5351,22 @@
     "dibujar": false,
     "preguntar": false,
     "nota": "Brilliant Boneyard -> Ivory Forest por el tornado 118512, el del sureste. Cruzado dos veces y las dos el primer tramo acabo en (286,171), pegado al tornado. La llegada fue (24,13) las DOS veces, sin dispersion. LOS DOS SENTIDOS MEDIDOS."
+   },
+   {
+    "entity": 118513,
+    "tile": [
+     292,
+     13
+    ],
+    "destino": 287,
+    "llegada": [
+     15,
+     161
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Brilliant Boneyard -> Razorex Temple por el tornado 118513, el del noreste. El MOVE_REQ salio de (283,11), a nueve casillas, y su primer tramo acabo en (291,12), a una. Las llegadas fueron (15,161) y (18,163); se usa la primera. La llegada de vuelta a este mapa, (280,11), queda a doce. Este enlace CIERRA el circuito de la zona: Brilliant Boneyard, Ivory Forest, Whitefang Village, Razorex Temple, Sleepy Spring, Transient Waters y Fragrant Courtyard. Se entra desde Gebuer Vale."
    }
   ],
   "286": [
@@ -5336,7 +5384,1009 @@
     "radio": 3,
     "dibujar": false,
     "preguntar": false,
-    "nota": "Ivory Forest -> Brilliant Boneyard por el tornado 118514, el del noroeste. El MOVE_REQ salio de (14,8), a tres casillas, y su primer tramo acabo en (12,6), a una. La llegada de este mapa, (24,13), queda a trece. La llegada (287,166) queda a seis del tornado de ida de Brilliant Boneyard. El otro tornado del mapa, el 118515 en (291,6), sigue sin destino."
+    "nota": "Ivory Forest -> Brilliant Boneyard por el tornado 118514, el del noroeste. El MOVE_REQ salio de (14,8), a tres casillas, y su primer tramo acabo en (12,6), a una. La llegada de este mapa, (24,13), queda a trece. La llegada (287,166) queda a seis del tornado de ida de Brilliant Boneyard."
+   },
+   {
+    "entity": 118515,
+    "tile": [
+     291,
+     6
+    ],
+    "destino": 288,
+    "llegada": [
+     12,
+     165
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Ivory Forest -> Whitefang Village por el tornado 118515, el del noreste. Cruzado dos veces y las dos el primer tramo acabo en (290,7), pegado al tornado. Las llegadas fueron (12,165) y (16,168); se usa la primera. LOS DOS SENTIDOS MEDIDOS. Con esto Ivory Forest queda cerrado."
+   }
+  ],
+  "288": [
+   {
+    "entity": 118522,
+    "tile": [
+     9,
+     173
+    ],
+    "destino": 286,
+    "llegada": [
+     280,
+     13
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Whitefang Village -> Ivory Forest por el tornado 118522, el del suroeste. El MOVE_REQ salio de (12,166), que es casi la casilla de llegada, a siete, y su primer tramo acabo en (10,172), a una. La otra llegada, (16,168), queda a siete. La llegada (280,13) queda a once del tornado de ida de Ivory Forest. Whitefang Village tiene TRES tornados y los tres estan medidos: van a Ivory Forest, Razorex Temple y Sleepy Spring."
+   },
+   {
+    "entity": 118523,
+    "tile": [
+     6,
+     3
+    ],
+    "destino": 287,
+    "llegada": [
+     278,
+     168
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Whitefang Village -> Razorex Temple por el tornado 118523, el de la esquina noroeste. Cruzado dos veces y las dos el primer tramo acabo en (7,4), pegado al tornado. Las llegadas fueron (278,168) y (284,162); se usa la primera. Radio 3 y no mas: la llegada de vuelta a este mapa, (11,8), queda a CINCO. LOS DOS SENTIDOS MEDIDOS."
+   },
+   {
+    "entity": 118521,
+    "tile": [
+     270,
+     6
+    ],
+    "destino": 289,
+    "llegada": [
+     18,
+     172
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Whitefang Village -> Sleepy Spring por el tornado 118521, el del norte. Cruzado dos veces y las dos el primer tramo acabo en (272,6), a dos casillas. Las llegadas fueron (18,172) y (16,168); se usa la primera. LOS DOS SENTIDOS MEDIDOS. Con esto Whitefang Village queda cerrado."
+   }
+  ],
+  "287": [
+   {
+    "entity": 118518,
+    "tile": [
+     289,
+     169
+    ],
+    "destino": 288,
+    "llegada": [
+     11,
+     8
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Razorex Temple -> Whitefang Village por el tornado 118518, el del sureste. El MOVE_REQ salio de (282,168), a siete casillas, y su primer tramo acabo en (288,168), a una. Las dos llegadas de este mapa, (278,168) y (284,162), quedan a once y a siete."
+   },
+   {
+    "entity": 118517,
+    "tile": [
+     14,
+     169
+    ],
+    "destino": 285,
+    "llegada": [
+     280,
+     11
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Razorex Temple -> Brilliant Boneyard por el tornado 118517, el del suroeste. Cruzado dos veces: los tramos acabaron en (14,171) y (15,168), a dos y a una casilla. La llegada fue (280,11) las DOS veces, sin dispersion. LOS DOS SENTIDOS MEDIDOS. Con esto Razorex Temple queda cerrado."
+   }
+  ],
+  "289": [
+   {
+    "entity": 118530,
+    "tile": [
+     9,
+     174
+    ],
+    "destino": 288,
+    "llegada": [
+     260,
+     10
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Sleepy Spring -> Whitefang Village por el tornado 118530, el del suroeste. El MOVE_REQ salio de (16,172), a siete casillas, y su primer tramo acabo en (10,173), a una. Las dos llegadas de este mapa, (18,172) y (16,168), quedan a nueve y a siete. La llegada (260,10) queda a diez del tornado de ida de Whitefang. Sleepy Spring tiene TRES tornados y los tres estan medidos: van a Whitefang Village, Transient Waters y Fragrant Courtyard."
+   },
+   {
+    "entity": 118531,
+    "tile": [
+     8,
+     7
+    ],
+    "destino": 290,
+    "llegada": [
+     280,
+     168
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Sleepy Spring -> Transient Waters por el tornado 118531, el del noroeste. Cruzado dos veces y las dos el primer tramo acabo en (9,8), pegado al tornado. Las llegadas fueron (280,168) y (278,173); se usa la primera. LOS DOS SENTIDOS MEDIDOS."
+   },
+   {
+    "entity": 118532,
+    "tile": [
+     292,
+     168
+    ],
+    "destino": 291,
+    "llegada": [
+     28,
+     10
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Sleepy Spring -> Fragrant Courtyard por el tornado 118532, el del sureste. Cruzado dos veces y las dos el primer tramo acabo en (291,167), pegado al tornado. Las llegadas fueron (28,10) y (31,13); se usa la primera. LOS DOS SENTIDOS MEDIDOS. Con esto Sleepy Spring queda cerrado."
+   }
+  ],
+  "290": [
+   {
+    "entity": 118534,
+    "tile": [
+     287,
+     173
+    ],
+    "destino": 289,
+    "llegada": [
+     18,
+     8
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Transient Waters -> Sleepy Spring por el tornado 118534. El MOVE_REQ salio de (281,169), a seis casillas, y su primer tramo acabo en (286,172), a una. Las dos llegadas de este mapa, (280,168) y (278,173), quedan a siete y a nueve. La llegada (18,8) queda a diez del tornado de ida de Sleepy Spring. Transient Waters tiene UN SOLO tornado y UN SOLO objeto de mapa: es un callejon sin salida, como Rex Point y Raven Riverpoint. Queda CERRADO con este unico portal."
+   }
+  ],
+  "291": [
+   {
+    "entity": 118536,
+    "tile": [
+     16,
+     4
+    ],
+    "destino": 289,
+    "llegada": [
+     282,
+     165
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Fragrant Courtyard -> Sleepy Spring por el tornado 118536, el del noroeste. El MOVE_REQ salio de (21,8), a cinco casillas, y su primer tramo acabo en (17,5), a una. Las dos llegadas de este mapa, (28,10) y (31,13), quedan a doce y a quince. La llegada (282,165) queda a diez del tornado de ida de Sleepy Spring."
+   },
+   {
+    "entity": 118535,
+    "tile": [
+     20,
+     174
+    ],
+    "destino": null,
+    "llegada": null,
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "sin_medir": true,
+    "punto_del_cliente": [
+     31,
+     171
+    ],
+    "nota": "INSTANCIA, SIN CRUZAR. El usuario la situa aqui y jumpmap.xml lo respalda: declara un \"Instance Entrance\" (id 243) en (31,171), a ONCE casillas de este tornado, que ademas es el unico libre del mapa. Se encontro buscando las DOS etiquetas del cliente, \"Instance Entrance\" e \"Instance Entry Point\"; con solo la segunda, que es la que se uso durante casi toda la sesion, este punto no habria aparecido. Destino y llegada van en null y _portal_en se lo salta."
+   }
+  ],
+  "232": [
+   {
+    "entity": 116859,
+    "tile": [
+     6,
+     6
+    ],
+    "destino": 231,
+    "llegada": [
+     280,
+     158
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Edo City -> Samara Woods por el tornado 116859, el del noroeste. El MOVE_REQ salio de (10,10), a cuatro casillas, y su primer tramo acabo en (7,7), a una. Las dos llegadas de este mapa, (11,11) y (6,11), quedan a cinco. La llegada (280,158) queda a diez del tornado de ida de Samara Woods. Edo City es la ciudad del Sakura Festival, el evento de temporada: tiene los cuatro totems y servicios (City Banker, City Maintenance, City Magic Research)."
+   },
+   {
+    "entity": 116860,
+    "tile": [
+     5,
+     161
+    ],
+    "destino": 233,
+    "llegada": [
+     286,
+     33
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Edo City -> Joy Festival por el tornado 116860, el del suroeste. Cruzado dos veces: los tramos acabaron en (6,160) y (6,162), los dos a una casilla. Las llegadas fueron (286,33) y (291,35); se usa la primera. LOS DOS SENTIDOS MEDIDOS. Con esto Edo City queda cerrado."
+   }
+  ],
+  "233": [
+   {
+    "entity": 116927,
+    "tile": [
+     293,
+     27
+    ],
+    "destino": 232,
+    "llegada": [
+     14,
+     160
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Joy Festival -> Edo City por el tornado 116927, el del noreste. El MOVE_REQ salio de (289,31), a cuatro casillas, y su primer tramo acabo en (293,26), a una. Las dos llegadas de este mapa, (286,33) y (291,35), quedan a ocho y a diez. La llegada (14,160) queda a nueve del tornado de ida de Edo City. Joy Festival tiene TRES tornados y los tres estan medidos: van a Edo City, Hot Spring Resort y Sakura Valley."
+   },
+   {
+    "entity": 116925,
+    "tile": [
+     21,
+     163
+    ],
+    "destino": 235,
+    "llegada": [
+     287,
+     12
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Joy Festival -> Hot Spring Resort por el tornado 116925, el del suroeste. Cruzado dos veces: los tramos acabaron en (18,164) y (22,163), a TRES y a una casilla, asi que el radio 3 es justo lo que hace falta. Las llegadas fueron (287,12) y (291,12); se usa la primera. LOS DOS SENTIDOS MEDIDOS."
+   },
+   {
+    "entity": 116926,
+    "tile": [
+     295,
+     157
+    ],
+    "destino": 234,
+    "llegada": [
+     11,
+     4
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Joy Festival -> Sakura Valley por el tornado 116926, el del sureste. El MOVE_REQ salio de (292,151), que es la propia casilla de llegada, a seis, y su primer tramo acabo en (294,156), a una. La llegada (11,4) queda a seis del tornado de ida de Sakura Valley. Con esto Joy Festival queda cerrado. Este enlace CIERRA el circuito del Sakura Festival: Edo City, Joy Festival, Hot Spring Resort, Ninja Land y Sakura Valley forman un anillo, con Fox Shrine colgando como callejon sin salida. Se entra desde Samara Woods."
+   }
+  ],
+  "235": [
+   {
+    "entity": 117052,
+    "tile": [
+     294,
+     6
+    ],
+    "destino": 233,
+    "llegada": [
+     29,
+     163
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Hot Spring Resort -> Joy Festival por el tornado 117052, el del noreste. El MOVE_REQ salio de (290,9), a cuatro casillas, y su primer tramo acabo en (295,8), a dos. Las dos llegadas de este mapa, (287,12) y (291,12), quedan a nueve y a cinco. La llegada (29,163) queda a ocho del tornado de ida de Joy Festival."
+   },
+   {
+    "entity": 117051,
+    "tile": [
+     282,
+     166
+    ],
+    "destino": 237,
+    "llegada": [
+     12,
+     7
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Hot Spring Resort -> Ninja Land por el tornado 117051, el del sureste. Cruzado dos veces y las dos el primer tramo acabo en (281,165), pegado al tornado. La llegada fue (12,7) las DOS veces, sin dispersion. LOS DOS SENTIDOS MEDIDOS. Con esto Hot Spring Resort queda cerrado."
+   }
+  ],
+  "237": [
+   {
+    "entity": 117178,
+    "tile": [
+     6,
+     4
+    ],
+    "destino": 235,
+    "llegada": [
+     273,
+     162
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Ninja Land -> Hot Spring Resort por el tornado 117178, el de la esquina noroeste. El MOVE_REQ salio de (10,6), a cuatro casillas, y su primer tramo acabo en (7,5), a una. La llegada de este mapa, (12,7), queda a seis. La llegada (273,162) queda a nueve del tornado de ida de Hot Spring Resort. Ninja Land tiene TRES tornados y estan los tres: uno a Hot Spring Resort, otro a Sakura Valley y el 117176, que es la entrada de una instancia. Queda cerrado."
+   },
+   {
+    "entity": 117176,
+    "tile": [
+     15,
+     165
+    ],
+    "destino": null,
+    "llegada": null,
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "sin_medir": true,
+    "punto_del_cliente": [
+     20,
+     160
+    ],
+    "nota": "INSTANCIA, SIN CRUZAR. El usuario la situa aqui y jumpmap.xml lo respalda sin ambiguedad: declara un \"Instance Entry Point\" (id 203) en (20,160), a CINCO casillas de este tornado; los otros dos del mapa estan a 272 y a 156. Destino y llegada van en null y _portal_en se lo salta."
+   },
+   {
+    "entity": 117177,
+    "tile": [
+     292,
+     6
+    ],
+    "destino": 234,
+    "llegada": [
+     16,
+     166
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Ninja Land -> Sakura Valley por el tornado 117177, el del noreste. Cruzado dos veces y las dos el primer tramo acabo en (291,7), pegado al tornado. Las llegadas fueron (16,166), (11,166) y (17,169). Se usa la PRIMERA a proposito: la (11,166) queda a solo TRES del tornado de vuelta de Sakura Valley, o sea dentro de su radio."
+   }
+  ],
+  "234": [
+   {
+    "entity": 116988,
+    "tile": [
+     8,
+     169
+    ],
+    "destino": 237,
+    "llegada": [
+     285,
+     12
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Sakura Valley -> Ninja Land por el tornado 116988, el del suroeste. Los dos cruces dispararon por vias DISTINTAS: el primero por el tramo, que acabo en (9,168) a una casilla, y el segundo por la casilla informada, (11,166), a tres, porque su tramo se iba a (18,167), a diez. RADIO 3 EXACTO: con 2 el segundo cruce no dispararia por ningun lado, y no se puede subir porque una de las tres llegadas de este mapa, (11,166), esta tambien a TRES. Esa llegada cae dentro del radio, asi que depende de que se marque la casilla como pisada al llegar, cosa que _viajar_por_portal ya hace. Sakura Valley tiene TRES tornados y los tres estan medidos: van a Ninja Land, Fox Shrine y Joy Festival."
+   },
+   {
+    "entity": 116990,
+    "tile": [
+     286,
+     170
+    ],
+    "destino": 236,
+    "llegada": [
+     7,
+     21
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Sakura Valley -> Fox Shrine por el tornado 116990, el del sureste. Cruzado dos veces y las dos el primer tramo acabo en (285,169), pegado al tornado. Las llegadas fueron (7,21) y (13,16); se usa la primera. Radio 3 y no mas: la llegada de vuelta a este mapa, (284,165), queda a CINCO. LOS DOS SENTIDOS MEDIDOS."
+   },
+   {
+    "entity": 116989,
+    "tile": [
+     5,
+     3
+    ],
+    "destino": 233,
+    "llegada": [
+     292,
+     151
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Sakura Valley -> Joy Festival por el tornado 116989, el de la esquina noroeste. Cruzado dos veces y las dos el primer tramo acabo en (6,4), pegado al tornado. Las llegadas fueron (292,151) y (287,153); se usa la primera. LOS DOS SENTIDOS MEDIDOS. Con esto Sakura Valley queda cerrado."
+   }
+  ],
+  "236": [
+   {
+    "entity": 117115,
+    "tile": [
+     5,
+     15
+    ],
+    "destino": 234,
+    "llegada": [
+     284,
+     165
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Fox Shrine -> Sakura Valley por el tornado 117115. El MOVE_REQ salio de (7,19), a cuatro casillas, y su primer tramo acabo en (6,16), a una. Las dos llegadas de este mapa, (7,21) y (13,16), quedan a seis y a ocho. Fox Shrine tiene UN SOLO tornado: es un callejon sin salida, el cuarto que vemos despues de Rex Point, Raven Riverpoint y Transient Waters. El usuario lo confirma: \"es unico camino\". Queda CERRADO con este unico portal. Es ademas un mapa ALTO, llega a y=257."
+   }
+  ],
+  "245": [
+   {
+    "entity": 117441,
+    "tile": [
+     239,
+     6
+    ],
+    "destino": 23,
+    "llegada": [
+     8,
+     30
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Sweet Orchard -> Dense Forest por el tornado 117441, el del noreste. El MOVE_REQ salio de (235,10), a cuatro casillas, y su primer tramo acabo en (238,7), a una. Las dos llegadas de este mapa, (233,11) y (235,14), quedan a seis y a ocho. La llegada (8,30) queda a diez del tornado de ida de Dense Forest. Sweet Orchard es un mapa ALTO: llega a y=270, donde esta su otro tornado, el 117442, ya medido. Queda cerrado."
+   },
+   {
+    "entity": 117442,
+    "tile": [
+     238,
+     270
+    ],
+    "destino": 246,
+    "llegada": [
+     52,
+     10
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Sweet Orchard -> Fruity Village por el tornado 117442, el del fondo del mapa. Cruzado dos veces: los tramos acabaron en (237,269) y (237,270), los dos a una casilla. Las llegadas fueron (52,10) y (53,14); se usa la primera. LOS DOS SENTIDOS MEDIDOS. Con esto Sweet Orchard queda cerrado."
+   }
+  ],
+  "246": [
+   {
+    "entity": 117506,
+    "tile": [
+     44,
+     8
+    ],
+    "destino": 245,
+    "llegada": [
+     231,
+     270
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Fruity Village -> Sweet Orchard por el tornado 117506, el del norte. El MOVE_REQ salio de (52,10), que es la propia casilla de llegada, a ocho, y su primer tramo acabo en (45,9), a una. La otra llegada, (53,14), queda a nueve. La llegada (231,270) queda a siete del tornado de ida de Sweet Orchard. Fruity Village tiene TRES tornados y los tres estan medidos: van a Sweet Orchard, Jade Garden y Luscious Grange."
+   },
+   {
+    "entity": 117505,
+    "tile": [
+     290,
+     166
+    ],
+    "destino": 247,
+    "llegada": [
+     10,
+     10
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Fruity Village -> Jade Garden por el tornado 117505, el del sureste. Cruzado dos veces: los tramos acabaron en (289,165) y (289,167), los dos a una casilla. La llegada fue (10,10) las DOS veces, sin dispersion. LOS DOS SENTIDOS MEDIDOS."
+   },
+   {
+    "entity": 117507,
+    "tile": [
+     13,
+     145
+    ],
+    "destino": 248,
+    "llegada": [
+     282,
+     8
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Fruity Village -> Luscious Grange por el tornado 117507, el del oeste. Cruzado dos veces y las dos el primer tramo acabo en (14,144), pegado al tornado. Las llegadas fueron (282,8) y (281,5); se usa la primera. LOS DOS SENTIDOS MEDIDOS. Con esto Fruity Village queda cerrado."
+   }
+  ],
+  "247": [
+   {
+    "entity": 117576,
+    "tile": [
+     6,
+     5
+    ],
+    "destino": 246,
+    "llegada": [
+     282,
+     161
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Jade Garden -> Fruity Village por el tornado 117576, el del noroeste. El MOVE_REQ salio de (10,10), que es la propia casilla de llegada, a cinco, y su primer tramo acabo en (7,6), a una. Radio 3 y no mas: con 5 la llegada caeria dentro y el jugador rebotaria al aterrizar. La llegada (282,161) queda a ocho del tornado de ida de Fruity Village."
+   },
+   {
+    "entity": 117575,
+    "tile": [
+     16,
+     172
+    ],
+    "destino": 249,
+    "llegada": [
+     284,
+     3
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Jade Garden -> Branch Way por el tornado 117575, el del suroeste. El MOVE_REQ salio de (20,170), a cuatro casillas, y su primer tramo acabo en (17,171), a una. Radio 3 y no mas: las dos llegadas de este mapa, (21,170) y (19,168), quedan a CINCO y a CUATRO. La llegada (284,3) queda a nueve del tornado de ida de Branch Way. Con esto Jade Garden queda cerrado."
+   }
+  ],
+  "248": [
+   {
+    "entity": 117704,
+    "tile": [
+     290,
+     3
+    ],
+    "destino": 246,
+    "llegada": [
+     21,
+     144
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Luscious Grange -> Fruity Village por el tornado 117704, el de la esquina noreste. El MOVE_REQ salio de (286,6), a cuatro casillas, y su primer tramo acabo en (289,4), a una. Las dos llegadas de este mapa, (282,8) y (281,5), quedan a ocho y a nueve. La llegada (21,144) queda a ocho del tornado de ida de Fruity Village."
+   },
+   {
+    "entity": 117703,
+    "tile": [
+     262,
+     165
+    ],
+    "destino": 249,
+    "llegada": [
+     14,
+     17
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Luscious Grange -> Branch Way por el tornado 117703, el del sureste. Cruzado dos veces: los tramos acabaron en (263,164) y (263,167), a una y dos casillas. La llegada fue (14,17) las DOS veces, sin dispersion. Radio 3 y no mas: la llegada de vuelta a este mapa, (261,161), queda a CUATRO. LOS DOS SENTIDOS MEDIDOS. Con esto Luscious Grange queda cerrado."
+   }
+  ],
+  "249": [
+   {
+    "entity": 117706,
+    "tile": [
+     7,
+     11
+    ],
+    "destino": 248,
+    "llegada": [
+     261,
+     161
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Branch Way -> Luscious Grange por el tornado 117706, el del noroeste. El MOVE_REQ salio de (14,17), que es la propia casilla de llegada, a siete, y su primer tramo acabo en (8,12), a una. BRANCH WAY TIENE SIETE TORNADOS, el maximo visto hasta ahora; el record anterior eran seis, en Forbidden Sector y Teddy Amusement. El nombre le hace justicia. El 117707 va a Jade Garden. Branch Way tiene DOS pares internos, el unico mapa asi hasta ahora: el 117769 con el 117770, y el 117771 con el 117772. El 117708 va a Lost Trail. Branch Way queda CERRADO: dos salidas, dos pares internos y esta."
+   },
+   {
+    "entity": 117707,
+    "tile": [
+     293,
+     4
+    ],
+    "destino": 247,
+    "llegada": [
+     21,
+     170
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Branch Way -> Jade Garden por el tornado 117707, el de la esquina noreste. Se cruzo dos veces pero solo UNA sirve para medir el disparo: en la otra ni la casilla informada (289,12) ni el tramo (290,10) llegan al tornado, se quedan a ocho y a seis, porque el ultimo MOVE_REQ decodificado fue a mitad de camino. La buena salio de (291,10) con el tramo acabando en (292,5), a una casilla. Las llegadas fueron (21,170) y (19,168); se usa la primera. LOS DOS SENTIDOS MEDIDOS."
+   },
+   {
+    "entity": 117769,
+    "tile": [
+     155,
+     129
+    ],
+    "destino": 249,
+    "llegada": [
+     24,
+     79
+    ],
+    "radio": 3,
+    "direccion": 3,
+    "mismo_mapa": true,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "PORTAL INTERNO: lleva a otro punto del MISMO mapa. Es el tercer par de este tipo, despues de Forbidden Sector y Hidden Grove. Siete cruces y ni un solo 0x000C: el mapa no se recarga. La direccion del 0x0016 volvio a salir variable (03, 01 y en tres cruces ninguna), lo que confirma que no es una propiedad del portal. Este es el del CENTRO. Cruzado cuatro veces, con los tramos en (156,128) tres veces y (156,129) una, todos a una casilla. Las llegadas fueron (24,79) tres veces y (29,81) una; se usa la primera. Quedan a siete y a cinco del portal de vuelta, fuera de su radio."
+   },
+   {
+    "entity": 117770,
+    "tile": [
+     24,
+     86
+    ],
+    "destino": 249,
+    "llegada": [
+     159,
+     123
+    ],
+    "radio": 3,
+    "direccion": 1,
+    "mismo_mapa": true,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "PORTAL INTERNO: lleva a otro punto del MISMO mapa. Es el tercer par de este tipo, despues de Forbidden Sector y Hidden Grove. Siete cruces y ni un solo 0x000C: el mapa no se recarga. La direccion del 0x0016 volvio a salir variable (03, 01 y en tres cruces ninguna), lo que confirma que no es una propiedad del portal. Este es el del OESTE. Cruzado tres veces y las tres con el tramo en (25,84), a dos casillas. Las llegadas fueron (159,123), (164,127) y (163,124); se usa la primera. Quedan a seis, nueve y ocho del portal de vuelta."
+   },
+   {
+    "entity": 117771,
+    "tile": [
+     18,
+     144
+    ],
+    "destino": 249,
+    "llegada": [
+     189,
+     163
+    ],
+    "radio": 3,
+    "direccion": 1,
+    "mismo_mapa": true,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "PORTAL INTERNO: lleva a otro punto del MISMO mapa. Branch Way tiene DOS pares internos, es el unico mapa con mas de uno. Este es el SEGUNDO par. Siete cruces entre los dos y ni un 0x000C. Este es el del OESTE. Cruzado cuatro veces, con los tramos en (19,143) tres veces y (17,143) una, todos a una casilla. Las llegadas fueron (189,163) una vez y (183,167) tres; se usa la primera. Quedan a cinco y a siete del portal de vuelta."
+   },
+   {
+    "entity": 117772,
+    "tile": [
+     190,
+     168
+    ],
+    "destino": 249,
+    "llegada": [
+     17,
+     140
+    ],
+    "radio": 3,
+    "direccion": 1,
+    "mismo_mapa": true,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "PORTAL INTERNO: lleva a otro punto del MISMO mapa. Branch Way tiene DOS pares internos, es el unico mapa con mas de uno. Este es el SEGUNDO par. Siete cruces entre los dos y ni un 0x000C. Este es el del SURESTE. Cruzado tres veces, con los tramos en (189,167) dos veces y (192,167) una, a una y dos casillas. Las llegadas fueron (17,140), (21,140) y (24,142); se usa la primera. OJO: dos de ellas, (17,140) y (21,140), quedan a CUATRO del portal de vuelta, asi que su radio 3 no se puede subir."
+   },
+   {
+    "entity": 117708,
+    "tile": [
+     21,
+     167
+    ],
+    "destino": 250,
+    "llegada": [
+     216,
+     5
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Branch Way -> Lost Trail por el tornado 117708, el del suroeste. Cruzado dos veces y las dos el primer tramo acabo en (22,166), pegado al tornado. Las llegadas fueron (216,5) y (220,5); se usa la primera. Radio 3 y no mas: la llegada de vuelta a este mapa, (25,162), queda a CINCO. LOS DOS SENTIDOS MEDIDOS. Con esto Branch Way queda cerrado."
+   }
+  ],
+  "250": [
+   {
+    "entity": 117773,
+    "tile": [
+     214,
+     15
+    ],
+    "destino": 249,
+    "llegada": [
+     25,
+     162
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Lost Trail -> Branch Way por el tornado 117773. El MOVE_REQ salio de (216,12), a tres casillas, y su primer tramo acabo en (215,14), a una. Las dos llegadas de este mapa, (216,5) y (220,5), quedan a diez las dos. LOST TRAIL TIENE CATORCE TORNADOS. El record anterior eran siete, en Branch Way, y antes seis. El nombre encaja: es un laberinto. Van SEIS pares internos medidos: 117775-117785, 117776-117777, 117784-117778, 117779-117786, 117780-117781 y 117782-117783. De los catorce tornados, doce son pares internos, este es la salida a Branch Way y el 117774 la salida a Buzzing Stopover. Lost Trail queda CERRADO: doce portales internos y dos salidas."
+   },
+   {
+    "entity": 117775,
+    "tile": [
+     285,
+     53
+    ],
+    "destino": 250,
+    "llegada": [
+     141,
+     13
+    ],
+    "radio": 3,
+    "direccion": 1,
+    "mismo_mapa": true,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "PORTAL INTERNO: lleva a otro punto del MISMO mapa. Lost Trail es el cuarto mapa con pares internos, despues de Forbidden Sector, Hidden Grove y Branch Way. Tres cruces y ni un 0x000C. Este es el del ESTE. Cruzado dos veces, con los tramos en (286,52) y (287,52), a una y dos casillas. La llegada fue (141,13) las dos veces, a siete del portal de vuelta."
+   },
+   {
+    "entity": 117785,
+    "tile": [
+     136,
+     20
+    ],
+    "destino": 250,
+    "llegada": [
+     291,
+     45
+    ],
+    "radio": 3,
+    "direccion": 1,
+    "mismo_mapa": true,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "PORTAL INTERNO: lleva a otro punto del MISMO mapa. Lost Trail es el cuarto mapa con pares internos, despues de Forbidden Sector, Hidden Grove y Branch Way. Tres cruces y ni un 0x000C. Este es el del CENTRO-NORTE. El MOVE_REQ salio de (140,16), a cuatro casillas, y su tramo acabo en (137,19), a una. La llegada (291,45) queda a ocho del portal de vuelta."
+   },
+   {
+    "entity": 117776,
+    "tile": [
+     279,
+     96
+    ],
+    "destino": 250,
+    "llegada": [
+     60,
+     23
+    ],
+    "radio": 3,
+    "direccion": 1,
+    "mismo_mapa": true,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "PORTAL INTERNO de Lost Trail, que es el mapa con mas tornados de todos: catorce. Lleva a otro punto del MISMO mapa, sin recargarlo. Segundo par, lado ESTE. Cruzado dos veces y las dos con el tramo en (280,95), a una casilla. Las llegadas fueron (60,23) y (55,19); se usa la primera. Quedan a siete y a once del portal de vuelta."
+   },
+   {
+    "entity": 117777,
+    "tile": [
+     56,
+     30
+    ],
+    "destino": 250,
+    "llegada": [
+     287,
+     88
+    ],
+    "radio": 3,
+    "direccion": 1,
+    "mismo_mapa": true,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "PORTAL INTERNO de Lost Trail, que es el mapa con mas tornados de todos: catorce. Lleva a otro punto del MISMO mapa, sin recargarlo. Segundo par, lado NOROESTE. El MOVE_REQ salio de (60,23), que es una de las casillas de llegada del otro lado, a cuatro, y su tramo acabo en (58,28), a dos. La llegada (287,88) queda a ocho del portal de vuelta."
+   },
+   {
+    "entity": 117784,
+    "tile": [
+     228,
+     116
+    ],
+    "destino": 250,
+    "llegada": [
+     22,
+     59
+    ],
+    "radio": 3,
+    "direccion": 1,
+    "mismo_mapa": true,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "PORTAL INTERNO de Lost Trail, el mapa con mas tornados de todos: catorce. Lleva a otro punto del MISMO mapa, sin recargarlo. Tercer par, lado ESTE. Cruzado dos veces: un tramo acabo JUSTO ENCIMA del tornado, en (228,116), y el otro en (229,115), a una casilla. Las llegadas fueron (22,59) y (18,60); se usa la primera. Quedan a ocho y a seis del portal de vuelta."
+   },
+   {
+    "entity": 117778,
+    "tile": [
+     14,
+     66
+    ],
+    "destino": 250,
+    "llegada": [
+     234,
+     114
+    ],
+    "radio": 4,
+    "direccion": 1,
+    "mismo_mapa": true,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "PORTAL INTERNO de Lost Trail, el mapa con mas tornados de todos: catorce. Lleva a otro punto del MISMO mapa, sin recargarlo. Tercer par, lado OESTE. RADIO 4, no 3: el MOVE_REQ salio de (22,59), a ocho casillas, y su tramo acabo en (17,62), a CUATRO, asi que con radio 3 no dispararia por ningun lado. Las dos llegadas de este lado, (22,59) y (18,60), quedan a ocho y a seis, fuera del radio 4. La llegada (234,114) queda a seis del portal de vuelta."
+   },
+   {
+    "entity": 117779,
+    "tile": [
+     199,
+     142
+    ],
+    "destino": 250,
+    "llegada": [
+     13,
+     99
+    ],
+    "radio": 3,
+    "direccion": 1,
+    "mismo_mapa": true,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "PORTAL INTERNO de Lost Trail, el mapa con mas tornados de todos: catorce. Lleva a otro punto del MISMO mapa, sin recargarlo. Cuarto par, lado ESTE. Cruzado dos veces y las dos con el tramo en (200,141), a una casilla. Las llegadas fueron (13,99) y (16,100). Se usa la PRIMERA a proposito: la (16,100) queda a solo TRES del portal de vuelta, o sea dentro de su radio."
+   },
+   {
+    "entity": 117786,
+    "tile": [
+     14,
+     103
+    ],
+    "destino": 250,
+    "llegada": [
+     204,
+     135
+    ],
+    "radio": 3,
+    "direccion": 1,
+    "mismo_mapa": true,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "PORTAL INTERNO de Lost Trail, el mapa con mas tornados de todos: catorce. Lleva a otro punto del MISMO mapa, sin recargarlo. Cuarto par, lado OESTE. El MOVE_REQ salio de (13,99), que es una de las casillas de llegada, a cuatro, y su tramo acabo en (13,102), a una. La llegada (204,135) queda a siete del portal de vuelta. MARGEN MUY JUSTO: de las dos llegadas de este lado, la (13,99) queda a CUATRO de este tornado y la (16,100) a TRES, o sea dentro. El radio 3 no se puede subir, y la (16,100) depende de que se marque la casilla como pisada al llegar."
+   },
+   {
+    "entity": 117780,
+    "tile": [
+     22,
+     168
+    ],
+    "destino": 250,
+    "llegada": [
+     88,
+     167
+    ],
+    "radio": 4,
+    "direccion": 1,
+    "mismo_mapa": true,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "PORTAL INTERNO de Lost Trail, el mapa con mas tornados de todos: catorce. Lleva a otro punto del MISMO mapa, sin recargarlo. Quinto par, lado OESTE. RADIO 4, no 3: en el primer cruce la casilla informada quedo a seis y el tramo, (18,164), a CUATRO, asi que con radio 3 no dispararia; el segundo cruce si, con el tramo en (21,167) a una. La llegada del otro lado, (17,163), queda a CINCO, justo fuera del radio 4: no se puede subir mas. La llegada fue (88,167) las dos veces."
+   },
+   {
+    "entity": 117781,
+    "tile": [
+     95,
+     167
+    ],
+    "destino": 250,
+    "llegada": [
+     17,
+     163
+    ],
+    "radio": 3,
+    "direccion": 1,
+    "mismo_mapa": true,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "PORTAL INTERNO de Lost Trail, el mapa con mas tornados de todos: catorce. Lleva a otro punto del MISMO mapa, sin recargarlo. Quinto par, lado CENTRO-SUR. El MOVE_REQ salio de (89,167), que es casi la casilla de llegada, a seis, y su tramo acabo en (94,167), a una. La llegada (17,163) queda a cinco del portal de vuelta."
+   },
+   {
+    "entity": 117782,
+    "tile": [
+     155,
+     168
+    ],
+    "destino": 250,
+    "llegada": [
+     248,
+     164
+    ],
+    "radio": 4,
+    "direccion": 1,
+    "mismo_mapa": true,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "PORTAL INTERNO de Lost Trail, el mapa con mas tornados de todos: catorce. Lleva a otro punto del MISMO mapa, sin recargarlo. Sexto par, lado CENTRO. RADIO 4, no 3: en el primer cruce la casilla informada quedo a cinco y el tramo, (159,165), a CUATRO; el segundo si disparo a una, con el tramo en (156,167). La llegada del otro lado, (165,164), queda a diez, asi que hay margen. Las llegadas fueron (248,164) y (247,167); se usa la primera."
+   },
+   {
+    "entity": 117783,
+    "tile": [
+     256,
+     167
+    ],
+    "destino": 250,
+    "llegada": [
+     165,
+     164
+    ],
+    "radio": 3,
+    "direccion": 1,
+    "mismo_mapa": true,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "PORTAL INTERNO de Lost Trail, el mapa con mas tornados de todos: catorce. Lleva a otro punto del MISMO mapa, sin recargarlo. Sexto par, lado ESTE. El MOVE_REQ salio de (249,166), que es casi la casilla de llegada, a siete, y su tramo acabo en (255,166), a una. Las dos llegadas de este lado, (248,164) y (247,167), quedan a ocho y a nueve."
+   },
+   {
+    "entity": 117774,
+    "tile": [
+     286,
+     171
+    ],
+    "destino": 251,
+    "llegada": [
+     21,
+     13
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Lost Trail -> Buzzing Stopover por el tornado 117774, el de la esquina sureste. Cruzado dos veces: los tramos acabaron en (285,168) y (287,170), a TRES y a una casilla, asi que el radio 3 es justo lo que hace falta. Y no se puede subir: la llegada de vuelta a este mapa, (288,167), queda a CUATRO. Las llegadas fueron (21,13) y (20,10); se usa la primera. LOS DOS SENTIDOS MEDIDOS. Con esto Lost Trail queda cerrado."
+   }
+  ],
+  "251": [
+   {
+    "entity": 117848,
+    "tile": [
+     12,
+     11
+    ],
+    "destino": 250,
+    "llegada": [
+     288,
+     167
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Buzzing Stopover -> Lost Trail por el tornado 117848, el del noroeste. El MOVE_REQ salio de (21,13), que es la propia casilla de llegada, a nueve, y su primer tramo acabo en (13,12), a una. La otra llegada, (20,10), queda a ocho."
+   },
+   {
+    "entity": 117847,
+    "tile": [
+     289,
+     171
+    ],
+    "destino": null,
+    "llegada": null,
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "sin_medir": true,
+    "punto_del_cliente": [
+     283,
+     168
+    ],
+    "nota": "INSTANCIA, SIN CRUZAR. El usuario la situa aqui y jumpmap.xml lo respalda sin ambiguedad: declara un \"Instance Entry Point\" (id 213) en (283,168), a SEIS casillas de este tornado y a 271 del otro del mapa. Ademas hay un NPC llamado \"Angel Inspector\" en (282,172), justo al lado, que encaja con una entrada de instancia. Destino y llegada van en null y _portal_en se lo salta."
    }
   ]
  },
