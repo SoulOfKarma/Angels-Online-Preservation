@@ -194,7 +194,7 @@ def recurso_a_datos(e, b, mats, cartel=None):
     return d
 
 
-TOLERANCIA = 0   # casillas; MEDIDO, ver quitar_repetidos_de_otra_sesion()
+TOLERANCIA = None   # DESACTIVADA; ver quitar_repetidos_de_otra_sesion()
 
 
 def quitar_repetidos_de_otra_sesion(spawns):
@@ -225,13 +225,19 @@ def quitar_repetidos_de_otra_sesion(spawns):
     vecino. El usuario lo noto antes que la medicion: dijo que faltaban
     bichos en Majestic Mansion, Warm Villa y Floral Alley.
 
-    Con 0 esto ya casi no hace nada, y esta bien que asi sea: la conclusion
-    de verdad es que JUNTAR SESIONES DEL MISMO MAPA NO ES FIABLE. Un bicho
+    Al final se DESACTIVA del todo. Contado tipo por tipo contra lo que
+    mando el servidor, la plantilla de Verdant Shrine tenia 108 de las 110
+    entidades, y las dos que faltaban las habia borrado esta funcion por caer
+    en la casilla exacta de otra: dos bichos apilados, que existen. O sea que
+    ni siquiera con tolerancia 0 sale gratis, y no hay nada que ganar, porque
+    JUNTAR SESIONES DEL MISMO MAPA NO ES FIABLE de todas formas. Un bicho
     visto en dos sesiones tiene ids distintos y ademas se ha movido, asi que
     no hay forma de reconocerlo. Lo correcto es recorrer el mapa entero en
     UNA sola sesion y poblar con esa; si hace falta mas cobertura, conviene
     un recorrido mas largo, no dos recorridos sumados.
     """
+    if TOLERANCIA is None:
+        return spawns, []
     buenos, fuera = [], []
     porTipo = collections.defaultdict(list)
     for e in spawns:

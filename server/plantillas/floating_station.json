@@ -1,5 +1,5 @@
 {
- "_nota": "floating_station (stage 397), Sun Sea Maze, del cliente OFICIAL de Taiwan (8.7.5.7). POBLADO DESDE UNA SOLA SESION a proposito: el entity_id NO sobrevive a la conexion, asi que juntar sesiones duplica los bichos, y deduplicar por cercania borra poblacion real -- se probo y se cargaba el 23% de un mapa de Celestia. Para mas cobertura hace falta UN recorrido completo, no dos sumados. Los objetos de mapa se guardan CRUDOS y se reenvian tal cual.",
+ "_nota": "floating_station (stage 397), Sun Sea Maze, del cliente OFICIAL de Taiwan (8.7.5.7). Poblado desde UNA sola sesion: el entity_id no sobrevive a la conexion, asi que juntar sesiones duplica. Los objetos de mapa se guardan CRUDOS y se reenvian tal cual. Comprobado contra lo que mando el servidor: la plantilla tiene TODAS las entidades que llegaron.",
  "stage": 397,
  "spawns": [
   {
@@ -393,6 +393,22 @@
     152
    ],
    "direccion": 1,
+   "visible": 0,
+   "nivel": 370,
+   "nombre_original": "兇兇海蜇皮"
+  },
+  {
+   "entity_id": 3370846686,
+   "nombre": "Fierce Roughskin",
+   "npc_type": 23448,
+   "sprite": 111326,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    36,
+    152
+   ],
+   "direccion": 5,
    "visible": 0,
    "nivel": 370,
    "nombre_original": "兇兇海蜇皮"
@@ -5195,23 +5211,6 @@
    "nivel": 354,
    "nombre_original": "菲特斯諾",
    "_motivo": "sprite 999: no es un id de grafico; el cliente no puede dibujarlo"
-  },
-  {
-   "entity_id": 3370846686,
-   "nombre": "Fierce Roughskin",
-   "npc_type": 23448,
-   "sprite": 111326,
-   "klass": 1,
-   "monstruo": true,
-   "tile": [
-    36,
-    152
-   ],
-   "direccion": 5,
-   "visible": 0,
-   "nivel": 370,
-   "nombre_original": "兇兇海蜇皮",
-   "_motivo": "mismo npc_type que la entidad 3370781149, a 0 casillas: es el mismo bicho visto en otra sesion, donde llevaba otro entity_id"
   },
   {
    "entity_id": 3393719106,

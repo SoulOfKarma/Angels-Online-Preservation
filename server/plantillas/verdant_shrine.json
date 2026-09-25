@@ -1,5 +1,5 @@
 {
- "_nota": "verdant_shrine (stage 401), Sun Sea Maze, del cliente OFICIAL de Taiwan (8.7.5.7). POBLADO DESDE UNA SOLA SESION a proposito: el entity_id NO sobrevive a la conexion, asi que juntar sesiones duplica los bichos, y deduplicar por cercania borra poblacion real -- se probo y se cargaba el 23% de un mapa de Celestia. Para mas cobertura hace falta UN recorrido completo, no dos sumados. Los objetos de mapa se guardan CRUDOS y se reenvian tal cual.",
+ "_nota": "verdant_shrine (stage 401), Sun Sea Maze, del cliente OFICIAL de Taiwan (8.7.5.7). Poblado desde UNA sola sesion: el entity_id no sobrevive a la conexion, asi que juntar sesiones duplica. Los objetos de mapa se guardan CRUDOS y se reenvian tal cual. Comprobado contra lo que mando el servidor: la plantilla tiene TODAS las entidades que llegaron.",
  "stage": 401,
  "spawns": [
   {
@@ -1136,6 +1136,22 @@
    "nombre_original": "枯竹小妖"
   },
   {
+   "entity_id": 1551304509,
+   "nombre": "Bamboo Imp",
+   "npc_type": 23491,
+   "sprite": 111362,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    85,
+    83
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 415,
+   "nombre_original": "枯竹小妖"
+  },
+  {
    "entity_id": 1551435583,
    "nombre": "Bamboo Imp",
    "npc_type": 23491,
@@ -1419,6 +1435,22 @@
     135
    ],
    "direccion": 5,
+   "visible": 0,
+   "nivel": 413,
+   "nombre_original": "雙斧戰士"
+  },
+  {
+   "entity_id": 1553794915,
+   "nombre": "Dual Axer",
+   "npc_type": 23490,
+   "sprite": 111361,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    162,
+    135
+   ],
+   "direccion": 7,
    "visible": 0,
    "nivel": 413,
    "nombre_original": "雙斧戰士"
@@ -3549,42 +3581,6 @@
    "sprite": 60034,
    "cola": "00000000000000",
    "crudo": "c606005c000000006e1b000010050000000000001b0000000000000000000000000682ea00000000000000"
-  }
- ],
- "_descartados": [
-  {
-   "entity_id": 1551304509,
-   "nombre": "Bamboo Imp",
-   "npc_type": 23491,
-   "sprite": 111362,
-   "klass": 1,
-   "monstruo": true,
-   "tile": [
-    85,
-    83
-   ],
-   "direccion": 0,
-   "visible": 0,
-   "nivel": 415,
-   "nombre_original": "枯竹小妖",
-   "_motivo": "mismo npc_type que la entidad 1550911287, a 0 casillas: es el mismo bicho visto en otra sesion, donde llevaba otro entity_id"
-  },
-  {
-   "entity_id": 1553794915,
-   "nombre": "Dual Axer",
-   "npc_type": 23490,
-   "sprite": 111361,
-   "klass": 1,
-   "monstruo": true,
-   "tile": [
-    162,
-    135
-   ],
-   "direccion": 7,
-   "visible": 0,
-   "nivel": 413,
-   "nombre_original": "雙斧戰士",
-   "_motivo": "mismo npc_type que la entidad 1553729378, a 0 casillas: es el mismo bicho visto en otra sesion, donde llevaba otro entity_id"
   }
  ]
 }
