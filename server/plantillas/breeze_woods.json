@@ -913,20 +913,6 @@
    "visible": 1
   },
   {
-   "entity_id": 121987,
-   "nombre": "Green Forest Sch",
-   "npc_type": 211,
-   "sprite": 40211,
-   "klass": 199,
-   "monstruo": false,
-   "tile": [
-    180,
-    128
-   ],
-   "direccion": 6,
-   "visible": 1
-  },
-  {
    "entity_id": 121988,
    "nombre": "Young Anthony",
    "npc_type": 59,
@@ -1421,6 +1407,23 @@
    "sprite": 60054,
    "cola": "00002280140000",
    "que_es": "Breeze Totem"
+  }
+ ],
+ "_descartados": [
+  {
+   "entity_id": 121987,
+   "nombre": "Green Forest Sch",
+   "npc_type": 211,
+   "sprite": 40211,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    180,
+    128
+   ],
+   "direccion": 6,
+   "visible": 1,
+   "_motivo": "invocacion de otro jugador: su npc_type pertenece a una FAMILIA graduada de invocaciones, la de \"Summon Skeleton II\". Esas criaturas no son poblacion de ningun mapa: solo existen mientras dura el hechizo."
   }
  ]
 }

@@ -82,6 +82,41 @@ def invocables():
     return {k: sorted(v) for k, v in out.items()}
 
 
+def familias(inv, con=None):
+    """npc_type que pertenecen a una FAMILIA graduada de invocaciones.
+
+    El criterio de los bloques de entity_id falla en los mapas de Taiwan,
+    porque alli los ids van muy dispersos y casi nada queda "solo en su
+    bloque". Asi se escapo un Putridox V en Floating Station, que es una
+    invocacion del Wraith y no poblacion del mapa.
+
+    Estas invocaciones tienen una forma reconocible: vienen en familias de
+    cinco grados, con npc_type consecutivos y nivel creciente, y cada grado
+    lo invoca su propio hechizo. Death's Head 1-5, Death Mummy 1-5, Azrael
+    1-5, Soul Eater 1-5, Demon I-V, Ghostly Swordsman, Putridox I-V, Minotaur
+    I-V y Earth Titan I-V, que es la mas alta, de nivel 350.
+
+    Eso las separa de un monstruo que ademas sea invocable: blue_ocean tiene
+    quince Sea Shark de verdad y existe un "Summon Sea Shark", pero es UN
+    hechizo suelto, no una familia de cinco. Se exige por eso un minimo de
+    tres grados.
+    """
+    if con is None:
+        db = RAIZ / 'corpus' / 'content.db'
+        if not db.exists():
+            return set()
+        con = sqlite3.connect(db)
+    por_familia = collections.defaultdict(set)
+    for t, hechizos in inv.items():
+        for h in hechizos:
+            por_familia[_sin_numeral(h)].add(t)
+    salida = set()
+    for fam, tipos in por_familia.items():
+        if len(tipos) >= 3:
+            salida |= tipos
+    return salida
+
+
 def bloques(ids):
     ids = sorted(ids)
     g = [[ids[0], ids[0], 1]]
@@ -94,16 +129,30 @@ def bloques(ids):
     return g
 
 
-def sospechosos(plantilla, inv):
-    """Spawns que estan SOLOS en su bloque de ids y son de tipo invocable."""
+def sospechosos(plantilla, inv, fams=frozenset()):
+    """Invocaciones coladas en la plantilla, por dos caminos.
+
+    1. El npc_type pertenece a una FAMILIA graduada de invocaciones. Eso basta
+       solo: esas criaturas no son poblacion de ningun mapa, nunca.
+    2. El spawn esta SOLO en su bloque de entity_id y es de tipo invocable.
+       Sirve para los casos que no forman familia, y es el que encontro los
+       Death's Head; falla en los mapas de Taiwan, donde los ids van muy
+       dispersos.
+    """
     sp = [e for e in (plantilla.get('spawns') or []) if isinstance(e, dict)]
     ids = [e['entity_id'] for e in sp if isinstance(e.get('entity_id'), int)]
+    fuera, ya = [], set()
+
+    for e in sp:
+        if str(e['npc_type']) in fams:
+            fuera.append((e, None, inv.get(str(e['npc_type']), ['?'])[0]))
+            ya.add(e.get('entity_id'))
+
     if len(ids) < 10:
-        return []
+        return fuera
     gs = bloques(ids)
     if len(gs) < 2 or max(g[2] for g in gs) < 20:
-        return []
-    fuera = []
+        return fuera
     for g in gs:
         if g[2] != 1:
             continue
@@ -112,9 +161,23 @@ def sospechosos(plantilla, inv):
         if dmin <= LEJOS:
             continue
         for e in sp:
-            if e.get('entity_id') == g[0] and str(e['npc_type']) in inv:
+            if (e.get('entity_id') == g[0] and str(e['npc_type']) in inv
+                    and e.get('entity_id') not in ya):
                 fuera.append((e, dmin, inv[str(e['npc_type'])][0]))
     return fuera
+
+
+def _motivo_de(dmin, hech):
+    """Por que se saca este spawn, segun que regla lo pillo."""
+    if dmin is None:
+        return ('invocacion de otro jugador: su npc_type pertenece a una '
+                'FAMILIA graduada de invocaciones, la de "%s". Esas criaturas '
+                'no son poblacion de ningun mapa: solo existen mientras dura '
+                'el hechizo.' % hech)
+    return ('invocacion de otro jugador: estaba sola en su bloque de '
+            'entity_id, a %d del bloque vecino, y su npc_type lo invoca "%s". '
+            'Las entidades de un mapa se crean juntas al cargarlo y salen en '
+            'ids contiguos; esta se creo durante la partida.' % (dmin, hech))
 
 
 def main():
@@ -124,6 +187,8 @@ def main():
     a = ap.parse_args()
 
     inv = invocables()
+    fams = familias(inv)
+    print(f'    familias graduadas de invocacion: {len(fams)} npc_type')
     print(f'npc_type invocables por hechizos con nombre de invocacion: {len(inv)}\n')
     total = 0
     for p in sorted(PLANTILLAS.glob('*.json')):
@@ -133,7 +198,7 @@ def main():
             continue
         if not isinstance(d, dict):
             continue
-        fuera = sospechosos(d, inv)
+        fuera = sospechosos(d, inv, fams)
         if not fuera:
             continue
         total += len(fuera)
@@ -146,12 +211,7 @@ def main():
         if a.limpiar:
             ids = {e['entity_id'] for e, _, _ in fuera}
             d['_descartados'] = (d.get('_descartados') or []) + [
-                dict(e, _motivo='invocacion de otro jugador: estaba sola en su '
-                                'bloque de entity_id, a %d del bloque vecino, y '
-                                'su npc_type lo invoca "%s". Las entidades de un '
-                                'mapa se crean juntas al cargarlo y salen en ids '
-                                'contiguos; esta se creo durante la partida.'
-                                % (dmin, hech))
+                dict(e, _motivo=_motivo_de(dmin, hech))
                 for e, dmin, hech in fuera]
             d['spawns'] = [e for e in d['spawns'] if e.get('entity_id') not in ids]
             p.write_text(json.dumps(d, ensure_ascii=False, indent=1),

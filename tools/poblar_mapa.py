@@ -186,6 +186,53 @@ def recurso_a_datos(e, b, mats, cartel=None):
     return d
 
 
+TOLERANCIA = 3   # casillas; ver quitar_repetidos_de_otra_sesion()
+
+
+def quitar_repetidos_de_otra_sesion(spawns):
+    """Junta el mismo bicho visto en dos sesiones distintas.
+
+    EL ENTITY_ID NO SOBREVIVE A LA SESION. Medido en Floating Station: entre
+    dos sesiones del mismo mapa hay CERO ids en comun, y entre otras dos solo
+    11 de 176. O sea que el servidor renumera las entidades en cada conexion,
+    y como cada cruce de portal abre conexion nueva, juntar tramos de varias
+    sesiones deduplicando por entidad no deduplica nada: 176 + 64 + 146
+    entidades quedaban en 366, casi todas el mismo bicho contado tres veces.
+
+    Se notaba en el juego antes que en los datos: el usuario vio los enemigos
+    "hacinados" y amontonados. Medido despues, Floating Station tenia 165
+    pares del mismo tipo a dos casillas o menos, cuando un mapa de Celestia
+    de tamano parecido tiene una o dos casillas compartidas en total.
+
+    Aqui se deduplica por TIPO Y CERCANIA en vez de por id: dos avistamientos
+    del mismo npc_type a TOLERANCIA casillas o menos se consideran el mismo
+    bicho, que se movio entre una sesion y otra. Se queda el primero.
+
+    No es exacto -- dos bichos distintos del mismo tipo pegados se fusionan --
+    pero el error va del lado seguro: es mejor un monstruo de menos que un
+    mapa lleno de duplicados. Para no perder nada, lo quitado se guarda.
+    """
+    buenos, fuera = [], []
+    porTipo = collections.defaultdict(list)
+    for e in spawns:
+        t = e['npc_type']
+        x, y = e['tile']
+        gemelo = next((o for o in porTipo[t]
+                       if max(abs(o['tile'][0] - x), abs(o['tile'][1] - y)) <= TOLERANCIA),
+                      None)
+        if gemelo is None:
+            porTipo[t].append(e)
+            buenos.append(e)
+        else:
+            fuera.append(dict(e, _motivo='mismo npc_type que la entidad %s, a %d '
+                                         'casillas: es el mismo bicho visto en otra '
+                                         'sesion, donde llevaba otro entity_id'
+                                         % (gemelo['entity_id'],
+                                            max(abs(gemelo['tile'][0] - x),
+                                                abs(gemelo['tile'][1] - y)))))
+    return buenos, fuera
+
+
 def filtrar_irrepresentables(spawns):
     """Saca los spawns que nuestro cliente no puede dibujar.
 
@@ -271,6 +318,8 @@ def main():
 
     traducir_nombres(ds)
     ds, descartados = filtrar_irrepresentables(ds)
+    ds, repetidos = quitar_repetidos_de_otra_sesion(ds)
+    descartados += repetidos
 
     salida = {'_nota': a.nota, 'stage': a.stage, 'spawns': ds, 'recursos': dr}
     if descartados:
