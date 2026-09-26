@@ -44,8 +44,8 @@ a guess, it says so.
   is certain. Below 1500 the `klass` still decides, because `npc.xml` does not
   reach down there and the old Lyceum NPCs use two- and three-digit numbers
   that collide with `monster.xml`
-- **158 maps populated from captures**: 28,165 monsters, 1,725 NPCs and
-  12,557 map objects, 7,671 of them with their resource name resolved. Every
+- **236 maps populated from captures**: 42,780 monsters, 2,254 NPCs and
+  15,059 map objects, 7,671 of them with their resource name resolved. Every
   monster, NPC and resource comes from a capture; none of it is made up
 - **Six maps do not come from Celestia, but from the official Taiwan
   server.** It is the only exception to "everything comes from Celestia
@@ -57,14 +57,20 @@ a guess, it says so.
   **Atlantis is complete except for the instances**, and the forest chain
   (Cryptic Moon Swamp to Giant Wooden Stairs, 8 maps) only has two tornados
   left. Plus a good part of Pharaoh, East Orient and the four faction
-  territories
-- **388 portals**, 370 of them active, almost all measured in both directions: the tornado's tile
+  territories. The late-game chains added last are closed too: **Arcana**
+  (Starglow Path, Academia Woods, Mana Ruins, Coo Village, Ethereal Garden,
+  Daydream Library, Reminiscence Cloister), **Goldenia** (Emerald Coast to
+  Royal Ruins, 9 maps), **Abyston** (Forsaken Crevasse, Specter Village,
+  Crystal Marsh, Crystal Quarry, Shrouded Haven, Peril Chasm) and the deep
+  chain from Galaxia Square to Deep Prison
+- **572 portals**, 551 of them active, almost all measured in both directions: the tornado's tile
   comes from the capture, and so does the tile the real server drops you on.
   Most of them were crossed **twice in each direction**, which is how we found
   out that some portals do not always drop you on the same tile
-- **Portals that lead somewhere else on the same map** work: **23 of them**,
-  across five maps. Lost Trail alone has twelve -- six pairs that move you
-  from one end of the map to the other -- and Branch Way has two pairs. They do **not**
+- **Portals that lead somewhere else on the same map** work: **29 of them**,
+  across seven maps. Lost Trail alone has twelve -- six pairs that move you
+  from one end of the map to the other --, Horizon Archives has five and
+  Branch Way has two pairs. They do **not**
   reload the map -- measured over 1,401 seconds without a single `0x000C`.
   The server answers `0x0016`, a `0x0012` of seven zeros and a `0x0003` that
   just moves the character

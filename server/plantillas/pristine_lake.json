@@ -1,0 +1,2735 @@
+{
+ "_nota": "Pristine Lake (stage 356), de Celestia. Se llega desde Galaxia Square (355). Poblado desde UNA sola sesion. Los objetos van CRUDOS.",
+ "stage": 356,
+ "spawns": [
+  {
+   "entity_id": 123880,
+   "nombre": "Flow",
+   "npc_type": 14912,
+   "sprite": 40651,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    185,
+    98
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123881,
+   "nombre": "Herbalist Lulu",
+   "npc_type": 14930,
+   "sprite": 40583,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    172,
+    89
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123882,
+   "nombre": "Lady Yael",
+   "npc_type": 14948,
+   "sprite": 40109,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    143,
+    129
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 1062523,
+   "nombre": "Dewy Fae",
+   "npc_type": 22456,
+   "sprite": 110935,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    143,
+    127
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1062524,
+   "nombre": "Dewy Fae",
+   "npc_type": 22456,
+   "sprite": 110935,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    153,
+    127
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1062525,
+   "nombre": "Dewy Fae",
+   "npc_type": 22456,
+   "sprite": 110935,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    161,
+    123
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1062526,
+   "nombre": "Dewy Fae",
+   "npc_type": 22456,
+   "sprite": 110935,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    162,
+    121
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1062527,
+   "nombre": "Dewy Fae",
+   "npc_type": 22456,
+   "sprite": 110935,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    154,
+    137
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1062528,
+   "nombre": "Dewy Fae",
+   "npc_type": 22456,
+   "sprite": 110935,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    171,
+    137
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1062529,
+   "nombre": "Dewy Fae",
+   "npc_type": 22456,
+   "sprite": 110935,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    171,
+    139
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1062530,
+   "nombre": "Dewy Fae",
+   "npc_type": 22456,
+   "sprite": 110935,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    170,
+    144
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1062531,
+   "nombre": "Dewy Fae",
+   "npc_type": 22456,
+   "sprite": 110935,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    175,
+    144
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1062532,
+   "nombre": "Dewy Fae",
+   "npc_type": 22456,
+   "sprite": 110935,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    188,
+    143
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1062533,
+   "nombre": "Dewy Fae",
+   "npc_type": 22456,
+   "sprite": 110935,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    205,
+    148
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1062534,
+   "nombre": "Dewy Fae",
+   "npc_type": 22456,
+   "sprite": 110935,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    190,
+    153
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1062535,
+   "nombre": "Dewy Fae",
+   "npc_type": 22456,
+   "sprite": 110935,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    192,
+    145
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1062536,
+   "nombre": "Dewy Fae",
+   "npc_type": 22456,
+   "sprite": 110935,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    199,
+    134
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1062537,
+   "nombre": "Dewy Fae",
+   "npc_type": 22456,
+   "sprite": 110935,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    216,
+    145
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1062538,
+   "nombre": "Dewy Fae",
+   "npc_type": 22456,
+   "sprite": 110935,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    222,
+    162
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1062539,
+   "nombre": "Dewy Fae",
+   "npc_type": 22456,
+   "sprite": 110935,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    219,
+    153
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1062540,
+   "nombre": "Dewy Fae",
+   "npc_type": 22456,
+   "sprite": 110935,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    213,
+    143
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1062541,
+   "nombre": "Dewy Fae",
+   "npc_type": 22456,
+   "sprite": 110935,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    230,
+    156
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1062542,
+   "nombre": "Dewy Fae",
+   "npc_type": 22456,
+   "sprite": 110935,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    229,
+    147
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1062543,
+   "nombre": "Dewy Fae",
+   "npc_type": 22456,
+   "sprite": 110935,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    238,
+    156
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1062544,
+   "nombre": "Dewy Fae",
+   "npc_type": 22456,
+   "sprite": 110935,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    244,
+    148
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1062545,
+   "nombre": "Dewy Fae",
+   "npc_type": 22456,
+   "sprite": 110935,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    233,
+    160
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1062546,
+   "nombre": "Dewy Fae",
+   "npc_type": 22456,
+   "sprite": 110935,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    240,
+    152
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1062547,
+   "nombre": "Dewy Fae",
+   "npc_type": 22456,
+   "sprite": 110935,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    243,
+    152
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1062548,
+   "nombre": "Waterfaller",
+   "npc_type": 22457,
+   "sprite": 110983,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    268,
+    153
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1062549,
+   "nombre": "Waterfaller",
+   "npc_type": 22457,
+   "sprite": 110983,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    255,
+    142
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1062550,
+   "nombre": "Waterfaller",
+   "npc_type": 22457,
+   "sprite": 110983,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    259,
+    142
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1062551,
+   "nombre": "Waterfaller",
+   "npc_type": 22457,
+   "sprite": 110983,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    246,
+    146
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1062552,
+   "nombre": "Waterfaller",
+   "npc_type": 22457,
+   "sprite": 110983,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    251,
+    145
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1062553,
+   "nombre": "Waterfaller",
+   "npc_type": 22457,
+   "sprite": 110983,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    276,
+    134
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1062554,
+   "nombre": "Waterfaller",
+   "npc_type": 22457,
+   "sprite": 110983,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    256,
+    128
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1062555,
+   "nombre": "Waterfaller",
+   "npc_type": 22457,
+   "sprite": 110983,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    274,
+    132
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1062556,
+   "nombre": "Waterfaller",
+   "npc_type": 22457,
+   "sprite": 110983,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    259,
+    148
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1062557,
+   "nombre": "Waterfaller",
+   "npc_type": 22457,
+   "sprite": 110983,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    263,
+    142
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1062558,
+   "nombre": "Waterfaller",
+   "npc_type": 22457,
+   "sprite": 110983,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    231,
+    113
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1062559,
+   "nombre": "Waterfaller",
+   "npc_type": 22457,
+   "sprite": 110983,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    225,
+    104
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1062560,
+   "nombre": "Waterfaller",
+   "npc_type": 22457,
+   "sprite": 110983,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    228,
+    111
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1062561,
+   "nombre": "Waterfaller",
+   "npc_type": 22457,
+   "sprite": 110983,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    214,
+    118
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1062562,
+   "nombre": "Waterfaller",
+   "npc_type": 22457,
+   "sprite": 110983,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    209,
+    117
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1062563,
+   "nombre": "Waterfaller",
+   "npc_type": 22457,
+   "sprite": 110983,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    264,
+    115
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1062564,
+   "nombre": "Waterfaller",
+   "npc_type": 22457,
+   "sprite": 110983,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    282,
+    119
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1062565,
+   "nombre": "Waterfaller",
+   "npc_type": 22457,
+   "sprite": 110983,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    260,
+    113
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1062566,
+   "nombre": "Waterfaller",
+   "npc_type": 22457,
+   "sprite": 110983,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    245,
+    109
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1062567,
+   "nombre": "Waterfaller",
+   "npc_type": 22457,
+   "sprite": 110983,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    250,
+    104
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1062568,
+   "nombre": "Waterfaller",
+   "npc_type": 22457,
+   "sprite": 110983,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    277,
+    121
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1062569,
+   "nombre": "Waterfaller",
+   "npc_type": 22457,
+   "sprite": 110983,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    269,
+    108
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1062570,
+   "nombre": "Waterfaller",
+   "npc_type": 22457,
+   "sprite": 110983,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    279,
+    113
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1062571,
+   "nombre": "Waterfaller",
+   "npc_type": 22457,
+   "sprite": 110983,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    276,
+    131
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1062572,
+   "nombre": "Waterfaller",
+   "npc_type": 22457,
+   "sprite": 110983,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    292,
+    121
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 339
+  },
+  {
+   "entity_id": 1062573,
+   "nombre": "Grassy Crabby",
+   "npc_type": 22458,
+   "sprite": 111008,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    282,
+    92
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1062574,
+   "nombre": "Grassy Crabby",
+   "npc_type": 22458,
+   "sprite": 111008,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    282,
+    98
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1062575,
+   "nombre": "Grassy Crabby",
+   "npc_type": 22458,
+   "sprite": 111008,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    273,
+    77
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1062576,
+   "nombre": "Grassy Crabby",
+   "npc_type": 22458,
+   "sprite": 111008,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    291,
+    88
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1062577,
+   "nombre": "Grassy Crabby",
+   "npc_type": 22458,
+   "sprite": 111008,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    278,
+    80
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1062578,
+   "nombre": "Grassy Crabby",
+   "npc_type": 22458,
+   "sprite": 111008,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    258,
+    79
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1062579,
+   "nombre": "Grassy Crabby",
+   "npc_type": 22458,
+   "sprite": 111008,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    260,
+    77
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1062580,
+   "nombre": "Grassy Crabby",
+   "npc_type": 22458,
+   "sprite": 111008,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    268,
+    57
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1062581,
+   "nombre": "Grassy Crabby",
+   "npc_type": 22458,
+   "sprite": 111008,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    259,
+    78
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1062582,
+   "nombre": "Grassy Crabby",
+   "npc_type": 22458,
+   "sprite": 111008,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    280,
+    72
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1062583,
+   "nombre": "Grassy Crabby",
+   "npc_type": 22458,
+   "sprite": 111008,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    236,
+    44
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1062584,
+   "nombre": "Grassy Crabby",
+   "npc_type": 22458,
+   "sprite": 111008,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    242,
+    57
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1062585,
+   "nombre": "Grassy Crabby",
+   "npc_type": 22458,
+   "sprite": 111008,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    273,
+    67
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1062586,
+   "nombre": "Grassy Crabby",
+   "npc_type": 22458,
+   "sprite": 111008,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    237,
+    44
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1062587,
+   "nombre": "Grassy Crabby",
+   "npc_type": 22458,
+   "sprite": 111008,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    246,
+    62
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1062588,
+   "nombre": "Grassy Crabby",
+   "npc_type": 22458,
+   "sprite": 111008,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    235,
+    48
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1062589,
+   "nombre": "Grassy Crabby",
+   "npc_type": 22458,
+   "sprite": 111008,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    231,
+    51
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1062590,
+   "nombre": "Grassy Crabby",
+   "npc_type": 22458,
+   "sprite": 111008,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    246,
+    76
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1062591,
+   "nombre": "Grassy Crabby",
+   "npc_type": 22458,
+   "sprite": 111008,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    254,
+    37
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1062592,
+   "nombre": "Grassy Crabby",
+   "npc_type": 22458,
+   "sprite": 111008,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    231,
+    43
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1062593,
+   "nombre": "Grassy Crabby",
+   "npc_type": 22458,
+   "sprite": 111008,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    252,
+    35
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1062594,
+   "nombre": "Grassy Crabby",
+   "npc_type": 22458,
+   "sprite": 111008,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    271,
+    81
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1062595,
+   "nombre": "Grassy Crabby",
+   "npc_type": 22458,
+   "sprite": 111008,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    240,
+    23
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1062596,
+   "nombre": "Grassy Crabby",
+   "npc_type": 22458,
+   "sprite": 111008,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    275,
+    36
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1062597,
+   "nombre": "Grassy Crabby",
+   "npc_type": 22458,
+   "sprite": 111008,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    254,
+    18
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1062598,
+   "nombre": "Violet Crabbo",
+   "npc_type": 22459,
+   "sprite": 111009,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    204,
+    69
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1062599,
+   "nombre": "Violet Crabbo",
+   "npc_type": 22459,
+   "sprite": 111009,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    221,
+    74
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1062600,
+   "nombre": "Violet Crabbo",
+   "npc_type": 22459,
+   "sprite": 111009,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    220,
+    85
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1062601,
+   "nombre": "Violet Crabbo",
+   "npc_type": 22459,
+   "sprite": 111009,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    213,
+    62
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1062602,
+   "nombre": "Violet Crabbo",
+   "npc_type": 22459,
+   "sprite": 111009,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    208,
+    60
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1062603,
+   "nombre": "Violet Crabbo",
+   "npc_type": 22459,
+   "sprite": 111009,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    190,
+    51
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1062604,
+   "nombre": "Violet Crabbo",
+   "npc_type": 22459,
+   "sprite": 111009,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    195,
+    57
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1062605,
+   "nombre": "Violet Crabbo",
+   "npc_type": 22459,
+   "sprite": 111009,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    185,
+    50
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1062606,
+   "nombre": "Violet Crabbo",
+   "npc_type": 22459,
+   "sprite": 111009,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    184,
+    54
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1062607,
+   "nombre": "Violet Crabbo",
+   "npc_type": 22459,
+   "sprite": 111009,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    191,
+    47
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1062608,
+   "nombre": "Violet Crabbo",
+   "npc_type": 22459,
+   "sprite": 111009,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    210,
+    31
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1062609,
+   "nombre": "Violet Crabbo",
+   "npc_type": 22459,
+   "sprite": 111009,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    203,
+    24
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1062610,
+   "nombre": "Violet Crabbo",
+   "npc_type": 22459,
+   "sprite": 111009,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    220,
+    20
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1062611,
+   "nombre": "Violet Crabbo",
+   "npc_type": 22459,
+   "sprite": 111009,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    213,
+    34
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1062612,
+   "nombre": "Violet Crabbo",
+   "npc_type": 22459,
+   "sprite": 111009,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    229,
+    30
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1062613,
+   "nombre": "Violet Crabbo",
+   "npc_type": 22459,
+   "sprite": 111009,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    176,
+    18
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1062614,
+   "nombre": "Violet Crabbo",
+   "npc_type": 22459,
+   "sprite": 111009,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    168,
+    28
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1062615,
+   "nombre": "Violet Crabbo",
+   "npc_type": 22459,
+   "sprite": 111009,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    179,
+    18
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1062616,
+   "nombre": "Violet Crabbo",
+   "npc_type": 22459,
+   "sprite": 111009,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    168,
+    35
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1062617,
+   "nombre": "Violet Crabbo",
+   "npc_type": 22459,
+   "sprite": 111009,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    195,
+    18
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1062618,
+   "nombre": "Violet Crabbo",
+   "npc_type": 22459,
+   "sprite": 111009,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    182,
+    38
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1062619,
+   "nombre": "Violet Crabbo",
+   "npc_type": 22459,
+   "sprite": 111009,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    182,
+    37
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1062620,
+   "nombre": "Violet Crabbo",
+   "npc_type": 22459,
+   "sprite": 111009,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    169,
+    38
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1062621,
+   "nombre": "Violet Crabbo",
+   "npc_type": 22459,
+   "sprite": 111009,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    151,
+    35
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1062622,
+   "nombre": "Violet Crabbo",
+   "npc_type": 22459,
+   "sprite": 111009,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    183,
+    35
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1062623,
+   "nombre": "Beach Boi",
+   "npc_type": 22460,
+   "sprite": 44014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    148,
+    142
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 349
+  },
+  {
+   "entity_id": 1062624,
+   "nombre": "Beach Boi",
+   "npc_type": 22460,
+   "sprite": 44014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    138,
+    136
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 349
+  },
+  {
+   "entity_id": 1062625,
+   "nombre": "Beach Boi",
+   "npc_type": 22460,
+   "sprite": 44014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    122,
+    139
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 349
+  },
+  {
+   "entity_id": 1062626,
+   "nombre": "Beach Boi",
+   "npc_type": 22460,
+   "sprite": 44014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    151,
+    144
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 349
+  },
+  {
+   "entity_id": 1062627,
+   "nombre": "Beach Boi",
+   "npc_type": 22460,
+   "sprite": 44014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    128,
+    151
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 349
+  },
+  {
+   "entity_id": 1062628,
+   "nombre": "Beach Boi",
+   "npc_type": 22460,
+   "sprite": 44014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    113,
+    139
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 349
+  },
+  {
+   "entity_id": 1062629,
+   "nombre": "Beach Boi",
+   "npc_type": 22460,
+   "sprite": 44014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    129,
+    152
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 349
+  },
+  {
+   "entity_id": 1062630,
+   "nombre": "Beach Boi",
+   "npc_type": 22460,
+   "sprite": 44014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    103,
+    148
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 349
+  },
+  {
+   "entity_id": 1062631,
+   "nombre": "Beach Boi",
+   "npc_type": 22460,
+   "sprite": 44014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    113,
+    153
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 349
+  },
+  {
+   "entity_id": 1062632,
+   "nombre": "Beach Boi",
+   "npc_type": 22460,
+   "sprite": 44014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    109,
+    149
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 349
+  },
+  {
+   "entity_id": 1062633,
+   "nombre": "Beach Boi",
+   "npc_type": 22460,
+   "sprite": 44014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    101,
+    153
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 349
+  },
+  {
+   "entity_id": 1062634,
+   "nombre": "Beach Boi",
+   "npc_type": 22460,
+   "sprite": 44014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    60,
+    143
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 349
+  },
+  {
+   "entity_id": 1062635,
+   "nombre": "Beach Boi",
+   "npc_type": 22460,
+   "sprite": 44014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    84,
+    140
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 349
+  },
+  {
+   "entity_id": 1062636,
+   "nombre": "Beach Boi",
+   "npc_type": 22460,
+   "sprite": 44014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    80,
+    158
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 349
+  },
+  {
+   "entity_id": 1062637,
+   "nombre": "Beach Boi",
+   "npc_type": 22460,
+   "sprite": 44014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    75,
+    142
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 349
+  },
+  {
+   "entity_id": 1062638,
+   "nombre": "Beach Boi",
+   "npc_type": 22460,
+   "sprite": 44014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    67,
+    136
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 349
+  },
+  {
+   "entity_id": 1062639,
+   "nombre": "Beach Boi",
+   "npc_type": 22460,
+   "sprite": 44014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    77,
+    135
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 349
+  },
+  {
+   "entity_id": 1062640,
+   "nombre": "Beach Boi",
+   "npc_type": 22460,
+   "sprite": 44014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    70,
+    137
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 349
+  },
+  {
+   "entity_id": 1062641,
+   "nombre": "Beach Boi",
+   "npc_type": 22460,
+   "sprite": 44014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    48,
+    124
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 349
+  },
+  {
+   "entity_id": 1062642,
+   "nombre": "Beach Boi",
+   "npc_type": 22460,
+   "sprite": 44014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    59,
+    145
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 349
+  },
+  {
+   "entity_id": 1062643,
+   "nombre": "Beach Boi",
+   "npc_type": 22460,
+   "sprite": 44014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    76,
+    116
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 349
+  },
+  {
+   "entity_id": 1062644,
+   "nombre": "Beach Boi",
+   "npc_type": 22460,
+   "sprite": 44014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    86,
+    111
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 349
+  },
+  {
+   "entity_id": 1062645,
+   "nombre": "Beach Boi",
+   "npc_type": 22460,
+   "sprite": 44014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    86,
+    124
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 349
+  },
+  {
+   "entity_id": 1062646,
+   "nombre": "Beach Boi",
+   "npc_type": 22460,
+   "sprite": 44014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    69,
+    108
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 349
+  },
+  {
+   "entity_id": 1062647,
+   "nombre": "Beach Boi",
+   "npc_type": 22460,
+   "sprite": 44014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    96,
+    118
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 349
+  },
+  {
+   "entity_id": 1062648,
+   "nombre": "Beach Boi",
+   "npc_type": 22460,
+   "sprite": 44014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    48,
+    127
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 349
+  },
+  {
+   "entity_id": 1062649,
+   "nombre": "Beach Boi",
+   "npc_type": 22460,
+   "sprite": 44014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    78,
+    132
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 349
+  },
+  {
+   "entity_id": 1062650,
+   "nombre": "Beach Boi",
+   "npc_type": 22460,
+   "sprite": 44014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    44,
+    133
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 349
+  },
+  {
+   "entity_id": 1062651,
+   "nombre": "Beach Boi",
+   "npc_type": 22460,
+   "sprite": 44014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    51,
+    145
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 349
+  },
+  {
+   "entity_id": 1062652,
+   "nombre": "Beach Boi",
+   "npc_type": 22460,
+   "sprite": 44014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    38,
+    144
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 349
+  },
+  {
+   "entity_id": 1062653,
+   "nombre": "Snorkela",
+   "npc_type": 22461,
+   "sprite": 44015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    132,
+    108
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 349
+  },
+  {
+   "entity_id": 1062654,
+   "nombre": "Snorkela",
+   "npc_type": 22461,
+   "sprite": 44015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    118,
+    103
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 349
+  },
+  {
+   "entity_id": 1062655,
+   "nombre": "Snorkela",
+   "npc_type": 22461,
+   "sprite": 44015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    122,
+    107
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 349
+  },
+  {
+   "entity_id": 1062656,
+   "nombre": "Snorkela",
+   "npc_type": 22461,
+   "sprite": 44015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    113,
+    118
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 349
+  },
+  {
+   "entity_id": 1062657,
+   "nombre": "Snorkela",
+   "npc_type": 22461,
+   "sprite": 44015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    121,
+    102
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 349
+  },
+  {
+   "entity_id": 1062658,
+   "nombre": "Snorkela",
+   "npc_type": 22461,
+   "sprite": 44015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    99,
+    97
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 349
+  },
+  {
+   "entity_id": 1062659,
+   "nombre": "Snorkela",
+   "npc_type": 22461,
+   "sprite": 44015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    117,
+    113
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 349
+  },
+  {
+   "entity_id": 1062660,
+   "nombre": "Snorkela",
+   "npc_type": 22461,
+   "sprite": 44015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    101,
+    101
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 349
+  },
+  {
+   "entity_id": 1062661,
+   "nombre": "Snorkela",
+   "npc_type": 22461,
+   "sprite": 44015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    83,
+    99
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 349
+  },
+  {
+   "entity_id": 1062662,
+   "nombre": "Snorkela",
+   "npc_type": 22461,
+   "sprite": 44015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    95,
+    96
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 349
+  },
+  {
+   "entity_id": 1062663,
+   "nombre": "Snorkela",
+   "npc_type": 22461,
+   "sprite": 44015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    64,
+    83
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 349
+  },
+  {
+   "entity_id": 1062664,
+   "nombre": "Snorkela",
+   "npc_type": 22461,
+   "sprite": 44015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    82,
+    89
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 349
+  },
+  {
+   "entity_id": 1062665,
+   "nombre": "Snorkela",
+   "npc_type": 22461,
+   "sprite": 44015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    84,
+    85
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 349
+  },
+  {
+   "entity_id": 1062666,
+   "nombre": "Snorkela",
+   "npc_type": 22461,
+   "sprite": 44015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    85,
+    96
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 349
+  },
+  {
+   "entity_id": 1062667,
+   "nombre": "Snorkela",
+   "npc_type": 22461,
+   "sprite": 44015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    72,
+    76
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 349
+  },
+  {
+   "entity_id": 1062668,
+   "nombre": "Snorkela",
+   "npc_type": 22461,
+   "sprite": 44015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    40,
+    86
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 349
+  },
+  {
+   "entity_id": 1062669,
+   "nombre": "Snorkela",
+   "npc_type": 22461,
+   "sprite": 44015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    60,
+    87
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 349
+  },
+  {
+   "entity_id": 1062670,
+   "nombre": "Snorkela",
+   "npc_type": 22461,
+   "sprite": 44015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    25,
+    94
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 349
+  },
+  {
+   "entity_id": 1062671,
+   "nombre": "Snorkela",
+   "npc_type": 22461,
+   "sprite": 44015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    31,
+    97
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 349
+  },
+  {
+   "entity_id": 1062672,
+   "nombre": "Snorkela",
+   "npc_type": 22461,
+   "sprite": 44015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    46,
+    84
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 349
+  },
+  {
+   "entity_id": 1062673,
+   "nombre": "Snorkela",
+   "npc_type": 22461,
+   "sprite": 44015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    13,
+    110
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 349
+  },
+  {
+   "entity_id": 1062674,
+   "nombre": "Snorkela",
+   "npc_type": 22461,
+   "sprite": 44015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    19,
+    129
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 349
+  },
+  {
+   "entity_id": 1062675,
+   "nombre": "Snorkela",
+   "npc_type": 22461,
+   "sprite": 44015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    40,
+    113
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 349
+  },
+  {
+   "entity_id": 1062676,
+   "nombre": "Snorkela",
+   "npc_type": 22461,
+   "sprite": 44015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    7,
+    119
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 349
+  },
+  {
+   "entity_id": 1062677,
+   "nombre": "Snorkela",
+   "npc_type": 22461,
+   "sprite": 44015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    38,
+    124
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 349
+  },
+  {
+   "entity_id": 1062678,
+   "nombre": "Snorkela",
+   "npc_type": 22461,
+   "sprite": 44015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    35,
+    111
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 349
+  },
+  {
+   "entity_id": 1062679,
+   "nombre": "Snorkela",
+   "npc_type": 22461,
+   "sprite": 44015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    44,
+    112
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 349
+  },
+  {
+   "entity_id": 1062680,
+   "nombre": "Snorkela",
+   "npc_type": 22461,
+   "sprite": 44015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    26,
+    117
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 349
+  },
+  {
+   "entity_id": 1062681,
+   "nombre": "Snorkela",
+   "npc_type": 22461,
+   "sprite": 44015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    47,
+    98
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 349
+  },
+  {
+   "entity_id": 1062682,
+   "nombre": "Snorkela",
+   "npc_type": 22461,
+   "sprite": 44015,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    43,
+    111
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 349
+  },
+  {
+   "entity_id": 1062683,
+   "nombre": "E-Dewy Fae",
+   "npc_type": 22462,
+   "sprite": 110935,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    140,
+    45
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 350
+  },
+  {
+   "entity_id": 1062684,
+   "nombre": "E-Dewy Fae",
+   "npc_type": 22462,
+   "sprite": 110935,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    123,
+    47
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 350
+  },
+  {
+   "entity_id": 1062685,
+   "nombre": "E-Dewy Fae",
+   "npc_type": 22462,
+   "sprite": 110935,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    127,
+    57
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 350
+  },
+  {
+   "entity_id": 1062686,
+   "nombre": "E-Dewy Fae",
+   "npc_type": 22462,
+   "sprite": 110935,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    138,
+    57
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 350
+  },
+  {
+   "entity_id": 1062687,
+   "nombre": "E-Dewy Fae",
+   "npc_type": 22462,
+   "sprite": 110935,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    124,
+    41
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 350
+  },
+  {
+   "entity_id": 1062688,
+   "nombre": "E-Grassy Crabby",
+   "npc_type": 22463,
+   "sprite": 111008,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    64,
+    60
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 351
+  },
+  {
+   "entity_id": 1062689,
+   "nombre": "E-Grassy Crabby",
+   "npc_type": 22463,
+   "sprite": 111008,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    83,
+    73
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 351
+  },
+  {
+   "entity_id": 1062690,
+   "nombre": "E-Grassy Crabby",
+   "npc_type": 22463,
+   "sprite": 111008,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    101,
+    69
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 351
+  },
+  {
+   "entity_id": 1062691,
+   "nombre": "E-Grassy Crabby",
+   "npc_type": 22463,
+   "sprite": 111008,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    97,
+    65
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 351
+  },
+  {
+   "entity_id": 1062692,
+   "nombre": "E-Grassy Crabby",
+   "npc_type": 22463,
+   "sprite": 111008,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    78,
+    54
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 351
+  },
+  {
+   "entity_id": 1062693,
+   "nombre": "E-Beach Boi",
+   "npc_type": 22464,
+   "sprite": 44014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    116,
+    28
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 352
+  },
+  {
+   "entity_id": 1062694,
+   "nombre": "E-Beach Boi",
+   "npc_type": 22464,
+   "sprite": 44014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    69,
+    40
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 352
+  },
+  {
+   "entity_id": 1062695,
+   "nombre": "E-Beach Boi",
+   "npc_type": 22464,
+   "sprite": 44014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    58,
+    47
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 352
+  },
+  {
+   "entity_id": 1062696,
+   "nombre": "E-Beach Boi",
+   "npc_type": 22464,
+   "sprite": 44014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    80,
+    39
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 352
+  },
+  {
+   "entity_id": 1062697,
+   "nombre": "E-Beach Boi",
+   "npc_type": 22464,
+   "sprite": 44014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    95,
+    23
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 352
+  },
+  {
+   "entity_id": 1062698,
+   "nombre": "Ericy",
+   "npc_type": 22465,
+   "sprite": 110936,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    165,
+    133
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 354
+  },
+  {
+   "entity_id": 1062699,
+   "nombre": "Crabby Canthes",
+   "npc_type": 22466,
+   "sprite": 111010,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    176,
+    80
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 354
+  }
+ ],
+ "recursos": [
+  {
+   "entity_id": 119590,
+   "capa": 0,
+   "px": [
+    334,
+    5344
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "crudo": "26d30100000000004e010000e01400000000000027000000000000001a000000dc0661ea00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 119591,
+   "capa": 0,
+   "px": [
+    9357,
+    5340
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "crudo": "27d30100000000008d240000dc1400000000000027000000000000001a000000dc0661ea00004080030000",
+   "que_es": "tornado (portal)"
+  }
+ ]
+}

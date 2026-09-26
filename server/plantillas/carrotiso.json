@@ -1,0 +1,3706 @@
+{
+ "_nota": "Carrotiso (stage 310), de Celestia. Se llega desde Chrono Ruins (312) y desde Rainbow Town (308). Poblado desde UNA sola sesion. Los objetos van CRUDOS.",
+ "stage": 310,
+ "spawns": [
+  {
+   "entity_id": 123677,
+   "nombre": "Ex-Advisor Mil",
+   "npc_type": 14535,
+   "sprite": 40451,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    214,
+    63
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123678,
+   "nombre": "Carrota",
+   "npc_type": 14575,
+   "sprite": 40360,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    175,
+    130
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123679,
+   "nombre": "Dashin",
+   "npc_type": 14576,
+   "sprite": 40496,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    67,
+    69
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123680,
+   "nombre": "Cleric Porcia",
+   "npc_type": 14587,
+   "sprite": 40069,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    32,
+    33
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 1055838,
+   "nombre": "Pinky Bun",
+   "npc_type": 19044,
+   "sprite": 110431,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    262,
+    36
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 1055839,
+   "nombre": "Pinky Bun",
+   "npc_type": 19044,
+   "sprite": 110431,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    278,
+    23
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 1055840,
+   "nombre": "Pinky Bun",
+   "npc_type": 19044,
+   "sprite": 110431,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    260,
+    33
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 1055841,
+   "nombre": "Pinky Bun",
+   "npc_type": 19044,
+   "sprite": 110431,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    269,
+    32
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 1055842,
+   "nombre": "Pinky Bun",
+   "npc_type": 19044,
+   "sprite": 110431,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    266,
+    28
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 1055843,
+   "nombre": "Pinky Bun",
+   "npc_type": 19044,
+   "sprite": 110431,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    248,
+    71
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 1055844,
+   "nombre": "Pinky Bun",
+   "npc_type": 19044,
+   "sprite": 110431,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    257,
+    57
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 1055845,
+   "nombre": "Pinky Bun",
+   "npc_type": 19044,
+   "sprite": 110431,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    244,
+    64
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 1055846,
+   "nombre": "Pinky Bun",
+   "npc_type": 19044,
+   "sprite": 110431,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    252,
+    67
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 1055847,
+   "nombre": "Pinky Bun",
+   "npc_type": 19044,
+   "sprite": 110431,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    258,
+    71
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 1055848,
+   "nombre": "Pinky Bun",
+   "npc_type": 19044,
+   "sprite": 110431,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    254,
+    68
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 1055849,
+   "nombre": "Pinky Bun",
+   "npc_type": 19044,
+   "sprite": 110431,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    223,
+    57
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 1055850,
+   "nombre": "Pinky Bun",
+   "npc_type": 19044,
+   "sprite": 110431,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    214,
+    56
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 1055851,
+   "nombre": "Pinky Bun",
+   "npc_type": 19044,
+   "sprite": 110431,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    237,
+    46
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 1055852,
+   "nombre": "Pinky Bun",
+   "npc_type": 19044,
+   "sprite": 110431,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    234,
+    56
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 1055853,
+   "nombre": "Pinky Bun",
+   "npc_type": 19044,
+   "sprite": 110431,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    241,
+    49
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 1055854,
+   "nombre": "Pinky Bun",
+   "npc_type": 19044,
+   "sprite": 110431,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    252,
+    61
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 1055855,
+   "nombre": "Pinky Bun",
+   "npc_type": 19044,
+   "sprite": 110431,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    250,
+    33
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 1055856,
+   "nombre": "Pinky Bun",
+   "npc_type": 19044,
+   "sprite": 110431,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    252,
+    27
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 1055857,
+   "nombre": "Pinky Bun",
+   "npc_type": 19044,
+   "sprite": 110431,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    243,
+    47
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 1055858,
+   "nombre": "Sasha Bun",
+   "npc_type": 19045,
+   "sprite": 110432,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    171,
+    31
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 1055859,
+   "nombre": "Sasha Bun",
+   "npc_type": 19045,
+   "sprite": 110432,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    151,
+    19
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 1055860,
+   "nombre": "Sasha Bun",
+   "npc_type": 19045,
+   "sprite": 110432,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    178,
+    20
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 1055861,
+   "nombre": "Sasha Bun",
+   "npc_type": 19045,
+   "sprite": 110432,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    165,
+    19
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 1055862,
+   "nombre": "Sasha Bun",
+   "npc_type": 19045,
+   "sprite": 110432,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    153,
+    16
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 1055863,
+   "nombre": "Sasha Bun",
+   "npc_type": 19045,
+   "sprite": 110432,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    183,
+    34
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 1055864,
+   "nombre": "Sasha Bun",
+   "npc_type": 19045,
+   "sprite": 110432,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    187,
+    41
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 1055865,
+   "nombre": "Sasha Bun",
+   "npc_type": 19045,
+   "sprite": 110432,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    176,
+    45
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 1055866,
+   "nombre": "Sasha Bun",
+   "npc_type": 19045,
+   "sprite": 110432,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    177,
+    30
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 1055867,
+   "nombre": "Sasha Bun",
+   "npc_type": 19045,
+   "sprite": 110432,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    170,
+    26
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 1055868,
+   "nombre": "Sasha Bun",
+   "npc_type": 19045,
+   "sprite": 110432,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    202,
+    27
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 1055869,
+   "nombre": "Sasha Bun",
+   "npc_type": 19045,
+   "sprite": 110432,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    191,
+    26
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 1055870,
+   "nombre": "Sasha Bun",
+   "npc_type": 19045,
+   "sprite": 110432,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    201,
+    28
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 1055871,
+   "nombre": "Sasha Bun",
+   "npc_type": 19045,
+   "sprite": 110432,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    202,
+    14
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 1055872,
+   "nombre": "Sasha Bun",
+   "npc_type": 19045,
+   "sprite": 110432,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    209,
+    29
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 1055873,
+   "nombre": "Sasha Bun",
+   "npc_type": 19045,
+   "sprite": 110432,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    228,
+    40
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 1055874,
+   "nombre": "Sasha Bun",
+   "npc_type": 19045,
+   "sprite": 110432,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    216,
+    32
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 1055875,
+   "nombre": "Sasha Bun",
+   "npc_type": 19045,
+   "sprite": 110432,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    233,
+    37
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 1055876,
+   "nombre": "Sasha Bun",
+   "npc_type": 19045,
+   "sprite": 110432,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    231,
+    19
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 1055877,
+   "nombre": "Sasha Bun",
+   "npc_type": 19045,
+   "sprite": 110432,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    218,
+    27
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 1055878,
+   "nombre": "Snippy Kate",
+   "npc_type": 19046,
+   "sprite": 110496,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    113,
+    37
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 302
+  },
+  {
+   "entity_id": 1055879,
+   "nombre": "Snippy Kate",
+   "npc_type": 19046,
+   "sprite": 110496,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    118,
+    39
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 302
+  },
+  {
+   "entity_id": 1055880,
+   "nombre": "Snippy Kate",
+   "npc_type": 19046,
+   "sprite": 110496,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    118,
+    33
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 302
+  },
+  {
+   "entity_id": 1055881,
+   "nombre": "Snippy Kate",
+   "npc_type": 19046,
+   "sprite": 110496,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    110,
+    35
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 302
+  },
+  {
+   "entity_id": 1055882,
+   "nombre": "Snippy Kate",
+   "npc_type": 19046,
+   "sprite": 110496,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    107,
+    37
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 302
+  },
+  {
+   "entity_id": 1055883,
+   "nombre": "Snippy Kate",
+   "npc_type": 19046,
+   "sprite": 110496,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    142,
+    29
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 302
+  },
+  {
+   "entity_id": 1055884,
+   "nombre": "Snippy Kate",
+   "npc_type": 19046,
+   "sprite": 110496,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    138,
+    18
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 302
+  },
+  {
+   "entity_id": 1055885,
+   "nombre": "Snippy Kate",
+   "npc_type": 19046,
+   "sprite": 110496,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    131,
+    16
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 302
+  },
+  {
+   "entity_id": 1055886,
+   "nombre": "Snippy Kate",
+   "npc_type": 19046,
+   "sprite": 110496,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    125,
+    22
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 302
+  },
+  {
+   "entity_id": 1055887,
+   "nombre": "Snippy Kate",
+   "npc_type": 19046,
+   "sprite": 110496,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    134,
+    21
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 302
+  },
+  {
+   "entity_id": 1055888,
+   "nombre": "Snippy Kate",
+   "npc_type": 19046,
+   "sprite": 110496,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    98,
+    25
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 302
+  },
+  {
+   "entity_id": 1055889,
+   "nombre": "Snippy Kate",
+   "npc_type": 19046,
+   "sprite": 110496,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    102,
+    34
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 302
+  },
+  {
+   "entity_id": 1055890,
+   "nombre": "Snippy Kate",
+   "npc_type": 19046,
+   "sprite": 110496,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    80,
+    18
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 302
+  },
+  {
+   "entity_id": 1055891,
+   "nombre": "Snippy Kate",
+   "npc_type": 19046,
+   "sprite": 110496,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    82,
+    20
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 302
+  },
+  {
+   "entity_id": 1055892,
+   "nombre": "Snippy Kate",
+   "npc_type": 19046,
+   "sprite": 110496,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    103,
+    30
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 302
+  },
+  {
+   "entity_id": 1055893,
+   "nombre": "Snippy Kate",
+   "npc_type": 19046,
+   "sprite": 110496,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    93,
+    26
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 302
+  },
+  {
+   "entity_id": 1055894,
+   "nombre": "Snippy Kate",
+   "npc_type": 19046,
+   "sprite": 110496,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    69,
+    18
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 302
+  },
+  {
+   "entity_id": 1055895,
+   "nombre": "Snippy Kate",
+   "npc_type": 19046,
+   "sprite": 110496,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    72,
+    26
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 302
+  },
+  {
+   "entity_id": 1055896,
+   "nombre": "Snippy Kate",
+   "npc_type": 19046,
+   "sprite": 110496,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    75,
+    21
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 302
+  },
+  {
+   "entity_id": 1055897,
+   "nombre": "Snippy Kate",
+   "npc_type": 19046,
+   "sprite": 110496,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    74,
+    16
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 302
+  },
+  {
+   "entity_id": 1055898,
+   "nombre": "Snippy Simone",
+   "npc_type": 19047,
+   "sprite": 110497,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    50,
+    69
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 302
+  },
+  {
+   "entity_id": 1055899,
+   "nombre": "Snippy Simone",
+   "npc_type": 19047,
+   "sprite": 110497,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    52,
+    74
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 302
+  },
+  {
+   "entity_id": 1055900,
+   "nombre": "Snippy Simone",
+   "npc_type": 19047,
+   "sprite": 110497,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    63,
+    73
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 302
+  },
+  {
+   "entity_id": 1055901,
+   "nombre": "Snippy Simone",
+   "npc_type": 19047,
+   "sprite": 110497,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    58,
+    77
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 302
+  },
+  {
+   "entity_id": 1055902,
+   "nombre": "Snippy Simone",
+   "npc_type": 19047,
+   "sprite": 110497,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    71
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 302
+  },
+  {
+   "entity_id": 1055903,
+   "nombre": "Snippy Simone",
+   "npc_type": 19047,
+   "sprite": 110497,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    29,
+    13
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 302
+  },
+  {
+   "entity_id": 1055904,
+   "nombre": "Snippy Simone",
+   "npc_type": 19047,
+   "sprite": 110497,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    22,
+    18
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 302
+  },
+  {
+   "entity_id": 1055905,
+   "nombre": "Snippy Simone",
+   "npc_type": 19047,
+   "sprite": 110497,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    36,
+    18
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 302
+  },
+  {
+   "entity_id": 1055906,
+   "nombre": "Snippy Simone",
+   "npc_type": 19047,
+   "sprite": 110497,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    53,
+    9
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 302
+  },
+  {
+   "entity_id": 1055907,
+   "nombre": "Snippy Simone",
+   "npc_type": 19047,
+   "sprite": 110497,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    51,
+    11
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 302
+  },
+  {
+   "entity_id": 1055908,
+   "nombre": "Snippy Simone",
+   "npc_type": 19047,
+   "sprite": 110497,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    37,
+    23
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 302
+  },
+  {
+   "entity_id": 1055909,
+   "nombre": "Snippy Simone",
+   "npc_type": 19047,
+   "sprite": 110497,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    13,
+    22
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 302
+  },
+  {
+   "entity_id": 1055910,
+   "nombre": "Snippy Simone",
+   "npc_type": 19047,
+   "sprite": 110497,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    25,
+    38
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 302
+  },
+  {
+   "entity_id": 1055911,
+   "nombre": "Snippy Simone",
+   "npc_type": 19047,
+   "sprite": 110497,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    21,
+    32
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 302
+  },
+  {
+   "entity_id": 1055912,
+   "nombre": "Snippy Simone",
+   "npc_type": 19047,
+   "sprite": 110497,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    11,
+    27
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 302
+  },
+  {
+   "entity_id": 1055913,
+   "nombre": "Snippy Simone",
+   "npc_type": 19047,
+   "sprite": 110497,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    13,
+    49
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 302
+  },
+  {
+   "entity_id": 1055914,
+   "nombre": "Snippy Simone",
+   "npc_type": 19047,
+   "sprite": 110497,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    43,
+    66
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 302
+  },
+  {
+   "entity_id": 1055915,
+   "nombre": "Snippy Simone",
+   "npc_type": 19047,
+   "sprite": 110497,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    38,
+    68
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 302
+  },
+  {
+   "entity_id": 1055916,
+   "nombre": "Snippy Simone",
+   "npc_type": 19047,
+   "sprite": 110497,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    30,
+    62
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 302
+  },
+  {
+   "entity_id": 1055917,
+   "nombre": "Snippy Simone",
+   "npc_type": 19047,
+   "sprite": 110497,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    11,
+    54
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 302
+  },
+  {
+   "entity_id": 1055918,
+   "nombre": "Tick-tock",
+   "npc_type": 19048,
+   "sprite": 110455,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    163,
+    55
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 304
+  },
+  {
+   "entity_id": 1055919,
+   "nombre": "Tick-tock",
+   "npc_type": 19048,
+   "sprite": 110455,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    176,
+    45
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 304
+  },
+  {
+   "entity_id": 1055920,
+   "nombre": "Tick-tock",
+   "npc_type": 19048,
+   "sprite": 110455,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    170,
+    57
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 304
+  },
+  {
+   "entity_id": 1055921,
+   "nombre": "Tick-tock",
+   "npc_type": 19048,
+   "sprite": 110455,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    162,
+    45
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 304
+  },
+  {
+   "entity_id": 1055922,
+   "nombre": "Tick-tock",
+   "npc_type": 19048,
+   "sprite": 110455,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    150,
+    65
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 304
+  },
+  {
+   "entity_id": 1055923,
+   "nombre": "Tick-tock",
+   "npc_type": 19048,
+   "sprite": 110455,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    142,
+    58
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 304
+  },
+  {
+   "entity_id": 1055924,
+   "nombre": "Tick-tock",
+   "npc_type": 19048,
+   "sprite": 110455,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    148,
+    61
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 304
+  },
+  {
+   "entity_id": 1055925,
+   "nombre": "Tick-tock",
+   "npc_type": 19048,
+   "sprite": 110455,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    155,
+    72
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 304
+  },
+  {
+   "entity_id": 1055926,
+   "nombre": "Tick-tock",
+   "npc_type": 19048,
+   "sprite": 110455,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    143,
+    65
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 304
+  },
+  {
+   "entity_id": 1055927,
+   "nombre": "Tick-tock",
+   "npc_type": 19048,
+   "sprite": 110455,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    132,
+    57
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 304
+  },
+  {
+   "entity_id": 1055928,
+   "nombre": "Tick-tock",
+   "npc_type": 19048,
+   "sprite": 110455,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    124,
+    57
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 304
+  },
+  {
+   "entity_id": 1055929,
+   "nombre": "Tick-tock",
+   "npc_type": 19048,
+   "sprite": 110455,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    117,
+    51
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 304
+  },
+  {
+   "entity_id": 1055930,
+   "nombre": "Tick-tock",
+   "npc_type": 19048,
+   "sprite": 110455,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    126,
+    58
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 304
+  },
+  {
+   "entity_id": 1055931,
+   "nombre": "Tick-tock",
+   "npc_type": 19048,
+   "sprite": 110455,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    126,
+    61
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 304
+  },
+  {
+   "entity_id": 1055932,
+   "nombre": "Tick-tock",
+   "npc_type": 19048,
+   "sprite": 110455,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    124,
+    57
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 304
+  },
+  {
+   "entity_id": 1055933,
+   "nombre": "Tick-tock",
+   "npc_type": 19048,
+   "sprite": 110455,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    100,
+    53
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 304
+  },
+  {
+   "entity_id": 1055934,
+   "nombre": "Tick-tock",
+   "npc_type": 19048,
+   "sprite": 110455,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    79,
+    46
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 304
+  },
+  {
+   "entity_id": 1055935,
+   "nombre": "Tick-tock",
+   "npc_type": 19048,
+   "sprite": 110455,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    94,
+    53
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 304
+  },
+  {
+   "entity_id": 1055936,
+   "nombre": "Tick-tock",
+   "npc_type": 19048,
+   "sprite": 110455,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    81,
+    48
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 304
+  },
+  {
+   "entity_id": 1055937,
+   "nombre": "Tick-tock",
+   "npc_type": 19048,
+   "sprite": 110455,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    111,
+    59
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 304
+  },
+  {
+   "entity_id": 1055938,
+   "nombre": "Tick-tock",
+   "npc_type": 19048,
+   "sprite": 110455,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    113,
+    49
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 304
+  },
+  {
+   "entity_id": 1055939,
+   "nombre": "Tick-tock",
+   "npc_type": 19048,
+   "sprite": 110455,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    115,
+    53
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 304
+  },
+  {
+   "entity_id": 1055940,
+   "nombre": "Tick-tock",
+   "npc_type": 19048,
+   "sprite": 110455,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    93,
+    42
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 304
+  },
+  {
+   "entity_id": 1055941,
+   "nombre": "Tick-tock",
+   "npc_type": 19048,
+   "sprite": 110455,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    88,
+    33
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 304
+  },
+  {
+   "entity_id": 1055942,
+   "nombre": "Tick-tock",
+   "npc_type": 19048,
+   "sprite": 110455,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    91,
+    44
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 304
+  },
+  {
+   "entity_id": 1055943,
+   "nombre": "Cuckoo Clock",
+   "npc_type": 19049,
+   "sprite": 110456,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    154,
+    65
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 304
+  },
+  {
+   "entity_id": 1055944,
+   "nombre": "Cuckoo Clock",
+   "npc_type": 19049,
+   "sprite": 110456,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    131,
+    83
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 304
+  },
+  {
+   "entity_id": 1055945,
+   "nombre": "Cuckoo Clock",
+   "npc_type": 19049,
+   "sprite": 110456,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    136,
+    76
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 304
+  },
+  {
+   "entity_id": 1055946,
+   "nombre": "Cuckoo Clock",
+   "npc_type": 19049,
+   "sprite": 110456,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    141,
+    85
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 304
+  },
+  {
+   "entity_id": 1055947,
+   "nombre": "Cuckoo Clock",
+   "npc_type": 19049,
+   "sprite": 110456,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    141,
+    88
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 304
+  },
+  {
+   "entity_id": 1055948,
+   "nombre": "Cuckoo Clock",
+   "npc_type": 19049,
+   "sprite": 110456,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    173,
+    96
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 304
+  },
+  {
+   "entity_id": 1055949,
+   "nombre": "Cuckoo Clock",
+   "npc_type": 19049,
+   "sprite": 110456,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    182,
+    95
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 304
+  },
+  {
+   "entity_id": 1055950,
+   "nombre": "Cuckoo Clock",
+   "npc_type": 19049,
+   "sprite": 110456,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    206,
+    87
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 304
+  },
+  {
+   "entity_id": 1055951,
+   "nombre": "Cuckoo Clock",
+   "npc_type": 19049,
+   "sprite": 110456,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    193,
+    82
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 304
+  },
+  {
+   "entity_id": 1055952,
+   "nombre": "Cuckoo Clock",
+   "npc_type": 19049,
+   "sprite": 110456,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    184,
+    82
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 304
+  },
+  {
+   "entity_id": 1055953,
+   "nombre": "Cuckoo Clock",
+   "npc_type": 19049,
+   "sprite": 110456,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    205,
+    77
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 304
+  },
+  {
+   "entity_id": 1055954,
+   "nombre": "Cuckoo Clock",
+   "npc_type": 19049,
+   "sprite": 110456,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    199,
+    91
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 304
+  },
+  {
+   "entity_id": 1055955,
+   "nombre": "Cuckoo Clock",
+   "npc_type": 19049,
+   "sprite": 110456,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    200,
+    76
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 304
+  },
+  {
+   "entity_id": 1055956,
+   "nombre": "Cuckoo Clock",
+   "npc_type": 19049,
+   "sprite": 110456,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    211,
+    91
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 304
+  },
+  {
+   "entity_id": 1055957,
+   "nombre": "Cuckoo Clock",
+   "npc_type": 19049,
+   "sprite": 110456,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    206,
+    97
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 304
+  },
+  {
+   "entity_id": 1055958,
+   "nombre": "Cuckoo Clock",
+   "npc_type": 19049,
+   "sprite": 110456,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    123,
+    87
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 304
+  },
+  {
+   "entity_id": 1055959,
+   "nombre": "Cuckoo Clock",
+   "npc_type": 19049,
+   "sprite": 110456,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    123,
+    89
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 304
+  },
+  {
+   "entity_id": 1055960,
+   "nombre": "Cuckoo Clock",
+   "npc_type": 19049,
+   "sprite": 110456,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    119,
+    80
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 304
+  },
+  {
+   "entity_id": 1055961,
+   "nombre": "Cuckoo Clock",
+   "npc_type": 19049,
+   "sprite": 110456,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    135,
+    95
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 304
+  },
+  {
+   "entity_id": 1055962,
+   "nombre": "Cuckoo Clock",
+   "npc_type": 19049,
+   "sprite": 110456,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    125,
+    78
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 304
+  },
+  {
+   "entity_id": 1055963,
+   "nombre": "Cuckoo Clock",
+   "npc_type": 19049,
+   "sprite": 110456,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    113,
+    91
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 304
+  },
+  {
+   "entity_id": 1055964,
+   "nombre": "Cuckoo Clock",
+   "npc_type": 19049,
+   "sprite": 110456,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    102,
+    92
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 304
+  },
+  {
+   "entity_id": 1055965,
+   "nombre": "Cuckoo Clock",
+   "npc_type": 19049,
+   "sprite": 110456,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    120,
+    84
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 304
+  },
+  {
+   "entity_id": 1055966,
+   "nombre": "Cuckoo Clock",
+   "npc_type": 19049,
+   "sprite": 110456,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    105,
+    91
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 304
+  },
+  {
+   "entity_id": 1055967,
+   "nombre": "Cuckoo Clock",
+   "npc_type": 19049,
+   "sprite": 110456,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    113,
+    79
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 304
+  },
+  {
+   "entity_id": 1055968,
+   "nombre": "Rugged Rabbit",
+   "npc_type": 19050,
+   "sprite": 110436,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    206,
+    142
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 306
+  },
+  {
+   "entity_id": 1055969,
+   "nombre": "Rugged Rabbit",
+   "npc_type": 19050,
+   "sprite": 110436,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    194,
+    141
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 306
+  },
+  {
+   "entity_id": 1055970,
+   "nombre": "Rugged Rabbit",
+   "npc_type": 19050,
+   "sprite": 110436,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    195,
+    145
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 306
+  },
+  {
+   "entity_id": 1055971,
+   "nombre": "Rugged Rabbit",
+   "npc_type": 19050,
+   "sprite": 110436,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    195,
+    140
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 306
+  },
+  {
+   "entity_id": 1055972,
+   "nombre": "Rugged Rabbit",
+   "npc_type": 19050,
+   "sprite": 110436,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    191,
+    143
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 306
+  },
+  {
+   "entity_id": 1055973,
+   "nombre": "Rugged Rabbit",
+   "npc_type": 19050,
+   "sprite": 110436,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    172,
+    138
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 306
+  },
+  {
+   "entity_id": 1055974,
+   "nombre": "Rugged Rabbit",
+   "npc_type": 19050,
+   "sprite": 110436,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    188,
+    131
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 306
+  },
+  {
+   "entity_id": 1055975,
+   "nombre": "Rugged Rabbit",
+   "npc_type": 19050,
+   "sprite": 110436,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    174,
+    120
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 306
+  },
+  {
+   "entity_id": 1055976,
+   "nombre": "Rugged Rabbit",
+   "npc_type": 19050,
+   "sprite": 110436,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    183,
+    125
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 306
+  },
+  {
+   "entity_id": 1055977,
+   "nombre": "Rugged Rabbit",
+   "npc_type": 19050,
+   "sprite": 110436,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    176,
+    150
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 306
+  },
+  {
+   "entity_id": 1055978,
+   "nombre": "Rugged Rabbit",
+   "npc_type": 19050,
+   "sprite": 110436,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    152,
+    156
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 306
+  },
+  {
+   "entity_id": 1055979,
+   "nombre": "Rugged Rabbit",
+   "npc_type": 19050,
+   "sprite": 110436,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    147,
+    157
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 306
+  },
+  {
+   "entity_id": 1055980,
+   "nombre": "Rugged Rabbit",
+   "npc_type": 19050,
+   "sprite": 110436,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    142,
+    151
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 306
+  },
+  {
+   "entity_id": 1055981,
+   "nombre": "Rugged Rabbit",
+   "npc_type": 19050,
+   "sprite": 110436,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    145,
+    144
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 306
+  },
+  {
+   "entity_id": 1055982,
+   "nombre": "Rugged Rabbit",
+   "npc_type": 19050,
+   "sprite": 110436,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    173,
+    150
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 306
+  },
+  {
+   "entity_id": 1055983,
+   "nombre": "Rugged Rabbit",
+   "npc_type": 19050,
+   "sprite": 110436,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    133,
+    138
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 306
+  },
+  {
+   "entity_id": 1055984,
+   "nombre": "Rugged Rabbit",
+   "npc_type": 19050,
+   "sprite": 110436,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    124,
+    149
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 306
+  },
+  {
+   "entity_id": 1055985,
+   "nombre": "Rugged Rabbit",
+   "npc_type": 19050,
+   "sprite": 110436,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    129,
+    149
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 306
+  },
+  {
+   "entity_id": 1055986,
+   "nombre": "Rugged Rabbit",
+   "npc_type": 19050,
+   "sprite": 110436,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    140,
+    150
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 306
+  },
+  {
+   "entity_id": 1055987,
+   "nombre": "Rugged Rabbit",
+   "npc_type": 19050,
+   "sprite": 110436,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    121,
+    140
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 306
+  },
+  {
+   "entity_id": 1055988,
+   "nombre": "Hammer Rabbit",
+   "npc_type": 19051,
+   "sprite": 110437,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    67,
+    152
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 306
+  },
+  {
+   "entity_id": 1055989,
+   "nombre": "Hammer Rabbit",
+   "npc_type": 19051,
+   "sprite": 110437,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    57,
+    162
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 306
+  },
+  {
+   "entity_id": 1055990,
+   "nombre": "Hammer Rabbit",
+   "npc_type": 19051,
+   "sprite": 110437,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    71,
+    160
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 306
+  },
+  {
+   "entity_id": 1055991,
+   "nombre": "Hammer Rabbit",
+   "npc_type": 19051,
+   "sprite": 110437,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    72,
+    158
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 306
+  },
+  {
+   "entity_id": 1055992,
+   "nombre": "Hammer Rabbit",
+   "npc_type": 19051,
+   "sprite": 110437,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    66,
+    150
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 306
+  },
+  {
+   "entity_id": 1055993,
+   "nombre": "Hammer Rabbit",
+   "npc_type": 19051,
+   "sprite": 110437,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    102,
+    164
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 306
+  },
+  {
+   "entity_id": 1055994,
+   "nombre": "Hammer Rabbit",
+   "npc_type": 19051,
+   "sprite": 110437,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    92,
+    158
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 306
+  },
+  {
+   "entity_id": 1055995,
+   "nombre": "Hammer Rabbit",
+   "npc_type": 19051,
+   "sprite": 110437,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    76,
+    157
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 306
+  },
+  {
+   "entity_id": 1055996,
+   "nombre": "Hammer Rabbit",
+   "npc_type": 19051,
+   "sprite": 110437,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    93,
+    161
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 306
+  },
+  {
+   "entity_id": 1055997,
+   "nombre": "Hammer Rabbit",
+   "npc_type": 19051,
+   "sprite": 110437,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    88,
+    163
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 306
+  },
+  {
+   "entity_id": 1055998,
+   "nombre": "Hammer Rabbit",
+   "npc_type": 19051,
+   "sprite": 110437,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    104,
+    155
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 306
+  },
+  {
+   "entity_id": 1055999,
+   "nombre": "Hammer Rabbit",
+   "npc_type": 19051,
+   "sprite": 110437,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    113,
+    156
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 306
+  },
+  {
+   "entity_id": 1056000,
+   "nombre": "Hammer Rabbit",
+   "npc_type": 19051,
+   "sprite": 110437,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    106,
+    167
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 306
+  },
+  {
+   "entity_id": 1056001,
+   "nombre": "Hammer Rabbit",
+   "npc_type": 19051,
+   "sprite": 110437,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    92,
+    160
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 306
+  },
+  {
+   "entity_id": 1056002,
+   "nombre": "Hammer Rabbit",
+   "npc_type": 19051,
+   "sprite": 110437,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    102,
+    149
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 306
+  },
+  {
+   "entity_id": 1056003,
+   "nombre": "Hammer Rabbit",
+   "npc_type": 19051,
+   "sprite": 110437,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    103,
+    137
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 306
+  },
+  {
+   "entity_id": 1056004,
+   "nombre": "Hammer Rabbit",
+   "npc_type": 19051,
+   "sprite": 110437,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    117,
+    150
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 306
+  },
+  {
+   "entity_id": 1056005,
+   "nombre": "Hammer Rabbit",
+   "npc_type": 19051,
+   "sprite": 110437,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    100,
+    146
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 306
+  },
+  {
+   "entity_id": 1056006,
+   "nombre": "Hammer Rabbit",
+   "npc_type": 19051,
+   "sprite": 110437,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    106,
+    146
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 306
+  },
+  {
+   "entity_id": 1056007,
+   "nombre": "Hammer Rabbit",
+   "npc_type": 19051,
+   "sprite": 110437,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    103,
+    140
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 306
+  },
+  {
+   "entity_id": 1056008,
+   "nombre": "Kitty Baron",
+   "npc_type": 19052,
+   "sprite": 110312,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    232,
+    157
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 308
+  },
+  {
+   "entity_id": 1056009,
+   "nombre": "Kitty Baron",
+   "npc_type": 19052,
+   "sprite": 110312,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    230,
+    165
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 308
+  },
+  {
+   "entity_id": 1056010,
+   "nombre": "Kitty Baron",
+   "npc_type": 19052,
+   "sprite": 110312,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    247,
+    162
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 308
+  },
+  {
+   "entity_id": 1056011,
+   "nombre": "Kitty Baron",
+   "npc_type": 19052,
+   "sprite": 110312,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    256,
+    155
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 308
+  },
+  {
+   "entity_id": 1056012,
+   "nombre": "Kitty Baron",
+   "npc_type": 19052,
+   "sprite": 110312,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    249,
+    153
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 308
+  },
+  {
+   "entity_id": 1056013,
+   "nombre": "Kitty Baron",
+   "npc_type": 19052,
+   "sprite": 110312,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    274,
+    145
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 308
+  },
+  {
+   "entity_id": 1056014,
+   "nombre": "Kitty Baron",
+   "npc_type": 19052,
+   "sprite": 110312,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    281,
+    143
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 308
+  },
+  {
+   "entity_id": 1056015,
+   "nombre": "Kitty Baron",
+   "npc_type": 19052,
+   "sprite": 110312,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    278,
+    120
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 308
+  },
+  {
+   "entity_id": 1056016,
+   "nombre": "Kitty Baron",
+   "npc_type": 19052,
+   "sprite": 110312,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    264,
+    141
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 308
+  },
+  {
+   "entity_id": 1056017,
+   "nombre": "Kitty Baron",
+   "npc_type": 19052,
+   "sprite": 110312,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    281,
+    123
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 308
+  },
+  {
+   "entity_id": 1056018,
+   "nombre": "Kitty Baron",
+   "npc_type": 19052,
+   "sprite": 110312,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    240,
+    143
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 308
+  },
+  {
+   "entity_id": 1056019,
+   "nombre": "Kitty Baron",
+   "npc_type": 19052,
+   "sprite": 110312,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    257,
+    138
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 308
+  },
+  {
+   "entity_id": 1056020,
+   "nombre": "Kitty Baron",
+   "npc_type": 19052,
+   "sprite": 110312,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    254,
+    146
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 308
+  },
+  {
+   "entity_id": 1056021,
+   "nombre": "Kitty Baron",
+   "npc_type": 19052,
+   "sprite": 110312,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    259,
+    157
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 308
+  },
+  {
+   "entity_id": 1056022,
+   "nombre": "Kitty Baron",
+   "npc_type": 19052,
+   "sprite": 110312,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    270,
+    130
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 308
+  },
+  {
+   "entity_id": 1056023,
+   "nombre": "Kitty Baron",
+   "npc_type": 19052,
+   "sprite": 110312,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    219,
+    145
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 308
+  },
+  {
+   "entity_id": 1056024,
+   "nombre": "Kitty Baron",
+   "npc_type": 19052,
+   "sprite": 110312,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    226,
+    142
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 308
+  },
+  {
+   "entity_id": 1056025,
+   "nombre": "Kitty Baron",
+   "npc_type": 19052,
+   "sprite": 110312,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    237,
+    145
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 308
+  },
+  {
+   "entity_id": 1056026,
+   "nombre": "Kitty Baron",
+   "npc_type": 19052,
+   "sprite": 110312,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    208,
+    150
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 308
+  },
+  {
+   "entity_id": 1056027,
+   "nombre": "Kitty Baron",
+   "npc_type": 19052,
+   "sprite": 110312,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    234,
+    147
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 308
+  },
+  {
+   "entity_id": 1056028,
+   "nombre": "Kitty Robber",
+   "npc_type": 19053,
+   "sprite": 110447,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    221,
+    128
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 308
+  },
+  {
+   "entity_id": 1056029,
+   "nombre": "Kitty Robber",
+   "npc_type": 19053,
+   "sprite": 110447,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    205,
+    130
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 308
+  },
+  {
+   "entity_id": 1056030,
+   "nombre": "Kitty Robber",
+   "npc_type": 19053,
+   "sprite": 110447,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    188,
+    119
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 308
+  },
+  {
+   "entity_id": 1056031,
+   "nombre": "Kitty Robber",
+   "npc_type": 19053,
+   "sprite": 110447,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    201,
+    125
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 308
+  },
+  {
+   "entity_id": 1056032,
+   "nombre": "Kitty Robber",
+   "npc_type": 19053,
+   "sprite": 110447,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    195,
+    124
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 308
+  },
+  {
+   "entity_id": 1056033,
+   "nombre": "Kitty Robber",
+   "npc_type": 19053,
+   "sprite": 110447,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    224,
+    126
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 308
+  },
+  {
+   "entity_id": 1056034,
+   "nombre": "Kitty Robber",
+   "npc_type": 19053,
+   "sprite": 110447,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    230,
+    139
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 308
+  },
+  {
+   "entity_id": 1056035,
+   "nombre": "Kitty Robber",
+   "npc_type": 19053,
+   "sprite": 110447,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    234,
+    115
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 308
+  },
+  {
+   "entity_id": 1056036,
+   "nombre": "Kitty Robber",
+   "npc_type": 19053,
+   "sprite": 110447,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    242,
+    131
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 308
+  },
+  {
+   "entity_id": 1056037,
+   "nombre": "Kitty Robber",
+   "npc_type": 19053,
+   "sprite": 110447,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    220,
+    131
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 308
+  },
+  {
+   "entity_id": 1056038,
+   "nombre": "Kitty Robber",
+   "npc_type": 19053,
+   "sprite": 110447,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    254,
+    99
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 308
+  },
+  {
+   "entity_id": 1056039,
+   "nombre": "Kitty Robber",
+   "npc_type": 19053,
+   "sprite": 110447,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    247,
+    116
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 308
+  },
+  {
+   "entity_id": 1056040,
+   "nombre": "Kitty Robber",
+   "npc_type": 19053,
+   "sprite": 110447,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    238,
+    114
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 308
+  },
+  {
+   "entity_id": 1056041,
+   "nombre": "Kitty Robber",
+   "npc_type": 19053,
+   "sprite": 110447,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    247,
+    114
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 308
+  },
+  {
+   "entity_id": 1056042,
+   "nombre": "Kitty Robber",
+   "npc_type": 19053,
+   "sprite": 110447,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    267,
+    105
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 308
+  },
+  {
+   "entity_id": 1056043,
+   "nombre": "Kitty Robber",
+   "npc_type": 19053,
+   "sprite": 110447,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    287,
+    92
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 308
+  },
+  {
+   "entity_id": 1056044,
+   "nombre": "Kitty Robber",
+   "npc_type": 19053,
+   "sprite": 110447,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    274,
+    114
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 308
+  },
+  {
+   "entity_id": 1056045,
+   "nombre": "Kitty Robber",
+   "npc_type": 19053,
+   "sprite": 110447,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    268,
+    111
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 308
+  },
+  {
+   "entity_id": 1056046,
+   "nombre": "Kitty Robber",
+   "npc_type": 19053,
+   "sprite": 110447,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    279,
+    101
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 308
+  },
+  {
+   "entity_id": 1056047,
+   "nombre": "Kitty Robber",
+   "npc_type": 19053,
+   "sprite": 110447,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    278,
+    105
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 308
+  },
+  {
+   "entity_id": 1056048,
+   "nombre": "E-Sasha Bun",
+   "npc_type": 19054,
+   "sprite": 110432,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    30,
+    69
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 309
+  },
+  {
+   "entity_id": 1056049,
+   "nombre": "E-Sasha Bun",
+   "npc_type": 19054,
+   "sprite": 110432,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    38,
+    87
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 309
+  },
+  {
+   "entity_id": 1056050,
+   "nombre": "E-Sasha Bun",
+   "npc_type": 19054,
+   "sprite": 110432,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    43,
+    90
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 309
+  },
+  {
+   "entity_id": 1056051,
+   "nombre": "E-Sasha Bun",
+   "npc_type": 19054,
+   "sprite": 110432,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    40,
+    84
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 309
+  },
+  {
+   "entity_id": 1056052,
+   "nombre": "E-Sasha Bun",
+   "npc_type": 19054,
+   "sprite": 110432,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    52,
+    73
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 309
+  },
+  {
+   "entity_id": 1056053,
+   "nombre": "E-Snippy Kate",
+   "npc_type": 19055,
+   "sprite": 110496,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    37,
+    123
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 309
+  },
+  {
+   "entity_id": 1056054,
+   "nombre": "E-Snippy Kate",
+   "npc_type": 19055,
+   "sprite": 110496,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    36,
+    135
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 309
+  },
+  {
+   "entity_id": 1056055,
+   "nombre": "E-Snippy Kate",
+   "npc_type": 19055,
+   "sprite": 110496,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    47,
+    139
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 309
+  },
+  {
+   "entity_id": 1056056,
+   "nombre": "E-Snippy Kate",
+   "npc_type": 19055,
+   "sprite": 110496,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    29,
+    125
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 309
+  },
+  {
+   "entity_id": 1056057,
+   "nombre": "E-Snippy Kate",
+   "npc_type": 19055,
+   "sprite": 110496,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    30,
+    136
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 309
+  },
+  {
+   "entity_id": 1056058,
+   "nombre": "E-Tick-tock",
+   "npc_type": 19056,
+   "sprite": 110455,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    62,
+    112
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 309
+  },
+  {
+   "entity_id": 1056059,
+   "nombre": "E-Tick-tock",
+   "npc_type": 19056,
+   "sprite": 110455,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    74,
+    106
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 309
+  },
+  {
+   "entity_id": 1056060,
+   "nombre": "E-Tick-tock",
+   "npc_type": 19056,
+   "sprite": 110455,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    70,
+    110
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 309
+  },
+  {
+   "entity_id": 1056061,
+   "nombre": "E-Tick-tock",
+   "npc_type": 19056,
+   "sprite": 110455,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    61,
+    108
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 309
+  },
+  {
+   "entity_id": 1056062,
+   "nombre": "E-Tick-tock",
+   "npc_type": 19056,
+   "sprite": 110455,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    71,
+    111
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 309
+  },
+  {
+   "entity_id": 1056063,
+   "nombre": "E-Hammer Rabbit",
+   "npc_type": 19057,
+   "sprite": 110437,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    28,
+    85
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 309
+  },
+  {
+   "entity_id": 1056064,
+   "nombre": "E-Hammer Rabbit",
+   "npc_type": 19057,
+   "sprite": 110437,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    40,
+    104
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 309
+  },
+  {
+   "entity_id": 1056065,
+   "nombre": "E-Hammer Rabbit",
+   "npc_type": 19057,
+   "sprite": 110437,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    51,
+    88
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 309
+  },
+  {
+   "entity_id": 1056066,
+   "nombre": "E-Hammer Rabbit",
+   "npc_type": 19057,
+   "sprite": 110437,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    27,
+    99
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 309
+  },
+  {
+   "entity_id": 1056067,
+   "nombre": "E-Hammer Rabbit",
+   "npc_type": 19057,
+   "sprite": 110437,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    32,
+    113
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 309
+  },
+  {
+   "entity_id": 1056068,
+   "nombre": "E-Kitty Baron",
+   "npc_type": 19058,
+   "sprite": 110312,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    22,
+    121
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 309
+  },
+  {
+   "entity_id": 1056069,
+   "nombre": "E-Kitty Baron",
+   "npc_type": 19058,
+   "sprite": 110312,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    22,
+    123
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 309
+  },
+  {
+   "entity_id": 1056070,
+   "nombre": "E-Kitty Baron",
+   "npc_type": 19058,
+   "sprite": 110312,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    31,
+    112
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 309
+  },
+  {
+   "entity_id": 1056071,
+   "nombre": "E-Kitty Baron",
+   "npc_type": 19058,
+   "sprite": 110312,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    31,
+    124
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 309
+  },
+  {
+   "entity_id": 1056072,
+   "nombre": "E-Kitty Baron",
+   "npc_type": 19058,
+   "sprite": 110312,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    22,
+    120
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 309
+  },
+  {
+   "entity_id": 1056073,
+   "nombre": "Lady Carolyn",
+   "npc_type": 19059,
+   "sprite": 110304,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    249,
+    60
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 310
+  },
+  {
+   "entity_id": 1056074,
+   "nombre": "Sister Odelia",
+   "npc_type": 19060,
+   "sprite": 110498,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    27,
+    68
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 312
+  },
+  {
+   "entity_id": 1056075,
+   "nombre": "Steely Zato",
+   "npc_type": 19061,
+   "sprite": 110307,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    151,
+    160
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 314
+  }
+ ],
+ "recursos": [
+  {
+   "entity_id": 118773,
+   "capa": 0,
+   "px": [
+    9384,
+    5554
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "crudo": "f5cf010000000000a8240000b21500000000000027000000000000001a000000dc0661ea00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 118774,
+   "capa": 0,
+   "px": [
+    9392,
+    146
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "crudo": "f6cf010000000000b0240000920000000000000027000000000000001a000000dc0661ea00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 118775,
+   "capa": 0,
+   "px": [
+    1738,
+    4965
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60305,
+   "cola": "00004080140000",
+   "crudo": "f7cf010000000000ca060000651300000000000027000000000000001a000000dc0691eb00004080140000"
+  },
+  {
+   "entity_id": 118776,
+   "capa": 0,
+   "px": [
+    3137,
+    3149
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60305,
+   "cola": "00004080140000",
+   "crudo": "f8cf010000000000410c00004d0c00000000000027000000000000001a000000dc0691eb00004080140000"
+  },
+  {
+   "entity_id": 118777,
+   "capa": 0,
+   "px": [
+    2331,
+    864
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60305,
+   "cola": "00004080140000",
+   "crudo": "f9cf0100000000001b090000600300000000000027000000000000001a000000dc0691eb00004080140000"
+  }
+ ]
+}

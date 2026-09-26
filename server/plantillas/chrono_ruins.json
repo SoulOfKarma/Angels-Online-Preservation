@@ -1,0 +1,3964 @@
+{
+ "_nota": "Chrono Ruins (stage 312), de Celestia. Se llega desde Cogsville (311). Tiene entrada de instancia. Poblado desde UNA sola sesion. Los objetos van CRUDOS.",
+ "stage": 312,
+ "spawns": [
+  {
+   "entity_id": 32752,
+   "nombre": "Aurora Totem",
+   "npc_type": 1937,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    133,
+    123
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 32753,
+   "nombre": "Dark City Totem",
+   "npc_type": 1938,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    134,
+    139
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 32754,
+   "nombre": "Iron Totem",
+   "npc_type": 1939,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    155,
+    138
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 32755,
+   "nombre": "Breeze Totem",
+   "npc_type": 1940,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    157,
+    122
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 123685,
+   "nombre": "Timefay Sytrid",
+   "npc_type": 14538,
+   "sprite": 40542,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    181,
+    105
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123686,
+   "nombre": " Ruins Warden",
+   "npc_type": 14579,
+   "sprite": 40529,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    137,
+    121
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123687,
+   "nombre": "Scholar Huz",
+   "npc_type": 14580,
+   "sprite": 40332,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    99,
+    132
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123688,
+   "nombre": "Historian Shane",
+   "npc_type": 14589,
+   "sprite": 40331,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    48,
+    39
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123689,
+   "nombre": "Timefay Gimes",
+   "npc_type": 14592,
+   "sprite": 40537,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    32,
+    163
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 1056324,
+   "nombre": "Sand Gobbler",
+   "npc_type": 19080,
+   "sprite": 110501,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    69,
+    15
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 320
+  },
+  {
+   "entity_id": 1056325,
+   "nombre": "Sand Gobbler",
+   "npc_type": 19080,
+   "sprite": 110501,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    62,
+    25
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 320
+  },
+  {
+   "entity_id": 1056326,
+   "nombre": "Sand Gobbler",
+   "npc_type": 19080,
+   "sprite": 110501,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    67,
+    18
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 320
+  },
+  {
+   "entity_id": 1056327,
+   "nombre": "Sand Gobbler",
+   "npc_type": 19080,
+   "sprite": 110501,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    41,
+    34
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 320
+  },
+  {
+   "entity_id": 1056328,
+   "nombre": "Sand Gobbler",
+   "npc_type": 19080,
+   "sprite": 110501,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    65,
+    17
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 320
+  },
+  {
+   "entity_id": 1056329,
+   "nombre": "Sand Gobbler",
+   "npc_type": 19080,
+   "sprite": 110501,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    95,
+    22
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 320
+  },
+  {
+   "entity_id": 1056330,
+   "nombre": "Sand Gobbler",
+   "npc_type": 19080,
+   "sprite": 110501,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    92,
+    25
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 320
+  },
+  {
+   "entity_id": 1056331,
+   "nombre": "Sand Gobbler",
+   "npc_type": 19080,
+   "sprite": 110501,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    93,
+    14
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 320
+  },
+  {
+   "entity_id": 1056332,
+   "nombre": "Sand Gobbler",
+   "npc_type": 19080,
+   "sprite": 110501,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    76,
+    18
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 320
+  },
+  {
+   "entity_id": 1056333,
+   "nombre": "Sand Gobbler",
+   "npc_type": 19080,
+   "sprite": 110501,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    96,
+    26
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 320
+  },
+  {
+   "entity_id": 1056334,
+   "nombre": "Sand Gobbler",
+   "npc_type": 19080,
+   "sprite": 110501,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    62,
+    45
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 320
+  },
+  {
+   "entity_id": 1056335,
+   "nombre": "Sand Gobbler",
+   "npc_type": 19080,
+   "sprite": 110501,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    42,
+    30
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 320
+  },
+  {
+   "entity_id": 1056336,
+   "nombre": "Sand Gobbler",
+   "npc_type": 19080,
+   "sprite": 110501,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    75,
+    57
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 320
+  },
+  {
+   "entity_id": 1056337,
+   "nombre": "Sand Gobbler",
+   "npc_type": 19080,
+   "sprite": 110501,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    59,
+    46
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 320
+  },
+  {
+   "entity_id": 1056338,
+   "nombre": "Sand Gobbler",
+   "npc_type": 19080,
+   "sprite": 110501,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    54,
+    41
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 320
+  },
+  {
+   "entity_id": 1056339,
+   "nombre": "Sand Gobbler",
+   "npc_type": 19080,
+   "sprite": 110501,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    104,
+    21
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 320
+  },
+  {
+   "entity_id": 1056340,
+   "nombre": "Sand Gobbler",
+   "npc_type": 19080,
+   "sprite": 110501,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    132,
+    35
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 320
+  },
+  {
+   "entity_id": 1056341,
+   "nombre": "Sand Gobbler",
+   "npc_type": 19080,
+   "sprite": 110501,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    143,
+    40
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 320
+  },
+  {
+   "entity_id": 1056342,
+   "nombre": "Sand Gobbler",
+   "npc_type": 19080,
+   "sprite": 110501,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    139,
+    28
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 320
+  },
+  {
+   "entity_id": 1056343,
+   "nombre": "Sand Gobbler",
+   "npc_type": 19080,
+   "sprite": 110501,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    112,
+    32
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 320
+  },
+  {
+   "entity_id": 1056344,
+   "nombre": "Clay Gobbler",
+   "npc_type": 19081,
+   "sprite": 110502,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    109,
+    61
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 320
+  },
+  {
+   "entity_id": 1056345,
+   "nombre": "Clay Gobbler",
+   "npc_type": 19081,
+   "sprite": 110502,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    83,
+    59
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 320
+  },
+  {
+   "entity_id": 1056346,
+   "nombre": "Clay Gobbler",
+   "npc_type": 19081,
+   "sprite": 110502,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    89,
+    61
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 320
+  },
+  {
+   "entity_id": 1056347,
+   "nombre": "Clay Gobbler",
+   "npc_type": 19081,
+   "sprite": 110502,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    99,
+    51
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 320
+  },
+  {
+   "entity_id": 1056348,
+   "nombre": "Clay Gobbler",
+   "npc_type": 19081,
+   "sprite": 110502,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    90,
+    59
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 320
+  },
+  {
+   "entity_id": 1056349,
+   "nombre": "Clay Gobbler",
+   "npc_type": 19081,
+   "sprite": 110502,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    102,
+    47
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 320
+  },
+  {
+   "entity_id": 1056350,
+   "nombre": "Clay Gobbler",
+   "npc_type": 19081,
+   "sprite": 110502,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    103,
+    61
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 320
+  },
+  {
+   "entity_id": 1056351,
+   "nombre": "Clay Gobbler",
+   "npc_type": 19081,
+   "sprite": 110502,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    124,
+    53
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 320
+  },
+  {
+   "entity_id": 1056352,
+   "nombre": "Clay Gobbler",
+   "npc_type": 19081,
+   "sprite": 110502,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    93,
+    54
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 320
+  },
+  {
+   "entity_id": 1056353,
+   "nombre": "Clay Gobbler",
+   "npc_type": 19081,
+   "sprite": 110502,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    115,
+    63
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 320
+  },
+  {
+   "entity_id": 1056354,
+   "nombre": "Clay Gobbler",
+   "npc_type": 19081,
+   "sprite": 110502,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    140,
+    49
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 320
+  },
+  {
+   "entity_id": 1056355,
+   "nombre": "Clay Gobbler",
+   "npc_type": 19081,
+   "sprite": 110502,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    123,
+    45
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 320
+  },
+  {
+   "entity_id": 1056356,
+   "nombre": "Clay Gobbler",
+   "npc_type": 19081,
+   "sprite": 110502,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    123,
+    55
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 320
+  },
+  {
+   "entity_id": 1056357,
+   "nombre": "Clay Gobbler",
+   "npc_type": 19081,
+   "sprite": 110502,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    120,
+    57
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 320
+  },
+  {
+   "entity_id": 1056358,
+   "nombre": "Clay Gobbler",
+   "npc_type": 19081,
+   "sprite": 110502,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    133,
+    51
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 320
+  },
+  {
+   "entity_id": 1056359,
+   "nombre": "Clay Gobbler",
+   "npc_type": 19081,
+   "sprite": 110502,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    146,
+    35
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 320
+  },
+  {
+   "entity_id": 1056360,
+   "nombre": "Clay Gobbler",
+   "npc_type": 19081,
+   "sprite": 110502,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    149,
+    37
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 320
+  },
+  {
+   "entity_id": 1056361,
+   "nombre": "Clay Gobbler",
+   "npc_type": 19081,
+   "sprite": 110502,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    146,
+    43
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 320
+  },
+  {
+   "entity_id": 1056362,
+   "nombre": "Clay Gobbler",
+   "npc_type": 19081,
+   "sprite": 110502,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    135,
+    47
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 320
+  },
+  {
+   "entity_id": 1056363,
+   "nombre": "Clay Gobbler",
+   "npc_type": 19081,
+   "sprite": 110502,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    137,
+    33
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 320
+  },
+  {
+   "entity_id": 1056364,
+   "nombre": "Fossil Rex",
+   "npc_type": 19082,
+   "sprite": 110471,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    215,
+    42
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 322
+  },
+  {
+   "entity_id": 1056365,
+   "nombre": "Fossil Rex",
+   "npc_type": 19082,
+   "sprite": 110471,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    205,
+    33
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 322
+  },
+  {
+   "entity_id": 1056366,
+   "nombre": "Fossil Rex",
+   "npc_type": 19082,
+   "sprite": 110471,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    202,
+    33
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 322
+  },
+  {
+   "entity_id": 1056367,
+   "nombre": "Fossil Rex",
+   "npc_type": 19082,
+   "sprite": 110471,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    208,
+    29
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 322
+  },
+  {
+   "entity_id": 1056368,
+   "nombre": "Fossil Rex",
+   "npc_type": 19082,
+   "sprite": 110471,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    219,
+    33
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 322
+  },
+  {
+   "entity_id": 1056369,
+   "nombre": "Fossil Rex",
+   "npc_type": 19082,
+   "sprite": 110471,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    242,
+    33
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 322
+  },
+  {
+   "entity_id": 1056370,
+   "nombre": "Fossil Rex",
+   "npc_type": 19082,
+   "sprite": 110471,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    240,
+    38
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 322
+  },
+  {
+   "entity_id": 1056371,
+   "nombre": "Fossil Rex",
+   "npc_type": 19082,
+   "sprite": 110471,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    236,
+    28
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 322
+  },
+  {
+   "entity_id": 1056372,
+   "nombre": "Fossil Rex",
+   "npc_type": 19082,
+   "sprite": 110471,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    237,
+    32
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 322
+  },
+  {
+   "entity_id": 1056373,
+   "nombre": "Fossil Rex",
+   "npc_type": 19082,
+   "sprite": 110471,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    216,
+    27
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 322
+  },
+  {
+   "entity_id": 1056374,
+   "nombre": "Fossil Rex",
+   "npc_type": 19082,
+   "sprite": 110471,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    243,
+    36
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 322
+  },
+  {
+   "entity_id": 1056375,
+   "nombre": "Fossil Rex",
+   "npc_type": 19082,
+   "sprite": 110471,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    258,
+    37
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 322
+  },
+  {
+   "entity_id": 1056376,
+   "nombre": "Fossil Rex",
+   "npc_type": 19082,
+   "sprite": 110471,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    258,
+    34
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 322
+  },
+  {
+   "entity_id": 1056377,
+   "nombre": "Fossil Rex",
+   "npc_type": 19082,
+   "sprite": 110471,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    264,
+    31
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 322
+  },
+  {
+   "entity_id": 1056378,
+   "nombre": "Fossil Rex",
+   "npc_type": 19082,
+   "sprite": 110471,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    248,
+    37
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 322
+  },
+  {
+   "entity_id": 1056379,
+   "nombre": "Rhodo Rex",
+   "npc_type": 19083,
+   "sprite": 110472,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    258,
+    78
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 322
+  },
+  {
+   "entity_id": 1056380,
+   "nombre": "Rhodo Rex",
+   "npc_type": 19083,
+   "sprite": 110472,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    273,
+    78
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 322
+  },
+  {
+   "entity_id": 1056381,
+   "nombre": "Rhodo Rex",
+   "npc_type": 19083,
+   "sprite": 110472,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    252,
+    78
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 322
+  },
+  {
+   "entity_id": 1056382,
+   "nombre": "Rhodo Rex",
+   "npc_type": 19083,
+   "sprite": 110472,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    242,
+    77
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 322
+  },
+  {
+   "entity_id": 1056383,
+   "nombre": "Rhodo Rex",
+   "npc_type": 19083,
+   "sprite": 110472,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    258,
+    76
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 322
+  },
+  {
+   "entity_id": 1056384,
+   "nombre": "Rhodo Rex",
+   "npc_type": 19083,
+   "sprite": 110472,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    290,
+    67
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 322
+  },
+  {
+   "entity_id": 1056385,
+   "nombre": "Rhodo Rex",
+   "npc_type": 19083,
+   "sprite": 110472,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    274,
+    59
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 322
+  },
+  {
+   "entity_id": 1056386,
+   "nombre": "Rhodo Rex",
+   "npc_type": 19083,
+   "sprite": 110472,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    277,
+    67
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 322
+  },
+  {
+   "entity_id": 1056387,
+   "nombre": "Rhodo Rex",
+   "npc_type": 19083,
+   "sprite": 110472,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    288,
+    63
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 322
+  },
+  {
+   "entity_id": 1056388,
+   "nombre": "Rhodo Rex",
+   "npc_type": 19083,
+   "sprite": 110472,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    282,
+    67
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 322
+  },
+  {
+   "entity_id": 1056389,
+   "nombre": "Rhodo Rex",
+   "npc_type": 19083,
+   "sprite": 110472,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    279,
+    54
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 322
+  },
+  {
+   "entity_id": 1056390,
+   "nombre": "Rhodo Rex",
+   "npc_type": 19083,
+   "sprite": 110472,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    277,
+    54
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 322
+  },
+  {
+   "entity_id": 1056391,
+   "nombre": "Rhodo Rex",
+   "npc_type": 19083,
+   "sprite": 110472,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    272,
+    49
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 322
+  },
+  {
+   "entity_id": 1056392,
+   "nombre": "Rhodo Rex",
+   "npc_type": 19083,
+   "sprite": 110472,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    280,
+    50
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 322
+  },
+  {
+   "entity_id": 1056393,
+   "nombre": "Rhodo Rex",
+   "npc_type": 19083,
+   "sprite": 110472,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    274,
+    49
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 322
+  },
+  {
+   "entity_id": 1056394,
+   "nombre": "Berry Bun",
+   "npc_type": 19084,
+   "sprite": 110433,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    139,
+    74
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 324
+  },
+  {
+   "entity_id": 1056395,
+   "nombre": "Berry Bun",
+   "npc_type": 19084,
+   "sprite": 110433,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    156,
+    71
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 324
+  },
+  {
+   "entity_id": 1056396,
+   "nombre": "Berry Bun",
+   "npc_type": 19084,
+   "sprite": 110433,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    148,
+    62
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 324
+  },
+  {
+   "entity_id": 1056397,
+   "nombre": "Berry Bun",
+   "npc_type": 19084,
+   "sprite": 110433,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    134,
+    74
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 324
+  },
+  {
+   "entity_id": 1056398,
+   "nombre": "Berry Bun",
+   "npc_type": 19084,
+   "sprite": 110433,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    137,
+    67
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 324
+  },
+  {
+   "entity_id": 1056399,
+   "nombre": "Berry Bun",
+   "npc_type": 19084,
+   "sprite": 110433,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    172,
+    82
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 324
+  },
+  {
+   "entity_id": 1056400,
+   "nombre": "Berry Bun",
+   "npc_type": 19084,
+   "sprite": 110433,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    155,
+    70
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 324
+  },
+  {
+   "entity_id": 1056401,
+   "nombre": "Berry Bun",
+   "npc_type": 19084,
+   "sprite": 110433,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    176,
+    84
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 324
+  },
+  {
+   "entity_id": 1056402,
+   "nombre": "Berry Bun",
+   "npc_type": 19084,
+   "sprite": 110433,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    144,
+    73
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 324
+  },
+  {
+   "entity_id": 1056403,
+   "nombre": "Berry Bun",
+   "npc_type": 19084,
+   "sprite": 110433,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    169,
+    81
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 324
+  },
+  {
+   "entity_id": 1056404,
+   "nombre": "Berry Bun",
+   "npc_type": 19084,
+   "sprite": 110433,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    187,
+    93
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 324
+  },
+  {
+   "entity_id": 1056405,
+   "nombre": "Berry Bun",
+   "npc_type": 19084,
+   "sprite": 110433,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    172,
+    96
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 324
+  },
+  {
+   "entity_id": 1056406,
+   "nombre": "Berry Bun",
+   "npc_type": 19084,
+   "sprite": 110433,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    173,
+    100
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 324
+  },
+  {
+   "entity_id": 1056407,
+   "nombre": "Berry Bun",
+   "npc_type": 19084,
+   "sprite": 110433,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    186,
+    92
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 324
+  },
+  {
+   "entity_id": 1056408,
+   "nombre": "Berry Bun",
+   "npc_type": 19084,
+   "sprite": 110433,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    190,
+    107
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 324
+  },
+  {
+   "entity_id": 1056409,
+   "nombre": "Berry Bun",
+   "npc_type": 19084,
+   "sprite": 110433,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    179,
+    38
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 324
+  },
+  {
+   "entity_id": 1056410,
+   "nombre": "Berry Bun",
+   "npc_type": 19084,
+   "sprite": 110433,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    167,
+    36
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 324
+  },
+  {
+   "entity_id": 1056411,
+   "nombre": "Berry Bun",
+   "npc_type": 19084,
+   "sprite": 110433,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    158,
+    32
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 324
+  },
+  {
+   "entity_id": 1056412,
+   "nombre": "Berry Bun",
+   "npc_type": 19084,
+   "sprite": 110433,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    181,
+    59
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 324
+  },
+  {
+   "entity_id": 1056413,
+   "nombre": "Berry Bun",
+   "npc_type": 19084,
+   "sprite": 110433,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    182,
+    49
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 324
+  },
+  {
+   "entity_id": 1056414,
+   "nombre": "Berry Bun",
+   "npc_type": 19084,
+   "sprite": 110433,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    204,
+    69
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 324
+  },
+  {
+   "entity_id": 1056415,
+   "nombre": "Berry Bun",
+   "npc_type": 19084,
+   "sprite": 110433,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    190,
+    58
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 324
+  },
+  {
+   "entity_id": 1056416,
+   "nombre": "Berry Bun",
+   "npc_type": 19084,
+   "sprite": 110433,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    197,
+    70
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 324
+  },
+  {
+   "entity_id": 1056417,
+   "nombre": "Berry Bun",
+   "npc_type": 19084,
+   "sprite": 110433,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    193,
+    50
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 324
+  },
+  {
+   "entity_id": 1056418,
+   "nombre": "Berry Bun",
+   "npc_type": 19084,
+   "sprite": 110433,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    203,
+    66
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 324
+  },
+  {
+   "entity_id": 1056419,
+   "nombre": "Kitty Punk",
+   "npc_type": 19085,
+   "sprite": 110448,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    216,
+    124
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 326
+  },
+  {
+   "entity_id": 1056420,
+   "nombre": "Kitty Punk",
+   "npc_type": 19085,
+   "sprite": 110448,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    216,
+    124
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 326
+  },
+  {
+   "entity_id": 1056421,
+   "nombre": "Kitty Punk",
+   "npc_type": 19085,
+   "sprite": 110448,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    211,
+    117
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 326
+  },
+  {
+   "entity_id": 1056422,
+   "nombre": "Kitty Punk",
+   "npc_type": 19085,
+   "sprite": 110448,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    200,
+    129
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 326
+  },
+  {
+   "entity_id": 1056423,
+   "nombre": "Kitty Punk",
+   "npc_type": 19085,
+   "sprite": 110448,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    206,
+    119
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 326
+  },
+  {
+   "entity_id": 1056424,
+   "nombre": "Kitty Punk",
+   "npc_type": 19085,
+   "sprite": 110448,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    209,
+    104
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 326
+  },
+  {
+   "entity_id": 1056425,
+   "nombre": "Kitty Punk",
+   "npc_type": 19085,
+   "sprite": 110448,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    195,
+    104
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 326
+  },
+  {
+   "entity_id": 1056426,
+   "nombre": "Kitty Punk",
+   "npc_type": 19085,
+   "sprite": 110448,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    211,
+    109
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 326
+  },
+  {
+   "entity_id": 1056427,
+   "nombre": "Kitty Punk",
+   "npc_type": 19085,
+   "sprite": 110448,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    203,
+    104
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 326
+  },
+  {
+   "entity_id": 1056428,
+   "nombre": "Kitty Punk",
+   "npc_type": 19085,
+   "sprite": 110448,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    223,
+    103
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 326
+  },
+  {
+   "entity_id": 1056429,
+   "nombre": "Kitty Punk",
+   "npc_type": 19085,
+   "sprite": 110448,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    228,
+    84
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 326
+  },
+  {
+   "entity_id": 1056430,
+   "nombre": "Kitty Punk",
+   "npc_type": 19085,
+   "sprite": 110448,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    219,
+    99
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 326
+  },
+  {
+   "entity_id": 1056431,
+   "nombre": "Kitty Punk",
+   "npc_type": 19085,
+   "sprite": 110448,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    238,
+    76
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 326
+  },
+  {
+   "entity_id": 1056432,
+   "nombre": "Kitty Punk",
+   "npc_type": 19085,
+   "sprite": 110448,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    230,
+    95
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 326
+  },
+  {
+   "entity_id": 1056433,
+   "nombre": "Kitty Punk",
+   "npc_type": 19085,
+   "sprite": 110448,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    221,
+    70
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 326
+  },
+  {
+   "entity_id": 1056434,
+   "nombre": "Kitty Punk",
+   "npc_type": 19085,
+   "sprite": 110448,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    266,
+    110
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 326
+  },
+  {
+   "entity_id": 1056435,
+   "nombre": "Kitty Punk",
+   "npc_type": 19085,
+   "sprite": 110448,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    267,
+    106
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 326
+  },
+  {
+   "entity_id": 1056436,
+   "nombre": "Kitty Punk",
+   "npc_type": 19085,
+   "sprite": 110448,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    249,
+    105
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 326
+  },
+  {
+   "entity_id": 1056437,
+   "nombre": "Kitty Punk",
+   "npc_type": 19085,
+   "sprite": 110448,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    240,
+    102
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 326
+  },
+  {
+   "entity_id": 1056438,
+   "nombre": "Kitty Punk",
+   "npc_type": 19085,
+   "sprite": 110448,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    241,
+    106
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 326
+  },
+  {
+   "entity_id": 1056439,
+   "nombre": "Kitty Punk",
+   "npc_type": 19085,
+   "sprite": 110448,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    262,
+    114
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 326
+  },
+  {
+   "entity_id": 1056440,
+   "nombre": "Kitty Punk",
+   "npc_type": 19085,
+   "sprite": 110448,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    238,
+    124
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 326
+  },
+  {
+   "entity_id": 1056441,
+   "nombre": "Kitty Punk",
+   "npc_type": 19085,
+   "sprite": 110448,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    256,
+    126
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 326
+  },
+  {
+   "entity_id": 1056442,
+   "nombre": "Kitty Punk",
+   "npc_type": 19085,
+   "sprite": 110448,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    240,
+    119
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 326
+  },
+  {
+   "entity_id": 1056443,
+   "nombre": "Kitty Punk",
+   "npc_type": 19085,
+   "sprite": 110448,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    258,
+    118
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 326
+  },
+  {
+   "entity_id": 1056444,
+   "nombre": "Gloomy Palm",
+   "npc_type": 19086,
+   "sprite": 110467,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    10,
+    69
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 324
+  },
+  {
+   "entity_id": 1056445,
+   "nombre": "Gloomy Palm",
+   "npc_type": 19086,
+   "sprite": 110467,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    25,
+    57
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 324
+  },
+  {
+   "entity_id": 1056446,
+   "nombre": "Gloomy Palm",
+   "npc_type": 19086,
+   "sprite": 110467,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    31,
+    63
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 324
+  },
+  {
+   "entity_id": 1056447,
+   "nombre": "Gloomy Palm",
+   "npc_type": 19086,
+   "sprite": 110467,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    38,
+    51
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 324
+  },
+  {
+   "entity_id": 1056448,
+   "nombre": "Gloomy Palm",
+   "npc_type": 19086,
+   "sprite": 110467,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    53,
+    46
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 324
+  },
+  {
+   "entity_id": 1056449,
+   "nombre": "Gloomy Palm",
+   "npc_type": 19086,
+   "sprite": 110467,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    69,
+    77
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 324
+  },
+  {
+   "entity_id": 1056450,
+   "nombre": "Gloomy Palm",
+   "npc_type": 19086,
+   "sprite": 110467,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    100,
+    74
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 324
+  },
+  {
+   "entity_id": 1056451,
+   "nombre": "Gloomy Palm",
+   "npc_type": 19086,
+   "sprite": 110467,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    91,
+    73
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 324
+  },
+  {
+   "entity_id": 1056452,
+   "nombre": "Gloomy Palm",
+   "npc_type": 19086,
+   "sprite": 110467,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    82,
+    81
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 324
+  },
+  {
+   "entity_id": 1056453,
+   "nombre": "Gloomy Palm",
+   "npc_type": 19086,
+   "sprite": 110467,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    80,
+    74
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 324
+  },
+  {
+   "entity_id": 1056454,
+   "nombre": "Gloomy Palm",
+   "npc_type": 19086,
+   "sprite": 110467,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    15,
+    70
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 324
+  },
+  {
+   "entity_id": 1056455,
+   "nombre": "Gloomy Palm",
+   "npc_type": 19086,
+   "sprite": 110467,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    43,
+    91
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 324
+  },
+  {
+   "entity_id": 1056456,
+   "nombre": "Gloomy Palm",
+   "npc_type": 19086,
+   "sprite": 110467,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    50,
+    96
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 324
+  },
+  {
+   "entity_id": 1056457,
+   "nombre": "Gloomy Palm",
+   "npc_type": 19086,
+   "sprite": 110467,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    89
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 324
+  },
+  {
+   "entity_id": 1056458,
+   "nombre": "Gloomy Palm",
+   "npc_type": 19086,
+   "sprite": 110467,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    33,
+    80
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 324
+  },
+  {
+   "entity_id": 1056459,
+   "nombre": "Gloomy Palm",
+   "npc_type": 19086,
+   "sprite": 110467,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    57,
+    90
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 324
+  },
+  {
+   "entity_id": 1056460,
+   "nombre": "Gloomy Palm",
+   "npc_type": 19086,
+   "sprite": 110467,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    64,
+    93
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 324
+  },
+  {
+   "entity_id": 1056461,
+   "nombre": "Gloomy Palm",
+   "npc_type": 19086,
+   "sprite": 110467,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    100,
+    94
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 324
+  },
+  {
+   "entity_id": 1056462,
+   "nombre": "Gloomy Palm",
+   "npc_type": 19086,
+   "sprite": 110467,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    57,
+    88
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 324
+  },
+  {
+   "entity_id": 1056463,
+   "nombre": "Gloomy Palm",
+   "npc_type": 19086,
+   "sprite": 110467,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    97,
+    96
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 324
+  },
+  {
+   "entity_id": 1056464,
+   "nombre": "Gloomy Palm",
+   "npc_type": 19086,
+   "sprite": 110467,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    99,
+    113
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 324
+  },
+  {
+   "entity_id": 1056465,
+   "nombre": "Gloomy Palm",
+   "npc_type": 19086,
+   "sprite": 110467,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    106,
+    95
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 324
+  },
+  {
+   "entity_id": 1056466,
+   "nombre": "Gloomy Palm",
+   "npc_type": 19086,
+   "sprite": 110467,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    113,
+    103
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 324
+  },
+  {
+   "entity_id": 1056467,
+   "nombre": "Gloomy Palm",
+   "npc_type": 19086,
+   "sprite": 110467,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    99,
+    110
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 324
+  },
+  {
+   "entity_id": 1056468,
+   "nombre": "Gloomy Palm",
+   "npc_type": 19086,
+   "sprite": 110467,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    117,
+    106
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 324
+  },
+  {
+   "entity_id": 1056469,
+   "nombre": "Vegan Rebel",
+   "npc_type": 19087,
+   "sprite": 110438,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    126,
+    126
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 326
+  },
+  {
+   "entity_id": 1056470,
+   "nombre": "Vegan Rebel",
+   "npc_type": 19087,
+   "sprite": 110438,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    150,
+    119
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 326
+  },
+  {
+   "entity_id": 1056471,
+   "nombre": "Vegan Rebel",
+   "npc_type": 19087,
+   "sprite": 110438,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    135,
+    112
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 326
+  },
+  {
+   "entity_id": 1056472,
+   "nombre": "Vegan Rebel",
+   "npc_type": 19087,
+   "sprite": 110438,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    131,
+    114
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 326
+  },
+  {
+   "entity_id": 1056473,
+   "nombre": "Vegan Rebel",
+   "npc_type": 19087,
+   "sprite": 110438,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    126,
+    117
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 326
+  },
+  {
+   "entity_id": 1056474,
+   "nombre": "Vegan Rebel",
+   "npc_type": 19087,
+   "sprite": 110438,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    166,
+    127
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 326
+  },
+  {
+   "entity_id": 1056475,
+   "nombre": "Vegan Rebel",
+   "npc_type": 19087,
+   "sprite": 110438,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    156,
+    120
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 326
+  },
+  {
+   "entity_id": 1056476,
+   "nombre": "Vegan Rebel",
+   "npc_type": 19087,
+   "sprite": 110438,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    174,
+    120
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 326
+  },
+  {
+   "entity_id": 1056477,
+   "nombre": "Vegan Rebel",
+   "npc_type": 19087,
+   "sprite": 110438,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    178,
+    122
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 326
+  },
+  {
+   "entity_id": 1056478,
+   "nombre": "Vegan Rebel",
+   "npc_type": 19087,
+   "sprite": 110438,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    167,
+    118
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 326
+  },
+  {
+   "entity_id": 1056479,
+   "nombre": "Vegan Rebel",
+   "npc_type": 19087,
+   "sprite": 110438,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    155,
+    142
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 326
+  },
+  {
+   "entity_id": 1056480,
+   "nombre": "Vegan Rebel",
+   "npc_type": 19087,
+   "sprite": 110438,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    182,
+    132
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 326
+  },
+  {
+   "entity_id": 1056481,
+   "nombre": "Vegan Rebel",
+   "npc_type": 19087,
+   "sprite": 110438,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    170,
+    130
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 326
+  },
+  {
+   "entity_id": 1056482,
+   "nombre": "Vegan Rebel",
+   "npc_type": 19087,
+   "sprite": 110438,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    171,
+    141
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 326
+  },
+  {
+   "entity_id": 1056483,
+   "nombre": "Vegan Rebel",
+   "npc_type": 19087,
+   "sprite": 110438,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    193,
+    125
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 326
+  },
+  {
+   "entity_id": 1056484,
+   "nombre": "Vegan Rebel",
+   "npc_type": 19087,
+   "sprite": 110438,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    162,
+    151
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 326
+  },
+  {
+   "entity_id": 1056485,
+   "nombre": "Vegan Rebel",
+   "npc_type": 19087,
+   "sprite": 110438,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    176,
+    160
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 326
+  },
+  {
+   "entity_id": 1056486,
+   "nombre": "Vegan Rebel",
+   "npc_type": 19087,
+   "sprite": 110438,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    169,
+    155
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 326
+  },
+  {
+   "entity_id": 1056487,
+   "nombre": "Vegan Rebel",
+   "npc_type": 19087,
+   "sprite": 110438,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    176,
+    160
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 326
+  },
+  {
+   "entity_id": 1056488,
+   "nombre": "Vegan Rebel",
+   "npc_type": 19087,
+   "sprite": 110438,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    158,
+    150
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 326
+  },
+  {
+   "entity_id": 1056489,
+   "nombre": "Vegan Rebel",
+   "npc_type": 19087,
+   "sprite": 110438,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    200,
+    158
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 326
+  },
+  {
+   "entity_id": 1056490,
+   "nombre": "Vegan Rebel",
+   "npc_type": 19087,
+   "sprite": 110438,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    215,
+    172
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 326
+  },
+  {
+   "entity_id": 1056491,
+   "nombre": "Vegan Rebel",
+   "npc_type": 19087,
+   "sprite": 110438,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    190,
+    165
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 326
+  },
+  {
+   "entity_id": 1056492,
+   "nombre": "Vegan Rebel",
+   "npc_type": 19087,
+   "sprite": 110438,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    197,
+    167
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 326
+  },
+  {
+   "entity_id": 1056493,
+   "nombre": "Vegan Rebel",
+   "npc_type": 19087,
+   "sprite": 110438,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    207,
+    166
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 326
+  },
+  {
+   "entity_id": 1056494,
+   "nombre": "Clock Lady",
+   "npc_type": 19088,
+   "sprite": 110318,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    18,
+    121
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 328
+  },
+  {
+   "entity_id": 1056495,
+   "nombre": "Clock Lady",
+   "npc_type": 19088,
+   "sprite": 110318,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    35,
+    98
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 328
+  },
+  {
+   "entity_id": 1056496,
+   "nombre": "Clock Lady",
+   "npc_type": 19088,
+   "sprite": 110318,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    29,
+    107
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 328
+  },
+  {
+   "entity_id": 1056497,
+   "nombre": "Clock Lady",
+   "npc_type": 19088,
+   "sprite": 110318,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    37,
+    98
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 328
+  },
+  {
+   "entity_id": 1056498,
+   "nombre": "Clock Lady",
+   "npc_type": 19088,
+   "sprite": 110318,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    19,
+    111
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 328
+  },
+  {
+   "entity_id": 1056499,
+   "nombre": "Clock Lady",
+   "npc_type": 19088,
+   "sprite": 110318,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    45,
+    136
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 328
+  },
+  {
+   "entity_id": 1056500,
+   "nombre": "Clock Lady",
+   "npc_type": 19088,
+   "sprite": 110318,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    36,
+    126
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 328
+  },
+  {
+   "entity_id": 1056501,
+   "nombre": "Clock Lady",
+   "npc_type": 19088,
+   "sprite": 110318,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    129
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 328
+  },
+  {
+   "entity_id": 1056502,
+   "nombre": "Clock Lady",
+   "npc_type": 19088,
+   "sprite": 110318,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    56,
+    136
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 328
+  },
+  {
+   "entity_id": 1056503,
+   "nombre": "Clock Lady",
+   "npc_type": 19088,
+   "sprite": 110318,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    59,
+    131
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 328
+  },
+  {
+   "entity_id": 1056504,
+   "nombre": "Clock Lady",
+   "npc_type": 19088,
+   "sprite": 110318,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    67,
+    135
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 328
+  },
+  {
+   "entity_id": 1056505,
+   "nombre": "Clock Lady",
+   "npc_type": 19088,
+   "sprite": 110318,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    48,
+    138
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 328
+  },
+  {
+   "entity_id": 1056506,
+   "nombre": "Clock Lady",
+   "npc_type": 19088,
+   "sprite": 110318,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    79,
+    110
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 328
+  },
+  {
+   "entity_id": 1056507,
+   "nombre": "Clock Lady",
+   "npc_type": 19088,
+   "sprite": 110318,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    62,
+    127
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 328
+  },
+  {
+   "entity_id": 1056508,
+   "nombre": "Clock Lady",
+   "npc_type": 19088,
+   "sprite": 110318,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    60,
+    131
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 328
+  },
+  {
+   "entity_id": 1056509,
+   "nombre": "Clock Lady",
+   "npc_type": 19088,
+   "sprite": 110318,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    100,
+    133
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 328
+  },
+  {
+   "entity_id": 1056510,
+   "nombre": "Clock Lady",
+   "npc_type": 19088,
+   "sprite": 110318,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    93,
+    119
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 328
+  },
+  {
+   "entity_id": 1056511,
+   "nombre": "Clock Lady",
+   "npc_type": 19088,
+   "sprite": 110318,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    97,
+    132
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 328
+  },
+  {
+   "entity_id": 1056512,
+   "nombre": "Clock Lady",
+   "npc_type": 19088,
+   "sprite": 110318,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    103,
+    128
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 328
+  },
+  {
+   "entity_id": 1056513,
+   "nombre": "Clock Lady",
+   "npc_type": 19088,
+   "sprite": 110318,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    105,
+    129
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 328
+  },
+  {
+   "entity_id": 1056514,
+   "nombre": "Ticker Lady",
+   "npc_type": 19089,
+   "sprite": 110457,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    89,
+    156
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 328
+  },
+  {
+   "entity_id": 1056515,
+   "nombre": "Ticker Lady",
+   "npc_type": 19089,
+   "sprite": 110457,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    80,
+    148
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 328
+  },
+  {
+   "entity_id": 1056516,
+   "nombre": "Ticker Lady",
+   "npc_type": 19089,
+   "sprite": 110457,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    95,
+    154
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 328
+  },
+  {
+   "entity_id": 1056517,
+   "nombre": "Ticker Lady",
+   "npc_type": 19089,
+   "sprite": 110457,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    93,
+    145
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 328
+  },
+  {
+   "entity_id": 1056518,
+   "nombre": "Ticker Lady",
+   "npc_type": 19089,
+   "sprite": 110457,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    80,
+    149
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 328
+  },
+  {
+   "entity_id": 1056519,
+   "nombre": "Ticker Lady",
+   "npc_type": 19089,
+   "sprite": 110457,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    117,
+    162
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 328
+  },
+  {
+   "entity_id": 1056520,
+   "nombre": "Ticker Lady",
+   "npc_type": 19089,
+   "sprite": 110457,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    113,
+    156
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 328
+  },
+  {
+   "entity_id": 1056521,
+   "nombre": "Ticker Lady",
+   "npc_type": 19089,
+   "sprite": 110457,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    104,
+    163
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 328
+  },
+  {
+   "entity_id": 1056522,
+   "nombre": "Ticker Lady",
+   "npc_type": 19089,
+   "sprite": 110457,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    107,
+    162
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 328
+  },
+  {
+   "entity_id": 1056523,
+   "nombre": "Ticker Lady",
+   "npc_type": 19089,
+   "sprite": 110457,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    113,
+    158
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 328
+  },
+  {
+   "entity_id": 1056524,
+   "nombre": "Ticker Lady",
+   "npc_type": 19089,
+   "sprite": 110457,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    111,
+    127
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 328
+  },
+  {
+   "entity_id": 1056525,
+   "nombre": "Ticker Lady",
+   "npc_type": 19089,
+   "sprite": 110457,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    120,
+    141
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 328
+  },
+  {
+   "entity_id": 1056526,
+   "nombre": "Ticker Lady",
+   "npc_type": 19089,
+   "sprite": 110457,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    136,
+    143
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 328
+  },
+  {
+   "entity_id": 1056527,
+   "nombre": "Ticker Lady",
+   "npc_type": 19089,
+   "sprite": 110457,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    129,
+    138
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 328
+  },
+  {
+   "entity_id": 1056528,
+   "nombre": "Ticker Lady",
+   "npc_type": 19089,
+   "sprite": 110457,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    133,
+    141
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 328
+  },
+  {
+   "entity_id": 1056529,
+   "nombre": "Ticker Lady",
+   "npc_type": 19089,
+   "sprite": 110457,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    145,
+    146
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 328
+  },
+  {
+   "entity_id": 1056530,
+   "nombre": "Ticker Lady",
+   "npc_type": 19089,
+   "sprite": 110457,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    154,
+    159
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 328
+  },
+  {
+   "entity_id": 1056531,
+   "nombre": "Ticker Lady",
+   "npc_type": 19089,
+   "sprite": 110457,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    148,
+    156
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 328
+  },
+  {
+   "entity_id": 1056532,
+   "nombre": "Ticker Lady",
+   "npc_type": 19089,
+   "sprite": 110457,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    151,
+    143
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 328
+  },
+  {
+   "entity_id": 1056533,
+   "nombre": "Ticker Lady",
+   "npc_type": 19089,
+   "sprite": 110457,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    163,
+    151
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 328
+  },
+  {
+   "entity_id": 1056534,
+   "nombre": "E-Sand Gobbler",
+   "npc_type": 19090,
+   "sprite": 110501,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    217,
+    135
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1056535,
+   "nombre": "E-Sand Gobbler",
+   "npc_type": 19090,
+   "sprite": 110501,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    224,
+    134
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1056536,
+   "nombre": "E-Sand Gobbler",
+   "npc_type": 19090,
+   "sprite": 110501,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    229,
+    145
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1056537,
+   "nombre": "E-Sand Gobbler",
+   "npc_type": 19090,
+   "sprite": 110501,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    204,
+    152
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1056538,
+   "nombre": "E-Sand Gobbler",
+   "npc_type": 19090,
+   "sprite": 110501,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    230,
+    126
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1056539,
+   "nombre": "E-Fossil Rex",
+   "npc_type": 19091,
+   "sprite": 110471,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    283,
+    149
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1056540,
+   "nombre": "E-Fossil Rex",
+   "npc_type": 19091,
+   "sprite": 110471,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    268,
+    143
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1056541,
+   "nombre": "E-Fossil Rex",
+   "npc_type": 19091,
+   "sprite": 110471,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    284,
+    137
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1056542,
+   "nombre": "E-Fossil Rex",
+   "npc_type": 19091,
+   "sprite": 110471,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    289,
+    121
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1056543,
+   "nombre": "E-Fossil Rex",
+   "npc_type": 19091,
+   "sprite": 110471,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    291,
+    145
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1056544,
+   "nombre": "E-Berry Bun",
+   "npc_type": 19092,
+   "sprite": 110433,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    241,
+    163
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1056545,
+   "nombre": "E-Berry Bun",
+   "npc_type": 19092,
+   "sprite": 110433,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    256,
+    165
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1056546,
+   "nombre": "E-Berry Bun",
+   "npc_type": 19092,
+   "sprite": 110433,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    245,
+    153
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1056547,
+   "nombre": "E-Berry Bun",
+   "npc_type": 19092,
+   "sprite": 110433,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    247,
+    154
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1056548,
+   "nombre": "E-Berry Bun",
+   "npc_type": 19092,
+   "sprite": 110433,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    255,
+    161
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1056549,
+   "nombre": "E-Gloomy Palm",
+   "npc_type": 19093,
+   "sprite": 110467,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    265,
+    152
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1056550,
+   "nombre": "E-Gloomy Palm",
+   "npc_type": 19093,
+   "sprite": 110467,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    264,
+    154
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1056551,
+   "nombre": "E-Gloomy Palm",
+   "npc_type": 19093,
+   "sprite": 110467,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    266,
+    144
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1056552,
+   "nombre": "E-Gloomy Palm",
+   "npc_type": 19093,
+   "sprite": 110467,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    289,
+    152
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1056553,
+   "nombre": "E-Gloomy Palm",
+   "npc_type": 19093,
+   "sprite": 110467,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    268,
+    153
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1056554,
+   "nombre": "E-Clock Lady",
+   "npc_type": 19094,
+   "sprite": 110318,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    271,
+    170
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1056555,
+   "nombre": "E-Clock Lady",
+   "npc_type": 19094,
+   "sprite": 110318,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    262,
+    166
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1056556,
+   "nombre": "E-Clock Lady",
+   "npc_type": 19094,
+   "sprite": 110318,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    270,
+    175
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1056557,
+   "nombre": "E-Clock Lady",
+   "npc_type": 19094,
+   "sprite": 110318,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    265,
+    170
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1056558,
+   "nombre": "E-Clock Lady",
+   "npc_type": 19094,
+   "sprite": 110318,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    267,
+    163
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 329
+  },
+  {
+   "entity_id": 1056559,
+   "nombre": "Ragey Gardios",
+   "npc_type": 19095,
+   "sprite": 110410,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    278,
+    67
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 330
+  },
+  {
+   "entity_id": 1056560,
+   "nombre": "Lady Eliza",
+   "npc_type": 19096,
+   "sprite": 110304,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    179,
+    100
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 332
+  },
+  {
+   "entity_id": 1056561,
+   "nombre": "Oak Timer",
+   "npc_type": 19097,
+   "sprite": 110319,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    103,
+    160
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 334
+  }
+ ],
+ "recursos": [
+  {
+   "entity_id": 118780,
+   "capa": 0,
+   "px": [
+    376,
+    5505
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "crudo": "fccf01000000000078010000811500000000000027000000000000001a000000dc0661ea00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 118781,
+   "capa": 0,
+   "px": [
+    9404,
+    206
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "crudo": "fdcf010000000000bc240000ce0000000000000027000000000000001a000000dc0661ea00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 118782,
+   "capa": 0,
+   "px": [
+    161,
+    111
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "crudo": "fecf010000000000a10000006f0000000000000027000000000000001a000000dc0661ea00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 118783,
+   "capa": 0,
+   "px": [
+    1052,
+    4978
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60305,
+   "cola": "00004080140000",
+   "crudo": "ffcf0100000000001c040000721300000000000027000000000000001a000000dc0691eb00004080140000"
+  },
+  {
+   "entity_id": 118784,
+   "capa": 0,
+   "px": [
+    6260,
+    3585
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60305,
+   "cola": "00004080140000",
+   "crudo": "00d001000000000074180000010e00000000000027000000000000001a000000dc0691eb00004080140000"
+  },
+  {
+   "entity_id": 118785,
+   "capa": 0,
+   "px": [
+    4264,
+    3980
+   ],
+   "medio": "006f70706572284d2900000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60051,
+   "cola": "00002280140000",
+   "crudo": "01d0010000000000a81000008c0f0000006f70706572284d2900000000000000000693ea00002280140000",
+   "que_es": "Aurora Totem"
+  },
+  {
+   "entity_id": 118786,
+   "capa": 0,
+   "px": [
+    4297,
+    4476
+   ],
+   "medio": "00000000180000000000000000000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60052,
+   "cola": "00002280140000",
+   "crudo": "02d0010000000000c91000007c11000000000000180000000000000000000000dc0694ea00002280140000",
+   "que_es": "Dark City Totem"
+  },
+  {
+   "entity_id": 118787,
+   "capa": 0,
+   "px": [
+    4967,
+    4452
+   ],
+   "medio": "006f70706572284d2900000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60053,
+   "cola": "00002280140000",
+   "crudo": "03d00100000000006713000064110000006f70706572284d2900000000000000000695ea00002280140000",
+   "que_es": "Iron Totem"
+  },
+  {
+   "entity_id": 118788,
+   "capa": 0,
+   "px": [
+    5033,
+    3950
+   ],
+   "medio": "000000ba156f77650000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60054,
+   "cola": "00002280140000",
+   "crudo": "04d0010000000000a91300006e0f0000000000ba156f77650000000000000000000696ea00002280140000",
+   "que_es": "Breeze Totem"
+  },
+  {
+   "entity_id": 118789,
+   "capa": 0,
+   "px": [
+    1769,
+    5317
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60305,
+   "cola": "00004080140000",
+   "crudo": "05d0010000000000e9060000c51400000000000027000000000000001a000000dc0691eb00004080140000"
+  },
+  {
+   "entity_id": 118790,
+   "capa": 0,
+   "px": [
+    4183,
+    4068
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60305,
+   "cola": "00004080140000",
+   "crudo": "06d001000000000057100000e40f00000000000027000000000000001a000000dc0691eb00004080140000"
+  },
+  {
+   "entity_id": 118791,
+   "capa": 0,
+   "px": [
+    4878,
+    3961
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60305,
+   "cola": "00004080140000",
+   "crudo": "07d00100000000000e130000790f00000000000027000000000000001a000000dc0691eb00004080140000"
+  },
+  {
+   "entity_id": 118792,
+   "capa": 0,
+   "px": [
+    4953,
+    4365
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60305,
+   "cola": "00004080140000",
+   "crudo": "08d0010000000000591300000d1100000000000027000000000000001a000000dc0691eb00004080140000"
+  },
+  {
+   "entity_id": 118793,
+   "capa": 0,
+   "px": [
+    1635,
+    2363
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080140000",
+   "crudo": "09d0010000000000630600003b0900000000000027000000000000001a000000dc0661ea00004080140000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 118794,
+   "capa": 0,
+   "px": [
+    4276,
+    4371
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60305,
+   "cola": "00004080140000",
+   "crudo": "0ad0010000000000b4100000131100000000000027000000000000001a000000dc0691eb00004080140000"
+  },
+  {
+   "entity_id": 118795,
+   "capa": 0,
+   "px": [
+    1268,
+    2049
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60305,
+   "cola": "00004080140000",
+   "crudo": "0bd0010000000000f4040000010800000000000027000000000000001a000000dc0691eb00004080140000"
+  },
+  {
+   "entity_id": 118796,
+   "capa": 0,
+   "px": [
+    1333,
+    2554
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60305,
+   "cola": "00004080140000",
+   "crudo": "0cd001000000000035050000fa0900000000000027000000000000001a000000dc0691eb00004080140000"
+  },
+  {
+   "entity_id": 118797,
+   "capa": 0,
+   "px": [
+    1996,
+    1960
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60305,
+   "cola": "00004080140000",
+   "crudo": "0dd0010000000000cc070000a80700000000000027000000000000001a000000dc0691eb00004080140000"
+  }
+ ]
+}

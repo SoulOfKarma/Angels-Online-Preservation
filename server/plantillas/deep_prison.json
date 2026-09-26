@@ -1,0 +1,2597 @@
+{
+ "_nota": "Deep Prison (stage 368), de Celestia. Se llega desde Desolate City (365). Tiene entrada de instancia. Poblado desde UNA sola sesion. Los objetos van CRUDOS.",
+ "stage": 368,
+ "spawns": [
+  {
+   "entity_id": 32752,
+   "nombre": "Aurora Totem",
+   "npc_type": 1937,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    239,
+    109
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 32753,
+   "nombre": "Dark City Totem",
+   "npc_type": 1938,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    217,
+    110
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 32754,
+   "nombre": "Iron Totem",
+   "npc_type": 1939,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    254,
+    127
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 32755,
+   "nombre": "Breeze Totem",
+   "npc_type": 1940,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    238,
+    128
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 123936,
+   "nombre": "Faela",
+   "npc_type": 24511,
+   "sprite": 40185,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    151,
+    85
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123937,
+   "nombre": "Produs",
+   "npc_type": 24500,
+   "sprite": 40672,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    22,
+    11
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123938,
+   "nombre": "Commander Napos",
+   "npc_type": 24537,
+   "sprite": 40697,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    31,
+    11
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123939,
+   "nombre": "Yatiss Elite",
+   "npc_type": 24539,
+   "sprite": 40698,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    33,
+    16
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123940,
+   "nombre": "Yatiss Elite",
+   "npc_type": 24539,
+   "sprite": 40698,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    40,
+    11
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123941,
+   "nombre": "Yatiss Elite",
+   "npc_type": 24539,
+   "sprite": 40698,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    44,
+    13
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123942,
+   "nombre": "Yatiss Elite",
+   "npc_type": 24539,
+   "sprite": 40698,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    37,
+    18
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123943,
+   "nombre": "Yatiss Elite",
+   "npc_type": 24539,
+   "sprite": 40698,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    41,
+    20
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123944,
+   "nombre": "Yatiss Elite",
+   "npc_type": 24539,
+   "sprite": 40698,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    47,
+    15
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123945,
+   "nombre": "Yatiss Elite",
+   "npc_type": 24539,
+   "sprite": 40698,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    45,
+    22
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123946,
+   "nombre": "Yatiss Elite",
+   "npc_type": 24539,
+   "sprite": 40698,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    51,
+    17
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123947,
+   "nombre": "Yatiss Elite",
+   "npc_type": 24539,
+   "sprite": 40698,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    49,
+    24
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123948,
+   "nombre": "Yatiss Elite",
+   "npc_type": 24539,
+   "sprite": 40698,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    56,
+    19
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123949,
+   "nombre": "Yatiss Elite",
+   "npc_type": 24539,
+   "sprite": 40698,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    53,
+    26
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123950,
+   "nombre": "Yatiss Elite",
+   "npc_type": 24539,
+   "sprite": 40698,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    60,
+    22
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 1064113,
+   "nombre": "Mordant Beast",
+   "npc_type": 23161,
+   "sprite": 111048,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    98,
+    15
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1064114,
+   "nombre": "Mordant Beast",
+   "npc_type": 23161,
+   "sprite": 111048,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    87,
+    25
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1064115,
+   "nombre": "Mordant Beast",
+   "npc_type": 23161,
+   "sprite": 111048,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    122,
+    5
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1064116,
+   "nombre": "Mordant Beast",
+   "npc_type": 23161,
+   "sprite": 111048,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    104,
+    22
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1064117,
+   "nombre": "Mordant Beast",
+   "npc_type": 23161,
+   "sprite": 111048,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    78,
+    37
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1064118,
+   "nombre": "Mordant Beast",
+   "npc_type": 23161,
+   "sprite": 111048,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    79,
+    49
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1064119,
+   "nombre": "Mordant Beast",
+   "npc_type": 23161,
+   "sprite": 111048,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    89,
+    50
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1064120,
+   "nombre": "Mordant Beast",
+   "npc_type": 23161,
+   "sprite": 111048,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    78,
+    37
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1064121,
+   "nombre": "Mordant Beast",
+   "npc_type": 23161,
+   "sprite": 111048,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    87,
+    53
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1064122,
+   "nombre": "Mordant Beast",
+   "npc_type": 23161,
+   "sprite": 111048,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    83,
+    60
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1064123,
+   "nombre": "Mordant Beast",
+   "npc_type": 23161,
+   "sprite": 111048,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    96,
+    52
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1064124,
+   "nombre": "Mordant Beast",
+   "npc_type": 23161,
+   "sprite": 111048,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    107,
+    44
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1064125,
+   "nombre": "Mordant Beast",
+   "npc_type": 23161,
+   "sprite": 111048,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    118,
+    36
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1064126,
+   "nombre": "Mordant Beast",
+   "npc_type": 23161,
+   "sprite": 111048,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    84,
+    48
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1064127,
+   "nombre": "Mordant Beast",
+   "npc_type": 23161,
+   "sprite": 111048,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    120,
+    41
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1064128,
+   "nombre": "Mordant Beast",
+   "npc_type": 23161,
+   "sprite": 111048,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    130,
+    53
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1064129,
+   "nombre": "Mordant Beast",
+   "npc_type": 23161,
+   "sprite": 111048,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    156,
+    26
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1064130,
+   "nombre": "Mordant Beast",
+   "npc_type": 23161,
+   "sprite": 111048,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    128,
+    42
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1064131,
+   "nombre": "Mordant Beast",
+   "npc_type": 23161,
+   "sprite": 111048,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    133,
+    32
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1064132,
+   "nombre": "Mordant Beast",
+   "npc_type": 23161,
+   "sprite": 111048,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    142,
+    47
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1064133,
+   "nombre": "Mordant Beast",
+   "npc_type": 23161,
+   "sprite": 111048,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    174,
+    17
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1064134,
+   "nombre": "Mordant Beast",
+   "npc_type": 23161,
+   "sprite": 111048,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    204,
+    5
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1064135,
+   "nombre": "Mordant Beast",
+   "npc_type": 23161,
+   "sprite": 111048,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    151,
+    5
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1064136,
+   "nombre": "Mordant Beast",
+   "npc_type": 23161,
+   "sprite": 111048,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    163,
+    12
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1064137,
+   "nombre": "Mordant Beast",
+   "npc_type": 23161,
+   "sprite": 111048,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    184,
+    18
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1064138,
+   "nombre": "Lair Monster",
+   "npc_type": 23162,
+   "sprite": 111094,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    169,
+    48
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1064139,
+   "nombre": "Lair Monster",
+   "npc_type": 23162,
+   "sprite": 111094,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    178,
+    45
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1064140,
+   "nombre": "Lair Monster",
+   "npc_type": 23162,
+   "sprite": 111094,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    185,
+    33
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1064141,
+   "nombre": "Lair Monster",
+   "npc_type": 23162,
+   "sprite": 111094,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    162,
+    36
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1064142,
+   "nombre": "Lair Monster",
+   "npc_type": 23162,
+   "sprite": 111094,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    179,
+    52
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1064143,
+   "nombre": "Lair Monster",
+   "npc_type": 23162,
+   "sprite": 111094,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    212,
+    30
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1064144,
+   "nombre": "Lair Monster",
+   "npc_type": 23162,
+   "sprite": 111094,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    191,
+    46
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1064145,
+   "nombre": "Lair Monster",
+   "npc_type": 23162,
+   "sprite": 111094,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    197,
+    34
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1064146,
+   "nombre": "Lair Monster",
+   "npc_type": 23162,
+   "sprite": 111094,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    222,
+    31
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1064147,
+   "nombre": "Lair Monster",
+   "npc_type": 23162,
+   "sprite": 111094,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    211,
+    36
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1064148,
+   "nombre": "Lair Monster",
+   "npc_type": 23162,
+   "sprite": 111094,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    243,
+    17
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1064149,
+   "nombre": "Lair Monster",
+   "npc_type": 23162,
+   "sprite": 111094,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    244,
+    18
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1064150,
+   "nombre": "Lair Monster",
+   "npc_type": 23162,
+   "sprite": 111094,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    233,
+    27
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1064151,
+   "nombre": "Lair Monster",
+   "npc_type": 23162,
+   "sprite": 111094,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    246,
+    26
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1064152,
+   "nombre": "Lair Monster",
+   "npc_type": 23162,
+   "sprite": 111094,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    255,
+    17
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1064153,
+   "nombre": "Lair Monster",
+   "npc_type": 23162,
+   "sprite": 111094,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    275,
+    37
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1064154,
+   "nombre": "Lair Monster",
+   "npc_type": 23162,
+   "sprite": 111094,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    273,
+    20
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1064155,
+   "nombre": "Lair Monster",
+   "npc_type": 23162,
+   "sprite": 111094,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    258,
+    29
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1064156,
+   "nombre": "Lair Monster",
+   "npc_type": 23162,
+   "sprite": 111094,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    274,
+    13
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1064157,
+   "nombre": "Lair Monster",
+   "npc_type": 23162,
+   "sprite": 111094,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    265,
+    9
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1064158,
+   "nombre": "Lair Monster",
+   "npc_type": 23162,
+   "sprite": 111094,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    236,
+    52
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1064159,
+   "nombre": "Lair Monster",
+   "npc_type": 23162,
+   "sprite": 111094,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    262,
+    68
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1064160,
+   "nombre": "Lair Monster",
+   "npc_type": 23162,
+   "sprite": 111094,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    238,
+    60
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1064161,
+   "nombre": "Lair Monster",
+   "npc_type": 23162,
+   "sprite": 111094,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    283,
+    54
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1064162,
+   "nombre": "Lair Monster",
+   "npc_type": 23162,
+   "sprite": 111094,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    280,
+    48
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1064163,
+   "nombre": "Moody Merman",
+   "npc_type": 23163,
+   "sprite": 111112,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    66,
+    72
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 384
+  },
+  {
+   "entity_id": 1064164,
+   "nombre": "Moody Merman",
+   "npc_type": 23163,
+   "sprite": 111112,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    77,
+    72
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 384
+  },
+  {
+   "entity_id": 1064165,
+   "nombre": "Moody Merman",
+   "npc_type": 23163,
+   "sprite": 111112,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    87,
+    68
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 384
+  },
+  {
+   "entity_id": 1064166,
+   "nombre": "Moody Merman",
+   "npc_type": 23163,
+   "sprite": 111112,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    76,
+    64
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 384
+  },
+  {
+   "entity_id": 1064167,
+   "nombre": "Moody Merman",
+   "npc_type": 23163,
+   "sprite": 111112,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    76,
+    63
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 384
+  },
+  {
+   "entity_id": 1064168,
+   "nombre": "Moody Merman",
+   "npc_type": 23163,
+   "sprite": 111112,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    31,
+    60
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 384
+  },
+  {
+   "entity_id": 1064169,
+   "nombre": "Moody Merman",
+   "npc_type": 23163,
+   "sprite": 111112,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    23,
+    67
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 384
+  },
+  {
+   "entity_id": 1064170,
+   "nombre": "Moody Merman",
+   "npc_type": 23163,
+   "sprite": 111112,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    27,
+    45
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 384
+  },
+  {
+   "entity_id": 1064171,
+   "nombre": "Moody Merman",
+   "npc_type": 23163,
+   "sprite": 111112,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    25,
+    72
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 384
+  },
+  {
+   "entity_id": 1064172,
+   "nombre": "Moody Merman",
+   "npc_type": 23163,
+   "sprite": 111112,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    24,
+    60
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 384
+  },
+  {
+   "entity_id": 1064173,
+   "nombre": "Moody Merman",
+   "npc_type": 23163,
+   "sprite": 111112,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    10,
+    88
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 384
+  },
+  {
+   "entity_id": 1064174,
+   "nombre": "Moody Merman",
+   "npc_type": 23163,
+   "sprite": 111112,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    23,
+    84
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 384
+  },
+  {
+   "entity_id": 1064175,
+   "nombre": "Moody Merman",
+   "npc_type": 23163,
+   "sprite": 111112,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    22,
+    93
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 384
+  },
+  {
+   "entity_id": 1064176,
+   "nombre": "Moody Merman",
+   "npc_type": 23163,
+   "sprite": 111112,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    25,
+    98
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 384
+  },
+  {
+   "entity_id": 1064177,
+   "nombre": "Moody Merman",
+   "npc_type": 23163,
+   "sprite": 111112,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    23,
+    81
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 384
+  },
+  {
+   "entity_id": 1064178,
+   "nombre": "Moody Merman",
+   "npc_type": 23163,
+   "sprite": 111112,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    40,
+    125
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 384
+  },
+  {
+   "entity_id": 1064179,
+   "nombre": "Moody Merman",
+   "npc_type": 23163,
+   "sprite": 111112,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    44,
+    119
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 384
+  },
+  {
+   "entity_id": 1064180,
+   "nombre": "Moody Merman",
+   "npc_type": 23163,
+   "sprite": 111112,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    60,
+    110
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 384
+  },
+  {
+   "entity_id": 1064181,
+   "nombre": "Moody Merman",
+   "npc_type": 23163,
+   "sprite": 111112,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    55,
+    121
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 384
+  },
+  {
+   "entity_id": 1064182,
+   "nombre": "Moody Merman",
+   "npc_type": 23163,
+   "sprite": 111112,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    49,
+    109
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 384
+  },
+  {
+   "entity_id": 1064183,
+   "nombre": "Silent Merman",
+   "npc_type": 23164,
+   "sprite": 111113,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    47,
+    143
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 384
+  },
+  {
+   "entity_id": 1064184,
+   "nombre": "Silent Merman",
+   "npc_type": 23164,
+   "sprite": 111113,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    30,
+    145
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 384
+  },
+  {
+   "entity_id": 1064185,
+   "nombre": "Silent Merman",
+   "npc_type": 23164,
+   "sprite": 111113,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    65,
+    146
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 384
+  },
+  {
+   "entity_id": 1064186,
+   "nombre": "Silent Merman",
+   "npc_type": 23164,
+   "sprite": 111113,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    53,
+    130
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 384
+  },
+  {
+   "entity_id": 1064187,
+   "nombre": "Silent Merman",
+   "npc_type": 23164,
+   "sprite": 111113,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    66,
+    146
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 384
+  },
+  {
+   "entity_id": 1064188,
+   "nombre": "Silent Merman",
+   "npc_type": 23164,
+   "sprite": 111113,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    61,
+    156
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 384
+  },
+  {
+   "entity_id": 1064189,
+   "nombre": "Silent Merman",
+   "npc_type": 23164,
+   "sprite": 111113,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    61,
+    155
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 384
+  },
+  {
+   "entity_id": 1064190,
+   "nombre": "Silent Merman",
+   "npc_type": 23164,
+   "sprite": 111113,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    61,
+    158
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 384
+  },
+  {
+   "entity_id": 1064191,
+   "nombre": "Silent Merman",
+   "npc_type": 23164,
+   "sprite": 111113,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    79,
+    152
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 384
+  },
+  {
+   "entity_id": 1064192,
+   "nombre": "Silent Merman",
+   "npc_type": 23164,
+   "sprite": 111113,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    48,
+    157
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 384
+  },
+  {
+   "entity_id": 1064193,
+   "nombre": "Silent Merman",
+   "npc_type": 23164,
+   "sprite": 111113,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    104,
+    163
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 384
+  },
+  {
+   "entity_id": 1064194,
+   "nombre": "Silent Merman",
+   "npc_type": 23164,
+   "sprite": 111113,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    131,
+    157
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 384
+  },
+  {
+   "entity_id": 1064195,
+   "nombre": "Silent Merman",
+   "npc_type": 23164,
+   "sprite": 111113,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    109,
+    166
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 384
+  },
+  {
+   "entity_id": 1064196,
+   "nombre": "Silent Merman",
+   "npc_type": 23164,
+   "sprite": 111113,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    89,
+    158
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 384
+  },
+  {
+   "entity_id": 1064197,
+   "nombre": "Silent Merman",
+   "npc_type": 23164,
+   "sprite": 111113,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    142,
+    158
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 384
+  },
+  {
+   "entity_id": 1064198,
+   "nombre": "Silent Merman",
+   "npc_type": 23164,
+   "sprite": 111113,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    131,
+    162
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 384
+  },
+  {
+   "entity_id": 1064199,
+   "nombre": "Silent Merman",
+   "npc_type": 23164,
+   "sprite": 111113,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    99,
+    160
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 384
+  },
+  {
+   "entity_id": 1064200,
+   "nombre": "Silent Merman",
+   "npc_type": 23164,
+   "sprite": 111113,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    117,
+    158
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 384
+  },
+  {
+   "entity_id": 1064201,
+   "nombre": "Silent Merman",
+   "npc_type": 23164,
+   "sprite": 111113,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    155,
+    168
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 384
+  },
+  {
+   "entity_id": 1064202,
+   "nombre": "Silent Merman",
+   "npc_type": 23164,
+   "sprite": 111113,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    138,
+    155
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 384
+  },
+  {
+   "entity_id": 1064203,
+   "nombre": "Red Protector",
+   "npc_type": 23165,
+   "sprite": 111093,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    204,
+    157
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 1064204,
+   "nombre": "Red Protector",
+   "npc_type": 23165,
+   "sprite": 111093,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    193,
+    153
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 1064205,
+   "nombre": "Red Protector",
+   "npc_type": 23165,
+   "sprite": 111093,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    201,
+    155
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 1064206,
+   "nombre": "Red Protector",
+   "npc_type": 23165,
+   "sprite": 111093,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    198,
+    153
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 1064207,
+   "nombre": "Red Protector",
+   "npc_type": 23165,
+   "sprite": 111093,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    197,
+    153
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 1064208,
+   "nombre": "Red Protector",
+   "npc_type": 23165,
+   "sprite": 111093,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    225,
+    161
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 1064209,
+   "nombre": "Red Protector",
+   "npc_type": 23165,
+   "sprite": 111093,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    233,
+    162
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 1064210,
+   "nombre": "Red Protector",
+   "npc_type": 23165,
+   "sprite": 111093,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    225,
+    156
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 1064211,
+   "nombre": "Red Protector",
+   "npc_type": 23165,
+   "sprite": 111093,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    223,
+    158
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 1064212,
+   "nombre": "Red Protector",
+   "npc_type": 23165,
+   "sprite": 111093,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    240,
+    152
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 1064213,
+   "nombre": "Red Protector",
+   "npc_type": 23165,
+   "sprite": 111093,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    247,
+    138
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 1064214,
+   "nombre": "Red Protector",
+   "npc_type": 23165,
+   "sprite": 111093,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    257,
+    156
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 1064215,
+   "nombre": "Red Protector",
+   "npc_type": 23165,
+   "sprite": 111093,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    245,
+    139
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 1064216,
+   "nombre": "Red Protector",
+   "npc_type": 23165,
+   "sprite": 111093,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    257,
+    143
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 1064217,
+   "nombre": "Red Protector",
+   "npc_type": 23165,
+   "sprite": 111093,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    245,
+    133
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 1064218,
+   "nombre": "Red Protector",
+   "npc_type": 23165,
+   "sprite": 111093,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    295,
+    121
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 1064219,
+   "nombre": "Red Protector",
+   "npc_type": 23165,
+   "sprite": 111093,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    289,
+    123
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 1064220,
+   "nombre": "Red Protector",
+   "npc_type": 23165,
+   "sprite": 111093,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    278,
+    142
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 1064221,
+   "nombre": "Red Protector",
+   "npc_type": 23165,
+   "sprite": 111093,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    285,
+    128
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 1064222,
+   "nombre": "Red Protector",
+   "npc_type": 23165,
+   "sprite": 111093,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    275,
+    140
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 1064223,
+   "nombre": "Red Protector",
+   "npc_type": 23165,
+   "sprite": 111093,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    290,
+    110
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 1064224,
+   "nombre": "Red Protector",
+   "npc_type": 23165,
+   "sprite": 111093,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    267,
+    90
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 1064225,
+   "nombre": "Red Protector",
+   "npc_type": 23165,
+   "sprite": 111093,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    252,
+    77
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 1064226,
+   "nombre": "Red Protector",
+   "npc_type": 23165,
+   "sprite": 111093,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    291,
+    93
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 1064227,
+   "nombre": "Red Protector",
+   "npc_type": 23165,
+   "sprite": 111093,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    282,
+    117
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 1064228,
+   "nombre": "Red Protector",
+   "npc_type": 23165,
+   "sprite": 111093,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    235,
+    124
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 1064229,
+   "nombre": "Red Protector",
+   "npc_type": 23165,
+   "sprite": 111093,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    220,
+    83
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 1064230,
+   "nombre": "Red Protector",
+   "npc_type": 23165,
+   "sprite": 111093,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    217,
+    85
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 1064231,
+   "nombre": "Red Protector",
+   "npc_type": 23165,
+   "sprite": 111093,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    216,
+    101
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 1064232,
+   "nombre": "Red Protector",
+   "npc_type": 23165,
+   "sprite": 111093,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    231,
+    100
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 1064233,
+   "nombre": "Red Protector",
+   "npc_type": 23165,
+   "sprite": 111093,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    203,
+    91
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 1064234,
+   "nombre": "Red Protector",
+   "npc_type": 23165,
+   "sprite": 111093,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    236,
+    109
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 1064235,
+   "nombre": "Red Protector",
+   "npc_type": 23165,
+   "sprite": 111093,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    208,
+    87
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 1064236,
+   "nombre": "Red Protector",
+   "npc_type": 23165,
+   "sprite": 111093,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    211,
+    75
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 1064237,
+   "nombre": "Red Protector",
+   "npc_type": 23165,
+   "sprite": 111093,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    219,
+    98
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 1064238,
+   "nombre": "Red Protector",
+   "npc_type": 23165,
+   "sprite": 111093,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    271,
+    150
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 1064239,
+   "nombre": "Red Protector",
+   "npc_type": 23165,
+   "sprite": 111093,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    256,
+    142
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 1064240,
+   "nombre": "Red Protector",
+   "npc_type": 23165,
+   "sprite": 111093,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    271,
+    142
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 1064241,
+   "nombre": "Red Protector",
+   "npc_type": 23165,
+   "sprite": 111093,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    263,
+    151
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 1064242,
+   "nombre": "Red Protector",
+   "npc_type": 23165,
+   "sprite": 111093,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    259,
+    141
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 1064243,
+   "nombre": "E-Mordant Beast",
+   "npc_type": 23166,
+   "sprite": 111048,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    107,
+    138
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 390
+  },
+  {
+   "entity_id": 1064244,
+   "nombre": "E-Mordant Beast",
+   "npc_type": 23166,
+   "sprite": 111048,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    113,
+    140
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 390
+  },
+  {
+   "entity_id": 1064245,
+   "nombre": "E-Mordant Beast",
+   "npc_type": 23166,
+   "sprite": 111048,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    110,
+    127
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 390
+  },
+  {
+   "entity_id": 1064246,
+   "nombre": "E-Mordant Beast",
+   "npc_type": 23166,
+   "sprite": 111048,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    109,
+    121
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 390
+  },
+  {
+   "entity_id": 1064247,
+   "nombre": "E-Mordant Beast",
+   "npc_type": 23166,
+   "sprite": 111048,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    106,
+    132
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 390
+  },
+  {
+   "entity_id": 1064248,
+   "nombre": "E-Moody Merman",
+   "npc_type": 23167,
+   "sprite": 111112,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    163,
+    112
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 392
+  },
+  {
+   "entity_id": 1064249,
+   "nombre": "E-Moody Merman",
+   "npc_type": 23167,
+   "sprite": 111112,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    169,
+    112
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 392
+  },
+  {
+   "entity_id": 1064250,
+   "nombre": "E-Moody Merman",
+   "npc_type": 23167,
+   "sprite": 111112,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    172,
+    122
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 392
+  },
+  {
+   "entity_id": 1064251,
+   "nombre": "E-Moody Merman",
+   "npc_type": 23167,
+   "sprite": 111112,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    162,
+    104
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 392
+  },
+  {
+   "entity_id": 1064252,
+   "nombre": "E-Moody Merman",
+   "npc_type": 23167,
+   "sprite": 111112,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    179,
+    115
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 392
+  },
+  {
+   "entity_id": 1064253,
+   "nombre": "Brown Abyss",
+   "npc_type": 23168,
+   "sprite": 111049,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    243,
+    51
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 394
+  },
+  {
+   "entity_id": 1064254,
+   "nombre": "Lair Watcher",
+   "npc_type": 23169,
+   "sprite": 111114,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    174,
+    169
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 394
+  },
+  {
+   "entity_id": 1064255,
+   "nombre": "Green Serpent's ",
+   "npc_type": 23200,
+   "sprite": 111056,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    133,
+    114
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 394
+  }
+ ],
+ "recursos": [
+  {
+   "entity_id": 119757,
+   "capa": 0,
+   "px": [
+    7637,
+    3519
+   ],
+   "medio": "006f70706572284d2900000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60051,
+   "cola": "00002280140000",
+   "crudo": "cdd3010000000000d51d0000bf0d0000006f70706572284d2900000000000000000693ea00002280140000",
+   "que_es": "Aurora Totem"
+  },
+  {
+   "entity_id": 119758,
+   "capa": 0,
+   "px": [
+    1064,
+    5356
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "crudo": "ced301000000000028040000ec1400000000000027000000000000001a000000dc0661ea00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 119759,
+   "capa": 0,
+   "px": [
+    3869,
+    2609
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "crudo": "cfd30100000000001d0f0000310a00000000000027000000000000001a000000dc0661ea00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 119760,
+   "capa": 0,
+   "px": [
+    4193,
+    3812
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "crudo": "d0d301000000000061100000e40e00000000000027000000000000001a000000dc0661ea00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 119761,
+   "capa": 0,
+   "px": [
+    5949,
+    3139
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "crudo": "d1d30100000000003d170000430c00000000000027000000000000001a000000dc0661ea00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 119762,
+   "capa": 0,
+   "px": [
+    6620,
+    4254
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "crudo": "d2d3010000000000dc1900009e1000000000000027000000000000001a000000dc0661ea00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 119763,
+   "capa": 0,
+   "px": [
+    250,
+    113
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "crudo": "d3d3010000000000fa000000710000000000000027000000000000001a000000dc0661ea00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 119764,
+   "capa": 0,
+   "px": [
+    8104,
+    2962
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60305,
+   "cola": "00004080140000",
+   "crudo": "d4d3010000000000a81f0000920b00000000000027000000000000001a000000dc0691eb00004080140000"
+  },
+  {
+   "entity_id": 119765,
+   "capa": 0,
+   "px": [
+    4918,
+    2787
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60305,
+   "cola": "00004080140000",
+   "crudo": "d5d301000000000036130000e30a00000000000027000000000000001a000000dc0691eb00004080140000"
+  },
+  {
+   "entity_id": 119766,
+   "capa": 0,
+   "px": [
+    6952,
+    3547
+   ],
+   "medio": "00000000180000000000000000000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60052,
+   "cola": "00002280140000",
+   "crudo": "d6d3010000000000281b0000db0d000000000000180000000000000000000000dc0694ea00002280140000",
+   "que_es": "Dark City Totem"
+  },
+  {
+   "entity_id": 119767,
+   "capa": 0,
+   "px": [
+    8120,
+    4100
+   ],
+   "medio": "006f70706572284d2900000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60053,
+   "cola": "00002280140000",
+   "crudo": "d7d3010000000000b81f000004100000006f70706572284d2900000000000000000695ea00002280140000",
+   "que_es": "Iron Totem"
+  },
+  {
+   "entity_id": 119768,
+   "capa": 0,
+   "px": [
+    7616,
+    4118
+   ],
+   "medio": "000000ba156f77650000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60054,
+   "cola": "00002280140000",
+   "crudo": "d8d3010000000000c01d000016100000000000ba156f77650000000000000000000696ea00002280140000",
+   "que_es": "Breeze Totem"
+  }
+ ]
+}

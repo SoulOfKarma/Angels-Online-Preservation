@@ -1,0 +1,3555 @@
+{
+ "_nota": "Specter Village (stage 335), de Celestia, zona Abyston. Se llega desde Forsaken Crevasse (334). Poblado desde UNA sola sesion. Los objetos van CRUDOS.",
+ "stage": 335,
+ "spawns": [
+  {
+   "entity_id": 32752,
+   "nombre": "Aurora Totem",
+   "npc_type": 1937,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    207,
+    142
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 32753,
+   "nombre": "Dark City Totem",
+   "npc_type": 1938,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    225,
+    132
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 32754,
+   "nombre": "Iron Totem",
+   "npc_type": 1939,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    219,
+    135
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 32755,
+   "nombre": "Breeze Totem",
+   "npc_type": 1940,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    213,
+    139
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 123777,
+   "nombre": "Researcher Isaia",
+   "npc_type": 14710,
+   "sprite": 40062,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    115,
+    71
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123778,
+   "nombre": "Lich Wenzt",
+   "npc_type": 14711,
+   "sprite": 40083,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    282,
+    103
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123779,
+   "nombre": "Overseer Isaac",
+   "npc_type": 14728,
+   "sprite": 40107,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    187,
+    123
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123780,
+   "nombre": "Researcher Ike",
+   "npc_type": 14729,
+   "sprite": 40594,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    73,
+    118
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123781,
+   "nombre": "Researcher Amy",
+   "npc_type": 14730,
+   "sprite": 40061,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    168,
+    60
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123782,
+   "nombre": "Researcher Edge",
+   "npc_type": 14731,
+   "sprite": 40062,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    90,
+    49
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123783,
+   "nombre": "Constable Bell",
+   "npc_type": 14777,
+   "sprite": 40394,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    208,
+    127
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123784,
+   "nombre": "Specter Worker",
+   "npc_type": 14759,
+   "sprite": 40592,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    224,
+    168
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123785,
+   "nombre": "Specter Tacticia",
+   "npc_type": 14761,
+   "sprite": 40595,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    267,
+    163
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123786,
+   "nombre": "Specter Merchant",
+   "npc_type": 14764,
+   "sprite": 40598,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    206,
+    162
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123787,
+   "nombre": "Specter Research",
+   "npc_type": 14760,
+   "sprite": 40532,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    262,
+    164
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123788,
+   "nombre": "Specter Instruct",
+   "npc_type": 14762,
+   "sprite": 40488,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    258,
+    141
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123789,
+   "nombre": "Specter Banker",
+   "npc_type": 14758,
+   "sprite": 40583,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    275,
+    145
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123790,
+   "nombre": "Specter Smith",
+   "npc_type": 14763,
+   "sprite": 40500,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    244,
+    134
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123791,
+   "nombre": "Cupid",
+   "npc_type": 1502,
+   "sprite": 40006,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    268,
+    156
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123792,
+   "nombre": "Crystal Guard",
+   "npc_type": 14765,
+   "sprite": 40005,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    280,
+    137
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123793,
+   "nombre": "Trader Joe",
+   "npc_type": 14779,
+   "sprite": 40009,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    111,
+    128
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123794,
+   "nombre": "Vera",
+   "npc_type": 14780,
+   "sprite": 40589,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    209,
+    93
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123795,
+   "nombre": "Researcher Voyn",
+   "npc_type": 14781,
+   "sprite": 40595,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    211,
+    94
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 1059370,
+   "nombre": "Lavendeant",
+   "npc_type": 20736,
+   "sprite": 110813,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    68,
+    46
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059371,
+   "nombre": "Lavendeant",
+   "npc_type": 20736,
+   "sprite": 110813,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    42,
+    30
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059372,
+   "nombre": "Lavendeant",
+   "npc_type": 20736,
+   "sprite": 110813,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    51,
+    29
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059373,
+   "nombre": "Lavendeant",
+   "npc_type": 20736,
+   "sprite": 110813,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    48,
+    34
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059374,
+   "nombre": "Lavendeant",
+   "npc_type": 20736,
+   "sprite": 110813,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    62,
+    44
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059375,
+   "nombre": "Lavendeant",
+   "npc_type": 20736,
+   "sprite": 110813,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    134,
+    32
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059376,
+   "nombre": "Lavendeant",
+   "npc_type": 20736,
+   "sprite": 110813,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    154,
+    32
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059377,
+   "nombre": "Lavendeant",
+   "npc_type": 20736,
+   "sprite": 110813,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    146,
+    30
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059378,
+   "nombre": "Lavendeant",
+   "npc_type": 20736,
+   "sprite": 110813,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    157,
+    24
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059379,
+   "nombre": "Lavendeant",
+   "npc_type": 20736,
+   "sprite": 110813,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    159,
+    32
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059380,
+   "nombre": "Lavendeant",
+   "npc_type": 20736,
+   "sprite": 110813,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    124,
+    39
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059381,
+   "nombre": "Lavendeant",
+   "npc_type": 20736,
+   "sprite": 110813,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    118,
+    47
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059382,
+   "nombre": "Lavendeant",
+   "npc_type": 20736,
+   "sprite": 110813,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    134,
+    28
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059383,
+   "nombre": "Lavendeant",
+   "npc_type": 20736,
+   "sprite": 110813,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    111,
+    37
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059384,
+   "nombre": "Lavendeant",
+   "npc_type": 20736,
+   "sprite": 110813,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    126,
+    45
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059385,
+   "nombre": "Lavendeant",
+   "npc_type": 20736,
+   "sprite": 110813,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    71,
+    51
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059386,
+   "nombre": "Lavendeant",
+   "npc_type": 20736,
+   "sprite": 110813,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    105,
+    34
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059387,
+   "nombre": "Lavendeant",
+   "npc_type": 20736,
+   "sprite": 110813,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    85,
+    40
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059388,
+   "nombre": "Lavendeant",
+   "npc_type": 20736,
+   "sprite": 110813,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    93,
+    38
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059389,
+   "nombre": "Lavendeant",
+   "npc_type": 20736,
+   "sprite": 110813,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    96,
+    32
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059390,
+   "nombre": "Mapleant",
+   "npc_type": 20737,
+   "sprite": 110814,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    44,
+    65
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059391,
+   "nombre": "Mapleant",
+   "npc_type": 20737,
+   "sprite": 110814,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    62,
+    64
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059392,
+   "nombre": "Mapleant",
+   "npc_type": 20737,
+   "sprite": 110814,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    64,
+    67
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059393,
+   "nombre": "Mapleant",
+   "npc_type": 20737,
+   "sprite": 110814,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    63,
+    66
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059394,
+   "nombre": "Mapleant",
+   "npc_type": 20737,
+   "sprite": 110814,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    55,
+    69
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059395,
+   "nombre": "Mapleant",
+   "npc_type": 20737,
+   "sprite": 110814,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    17,
+    75
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059396,
+   "nombre": "Mapleant",
+   "npc_type": 20737,
+   "sprite": 110814,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    21,
+    60
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059397,
+   "nombre": "Mapleant",
+   "npc_type": 20737,
+   "sprite": 110814,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    25,
+    63
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059398,
+   "nombre": "Mapleant",
+   "npc_type": 20737,
+   "sprite": 110814,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    13,
+    74
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059399,
+   "nombre": "Mapleant",
+   "npc_type": 20737,
+   "sprite": 110814,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    32,
+    62
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059400,
+   "nombre": "Mapleant",
+   "npc_type": 20737,
+   "sprite": 110814,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    65,
+    44
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059401,
+   "nombre": "Mapleant",
+   "npc_type": 20737,
+   "sprite": 110814,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    80,
+    48
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059402,
+   "nombre": "Mapleant",
+   "npc_type": 20737,
+   "sprite": 110814,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    85,
+    44
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059403,
+   "nombre": "Mapleant",
+   "npc_type": 20737,
+   "sprite": 110814,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    92,
+    41
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059404,
+   "nombre": "Mapleant",
+   "npc_type": 20737,
+   "sprite": 110814,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    81,
+    57
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059405,
+   "nombre": "Mapleant",
+   "npc_type": 20737,
+   "sprite": 110814,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    75,
+    58
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059406,
+   "nombre": "Mapleant",
+   "npc_type": 20737,
+   "sprite": 110814,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    94,
+    71
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059407,
+   "nombre": "Mapleant",
+   "npc_type": 20737,
+   "sprite": 110814,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    81,
+    59
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059408,
+   "nombre": "Mapleant",
+   "npc_type": 20737,
+   "sprite": 110814,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    91,
+    55
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059409,
+   "nombre": "Mapleant",
+   "npc_type": 20737,
+   "sprite": 110814,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    80,
+    60
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059410,
+   "nombre": "Spiriton",
+   "npc_type": 20738,
+   "sprite": 110822,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    99,
+    72
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 301
+  },
+  {
+   "entity_id": 1059411,
+   "nombre": "Spiriton",
+   "npc_type": 20738,
+   "sprite": 110822,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    101,
+    77
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 301
+  },
+  {
+   "entity_id": 1059412,
+   "nombre": "Spiriton",
+   "npc_type": 20738,
+   "sprite": 110822,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    80,
+    94
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 301
+  },
+  {
+   "entity_id": 1059413,
+   "nombre": "Spiriton",
+   "npc_type": 20738,
+   "sprite": 110822,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    84,
+    73
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 301
+  },
+  {
+   "entity_id": 1059414,
+   "nombre": "Spiriton",
+   "npc_type": 20738,
+   "sprite": 110822,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    95,
+    85
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 301
+  },
+  {
+   "entity_id": 1059415,
+   "nombre": "Spiriton",
+   "npc_type": 20738,
+   "sprite": 110822,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    145,
+    83
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 301
+  },
+  {
+   "entity_id": 1059416,
+   "nombre": "Spiriton",
+   "npc_type": 20738,
+   "sprite": 110822,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    133,
+    84
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 301
+  },
+  {
+   "entity_id": 1059417,
+   "nombre": "Spiriton",
+   "npc_type": 20738,
+   "sprite": 110822,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    110,
+    85
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 301
+  },
+  {
+   "entity_id": 1059418,
+   "nombre": "Spiriton",
+   "npc_type": 20738,
+   "sprite": 110822,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    135,
+    93
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 301
+  },
+  {
+   "entity_id": 1059419,
+   "nombre": "Spiriton",
+   "npc_type": 20738,
+   "sprite": 110822,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    102,
+    77
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 301
+  },
+  {
+   "entity_id": 1059420,
+   "nombre": "Spiriton",
+   "npc_type": 20738,
+   "sprite": 110822,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    148,
+    69
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 301
+  },
+  {
+   "entity_id": 1059421,
+   "nombre": "Spiriton",
+   "npc_type": 20738,
+   "sprite": 110822,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    155,
+    51
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 301
+  },
+  {
+   "entity_id": 1059422,
+   "nombre": "Spiriton",
+   "npc_type": 20738,
+   "sprite": 110822,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    113,
+    62
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 301
+  },
+  {
+   "entity_id": 1059423,
+   "nombre": "Spiriton",
+   "npc_type": 20738,
+   "sprite": 110822,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    125,
+    64
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 301
+  },
+  {
+   "entity_id": 1059424,
+   "nombre": "Spiriton",
+   "npc_type": 20738,
+   "sprite": 110822,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    103,
+    74
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 301
+  },
+  {
+   "entity_id": 1059425,
+   "nombre": "Spiriton",
+   "npc_type": 20738,
+   "sprite": 110822,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    145,
+    77
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 301
+  },
+  {
+   "entity_id": 1059426,
+   "nombre": "Spiriton",
+   "npc_type": 20738,
+   "sprite": 110822,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    138,
+    65
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 301
+  },
+  {
+   "entity_id": 1059427,
+   "nombre": "Spiriton",
+   "npc_type": 20738,
+   "sprite": 110822,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    137,
+    66
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 301
+  },
+  {
+   "entity_id": 1059428,
+   "nombre": "Spiriton",
+   "npc_type": 20738,
+   "sprite": 110822,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    131,
+    48
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 301
+  },
+  {
+   "entity_id": 1059429,
+   "nombre": "Spiriton",
+   "npc_type": 20738,
+   "sprite": 110822,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    155,
+    76
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 301
+  },
+  {
+   "entity_id": 1059430,
+   "nombre": "Ghoston",
+   "npc_type": 20739,
+   "sprite": 110823,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    224,
+    55
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 301
+  },
+  {
+   "entity_id": 1059431,
+   "nombre": "Ghoston",
+   "npc_type": 20739,
+   "sprite": 110823,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    244,
+    36
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 301
+  },
+  {
+   "entity_id": 1059432,
+   "nombre": "Ghoston",
+   "npc_type": 20739,
+   "sprite": 110823,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    216,
+    51
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 301
+  },
+  {
+   "entity_id": 1059433,
+   "nombre": "Ghoston",
+   "npc_type": 20739,
+   "sprite": 110823,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    245,
+    37
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 301
+  },
+  {
+   "entity_id": 1059434,
+   "nombre": "Ghoston",
+   "npc_type": 20739,
+   "sprite": 110823,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    223,
+    46
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 301
+  },
+  {
+   "entity_id": 1059435,
+   "nombre": "Ghoston",
+   "npc_type": 20739,
+   "sprite": 110823,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    207,
+    26
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 301
+  },
+  {
+   "entity_id": 1059436,
+   "nombre": "Ghoston",
+   "npc_type": 20739,
+   "sprite": 110823,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    212,
+    37
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 301
+  },
+  {
+   "entity_id": 1059437,
+   "nombre": "Ghoston",
+   "npc_type": 20739,
+   "sprite": 110823,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    222,
+    34
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 301
+  },
+  {
+   "entity_id": 1059438,
+   "nombre": "Ghoston",
+   "npc_type": 20739,
+   "sprite": 110823,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    216,
+    25
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 301
+  },
+  {
+   "entity_id": 1059439,
+   "nombre": "Ghoston",
+   "npc_type": 20739,
+   "sprite": 110823,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    215,
+    46
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 301
+  },
+  {
+   "entity_id": 1059440,
+   "nombre": "Ghoston",
+   "npc_type": 20739,
+   "sprite": 110823,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    168,
+    47
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 301
+  },
+  {
+   "entity_id": 1059441,
+   "nombre": "Ghoston",
+   "npc_type": 20739,
+   "sprite": 110823,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    191,
+    37
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 301
+  },
+  {
+   "entity_id": 1059442,
+   "nombre": "Ghoston",
+   "npc_type": 20739,
+   "sprite": 110823,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    170,
+    45
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 301
+  },
+  {
+   "entity_id": 1059443,
+   "nombre": "Ghoston",
+   "npc_type": 20739,
+   "sprite": 110823,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    192,
+    35
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 301
+  },
+  {
+   "entity_id": 1059444,
+   "nombre": "Ghoston",
+   "npc_type": 20739,
+   "sprite": 110823,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    183,
+    35
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 301
+  },
+  {
+   "entity_id": 1059445,
+   "nombre": "Ghoston",
+   "npc_type": 20739,
+   "sprite": 110823,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    181,
+    59
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 301
+  },
+  {
+   "entity_id": 1059446,
+   "nombre": "Ghoston",
+   "npc_type": 20739,
+   "sprite": 110823,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    167,
+    57
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 301
+  },
+  {
+   "entity_id": 1059447,
+   "nombre": "Ghoston",
+   "npc_type": 20739,
+   "sprite": 110823,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    165,
+    52
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 301
+  },
+  {
+   "entity_id": 1059448,
+   "nombre": "Ghoston",
+   "npc_type": 20739,
+   "sprite": 110823,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    180,
+    63
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 301
+  },
+  {
+   "entity_id": 1059449,
+   "nombre": "Ghoston",
+   "npc_type": 20739,
+   "sprite": 110823,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    162,
+    32
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 301
+  },
+  {
+   "entity_id": 1059450,
+   "nombre": "Kupillar",
+   "npc_type": 20740,
+   "sprite": 110756,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    29,
+    90
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 303
+  },
+  {
+   "entity_id": 1059451,
+   "nombre": "Kupillar",
+   "npc_type": 20740,
+   "sprite": 110756,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    22,
+    82
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 303
+  },
+  {
+   "entity_id": 1059452,
+   "nombre": "Kupillar",
+   "npc_type": 20740,
+   "sprite": 110756,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    29,
+    93
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 303
+  },
+  {
+   "entity_id": 1059453,
+   "nombre": "Kupillar",
+   "npc_type": 20740,
+   "sprite": 110756,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    21,
+    78
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 303
+  },
+  {
+   "entity_id": 1059454,
+   "nombre": "Kupillar",
+   "npc_type": 20740,
+   "sprite": 110756,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    25,
+    104
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 303
+  },
+  {
+   "entity_id": 1059455,
+   "nombre": "Kupillar",
+   "npc_type": 20740,
+   "sprite": 110756,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    32,
+    112
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 303
+  },
+  {
+   "entity_id": 1059456,
+   "nombre": "Kupillar",
+   "npc_type": 20740,
+   "sprite": 110756,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    35,
+    114
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 303
+  },
+  {
+   "entity_id": 1059457,
+   "nombre": "Kupillar",
+   "npc_type": 20740,
+   "sprite": 110756,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    41,
+    118
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 303
+  },
+  {
+   "entity_id": 1059458,
+   "nombre": "Kupillar",
+   "npc_type": 20740,
+   "sprite": 110756,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    25,
+    108
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 303
+  },
+  {
+   "entity_id": 1059459,
+   "nombre": "Kupillar",
+   "npc_type": 20740,
+   "sprite": 110756,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    29,
+    115
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 303
+  },
+  {
+   "entity_id": 1059460,
+   "nombre": "Kupillar",
+   "npc_type": 20740,
+   "sprite": 110756,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    60,
+    126
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 303
+  },
+  {
+   "entity_id": 1059461,
+   "nombre": "Kupillar",
+   "npc_type": 20740,
+   "sprite": 110756,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    59,
+    133
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 303
+  },
+  {
+   "entity_id": 1059462,
+   "nombre": "Kupillar",
+   "npc_type": 20740,
+   "sprite": 110756,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    74,
+    127
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 303
+  },
+  {
+   "entity_id": 1059463,
+   "nombre": "Kupillar",
+   "npc_type": 20740,
+   "sprite": 110756,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    63,
+    122
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 303
+  },
+  {
+   "entity_id": 1059464,
+   "nombre": "Kupillar",
+   "npc_type": 20740,
+   "sprite": 110756,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    75,
+    120
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 303
+  },
+  {
+   "entity_id": 1059465,
+   "nombre": "Kupillar",
+   "npc_type": 20740,
+   "sprite": 110756,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    40,
+    120
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 303
+  },
+  {
+   "entity_id": 1059466,
+   "nombre": "Kupillar",
+   "npc_type": 20740,
+   "sprite": 110756,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    47,
+    113
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 303
+  },
+  {
+   "entity_id": 1059467,
+   "nombre": "Kupillar",
+   "npc_type": 20740,
+   "sprite": 110756,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    52,
+    116
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 303
+  },
+  {
+   "entity_id": 1059468,
+   "nombre": "Kupillar",
+   "npc_type": 20740,
+   "sprite": 110756,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    42,
+    120
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 303
+  },
+  {
+   "entity_id": 1059469,
+   "nombre": "Kupillar",
+   "npc_type": 20740,
+   "sprite": 110756,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    64,
+    118
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 303
+  },
+  {
+   "entity_id": 1059470,
+   "nombre": "Vegan Ogre",
+   "npc_type": 20741,
+   "sprite": 110761,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    75,
+    136
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 303
+  },
+  {
+   "entity_id": 1059471,
+   "nombre": "Vegan Ogre",
+   "npc_type": 20741,
+   "sprite": 110761,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    67,
+    131
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 303
+  },
+  {
+   "entity_id": 1059472,
+   "nombre": "Vegan Ogre",
+   "npc_type": 20741,
+   "sprite": 110761,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    71,
+    121
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 303
+  },
+  {
+   "entity_id": 1059473,
+   "nombre": "Vegan Ogre",
+   "npc_type": 20741,
+   "sprite": 110761,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    93,
+    119
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 303
+  },
+  {
+   "entity_id": 1059474,
+   "nombre": "Vegan Ogre",
+   "npc_type": 20741,
+   "sprite": 110761,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    82,
+    121
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 303
+  },
+  {
+   "entity_id": 1059475,
+   "nombre": "Vegan Ogre",
+   "npc_type": 20741,
+   "sprite": 110761,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    83,
+    105
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 303
+  },
+  {
+   "entity_id": 1059476,
+   "nombre": "Vegan Ogre",
+   "npc_type": 20741,
+   "sprite": 110761,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    82,
+    89
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 303
+  },
+  {
+   "entity_id": 1059477,
+   "nombre": "Vegan Ogre",
+   "npc_type": 20741,
+   "sprite": 110761,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    82,
+    101
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 303
+  },
+  {
+   "entity_id": 1059478,
+   "nombre": "Vegan Ogre",
+   "npc_type": 20741,
+   "sprite": 110761,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    98,
+    105
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 303
+  },
+  {
+   "entity_id": 1059479,
+   "nombre": "Vegan Ogre",
+   "npc_type": 20741,
+   "sprite": 110761,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    77,
+    103
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 303
+  },
+  {
+   "entity_id": 1059480,
+   "nombre": "Vegan Ogre",
+   "npc_type": 20741,
+   "sprite": 110761,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    104,
+    124
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 303
+  },
+  {
+   "entity_id": 1059481,
+   "nombre": "Vegan Ogre",
+   "npc_type": 20741,
+   "sprite": 110761,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    104,
+    125
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 303
+  },
+  {
+   "entity_id": 1059482,
+   "nombre": "Vegan Ogre",
+   "npc_type": 20741,
+   "sprite": 110761,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    95,
+    124
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 303
+  },
+  {
+   "entity_id": 1059483,
+   "nombre": "Vegan Ogre",
+   "npc_type": 20741,
+   "sprite": 110761,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    87,
+    128
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 303
+  },
+  {
+   "entity_id": 1059484,
+   "nombre": "Vegan Ogre",
+   "npc_type": 20741,
+   "sprite": 110761,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    114,
+    127
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 303
+  },
+  {
+   "entity_id": 1059485,
+   "nombre": "Vegan Ogre",
+   "npc_type": 20741,
+   "sprite": 110761,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    92,
+    106
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 303
+  },
+  {
+   "entity_id": 1059486,
+   "nombre": "Vegan Ogre",
+   "npc_type": 20741,
+   "sprite": 110761,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    86,
+    108
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 303
+  },
+  {
+   "entity_id": 1059487,
+   "nombre": "Vegan Ogre",
+   "npc_type": 20741,
+   "sprite": 110761,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    101,
+    105
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 303
+  },
+  {
+   "entity_id": 1059488,
+   "nombre": "Vegan Ogre",
+   "npc_type": 20741,
+   "sprite": 110761,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    86,
+    117
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 303
+  },
+  {
+   "entity_id": 1059489,
+   "nombre": "Vegan Ogre",
+   "npc_type": 20741,
+   "sprite": 110761,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    94,
+    112
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 303
+  },
+  {
+   "entity_id": 1059490,
+   "nombre": "Lamia",
+   "npc_type": 20742,
+   "sprite": 110686,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    201,
+    75
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 305
+  },
+  {
+   "entity_id": 1059491,
+   "nombre": "Lamia",
+   "npc_type": 20742,
+   "sprite": 110686,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    199,
+    77
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 305
+  },
+  {
+   "entity_id": 1059492,
+   "nombre": "Lamia",
+   "npc_type": 20742,
+   "sprite": 110686,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    217,
+    82
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 305
+  },
+  {
+   "entity_id": 1059493,
+   "nombre": "Lamia",
+   "npc_type": 20742,
+   "sprite": 110686,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    221,
+    80
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 305
+  },
+  {
+   "entity_id": 1059494,
+   "nombre": "Lamia",
+   "npc_type": 20742,
+   "sprite": 110686,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    214,
+    95
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 305
+  },
+  {
+   "entity_id": 1059495,
+   "nombre": "Lamia",
+   "npc_type": 20742,
+   "sprite": 110686,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    233,
+    76
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 305
+  },
+  {
+   "entity_id": 1059496,
+   "nombre": "Lamia",
+   "npc_type": 20742,
+   "sprite": 110686,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    230,
+    69
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 305
+  },
+  {
+   "entity_id": 1059497,
+   "nombre": "Lamia",
+   "npc_type": 20742,
+   "sprite": 110686,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    226,
+    82
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 305
+  },
+  {
+   "entity_id": 1059498,
+   "nombre": "Lamia",
+   "npc_type": 20742,
+   "sprite": 110686,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    227,
+    72
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 305
+  },
+  {
+   "entity_id": 1059499,
+   "nombre": "Lamia",
+   "npc_type": 20742,
+   "sprite": 110686,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    225,
+    64
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 305
+  },
+  {
+   "entity_id": 1059500,
+   "nombre": "Lamia",
+   "npc_type": 20742,
+   "sprite": 110686,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    229,
+    101
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 305
+  },
+  {
+   "entity_id": 1059501,
+   "nombre": "Lamia",
+   "npc_type": 20742,
+   "sprite": 110686,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    231,
+    92
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 305
+  },
+  {
+   "entity_id": 1059502,
+   "nombre": "Lamia",
+   "npc_type": 20742,
+   "sprite": 110686,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    220,
+    111
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 305
+  },
+  {
+   "entity_id": 1059503,
+   "nombre": "Lamia",
+   "npc_type": 20742,
+   "sprite": 110686,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    231,
+    114
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 305
+  },
+  {
+   "entity_id": 1059504,
+   "nombre": "Lamia",
+   "npc_type": 20742,
+   "sprite": 110686,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    230,
+    97
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 305
+  },
+  {
+   "entity_id": 1059505,
+   "nombre": "Naga",
+   "npc_type": 20743,
+   "sprite": 110784,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    257,
+    97
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 305
+  },
+  {
+   "entity_id": 1059506,
+   "nombre": "Naga",
+   "npc_type": 20743,
+   "sprite": 110784,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    264,
+    104
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 305
+  },
+  {
+   "entity_id": 1059507,
+   "nombre": "Naga",
+   "npc_type": 20743,
+   "sprite": 110784,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    248,
+    118
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 305
+  },
+  {
+   "entity_id": 1059508,
+   "nombre": "Naga",
+   "npc_type": 20743,
+   "sprite": 110784,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    248,
+    83
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 305
+  },
+  {
+   "entity_id": 1059509,
+   "nombre": "Naga",
+   "npc_type": 20743,
+   "sprite": 110784,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    252,
+    101
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 305
+  },
+  {
+   "entity_id": 1059510,
+   "nombre": "Naga",
+   "npc_type": 20743,
+   "sprite": 110784,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    283,
+    88
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 305
+  },
+  {
+   "entity_id": 1059511,
+   "nombre": "Naga",
+   "npc_type": 20743,
+   "sprite": 110784,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    270,
+    92
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 305
+  },
+  {
+   "entity_id": 1059512,
+   "nombre": "Naga",
+   "npc_type": 20743,
+   "sprite": 110784,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    287,
+    77
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 305
+  },
+  {
+   "entity_id": 1059513,
+   "nombre": "Naga",
+   "npc_type": 20743,
+   "sprite": 110784,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    268,
+    95
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 305
+  },
+  {
+   "entity_id": 1059514,
+   "nombre": "Naga",
+   "npc_type": 20743,
+   "sprite": 110784,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    256,
+    114
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 305
+  },
+  {
+   "entity_id": 1059515,
+   "nombre": "Naga",
+   "npc_type": 20743,
+   "sprite": 110784,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    263,
+    49
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 305
+  },
+  {
+   "entity_id": 1059516,
+   "nombre": "Naga",
+   "npc_type": 20743,
+   "sprite": 110784,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    275,
+    61
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 305
+  },
+  {
+   "entity_id": 1059517,
+   "nombre": "Naga",
+   "npc_type": 20743,
+   "sprite": 110784,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    267,
+    50
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 305
+  },
+  {
+   "entity_id": 1059518,
+   "nombre": "Naga",
+   "npc_type": 20743,
+   "sprite": 110784,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    269,
+    39
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 305
+  },
+  {
+   "entity_id": 1059519,
+   "nombre": "Naga",
+   "npc_type": 20743,
+   "sprite": 110784,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    287,
+    70
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 305
+  },
+  {
+   "entity_id": 1059520,
+   "nombre": "Red Cockatrice",
+   "npc_type": 20744,
+   "sprite": 110689,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    57,
+    159
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 307
+  },
+  {
+   "entity_id": 1059521,
+   "nombre": "Red Cockatrice",
+   "npc_type": 20744,
+   "sprite": 110689,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    150
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 307
+  },
+  {
+   "entity_id": 1059522,
+   "nombre": "Red Cockatrice",
+   "npc_type": 20744,
+   "sprite": 110689,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    45,
+    156
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 307
+  },
+  {
+   "entity_id": 1059523,
+   "nombre": "Red Cockatrice",
+   "npc_type": 20744,
+   "sprite": 110689,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    66,
+    145
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 307
+  },
+  {
+   "entity_id": 1059524,
+   "nombre": "Red Cockatrice",
+   "npc_type": 20744,
+   "sprite": 110689,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    75,
+    147
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 307
+  },
+  {
+   "entity_id": 1059525,
+   "nombre": "Red Cockatrice",
+   "npc_type": 20744,
+   "sprite": 110689,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    103,
+    160
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 307
+  },
+  {
+   "entity_id": 1059526,
+   "nombre": "Red Cockatrice",
+   "npc_type": 20744,
+   "sprite": 110689,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    90,
+    143
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 307
+  },
+  {
+   "entity_id": 1059527,
+   "nombre": "Red Cockatrice",
+   "npc_type": 20744,
+   "sprite": 110689,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    103,
+    156
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 307
+  },
+  {
+   "entity_id": 1059528,
+   "nombre": "Red Cockatrice",
+   "npc_type": 20744,
+   "sprite": 110689,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    98,
+    156
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 307
+  },
+  {
+   "entity_id": 1059529,
+   "nombre": "Red Cockatrice",
+   "npc_type": 20744,
+   "sprite": 110689,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    73,
+    146
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 307
+  },
+  {
+   "entity_id": 1059530,
+   "nombre": "Red Cockatrice",
+   "npc_type": 20744,
+   "sprite": 110689,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    107,
+    158
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 307
+  },
+  {
+   "entity_id": 1059531,
+   "nombre": "Red Cockatrice",
+   "npc_type": 20744,
+   "sprite": 110689,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    120,
+    126
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 307
+  },
+  {
+   "entity_id": 1059532,
+   "nombre": "Red Cockatrice",
+   "npc_type": 20744,
+   "sprite": 110689,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    119,
+    116
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 307
+  },
+  {
+   "entity_id": 1059533,
+   "nombre": "Red Cockatrice",
+   "npc_type": 20744,
+   "sprite": 110689,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    126,
+    131
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 307
+  },
+  {
+   "entity_id": 1059534,
+   "nombre": "Red Cockatrice",
+   "npc_type": 20744,
+   "sprite": 110689,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    124,
+    124
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 307
+  },
+  {
+   "entity_id": 1059535,
+   "nombre": "Royal Cockatrice",
+   "npc_type": 20745,
+   "sprite": 110789,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    141,
+    143
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 307
+  },
+  {
+   "entity_id": 1059536,
+   "nombre": "Royal Cockatrice",
+   "npc_type": 20745,
+   "sprite": 110789,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    143,
+    137
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 307
+  },
+  {
+   "entity_id": 1059537,
+   "nombre": "Royal Cockatrice",
+   "npc_type": 20745,
+   "sprite": 110789,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    157,
+    156
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 307
+  },
+  {
+   "entity_id": 1059538,
+   "nombre": "Royal Cockatrice",
+   "npc_type": 20745,
+   "sprite": 110789,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    140,
+    145
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 307
+  },
+  {
+   "entity_id": 1059539,
+   "nombre": "Royal Cockatrice",
+   "npc_type": 20745,
+   "sprite": 110789,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    138,
+    140
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 307
+  },
+  {
+   "entity_id": 1059540,
+   "nombre": "Royal Cockatrice",
+   "npc_type": 20745,
+   "sprite": 110789,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    166,
+    145
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 307
+  },
+  {
+   "entity_id": 1059541,
+   "nombre": "Royal Cockatrice",
+   "npc_type": 20745,
+   "sprite": 110789,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    180,
+    143
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 307
+  },
+  {
+   "entity_id": 1059542,
+   "nombre": "Royal Cockatrice",
+   "npc_type": 20745,
+   "sprite": 110789,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    176,
+    137
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 307
+  },
+  {
+   "entity_id": 1059543,
+   "nombre": "Royal Cockatrice",
+   "npc_type": 20745,
+   "sprite": 110789,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    169,
+    141
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 307
+  },
+  {
+   "entity_id": 1059544,
+   "nombre": "Royal Cockatrice",
+   "npc_type": 20745,
+   "sprite": 110789,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    164,
+    149
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 307
+  },
+  {
+   "entity_id": 1059545,
+   "nombre": "Royal Cockatrice",
+   "npc_type": 20745,
+   "sprite": 110789,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    178,
+    165
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 307
+  },
+  {
+   "entity_id": 1059546,
+   "nombre": "Royal Cockatrice",
+   "npc_type": 20745,
+   "sprite": 110789,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    173,
+    158
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 307
+  },
+  {
+   "entity_id": 1059547,
+   "nombre": "Royal Cockatrice",
+   "npc_type": 20745,
+   "sprite": 110789,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    191,
+    159
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 307
+  },
+  {
+   "entity_id": 1059548,
+   "nombre": "Royal Cockatrice",
+   "npc_type": 20745,
+   "sprite": 110789,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    182,
+    145
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 307
+  },
+  {
+   "entity_id": 1059549,
+   "nombre": "Royal Cockatrice",
+   "npc_type": 20745,
+   "sprite": 110789,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    171,
+    158
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 307
+  },
+  {
+   "entity_id": 1059550,
+   "nombre": "E-Lavendeant",
+   "npc_type": 20746,
+   "sprite": 110813,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    168,
+    76
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 309
+  },
+  {
+   "entity_id": 1059551,
+   "nombre": "E-Lavendeant",
+   "npc_type": 20746,
+   "sprite": 110813,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    162,
+    99
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 309
+  },
+  {
+   "entity_id": 1059552,
+   "nombre": "E-Lavendeant",
+   "npc_type": 20746,
+   "sprite": 110813,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    173,
+    76
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 309
+  },
+  {
+   "entity_id": 1059553,
+   "nombre": "E-Lavendeant",
+   "npc_type": 20746,
+   "sprite": 110813,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    161,
+    94
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 309
+  },
+  {
+   "entity_id": 1059554,
+   "nombre": "E-Lavendeant",
+   "npc_type": 20746,
+   "sprite": 110813,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    162,
+    92
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 309
+  },
+  {
+   "entity_id": 1059555,
+   "nombre": "E-Spiriton",
+   "npc_type": 20747,
+   "sprite": 110822,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    166,
+    100
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 309
+  },
+  {
+   "entity_id": 1059556,
+   "nombre": "E-Spiriton",
+   "npc_type": 20747,
+   "sprite": 110822,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    178,
+    97
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 309
+  },
+  {
+   "entity_id": 1059557,
+   "nombre": "E-Spiriton",
+   "npc_type": 20747,
+   "sprite": 110822,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    199,
+    85
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 309
+  },
+  {
+   "entity_id": 1059558,
+   "nombre": "E-Spiriton",
+   "npc_type": 20747,
+   "sprite": 110822,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    182,
+    96
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 309
+  },
+  {
+   "entity_id": 1059559,
+   "nombre": "E-Spiriton",
+   "npc_type": 20747,
+   "sprite": 110822,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    189,
+    93
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 309
+  },
+  {
+   "entity_id": 1059560,
+   "nombre": "E-Kupillar",
+   "npc_type": 20748,
+   "sprite": 110756,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    143,
+    118
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 309
+  },
+  {
+   "entity_id": 1059561,
+   "nombre": "E-Kupillar",
+   "npc_type": 20748,
+   "sprite": 110756,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    136,
+    99
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 309
+  },
+  {
+   "entity_id": 1059562,
+   "nombre": "E-Kupillar",
+   "npc_type": 20748,
+   "sprite": 110756,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    126,
+    118
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 309
+  },
+  {
+   "entity_id": 1059563,
+   "nombre": "E-Kupillar",
+   "npc_type": 20748,
+   "sprite": 110756,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    124,
+    106
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 309
+  },
+  {
+   "entity_id": 1059564,
+   "nombre": "E-Kupillar",
+   "npc_type": 20748,
+   "sprite": 110756,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    147,
+    113
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 309
+  },
+  {
+   "entity_id": 1059565,
+   "nombre": "E-Lamia",
+   "npc_type": 20749,
+   "sprite": 110686,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    187,
+    109
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 309
+  },
+  {
+   "entity_id": 1059566,
+   "nombre": "E-Lamia",
+   "npc_type": 20749,
+   "sprite": 110686,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    167,
+    105
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 309
+  },
+  {
+   "entity_id": 1059567,
+   "nombre": "E-Lamia",
+   "npc_type": 20749,
+   "sprite": 110686,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    174,
+    111
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 309
+  },
+  {
+   "entity_id": 1059568,
+   "nombre": "E-Lamia",
+   "npc_type": 20749,
+   "sprite": 110686,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    169,
+    108
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 309
+  },
+  {
+   "entity_id": 1059569,
+   "nombre": "E-Lamia",
+   "npc_type": 20749,
+   "sprite": 110686,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    149,
+    115
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 309
+  },
+  {
+   "entity_id": 1059570,
+   "nombre": "E-Red Cockatrice",
+   "npc_type": 20750,
+   "sprite": 110689,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    191,
+    122
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 309
+  },
+  {
+   "entity_id": 1059571,
+   "nombre": "E-Red Cockatrice",
+   "npc_type": 20750,
+   "sprite": 110689,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    209,
+    120
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 309
+  },
+  {
+   "entity_id": 1059572,
+   "nombre": "E-Red Cockatrice",
+   "npc_type": 20750,
+   "sprite": 110689,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    207,
+    124
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 309
+  },
+  {
+   "entity_id": 1059573,
+   "nombre": "E-Red Cockatrice",
+   "npc_type": 20750,
+   "sprite": 110689,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    206,
+    107
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 309
+  },
+  {
+   "entity_id": 1059574,
+   "nombre": "E-Red Cockatrice",
+   "npc_type": 20750,
+   "sprite": 110689,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    197,
+    119
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 309
+  },
+  {
+   "entity_id": 1059575,
+   "nombre": "Galeneant",
+   "npc_type": 20751,
+   "sprite": 110815,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    119,
+    39
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 310
+  },
+  {
+   "entity_id": 1059576,
+   "nombre": "Grim Schkull",
+   "npc_type": 20752,
+   "sprite": 110824,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    199,
+    29
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 312
+  },
+  {
+   "entity_id": 1059577,
+   "nombre": "Echidna",
+   "npc_type": 20753,
+   "sprite": 110687,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    248,
+    105
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 314
+  }
+ ],
+ "recursos": [
+  {
+   "entity_id": 119262,
+   "capa": 0,
+   "px": [
+    189,
+    143
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "crudo": "ded1010000000000bd0000008f0000000000000027000000000000001a000000dc0661ea00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 119263,
+   "capa": 0,
+   "px": [
+    9400,
+    274
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "crudo": "dfd1010000000000b8240000120100000000000027000000000000001a000000dc0661ea00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 119264,
+   "capa": 0,
+   "px": [
+    237,
+    5603
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "crudo": "e0d1010000000000ed000000e31500000000000027000000000000001a000000dc0661ea00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 119265,
+   "capa": 0,
+   "px": [
+    7201,
+    4260
+   ],
+   "medio": "00000000180000000000000000000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60052,
+   "cola": "00002280140000",
+   "crudo": "e1d1010000000000211c0000a410000000000000180000000000000000000000dc0694ea00002280140000",
+   "que_es": "Dark City Totem"
+  },
+  {
+   "entity_id": 119266,
+   "capa": 0,
+   "px": [
+    6805,
+    4477
+   ],
+   "medio": "000000ba156f77650000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60054,
+   "cola": "00002280140000",
+   "crudo": "e2d1010000000000951a00007d110000000000ba156f77650000000000000000000696ea00002280140000",
+   "que_es": "Breeze Totem"
+  },
+  {
+   "entity_id": 119267,
+   "capa": 0,
+   "px": [
+    6997,
+    4354
+   ],
+   "medio": "006f70706572284d2900000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60053,
+   "cola": "00002280140000",
+   "crudo": "e3d1010000000000551b000002110000006f70706572284d2900000000000000000695ea00002280140000",
+   "que_es": "Iron Totem"
+  },
+  {
+   "entity_id": 119268,
+   "capa": 0,
+   "px": [
+    6617,
+    4579
+   ],
+   "medio": "006f70706572284d2900000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60051,
+   "cola": "00002280140000",
+   "crudo": "e4d1010000000000d9190000e3110000006f70706572284d2900000000000000000693ea00002280140000",
+   "que_es": "Aurora Totem"
+  }
+ ]
+}

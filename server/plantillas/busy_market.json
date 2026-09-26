@@ -1,0 +1,3666 @@
+{
+ "_nota": "Busy Market (stage 390), de Celestia, zona Celestia. Se llega desde Pier Lane (389). Poblado desde UNA sola sesion. Los objetos van CRUDOS.",
+ "stage": 390,
+ "spawns": [
+  {
+   "entity_id": 32752,
+   "nombre": "Aurora Totem",
+   "npc_type": 1937,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    124,
+    127
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 32753,
+   "nombre": "Dark City Totem",
+   "npc_type": 1938,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    141,
+    135
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 32754,
+   "nombre": "Iron Totem",
+   "npc_type": 1939,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    135,
+    132
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 32755,
+   "nombre": "Breeze Totem",
+   "npc_type": 1940,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    129,
+    130
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 123986,
+   "nombre": "Chef Ramsay",
+   "npc_type": 24628,
+   "sprite": 40025,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    224,
+    108
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123987,
+   "nombre": "Spell Researcher",
+   "npc_type": 24642,
+   "sprite": 40727,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    110,
+    87
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123988,
+   "nombre": "Bank Staff",
+   "npc_type": 24640,
+   "sprite": 40726,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    196,
+    103
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123989,
+   "nombre": "Athena",
+   "npc_type": 24650,
+   "sprite": 40715,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    208,
+    109
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123990,
+   "nombre": "Cupid",
+   "npc_type": 1502,
+   "sprite": 40006,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    149,
+    91
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123991,
+   "nombre": "Market Technicia",
+   "npc_type": 24641,
+   "sprite": 40587,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    237,
+    100
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123992,
+   "nombre": "Skill Researcher",
+   "npc_type": 24643,
+   "sprite": 40115,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    125,
+    96
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123993,
+   "nombre": "Market Merchant",
+   "npc_type": 24644,
+   "sprite": 40263,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    152,
+    110
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123994,
+   "nombre": "Kefiar",
+   "npc_type": 24661,
+   "sprite": 40012,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    212,
+    46
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 1067436,
+   "nombre": "Thieving Wolf",
+   "npc_type": 23374,
+   "sprite": 111277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    58,
+    77
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 364
+  },
+  {
+   "entity_id": 1067437,
+   "nombre": "Thieving Wolf",
+   "npc_type": 23374,
+   "sprite": 111277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    37,
+    83
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 364
+  },
+  {
+   "entity_id": 1067438,
+   "nombre": "Thieving Wolf",
+   "npc_type": 23374,
+   "sprite": 111277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    51,
+    82
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 364
+  },
+  {
+   "entity_id": 1067439,
+   "nombre": "Thieving Wolf",
+   "npc_type": 23374,
+   "sprite": 111277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    55,
+    88
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 364
+  },
+  {
+   "entity_id": 1067440,
+   "nombre": "Thieving Wolf",
+   "npc_type": 23374,
+   "sprite": 111277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    44,
+    93
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 364
+  },
+  {
+   "entity_id": 1067441,
+   "nombre": "Thieving Wolf",
+   "npc_type": 23374,
+   "sprite": 111277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    34,
+    64
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 364
+  },
+  {
+   "entity_id": 1067442,
+   "nombre": "Thieving Wolf",
+   "npc_type": 23374,
+   "sprite": 111277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    19,
+    87
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 364
+  },
+  {
+   "entity_id": 1067443,
+   "nombre": "Thieving Wolf",
+   "npc_type": 23374,
+   "sprite": 111277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    11,
+    81
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 364
+  },
+  {
+   "entity_id": 1067444,
+   "nombre": "Thieving Wolf",
+   "npc_type": 23374,
+   "sprite": 111277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    43,
+    69
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 364
+  },
+  {
+   "entity_id": 1067445,
+   "nombre": "Thieving Wolf",
+   "npc_type": 23374,
+   "sprite": 111277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    29,
+    73
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 364
+  },
+  {
+   "entity_id": 1067446,
+   "nombre": "Thieving Wolf",
+   "npc_type": 23374,
+   "sprite": 111277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    36,
+    69
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 364
+  },
+  {
+   "entity_id": 1067447,
+   "nombre": "Thieving Wolf",
+   "npc_type": 23374,
+   "sprite": 111277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    57,
+    72
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 364
+  },
+  {
+   "entity_id": 1067448,
+   "nombre": "Thieving Wolf",
+   "npc_type": 23374,
+   "sprite": 111277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    50,
+    58
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 364
+  },
+  {
+   "entity_id": 1067449,
+   "nombre": "Thieving Wolf",
+   "npc_type": 23374,
+   "sprite": 111277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    51,
+    61
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 364
+  },
+  {
+   "entity_id": 1067450,
+   "nombre": "Thieving Wolf",
+   "npc_type": 23374,
+   "sprite": 111277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    48,
+    79
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 364
+  },
+  {
+   "entity_id": 1067451,
+   "nombre": "Thieving Wolf",
+   "npc_type": 23374,
+   "sprite": 111277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    38,
+    52
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 364
+  },
+  {
+   "entity_id": 1067452,
+   "nombre": "Thieving Wolf",
+   "npc_type": 23374,
+   "sprite": 111277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    17,
+    54
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 364
+  },
+  {
+   "entity_id": 1067453,
+   "nombre": "Thieving Wolf",
+   "npc_type": 23374,
+   "sprite": 111277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    47
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 364
+  },
+  {
+   "entity_id": 1067454,
+   "nombre": "Thieving Wolf",
+   "npc_type": 23374,
+   "sprite": 111277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    42,
+    35
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 364
+  },
+  {
+   "entity_id": 1067455,
+   "nombre": "Thieving Wolf",
+   "npc_type": 23374,
+   "sprite": 111277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    32,
+    59
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 364
+  },
+  {
+   "entity_id": 1067456,
+   "nombre": "Thieving Wolf",
+   "npc_type": 23374,
+   "sprite": 111277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    38,
+    47
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 364
+  },
+  {
+   "entity_id": 1067457,
+   "nombre": "Thieving Wolf",
+   "npc_type": 23374,
+   "sprite": 111277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    67,
+    41
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 364
+  },
+  {
+   "entity_id": 1067458,
+   "nombre": "Thieving Wolf",
+   "npc_type": 23374,
+   "sprite": 111277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    62,
+    38
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 364
+  },
+  {
+   "entity_id": 1067459,
+   "nombre": "Thieving Wolf",
+   "npc_type": 23374,
+   "sprite": 111277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    55,
+    38
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 364
+  },
+  {
+   "entity_id": 1067460,
+   "nombre": "Thieving Wolf",
+   "npc_type": 23374,
+   "sprite": 111277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    46,
+    31
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 364
+  },
+  {
+   "entity_id": 1067461,
+   "nombre": "Thieving Wolf",
+   "npc_type": 23374,
+   "sprite": 111277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    72,
+    25
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 364
+  },
+  {
+   "entity_id": 1067462,
+   "nombre": "Thieving Wolf",
+   "npc_type": 23374,
+   "sprite": 111277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    79,
+    20
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 364
+  },
+  {
+   "entity_id": 1067463,
+   "nombre": "Thieving Wolf",
+   "npc_type": 23374,
+   "sprite": 111277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    72,
+    35
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 364
+  },
+  {
+   "entity_id": 1067464,
+   "nombre": "Thieving Wolf",
+   "npc_type": 23374,
+   "sprite": 111277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    63,
+    30
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 364
+  },
+  {
+   "entity_id": 1067465,
+   "nombre": "Thieving Wolf",
+   "npc_type": 23374,
+   "sprite": 111277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    85,
+    27
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 364
+  },
+  {
+   "entity_id": 1067466,
+   "nombre": "Thieving Wolf",
+   "npc_type": 23374,
+   "sprite": 111277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    75,
+    65
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 364
+  },
+  {
+   "entity_id": 1067467,
+   "nombre": "Thieving Wolf",
+   "npc_type": 23374,
+   "sprite": 111277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    64,
+    72
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 364
+  },
+  {
+   "entity_id": 1067468,
+   "nombre": "Thieving Wolf",
+   "npc_type": 23374,
+   "sprite": 111277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    90,
+    57
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 364
+  },
+  {
+   "entity_id": 1067469,
+   "nombre": "Thieving Wolf",
+   "npc_type": 23374,
+   "sprite": 111277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    81,
+    58
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 364
+  },
+  {
+   "entity_id": 1067470,
+   "nombre": "Thieving Wolf",
+   "npc_type": 23374,
+   "sprite": 111277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    67,
+    68
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 364
+  },
+  {
+   "entity_id": 1067471,
+   "nombre": "Thieving Wolf",
+   "npc_type": 23374,
+   "sprite": 111277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    107,
+    44
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 364
+  },
+  {
+   "entity_id": 1067472,
+   "nombre": "Thieving Wolf",
+   "npc_type": 23374,
+   "sprite": 111277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    109,
+    38
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 364
+  },
+  {
+   "entity_id": 1067473,
+   "nombre": "Thieving Wolf",
+   "npc_type": 23374,
+   "sprite": 111277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    101,
+    54
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 364
+  },
+  {
+   "entity_id": 1067474,
+   "nombre": "Thieving Wolf",
+   "npc_type": 23374,
+   "sprite": 111277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    92,
+    54
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 364
+  },
+  {
+   "entity_id": 1067475,
+   "nombre": "Thieving Wolf",
+   "npc_type": 23374,
+   "sprite": 111277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    102,
+    51
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 364
+  },
+  {
+   "entity_id": 1067476,
+   "nombre": "Pink Doggy",
+   "npc_type": 23375,
+   "sprite": 111278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    94,
+    19
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 365
+  },
+  {
+   "entity_id": 1067477,
+   "nombre": "Pink Doggy",
+   "npc_type": 23375,
+   "sprite": 111278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    90,
+    21
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 365
+  },
+  {
+   "entity_id": 1067478,
+   "nombre": "Pink Doggy",
+   "npc_type": 23375,
+   "sprite": 111278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    79,
+    19
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 365
+  },
+  {
+   "entity_id": 1067479,
+   "nombre": "Pink Doggy",
+   "npc_type": 23375,
+   "sprite": 111278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    98,
+    15
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 365
+  },
+  {
+   "entity_id": 1067480,
+   "nombre": "Pink Doggy",
+   "npc_type": 23375,
+   "sprite": 111278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    101,
+    20
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 365
+  },
+  {
+   "entity_id": 1067481,
+   "nombre": "Pink Doggy",
+   "npc_type": 23375,
+   "sprite": 111278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    128,
+    14
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 365
+  },
+  {
+   "entity_id": 1067482,
+   "nombre": "Pink Doggy",
+   "npc_type": 23375,
+   "sprite": 111278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    107,
+    21
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 365
+  },
+  {
+   "entity_id": 1067483,
+   "nombre": "Pink Doggy",
+   "npc_type": 23375,
+   "sprite": 111278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    126,
+    17
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 365
+  },
+  {
+   "entity_id": 1067484,
+   "nombre": "Pink Doggy",
+   "npc_type": 23375,
+   "sprite": 111278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    116,
+    13
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 365
+  },
+  {
+   "entity_id": 1067485,
+   "nombre": "Pink Doggy",
+   "npc_type": 23375,
+   "sprite": 111278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    110,
+    1
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 365
+  },
+  {
+   "entity_id": 1067486,
+   "nombre": "Pink Doggy",
+   "npc_type": 23375,
+   "sprite": 111278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    143,
+    48
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 365
+  },
+  {
+   "entity_id": 1067487,
+   "nombre": "Pink Doggy",
+   "npc_type": 23375,
+   "sprite": 111278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    151,
+    53
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 365
+  },
+  {
+   "entity_id": 1067488,
+   "nombre": "Pink Doggy",
+   "npc_type": 23375,
+   "sprite": 111278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    163,
+    47
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 365
+  },
+  {
+   "entity_id": 1067489,
+   "nombre": "Pink Doggy",
+   "npc_type": 23375,
+   "sprite": 111278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    155,
+    51
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 365
+  },
+  {
+   "entity_id": 1067490,
+   "nombre": "Pink Doggy",
+   "npc_type": 23375,
+   "sprite": 111278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    163,
+    44
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 365
+  },
+  {
+   "entity_id": 1067491,
+   "nombre": "Pink Doggy",
+   "npc_type": 23375,
+   "sprite": 111278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    159,
+    67
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 365
+  },
+  {
+   "entity_id": 1067492,
+   "nombre": "Pink Doggy",
+   "npc_type": 23375,
+   "sprite": 111278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    163,
+    55
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 365
+  },
+  {
+   "entity_id": 1067493,
+   "nombre": "Pink Doggy",
+   "npc_type": 23375,
+   "sprite": 111278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    170,
+    63
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 365
+  },
+  {
+   "entity_id": 1067494,
+   "nombre": "Pink Doggy",
+   "npc_type": 23375,
+   "sprite": 111278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    159,
+    59
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 365
+  },
+  {
+   "entity_id": 1067495,
+   "nombre": "Pink Doggy",
+   "npc_type": 23375,
+   "sprite": 111278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    178,
+    62
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 365
+  },
+  {
+   "entity_id": 1067496,
+   "nombre": "Pink Doggy",
+   "npc_type": 23375,
+   "sprite": 111278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    185,
+    50
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 365
+  },
+  {
+   "entity_id": 1067497,
+   "nombre": "Pink Doggy",
+   "npc_type": 23375,
+   "sprite": 111278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    190,
+    45
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 365
+  },
+  {
+   "entity_id": 1067498,
+   "nombre": "Pink Doggy",
+   "npc_type": 23375,
+   "sprite": 111278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    177,
+    47
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 365
+  },
+  {
+   "entity_id": 1067499,
+   "nombre": "Pink Doggy",
+   "npc_type": 23375,
+   "sprite": 111278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    183,
+    51
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 365
+  },
+  {
+   "entity_id": 1067500,
+   "nombre": "Pink Doggy",
+   "npc_type": 23375,
+   "sprite": 111278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    185,
+    47
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 365
+  },
+  {
+   "entity_id": 1067501,
+   "nombre": "Pink Doggy",
+   "npc_type": 23375,
+   "sprite": 111278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    192,
+    34
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 365
+  },
+  {
+   "entity_id": 1067502,
+   "nombre": "Pink Doggy",
+   "npc_type": 23375,
+   "sprite": 111278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    178,
+    50
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 365
+  },
+  {
+   "entity_id": 1067503,
+   "nombre": "Pink Doggy",
+   "npc_type": 23375,
+   "sprite": 111278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    200,
+    40
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 365
+  },
+  {
+   "entity_id": 1067504,
+   "nombre": "Pink Doggy",
+   "npc_type": 23375,
+   "sprite": 111278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    195,
+    46
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 365
+  },
+  {
+   "entity_id": 1067505,
+   "nombre": "Pink Doggy",
+   "npc_type": 23375,
+   "sprite": 111278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    181,
+    36
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 365
+  },
+  {
+   "entity_id": 1067506,
+   "nombre": "Pink Doggy",
+   "npc_type": 23375,
+   "sprite": 111278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    170,
+    32
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 365
+  },
+  {
+   "entity_id": 1067507,
+   "nombre": "Pink Doggy",
+   "npc_type": 23375,
+   "sprite": 111278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    163,
+    18
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 365
+  },
+  {
+   "entity_id": 1067508,
+   "nombre": "Pink Doggy",
+   "npc_type": 23375,
+   "sprite": 111278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    168,
+    35
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 365
+  },
+  {
+   "entity_id": 1067509,
+   "nombre": "Pink Doggy",
+   "npc_type": 23375,
+   "sprite": 111278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    176,
+    29
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 365
+  },
+  {
+   "entity_id": 1067510,
+   "nombre": "Pink Doggy",
+   "npc_type": 23375,
+   "sprite": 111278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    159,
+    23
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 365
+  },
+  {
+   "entity_id": 1067511,
+   "nombre": "Pink Doggy",
+   "npc_type": 23375,
+   "sprite": 111278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    133,
+    20
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 365
+  },
+  {
+   "entity_id": 1067512,
+   "nombre": "Pink Doggy",
+   "npc_type": 23375,
+   "sprite": 111278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    134,
+    20
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 365
+  },
+  {
+   "entity_id": 1067513,
+   "nombre": "Pink Doggy",
+   "npc_type": 23375,
+   "sprite": 111278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    153,
+    17
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 365
+  },
+  {
+   "entity_id": 1067514,
+   "nombre": "Pink Doggy",
+   "npc_type": 23375,
+   "sprite": 111278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    137,
+    24
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 365
+  },
+  {
+   "entity_id": 1067515,
+   "nombre": "Pink Doggy",
+   "npc_type": 23375,
+   "sprite": 111278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    146,
+    29
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 365
+  },
+  {
+   "entity_id": 1067516,
+   "nombre": "Hopping Mouse",
+   "npc_type": 23376,
+   "sprite": 111285,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    189,
+    8
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 367
+  },
+  {
+   "entity_id": 1067517,
+   "nombre": "Hopping Mouse",
+   "npc_type": 23376,
+   "sprite": 111285,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    198,
+    13
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 367
+  },
+  {
+   "entity_id": 1067518,
+   "nombre": "Hopping Mouse",
+   "npc_type": 23376,
+   "sprite": 111285,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    195,
+    14
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 367
+  },
+  {
+   "entity_id": 1067519,
+   "nombre": "Hopping Mouse",
+   "npc_type": 23376,
+   "sprite": 111285,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    167,
+    16
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 367
+  },
+  {
+   "entity_id": 1067520,
+   "nombre": "Hopping Mouse",
+   "npc_type": 23376,
+   "sprite": 111285,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    184,
+    12
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 367
+  },
+  {
+   "entity_id": 1067521,
+   "nombre": "Hopping Mouse",
+   "npc_type": 23376,
+   "sprite": 111285,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    215,
+    27
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 367
+  },
+  {
+   "entity_id": 1067522,
+   "nombre": "Hopping Mouse",
+   "npc_type": 23376,
+   "sprite": 111285,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    207,
+    17
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 367
+  },
+  {
+   "entity_id": 1067523,
+   "nombre": "Hopping Mouse",
+   "npc_type": 23376,
+   "sprite": 111285,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    211,
+    22
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 367
+  },
+  {
+   "entity_id": 1067524,
+   "nombre": "Hopping Mouse",
+   "npc_type": 23376,
+   "sprite": 111285,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    192,
+    14
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 367
+  },
+  {
+   "entity_id": 1067525,
+   "nombre": "Hopping Mouse",
+   "npc_type": 23376,
+   "sprite": 111285,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    212,
+    29
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 367
+  },
+  {
+   "entity_id": 1067526,
+   "nombre": "Hopping Mouse",
+   "npc_type": 23376,
+   "sprite": 111285,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    218,
+    35
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 367
+  },
+  {
+   "entity_id": 1067527,
+   "nombre": "Hopping Mouse",
+   "npc_type": 23376,
+   "sprite": 111285,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    220,
+    52
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 367
+  },
+  {
+   "entity_id": 1067528,
+   "nombre": "Hopping Mouse",
+   "npc_type": 23376,
+   "sprite": 111285,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    206,
+    39
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 367
+  },
+  {
+   "entity_id": 1067529,
+   "nombre": "Hopping Mouse",
+   "npc_type": 23376,
+   "sprite": 111285,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    226,
+    44
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 367
+  },
+  {
+   "entity_id": 1067530,
+   "nombre": "Hopping Mouse",
+   "npc_type": 23376,
+   "sprite": 111285,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    214,
+    38
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 367
+  },
+  {
+   "entity_id": 1067531,
+   "nombre": "Hopping Mouse",
+   "npc_type": 23376,
+   "sprite": 111285,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    220,
+    33
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 367
+  },
+  {
+   "entity_id": 1067532,
+   "nombre": "Hopping Mouse",
+   "npc_type": 23376,
+   "sprite": 111285,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    252,
+    27
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 367
+  },
+  {
+   "entity_id": 1067533,
+   "nombre": "Hopping Mouse",
+   "npc_type": 23376,
+   "sprite": 111285,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    237,
+    36
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 367
+  },
+  {
+   "entity_id": 1067534,
+   "nombre": "Hopping Mouse",
+   "npc_type": 23376,
+   "sprite": 111285,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    225,
+    28
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 367
+  },
+  {
+   "entity_id": 1067535,
+   "nombre": "Hopping Mouse",
+   "npc_type": 23376,
+   "sprite": 111285,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    228,
+    38
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 367
+  },
+  {
+   "entity_id": 1067536,
+   "nombre": "Hopping Mouse",
+   "npc_type": 23376,
+   "sprite": 111285,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    240,
+    18
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 367
+  },
+  {
+   "entity_id": 1067537,
+   "nombre": "Hopping Mouse",
+   "npc_type": 23376,
+   "sprite": 111285,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    235,
+    11
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 367
+  },
+  {
+   "entity_id": 1067538,
+   "nombre": "Hopping Mouse",
+   "npc_type": 23376,
+   "sprite": 111285,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    223,
+    18
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 367
+  },
+  {
+   "entity_id": 1067539,
+   "nombre": "Hopping Mouse",
+   "npc_type": 23376,
+   "sprite": 111285,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    217,
+    30
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 367
+  },
+  {
+   "entity_id": 1067540,
+   "nombre": "Hopping Mouse",
+   "npc_type": 23376,
+   "sprite": 111285,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    247,
+    0
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 367
+  },
+  {
+   "entity_id": 1067541,
+   "nombre": "Hopping Mouse",
+   "npc_type": 23376,
+   "sprite": 111285,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    251,
+    16
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 367
+  },
+  {
+   "entity_id": 1067542,
+   "nombre": "Hopping Mouse",
+   "npc_type": 23376,
+   "sprite": 111285,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    252,
+    25
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 367
+  },
+  {
+   "entity_id": 1067543,
+   "nombre": "Hopping Mouse",
+   "npc_type": 23376,
+   "sprite": 111285,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    269,
+    20
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 367
+  },
+  {
+   "entity_id": 1067544,
+   "nombre": "Hopping Mouse",
+   "npc_type": 23376,
+   "sprite": 111285,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    259,
+    29
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 367
+  },
+  {
+   "entity_id": 1067545,
+   "nombre": "Hopping Mouse",
+   "npc_type": 23376,
+   "sprite": 111285,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    270,
+    25
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 367
+  },
+  {
+   "entity_id": 1067546,
+   "nombre": "Hopping Mouse",
+   "npc_type": 23376,
+   "sprite": 111285,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    250,
+    55
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 367
+  },
+  {
+   "entity_id": 1067547,
+   "nombre": "Hopping Mouse",
+   "npc_type": 23376,
+   "sprite": 111285,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    254,
+    37
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 367
+  },
+  {
+   "entity_id": 1067548,
+   "nombre": "Hopping Mouse",
+   "npc_type": 23376,
+   "sprite": 111285,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    263,
+    47
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 367
+  },
+  {
+   "entity_id": 1067549,
+   "nombre": "Hopping Mouse",
+   "npc_type": 23376,
+   "sprite": 111285,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    257,
+    41
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 367
+  },
+  {
+   "entity_id": 1067550,
+   "nombre": "Hopping Mouse",
+   "npc_type": 23376,
+   "sprite": 111285,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    268,
+    27
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 367
+  },
+  {
+   "entity_id": 1067551,
+   "nombre": "Hopping Mouse",
+   "npc_type": 23376,
+   "sprite": 111285,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    245,
+    60
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 367
+  },
+  {
+   "entity_id": 1067552,
+   "nombre": "Hopping Mouse",
+   "npc_type": 23376,
+   "sprite": 111285,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    249,
+    54
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 367
+  },
+  {
+   "entity_id": 1067553,
+   "nombre": "Hopping Mouse",
+   "npc_type": 23376,
+   "sprite": 111285,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    244,
+    57
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 367
+  },
+  {
+   "entity_id": 1067554,
+   "nombre": "Hopping Mouse",
+   "npc_type": 23376,
+   "sprite": 111285,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    248,
+    45
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 367
+  },
+  {
+   "entity_id": 1067555,
+   "nombre": "Hopping Mouse",
+   "npc_type": 23376,
+   "sprite": 111285,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    245,
+    66
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 367
+  },
+  {
+   "entity_id": 1067556,
+   "nombre": "Red-Bellied Rat",
+   "npc_type": 23377,
+   "sprite": 111286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    287,
+    44
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1067557,
+   "nombre": "Red-Bellied Rat",
+   "npc_type": 23377,
+   "sprite": 111286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    290,
+    53
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1067558,
+   "nombre": "Red-Bellied Rat",
+   "npc_type": 23377,
+   "sprite": 111286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    292,
+    50
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1067559,
+   "nombre": "Red-Bellied Rat",
+   "npc_type": 23377,
+   "sprite": 111286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    274,
+    55
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1067560,
+   "nombre": "Red-Bellied Rat",
+   "npc_type": 23377,
+   "sprite": 111286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    291,
+    42
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1067561,
+   "nombre": "Red-Bellied Rat",
+   "npc_type": 23377,
+   "sprite": 111286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    277,
+    75
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1067562,
+   "nombre": "Red-Bellied Rat",
+   "npc_type": 23377,
+   "sprite": 111286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    287,
+    66
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1067563,
+   "nombre": "Red-Bellied Rat",
+   "npc_type": 23377,
+   "sprite": 111286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    292,
+    70
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1067564,
+   "nombre": "Red-Bellied Rat",
+   "npc_type": 23377,
+   "sprite": 111286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    278,
+    73
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1067565,
+   "nombre": "Red-Bellied Rat",
+   "npc_type": 23377,
+   "sprite": 111286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    291,
+    77
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1067566,
+   "nombre": "Red-Bellied Rat",
+   "npc_type": 23377,
+   "sprite": 111286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    253,
+    72
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1067567,
+   "nombre": "Red-Bellied Rat",
+   "npc_type": 23377,
+   "sprite": 111286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    243,
+    86
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1067568,
+   "nombre": "Red-Bellied Rat",
+   "npc_type": 23377,
+   "sprite": 111286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    268,
+    68
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1067569,
+   "nombre": "Red-Bellied Rat",
+   "npc_type": 23377,
+   "sprite": 111286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    260,
+    84
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1067570,
+   "nombre": "Red-Bellied Rat",
+   "npc_type": 23377,
+   "sprite": 111286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    258,
+    68
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1067571,
+   "nombre": "Red-Bellied Rat",
+   "npc_type": 23377,
+   "sprite": 111286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    276,
+    71
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1067572,
+   "nombre": "Red-Bellied Rat",
+   "npc_type": 23377,
+   "sprite": 111286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    257,
+    86
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1067573,
+   "nombre": "Red-Bellied Rat",
+   "npc_type": 23377,
+   "sprite": 111286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    272,
+    92
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1067574,
+   "nombre": "Red-Bellied Rat",
+   "npc_type": 23377,
+   "sprite": 111286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    271,
+    71
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1067575,
+   "nombre": "Red-Bellied Rat",
+   "npc_type": 23377,
+   "sprite": 111286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    274,
+    80
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1067576,
+   "nombre": "Red-Bellied Rat",
+   "npc_type": 23377,
+   "sprite": 111286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    275,
+    109
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1067577,
+   "nombre": "Red-Bellied Rat",
+   "npc_type": 23377,
+   "sprite": 111286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    273,
+    102
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1067578,
+   "nombre": "Red-Bellied Rat",
+   "npc_type": 23377,
+   "sprite": 111286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    293,
+    92
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1067579,
+   "nombre": "Red-Bellied Rat",
+   "npc_type": 23377,
+   "sprite": 111286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    279,
+    105
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1067580,
+   "nombre": "Red-Bellied Rat",
+   "npc_type": 23377,
+   "sprite": 111286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    273,
+    102
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1067581,
+   "nombre": "Red-Bellied Rat",
+   "npc_type": 23377,
+   "sprite": 111286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    244,
+    123
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1067582,
+   "nombre": "Red-Bellied Rat",
+   "npc_type": 23377,
+   "sprite": 111286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    248,
+    124
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1067583,
+   "nombre": "Red-Bellied Rat",
+   "npc_type": 23377,
+   "sprite": 111286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    243,
+    130
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1067584,
+   "nombre": "Red-Bellied Rat",
+   "npc_type": 23377,
+   "sprite": 111286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    254,
+    126
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1067585,
+   "nombre": "Red-Bellied Rat",
+   "npc_type": 23377,
+   "sprite": 111286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    263,
+    114
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1067586,
+   "nombre": "Red-Bellied Rat",
+   "npc_type": 23377,
+   "sprite": 111286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    274,
+    124
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1067587,
+   "nombre": "Red-Bellied Rat",
+   "npc_type": 23377,
+   "sprite": 111286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    278,
+    130
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1067588,
+   "nombre": "Red-Bellied Rat",
+   "npc_type": 23377,
+   "sprite": 111286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    272,
+    115
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1067589,
+   "nombre": "Red-Bellied Rat",
+   "npc_type": 23377,
+   "sprite": 111286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    288,
+    117
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1067590,
+   "nombre": "Red-Bellied Rat",
+   "npc_type": 23377,
+   "sprite": 111286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    270,
+    110
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1067591,
+   "nombre": "Red-Bellied Rat",
+   "npc_type": 23377,
+   "sprite": 111286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    294,
+    130
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1067592,
+   "nombre": "Red-Bellied Rat",
+   "npc_type": 23377,
+   "sprite": 111286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    275,
+    146
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1067593,
+   "nombre": "Red-Bellied Rat",
+   "npc_type": 23377,
+   "sprite": 111286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    292,
+    135
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1067594,
+   "nombre": "Red-Bellied Rat",
+   "npc_type": 23377,
+   "sprite": 111286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    288,
+    139
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1067595,
+   "nombre": "Red-Bellied Rat",
+   "npc_type": 23377,
+   "sprite": 111286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    295,
+    120
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1067596,
+   "nombre": "Big Glutton",
+   "npc_type": 23378,
+   "sprite": 111306,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    262,
+    140
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 371
+  },
+  {
+   "entity_id": 1067597,
+   "nombre": "Big Glutton",
+   "npc_type": 23378,
+   "sprite": 111306,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    261,
+    149
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 371
+  },
+  {
+   "entity_id": 1067598,
+   "nombre": "Big Glutton",
+   "npc_type": 23378,
+   "sprite": 111306,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    267,
+    155
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 371
+  },
+  {
+   "entity_id": 1067599,
+   "nombre": "Big Glutton",
+   "npc_type": 23378,
+   "sprite": 111306,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    273,
+    140
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 371
+  },
+  {
+   "entity_id": 1067600,
+   "nombre": "Big Glutton",
+   "npc_type": 23378,
+   "sprite": 111306,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    280,
+    141
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 371
+  },
+  {
+   "entity_id": 1067601,
+   "nombre": "Big Glutton",
+   "npc_type": 23378,
+   "sprite": 111306,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    244,
+    138
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 371
+  },
+  {
+   "entity_id": 1067602,
+   "nombre": "Big Glutton",
+   "npc_type": 23378,
+   "sprite": 111306,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    252,
+    137
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 371
+  },
+  {
+   "entity_id": 1067603,
+   "nombre": "Big Glutton",
+   "npc_type": 23378,
+   "sprite": 111306,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    234,
+    130
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 371
+  },
+  {
+   "entity_id": 1067604,
+   "nombre": "Big Glutton",
+   "npc_type": 23378,
+   "sprite": 111306,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    220,
+    136
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 371
+  },
+  {
+   "entity_id": 1067605,
+   "nombre": "Big Glutton",
+   "npc_type": 23378,
+   "sprite": 111306,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    238,
+    125
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 371
+  },
+  {
+   "entity_id": 1067606,
+   "nombre": "Big Glutton",
+   "npc_type": 23378,
+   "sprite": 111306,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    263,
+    163
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 371
+  },
+  {
+   "entity_id": 1067607,
+   "nombre": "Big Glutton",
+   "npc_type": 23378,
+   "sprite": 111306,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    256,
+    163
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 371
+  },
+  {
+   "entity_id": 1067608,
+   "nombre": "Big Glutton",
+   "npc_type": 23378,
+   "sprite": 111306,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    253,
+    169
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 371
+  },
+  {
+   "entity_id": 1067609,
+   "nombre": "Big Glutton",
+   "npc_type": 23378,
+   "sprite": 111306,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    250,
+    165
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 371
+  },
+  {
+   "entity_id": 1067610,
+   "nombre": "Big Glutton",
+   "npc_type": 23378,
+   "sprite": 111306,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    257,
+    149
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 371
+  },
+  {
+   "entity_id": 1067611,
+   "nombre": "Big Glutton",
+   "npc_type": 23378,
+   "sprite": 111306,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    229,
+    158
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 371
+  },
+  {
+   "entity_id": 1067612,
+   "nombre": "Big Glutton",
+   "npc_type": 23378,
+   "sprite": 111306,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    244,
+    156
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 371
+  },
+  {
+   "entity_id": 1067613,
+   "nombre": "Big Glutton",
+   "npc_type": 23378,
+   "sprite": 111306,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    226,
+    159
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 371
+  },
+  {
+   "entity_id": 1067614,
+   "nombre": "Big Glutton",
+   "npc_type": 23378,
+   "sprite": 111306,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    245,
+    171
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 371
+  },
+  {
+   "entity_id": 1067615,
+   "nombre": "Big Glutton",
+   "npc_type": 23378,
+   "sprite": 111306,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    234,
+    165
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 371
+  },
+  {
+   "entity_id": 1067616,
+   "nombre": "Big Glutton",
+   "npc_type": 23378,
+   "sprite": 111306,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    217,
+    157
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 371
+  },
+  {
+   "entity_id": 1067617,
+   "nombre": "Big Glutton",
+   "npc_type": 23378,
+   "sprite": 111306,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    202,
+    164
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 371
+  },
+  {
+   "entity_id": 1067618,
+   "nombre": "Big Glutton",
+   "npc_type": 23378,
+   "sprite": 111306,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    223,
+    166
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 371
+  },
+  {
+   "entity_id": 1067619,
+   "nombre": "Big Glutton",
+   "npc_type": 23378,
+   "sprite": 111306,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    198,
+    179
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 371
+  },
+  {
+   "entity_id": 1067620,
+   "nombre": "Big Glutton",
+   "npc_type": 23378,
+   "sprite": 111306,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    227,
+    152
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 371
+  },
+  {
+   "entity_id": 1067621,
+   "nombre": "Novice Thief",
+   "npc_type": 23379,
+   "sprite": 111307,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    185,
+    152
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 373
+  },
+  {
+   "entity_id": 1067622,
+   "nombre": "Novice Thief",
+   "npc_type": 23379,
+   "sprite": 111307,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    187,
+    170
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 373
+  },
+  {
+   "entity_id": 1067623,
+   "nombre": "Novice Thief",
+   "npc_type": 23379,
+   "sprite": 111307,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    187,
+    158
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 373
+  },
+  {
+   "entity_id": 1067624,
+   "nombre": "Novice Thief",
+   "npc_type": 23379,
+   "sprite": 111307,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    201,
+    173
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 373
+  },
+  {
+   "entity_id": 1067625,
+   "nombre": "Novice Thief",
+   "npc_type": 23379,
+   "sprite": 111307,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    201,
+    150
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 373
+  },
+  {
+   "entity_id": 1067626,
+   "nombre": "Novice Thief",
+   "npc_type": 23379,
+   "sprite": 111307,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    174,
+    155
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 373
+  },
+  {
+   "entity_id": 1067627,
+   "nombre": "Novice Thief",
+   "npc_type": 23379,
+   "sprite": 111307,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    185,
+    160
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 373
+  },
+  {
+   "entity_id": 1067628,
+   "nombre": "Novice Thief",
+   "npc_type": 23379,
+   "sprite": 111307,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    162,
+    167
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 373
+  },
+  {
+   "entity_id": 1067629,
+   "nombre": "Novice Thief",
+   "npc_type": 23379,
+   "sprite": 111307,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    177,
+    155
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 373
+  },
+  {
+   "entity_id": 1067630,
+   "nombre": "Novice Thief",
+   "npc_type": 23379,
+   "sprite": 111307,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    173,
+    166
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 373
+  },
+  {
+   "entity_id": 1067631,
+   "nombre": "Novice Thief",
+   "npc_type": 23379,
+   "sprite": 111307,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    148,
+    161
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 373
+  },
+  {
+   "entity_id": 1067632,
+   "nombre": "Novice Thief",
+   "npc_type": 23379,
+   "sprite": 111307,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    145,
+    160
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 373
+  },
+  {
+   "entity_id": 1067633,
+   "nombre": "Novice Thief",
+   "npc_type": 23379,
+   "sprite": 111307,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    135,
+    153
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 373
+  },
+  {
+   "entity_id": 1067634,
+   "nombre": "Novice Thief",
+   "npc_type": 23379,
+   "sprite": 111307,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    146,
+    171
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 373
+  },
+  {
+   "entity_id": 1067635,
+   "nombre": "Novice Thief",
+   "npc_type": 23379,
+   "sprite": 111307,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    152,
+    157
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 373
+  },
+  {
+   "entity_id": 1067636,
+   "nombre": "Novice Thief",
+   "npc_type": 23379,
+   "sprite": 111307,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    109,
+    169
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 373
+  },
+  {
+   "entity_id": 1067637,
+   "nombre": "Novice Thief",
+   "npc_type": 23379,
+   "sprite": 111307,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    110,
+    150
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 373
+  },
+  {
+   "entity_id": 1067638,
+   "nombre": "Novice Thief",
+   "npc_type": 23379,
+   "sprite": 111307,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    113,
+    160
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 373
+  },
+  {
+   "entity_id": 1067639,
+   "nombre": "Novice Thief",
+   "npc_type": 23379,
+   "sprite": 111307,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    132,
+    151
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 373
+  },
+  {
+   "entity_id": 1067640,
+   "nombre": "Novice Thief",
+   "npc_type": 23379,
+   "sprite": 111307,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    112,
+    160
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 373
+  },
+  {
+   "entity_id": 1067641,
+   "nombre": "Novice Thief",
+   "npc_type": 23379,
+   "sprite": 111307,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    89,
+    170
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 373
+  },
+  {
+   "entity_id": 1067642,
+   "nombre": "Novice Thief",
+   "npc_type": 23379,
+   "sprite": 111307,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    76,
+    162
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 373
+  },
+  {
+   "entity_id": 1067643,
+   "nombre": "Novice Thief",
+   "npc_type": 23379,
+   "sprite": 111307,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    101,
+    161
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 373
+  },
+  {
+   "entity_id": 1067644,
+   "nombre": "Novice Thief",
+   "npc_type": 23379,
+   "sprite": 111307,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    84,
+    169
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 373
+  },
+  {
+   "entity_id": 1067645,
+   "nombre": "Novice Thief",
+   "npc_type": 23379,
+   "sprite": 111307,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    74,
+    160
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 373
+  },
+  {
+   "entity_id": 1067646,
+   "nombre": "E-Big Glutton",
+   "npc_type": 23380,
+   "sprite": 111306,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    48,
+    126
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 375
+  },
+  {
+   "entity_id": 1067647,
+   "nombre": "E-Big Glutton",
+   "npc_type": 23380,
+   "sprite": 111306,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    98,
+    128
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 375
+  },
+  {
+   "entity_id": 1067648,
+   "nombre": "E-Big Glutton",
+   "npc_type": 23380,
+   "sprite": 111306,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    81,
+    121
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 375
+  },
+  {
+   "entity_id": 1067649,
+   "nombre": "E-Big Glutton",
+   "npc_type": 23380,
+   "sprite": 111306,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    95,
+    132
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 375
+  },
+  {
+   "entity_id": 1067650,
+   "nombre": "E-Big Glutton",
+   "npc_type": 23380,
+   "sprite": 111306,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    55,
+    124
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 375
+  },
+  {
+   "entity_id": 1067651,
+   "nombre": "E-Novice Thief",
+   "npc_type": 23381,
+   "sprite": 111307,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    25,
+    124
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 377
+  },
+  {
+   "entity_id": 1067652,
+   "nombre": "E-Novice Thief",
+   "npc_type": 23381,
+   "sprite": 111307,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    32,
+    97
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 377
+  },
+  {
+   "entity_id": 1067653,
+   "nombre": "E-Novice Thief",
+   "npc_type": 23381,
+   "sprite": 111307,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    47,
+    107
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 377
+  },
+  {
+   "entity_id": 1067654,
+   "nombre": "E-Novice Thief",
+   "npc_type": 23381,
+   "sprite": 111307,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    32,
+    109
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 377
+  },
+  {
+   "entity_id": 1067655,
+   "nombre": "E-Novice Thief",
+   "npc_type": 23381,
+   "sprite": 111307,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    23,
+    135
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 377
+  },
+  {
+   "entity_id": 1067656,
+   "nombre": "Bandit Randolf",
+   "npc_type": 23382,
+   "sprite": 111279,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    148,
+    36
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1067657,
+   "nombre": "King Hopper",
+   "npc_type": 23383,
+   "sprite": 111287,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    293,
+    38
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  }
+ ],
+ "recursos": [
+  {
+   "entity_id": 120116,
+   "capa": 0,
+   "px": [
+    194,
+    188
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "crudo": "34d5010000000000c2000000bc0000000000000027000000000000001a000000dc0661ea00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 120117,
+   "capa": 0,
+   "px": [
+    9386,
+    5426
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "crudo": "35d5010000000000aa240000321500000000000027000000000000001a000000dc0661ea00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 120118,
+   "capa": 2,
+   "px": [
+    3955,
+    4103
+   ],
+   "medio": "006f70706572284d2900000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60051,
+   "cola": "00002280140000",
+   "crudo": "36d5010002000000730f000007100000006f70706572284d2900000000000000000693ea00002280140000",
+   "que_es": "Aurora Totem"
+  },
+  {
+   "entity_id": 120119,
+   "capa": 0,
+   "px": [
+    7025,
+    1148
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60305,
+   "cola": "00004080140000",
+   "crudo": "37d5010000000000711b00007c0400000000000027000000000000001a000000dc0691eb00004080140000"
+  },
+  {
+   "entity_id": 120120,
+   "capa": 2,
+   "px": [
+    4511,
+    4362
+   ],
+   "medio": "00000000180000000000000000000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60052,
+   "cola": "00002280140000",
+   "crudo": "38d50100020000009f1100000a11000000000000180000000000000000000000dc0694ea00002280140000",
+   "que_es": "Dark City Totem"
+  },
+  {
+   "entity_id": 120121,
+   "capa": 2,
+   "px": [
+    4328,
+    4250
+   ],
+   "medio": "006f70706572284d2900000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60053,
+   "cola": "00002280140000",
+   "crudo": "39d5010002000000e81000009a100000006f70706572284d2900000000000000000695ea00002280140000",
+   "que_es": "Iron Totem"
+  },
+  {
+   "entity_id": 120122,
+   "capa": 2,
+   "px": [
+    4142,
+    4189
+   ],
+   "medio": "000000ba156f77650000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60054,
+   "cola": "00002280140000",
+   "crudo": "3ad50100020000002e1000005d100000000000ba156f77650000000000000000000696ea00002280140000",
+   "que_es": "Breeze Totem"
+  },
+  {
+   "entity_id": 120123,
+   "capa": 0,
+   "px": [
+    1737,
+    1223
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60305,
+   "cola": "00004080140000",
+   "crudo": "3bd5010000000000c9060000c70400000000000027000000000000001a000000dc0691eb00004080140000"
+  },
+  {
+   "entity_id": 120124,
+   "capa": 0,
+   "px": [
+    1166,
+    3426
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60305,
+   "cola": "00004080140000",
+   "crudo": "3cd50100000000008e040000620d00000000000027000000000000001a000000dc0691eb00004080140000"
+  },
+  {
+   "entity_id": 120125,
+   "capa": 0,
+   "px": [
+    8900,
+    4039
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60305,
+   "cola": "00004080140000",
+   "crudo": "3dd5010000000000c4220000c70f00000000000027000000000000001a000000dc0691eb00004080140000"
+  }
+ ]
+}

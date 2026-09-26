@@ -1,0 +1,4085 @@
+{
+ "_nota": "Coo Village (stage 298), de Celestia, zona Arcana. Se llega desde Academia Woods (296). Poblado desde UNA sola sesion. Los objetos van CRUDOS.",
+ "stage": 298,
+ "spawns": [
+  {
+   "entity_id": 32752,
+   "nombre": "Aurora Totem",
+   "npc_type": 1937,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    139,
+    110
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 32753,
+   "nombre": "Dark City Totem",
+   "npc_type": 1938,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    143,
+    115
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 32754,
+   "nombre": "Iron Totem",
+   "npc_type": 1939,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    161,
+    114
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 32755,
+   "nombre": "Breeze Totem",
+   "npc_type": 1940,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    165,
+    110
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 123617,
+   "nombre": "Magikale Bank Em",
+   "npc_type": 14455,
+   "sprite": 40439,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    159,
+    125
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123618,
+   "nombre": "Magikale Worker",
+   "npc_type": 14456,
+   "sprite": 40396,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    167,
+    122
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123619,
+   "nombre": "Magikale Spell R",
+   "npc_type": 14457,
+   "sprite": 40523,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    151,
+    124
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123620,
+   "nombre": "Magikale Tactici",
+   "npc_type": 14458,
+   "sprite": 40522,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    142,
+    123
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123621,
+   "nombre": "Magikale Instruc",
+   "npc_type": 14459,
+   "sprite": 40346,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    175,
+    121
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123622,
+   "nombre": "Magikale Master ",
+   "npc_type": 14460,
+   "sprite": 40364,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    180,
+    124
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123623,
+   "nombre": "Magikale Merchan",
+   "npc_type": 14461,
+   "sprite": 40459,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    137,
+    120
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123624,
+   "nombre": "Cupid",
+   "npc_type": 1502,
+   "sprite": 40006,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    171,
+    117
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123625,
+   "nombre": "Ethereal Produce",
+   "npc_type": 14462,
+   "sprite": 40005,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    156,
+    120
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123626,
+   "nombre": "High Mage Mogol",
+   "npc_type": 14471,
+   "sprite": 40522,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    263,
+    88
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123627,
+   "nombre": "Mage Jerika",
+   "npc_type": 14476,
+   "sprite": 40524,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    140,
+    98
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123628,
+   "nombre": "Deliveryman Ronn",
+   "npc_type": 14485,
+   "sprite": 40385,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    224,
+    51
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123629,
+   "nombre": "Herbalist Manny",
+   "npc_type": 14486,
+   "sprite": 40388,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    200,
+    87
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123630,
+   "nombre": "Aktos",
+   "npc_type": 14502,
+   "sprite": 40527,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    161,
+    98
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 1053653,
+   "nombre": "PowPow Bun",
+   "npc_type": 18547,
+   "sprite": 110286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    51,
+    10
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 270
+  },
+  {
+   "entity_id": 1053654,
+   "nombre": "PowPow Bun",
+   "npc_type": 18547,
+   "sprite": 110286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    42,
+    33
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 270
+  },
+  {
+   "entity_id": 1053655,
+   "nombre": "PowPow Bun",
+   "npc_type": 18547,
+   "sprite": 110286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    36,
+    30
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 270
+  },
+  {
+   "entity_id": 1053656,
+   "nombre": "PowPow Bun",
+   "npc_type": 18547,
+   "sprite": 110286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    44,
+    36
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 270
+  },
+  {
+   "entity_id": 1053657,
+   "nombre": "PowPow Bun",
+   "npc_type": 18547,
+   "sprite": 110286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    44,
+    22
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 270
+  },
+  {
+   "entity_id": 1053658,
+   "nombre": "PowPow Bun",
+   "npc_type": 18547,
+   "sprite": 110286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    56,
+    28
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 270
+  },
+  {
+   "entity_id": 1053659,
+   "nombre": "PowPow Bun",
+   "npc_type": 18547,
+   "sprite": 110286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    65,
+    17
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 270
+  },
+  {
+   "entity_id": 1053660,
+   "nombre": "PowPow Bun",
+   "npc_type": 18547,
+   "sprite": 110286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    59,
+    10
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 270
+  },
+  {
+   "entity_id": 1053661,
+   "nombre": "PowPow Bun",
+   "npc_type": 18547,
+   "sprite": 110286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    74,
+    13
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 270
+  },
+  {
+   "entity_id": 1053662,
+   "nombre": "PowPow Bun",
+   "npc_type": 18547,
+   "sprite": 110286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    56,
+    21
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 270
+  },
+  {
+   "entity_id": 1053663,
+   "nombre": "PowPow Bun",
+   "npc_type": 18547,
+   "sprite": 110286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    107,
+    25
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 270
+  },
+  {
+   "entity_id": 1053664,
+   "nombre": "PowPow Bun",
+   "npc_type": 18547,
+   "sprite": 110286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    116,
+    41
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 270
+  },
+  {
+   "entity_id": 1053665,
+   "nombre": "PowPow Bun",
+   "npc_type": 18547,
+   "sprite": 110286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    96,
+    39
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 270
+  },
+  {
+   "entity_id": 1053666,
+   "nombre": "PowPow Bun",
+   "npc_type": 18547,
+   "sprite": 110286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    78,
+    24
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 270
+  },
+  {
+   "entity_id": 1053667,
+   "nombre": "PowPow Bun",
+   "npc_type": 18547,
+   "sprite": 110286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    100,
+    38
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 270
+  },
+  {
+   "entity_id": 1053668,
+   "nombre": "PowPow Bun",
+   "npc_type": 18547,
+   "sprite": 110286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    87,
+    17
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 270
+  },
+  {
+   "entity_id": 1053669,
+   "nombre": "PowPow Bun",
+   "npc_type": 18547,
+   "sprite": 110286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    70,
+    19
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 270
+  },
+  {
+   "entity_id": 1053670,
+   "nombre": "PowPow Bun",
+   "npc_type": 18547,
+   "sprite": 110286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    90,
+    29
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 270
+  },
+  {
+   "entity_id": 1053671,
+   "nombre": "PowPow Bun",
+   "npc_type": 18547,
+   "sprite": 110286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    79,
+    18
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 270
+  },
+  {
+   "entity_id": 1053672,
+   "nombre": "PowPow Bun",
+   "npc_type": 18547,
+   "sprite": 110286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    88,
+    29
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 270
+  },
+  {
+   "entity_id": 1053673,
+   "nombre": "KerPow Bun",
+   "npc_type": 18548,
+   "sprite": 110358,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    44,
+    52
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 270
+  },
+  {
+   "entity_id": 1053674,
+   "nombre": "KerPow Bun",
+   "npc_type": 18548,
+   "sprite": 110358,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    44,
+    49
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 270
+  },
+  {
+   "entity_id": 1053675,
+   "nombre": "KerPow Bun",
+   "npc_type": 18548,
+   "sprite": 110358,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    62,
+    61
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 270
+  },
+  {
+   "entity_id": 1053676,
+   "nombre": "KerPow Bun",
+   "npc_type": 18548,
+   "sprite": 110358,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    42,
+    53
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 270
+  },
+  {
+   "entity_id": 1053677,
+   "nombre": "KerPow Bun",
+   "npc_type": 18548,
+   "sprite": 110358,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    54,
+    65
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 270
+  },
+  {
+   "entity_id": 1053678,
+   "nombre": "KerPow Bun",
+   "npc_type": 18548,
+   "sprite": 110358,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    25,
+    51
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 270
+  },
+  {
+   "entity_id": 1053679,
+   "nombre": "KerPow Bun",
+   "npc_type": 18548,
+   "sprite": 110358,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    35,
+    43
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 270
+  },
+  {
+   "entity_id": 1053680,
+   "nombre": "KerPow Bun",
+   "npc_type": 18548,
+   "sprite": 110358,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    33,
+    47
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 270
+  },
+  {
+   "entity_id": 1053681,
+   "nombre": "KerPow Bun",
+   "npc_type": 18548,
+   "sprite": 110358,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    24,
+    50
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 270
+  },
+  {
+   "entity_id": 1053682,
+   "nombre": "KerPow Bun",
+   "npc_type": 18548,
+   "sprite": 110358,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    38,
+    53
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 270
+  },
+  {
+   "entity_id": 1053683,
+   "nombre": "KerPow Bun",
+   "npc_type": 18548,
+   "sprite": 110358,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    17,
+    51
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 270
+  },
+  {
+   "entity_id": 1053684,
+   "nombre": "KerPow Bun",
+   "npc_type": 18548,
+   "sprite": 110358,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    29,
+    40
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 270
+  },
+  {
+   "entity_id": 1053685,
+   "nombre": "KerPow Bun",
+   "npc_type": 18548,
+   "sprite": 110358,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    40,
+    31
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 270
+  },
+  {
+   "entity_id": 1053686,
+   "nombre": "KerPow Bun",
+   "npc_type": 18548,
+   "sprite": 110358,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    22,
+    45
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 270
+  },
+  {
+   "entity_id": 1053687,
+   "nombre": "KerPow Bun",
+   "npc_type": 18548,
+   "sprite": 110358,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    19,
+    39
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 270
+  },
+  {
+   "entity_id": 1053688,
+   "nombre": "KerPow Bun",
+   "npc_type": 18548,
+   "sprite": 110358,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    25,
+    48
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 270
+  },
+  {
+   "entity_id": 1053689,
+   "nombre": "KerPow Bun",
+   "npc_type": 18548,
+   "sprite": 110358,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    15,
+    29
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 270
+  },
+  {
+   "entity_id": 1053690,
+   "nombre": "KerPow Bun",
+   "npc_type": 18548,
+   "sprite": 110358,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    53,
+    72
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 270
+  },
+  {
+   "entity_id": 1053691,
+   "nombre": "KerPow Bun",
+   "npc_type": 18548,
+   "sprite": 110358,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    56,
+    67
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 270
+  },
+  {
+   "entity_id": 1053692,
+   "nombre": "KerPow Bun",
+   "npc_type": 18548,
+   "sprite": 110358,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    25,
+    33
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 270
+  },
+  {
+   "entity_id": 1053693,
+   "nombre": "Chikahorn",
+   "npc_type": 18549,
+   "sprite": 110343,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    134,
+    32
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 272
+  },
+  {
+   "entity_id": 1053694,
+   "nombre": "Chikahorn",
+   "npc_type": 18549,
+   "sprite": 110343,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    139,
+    25
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 272
+  },
+  {
+   "entity_id": 1053695,
+   "nombre": "Chikahorn",
+   "npc_type": 18549,
+   "sprite": 110343,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    134,
+    36
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 272
+  },
+  {
+   "entity_id": 1053696,
+   "nombre": "Chikahorn",
+   "npc_type": 18549,
+   "sprite": 110343,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    121,
+    31
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 272
+  },
+  {
+   "entity_id": 1053697,
+   "nombre": "Chikahorn",
+   "npc_type": 18549,
+   "sprite": 110343,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    136,
+    33
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 272
+  },
+  {
+   "entity_id": 1053698,
+   "nombre": "Chikahorn",
+   "npc_type": 18549,
+   "sprite": 110343,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    190,
+    46
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 272
+  },
+  {
+   "entity_id": 1053699,
+   "nombre": "Chikahorn",
+   "npc_type": 18549,
+   "sprite": 110343,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    206,
+    16
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 272
+  },
+  {
+   "entity_id": 1053700,
+   "nombre": "Chikahorn",
+   "npc_type": 18549,
+   "sprite": 110343,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    201,
+    20
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 272
+  },
+  {
+   "entity_id": 1053701,
+   "nombre": "Chikahorn",
+   "npc_type": 18549,
+   "sprite": 110343,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    196,
+    29
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 272
+  },
+  {
+   "entity_id": 1053702,
+   "nombre": "Chikahorn",
+   "npc_type": 18549,
+   "sprite": 110343,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    202,
+    32
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 272
+  },
+  {
+   "entity_id": 1053703,
+   "nombre": "Chikahorn",
+   "npc_type": 18549,
+   "sprite": 110343,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    151,
+    38
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 272
+  },
+  {
+   "entity_id": 1053704,
+   "nombre": "Chikahorn",
+   "npc_type": 18549,
+   "sprite": 110343,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    152,
+    26
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 272
+  },
+  {
+   "entity_id": 1053705,
+   "nombre": "Chikahorn",
+   "npc_type": 18549,
+   "sprite": 110343,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    139,
+    29
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 272
+  },
+  {
+   "entity_id": 1053706,
+   "nombre": "Chikahorn",
+   "npc_type": 18549,
+   "sprite": 110343,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    147,
+    21
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 272
+  },
+  {
+   "entity_id": 1053707,
+   "nombre": "Chikahorn",
+   "npc_type": 18549,
+   "sprite": 110343,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    152,
+    35
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 272
+  },
+  {
+   "entity_id": 1053708,
+   "nombre": "Chikahorn",
+   "npc_type": 18549,
+   "sprite": 110343,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    172,
+    28
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 272
+  },
+  {
+   "entity_id": 1053709,
+   "nombre": "Chikahorn",
+   "npc_type": 18549,
+   "sprite": 110343,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    158,
+    23
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 272
+  },
+  {
+   "entity_id": 1053710,
+   "nombre": "Chikahorn",
+   "npc_type": 18549,
+   "sprite": 110343,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    174,
+    29
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 272
+  },
+  {
+   "entity_id": 1053711,
+   "nombre": "Chikahorn",
+   "npc_type": 18549,
+   "sprite": 110343,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    164,
+    20
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 272
+  },
+  {
+   "entity_id": 1053712,
+   "nombre": "Chikahorn",
+   "npc_type": 18549,
+   "sprite": 110343,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    160,
+    36
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 272
+  },
+  {
+   "entity_id": 1053713,
+   "nombre": "Chikahorn",
+   "npc_type": 18549,
+   "sprite": 110343,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    187,
+    26
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 272
+  },
+  {
+   "entity_id": 1053714,
+   "nombre": "Chikahorn",
+   "npc_type": 18549,
+   "sprite": 110343,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    180,
+    26
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 272
+  },
+  {
+   "entity_id": 1053715,
+   "nombre": "Chikahorn",
+   "npc_type": 18549,
+   "sprite": 110343,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    192,
+    17
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 272
+  },
+  {
+   "entity_id": 1053716,
+   "nombre": "Chikahorn",
+   "npc_type": 18549,
+   "sprite": 110343,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    182,
+    38
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 272
+  },
+  {
+   "entity_id": 1053717,
+   "nombre": "Chikahorn",
+   "npc_type": 18549,
+   "sprite": 110343,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    184,
+    24
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 272
+  },
+  {
+   "entity_id": 1053718,
+   "nombre": "Chikadrum",
+   "npc_type": 18550,
+   "sprite": 110278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    60,
+    84
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 272
+  },
+  {
+   "entity_id": 1053719,
+   "nombre": "Chikadrum",
+   "npc_type": 18550,
+   "sprite": 110278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    59,
+    75
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 272
+  },
+  {
+   "entity_id": 1053720,
+   "nombre": "Chikadrum",
+   "npc_type": 18550,
+   "sprite": 110278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    53,
+    72
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 272
+  },
+  {
+   "entity_id": 1053721,
+   "nombre": "Chikadrum",
+   "npc_type": 18550,
+   "sprite": 110278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    68,
+    65
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 272
+  },
+  {
+   "entity_id": 1053722,
+   "nombre": "Chikadrum",
+   "npc_type": 18550,
+   "sprite": 110278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    50,
+    75
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 272
+  },
+  {
+   "entity_id": 1053723,
+   "nombre": "Chikadrum",
+   "npc_type": 18550,
+   "sprite": 110278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    110,
+    45
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 272
+  },
+  {
+   "entity_id": 1053724,
+   "nombre": "Chikadrum",
+   "npc_type": 18550,
+   "sprite": 110278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    120,
+    44
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 272
+  },
+  {
+   "entity_id": 1053725,
+   "nombre": "Chikadrum",
+   "npc_type": 18550,
+   "sprite": 110278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    122,
+    40
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 272
+  },
+  {
+   "entity_id": 1053726,
+   "nombre": "Chikadrum",
+   "npc_type": 18550,
+   "sprite": 110278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    119,
+    32
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 272
+  },
+  {
+   "entity_id": 1053727,
+   "nombre": "Chikadrum",
+   "npc_type": 18550,
+   "sprite": 110278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    112,
+    46
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 272
+  },
+  {
+   "entity_id": 1053728,
+   "nombre": "Chikadrum",
+   "npc_type": 18550,
+   "sprite": 110278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    100,
+    58
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 272
+  },
+  {
+   "entity_id": 1053729,
+   "nombre": "Chikadrum",
+   "npc_type": 18550,
+   "sprite": 110278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    96,
+    49
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 272
+  },
+  {
+   "entity_id": 1053730,
+   "nombre": "Chikadrum",
+   "npc_type": 18550,
+   "sprite": 110278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    89,
+    48
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 272
+  },
+  {
+   "entity_id": 1053731,
+   "nombre": "Chikadrum",
+   "npc_type": 18550,
+   "sprite": 110278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    96,
+    52
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 272
+  },
+  {
+   "entity_id": 1053732,
+   "nombre": "Chikadrum",
+   "npc_type": 18550,
+   "sprite": 110278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    117,
+    40
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 272
+  },
+  {
+   "entity_id": 1053733,
+   "nombre": "Chikadrum",
+   "npc_type": 18550,
+   "sprite": 110278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    101,
+    70
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 272
+  },
+  {
+   "entity_id": 1053734,
+   "nombre": "Chikadrum",
+   "npc_type": 18550,
+   "sprite": 110278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    82,
+    69
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 272
+  },
+  {
+   "entity_id": 1053735,
+   "nombre": "Chikadrum",
+   "npc_type": 18550,
+   "sprite": 110278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    104,
+    66
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 272
+  },
+  {
+   "entity_id": 1053736,
+   "nombre": "Chikadrum",
+   "npc_type": 18550,
+   "sprite": 110278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    96,
+    54
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 272
+  },
+  {
+   "entity_id": 1053737,
+   "nombre": "Chikadrum",
+   "npc_type": 18550,
+   "sprite": 110278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    108,
+    70
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 272
+  },
+  {
+   "entity_id": 1053738,
+   "nombre": "Chikadrum",
+   "npc_type": 18550,
+   "sprite": 110278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    83,
+    67
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 272
+  },
+  {
+   "entity_id": 1053739,
+   "nombre": "Chikadrum",
+   "npc_type": 18550,
+   "sprite": 110278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    80,
+    57
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 272
+  },
+  {
+   "entity_id": 1053740,
+   "nombre": "Chikadrum",
+   "npc_type": 18550,
+   "sprite": 110278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    70,
+    78
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 272
+  },
+  {
+   "entity_id": 1053741,
+   "nombre": "Chikadrum",
+   "npc_type": 18550,
+   "sprite": 110278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    78,
+    67
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 272
+  },
+  {
+   "entity_id": 1053742,
+   "nombre": "Chikadrum",
+   "npc_type": 18550,
+   "sprite": 110278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    65,
+    63
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 272
+  },
+  {
+   "entity_id": 1053743,
+   "nombre": "Merciless Trador",
+   "npc_type": 18551,
+   "sprite": 110390,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    204,
+    64
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 274
+  },
+  {
+   "entity_id": 1053744,
+   "nombre": "Merciless Trador",
+   "npc_type": 18551,
+   "sprite": 110390,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    214,
+    52
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 274
+  },
+  {
+   "entity_id": 1053745,
+   "nombre": "Merciless Trador",
+   "npc_type": 18551,
+   "sprite": 110390,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    217,
+    66
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 274
+  },
+  {
+   "entity_id": 1053746,
+   "nombre": "Merciless Trador",
+   "npc_type": 18551,
+   "sprite": 110390,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    207,
+    32
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 274
+  },
+  {
+   "entity_id": 1053747,
+   "nombre": "Merciless Trador",
+   "npc_type": 18551,
+   "sprite": 110390,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    217,
+    29
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 274
+  },
+  {
+   "entity_id": 1053748,
+   "nombre": "Merciless Trador",
+   "npc_type": 18551,
+   "sprite": 110390,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    246,
+    15
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 274
+  },
+  {
+   "entity_id": 1053749,
+   "nombre": "Merciless Trador",
+   "npc_type": 18551,
+   "sprite": 110390,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    228,
+    7
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 274
+  },
+  {
+   "entity_id": 1053750,
+   "nombre": "Merciless Trador",
+   "npc_type": 18551,
+   "sprite": 110390,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    246,
+    28
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 274
+  },
+  {
+   "entity_id": 1053751,
+   "nombre": "Merciless Trador",
+   "npc_type": 18551,
+   "sprite": 110390,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    242,
+    29
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 274
+  },
+  {
+   "entity_id": 1053752,
+   "nombre": "Merciless Trador",
+   "npc_type": 18551,
+   "sprite": 110390,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    227,
+    25
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 274
+  },
+  {
+   "entity_id": 1053753,
+   "nombre": "Merciless Trador",
+   "npc_type": 18551,
+   "sprite": 110390,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    225,
+    51
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 274
+  },
+  {
+   "entity_id": 1053754,
+   "nombre": "Merciless Trador",
+   "npc_type": 18551,
+   "sprite": 110390,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    267,
+    23
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 274
+  },
+  {
+   "entity_id": 1053755,
+   "nombre": "Merciless Trador",
+   "npc_type": 18551,
+   "sprite": 110390,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    266,
+    38
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 274
+  },
+  {
+   "entity_id": 1053756,
+   "nombre": "Merciless Trador",
+   "npc_type": 18551,
+   "sprite": 110390,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    279,
+    38
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 274
+  },
+  {
+   "entity_id": 1053757,
+   "nombre": "Merciless Trador",
+   "npc_type": 18551,
+   "sprite": 110390,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    223,
+    40
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 274
+  },
+  {
+   "entity_id": 1053758,
+   "nombre": "Merciless Trador",
+   "npc_type": 18551,
+   "sprite": 110390,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    222,
+    31
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 274
+  },
+  {
+   "entity_id": 1053759,
+   "nombre": "Merciless Trador",
+   "npc_type": 18551,
+   "sprite": 110390,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    263,
+    39
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 274
+  },
+  {
+   "entity_id": 1053760,
+   "nombre": "Merciless Trador",
+   "npc_type": 18551,
+   "sprite": 110390,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    260,
+    44
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 274
+  },
+  {
+   "entity_id": 1053761,
+   "nombre": "Merciless Trador",
+   "npc_type": 18551,
+   "sprite": 110390,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    246,
+    46
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 274
+  },
+  {
+   "entity_id": 1053762,
+   "nombre": "Merciless Trador",
+   "npc_type": 18551,
+   "sprite": 110390,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    228,
+    63
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 274
+  },
+  {
+   "entity_id": 1053763,
+   "nombre": "Ruthless Trador",
+   "npc_type": 18552,
+   "sprite": 110391,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    258,
+    63
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 274
+  },
+  {
+   "entity_id": 1053764,
+   "nombre": "Ruthless Trador",
+   "npc_type": 18552,
+   "sprite": 110391,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    277,
+    48
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 274
+  },
+  {
+   "entity_id": 1053765,
+   "nombre": "Ruthless Trador",
+   "npc_type": 18552,
+   "sprite": 110391,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    272,
+    55
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 274
+  },
+  {
+   "entity_id": 1053766,
+   "nombre": "Ruthless Trador",
+   "npc_type": 18552,
+   "sprite": 110391,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    282,
+    54
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 274
+  },
+  {
+   "entity_id": 1053767,
+   "nombre": "Ruthless Trador",
+   "npc_type": 18552,
+   "sprite": 110391,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    252,
+    58
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 274
+  },
+  {
+   "entity_id": 1053768,
+   "nombre": "Ruthless Trador",
+   "npc_type": 18552,
+   "sprite": 110391,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    245,
+    119
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 274
+  },
+  {
+   "entity_id": 1053769,
+   "nombre": "Ruthless Trador",
+   "npc_type": 18552,
+   "sprite": 110391,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    233,
+    120
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 274
+  },
+  {
+   "entity_id": 1053770,
+   "nombre": "Ruthless Trador",
+   "npc_type": 18552,
+   "sprite": 110391,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    237,
+    100
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 274
+  },
+  {
+   "entity_id": 1053771,
+   "nombre": "Ruthless Trador",
+   "npc_type": 18552,
+   "sprite": 110391,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    249,
+    113
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 274
+  },
+  {
+   "entity_id": 1053772,
+   "nombre": "Ruthless Trador",
+   "npc_type": 18552,
+   "sprite": 110391,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    256,
+    111
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 274
+  },
+  {
+   "entity_id": 1053773,
+   "nombre": "Ruthless Trador",
+   "npc_type": 18552,
+   "sprite": 110391,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    271,
+    114
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 274
+  },
+  {
+   "entity_id": 1053774,
+   "nombre": "Ruthless Trador",
+   "npc_type": 18552,
+   "sprite": 110391,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    271,
+    107
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 274
+  },
+  {
+   "entity_id": 1053775,
+   "nombre": "Ruthless Trador",
+   "npc_type": 18552,
+   "sprite": 110391,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    245,
+    136
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 274
+  },
+  {
+   "entity_id": 1053776,
+   "nombre": "Ruthless Trador",
+   "npc_type": 18552,
+   "sprite": 110391,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    278,
+    107
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 274
+  },
+  {
+   "entity_id": 1053777,
+   "nombre": "Ruthless Trador",
+   "npc_type": 18552,
+   "sprite": 110391,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    264,
+    125
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 274
+  },
+  {
+   "entity_id": 1053778,
+   "nombre": "Ruthless Trador",
+   "npc_type": 18552,
+   "sprite": 110391,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    244,
+    74
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 274
+  },
+  {
+   "entity_id": 1053779,
+   "nombre": "Ruthless Trador",
+   "npc_type": 18552,
+   "sprite": 110391,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    249,
+    86
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 274
+  },
+  {
+   "entity_id": 1053780,
+   "nombre": "Ruthless Trador",
+   "npc_type": 18552,
+   "sprite": 110391,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    246,
+    108
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 274
+  },
+  {
+   "entity_id": 1053781,
+   "nombre": "Ruthless Trador",
+   "npc_type": 18552,
+   "sprite": 110391,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    243,
+    98
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 274
+  },
+  {
+   "entity_id": 1053782,
+   "nombre": "Ruthless Trador",
+   "npc_type": 18552,
+   "sprite": 110391,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    244,
+    79
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 274
+  },
+  {
+   "entity_id": 1053783,
+   "nombre": "Slate Golem",
+   "npc_type": 18553,
+   "sprite": 110268,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    141,
+    81
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 276
+  },
+  {
+   "entity_id": 1053784,
+   "nombre": "Slate Golem",
+   "npc_type": 18553,
+   "sprite": 110268,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    132,
+    85
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 276
+  },
+  {
+   "entity_id": 1053785,
+   "nombre": "Slate Golem",
+   "npc_type": 18553,
+   "sprite": 110268,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    110,
+    78
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 276
+  },
+  {
+   "entity_id": 1053786,
+   "nombre": "Slate Golem",
+   "npc_type": 18553,
+   "sprite": 110268,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    120,
+    75
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 276
+  },
+  {
+   "entity_id": 1053787,
+   "nombre": "Slate Golem",
+   "npc_type": 18553,
+   "sprite": 110268,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    122,
+    92
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 276
+  },
+  {
+   "entity_id": 1053788,
+   "nombre": "Slate Golem",
+   "npc_type": 18553,
+   "sprite": 110268,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    80,
+    111
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 276
+  },
+  {
+   "entity_id": 1053789,
+   "nombre": "Slate Golem",
+   "npc_type": 18553,
+   "sprite": 110268,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    85,
+    116
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 276
+  },
+  {
+   "entity_id": 1053790,
+   "nombre": "Slate Golem",
+   "npc_type": 18553,
+   "sprite": 110268,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    70,
+    106
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 276
+  },
+  {
+   "entity_id": 1053791,
+   "nombre": "Slate Golem",
+   "npc_type": 18553,
+   "sprite": 110268,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    55,
+    101
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 276
+  },
+  {
+   "entity_id": 1053792,
+   "nombre": "Slate Golem",
+   "npc_type": 18553,
+   "sprite": 110268,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    55,
+    97
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 276
+  },
+  {
+   "entity_id": 1053793,
+   "nombre": "Slate Golem",
+   "npc_type": 18553,
+   "sprite": 110268,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    150,
+    76
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 276
+  },
+  {
+   "entity_id": 1053794,
+   "nombre": "Slate Golem",
+   "npc_type": 18553,
+   "sprite": 110268,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    117,
+    89
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 276
+  },
+  {
+   "entity_id": 1053795,
+   "nombre": "Slate Golem",
+   "npc_type": 18553,
+   "sprite": 110268,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    172,
+    79
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 276
+  },
+  {
+   "entity_id": 1053796,
+   "nombre": "Slate Golem",
+   "npc_type": 18553,
+   "sprite": 110268,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    123,
+    106
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 276
+  },
+  {
+   "entity_id": 1053797,
+   "nombre": "Slate Golem",
+   "npc_type": 18553,
+   "sprite": 110268,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    145,
+    79
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 276
+  },
+  {
+   "entity_id": 1053798,
+   "nombre": "Slate Golem",
+   "npc_type": 18553,
+   "sprite": 110268,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    202,
+    79
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 276
+  },
+  {
+   "entity_id": 1053799,
+   "nombre": "Slate Golem",
+   "npc_type": 18553,
+   "sprite": 110268,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    186,
+    66
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 276
+  },
+  {
+   "entity_id": 1053800,
+   "nombre": "Slate Golem",
+   "npc_type": 18553,
+   "sprite": 110268,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    196,
+    82
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 276
+  },
+  {
+   "entity_id": 1053801,
+   "nombre": "Slate Golem",
+   "npc_type": 18553,
+   "sprite": 110268,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    182,
+    76
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 276
+  },
+  {
+   "entity_id": 1053802,
+   "nombre": "Slate Golem",
+   "npc_type": 18553,
+   "sprite": 110268,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    208,
+    71
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 276
+  },
+  {
+   "entity_id": 1053803,
+   "nombre": "Lilac Golem",
+   "npc_type": 18554,
+   "sprite": 110330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    191,
+    117
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 276
+  },
+  {
+   "entity_id": 1053804,
+   "nombre": "Lilac Golem",
+   "npc_type": 18554,
+   "sprite": 110330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    169,
+    81
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 276
+  },
+  {
+   "entity_id": 1053805,
+   "nombre": "Lilac Golem",
+   "npc_type": 18554,
+   "sprite": 110330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    163,
+    104
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 276
+  },
+  {
+   "entity_id": 1053806,
+   "nombre": "Lilac Golem",
+   "npc_type": 18554,
+   "sprite": 110330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    198,
+    107
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 276
+  },
+  {
+   "entity_id": 1053807,
+   "nombre": "Lilac Golem",
+   "npc_type": 18554,
+   "sprite": 110330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    168,
+    83
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 276
+  },
+  {
+   "entity_id": 1053808,
+   "nombre": "Lilac Golem",
+   "npc_type": 18554,
+   "sprite": 110330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    176,
+    162
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 276
+  },
+  {
+   "entity_id": 1053809,
+   "nombre": "Lilac Golem",
+   "npc_type": 18554,
+   "sprite": 110330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    189,
+    166
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 276
+  },
+  {
+   "entity_id": 1053810,
+   "nombre": "Lilac Golem",
+   "npc_type": 18554,
+   "sprite": 110330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    192,
+    146
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 276
+  },
+  {
+   "entity_id": 1053811,
+   "nombre": "Lilac Golem",
+   "npc_type": 18554,
+   "sprite": 110330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    201,
+    163
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 276
+  },
+  {
+   "entity_id": 1053812,
+   "nombre": "Lilac Golem",
+   "npc_type": 18554,
+   "sprite": 110330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    187,
+    147
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 276
+  },
+  {
+   "entity_id": 1053813,
+   "nombre": "Lilac Golem",
+   "npc_type": 18554,
+   "sprite": 110330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    190,
+    139
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 276
+  },
+  {
+   "entity_id": 1053814,
+   "nombre": "Lilac Golem",
+   "npc_type": 18554,
+   "sprite": 110330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    192,
+    129
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 276
+  },
+  {
+   "entity_id": 1053815,
+   "nombre": "Lilac Golem",
+   "npc_type": 18554,
+   "sprite": 110330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    192,
+    138
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 276
+  },
+  {
+   "entity_id": 1053816,
+   "nombre": "Lilac Golem",
+   "npc_type": 18554,
+   "sprite": 110330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    224,
+    123
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 276
+  },
+  {
+   "entity_id": 1053817,
+   "nombre": "Lilac Golem",
+   "npc_type": 18554,
+   "sprite": 110330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    204,
+    130
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 276
+  },
+  {
+   "entity_id": 1053818,
+   "nombre": "Lilac Golem",
+   "npc_type": 18554,
+   "sprite": 110330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    167,
+    156
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 276
+  },
+  {
+   "entity_id": 1053819,
+   "nombre": "Lilac Golem",
+   "npc_type": 18554,
+   "sprite": 110330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    126,
+    158
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 276
+  },
+  {
+   "entity_id": 1053820,
+   "nombre": "Lilac Golem",
+   "npc_type": 18554,
+   "sprite": 110330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    128,
+    150
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 276
+  },
+  {
+   "entity_id": 1053821,
+   "nombre": "Lilac Golem",
+   "npc_type": 18554,
+   "sprite": 110330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    141,
+    152
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 276
+  },
+  {
+   "entity_id": 1053822,
+   "nombre": "Lilac Golem",
+   "npc_type": 18554,
+   "sprite": 110330,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    147,
+    159
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 276
+  },
+  {
+   "entity_id": 1053823,
+   "nombre": "Naughty Nic",
+   "npc_type": 18555,
+   "sprite": 110362,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    43,
+    128
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 278
+  },
+  {
+   "entity_id": 1053824,
+   "nombre": "Naughty Nic",
+   "npc_type": 18555,
+   "sprite": 110362,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    63,
+    127
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 278
+  },
+  {
+   "entity_id": 1053825,
+   "nombre": "Naughty Nic",
+   "npc_type": 18555,
+   "sprite": 110362,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    52,
+    132
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 278
+  },
+  {
+   "entity_id": 1053826,
+   "nombre": "Naughty Nic",
+   "npc_type": 18555,
+   "sprite": 110362,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    64,
+    124
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 278
+  },
+  {
+   "entity_id": 1053827,
+   "nombre": "Naughty Nic",
+   "npc_type": 18555,
+   "sprite": 110362,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    42,
+    135
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 278
+  },
+  {
+   "entity_id": 1053828,
+   "nombre": "Naughty Nic",
+   "npc_type": 18555,
+   "sprite": 110362,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    34,
+    133
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 278
+  },
+  {
+   "entity_id": 1053829,
+   "nombre": "Naughty Nic",
+   "npc_type": 18555,
+   "sprite": 110362,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    37,
+    140
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 278
+  },
+  {
+   "entity_id": 1053830,
+   "nombre": "Naughty Nic",
+   "npc_type": 18555,
+   "sprite": 110362,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    48,
+    128
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 278
+  },
+  {
+   "entity_id": 1053831,
+   "nombre": "Naughty Nic",
+   "npc_type": 18555,
+   "sprite": 110362,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    50,
+    137
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 278
+  },
+  {
+   "entity_id": 1053832,
+   "nombre": "Naughty Nic",
+   "npc_type": 18555,
+   "sprite": 110362,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    47,
+    135
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 278
+  },
+  {
+   "entity_id": 1053833,
+   "nombre": "Naughty Nic",
+   "npc_type": 18555,
+   "sprite": 110362,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    11,
+    129
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 278
+  },
+  {
+   "entity_id": 1053834,
+   "nombre": "Naughty Nic",
+   "npc_type": 18555,
+   "sprite": 110362,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    15,
+    139
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 278
+  },
+  {
+   "entity_id": 1053835,
+   "nombre": "Naughty Nic",
+   "npc_type": 18555,
+   "sprite": 110362,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    26,
+    134
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 278
+  },
+  {
+   "entity_id": 1053836,
+   "nombre": "Naughty Nic",
+   "npc_type": 18555,
+   "sprite": 110362,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    26,
+    137
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 278
+  },
+  {
+   "entity_id": 1053837,
+   "nombre": "Naughty Nic",
+   "npc_type": 18555,
+   "sprite": 110362,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    6,
+    129
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 278
+  },
+  {
+   "entity_id": 1053838,
+   "nombre": "Naughty Nic",
+   "npc_type": 18555,
+   "sprite": 110362,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    42,
+    151
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 278
+  },
+  {
+   "entity_id": 1053839,
+   "nombre": "Naughty Nic",
+   "npc_type": 18555,
+   "sprite": 110362,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    50,
+    144
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 278
+  },
+  {
+   "entity_id": 1053840,
+   "nombre": "Naughty Nic",
+   "npc_type": 18555,
+   "sprite": 110362,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    24,
+    138
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 278
+  },
+  {
+   "entity_id": 1053841,
+   "nombre": "Naughty Nic",
+   "npc_type": 18555,
+   "sprite": 110362,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    41,
+    141
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 278
+  },
+  {
+   "entity_id": 1053842,
+   "nombre": "Naughty Nic",
+   "npc_type": 18555,
+   "sprite": 110362,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    33,
+    133
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 278
+  },
+  {
+   "entity_id": 1053843,
+   "nombre": "Naughty Nic",
+   "npc_type": 18555,
+   "sprite": 110362,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    112,
+    122
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 278
+  },
+  {
+   "entity_id": 1053844,
+   "nombre": "Naughty Nic",
+   "npc_type": 18555,
+   "sprite": 110362,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    89,
+    122
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 278
+  },
+  {
+   "entity_id": 1053845,
+   "nombre": "Naughty Nic",
+   "npc_type": 18555,
+   "sprite": 110362,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    92,
+    133
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 278
+  },
+  {
+   "entity_id": 1053846,
+   "nombre": "Naughty Nic",
+   "npc_type": 18555,
+   "sprite": 110362,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    85,
+    117
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 278
+  },
+  {
+   "entity_id": 1053847,
+   "nombre": "Naughty Nic",
+   "npc_type": 18555,
+   "sprite": 110362,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    107,
+    121
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 278
+  },
+  {
+   "entity_id": 1053848,
+   "nombre": "Bottlecap Butler",
+   "npc_type": 18556,
+   "sprite": 110290,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    47,
+    149
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 278
+  },
+  {
+   "entity_id": 1053849,
+   "nombre": "Bottlecap Butler",
+   "npc_type": 18556,
+   "sprite": 110290,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    68,
+    152
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 278
+  },
+  {
+   "entity_id": 1053850,
+   "nombre": "Bottlecap Butler",
+   "npc_type": 18556,
+   "sprite": 110290,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    71,
+    155
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 278
+  },
+  {
+   "entity_id": 1053851,
+   "nombre": "Bottlecap Butler",
+   "npc_type": 18556,
+   "sprite": 110290,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    59,
+    153
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 278
+  },
+  {
+   "entity_id": 1053852,
+   "nombre": "Bottlecap Butler",
+   "npc_type": 18556,
+   "sprite": 110290,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    59,
+    152
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 278
+  },
+  {
+   "entity_id": 1053853,
+   "nombre": "Bottlecap Butler",
+   "npc_type": 18556,
+   "sprite": 110290,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    90,
+    152
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 278
+  },
+  {
+   "entity_id": 1053854,
+   "nombre": "Bottlecap Butler",
+   "npc_type": 18556,
+   "sprite": 110290,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    95,
+    161
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 278
+  },
+  {
+   "entity_id": 1053855,
+   "nombre": "Bottlecap Butler",
+   "npc_type": 18556,
+   "sprite": 110290,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    91,
+    164
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 278
+  },
+  {
+   "entity_id": 1053856,
+   "nombre": "Bottlecap Butler",
+   "npc_type": 18556,
+   "sprite": 110290,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    92,
+    141
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 278
+  },
+  {
+   "entity_id": 1053857,
+   "nombre": "Bottlecap Butler",
+   "npc_type": 18556,
+   "sprite": 110290,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    95,
+    147
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 278
+  },
+  {
+   "entity_id": 1053858,
+   "nombre": "Bottlecap Butler",
+   "npc_type": 18556,
+   "sprite": 110290,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    93,
+    153
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 278
+  },
+  {
+   "entity_id": 1053859,
+   "nombre": "Bottlecap Butler",
+   "npc_type": 18556,
+   "sprite": 110290,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    108,
+    135
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 278
+  },
+  {
+   "entity_id": 1053860,
+   "nombre": "Bottlecap Butler",
+   "npc_type": 18556,
+   "sprite": 110290,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    79,
+    146
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 278
+  },
+  {
+   "entity_id": 1053861,
+   "nombre": "Bottlecap Butler",
+   "npc_type": 18556,
+   "sprite": 110290,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    135,
+    154
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 278
+  },
+  {
+   "entity_id": 1053862,
+   "nombre": "Bottlecap Butler",
+   "npc_type": 18556,
+   "sprite": 110290,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    119,
+    137
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 278
+  },
+  {
+   "entity_id": 1053863,
+   "nombre": "Bottlecap Butler",
+   "npc_type": 18556,
+   "sprite": 110290,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    90,
+    170
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 278
+  },
+  {
+   "entity_id": 1053864,
+   "nombre": "Bottlecap Butler",
+   "npc_type": 18556,
+   "sprite": 110290,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    79,
+    171
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 278
+  },
+  {
+   "entity_id": 1053865,
+   "nombre": "Bottlecap Butler",
+   "npc_type": 18556,
+   "sprite": 110290,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    80,
+    170
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 278
+  },
+  {
+   "entity_id": 1053866,
+   "nombre": "Bottlecap Butler",
+   "npc_type": 18556,
+   "sprite": 110290,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    84,
+    173
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 278
+  },
+  {
+   "entity_id": 1053867,
+   "nombre": "Bottlecap Butler",
+   "npc_type": 18556,
+   "sprite": 110290,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    89,
+    160
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 278
+  },
+  {
+   "entity_id": 1053868,
+   "nombre": "Bottlecap Butler",
+   "npc_type": 18556,
+   "sprite": 110290,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    104,
+    139
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 278
+  },
+  {
+   "entity_id": 1053869,
+   "nombre": "Bottlecap Butler",
+   "npc_type": 18556,
+   "sprite": 110290,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    76,
+    152
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 278
+  },
+  {
+   "entity_id": 1053870,
+   "nombre": "Bottlecap Butler",
+   "npc_type": 18556,
+   "sprite": 110290,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    98,
+    137
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 278
+  },
+  {
+   "entity_id": 1053871,
+   "nombre": "Bottlecap Butler",
+   "npc_type": 18556,
+   "sprite": 110290,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    108,
+    141
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 278
+  },
+  {
+   "entity_id": 1053872,
+   "nombre": "Bottlecap Butler",
+   "npc_type": 18556,
+   "sprite": 110290,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    122,
+    150
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 278
+  },
+  {
+   "entity_id": 1053873,
+   "nombre": "Elite - PowPow B",
+   "npc_type": 18557,
+   "sprite": 110286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    251,
+    140
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 279
+  },
+  {
+   "entity_id": 1053874,
+   "nombre": "Elite - PowPow B",
+   "npc_type": 18557,
+   "sprite": 110286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    265,
+    130
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 279
+  },
+  {
+   "entity_id": 1053875,
+   "nombre": "Elite - PowPow B",
+   "npc_type": 18557,
+   "sprite": 110286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    259,
+    140
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 279
+  },
+  {
+   "entity_id": 1053876,
+   "nombre": "Elite - PowPow B",
+   "npc_type": 18557,
+   "sprite": 110286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    237,
+    124
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 279
+  },
+  {
+   "entity_id": 1053877,
+   "nombre": "Elite - PowPow B",
+   "npc_type": 18557,
+   "sprite": 110286,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    278,
+    141
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 279
+  },
+  {
+   "entity_id": 1053878,
+   "nombre": "Elite - Chikadru",
+   "npc_type": 18558,
+   "sprite": 110278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    221,
+    147
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 279
+  },
+  {
+   "entity_id": 1053879,
+   "nombre": "Elite - Chikadru",
+   "npc_type": 18558,
+   "sprite": 110278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    198,
+    161
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 279
+  },
+  {
+   "entity_id": 1053880,
+   "nombre": "Elite - Chikadru",
+   "npc_type": 18558,
+   "sprite": 110278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    215,
+    165
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 279
+  },
+  {
+   "entity_id": 1053881,
+   "nombre": "Elite - Chikadru",
+   "npc_type": 18558,
+   "sprite": 110278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    210,
+    146
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 279
+  },
+  {
+   "entity_id": 1053882,
+   "nombre": "Elite - Chikadru",
+   "npc_type": 18558,
+   "sprite": 110278,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    222,
+    159
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 279
+  },
+  {
+   "entity_id": 1053883,
+   "nombre": "Elite - Merciles",
+   "npc_type": 18559,
+   "sprite": 110388,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    266,
+    160
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 279
+  },
+  {
+   "entity_id": 1053884,
+   "nombre": "Elite - Merciles",
+   "npc_type": 18559,
+   "sprite": 110388,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    280,
+    140
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 279
+  },
+  {
+   "entity_id": 1053885,
+   "nombre": "Elite - Merciles",
+   "npc_type": 18559,
+   "sprite": 110388,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    281,
+    150
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 279
+  },
+  {
+   "entity_id": 1053886,
+   "nombre": "Elite - Merciles",
+   "npc_type": 18559,
+   "sprite": 110388,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    280,
+    157
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 279
+  },
+  {
+   "entity_id": 1053887,
+   "nombre": "Elite - Merciles",
+   "npc_type": 18559,
+   "sprite": 110388,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    274,
+    155
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 279
+  },
+  {
+   "entity_id": 1053888,
+   "nombre": "Elite - Slate Go",
+   "npc_type": 18560,
+   "sprite": 110268,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    244,
+    146
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 279
+  },
+  {
+   "entity_id": 1053889,
+   "nombre": "Elite - Slate Go",
+   "npc_type": 18560,
+   "sprite": 110268,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    229,
+    155
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 279
+  },
+  {
+   "entity_id": 1053890,
+   "nombre": "Elite - Slate Go",
+   "npc_type": 18560,
+   "sprite": 110268,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    231,
+    149
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 279
+  },
+  {
+   "entity_id": 1053891,
+   "nombre": "Elite - Slate Go",
+   "npc_type": 18560,
+   "sprite": 110268,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    226,
+    147
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 279
+  },
+  {
+   "entity_id": 1053892,
+   "nombre": "Elite - Slate Go",
+   "npc_type": 18560,
+   "sprite": 110268,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    248,
+    147
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 279
+  },
+  {
+   "entity_id": 1053893,
+   "nombre": "Elite - Naughty ",
+   "npc_type": 18561,
+   "sprite": 110362,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    249,
+    162
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 279
+  },
+  {
+   "entity_id": 1053894,
+   "nombre": "Elite - Naughty ",
+   "npc_type": 18561,
+   "sprite": 110362,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    255,
+    164
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 279
+  },
+  {
+   "entity_id": 1053895,
+   "nombre": "Elite - Naughty ",
+   "npc_type": 18561,
+   "sprite": 110362,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    243,
+    162
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 279
+  },
+  {
+   "entity_id": 1053896,
+   "nombre": "Elite - Naughty ",
+   "npc_type": 18561,
+   "sprite": 110362,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    269,
+    159
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 279
+  },
+  {
+   "entity_id": 1053897,
+   "nombre": "Elite - Naughty ",
+   "npc_type": 18561,
+   "sprite": 110362,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    268,
+    164
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 279
+  },
+  {
+   "entity_id": 1053898,
+   "nombre": "Champion Bun",
+   "npc_type": 18562,
+   "sprite": 110288,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    59
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 280
+  },
+  {
+   "entity_id": 1053899,
+   "nombre": "Grand Assassin L",
+   "npc_type": 18563,
+   "sprite": 110392,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    265,
+    44
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 282
+  },
+  {
+   "entity_id": 1053900,
+   "nombre": "Gentleman Gary",
+   "npc_type": 18564,
+   "sprite": 110365,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    90,
+    166
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 284
+  }
+ ],
+ "recursos": [
+  {
+   "entity_id": 118653,
+   "capa": 0,
+   "px": [
+    204,
+    237
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "crudo": "7dcf010000000000cc000000ed0000000000000027000000000000001a000000dc0661ea00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 118654,
+   "capa": 0,
+   "px": [
+    1073,
+    5560
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "crudo": "7ecf01000000000031040000b81500000000000027000000000000001a000000dc0661ea00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 118655,
+   "capa": 0,
+   "px": [
+    9432,
+    112
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "crudo": "7fcf010000000000d8240000700000000000000027000000000000001a000000dc0661ea00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 118656,
+   "capa": 0,
+   "px": [
+    4439,
+    3563
+   ],
+   "medio": "006f70706572284d2900000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60051,
+   "cola": "00002280140000",
+   "crudo": "80cf01000000000057110000eb0d0000006f70706572284d2900000000000000000693ea00002280140000",
+   "que_es": "Aurora Totem"
+  },
+  {
+   "entity_id": 118657,
+   "capa": 0,
+   "px": [
+    4575,
+    3718
+   ],
+   "medio": "00000000180000000000000000000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60052,
+   "cola": "00002280140000",
+   "crudo": "81cf010000000000df110000860e000000000000180000000000000000000000dc0694ea00002280140000",
+   "que_es": "Dark City Totem"
+  },
+  {
+   "entity_id": 118658,
+   "capa": 0,
+   "px": [
+    5140,
+    3693
+   ],
+   "medio": "006f70706572284d2900000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60053,
+   "cola": "00002280140000",
+   "crudo": "82cf010000000000141400006d0e0000006f70706572284d2900000000000000000695ea00002280140000",
+   "que_es": "Iron Totem"
+  },
+  {
+   "entity_id": 118659,
+   "capa": 0,
+   "px": [
+    5282,
+    3537
+   ],
+   "medio": "000000ba156f77650000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60054,
+   "cola": "00002280140000",
+   "crudo": "83cf010000000000a2140000d10d0000000000ba156f77650000000000000000000696ea00002280140000",
+   "que_es": "Breeze Totem"
+  }
+ ]
+}

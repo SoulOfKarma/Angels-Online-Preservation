@@ -1,0 +1,2672 @@
+{
+ "_nota": "Horizon Archives (stage 359), de Celestia. Se llega desde Rolling Sands (358). Tiene entrada de instancia. Poblado desde UNA sola sesion. Los objetos van CRUDOS.",
+ "stage": 359,
+ "spawns": [
+  {
+   "entity_id": 32752,
+   "nombre": "Aurora Totem",
+   "npc_type": 1937,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    186,
+    110
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 32753,
+   "nombre": "Dark City Totem",
+   "npc_type": 1938,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    191,
+    114
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 32754,
+   "nombre": "Iron Totem",
+   "npc_type": 1939,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    198,
+    103
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 32755,
+   "nombre": "Breeze Totem",
+   "npc_type": 1940,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    204,
+    107
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 123888,
+   "nombre": "Horizon Alpha",
+   "npc_type": 14915,
+   "sprite": 40633,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    271,
+    20
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123889,
+   "nombre": "Horizon Beta",
+   "npc_type": 14916,
+   "sprite": 40633,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    203,
+    113
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123890,
+   "nombre": "Horizon Gamma",
+   "npc_type": 14917,
+   "sprite": 40633,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    70,
+    36
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123891,
+   "nombre": "Horizon Omega",
+   "npc_type": 14918,
+   "sprite": 40633,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    52,
+    148
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123892,
+   "nombre": "Horizon Intern",
+   "npc_type": 14933,
+   "sprite": 40637,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    181,
+    92
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123893,
+   "nombre": "Poor Norwel",
+   "npc_type": 14947,
+   "sprite": 40642,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    45,
+    161
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 1063044,
+   "nombre": "Phoeneox",
+   "npc_type": 22489,
+   "sprite": 110988,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    221,
+    58
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1063045,
+   "nombre": "Phoeneox",
+   "npc_type": 22489,
+   "sprite": 110988,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    198,
+    63
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1063046,
+   "nombre": "Phoeneox",
+   "npc_type": 22489,
+   "sprite": 110988,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    208,
+    58
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1063047,
+   "nombre": "Phoeneox",
+   "npc_type": 22489,
+   "sprite": 110988,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    208,
+    66
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1063048,
+   "nombre": "Phoeneox",
+   "npc_type": 22489,
+   "sprite": 110988,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    214,
+    65
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1063049,
+   "nombre": "Phoeneox",
+   "npc_type": 22489,
+   "sprite": 110988,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    214,
+    49
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1063050,
+   "nombre": "Phoeneox",
+   "npc_type": 22489,
+   "sprite": 110988,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    223,
+    49
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1063051,
+   "nombre": "Phoeneox",
+   "npc_type": 22489,
+   "sprite": 110988,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    237,
+    57
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1063052,
+   "nombre": "Phoeneox",
+   "npc_type": 22489,
+   "sprite": 110988,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    232,
+    64
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1063053,
+   "nombre": "Phoeneox",
+   "npc_type": 22489,
+   "sprite": 110988,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    209,
+    50
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1063054,
+   "nombre": "Phoeneox",
+   "npc_type": 22489,
+   "sprite": 110988,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    226,
+    41
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1063055,
+   "nombre": "Phoeneox",
+   "npc_type": 22489,
+   "sprite": 110988,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    242,
+    54
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1063056,
+   "nombre": "Phoeneox",
+   "npc_type": 22489,
+   "sprite": 110988,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    231,
+    46
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1063057,
+   "nombre": "Phoeneox",
+   "npc_type": 22489,
+   "sprite": 110988,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    227,
+    32
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1063058,
+   "nombre": "Phoeneox",
+   "npc_type": 22489,
+   "sprite": 110988,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    236,
+    50
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1063059,
+   "nombre": "Phoeneox",
+   "npc_type": 22489,
+   "sprite": 110988,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    253,
+    48
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1063060,
+   "nombre": "Phoeneox",
+   "npc_type": 22489,
+   "sprite": 110988,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    247,
+    40
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1063061,
+   "nombre": "Phoeneox",
+   "npc_type": 22489,
+   "sprite": 110988,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    262,
+    39
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1063062,
+   "nombre": "Phoeneox",
+   "npc_type": 22489,
+   "sprite": 110988,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    240,
+    34
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1063063,
+   "nombre": "Phoeneox",
+   "npc_type": 22489,
+   "sprite": 110988,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    240,
+    33
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1063064,
+   "nombre": "Phoeneox",
+   "npc_type": 22489,
+   "sprite": 110988,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    250,
+    27
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1063065,
+   "nombre": "Phoeneox",
+   "npc_type": 22489,
+   "sprite": 110988,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    268,
+    30
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1063066,
+   "nombre": "Phoeneox",
+   "npc_type": 22489,
+   "sprite": 110988,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    255,
+    28
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1063067,
+   "nombre": "Phoeneox",
+   "npc_type": 22489,
+   "sprite": 110988,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    258,
+    49
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1063068,
+   "nombre": "Phoeneox",
+   "npc_type": 22489,
+   "sprite": 110988,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    266,
+    43
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1063069,
+   "nombre": "Frost Pixie",
+   "npc_type": 22490,
+   "sprite": 110984,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    171,
+    55
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1063070,
+   "nombre": "Frost Pixie",
+   "npc_type": 22490,
+   "sprite": 110984,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    153,
+    71
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1063071,
+   "nombre": "Frost Pixie",
+   "npc_type": 22490,
+   "sprite": 110984,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    169,
+    57
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1063072,
+   "nombre": "Frost Pixie",
+   "npc_type": 22490,
+   "sprite": 110984,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    177,
+    60
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1063073,
+   "nombre": "Frost Pixie",
+   "npc_type": 22490,
+   "sprite": 110984,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    163,
+    67
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1063074,
+   "nombre": "Frost Pixie",
+   "npc_type": 22490,
+   "sprite": 110984,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    181,
+    68
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1063075,
+   "nombre": "Frost Pixie",
+   "npc_type": 22490,
+   "sprite": 110984,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    200,
+    80
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1063076,
+   "nombre": "Frost Pixie",
+   "npc_type": 22490,
+   "sprite": 110984,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    202,
+    86
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1063077,
+   "nombre": "Frost Pixie",
+   "npc_type": 22490,
+   "sprite": 110984,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    190,
+    78
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1063078,
+   "nombre": "Frost Pixie",
+   "npc_type": 22490,
+   "sprite": 110984,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    196,
+    72
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1063079,
+   "nombre": "Frost Pixie",
+   "npc_type": 22490,
+   "sprite": 110984,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    184,
+    86
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1063080,
+   "nombre": "Frost Pixie",
+   "npc_type": 22490,
+   "sprite": 110984,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    196,
+    88
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1063081,
+   "nombre": "Frost Pixie",
+   "npc_type": 22490,
+   "sprite": 110984,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    186,
+    80
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1063082,
+   "nombre": "Frost Pixie",
+   "npc_type": 22490,
+   "sprite": 110984,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    174,
+    92
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1063083,
+   "nombre": "Frost Pixie",
+   "npc_type": 22490,
+   "sprite": 110984,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    187,
+    83
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1063084,
+   "nombre": "Frost Pixie",
+   "npc_type": 22490,
+   "sprite": 110984,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    134,
+    77
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1063085,
+   "nombre": "Frost Pixie",
+   "npc_type": 22490,
+   "sprite": 110984,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    152,
+    72
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1063086,
+   "nombre": "Frost Pixie",
+   "npc_type": 22490,
+   "sprite": 110984,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    150,
+    66
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1063087,
+   "nombre": "Frost Pixie",
+   "npc_type": 22490,
+   "sprite": 110984,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    167,
+    88
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1063088,
+   "nombre": "Frost Pixie",
+   "npc_type": 22490,
+   "sprite": 110984,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    150,
+    81
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1063089,
+   "nombre": "Frost Pixie",
+   "npc_type": 22490,
+   "sprite": 110984,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    152,
+    99
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1063090,
+   "nombre": "Frost Pixie",
+   "npc_type": 22490,
+   "sprite": 110984,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    164,
+    98
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1063091,
+   "nombre": "Frost Pixie",
+   "npc_type": 22490,
+   "sprite": 110984,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    166,
+    93
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1063092,
+   "nombre": "Frost Pixie",
+   "npc_type": 22490,
+   "sprite": 110984,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    155,
+    98
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1063093,
+   "nombre": "Frost Pixie",
+   "npc_type": 22490,
+   "sprite": 110984,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    152,
+    72
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 369
+  },
+  {
+   "entity_id": 1063094,
+   "nombre": "Chartreuse",
+   "npc_type": 22491,
+   "sprite": 110991,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    122,
+    94
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 374
+  },
+  {
+   "entity_id": 1063095,
+   "nombre": "Chartreuse",
+   "npc_type": 22491,
+   "sprite": 110991,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    112,
+    104
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 374
+  },
+  {
+   "entity_id": 1063096,
+   "nombre": "Chartreuse",
+   "npc_type": 22491,
+   "sprite": 110991,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    111,
+    99
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 374
+  },
+  {
+   "entity_id": 1063097,
+   "nombre": "Chartreuse",
+   "npc_type": 22491,
+   "sprite": 110991,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    101,
+    97
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 374
+  },
+  {
+   "entity_id": 1063098,
+   "nombre": "Chartreuse",
+   "npc_type": 22491,
+   "sprite": 110991,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    110,
+    89
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 374
+  },
+  {
+   "entity_id": 1063099,
+   "nombre": "Chartreuse",
+   "npc_type": 22491,
+   "sprite": 110991,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    148,
+    100
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 374
+  },
+  {
+   "entity_id": 1063100,
+   "nombre": "Chartreuse",
+   "npc_type": 22491,
+   "sprite": 110991,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    136,
+    109
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 374
+  },
+  {
+   "entity_id": 1063101,
+   "nombre": "Chartreuse",
+   "npc_type": 22491,
+   "sprite": 110991,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    152,
+    111
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 374
+  },
+  {
+   "entity_id": 1063102,
+   "nombre": "Chartreuse",
+   "npc_type": 22491,
+   "sprite": 110991,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    122,
+    102
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 374
+  },
+  {
+   "entity_id": 1063103,
+   "nombre": "Chartreuse",
+   "npc_type": 22491,
+   "sprite": 110991,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    130,
+    109
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 374
+  },
+  {
+   "entity_id": 1063104,
+   "nombre": "Chartreuse",
+   "npc_type": 22491,
+   "sprite": 110991,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    157,
+    125
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 374
+  },
+  {
+   "entity_id": 1063105,
+   "nombre": "Chartreuse",
+   "npc_type": 22491,
+   "sprite": 110991,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    134,
+    118
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 374
+  },
+  {
+   "entity_id": 1063106,
+   "nombre": "Chartreuse",
+   "npc_type": 22491,
+   "sprite": 110991,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    174,
+    114
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 374
+  },
+  {
+   "entity_id": 1063107,
+   "nombre": "Chartreuse",
+   "npc_type": 22491,
+   "sprite": 110991,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    163,
+    118
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 374
+  },
+  {
+   "entity_id": 1063108,
+   "nombre": "Chartreuse",
+   "npc_type": 22491,
+   "sprite": 110991,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    153,
+    113
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 374
+  },
+  {
+   "entity_id": 1063109,
+   "nombre": "Chartreuse",
+   "npc_type": 22491,
+   "sprite": 110991,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    169,
+    134
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 374
+  },
+  {
+   "entity_id": 1063110,
+   "nombre": "Chartreuse",
+   "npc_type": 22491,
+   "sprite": 110991,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    183,
+    145
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 374
+  },
+  {
+   "entity_id": 1063111,
+   "nombre": "Chartreuse",
+   "npc_type": 22491,
+   "sprite": 110991,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    182,
+    127
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 374
+  },
+  {
+   "entity_id": 1063112,
+   "nombre": "Chartreuse",
+   "npc_type": 22491,
+   "sprite": 110991,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    173,
+    111
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 374
+  },
+  {
+   "entity_id": 1063113,
+   "nombre": "Chartreuse",
+   "npc_type": 22491,
+   "sprite": 110991,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    185,
+    134
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 374
+  },
+  {
+   "entity_id": 1063114,
+   "nombre": "Crystal Giant",
+   "npc_type": 22492,
+   "sprite": 110999,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    212,
+    130
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 374
+  },
+  {
+   "entity_id": 1063115,
+   "nombre": "Crystal Giant",
+   "npc_type": 22492,
+   "sprite": 110999,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    196,
+    139
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 374
+  },
+  {
+   "entity_id": 1063116,
+   "nombre": "Crystal Giant",
+   "npc_type": 22492,
+   "sprite": 110999,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    210,
+    134
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 374
+  },
+  {
+   "entity_id": 1063117,
+   "nombre": "Crystal Giant",
+   "npc_type": 22492,
+   "sprite": 110999,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    207,
+    133
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 374
+  },
+  {
+   "entity_id": 1063118,
+   "nombre": "Crystal Giant",
+   "npc_type": 22492,
+   "sprite": 110999,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    205,
+    142
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 374
+  },
+  {
+   "entity_id": 1063119,
+   "nombre": "Crystal Giant",
+   "npc_type": 22492,
+   "sprite": 110999,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    223,
+    127
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 374
+  },
+  {
+   "entity_id": 1063120,
+   "nombre": "Crystal Giant",
+   "npc_type": 22492,
+   "sprite": 110999,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    245,
+    115
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 374
+  },
+  {
+   "entity_id": 1063121,
+   "nombre": "Crystal Giant",
+   "npc_type": 22492,
+   "sprite": 110999,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    249,
+    116
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 374
+  },
+  {
+   "entity_id": 1063122,
+   "nombre": "Crystal Giant",
+   "npc_type": 22492,
+   "sprite": 110999,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    238,
+    113
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 374
+  },
+  {
+   "entity_id": 1063123,
+   "nombre": "Crystal Giant",
+   "npc_type": 22492,
+   "sprite": 110999,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    242,
+    122
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 374
+  },
+  {
+   "entity_id": 1063124,
+   "nombre": "Crystal Giant",
+   "npc_type": 22492,
+   "sprite": 110999,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    262,
+    92
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 374
+  },
+  {
+   "entity_id": 1063125,
+   "nombre": "Crystal Giant",
+   "npc_type": 22492,
+   "sprite": 110999,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    275,
+    108
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 374
+  },
+  {
+   "entity_id": 1063126,
+   "nombre": "Crystal Giant",
+   "npc_type": 22492,
+   "sprite": 110999,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    268,
+    105
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 374
+  },
+  {
+   "entity_id": 1063127,
+   "nombre": "Crystal Giant",
+   "npc_type": 22492,
+   "sprite": 110999,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    267,
+    104
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 374
+  },
+  {
+   "entity_id": 1063128,
+   "nombre": "Crystal Giant",
+   "npc_type": 22492,
+   "sprite": 110999,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    262,
+    101
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 374
+  },
+  {
+   "entity_id": 1063129,
+   "nombre": "Crystal Giant",
+   "npc_type": 22492,
+   "sprite": 110999,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    227,
+    87
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 374
+  },
+  {
+   "entity_id": 1063130,
+   "nombre": "Crystal Giant",
+   "npc_type": 22492,
+   "sprite": 110999,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    251,
+    93
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 374
+  },
+  {
+   "entity_id": 1063131,
+   "nombre": "Crystal Giant",
+   "npc_type": 22492,
+   "sprite": 110999,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    237,
+    87
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 374
+  },
+  {
+   "entity_id": 1063132,
+   "nombre": "Crystal Giant",
+   "npc_type": 22492,
+   "sprite": 110999,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    220,
+    85
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 374
+  },
+  {
+   "entity_id": 1063133,
+   "nombre": "Crystal Giant",
+   "npc_type": 22492,
+   "sprite": 110999,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    245,
+    92
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 374
+  },
+  {
+   "entity_id": 1063134,
+   "nombre": "Chalky Axeman",
+   "npc_type": 22493,
+   "sprite": 110995,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    72,
+    86
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1063135,
+   "nombre": "Chalky Axeman",
+   "npc_type": 22493,
+   "sprite": 110995,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    88,
+    67
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1063136,
+   "nombre": "Chalky Axeman",
+   "npc_type": 22493,
+   "sprite": 110995,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    72,
+    83
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1063137,
+   "nombre": "Chalky Axeman",
+   "npc_type": 22493,
+   "sprite": 110995,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    91,
+    67
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1063138,
+   "nombre": "Chalky Axeman",
+   "npc_type": 22493,
+   "sprite": 110995,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    78,
+    76
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1063139,
+   "nombre": "Chalky Axeman",
+   "npc_type": 22493,
+   "sprite": 110995,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    52,
+    49
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1063140,
+   "nombre": "Chalky Axeman",
+   "npc_type": 22493,
+   "sprite": 110995,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    48,
+    57
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1063141,
+   "nombre": "Chalky Axeman",
+   "npc_type": 22493,
+   "sprite": 110995,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    50,
+    62
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1063142,
+   "nombre": "Chalky Axeman",
+   "npc_type": 22493,
+   "sprite": 110995,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    70
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1063143,
+   "nombre": "Chalky Axeman",
+   "npc_type": 22493,
+   "sprite": 110995,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    36,
+    57
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1063144,
+   "nombre": "Chalky Axeman",
+   "npc_type": 22493,
+   "sprite": 110995,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    103,
+    62
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1063145,
+   "nombre": "Chalky Axeman",
+   "npc_type": 22493,
+   "sprite": 110995,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    63,
+    63
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1063146,
+   "nombre": "Chalky Axeman",
+   "npc_type": 22493,
+   "sprite": 110995,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    83,
+    44
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1063147,
+   "nombre": "Chalky Axeman",
+   "npc_type": 22493,
+   "sprite": 110995,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    103,
+    59
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1063148,
+   "nombre": "Chalky Axeman",
+   "npc_type": 22493,
+   "sprite": 110995,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    60,
+    59
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1063149,
+   "nombre": "Chalky Axeman",
+   "npc_type": 22493,
+   "sprite": 110995,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    71,
+    31
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1063150,
+   "nombre": "Chalky Axeman",
+   "npc_type": 22493,
+   "sprite": 110995,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    70,
+    29
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1063151,
+   "nombre": "Chalky Axeman",
+   "npc_type": 22493,
+   "sprite": 110995,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    67,
+    45
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1063152,
+   "nombre": "Chalky Axeman",
+   "npc_type": 22493,
+   "sprite": 110995,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    86,
+    41
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1063153,
+   "nombre": "Chalky Axeman",
+   "npc_type": 22493,
+   "sprite": 110995,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    79,
+    27
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1063154,
+   "nombre": "Tar Axeman",
+   "npc_type": 22494,
+   "sprite": 110996,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    112,
+    56
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1063155,
+   "nombre": "Tar Axeman",
+   "npc_type": 22494,
+   "sprite": 110996,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    133,
+    50
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1063156,
+   "nombre": "Tar Axeman",
+   "npc_type": 22494,
+   "sprite": 110996,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    133,
+    50
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1063157,
+   "nombre": "Tar Axeman",
+   "npc_type": 22494,
+   "sprite": 110996,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    128,
+    54
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1063158,
+   "nombre": "Tar Axeman",
+   "npc_type": 22494,
+   "sprite": 110996,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    108,
+    59
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1063159,
+   "nombre": "Tar Axeman",
+   "npc_type": 22494,
+   "sprite": 110996,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    111,
+    24
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1063160,
+   "nombre": "Tar Axeman",
+   "npc_type": 22494,
+   "sprite": 110996,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    96,
+    38
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1063161,
+   "nombre": "Tar Axeman",
+   "npc_type": 22494,
+   "sprite": 110996,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    103,
+    43
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1063162,
+   "nombre": "Tar Axeman",
+   "npc_type": 22494,
+   "sprite": 110996,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    89,
+    32
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1063163,
+   "nombre": "Tar Axeman",
+   "npc_type": 22494,
+   "sprite": 110996,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    94,
+    39
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1063164,
+   "nombre": "Tar Axeman",
+   "npc_type": 22494,
+   "sprite": 110996,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    143,
+    34
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1063165,
+   "nombre": "Tar Axeman",
+   "npc_type": 22494,
+   "sprite": 110996,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    148,
+    44
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1063166,
+   "nombre": "Tar Axeman",
+   "npc_type": 22494,
+   "sprite": 110996,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    111,
+    30
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1063167,
+   "nombre": "Tar Axeman",
+   "npc_type": 22494,
+   "sprite": 110996,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    130,
+    32
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1063168,
+   "nombre": "Tar Axeman",
+   "npc_type": 22494,
+   "sprite": 110996,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    143,
+    43
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1063169,
+   "nombre": "Tar Axeman",
+   "npc_type": 22494,
+   "sprite": 110996,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    114,
+    27
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1063170,
+   "nombre": "Tar Axeman",
+   "npc_type": 22494,
+   "sprite": 110996,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    141,
+    35
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1063171,
+   "nombre": "Tar Axeman",
+   "npc_type": 22494,
+   "sprite": 110996,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    126,
+    32
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1063172,
+   "nombre": "Tar Axeman",
+   "npc_type": 22494,
+   "sprite": 110996,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    130,
+    34
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1063173,
+   "nombre": "Tar Axeman",
+   "npc_type": 22494,
+   "sprite": 110996,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    110,
+    30
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 379
+  },
+  {
+   "entity_id": 1063174,
+   "nombre": "E-Phoeneox",
+   "npc_type": 22495,
+   "sprite": 110988,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    256,
+    157
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 380
+  },
+  {
+   "entity_id": 1063175,
+   "nombre": "E-Phoeneox",
+   "npc_type": 22495,
+   "sprite": 110988,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    257,
+    149
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 380
+  },
+  {
+   "entity_id": 1063176,
+   "nombre": "E-Phoeneox",
+   "npc_type": 22495,
+   "sprite": 110988,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    256,
+    154
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 380
+  },
+  {
+   "entity_id": 1063177,
+   "nombre": "E-Phoeneox",
+   "npc_type": 22495,
+   "sprite": 110988,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    271,
+    146
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 380
+  },
+  {
+   "entity_id": 1063178,
+   "nombre": "E-Phoeneox",
+   "npc_type": 22495,
+   "sprite": 110988,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    247,
+    160
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 380
+  },
+  {
+   "entity_id": 1063179,
+   "nombre": "E-Frost Pixie",
+   "npc_type": 22496,
+   "sprite": 110984,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    268,
+    153
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 381
+  },
+  {
+   "entity_id": 1063180,
+   "nombre": "E-Frost Pixie",
+   "npc_type": 22496,
+   "sprite": 110984,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    282,
+    152
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 381
+  },
+  {
+   "entity_id": 1063181,
+   "nombre": "E-Frost Pixie",
+   "npc_type": 22496,
+   "sprite": 110984,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    269,
+    153
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 381
+  },
+  {
+   "entity_id": 1063182,
+   "nombre": "E-Frost Pixie",
+   "npc_type": 22496,
+   "sprite": 110984,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    275,
+    145
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 381
+  },
+  {
+   "entity_id": 1063183,
+   "nombre": "E-Frost Pixie",
+   "npc_type": 22496,
+   "sprite": 110984,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    266,
+    162
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 381
+  },
+  {
+   "entity_id": 1063184,
+   "nombre": "E-Crystal Giant",
+   "npc_type": 22497,
+   "sprite": 110999,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    280,
+    154
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 1063185,
+   "nombre": "E-Crystal Giant",
+   "npc_type": 22497,
+   "sprite": 110999,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    284,
+    166
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 1063186,
+   "nombre": "E-Crystal Giant",
+   "npc_type": 22497,
+   "sprite": 110999,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    269,
+    161
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 1063187,
+   "nombre": "E-Crystal Giant",
+   "npc_type": 22497,
+   "sprite": 110999,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    270,
+    166
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 1063188,
+   "nombre": "E-Crystal Giant",
+   "npc_type": 22497,
+   "sprite": 110999,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    279,
+    148
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 1063189,
+   "nombre": "Mystic Phoenix",
+   "npc_type": 22498,
+   "sprite": 110940,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    216,
+    44
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 384
+  },
+  {
+   "entity_id": 1063190,
+   "nombre": "Seastorm Babee",
+   "npc_type": 22499,
+   "sprite": 110937,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    188,
+    89
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 384
+  }
+ ],
+ "recursos": [
+  {
+   "entity_id": 119597,
+   "capa": 0,
+   "px": [
+    1251,
+    999
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "crudo": "2dd3010000000000e3040000e70300000000000027000000000000001a000000dc0661ea00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 119598,
+   "capa": 0,
+   "px": [
+    4134,
+    2392
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "crudo": "2ed301000000000026100000580900000000000027000000000000001a000000dc0661ea00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 119599,
+   "capa": 0,
+   "px": [
+    5507,
+    4790
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "crudo": "2fd301000000000083150000b61200000000000027000000000000001a000000dc0661ea00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 119600,
+   "capa": 0,
+   "px": [
+    9334,
+    5443
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "crudo": "30d301000000000076240000431500000000000027000000000000001a000000dc0661ea00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 119601,
+   "capa": 0,
+   "px": [
+    9337,
+    299
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "crudo": "31d3010000000000792400002b0100000000000027000000000000001a000000dc0661ea00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 119602,
+   "capa": 0,
+   "px": [
+    4247,
+    4476
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "crudo": "32d3010000000000971000007c1100000000000027000000000000001a000000dc0661ea00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 119603,
+   "capa": 0,
+   "px": [
+    2319,
+    3508
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "crudo": "33d30100000000000f090000b40d00000000000027000000000000001a000000dc0661ea00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 119604,
+   "capa": 0,
+   "px": [
+    2276,
+    2310
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60305,
+   "cola": "00004080140000",
+   "crudo": "34d3010000000000e4080000060900000000000027000000000000001a000000dc0691eb00004080140000"
+  },
+  {
+   "entity_id": 119605,
+   "capa": 0,
+   "px": [
+    5958,
+    3542
+   ],
+   "medio": "006f70706572284d2900000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60051,
+   "cola": "00002280140000",
+   "crudo": "35d301000000000046170000d60d0000006f70706572284d2900000000000000000693ea00002280140000",
+   "que_es": "Aurora Totem"
+  },
+  {
+   "entity_id": 119606,
+   "capa": 0,
+   "px": [
+    6123,
+    3680
+   ],
+   "medio": "00000000180000000000000000000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60052,
+   "cola": "00002280140000",
+   "crudo": "36d3010000000000eb170000600e000000000000180000000000000000000000dc0694ea00002280140000",
+   "que_es": "Dark City Totem"
+  },
+  {
+   "entity_id": 119607,
+   "capa": 0,
+   "px": [
+    8494,
+    3676
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60305,
+   "cola": "00004080140000",
+   "crudo": "37d30100000000002e2100005c0e00000000000027000000000000001a000000dc0691eb00004080140000"
+  },
+  {
+   "entity_id": 119608,
+   "capa": 0,
+   "px": [
+    5113,
+    3980
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60305,
+   "cola": "00004080140000",
+   "crudo": "38d3010000000000f91300008c0f00000000000027000000000000001a000000dc0691eb00004080140000"
+  },
+  {
+   "entity_id": 119609,
+   "capa": 0,
+   "px": [
+    725,
+    3661
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60305,
+   "cola": "00004080140000",
+   "crudo": "39d3010000000000d50200004d0e00000000000027000000000000001a000000dc0691eb00004080140000"
+  },
+  {
+   "entity_id": 119610,
+   "capa": 0,
+   "px": [
+    2516,
+    2645
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60305,
+   "cola": "00004080140000",
+   "crudo": "3ad3010000000000d4090000550a00000000000027000000000000001a000000dc0691eb00004080140000"
+  },
+  {
+   "entity_id": 119611,
+   "capa": 0,
+   "px": [
+    5234,
+    4020
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60305,
+   "cola": "00004080140000",
+   "crudo": "3bd301000000000072140000b40f00000000000027000000000000001a000000dc0691eb00004080140000"
+  },
+  {
+   "entity_id": 119612,
+   "capa": 0,
+   "px": [
+    5474,
+    4141
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60305,
+   "cola": "00004080140000",
+   "crudo": "3cd3010000000000621500002d1000000000000027000000000000001a000000dc0691eb00004080140000"
+  },
+  {
+   "entity_id": 119613,
+   "capa": 0,
+   "px": [
+    7838,
+    3076
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60305,
+   "cola": "00004080140000",
+   "crudo": "3dd30100000000009e1e0000040c00000000000027000000000000001a000000dc0691eb00004080140000"
+  },
+  {
+   "entity_id": 119614,
+   "capa": 0,
+   "px": [
+    893,
+    3395
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60305,
+   "cola": "00004080140000",
+   "crudo": "3ed30100000000007d030000430d00000000000027000000000000001a000000dc0691eb00004080140000"
+  },
+  {
+   "entity_id": 119615,
+   "capa": 0,
+   "px": [
+    6337,
+    3332
+   ],
+   "medio": "006f70706572284d2900000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60053,
+   "cola": "00002280140000",
+   "crudo": "3fd3010000000000c1180000040d0000006f70706572284d2900000000000000000695ea00002280140000",
+   "que_es": "Iron Totem"
+  },
+  {
+   "entity_id": 119616,
+   "capa": 0,
+   "px": [
+    2361,
+    2711
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60305,
+   "cola": "00004080140000",
+   "crudo": "40d301000000000039090000970a00000000000027000000000000001a000000dc0691eb00004080140000"
+  },
+  {
+   "entity_id": 119617,
+   "capa": 0,
+   "px": [
+    2221,
+    2779
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60305,
+   "cola": "00004080140000",
+   "crudo": "41d3010000000000ad080000db0a00000000000027000000000000001a000000dc0691eb00004080140000"
+  },
+  {
+   "entity_id": 119618,
+   "capa": 0,
+   "px": [
+    6517,
+    3463
+   ],
+   "medio": "000000ba156f77650000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60054,
+   "cola": "00002280140000",
+   "crudo": "42d301000000000075190000870d0000000000ba156f77650000000000000000000696ea00002280140000",
+   "que_es": "Breeze Totem"
+  }
+ ]
+}

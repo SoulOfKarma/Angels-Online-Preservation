@@ -1,0 +1,3822 @@
+{
+ "_nota": "Drip-drop Passage (stage 280), de Celestia. Se llega desde Sylvan Gardens (278). Aqui hay una INSTANCIA segun el usuario. Poblado desde UNA sola sesion. Los objetos van CRUDOS.",
+ "stage": 280,
+ "spawns": [
+  {
+   "entity_id": 32752,
+   "nombre": "Aurora Totem",
+   "npc_type": 1937,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    157,
+    91
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 32753,
+   "nombre": "Dark City Totem",
+   "npc_type": 1938,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    164,
+    91
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 32754,
+   "nombre": "Iron Totem",
+   "npc_type": 1939,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    172,
+    92
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 32755,
+   "nombre": "Breeze Totem",
+   "npc_type": 1940,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    176,
+    94
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 123520,
+   "nombre": "Roselia",
+   "npc_type": 14263,
+   "sprite": 40439,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    56,
+    172
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123521,
+   "nombre": "Frost Bears' Dmi",
+   "npc_type": 14266,
+   "sprite": 40385,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    271,
+    14
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123522,
+   "nombre": "Frost Bears' Kay",
+   "npc_type": 14267,
+   "sprite": 40116,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    275,
+    13
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123523,
+   "nombre": "Botanist Knowles",
+   "npc_type": 14281,
+   "sprite": 40128,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    269,
+    44
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123524,
+   "nombre": "Champ Champ",
+   "npc_type": 14306,
+   "sprite": 40490,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    147,
+    89
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123525,
+   "nombre": "Verna",
+   "npc_type": 14307,
+   "sprite": 40496,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    290,
+    131
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123526,
+   "nombre": "Strange Chest",
+   "npc_type": 14308,
+   "sprite": 40336,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    293,
+    130
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 1050195,
+   "nombre": "Crystal Indigo",
+   "npc_type": 17057,
+   "sprite": 110111,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    21,
+    130
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 264
+  },
+  {
+   "entity_id": 1050196,
+   "nombre": "Crystal Indigo",
+   "npc_type": 17057,
+   "sprite": 110111,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    9,
+    131
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 264
+  },
+  {
+   "entity_id": 1050197,
+   "nombre": "Crystal Indigo",
+   "npc_type": 17057,
+   "sprite": 110111,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    17,
+    124
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 264
+  },
+  {
+   "entity_id": 1050198,
+   "nombre": "Crystal Indigo",
+   "npc_type": 17057,
+   "sprite": 110111,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    23,
+    127
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 264
+  },
+  {
+   "entity_id": 1050199,
+   "nombre": "Crystal Indigo",
+   "npc_type": 17057,
+   "sprite": 110111,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    14,
+    127
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 264
+  },
+  {
+   "entity_id": 1050200,
+   "nombre": "Crystal Indigo",
+   "npc_type": 17057,
+   "sprite": 110111,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    21,
+    103
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 264
+  },
+  {
+   "entity_id": 1050201,
+   "nombre": "Crystal Indigo",
+   "npc_type": 17057,
+   "sprite": 110111,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    20,
+    113
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 264
+  },
+  {
+   "entity_id": 1050202,
+   "nombre": "Crystal Indigo",
+   "npc_type": 17057,
+   "sprite": 110111,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    13,
+    103
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 264
+  },
+  {
+   "entity_id": 1050203,
+   "nombre": "Crystal Indigo",
+   "npc_type": 17057,
+   "sprite": 110111,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    9,
+    105
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 264
+  },
+  {
+   "entity_id": 1050204,
+   "nombre": "Crystal Indigo",
+   "npc_type": 17057,
+   "sprite": 110111,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    17,
+    109
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 264
+  },
+  {
+   "entity_id": 1050205,
+   "nombre": "Crystal Indigo",
+   "npc_type": 17057,
+   "sprite": 110111,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    25,
+    157
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 264
+  },
+  {
+   "entity_id": 1050206,
+   "nombre": "Crystal Indigo",
+   "npc_type": 17057,
+   "sprite": 110111,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    8,
+    143
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 264
+  },
+  {
+   "entity_id": 1050207,
+   "nombre": "Crystal Indigo",
+   "npc_type": 17057,
+   "sprite": 110111,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    21,
+    145
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 264
+  },
+  {
+   "entity_id": 1050208,
+   "nombre": "Crystal Indigo",
+   "npc_type": 17057,
+   "sprite": 110111,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    24,
+    153
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 264
+  },
+  {
+   "entity_id": 1050209,
+   "nombre": "Crystal Indigo",
+   "npc_type": 17057,
+   "sprite": 110111,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    10,
+    133
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 264
+  },
+  {
+   "entity_id": 1050210,
+   "nombre": "Rainbow Pinball",
+   "npc_type": 17058,
+   "sprite": 110112,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    117
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 264
+  },
+  {
+   "entity_id": 1050211,
+   "nombre": "Rainbow Pinball",
+   "npc_type": 17058,
+   "sprite": 110112,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    38,
+    121
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 264
+  },
+  {
+   "entity_id": 1050212,
+   "nombre": "Rainbow Pinball",
+   "npc_type": 17058,
+   "sprite": 110112,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    46,
+    122
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 264
+  },
+  {
+   "entity_id": 1050213,
+   "nombre": "Rainbow Pinball",
+   "npc_type": 17058,
+   "sprite": 110112,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    48,
+    120
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 264
+  },
+  {
+   "entity_id": 1050214,
+   "nombre": "Rainbow Pinball",
+   "npc_type": 17058,
+   "sprite": 110112,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    41,
+    122
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 264
+  },
+  {
+   "entity_id": 1050215,
+   "nombre": "Rainbow Pinball",
+   "npc_type": 17058,
+   "sprite": 110112,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    23,
+    117
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 264
+  },
+  {
+   "entity_id": 1050216,
+   "nombre": "Rainbow Pinball",
+   "npc_type": 17058,
+   "sprite": 110112,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    42,
+    121
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 264
+  },
+  {
+   "entity_id": 1050217,
+   "nombre": "Rainbow Pinball",
+   "npc_type": 17058,
+   "sprite": 110112,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    31,
+    118
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 264
+  },
+  {
+   "entity_id": 1050218,
+   "nombre": "Rainbow Pinball",
+   "npc_type": 17058,
+   "sprite": 110112,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    25,
+    113
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 264
+  },
+  {
+   "entity_id": 1050219,
+   "nombre": "Rainbow Pinball",
+   "npc_type": 17058,
+   "sprite": 110112,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    31,
+    114
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 264
+  },
+  {
+   "entity_id": 1050220,
+   "nombre": "Rainbow Pinball",
+   "npc_type": 17058,
+   "sprite": 110112,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    31,
+    111
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 264
+  },
+  {
+   "entity_id": 1050221,
+   "nombre": "Rainbow Pinball",
+   "npc_type": 17058,
+   "sprite": 110112,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    16,
+    113
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 264
+  },
+  {
+   "entity_id": 1050222,
+   "nombre": "Rainbow Pinball",
+   "npc_type": 17058,
+   "sprite": 110112,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    22,
+    123
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 264
+  },
+  {
+   "entity_id": 1050223,
+   "nombre": "Rainbow Pinball",
+   "npc_type": 17058,
+   "sprite": 110112,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    19,
+    108
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 264
+  },
+  {
+   "entity_id": 1050224,
+   "nombre": "Rainbow Pinball",
+   "npc_type": 17058,
+   "sprite": 110112,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    17,
+    116
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 264
+  },
+  {
+   "entity_id": 1050225,
+   "nombre": "Rusty Crocodile",
+   "npc_type": 17059,
+   "sprite": 110154,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    38,
+    73
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 267
+  },
+  {
+   "entity_id": 1050226,
+   "nombre": "Rusty Crocodile",
+   "npc_type": 17059,
+   "sprite": 110154,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    25,
+    78
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 267
+  },
+  {
+   "entity_id": 1050227,
+   "nombre": "Rusty Crocodile",
+   "npc_type": 17059,
+   "sprite": 110154,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    21,
+    72
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 267
+  },
+  {
+   "entity_id": 1050228,
+   "nombre": "Rusty Crocodile",
+   "npc_type": 17059,
+   "sprite": 110154,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    24,
+    80
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 267
+  },
+  {
+   "entity_id": 1050229,
+   "nombre": "Rusty Crocodile",
+   "npc_type": 17059,
+   "sprite": 110154,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    23,
+    77
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 267
+  },
+  {
+   "entity_id": 1050230,
+   "nombre": "Rusty Crocodile",
+   "npc_type": 17059,
+   "sprite": 110154,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    47,
+    83
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 267
+  },
+  {
+   "entity_id": 1050231,
+   "nombre": "Rusty Crocodile",
+   "npc_type": 17059,
+   "sprite": 110154,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    57,
+    84
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 267
+  },
+  {
+   "entity_id": 1050232,
+   "nombre": "Rusty Crocodile",
+   "npc_type": 17059,
+   "sprite": 110154,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    54,
+    86
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 267
+  },
+  {
+   "entity_id": 1050233,
+   "nombre": "Rusty Crocodile",
+   "npc_type": 17059,
+   "sprite": 110154,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    41,
+    72
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 267
+  },
+  {
+   "entity_id": 1050234,
+   "nombre": "Rusty Crocodile",
+   "npc_type": 17059,
+   "sprite": 110154,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    35,
+    76
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 267
+  },
+  {
+   "entity_id": 1050235,
+   "nombre": "Rusty Crocodile",
+   "npc_type": 17059,
+   "sprite": 110154,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    65,
+    97
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 267
+  },
+  {
+   "entity_id": 1050236,
+   "nombre": "Rusty Crocodile",
+   "npc_type": 17059,
+   "sprite": 110154,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    68,
+    93
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 267
+  },
+  {
+   "entity_id": 1050237,
+   "nombre": "Rusty Crocodile",
+   "npc_type": 17059,
+   "sprite": 110154,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    48,
+    87
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 267
+  },
+  {
+   "entity_id": 1050238,
+   "nombre": "Rusty Crocodile",
+   "npc_type": 17059,
+   "sprite": 110154,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    65,
+    94
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 267
+  },
+  {
+   "entity_id": 1050239,
+   "nombre": "Rusty Crocodile",
+   "npc_type": 17059,
+   "sprite": 110154,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    61,
+    89
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 267
+  },
+  {
+   "entity_id": 1050240,
+   "nombre": "Rusty Crocodile",
+   "npc_type": 17059,
+   "sprite": 110154,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    81,
+    98
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 267
+  },
+  {
+   "entity_id": 1050241,
+   "nombre": "Rusty Crocodile",
+   "npc_type": 17059,
+   "sprite": 110154,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    92,
+    106
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 267
+  },
+  {
+   "entity_id": 1050242,
+   "nombre": "Rusty Crocodile",
+   "npc_type": 17059,
+   "sprite": 110154,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    82,
+    103
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 267
+  },
+  {
+   "entity_id": 1050243,
+   "nombre": "Rusty Crocodile",
+   "npc_type": 17059,
+   "sprite": 110154,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    85,
+    99
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 267
+  },
+  {
+   "entity_id": 1050244,
+   "nombre": "Rusty Crocodile",
+   "npc_type": 17059,
+   "sprite": 110154,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    79,
+    102
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 267
+  },
+  {
+   "entity_id": 1050245,
+   "nombre": "Bloody Crocodile",
+   "npc_type": 17060,
+   "sprite": 110163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    100,
+    135
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 267
+  },
+  {
+   "entity_id": 1050246,
+   "nombre": "Bloody Crocodile",
+   "npc_type": 17060,
+   "sprite": 110163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    121,
+    123
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 267
+  },
+  {
+   "entity_id": 1050247,
+   "nombre": "Bloody Crocodile",
+   "npc_type": 17060,
+   "sprite": 110163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    118,
+    141
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 267
+  },
+  {
+   "entity_id": 1050248,
+   "nombre": "Bloody Crocodile",
+   "npc_type": 17060,
+   "sprite": 110163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    112,
+    143
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 267
+  },
+  {
+   "entity_id": 1050249,
+   "nombre": "Bloody Crocodile",
+   "npc_type": 17060,
+   "sprite": 110163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    116,
+    140
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 267
+  },
+  {
+   "entity_id": 1050250,
+   "nombre": "Bloody Crocodile",
+   "npc_type": 17060,
+   "sprite": 110163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    157,
+    146
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 267
+  },
+  {
+   "entity_id": 1050251,
+   "nombre": "Bloody Crocodile",
+   "npc_type": 17060,
+   "sprite": 110163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    142,
+    149
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 267
+  },
+  {
+   "entity_id": 1050252,
+   "nombre": "Bloody Crocodile",
+   "npc_type": 17060,
+   "sprite": 110163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    143,
+    137
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 267
+  },
+  {
+   "entity_id": 1050253,
+   "nombre": "Bloody Crocodile",
+   "npc_type": 17060,
+   "sprite": 110163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    148,
+    149
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 267
+  },
+  {
+   "entity_id": 1050254,
+   "nombre": "Bloody Crocodile",
+   "npc_type": 17060,
+   "sprite": 110163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    138,
+    144
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 267
+  },
+  {
+   "entity_id": 1050255,
+   "nombre": "Bloody Crocodile",
+   "npc_type": 17060,
+   "sprite": 110163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    135,
+    124
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 267
+  },
+  {
+   "entity_id": 1050256,
+   "nombre": "Bloody Crocodile",
+   "npc_type": 17060,
+   "sprite": 110163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    130,
+    135
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 267
+  },
+  {
+   "entity_id": 1050257,
+   "nombre": "Bloody Crocodile",
+   "npc_type": 17060,
+   "sprite": 110163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    123,
+    119
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 267
+  },
+  {
+   "entity_id": 1050258,
+   "nombre": "Bloody Crocodile",
+   "npc_type": 17060,
+   "sprite": 110163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    136,
+    131
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 267
+  },
+  {
+   "entity_id": 1050259,
+   "nombre": "Bloody Crocodile",
+   "npc_type": 17060,
+   "sprite": 110163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    120,
+    132
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 267
+  },
+  {
+   "entity_id": 1050260,
+   "nombre": "Bloody Crocodile",
+   "npc_type": 17060,
+   "sprite": 110163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    104,
+    106
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 267
+  },
+  {
+   "entity_id": 1050261,
+   "nombre": "Bloody Crocodile",
+   "npc_type": 17060,
+   "sprite": 110163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    124,
+    107
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 267
+  },
+  {
+   "entity_id": 1050262,
+   "nombre": "Bloody Crocodile",
+   "npc_type": 17060,
+   "sprite": 110163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    117,
+    106
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 267
+  },
+  {
+   "entity_id": 1050263,
+   "nombre": "Bloody Crocodile",
+   "npc_type": 17060,
+   "sprite": 110163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    121,
+    104
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 267
+  },
+  {
+   "entity_id": 1050264,
+   "nombre": "Bloody Crocodile",
+   "npc_type": 17060,
+   "sprite": 110163,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    105,
+    105
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 267
+  },
+  {
+   "entity_id": 1050265,
+   "nombre": "Tendrillon",
+   "npc_type": 17061,
+   "sprite": 110160,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    119,
+    74
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 269
+  },
+  {
+   "entity_id": 1050266,
+   "nombre": "Tendrillon",
+   "npc_type": 17061,
+   "sprite": 110160,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    106,
+    73
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 269
+  },
+  {
+   "entity_id": 1050267,
+   "nombre": "Tendrillon",
+   "npc_type": 17061,
+   "sprite": 110160,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    129,
+    73
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 269
+  },
+  {
+   "entity_id": 1050268,
+   "nombre": "Tendrillon",
+   "npc_type": 17061,
+   "sprite": 110160,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    123,
+    69
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 269
+  },
+  {
+   "entity_id": 1050269,
+   "nombre": "Tendrillon",
+   "npc_type": 17061,
+   "sprite": 110160,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    116,
+    57
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 269
+  },
+  {
+   "entity_id": 1050270,
+   "nombre": "Tendrillon",
+   "npc_type": 17061,
+   "sprite": 110160,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    109,
+    53
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 269
+  },
+  {
+   "entity_id": 1050271,
+   "nombre": "Tendrillon",
+   "npc_type": 17061,
+   "sprite": 110160,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    102,
+    75
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 269
+  },
+  {
+   "entity_id": 1050272,
+   "nombre": "Tendrillon",
+   "npc_type": 17061,
+   "sprite": 110160,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    116,
+    59
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 269
+  },
+  {
+   "entity_id": 1050273,
+   "nombre": "Tendrillon",
+   "npc_type": 17061,
+   "sprite": 110160,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    100,
+    53
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 269
+  },
+  {
+   "entity_id": 1050274,
+   "nombre": "Tendrillon",
+   "npc_type": 17061,
+   "sprite": 110160,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    102,
+    52
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 269
+  },
+  {
+   "entity_id": 1050275,
+   "nombre": "Tendrillon",
+   "npc_type": 17061,
+   "sprite": 110160,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    64,
+    58
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 269
+  },
+  {
+   "entity_id": 1050276,
+   "nombre": "Tendrillon",
+   "npc_type": 17061,
+   "sprite": 110160,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    83,
+    56
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 269
+  },
+  {
+   "entity_id": 1050277,
+   "nombre": "Tendrillon",
+   "npc_type": 17061,
+   "sprite": 110160,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    92,
+    54
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 269
+  },
+  {
+   "entity_id": 1050278,
+   "nombre": "Tendrillon",
+   "npc_type": 17061,
+   "sprite": 110160,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    69,
+    60
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 269
+  },
+  {
+   "entity_id": 1050279,
+   "nombre": "Tendrillon",
+   "npc_type": 17061,
+   "sprite": 110160,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    81,
+    50
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 269
+  },
+  {
+   "entity_id": 1050280,
+   "nombre": "Tendrillon",
+   "npc_type": 17061,
+   "sprite": 110160,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    68,
+    40
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 269
+  },
+  {
+   "entity_id": 1050281,
+   "nombre": "Tendrillon",
+   "npc_type": 17061,
+   "sprite": 110160,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    66,
+    34
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 269
+  },
+  {
+   "entity_id": 1050282,
+   "nombre": "Tendrillon",
+   "npc_type": 17061,
+   "sprite": 110160,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    72,
+    44
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 269
+  },
+  {
+   "entity_id": 1050283,
+   "nombre": "Tendrillon",
+   "npc_type": 17061,
+   "sprite": 110160,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    78,
+    44
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 269
+  },
+  {
+   "entity_id": 1050284,
+   "nombre": "Tendrillon",
+   "npc_type": 17061,
+   "sprite": 110160,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    86,
+    49
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 269
+  },
+  {
+   "entity_id": 1050285,
+   "nombre": "Bloodlust Fern",
+   "npc_type": 17062,
+   "sprite": 110169,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    98,
+    17
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 269
+  },
+  {
+   "entity_id": 1050286,
+   "nombre": "Bloodlust Fern",
+   "npc_type": 17062,
+   "sprite": 110169,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    112,
+    25
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 269
+  },
+  {
+   "entity_id": 1050287,
+   "nombre": "Bloodlust Fern",
+   "npc_type": 17062,
+   "sprite": 110169,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    116,
+    19
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 269
+  },
+  {
+   "entity_id": 1050288,
+   "nombre": "Bloodlust Fern",
+   "npc_type": 17062,
+   "sprite": 110169,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    114,
+    24
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 269
+  },
+  {
+   "entity_id": 1050289,
+   "nombre": "Bloodlust Fern",
+   "npc_type": 17062,
+   "sprite": 110169,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    123,
+    20
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 269
+  },
+  {
+   "entity_id": 1050290,
+   "nombre": "Bloodlust Fern",
+   "npc_type": 17062,
+   "sprite": 110169,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    116,
+    21
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 269
+  },
+  {
+   "entity_id": 1050291,
+   "nombre": "Bloodlust Fern",
+   "npc_type": 17062,
+   "sprite": 110169,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    115,
+    21
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 269
+  },
+  {
+   "entity_id": 1050292,
+   "nombre": "Bloodlust Fern",
+   "npc_type": 17062,
+   "sprite": 110169,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    128,
+    11
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 269
+  },
+  {
+   "entity_id": 1050293,
+   "nombre": "Bloodlust Fern",
+   "npc_type": 17062,
+   "sprite": 110169,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    124,
+    11
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 269
+  },
+  {
+   "entity_id": 1050294,
+   "nombre": "Bloodlust Fern",
+   "npc_type": 17062,
+   "sprite": 110169,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    127,
+    25
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 269
+  },
+  {
+   "entity_id": 1050295,
+   "nombre": "Bloodlust Fern",
+   "npc_type": 17062,
+   "sprite": 110169,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    62,
+    57
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 269
+  },
+  {
+   "entity_id": 1050296,
+   "nombre": "Bloodlust Fern",
+   "npc_type": 17062,
+   "sprite": 110169,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    19,
+    26
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 269
+  },
+  {
+   "entity_id": 1050297,
+   "nombre": "Bloodlust Fern",
+   "npc_type": 17062,
+   "sprite": 110169,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    42,
+    43
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 269
+  },
+  {
+   "entity_id": 1050298,
+   "nombre": "Bloodlust Fern",
+   "npc_type": 17062,
+   "sprite": 110169,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    55,
+    54
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 269
+  },
+  {
+   "entity_id": 1050299,
+   "nombre": "Bloodlust Fern",
+   "npc_type": 17062,
+   "sprite": 110169,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    58,
+    41
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 269
+  },
+  {
+   "entity_id": 1050300,
+   "nombre": "Bloodlust Fern",
+   "npc_type": 17062,
+   "sprite": 110169,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    33,
+    18
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 269
+  },
+  {
+   "entity_id": 1050301,
+   "nombre": "Bloodlust Fern",
+   "npc_type": 17062,
+   "sprite": 110169,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    26,
+    21
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 269
+  },
+  {
+   "entity_id": 1050302,
+   "nombre": "Bloodlust Fern",
+   "npc_type": 17062,
+   "sprite": 110169,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    30,
+    27
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 269
+  },
+  {
+   "entity_id": 1050303,
+   "nombre": "Bloodlust Fern",
+   "npc_type": 17062,
+   "sprite": 110169,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    19,
+    25
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 269
+  },
+  {
+   "entity_id": 1050304,
+   "nombre": "Bloodlust Fern",
+   "npc_type": 17062,
+   "sprite": 110169,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    41,
+    17
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 269
+  },
+  {
+   "entity_id": 1050305,
+   "nombre": "Ragethorn",
+   "npc_type": 17063,
+   "sprite": 110047,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    147,
+    57
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 271
+  },
+  {
+   "entity_id": 1050306,
+   "nombre": "Ragethorn",
+   "npc_type": 17063,
+   "sprite": 110047,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    155,
+    55
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 271
+  },
+  {
+   "entity_id": 1050307,
+   "nombre": "Ragethorn",
+   "npc_type": 17063,
+   "sprite": 110047,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    144,
+    48
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 271
+  },
+  {
+   "entity_id": 1050308,
+   "nombre": "Ragethorn",
+   "npc_type": 17063,
+   "sprite": 110047,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    141,
+    47
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 271
+  },
+  {
+   "entity_id": 1050309,
+   "nombre": "Ragethorn",
+   "npc_type": 17063,
+   "sprite": 110047,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    152,
+    53
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 271
+  },
+  {
+   "entity_id": 1050310,
+   "nombre": "Ragethorn",
+   "npc_type": 17063,
+   "sprite": 110047,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    183,
+    63
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 271
+  },
+  {
+   "entity_id": 1050311,
+   "nombre": "Ragethorn",
+   "npc_type": 17063,
+   "sprite": 110047,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    163,
+    60
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 271
+  },
+  {
+   "entity_id": 1050312,
+   "nombre": "Ragethorn",
+   "npc_type": 17063,
+   "sprite": 110047,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    165,
+    72
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 271
+  },
+  {
+   "entity_id": 1050313,
+   "nombre": "Ragethorn",
+   "npc_type": 17063,
+   "sprite": 110047,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    173,
+    72
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 271
+  },
+  {
+   "entity_id": 1050314,
+   "nombre": "Ragethorn",
+   "npc_type": 17063,
+   "sprite": 110047,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    177,
+    70
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 271
+  },
+  {
+   "entity_id": 1050315,
+   "nombre": "Ragethorn",
+   "npc_type": 17063,
+   "sprite": 110047,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    144,
+    88
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 271
+  },
+  {
+   "entity_id": 1050316,
+   "nombre": "Ragethorn",
+   "npc_type": 17063,
+   "sprite": 110047,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    167,
+    74
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 271
+  },
+  {
+   "entity_id": 1050317,
+   "nombre": "Ragethorn",
+   "npc_type": 17063,
+   "sprite": 110047,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    154,
+    87
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 271
+  },
+  {
+   "entity_id": 1050318,
+   "nombre": "Ragethorn",
+   "npc_type": 17063,
+   "sprite": 110047,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    194,
+    84
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 271
+  },
+  {
+   "entity_id": 1050319,
+   "nombre": "Ragethorn",
+   "npc_type": 17063,
+   "sprite": 110047,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    131,
+    77
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 271
+  },
+  {
+   "entity_id": 1050320,
+   "nombre": "Ragethorn",
+   "npc_type": 17063,
+   "sprite": 110047,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    201,
+    82
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 271
+  },
+  {
+   "entity_id": 1050321,
+   "nombre": "Ragethorn",
+   "npc_type": 17063,
+   "sprite": 110047,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    196,
+    73
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 271
+  },
+  {
+   "entity_id": 1050322,
+   "nombre": "Ragethorn",
+   "npc_type": 17063,
+   "sprite": 110047,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    200,
+    80
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 271
+  },
+  {
+   "entity_id": 1050323,
+   "nombre": "Ragethorn",
+   "npc_type": 17063,
+   "sprite": 110047,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    188,
+    85
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 271
+  },
+  {
+   "entity_id": 1050324,
+   "nombre": "Ragethorn",
+   "npc_type": 17063,
+   "sprite": 110047,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    213,
+    72
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 271
+  },
+  {
+   "entity_id": 1050325,
+   "nombre": "Ragethorn",
+   "npc_type": 17063,
+   "sprite": 110047,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    191,
+    69
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 271
+  },
+  {
+   "entity_id": 1050326,
+   "nombre": "Ragethorn",
+   "npc_type": 17063,
+   "sprite": 110047,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    187,
+    65
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 271
+  },
+  {
+   "entity_id": 1050327,
+   "nombre": "Ragethorn",
+   "npc_type": 17063,
+   "sprite": 110047,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    187,
+    53
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 271
+  },
+  {
+   "entity_id": 1050328,
+   "nombre": "Ragethorn",
+   "npc_type": 17063,
+   "sprite": 110047,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    207,
+    71
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 271
+  },
+  {
+   "entity_id": 1050329,
+   "nombre": "Ragethorn",
+   "npc_type": 17063,
+   "sprite": 110047,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    188,
+    61
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 271
+  },
+  {
+   "entity_id": 1050330,
+   "nombre": "Withered Glory",
+   "npc_type": 17064,
+   "sprite": 110126,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    220,
+    84
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 271
+  },
+  {
+   "entity_id": 1050331,
+   "nombre": "Withered Glory",
+   "npc_type": 17064,
+   "sprite": 110126,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    222,
+    78
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 271
+  },
+  {
+   "entity_id": 1050332,
+   "nombre": "Withered Glory",
+   "npc_type": 17064,
+   "sprite": 110126,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    221,
+    88
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 271
+  },
+  {
+   "entity_id": 1050333,
+   "nombre": "Withered Glory",
+   "npc_type": 17064,
+   "sprite": 110126,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    224,
+    77
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 271
+  },
+  {
+   "entity_id": 1050334,
+   "nombre": "Withered Glory",
+   "npc_type": 17064,
+   "sprite": 110126,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    219,
+    75
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 271
+  },
+  {
+   "entity_id": 1050335,
+   "nombre": "Withered Glory",
+   "npc_type": 17064,
+   "sprite": 110126,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    242,
+    95
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 271
+  },
+  {
+   "entity_id": 1050336,
+   "nombre": "Withered Glory",
+   "npc_type": 17064,
+   "sprite": 110126,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    235,
+    80
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 271
+  },
+  {
+   "entity_id": 1050337,
+   "nombre": "Withered Glory",
+   "npc_type": 17064,
+   "sprite": 110126,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    228,
+    92
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 271
+  },
+  {
+   "entity_id": 1050338,
+   "nombre": "Withered Glory",
+   "npc_type": 17064,
+   "sprite": 110126,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    233,
+    91
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 271
+  },
+  {
+   "entity_id": 1050339,
+   "nombre": "Withered Glory",
+   "npc_type": 17064,
+   "sprite": 110126,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    233,
+    93
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 271
+  },
+  {
+   "entity_id": 1050340,
+   "nombre": "Withered Glory",
+   "npc_type": 17064,
+   "sprite": 110126,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    241,
+    82
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 271
+  },
+  {
+   "entity_id": 1050341,
+   "nombre": "Withered Glory",
+   "npc_type": 17064,
+   "sprite": 110126,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    238,
+    78
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 271
+  },
+  {
+   "entity_id": 1050342,
+   "nombre": "Withered Glory",
+   "npc_type": 17064,
+   "sprite": 110126,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    251,
+    80
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 271
+  },
+  {
+   "entity_id": 1050343,
+   "nombre": "Withered Glory",
+   "npc_type": 17064,
+   "sprite": 110126,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    249,
+    85
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 271
+  },
+  {
+   "entity_id": 1050344,
+   "nombre": "Withered Glory",
+   "npc_type": 17064,
+   "sprite": 110126,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    232,
+    86
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 271
+  },
+  {
+   "entity_id": 1050345,
+   "nombre": "Withered Glory",
+   "npc_type": 17064,
+   "sprite": 110126,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    269,
+    84
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 271
+  },
+  {
+   "entity_id": 1050346,
+   "nombre": "Withered Glory",
+   "npc_type": 17064,
+   "sprite": 110126,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    260,
+    78
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 271
+  },
+  {
+   "entity_id": 1050347,
+   "nombre": "Withered Glory",
+   "npc_type": 17064,
+   "sprite": 110126,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    256,
+    79
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 271
+  },
+  {
+   "entity_id": 1050348,
+   "nombre": "Withered Glory",
+   "npc_type": 17064,
+   "sprite": 110126,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    252,
+    86
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 271
+  },
+  {
+   "entity_id": 1050349,
+   "nombre": "Withered Glory",
+   "npc_type": 17064,
+   "sprite": 110126,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    247,
+    82
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 271
+  },
+  {
+   "entity_id": 1050350,
+   "nombre": "Withered Glory",
+   "npc_type": 17064,
+   "sprite": 110126,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    282,
+    72
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 271
+  },
+  {
+   "entity_id": 1050351,
+   "nombre": "Withered Glory",
+   "npc_type": 17064,
+   "sprite": 110126,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    255,
+    84
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 271
+  },
+  {
+   "entity_id": 1050352,
+   "nombre": "Withered Glory",
+   "npc_type": 17064,
+   "sprite": 110126,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    271,
+    85
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 271
+  },
+  {
+   "entity_id": 1050353,
+   "nombre": "Withered Glory",
+   "npc_type": 17064,
+   "sprite": 110126,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    278,
+    82
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 271
+  },
+  {
+   "entity_id": 1050354,
+   "nombre": "Withered Glory",
+   "npc_type": 17064,
+   "sprite": 110126,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    283,
+    70
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 271
+  },
+  {
+   "entity_id": 1050355,
+   "nombre": "Spunk Fly",
+   "npc_type": 17065,
+   "sprite": 110026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    179,
+    118
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 273
+  },
+  {
+   "entity_id": 1050356,
+   "nombre": "Spunk Fly",
+   "npc_type": 17065,
+   "sprite": 110026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    186,
+    114
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 273
+  },
+  {
+   "entity_id": 1050357,
+   "nombre": "Spunk Fly",
+   "npc_type": 17065,
+   "sprite": 110026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    204,
+    104
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 273
+  },
+  {
+   "entity_id": 1050358,
+   "nombre": "Spunk Fly",
+   "npc_type": 17065,
+   "sprite": 110026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    174,
+    118
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 273
+  },
+  {
+   "entity_id": 1050359,
+   "nombre": "Spunk Fly",
+   "npc_type": 17065,
+   "sprite": 110026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    191,
+    108
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 273
+  },
+  {
+   "entity_id": 1050360,
+   "nombre": "Spunk Fly",
+   "npc_type": 17065,
+   "sprite": 110026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    203,
+    109
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 273
+  },
+  {
+   "entity_id": 1050361,
+   "nombre": "Spunk Fly",
+   "npc_type": 17065,
+   "sprite": 110026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    206,
+    107
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 273
+  },
+  {
+   "entity_id": 1050362,
+   "nombre": "Spunk Fly",
+   "npc_type": 17065,
+   "sprite": 110026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    189,
+    116
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 273
+  },
+  {
+   "entity_id": 1050363,
+   "nombre": "Spunk Fly",
+   "npc_type": 17065,
+   "sprite": 110026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    195,
+    124
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 273
+  },
+  {
+   "entity_id": 1050364,
+   "nombre": "Spunk Fly",
+   "npc_type": 17065,
+   "sprite": 110026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    203,
+    111
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 273
+  },
+  {
+   "entity_id": 1050365,
+   "nombre": "Spunk Fly",
+   "npc_type": 17065,
+   "sprite": 110026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    213,
+    124
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 273
+  },
+  {
+   "entity_id": 1050366,
+   "nombre": "Spunk Fly",
+   "npc_type": 17065,
+   "sprite": 110026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    202,
+    122
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 273
+  },
+  {
+   "entity_id": 1050367,
+   "nombre": "Spunk Fly",
+   "npc_type": 17065,
+   "sprite": 110026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    204,
+    105
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 273
+  },
+  {
+   "entity_id": 1050368,
+   "nombre": "Spunk Fly",
+   "npc_type": 17065,
+   "sprite": 110026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    216,
+    107
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 273
+  },
+  {
+   "entity_id": 1050369,
+   "nombre": "Spunk Fly",
+   "npc_type": 17065,
+   "sprite": 110026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    196,
+    116
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 273
+  },
+  {
+   "entity_id": 1050370,
+   "nombre": "Spunk Fly",
+   "npc_type": 17065,
+   "sprite": 110026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    216,
+    104
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 273
+  },
+  {
+   "entity_id": 1050371,
+   "nombre": "Spunk Fly",
+   "npc_type": 17065,
+   "sprite": 110026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    220,
+    118
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 273
+  },
+  {
+   "entity_id": 1050372,
+   "nombre": "Spunk Fly",
+   "npc_type": 17065,
+   "sprite": 110026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    207,
+    122
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 273
+  },
+  {
+   "entity_id": 1050373,
+   "nombre": "Spunk Fly",
+   "npc_type": 17065,
+   "sprite": 110026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    213,
+    112
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 273
+  },
+  {
+   "entity_id": 1050374,
+   "nombre": "Spunk Fly",
+   "npc_type": 17065,
+   "sprite": 110026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    225,
+    112
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 273
+  },
+  {
+   "entity_id": 1050375,
+   "nombre": "Spunk Fly",
+   "npc_type": 17065,
+   "sprite": 110026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    232,
+    119
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 273
+  },
+  {
+   "entity_id": 1050376,
+   "nombre": "Spunk Fly",
+   "npc_type": 17065,
+   "sprite": 110026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    229,
+    125
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 273
+  },
+  {
+   "entity_id": 1050377,
+   "nombre": "Spunk Fly",
+   "npc_type": 17065,
+   "sprite": 110026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    218,
+    114
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 273
+  },
+  {
+   "entity_id": 1050378,
+   "nombre": "Spunk Fly",
+   "npc_type": 17065,
+   "sprite": 110026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    231,
+    123
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 273
+  },
+  {
+   "entity_id": 1050379,
+   "nombre": "Spunk Fly",
+   "npc_type": 17065,
+   "sprite": 110026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    234,
+    119
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 273
+  },
+  {
+   "entity_id": 1050380,
+   "nombre": "Naughty Fly",
+   "npc_type": 17066,
+   "sprite": 110091,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    231,
+    170
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 273
+  },
+  {
+   "entity_id": 1050381,
+   "nombre": "Naughty Fly",
+   "npc_type": 17066,
+   "sprite": 110091,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    224,
+    160
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 273
+  },
+  {
+   "entity_id": 1050382,
+   "nombre": "Naughty Fly",
+   "npc_type": 17066,
+   "sprite": 110091,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    228,
+    157
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 273
+  },
+  {
+   "entity_id": 1050383,
+   "nombre": "Naughty Fly",
+   "npc_type": 17066,
+   "sprite": 110091,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    229,
+    161
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 273
+  },
+  {
+   "entity_id": 1050384,
+   "nombre": "Naughty Fly",
+   "npc_type": 17066,
+   "sprite": 110091,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    226,
+    160
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 273
+  },
+  {
+   "entity_id": 1050385,
+   "nombre": "Naughty Fly",
+   "npc_type": 17066,
+   "sprite": 110091,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    226,
+    169
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 273
+  },
+  {
+   "entity_id": 1050386,
+   "nombre": "Naughty Fly",
+   "npc_type": 17066,
+   "sprite": 110091,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    222,
+    159
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 273
+  },
+  {
+   "entity_id": 1050387,
+   "nombre": "Naughty Fly",
+   "npc_type": 17066,
+   "sprite": 110091,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    227,
+    159
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 273
+  },
+  {
+   "entity_id": 1050388,
+   "nombre": "Naughty Fly",
+   "npc_type": 17066,
+   "sprite": 110091,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    219,
+    166
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 273
+  },
+  {
+   "entity_id": 1050389,
+   "nombre": "Naughty Fly",
+   "npc_type": 17066,
+   "sprite": 110091,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    223,
+    161
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 273
+  },
+  {
+   "entity_id": 1050390,
+   "nombre": "Naughty Fly",
+   "npc_type": 17066,
+   "sprite": 110091,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    287,
+    125
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 273
+  },
+  {
+   "entity_id": 1050391,
+   "nombre": "Naughty Fly",
+   "npc_type": 17066,
+   "sprite": 110091,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    276,
+    131
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 273
+  },
+  {
+   "entity_id": 1050392,
+   "nombre": "Naughty Fly",
+   "npc_type": 17066,
+   "sprite": 110091,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    277,
+    126
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 273
+  },
+  {
+   "entity_id": 1050393,
+   "nombre": "Naughty Fly",
+   "npc_type": 17066,
+   "sprite": 110091,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    282,
+    134
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 273
+  },
+  {
+   "entity_id": 1050394,
+   "nombre": "Naughty Fly",
+   "npc_type": 17066,
+   "sprite": 110091,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    278,
+    132
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 273
+  },
+  {
+   "entity_id": 1050395,
+   "nombre": "Naughty Fly",
+   "npc_type": 17066,
+   "sprite": 110091,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    272,
+    131
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 273
+  },
+  {
+   "entity_id": 1050396,
+   "nombre": "Naughty Fly",
+   "npc_type": 17066,
+   "sprite": 110091,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    271,
+    122
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 273
+  },
+  {
+   "entity_id": 1050397,
+   "nombre": "Naughty Fly",
+   "npc_type": 17066,
+   "sprite": 110091,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    278,
+    129
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 273
+  },
+  {
+   "entity_id": 1050398,
+   "nombre": "Naughty Fly",
+   "npc_type": 17066,
+   "sprite": 110091,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    284,
+    124
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 273
+  },
+  {
+   "entity_id": 1050399,
+   "nombre": "Naughty Fly",
+   "npc_type": 17066,
+   "sprite": 110091,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    268,
+    128
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 273
+  },
+  {
+   "entity_id": 1050400,
+   "nombre": "Naughty Fly",
+   "npc_type": 17066,
+   "sprite": 110091,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    273,
+    122
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 273
+  },
+  {
+   "entity_id": 1050401,
+   "nombre": "Naughty Fly",
+   "npc_type": 17066,
+   "sprite": 110091,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    218,
+    159
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 273
+  },
+  {
+   "entity_id": 1050402,
+   "nombre": "Naughty Fly",
+   "npc_type": 17066,
+   "sprite": 110091,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    283,
+    135
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 273
+  },
+  {
+   "entity_id": 1050403,
+   "nombre": "Naughty Fly",
+   "npc_type": 17066,
+   "sprite": 110091,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    218,
+    156
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 273
+  },
+  {
+   "entity_id": 1050404,
+   "nombre": "Naughty Fly",
+   "npc_type": 17066,
+   "sprite": 110091,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    224,
+    169
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 273
+  },
+  {
+   "entity_id": 1050405,
+   "nombre": "Elite - Rainbow ",
+   "npc_type": 17067,
+   "sprite": 110112,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    224,
+    40
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 275
+  },
+  {
+   "entity_id": 1050406,
+   "nombre": "Elite - Rainbow ",
+   "npc_type": 17067,
+   "sprite": 110112,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    222,
+    42
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 275
+  },
+  {
+   "entity_id": 1050407,
+   "nombre": "Elite - Rainbow ",
+   "npc_type": 17067,
+   "sprite": 110112,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    213,
+    36
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 275
+  },
+  {
+   "entity_id": 1050408,
+   "nombre": "Elite - Rainbow ",
+   "npc_type": 17067,
+   "sprite": 110112,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    227,
+    35
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 275
+  },
+  {
+   "entity_id": 1050409,
+   "nombre": "Elite - Rainbow ",
+   "npc_type": 17067,
+   "sprite": 110112,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    223,
+    48
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 275
+  },
+  {
+   "entity_id": 1050410,
+   "nombre": "Elite - Rusty Cr",
+   "npc_type": 17068,
+   "sprite": 110154,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    258,
+    39
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 275
+  },
+  {
+   "entity_id": 1050411,
+   "nombre": "Elite - Rusty Cr",
+   "npc_type": 17068,
+   "sprite": 110154,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    232,
+    47
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 275
+  },
+  {
+   "entity_id": 1050412,
+   "nombre": "Elite - Rusty Cr",
+   "npc_type": 17068,
+   "sprite": 110154,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    262,
+    38
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 275
+  },
+  {
+   "entity_id": 1050413,
+   "nombre": "Elite - Rusty Cr",
+   "npc_type": 17068,
+   "sprite": 110154,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    254,
+    43
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 275
+  },
+  {
+   "entity_id": 1050414,
+   "nombre": "Elite - Rusty Cr",
+   "npc_type": 17068,
+   "sprite": 110154,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    239,
+    54
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 275
+  },
+  {
+   "entity_id": 1050415,
+   "nombre": "Elite - Tendrill",
+   "npc_type": 17069,
+   "sprite": 110160,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    192,
+    16
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 277
+  },
+  {
+   "entity_id": 1050416,
+   "nombre": "Elite - Tendrill",
+   "npc_type": 17069,
+   "sprite": 110160,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    192,
+    31
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 277
+  },
+  {
+   "entity_id": 1050417,
+   "nombre": "Elite - Tendrill",
+   "npc_type": 17069,
+   "sprite": 110160,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    210,
+    38
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 277
+  },
+  {
+   "entity_id": 1050418,
+   "nombre": "Elite - Tendrill",
+   "npc_type": 17069,
+   "sprite": 110160,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    201,
+    38
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 277
+  },
+  {
+   "entity_id": 1050419,
+   "nombre": "Elite - Tendrill",
+   "npc_type": 17069,
+   "sprite": 110160,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    192,
+    30
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 277
+  },
+  {
+   "entity_id": 1050420,
+   "nombre": "Elite - Ragethor",
+   "npc_type": 17070,
+   "sprite": 110047,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    239,
+    25
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 277
+  },
+  {
+   "entity_id": 1050421,
+   "nombre": "Elite - Ragethor",
+   "npc_type": 17070,
+   "sprite": 110047,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    233,
+    35
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 277
+  },
+  {
+   "entity_id": 1050422,
+   "nombre": "Elite - Ragethor",
+   "npc_type": 17070,
+   "sprite": 110047,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    249,
+    32
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 277
+  },
+  {
+   "entity_id": 1050423,
+   "nombre": "Elite - Ragethor",
+   "npc_type": 17070,
+   "sprite": 110047,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    244,
+    38
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 277
+  },
+  {
+   "entity_id": 1050424,
+   "nombre": "Elite - Ragethor",
+   "npc_type": 17070,
+   "sprite": 110047,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    239,
+    26
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 277
+  },
+  {
+   "entity_id": 1050425,
+   "nombre": "Elite - Spunk Fl",
+   "npc_type": 17071,
+   "sprite": 110026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    200,
+    11
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 278
+  },
+  {
+   "entity_id": 1050426,
+   "nombre": "Elite - Spunk Fl",
+   "npc_type": 17071,
+   "sprite": 110026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    210,
+    10
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 278
+  },
+  {
+   "entity_id": 1050427,
+   "nombre": "Elite - Spunk Fl",
+   "npc_type": 17071,
+   "sprite": 110026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    192,
+    6
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 278
+  },
+  {
+   "entity_id": 1050428,
+   "nombre": "Elite - Spunk Fl",
+   "npc_type": 17071,
+   "sprite": 110026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    218,
+    19
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 278
+  },
+  {
+   "entity_id": 1050429,
+   "nombre": "Elite - Spunk Fl",
+   "npc_type": 17071,
+   "sprite": 110026,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    193,
+    18
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 278
+  },
+  {
+   "entity_id": 1050430,
+   "nombre": "Empress Padine",
+   "npc_type": 17072,
+   "sprite": 110133,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    27,
+    116
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 275
+  },
+  {
+   "entity_id": 1050431,
+   "nombre": "Berserker Brad",
+   "npc_type": 17073,
+   "sprite": 110155,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    113,
+    130
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 277
+  },
+  {
+   "entity_id": 1050432,
+   "nombre": "Cryptic Vince",
+   "npc_type": 17074,
+   "sprite": 110130,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    192,
+    115
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 279
+  }
+ ],
+ "recursos": [
+  {
+   "entity_id": 118335,
+   "capa": 0,
+   "px": [
+    808,
+    5578
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "crudo": "3fce01000000000028030000ca1500000000000027000000000000001a000000dc0661ea00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 118336,
+   "capa": 0,
+   "px": [
+    9165,
+    105
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "crudo": "40ce010000000000cd230000690000000000000027000000000000001a000000dc0661ea00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 118337,
+   "capa": 0,
+   "px": [
+    5008,
+    2954
+   ],
+   "medio": "006f70706572284d2900000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60051,
+   "cola": "00002280140000",
+   "crudo": "41ce010000000000901300008a0b0000006f70706572284d2900000000000000000693ea00002280140000",
+   "que_es": "Aurora Totem"
+  },
+  {
+   "entity_id": 118338,
+   "capa": 0,
+   "px": [
+    5236,
+    2939
+   ],
+   "medio": "00000000180000000000000000000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60052,
+   "cola": "00002280140000",
+   "crudo": "42ce010000000000741400007b0b000000000000180000000000000000000000dc0694ea00002280140000",
+   "que_es": "Dark City Totem"
+  },
+  {
+   "entity_id": 118339,
+   "capa": 0,
+   "px": [
+    5517,
+    2978
+   ],
+   "medio": "006f70706572284d2900000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60053,
+   "cola": "00002280140000",
+   "crudo": "43ce0100000000008d150000a20b0000006f70706572284d2900000000000000000695ea00002280140000",
+   "que_es": "Iron Totem"
+  },
+  {
+   "entity_id": 118340,
+   "capa": 0,
+   "px": [
+    5619,
+    3051
+   ],
+   "medio": "000000ba156f77650000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60054,
+   "cola": "00002280140000",
+   "crudo": "44ce010000000000f3150000eb0b0000000000ba156f77650000000000000000000696ea00002280140000",
+   "que_es": "Breeze Totem"
+  }
+ ]
+}

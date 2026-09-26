@@ -1,0 +1,3406 @@
+{
+ "_nota": "Forsaken Crevasse (stage 334), de Celestia, zona Abyston. Se llega desde Ancient Landing (333). Poblado desde UNA sola sesion. Los objetos van CRUDOS.",
+ "stage": 334,
+ "spawns": [
+  {
+   "entity_id": 123771,
+   "nombre": "Dozus",
+   "npc_type": 14706,
+   "sprite": 40027,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    181,
+    69
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123772,
+   "nombre": "Snoozie",
+   "npc_type": 14707,
+   "sprite": 40088,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    166,
+    80
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123773,
+   "nombre": "Sage Jimmy",
+   "npc_type": 14708,
+   "sprite": 40482,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    163,
+    49
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123774,
+   "nombre": "Scythe Marcus",
+   "npc_type": 14726,
+   "sprite": 40114,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    32,
+    164
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123775,
+   "nombre": "Scythe Mary",
+   "npc_type": 14727,
+   "sprite": 40021,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    280,
+    94
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123776,
+   "nombre": "Archmage Greg",
+   "npc_type": 14782,
+   "sprite": 40522,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    156,
+    113
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 1059152,
+   "nombre": "Desert Piscine",
+   "npc_type": 20718,
+   "sprite": 110674,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    75,
+    164
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 289
+  },
+  {
+   "entity_id": 1059153,
+   "nombre": "Desert Piscine",
+   "npc_type": 20718,
+   "sprite": 110674,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    69,
+    148
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 289
+  },
+  {
+   "entity_id": 1059154,
+   "nombre": "Desert Piscine",
+   "npc_type": 20718,
+   "sprite": 110674,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    73,
+    159
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 289
+  },
+  {
+   "entity_id": 1059155,
+   "nombre": "Desert Piscine",
+   "npc_type": 20718,
+   "sprite": 110674,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    77,
+    155
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 289
+  },
+  {
+   "entity_id": 1059156,
+   "nombre": "Desert Piscine",
+   "npc_type": 20718,
+   "sprite": 110674,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    70,
+    157
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 289
+  },
+  {
+   "entity_id": 1059157,
+   "nombre": "Desert Piscine",
+   "npc_type": 20718,
+   "sprite": 110674,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    63,
+    153
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 289
+  },
+  {
+   "entity_id": 1059158,
+   "nombre": "Desert Piscine",
+   "npc_type": 20718,
+   "sprite": 110674,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    58,
+    138
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 289
+  },
+  {
+   "entity_id": 1059159,
+   "nombre": "Desert Piscine",
+   "npc_type": 20718,
+   "sprite": 110674,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    62,
+    153
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 289
+  },
+  {
+   "entity_id": 1059160,
+   "nombre": "Desert Piscine",
+   "npc_type": 20718,
+   "sprite": 110674,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    66,
+    131
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 289
+  },
+  {
+   "entity_id": 1059161,
+   "nombre": "Desert Piscine",
+   "npc_type": 20718,
+   "sprite": 110674,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    76,
+    128
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 289
+  },
+  {
+   "entity_id": 1059162,
+   "nombre": "Desert Piscine",
+   "npc_type": 20718,
+   "sprite": 110674,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    105,
+    128
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 289
+  },
+  {
+   "entity_id": 1059163,
+   "nombre": "Desert Piscine",
+   "npc_type": 20718,
+   "sprite": 110674,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    89,
+    127
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 289
+  },
+  {
+   "entity_id": 1059164,
+   "nombre": "Desert Piscine",
+   "npc_type": 20718,
+   "sprite": 110674,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    109,
+    125
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 289
+  },
+  {
+   "entity_id": 1059165,
+   "nombre": "Desert Piscine",
+   "npc_type": 20718,
+   "sprite": 110674,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    88,
+    120
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 289
+  },
+  {
+   "entity_id": 1059166,
+   "nombre": "Desert Piscine",
+   "npc_type": 20718,
+   "sprite": 110674,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    95,
+    127
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 289
+  },
+  {
+   "entity_id": 1059167,
+   "nombre": "Desert Piscine",
+   "npc_type": 20718,
+   "sprite": 110674,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    78,
+    124
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 289
+  },
+  {
+   "entity_id": 1059168,
+   "nombre": "Desert Piscine",
+   "npc_type": 20718,
+   "sprite": 110674,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    142
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 289
+  },
+  {
+   "entity_id": 1059169,
+   "nombre": "Desert Piscine",
+   "npc_type": 20718,
+   "sprite": 110674,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    81,
+    121
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 289
+  },
+  {
+   "entity_id": 1059170,
+   "nombre": "Desert Piscine",
+   "npc_type": 20718,
+   "sprite": 110674,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    75,
+    118
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 289
+  },
+  {
+   "entity_id": 1059171,
+   "nombre": "Desert Piscine",
+   "npc_type": 20718,
+   "sprite": 110674,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    36,
+    139
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 289
+  },
+  {
+   "entity_id": 1059172,
+   "nombre": "Marsh Piscine",
+   "npc_type": 20719,
+   "sprite": 110769,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    25,
+    127
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 289
+  },
+  {
+   "entity_id": 1059173,
+   "nombre": "Marsh Piscine",
+   "npc_type": 20719,
+   "sprite": 110769,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    30,
+    137
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 289
+  },
+  {
+   "entity_id": 1059174,
+   "nombre": "Marsh Piscine",
+   "npc_type": 20719,
+   "sprite": 110769,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    44,
+    141
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 289
+  },
+  {
+   "entity_id": 1059175,
+   "nombre": "Marsh Piscine",
+   "npc_type": 20719,
+   "sprite": 110769,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    31,
+    132
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 289
+  },
+  {
+   "entity_id": 1059176,
+   "nombre": "Marsh Piscine",
+   "npc_type": 20719,
+   "sprite": 110769,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    45,
+    144
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 289
+  },
+  {
+   "entity_id": 1059177,
+   "nombre": "Marsh Piscine",
+   "npc_type": 20719,
+   "sprite": 110769,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    32,
+    116
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 289
+  },
+  {
+   "entity_id": 1059178,
+   "nombre": "Marsh Piscine",
+   "npc_type": 20719,
+   "sprite": 110769,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    44,
+    113
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 289
+  },
+  {
+   "entity_id": 1059179,
+   "nombre": "Marsh Piscine",
+   "npc_type": 20719,
+   "sprite": 110769,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    114
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 289
+  },
+  {
+   "entity_id": 1059180,
+   "nombre": "Marsh Piscine",
+   "npc_type": 20719,
+   "sprite": 110769,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    41,
+    106
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 289
+  },
+  {
+   "entity_id": 1059181,
+   "nombre": "Marsh Piscine",
+   "npc_type": 20719,
+   "sprite": 110769,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    48,
+    102
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 289
+  },
+  {
+   "entity_id": 1059182,
+   "nombre": "Marsh Piscine",
+   "npc_type": 20719,
+   "sprite": 110769,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    62,
+    94
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 289
+  },
+  {
+   "entity_id": 1059183,
+   "nombre": "Marsh Piscine",
+   "npc_type": 20719,
+   "sprite": 110769,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    62,
+    98
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 289
+  },
+  {
+   "entity_id": 1059184,
+   "nombre": "Marsh Piscine",
+   "npc_type": 20719,
+   "sprite": 110769,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    56,
+    101
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 289
+  },
+  {
+   "entity_id": 1059185,
+   "nombre": "Marsh Piscine",
+   "npc_type": 20719,
+   "sprite": 110769,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    46,
+    105
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 289
+  },
+  {
+   "entity_id": 1059186,
+   "nombre": "Marsh Piscine",
+   "npc_type": 20719,
+   "sprite": 110769,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    55,
+    109
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 289
+  },
+  {
+   "entity_id": 1059187,
+   "nombre": "Marsh Piscine",
+   "npc_type": 20719,
+   "sprite": 110769,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    26,
+    88
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 289
+  },
+  {
+   "entity_id": 1059188,
+   "nombre": "Marsh Piscine",
+   "npc_type": 20719,
+   "sprite": 110769,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    46,
+    100
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 289
+  },
+  {
+   "entity_id": 1059189,
+   "nombre": "Marsh Piscine",
+   "npc_type": 20719,
+   "sprite": 110769,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    48,
+    100
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 289
+  },
+  {
+   "entity_id": 1059190,
+   "nombre": "Marsh Piscine",
+   "npc_type": 20719,
+   "sprite": 110769,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    34,
+    98
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 289
+  },
+  {
+   "entity_id": 1059191,
+   "nombre": "Marsh Piscine",
+   "npc_type": 20719,
+   "sprite": 110769,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    33,
+    87
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 289
+  },
+  {
+   "entity_id": 1059192,
+   "nombre": "Teal Doll",
+   "npc_type": 20720,
+   "sprite": 110801,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    146,
+    110
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 291
+  },
+  {
+   "entity_id": 1059193,
+   "nombre": "Teal Doll",
+   "npc_type": 20720,
+   "sprite": 110801,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    141,
+    121
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 291
+  },
+  {
+   "entity_id": 1059194,
+   "nombre": "Teal Doll",
+   "npc_type": 20720,
+   "sprite": 110801,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    148,
+    107
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 291
+  },
+  {
+   "entity_id": 1059195,
+   "nombre": "Teal Doll",
+   "npc_type": 20720,
+   "sprite": 110801,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    149,
+    113
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 291
+  },
+  {
+   "entity_id": 1059196,
+   "nombre": "Teal Doll",
+   "npc_type": 20720,
+   "sprite": 110801,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    137,
+    122
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 291
+  },
+  {
+   "entity_id": 1059197,
+   "nombre": "Teal Doll",
+   "npc_type": 20720,
+   "sprite": 110801,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    151,
+    108
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 291
+  },
+  {
+   "entity_id": 1059198,
+   "nombre": "Teal Doll",
+   "npc_type": 20720,
+   "sprite": 110801,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    154,
+    94
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 291
+  },
+  {
+   "entity_id": 1059199,
+   "nombre": "Teal Doll",
+   "npc_type": 20720,
+   "sprite": 110801,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    149,
+    104
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 291
+  },
+  {
+   "entity_id": 1059200,
+   "nombre": "Teal Doll",
+   "npc_type": 20720,
+   "sprite": 110801,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    157,
+    85
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 291
+  },
+  {
+   "entity_id": 1059201,
+   "nombre": "Teal Doll",
+   "npc_type": 20720,
+   "sprite": 110801,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    164,
+    80
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 291
+  },
+  {
+   "entity_id": 1059202,
+   "nombre": "Teal Doll",
+   "npc_type": 20720,
+   "sprite": 110801,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    130,
+    90
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 291
+  },
+  {
+   "entity_id": 1059203,
+   "nombre": "Teal Doll",
+   "npc_type": 20720,
+   "sprite": 110801,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    111,
+    102
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 291
+  },
+  {
+   "entity_id": 1059204,
+   "nombre": "Teal Doll",
+   "npc_type": 20720,
+   "sprite": 110801,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    103,
+    107
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 291
+  },
+  {
+   "entity_id": 1059205,
+   "nombre": "Teal Doll",
+   "npc_type": 20720,
+   "sprite": 110801,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    118,
+    102
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 291
+  },
+  {
+   "entity_id": 1059206,
+   "nombre": "Teal Doll",
+   "npc_type": 20720,
+   "sprite": 110801,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    116,
+    100
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 291
+  },
+  {
+   "entity_id": 1059207,
+   "nombre": "Teal Doll",
+   "npc_type": 20720,
+   "sprite": 110801,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    135,
+    87
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 291
+  },
+  {
+   "entity_id": 1059208,
+   "nombre": "Teal Doll",
+   "npc_type": 20720,
+   "sprite": 110801,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    96,
+    111
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 291
+  },
+  {
+   "entity_id": 1059209,
+   "nombre": "Teal Doll",
+   "npc_type": 20720,
+   "sprite": 110801,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    93,
+    108
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 291
+  },
+  {
+   "entity_id": 1059210,
+   "nombre": "Teal Doll",
+   "npc_type": 20720,
+   "sprite": 110801,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    134,
+    88
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 291
+  },
+  {
+   "entity_id": 1059211,
+   "nombre": "Teal Doll",
+   "npc_type": 20720,
+   "sprite": 110801,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    137,
+    80
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 291
+  },
+  {
+   "entity_id": 1059212,
+   "nombre": "Blue Doll",
+   "npc_type": 20721,
+   "sprite": 110802,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    115,
+    75
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 291
+  },
+  {
+   "entity_id": 1059213,
+   "nombre": "Blue Doll",
+   "npc_type": 20721,
+   "sprite": 110802,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    117,
+    71
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 291
+  },
+  {
+   "entity_id": 1059214,
+   "nombre": "Blue Doll",
+   "npc_type": 20721,
+   "sprite": 110802,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    107,
+    78
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 291
+  },
+  {
+   "entity_id": 1059215,
+   "nombre": "Blue Doll",
+   "npc_type": 20721,
+   "sprite": 110802,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    124,
+    71
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 291
+  },
+  {
+   "entity_id": 1059216,
+   "nombre": "Blue Doll",
+   "npc_type": 20721,
+   "sprite": 110802,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    116,
+    78
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 291
+  },
+  {
+   "entity_id": 1059217,
+   "nombre": "Blue Doll",
+   "npc_type": 20721,
+   "sprite": 110802,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    46,
+    73
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 291
+  },
+  {
+   "entity_id": 1059218,
+   "nombre": "Blue Doll",
+   "npc_type": 20721,
+   "sprite": 110802,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    46,
+    70
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 291
+  },
+  {
+   "entity_id": 1059219,
+   "nombre": "Blue Doll",
+   "npc_type": 20721,
+   "sprite": 110802,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    62,
+    68
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 291
+  },
+  {
+   "entity_id": 1059220,
+   "nombre": "Blue Doll",
+   "npc_type": 20721,
+   "sprite": 110802,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    59,
+    70
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 291
+  },
+  {
+   "entity_id": 1059221,
+   "nombre": "Blue Doll",
+   "npc_type": 20721,
+   "sprite": 110802,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    63,
+    62
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 291
+  },
+  {
+   "entity_id": 1059222,
+   "nombre": "Blue Doll",
+   "npc_type": 20721,
+   "sprite": 110802,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    35,
+    80
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 291
+  },
+  {
+   "entity_id": 1059223,
+   "nombre": "Blue Doll",
+   "npc_type": 20721,
+   "sprite": 110802,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    31,
+    67
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 291
+  },
+  {
+   "entity_id": 1059224,
+   "nombre": "Blue Doll",
+   "npc_type": 20721,
+   "sprite": 110802,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    26,
+    83
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 291
+  },
+  {
+   "entity_id": 1059225,
+   "nombre": "Blue Doll",
+   "npc_type": 20721,
+   "sprite": 110802,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    27,
+    68
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 291
+  },
+  {
+   "entity_id": 1059226,
+   "nombre": "Blue Doll",
+   "npc_type": 20721,
+   "sprite": 110802,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    31,
+    67
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 291
+  },
+  {
+   "entity_id": 1059227,
+   "nombre": "Blue Doll",
+   "npc_type": 20721,
+   "sprite": 110802,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    85,
+    64
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 291
+  },
+  {
+   "entity_id": 1059228,
+   "nombre": "Blue Doll",
+   "npc_type": 20721,
+   "sprite": 110802,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    78,
+    58
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 291
+  },
+  {
+   "entity_id": 1059229,
+   "nombre": "Blue Doll",
+   "npc_type": 20721,
+   "sprite": 110802,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    92,
+    77
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 291
+  },
+  {
+   "entity_id": 1059230,
+   "nombre": "Blue Doll",
+   "npc_type": 20721,
+   "sprite": 110802,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    95,
+    75
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 291
+  },
+  {
+   "entity_id": 1059231,
+   "nombre": "Blue Doll",
+   "npc_type": 20721,
+   "sprite": 110802,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    82,
+    74
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 291
+  },
+  {
+   "entity_id": 1059232,
+   "nombre": "Draconis",
+   "npc_type": 20722,
+   "sprite": 110671,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    49,
+    44
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 293
+  },
+  {
+   "entity_id": 1059233,
+   "nombre": "Draconis",
+   "npc_type": 20722,
+   "sprite": 110671,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    38
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 293
+  },
+  {
+   "entity_id": 1059234,
+   "nombre": "Draconis",
+   "npc_type": 20722,
+   "sprite": 110671,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    51,
+    39
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 293
+  },
+  {
+   "entity_id": 1059235,
+   "nombre": "Draconis",
+   "npc_type": 20722,
+   "sprite": 110671,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    55,
+    53
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 293
+  },
+  {
+   "entity_id": 1059236,
+   "nombre": "Draconis",
+   "npc_type": 20722,
+   "sprite": 110671,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    49,
+    45
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 293
+  },
+  {
+   "entity_id": 1059237,
+   "nombre": "Draconis",
+   "npc_type": 20722,
+   "sprite": 110671,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    36,
+    40
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 293
+  },
+  {
+   "entity_id": 1059238,
+   "nombre": "Draconis",
+   "npc_type": 20722,
+   "sprite": 110671,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    30,
+    32
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 293
+  },
+  {
+   "entity_id": 1059239,
+   "nombre": "Draconis",
+   "npc_type": 20722,
+   "sprite": 110671,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    31,
+    30
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 293
+  },
+  {
+   "entity_id": 1059240,
+   "nombre": "Draconis",
+   "npc_type": 20722,
+   "sprite": 110671,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    24,
+    31
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 293
+  },
+  {
+   "entity_id": 1059241,
+   "nombre": "Draconis",
+   "npc_type": 20722,
+   "sprite": 110671,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    33,
+    27
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 293
+  },
+  {
+   "entity_id": 1059242,
+   "nombre": "Draconis",
+   "npc_type": 20722,
+   "sprite": 110671,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    19
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 293
+  },
+  {
+   "entity_id": 1059243,
+   "nombre": "Draconis",
+   "npc_type": 20722,
+   "sprite": 110671,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    53,
+    19
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 293
+  },
+  {
+   "entity_id": 1059244,
+   "nombre": "Draconis",
+   "npc_type": 20722,
+   "sprite": 110671,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    42,
+    22
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 293
+  },
+  {
+   "entity_id": 1059245,
+   "nombre": "Draconis",
+   "npc_type": 20722,
+   "sprite": 110671,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    51,
+    21
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 293
+  },
+  {
+   "entity_id": 1059246,
+   "nombre": "Draconis",
+   "npc_type": 20722,
+   "sprite": 110671,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    49,
+    24
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 293
+  },
+  {
+   "entity_id": 1059247,
+   "nombre": "Draconis",
+   "npc_type": 20722,
+   "sprite": 110671,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    58,
+    23
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 293
+  },
+  {
+   "entity_id": 1059248,
+   "nombre": "Draconis",
+   "npc_type": 20722,
+   "sprite": 110671,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    69,
+    23
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 293
+  },
+  {
+   "entity_id": 1059249,
+   "nombre": "Draconis",
+   "npc_type": 20722,
+   "sprite": 110671,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    71,
+    23
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 293
+  },
+  {
+   "entity_id": 1059250,
+   "nombre": "Draconis",
+   "npc_type": 20722,
+   "sprite": 110671,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    85,
+    17
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 293
+  },
+  {
+   "entity_id": 1059251,
+   "nombre": "Draconis",
+   "npc_type": 20722,
+   "sprite": 110671,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    63,
+    17
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 293
+  },
+  {
+   "entity_id": 1059252,
+   "nombre": "Draconia",
+   "npc_type": 20723,
+   "sprite": 110764,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    91,
+    43
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 293
+  },
+  {
+   "entity_id": 1059253,
+   "nombre": "Draconia",
+   "npc_type": 20723,
+   "sprite": 110764,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    100,
+    37
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 293
+  },
+  {
+   "entity_id": 1059254,
+   "nombre": "Draconia",
+   "npc_type": 20723,
+   "sprite": 110764,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    101,
+    37
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 293
+  },
+  {
+   "entity_id": 1059255,
+   "nombre": "Draconia",
+   "npc_type": 20723,
+   "sprite": 110764,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    100,
+    42
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 293
+  },
+  {
+   "entity_id": 1059256,
+   "nombre": "Draconia",
+   "npc_type": 20723,
+   "sprite": 110764,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    88,
+    51
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 293
+  },
+  {
+   "entity_id": 1059257,
+   "nombre": "Draconia",
+   "npc_type": 20723,
+   "sprite": 110764,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    139,
+    20
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 293
+  },
+  {
+   "entity_id": 1059258,
+   "nombre": "Draconia",
+   "npc_type": 20723,
+   "sprite": 110764,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    130,
+    20
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 293
+  },
+  {
+   "entity_id": 1059259,
+   "nombre": "Draconia",
+   "npc_type": 20723,
+   "sprite": 110764,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    161,
+    45
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 293
+  },
+  {
+   "entity_id": 1059260,
+   "nombre": "Draconia",
+   "npc_type": 20723,
+   "sprite": 110764,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    143,
+    15
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 293
+  },
+  {
+   "entity_id": 1059261,
+   "nombre": "Draconia",
+   "npc_type": 20723,
+   "sprite": 110764,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    133,
+    19
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 293
+  },
+  {
+   "entity_id": 1059262,
+   "nombre": "Draconia",
+   "npc_type": 20723,
+   "sprite": 110764,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    83,
+    31
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 293
+  },
+  {
+   "entity_id": 1059263,
+   "nombre": "Draconia",
+   "npc_type": 20723,
+   "sprite": 110764,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    92,
+    37
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 293
+  },
+  {
+   "entity_id": 1059264,
+   "nombre": "Draconia",
+   "npc_type": 20723,
+   "sprite": 110764,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    79,
+    25
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 293
+  },
+  {
+   "entity_id": 1059265,
+   "nombre": "Draconia",
+   "npc_type": 20723,
+   "sprite": 110764,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    87,
+    32
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 293
+  },
+  {
+   "entity_id": 1059266,
+   "nombre": "Draconia",
+   "npc_type": 20723,
+   "sprite": 110764,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    83,
+    32
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 293
+  },
+  {
+   "entity_id": 1059267,
+   "nombre": "Draconia",
+   "npc_type": 20723,
+   "sprite": 110764,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    170,
+    47
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 293
+  },
+  {
+   "entity_id": 1059268,
+   "nombre": "Draconia",
+   "npc_type": 20723,
+   "sprite": 110764,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    183,
+    24
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 293
+  },
+  {
+   "entity_id": 1059269,
+   "nombre": "Draconia",
+   "npc_type": 20723,
+   "sprite": 110764,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    182,
+    31
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 293
+  },
+  {
+   "entity_id": 1059270,
+   "nombre": "Draconia",
+   "npc_type": 20723,
+   "sprite": 110764,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    180,
+    31
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 293
+  },
+  {
+   "entity_id": 1059271,
+   "nombre": "Draconia",
+   "npc_type": 20723,
+   "sprite": 110764,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    176,
+    29
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 293
+  },
+  {
+   "entity_id": 1059272,
+   "nombre": "Golden Fae",
+   "npc_type": 20724,
+   "sprite": 110804,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    195,
+    57
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 295
+  },
+  {
+   "entity_id": 1059273,
+   "nombre": "Golden Fae",
+   "npc_type": 20724,
+   "sprite": 110804,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    206,
+    45
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 295
+  },
+  {
+   "entity_id": 1059274,
+   "nombre": "Golden Fae",
+   "npc_type": 20724,
+   "sprite": 110804,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    199,
+    45
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 295
+  },
+  {
+   "entity_id": 1059275,
+   "nombre": "Golden Fae",
+   "npc_type": 20724,
+   "sprite": 110804,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    184,
+    59
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 295
+  },
+  {
+   "entity_id": 1059276,
+   "nombre": "Golden Fae",
+   "npc_type": 20724,
+   "sprite": 110804,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    213,
+    47
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 295
+  },
+  {
+   "entity_id": 1059277,
+   "nombre": "Golden Fae",
+   "npc_type": 20724,
+   "sprite": 110804,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    228,
+    65
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 295
+  },
+  {
+   "entity_id": 1059278,
+   "nombre": "Golden Fae",
+   "npc_type": 20724,
+   "sprite": 110804,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    215,
+    48
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 295
+  },
+  {
+   "entity_id": 1059279,
+   "nombre": "Golden Fae",
+   "npc_type": 20724,
+   "sprite": 110804,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    224,
+    56
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 295
+  },
+  {
+   "entity_id": 1059280,
+   "nombre": "Golden Fae",
+   "npc_type": 20724,
+   "sprite": 110804,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    187,
+    59
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 295
+  },
+  {
+   "entity_id": 1059281,
+   "nombre": "Golden Fae",
+   "npc_type": 20724,
+   "sprite": 110804,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    223,
+    49
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 295
+  },
+  {
+   "entity_id": 1059282,
+   "nombre": "Golden Fae",
+   "npc_type": 20724,
+   "sprite": 110804,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    199,
+    75
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 295
+  },
+  {
+   "entity_id": 1059283,
+   "nombre": "Golden Fae",
+   "npc_type": 20724,
+   "sprite": 110804,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    190,
+    75
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 295
+  },
+  {
+   "entity_id": 1059284,
+   "nombre": "Golden Fae",
+   "npc_type": 20724,
+   "sprite": 110804,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    212,
+    84
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 295
+  },
+  {
+   "entity_id": 1059285,
+   "nombre": "Golden Fae",
+   "npc_type": 20724,
+   "sprite": 110804,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    202,
+    82
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 295
+  },
+  {
+   "entity_id": 1059286,
+   "nombre": "Golden Fae",
+   "npc_type": 20724,
+   "sprite": 110804,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    182,
+    66
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 295
+  },
+  {
+   "entity_id": 1059287,
+   "nombre": "Golden Fae",
+   "npc_type": 20724,
+   "sprite": 110804,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    203,
+    109
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 295
+  },
+  {
+   "entity_id": 1059288,
+   "nombre": "Golden Fae",
+   "npc_type": 20724,
+   "sprite": 110804,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    221,
+    92
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 295
+  },
+  {
+   "entity_id": 1059289,
+   "nombre": "Golden Fae",
+   "npc_type": 20724,
+   "sprite": 110804,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    208,
+    93
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 295
+  },
+  {
+   "entity_id": 1059290,
+   "nombre": "Golden Fae",
+   "npc_type": 20724,
+   "sprite": 110804,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    206,
+    81
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 295
+  },
+  {
+   "entity_id": 1059291,
+   "nombre": "Golden Fae",
+   "npc_type": 20724,
+   "sprite": 110804,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    197,
+    105
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 295
+  },
+  {
+   "entity_id": 1059292,
+   "nombre": "Crystal Fae",
+   "npc_type": 20725,
+   "sprite": 110805,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    226,
+    98
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 295
+  },
+  {
+   "entity_id": 1059293,
+   "nombre": "Crystal Fae",
+   "npc_type": 20725,
+   "sprite": 110805,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    219,
+    92
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 295
+  },
+  {
+   "entity_id": 1059294,
+   "nombre": "Crystal Fae",
+   "npc_type": 20725,
+   "sprite": 110805,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    227,
+    132
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 295
+  },
+  {
+   "entity_id": 1059295,
+   "nombre": "Crystal Fae",
+   "npc_type": 20725,
+   "sprite": 110805,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    234,
+    109
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 295
+  },
+  {
+   "entity_id": 1059296,
+   "nombre": "Crystal Fae",
+   "npc_type": 20725,
+   "sprite": 110805,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    230,
+    113
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 295
+  },
+  {
+   "entity_id": 1059297,
+   "nombre": "Crystal Fae",
+   "npc_type": 20725,
+   "sprite": 110805,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    230,
+    68
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 295
+  },
+  {
+   "entity_id": 1059298,
+   "nombre": "Crystal Fae",
+   "npc_type": 20725,
+   "sprite": 110805,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    238,
+    119
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 295
+  },
+  {
+   "entity_id": 1059299,
+   "nombre": "Crystal Fae",
+   "npc_type": 20725,
+   "sprite": 110805,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    243,
+    113
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 295
+  },
+  {
+   "entity_id": 1059300,
+   "nombre": "Crystal Fae",
+   "npc_type": 20725,
+   "sprite": 110805,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    226,
+    128
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 295
+  },
+  {
+   "entity_id": 1059301,
+   "nombre": "Crystal Fae",
+   "npc_type": 20725,
+   "sprite": 110805,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    233,
+    125
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 295
+  },
+  {
+   "entity_id": 1059302,
+   "nombre": "Crystal Fae",
+   "npc_type": 20725,
+   "sprite": 110805,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    232,
+    94
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 295
+  },
+  {
+   "entity_id": 1059303,
+   "nombre": "Crystal Fae",
+   "npc_type": 20725,
+   "sprite": 110805,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    245,
+    82
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 295
+  },
+  {
+   "entity_id": 1059304,
+   "nombre": "Crystal Fae",
+   "npc_type": 20725,
+   "sprite": 110805,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    234,
+    70
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 295
+  },
+  {
+   "entity_id": 1059305,
+   "nombre": "Crystal Fae",
+   "npc_type": 20725,
+   "sprite": 110805,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    275,
+    80
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 295
+  },
+  {
+   "entity_id": 1059306,
+   "nombre": "Crystal Fae",
+   "npc_type": 20725,
+   "sprite": 110805,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    243,
+    78
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 295
+  },
+  {
+   "entity_id": 1059307,
+   "nombre": "Crystal Fae",
+   "npc_type": 20725,
+   "sprite": 110805,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    229,
+    102
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 295
+  },
+  {
+   "entity_id": 1059308,
+   "nombre": "Crystal Fae",
+   "npc_type": 20725,
+   "sprite": 110805,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    254,
+    81
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 295
+  },
+  {
+   "entity_id": 1059309,
+   "nombre": "Crystal Fae",
+   "npc_type": 20725,
+   "sprite": 110805,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    280,
+    95
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 295
+  },
+  {
+   "entity_id": 1059310,
+   "nombre": "Crystal Fae",
+   "npc_type": 20725,
+   "sprite": 110805,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    276,
+    87
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 295
+  },
+  {
+   "entity_id": 1059311,
+   "nombre": "Crystal Fae",
+   "npc_type": 20725,
+   "sprite": 110805,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    254,
+    81
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 295
+  },
+  {
+   "entity_id": 1059312,
+   "nombre": "Red Cultist",
+   "npc_type": 20726,
+   "sprite": 110680,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    195,
+    150
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 297
+  },
+  {
+   "entity_id": 1059313,
+   "nombre": "Red Cultist",
+   "npc_type": 20726,
+   "sprite": 110680,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    182,
+    132
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 297
+  },
+  {
+   "entity_id": 1059314,
+   "nombre": "Red Cultist",
+   "npc_type": 20726,
+   "sprite": 110680,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    186,
+    130
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 297
+  },
+  {
+   "entity_id": 1059315,
+   "nombre": "Red Cultist",
+   "npc_type": 20726,
+   "sprite": 110680,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    182,
+    138
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 297
+  },
+  {
+   "entity_id": 1059316,
+   "nombre": "Red Cultist",
+   "npc_type": 20726,
+   "sprite": 110680,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    188,
+    128
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 297
+  },
+  {
+   "entity_id": 1059317,
+   "nombre": "Red Cultist",
+   "npc_type": 20726,
+   "sprite": 110680,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    131,
+    145
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 297
+  },
+  {
+   "entity_id": 1059318,
+   "nombre": "Red Cultist",
+   "npc_type": 20726,
+   "sprite": 110680,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    150,
+    153
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 297
+  },
+  {
+   "entity_id": 1059319,
+   "nombre": "Red Cultist",
+   "npc_type": 20726,
+   "sprite": 110680,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    136,
+    156
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 297
+  },
+  {
+   "entity_id": 1059320,
+   "nombre": "Red Cultist",
+   "npc_type": 20726,
+   "sprite": 110680,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    152,
+    160
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 297
+  },
+  {
+   "entity_id": 1059321,
+   "nombre": "Red Cultist",
+   "npc_type": 20726,
+   "sprite": 110680,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    156,
+    165
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 297
+  },
+  {
+   "entity_id": 1059322,
+   "nombre": "Red Cultist",
+   "npc_type": 20726,
+   "sprite": 110680,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    204,
+    155
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 297
+  },
+  {
+   "entity_id": 1059323,
+   "nombre": "Red Cultist",
+   "npc_type": 20726,
+   "sprite": 110680,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    206,
+    155
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 297
+  },
+  {
+   "entity_id": 1059324,
+   "nombre": "Red Cultist",
+   "npc_type": 20726,
+   "sprite": 110680,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    212,
+    158
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 297
+  },
+  {
+   "entity_id": 1059325,
+   "nombre": "Red Cultist",
+   "npc_type": 20726,
+   "sprite": 110680,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    220,
+    156
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 297
+  },
+  {
+   "entity_id": 1059326,
+   "nombre": "Red Cultist",
+   "npc_type": 20726,
+   "sprite": 110680,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    211,
+    160
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 297
+  },
+  {
+   "entity_id": 1059327,
+   "nombre": "Stone Mask",
+   "npc_type": 20727,
+   "sprite": 110683,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    220,
+    155
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 297
+  },
+  {
+   "entity_id": 1059328,
+   "nombre": "Stone Mask",
+   "npc_type": 20727,
+   "sprite": 110683,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    220,
+    150
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 297
+  },
+  {
+   "entity_id": 1059329,
+   "nombre": "Stone Mask",
+   "npc_type": 20727,
+   "sprite": 110683,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    226,
+    138
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 297
+  },
+  {
+   "entity_id": 1059330,
+   "nombre": "Stone Mask",
+   "npc_type": 20727,
+   "sprite": 110683,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    231,
+    152
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 297
+  },
+  {
+   "entity_id": 1059331,
+   "nombre": "Stone Mask",
+   "npc_type": 20727,
+   "sprite": 110683,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    235,
+    132
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 297
+  },
+  {
+   "entity_id": 1059332,
+   "nombre": "Stone Mask",
+   "npc_type": 20727,
+   "sprite": 110683,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    244,
+    141
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 297
+  },
+  {
+   "entity_id": 1059333,
+   "nombre": "Stone Mask",
+   "npc_type": 20727,
+   "sprite": 110683,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    259,
+    142
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 297
+  },
+  {
+   "entity_id": 1059334,
+   "nombre": "Stone Mask",
+   "npc_type": 20727,
+   "sprite": 110683,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    250,
+    152
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 297
+  },
+  {
+   "entity_id": 1059335,
+   "nombre": "Stone Mask",
+   "npc_type": 20727,
+   "sprite": 110683,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    257,
+    150
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 297
+  },
+  {
+   "entity_id": 1059336,
+   "nombre": "Stone Mask",
+   "npc_type": 20727,
+   "sprite": 110683,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    263,
+    151
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 297
+  },
+  {
+   "entity_id": 1059337,
+   "nombre": "Stone Mask",
+   "npc_type": 20727,
+   "sprite": 110683,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    282,
+    146
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 297
+  },
+  {
+   "entity_id": 1059338,
+   "nombre": "Stone Mask",
+   "npc_type": 20727,
+   "sprite": 110683,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    274,
+    147
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 297
+  },
+  {
+   "entity_id": 1059339,
+   "nombre": "Stone Mask",
+   "npc_type": 20727,
+   "sprite": 110683,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    279,
+    147
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 297
+  },
+  {
+   "entity_id": 1059340,
+   "nombre": "Stone Mask",
+   "npc_type": 20727,
+   "sprite": 110683,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    292,
+    127
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 297
+  },
+  {
+   "entity_id": 1059341,
+   "nombre": "Stone Mask",
+   "npc_type": 20727,
+   "sprite": 110683,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    285,
+    135
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 297
+  },
+  {
+   "entity_id": 1059342,
+   "nombre": "E-Desert Piscine",
+   "npc_type": 20728,
+   "sprite": 110674,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    225,
+    40
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059343,
+   "nombre": "E-Desert Piscine",
+   "npc_type": 20728,
+   "sprite": 110674,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    240,
+    25
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059344,
+   "nombre": "E-Desert Piscine",
+   "npc_type": 20728,
+   "sprite": 110674,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    225,
+    40
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059345,
+   "nombre": "E-Desert Piscine",
+   "npc_type": 20728,
+   "sprite": 110674,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    238,
+    26
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059346,
+   "nombre": "E-Desert Piscine",
+   "npc_type": 20728,
+   "sprite": 110674,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    238,
+    31
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059347,
+   "nombre": "E-Teal Doll",
+   "npc_type": 20729,
+   "sprite": 110801,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    282,
+    76
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059348,
+   "nombre": "E-Teal Doll",
+   "npc_type": 20729,
+   "sprite": 110801,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    284,
+    69
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059349,
+   "nombre": "E-Teal Doll",
+   "npc_type": 20729,
+   "sprite": 110801,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    284,
+    63
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059350,
+   "nombre": "E-Teal Doll",
+   "npc_type": 20729,
+   "sprite": 110801,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    285,
+    78
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059351,
+   "nombre": "E-Teal Doll",
+   "npc_type": 20729,
+   "sprite": 110801,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    285,
+    71
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059352,
+   "nombre": "E-Draconis",
+   "npc_type": 20730,
+   "sprite": 110671,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    263,
+    34
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059353,
+   "nombre": "E-Draconis",
+   "npc_type": 20730,
+   "sprite": 110671,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    240,
+    25
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059354,
+   "nombre": "E-Draconis",
+   "npc_type": 20730,
+   "sprite": 110671,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    256,
+    33
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059355,
+   "nombre": "E-Draconis",
+   "npc_type": 20730,
+   "sprite": 110671,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    258,
+    30
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059356,
+   "nombre": "E-Draconis",
+   "npc_type": 20730,
+   "sprite": 110671,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    257,
+    34
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059357,
+   "nombre": "E-Golden Fae",
+   "npc_type": 20731,
+   "sprite": 110804,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    275,
+    60
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059358,
+   "nombre": "E-Golden Fae",
+   "npc_type": 20731,
+   "sprite": 110804,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    274,
+    57
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059359,
+   "nombre": "E-Golden Fae",
+   "npc_type": 20731,
+   "sprite": 110804,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    286,
+    43
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059360,
+   "nombre": "E-Golden Fae",
+   "npc_type": 20731,
+   "sprite": 110804,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    277,
+    58
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059361,
+   "nombre": "E-Golden Fae",
+   "npc_type": 20731,
+   "sprite": 110804,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    283,
+    54
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059362,
+   "nombre": "E-Red Cultist",
+   "npc_type": 20732,
+   "sprite": 110680,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    282,
+    43
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059363,
+   "nombre": "E-Red Cultist",
+   "npc_type": 20732,
+   "sprite": 110680,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    276,
+    39
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059364,
+   "nombre": "E-Red Cultist",
+   "npc_type": 20732,
+   "sprite": 110680,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    284,
+    41
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059365,
+   "nombre": "E-Red Cultist",
+   "npc_type": 20732,
+   "sprite": 110680,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    275,
+    40
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059366,
+   "nombre": "E-Red Cultist",
+   "npc_type": 20732,
+   "sprite": 110680,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    281,
+    50
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 299
+  },
+  {
+   "entity_id": 1059367,
+   "nombre": "Piscine King",
+   "npc_type": 20733,
+   "sprite": 110675,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    76,
+    125
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 1059368,
+   "nombre": "Angry Doll",
+   "npc_type": 20734,
+   "sprite": 110803,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    95,
+    73
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 302
+  },
+  {
+   "entity_id": 1059369,
+   "nombre": "Draconlem",
+   "npc_type": 20735,
+   "sprite": 110672,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    99,
+    38
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 304
+  }
+ ],
+ "recursos": [
+  {
+   "entity_id": 119259,
+   "capa": 0,
+   "px": [
+    376,
+    5264
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "crudo": "dbd101000000000078010000901400000000000027000000000000001a000000dc0661ea00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 119260,
+   "capa": 0,
+   "px": [
+    9181,
+    5508
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "crudo": "dcd1010000000000dd230000841500000000000027000000000000001a000000dc0661ea00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 119261,
+   "capa": 0,
+   "px": [
+    6218,
+    3099
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60305,
+   "cola": "00004080140000",
+   "crudo": "ddd10100000000004a1800001b0c00000000000027000000000000001a000000dc0691eb00004080140000"
+  }
+ ]
+}

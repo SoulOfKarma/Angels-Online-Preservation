@@ -45,8 +45,8 @@ una suposición, lo dice.
   respuesta es segura. Por debajo sigue mandando el `klass`, porque `npc.xml`
   no llega ahí y los NPC antiguos del Lyceum usan números de dos y tres
   cifras que chocan con los de `monster.xml`
-- **158 mapas poblados a partir de capturas**: 28.165 monstruos, 1.725 NPC y
-  12.557 objetos de mapa, 7.671 de ellos con su recurso identificado. Cada
+- **236 mapas poblados a partir de capturas**: 42.780 monstruos, 2.254 NPC y
+  15.059 objetos de mapa, 7.671 de ellos con su recurso identificado. Cada
   monstruo, NPC y recurso sale de una captura; nada está inventado
 - **Seis mapas no salen de Celestia, sino del servidor oficial de Taiwán.**
   Es la única excepción a "todo sale de capturas de Celestia", y está
@@ -58,15 +58,22 @@ una suposición, lo dice.
   **Candyland** (7 mapas). **Atlantis está completo salvo las instancias**, y
   a la cadena del bosque (de Cryptic Moon Swamp a Giant Wooden Stairs, 8
   mapas) solo le quedan dos tornados. Más buena parte de Pharaoh, East Orient
-  y los territorios de las cuatro facciones
-- **388 portales**, 370 activos, casi todos medidos en los dos sentidos: la casilla del
+  y los territorios de las cuatro facciones. También quedan cerradas las
+  cadenas de nivel alto añadidas al final: **Arcana** (Starglow Path,
+  Academia Woods, Mana Ruins, Coo Village, Ethereal Garden, Daydream Library,
+  Reminiscence Cloister), **Goldenia** (de Emerald Coast a Royal Ruins, 9
+  mapas), **Abyston** (Forsaken Crevasse, Specter Village, Crystal Marsh,
+  Crystal Quarry, Shrouded Haven, Peril Chasm) y la cadena profunda de
+  Galaxia Square a Deep Prison
+- **572 portales**, 551 activos, casi todos medidos en los dos sentidos: la casilla del
   tornado sale de la captura, y también aquella donde el servidor real deja
   al jugador al cruzar. La mayoría se cruzaron **dos veces en cada sentido**,
   que es como se descubrió que algunos portales no dejan siempre en la misma
   casilla
-- **Los portales que llevan a otro punto del mismo mapa** funcionan: **23**,
-  repartidos en cinco mapas. Solo Lost Trail tiene doce —seis pares que te
-  mueven de una punta del mapa a la otra— y Branch Way tiene dos pares. **No** recargan el
+- **Los portales que llevan a otro punto del mismo mapa** funcionan: **29**,
+  repartidos en siete mapas. Solo Lost Trail tiene doce —seis pares que te
+  mueven de una punta del mapa a la otra—, Horizon Archives tiene cinco y
+  Branch Way tiene dos pares. **No** recargan el
   mapa — medido durante 1.401 segundos sin un solo `0x000C`. El servidor
   contesta `0x0016`, un `0x0012` de siete ceros y un `0x0003` que solo
   recoloca al personaje

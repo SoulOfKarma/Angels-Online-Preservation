@@ -543,6 +543,22 @@
     "dibujar": false,
     "preguntar": false,
     "nota": "Crashing Hillock -> Thunder Ruins. Tornado 100376; el salto se disparo desde (292,167). La llegada (12,19) la pidio el usuario; Celestia deja en (15,17), dos casillas mas alla."
+   },
+   {
+    "entity": 124308,
+    "tile": [
+     292,
+     70
+    ],
+    "destino": 295,
+    "llegada": [
+     12,
+     12
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Crashing Hillock -> Starglow Path, entrada a la zona Arcana. Tornado 124308 en (292,70); el tramo del cruce acabo en (291,68), a dos casillas. La llegada (12,12) es la que mando Celestia, medida. Radio 3: la vuelta deja en (286,74), a SEIS de este tornado, asi que no rebota."
    }
   ],
   "11": [
@@ -994,6 +1010,22 @@
     "dibujar": false,
     "preguntar": false,
     "nota": "Deity Palace Ruins -> Dragon Field. Tornado 101272; el salto se disparo desde (285,166). La llegada (16,12) es la que mando Celestia. Queda sin destino (271,1)."
+   },
+   {
+    "entity": 121585,
+    "tile": [
+     271,
+     1
+    ],
+    "destino": 306,
+    "llegada": [
+     8,
+     172
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Deity Palace Ruins -> Dial Desert (stage 306). ACTIVADO. Con este quedan medidos los tres tornados del mapa. Tornado 121585 en (271,1); el tramo acabo en (270,2), a una casilla. La llegada (8,172) es la que mando Celestia, medida. OJO: queda a solo TRES casillas del tornado de vuelta (5,175), por eso ese lleva radio 2 y no 3."
    }
   ],
   "128": [
@@ -1348,6 +1380,23 @@
     "dibujar": false,
     "preguntar": false,
     "nota": "Dawn Harbor -> Riprap Coast. Tornado 100135, el quinto y ultimo de Dawn Harbor: con este el mapa queda completo. El MOVE_REQ vino de (267,7), a cinco casillas, con el paso acabando en (263,3), a una."
+   },
+   {
+    "entity": 718,
+    "tile": [
+     82,
+     83
+    ],
+    "destino": 389,
+    "llegada": [
+     277,
+     19
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "inventado": true,
+    "nota": "Dawn Harbor -> Pier Lane (stage 389). PORTAL INVENTADO, no medido: en Celestia este paso NO EXISTE. El mapa si existe y esta poblado, y la VUELTA si funciona y esta medida, pero la ida no; el usuario tuvo que llegar con Superwing. La casilla (82,83) la eligio el usuario y no sale de ninguna captura. Por eso lleva 'inventado': true, para poder distinguirla del resto. Es la segunda entrada inventada del proyecto, junto con la de Lost Cove. La llegada (277,19) SI esta medida, pero de un salto con Superwing, no de un portal. Queda a SEIS del tornado de vuelta (283,13), asi que con radio 3 no rebota. SE DIBUJA A MANO con entity 718 (serie 700-718). Aqui dibujarlo es seguro: el portal no existe en Celestia, asi que no manda ningun tornado con el que pueda duplicarse -- comprobado, no hay ningun sprite 60001 a diez casillas de (82,83). Sin dibujarlo el paso seria invisible y el jugador no sabria que esta ahi, que es peor que en los pasos invisibles del original, porque este no existe en el juego real y nadie lo espera."
    }
   ],
   "192": [
@@ -1415,7 +1464,23 @@
     "radio": 3,
     "dibujar": false,
     "preguntar": false,
-    "nota": "Emerald Coast -> Dawn Harbor. Tornado 118989; el MOVE_REQ vino de (286,9), a NUEVE casillas, con el paso acabando en (294,4), a una. La llegada (123,67) es la que mando Celestia. LOS DOS SENTIDOS MEDIDOS. Queda sin destino (292,174)."
+    "nota": "Emerald Coast -> Dawn Harbor. ACTIVADO. Tornado 118989 en (295,3); el tramo acabo en (294,6), a tres casillas. La llegada (123,67) LA DIO EL USUARIO leyendola en el juego, no sale de una captura: el cliente se reconecto justo al volver a Dawn Harbor y esa sesion no trae ni un MOVE_REQ. Antes habia una casilla puesta a ojo, (115,66), que se ha sustituido. Queda a OCHO del tornado de ida (115,59), que tiene radio 3, asi que no rebota."
+   },
+   {
+    "entity": 118988,
+    "tile": [
+     292,
+     174
+    ],
+    "destino": 319,
+    "llegada": [
+     17,
+     17
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Emerald Coast -> Whisper Lake (stage 319). ACTIVADO. Con este quedan medidos los dos tornados del mapa. Tornado 118988 en (292,174); el tramo acabo en (291,173), a una casilla. La llegada (17,17) es la que mando Celestia, medida, y queda a DOCE del tornado de vuelta (10,4). Radio 3. OJO: la primera vez que se llego a Whisper Lake en esta tanda fue con SUPERWING, no por este portal; ese salto dejo en (18,11), que es el punto del jumpmap, y no se uso para medir nada."
    }
   ],
   "257": [
@@ -1739,6 +1804,22 @@
     "dibujar": false,
     "preguntar": false,
     "nota": "Deep Trench -> Palm Base. Tornado 119718; el MOVE_REQ vino de (20,167), a cinco casillas, con el paso acabando en (17,171), a una. La llegada (212,82) es la que mando Celestia. LOS DOS SENTIDOS MEDIDOS. Queda sin destino (288,5)."
+   },
+   {
+    "entity": 119719,
+    "tile": [
+     288,
+     5
+    ],
+    "destino": 364,
+    "llegada": [
+     18,
+     170
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Deep Trench -> Ancient Rift (stage 364). ACTIVADO. Con este quedan medidos los dos tornados del mapa. Tornado 119719 en (288,5); el tramo acabo en (288,6), a una casilla. La llegada (18,170) es la que mando Celestia, medida: en la primera revision de esta captura la sesion todavia no traia ningun MOVE_REQ y se habia puesto (13,169) a ojo, el punto del jumpmap. Queda a CATORCE del tornado de vuelta (4,175), asi que no rebota. Radio 3."
    }
   ],
   "89": [
@@ -2447,6 +2528,22 @@
     "dibujar": false,
     "preguntar": false,
     "nota": "Scrap Iron Village -> Megalith Plain. Tornado 101625. El MOVE_REQ vino de (19,18), a OCHO casillas, con el paso acabando en (18,11), a una: lo coge el portal armado. La llegada (286,176) la mando Celestia las dos veces igual."
+   },
+   {
+    "entity": 121589,
+    "tile": [
+     33,
+     175
+    ],
+    "destino": 274,
+    "llegada": [
+     281,
+     14
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Scrap Iron Village -> Metal Scrapyard (stage 274, zona Sylvan Chaos). ACTIVADO. Tornado capturado en (33,175). Medido una vez: el tramo acabo en (34,176), a una casilla. Las llegadas observadas fueron (281,14) y (283,12); se usa la primera, que es la que dio el usuario leyendola en el juego. Radio 3 con holgura: la llegada de vuelta desde el 274 es (179,103), en la otra punta del mapa."
    }
   ],
   "32": [
@@ -2599,6 +2696,22 @@
     "dibujar": false,
     "preguntar": false,
     "nota": "Ancient Landing -> Bottomless Pit. Tornado 119257; el MOVE_REQ vino de (144,86), a OCHO casillas, con el paso acabando en (151,90), a una. La llegada (160,91) es la que mando Celestia. LOS DOS SENTIDOS MEDIDOS. Queda sin destino (292,17)."
+   },
+   {
+    "entity": 119256,
+    "tile": [
+     292,
+     17
+    ],
+    "destino": 334,
+    "llegada": [
+     26,
+     168
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Ancient Landing -> Forsaken Crevasse (stage 334). ACTIVADO. Con este quedan medidos los dos tornados del mapa. Tornado 119256 en (292,17); el tramo acabo en (291,17), a una casilla. La llegada (26,168) es la que mando Celestia, medida, y queda a QUINCE del tornado de vuelta (11,164). Radio 3. OJO: la primera vez que se llego a Forsaken Crevasse en esta tanda fue con SUPERWING, no por este portal; ese salto dejo en (25,161), que es el punto del jumpmap, y no se uso para medir nada."
    }
   ],
   "14": [
@@ -5070,6 +5183,22 @@
     "dibujar": false,
     "preguntar": false,
     "nota": "Whispering Hill -> Forbidden Sector por el tornado 119582, el del sureste. El MOVE_REQ salio de (287,161), a dos casillas, y su primer tramo acabo en (288,161), a una. Las dos llegadas de este mapa, (278,160) y (284,154), quedan a once y a ocho. El otro tornado del mapa, el 119581 en (5,175), sigue sin destino."
+   },
+   {
+    "entity": 119581,
+    "tile": [
+     5,
+     175
+    ],
+    "destino": 355,
+    "llegada": [
+     285,
+     21
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Whispering Hill -> Galaxia Square (stage 355). ACTIVADO. Con este quedan medidos los dos tornados del mapa. Tornado 119581 en (5,175); se cruzo DOS veces y los dos tramos acabaron en (6,174), a una casilla. Celestia dejo en (290,24) la primera vez, que es el punto 'Entrance' del jumpmap, y en (285,21) la segunda; se usa (285,21), que queda a ONCE del tornado de vuelta (294,14) en vez de a diez. Radio 3."
    }
   ],
   "227": [
@@ -7539,6 +7668,2086 @@
     "sin_medir": true,
     "desactivado": true,
     "nota": "Tornado de Siam Square abajo a la derecha. NO SE CRUZO."
+   }
+  ],
+  "274": [
+   {
+    "entity": 118313,
+    "tile": [
+     290,
+     6
+    ],
+    "destino": 34,
+    "llegada": [
+     41,
+     171
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Metal Scrapyard -> Scrap Iron Village. ACTIVADO con la casilla que dio el USUARIO, (290,6), no con la medida. EN CELESTIA ESTE PORTAL ESTA MAL: el usuario dice que el de salida no funciona bien y que no podia volver. Se nota en los datos: el tramo del cruce acabo en (285,21), a QUINCE casillas del tornado, cuando lo normal en todo el proyecto es una o dos. El tornado si existe y esta capturado en (290,6), entidad 118313. Se usa la casilla del tornado porque es la que el jugador ve y la que funciona en el original; con la medida el portal se dispararia en medio de la nada. La LLEGADA (41,171) la dio el usuario leyendola en el juego. Antes estaba en (179,103), que es la casilla que mando el servidor en el unico cruce capturado, pero ahi esta el Cupido de Scrap Iron Village y el jugador aparecia encima. Como el portal de este mapa esta roto en Celestia, la casilla que manda no es de fiar. Radio 3: las llegadas desde Scrap Iron Village son (281,14) y (283,12), a NUEVE y a SIETE del tornado de aqui, y la nueva llegada (41,171) queda a OCHO del tornado de ida (33,175), asi que no hay rebote por ningun lado."
+   },
+   {
+    "entity": 118314,
+    "tile": [
+     15,
+     5
+    ],
+    "destino": 275,
+    "llegada": [
+     283,
+     167
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Metal Scrapyard -> Rusty Pipe Lane (stage 275). ACTIVADO. Era el tornado anotado como 'no se cruzo'. Tornado capturado en (15,5). Medido DOS veces: los tramos acabaron en (14,6) y (16,6), a una casilla. Las dos llegadas fueron (283,167). Radio 3 con holgura: la llegada de vuelta desde el 275 es (24,15), a DIEZ de aqui."
+   }
+  ],
+  "275": [
+   {
+    "entity": 118315,
+    "tile": [
+     288,
+     173
+    ],
+    "destino": 274,
+    "llegada": [
+     24,
+     15
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Rusty Pipe Lane -> Metal Scrapyard. ACTIVADO. Tornado capturado en (288,173). Medido una vez: el tramo acabo en (287,172), a una casilla, y se llego a (24,15). RADIO 3 Y NO MAS: la llegada desde el 274 es (283,167), a SEIS de aqui, asi que el techo es 5."
+   },
+   {
+    "entity": 118316,
+    "tile": [
+     6,
+     13
+    ],
+    "destino": 276,
+    "llegada": [
+     284,
+     162
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Rusty Pipe Lane -> Joaquin (stage 276). ACTIVADO. Era el tornado anotado como 'no se cruzo'. Tornado capturado en (6,13). Medido DOS veces: los tramos acabaron en (7,14) y (6,12), a una casilla. Las llegadas fueron (284,162) y (280,162). Radio 3 con holgura: la llegada de vuelta desde Joaquin es (14,20), a OCHO de aqui."
+   }
+  ],
+  "276": [
+   {
+    "entity": 118318,
+    "tile": [
+     289,
+     169
+    ],
+    "destino": 275,
+    "llegada": [
+     14,
+     20
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Joaquin -> Rusty Pipe Lane. ACTIVADO. Tornado capturado en (289,169). Medido una vez: el tramo acabo en (288,168), a una casilla, y se llego a (14,20). RADIO 3 Y NO MAS: las llegadas desde Rusty Pipe Lane son (284,162) y (280,162), a SIETE y a NUEVE; el techo lo pone la primera."
+   },
+   {
+    "entity": 118319,
+    "tile": [
+     293,
+     7
+    ],
+    "destino": 277,
+    "llegada": [
+     21,
+     171
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Joaquin -> Scrap Iron Works (stage 277). ACTIVADO. Tornado capturado en (293,7). Medido DOS veces: los dos tramos acabaron en (292,8), a una casilla, y se llego a (21,171) las dos. Radio 3 con holgura: la llegada de vuelta desde el 277 es (282,18), a ONCE de aqui. A Joaquin le quedan DOS tornados sin cruzar: (8,7) y (31,154)."
+   },
+   {
+    "entity": 118320,
+    "tile": [
+     8,
+     7
+    ],
+    "destino": 278,
+    "llegada": [
+     286,
+     163
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Joaquin -> Sylvan Gardens (stage 278). ACTIVADO. Era el ULTIMO tornado sin cruzar de Joaquin: con este, sus cuatro quedan medidos -- (289,169) a Rusty Pipe Lane, (293,7) a Scrap Iron Works, (31,154) a Spring Garden y este. Tornado capturado en (8,7). Medido DOS veces: los dos tramos acabaron en (9,8), a una casilla. Las llegadas fueron (286,163) y (290,161). Radio 3 con holgura: la llegada de vuelta desde el 278 es (11,18), a ONCE de aqui."
+   },
+   {
+    "entity": 118325,
+    "tile": [
+     31,
+     154
+    ],
+    "destino": 381,
+    "llegada": [
+     269,
+     24
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Joaquin -> Spring Garden (stage 381), ya en la zona CELESTIA, el DLC que da nombre al servidor. ACTIVADO. Tornado capturado en (31,154). Medido DOS veces: los tramos acabaron en (30,153) y (32,153), a una casilla. Se llego a (269,24). Radio 3 con holgura: la llegada de vuelta desde Spring Garden es (41,153), a DIEZ de aqui. A Joaquin le queda UN tornado sin cruzar: el de (8,7)."
+   }
+  ],
+  "277": [
+   {
+    "entity": 118326,
+    "tile": [
+     14,
+     174
+    ],
+    "destino": 276,
+    "llegada": [
+     282,
+     18
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Scrap Iron Works -> Joaquin. ACTIVADO. ES EL UNICO PASO DEL MAPA: su captura trae UN solo sprite 60001, asi que es un callejon sin salida. Tornado capturado en (14,174). Medido una vez: el tramo acabo en (15,173), a una casilla, y se llego a (282,18). RADIO 3 Y NO MAS: la llegada desde Joaquin es (21,171), a SIETE de aqui, asi que el techo es 6."
+   }
+  ],
+  "381": [
+   {
+    "entity": 120069,
+    "tile": [
+     282,
+     23
+    ],
+    "destino": 276,
+    "llegada": [
+     41,
+     153
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Spring Garden -> Joaquin. ACTIVADO. Tornado capturado en (282,23). Medido una vez: el tramo acabo en (281,24), a una casilla, y se llego a (41,153). Radio 3 con holgura: la llegada desde Joaquin es (269,24), a TRECE de aqui."
+   },
+   {
+    "entity": 120070,
+    "tile": [
+     288,
+     169
+    ],
+    "destino": 383,
+    "llegada": [
+     25,
+     10
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Spring Garden -> Red Desert (stage 383). ACTIVADO. Tornado capturado en (288,169). Medido DOS veces: los tramos acabaron en (287,168) y (290,169), a una casilla, y se llego a (25,10) las dos. Radio 3 con holgura: las llegadas de vuelta desde el 383 son (278,169) y (277,164), a DIEZ y a ONCE. A Spring Garden le queda UN tornado sin cruzar: el de (5,8)."
+   },
+   {
+    "entity": 120071,
+    "tile": [
+     5,
+     8
+    ],
+    "destino": 382,
+    "llegada": [
+     288,
+     163
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Spring Garden -> Silent Lakeside (stage 382). ACTIVADO. Era el ULTIMO tornado sin cruzar de Spring Garden: con este sus tres quedan medidos -- (282,23) a Joaquin, (288,169) a Red Desert y este. Tornado capturado en (5,8). Medido DOS veces: los tramos acabaron en (6,9) y (7,8), a una casilla. RADIO 3 Y NO MAS: la llegada de vuelta desde el 382 es (11,15), a SIETE de aqui, asi que el techo es 6."
+   }
+  ],
+  "278": [
+   {
+    "entity": 118327,
+    "tile": [
+     292,
+     169
+    ],
+    "destino": 276,
+    "llegada": [
+     11,
+     18
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Sylvan Gardens -> Joaquin. ACTIVADO. Tornado capturado en (292,169). Medido una vez: el tramo acabo en (291,168), a una casilla, y se llego a (11,18). RADIO 3 Y NO MAS: las llegadas desde Joaquin son (286,163) y (290,161), a SEIS y a OCHO; el techo lo pone la primera."
+   },
+   {
+    "entity": 118328,
+    "tile": [
+     12,
+     170
+    ],
+    "destino": 279,
+    "llegada": [
+     276,
+     11
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Sylvan Gardens -> Paua Shell Harbor (stage 279). ACTIVADO. Tornado capturado en (12,170). Medido DOS veces: los tramos acabaron en (13,169) y (10,172), a una y a dos casillas. Las llegadas fueron (276,11) y (283,15). Radio 3 con holgura: la llegada de vuelta desde el 279 es (23,164), a ONCE de aqui. A Sylvan Gardens le queda UN tornado sin cruzar: el de (287,11)."
+   },
+   {
+    "entity": 118329,
+    "tile": [
+     287,
+     11
+    ],
+    "destino": 280,
+    "llegada": [
+     32,
+     168
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Sylvan Gardens -> Drip-drop Passage (stage 280). ACTIVADO. Era el ULTIMO tornado sin cruzar de Sylvan Gardens: con este sus tres quedan medidos -- (292,169) a Joaquin, (12,170) a Paua Shell Harbor y este. Tornado capturado en (287,11). Medido DOS veces: los tramos acabaron en (286,12) y (289,11), a una y a dos casillas. Radio 3 con holgura: la llegada de vuelta desde el 280 es (276,19), a ONCE de aqui."
+   }
+  ],
+  "279": [
+   {
+    "entity": 118333,
+    "tile": [
+     293,
+     4
+    ],
+    "destino": 278,
+    "llegada": [
+     23,
+     164
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Paua Shell Harbor -> Sylvan Gardens. ACTIVADO. ES EL UNICO PASO DEL MAPA: su captura trae UN solo sprite 60001, asi que es un callejon sin salida. Tornado capturado en (293,4). Medido una vez: el tramo acabo en (292,5), a una casilla, y se llego a (23,164). Radio 3 con holgura: las llegadas desde Sylvan Gardens son (276,11) y (283,15), a DIECISIETE y a ONCE."
+   }
+  ],
+  "280": [
+   {
+    "entity": 118335,
+    "tile": [
+     25,
+     174
+    ],
+    "destino": 278,
+    "llegada": [
+     276,
+     19
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Drip-drop Passage -> Sylvan Gardens. ACTIVADO. Tornado capturado en (25,174). Medido una vez: el tramo acabo en (26,173), a una casilla, y se llego a (276,19). RADIO 3 Y NO MAS: la llegada desde Sylvan Gardens es (32,168), a SIETE de aqui, asi que el techo es 6."
+   },
+   {
+    "entity": 118336,
+    "tile": [
+     286,
+     3
+    ],
+    "destino": null,
+    "llegada": null,
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "sin_medir": true,
+    "desactivado": true,
+    "nota": "ENTRADA DE INSTANCIA de Drip-drop Passage, avisada por el usuario. Identificada por descarte: de los dos tornados del mapa, el de (25,174) vuelve a Sylvan Gardens, asi que este es el que queda. NO SE CRUZO. Queda DESACTIVADA como las otras 18 del proyecto."
+   }
+  ],
+  "383": [
+   {
+    "entity": 120080,
+    "tile": [
+     13,
+     7
+    ],
+    "destino": 381,
+    "llegada": [
+     278,
+     169
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Red Desert -> Spring Garden. ACTIVADO. Tornado capturado en (13,7). Medido DOS veces: los tramos acabaron en (14,8) y (11,9), a una y a dos casillas. Las llegadas fueron (278,169) y (277,164); se usa la primera. Radio 3 con holgura: la llegada desde Spring Garden es (25,10), a DOCE de aqui."
+   },
+   {
+    "entity": 120081,
+    "tile": [
+     8,
+     171
+    ],
+    "destino": 385,
+    "llegada": [
+     283,
+     10
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Red Desert -> Pink Woods (stage 385). ACTIVADO. Era el ULTIMO tornado sin cruzar de Red Desert: con este sus tres quedan medidos -- (13,7) a Spring Garden, (290,170) a Chilly Village y este. Tornado capturado en (8,171). Medido DOS veces: los tramos acabaron en (9,170) y (8,172), a una casilla. Las llegadas fueron (283,10) y (285,13). Radio 3 con holgura: la llegada de vuelta desde el 385 es (16,165), a OCHO de aqui."
+   },
+   {
+    "entity": 120082,
+    "tile": [
+     290,
+     170
+    ],
+    "destino": 384,
+    "llegada": [
+     16,
+     13
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Red Desert -> Chilly Village (stage 384). ACTIVADO. Tornado capturado en (290,170). Medido DOS veces: los tramos acabaron en (290,169) y (292,170), a una y a dos casillas. RADIO 3 Y NO MAS: la llegada de vuelta desde el 384 es (288,164), a SEIS de aqui, asi que el techo es 5. A Red Desert le queda UN tornado sin cruzar: el de (8,171)."
+   }
+  ],
+  "382": [
+   {
+    "entity": 120076,
+    "tile": [
+     292,
+     171
+    ],
+    "destino": 381,
+    "llegada": [
+     11,
+     15
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Silent Lakeside -> Spring Garden. ACTIVADO. ES EL UNICO PASO DEL MAPA: su captura trae UN solo sprite 60001, asi que es un callejon sin salida. Tornado capturado en (292,171). Medido una vez: el tramo acabo en (291,170), a una casilla, y se llego a (11,15). RADIO 3 Y NO MAS: la llegada desde Spring Garden es (288,163), a OCHO de aqui, asi que el techo es 7."
+   }
+  ],
+  "384": [
+   {
+    "entity": 120083,
+    "tile": [
+     10,
+     4
+    ],
+    "destino": 383,
+    "llegada": [
+     288,
+     164
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Chilly Village -> Red Desert. ACTIVADO. ES EL UNICO PASO DEL MAPA: su captura trae UN solo sprite 60001, asi que es un callejon sin salida, aunque tenga 14 NPC y sea pueblo de servicios. Tornado capturado en (10,4). Medido una vez: el tramo acabo en (11,5), a una casilla, y se llego a (288,164). Radio 3 con holgura: la llegada desde Red Desert es (16,13), a NUEVE de aqui."
+   }
+  ],
+  "385": [
+   {
+    "entity": 120090,
+    "tile": [
+     295,
+     7
+    ],
+    "destino": 383,
+    "llegada": [
+     16,
+     165
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Pink Woods -> Red Desert. ACTIVADO. Tornado capturado en (295,7). Medido una vez: el tramo acabo en (294,8), a una casilla, y se llego a (16,165). Radio 3 con holgura: las llegadas desde Red Desert son (283,10) y (285,13), a DOCE y a DIEZ de aqui."
+   },
+   {
+    "entity": 120089,
+    "tile": [
+     15,
+     3
+    ],
+    "destino": 386,
+    "llegada": [
+     291,
+     167
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Pink Woods -> Frozen Region (stage 386). ACTIVADO. Era el ULTIMO tornado sin cruzar de Pink Woods: con este sus dos quedan medidos. Tornado capturado en (15,3). Medido DOS veces: los dos tramos acabaron en (16,4), a una casilla, y se llego a (291,167) las dos. Radio 3 con holgura: la llegada de vuelta desde el 386 es (25,8), a DIEZ de aqui."
+   }
+  ],
+  "386": [
+   {
+    "entity": 120095,
+    "tile": [
+     290,
+     172
+    ],
+    "destino": 385,
+    "llegada": [
+     25,
+     8
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Frozen Region -> Pink Woods. ACTIVADO. Tornado capturado en (290,172). Medido una vez: el tramo acabo en (291,171), a una casilla, y se llego a (25,8). RADIO 3 Y NO MAS: la llegada desde Pink Woods es (291,167), a CINCO de aqui, asi que el techo es 4."
+   },
+   {
+    "entity": 120094,
+    "tile": [
+     8,
+     171
+    ],
+    "destino": null,
+    "llegada": null,
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "sin_medir": true,
+    "desactivado": true,
+    "nota": "ENTRADA DE INSTANCIA de Frozen Region, avisada por el usuario. Identificada por descarte: de los dos tornados del mapa, el de (290,172) vuelve a Pink Woods, asi que este es el que queda. NO SE CRUZO. Queda DESACTIVADA como las otras 19 del proyecto."
+   }
+  ],
+  "389": [
+   {
+    "entity": 120112,
+    "tile": [
+     283,
+     13
+    ],
+    "destino": 4,
+    "llegada": [
+     74,
+     89
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Pier Lane -> Dawn Harbor. ACTIVADO y MEDIDO de verdad: este sentido SI existe en Celestia. Tornado capturado en (283,13). El tramo acabo en (282,14), a una casilla, y se llego a (74,89). Radio 3: la llegada (74,89) queda a OCHO del portal inventado de (82,83), asi que no rebota."
+   },
+   {
+    "entity": 120113,
+    "tile": [
+     7,
+     171
+    ],
+    "destino": 391,
+    "llegada": [
+     292,
+     13
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Pier Lane -> Bath Area (stage 391). ACTIVADO. Tornado capturado en (7,171). Medido DOS veces: los dos tramos acabaron en (8,170), a una casilla. Las llegadas fueron (292,13) y (285,13). RADIO 3 Y NO MAS: las llegadas de vuelta desde el 391 son (12,166) y (16,169), a CINCO y a NUEVE; el techo lo pone la primera. A Pier Lane le queda UN tornado sin cruzar: el de (290,171)."
+   },
+   {
+    "entity": 120114,
+    "tile": [
+     290,
+     171
+    ],
+    "destino": 390,
+    "llegada": [
+     16,
+     9
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Pier Lane -> Busy Market (stage 390). ACTIVADO. Era el ULTIMO tornado sin cruzar de Pier Lane: con este sus tres quedan medidos -- (283,13) a Dawn Harbor, (7,171) a Bath Area y este. Tornado capturado en (290,171). Medido DOS veces: los tramos acabaron en (287,169) y (290,170), a TRES y a una casilla, asi que el radio no puede bajar de 3. Se llego a (16,9) las dos veces. El techo lo pone la llegada de vuelta desde el 390, que es (282,166) y esta a OCHO."
+   }
+  ],
+  "391": [
+   {
+    "entity": 120126,
+    "tile": [
+     293,
+     6
+    ],
+    "destino": 389,
+    "llegada": [
+     12,
+     166
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Bath Area -> Pier Lane. ACTIVADO. ES EL UNICO PASO DEL MAPA: su captura trae UN solo sprite 60001, asi que es un callejon sin salida. Tornado capturado en (293,6). Medido DOS veces: los dos tramos acabaron en (292,7), a una casilla. Las llegadas fueron (12,166) y (16,169). RADIO 3 Y NO MAS: las llegadas desde Pier Lane son (292,13) y (285,13), a SIETE y a OCHO; el techo es 6."
+   }
+  ],
+  "390": [
+   {
+    "entity": 120116,
+    "tile": [
+     6,
+     5
+    ],
+    "destino": 389,
+    "llegada": [
+     282,
+     166
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Busy Market -> Pier Lane. ACTIVADO. Tornado capturado en (6,5). Medido una vez: el tramo acabo en (7,6), a una casilla, y se llego a (282,166). Radio 3 con holgura: las llegadas desde Pier Lane son (16,9) las dos veces, a DIEZ de aqui."
+   },
+   {
+    "entity": 120117,
+    "tile": [
+     293,
+     169
+    ],
+    "destino": 392,
+    "llegada": [
+     23,
+     10
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Busy Market -> Manege (stage 392). ACTIVADO. Era el tornado anotado como 'no se cruzo'; con el, los dos de Busy Market quedan medidos. Tornado capturado en (293,169). El tramo acabo en (292,168), a una casilla, y se llego a (23,10) las dos veces. RADIO 3 Y NO MAS: la llegada de vuelta desde Manege es (288,165), a CINCO de aqui, asi que el techo es 4."
+   }
+  ],
+  "392": [
+   {
+    "entity": 120129,
+    "tile": [
+     13,
+     4
+    ],
+    "destino": 390,
+    "llegada": [
+     288,
+     165
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Manege -> Busy Market. ACTIVADO. Tornado capturado en (13,4). El tramo acabo en (14,5), a una casilla, y se llego a (288,165). Radio 3 con holgura: la llegada desde Busy Market es (23,10), a DIEZ de aqui."
+   },
+   {
+    "entity": 120128,
+    "tile": [
+     6,
+     174
+    ],
+    "destino": 393,
+    "llegada": [
+     287,
+     15
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "sin_medir": false,
+    "nota": "Manege -> Garrison (stage 393). ACTIVADO. Tornado capturado en (6,174). Medido DOS veces: los dos tramos acabaron en (7,173), a una casilla. LA LLEGADA SE CORRIGIO a (287,15): la que habia, (288,163), dejaba al jugador metido en una esquina contra una valla, en la parte de abajo del mapa. El paso nuevo por Garrison en Celestia empieza en (287,15), que es arriba a la derecha, cerca del tornado que vuelve a Manege, y el usuario lo confirmo. Queda a OCHO casillas de ese tornado (295,8), que tiene radio 3, asi que no rebota."
+   }
+  ],
+  "393": [
+   {
+    "entity": 120134,
+    "tile": [
+     295,
+     8
+    ],
+    "destino": 392,
+    "llegada": [
+     9,
+     170
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Garrison -> Manege. ACTIVADO. Tornado capturado en (295,8). El tramo acabo en (294,9), a una casilla, y se llego a (9,170). Radio 3."
+   },
+   {
+    "entity": 120135,
+    "tile": [
+     5,
+     8
+    ],
+    "destino": 394,
+    "llegada": [
+     288,
+     167
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Garrison -> Champions' Arena (stage 394). ACTIVADO. Era el ULTIMO tornado sin cruzar de Garrison: con este sus dos quedan medidos. Tornado capturado en (5,8). Medido DOS veces: los dos tramos acabaron en (6,9), a una casilla. RADIO 3 Y NO MAS: la llegada de vuelta desde el 394 es (11,14), a SEIS de aqui, asi que el techo es 5."
+   }
+  ],
+  "394": [
+   {
+    "entity": 120145,
+    "tile": [
+     293,
+     171
+    ],
+    "destino": 393,
+    "llegada": [
+     11,
+     14
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Champions' Arena -> Garrison. ACTIVADO. Tornado capturado en (293,171). El tramo acabo en (292,170), a una casilla, y se llego a (11,14). RADIO 3 Y NO MAS: la llegada desde Garrison es (288,167), a CINCO de aqui, asi que el techo es 4."
+   },
+   {
+    "entity": 120146,
+    "tile": [
+     6,
+     173
+    ],
+    "destino": null,
+    "llegada": null,
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "sin_medir": true,
+    "desactivado": true,
+    "nota": "ENTRADA DE INSTANCIA de Champions' Arena, avisada por el usuario. Identificada por descarte: de los dos tornados del mapa, el de (293,171) vuelve a Garrison, asi que este es el que queda. NO SE CRUZO. Queda DESACTIVADA como las otras 20 del proyecto."
+   }
+  ],
+  "295": [
+   {
+    "entity": 118640,
+    "tile": [
+     5,
+     3
+    ],
+    "destino": 8,
+    "llegada": [
+     286,
+     74
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Starglow Path -> Crashing Hillock. Tornado 118640 en (5,3); el tramo acabo en (6,4), a una casilla. EN CELESTIA ESTE PORTAL DE REGRESO NO FUNCIONA, igual que el de Metal Scrapyard: el servidor dejo al jugador en (18,13), que no corresponde al tornado de vuelta, y el usuario no podia volver. La LLEGADA (286,74) la dio el USUARIO leyendola en el juego, NO sale de una captura. Queda a seis casillas del tornado de ida (292,70), que tiene radio 3, asi que no hay rebote. El otro tornado del mapa, 118639 en (293,174), sigue sin explorar."
+   },
+   {
+    "entity": 118639,
+    "tile": [
+     293,
+     174
+    ],
+    "destino": 296,
+    "llegada": [
+     15,
+     12
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Starglow Path -> Academia Woods (stage 296). ACTIVADO. Era el tornado que quedaba sin cruzar de este mapa: con este los dos quedan medidos. Tornado 118639 en (293,174); el tramo acabo en (294,173), a una casilla. La llegada (15,12) es la que mando Celestia, medida. Radio 3: la vuelta desde Academia Woods deja en (289,167), a SIETE de este tornado, asi que no rebota."
+   }
+  ],
+  "296": [
+   {
+    "entity": 118641,
+    "tile": [
+     5,
+     8
+    ],
+    "destino": 295,
+    "llegada": [
+     289,
+     167
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Academia Woods -> Starglow Path. ACTIVADO. Tornado 118641 en (5,8); el tramo acabo en (7,8), a dos casillas. La llegada (289,167) es la que mando Celestia, medida. Radio 3: la llegada desde Starglow Path es (15,12), a DIEZ de este tornado, asi que no rebota."
+   },
+   {
+    "entity": 118643,
+    "tile": [
+     294,
+     174
+    ],
+    "destino": 298,
+    "llegada": [
+     3,
+     14
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Academia Woods -> Coo Village (stage 298). ACTIVADO. Tornado 118643 en (294,174); el tramo acabo en (292,174), a dos casillas. La llegada (3,14) es la que mando Celestia, medida. Radio 3: la vuelta desde Coo Village deja en (285,174), a NUEVE de este tornado, asi que no rebota."
+   },
+   {
+    "entity": 118642,
+    "tile": [
+     294,
+     17
+    ],
+    "destino": 297,
+    "llegada": [
+     13,
+     172
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Academia Woods -> Mana Ruins (stage 297). ACTIVADO. Con este quedan medidos los tres tornados del mapa. Tornado 118642 en (294,17); el tramo acabo en (293,18), a una casilla. La llegada (13,172) es la que mando Celestia, medida, y queda a OCHO del tornado de vuelta (5,174), asi que no rebota. Radio 3."
+   }
+  ],
+  "298": [
+   {
+    "entity": 118653,
+    "tile": [
+     6,
+     7
+    ],
+    "destino": 296,
+    "llegada": [
+     285,
+     174
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Coo Village -> Academia Woods. ACTIVADO. Tornado 118653 en (6,7); el tramo acabo en (7,8), a una casilla. La llegada (285,174) es la que mando Celestia, medida. RADIO 3 Y NO MAS: la llegada desde Academia Woods es (3,14), a SEIS casillas de este tornado, asi que con radio 6 o mas el jugador rebotaria nada mas entrar."
+   },
+   {
+    "entity": 118655,
+    "tile": [
+     294,
+     3
+    ],
+    "destino": 299,
+    "llegada": [
+     19,
+     173
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Coo Village -> Ethereal Garden (stage 299). ACTIVADO. Tornado 118655 en (294,3); el tramo acabo en (293,4) LAS DOS VECES que se cruzo. Celestia no dejo en la misma casilla las dos veces: una en (14,172) y otra en (19,173). Se usa (19,173), que es la segunda y la que queda mas lejos del tornado de vuelta (8,174): a ONCE casillas en vez de a seis. Radio 3."
+   },
+   {
+    "entity": 118654,
+    "tile": [
+     33,
+     173
+    ],
+    "destino": 300,
+    "llegada": [
+     285,
+     6
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Coo Village -> Daydream Library (stage 300). ACTIVADO. Con este quedan medidos los tres tornados del mapa. Tornado 118654 en (33,173); se cruzo DOS veces y los tramos acabaron en (34,172) y (33,172), a una casilla. Celestia dejo en (286,10) la primera vez y en (285,6) la segunda; se usa (285,6), que queda a OCHO del tornado de vuelta (294,3). Radio 3."
+   }
+  ],
+  "299": [
+   {
+    "entity": 118660,
+    "tile": [
+     8,
+     174
+    ],
+    "destino": 298,
+    "llegada": [
+     285,
+     5
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Ethereal Garden -> Coo Village. ACTIVADO. Tornado 118660 en (8,174); el tramo acabo en (9,173), a una casilla. La llegada (285,5) es la que mando Celestia, medida, y queda a NUEVE del tornado de ida (294,3), asi que no rebota. Radio 3."
+   },
+   {
+    "entity": 118661,
+    "tile": [
+     5,
+     3
+    ],
+    "destino": 297,
+    "llegada": [
+     291,
+     157
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Ethereal Garden -> Mana Ruins (stage 297). ACTIVADO. Con este quedan medidos los dos tornados del mapa. Tornado 118661 en (5,3); se cruzo DOS veces y los tramos acabaron en (6,4) y (5,5), a una y a dos casillas. La llegada (291,157) es la que mando Celestia las DOS veces, medida, y queda a CINCO del tornado de vuelta (288,162), que tiene radio 3, asi que no rebota."
+   }
+  ],
+  "297": [
+   {
+    "entity": 118644,
+    "tile": [
+     288,
+     162
+    ],
+    "destino": 299,
+    "llegada": [
+     14,
+     5
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Mana Ruins -> Ethereal Garden. ACTIVADO. Tornado 118644 en (288,162); el tramo acabo en (289,161), a una casilla. La llegada (14,5) es la que mando Celestia, medida, y queda a NUEVE del tornado de ida (5,3). RADIO 3 Y NO MAS: la llegada desde Ethereal Garden es (291,157), a CINCO de este tornado."
+   },
+   {
+    "entity": 118645,
+    "tile": [
+     5,
+     174
+    ],
+    "destino": 296,
+    "llegada": [
+     293,
+     28
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Mana Ruins -> Academia Woods (stage 296). ACTIVADO. Con este quedan medidos los dos tornados del mapa. Tornado 118645 en (5,174); se cruzo DOS veces y los dos tramos acabaron en (6,173), a una casilla. Celestia no dejo en la misma casilla las dos veces: la primera en (293,28) y la segunda en (294,17), que es EXACTAMENTE la casilla del tornado de vuelta. Se usa (293,28): con la otra el jugador caeria encima del tornado y rebotaria aqui al instante."
+   }
+  ],
+  "300": [
+   {
+    "entity": 118663,
+    "tile": [
+     294,
+     3
+    ],
+    "destino": 298,
+    "llegada": [
+     34,
+     169
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Daydream Library -> Coo Village. ACTIVADO. Tornado 118663 en (294,3); el tramo acabo en (293,4), a una casilla. La llegada (34,169) es la que mando Celestia, medida. RADIO 3 Y NO MAS en el tornado de Coo Village (33,173): esa llegada queda a solo CUATRO casillas de el."
+   },
+   {
+    "entity": 118662,
+    "tile": [
+     4,
+     174
+    ],
+    "destino": 301,
+    "llegada": [
+     288,
+     8
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Daydream Library -> Reminiscence Cloister (stage 301). ACTIVADO. Con este quedan medidos los dos tornados del mapa. Tornado 118662 en (4,174); se cruzo DOS veces y los dos tramos acabaron en (5,173), a una casilla. La llegada (288,8) es la que mando Celestia las DOS veces, medida, y queda a SEIS del tornado de vuelta (295,6). Radio 3."
+   }
+  ],
+  "301": [
+   {
+    "entity": 118664,
+    "tile": [
+     295,
+     6
+    ],
+    "destino": 300,
+    "llegada": [
+     11,
+     172
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Reminiscence Cloister -> Daydream Library. ACTIVADO. Tornado 118664 en (295,6); el tramo acabo en (294,7), a una casilla. La llegada (11,172) es la que mando Celestia, medida, y queda a SIETE del tornado de ida (4,174), asi que no rebota. Radio 3."
+   },
+   {
+    "entity": 118665,
+    "tile": [
+     295,
+     167
+    ],
+    "destino": null,
+    "llegada": null,
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "sin_medir": true,
+    "desactivado": true,
+    "nota": "ENTRADA DE INSTANCIA de Reminiscence Cloister, avisada por el usuario. El jumpmap la confirma: el mapa tiene un punto llamado 'Instance Entrance' en (289,159), y de los dos tornados del mapa el de (295,6) vuelve a Daydream Library, asi que este es el que queda. NO SE CRUZO. Queda DESACTIVADA como las demas del proyecto."
+   }
+  ],
+  "306": [
+   {
+    "entity": 118755,
+    "tile": [
+     5,
+     175
+    ],
+    "destino": 27,
+    "llegada": [
+     270,
+     12
+    ],
+    "radio": 2,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Dial Desert -> Deity Palace Ruins. ACTIVADO. Tornado 118755 en (5,175); el tramo acabo en (6,174), a una casilla. La llegada (270,12) es la que mando Celestia, medida, y queda a ONCE del tornado de ida (271,1). RADIO 2, no el 3 de costumbre: la llegada desde Deity Palace Ruins es (8,172), a TRES casillas de este tornado, asi que con radio 3 el jugador rebotaria nada mas entrar. Con radio 2 sigue cubriendo el tramo medido, que esta a una."
+   },
+   {
+    "entity": 118756,
+    "tile": [
+     288,
+     3
+    ],
+    "destino": 307,
+    "llegada": [
+     12,
+     167
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Dial Desert -> Greenfield (stage 307). ACTIVADO. Con este quedan medidos los dos tornados del mapa. Tornado 118756 en (288,3); se cruzo DOS veces y los dos tramos acabaron en (287,4), a una casilla. Celestia dejo en (6,167) la primera vez y en (12,167) la segunda; se usa (12,167). Las dos quedan a SIETE del tornado de vuelta (5,174), asi que no rebota ninguna. Radio 3."
+   }
+  ],
+  "307": [
+   {
+    "entity": 118758,
+    "tile": [
+     5,
+     174
+    ],
+    "destino": 306,
+    "llegada": [
+     284,
+     10
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Greenfield -> Dial Desert. ACTIVADO. Tornado 118758 en (5,174); el tramo acabo en (6,173), a una casilla. La llegada (284,10) es la que mando Celestia, medida, y queda a SIETE del tornado de ida (288,3), asi que no rebota. Radio 3."
+   },
+   {
+    "entity": 118757,
+    "tile": [
+     294,
+     175
+    ],
+    "destino": 308,
+    "llegada": [
+     10,
+     12
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Greenfield -> Rainbow Town (stage 308). ACTIVADO. Con este quedan medidos los dos tornados del mapa. Tornado 118757 en (294,175); se cruzo DOS veces, con tramos en (290,175) y (293,174). Celestia dejo en (7,16) la primera vez y en (10,12) la segunda; se usa (10,12), que ademas coincide casi con el punto 'Entrance' del jumpmap, (11,12). Queda a NUEVE del tornado de vuelta (5,3). Radio 3."
+   }
+  ],
+  "308": [
+   {
+    "entity": 118763,
+    "tile": [
+     5,
+     3
+    ],
+    "destino": 307,
+    "llegada": [
+     286,
+     170
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Rainbow Town -> Greenfield. ACTIVADO. De los CUATRO tornados del mapa este es el unico cruzado. Tornado 118763 en (5,3); el tramo acabo en (5,4), a una casilla. La llegada (286,170) es la que mando Celestia, medida, y queda a OCHO del tornado de ida (294,175), asi que no rebota. Radio 3."
+   },
+   {
+    "entity": 118766,
+    "tile": [
+     294,
+     3
+    ],
+    "destino": 309,
+    "llegada": [
+     12,
+     170
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Rainbow Town -> Antler Mesa (stage 309). ACTIVADO. Tornado 118766 en (294,3); se cruzo DOS veces y los dos tramos acabaron en (293,4), a una casilla. Celestia dejo en (9,165) la primera vez y en (12,170) la segunda; se usa (12,170), que ademas coincide casi con el punto del jumpmap, (13,169). Queda a SIETE del tornado de vuelta (5,174). Radio 3."
+   },
+   {
+    "entity": 118765,
+    "tile": [
+     292,
+     175
+    ],
+    "destino": 311,
+    "llegada": [
+     26,
+     16
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Rainbow Town -> Cogsville (stage 311). ACTIVADO. Tornado 118765 en (292,175); se cruzo DOS veces y los dos tramos acabaron en (291,174), a una casilla. La llegada (26,16) es la que mando Celestia en el cruce que se pudo medir, y queda a NUEVE del tornado de vuelta (17,14). Radio 3."
+   },
+   {
+    "entity": 118764,
+    "tile": [
+     6,
+     174
+    ],
+    "destino": 310,
+    "llegada": [
+     288,
+     11
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Rainbow Town -> Carrotiso (stage 310). ACTIVADO. Con este quedan medidos los CUATRO tornados de Rainbow Town. Tornado 118764 en (6,174); el tramo acabo en (7,173), a una casilla. La llegada (288,11) es la que mando Celestia, medida, y coincide casi con el punto del jumpmap, (289,14). Queda a SIETE del tornado de vuelta (293,4). Radio 3."
+   }
+  ],
+  "309": [
+   {
+    "entity": 118772,
+    "tile": [
+     5,
+     174
+    ],
+    "destino": 308,
+    "llegada": [
+     278,
+     6
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Antler Mesa -> Rainbow Town. ACTIVADO. Es el UNICO tornado que aparecio en la captura de este mapa. Tornado 118772 en (5,174); el tramo acabo en (7,174), a dos casillas. La llegada (278,6) es la que mando Celestia, medida, y queda a DIECISEIS del tornado de ida (294,3), asi que no rebota. Radio 3. Que solo se viera uno no quiere decir que no haya mas: el mapa no se recorrio entero."
+   }
+  ],
+  "311": [
+   {
+    "entity": 118779,
+    "tile": [
+     17,
+     14
+    ],
+    "destino": 308,
+    "llegada": [
+     290,
+     168
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Cogsville -> Rainbow Town. ACTIVADO. Tornado 118779 en (17,14), que no esta en el borde del mapa sino metido dentro; el tramo acabo en (18,15), a una casilla. La llegada (290,168) es la que mando Celestia, medida, y queda a SIETE del tornado de ida (292,175), asi que no rebota. Radio 3."
+   },
+   {
+    "entity": 118778,
+    "tile": [
+     7,
+     173
+    ],
+    "destino": 312,
+    "llegada": [
+     284,
+     18
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Cogsville -> Chrono Ruins (stage 312). ACTIVADO. Con este quedan medidos los dos tornados del mapa. Tornado 118778 en (7,173); se cruzo DOS veces y los tramos acabaron en (8,172) y (8,173), a una casilla. La llegada (284,18) es la que mando Celestia las DOS veces, medida, y queda a ONCE del tornado de vuelta (293,6). Radio 3."
+   }
+  ],
+  "312": [
+   {
+    "entity": 118781,
+    "tile": [
+     293,
+     6
+    ],
+    "destino": 311,
+    "llegada": [
+     16,
+     173
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Chrono Ruins -> Cogsville. ACTIVADO. Tornado 118781 en (293,6); el tramo acabo en (292,7), a una casilla. La llegada (16,173) es la que mando Celestia, medida, y queda a NUEVE del tornado de ida (7,173), asi que no rebota. Radio 3. Quedan sin explorar los otros dos tornados del mapa: 118782 se cruzo, 118793 en (51,73) no."
+   },
+   {
+    "entity": 118780,
+    "tile": [
+     11,
+     172
+    ],
+    "destino": null,
+    "llegada": null,
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "sin_medir": true,
+    "desactivado": true,
+    "nota": "ENTRADA DE INSTANCIA de Chrono Ruins, avisada por el usuario. El jumpmap la confirma: el mapa tiene un punto llamado 'Instance Entrance' en (17,166), que es la esquina donde esta este tornado. NO SE CRUZO. Queda DESACTIVADA como las demas del proyecto."
+   },
+   {
+    "entity": 118782,
+    "tile": [
+     5,
+     3
+    ],
+    "destino": 310,
+    "llegada": [
+     291,
+     166
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Chrono Ruins -> Carrotiso (stage 310). ACTIVADO. Tornado 118782 en (5,3); se cruzo DOS veces y los dos tramos acabaron en (6,4), a una casilla. Celestia dejo en (286,170) la primera vez y en (291,166) la segunda; se usa (291,166), que queda a SIETE del tornado de vuelta (293,173). Radio 3."
+   }
+  ],
+  "310": [
+   {
+    "entity": 118773,
+    "tile": [
+     293,
+     173
+    ],
+    "destino": 312,
+    "llegada": [
+     16,
+     9
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Carrotiso -> Chrono Ruins. ACTIVADO. Tornado 118773 en (293,173); el tramo acabo en (294,173), a una casilla. La llegada (16,9) es la que mando Celestia, medida, y queda a ONCE del tornado de ida (5,3), asi que no rebota. Radio 3."
+   },
+   {
+    "entity": 118774,
+    "tile": [
+     293,
+     4
+    ],
+    "destino": 308,
+    "llegada": [
+     7,
+     167
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Carrotiso -> Rainbow Town (stage 308). ACTIVADO. Con este quedan medidos los dos tornados del mapa. Tornado 118774 en (293,4); se cruzo DOS veces y los dos tramos acabaron en (292,5), a una casilla. La llegada (7,167) es la que mando Celestia, medida, y queda a SIETE del tornado de vuelta (6,174), asi que no rebota. Radio 3."
+   }
+  ],
+  "319": [
+   {
+    "entity": 118992,
+    "tile": [
+     10,
+     4
+    ],
+    "destino": 318,
+    "llegada": [
+     290,
+     165
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Whisper Lake -> Emerald Coast. ACTIVADO. Tornado 118992 en (10,4); el tramo acabo en (11,5), a una casilla. La llegada (290,165) es la que mando Celestia, medida, y queda a NUEVE del tornado de ida (292,174), asi que no rebota. Radio 3."
+   },
+   {
+    "entity": 118993,
+    "tile": [
+     4,
+     175
+    ],
+    "destino": 320,
+    "llegada": [
+     283,
+     18
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Whisper Lake -> Twinkle Town (stage 320). ACTIVADO. Con este quedan medidos los dos tornados del mapa. Tornado 118993 en (4,175); se cruzo DOS veces, con tramos en (5,175) y (5,174). Celestia dejo en (286,13) la primera vez y en (283,18) la segunda; se usa (283,18), que queda a ONCE del tornado de vuelta (295,8) en vez de a ocho. Radio 3."
+   }
+  ],
+  "320": [
+   {
+    "entity": 118995,
+    "tile": [
+     295,
+     8
+    ],
+    "destino": 319,
+    "llegada": [
+     19,
+     169
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Twinkle Town -> Whisper Lake. ACTIVADO. Tornado 118995 en (295,8); el tramo acabo en (294,9), a una casilla. La llegada (19,169) es la que mando Celestia, medida, y queda a QUINCE del tornado de ida (4,175), asi que no rebota. Radio 3."
+   },
+   {
+    "entity": 118996,
+    "tile": [
+     4,
+     2
+    ],
+    "destino": 321,
+    "llegada": [
+     279,
+     172
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Twinkle Town -> Cobalt Market (stage 321). ACTIVADO. Tornado 118996 en (4,2); se cruzo DOS veces y los dos tramos acabaron en (5,3), a una casilla. Celestia dejo en (285,167) la primera vez y en (279,172) la segunda; se usa (279,172), que ademas coincide casi con el punto del jumpmap, (280,169). Queda a QUINCE del tornado de vuelta (294,175). Radio 3."
+   },
+   {
+    "entity": 118994,
+    "tile": [
+     295,
+     176
+    ],
+    "destino": 322,
+    "llegada": [
+     21,
+     5
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Twinkle Town -> Grove of Bliss (stage 322). ACTIVADO. Con este quedan medidos los TRES tornados del mapa. Tornado 118994 en (295,176); se cruzo DOS veces, con tramos en (292,176) y (294,175). Celestia dejo en (15,6) la primera vez y en (21,5) la segunda; se usa (21,5), que queda a CATORCE del tornado de vuelta (5,2) en vez de a ocho. Radio 3."
+   }
+  ],
+  "321": [
+   {
+    "entity": 119020,
+    "tile": [
+     294,
+     175
+    ],
+    "destino": 320,
+    "llegada": [
+     10,
+     9
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Cobalt Market -> Twinkle Town. ACTIVADO. Es el UNICO tornado que aparecio en la captura de este mapa. Tornado 119020 en (294,175); el tramo acabo en (293,174), a una casilla. La llegada (10,9) es la que mando Celestia, medida, y queda a SIETE del tornado de ida (4,2), asi que no rebota. Radio 3. Que solo se viera uno no quiere decir que no haya mas: el mapa no se recorrio entero."
+   }
+  ],
+  "322": [
+   {
+    "entity": 119021,
+    "tile": [
+     5,
+     2
+    ],
+    "destino": 320,
+    "llegada": [
+     287,
+     173
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Grove of Bliss -> Twinkle Town. ACTIVADO. Tornado 119021 en (5,2); el tramo acabo en (7,4), a dos casillas. La llegada (287,173) es la que mando Celestia, medida, y queda a OCHO del tornado de ida (295,176), asi que no rebota. Radio 3."
+   },
+   {
+    "entity": 119022,
+    "tile": [
+     12,
+     170
+    ],
+    "destino": 323,
+    "llegada": [
+     289,
+     13
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Grove of Bliss -> Twilight Mines (stage 323). ACTIVADO. Con este quedan medidos los dos tornados del mapa. Tornado 119022 en (12,170); se cruzo DOS veces, con tramos en (13,169) y (12,172), a una y a dos casillas. Celestia dejo en (287,9) la primera vez y en (289,13) la segunda; se usa (289,13), que queda a DIEZ del tornado de vuelta (294,3) en vez de a siete. Radio 3."
+   }
+  ],
+  "323": [
+   {
+    "entity": 119023,
+    "tile": [
+     294,
+     3
+    ],
+    "destino": 322,
+    "llegada": [
+     15,
+     164
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Twilight Mines -> Grove of Bliss. ACTIVADO. Tornado 119023 en (294,3); el tramo acabo en (293,4), a una casilla. La llegada (15,164) es la que mando Celestia, medida, y queda a SEIS del tornado de ida (12,170), que tiene radio 3, asi que no rebota. Radio 3."
+   },
+   {
+    "entity": 119024,
+    "tile": [
+     5,
+     10
+    ],
+    "destino": 324,
+    "llegada": [
+     288,
+     170
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Twilight Mines -> Royal Ruins (stage 324). ACTIVADO. Con este quedan medidos los dos tornados del mapa. Tornado 119024 en (5,10); se cruzo DOS veces, con tramos en (6,11) y (6,10), a una casilla. La llegada (288,170) es la que mando Celestia las DOS veces, medida, y queda a SEIS del tornado de vuelta (294,174), que tiene radio 3, asi que no rebota."
+   }
+  ],
+  "324": [
+   {
+    "entity": 119030,
+    "tile": [
+     294,
+     174
+    ],
+    "destino": 323,
+    "llegada": [
+     14,
+     15
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Royal Ruins -> Twilight Mines. ACTIVADO. Tornado 119030 en (294,174); el tramo acabo en (293,173), a una casilla. La llegada (14,15) es la que mando Celestia, medida, y queda a NUEVE del tornado de ida (5,10), asi que no rebota. Radio 3."
+   },
+   {
+    "entity": 119031,
+    "tile": [
+     18,
+     170
+    ],
+    "destino": null,
+    "llegada": null,
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "sin_medir": true,
+    "desactivado": true,
+    "nota": "ENTRADA DE INSTANCIA de Royal Ruins, avisada por el usuario. El jumpmap la confirma: el mapa tiene un punto llamado 'Instance Entrance' en (29,164), que es la esquina donde esta este tornado. De los dos tornados del mapa el de (294,174) vuelve a Twilight Mines, asi que este es el que queda. NO SE CRUZO. Queda DESACTIVADA como las demas del proyecto."
+   }
+  ],
+  "334": [
+   {
+    "entity": 119259,
+    "tile": [
+     11,
+     164
+    ],
+    "destino": 333,
+    "llegada": [
+     277,
+     18
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Forsaken Crevasse -> Ancient Landing. ACTIVADO. Tornado 119259 en (11,164); el tramo acabo en (12,163), a una casilla. La llegada (277,18) es la que mando Celestia, medida, y queda a QUINCE del tornado de ida (292,17), asi que no rebota. Radio 3."
+   },
+   {
+    "entity": 119260,
+    "tile": [
+     286,
+     172
+    ],
+    "destino": 335,
+    "llegada": [
+     20,
+     9
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Forsaken Crevasse -> Specter Village (stage 335). ACTIVADO. Con este quedan medidos los dos tornados del mapa. Tornado 119260 en (286,172); el tramo acabo en (285,171), a una casilla. La llegada (20,9) es la que mando Celestia, medida, y queda a QUINCE del tornado de vuelta (5,4). Radio 3. OJO: la primera vez que se llego a Specter Village en esta tanda fue con SUPERWING, no por este portal; ese salto dejo en (18,11), que es el punto 'Entrance' del jumpmap, y no se uso para medir nada."
+   }
+  ],
+  "335": [
+   {
+    "entity": 119262,
+    "tile": [
+     5,
+     4
+    ],
+    "destino": 334,
+    "llegada": [
+     275,
+     170
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Specter Village -> Forsaken Crevasse. ACTIVADO. Tornado 119262 en (5,4); el tramo acabo en (6,5), a una casilla. La llegada (275,170) es la que mando Celestia, medida, y queda a ONCE del tornado de ida (286,172), asi que no rebota. Radio 3."
+   },
+   {
+    "entity": 119264,
+    "tile": [
+     7,
+     175
+    ],
+    "destino": 337,
+    "llegada": [
+     288,
+     28
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Specter Village -> Crystal Quarry (stage 337). ACTIVADO. Tornado 119264 en (7,175); se cruzo DOS veces y los dos tramos acabaron en (8,174), a una casilla. Celestia dejo en (280,20) la primera vez y en (288,28) la segunda; se usa (288,28). Las dos quedan lejos del tornado de vuelta (294,18), a catorce y a diez. Radio 3."
+   },
+   {
+    "entity": 119263,
+    "tile": [
+     293,
+     8
+    ],
+    "destino": 336,
+    "llegada": [
+     22,
+     171
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Specter Village -> Crystal Marsh (stage 336). ACTIVADO. Con este quedan medidos los TRES tornados de Specter Village. Tornado 119263 en (293,8); el tramo acabo en (292,9), a una casilla. La llegada (22,171) es la que mando Celestia, medida, y queda a OCHO del tornado de vuelta (14,173), asi que no rebota. Radio 3."
+   }
+  ],
+  "337": [
+   {
+    "entity": 119273,
+    "tile": [
+     294,
+     18
+    ],
+    "destino": 335,
+    "llegada": [
+     19,
+     171
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Crystal Quarry -> Specter Village. ACTIVADO. Tornado 119273 en (294,18); el tramo acabo justo en la casilla del tornado. La llegada (19,171) es la que mando Celestia, medida, y queda a DOCE del tornado de ida (7,175), asi que no rebota. Radio 3."
+   },
+   {
+    "entity": 119274,
+    "tile": [
+     289,
+     170
+    ],
+    "destino": 339,
+    "llegada": [
+     16,
+     18
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Crystal Quarry -> Peril Chasm (stage 339). ACTIVADO. Con este quedan medidos los dos tornados del mapa. Tornado 119274 en (289,170); se cruzo DOS veces, con tramos en (288,171) y (288,170), a una casilla. Celestia dejo en (23,14) la primera vez y en (16,18) la segunda; se usa (16,18). Las dos quedan lejos del tornado de vuelta (5,3). Radio 3."
+   }
+  ],
+  "339": [
+   {
+    "entity": 119293,
+    "tile": [
+     5,
+     3
+    ],
+    "destino": 337,
+    "llegada": [
+     278,
+     170
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Peril Chasm -> Crystal Quarry. ACTIVADO. Tornado 119293 en (5,3); el tramo acabo en (6,4), a una casilla. La llegada (278,170) es la que mando Celestia, medida, y queda a ONCE del tornado de ida (289,170), asi que no rebota. Radio 3."
+   },
+   {
+    "entity": 119295,
+    "tile": [
+     293,
+     170
+    ],
+    "destino": null,
+    "llegada": null,
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "sin_medir": true,
+    "desactivado": true,
+    "nota": "ENTRADA DE INSTANCIA de Peril Chasm, avisada por el usuario. El jumpmap la confirma: el mapa tiene un punto llamado 'Instance Entrance' en (282,164), que es la esquina donde esta este tornado. NO SE CRUZO. Queda DESACTIVADA como las demas del proyecto."
+   },
+   {
+    "entity": 119294,
+    "tile": [
+     294,
+     3
+    ],
+    "destino": 338,
+    "llegada": [
+     16,
+     172
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Peril Chasm -> Shrouded Haven (stage 338). ACTIVADO. Tornado 119294 en (294,3); se cruzo DOS veces, con tramos en (295,4) y (293,4), a una casilla. Celestia dejo en (6,166) la primera vez y en (16,172) la segunda; se usa (16,172), que queda a ONCE del tornado de vuelta (5,174) en vez de a siete. Radio 3. Queda sin explorar el cuarto tornado del mapa: 119300 en (10,175)."
+   }
+  ],
+  "338": [
+   {
+    "entity": 119277,
+    "tile": [
+     5,
+     174
+    ],
+    "destino": 339,
+    "llegada": [
+     287,
+     10
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Shrouded Haven -> Peril Chasm. ACTIVADO. Tornado 119277 en (5,174); el tramo acabo en (5,173), a una casilla. La llegada (287,10) es la que mando Celestia, medida, y queda a SIETE del tornado de ida (294,3), asi que no rebota. Radio 3."
+   },
+   {
+    "entity": 119276,
+    "tile": [
+     5,
+     3
+    ],
+    "destino": 336,
+    "llegada": [
+     282,
+     165
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Shrouded Haven -> Crystal Marsh (stage 336). ACTIVADO. Con este quedan medidos los dos tornados del mapa. Tornado 119276 en (5,3); se cruzo DOS veces, con tramos en (7,5) y (6,4), a dos y a una casilla. Celestia dejo en (281,161) la primera vez y en (282,165) la segunda; se usa (282,165), que queda a SIETE del tornado de vuelta (289,169). Radio 3."
+   }
+  ],
+  "336": [
+   {
+    "entity": 119269,
+    "tile": [
+     289,
+     169
+    ],
+    "destino": 338,
+    "llegada": [
+     15,
+     16
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Crystal Marsh -> Shrouded Haven. ACTIVADO. Tornado 119269 en (289,169); el tramo acabo en (289,170), a una casilla. La llegada (15,16) es la que mando Celestia, medida, y queda a TRECE del tornado de ida (5,3), asi que no rebota. Radio 3."
+   },
+   {
+    "entity": 119270,
+    "tile": [
+     14,
+     173
+    ],
+    "destino": 335,
+    "llegada": [
+     284,
+     13
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Crystal Marsh -> Specter Village (stage 335). ACTIVADO. Con este quedan medidos los dos tornados del mapa. Tornado 119270 en (14,173); se cruzo DOS veces y los dos tramos acabaron en (15,172), a una casilla. La llegada (284,13) es la que mando Celestia, medida, y queda a NUEVE del tornado de vuelta (293,8), asi que no rebota. Radio 3."
+   }
+  ],
+  "355": [
+   {
+    "entity": 119584,
+    "tile": [
+     294,
+     14
+    ],
+    "destino": 354,
+    "llegada": [
+     17,
+     172
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Galaxia Square -> Whispering Hill. ACTIVADO. Tornado 119584 en (294,14); el tramo acabo justo en la casilla del tornado. La llegada (17,172) es la que mando Celestia, medida, y queda a DOCE del tornado de ida (5,175), asi que no rebota. Radio 3."
+   },
+   {
+    "entity": 119585,
+    "tile": [
+     10,
+     11
+    ],
+    "destino": 356,
+    "llegada": [
+     281,
+     165
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Galaxia Square -> Pristine Lake (stage 356). ACTIVADO. Tornado 119585 en (10,11); se cruzo DOS veces, con tramos en (10,11) y (9,11), o sea justo encima y a una casilla. Celestia dejo en (285,161) la primera vez, que es el punto del jumpmap, y en (281,165) la segunda; se usa (281,165), que queda a ONCE del tornado de vuelta (292,166). Radio 3."
+   },
+   {
+    "entity": 119583,
+    "tile": [
+     288,
+     168
+    ],
+    "destino": 357,
+    "llegada": [
+     26,
+     8
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Galaxia Square -> Magma Field (stage 357). ACTIVADO. Con este quedan medidos los TRES tornados del mapa. Tornado 119583 en (288,168); el tramo acabo en (289,170), a dos casillas. La llegada (26,8) es la que mando Celestia, medida, y coincide con el punto del jumpmap. Queda a TRECE del tornado de vuelta (12,5). Radio 3."
+   }
+  ],
+  "356": [
+   {
+    "entity": 119591,
+    "tile": [
+     292,
+     166
+    ],
+    "destino": 355,
+    "llegada": [
+     21,
+     19
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Pristine Lake -> Galaxia Square. ACTIVADO. Tornado 119591 en (292,166); el tramo acabo en (291,165), a una casilla. La llegada (21,19) es la que mando Celestia, medida, y queda a ONCE del tornado de ida (10,11), asi que no rebota. Radio 3."
+   },
+   {
+    "entity": 119590,
+    "tile": [
+     10,
+     167
+    ],
+    "destino": 358,
+    "llegada": [
+     18,
+     16
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Pristine Lake -> Rolling Sands (stage 358). ACTIVADO. Con este quedan medidos los dos tornados del mapa. Tornado 119590 en (10,167); se cruzo DOS veces, con tramos en (10,167) y (8,168), o sea justo encima y a dos casillas. La llegada (18,16) es la que mando Celestia las DOS veces, medida, y queda a ONCE del tornado de vuelta (16,5). Radio 3."
+   }
+  ],
+  "358": [
+   {
+    "entity": 119596,
+    "tile": [
+     16,
+     5
+    ],
+    "destino": 356,
+    "llegada": [
+     23,
+     163
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Rolling Sands -> Pristine Lake. ACTIVADO. Tornado 119596 en (16,5); el tramo acabo en (17,5), a una casilla. La llegada (23,163) es la que mando Celestia, medida, y queda a TRECE del tornado de ida (10,167), asi que no rebota. Radio 3. Queda sin explorar el otro tornado del mapa: 119595 en (283,160), que es el que deberia volver a Magma Field."
+   },
+   {
+    "entity": 119594,
+    "tile": [
+     6,
+     170
+    ],
+    "destino": 359,
+    "llegada": [
+     273,
+     15
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Rolling Sands -> Horizon Archives (stage 359). ACTIVADO. Tornado 119594 en (6,170); se cruzo DOS veces, con tramos en (7,169) y (7,171), a una casilla. Celestia dejo en (277,19) la primera vez, que es el punto 'Entrance' del jumpmap, y en (273,15) la segunda; se usa (273,15), que queda a DIECIOCHO del tornado de vuelta (291,9). Radio 3."
+   }
+  ],
+  "357": [
+   {
+    "entity": 119593,
+    "tile": [
+     12,
+     5
+    ],
+    "destino": 355,
+    "llegada": [
+     281,
+     164
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Magma Field -> Galaxia Square. ACTIVADO. Tornado 119593 en (12,5); el tramo acabo en (13,6), a una casilla. La llegada (281,164) es la que mando Celestia, medida, y queda a SIETE del tornado de ida (288,168), asi que no rebota. Radio 3. OJO: la primera vez que se llego a Magma Field en esta tanda fue con SUPERWING, no por el portal; ese salto dejo en (26,8), la misma casilla que manda el portal, y no se uso para medir nada."
+   },
+   {
+    "entity": 119592,
+    "tile": [
+     12,
+     168
+    ],
+    "destino": 358,
+    "llegada": [
+     275,
+     157
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Magma Field -> Rolling Sands (stage 358). ACTIVADO. Con este quedan medidos los dos tornados del mapa. Tornado 119592 en (12,168); el tramo acabo en (11,167), a una casilla. La llegada (275,157) es la que mando Celestia, medida, y queda a OCHO del tornado de Rolling Sands que da la vuelta, 119595 en (283,160), asi que no rebota. LA VUELTA NO ESTA MEDIDA todavia: no se cruzo de Rolling Sands a aqui."
+   }
+  ],
+  "359": [
+   {
+    "entity": 119601,
+    "tile": [
+     291,
+     9
+    ],
+    "destino": 358,
+    "llegada": [
+     13,
+     167
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Horizon Archives -> Rolling Sands. ACTIVADO. Tornado 119601 en (291,9); el tramo acabo justo en la casilla del tornado. La llegada (13,167) es la que mando Celestia, medida, y queda a SIETE del tornado de ida (6,170), asi que no rebota. Radio 3. El mapa tiene SIETE tornados y todos estan medidos: este, la instancia (desactivada) y CINCO saltos internos."
+   },
+   {
+    "entity": 119600,
+    "tile": [
+     291,
+     170
+    ],
+    "destino": null,
+    "llegada": null,
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "sin_medir": true,
+    "desactivado": true,
+    "nota": "ENTRADA DE INSTANCIA de Horizon Archives, avisada por el usuario. El jumpmap la confirma: el mapa tiene un punto llamado 'Instance Entrance' en (284,167), que es la esquina donde esta este tornado. NO SE CRUZO. Queda DESACTIVADA como las demas del proyecto."
+   },
+   {
+    "entity": 119599,
+    "tile": [
+     172,
+     149
+    ],
+    "destino": 359,
+    "llegada": [
+     124,
+     146
+    ],
+    "radio": 3,
+    "direccion": 3,
+    "mismo_mapa": true,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "PORTAL INTERNO: lleva a otro punto del MISMO mapa, igual que los de Forbidden Sector, Hidden Grove, Branch Way y Lost Trail. Lo aviso el usuario. Tornado 119599 en (172,149). Se cruzo CUATRO veces, con tramos en (175,149), (173,148), (170,150) y (171,149), y las cuatro veces Celestia dejo en (124,146). La secuencia es la misma de siempre: 0x0016 con la direccion, 0x0012 de SIETE ceros y 0x0003 con la casilla; ni un solo 0x000C, que es lo que confirma que no se cambia de escenario. La direccion salio 1 la primera vez y 3 la segunda; se usa 3, la ultima medida."
+   },
+   {
+    "entity": 119602,
+    "tile": [
+     132,
+     139
+    ],
+    "destino": 359,
+    "llegada": [
+     186,
+     141
+    ],
+    "radio": 3,
+    "direccion": 7,
+    "mismo_mapa": true,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "PORTAL INTERNO de vuelta del anterior. Tornado 119602 en (132,139). Se cruzo DOS veces y los tramos acabaron en (131,140) y (131,139), a una casilla; las dos veces Celestia dejo en (186,141) y mando direccion 7. Las dos llegadas quedan fuera del radio del otro tornado del par -- (124,146) esta a OCHO de (132,139) y (186,141) a CATORCE de (172,149) -- asi que no hay rebote en ningun sentido."
+   },
+   {
+    "entity": 119603,
+    "tile": [
+     72,
+     109
+    ],
+    "destino": 359,
+    "llegada": [
+     178,
+     143
+    ],
+    "radio": 3,
+    "direccion": 7,
+    "mismo_mapa": true,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "PORTAL INTERNO de Horizon Archives, el tercero del mapa. Tornado 119603 en (72,109). Se cruzo DOS veces, con tramos en (71,110) y (71,108), a una casilla. Celestia NO dejo en la misma casilla las dos veces: (179,138) la primera y (178,143) la segunda; se usa la segunda. Las dos caen cerca del tornado 119599 de (172,149), pero fuera de su radio 3: a once y a seis casillas."
+   },
+   {
+    "entity": 119598,
+    "tile": [
+     129,
+     74
+    ],
+    "destino": 359,
+    "llegada": [
+     45,
+     41
+    ],
+    "radio": 3,
+    "direccion": 6,
+    "mismo_mapa": true,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "PORTAL INTERNO de Horizon Archives, el cuarto. Tornado 119598 en (129,74). Se cruzo DOS veces, con tramos en (130,75) y (129,75), a una casilla, y las dos veces Celestia dejo en (45,41), que esta a DIEZ del tornado 119597 de (39,31), su pareja, asi que no rebota. La direccion salio 5 la primera vez y 6 la segunda; se usa 6, la ultima medida."
+   },
+   {
+    "entity": 119597,
+    "tile": [
+     39,
+     31
+    ],
+    "destino": 359,
+    "llegada": [
+     138,
+     77
+    ],
+    "radio": 3,
+    "direccion": 5,
+    "mismo_mapa": true,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "PORTAL INTERNO de Horizon Archives, el quinto y ultimo: con este quedan medidos los SIETE tornados del mapa. Tornado 119597 en (39,31). Se cruzo DOS veces, con tramos en (37,31) y (40,32), a dos y a una casilla. Celestia dejo en (129,83) la primera vez y en (138,77) la segunda; se usa la segunda. Las dos caen a NUEVE del tornado 119598 de (129,74), su pareja, asi que no rebota."
+   }
+  ],
+  "364": [
+   {
+    "entity": 119723,
+    "tile": [
+     4,
+     175
+    ],
+    "destino": 363,
+    "llegada": [
+     288,
+     13
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Ancient Rift -> Deep Trench. ACTIVADO. Tornado 119723 en (4,175); el tramo acabo en (5,174), a una casilla. La llegada (288,13) es la que mando Celestia, medida, y queda a OCHO del tornado de ida (288,5), asi que no rebota. Radio 3."
+   },
+   {
+    "entity": 119724,
+    "tile": [
+     289,
+     166
+    ],
+    "destino": 365,
+    "llegada": [
+     23,
+     8
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Ancient Rift -> Desolate City (stage 365). ACTIVADO. Con este quedan medidos los dos tornados del mapa. Tornado 119724 en (289,166); el tramo acabo en (289,168), a dos casillas. La llegada (23,8) es la que mando Celestia, medida, y queda a DOCE del tornado de vuelta (11,6). Radio 3. OJO: la primera vez que se llego a Desolate City fue con SUPERWING, no por este portal; ese salto dejo en (14,11), el punto 'Entrance' del jumpmap, y no se uso para medir nada."
+   }
+  ],
+  "365": [
+   {
+    "entity": 119735,
+    "tile": [
+     11,
+     6
+    ],
+    "destino": 364,
+    "llegada": [
+     281,
+     159
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Desolate City -> Ancient Rift. ACTIVADO. Tornado 119735 en (11,6); el tramo acabo en (12,7), a una casilla. La llegada (281,159) es la que mando Celestia, medida, y queda a OCHO del tornado de ida (289,166), asi que no rebota. Radio 3."
+   },
+   {
+    "entity": 119736,
+    "tile": [
+     5,
+     174
+    ],
+    "destino": 367,
+    "llegada": [
+     279,
+     6
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Desolate City -> Poseidon Shrine (stage 367). ACTIVADO. Tornado 119736 en (5,174); se cruzo DOS veces, con tramos en (8,172) y (6,173), a tres y a una casilla. La llegada (279,6) es la que mando Celestia las DOS veces, medida, y queda a QUINCE del tornado de vuelta (294,3). Radio 3."
+   },
+   {
+    "entity": 119734,
+    "tile": [
+     294,
+     3
+    ],
+    "destino": 366,
+    "llegada": [
+     34,
+     161
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Desolate City -> Abyssal Arena (stage 366). ACTIVADO. Tornado 119734 en (294,3); se cruzo DOS veces, con tramos en (293,4) y (295,4), a una casilla. La llegada (34,161) es la que mando Celestia las DOS veces, medida, y queda a DOCE del tornado de vuelta (22,167). Radio 3."
+   },
+   {
+    "entity": 119733,
+    "tile": [
+     293,
+     171
+    ],
+    "destino": 368,
+    "llegada": [
+     23,
+     5
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Desolate City -> Deep Prison (stage 368). ACTIVADO. Con este quedan medidos los CUATRO tornados de Desolate City. Tornado 119733 en (293,171); se cruzo DOS veces y los dos tramos acabaron en (292,170), a una casilla. Celestia dejo en (19,8) la primera vez y en (23,5) la segunda; se usa (23,5), que ademas coincide casi con el punto 'Entrance' del jumpmap, (24,7). Queda a DIECISEIS del tornado de vuelta (7,3). Radio 3."
+   }
+  ],
+  "367": [
+   {
+    "entity": 119745,
+    "tile": [
+     294,
+     3
+    ],
+    "destino": 365,
+    "llegada": [
+     18,
+     168
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Poseidon Shrine -> Desolate City. ACTIVADO. Es el UNICO tornado que aparecio en la captura de este mapa. Tornado 119745 en (294,3); el tramo acabo en (293,4), a una casilla. La llegada (18,168) es la que mando Celestia, medida, y queda a TRECE del tornado de ida (5,174), asi que no rebota. Radio 3."
+   }
+  ],
+  "366": [
+   {
+    "entity": 119744,
+    "tile": [
+     22,
+     167
+    ],
+    "destino": 365,
+    "llegada": [
+     290,
+     16
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Abyssal Arena -> Desolate City. ACTIVADO. Es el UNICO tornado que aparecio en la captura de este mapa. Tornado 119744 en (22,167); el tramo acabo en (23,166), a una casilla. La llegada (290,16) es la que mando Celestia, medida, y queda a TRECE del tornado de ida (294,3), asi que no rebota. Radio 3."
+   }
+  ],
+  "368": [
+   {
+    "entity": 119763,
+    "tile": [
+     7,
+     3
+    ],
+    "destino": 365,
+    "llegada": [
+     287,
+     161
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Deep Prison -> Desolate City. ACTIVADO. Tornado 119763 en (7,3); el tramo acabo en (8,4), a una casilla. La llegada (287,161) es la que mando Celestia, medida, y queda a DIEZ del tornado de ida (293,171), asi que no rebota. Radio 3."
+   },
+   {
+    "entity": 119760,
+    "tile": [
+     131,
+     119
+    ],
+    "destino": null,
+    "llegada": null,
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "sin_medir": true,
+    "desactivado": true,
+    "nota": "ENTRADA DE INSTANCIA de Deep Prison, avisada por el usuario. El jumpmap dice que el mapa tiene un punto 'Instance Entrance' en (111,116), y de los seis tornados del mapa este es el que le queda cerca, a veinte casillas. NO SE CRUZO, asi que la identificacion es POR CERCANIA y no esta confirmada. Queda DESACTIVADA como las demas del proyecto."
    }
   ]
  },

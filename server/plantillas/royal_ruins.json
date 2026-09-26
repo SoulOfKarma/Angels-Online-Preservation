@@ -1,0 +1,3822 @@
+{
+ "_nota": "Royal Ruins (stage 324), de Celestia, zona Goldenia. Se llega desde Twilight Mines (323). Tiene entrada de instancia. Poblado desde UNA sola sesion. Los objetos van CRUDOS.",
+ "stage": 324,
+ "spawns": [
+  {
+   "entity_id": 32752,
+   "nombre": "Aurora Totem",
+   "npc_type": 1937,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    163,
+    128
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 32753,
+   "nombre": "Dark City Totem",
+   "npc_type": 1938,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    168,
+    131
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 32754,
+   "nombre": "Iron Totem",
+   "npc_type": 1939,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    143,
+    140
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 32755,
+   "nombre": "Breeze Totem",
+   "npc_type": 1940,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    149,
+    143
+   ],
+   "direccion": 6,
+   "visible": 0
+  },
+  {
+   "entity_id": 123736,
+   "nombre": "Dee",
+   "npc_type": 14633,
+   "sprite": 40011,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    65,
+    158
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123737,
+   "nombre": "Hauche",
+   "npc_type": 14663,
+   "sprite": 40570,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    260,
+    157
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123738,
+   "nombre": "Young Niels",
+   "npc_type": 14666,
+   "sprite": 40318,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    34,
+    161
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123739,
+   "nombre": "Ruins Restorer",
+   "npc_type": 14654,
+   "sprite": 40211,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    57,
+    128
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 123740,
+   "nombre": "Skeli Marli",
+   "npc_type": 14656,
+   "sprite": 40136,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    161,
+    96
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 1058379,
+   "nombre": "Galax",
+   "npc_type": 20059,
+   "sprite": 110627,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    263,
+    156
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1058380,
+   "nombre": "Galax",
+   "npc_type": 20059,
+   "sprite": 110627,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    257,
+    149
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1058381,
+   "nombre": "Galax",
+   "npc_type": 20059,
+   "sprite": 110627,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    252,
+    138
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1058382,
+   "nombre": "Galax",
+   "npc_type": 20059,
+   "sprite": 110627,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    239,
+    136
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1058383,
+   "nombre": "Galax",
+   "npc_type": 20059,
+   "sprite": 110627,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    228,
+    148
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1058384,
+   "nombre": "Galax",
+   "npc_type": 20059,
+   "sprite": 110627,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    177,
+    168
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1058385,
+   "nombre": "Galax",
+   "npc_type": 20059,
+   "sprite": 110627,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    176,
+    156
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1058386,
+   "nombre": "Galax",
+   "npc_type": 20059,
+   "sprite": 110627,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    185,
+    166
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1058387,
+   "nombre": "Galax",
+   "npc_type": 20059,
+   "sprite": 110627,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    183,
+    157
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1058388,
+   "nombre": "Galax",
+   "npc_type": 20059,
+   "sprite": 110627,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    169,
+    164
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1058389,
+   "nombre": "Galax",
+   "npc_type": 20059,
+   "sprite": 110627,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    185,
+    154
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1058390,
+   "nombre": "Galax",
+   "npc_type": 20059,
+   "sprite": 110627,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    201,
+    145
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1058391,
+   "nombre": "Galax",
+   "npc_type": 20059,
+   "sprite": 110627,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    206,
+    152
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1058392,
+   "nombre": "Galax",
+   "npc_type": 20059,
+   "sprite": 110627,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    179,
+    148
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1058393,
+   "nombre": "Galax",
+   "npc_type": 20059,
+   "sprite": 110627,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    204,
+    162
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1058394,
+   "nombre": "Galax",
+   "npc_type": 20059,
+   "sprite": 110627,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    220,
+    132
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1058395,
+   "nombre": "Galax",
+   "npc_type": 20059,
+   "sprite": 110627,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    222,
+    141
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1058396,
+   "nombre": "Galax",
+   "npc_type": 20059,
+   "sprite": 110627,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    205,
+    155
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1058397,
+   "nombre": "Galax",
+   "npc_type": 20059,
+   "sprite": 110627,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    223,
+    127
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1058398,
+   "nombre": "Galax",
+   "npc_type": 20059,
+   "sprite": 110627,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    210,
+    152
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1058399,
+   "nombre": "Ultravi",
+   "npc_type": 20060,
+   "sprite": 110595,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    282,
+    72
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1058400,
+   "nombre": "Ultravi",
+   "npc_type": 20060,
+   "sprite": 110595,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    279,
+    74
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1058401,
+   "nombre": "Ultravi",
+   "npc_type": 20060,
+   "sprite": 110595,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    283,
+    91
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1058402,
+   "nombre": "Ultravi",
+   "npc_type": 20060,
+   "sprite": 110595,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    282,
+    96
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1058403,
+   "nombre": "Ultravi",
+   "npc_type": 20060,
+   "sprite": 110595,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    275,
+    80
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1058404,
+   "nombre": "Ultravi",
+   "npc_type": 20060,
+   "sprite": 110595,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    252,
+    90
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1058405,
+   "nombre": "Ultravi",
+   "npc_type": 20060,
+   "sprite": 110595,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    249,
+    95
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1058406,
+   "nombre": "Ultravi",
+   "npc_type": 20060,
+   "sprite": 110595,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    260,
+    99
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1058407,
+   "nombre": "Ultravi",
+   "npc_type": 20060,
+   "sprite": 110595,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    258,
+    102
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1058408,
+   "nombre": "Ultravi",
+   "npc_type": 20060,
+   "sprite": 110595,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    241,
+    96
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1058409,
+   "nombre": "Ultravi",
+   "npc_type": 20060,
+   "sprite": 110595,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    234,
+    135
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1058410,
+   "nombre": "Ultravi",
+   "npc_type": 20060,
+   "sprite": 110595,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    247,
+    131
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1058411,
+   "nombre": "Ultravi",
+   "npc_type": 20060,
+   "sprite": 110595,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    257,
+    114
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1058412,
+   "nombre": "Ultravi",
+   "npc_type": 20060,
+   "sprite": 110595,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    232,
+    122
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1058413,
+   "nombre": "Ultravi",
+   "npc_type": 20060,
+   "sprite": 110595,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    238,
+    128
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1058414,
+   "nombre": "Ultravi",
+   "npc_type": 20060,
+   "sprite": 110595,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    264,
+    108
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1058415,
+   "nombre": "Ultravi",
+   "npc_type": 20060,
+   "sprite": 110595,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    259,
+    109
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1058416,
+   "nombre": "Ultravi",
+   "npc_type": 20060,
+   "sprite": 110595,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    276,
+    109
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1058417,
+   "nombre": "Ultravi",
+   "npc_type": 20060,
+   "sprite": 110595,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    275,
+    94
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1058418,
+   "nombre": "Ultravi",
+   "npc_type": 20060,
+   "sprite": 110595,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    276,
+    94
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 344
+  },
+  {
+   "entity_id": 1058419,
+   "nombre": "Reptica",
+   "npc_type": 20061,
+   "sprite": 110590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    219,
+    88
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 346
+  },
+  {
+   "entity_id": 1058420,
+   "nombre": "Reptica",
+   "npc_type": 20061,
+   "sprite": 110590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    219,
+    86
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 346
+  },
+  {
+   "entity_id": 1058421,
+   "nombre": "Reptica",
+   "npc_type": 20061,
+   "sprite": 110590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    216,
+    76
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 346
+  },
+  {
+   "entity_id": 1058422,
+   "nombre": "Reptica",
+   "npc_type": 20061,
+   "sprite": 110590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    218,
+    83
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 346
+  },
+  {
+   "entity_id": 1058423,
+   "nombre": "Reptica",
+   "npc_type": 20061,
+   "sprite": 110590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    218,
+    63
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 346
+  },
+  {
+   "entity_id": 1058424,
+   "nombre": "Reptica",
+   "npc_type": 20061,
+   "sprite": 110590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    220,
+    54
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 346
+  },
+  {
+   "entity_id": 1058425,
+   "nombre": "Reptica",
+   "npc_type": 20061,
+   "sprite": 110590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    223,
+    51
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 346
+  },
+  {
+   "entity_id": 1058426,
+   "nombre": "Reptica",
+   "npc_type": 20061,
+   "sprite": 110590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    202,
+    68
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 346
+  },
+  {
+   "entity_id": 1058427,
+   "nombre": "Reptica",
+   "npc_type": 20061,
+   "sprite": 110590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    225,
+    58
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 346
+  },
+  {
+   "entity_id": 1058428,
+   "nombre": "Reptica",
+   "npc_type": 20061,
+   "sprite": 110590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    204,
+    58
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 346
+  },
+  {
+   "entity_id": 1058429,
+   "nombre": "Reptica",
+   "npc_type": 20061,
+   "sprite": 110590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    232,
+    45
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 346
+  },
+  {
+   "entity_id": 1058430,
+   "nombre": "Reptica",
+   "npc_type": 20061,
+   "sprite": 110590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    232,
+    48
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 346
+  },
+  {
+   "entity_id": 1058431,
+   "nombre": "Reptica",
+   "npc_type": 20061,
+   "sprite": 110590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    234,
+    50
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 346
+  },
+  {
+   "entity_id": 1058432,
+   "nombre": "Reptica",
+   "npc_type": 20061,
+   "sprite": 110590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    227,
+    32
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 346
+  },
+  {
+   "entity_id": 1058433,
+   "nombre": "Reptica",
+   "npc_type": 20061,
+   "sprite": 110590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    227,
+    33
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 346
+  },
+  {
+   "entity_id": 1058434,
+   "nombre": "Reptica",
+   "npc_type": 20061,
+   "sprite": 110590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    197,
+    28
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 346
+  },
+  {
+   "entity_id": 1058435,
+   "nombre": "Reptica",
+   "npc_type": 20061,
+   "sprite": 110590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    201,
+    36
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 346
+  },
+  {
+   "entity_id": 1058436,
+   "nombre": "Reptica",
+   "npc_type": 20061,
+   "sprite": 110590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    211,
+    34
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 346
+  },
+  {
+   "entity_id": 1058437,
+   "nombre": "Reptica",
+   "npc_type": 20061,
+   "sprite": 110590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    195,
+    35
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 346
+  },
+  {
+   "entity_id": 1058438,
+   "nombre": "Reptica",
+   "npc_type": 20061,
+   "sprite": 110590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    215,
+    39
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 346
+  },
+  {
+   "entity_id": 1058439,
+   "nombre": "Asheel",
+   "npc_type": 20062,
+   "sprite": 110618,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    248,
+    42
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 346
+  },
+  {
+   "entity_id": 1058440,
+   "nombre": "Asheel",
+   "npc_type": 20062,
+   "sprite": 110618,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    255,
+    51
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 346
+  },
+  {
+   "entity_id": 1058441,
+   "nombre": "Asheel",
+   "npc_type": 20062,
+   "sprite": 110618,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    247,
+    39
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 346
+  },
+  {
+   "entity_id": 1058442,
+   "nombre": "Asheel",
+   "npc_type": 20062,
+   "sprite": 110618,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    246,
+    41
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 346
+  },
+  {
+   "entity_id": 1058443,
+   "nombre": "Asheel",
+   "npc_type": 20062,
+   "sprite": 110618,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    259,
+    53
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 346
+  },
+  {
+   "entity_id": 1058444,
+   "nombre": "Asheel",
+   "npc_type": 20062,
+   "sprite": 110618,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    286,
+    26
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 346
+  },
+  {
+   "entity_id": 1058445,
+   "nombre": "Asheel",
+   "npc_type": 20062,
+   "sprite": 110618,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    286,
+    18
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 346
+  },
+  {
+   "entity_id": 1058446,
+   "nombre": "Asheel",
+   "npc_type": 20062,
+   "sprite": 110618,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    289,
+    32
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 346
+  },
+  {
+   "entity_id": 1058447,
+   "nombre": "Asheel",
+   "npc_type": 20062,
+   "sprite": 110618,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    269,
+    27
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 346
+  },
+  {
+   "entity_id": 1058448,
+   "nombre": "Asheel",
+   "npc_type": 20062,
+   "sprite": 110618,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    274,
+    21
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 346
+  },
+  {
+   "entity_id": 1058449,
+   "nombre": "Asheel",
+   "npc_type": 20062,
+   "sprite": 110618,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    266,
+    7
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 346
+  },
+  {
+   "entity_id": 1058450,
+   "nombre": "Asheel",
+   "npc_type": 20062,
+   "sprite": 110618,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    268,
+    19
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 346
+  },
+  {
+   "entity_id": 1058451,
+   "nombre": "Asheel",
+   "npc_type": 20062,
+   "sprite": 110618,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    269,
+    7
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 346
+  },
+  {
+   "entity_id": 1058452,
+   "nombre": "Asheel",
+   "npc_type": 20062,
+   "sprite": 110618,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    264,
+    14
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 346
+  },
+  {
+   "entity_id": 1058453,
+   "nombre": "Asheel",
+   "npc_type": 20062,
+   "sprite": 110618,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    279,
+    21
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 346
+  },
+  {
+   "entity_id": 1058454,
+   "nombre": "Asheel",
+   "npc_type": 20062,
+   "sprite": 110618,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    254,
+    26
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 346
+  },
+  {
+   "entity_id": 1058455,
+   "nombre": "Asheel",
+   "npc_type": 20062,
+   "sprite": 110618,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    253,
+    21
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 346
+  },
+  {
+   "entity_id": 1058456,
+   "nombre": "Asheel",
+   "npc_type": 20062,
+   "sprite": 110618,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    244,
+    29
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 346
+  },
+  {
+   "entity_id": 1058457,
+   "nombre": "Asheel",
+   "npc_type": 20062,
+   "sprite": 110618,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    257,
+    13
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 346
+  },
+  {
+   "entity_id": 1058458,
+   "nombre": "Asheel",
+   "npc_type": 20062,
+   "sprite": 110618,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    262,
+    18
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 346
+  },
+  {
+   "entity_id": 1058459,
+   "nombre": "Hootric",
+   "npc_type": 20063,
+   "sprite": 110636,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    199,
+    109
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 348
+  },
+  {
+   "entity_id": 1058460,
+   "nombre": "Hootric",
+   "npc_type": 20063,
+   "sprite": 110636,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    182,
+    111
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 348
+  },
+  {
+   "entity_id": 1058461,
+   "nombre": "Hootric",
+   "npc_type": 20063,
+   "sprite": 110636,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    218,
+    115
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 348
+  },
+  {
+   "entity_id": 1058462,
+   "nombre": "Hootric",
+   "npc_type": 20063,
+   "sprite": 110636,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    208,
+    113
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 348
+  },
+  {
+   "entity_id": 1058463,
+   "nombre": "Hootric",
+   "npc_type": 20063,
+   "sprite": 110636,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    216,
+    122
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 348
+  },
+  {
+   "entity_id": 1058464,
+   "nombre": "Hootric",
+   "npc_type": 20063,
+   "sprite": 110636,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    198,
+    96
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 348
+  },
+  {
+   "entity_id": 1058465,
+   "nombre": "Hootric",
+   "npc_type": 20063,
+   "sprite": 110636,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    207,
+    116
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 348
+  },
+  {
+   "entity_id": 1058466,
+   "nombre": "Hootric",
+   "npc_type": 20063,
+   "sprite": 110636,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    197,
+    88
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 348
+  },
+  {
+   "entity_id": 1058467,
+   "nombre": "Hootric",
+   "npc_type": 20063,
+   "sprite": 110636,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    193,
+    104
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 348
+  },
+  {
+   "entity_id": 1058468,
+   "nombre": "Hootric",
+   "npc_type": 20063,
+   "sprite": 110636,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    193,
+    96
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 348
+  },
+  {
+   "entity_id": 1058469,
+   "nombre": "Hootric",
+   "npc_type": 20063,
+   "sprite": 110636,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    164,
+    86
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 348
+  },
+  {
+   "entity_id": 1058470,
+   "nombre": "Hootric",
+   "npc_type": 20063,
+   "sprite": 110636,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    170,
+    85
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 348
+  },
+  {
+   "entity_id": 1058471,
+   "nombre": "Hootric",
+   "npc_type": 20063,
+   "sprite": 110636,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    165,
+    69
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 348
+  },
+  {
+   "entity_id": 1058472,
+   "nombre": "Hootric",
+   "npc_type": 20063,
+   "sprite": 110636,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    157,
+    92
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 348
+  },
+  {
+   "entity_id": 1058473,
+   "nombre": "Hootric",
+   "npc_type": 20063,
+   "sprite": 110636,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    161,
+    86
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 348
+  },
+  {
+   "entity_id": 1058474,
+   "nombre": "Hootric",
+   "npc_type": 20063,
+   "sprite": 110636,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    172,
+    84
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 348
+  },
+  {
+   "entity_id": 1058475,
+   "nombre": "Hootric",
+   "npc_type": 20063,
+   "sprite": 110636,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    203,
+    80
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 348
+  },
+  {
+   "entity_id": 1058476,
+   "nombre": "Hootric",
+   "npc_type": 20063,
+   "sprite": 110636,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    196,
+    84
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 348
+  },
+  {
+   "entity_id": 1058477,
+   "nombre": "Hootric",
+   "npc_type": 20063,
+   "sprite": 110636,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    202,
+    83
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 348
+  },
+  {
+   "entity_id": 1058478,
+   "nombre": "Hootric",
+   "npc_type": 20063,
+   "sprite": 110636,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    201,
+    60
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 348
+  },
+  {
+   "entity_id": 1058479,
+   "nombre": "Kalfee",
+   "npc_type": 20064,
+   "sprite": 110632,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    162,
+    49
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 348
+  },
+  {
+   "entity_id": 1058480,
+   "nombre": "Kalfee",
+   "npc_type": 20064,
+   "sprite": 110632,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    157,
+    65
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 348
+  },
+  {
+   "entity_id": 1058481,
+   "nombre": "Kalfee",
+   "npc_type": 20064,
+   "sprite": 110632,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    187,
+    51
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 348
+  },
+  {
+   "entity_id": 1058482,
+   "nombre": "Kalfee",
+   "npc_type": 20064,
+   "sprite": 110632,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    188,
+    53
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 348
+  },
+  {
+   "entity_id": 1058483,
+   "nombre": "Kalfee",
+   "npc_type": 20064,
+   "sprite": 110632,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    183,
+    44
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 348
+  },
+  {
+   "entity_id": 1058484,
+   "nombre": "Kalfee",
+   "npc_type": 20064,
+   "sprite": 110632,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    120,
+    62
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 348
+  },
+  {
+   "entity_id": 1058485,
+   "nombre": "Kalfee",
+   "npc_type": 20064,
+   "sprite": 110632,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    125,
+    69
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 348
+  },
+  {
+   "entity_id": 1058486,
+   "nombre": "Kalfee",
+   "npc_type": 20064,
+   "sprite": 110632,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    101,
+    52
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 348
+  },
+  {
+   "entity_id": 1058487,
+   "nombre": "Kalfee",
+   "npc_type": 20064,
+   "sprite": 110632,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    157,
+    68
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 348
+  },
+  {
+   "entity_id": 1058488,
+   "nombre": "Kalfee",
+   "npc_type": 20064,
+   "sprite": 110632,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    116,
+    51
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 348
+  },
+  {
+   "entity_id": 1058489,
+   "nombre": "Kalfee",
+   "npc_type": 20064,
+   "sprite": 110632,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    131,
+    29
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 348
+  },
+  {
+   "entity_id": 1058490,
+   "nombre": "Kalfee",
+   "npc_type": 20064,
+   "sprite": 110632,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    111,
+    59
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 348
+  },
+  {
+   "entity_id": 1058491,
+   "nombre": "Kalfee",
+   "npc_type": 20064,
+   "sprite": 110632,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    124,
+    35
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 348
+  },
+  {
+   "entity_id": 1058492,
+   "nombre": "Kalfee",
+   "npc_type": 20064,
+   "sprite": 110632,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    100,
+    46
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 348
+  },
+  {
+   "entity_id": 1058493,
+   "nombre": "Kalfee",
+   "npc_type": 20064,
+   "sprite": 110632,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    145,
+    64
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 348
+  },
+  {
+   "entity_id": 1058494,
+   "nombre": "Kalfee",
+   "npc_type": 20064,
+   "sprite": 110632,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    136,
+    31
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 348
+  },
+  {
+   "entity_id": 1058495,
+   "nombre": "Kalfee",
+   "npc_type": 20064,
+   "sprite": 110632,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    153,
+    45
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 348
+  },
+  {
+   "entity_id": 1058496,
+   "nombre": "Kalfee",
+   "npc_type": 20064,
+   "sprite": 110632,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    152,
+    44
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 348
+  },
+  {
+   "entity_id": 1058497,
+   "nombre": "Kalfee",
+   "npc_type": 20064,
+   "sprite": 110632,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    177,
+    42
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 348
+  },
+  {
+   "entity_id": 1058498,
+   "nombre": "Kalfee",
+   "npc_type": 20064,
+   "sprite": 110632,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    145,
+    22
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 348
+  },
+  {
+   "entity_id": 1058499,
+   "nombre": "Gumbok",
+   "npc_type": 20065,
+   "sprite": 110622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    150,
+    151
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 350
+  },
+  {
+   "entity_id": 1058500,
+   "nombre": "Gumbok",
+   "npc_type": 20065,
+   "sprite": 110622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    158,
+    143
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 350
+  },
+  {
+   "entity_id": 1058501,
+   "nombre": "Gumbok",
+   "npc_type": 20065,
+   "sprite": 110622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    161,
+    151
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 350
+  },
+  {
+   "entity_id": 1058502,
+   "nombre": "Gumbok",
+   "npc_type": 20065,
+   "sprite": 110622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    174,
+    146
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 350
+  },
+  {
+   "entity_id": 1058503,
+   "nombre": "Gumbok",
+   "npc_type": 20065,
+   "sprite": 110622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    150,
+    149
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 350
+  },
+  {
+   "entity_id": 1058504,
+   "nombre": "Gumbok",
+   "npc_type": 20065,
+   "sprite": 110622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    174,
+    117
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 350
+  },
+  {
+   "entity_id": 1058505,
+   "nombre": "Gumbok",
+   "npc_type": 20065,
+   "sprite": 110622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    166,
+    123
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 350
+  },
+  {
+   "entity_id": 1058506,
+   "nombre": "Gumbok",
+   "npc_type": 20065,
+   "sprite": 110622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    167,
+    127
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 350
+  },
+  {
+   "entity_id": 1058507,
+   "nombre": "Gumbok",
+   "npc_type": 20065,
+   "sprite": 110622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    185,
+    119
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 350
+  },
+  {
+   "entity_id": 1058508,
+   "nombre": "Gumbok",
+   "npc_type": 20065,
+   "sprite": 110622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    170,
+    119
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 350
+  },
+  {
+   "entity_id": 1058509,
+   "nombre": "Gumbok",
+   "npc_type": 20065,
+   "sprite": 110622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    132,
+    142
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 350
+  },
+  {
+   "entity_id": 1058510,
+   "nombre": "Gumbok",
+   "npc_type": 20065,
+   "sprite": 110622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    134,
+    131
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 350
+  },
+  {
+   "entity_id": 1058511,
+   "nombre": "Gumbok",
+   "npc_type": 20065,
+   "sprite": 110622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    143,
+    129
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 350
+  },
+  {
+   "entity_id": 1058512,
+   "nombre": "Gumbok",
+   "npc_type": 20065,
+   "sprite": 110622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    150,
+    127
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 350
+  },
+  {
+   "entity_id": 1058513,
+   "nombre": "Gumbok",
+   "npc_type": 20065,
+   "sprite": 110622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    138,
+    149
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 350
+  },
+  {
+   "entity_id": 1058514,
+   "nombre": "Gumbok",
+   "npc_type": 20065,
+   "sprite": 110622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    115,
+    143
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 350
+  },
+  {
+   "entity_id": 1058515,
+   "nombre": "Gumbok",
+   "npc_type": 20065,
+   "sprite": 110622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    137,
+    160
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 350
+  },
+  {
+   "entity_id": 1058516,
+   "nombre": "Gumbok",
+   "npc_type": 20065,
+   "sprite": 110622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    129,
+    155
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 350
+  },
+  {
+   "entity_id": 1058517,
+   "nombre": "Gumbok",
+   "npc_type": 20065,
+   "sprite": 110622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    114,
+    145
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 350
+  },
+  {
+   "entity_id": 1058518,
+   "nombre": "Gumbok",
+   "npc_type": 20065,
+   "sprite": 110622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    111,
+    149
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 350
+  },
+  {
+   "entity_id": 1058519,
+   "nombre": "Gumbok",
+   "npc_type": 20065,
+   "sprite": 110622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    97,
+    147
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 350
+  },
+  {
+   "entity_id": 1058520,
+   "nombre": "Gumbok",
+   "npc_type": 20065,
+   "sprite": 110622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    91,
+    146
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 350
+  },
+  {
+   "entity_id": 1058521,
+   "nombre": "Gumbok",
+   "npc_type": 20065,
+   "sprite": 110622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    104,
+    146
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 350
+  },
+  {
+   "entity_id": 1058522,
+   "nombre": "Gumbok",
+   "npc_type": 20065,
+   "sprite": 110622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    115,
+    141
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 350
+  },
+  {
+   "entity_id": 1058523,
+   "nombre": "Gumbok",
+   "npc_type": 20065,
+   "sprite": 110622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    93,
+    145
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 350
+  },
+  {
+   "entity_id": 1058524,
+   "nombre": "Talbok",
+   "npc_type": 20066,
+   "sprite": 110623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    54,
+    155
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 350
+  },
+  {
+   "entity_id": 1058525,
+   "nombre": "Talbok",
+   "npc_type": 20066,
+   "sprite": 110623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    77,
+    149
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 350
+  },
+  {
+   "entity_id": 1058526,
+   "nombre": "Talbok",
+   "npc_type": 20066,
+   "sprite": 110623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    51,
+    148
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 350
+  },
+  {
+   "entity_id": 1058527,
+   "nombre": "Talbok",
+   "npc_type": 20066,
+   "sprite": 110623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    42,
+    151
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 350
+  },
+  {
+   "entity_id": 1058528,
+   "nombre": "Talbok",
+   "npc_type": 20066,
+   "sprite": 110623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    64,
+    159
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 350
+  },
+  {
+   "entity_id": 1058529,
+   "nombre": "Talbok",
+   "npc_type": 20066,
+   "sprite": 110623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    135,
+    112
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 350
+  },
+  {
+   "entity_id": 1058530,
+   "nombre": "Talbok",
+   "npc_type": 20066,
+   "sprite": 110623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    136,
+    97
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 350
+  },
+  {
+   "entity_id": 1058531,
+   "nombre": "Talbok",
+   "npc_type": 20066,
+   "sprite": 110623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    146,
+    95
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 350
+  },
+  {
+   "entity_id": 1058532,
+   "nombre": "Talbok",
+   "npc_type": 20066,
+   "sprite": 110623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    129,
+    114
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 350
+  },
+  {
+   "entity_id": 1058533,
+   "nombre": "Talbok",
+   "npc_type": 20066,
+   "sprite": 110623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    132,
+    109
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 350
+  },
+  {
+   "entity_id": 1058534,
+   "nombre": "Talbok",
+   "npc_type": 20066,
+   "sprite": 110623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    92,
+    144
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 350
+  },
+  {
+   "entity_id": 1058535,
+   "nombre": "Talbok",
+   "npc_type": 20066,
+   "sprite": 110623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    87,
+    134
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 350
+  },
+  {
+   "entity_id": 1058536,
+   "nombre": "Talbok",
+   "npc_type": 20066,
+   "sprite": 110623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    83,
+    156
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 350
+  },
+  {
+   "entity_id": 1058537,
+   "nombre": "Talbok",
+   "npc_type": 20066,
+   "sprite": 110623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    88,
+    144
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 350
+  },
+  {
+   "entity_id": 1058538,
+   "nombre": "Talbok",
+   "npc_type": 20066,
+   "sprite": 110623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    90,
+    124
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 350
+  },
+  {
+   "entity_id": 1058539,
+   "nombre": "Talbok",
+   "npc_type": 20066,
+   "sprite": 110623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    87,
+    125
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 350
+  },
+  {
+   "entity_id": 1058540,
+   "nombre": "Talbok",
+   "npc_type": 20066,
+   "sprite": 110623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    109,
+    120
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 350
+  },
+  {
+   "entity_id": 1058541,
+   "nombre": "Talbok",
+   "npc_type": 20066,
+   "sprite": 110623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    98,
+    110
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 350
+  },
+  {
+   "entity_id": 1058542,
+   "nombre": "Talbok",
+   "npc_type": 20066,
+   "sprite": 110623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    106,
+    117
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 350
+  },
+  {
+   "entity_id": 1058543,
+   "nombre": "Talbok",
+   "npc_type": 20066,
+   "sprite": 110623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    96,
+    114
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 350
+  },
+  {
+   "entity_id": 1058544,
+   "nombre": "Talbok",
+   "npc_type": 20066,
+   "sprite": 110623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    112,
+    105
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 350
+  },
+  {
+   "entity_id": 1058545,
+   "nombre": "Talbok",
+   "npc_type": 20066,
+   "sprite": 110623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    108,
+    121
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 350
+  },
+  {
+   "entity_id": 1058546,
+   "nombre": "Talbok",
+   "npc_type": 20066,
+   "sprite": 110623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    111,
+    111
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 350
+  },
+  {
+   "entity_id": 1058547,
+   "nombre": "Talbok",
+   "npc_type": 20066,
+   "sprite": 110623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    125,
+    100
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 350
+  },
+  {
+   "entity_id": 1058548,
+   "nombre": "Talbok",
+   "npc_type": 20066,
+   "sprite": 110623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    128,
+    103
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 350
+  },
+  {
+   "entity_id": 1058549,
+   "nombre": "Minotos",
+   "npc_type": 20067,
+   "sprite": 110604,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    66,
+    127
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 352
+  },
+  {
+   "entity_id": 1058550,
+   "nombre": "Minotos",
+   "npc_type": 20067,
+   "sprite": 110604,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    64,
+    123
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 352
+  },
+  {
+   "entity_id": 1058551,
+   "nombre": "Minotos",
+   "npc_type": 20067,
+   "sprite": 110604,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    79,
+    126
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 352
+  },
+  {
+   "entity_id": 1058552,
+   "nombre": "Minotos",
+   "npc_type": 20067,
+   "sprite": 110604,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    56,
+    117
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 352
+  },
+  {
+   "entity_id": 1058553,
+   "nombre": "Minotos",
+   "npc_type": 20067,
+   "sprite": 110604,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    69,
+    124
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 352
+  },
+  {
+   "entity_id": 1058554,
+   "nombre": "Minotos",
+   "npc_type": 20067,
+   "sprite": 110604,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    15,
+    142
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 352
+  },
+  {
+   "entity_id": 1058555,
+   "nombre": "Minotos",
+   "npc_type": 20067,
+   "sprite": 110604,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    12,
+    133
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 352
+  },
+  {
+   "entity_id": 1058556,
+   "nombre": "Minotos",
+   "npc_type": 20067,
+   "sprite": 110604,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    14,
+    131
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 352
+  },
+  {
+   "entity_id": 1058557,
+   "nombre": "Minotos",
+   "npc_type": 20067,
+   "sprite": 110604,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    14,
+    143
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 352
+  },
+  {
+   "entity_id": 1058558,
+   "nombre": "Minotos",
+   "npc_type": 20067,
+   "sprite": 110604,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    19,
+    135
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 352
+  },
+  {
+   "entity_id": 1058559,
+   "nombre": "Minotos",
+   "npc_type": 20067,
+   "sprite": 110604,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    22,
+    114
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 352
+  },
+  {
+   "entity_id": 1058560,
+   "nombre": "Minotos",
+   "npc_type": 20067,
+   "sprite": 110604,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    11,
+    129
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 352
+  },
+  {
+   "entity_id": 1058561,
+   "nombre": "Minotos",
+   "npc_type": 20067,
+   "sprite": 110604,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    22,
+    110
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 352
+  },
+  {
+   "entity_id": 1058562,
+   "nombre": "Minotos",
+   "npc_type": 20067,
+   "sprite": 110604,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    19,
+    119
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 352
+  },
+  {
+   "entity_id": 1058563,
+   "nombre": "Minotos",
+   "npc_type": 20067,
+   "sprite": 110604,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    18,
+    117
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 352
+  },
+  {
+   "entity_id": 1058564,
+   "nombre": "Minotos",
+   "npc_type": 20067,
+   "sprite": 110604,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    41,
+    110
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 352
+  },
+  {
+   "entity_id": 1058565,
+   "nombre": "Minotos",
+   "npc_type": 20067,
+   "sprite": 110604,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    68,
+    98
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 352
+  },
+  {
+   "entity_id": 1058566,
+   "nombre": "Minotos",
+   "npc_type": 20067,
+   "sprite": 110604,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    66,
+    108
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 352
+  },
+  {
+   "entity_id": 1058567,
+   "nombre": "Minotos",
+   "npc_type": 20067,
+   "sprite": 110604,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    52,
+    103
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 352
+  },
+  {
+   "entity_id": 1058568,
+   "nombre": "Minotos",
+   "npc_type": 20067,
+   "sprite": 110604,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    63,
+    98
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 352
+  },
+  {
+   "entity_id": 1058569,
+   "nombre": "Legionat",
+   "npc_type": 20068,
+   "sprite": 110600,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    30,
+    103
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 352
+  },
+  {
+   "entity_id": 1058570,
+   "nombre": "Legionat",
+   "npc_type": 20068,
+   "sprite": 110600,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    30,
+    98
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 352
+  },
+  {
+   "entity_id": 1058571,
+   "nombre": "Legionat",
+   "npc_type": 20068,
+   "sprite": 110600,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    22,
+    95
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 352
+  },
+  {
+   "entity_id": 1058572,
+   "nombre": "Legionat",
+   "npc_type": 20068,
+   "sprite": 110600,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    29,
+    85
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 352
+  },
+  {
+   "entity_id": 1058573,
+   "nombre": "Legionat",
+   "npc_type": 20068,
+   "sprite": 110600,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    38,
+    102
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 352
+  },
+  {
+   "entity_id": 1058574,
+   "nombre": "Legionat",
+   "npc_type": 20068,
+   "sprite": 110600,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    41,
+    86
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 352
+  },
+  {
+   "entity_id": 1058575,
+   "nombre": "Legionat",
+   "npc_type": 20068,
+   "sprite": 110600,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    50,
+    81
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 352
+  },
+  {
+   "entity_id": 1058576,
+   "nombre": "Legionat",
+   "npc_type": 20068,
+   "sprite": 110600,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    53,
+    82
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 352
+  },
+  {
+   "entity_id": 1058577,
+   "nombre": "Legionat",
+   "npc_type": 20068,
+   "sprite": 110600,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    48,
+    87
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 352
+  },
+  {
+   "entity_id": 1058578,
+   "nombre": "Legionat",
+   "npc_type": 20068,
+   "sprite": 110600,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    72,
+    74
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 352
+  },
+  {
+   "entity_id": 1058579,
+   "nombre": "Legionat",
+   "npc_type": 20068,
+   "sprite": 110600,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    67,
+    76
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 352
+  },
+  {
+   "entity_id": 1058580,
+   "nombre": "Legionat",
+   "npc_type": 20068,
+   "sprite": 110600,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    64,
+    62
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 352
+  },
+  {
+   "entity_id": 1058581,
+   "nombre": "Legionat",
+   "npc_type": 20068,
+   "sprite": 110600,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    70,
+    68
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 352
+  },
+  {
+   "entity_id": 1058582,
+   "nombre": "Legionat",
+   "npc_type": 20068,
+   "sprite": 110600,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    80,
+    87
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 352
+  },
+  {
+   "entity_id": 1058583,
+   "nombre": "Legionat",
+   "npc_type": 20068,
+   "sprite": 110600,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    81,
+    70
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 352
+  },
+  {
+   "entity_id": 1058584,
+   "nombre": "Legionat",
+   "npc_type": 20068,
+   "sprite": 110600,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    108,
+    82
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 352
+  },
+  {
+   "entity_id": 1058585,
+   "nombre": "Legionat",
+   "npc_type": 20068,
+   "sprite": 110600,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    87,
+    90
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 352
+  },
+  {
+   "entity_id": 1058586,
+   "nombre": "Legionat",
+   "npc_type": 20068,
+   "sprite": 110600,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    110,
+    83
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 352
+  },
+  {
+   "entity_id": 1058587,
+   "nombre": "Legionat",
+   "npc_type": 20068,
+   "sprite": 110600,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    82,
+    91
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 352
+  },
+  {
+   "entity_id": 1058588,
+   "nombre": "Legionat",
+   "npc_type": 20068,
+   "sprite": 110600,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    111,
+    75
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 352
+  },
+  {
+   "entity_id": 1058589,
+   "nombre": "E-Galax",
+   "npc_type": 20069,
+   "sprite": 110627,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    83,
+    49
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 354
+  },
+  {
+   "entity_id": 1058590,
+   "nombre": "E-Galax",
+   "npc_type": 20069,
+   "sprite": 110627,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    75,
+    38
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 354
+  },
+  {
+   "entity_id": 1058591,
+   "nombre": "E-Galax",
+   "npc_type": 20069,
+   "sprite": 110627,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    97,
+    55
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 354
+  },
+  {
+   "entity_id": 1058592,
+   "nombre": "E-Galax",
+   "npc_type": 20069,
+   "sprite": 110627,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    62,
+    47
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 354
+  },
+  {
+   "entity_id": 1058593,
+   "nombre": "E-Galax",
+   "npc_type": 20069,
+   "sprite": 110627,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    66,
+    42
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 354
+  },
+  {
+   "entity_id": 1058594,
+   "nombre": "E-Reptica",
+   "npc_type": 20070,
+   "sprite": 110590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    48,
+    58
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 354
+  },
+  {
+   "entity_id": 1058595,
+   "nombre": "E-Reptica",
+   "npc_type": 20070,
+   "sprite": 110590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    37,
+    67
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 354
+  },
+  {
+   "entity_id": 1058596,
+   "nombre": "E-Reptica",
+   "npc_type": 20070,
+   "sprite": 110590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    53,
+    67
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 354
+  },
+  {
+   "entity_id": 1058597,
+   "nombre": "E-Reptica",
+   "npc_type": 20070,
+   "sprite": 110590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    38,
+    79
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 354
+  },
+  {
+   "entity_id": 1058598,
+   "nombre": "E-Reptica",
+   "npc_type": 20070,
+   "sprite": 110590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    64,
+    69
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 354
+  },
+  {
+   "entity_id": 1058599,
+   "nombre": "E-Hootric",
+   "npc_type": 20071,
+   "sprite": 110636,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    91,
+    27
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 354
+  },
+  {
+   "entity_id": 1058600,
+   "nombre": "E-Hootric",
+   "npc_type": 20071,
+   "sprite": 110636,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    77,
+    39
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 354
+  },
+  {
+   "entity_id": 1058601,
+   "nombre": "E-Hootric",
+   "npc_type": 20071,
+   "sprite": 110636,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    77,
+    43
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 354
+  },
+  {
+   "entity_id": 1058602,
+   "nombre": "E-Hootric",
+   "npc_type": 20071,
+   "sprite": 110636,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    94,
+    17
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 354
+  },
+  {
+   "entity_id": 1058603,
+   "nombre": "E-Hootric",
+   "npc_type": 20071,
+   "sprite": 110636,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    82,
+    26
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 354
+  },
+  {
+   "entity_id": 1058604,
+   "nombre": "E-Gumbok",
+   "npc_type": 20072,
+   "sprite": 110622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    44,
+    50
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 354
+  },
+  {
+   "entity_id": 1058605,
+   "nombre": "E-Gumbok",
+   "npc_type": 20072,
+   "sprite": 110622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    25,
+    48
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 354
+  },
+  {
+   "entity_id": 1058606,
+   "nombre": "E-Gumbok",
+   "npc_type": 20072,
+   "sprite": 110622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    28,
+    51
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 354
+  },
+  {
+   "entity_id": 1058607,
+   "nombre": "E-Gumbok",
+   "npc_type": 20072,
+   "sprite": 110622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    25,
+    55
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 354
+  },
+  {
+   "entity_id": 1058608,
+   "nombre": "E-Gumbok",
+   "npc_type": 20072,
+   "sprite": 110622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    51,
+    54
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 354
+  },
+  {
+   "entity_id": 1058609,
+   "nombre": "E-Minotos",
+   "npc_type": 20073,
+   "sprite": 110604,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    50,
+    26
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 354
+  },
+  {
+   "entity_id": 1058610,
+   "nombre": "E-Minotos",
+   "npc_type": 20073,
+   "sprite": 110604,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    48,
+    20
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 354
+  },
+  {
+   "entity_id": 1058611,
+   "nombre": "E-Minotos",
+   "npc_type": 20073,
+   "sprite": 110604,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    44,
+    36
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 354
+  },
+  {
+   "entity_id": 1058612,
+   "nombre": "E-Minotos",
+   "npc_type": 20073,
+   "sprite": 110604,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    71,
+    32
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 354
+  },
+  {
+   "entity_id": 1058613,
+   "nombre": "E-Minotos",
+   "npc_type": 20073,
+   "sprite": 110604,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    69,
+    21
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 354
+  },
+  {
+   "entity_id": 1058614,
+   "nombre": "Engelic",
+   "npc_type": 20074,
+   "sprite": 110566,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    190,
+    153
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 355
+  },
+  {
+   "entity_id": 1058615,
+   "nombre": "Angara",
+   "npc_type": 20075,
+   "sprite": 110539,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    211,
+    38
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 357
+  },
+  {
+   "entity_id": 1058616,
+   "nombre": "Halika",
+   "npc_type": 20076,
+   "sprite": 110637,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    159,
+    83
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 359
+  }
+ ],
+ "recursos": [
+  {
+   "entity_id": 119030,
+   "capa": 0,
+   "px": [
+    9418,
+    5597
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "crudo": "f6d0010000000000ca240000dd1500000000000027000000000000001a000000dc0661ea00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 119031,
+   "capa": 0,
+   "px": [
+    576,
+    5458
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "crudo": "f7d001000000000040020000521500000000000027000000000000001a000000dc0661ea00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 119032,
+   "capa": 0,
+   "px": [
+    4774,
+    4193
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60305,
+   "cola": "00004080140000",
+   "crudo": "f8d0010000000000a6120000611000000000000027000000000000001a000000dc0691eb00004080140000"
+  },
+  {
+   "entity_id": 119033,
+   "capa": 0,
+   "px": [
+    5219,
+    4131
+   ],
+   "medio": "006f70706572284d2900000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60051,
+   "cola": "00002280140000",
+   "crudo": "f9d00100000000006314000023100000006f70706572284d2900000000000000000693ea00002280140000",
+   "que_es": "Aurora Totem"
+  },
+  {
+   "entity_id": 119034,
+   "capa": 0,
+   "px": [
+    4867,
+    736
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60305,
+   "cola": "00004080140000",
+   "crudo": "fad001000000000003130000e00200000000000027000000000000001a000000dc0691eb00004080140000"
+  },
+  {
+   "entity_id": 119035,
+   "capa": 0,
+   "px": [
+    5383,
+    4222
+   ],
+   "medio": "00000000180000000000000000000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60052,
+   "cola": "00002280140000",
+   "crudo": "fbd0010000000000071500007e10000000000000180000000000000000000000dc0694ea00002280140000",
+   "que_es": "Dark City Totem"
+  },
+  {
+   "entity_id": 119036,
+   "capa": 0,
+   "px": [
+    4579,
+    4520
+   ],
+   "medio": "006f70706572284d2900000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60053,
+   "cola": "00002280140000",
+   "crudo": "fcd0010000000000e3110000a8110000006f70706572284d2900000000000000000695ea00002280140000",
+   "que_es": "Iron Totem"
+  },
+  {
+   "entity_id": 119037,
+   "capa": 0,
+   "px": [
+    4753,
+    4618
+   ],
+   "medio": "000000ba156f77650000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60054,
+   "cola": "00002280140000",
+   "crudo": "fdd0010000000000911200000a120000000000ba156f77650000000000000000000696ea00002280140000",
+   "que_es": "Breeze Totem"
+  }
+ ]
+}
