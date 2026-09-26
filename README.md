@@ -47,9 +47,9 @@ a guess, it says so.
 - **236 maps populated from captures**: 42,780 monsters, 2,254 NPCs and
   15,059 map objects, 7,671 of them with their resource name resolved. Every
   monster, NPC and resource comes from a capture; none of it is made up
-- **Six maps do not come from Celestia, but from the official Taiwan
-  server.** It is the only exception to "everything comes from Celestia
-  captures", and it is explained below in *The Night City Code exception*
+- **Six maps do not come from the main server, but from a second one.** It is
+  the only exception to "everything comes from captures of one server", and it
+  is explained below in *The Night City Code exception*
 - **Whole zones are closed**, meaning every tornado in them has been crossed
   and measured: **Heart of Eden**, **Floating** (6 maps), **the desert ring**
   (Crescent Valley, Desert Racetrack, Ghost Village, Troop Outpost, Ancient
@@ -165,8 +165,8 @@ a guess, it says so.
 Everything else in this project comes from captures of **a single** private
 server. Six maps do not: **Night City Code**, stages 416 to 421 -- Clink
 Harbor, Neon Sky Corridor, Black Market District, Commercial Street, Bling
-Plaza and Ultimate Arena. Those come from the **official Taiwan client**, and
-it is worth knowing why and what it implies.
+Plaza and Ultimate Arena. Those come from **a second server, on another
+version of the client**, and it is worth knowing why and what it implies.
 
 ### Why another server was needed
 
@@ -177,8 +177,8 @@ signature of a stage **declared but not populated**: it exists in the table,
 it has no content. The portal sat measured but disabled, with a note saying
 "enable it when some version brings the map populated".
 
-The official Taiwan client is that version. Crossing the same tornado, its
-server sends **171 entities** spread across the whole map, with real monsters.
+The second server runs that version. Crossing the same tornado, it sends
+**171 entities** spread across the whole map, with real monsters.
 The map exists; what was missing was a server that served it.
 
 ### What was taken and what was not

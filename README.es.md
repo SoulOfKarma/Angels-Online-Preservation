@@ -48,8 +48,8 @@ una suposición, lo dice.
 - **236 mapas poblados a partir de capturas**: 42.780 monstruos, 2.254 NPC y
   15.059 objetos de mapa, 7.671 de ellos con su recurso identificado. Cada
   monstruo, NPC y recurso sale de una captura; nada está inventado
-- **Seis mapas no salen de Celestia, sino del servidor oficial de Taiwán.**
-  Es la única excepción a "todo sale de capturas de Celestia", y está
+- **Seis mapas no salen del servidor principal, sino de un segundo
+  servidor.** Es la única excepción a "todo sale de capturas de un servidor", y está
   explicada más abajo en *La excepción de Night City Code*
 - **Hay zonas enteras cerradas**, es decir con todos sus tornados cruzados y
   medidos: **Heart of Eden**, **Floating** (6 mapas), **el anillo del
@@ -170,8 +170,8 @@ una suposición, lo dice.
 Todo el resto del proyecto sale de capturas de **un solo** servidor privado.
 Seis mapas no: **Night City Code**, los stages 416 a 421 — Clink Harbor, Neon
 Sky Corridor, Black Market District, Commercial Street, Bling Plaza y Ultimate
-Arena. Esos salen del **cliente oficial de Taiwán**, y conviene saber por qué y
-qué implica.
+Arena. Esos salen de **un segundo servidor, con otra versión del cliente**, y
+conviene saber por qué y qué implica.
 
 ### Por qué hizo falta otro servidor
 
@@ -182,7 +182,7 @@ entidades y nada más**, todas NPC, todas amontonadas en la esquina (1..6,
 tabla, no tiene contenido. El portal quedó medido pero desactivado, con una
 nota que decía «activarlo cuando alguna versión traiga el mapa poblado».
 
-El cliente oficial de Taiwán trae esa versión. Al cruzar el mismo tornado, su
+El segundo servidor corre esa versión. Al cruzar el mismo tornado, su
 servidor manda **171 entidades** repartidas por todo el mapa, con monstruos de
 verdad. El mapa existe; lo que faltaba era un servidor que lo sirviera.
 
