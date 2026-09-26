@@ -47,9 +47,11 @@ a guess, it says so.
 - **236 maps populated from captures**: 42,780 monsters, 2,254 NPCs and
   15,059 map objects, 7,671 of them with their resource name resolved. Every
   monster, NPC and resource comes from a capture; none of it is made up
-- **Six maps do not come from the main server, but from a second one.** It is
-  the only exception to "everything comes from captures of one server", and it
-  is explained below in *The Night City Code exception*
+- **Twenty maps do not come from the main server, but from a second one**:
+  three whole zones -- **Night City Code**, **Sun Sea Maze** and
+  **Cybertronica** -- plus two Training Areas. It is the only exception to
+  "everything comes from captures of one server", and it is explained below in
+  *The three zones that came from elsewhere*
 - **Whole zones are closed**, meaning every tornado in them has been crossed
   and measured: **Heart of Eden**, **Floating** (6 maps), **the desert ring**
   (Crescent Valley, Desert Racetrack, Ghost Village, Troop Outpost, Ancient
@@ -160,13 +162,25 @@ a guess, it says so.
 
 ---
 
-## The Night City Code exception
+## The three zones that came from elsewhere
 
 Everything else in this project comes from captures of **a single** private
-server. Six maps do not: **Night City Code**, stages 416 to 421 -- Clink
-Harbor, Neon Sky Corridor, Black Market District, Commercial Street, Bling
-Plaza and Ultimate Arena. Those come from **a second server, on another
-version of the client**, and it is worth knowing why and what it implies.
+server. Twenty maps do not. They come from **a second server, on another
+version of the client**, and it is worth knowing why and what it implies:
+
+- **Night City Code**, stages 416 to 421 -- Clink Harbor, Neon Sky Corridor,
+  Black Market District, Commercial Street, Bling Plaza and Ultimate Arena
+- **Sun Sea Maze**, stages 397 to 402 -- Floating Station, Floral Alley,
+  Majestic Mansion, Warm Villa, Verdant Shrine and Seaside Grotto
+- **Cybertronica**, stages 405 to 410 -- Sandy Heights, Wise Institute, Clank
+  Oasis, Ironbone Works, Machinery Ruins and Steely Circuit
+- **Training Area A and B**, stages 118 and 134
+
+The three zones share the same reason, told below with Night City Code
+because that is where it was found first: on the main server the stages exist
+but arrive empty. Seaside Grotto brought something extra, a teleport that is
+not a portal: you **talk** to a statue and it moves you across the map. That
+mechanism is described further down.
 
 ### Why another server was needed
 
@@ -228,6 +242,16 @@ with entities even further out.
 first walk, 109 on the second and 125 on the third. The map did not change: a
 capture only brings what you had in view, and the early passes left areas
 uncovered.
+
+**A teleport that is not a portal.** In Seaside Grotto you do not walk onto a
+tornado: you **talk** to a statue. The click arrives as `0x0005`, the server
+answers a `0x0012` dialogue with two options, the client sends `0x000B` with
+`0a` -- option index 0, "Yes" -- and then comes a bare `0x0003` that moves the
+character. No `0x000C`, so the map never reloads. It cost two wrong readings:
+first the `0x000F` right after the dialogue was blamed, and that one turns up
+95 times per session because it is a heartbeat. The way back is not a click at
+all -- you step on the tornado -- and it sends only the `0x0003`, without the
+`0x0016` and `0x0012` that the internal jumps of other maps carry.
 
 ### What is still missing from this region
 

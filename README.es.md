@@ -48,9 +48,11 @@ una suposición, lo dice.
 - **236 mapas poblados a partir de capturas**: 42.780 monstruos, 2.254 NPC y
   15.059 objetos de mapa, 7.671 de ellos con su recurso identificado. Cada
   monstruo, NPC y recurso sale de una captura; nada está inventado
-- **Seis mapas no salen del servidor principal, sino de un segundo
-  servidor.** Es la única excepción a "todo sale de capturas de un servidor", y está
-  explicada más abajo en *La excepción de Night City Code*
+- **Veinte mapas no salen del servidor principal, sino de un segundo
+  servidor**: tres zonas enteras —**Night City Code**, **Sun Sea Maze** y
+  **Cybertronica**— más dos Training Area. Es la única excepción a "todo sale
+  de capturas de un servidor", y está explicada más abajo en *Las tres zonas
+  que salieron de otro sitio*
 - **Hay zonas enteras cerradas**, es decir con todos sus tornados cruzados y
   medidos: **Heart of Eden**, **Floating** (6 mapas), **el anillo del
   desierto** (Crescent Valley, Desert Racetrack, Ghost Village, Troop
@@ -165,13 +167,26 @@ una suposición, lo dice.
 
 ---
 
-## La excepción de Night City Code
+## Las tres zonas que salieron de otro sitio
 
 Todo el resto del proyecto sale de capturas de **un solo** servidor privado.
-Seis mapas no: **Night City Code**, los stages 416 a 421 — Clink Harbor, Neon
-Sky Corridor, Black Market District, Commercial Street, Bling Plaza y Ultimate
-Arena. Esos salen de **un segundo servidor, con otra versión del cliente**, y
-conviene saber por qué y qué implica.
+Veinte mapas no. Salen de **un segundo servidor, con otra versión del
+cliente**, y conviene saber por qué y qué implica:
+
+- **Night City Code**, los stages 416 a 421 — Clink Harbor, Neon Sky Corridor,
+  Black Market District, Commercial Street, Bling Plaza y Ultimate Arena
+- **Sun Sea Maze**, los stages 397 a 402 — Floating Station, Floral Alley,
+  Majestic Mansion, Warm Villa, Verdant Shrine y Seaside Grotto
+- **Cybertronica**, los stages 405 a 410 — Sandy Heights, Wise Institute,
+  Clank Oasis, Ironbone Works, Machinery Ruins y Steely Circuit
+- **Training Area A y B**, los stages 118 y 134
+
+Las tres zonas comparten el mismo motivo, contado aquí abajo con Night City
+Code porque es donde se descubrió primero: en el servidor principal los
+escenarios existen pero llegan vacíos. Seaside Grotto trajo además algo que no
+estaba en ningún otro sitio, un teletransporte que no es un portal: se le
+**habla** a una estatua y te mueve al otro lado del mapa. Ese mecanismo está
+descrito más abajo.
 
 ### Por qué hizo falta otro servidor
 
@@ -234,6 +249,16 @@ borde, con entidades incluso más allá.
 en el primer recorrido, 109 en el segundo y 125 en el tercero. No cambió el
 mapa: una captura solo trae lo que se tuvo a la vista, y las primeras pasadas
 dejaron zonas sin cubrir.
+
+**Un teletransporte que no es un portal.** En Seaside Grotto no se pisa un
+tornado: se le **habla** a una estatua. El clic llega como `0x0005`, el
+servidor contesta un diálogo `0x0012` con dos opciones, el cliente manda
+`0x000B` con `0a` —el índice 0, «Yes»— y después llega un `0x0003` pelado que
+mueve al personaje. No hay `0x000C`, así que el mapa no se recarga. Costó dos
+lecturas equivocadas: primero se culpó al `0x000F` que sale justo detrás del
+diálogo, y ese aparece 95 veces por sesión porque es un latido. La vuelta no
+es un clic —se pisa el tornado— y manda solo el `0x0003`, sin el `0x0016` ni
+el `0x0012` que sí llevan los saltos internos de otros mapas.
 
 ### Lo que falta de esta región
 
