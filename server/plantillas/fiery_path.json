@@ -1,0 +1,3276 @@
+{
+ "_nota": "Fiery Path (stage 68), de Celestia. Se llega desde Sad Abyss (67). Poblado desde UNA sola sesion: el entity_id no sobrevive a la conexion. Los objetos de mapa van CRUDOS y se reenvian tal cual.",
+ "stage": 68,
+ "spawns": [
+  {
+   "entity_id": 122290,
+   "nombre": "Cupid",
+   "npc_type": 1502,
+   "sprite": 40006,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    27,
+    27
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122291,
+   "nombre": "Mayole",
+   "npc_type": 2098,
+   "sprite": 40106,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    121,
+    108
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122292,
+   "nombre": "Hunter Shinge",
+   "npc_type": 2106,
+   "sprite": 40099,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    32,
+    19
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122293,
+   "nombre": "Cook Betty",
+   "npc_type": 2108,
+   "sprite": 40140,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    152,
+    18
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122294,
+   "nombre": "Motor Seller Pam",
+   "npc_type": 2127,
+   "sprite": 40057,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    19,
+    14
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 1016005,
+   "nombre": "Evil Flower",
+   "npc_type": 805,
+   "sprite": 42293,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    217,
+    26
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 67
+  },
+  {
+   "entity_id": 1016006,
+   "nombre": "Evil Flower",
+   "npc_type": 805,
+   "sprite": 42293,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    229,
+    25
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 67
+  },
+  {
+   "entity_id": 1016007,
+   "nombre": "Evil Flower",
+   "npc_type": 805,
+   "sprite": 42293,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    197,
+    15
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 67
+  },
+  {
+   "entity_id": 1016008,
+   "nombre": "Evil Flower",
+   "npc_type": 805,
+   "sprite": 42293,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    195,
+    7
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 67
+  },
+  {
+   "entity_id": 1016009,
+   "nombre": "Evil Flower",
+   "npc_type": 805,
+   "sprite": 42293,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    228,
+    29
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 67
+  },
+  {
+   "entity_id": 1016010,
+   "nombre": "Evil Flower",
+   "npc_type": 805,
+   "sprite": 42293,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    214,
+    61
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 67
+  },
+  {
+   "entity_id": 1016011,
+   "nombre": "Evil Flower",
+   "npc_type": 805,
+   "sprite": 42293,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    193,
+    54
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 67
+  },
+  {
+   "entity_id": 1016012,
+   "nombre": "Evil Flower",
+   "npc_type": 805,
+   "sprite": 42293,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    224,
+    71
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 67
+  },
+  {
+   "entity_id": 1016013,
+   "nombre": "Evil Flower",
+   "npc_type": 805,
+   "sprite": 42293,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    226,
+    72
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 67
+  },
+  {
+   "entity_id": 1016014,
+   "nombre": "Evil Flower",
+   "npc_type": 805,
+   "sprite": 42293,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    209,
+    58
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 67
+  },
+  {
+   "entity_id": 1016015,
+   "nombre": "Evil Flower",
+   "npc_type": 805,
+   "sprite": 42293,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    203,
+    30
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 67
+  },
+  {
+   "entity_id": 1016016,
+   "nombre": "Evil Flower",
+   "npc_type": 805,
+   "sprite": 42293,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    182,
+    40
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 67
+  },
+  {
+   "entity_id": 1016017,
+   "nombre": "Evil Flower",
+   "npc_type": 805,
+   "sprite": 42293,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    186,
+    18
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 67
+  },
+  {
+   "entity_id": 1016018,
+   "nombre": "Evil Flower",
+   "npc_type": 805,
+   "sprite": 42293,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    178,
+    32
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 67
+  },
+  {
+   "entity_id": 1016019,
+   "nombre": "Evil Flower",
+   "npc_type": 805,
+   "sprite": 42293,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    202,
+    25
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 67
+  },
+  {
+   "entity_id": 1016020,
+   "nombre": "Bloody Flower",
+   "npc_type": 806,
+   "sprite": 42294,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    217,
+    20
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 69
+  },
+  {
+   "entity_id": 1016021,
+   "nombre": "Wanderer",
+   "npc_type": 824,
+   "sprite": 42304,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    232,
+    115
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 64
+  },
+  {
+   "entity_id": 1016022,
+   "nombre": "Terra Lampman",
+   "npc_type": 825,
+   "sprite": 42282,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    234,
+    123
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 64
+  },
+  {
+   "entity_id": 1016023,
+   "nombre": "Terra Lampman",
+   "npc_type": 825,
+   "sprite": 42282,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    256,
+    125
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 64
+  },
+  {
+   "entity_id": 1016024,
+   "nombre": "Terra Lampman",
+   "npc_type": 825,
+   "sprite": 42282,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    226,
+    113
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 64
+  },
+  {
+   "entity_id": 1016025,
+   "nombre": "Terra Lampman",
+   "npc_type": 825,
+   "sprite": 42282,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    240,
+    125
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 64
+  },
+  {
+   "entity_id": 1016026,
+   "nombre": "Terra Lampman",
+   "npc_type": 825,
+   "sprite": 42282,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    231,
+    116
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 64
+  },
+  {
+   "entity_id": 1016027,
+   "nombre": "Terra Lampman",
+   "npc_type": 825,
+   "sprite": 42282,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    273,
+    103
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 64
+  },
+  {
+   "entity_id": 1016028,
+   "nombre": "Terra Lampman",
+   "npc_type": 825,
+   "sprite": 42282,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    265,
+    107
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 64
+  },
+  {
+   "entity_id": 1016029,
+   "nombre": "Terra Lampman",
+   "npc_type": 825,
+   "sprite": 42282,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    267,
+    103
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 64
+  },
+  {
+   "entity_id": 1016030,
+   "nombre": "Terra Lampman",
+   "npc_type": 825,
+   "sprite": 42282,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    267,
+    107
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 64
+  },
+  {
+   "entity_id": 1016031,
+   "nombre": "Terra Lampman",
+   "npc_type": 825,
+   "sprite": 42282,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    282,
+    106
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 64
+  },
+  {
+   "entity_id": 1016032,
+   "nombre": "Terra Lampman",
+   "npc_type": 825,
+   "sprite": 42282,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    238,
+    90
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 64
+  },
+  {
+   "entity_id": 1016033,
+   "nombre": "Terra Lampman",
+   "npc_type": 825,
+   "sprite": 42282,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    250,
+    74
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 64
+  },
+  {
+   "entity_id": 1016034,
+   "nombre": "Terra Lampman",
+   "npc_type": 825,
+   "sprite": 42282,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    265,
+    102
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 64
+  },
+  {
+   "entity_id": 1016035,
+   "nombre": "Terra Lampman",
+   "npc_type": 825,
+   "sprite": 42282,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    271,
+    100
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 64
+  },
+  {
+   "entity_id": 1016036,
+   "nombre": "Terra Lampman",
+   "npc_type": 825,
+   "sprite": 42282,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    237,
+    90
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 64
+  },
+  {
+   "entity_id": 1016037,
+   "nombre": "Fly",
+   "npc_type": 839,
+   "sprite": 42275,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    33,
+    99
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 47
+  },
+  {
+   "entity_id": 1016038,
+   "nombre": "Fly",
+   "npc_type": 839,
+   "sprite": 42275,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    42,
+    103
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 47
+  },
+  {
+   "entity_id": 1016039,
+   "nombre": "Fly",
+   "npc_type": 839,
+   "sprite": 42275,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    22,
+    99
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 47
+  },
+  {
+   "entity_id": 1016040,
+   "nombre": "Fly",
+   "npc_type": 839,
+   "sprite": 42275,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    15,
+    101
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 47
+  },
+  {
+   "entity_id": 1016041,
+   "nombre": "Fly",
+   "npc_type": 839,
+   "sprite": 42275,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    38,
+    89
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 47
+  },
+  {
+   "entity_id": 1016042,
+   "nombre": "Fly",
+   "npc_type": 839,
+   "sprite": 42275,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    43,
+    102
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 47
+  },
+  {
+   "entity_id": 1016043,
+   "nombre": "Fly",
+   "npc_type": 839,
+   "sprite": 42275,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    41,
+    89
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 47
+  },
+  {
+   "entity_id": 1016044,
+   "nombre": "Fly",
+   "npc_type": 839,
+   "sprite": 42275,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    35,
+    99
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 47
+  },
+  {
+   "entity_id": 1016045,
+   "nombre": "Fly",
+   "npc_type": 839,
+   "sprite": 42275,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    34,
+    82
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 47
+  },
+  {
+   "entity_id": 1016046,
+   "nombre": "Fly",
+   "npc_type": 839,
+   "sprite": 42275,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    49,
+    104
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 47
+  },
+  {
+   "entity_id": 1016047,
+   "nombre": "Fly",
+   "npc_type": 839,
+   "sprite": 42275,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    49,
+    108
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 47
+  },
+  {
+   "entity_id": 1016048,
+   "nombre": "Fly",
+   "npc_type": 839,
+   "sprite": 42275,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    53,
+    102
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 47
+  },
+  {
+   "entity_id": 1016049,
+   "nombre": "Fly",
+   "npc_type": 839,
+   "sprite": 42275,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    62,
+    100
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 47
+  },
+  {
+   "entity_id": 1016050,
+   "nombre": "Fly",
+   "npc_type": 839,
+   "sprite": 42275,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    48,
+    94
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 47
+  },
+  {
+   "entity_id": 1016051,
+   "nombre": "Fly",
+   "npc_type": 839,
+   "sprite": 42275,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    44,
+    106
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 47
+  },
+  {
+   "entity_id": 1016052,
+   "nombre": "Gold Fly",
+   "npc_type": 843,
+   "sprite": 42276,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    114,
+    72
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 59
+  },
+  {
+   "entity_id": 1016053,
+   "nombre": "Gold Fly",
+   "npc_type": 843,
+   "sprite": 42276,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    111,
+    69
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 59
+  },
+  {
+   "entity_id": 1016054,
+   "nombre": "Gold Fly",
+   "npc_type": 843,
+   "sprite": 42276,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    127,
+    102
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 59
+  },
+  {
+   "entity_id": 1016055,
+   "nombre": "Gold Fly",
+   "npc_type": 843,
+   "sprite": 42276,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    123,
+    81
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 59
+  },
+  {
+   "entity_id": 1016056,
+   "nombre": "Gold Fly",
+   "npc_type": 843,
+   "sprite": 42276,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    130,
+    96
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 59
+  },
+  {
+   "entity_id": 1016057,
+   "nombre": "Gold Fly",
+   "npc_type": 843,
+   "sprite": 42276,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    134,
+    122
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 59
+  },
+  {
+   "entity_id": 1016058,
+   "nombre": "Gold Fly",
+   "npc_type": 843,
+   "sprite": 42276,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    128,
+    123
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 59
+  },
+  {
+   "entity_id": 1016059,
+   "nombre": "Gold Fly",
+   "npc_type": 843,
+   "sprite": 42276,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    142,
+    117
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 59
+  },
+  {
+   "entity_id": 1016060,
+   "nombre": "Gold Fly",
+   "npc_type": 843,
+   "sprite": 42276,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    147,
+    119
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 59
+  },
+  {
+   "entity_id": 1016061,
+   "nombre": "Gold Fly",
+   "npc_type": 843,
+   "sprite": 42276,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    130,
+    123
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 59
+  },
+  {
+   "entity_id": 1016062,
+   "nombre": "Gold Fly",
+   "npc_type": 843,
+   "sprite": 42276,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    159,
+    120
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 59
+  },
+  {
+   "entity_id": 1016063,
+   "nombre": "Gold Fly",
+   "npc_type": 843,
+   "sprite": 42276,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    164,
+    118
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 59
+  },
+  {
+   "entity_id": 1016064,
+   "nombre": "Gold Fly",
+   "npc_type": 843,
+   "sprite": 42276,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    168,
+    115
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 59
+  },
+  {
+   "entity_id": 1016065,
+   "nombre": "Gold Fly",
+   "npc_type": 843,
+   "sprite": 42276,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    158,
+    117
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 59
+  },
+  {
+   "entity_id": 1016066,
+   "nombre": "Gold Fly",
+   "npc_type": 843,
+   "sprite": 42276,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    176,
+    119
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 59
+  },
+  {
+   "entity_id": 1016067,
+   "nombre": "Gold Fly",
+   "npc_type": 843,
+   "sprite": 42276,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    181,
+    117
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 59
+  },
+  {
+   "entity_id": 1016068,
+   "nombre": "Gold Fly",
+   "npc_type": 843,
+   "sprite": 42276,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    192,
+    119
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 59
+  },
+  {
+   "entity_id": 1016069,
+   "nombre": "Gold Fly",
+   "npc_type": 843,
+   "sprite": 42276,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    166,
+    118
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 59
+  },
+  {
+   "entity_id": 1016070,
+   "nombre": "Gold Fly",
+   "npc_type": 843,
+   "sprite": 42276,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    225,
+    129
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 59
+  },
+  {
+   "entity_id": 1016071,
+   "nombre": "Gold Fly",
+   "npc_type": 843,
+   "sprite": 42276,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    245,
+    117
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 59
+  },
+  {
+   "entity_id": 1016072,
+   "nombre": "Gold Fly",
+   "npc_type": 843,
+   "sprite": 42276,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    227,
+    118
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 59
+  },
+  {
+   "entity_id": 1016073,
+   "nombre": "Gold Fly",
+   "npc_type": 843,
+   "sprite": 42276,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    240,
+    114
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 59
+  },
+  {
+   "entity_id": 1016074,
+   "nombre": "Jail Warden",
+   "npc_type": 884,
+   "sprite": 42322,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    116,
+    33
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 59
+  },
+  {
+   "entity_id": 1016075,
+   "nombre": "Imp Elf",
+   "npc_type": 894,
+   "sprite": 42331,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    84,
+    97
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 57
+  },
+  {
+   "entity_id": 1016076,
+   "nombre": "Imp Elf",
+   "npc_type": 894,
+   "sprite": 42331,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    75,
+    108
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 57
+  },
+  {
+   "entity_id": 1016077,
+   "nombre": "Imp Elf",
+   "npc_type": 894,
+   "sprite": 42331,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    61,
+    98
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 57
+  },
+  {
+   "entity_id": 1016078,
+   "nombre": "Imp Elf",
+   "npc_type": 894,
+   "sprite": 42331,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    57,
+    98
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 57
+  },
+  {
+   "entity_id": 1016079,
+   "nombre": "Imp Elf",
+   "npc_type": 894,
+   "sprite": 42331,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    69,
+    87
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 57
+  },
+  {
+   "entity_id": 1016080,
+   "nombre": "Imp Elf",
+   "npc_type": 894,
+   "sprite": 42331,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    75,
+    97
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 57
+  },
+  {
+   "entity_id": 1016081,
+   "nombre": "Imp Elf",
+   "npc_type": 894,
+   "sprite": 42331,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    84,
+    88
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 57
+  },
+  {
+   "entity_id": 1016082,
+   "nombre": "Imp Elf",
+   "npc_type": 894,
+   "sprite": 42331,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    75,
+    84
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 57
+  },
+  {
+   "entity_id": 1016083,
+   "nombre": "Imp Elf",
+   "npc_type": 894,
+   "sprite": 42331,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    95,
+    75
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 57
+  },
+  {
+   "entity_id": 1016084,
+   "nombre": "Imp Elf",
+   "npc_type": 894,
+   "sprite": 42331,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    78,
+    77
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 57
+  },
+  {
+   "entity_id": 1016085,
+   "nombre": "Imp Elf",
+   "npc_type": 894,
+   "sprite": 42331,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    69,
+    66
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 57
+  },
+  {
+   "entity_id": 1016086,
+   "nombre": "Imp Elf",
+   "npc_type": 894,
+   "sprite": 42331,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    95,
+    95
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 57
+  },
+  {
+   "entity_id": 1016087,
+   "nombre": "Imp Elf",
+   "npc_type": 894,
+   "sprite": 42331,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    111,
+    89
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 57
+  },
+  {
+   "entity_id": 1016088,
+   "nombre": "Imp Elf",
+   "npc_type": 894,
+   "sprite": 42331,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    86,
+    101
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 57
+  },
+  {
+   "entity_id": 1016089,
+   "nombre": "Imp Elf",
+   "npc_type": 894,
+   "sprite": 42331,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    111,
+    105
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 57
+  },
+  {
+   "entity_id": 1016090,
+   "nombre": "Imp Elf",
+   "npc_type": 894,
+   "sprite": 42331,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    106,
+    88
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 57
+  },
+  {
+   "entity_id": 1016091,
+   "nombre": "Imp Elf",
+   "npc_type": 894,
+   "sprite": 42331,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    124,
+    91
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 57
+  },
+  {
+   "entity_id": 1016092,
+   "nombre": "Imp Elf",
+   "npc_type": 894,
+   "sprite": 42331,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    254,
+    85
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 57
+  },
+  {
+   "entity_id": 1016093,
+   "nombre": "Imp Elf",
+   "npc_type": 894,
+   "sprite": 42331,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    224,
+    59
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 57
+  },
+  {
+   "entity_id": 1016094,
+   "nombre": "Imp Elf",
+   "npc_type": 894,
+   "sprite": 42331,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    241,
+    77
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 57
+  },
+  {
+   "entity_id": 1016095,
+   "nombre": "Imp Elf",
+   "npc_type": 894,
+   "sprite": 42331,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    250,
+    19
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 57
+  },
+  {
+   "entity_id": 1016096,
+   "nombre": "Imp Elf",
+   "npc_type": 894,
+   "sprite": 42331,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    245,
+    49
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 57
+  },
+  {
+   "entity_id": 1016097,
+   "nombre": "Imp Elf",
+   "npc_type": 894,
+   "sprite": 42331,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    245,
+    48
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 57
+  },
+  {
+   "entity_id": 1016098,
+   "nombre": "Theurgy Master",
+   "npc_type": 899,
+   "sprite": 42335,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    55,
+    70
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 54
+  },
+  {
+   "entity_id": 1016099,
+   "nombre": "Theurgy Master",
+   "npc_type": 899,
+   "sprite": 42335,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    48,
+    58
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 54
+  },
+  {
+   "entity_id": 1016100,
+   "nombre": "Theurgy Master",
+   "npc_type": 899,
+   "sprite": 42335,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    27,
+    65
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 54
+  },
+  {
+   "entity_id": 1016101,
+   "nombre": "Theurgy Master",
+   "npc_type": 899,
+   "sprite": 42335,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    37,
+    74
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 54
+  },
+  {
+   "entity_id": 1016102,
+   "nombre": "Theurgy Master",
+   "npc_type": 899,
+   "sprite": 42335,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    38,
+    74
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 54
+  },
+  {
+   "entity_id": 1016103,
+   "nombre": "Theurgy Master",
+   "npc_type": 899,
+   "sprite": 42335,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    42,
+    72
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 54
+  },
+  {
+   "entity_id": 1016104,
+   "nombre": "Theurgy Master",
+   "npc_type": 899,
+   "sprite": 42335,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    54,
+    79
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 54
+  },
+  {
+   "entity_id": 1016105,
+   "nombre": "Theurgy Master",
+   "npc_type": 899,
+   "sprite": 42335,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    48,
+    78
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 54
+  },
+  {
+   "entity_id": 1016106,
+   "nombre": "Theurgy Master",
+   "npc_type": 899,
+   "sprite": 42335,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    56,
+    69
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 54
+  },
+  {
+   "entity_id": 1016107,
+   "nombre": "Theurgy Master",
+   "npc_type": 899,
+   "sprite": 42335,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    64,
+    63
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 54
+  },
+  {
+   "entity_id": 1016108,
+   "nombre": "Theurgy Master",
+   "npc_type": 899,
+   "sprite": 42335,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    68,
+    70
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 54
+  },
+  {
+   "entity_id": 1016109,
+   "nombre": "Theurgy Master",
+   "npc_type": 899,
+   "sprite": 42335,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    73,
+    73
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 54
+  },
+  {
+   "entity_id": 1016110,
+   "nombre": "Theurgy Master",
+   "npc_type": 899,
+   "sprite": 42335,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    60,
+    46
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 54
+  },
+  {
+   "entity_id": 1016111,
+   "nombre": "Theurgy Master",
+   "npc_type": 899,
+   "sprite": 42335,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    62,
+    38
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 54
+  },
+  {
+   "entity_id": 1016112,
+   "nombre": "Theurgy Master",
+   "npc_type": 899,
+   "sprite": 42335,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    55,
+    61
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 54
+  },
+  {
+   "entity_id": 1016113,
+   "nombre": "Theurgy Master",
+   "npc_type": 899,
+   "sprite": 42335,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    59,
+    41
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 54
+  },
+  {
+   "entity_id": 1016114,
+   "nombre": "Theurgy Master",
+   "npc_type": 899,
+   "sprite": 42335,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    236,
+    79
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 54
+  },
+  {
+   "entity_id": 1016115,
+   "nombre": "Theurgy Master",
+   "npc_type": 899,
+   "sprite": 42335,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    241,
+    51
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 54
+  },
+  {
+   "entity_id": 1016116,
+   "nombre": "Theurgy Master",
+   "npc_type": 899,
+   "sprite": 42335,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    218,
+    58
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 54
+  },
+  {
+   "entity_id": 1016117,
+   "nombre": "Theurgy Master",
+   "npc_type": 899,
+   "sprite": 42335,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    238,
+    76
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 54
+  },
+  {
+   "entity_id": 1016118,
+   "nombre": "Theurgy Master",
+   "npc_type": 899,
+   "sprite": 42335,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    289,
+    34
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 54
+  },
+  {
+   "entity_id": 1016119,
+   "nombre": "Theurgy Master",
+   "npc_type": 899,
+   "sprite": 42335,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    267,
+    23
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 54
+  },
+  {
+   "entity_id": 1016120,
+   "nombre": "Theurgy Master",
+   "npc_type": 899,
+   "sprite": 42335,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    283,
+    32
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 54
+  },
+  {
+   "entity_id": 1016121,
+   "nombre": "Theurgy Master",
+   "npc_type": 899,
+   "sprite": 42335,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    275,
+    32
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 54
+  },
+  {
+   "entity_id": 1016122,
+   "nombre": "Theurgy Master",
+   "npc_type": 899,
+   "sprite": 42335,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    267,
+    20
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 54
+  },
+  {
+   "entity_id": 1016123,
+   "nombre": "Evil Knight",
+   "npc_type": 900,
+   "sprite": 42336,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    77,
+    51
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 62
+  },
+  {
+   "entity_id": 1016124,
+   "nombre": "Evil Knight",
+   "npc_type": 900,
+   "sprite": 42336,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    55,
+    32
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 62
+  },
+  {
+   "entity_id": 1016125,
+   "nombre": "Evil Knight",
+   "npc_type": 900,
+   "sprite": 42336,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    74,
+    60
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 62
+  },
+  {
+   "entity_id": 1016126,
+   "nombre": "Evil Knight",
+   "npc_type": 900,
+   "sprite": 42336,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    84,
+    50
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 62
+  },
+  {
+   "entity_id": 1016127,
+   "nombre": "Evil Knight",
+   "npc_type": 900,
+   "sprite": 42336,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    92,
+    55
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 62
+  },
+  {
+   "entity_id": 1016128,
+   "nombre": "Evil Knight",
+   "npc_type": 900,
+   "sprite": 42336,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    84,
+    46
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 62
+  },
+  {
+   "entity_id": 1016129,
+   "nombre": "Evil Knight",
+   "npc_type": 900,
+   "sprite": 42336,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    90,
+    39
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 62
+  },
+  {
+   "entity_id": 1016130,
+   "nombre": "Evil Knight",
+   "npc_type": 900,
+   "sprite": 42336,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    107,
+    30
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 62
+  },
+  {
+   "entity_id": 1016131,
+   "nombre": "Evil Knight",
+   "npc_type": 900,
+   "sprite": 42336,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    101,
+    46
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 62
+  },
+  {
+   "entity_id": 1016132,
+   "nombre": "Evil Knight",
+   "npc_type": 900,
+   "sprite": 42336,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    89,
+    28
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 62
+  },
+  {
+   "entity_id": 1016133,
+   "nombre": "Evil Knight",
+   "npc_type": 900,
+   "sprite": 42336,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    105,
+    28
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 62
+  },
+  {
+   "entity_id": 1016134,
+   "nombre": "Evil Knight",
+   "npc_type": 900,
+   "sprite": 42336,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    68,
+    33
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 62
+  },
+  {
+   "entity_id": 1016135,
+   "nombre": "Evil Knight",
+   "npc_type": 900,
+   "sprite": 42336,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    42,
+    33
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 62
+  },
+  {
+   "entity_id": 1016136,
+   "nombre": "Evil Knight",
+   "npc_type": 900,
+   "sprite": 42336,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    37,
+    38
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 62
+  },
+  {
+   "entity_id": 1016137,
+   "nombre": "Evil Knight",
+   "npc_type": 900,
+   "sprite": 42336,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    40
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 62
+  },
+  {
+   "entity_id": 1016138,
+   "nombre": "Evil Knight",
+   "npc_type": 900,
+   "sprite": 42336,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    248,
+    40
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 62
+  },
+  {
+   "entity_id": 1016139,
+   "nombre": "Evil Knight",
+   "npc_type": 900,
+   "sprite": 42336,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    254,
+    45
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 62
+  },
+  {
+   "entity_id": 1016140,
+   "nombre": "Evil Knight",
+   "npc_type": 900,
+   "sprite": 42336,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    243,
+    53
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 62
+  },
+  {
+   "entity_id": 1016141,
+   "nombre": "Evil Knight",
+   "npc_type": 900,
+   "sprite": 42336,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    292,
+    39
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 62
+  },
+  {
+   "entity_id": 1016142,
+   "nombre": "Evil Knight",
+   "npc_type": 900,
+   "sprite": 42336,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    272,
+    44
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 62
+  },
+  {
+   "entity_id": 1016143,
+   "nombre": "Evil Knight",
+   "npc_type": 900,
+   "sprite": 42336,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    257,
+    28
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 62
+  }
+ ],
+ "recursos": [
+  {
+   "entity_id": 105393,
+   "capa": 0,
+   "px": [
+    1069,
+    3752
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60192,
+   "cola": "00004080120000",
+   "crudo": "b19b0100000000002d040000a80e00000000000027000000000000001a000000dc0620eb00004080120000",
+   "material": "Fire Alga(S)"
+  },
+  {
+   "entity_id": 105394,
+   "capa": 0,
+   "px": [
+    1101,
+    3875
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60191,
+   "cola": "00004080120000",
+   "crudo": "b29b0100000000004d040000230f00000000000027000000000000001a000000dc061feb00004080120000"
+  },
+  {
+   "entity_id": 105395,
+   "capa": 0,
+   "px": [
+    927,
+    3849
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60137,
+   "cola": "00004080120000",
+   "crudo": "b39b0100000000009f030000090f00000000000027000000000000001a000000dc06e9ea00004080120000"
+  },
+  {
+   "entity_id": 105396,
+   "capa": 0,
+   "px": [
+    429,
+    4217
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "crudo": "b49b010000000000ad010000791000000000000027000000000000001a000000dc0661ea00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 105397,
+   "capa": 0,
+   "px": [
+    10017,
+    188
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "crudo": "b59b01000000000021270000bc0000000000000027000000000000001a000000dc0661ea00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 105398,
+   "capa": 0,
+   "px": [
+    5796,
+    1508
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080030000",
+   "crudo": "b69b010000000000a4160000e40500000000000027000000000000001a000000dc06fdea00004080030000"
+  },
+  {
+   "entity_id": 105399,
+   "capa": 0,
+   "px": [
+    4495,
+    2065
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "000040800d0000",
+   "crudo": "b79b0100000000008f110000110800000000000027000000000000001a000000dc06fdea000040800d0000"
+  },
+  {
+   "entity_id": 105400,
+   "capa": 0,
+   "px": [
+    4506,
+    2053
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "000040800d0000",
+   "crudo": "b89b0100000000009a110000050800000000000027000000000000001a000000dc06fdea000040800d0000"
+  },
+  {
+   "entity_id": 105401,
+   "capa": 0,
+   "px": [
+    4498,
+    2061
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "000040800d0000",
+   "crudo": "b99b010000000000921100000d0800000000000027000000000000001a000000dc06fdea000040800d0000"
+  },
+  {
+   "entity_id": 105402,
+   "capa": 0,
+   "px": [
+    4502,
+    2057
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "000040800d0000",
+   "crudo": "ba9b01000000000096110000090800000000000027000000000000001a000000dc06fdea000040800d0000"
+  },
+  {
+   "entity_id": 105403,
+   "capa": 0,
+   "px": [
+    5230,
+    140
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "000040800d0000",
+   "crudo": "bb9b0100000000006e1400008c0000000000000027000000000000001a000000dc06fdea000040800d0000"
+  },
+  {
+   "entity_id": 105404,
+   "capa": 0,
+   "px": [
+    5230,
+    144
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "000040800d0000",
+   "crudo": "bc9b0100000000006e140000900000000000000027000000000000001a000000dc06fdea000040800d0000"
+  },
+  {
+   "entity_id": 105405,
+   "capa": 0,
+   "px": [
+    5231,
+    136
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "000040800d0000",
+   "crudo": "bd9b0100000000006f140000880000000000000027000000000000001a000000dc06fdea000040800d0000"
+  },
+  {
+   "entity_id": 105406,
+   "capa": 0,
+   "px": [
+    5231,
+    132
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "000040800d0000",
+   "crudo": "be9b0100000000006f140000840000000000000027000000000000001a000000dc06fdea000040800d0000"
+  },
+  {
+   "entity_id": 105407,
+   "capa": 0,
+   "px": [
+    5230,
+    128
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "000040800d0000",
+   "crudo": "bf9b0100000000006e140000800000000000000027000000000000001a000000dc06fdea000040800d0000"
+  },
+  {
+   "entity_id": 105408,
+   "capa": 0,
+   "px": [
+    7040,
+    4127
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60166,
+   "cola": "00004080100000",
+   "crudo": "c09b010000000000801b00001f1000000000000027000000000000001a000000dc0606eb00004080100000",
+   "material_posibles": [
+    "Bauxite (L)",
+    "Big Bauxite"
+   ]
+  },
+  {
+   "entity_id": 105409,
+   "capa": 0,
+   "px": [
+    7136,
+    4255
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60165,
+   "cola": "00004080100000",
+   "crudo": "c19b010000000000e01b00009f1000000000000027000000000000001a000000dc0605eb00004080100000"
+  },
+  {
+   "entity_id": 105410,
+   "capa": 0,
+   "px": [
+    7200,
+    4255
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60164,
+   "cola": "00004080100000",
+   "crudo": "c29b010000000000201c00009f1000000000000027000000000000001a000000dc0604eb00004080100000"
+  },
+  {
+   "entity_id": 105411,
+   "capa": 2,
+   "px": [
+    7104,
+    4095
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60165,
+   "cola": "00004080100000",
+   "crudo": "c39b010002000000c01b0000ff0f00000000000027000000000000001a000000dc0605eb00004080100000"
+  },
+  {
+   "entity_id": 105412,
+   "capa": 2,
+   "px": [
+    7328,
+    4287
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60166,
+   "cola": "00004080100000",
+   "crudo": "c49b010002000000a01c0000bf1000000000000027000000000000001a000000dc0606eb00004080100000",
+   "material_posibles": [
+    "Bauxite (L)",
+    "Big Bauxite"
+   ]
+  },
+  {
+   "entity_id": 105413,
+   "capa": 0,
+   "px": [
+    7392,
+    4191
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60165,
+   "cola": "00004080100000",
+   "crudo": "c59b010000000000e01c00005f1000000000000027000000000000001a000000dc0605eb00004080100000"
+  },
+  {
+   "entity_id": 105414,
+   "capa": 2,
+   "px": [
+    7968,
+    4127
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60165,
+   "cola": "00004080100000",
+   "crudo": "c69b010002000000201f00001f1000000000000027000000000000001a000000dc0605eb00004080100000"
+  },
+  {
+   "entity_id": 105415,
+   "capa": 0,
+   "px": [
+    7776,
+    3967
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60166,
+   "cola": "00004080100000",
+   "crudo": "c79b010000000000601e00007f0f00000000000027000000000000001a000000dc0606eb00004080100000",
+   "material_posibles": [
+    "Bauxite (L)",
+    "Big Bauxite"
+   ]
+  },
+  {
+   "entity_id": 105416,
+   "capa": 0,
+   "px": [
+    7712,
+    4159
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60164,
+   "cola": "00004080100000",
+   "crudo": "c89b010000000000201e00003f1000000000000027000000000000001a000000dc0604eb00004080100000"
+  },
+  {
+   "entity_id": 105417,
+   "capa": 0,
+   "px": [
+    1600,
+    671
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60166,
+   "cola": "00004080100000",
+   "crudo": "c99b010000000000400600009f0200000000000027000000000000001a000000dc0606eb00004080100000",
+   "material_posibles": [
+    "Bauxite (L)",
+    "Big Bauxite"
+   ]
+  },
+  {
+   "entity_id": 105418,
+   "capa": 2,
+   "px": [
+    2784,
+    671
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60166,
+   "cola": "00004080100000",
+   "crudo": "ca9b010002000000e00a00009f0200000000000027000000000000001a000000dc0606eb00004080100000",
+   "material_posibles": [
+    "Bauxite (L)",
+    "Big Bauxite"
+   ]
+  },
+  {
+   "entity_id": 105419,
+   "capa": 0,
+   "px": [
+    2208,
+    799
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60164,
+   "cola": "00004080100000",
+   "crudo": "cb9b010000000000a00800001f0300000000000027000000000000001a000000dc0604eb00004080100000"
+  },
+  {
+   "entity_id": 105420,
+   "capa": 2,
+   "px": [
+    1920,
+    863
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60164,
+   "cola": "00004080100000",
+   "crudo": "cc9b010002000000800700005f0300000000000027000000000000001a000000dc0604eb00004080100000"
+  },
+  {
+   "entity_id": 105421,
+   "capa": 2,
+   "px": [
+    2848,
+    703
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60164,
+   "cola": "00004080100000",
+   "crudo": "cd9b010002000000200b0000bf0200000000000027000000000000001a000000dc0604eb00004080100000"
+  },
+  {
+   "entity_id": 105422,
+   "capa": 0,
+   "px": [
+    2304,
+    831
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60165,
+   "cola": "00004080100000",
+   "crudo": "ce9b010000000000000900003f0300000000000027000000000000001a000000dc0605eb00004080100000"
+  },
+  {
+   "entity_id": 105423,
+   "capa": 0,
+   "px": [
+    1568,
+    543
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60165,
+   "cola": "00004080100000",
+   "crudo": "cf9b010000000000200600001f0200000000000027000000000000001a000000dc0605eb00004080100000"
+  },
+  {
+   "entity_id": 105424,
+   "capa": 0,
+   "px": [
+    6528,
+    3327
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60112,
+   "cola": "000040800f0000",
+   "crudo": "d09b01000000000080190000ff0c00000000000027000000000000001a000000dc06d0ea000040800f0000",
+   "material": "Poplar(S)"
+  },
+  {
+   "entity_id": 105425,
+   "capa": 2,
+   "px": [
+    5760,
+    3423
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60112,
+   "cola": "000040800f0000",
+   "crudo": "d19b010002000000801600005f0d00000000000027000000000000001a000000dc06d0ea000040800f0000",
+   "material": "Poplar(S)"
+  },
+  {
+   "entity_id": 105426,
+   "capa": 0,
+   "px": [
+    6016,
+    3327
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60123,
+   "cola": "000040800f0000",
+   "crudo": "d29b01000000000080170000ff0c00000000000027000000000000001a000000dc06dbea000040800f0000",
+   "material": "Poplar(M)"
+  },
+  {
+   "entity_id": 105427,
+   "capa": 0,
+   "px": [
+    6592,
+    3327
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60123,
+   "cola": "000040800f0000",
+   "crudo": "d39b010000000000c0190000ff0c00000000000027000000000000001a000000dc06dbea000040800f0000",
+   "material": "Poplar(M)"
+  },
+  {
+   "entity_id": 105428,
+   "capa": 2,
+   "px": [
+    6176,
+    3487
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60123,
+   "cola": "000040800f0000",
+   "crudo": "d49b010002000000201800009f0d00000000000027000000000000001a000000dc06dbea000040800f0000",
+   "material": "Poplar(M)"
+  },
+  {
+   "entity_id": 105429,
+   "capa": 0,
+   "px": [
+    6112,
+    3359
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60176,
+   "cola": "000040800f0000",
+   "crudo": "d59b010000000000e01700001f0d00000000000027000000000000001a000000dc0610eb000040800f0000",
+   "material_posibles": [
+    "Grapefruit(L)",
+    "Poplar(L)",
+    "Teak(L)"
+   ]
+  },
+  {
+   "entity_id": 105430,
+   "capa": 2,
+   "px": [
+    5696,
+    3423
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60176,
+   "cola": "000040800f0000",
+   "crudo": "d69b010002000000401600005f0d00000000000027000000000000001a000000dc0610eb000040800f0000",
+   "material_posibles": [
+    "Grapefruit(L)",
+    "Poplar(L)",
+    "Teak(L)"
+   ]
+  },
+  {
+   "entity_id": 105431,
+   "capa": 0,
+   "px": [
+    5248,
+    511
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60176,
+   "cola": "000040800f0000",
+   "crudo": "d79b01000000000080140000ff0100000000000027000000000000001a000000dc0610eb000040800f0000",
+   "material_posibles": [
+    "Grapefruit(L)",
+    "Poplar(L)",
+    "Teak(L)"
+   ]
+  },
+  {
+   "entity_id": 105432,
+   "capa": 2,
+   "px": [
+    5888,
+    319
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60176,
+   "cola": "000040800f0000",
+   "crudo": "d89b010002000000001700003f0100000000000027000000000000001a000000dc0610eb000040800f0000",
+   "material_posibles": [
+    "Grapefruit(L)",
+    "Poplar(L)",
+    "Teak(L)"
+   ]
+  },
+  {
+   "entity_id": 105433,
+   "capa": 0,
+   "px": [
+    5536,
+    319
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60176,
+   "cola": "000040800f0000",
+   "crudo": "d99b010000000000a01500003f0100000000000027000000000000001a000000dc0610eb000040800f0000",
+   "material_posibles": [
+    "Grapefruit(L)",
+    "Poplar(L)",
+    "Teak(L)"
+   ]
+  },
+  {
+   "entity_id": 105434,
+   "capa": 0,
+   "px": [
+    6144,
+    351
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60123,
+   "cola": "000040800f0000",
+   "crudo": "da9b010000000000001800005f0100000000000027000000000000001a000000dc06dbea000040800f0000",
+   "material": "Poplar(M)"
+  },
+  {
+   "entity_id": 105435,
+   "capa": 2,
+   "px": [
+    5664,
+    351
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60123,
+   "cola": "000040800f0000",
+   "crudo": "db9b010002000000201600005f0100000000000027000000000000001a000000dc06dbea000040800f0000",
+   "material": "Poplar(M)"
+  },
+  {
+   "entity_id": 105436,
+   "capa": 0,
+   "px": [
+    6208,
+    351
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60112,
+   "cola": "000040800f0000",
+   "crudo": "dc9b010000000000401800005f0100000000000027000000000000001a000000dc06d0ea000040800f0000",
+   "material": "Poplar(S)"
+  },
+  {
+   "entity_id": 105437,
+   "capa": 2,
+   "px": [
+    5760,
+    319
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60112,
+   "cola": "000040800f0000",
+   "crudo": "dd9b010002000000801600003f0100000000000027000000000000001a000000dc06d0ea000040800f0000",
+   "material": "Poplar(S)"
+  },
+  {
+   "entity_id": 105438,
+   "capa": 0,
+   "px": [
+    5344,
+    479
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60112,
+   "cola": "000040800f0000",
+   "crudo": "de9b010000000000e0140000df0100000000000027000000000000001a000000dc06d0ea000040800f0000",
+   "material": "Poplar(S)"
+  },
+  {
+   "entity_id": 105439,
+   "capa": 0,
+   "px": [
+    4493,
+    2708
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60228,
+   "cola": "00004080110000",
+   "crudo": "df9b0100000000008d110000940a00000000000027000000000000001a000000dc0644eb00004080110000"
+  },
+  {
+   "entity_id": 105440,
+   "capa": 2,
+   "px": [
+    4188,
+    2213
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60228,
+   "cola": "00004080110000",
+   "crudo": "e09b0100020000005c100000a50800000000000027000000000000001a000000dc0644eb00004080110000"
+  },
+  {
+   "entity_id": 105441,
+   "capa": 2,
+   "px": [
+    4369,
+    2838
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60222,
+   "cola": "00004080110000",
+   "crudo": "e19b01000200000011110000160b00000000000027000000000000001a000000dc063eeb00004080110000"
+  },
+  {
+   "entity_id": 105442,
+   "capa": 0,
+   "px": [
+    4455,
+    2478
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60129,
+   "cola": "00004080110000",
+   "crudo": "e29b01000000000067110000ae0900000000000027000000000000001a000000dc06e1ea00004080110000",
+   "material": "Leafy Bush(L)"
+  },
+  {
+   "entity_id": 105443,
+   "capa": 2,
+   "px": [
+    4266,
+    2316
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60129,
+   "cola": "00004080110000",
+   "crudo": "e39b010002000000aa1000000c0900000000000027000000000000001a000000dc06e1ea00004080110000",
+   "material": "Leafy Bush(L)"
+  },
+  {
+   "entity_id": 105444,
+   "capa": 0,
+   "px": [
+    6315,
+    2046
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60228,
+   "cola": "00004080110000",
+   "crudo": "e49b010000000000ab180000fe0700000000000027000000000000001a000000dc0644eb00004080110000"
+  },
+  {
+   "entity_id": 105445,
+   "capa": 2,
+   "px": [
+    6429,
+    2009
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60222,
+   "cola": "00004080110000",
+   "crudo": "e59b0100020000001d190000d90700000000000027000000000000001a000000dc063eeb00004080110000"
+  },
+  {
+   "entity_id": 105446,
+   "capa": 0,
+   "px": [
+    6731,
+    2225
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60222,
+   "cola": "00004080110000",
+   "crudo": "e69b0100000000004b1a0000b10800000000000027000000000000001a000000dc063eeb00004080110000"
+  },
+  {
+   "entity_id": 105447,
+   "capa": 2,
+   "px": [
+    6301,
+    1872
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60129,
+   "cola": "00004080110000",
+   "crudo": "e79b0100020000009d180000500700000000000027000000000000001a000000dc06e1ea00004080110000",
+   "material": "Leafy Bush(L)"
+  },
+  {
+   "entity_id": 105448,
+   "capa": 2,
+   "px": [
+    6856,
+    2271
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60129,
+   "cola": "00004080110000",
+   "crudo": "e89b010002000000c81a0000df0800000000000027000000000000001a000000dc06e1ea00004080110000",
+   "material": "Leafy Bush(L)"
+  },
+  {
+   "entity_id": 105449,
+   "capa": 2,
+   "px": [
+    9628,
+    3031
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60174,
+   "cola": "00004080110000",
+   "crudo": "e99b0100020000009c250000d70b00000000000027000000000000001a000000dc060eeb00004080110000"
+  },
+  {
+   "entity_id": 105450,
+   "capa": 0,
+   "px": [
+    3960,
+    4029
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60174,
+   "cola": "00004080110000",
+   "crudo": "ea9b010000000000780f0000bd0f00000000000027000000000000001a000000dc060eeb00004080110000"
+  },
+  {
+   "entity_id": 105451,
+   "capa": 0,
+   "px": [
+    4626,
+    4209
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60174,
+   "cola": "00004080110000",
+   "crudo": "eb9b01000000000012120000711000000000000027000000000000001a000000dc060eeb00004080110000"
+  },
+  {
+   "entity_id": 105452,
+   "capa": 2,
+   "px": [
+    3786,
+    3954
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60134,
+   "cola": "00004080110000",
+   "crudo": "ec9b010002000000ca0e0000720f00000000000027000000000000001a000000dc06e6ea00004080110000"
+  },
+  {
+   "entity_id": 105453,
+   "capa": 2,
+   "px": [
+    4765,
+    4116
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60134,
+   "cola": "00004080110000",
+   "crudo": "ed9b0100020000009d120000141000000000000027000000000000001a000000dc06e6ea00004080110000"
+  },
+  {
+   "entity_id": 105454,
+   "capa": 0,
+   "px": [
+    9575,
+    3227
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60134,
+   "cola": "00004080110000",
+   "crudo": "ee9b010000000000672500009b0c00000000000027000000000000001a000000dc06e6ea00004080110000"
+  },
+  {
+   "entity_id": 105455,
+   "capa": 0,
+   "px": [
+    9454,
+    3286
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60174,
+   "cola": "00004080110000",
+   "crudo": "ef9b010000000000ee240000d60c00000000000027000000000000001a000000dc060eeb00004080110000"
+  },
+  {
+   "entity_id": 105456,
+   "capa": 0,
+   "px": [
+    9281,
+    3413
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60174,
+   "cola": "00004080110000",
+   "crudo": "f09b01000000000041240000550d00000000000027000000000000001a000000dc060eeb00004080110000"
+  },
+  {
+   "entity_id": 105457,
+   "capa": 0,
+   "px": [
+    1386,
+    755
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60074,
+   "cola": "00004080120000",
+   "crudo": "f19b0100000000006a050000f30200000000000027000000000000001a000000dc06aaea00004080120000"
+  },
+  {
+   "entity_id": 105458,
+   "capa": 0,
+   "px": [
+    1328,
+    668
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60075,
+   "cola": "00000000000000",
+   "crudo": "f29b010000000000300500009c0200000000000027000000000000001a000000dc06abea00000000000000"
+  },
+  {
+   "entity_id": 105459,
+   "capa": 0,
+   "px": [
+    1298,
+    798
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60075,
+   "cola": "00000000000000",
+   "crudo": "f39b010000000000120500001e0300000000000027000000000000001a000000dc06abea00000000000000"
+  },
+  {
+   "entity_id": 105460,
+   "capa": 0,
+   "px": [
+    788,
+    497
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60108,
+   "cola": "00000000000000",
+   "crudo": "f49b01000000000014030000f10100000000000027000000000000001a000000dc06ccea00000000000000"
+  },
+  {
+   "entity_id": 105461,
+   "capa": 0,
+   "px": [
+    871,
+    524
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60075,
+   "cola": "00000000000000",
+   "crudo": "f59b010000000000670300000c0200000000000027000000000000001a000000dc06abea00000000000000"
+  },
+  {
+   "entity_id": 105462,
+   "capa": 0,
+   "px": [
+    833,
+    398
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60074,
+   "cola": "00004080120000",
+   "crudo": "f69b010000000000410300008e0100000000000027000000000000001a000000dc06aaea00004080120000"
+  },
+  {
+   "entity_id": 105463,
+   "capa": 0,
+   "px": [
+    940,
+    3784
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60075,
+   "cola": "00000000000000",
+   "crudo": "f79b010000000000ac030000c80e00000000000027000000000000001a000000dc06abea00000000000000"
+  },
+  {
+   "entity_id": 105464,
+   "capa": 0,
+   "px": [
+    1006,
+    3874
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60074,
+   "cola": "00004080120000",
+   "crudo": "f89b010000000000ee030000220f00000000000027000000000000001a000000dc06aaea00004080120000"
+  },
+  {
+   "entity_id": 105465,
+   "capa": 0,
+   "px": [
+    9345,
+    523
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60191,
+   "cola": "00004080120000",
+   "crudo": "f99b010000000000812400000b0200000000000027000000000000001a000000dc061feb00004080120000"
+  },
+  {
+   "entity_id": 105466,
+   "capa": 0,
+   "px": [
+    9209,
+    477
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60192,
+   "cola": "00004080120000",
+   "crudo": "fa9b010000000000f9230000dd0100000000000027000000000000001a000000dc0620eb00004080120000",
+   "material": "Fire Alga(S)"
+  },
+  {
+   "entity_id": 105467,
+   "capa": 0,
+   "px": [
+    9272,
+    593
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60074,
+   "cola": "00004080120000",
+   "crudo": "fb9b01000000000038240000510200000000000027000000000000001a000000dc06aaea00004080120000"
+  }
+ ]
+}

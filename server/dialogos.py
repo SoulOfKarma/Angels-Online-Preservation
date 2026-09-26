@@ -462,7 +462,7 @@ def opciones_de(linea: bytes):
 
 
 def respuesta_a(opcion_id: int, entidad: int = 0, val: int = 4,
-                nombre: str = '', stage: int = 0):
+                nombre: str = '', stage: int = 0, nivel: int = 0):
     """Devuelve tupla de sub-mensajes: apertura de tienda y/o cierre/continuacion de dialogo."""
     if opcion_id in TIENDAS_POR_OPCION:
         if opcion_id == 12103 and entidad in TIENDAS_POR_ENTIDAD:
@@ -472,6 +472,17 @@ def respuesta_a(opcion_id: int, entidad: int = 0, val: int = 4,
         pkg_shop = struct.pack('<HH', 0x0034, shop_id)
         pkg_cierre = struct.pack('<H', 0x0012) + FIN
         return (pkg_shop, pkg_cierre)
+
+    if opcion_id == 5976:
+        if nivel >= 60:
+            return (armar_linea(7503, val, [7505, 7506],
+                                acciones=[0x0f42dc, 0x0f42dd]),)
+        return (armar_linea(7504, val, [7507, 7508],
+                            acciones=[0x0f42de, 0x0f42df]),)
+    if opcion_id == 7509:
+        return (armar_linea(7510, val), armar_linea(7511, val))
+    if opcion_id == 7554 or opcion_id in (7505, 7506, 7507, 7508):
+        return (struct.pack('<H', 0x0012) + FIN,)
 
     # Pet Expert: 6101 "Tell me about pets", 6103 "Pet Revival" (WND_PET_RESURRECT 0x0066)
     if opcion_id == 6101:

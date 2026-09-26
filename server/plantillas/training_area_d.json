@@ -1,0 +1,1471 @@
+{
+ "_nota": "Training Area D (stage 136). REPLICA de training_area_a.json (stage 118), por decision expresa del usuario, que recorrio las cuatro y confirma que tienen LOS MISMOS bichos y el mismo portal de salida. Las diferencias que daban las capturas -- A con 48 monstruos y B con 33 -- no eran del mapa sino de cuanto se camino en cada uno. LO QUE ESTO SIGNIFICA: especies y cantidades vienen de una captura real del 118, pero LAS POSICIONES NO SON DE ESTE MAPA: map118, map134, map135 y map136 son cuatro archivos de terreno DISTINTOS, asi que una casilla del 118 no es el mismo sitio aqui y algun bicho puede quedar en una pared o en el agua. Cada spawn lleva 'copiado_de': 118 para distinguirlo de lo capturado. PARA ARREGLARLO: recorrer el mapa con el proxy y volver a generar.",
+ "stage": 136,
+ "spawns": [
+  {
+   "entity_id": 13600000,
+   "nombre": "Terra Keeper",
+   "npc_type": 2087,
+   "sprite": 40008,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    90,
+    62
+   ],
+   "direccion": 5,
+   "visible": 1,
+   "nombre_original": "領地管理員",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13600001,
+   "nombre": "One-eyed Bat",
+   "npc_type": 700,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    60,
+    15
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 24,
+   "nombre_original": "獨眼蝙蝠",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13600002,
+   "nombre": "One-eyed Bat",
+   "npc_type": 700,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    63,
+    7
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 24,
+   "nombre_original": "獨眼蝙蝠",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13600003,
+   "nombre": "One-eyed Bat",
+   "npc_type": 700,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    69,
+    2
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 24,
+   "nombre_original": "獨眼蝙蝠",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13600004,
+   "nombre": "Evil Slarm",
+   "npc_type": 699,
+   "sprite": 42036,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    80,
+    10
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 15,
+   "nombre_original": "進化史萊姆",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13600005,
+   "nombre": "Evil Slarm",
+   "npc_type": 699,
+   "sprite": 42036,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    79,
+    8
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 15,
+   "nombre_original": "進化史萊姆",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13600006,
+   "nombre": "Savage Priest",
+   "npc_type": 704,
+   "sprite": 42088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    106,
+    11
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 48,
+   "nombre_original": "蠻族祭司",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13600007,
+   "nombre": "Savage Priest",
+   "npc_type": 704,
+   "sprite": 42088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    121,
+    17
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 48,
+   "nombre_original": "蠻族祭司",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13600008,
+   "nombre": "Savage Priest",
+   "npc_type": 704,
+   "sprite": 42088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    115,
+    18
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 48,
+   "nombre_original": "蠻族祭司",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13600009,
+   "nombre": "Tree Elf",
+   "npc_type": 703,
+   "sprite": 42044,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    121,
+    10
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 43,
+   "nombre_original": "迷幻樹妖",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13600010,
+   "nombre": "Tree Elf",
+   "npc_type": 703,
+   "sprite": 42044,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    131,
+    13
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 43,
+   "nombre_original": "迷幻樹妖",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13600011,
+   "nombre": "Tree Elf",
+   "npc_type": 703,
+   "sprite": 42044,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    116,
+    31
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 43,
+   "nombre_original": "迷幻樹妖",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13600012,
+   "nombre": "Tree Elf",
+   "npc_type": 703,
+   "sprite": 42044,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    103,
+    31
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 43,
+   "nombre_original": "迷幻樹妖",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13600013,
+   "nombre": "Tree Elf",
+   "npc_type": 703,
+   "sprite": 42044,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    99,
+    26
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 43,
+   "nombre_original": "迷幻樹妖",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13600014,
+   "nombre": "Savage Priest",
+   "npc_type": 704,
+   "sprite": 42088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    94,
+    44
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 48,
+   "nombre_original": "蠻族祭司",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13600015,
+   "nombre": "Savage Priest",
+   "npc_type": 704,
+   "sprite": 42088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    94,
+    46
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 48,
+   "nombre_original": "蠻族祭司",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13600016,
+   "nombre": "One-eyed Bat",
+   "npc_type": 700,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    91,
+    50
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 24,
+   "nombre_original": "獨眼蝙蝠",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13600017,
+   "nombre": "One-eyed Bat",
+   "npc_type": 700,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    84,
+    52
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 24,
+   "nombre_original": "獨眼蝙蝠",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13600018,
+   "nombre": "One-eyed Bat",
+   "npc_type": 700,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    64,
+    55
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 24,
+   "nombre_original": "獨眼蝙蝠",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13600019,
+   "nombre": "One-eyed Bat",
+   "npc_type": 700,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    76,
+    56
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 24,
+   "nombre_original": "獨眼蝙蝠",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13600020,
+   "nombre": "One-eyed Bat",
+   "npc_type": 700,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    77,
+    48
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 24,
+   "nombre_original": "獨眼蝙蝠",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13600021,
+   "nombre": "Busy Jackstraw",
+   "npc_type": 708,
+   "sprite": 42004,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    87,
+    53
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 1,
+   "nombre_original": "練功稻草人",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13600022,
+   "nombre": "Evil Slarm",
+   "npc_type": 699,
+   "sprite": 42036,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    59,
+    59
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 15,
+   "nombre_original": "進化史萊姆",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13600023,
+   "nombre": "Evil Slarm",
+   "npc_type": 699,
+   "sprite": 42036,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    52,
+    55
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 15,
+   "nombre_original": "進化史萊姆",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13600024,
+   "nombre": "Evil Slarm",
+   "npc_type": 699,
+   "sprite": 42036,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    52,
+    54
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 15,
+   "nombre_original": "進化史萊姆",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13600025,
+   "nombre": "Evil Slarm",
+   "npc_type": 699,
+   "sprite": 42036,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    51,
+    55
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 15,
+   "nombre_original": "進化史萊姆",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13600026,
+   "nombre": "Busy Jackstraw",
+   "npc_type": 708,
+   "sprite": 42004,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    65,
+    60
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 1,
+   "nombre_original": "練功稻草人",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13600027,
+   "nombre": "Wild Lizardman",
+   "npc_type": 702,
+   "sprite": 42173,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    36,
+    73
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 38,
+   "nombre_original": "野生蜥蜴人",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13600028,
+   "nombre": "Wild Lizardman",
+   "npc_type": 702,
+   "sprite": 42173,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    62,
+    85
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 38,
+   "nombre_original": "野生蜥蜴人",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13600029,
+   "nombre": "Dark Fungus",
+   "npc_type": 701,
+   "sprite": 42165,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    71,
+    83
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 35,
+   "nombre_original": "黑暗靈芝",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13600030,
+   "nombre": "Dark Fungus",
+   "npc_type": 701,
+   "sprite": 42165,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    75,
+    84
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 35,
+   "nombre_original": "黑暗靈芝",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13600031,
+   "nombre": "Evil Slarm",
+   "npc_type": 699,
+   "sprite": 42036,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    127,
+    69
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 15,
+   "nombre_original": "進化史萊姆",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13600032,
+   "nombre": "Evil Slarm",
+   "npc_type": 699,
+   "sprite": 42036,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    122,
+    68
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 15,
+   "nombre_original": "進化史萊姆",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13600033,
+   "nombre": "One-eyed Bat",
+   "npc_type": 700,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    108,
+    69
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 24,
+   "nombre_original": "獨眼蝙蝠",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13600034,
+   "nombre": "One-eyed Bat",
+   "npc_type": 700,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    108,
+    73
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 24,
+   "nombre_original": "獨眼蝙蝠",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13600035,
+   "nombre": "One-eyed Bat",
+   "npc_type": 700,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    106,
+    86
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 24,
+   "nombre_original": "獨眼蝙蝠",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13600036,
+   "nombre": "One-eyed Bat",
+   "npc_type": 700,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    103,
+    91
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 24,
+   "nombre_original": "獨眼蝙蝠",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13600037,
+   "nombre": "One-eyed Bat",
+   "npc_type": 700,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    103,
+    79
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 24,
+   "nombre_original": "獨眼蝙蝠",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13600038,
+   "nombre": "One-eyed Bat",
+   "npc_type": 700,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    77,
+    10
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 24,
+   "nombre_original": "獨眼蝙蝠",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13600039,
+   "nombre": "One-eyed Bat",
+   "npc_type": 700,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    68,
+    4
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 24,
+   "nombre_original": "獨眼蝙蝠",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13600040,
+   "nombre": "Evil Wind Elf",
+   "npc_type": 705,
+   "sprite": 42059,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    13,
+    32
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 53,
+   "nombre_original": "疾風邪靈",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13600041,
+   "nombre": "Mirror Elf",
+   "npc_type": 706,
+   "sprite": 42061,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    9,
+    22
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 55,
+   "nombre_original": "水鏡邪靈",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13600042,
+   "nombre": "Mirror Elf",
+   "npc_type": 706,
+   "sprite": 42061,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    12,
+    23
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 55,
+   "nombre_original": "水鏡邪靈",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13600043,
+   "nombre": "Evil Wind Elf",
+   "npc_type": 705,
+   "sprite": 42059,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    30,
+    29
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 53,
+   "nombre_original": "疾風邪靈",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13600044,
+   "nombre": "Mirror Elf",
+   "npc_type": 706,
+   "sprite": 42061,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    28,
+    21
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 55,
+   "nombre_original": "水鏡邪靈",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13600045,
+   "nombre": "Mirror Elf",
+   "npc_type": 706,
+   "sprite": 42061,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    23,
+    25
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 55,
+   "nombre_original": "水鏡邪靈",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13600046,
+   "nombre": "Evil Wind Elf",
+   "npc_type": 705,
+   "sprite": 42059,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    36,
+    27
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 53,
+   "nombre_original": "疾風邪靈",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13600047,
+   "nombre": "Evil Wind Elf",
+   "npc_type": 705,
+   "sprite": 42059,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    36,
+    32
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 53,
+   "nombre_original": "疾風邪靈",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13600048,
+   "nombre": "Evil Wind Elf",
+   "npc_type": 705,
+   "sprite": 42059,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    43,
+    31
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 53,
+   "nombre_original": "疾風邪靈",
+   "copiado_de": 118
+  }
+ ],
+ "recursos": [
+  {
+   "entity_id": 13650000,
+   "capa": 0,
+   "px": [
+    3288,
+    2665
+   ],
+   "medio": "0000000041000080c80002800f000080",
+   "marca": 20,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "5048d00000000000d80c0000690a00000000000041000080c80002800f000080140665ea00000000000000",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13650001,
+   "capa": 0,
+   "px": [
+    4691,
+    2268
+   ],
+   "medio": "00a6b9d2a5faafbeaae1c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00000481030000",
+   "crudo": "5148d0000000000053120000dc08000000a6b9d2a5faafbeaae1c24f00000000000661ea00000481030000",
+   "que_es": "tornado (portal)",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13650002,
+   "capa": 0,
+   "px": [
+    4464,
+    2449
+   ],
+   "medio": "000000001d0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "5248d000000000007011000091090000000000001d0000000000000000000000000665ea00000000000000",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13650003,
+   "capa": 0,
+   "px": [
+    4367,
+    2320
+   ],
+   "medio": "00000000280000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "5348d000000000000f1100001009000000000000280000000000000000000000000665ea00000000000000",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13650004,
+   "capa": 0,
+   "px": [
+    4463,
+    2191
+   ],
+   "medio": "000000001b0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "5448d000000000006f1100008f080000000000001b0000000000000000000000000665ea00000000000000",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13650005,
+   "capa": 0,
+   "px": [
+    3715,
+    310
+   ],
+   "medio": "000000002b0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000",
+   "crudo": "5548d00000000000830e000036010000000000002b0000000000000000000000000686ea00000000000000",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13650006,
+   "capa": 0,
+   "px": [
+    2277,
+    323
+   ],
+   "medio": "00000000410000800f00008032001080",
+   "marca": 80,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "5648d00000000000e50800004301000000000000410000800f00008032001080500665ea00000000000000",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13650007,
+   "capa": 0,
+   "px": [
+    3232,
+    2848
+   ],
+   "medio": "000000001f0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "5748d00000000000a00c0000200b0000000000001f0000000000000000000000000665ea00000000000000",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13650008,
+   "capa": 0,
+   "px": [
+    2378,
+    1896
+   ],
+   "medio": "00000000410000800f00008032001080",
+   "marca": 80,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "5848d000000000004a0900006807000000000000410000800f00008032001080500665ea00000000000000",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13650009,
+   "capa": 0,
+   "px": [
+    1908,
+    1910
+   ],
+   "medio": "00a6b9d2b6c2c260c471afdf00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000",
+   "crudo": "5948d00000000000740700007607000000a6b9d2b6c2c260c471afdf00000000000683ea00000000000000",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13650010,
+   "capa": 0,
+   "px": [
+    2753,
+    1481
+   ],
+   "medio": "00a6b9d2b4b9bffbc471afdf00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "5a48d00000000000c10a0000c905000000a6b9d2b4b9bffbc471afdf00000000000665ea00000000000000",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13650011,
+   "capa": 0,
+   "px": [
+    1747,
+    1790
+   ],
+   "medio": "00000000210000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000",
+   "crudo": "5b48d00000000000d3060000fe06000000000000210000000000000000000000000683ea00000000000000",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13650012,
+   "capa": 0,
+   "px": [
+    2702,
+    1690
+   ],
+   "medio": "00a6b9d2ac79ac50b3bdc4a600000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "5c48d000000000008e0a00009a06000000a6b9d2ac79ac50b3bdc4a600000000000665ea00000000000000",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13650013,
+   "capa": 0,
+   "px": [
+    2237,
+    1744
+   ],
+   "medio": "00000000170000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "5d48d00000000000bd080000d006000000000000170000000000000000000000000665ea00000000000000",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13650014,
+   "capa": 0,
+   "px": [
+    3505,
+    1338
+   ],
+   "medio": "000000002b0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000",
+   "crudo": "5e48d00000000000b10d00003a050000000000002b0000000000000000000000000684ea00000000000000",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13650015,
+   "capa": 0,
+   "px": [
+    4101,
+    494
+   ],
+   "medio": "000000002b0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000",
+   "crudo": "5f48d0000000000005100000ee010000000000002b0000000000000000000000000686ea00000000000000",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13650016,
+   "capa": 0,
+   "px": [
+    3908,
+    783
+   ],
+   "medio": "000000002c0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000",
+   "crudo": "6048d00000000000440f00000f030000000000002c0000000000000000000000000684ea00000000000000",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13650017,
+   "capa": 0,
+   "px": [
+    3190,
+    1354
+   ],
+   "medio": "000000002c0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000",
+   "crudo": "6148d00000000000760c00004a050000000000002c0000000000000000000000000684ea00000000000000",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13650018,
+   "capa": 0,
+   "px": [
+    3159,
+    961
+   ],
+   "medio": "00a6b9d2a4dbbbc8c471afdf00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000",
+   "crudo": "6248d00000000000570c0000c103000000a6b9d2a4dbbbc8c471afdf00000000000686ea00000000000000",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13650019,
+   "capa": 0,
+   "px": [
+    623,
+    548
+   ],
+   "medio": "000000001d0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000",
+   "crudo": "6348d000000000006f02000024020000000000001d0000000000000000000000000686ea00000000000000",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13650020,
+   "capa": 0,
+   "px": [
+    624,
+    996
+   ],
+   "medio": "00000000290000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000",
+   "crudo": "6448d0000000000070020000e403000000000000290000000000000000000000000686ea00000000000000",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13650021,
+   "capa": 0,
+   "px": [
+    2465,
+    1641
+   ],
+   "medio": "00000000190000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "6548d00000000000a10900006906000000000000190000000000000000000000000665ea00000000000000",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13650022,
+   "capa": 0,
+   "px": [
+    3593,
+    960
+   ],
+   "medio": "00a6b9d2c073c37ea5de004600000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000",
+   "crudo": "6648d00000000000090e0000c003000000a6b9d2c073c37ea5de004600000000000686ea00000000000000",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13650023,
+   "capa": 0,
+   "px": [
+    2149,
+    183
+   ],
+   "medio": "00000000190000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "6748d0000000000065080000b700000000000000190000000000000000000000000665ea00000000000000",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13650024,
+   "capa": 0,
+   "px": [
+    1611,
+    581
+   ],
+   "medio": "0000000041000080c80002800f000080",
+   "marca": 20,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "6848d000000000004b060000450200000000000041000080c80002800f000080140665ea00000000000000",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13650025,
+   "capa": 0,
+   "px": [
+    1859,
+    473
+   ],
+   "medio": "000000001d0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "6948d0000000000043070000d9010000000000001d0000000000000000000000000665ea00000000000000",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13650026,
+   "capa": 0,
+   "px": [
+    3397,
+    1115
+   ],
+   "medio": "000000002b0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000",
+   "crudo": "6a48d00000000000450d00005b040000000000002b0000000000000000000000000686ea00000000000000",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13650027,
+   "capa": 0,
+   "px": [
+    3833,
+    570
+   ],
+   "medio": "00a6b9d2a4dbbbc8c471afdf00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000",
+   "crudo": "6b48d00000000000f90e00003a02000000a6b9d2a4dbbbc8c471afdf00000000000684ea00000000000000",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13650028,
+   "capa": 0,
+   "px": [
+    3541,
+    518
+   ],
+   "medio": "000000002b0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000",
+   "crudo": "6c48d00000000000d50d000006020000000000002b0000000000000000000000000684ea00000000000000",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13650029,
+   "capa": 0,
+   "px": [
+    2589,
+    257
+   ],
+   "medio": "00000000290000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000",
+   "crudo": "6d48d000000000001d0a00000101000000000000290000000000000000000000000683ea00000000000000",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13650030,
+   "capa": 0,
+   "px": [
+    2421,
+    206
+   ],
+   "medio": "00000000220000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000",
+   "crudo": "6e48d0000000000075090000ce00000000000000220000000000000000000000000683ea00000000000000",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13650031,
+   "capa": 0,
+   "px": [
+    2476,
+    369
+   ],
+   "medio": "000000002b0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000",
+   "crudo": "6f48d00000000000ac09000071010000000000002b0000000000000000000000000683ea00000000000000",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13650032,
+   "capa": 0,
+   "px": [
+    2051,
+    389
+   ],
+   "medio": "000000002b0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "7048d000000000000308000085010000000000002b0000000000000000000000000665ea00000000000000",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13650033,
+   "capa": 0,
+   "px": [
+    3024,
+    2753
+   ],
+   "medio": "00000000250000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "7148d00000000000d00b0000c10a000000000000250000000000000000000000000665ea00000000000000",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13650034,
+   "capa": 0,
+   "px": [
+    1441,
+    897
+   ],
+   "medio": "005501005a02298b04005b02ae220000",
+   "marca": 45,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000",
+   "crudo": "7248d00000000000a105000081030000005501005a02298b04005b02ae2200002d0686ea00000000000000",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13650035,
+   "capa": 0,
+   "px": [
+    1366,
+    726
+   ],
+   "medio": "000000001d0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000",
+   "crudo": "7348d0000000000056050000d6020000000000001d0000000000000000000000000686ea00000000000000",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13650036,
+   "capa": 0,
+   "px": [
+    1199,
+    1036
+   ],
+   "medio": "00000000270000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000",
+   "crudo": "7448d00000000000af0400000c04000000000000270000000000000000000000000686ea00000000000000",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13650037,
+   "capa": 0,
+   "px": [
+    881,
+    996
+   ],
+   "medio": "00663737373263313934346100000080",
+   "marca": 20,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000",
+   "crudo": "7548d0000000000071030000e403000000663737373263313934346100000080140684ea00000000000000",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13650038,
+   "capa": 0,
+   "px": [
+    1077,
+    751
+   ],
+   "medio": "00000000200000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000",
+   "crudo": "7648d0000000000035040000ef02000000000000200000000000000000000000000684ea00000000000000",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13650039,
+   "capa": 0,
+   "px": [
+    800,
+    755
+   ],
+   "medio": "00663737373263313934346100000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000",
+   "crudo": "7748d0000000000020030000f302000000663737373263313934346100000000000686ea00000000000000",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13650040,
+   "capa": 0,
+   "px": [
+    416,
+    851
+   ],
+   "medio": "00a6b9d2b6c2c260c471afdf00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000",
+   "crudo": "7848d00000000000a00100005303000000a6b9d2b6c2c260c471afdf00000000000684ea00000000000000",
+   "copiado_de": 118
+  },
+  {
+   "entity_id": 13650041,
+   "capa": 0,
+   "px": [
+    392,
+    653
+   ],
+   "medio": "000000001e0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000",
+   "crudo": "7948d00000000000880100008d020000000000001e0000000000000000000000000684ea00000000000000",
+   "copiado_de": 118
+  }
+ ]
+}

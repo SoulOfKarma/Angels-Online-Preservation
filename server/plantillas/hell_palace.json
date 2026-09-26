@@ -1,0 +1,3260 @@
+{
+ "_nota": "Hell Palace (stage 72), de Celestia. Se llega desde Underground Square (71). Poblado desde UNA sola sesion. Los objetos de mapa van CRUDOS.",
+ "stage": 72,
+ "spawns": [
+  {
+   "entity_id": 122319,
+   "nombre": "Eden UnionLeader",
+   "npc_type": 2131,
+   "sprite": 40032,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    112,
+    13
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122320,
+   "nombre": "Smith Waliz",
+   "npc_type": 2096,
+   "sprite": 40023,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    53,
+    66
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122321,
+   "nombre": "Smith Rachael",
+   "npc_type": 2234,
+   "sprite": 40109,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    50,
+    69
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 122322,
+   "nombre": "Assistant Lorin",
+   "npc_type": 2691,
+   "sprite": 40168,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    42,
+    93
+   ],
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "entity_id": 1016601,
+   "nombre": "Horn Dragon",
+   "npc_type": 803,
+   "sprite": 42292,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    233,
+    121
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 84
+  },
+  {
+   "entity_id": 1016602,
+   "nombre": "Poison Flower",
+   "npc_type": 809,
+   "sprite": 42296,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    59,
+    46
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 74
+  },
+  {
+   "entity_id": 1016603,
+   "nombre": "Poison Flower",
+   "npc_type": 809,
+   "sprite": 42296,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    72,
+    44
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 74
+  },
+  {
+   "entity_id": 1016604,
+   "nombre": "Poison Flower",
+   "npc_type": 809,
+   "sprite": 42296,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    95,
+    65
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 74
+  },
+  {
+   "entity_id": 1016605,
+   "nombre": "Poison Flower",
+   "npc_type": 809,
+   "sprite": 42296,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    86,
+    62
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 74
+  },
+  {
+   "entity_id": 1016606,
+   "nombre": "Poison Flower",
+   "npc_type": 809,
+   "sprite": 42296,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    65,
+    42
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 74
+  },
+  {
+   "entity_id": 1016607,
+   "nombre": "Poison Flower",
+   "npc_type": 809,
+   "sprite": 42296,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    96,
+    72
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 74
+  },
+  {
+   "entity_id": 1016608,
+   "nombre": "Poison Flower",
+   "npc_type": 809,
+   "sprite": 42296,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    77,
+    42
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 74
+  },
+  {
+   "entity_id": 1016609,
+   "nombre": "Poison Flower",
+   "npc_type": 809,
+   "sprite": 42296,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    124,
+    70
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 74
+  },
+  {
+   "entity_id": 1016610,
+   "nombre": "Poison Flower",
+   "npc_type": 809,
+   "sprite": 42296,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    85,
+    39
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 74
+  },
+  {
+   "entity_id": 1016611,
+   "nombre": "Poison Flower",
+   "npc_type": 809,
+   "sprite": 42296,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    106,
+    68
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 74
+  },
+  {
+   "entity_id": 1016612,
+   "nombre": "Poison Flower",
+   "npc_type": 809,
+   "sprite": 42296,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    173,
+    92
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 74
+  },
+  {
+   "entity_id": 1016613,
+   "nombre": "Poison Flower",
+   "npc_type": 809,
+   "sprite": 42296,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    147,
+    107
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 74
+  },
+  {
+   "entity_id": 1016614,
+   "nombre": "Poison Flower",
+   "npc_type": 809,
+   "sprite": 42296,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    157,
+    95
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 74
+  },
+  {
+   "entity_id": 1016615,
+   "nombre": "Poison Flower",
+   "npc_type": 809,
+   "sprite": 42296,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    163,
+    104
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 74
+  },
+  {
+   "entity_id": 1016616,
+   "nombre": "Poison Flower",
+   "npc_type": 809,
+   "sprite": 42296,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    171,
+    83
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 74
+  },
+  {
+   "entity_id": 1016617,
+   "nombre": "Poison Flower",
+   "npc_type": 809,
+   "sprite": 42296,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    160,
+    85
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 74
+  },
+  {
+   "entity_id": 1016618,
+   "nombre": "Poison Flower",
+   "npc_type": 809,
+   "sprite": 42296,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    122,
+    78
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 74
+  },
+  {
+   "entity_id": 1016619,
+   "nombre": "Poison Flower",
+   "npc_type": 809,
+   "sprite": 42296,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    126,
+    46
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 74
+  },
+  {
+   "entity_id": 1016620,
+   "nombre": "Poison Flower",
+   "npc_type": 809,
+   "sprite": 42296,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    126,
+    80
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 74
+  },
+  {
+   "entity_id": 1016621,
+   "nombre": "Poison Flower",
+   "npc_type": 809,
+   "sprite": 42296,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    119,
+    50
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 74
+  },
+  {
+   "entity_id": 1016622,
+   "nombre": "Terra Miner",
+   "npc_type": 827,
+   "sprite": 42283,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    76,
+    113
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 77
+  },
+  {
+   "entity_id": 1016623,
+   "nombre": "Terra Miner",
+   "npc_type": 827,
+   "sprite": 42283,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    17,
+    94
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 77
+  },
+  {
+   "entity_id": 1016624,
+   "nombre": "Terra Miner",
+   "npc_type": 827,
+   "sprite": 42283,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    54,
+    110
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 77
+  },
+  {
+   "entity_id": 1016625,
+   "nombre": "Terra Miner",
+   "npc_type": 827,
+   "sprite": 42283,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    14,
+    95
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 77
+  },
+  {
+   "entity_id": 1016626,
+   "nombre": "Terra Miner",
+   "npc_type": 827,
+   "sprite": 42283,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    50,
+    105
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 77
+  },
+  {
+   "entity_id": 1016627,
+   "nombre": "Terra Miner",
+   "npc_type": 827,
+   "sprite": 42283,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    139,
+    134
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 77
+  },
+  {
+   "entity_id": 1016628,
+   "nombre": "Terra Miner",
+   "npc_type": 827,
+   "sprite": 42283,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    219,
+    73
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 77
+  },
+  {
+   "entity_id": 1016629,
+   "nombre": "Terra Miner",
+   "npc_type": 827,
+   "sprite": 42283,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    134,
+    123
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 77
+  },
+  {
+   "entity_id": 1016630,
+   "nombre": "Terra Miner",
+   "npc_type": 827,
+   "sprite": 42283,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    136,
+    124
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 77
+  },
+  {
+   "entity_id": 1016631,
+   "nombre": "Terra Miner",
+   "npc_type": 827,
+   "sprite": 42283,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    213,
+    67
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 77
+  },
+  {
+   "entity_id": 1016632,
+   "nombre": "Terra Miner",
+   "npc_type": 827,
+   "sprite": 42283,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    69,
+    112
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 77
+  },
+  {
+   "entity_id": 1016633,
+   "nombre": "Terra Miner",
+   "npc_type": 827,
+   "sprite": 42283,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    83,
+    120
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 77
+  },
+  {
+   "entity_id": 1016634,
+   "nombre": "Terra Miner",
+   "npc_type": 827,
+   "sprite": 42283,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    63,
+    103
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 77
+  },
+  {
+   "entity_id": 1016635,
+   "nombre": "Terra Miner",
+   "npc_type": 827,
+   "sprite": 42283,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    68,
+    107
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 77
+  },
+  {
+   "entity_id": 1016636,
+   "nombre": "Terra Miner",
+   "npc_type": 827,
+   "sprite": 42283,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    85,
+    121
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 77
+  },
+  {
+   "entity_id": 1016637,
+   "nombre": "Terra Miner",
+   "npc_type": 827,
+   "sprite": 42283,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    165,
+    45
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 77
+  },
+  {
+   "entity_id": 1016638,
+   "nombre": "Terra Miner",
+   "npc_type": 827,
+   "sprite": 42283,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    121,
+    47
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 77
+  },
+  {
+   "entity_id": 1016639,
+   "nombre": "Terra Miner",
+   "npc_type": 827,
+   "sprite": 42283,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    158,
+    62
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 77
+  },
+  {
+   "entity_id": 1016640,
+   "nombre": "Terra Miner",
+   "npc_type": 827,
+   "sprite": 42283,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    164,
+    37
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 77
+  },
+  {
+   "entity_id": 1016641,
+   "nombre": "Terra Miner",
+   "npc_type": 827,
+   "sprite": 42283,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    153,
+    55
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 77
+  },
+  {
+   "entity_id": 1016642,
+   "nombre": "Terra Miner",
+   "npc_type": 827,
+   "sprite": 42283,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    228,
+    84
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 77
+  },
+  {
+   "entity_id": 1016643,
+   "nombre": "Terra Miner",
+   "npc_type": 827,
+   "sprite": 42283,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    130,
+    139
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 77
+  },
+  {
+   "entity_id": 1016644,
+   "nombre": "Terra Miner",
+   "npc_type": 827,
+   "sprite": 42283,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    199,
+    104
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 77
+  },
+  {
+   "entity_id": 1016645,
+   "nombre": "Terra Miner",
+   "npc_type": 827,
+   "sprite": 42283,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    199,
+    108
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 77
+  },
+  {
+   "entity_id": 1016646,
+   "nombre": "Terra Miner",
+   "npc_type": 827,
+   "sprite": 42283,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    135,
+    136
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 77
+  },
+  {
+   "entity_id": 1016647,
+   "nombre": "Rotten Slarm",
+   "npc_type": 837,
+   "sprite": 42308,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    161,
+    53
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 77
+  },
+  {
+   "entity_id": 1016648,
+   "nombre": "Rotten Slarm",
+   "npc_type": 837,
+   "sprite": 42308,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    174,
+    30
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 77
+  },
+  {
+   "entity_id": 1016649,
+   "nombre": "Rotten Slarm",
+   "npc_type": 837,
+   "sprite": 42308,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    172,
+    63
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 77
+  },
+  {
+   "entity_id": 1016650,
+   "nombre": "Rotten Slarm",
+   "npc_type": 837,
+   "sprite": 42308,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    159,
+    52
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 77
+  },
+  {
+   "entity_id": 1016651,
+   "nombre": "Rotten Slarm",
+   "npc_type": 837,
+   "sprite": 42308,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    177,
+    65
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 77
+  },
+  {
+   "entity_id": 1016652,
+   "nombre": "Rotten Slarm",
+   "npc_type": 837,
+   "sprite": 42308,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    124,
+    47
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 77
+  },
+  {
+   "entity_id": 1016653,
+   "nombre": "Rotten Slarm",
+   "npc_type": 837,
+   "sprite": 42308,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    132,
+    59
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 77
+  },
+  {
+   "entity_id": 1016654,
+   "nombre": "Rotten Slarm",
+   "npc_type": 837,
+   "sprite": 42308,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    146,
+    27
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 77
+  },
+  {
+   "entity_id": 1016655,
+   "nombre": "Rotten Slarm",
+   "npc_type": 837,
+   "sprite": 42308,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    127,
+    43
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 77
+  },
+  {
+   "entity_id": 1016656,
+   "nombre": "Rotten Slarm",
+   "npc_type": 837,
+   "sprite": 42308,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    140,
+    61
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 77
+  },
+  {
+   "entity_id": 1016657,
+   "nombre": "Rotten Slarm",
+   "npc_type": 837,
+   "sprite": 42308,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    194,
+    52
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 77
+  },
+  {
+   "entity_id": 1016658,
+   "nombre": "Rotten Slarm",
+   "npc_type": 837,
+   "sprite": 42308,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    149,
+    58
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 77
+  },
+  {
+   "entity_id": 1016659,
+   "nombre": "Rotten Slarm",
+   "npc_type": 837,
+   "sprite": 42308,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    187,
+    61
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 77
+  },
+  {
+   "entity_id": 1016660,
+   "nombre": "Rotten Slarm",
+   "npc_type": 837,
+   "sprite": 42308,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    193,
+    50
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 77
+  },
+  {
+   "entity_id": 1016661,
+   "nombre": "Rotten Slarm",
+   "npc_type": 837,
+   "sprite": 42308,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    151,
+    54
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 77
+  },
+  {
+   "entity_id": 1016662,
+   "nombre": "Rotten Slarm",
+   "npc_type": 837,
+   "sprite": 42308,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    147,
+    139
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 77
+  },
+  {
+   "entity_id": 1016663,
+   "nombre": "Rotten Slarm",
+   "npc_type": 837,
+   "sprite": 42308,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    144,
+    119
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 77
+  },
+  {
+   "entity_id": 1016664,
+   "nombre": "Rotten Slarm",
+   "npc_type": 837,
+   "sprite": 42308,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    182,
+    108
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 77
+  },
+  {
+   "entity_id": 1016665,
+   "nombre": "Rotten Slarm",
+   "npc_type": 837,
+   "sprite": 42308,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    145,
+    112
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 77
+  },
+  {
+   "entity_id": 1016666,
+   "nombre": "Rotten Slarm",
+   "npc_type": 837,
+   "sprite": 42308,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    176,
+    111
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 77
+  },
+  {
+   "entity_id": 1016667,
+   "nombre": "Rotten Slarm",
+   "npc_type": 837,
+   "sprite": 42308,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    40,
+    107
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 77
+  },
+  {
+   "entity_id": 1016668,
+   "nombre": "Rotten Slarm",
+   "npc_type": 837,
+   "sprite": 42308,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    29,
+    112
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 77
+  },
+  {
+   "entity_id": 1016669,
+   "nombre": "Rotten Slarm",
+   "npc_type": 837,
+   "sprite": 42308,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    73,
+    93
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 77
+  },
+  {
+   "entity_id": 1016670,
+   "nombre": "Rotten Slarm",
+   "npc_type": 837,
+   "sprite": 42308,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    63,
+    99
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 77
+  },
+  {
+   "entity_id": 1016671,
+   "nombre": "Rotten Slarm",
+   "npc_type": 837,
+   "sprite": 42308,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    31,
+    109
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 77
+  },
+  {
+   "entity_id": 1016672,
+   "nombre": "Fire Fly",
+   "npc_type": 846,
+   "sprite": 42277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    49,
+    39
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 72
+  },
+  {
+   "entity_id": 1016673,
+   "nombre": "Fire Fly",
+   "npc_type": 846,
+   "sprite": 42277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    55,
+    34
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 72
+  },
+  {
+   "entity_id": 1016674,
+   "nombre": "Fire Fly",
+   "npc_type": 846,
+   "sprite": 42277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    37,
+    43
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 72
+  },
+  {
+   "entity_id": 1016675,
+   "nombre": "Fire Fly",
+   "npc_type": 846,
+   "sprite": 42277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    33,
+    42
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 72
+  },
+  {
+   "entity_id": 1016676,
+   "nombre": "Fire Fly",
+   "npc_type": 846,
+   "sprite": 42277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    50,
+    33
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 72
+  },
+  {
+   "entity_id": 1016677,
+   "nombre": "Fire Fly",
+   "npc_type": 846,
+   "sprite": 42277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    141,
+    78
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 72
+  },
+  {
+   "entity_id": 1016678,
+   "nombre": "Fire Fly",
+   "npc_type": 846,
+   "sprite": 42277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    150,
+    93
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 72
+  },
+  {
+   "entity_id": 1016679,
+   "nombre": "Fire Fly",
+   "npc_type": 846,
+   "sprite": 42277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    95,
+    77
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 72
+  },
+  {
+   "entity_id": 1016680,
+   "nombre": "Fire Fly",
+   "npc_type": 846,
+   "sprite": 42277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    139,
+    85
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 72
+  },
+  {
+   "entity_id": 1016681,
+   "nombre": "Fire Fly",
+   "npc_type": 846,
+   "sprite": 42277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    89,
+    82
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 72
+  },
+  {
+   "entity_id": 1016682,
+   "nombre": "Fire Fly",
+   "npc_type": 846,
+   "sprite": 42277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    94,
+    16
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 72
+  },
+  {
+   "entity_id": 1016683,
+   "nombre": "Fire Fly",
+   "npc_type": 846,
+   "sprite": 42277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    73,
+    13
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 72
+  },
+  {
+   "entity_id": 1016684,
+   "nombre": "Fire Fly",
+   "npc_type": 846,
+   "sprite": 42277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    91,
+    14
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 72
+  },
+  {
+   "entity_id": 1016685,
+   "nombre": "Fire Fly",
+   "npc_type": 846,
+   "sprite": 42277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    85,
+    17
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 72
+  },
+  {
+   "entity_id": 1016686,
+   "nombre": "Fire Fly",
+   "npc_type": 846,
+   "sprite": 42277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    96,
+    23
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 72
+  },
+  {
+   "entity_id": 1016687,
+   "nombre": "Fire Fly",
+   "npc_type": 846,
+   "sprite": 42277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    64,
+    30
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 72
+  },
+  {
+   "entity_id": 1016688,
+   "nombre": "Fire Fly",
+   "npc_type": 846,
+   "sprite": 42277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    81,
+    56
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 72
+  },
+  {
+   "entity_id": 1016689,
+   "nombre": "Fire Fly",
+   "npc_type": 846,
+   "sprite": 42277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    108,
+    63
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 72
+  },
+  {
+   "entity_id": 1016690,
+   "nombre": "Fire Fly",
+   "npc_type": 846,
+   "sprite": 42277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    61,
+    29
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 72
+  },
+  {
+   "entity_id": 1016691,
+   "nombre": "Fire Fly",
+   "npc_type": 846,
+   "sprite": 42277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    106,
+    64
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 72
+  },
+  {
+   "entity_id": 1016692,
+   "nombre": "Fire Fly",
+   "npc_type": 846,
+   "sprite": 42277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    112,
+    68
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 72
+  },
+  {
+   "entity_id": 1016693,
+   "nombre": "Fire Fly",
+   "npc_type": 846,
+   "sprite": 42277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    132,
+    48
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 72
+  },
+  {
+   "entity_id": 1016694,
+   "nombre": "Fire Fly",
+   "npc_type": 846,
+   "sprite": 42277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    145,
+    87
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 72
+  },
+  {
+   "entity_id": 1016695,
+   "nombre": "Fire Fly",
+   "npc_type": 846,
+   "sprite": 42277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    130,
+    50
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 72
+  },
+  {
+   "entity_id": 1016696,
+   "nombre": "Fire Fly",
+   "npc_type": 846,
+   "sprite": 42277,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    122,
+    71
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 72
+  },
+  {
+   "entity_id": 1016697,
+   "nombre": "Gluttonous Angel",
+   "npc_type": 849,
+   "sprite": 42287,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    221,
+    51
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 79
+  },
+  {
+   "entity_id": 1016698,
+   "nombre": "Gluttonous Angel",
+   "npc_type": 849,
+   "sprite": 42287,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    238,
+    84
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 79
+  },
+  {
+   "entity_id": 1016699,
+   "nombre": "Gluttonous Angel",
+   "npc_type": 849,
+   "sprite": 42287,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    210,
+    84
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 79
+  },
+  {
+   "entity_id": 1016700,
+   "nombre": "Gluttonous Angel",
+   "npc_type": 849,
+   "sprite": 42287,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    220,
+    87
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 79
+  },
+  {
+   "entity_id": 1016701,
+   "nombre": "Gluttonous Angel",
+   "npc_type": 849,
+   "sprite": 42287,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    232,
+    78
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 79
+  },
+  {
+   "entity_id": 1016702,
+   "nombre": "Gluttonous Angel",
+   "npc_type": 849,
+   "sprite": 42287,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    211,
+    72
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 79
+  },
+  {
+   "entity_id": 1016703,
+   "nombre": "Gluttonous Angel",
+   "npc_type": 849,
+   "sprite": 42287,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    190,
+    76
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 79
+  },
+  {
+   "entity_id": 1016704,
+   "nombre": "Gluttonous Angel",
+   "npc_type": 849,
+   "sprite": 42287,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    202,
+    113
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 79
+  },
+  {
+   "entity_id": 1016705,
+   "nombre": "Gluttonous Angel",
+   "npc_type": 849,
+   "sprite": 42287,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    117,
+    125
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 79
+  },
+  {
+   "entity_id": 1016706,
+   "nombre": "Gluttonous Angel",
+   "npc_type": 849,
+   "sprite": 42287,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    116,
+    121
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 79
+  },
+  {
+   "entity_id": 1016707,
+   "nombre": "Gluttonous Angel",
+   "npc_type": 849,
+   "sprite": 42287,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    130,
+    124
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 79
+  },
+  {
+   "entity_id": 1016708,
+   "nombre": "Gluttonous Angel",
+   "npc_type": 849,
+   "sprite": 42287,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    137,
+    108
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 79
+  },
+  {
+   "entity_id": 1016709,
+   "nombre": "Gluttonous Angel",
+   "npc_type": 849,
+   "sprite": 42287,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    112,
+    128
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 79
+  },
+  {
+   "entity_id": 1016710,
+   "nombre": "Gluttonous Angel",
+   "npc_type": 849,
+   "sprite": 42287,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    129,
+    112
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 79
+  },
+  {
+   "entity_id": 1016711,
+   "nombre": "Gluttonous Angel",
+   "npc_type": 849,
+   "sprite": 42287,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    118,
+    126
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 79
+  },
+  {
+   "entity_id": 1016712,
+   "nombre": "Declined Angel",
+   "npc_type": 852,
+   "sprite": 42311,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    227,
+    120
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 82
+  },
+  {
+   "entity_id": 1016713,
+   "nombre": "Declined Angel",
+   "npc_type": 852,
+   "sprite": 42311,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    238,
+    116
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 82
+  },
+  {
+   "entity_id": 1016714,
+   "nombre": "Declined Angel",
+   "npc_type": 852,
+   "sprite": 42311,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    204,
+    144
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 82
+  },
+  {
+   "entity_id": 1016715,
+   "nombre": "Declined Angel",
+   "npc_type": 852,
+   "sprite": 42311,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    222,
+    120
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 82
+  },
+  {
+   "entity_id": 1016716,
+   "nombre": "Declined Angel",
+   "npc_type": 852,
+   "sprite": 42311,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    203,
+    134
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 82
+  },
+  {
+   "entity_id": 1016717,
+   "nombre": "Sealed Elf Lord",
+   "npc_type": 881,
+   "sprite": 42318,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    196,
+    38
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 79
+  },
+  {
+   "entity_id": 1016718,
+   "nombre": "Injuried Angel",
+   "npc_type": 885,
+   "sprite": 42323,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    121,
+    121
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 82
+  },
+  {
+   "entity_id": 1016719,
+   "nombre": "Fire Ghost Kid",
+   "npc_type": 906,
+   "sprite": 42321,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    20,
+    85
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 74
+  },
+  {
+   "entity_id": 1016720,
+   "nombre": "Fire Ghost Kid",
+   "npc_type": 906,
+   "sprite": 42321,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    38,
+    89
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 74
+  },
+  {
+   "entity_id": 1016721,
+   "nombre": "Fire Ghost Kid",
+   "npc_type": 906,
+   "sprite": 42321,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    21,
+    119
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 74
+  },
+  {
+   "entity_id": 1016722,
+   "nombre": "Fire Ghost Kid",
+   "npc_type": 906,
+   "sprite": 42321,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    26,
+    90
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 74
+  },
+  {
+   "entity_id": 1016723,
+   "nombre": "Fire Ghost Kid",
+   "npc_type": 906,
+   "sprite": 42321,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    21,
+    112
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 74
+  },
+  {
+   "entity_id": 1016724,
+   "nombre": "Fire Ghost Kid",
+   "npc_type": 906,
+   "sprite": 42321,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    174,
+    98
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 74
+  },
+  {
+   "entity_id": 1016725,
+   "nombre": "Fire Ghost Kid",
+   "npc_type": 906,
+   "sprite": 42321,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    180,
+    85
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 74
+  },
+  {
+   "entity_id": 1016726,
+   "nombre": "Fire Ghost Kid",
+   "npc_type": 906,
+   "sprite": 42321,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    90,
+    127
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 74
+  },
+  {
+   "entity_id": 1016727,
+   "nombre": "Fire Ghost Kid",
+   "npc_type": 906,
+   "sprite": 42321,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    187,
+    84
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 74
+  },
+  {
+   "entity_id": 1016728,
+   "nombre": "Fire Ghost Kid",
+   "npc_type": 906,
+   "sprite": 42321,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    83,
+    117
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 74
+  },
+  {
+   "entity_id": 1016729,
+   "nombre": "Fire Ghost Kid",
+   "npc_type": 906,
+   "sprite": 42321,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    137,
+    39
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 74
+  },
+  {
+   "entity_id": 1016730,
+   "nombre": "Fire Ghost Kid",
+   "npc_type": 906,
+   "sprite": 42321,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    176,
+    32
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 74
+  },
+  {
+   "entity_id": 1016731,
+   "nombre": "Fire Ghost Kid",
+   "npc_type": 906,
+   "sprite": 42321,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    196,
+    37
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 74
+  },
+  {
+   "entity_id": 1016732,
+   "nombre": "Fire Ghost Kid",
+   "npc_type": 906,
+   "sprite": 42321,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    192,
+    37
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 74
+  },
+  {
+   "entity_id": 1016733,
+   "nombre": "Fire Ghost Kid",
+   "npc_type": 906,
+   "sprite": 42321,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    140,
+    37
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 74
+  },
+  {
+   "entity_id": 1016734,
+   "nombre": "Riddle Bishop",
+   "npc_type": 911,
+   "sprite": 42345,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    111,
+    102
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 79
+  },
+  {
+   "entity_id": 1016735,
+   "nombre": "Riddle Bishop",
+   "npc_type": 911,
+   "sprite": 42345,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    80,
+    86
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 79
+  },
+  {
+   "entity_id": 1016736,
+   "nombre": "Riddle Bishop",
+   "npc_type": 911,
+   "sprite": 42345,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    98,
+    104
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 79
+  },
+  {
+   "entity_id": 1016737,
+   "nombre": "Riddle Bishop",
+   "npc_type": 911,
+   "sprite": 42345,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    96,
+    96
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 79
+  },
+  {
+   "entity_id": 1016738,
+   "nombre": "Riddle Bishop",
+   "npc_type": 911,
+   "sprite": 42345,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    107,
+    91
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 79
+  },
+  {
+   "entity_id": 1016739,
+   "nombre": "Riddle Bishop",
+   "npc_type": 911,
+   "sprite": 42345,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    154,
+    147
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 79
+  },
+  {
+   "entity_id": 1016740,
+   "nombre": "Riddle Bishop",
+   "npc_type": 911,
+   "sprite": 42345,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    104,
+    123
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 79
+  },
+  {
+   "entity_id": 1016741,
+   "nombre": "Riddle Bishop",
+   "npc_type": 911,
+   "sprite": 42345,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    190,
+    89
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 79
+  },
+  {
+   "entity_id": 1016742,
+   "nombre": "Riddle Bishop",
+   "npc_type": 911,
+   "sprite": 42345,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    160,
+    146
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 79
+  },
+  {
+   "entity_id": 1016743,
+   "nombre": "Riddle Bishop",
+   "npc_type": 911,
+   "sprite": 42345,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    189,
+    83
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 79
+  },
+  {
+   "entity_id": 1016744,
+   "nombre": "Riddle Bishop",
+   "npc_type": 911,
+   "sprite": 42345,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    209,
+    59
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 79
+  },
+  {
+   "entity_id": 1016745,
+   "nombre": "Riddle Bishop",
+   "npc_type": 911,
+   "sprite": 42345,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    210,
+    91
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 79
+  },
+  {
+   "entity_id": 1016746,
+   "nombre": "Riddle Bishop",
+   "npc_type": 911,
+   "sprite": 42345,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    216,
+    116
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 79
+  },
+  {
+   "entity_id": 1016747,
+   "nombre": "Riddle Bishop",
+   "npc_type": 911,
+   "sprite": 42345,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    212,
+    89
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 79
+  },
+  {
+   "entity_id": 1016748,
+   "nombre": "Riddle Bishop",
+   "npc_type": 911,
+   "sprite": 42345,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    214,
+    121
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 79
+  }
+ ],
+ "recursos": [
+  {
+   "entity_id": 105672,
+   "capa": 0,
+   "px": [
+    580,
+    760
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00004080030000",
+   "crudo": "c89c01000000000044020000f80200000000000027000000000000001a000000dc0661ea00004080030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 105673,
+   "capa": 0,
+   "px": [
+    391,
+    4395
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60258,
+   "cola": "00004080110000",
+   "crudo": "c99c010000000000870100002b1100000000000027000000000000001a000000dc0662eb00004080110000",
+   "material": "Flame Bush(L)"
+  },
+  {
+   "entity_id": 105674,
+   "capa": 2,
+   "px": [
+    735,
+    4302
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60258,
+   "cola": "00004080110000",
+   "crudo": "ca9c010002000000df020000ce1000000000000027000000000000001a000000dc0662eb00004080110000",
+   "material": "Flame Bush(L)"
+  },
+  {
+   "entity_id": 105675,
+   "capa": 0,
+   "px": [
+    431,
+    4044
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60258,
+   "cola": "00004080110000",
+   "crudo": "cb9c010000000000af010000cc0f00000000000027000000000000001a000000dc0662eb00004080110000",
+   "material": "Flame Bush(L)"
+  },
+  {
+   "entity_id": 105676,
+   "capa": 2,
+   "px": [
+    759,
+    4254
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60258,
+   "cola": "00004080110000",
+   "crudo": "cc9c010002000000f70200009e1000000000000027000000000000001a000000dc0662eb00004080110000",
+   "material": "Flame Bush(L)"
+  },
+  {
+   "entity_id": 105677,
+   "capa": 2,
+   "px": [
+    384,
+    3869
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60258,
+   "cola": "00004080110000",
+   "crudo": "cd9c010002000000800100001d0f00000000000027000000000000001a000000dc0662eb00004080110000",
+   "material": "Flame Bush(L)"
+  },
+  {
+   "entity_id": 105678,
+   "capa": 0,
+   "px": [
+    339,
+    3204
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60258,
+   "cola": "00004080110000",
+   "crudo": "ce9c01000000000053010000840c00000000000027000000000000001a000000dc0662eb00004080110000",
+   "material": "Flame Bush(L)"
+  },
+  {
+   "entity_id": 105679,
+   "capa": 0,
+   "px": [
+    319,
+    2307
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60258,
+   "cola": "00004080110000",
+   "crudo": "cf9c0100000000003f010000030900000000000027000000000000001a000000dc0662eb00004080110000",
+   "material": "Flame Bush(L)"
+  },
+  {
+   "entity_id": 105680,
+   "capa": 2,
+   "px": [
+    627,
+    2162
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60258,
+   "cola": "00004080110000",
+   "crudo": "d09c01000200000073020000720800000000000027000000000000001a000000dc0662eb00004080110000",
+   "material": "Flame Bush(L)"
+  },
+  {
+   "entity_id": 105681,
+   "capa": 2,
+   "px": [
+    770,
+    1998
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60258,
+   "cola": "00004080110000",
+   "crudo": "d19c01000200000002030000ce0700000000000027000000000000001a000000dc0662eb00004080110000",
+   "material": "Flame Bush(L)"
+  },
+  {
+   "entity_id": 105682,
+   "capa": 0,
+   "px": [
+    451,
+    1984
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60258,
+   "cola": "00004080110000",
+   "crudo": "d29c010000000000c3010000c00700000000000027000000000000001a000000dc0662eb00004080110000",
+   "material": "Flame Bush(L)"
+  },
+  {
+   "entity_id": 105683,
+   "capa": 2,
+   "px": [
+    268,
+    2259
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60264,
+   "cola": "00004080110000",
+   "crudo": "d39c0100020000000c010000d30800000000000027000000000000001a000000dc0668eb00004080110000",
+   "material_posibles": [
+    "Wanderer Den(S)",
+    "WandererDen(M)",
+    "WandererDen(S)"
+   ]
+  },
+  {
+   "entity_id": 105684,
+   "capa": 2,
+   "px": [
+    520,
+    1940
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60264,
+   "cola": "00004080110000",
+   "crudo": "d49c01000200000008020000940700000000000027000000000000001a000000dc0668eb00004080110000",
+   "material_posibles": [
+    "Wanderer Den(S)",
+    "WandererDen(M)",
+    "WandererDen(S)"
+   ]
+  },
+  {
+   "entity_id": 105685,
+   "capa": 0,
+   "px": [
+    732,
+    2100
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60264,
+   "cola": "00004080110000",
+   "crudo": "d59c010000000000dc020000340800000000000027000000000000001a000000dc0668eb00004080110000",
+   "material_posibles": [
+    "Wanderer Den(S)",
+    "WandererDen(M)",
+    "WandererDen(S)"
+   ]
+  },
+  {
+   "entity_id": 105686,
+   "capa": 2,
+   "px": [
+    324,
+    4349
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60264,
+   "cola": "00004080110000",
+   "crudo": "d69c01000200000044010000fd1000000000000027000000000000001a000000dc0668eb00004080110000",
+   "material_posibles": [
+    "Wanderer Den(S)",
+    "WandererDen(M)",
+    "WandererDen(S)"
+   ]
+  },
+  {
+   "entity_id": 105687,
+   "capa": 0,
+   "px": [
+    696,
+    4277
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60264,
+   "cola": "00004080110000",
+   "crudo": "d79c010000000000b8020000b51000000000000027000000000000001a000000dc0668eb00004080110000",
+   "material_posibles": [
+    "Wanderer Den(S)",
+    "WandererDen(M)",
+    "WandererDen(S)"
+   ]
+  },
+  {
+   "entity_id": 105688,
+   "capa": 2,
+   "px": [
+    470,
+    3989
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60264,
+   "cola": "00004080110000",
+   "crudo": "d89c010002000000d6010000950f00000000000027000000000000001a000000dc0668eb00004080110000",
+   "material_posibles": [
+    "Wanderer Den(S)",
+    "WandererDen(M)",
+    "WandererDen(S)"
+   ]
+  },
+  {
+   "entity_id": 105689,
+   "capa": 0,
+   "px": [
+    762,
+    4205
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60264,
+   "cola": "00004080110000",
+   "crudo": "d99c010000000000fa0200006d1000000000000027000000000000001a000000dc0668eb00004080110000",
+   "material_posibles": [
+    "Wanderer Den(S)",
+    "WandererDen(M)",
+    "WandererDen(S)"
+   ]
+  },
+  {
+   "entity_id": 105690,
+   "capa": 0,
+   "px": [
+    688,
+    3923
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60264,
+   "cola": "00004080110000",
+   "crudo": "da9c010000000000b0020000530f00000000000027000000000000001a000000dc0668eb00004080110000",
+   "material_posibles": [
+    "Wanderer Den(S)",
+    "WandererDen(M)",
+    "WandererDen(S)"
+   ]
+  },
+  {
+   "entity_id": 105691,
+   "capa": 0,
+   "px": [
+    1928,
+    3989
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60256,
+   "cola": "000040800f0000",
+   "crudo": "db9c01000000000088070000950f00000000000027000000000000001a000000dc0660eb000040800f0000"
+  },
+  {
+   "entity_id": 105692,
+   "capa": 0,
+   "px": [
+    1448,
+    3952
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60256,
+   "cola": "000040800f0000",
+   "crudo": "dc9c010000000000a8050000700f00000000000027000000000000001a000000dc0660eb000040800f0000"
+  },
+  {
+   "entity_id": 105693,
+   "capa": 2,
+   "px": [
+    2219,
+    3984
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60256,
+   "cola": "000040800f0000",
+   "crudo": "dd9c010002000000ab080000900f00000000000027000000000000001a000000dc0660eb000040800f0000"
+  },
+  {
+   "entity_id": 105694,
+   "capa": 2,
+   "px": [
+    1200,
+    3964
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60256,
+   "cola": "000040800f0000",
+   "crudo": "de9c010002000000b00400007c0f00000000000027000000000000001a000000dc0660eb000040800f0000"
+  },
+  {
+   "entity_id": 105695,
+   "capa": 2,
+   "px": [
+    4945,
+    2301
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60256,
+   "cola": "000040800f0000",
+   "crudo": "df9c01000200000051130000fd0800000000000027000000000000001a000000dc0660eb000040800f0000"
+  },
+  {
+   "entity_id": 105696,
+   "capa": 2,
+   "px": [
+    4911,
+    2316
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60257,
+   "cola": "000040800f0000",
+   "crudo": "e09c0100020000002f1300000c0900000000000027000000000000001a000000dc0661eb000040800f0000"
+  },
+  {
+   "entity_id": 105697,
+   "capa": 0,
+   "px": [
+    5069,
+    2223
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60257,
+   "cola": "000040800f0000",
+   "crudo": "e19c010000000000cd130000af0800000000000027000000000000001a000000dc0661eb000040800f0000"
+  },
+  {
+   "entity_id": 105698,
+   "capa": 0,
+   "px": [
+    2220,
+    4016
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60257,
+   "cola": "000040800f0000",
+   "crudo": "e29c010000000000ac080000b00f00000000000027000000000000001a000000dc0661eb000040800f0000"
+  },
+  {
+   "entity_id": 105699,
+   "capa": 2,
+   "px": [
+    1910,
+    3986
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60257,
+   "cola": "000040800f0000",
+   "crudo": "e39c01000200000076070000920f00000000000027000000000000001a000000dc0661eb000040800f0000"
+  },
+  {
+   "entity_id": 105700,
+   "capa": 0,
+   "px": [
+    1492,
+    3962
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60257,
+   "cola": "000040800f0000",
+   "crudo": "e49c010000000000d40500007a0f00000000000027000000000000001a000000dc0661eb000040800f0000"
+  },
+  {
+   "entity_id": 105701,
+   "capa": 2,
+   "px": [
+    1173,
+    3985
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60255,
+   "cola": "000040800f0000",
+   "crudo": "e59c01000200000095040000910f00000000000027000000000000001a000000dc065feb000040800f0000",
+   "material_posibles": [
+    "Big Birch",
+    "Birch(L)"
+   ]
+  },
+  {
+   "entity_id": 105702,
+   "capa": 2,
+   "px": [
+    2172,
+    4044
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60255,
+   "cola": "000040800f0000",
+   "crudo": "e69c0100020000007c080000cc0f00000000000027000000000000001a000000dc065feb000040800f0000",
+   "material_posibles": [
+    "Big Birch",
+    "Birch(L)"
+   ]
+  },
+  {
+   "entity_id": 105703,
+   "capa": 2,
+   "px": [
+    2093,
+    4020
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60255,
+   "cola": "000040800f0000",
+   "crudo": "e79c0100020000002d080000b40f00000000000027000000000000001a000000dc065feb000040800f0000",
+   "material_posibles": [
+    "Big Birch",
+    "Birch(L)"
+   ]
+  },
+  {
+   "entity_id": 105704,
+   "capa": 2,
+   "px": [
+    4875,
+    2290
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60255,
+   "cola": "000040800f0000",
+   "crudo": "e89c0100020000000b130000f20800000000000027000000000000001a000000dc065feb000040800f0000",
+   "material_posibles": [
+    "Big Birch",
+    "Birch(L)"
+   ]
+  },
+  {
+   "entity_id": 105705,
+   "capa": 0,
+   "px": [
+    5041,
+    2237
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60255,
+   "cola": "000040800f0000",
+   "crudo": "e99c010000000000b1130000bd0800000000000027000000000000001a000000dc065feb000040800f0000",
+   "material_posibles": [
+    "Big Birch",
+    "Birch(L)"
+   ]
+  },
+  {
+   "entity_id": 105706,
+   "capa": 0,
+   "px": [
+    7418,
+    784
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60250,
+   "cola": "00004080100000",
+   "crudo": "ea9c010000000000fa1c0000100300000000000027000000000000001a000000dc065aeb00004080100000"
+  },
+  {
+   "entity_id": 105707,
+   "capa": 0,
+   "px": [
+    7127,
+    919
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60250,
+   "cola": "00004080100000",
+   "crudo": "eb9c010000000000d71b0000970300000000000027000000000000001a000000dc065aeb00004080100000"
+  },
+  {
+   "entity_id": 105708,
+   "capa": 0,
+   "px": [
+    6956,
+    767
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60250,
+   "cola": "00004080100000",
+   "crudo": "ec9c0100000000002c1b0000ff0200000000000027000000000000001a000000dc065aeb00004080100000"
+  },
+  {
+   "entity_id": 105709,
+   "capa": 0,
+   "px": [
+    1849,
+    2387
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60250,
+   "cola": "00004080100000",
+   "crudo": "ed9c01000000000039070000530900000000000027000000000000001a000000dc065aeb00004080100000"
+  },
+  {
+   "entity_id": 105710,
+   "capa": 2,
+   "px": [
+    2146,
+    2291
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60250,
+   "cola": "00004080100000",
+   "crudo": "ee9c01000200000062080000f30800000000000027000000000000001a000000dc065aeb00004080100000"
+  },
+  {
+   "entity_id": 105711,
+   "capa": 2,
+   "px": [
+    1952,
+    2389
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60251,
+   "cola": "00004080100000",
+   "crudo": "ef9c010002000000a0070000550900000000000027000000000000001a000000dc065beb00004080100000"
+  },
+  {
+   "entity_id": 105712,
+   "capa": 0,
+   "px": [
+    2181,
+    2327
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60251,
+   "cola": "00004080100000",
+   "crudo": "f09c01000000000085080000170900000000000027000000000000001a000000dc065beb00004080100000"
+  },
+  {
+   "entity_id": 105713,
+   "capa": 2,
+   "px": [
+    6896,
+    772
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60251,
+   "cola": "00004080100000",
+   "crudo": "f19c010002000000f01a0000040300000000000027000000000000001a000000dc065beb00004080100000"
+  },
+  {
+   "entity_id": 105714,
+   "capa": 0,
+   "px": [
+    7388,
+    726
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60251,
+   "cola": "00004080100000",
+   "crudo": "f29c010000000000dc1c0000d60200000000000027000000000000001a000000dc065beb00004080100000"
+  },
+  {
+   "entity_id": 105715,
+   "capa": 0,
+   "px": [
+    7382,
+    1062
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60251,
+   "cola": "00004080100000",
+   "crudo": "f39c010000000000d61c0000260400000000000027000000000000001a000000dc065beb00004080100000"
+  },
+  {
+   "entity_id": 105716,
+   "capa": 2,
+   "px": [
+    7441,
+    1024
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60249,
+   "cola": "00004080100000",
+   "crudo": "f49c010002000000111d0000000400000000000027000000000000001a000000dc0659eb00004080100000",
+   "material_posibles": [
+    "Big Gold",
+    "Gold (L)"
+   ]
+  },
+  {
+   "entity_id": 105717,
+   "capa": 0,
+   "px": [
+    7111,
+    860
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60249,
+   "cola": "00004080100000",
+   "crudo": "f59c010000000000c71b00005c0300000000000027000000000000001a000000dc0659eb00004080100000",
+   "material_posibles": [
+    "Big Gold",
+    "Gold (L)"
+   ]
+  },
+  {
+   "entity_id": 105718,
+   "capa": 0,
+   "px": [
+    6776,
+    841
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60249,
+   "cola": "00004080100000",
+   "crudo": "f69c010000000000781a0000490300000000000027000000000000001a000000dc0659eb00004080100000",
+   "material_posibles": [
+    "Big Gold",
+    "Gold (L)"
+   ]
+  },
+  {
+   "entity_id": 105719,
+   "capa": 0,
+   "px": [
+    1891,
+    2429
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60249,
+   "cola": "00004080100000",
+   "crudo": "f79c010000000000630700007d0900000000000027000000000000001a000000dc0659eb00004080100000",
+   "material_posibles": [
+    "Big Gold",
+    "Gold (L)"
+   ]
+  },
+  {
+   "entity_id": 105720,
+   "capa": 2,
+   "px": [
+    2102,
+    2454
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60249,
+   "cola": "00004080100000",
+   "crudo": "f89c01000200000036080000960900000000000027000000000000001a000000dc0659eb00004080100000",
+   "material_posibles": [
+    "Big Gold",
+    "Gold (L)"
+   ]
+  },
+  {
+   "entity_id": 105721,
+   "capa": 0,
+   "px": [
+    3973,
+    343
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60264,
+   "cola": "00004080110000",
+   "crudo": "f99c010000000000850f0000570100000000000027000000000000001a000000dc0668eb00004080110000",
+   "material_posibles": [
+    "Wanderer Den(S)",
+    "WandererDen(M)",
+    "WandererDen(S)"
+   ]
+  },
+  {
+   "entity_id": 105722,
+   "capa": 0,
+   "px": [
+    3698,
+    351
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60264,
+   "cola": "00004080110000",
+   "crudo": "fa9c010000000000720e00005f0100000000000027000000000000001a000000dc0668eb00004080110000",
+   "material_posibles": [
+    "Wanderer Den(S)",
+    "WandererDen(M)",
+    "WandererDen(S)"
+   ]
+  },
+  {
+   "entity_id": 105723,
+   "capa": 2,
+   "px": [
+    3758,
+    303
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60264,
+   "cola": "00004080110000",
+   "crudo": "fb9c010002000000ae0e00002f0100000000000027000000000000001a000000dc0668eb00004080110000",
+   "material_posibles": [
+    "Wanderer Den(S)",
+    "WandererDen(M)",
+    "WandererDen(S)"
+   ]
+  },
+  {
+   "entity_id": 105724,
+   "capa": 0,
+   "px": [
+    4187,
+    203
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60264,
+   "cola": "00004080110000",
+   "crudo": "fc9c0100000000005b100000cb0000000000000027000000000000001a000000dc0668eb00004080110000",
+   "material_posibles": [
+    "Wanderer Den(S)",
+    "WandererDen(M)",
+    "WandererDen(S)"
+   ]
+  },
+  {
+   "entity_id": 105725,
+   "capa": 0,
+   "px": [
+    5343,
+    4966
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60264,
+   "cola": "00004080110000",
+   "crudo": "fd9c010000000000df140000661300000000000027000000000000001a000000dc0668eb00004080110000",
+   "material_posibles": [
+    "Wanderer Den(S)",
+    "WandererDen(M)",
+    "WandererDen(S)"
+   ]
+  },
+  {
+   "entity_id": 105726,
+   "capa": 0,
+   "px": [
+    5484,
+    4960
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60264,
+   "cola": "00004080110000",
+   "crudo": "fe9c0100000000006c150000601300000000000027000000000000001a000000dc0668eb00004080110000",
+   "material_posibles": [
+    "Wanderer Den(S)",
+    "WandererDen(M)",
+    "WandererDen(S)"
+   ]
+  },
+  {
+   "entity_id": 105727,
+   "capa": 2,
+   "px": [
+    5087,
+    4894
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60264,
+   "cola": "00004080110000",
+   "crudo": "ff9c010002000000df1300001e1300000000000027000000000000001a000000dc0668eb00004080110000",
+   "material_posibles": [
+    "Wanderer Den(S)",
+    "WandererDen(M)",
+    "WandererDen(S)"
+   ]
+  },
+  {
+   "entity_id": 105728,
+   "capa": 2,
+   "px": [
+    5732,
+    4897
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60264,
+   "cola": "00004080110000",
+   "crudo": "009d01000200000064160000211300000000000027000000000000001a000000dc0668eb00004080110000",
+   "material_posibles": [
+    "Wanderer Den(S)",
+    "WandererDen(M)",
+    "WandererDen(S)"
+   ]
+  },
+  {
+   "entity_id": 105729,
+   "capa": 0,
+   "px": [
+    6092,
+    5008
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60264,
+   "cola": "00004080110000",
+   "crudo": "019d010000000000cc170000901300000000000027000000000000001a000000dc0668eb00004080110000",
+   "material_posibles": [
+    "Wanderer Den(S)",
+    "WandererDen(M)",
+    "WandererDen(S)"
+   ]
+  },
+  {
+   "entity_id": 105730,
+   "capa": 0,
+   "px": [
+    5638,
+    3479
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60098,
+   "cola": "00004080140000",
+   "crudo": "029d01000000000006160000970d00000000000027000000000000001a000000dc06c2ea00004080140000"
+  },
+  {
+   "entity_id": 105731,
+   "capa": 0,
+   "px": [
+    7605,
+    2741
+   ],
+   "medio": "0000000027000000000000001a000000",
+   "marca": 220,
+   "orient": 6,
+   "sprite": 60157,
+   "cola": "00004080030000",
+   "crudo": "039d010000000000b51d0000b50a00000000000027000000000000001a000000dc06fdea00004080030000"
+  }
+ ]
+}

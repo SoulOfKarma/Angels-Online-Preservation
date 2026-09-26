@@ -944,6 +944,22 @@
     "dibujar": false,
     "preguntar": false,
     "nota": "Sad Abyss -> Dragon Graveyard. Tornado 105326; el jugador iba a (13,181), pegado al tornado. La llegada (178,175) es la que mando Celestia. LOS DOS SENTIDOS MEDIDOS. Queda sin destino el otro tornado, (295,7)."
+   },
+   {
+    "entity": 105327,
+    "tile": [
+     295,
+     7
+    ],
+    "destino": 68,
+    "llegada": [
+     24,
+     124
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Sad Abyss -> Fiery Path (stage 68). ACTIVADO el 25/09/2026, de vuelta capturando en Celestia. Tornado capturado en (295,7), va en los recursos de la plantilla. Medido TRES veces: los tres tramos acabaron en (294,8), a una casilla, y se llego a (24,124) las dos veces que se pudo leer. Radio 3: la llegada de vuelta desde Fiery Path es (287,9), a SIETE de este tornado."
    }
   ],
   "27": [
@@ -1418,6 +1434,22 @@
     "dibujar": false,
     "preguntar": false,
     "nota": "Mariam Waterway -> Dawn Harbor. Tornado 117919; el MOVE_REQ vino de (290,7), a cuatro casillas. La llegada (180,20) es la que mando Celestia. LOS DOS SENTIDOS MEDIDOS. Quedan sin destino (294,175) y (4,175)."
+   },
+   {
+    "entity": 117921,
+    "tile": [
+     4,
+     175
+    ],
+    "destino": 259,
+    "llegada": [
+     282,
+     11
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Mariam Waterway -> Bayan Village (stage 259). ACTIVADO. Tornado capturado en (4,175). Medido DOS veces: los dos tramos acabaron en (5,174), a una casilla. Las llegadas fueron (282,11) y (289,16). Radio 3 con holgura: la llegada de vuelta desde Bayan Village es (9,171), a CINCO de aqui, asi que el techo es 4."
    }
   ],
   "2": [
@@ -2229,6 +2261,22 @@
     "dibujar": false,
     "preguntar": false,
     "nota": "Wishing Tear -> Scrap Iron Village. Tornado 101797, el CUARTO y ultimo de Wishing Tear: con este queda completo. El MOVE_REQ vino de (13,33), a OCHO casillas, con el paso acabando en (6,30), a una: lo coge el portal armado."
+   },
+   {
+    "entity": 711,
+    "tile": [
+     30,
+     10
+    ],
+    "destino": 405,
+    "llegada": [
+     169,
+     104
+    ],
+    "radio": 2,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Wishing Tear -> SANDY HEIGHTS (stage 405), primera parada de Cybertronica. ACTIVADO el 25/09/2026. ESTE TORNADO NO EXISTE EN CELESTIA, como el de Jade Vale al 397: wishing_tear.json, que salio de alli, trae CUATRO tornados -- (5,29), (269,32), (9,171) y (257,162) -- y el mas cercano a este queda a VEINTICINCO casillas. Es el segundo caso confirmado de que la version de Taiwan aniade conexiones a mapas que ya teniamos, no solo mapas nuevos. Medido dos veces: los tramos acabaron en (29,10) y (31,10), y se llego a (169,104) y (172,103). RADIO 2 Y NO MAS: las llegadas de vuelta desde Sandy Heights son (28,7) y (34,7), y la primera cae a TRES casillas de aqui; con radio 3 el jugador rebotaria al aterrizar. Los dos tramos medidos quedan a una, asi que con 2 sigue disparando. Se dibuja a mano con entity 711 (serie 700-711) y la posicion es APROXIMADA: es la casilla donde dispara, no necesariamente donde esta el dibujo."
    }
   ],
   "38": [
@@ -6863,22 +6911,6 @@
     "nota": "Seaside Grotto -> Verdant Shrine. SIN TORNADO CAPTURADO: los dos sprites 60001 del mapa estan en (292,173) y (245,137), los dos en la esquina opuesta. Se dibuja a mano con entity 710 (serie 700-710) y la posicion es APROXIMADA. Medido dos veces: los dos tramos acabaron justo en (6,4) y se llego a (286,165) y (282,166). Radio 3: las llegadas desde Verdant Shrine son (10,10) y (13,7), a SEIS y a SIETE."
    },
    {
-    "entity": 872612998,
-    "tile": [
-     245,
-     137
-    ],
-    "destino": null,
-    "llegada": null,
-    "radio": 3,
-    "dibujar": false,
-    "preguntar": false,
-    "sin_medir": true,
-    "desactivado": true,
-    "mismo_mapa": true,
-    "nota": "Tornado de vuelta del teletransporte de las ESFERAS, dentro del propio Seaside Grotto. El usuario lo situa en torno a (244,138) y dice que devuelve a la zona de las esferas, en (212,130). NO ESTA MEDIDO: para cruzarlo no hace falta 0x000C, asi que no deja rastro de cambio de mapa, y en esta sesion no se aisló su 0x0003. Queda anotado para medirlo cruzandolo y mirando a donde salta el jugador. Ver la entrada del dialogo 516358 para el sentido de ida."
-   },
-   {
     "entity": 853410657,
     "tile": [
      292,
@@ -6896,6 +6928,617 @@
      161
     ],
     "nota": "Entrada de INSTANCIA de Seaside Grotto, avisada por el usuario y respaldada por el cliente. El jumpmap.xml trae DOS destinos para el stage 402: el id 336 en (13,13) con la clase 37 a secas, y el id 337 en (280,161) con clase 37 MAS UNA 19. Esa clase de mas es la misma senal que delató la entrada de instancia de Bling Plaza, y el punto (280,161) queda a DOCE casillas de este tornado, una distancia parecida a las ocho de aquel. No se cruzo. Queda DESACTIVADA como las otras 15 entradas de instancia del proyecto."
+   },
+   {
+    "entity": 872612998,
+    "tile": [
+     245,
+     137
+    ],
+    "destino": 402,
+    "llegada": [
+     218,
+     125
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "mismo_mapa": true,
+    "solo_0003": true,
+    "nota": "LA VUELTA del teletransporte de las estatuas, dentro del propio Seaside Grotto. SE PISA, no se clica: el usuario lo confirmo y la captura lo respalda -- el segundo de los dos saltos no tuvo NINGUN clic delante. El primero si traia un 0x0005 sobre esta entidad, pero era el clic para CAMINAR hacia el tornado, no para activarlo; quedarse con ese llevo a implementarlo mal una vez. Medido dos veces el 25/09/2026: los tramos de los MOVE_REQ acabaron en (246,138) y (246,137), a una casilla del tornado (245,137), y se llego a (218,125) las dos veces, viniendo de (247,142) y de (249,141). Radio 3: la llegada (218,125) queda a VEINTISIETE casillas de aqui, asi que no hay riesgo de rebote; y la ida deja al jugador en (244,143), a SEIS, tambien fuera. solo_0003: este salto NO manda el 0x0016 de los portales internos de Lost Trail. Se busco en toda la sesion y no hay ni un 0x0016; lo unico que llega es el 0x0003 que recoloca al personaje."
+   }
+  ],
+  "405": [
+   {
+    "entity": 500697379,
+    "tile": [
+     171,
+     109
+    ],
+    "destino": 37,
+    "llegada": [
+     28,
+     7
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "sin_medir": false,
+    "nota": "Sandy Heights -> Wishing Tear. ACTIVADO el 25/09/2026. El tornado SI esta capturado, en (171,109), y va en los recursos de la plantilla, asi que el servidor lo dibuja solo; la casilla se corrigio de (171,108), que era donde acababa el tramo, a la del tornado, que esta a una. Medido dos veces: los tramos acabaron en (172,108) y (170,108), y se llego a (28,7) y (34,7). RADIO 3 Y NO MAS: las llegadas desde Wishing Tear son (169,104) y (172,103), a CINCO y a SEIS. OJO AL PROCESAR ESTA TANDA: a este mapa se llego TAMBIEN con Superwing, id 338 de jumpmap.xml, y ese salto produce un 0x000C igual que un portal. Los cuatro cruces 37 <-> 405 si son portal de verdad, comprobado mirando si habia un 0x0151 delante."
+   },
+   {
+    "entity": 500762916,
+    "tile": [
+     8,
+     174
+    ],
+    "destino": 406,
+    "llegada": [
+     276,
+     10
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Sandy Heights -> Wise Institute (stage 406). ACTIVADO el 25/09/2026. Tornado capturado en (8,174). Medido TRES veces: los tramos acabaron en (9,173) dos veces y (9,174) una; las llegadas fueron (276,10), (275,7) y (278,12). Radio 3: las llegadas de vuelta desde el 406 son (19,174) y (16,171), a ONCE y a OCHO, holgadamente fuera."
+   }
+  ],
+  "406": [
+   {
+    "entity": null,
+    "tile": [
+     282,
+     8
+    ],
+    "destino": 405,
+    "llegada": [
+     19,
+     174
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Wise Institute -> Sandy Heights. NO SE DIBUJA: se dibujo uno a mano encima y se veian dos. Medido dos veces: los dos tramos acabaron justo en (282,8), y se llego a (19,174) y (16,171). RADIO 3 Y NO MAS: las llegadas desde Sandy Heights son (276,10), (275,7) y (278,12), y la ultima cae a CUATRO de aqui."
+   },
+   {
+    "entity": 172164373,
+    "tile": [
+     292,
+     171
+    ],
+    "destino": 407,
+    "llegada": [
+     14,
+     9
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Wise Institute -> Clank Oasis (stage 407). ACTIVADO. Tornado capturado en (292,171). Medido dos veces: los dos tramos acabaron en (291,170), a una casilla, y se llego a (14,9). RADIO 3 Y NO MAS: la llegada de vuelta desde el 407 es (286,169), a SEIS, asi que el techo es 5."
+   },
+   {
+    "entity": 172098836,
+    "tile": [
+     7,
+     173
+    ],
+    "destino": 408,
+    "llegada": [
+     286,
+     10
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Wise Institute -> IRONBONE WORKS (stage 408). ACTIVADO. Medido CUATRO veces. Tornado capturado en (7,173); los tramos acabaron en (8,172) dos veces y (7,172) dos, todos a una casilla o encima. Las llegadas fueron (286,10) dos veces y (285,13) una; se usa (286,10). RADIO 3 Y NO MAS: las llegadas de vuelta desde el 408 son (7,168) y (13,171), y la primera cae a CINCO de este tornado, asi que el techo es 4. ACTIVARLO poniendo destino 408."
+   }
+  ],
+  "407": [
+   {
+    "entity": 1964246916,
+    "tile": [
+     8,
+     5
+    ],
+    "destino": 406,
+    "llegada": [
+     286,
+     169
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "sin_medir": false,
+    "nota": "Clank Oasis -> Wise Institute. El tornado ESTA CAPTURADO, en (8,5), y va en los recursos de la plantilla, asi que el servidor lo dibuja solo. NO se dibuja a mano. LECCION: en el primer recorrido el mapa no trajo NI UN sprite 60001 y se dio por un paso invisible; se llego a dibujar uno a mano y el usuario lo hizo quitar. Al volver a pasar por el, aparecio. La ausencia de un tornado en una captura NO significa que no exista, solo que no se paso cerca. La casilla del portal se movio de (9,6), donde acababa el tramo medido, a la del tornado, que esta a una. Radio 3: la llegada desde el 406 es (14,9), a SEIS de aqui."
+   }
+  ],
+  "408": [
+   {
+    "entity": null,
+    "tile": [
+     292,
+     9
+    ],
+    "destino": 406,
+    "llegada": [
+     7,
+     168
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "sin_medir": false,
+    "nota": "Ironbone Works -> Wise Institute. ACTIVADO. Medido TRES veces, los tres tramos acabaron JUSTO en (292,9). Las llegadas fueron (7,168) dos veces y (13,171) una; se usa la repetida. SIN TORNADO ahi: el mapa se recorrio entero y sus dos sprites 60001 estan en (10,5) y (273,167), los dos lejos. No se dibuja nada a mano. Radio 3: las llegadas desde el 406 son (286,10) y (285,13), a SEIS y a SIETE."
+   },
+   {
+    "entity": 1797849146,
+    "tile": [
+     10,
+     5
+    ],
+    "destino": 409,
+    "llegada": [
+     235,
+     140
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Ironbone Works -> MACHINERY RUINS (stage 409), ACTIVADO. Tornado capturado en (10,5). Medido TRES veces: los tramos acabaron en (13,6) y (11,6) dos veces, o sea a TRES y a UNA casilla. Las llegadas fueron (235,143) y (235,140) dos veces. RADIO 3 Y NO MAS: hace falta 3 para cubrir el tramo de (13,6), y las llegadas de vuelta desde el 409 son (16,11) y (13,10), a SEIS y a CINCO, asi que el techo es 4. ACTIVARLO poniendo destino 409."
+   },
+   {
+    "entity": 1797783609,
+    "tile": [
+     273,
+     167
+    ],
+    "destino": 410,
+    "llegada": [
+     12,
+     8
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Ironbone Works -> STEELY CIRCUIT (stage 410), ACTIVADO. Es el tornado que estaba anotado como 'no se cruzo, no se sabe adonde va'; se cruzo TRES veces y va aqui. Tornado capturado en (273,167); los tres tramos acabaron en (272,166), a una casilla. Las llegadas fueron (12,8) dos veces y (11,11) una; se usa la repetida. RADIO 3 Y NO MAS: las llegadas de vuelta desde el 410 son (268,163) y (263,164), a CINCO y a DIEZ, asi que el techo es 4. ACTIVARLO poniendo destino 410."
+   }
+  ],
+  "118": [
+   {
+    "entity": null,
+    "tile": [
+     139,
+     76
+    ],
+    "destino": 22,
+    "llegada": [
+     202,
+     109
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Training Area (stage 118) -> Mysterious Garden (22). NO SE DIBUJA: el tornado ya viene en los recursos de la plantilla, capturado. Se llego a dibujar OTRO encima por error y se veian dos. La casilla (139,76) la leyo el usuario del minimapa; los tramos medidos acabaron por (145,70). La llegada (202,109) esta medida, observada dos veces al aparecer en Mysterious Garden.",
+    "copiado_de": null
+   }
+  ],
+  "134": [
+   {
+    "entity": null,
+    "tile": [
+     139,
+     76
+    ],
+    "destino": 22,
+    "llegada": [
+     202,
+     109
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Training Area (stage 134) -> Mysterious Garden (22). NO SE DIBUJA: el tornado ya viene en los recursos de la plantilla, capturado. Se llego a dibujar OTRO encima por error y se veian dos. La casilla (139,76) la leyo el usuario del minimapa; los tramos medidos acabaron por (145,70). La llegada (202,109) esta medida, observada dos veces al aparecer en Mysterious Garden.",
+    "copiado_de": 118
+   }
+  ],
+  "135": [
+   {
+    "entity": null,
+    "tile": [
+     139,
+     76
+    ],
+    "destino": 22,
+    "llegada": [
+     202,
+     109
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Training Area (stage 135) -> Mysterious Garden (22). NO SE DIBUJA: el tornado ya viene en los recursos de la plantilla, capturado. Se llego a dibujar OTRO encima por error y se veian dos. La casilla (139,76) la leyo el usuario del minimapa; los tramos medidos acabaron por (145,70). La llegada (202,109) esta medida, observada dos veces al aparecer en Mysterious Garden.",
+    "copiado_de": 118
+   }
+  ],
+  "136": [
+   {
+    "entity": null,
+    "tile": [
+     139,
+     76
+    ],
+    "destino": 22,
+    "llegada": [
+     202,
+     109
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Training Area (stage 136) -> Mysterious Garden (22). NO SE DIBUJA: el tornado ya viene en los recursos de la plantilla, capturado. Se llego a dibujar OTRO encima por error y se veian dos. La casilla (139,76) la leyo el usuario del minimapa; los tramos medidos acabaron por (145,70). La llegada (202,109) esta medida, observada dos veces al aparecer en Mysterious Garden.",
+    "copiado_de": 118
+   }
+  ],
+  "409": [
+   {
+    "entity": 854002870,
+    "tile": [
+     243,
+     144
+    ],
+    "destino": 408,
+    "llegada": [
+     13,
+     10
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "sin_medir": false,
+    "nota": "Machinery Ruins -> Ironbone Works. ACTIVADO. ES EL UNICO PASO DEL MAPA: callejon sin salida, confirmado por el usuario al recorrerlo entero y respaldado por la captura, cuyo UNICO sprite 60001 es este. El tornado esta capturado en (243,144) y va en los recursos de la plantilla, asi que el servidor lo dibuja solo; NO dibujar nada a mano. La casilla se ajusto de (242,143), donde acababa un tramo, a la del tornado. Medido TRES veces: los tramos acabaron en (243,144), (240,141) y (242,143). Las llegadas fueron (16,11) y (13,10). Radio 3: las llegadas desde el 408 son (235,143) y (235,140), a SIETE."
+   }
+  ],
+  "410": [
+   {
+    "entity": 2050359438,
+    "tile": [
+     5,
+     5
+    ],
+    "destino": 408,
+    "llegada": [
+     268,
+     163
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "sin_medir": false,
+    "nota": "Steely Circuit -> Ironbone Works. ACTIVADO. El tornado esta capturado en (5,5) y va en los recursos de la plantilla, asi que el servidor lo dibuja solo; NO dibujar nada a mano. La casilla se ajusto de (6,6), donde acababan los tramos, a la del tornado, que esta a una. Medido DOS veces: los dos tramos acabaron justo en (6,6). Las llegadas fueron (268,163) y (263,164). Radio 3: las llegadas desde el 408 son (12,8) y (11,11), a SIETE y a SEIS de aqui."
+   },
+   {
+    "entity": 2050424975,
+    "tile": [
+     77,
+     172
+    ],
+    "destino": null,
+    "llegada": null,
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "sin_medir": true,
+    "desactivado": true,
+    "nota": "ENTRADA DE INSTANCIA de Steely Circuit, avisada por el usuario y confirmada por su captura de pantalla, que lo situa en (78,171) -- a una casilla de este tornado. NO SE CRUZO. Queda DESACTIVADA como las otras 16 entradas de instancia del proyecto: las instancias no estan implementadas. NOTA DEL USUARIO: no encontro paso al otro lado del mapa y dice que parece hecho a proposito; tuvo que llegar con Superwing. Asi que este mapa puede tener dos mitades incomunicadas por diseno."
+   }
+  ],
+  "68": [
+   {
+    "entity": 105396,
+    "tile": [
+     13,
+     131
+    ],
+    "destino": 67,
+    "llegada": [
+     287,
+     9
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Fiery Path -> Sad Abyss. ACTIVADO. Tornado capturado en (13,131). Medido DOS veces: los dos tramos acabaron en (14,130), a una casilla, y se llego a (287,9) las dos. Radio 3 con holgura: la llegada desde Sad Abyss es (24,124), a ONCE de aqui."
+   },
+   {
+    "entity": 105397,
+    "tile": [
+     313,
+     5
+    ],
+    "destino": 69,
+    "llegada": [
+     16,
+     164
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Fiery Path -> Lava Cave (stage 69). ACTIVADO. Era el tornado anotado como 'no se cruzo, no se sabe adonde va'; se cruzo dos veces y va aqui. Los dos tramos acabaron en (312,6), a una casilla, y se llego a (16,164) las dos. Radio 3 con holgura: la llegada de vuelta desde Lava Cave es (303,16), a ONCE de aqui. OJO: la casilla 313 existe, o sea que este mapa pasa de 300 de ancho."
+   }
+  ],
+  "69": [
+   {
+    "entity": 105469,
+    "tile": [
+     10,
+     170
+    ],
+    "destino": 68,
+    "llegada": [
+     303,
+     16
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Lava Cave -> Fiery Path. ACTIVADO. Tornado capturado en (10,170). Medido una vez: el tramo acabo en (11,169), a una casilla, y se llego a (303,16). RADIO 3 Y NO MAS: la llegada desde Fiery Path es (16,164), a SEIS de aqui, asi que el techo es 5."
+   },
+   {
+    "entity": 105468,
+    "tile": [
+     294,
+     17
+    ],
+    "destino": 70,
+    "llegada": [
+     23,
+     156
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Lava Cave -> Flaming Door (stage 70). ACTIVADO. Tornado capturado en (294,17). Medido DOS veces: los tramos acabaron en (293,18) y (293,17), a una casilla. Las llegadas fueron (23,156) y (17,153). Radio 3: la llegada de vuelta desde Flaming Door es (287,17), a SIETE de aqui."
+   },
+   {
+    "entity": 105470,
+    "tile": [
+     250,
+     171
+    ],
+    "destino": null,
+    "llegada": null,
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "sin_medir": true,
+    "desactivado": true,
+    "nota": "ENTRADA DE INSTANCIA de Lava Cave, confirmada por el usuario: de los tres tornados del mapa, el de (10,170) vuelve a Fiery Path, el de (294,17) va a Flaming Door y este es la instancia. NO SE CRUZO. Segun el usuario lleva a MAGIC KITCHEN PATH, que no figura en stage.xml con ese nombre, asi que sera un escenario de instancia con nombre interno distinto. Queda DESACTIVADA como las otras 17.",
+    "punto_del_cliente": null
+   }
+  ],
+  "70": [
+   {
+    "entity": null,
+    "tile": [
+     17,
+     156
+    ],
+    "destino": 69,
+    "llegada": [
+     287,
+     17
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Flaming Door -> Lava Cave. ACTIVADO. Medido una vez: el tramo acabo en (17,156) y se llego a (287,17). Radio 3: las llegadas desde Lava Cave son (23,156) y (17,153), a SEIS y a TRES... la segunda esta JUSTO en el limite, asi que conviene volver a medir este par antes de fiarse. OJO, ALGO NO CUADRA: los dos tornados del mapa estan en (9,162) y (294,151), y el mas cercano a esta casilla queda a OCHO. O el jugador venia caminando y el tramo se corto a medio camino, o el paso no es ninguno de esos dos tornados. No se dibuja nada hasta aclararlo."
+   },
+   {
+    "entity": 105543,
+    "tile": [
+     9,
+     162
+    ],
+    "destino": null,
+    "llegada": null,
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "sin_medir": true,
+    "desactivado": true,
+    "nota": "Tornado de Flaming Door en la esquina suroeste. NO SE CRUZO. Es el mas cercano al punto por el que se vuelve a Lava Cave, a ocho casillas, asi que podria ser ese mismo paso mal medido. Comprobarlo cruzandolo."
+   },
+   {
+    "entity": 105544,
+    "tile": [
+     294,
+     151
+    ],
+    "destino": 71,
+    "llegada": [
+     20,
+     12
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Flaming Door -> Underground Square (stage 71). ACTIVADO. Era el tornado anotado como 'no se cruzo'. Tornado capturado en (294,151). Medido DOS veces: los tramos acabaron en (292,153) y (297,152), a DOS y a TRES casillas. RADIO 3 Y NO MAS: hace falta 3 para cubrir el segundo, y la llegada de vuelta desde el 71 es (287,149), a SIETE, asi que el techo es 6."
+   }
+  ],
+  "71": [
+   {
+    "entity": 105613,
+    "tile": [
+     9,
+     9
+    ],
+    "destino": 70,
+    "llegada": [
+     287,
+     149
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Underground Square -> Flaming Door. ACTIVADO. Tornado capturado en (9,9). Medido una vez: el tramo acabo en (10,10), a una casilla, y se llego a (287,149). Radio 3 con holgura: la llegada desde Flaming Door es (20,12), a ONCE de aqui."
+   },
+   {
+    "entity": 105610,
+    "tile": [
+     252,
+     24
+    ],
+    "destino": null,
+    "llegada": null,
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "sin_medir": true,
+    "desactivado": true,
+    "nota": "ENTRADA DE INSTANCIA de Underground Square, la de GULP ROOM. Queda identificada por descarte: de los tres tornados del mapa, el de (9,9) vuelve a Flaming Door y el de (264,149) va a Hell Palace, asi que este es el que queda. NO SE CRUZO. Gulp Room son CUATRO escenarios en stage.xml: 76, 77, 78 y 79. Queda DESACTIVADA como las otras 17 del proyecto."
+   },
+   {
+    "entity": 105614,
+    "tile": [
+     264,
+     149
+    ],
+    "destino": 72,
+    "llegada": [
+     28,
+     29
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Underground Square -> Hell Palace (stage 72). ACTIVADO. Tornado capturado en (264,149). Medido DOS veces: los dos tramos acabaron en (263,148), a una casilla, y se llego a (28,29). Radio 3 con holgura: la llegada de vuelta desde Hell Palace es (250,143), a CATORCE de aqui."
+   }
+  ],
+  "72": [
+   {
+    "entity": 105672,
+    "tile": [
+     18,
+     23
+    ],
+    "destino": 71,
+    "llegada": [
+     250,
+     143
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Hell Palace -> Underground Square. ACTIVADO. ES EL UNICO PASO DEL MAPA: se recorrio entero y su captura trae UN solo sprite 60001, asi que Hell Palace es un callejon sin salida. Tornado capturado en (18,23). Medido una vez: el tramo acabo en (15,22), a TRES casillas, asi que el radio no puede bajar de 3. La llegada fue (250,143). El techo lo pone la llegada desde el 71, que es (28,29) y esta a DIEZ, asi que hay sitio de sobra."
+   }
+  ],
+  "259": [
+   {
+    "entity": 117929,
+    "tile": [
+     294,
+     9
+    ],
+    "destino": 257,
+    "llegada": [
+     9,
+     171
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Bayan Village -> Mariam Waterway. ACTIVADO. Tornado capturado en (294,9). Medido una vez: el tramo acabo en (293,10), a una casilla, y se llego a (9,171). RADIO 3 Y NO MAS: las llegadas desde Mariam Waterway son (282,11) y (289,16), a DOCE y a SIETE; el techo lo pone la segunda."
+   },
+   {
+    "entity": 117930,
+    "tile": [
+     31,
+     165
+    ],
+    "destino": null,
+    "llegada": null,
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "sin_medir": true,
+    "desactivado": true,
+    "nota": "Tornado de Bayan Village abajo a la izquierda. NO SE CRUZO, no se sabe adonde va."
+   },
+   {
+    "entity": 117931,
+    "tile": [
+     272,
+     148
+    ],
+    "destino": null,
+    "llegada": null,
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": true,
+    "nota": "Bayan Village -> SIAM SQUARE, por un PORTAL CON MENU. Al pisarlo el servidor manda el 0x0012 con el msg 125309 y TRES opciones: 125310 'Siam Square', 125311 'Elite Siam Square' y 125312 'Leave'; sus acciones son 1000001, 1000002 y 0. Solo esta medida la PRIMERA: se eligio Siam Square y se llego al stage 261 en (10,11). Elite Siam Square NO se ha cruzado, asi que su opcion no lleva destino y el servidor se la salta; en stage.xml existe 'Hell Siam Square' (262), que podria ser ese, pero no esta comprobado. El tornado esta en (272,148) y el tramo medido acabo en (274,149), a dos casillas.",
+    "msg": 125309,
+    "opciones": [
+     125310,
+     125311,
+     125312
+    ],
+    "destinos": {
+     "125310": {
+      "destino": 261,
+      "llegada": [
+       10,
+       11
+      ]
+     }
+    }
+   }
+  ],
+  "261": [
+   {
+    "entity": 117935,
+    "tile": [
+     4,
+     3
+    ],
+    "destino": 259,
+    "llegada": [
+     271,
+     142
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Siam Square -> Bayan Village. ACTIVADO. Tornado capturado en (4,3). Medido DOS veces: los dos tramos acabaron en (5,4), a una casilla. Se llego a (271,142), que es justo la casilla del portal con menu de Bayan Village, asi que se entra y se sale por el mismo sitio. Radio 3: la llegada desde Bayan Village es (10,11), a OCHO de aqui. CORRECCION: primero se puso (294,3), elegido a ciegas entre los tres tornados del mapa sin mirar el tramo. Los otros dos, (294,3) y (294,175), siguen SIN CRUZAR."
+   },
+   {
+    "entity": 117934,
+    "tile": [
+     294,
+     3
+    ],
+    "destino": null,
+    "llegada": null,
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "sin_medir": true,
+    "desactivado": true,
+    "nota": "Tornado de Siam Square arriba a la derecha. NO SE CRUZO."
+   },
+   {
+    "entity": 117936,
+    "tile": [
+     294,
+     175
+    ],
+    "destino": null,
+    "llegada": null,
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "sin_medir": true,
+    "desactivado": true,
+    "nota": "Tornado de Siam Square abajo a la derecha. NO SE CRUZO."
    }
   ]
  },

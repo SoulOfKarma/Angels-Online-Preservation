@@ -45,14 +45,26 @@ SALIDA = RAIZ / 'logs' / 'proxy' / 'partido'
 def resumen(f):
     """Cambios de mapa, spawns por tamano y rango de entity_id de una sesion."""
     cambios, tam, ids, movs = [], collections.Counter(), [], 0
+    wings, ultimo_wing = [], -999
+    regs = []
     for linea in pathlib.Path(f).open(encoding='utf-8'):
         try:
-            r = json.loads(linea)
+            regs.append(json.loads(linea))
         except json.JSONDecodeError:
             continue
+    for k, r in enumerate(regs):
         h = r.get('hex') or ''
+        # SUPERWING. El 0x0151 teletransporta y provoca un 0x000C igual que un
+        # portal, asi que sin mirarlo se toma por un cruce y se acaba midiendo
+        # un portal que no existe. Paso: dos saltos con Superwing aparecieron
+        # como "402 -> 21" y "21 -> 276", y el usuario tuvo que avisar.
+        if r.get('dir') == 'c2s' and r.get('opcode') == 0x0151:
+            ultimo_wing = k
         if r.get('dir') == 's2c' and r.get('opcode') == 0x000C and len(h) >= 8:
-            cambios.append(struct.unpack_from('<I', bytes.fromhex(h), 0)[0])
+            st = struct.unpack_from('<I', bytes.fromhex(h), 0)[0]
+            cambios.append(st)
+            if k - ultimo_wing <= 40:
+                wings.append(st)
         elif r.get('dir') == 's2c' and r.get('opcode') == 0x0008:
             b = bytes.fromhex(h)
             tam[len(b)] += 1
@@ -60,21 +72,52 @@ def resumen(f):
                 ids.append(struct.unpack_from('<I', b, 0)[0])
         elif r.get('dir') == 'c2s' and r.get('opcode') == 0x0004:
             movs += 1
-    return {'cambios': cambios, 'tam': tam, 'movs': movs,
+    return {'cambios': cambios, 'wings': wings, 'tam': tam, 'movs': movs,
             'ids': (min(ids), max(ids)) if ids else None,
             'spawns': sum(tam.values())}
 
 
-def origen(r):
-    """'taiwan', 'celestia' o 'sin datos', por tamano de paquete y rango de id."""
+# Nombres conocidos, SOLO para que el informe se lea. La separacion NO depende
+# de esta tabla: si aparece un servidor nuevo se agrupa igual, con su huella.
+CONOCIDOS = {
+    (63, 8): 'taiwan',       # 0x0008 de 63 bytes, entity_id de nueve cifras
+    (63, 9): 'taiwan',
+    (63, 10): 'taiwan',
+    (64, 6): 'celestia',     # 0x0008 de 64 bytes, entity_id de siete cifras
+    (64, 7): 'celestia',
+    (62, 6): 'celestia',
+    (62, 7): 'celestia',
+}
+
+
+def huella(r):
+    """Identifica de QUE servidor es una sesion, sin saber su nombre.
+
+    Se calcula, no se declara. Son dos rasgos que cada servidor tiene fijos y
+    que resultaron suficientes para separar los dos que se han capturado:
+
+      - el TAMANO del 0x0008, que depende de la version del protocolo
+      - el ORDEN DE MAGNITUD del entity_id, o sea cuantas cifras tiene
+
+    De ahi salio el caso que motivo todo esto: una sesion de 64 bytes con ids
+    de siete cifras se colo entre otras de 63 bytes con ids de nueve, y metio
+    veinte Pyramid Cat en un mapa de pulpos.
+
+    Devolver una huella en vez de un nombre es lo que permite que esto siga
+    funcionando si manana se captura de un tercer servidor: no hara falta
+    tocar nada, se agrupara solo y saldra con su huella en el informe.
+    """
     if not r['spawns']:
+        return None
+    tam = r['tam'].most_common(1)[0][0]
+    cifras = len(str(r['ids'][1])) if r['ids'] else 0
+    return (tam, cifras)
+
+
+def nombre_huella(h):
+    if h is None:
         return 'sin datos'
-    t = r['tam'].most_common(1)[0][0]
-    if t == 63 and r['ids'] and r['ids'][1] > 100_000_000:
-        return 'taiwan'
-    if t in (62, 64) or (r['ids'] and r['ids'][1] < 100_000_000):
-        return 'celestia'
-    return 'raro'
+    return CONOCIDOS.get(h, 'desconocido(%dB,%d cifras)' % h)
 
 
 def main():
@@ -102,19 +145,39 @@ def main():
         print('no hay sesiones que procesar')
         return
 
+    # CUAL ES LA FUENTE DE ESTA TANDA. Antes estaba fijo en "taiwan" y todo lo
+    # que fuera de Celestia se descartaba, lo que dejaba el tool inservible
+    # justo al volver a capturar en Celestia. Ahora la fuente la decide la
+    # MAYORIA de las sesiones, y se avisa de las que no encajan, sea cual sea.
+    votos = collections.Counter()
+    for f in fs:
+        h = huella(resumen(f))
+        if h is not None:
+            votos[h] += 1
+    fuente = votos.most_common(1)[0][0] if votos else None
+    if fuente:
+        print('fuente de la tanda: %s  %s' % (nombre_huella(fuente),
+              {nombre_huella(k): v for k, v in votos.items()}))
+        print()
+
     actual = a.stage_inicial
     buenas, mapas = [], collections.defaultdict(list)
     print(f'{"sesion":<22} {"hora":<6} {"origen":<9} {"empieza":>8} '
           f'{"cambios":<22} {"spawns":>7}')
     for f in fs:
         r = resumen(f)
-        org = origen(r)
+        h = huella(r)
+        org = nombre_huella(h)
         hora = datetime.datetime.fromtimestamp(os.path.getmtime(f)).strftime('%H:%M')
         nom = pathlib.Path(f).name.replace('_orden.jsonl', '')[6:]
-        ini = actual if org != 'celestia' else None
+        ajena = fuente is not None and h is not None and h != fuente
+        ini = None if ajena else actual
         print(f'{nom:<22} {hora:<6} {org:<9} {str(ini):>8} '
               f'{str(r["cambios"])[:22]:<22} {r["spawns"]:>7}')
-        if org == 'celestia':
+        if r.get('wings'):
+            print(f'     AVISO: los stages {r["wings"]} se alcanzaron con '
+                  'SUPERWING, no cruzando un portal. No medir portales ahi.')
+        if ajena:
             print('     AVISO: esta sesion NO es de la misma fuente que el '
                   'resto. No se encadena ni se recomienda juntarla.')
         else:

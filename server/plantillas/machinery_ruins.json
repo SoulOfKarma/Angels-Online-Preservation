@@ -1,0 +1,3620 @@
+{
+ "_nota": "Machinery Ruins (stage 409), quinta parada de Cybertronica, del cliente OFICIAL de Taiwan (8.7.5.7). ES UN CALLEJON SIN SALIDA: el usuario lo recorrio entero y confirma que solo se vuelve por donde se entro, y la captura lo respalda -- su UNICO sprite 60001 es el de (243,144), el de vuelta a Ironbone Works. Poblado desde UNA sola sesion. Los objetos van CRUDOS.",
+ "stage": 409,
+ "spawns": [
+  {
+   "entity_id": 871694383,
+   "nombre": "Hadag",
+   "npc_type": 24782,
+   "sprite": 40027,
+   "klass": 400,
+   "monstruo": false,
+   "tile": [
+    78,
+    136
+   ],
+   "direccion": 6,
+   "visible": 1,
+   "nombre_original": "哈代"
+  },
+  {
+   "entity_id": 871956531,
+   "nombre": "Xis",
+   "npc_type": 24764,
+   "sprite": 40757,
+   "klass": 400,
+   "monstruo": false,
+   "tile": [
+    152,
+    127
+   ],
+   "direccion": 6,
+   "visible": 1,
+   "nombre_original": "席斯"
+  },
+  {
+   "entity_id": 872284216,
+   "nombre": "Seus",
+   "npc_type": 24769,
+   "sprite": 40573,
+   "klass": 400,
+   "monstruo": false,
+   "tile": [
+    229,
+    48
+   ],
+   "direccion": 7,
+   "visible": 1,
+   "nombre_original": "修斯"
+  },
+  {
+   "entity_id": 872480827,
+   "nombre": "E-Iron Scavenger",
+   "npc_type": 23610,
+   "sprite": 111435,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    94,
+    12
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 431,
+   "nombre_original": "菁英-鐵渣掠奪者"
+  },
+  {
+   "entity_id": 872611901,
+   "nombre": "E-Iron Scavenger",
+   "npc_type": 23610,
+   "sprite": 111435,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    102,
+    19
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 431,
+   "nombre_original": "菁英-鐵渣掠奪者"
+  },
+  {
+   "entity_id": 872677438,
+   "nombre": "E-Iron Scavenger",
+   "npc_type": 23610,
+   "sprite": 111435,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    110,
+    24
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 431,
+   "nombre_original": "菁英-鐵渣掠奪者"
+  },
+  {
+   "entity_id": 872742975,
+   "nombre": "E-Iron Scavenger",
+   "npc_type": 23610,
+   "sprite": 111435,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    73,
+    28
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 431,
+   "nombre_original": "菁英-鐵渣掠奪者"
+  },
+  {
+   "entity_id": 872808512,
+   "nombre": "E-Heartless Bot",
+   "npc_type": 23611,
+   "sprite": 111436,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    41,
+    36
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 433,
+   "nombre_original": "菁英-無心鐵兵"
+  },
+  {
+   "entity_id": 872874049,
+   "nombre": "E-Heartless Bot",
+   "npc_type": 23611,
+   "sprite": 111436,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    55,
+    31
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 433,
+   "nombre_original": "菁英-無心鐵兵"
+  },
+  {
+   "entity_id": 872939586,
+   "nombre": "E-Heartless Bot",
+   "npc_type": 23611,
+   "sprite": 111436,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    45,
+    45
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 433,
+   "nombre_original": "菁英-無心鐵兵"
+  },
+  {
+   "entity_id": 873005123,
+   "nombre": "E-Heartless Bot",
+   "npc_type": 23611,
+   "sprite": 111436,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    45,
+    28
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 433,
+   "nombre_original": "菁英-無心鐵兵"
+  },
+  {
+   "entity_id": 873070660,
+   "nombre": "E-Heartless Bot",
+   "npc_type": 23611,
+   "sprite": 111436,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    57,
+    34
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 433,
+   "nombre_original": "菁英-無心鐵兵"
+  },
+  {
+   "entity_id": 873136197,
+   "nombre": "Steel Eater Maw",
+   "npc_type": 23613,
+   "sprite": 111465,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    133,
+    34
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 435,
+   "nombre_original": "鋼噬巨嘴茂斯"
+  },
+  {
+   "entity_id": 873267271,
+   "nombre": "Rusty Shell Vine",
+   "npc_type": 23609,
+   "sprite": 111464,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    211,
+    20
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 429,
+   "nombre_original": "鏽殼藤枝"
+  },
+  {
+   "entity_id": 873332808,
+   "nombre": "Rusty Shell Vine",
+   "npc_type": 23609,
+   "sprite": 111464,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    203,
+    29
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 429,
+   "nombre_original": "鏽殼藤枝"
+  },
+  {
+   "entity_id": 873398345,
+   "nombre": "Rusty Shell Vine",
+   "npc_type": 23609,
+   "sprite": 111464,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    226,
+    24
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 429,
+   "nombre_original": "鏽殼藤枝"
+  },
+  {
+   "entity_id": 873463882,
+   "nombre": "Rusty Shell Vine",
+   "npc_type": 23609,
+   "sprite": 111464,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    199,
+    30
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 429,
+   "nombre_original": "鏽殼藤枝"
+  },
+  {
+   "entity_id": 873791567,
+   "nombre": "Rusty Shell Vine",
+   "npc_type": 23609,
+   "sprite": 111464,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    232,
+    50
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 429,
+   "nombre_original": "鏽殼藤枝"
+  },
+  {
+   "entity_id": 873857104,
+   "nombre": "Rusty Shell Vine",
+   "npc_type": 23609,
+   "sprite": 111464,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    216,
+    51
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 429,
+   "nombre_original": "鏽殼藤枝"
+  },
+  {
+   "entity_id": 873922641,
+   "nombre": "Rusty Shell Vine",
+   "npc_type": 23609,
+   "sprite": 111464,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    184,
+    48
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 429,
+   "nombre_original": "鏽殼藤枝"
+  },
+  {
+   "entity_id": 874053715,
+   "nombre": "Rusty Shell Vine",
+   "npc_type": 23609,
+   "sprite": 111464,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    182,
+    38
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 429,
+   "nombre_original": "鏽殼藤枝"
+  },
+  {
+   "entity_id": 874119252,
+   "nombre": "Rusty Shell Vine",
+   "npc_type": 23609,
+   "sprite": 111464,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    179,
+    39
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 429,
+   "nombre_original": "鏽殼藤枝"
+  },
+  {
+   "entity_id": 874184789,
+   "nombre": "Rusty Shell Vine",
+   "npc_type": 23609,
+   "sprite": 111464,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    176,
+    28
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 429,
+   "nombre_original": "鏽殼藤枝"
+  },
+  {
+   "entity_id": 874315863,
+   "nombre": "Rusty Shell Vine",
+   "npc_type": 23609,
+   "sprite": 111464,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    164,
+    36
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 429,
+   "nombre_original": "鏽殼藤枝"
+  },
+  {
+   "entity_id": 874381400,
+   "nombre": "Rusty Shell Vine",
+   "npc_type": 23609,
+   "sprite": 111464,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    179,
+    21
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 429,
+   "nombre_original": "鏽殼藤枝"
+  },
+  {
+   "entity_id": 874446937,
+   "nombre": "Rusty Shell Vine",
+   "npc_type": 23609,
+   "sprite": 111464,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    163,
+    24
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 429,
+   "nombre_original": "鏽殼藤枝"
+  },
+  {
+   "entity_id": 874512474,
+   "nombre": "Rusty Shell Vine",
+   "npc_type": 23609,
+   "sprite": 111464,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    247,
+    32
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 429,
+   "nombre_original": "鏽殼藤枝"
+  },
+  {
+   "entity_id": 874578011,
+   "nombre": "Rusty Shell Vine",
+   "npc_type": 23609,
+   "sprite": 111464,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    263,
+    33
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 429,
+   "nombre_original": "鏽殼藤枝"
+  },
+  {
+   "entity_id": 874643548,
+   "nombre": "Rusty Shell Vine",
+   "npc_type": 23609,
+   "sprite": 111464,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    234,
+    24
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 429,
+   "nombre_original": "鏽殼藤枝"
+  },
+  {
+   "entity_id": 874709085,
+   "nombre": "Rusty Shell Vine",
+   "npc_type": 23609,
+   "sprite": 111464,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    244,
+    23
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 429,
+   "nombre_original": "鏽殼藤枝"
+  },
+  {
+   "entity_id": 874774622,
+   "nombre": "Rusty Shell Vine",
+   "npc_type": 23609,
+   "sprite": 111464,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    230,
+    24
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 429,
+   "nombre_original": "鏽殼藤枝"
+  },
+  {
+   "entity_id": 874971233,
+   "nombre": "Rusty Shell Vine",
+   "npc_type": 23609,
+   "sprite": 111464,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    283,
+    47
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 429,
+   "nombre_original": "鏽殼藤枝"
+  },
+  {
+   "entity_id": 875167844,
+   "nombre": "Rusty Shell Vine",
+   "npc_type": 23609,
+   "sprite": 111464,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    155,
+    53
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 429,
+   "nombre_original": "鏽殼藤枝"
+  },
+  {
+   "entity_id": 875233381,
+   "nombre": "Rusty Shell Vine",
+   "npc_type": 23609,
+   "sprite": 111464,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    152,
+    47
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 429,
+   "nombre_original": "鏽殼藤枝"
+  },
+  {
+   "entity_id": 875298918,
+   "nombre": "Rusty Shell Vine",
+   "npc_type": 23609,
+   "sprite": 111464,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    157,
+    43
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 429,
+   "nombre_original": "鏽殼藤枝"
+  },
+  {
+   "entity_id": 875364455,
+   "nombre": "Rusty Shell Vine",
+   "npc_type": 23609,
+   "sprite": 111464,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    173,
+    38
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 429,
+   "nombre_original": "鏽殼藤枝"
+  },
+  {
+   "entity_id": 875429992,
+   "nombre": "Rusty Shell Vine",
+   "npc_type": 23609,
+   "sprite": 111464,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    148,
+    50
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 429,
+   "nombre_original": "鏽殼藤枝"
+  },
+  {
+   "entity_id": 875495529,
+   "nombre": "Heartless Bot",
+   "npc_type": 23607,
+   "sprite": 111436,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    67,
+    73
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 425,
+   "nombre_original": "無心鐵兵"
+  },
+  {
+   "entity_id": 875561066,
+   "nombre": "Heartless Bot",
+   "npc_type": 23607,
+   "sprite": 111436,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    71,
+    58
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 425,
+   "nombre_original": "無心鐵兵"
+  },
+  {
+   "entity_id": 875626603,
+   "nombre": "Heartless Bot",
+   "npc_type": 23607,
+   "sprite": 111436,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    69,
+    68
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 425,
+   "nombre_original": "無心鐵兵"
+  },
+  {
+   "entity_id": 875692140,
+   "nombre": "Heartless Bot",
+   "npc_type": 23607,
+   "sprite": 111436,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    122,
+    52
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 425,
+   "nombre_original": "無心鐵兵"
+  },
+  {
+   "entity_id": 875757677,
+   "nombre": "Heartless Bot",
+   "npc_type": 23607,
+   "sprite": 111436,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    103,
+    51
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 425,
+   "nombre_original": "無心鐵兵"
+  },
+  {
+   "entity_id": 875888751,
+   "nombre": "Heartless Bot",
+   "npc_type": 23607,
+   "sprite": 111436,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    134,
+    57
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 425,
+   "nombre_original": "無心鐵兵"
+  },
+  {
+   "entity_id": 875954288,
+   "nombre": "Heartless Bot",
+   "npc_type": 23607,
+   "sprite": 111436,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    121,
+    70
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 425,
+   "nombre_original": "無心鐵兵"
+  },
+  {
+   "entity_id": 876085362,
+   "nombre": "Heartless Bot",
+   "npc_type": 23607,
+   "sprite": 111436,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    97,
+    42
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 425,
+   "nombre_original": "無心鐵兵"
+  },
+  {
+   "entity_id": 876150899,
+   "nombre": "Heartless Bot",
+   "npc_type": 23607,
+   "sprite": 111436,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    78,
+    43
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 425,
+   "nombre_original": "無心鐵兵"
+  },
+  {
+   "entity_id": 876216436,
+   "nombre": "Heartless Bot",
+   "npc_type": 23607,
+   "sprite": 111436,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    86,
+    34
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 425,
+   "nombre_original": "無心鐵兵"
+  },
+  {
+   "entity_id": 876347510,
+   "nombre": "Heartless Bot",
+   "npc_type": 23607,
+   "sprite": 111436,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    97,
+    83
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 425,
+   "nombre_original": "無心鐵兵"
+  },
+  {
+   "entity_id": 876413047,
+   "nombre": "Heartless Bot",
+   "npc_type": 23607,
+   "sprite": 111436,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    95,
+    70
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 425,
+   "nombre_original": "無心鐵兵"
+  },
+  {
+   "entity_id": 876478584,
+   "nombre": "Heartless Bot",
+   "npc_type": 23607,
+   "sprite": 111436,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    97,
+    95
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 425,
+   "nombre_original": "無心鐵兵"
+  },
+  {
+   "entity_id": 876544121,
+   "nombre": "Heartless Bot",
+   "npc_type": 23607,
+   "sprite": 111436,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    97,
+    98
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 425,
+   "nombre_original": "無心鐵兵"
+  },
+  {
+   "entity_id": 876609658,
+   "nombre": "Heartless Bot",
+   "npc_type": 23607,
+   "sprite": 111436,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    109,
+    96
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 425,
+   "nombre_original": "無心鐵兵"
+  },
+  {
+   "entity_id": 876675195,
+   "nombre": "Heartless Bot",
+   "npc_type": 23607,
+   "sprite": 111436,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    82,
+    108
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 425,
+   "nombre_original": "無心鐵兵"
+  },
+  {
+   "entity_id": 876740732,
+   "nombre": "Heartless Bot",
+   "npc_type": 23607,
+   "sprite": 111436,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    76,
+    106
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 425,
+   "nombre_original": "無心鐵兵"
+  },
+  {
+   "entity_id": 876806269,
+   "nombre": "Heartless Bot",
+   "npc_type": 23607,
+   "sprite": 111436,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    84,
+    109
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 425,
+   "nombre_original": "無心鐵兵"
+  },
+  {
+   "entity_id": 877330565,
+   "nombre": "Ironhide Flower",
+   "npc_type": 23608,
+   "sprite": 111463,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    155,
+    70
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 427,
+   "nombre_original": "鐵皮怪花"
+  },
+  {
+   "entity_id": 877396102,
+   "nombre": "Ironhide Flower",
+   "npc_type": 23608,
+   "sprite": 111463,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    176,
+    59
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 427,
+   "nombre_original": "鐵皮怪花"
+  },
+  {
+   "entity_id": 877461639,
+   "nombre": "Ironhide Flower",
+   "npc_type": 23608,
+   "sprite": 111463,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    175,
+    60
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 427,
+   "nombre_original": "鐵皮怪花"
+  },
+  {
+   "entity_id": 877854861,
+   "nombre": "Ironhide Flower",
+   "npc_type": 23608,
+   "sprite": 111463,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    229,
+    62
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 427,
+   "nombre_original": "鐵皮怪花"
+  },
+  {
+   "entity_id": 877920398,
+   "nombre": "Ironhide Flower",
+   "npc_type": 23608,
+   "sprite": 111463,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    228,
+    65
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 427,
+   "nombre_original": "鐵皮怪花"
+  },
+  {
+   "entity_id": 877985935,
+   "nombre": "Ironhide Flower",
+   "npc_type": 23608,
+   "sprite": 111463,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    228,
+    70
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 427,
+   "nombre_original": "鐵皮怪花"
+  },
+  {
+   "entity_id": 878706842,
+   "nombre": "Ironhide Flower",
+   "npc_type": 23608,
+   "sprite": 111463,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    252,
+    72
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 427,
+   "nombre_original": "鐵皮怪花"
+  },
+  {
+   "entity_id": 878903453,
+   "nombre": "Ironhide Flower",
+   "npc_type": 23608,
+   "sprite": 111463,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    283,
+    67
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 427,
+   "nombre_original": "鐵皮怪花"
+  },
+  {
+   "entity_id": 878968990,
+   "nombre": "Ironhide Flower",
+   "npc_type": 23608,
+   "sprite": 111463,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    263,
+    65
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 427,
+   "nombre_original": "鐵皮怪花"
+  },
+  {
+   "entity_id": 879165601,
+   "nombre": "Bio Sky Bandit",
+   "npc_type": 23604,
+   "sprite": 111420,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    269,
+    109
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 420,
+   "nombre_original": "空賊生化兵"
+  },
+  {
+   "entity_id": 879231138,
+   "nombre": "Bio Sky Bandit",
+   "npc_type": 23604,
+   "sprite": 111420,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    263,
+    115
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 420,
+   "nombre_original": "空賊生化兵"
+  },
+  {
+   "entity_id": 879296675,
+   "nombre": "Bio Sky Bandit",
+   "npc_type": 23604,
+   "sprite": 111420,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    246,
+    122
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 420,
+   "nombre_original": "空賊生化兵"
+  },
+  {
+   "entity_id": 879362212,
+   "nombre": "Bio Sky Bandit",
+   "npc_type": 23604,
+   "sprite": 111420,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    252,
+    119
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 420,
+   "nombre_original": "空賊生化兵"
+  },
+  {
+   "entity_id": 879427749,
+   "nombre": "Bio Sky Bandit",
+   "npc_type": 23604,
+   "sprite": 111420,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    268,
+    113
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 420,
+   "nombre_original": "空賊生化兵"
+  },
+  {
+   "entity_id": 879493286,
+   "nombre": "Bio Sky Bandit",
+   "npc_type": 23604,
+   "sprite": 111420,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    221,
+    139
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 420,
+   "nombre_original": "空賊生化兵"
+  },
+  {
+   "entity_id": 879558823,
+   "nombre": "Bio Sky Bandit",
+   "npc_type": 23604,
+   "sprite": 111420,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    224,
+    131
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 420,
+   "nombre_original": "空賊生化兵"
+  },
+  {
+   "entity_id": 879689897,
+   "nombre": "Bio Sky Bandit",
+   "npc_type": 23604,
+   "sprite": 111420,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    216,
+    136
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 420,
+   "nombre_original": "空賊生化兵"
+  },
+  {
+   "entity_id": 879755434,
+   "nombre": "Bio Sky Bandit",
+   "npc_type": 23604,
+   "sprite": 111420,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    219,
+    135
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 420,
+   "nombre_original": "空賊生化兵"
+  },
+  {
+   "entity_id": 880017582,
+   "nombre": "Bio Sky Bandit",
+   "npc_type": 23604,
+   "sprite": 111420,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    204,
+    154
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 420,
+   "nombre_original": "空賊生化兵"
+  },
+  {
+   "entity_id": 880148656,
+   "nombre": "Bio Sky Bandit",
+   "npc_type": 23604,
+   "sprite": 111420,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    167,
+    138
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 420,
+   "nombre_original": "空賊生化兵"
+  },
+  {
+   "entity_id": 880214193,
+   "nombre": "Bio Sky Bandit",
+   "npc_type": 23604,
+   "sprite": 111420,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    162,
+    137
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 420,
+   "nombre_original": "空賊生化兵"
+  },
+  {
+   "entity_id": 880804026,
+   "nombre": "Bio Sky Bandit",
+   "npc_type": 23604,
+   "sprite": 111420,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    204,
+    131
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 420,
+   "nombre_original": "空賊生化兵"
+  },
+  {
+   "entity_id": 880935100,
+   "nombre": "Bio Sky Bandit",
+   "npc_type": 23604,
+   "sprite": 111420,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    204,
+    118
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 420,
+   "nombre_original": "空賊生化兵"
+  },
+  {
+   "entity_id": 881066174,
+   "nombre": "Bio Sky Bandit",
+   "npc_type": 23604,
+   "sprite": 111420,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    204,
+    121
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 420,
+   "nombre_original": "空賊生化兵"
+  },
+  {
+   "entity_id": 881131711,
+   "nombre": "Raider Lobb",
+   "npc_type": 23612,
+   "sprite": 111422,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    99,
+    123
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 435,
+   "nombre_original": "盜獵者洛柏"
+  },
+  {
+   "entity_id": 881197248,
+   "nombre": "Rusted Ironman",
+   "npc_type": 23606,
+   "sprite": 111423,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    78,
+    147
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 423,
+   "nombre_original": "鏽蝕鐵人"
+  },
+  {
+   "entity_id": 881262785,
+   "nombre": "Rusted Ironman",
+   "npc_type": 23606,
+   "sprite": 111423,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    68,
+    146
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 423,
+   "nombre_original": "鏽蝕鐵人"
+  },
+  {
+   "entity_id": 881393859,
+   "nombre": "Rusted Ironman",
+   "npc_type": 23606,
+   "sprite": 111423,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    71,
+    131
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 423,
+   "nombre_original": "鏽蝕鐵人"
+  },
+  {
+   "entity_id": 881459396,
+   "nombre": "Rusted Ironman",
+   "npc_type": 23606,
+   "sprite": 111423,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    87,
+    135
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 423,
+   "nombre_original": "鏽蝕鐵人"
+  },
+  {
+   "entity_id": 881590470,
+   "nombre": "Rusted Ironman",
+   "npc_type": 23606,
+   "sprite": 111423,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    51,
+    113
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 423,
+   "nombre_original": "鏽蝕鐵人"
+  },
+  {
+   "entity_id": 881721544,
+   "nombre": "Rusted Ironman",
+   "npc_type": 23606,
+   "sprite": 111423,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    62,
+    132
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 423,
+   "nombre_original": "鏽蝕鐵人"
+  },
+  {
+   "entity_id": 881787081,
+   "nombre": "Rusted Ironman",
+   "npc_type": 23606,
+   "sprite": 111423,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    36,
+    110
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 423,
+   "nombre_original": "鏽蝕鐵人"
+  },
+  {
+   "entity_id": 881918155,
+   "nombre": "Rusted Ironman",
+   "npc_type": 23606,
+   "sprite": 111423,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    36,
+    108
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 423,
+   "nombre_original": "鏽蝕鐵人"
+  },
+  {
+   "entity_id": 881983692,
+   "nombre": "Rusted Ironman",
+   "npc_type": 23606,
+   "sprite": 111423,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    64,
+    90
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 423,
+   "nombre_original": "鏽蝕鐵人"
+  },
+  {
+   "entity_id": 882114766,
+   "nombre": "Rusted Ironman",
+   "npc_type": 23606,
+   "sprite": 111423,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    60,
+    97
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 423,
+   "nombre_original": "鏽蝕鐵人"
+  },
+  {
+   "entity_id": 882180303,
+   "nombre": "Rusted Ironman",
+   "npc_type": 23606,
+   "sprite": 111423,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    40,
+    67
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423,
+   "nombre_original": "鏽蝕鐵人"
+  },
+  {
+   "entity_id": 882245840,
+   "nombre": "Rusted Ironman",
+   "npc_type": 23606,
+   "sprite": 111423,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    30,
+    84
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 423,
+   "nombre_original": "鏽蝕鐵人"
+  },
+  {
+   "entity_id": 882311377,
+   "nombre": "Rusted Ironman",
+   "npc_type": 23606,
+   "sprite": 111423,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    22,
+    80
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 423,
+   "nombre_original": "鏽蝕鐵人"
+  },
+  {
+   "entity_id": 882376914,
+   "nombre": "Rusted Ironman",
+   "npc_type": 23606,
+   "sprite": 111423,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    109,
+    147
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 423,
+   "nombre_original": "鏽蝕鐵人"
+  },
+  {
+   "entity_id": 882442451,
+   "nombre": "Rusted Ironman",
+   "npc_type": 23606,
+   "sprite": 111423,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    114,
+    144
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 423,
+   "nombre_original": "鏽蝕鐵人"
+  },
+  {
+   "entity_id": 882507988,
+   "nombre": "Rusted Ironman",
+   "npc_type": 23606,
+   "sprite": 111423,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    101,
+    147
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 423,
+   "nombre_original": "鏽蝕鐵人"
+  },
+  {
+   "entity_id": 882573525,
+   "nombre": "Iron Scavenger",
+   "npc_type": 23605,
+   "sprite": 111435,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    129,
+    152
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 421,
+   "nombre_original": "鐵渣掠奪者"
+  },
+  {
+   "entity_id": 882639062,
+   "nombre": "Iron Scavenger",
+   "npc_type": 23605,
+   "sprite": 111435,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    118,
+    150
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 421,
+   "nombre_original": "鐵渣掠奪者"
+  },
+  {
+   "entity_id": 882704599,
+   "nombre": "Iron Scavenger",
+   "npc_type": 23605,
+   "sprite": 111435,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    121,
+    153
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 421,
+   "nombre_original": "鐵渣掠奪者"
+  },
+  {
+   "entity_id": 882770136,
+   "nombre": "Iron Scavenger",
+   "npc_type": 23605,
+   "sprite": 111435,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    145,
+    149
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 421,
+   "nombre_original": "鐵渣掠奪者"
+  },
+  {
+   "entity_id": 882835673,
+   "nombre": "Iron Scavenger",
+   "npc_type": 23605,
+   "sprite": 111435,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    135,
+    155
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 421,
+   "nombre_original": "鐵渣掠奪者"
+  },
+  {
+   "entity_id": 882966747,
+   "nombre": "Iron Scavenger",
+   "npc_type": 23605,
+   "sprite": 111435,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    156,
+    120
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 421,
+   "nombre_original": "鐵渣掠奪者"
+  },
+  {
+   "entity_id": 883032284,
+   "nombre": "Iron Scavenger",
+   "npc_type": 23605,
+   "sprite": 111435,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    152,
+    120
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 421,
+   "nombre_original": "鐵渣掠奪者"
+  },
+  {
+   "entity_id": 883097821,
+   "nombre": "Iron Scavenger",
+   "npc_type": 23605,
+   "sprite": 111435,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    126,
+    126
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 421,
+   "nombre_original": "鐵渣掠奪者"
+  },
+  {
+   "entity_id": 883163358,
+   "nombre": "Iron Scavenger",
+   "npc_type": 23605,
+   "sprite": 111435,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    165,
+    120
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 421,
+   "nombre_original": "鐵渣掠奪者"
+  },
+  {
+   "entity_id": 883228895,
+   "nombre": "Iron Scavenger",
+   "npc_type": 23605,
+   "sprite": 111435,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    168,
+    110
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 421,
+   "nombre_original": "鐵渣掠奪者"
+  },
+  {
+   "entity_id": 883556580,
+   "nombre": "Iron Scavenger",
+   "npc_type": 23605,
+   "sprite": 111435,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    207,
+    84
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 421,
+   "nombre_original": "鐵渣掠奪者"
+  },
+  {
+   "entity_id": 883753191,
+   "nombre": "Iron Scavenger",
+   "npc_type": 23605,
+   "sprite": 111435,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    208,
+    95
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 421,
+   "nombre_original": "鐵渣掠奪者"
+  },
+  {
+   "entity_id": 883884265,
+   "nombre": "Iron Scavenger",
+   "npc_type": 23605,
+   "sprite": 111435,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    235,
+    111
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 421,
+   "nombre_original": "鐵渣掠奪者"
+  },
+  {
+   "entity_id": 883949802,
+   "nombre": "Iron Scavenger",
+   "npc_type": 23605,
+   "sprite": 111435,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    219,
+    108
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 421,
+   "nombre_original": "鐵渣掠奪者"
+  },
+  {
+   "entity_id": 884015339,
+   "nombre": "Iron Scavenger",
+   "npc_type": 23605,
+   "sprite": 111435,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    229,
+    108
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 421,
+   "nombre_original": "鐵渣掠奪者"
+  },
+  {
+   "entity_id": 884080876,
+   "nombre": "Iron Scavenger",
+   "npc_type": 23605,
+   "sprite": 111435,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    223,
+    108
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 421,
+   "nombre_original": "鐵渣掠奪者"
+  },
+  {
+   "entity_id": 884146413,
+   "nombre": "Iron Scavenger",
+   "npc_type": 23605,
+   "sprite": 111435,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    230,
+    102
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 421,
+   "nombre_original": "鐵渣掠奪者"
+  }
+ ],
+ "recursos": [
+  {
+   "entity_id": 854002870,
+   "capa": 0,
+   "px": [
+    7794,
+    4621
+   ],
+   "medio": "002d04009200fa2402003a1562510000",
+   "marca": 81,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00000481030000",
+   "crudo": "b60ce73200000000721e00000d120000002d04009200fa2402003a1562510000510661ea00000481030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 854068407,
+   "capa": 0,
+   "px": [
+    7535,
+    4590
+   ],
+   "medio": "0070b2a7abacc37ebef0c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "b70ce832000000006f1d0000ee1100000070b2a7abacc37ebef0c24f00000000000665ea00000000000000"
+  },
+  {
+   "entity_id": 854133944,
+   "capa": 0,
+   "px": [
+    7534,
+    4498
+   ],
+   "medio": "00cfa95aa74ab3bd00ec004f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "b80ce932000000006e1d00009211000000cfa95aa74ab3bd00ec004f00000000000665ea00000000000000"
+  },
+  {
+   "entity_id": 854199481,
+   "capa": 0,
+   "px": [
+    7634,
+    4498
+   ],
+   "medio": "0070c565adbbaefcaff3c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "b90cea3200000000d21d0000921100000070c565adbbaefcaff3c24f00000000000665ea00000000000000"
+  },
+  {
+   "entity_id": 854461629,
+   "capa": 0,
+   "px": [
+    6597,
+    5039
+   ],
+   "medio": "00000000240000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000",
+   "crudo": "bd0cee3200000000c5190000af13000000000000240000000000000000000000000686ea00000000000000"
+  },
+  {
+   "entity_id": 854789314,
+   "capa": 0,
+   "px": [
+    6958,
+    4404
+   ],
+   "medio": "006ab2a7abacc37ebef0c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000",
+   "crudo": "c20cf332000000002e1b000034110000006ab2a7abacc37ebef0c24f00000000000684ea00000000000000"
+  },
+  {
+   "entity_id": 854920388,
+   "capa": 0,
+   "px": [
+    7793,
+    3985
+   ],
+   "medio": "00000000220000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000",
+   "crudo": "c40cf53200000000711e0000910f000000000000220000000000000000000000000683ea00000000000000"
+  },
+  {
+   "entity_id": 854985925,
+   "capa": 0,
+   "px": [
+    8338,
+    3919
+   ],
+   "medio": "00000000290000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000",
+   "crudo": "c50cf63200000000922000004f0f000000000000290000000000000000000000000683ea00000000000000"
+  },
+  {
+   "entity_id": 855051462,
+   "capa": 0,
+   "px": [
+    8399,
+    3728
+   ],
+   "medio": "0070b0adc0aec37ebef0c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000",
+   "crudo": "c60cf73200000000cf200000900e00000070b0adc0aec37ebef0c24f00000000000683ea00000000000000"
+  },
+  {
+   "entity_id": 855116999,
+   "capa": 0,
+   "px": [
+    3729,
+    4145
+   ],
+   "medio": "00c8b2efaff3007ebef0c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60037,
+   "cola": "00000000000000",
+   "crudo": "c70cf83200000000910e00003110000000c8b2efaff3007ebef0c24f00000000000685ea00000000000000"
+  },
+  {
+   "entity_id": 855182536,
+   "capa": 0,
+   "px": [
+    7697,
+    3698
+   ],
+   "medio": "00000000290000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000",
+   "crudo": "c80cf93200000000111e0000720e000000000000290000000000000000000000000683ea00000000000000"
+  },
+  {
+   "entity_id": 855248073,
+   "capa": 0,
+   "px": [
+    8002,
+    3870
+   ],
+   "medio": "0073c5ecb3bd00ec00f3c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000",
+   "crudo": "c90cfa3200000000421f00001e0f00000073c5ecb3bd00ec00f3c24f00000000000683ea00000000000000"
+  },
+  {
+   "entity_id": 855313610,
+   "capa": 0,
+   "px": [
+    3436,
+    4018
+   ],
+   "medio": "00a4b2a7abacc37ebef0c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60037,
+   "cola": "00000000000000",
+   "crudo": "ca0cfb32000000006c0d0000b20f000000a4b2a7abacc37ebef0c24f00000000000685ea00000000000000"
+  },
+  {
+   "entity_id": 855379147,
+   "capa": 0,
+   "px": [
+    3183,
+    3884
+   ],
+   "medio": "00000000250000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60037,
+   "cola": "00000000000000",
+   "crudo": "cb0cfc32000000006f0c00002c0f000000000000250000000000000000000000000685ea00000000000000"
+  },
+  {
+   "entity_id": 855641295,
+   "capa": 0,
+   "px": [
+    5360,
+    4320
+   ],
+   "medio": "00000000240000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000",
+   "crudo": "cf0c003300000000f0140000e010000000000000240000000000000000000000000682ea00000000000000"
+  },
+  {
+   "entity_id": 855706832,
+   "capa": 0,
+   "px": [
+    5092,
+    4516
+   ],
+   "medio": "00860a00430335890a004403d48b0a00",
+   "marca": 96,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000",
+   "crudo": "d00c013300000000e4130000a411000000860a00430335890a004403d48b0a00600682ea00000000000000"
+  },
+  {
+   "entity_id": 855772369,
+   "capa": 0,
+   "px": [
+    4846,
+    4607
+   ],
+   "medio": "00a4bb42c452c471afdf000055000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "d10c023300000000ee120000ff11000000a4bb42c452c471afdf000055000000000665ea00000000000000"
+  },
+  {
+   "entity_id": 855837906,
+   "capa": 0,
+   "px": [
+    4591,
+    4739
+   ],
+   "medio": "00a4a8b3c37ebef0c24f004f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "d20c033300000000ef1100008312000000a4a8b3c37ebef0c24f004f00000000000665ea00000000000000"
+  },
+  {
+   "entity_id": 855903443,
+   "capa": 0,
+   "px": [
+    4371,
+    4847
+   ],
+   "medio": "00d0b8adb241aff30000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "d30c04330000000013110000ef12000000d0b8adb241aff30000000000000000000665ea00000000000000"
+  },
+  {
+   "entity_id": 855968980,
+   "capa": 0,
+   "px": [
+    4082,
+    4942
+   ],
+   "medio": "000000002b0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "d40c053300000000f20f00004e130000000000002b0000000000000000000000000665ea00000000000000"
+  },
+  {
+   "entity_id": 856034517,
+   "capa": 0,
+   "px": [
+    3824,
+    4875
+   ],
+   "medio": "006abbccc54bc471afdf004f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "d50c063300000000f00e00000b130000006abbccc54bc471afdf004f00000000000665ea00000000000000"
+  },
+  {
+   "entity_id": 856100054,
+   "capa": 0,
+   "px": [
+    4239,
+    4204
+   ],
+   "medio": "00d0b8adb241aff30000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000",
+   "crudo": "d60c0733000000008f1000006c10000000d0b8adb241aff30000000000000000000686ea00000000000000"
+  },
+  {
+   "entity_id": 856231128,
+   "capa": 0,
+   "px": [
+    4562,
+    4083
+   ],
+   "medio": "00d0b8adb241aff3004f000022610200",
+   "marca": 58,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000",
+   "crudo": "d80c093300000000d2110000f30f000000d0b8adb241aff3004f0000226102003a0686ea00000000000000"
+  },
+  {
+   "entity_id": 856296665,
+   "capa": 0,
+   "px": [
+    4818,
+    3955
+   ],
+   "medio": "006aaeefacf5bcd8a4ec004f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000",
+   "crudo": "d90c0a3300000000d2120000730f0000006aaeefacf5bcd8a4ec004f00000000000686ea00000000000000"
+  },
+  {
+   "entity_id": 856362202,
+   "capa": 0,
+   "px": [
+    4047,
+    4112
+   ],
+   "medio": "00000000210000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000",
+   "crudo": "da0c0b3300000000cf0f00001010000000000000210000000000000000000000000686ea00000000000000"
+  },
+  {
+   "entity_id": 856689887,
+   "capa": 0,
+   "px": [
+    5234,
+    3318
+   ],
+   "medio": "00be0a00430317c10a004c03f48a0000",
+   "marca": 95,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000",
+   "crudo": "df0c10330000000072140000f60c000000be0a00430317c10a004c03f48a00005f0684ea00000000000000"
+  },
+  {
+   "entity_id": 857804016,
+   "capa": 0,
+   "px": [
+    7449,
+    3348
+   ],
+   "medio": "00a4a5c9aa51a4ec0000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000",
+   "crudo": "f00c213300000000191d0000140d000000a4a5c9aa51a4ec0000000000000000000686ea00000000000000"
+  },
+  {
+   "entity_id": 857869553,
+   "capa": 0,
+   "px": [
+    7411,
+    3538
+   ],
+   "medio": "006ab2a7abacc37ebef0c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000",
+   "crudo": "f10c223300000000f31c0000d20d0000006ab2a7abacc37ebef0c24f00000000000686ea00000000000000"
+  },
+  {
+   "entity_id": 857935090,
+   "capa": 0,
+   "px": [
+    7244,
+    3372
+   ],
+   "medio": "00ccc04db3bd007ebef0c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000",
+   "crudo": "f20c2333000000004c1c00002c0d000000ccc04db3bd007ebef0c24f00000000000686ea00000000000000"
+  },
+  {
+   "entity_id": 858000627,
+   "capa": 0,
+   "px": [
+    7761,
+    3132
+   ],
+   "medio": "00000000180000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000",
+   "crudo": "f30c243300000000511e00003c0c000000000000180000000000000000000000000684ea00000000000000"
+  },
+  {
+   "entity_id": 858328312,
+   "capa": 0,
+   "px": [
+    3503,
+    4683
+   ],
+   "medio": "00000000210000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000",
+   "crudo": "f80c293300000000af0d00004b12000000000000210000000000000000000000000684ea00000000000000"
+  },
+  {
+   "entity_id": 858393849,
+   "capa": 0,
+   "px": [
+    3085,
+    4686
+   ],
+   "medio": "0070b2a7abacc37ebef0c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000",
+   "crudo": "f90c2a33000000000d0c00004e1200000070b2a7abacc37ebef0c24f00000000000684ea00000000000000"
+  },
+  {
+   "entity_id": 858459386,
+   "capa": 0,
+   "px": [
+    3278,
+    4528
+   ],
+   "medio": "000000001a0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000",
+   "crudo": "fa0c2b3300000000ce0c0000b0110000000000001a0000000000000000000000000684ea00000000000000"
+  },
+  {
+   "entity_id": 858524923,
+   "capa": 0,
+   "px": [
+    3025,
+    4434
+   ],
+   "medio": "0070b2a7abacc37ebef0c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000",
+   "crudo": "fb0c2c3300000000d10b0000521100000070b2a7abacc37ebef0c24f00000000000684ea00000000000000"
+  },
+  {
+   "entity_id": 858590460,
+   "capa": 0,
+   "px": [
+    2863,
+    4834
+   ],
+   "medio": "006aaeefacf5bcd8a4ec004f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000",
+   "crudo": "fc0c2d33000000002f0b0000e2120000006aaeefacf5bcd8a4ec004f00000000000684ea00000000000000"
+  },
+  {
+   "entity_id": 858655997,
+   "capa": 0,
+   "px": [
+    2542,
+    4847
+   ],
+   "medio": "00000000160000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "fd0c2e3300000000ee090000ef12000000000000160000000000000000000000000665ea00000000000000"
+  },
+  {
+   "entity_id": 858721534,
+   "capa": 0,
+   "px": [
+    2288,
+    4719
+   ],
+   "medio": "00c707004303ecc9070044038bcc0700",
+   "marca": 96,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "fe0c2f3300000000f00800006f12000000c707004303ecc9070044038bcc0700600665ea00000000000000"
+  },
+  {
+   "entity_id": 858787071,
+   "capa": 0,
+   "px": [
+    2032,
+    4593
+   ],
+   "medio": "00000000190000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "ff0c303300000000f0070000f111000000000000190000000000000000000000000665ea00000000000000"
+  },
+  {
+   "entity_id": 858852608,
+   "capa": 0,
+   "px": [
+    1777,
+    4436
+   ],
+   "medio": "00000000280000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "000d313300000000f10600005411000000000000280000000000000000000000000665ea00000000000000"
+  },
+  {
+   "entity_id": 858918145,
+   "capa": 0,
+   "px": [
+    1518,
+    4301
+   ],
+   "medio": "00000000280000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "010d323300000000ee050000cd10000000000000280000000000000000000000000665ea00000000000000"
+  },
+  {
+   "entity_id": 858983682,
+   "capa": 0,
+   "px": [
+    2802,
+    4339
+   ],
+   "medio": "006ab2a7abacc37ebef0c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000",
+   "crudo": "020d333300000000f20a0000f3100000006ab2a7abacc37ebef0c24f00000000000682ea00000000000000"
+  },
+  {
+   "entity_id": 859049219,
+   "capa": 0,
+   "px": [
+    2609,
+    4208
+   ],
+   "medio": "0070b0adc0aec37ebef0c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000",
+   "crudo": "030d343300000000310a0000701000000070b0adc0aec37ebef0c24f00000000000682ea00000000000000"
+  },
+  {
+   "entity_id": 859114756,
+   "capa": 0,
+   "px": [
+    2416,
+    4114
+   ],
+   "medio": "00000000260000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000",
+   "crudo": "040d353300000000700900001210000000000000260000000000000000000000000682ea00000000000000"
+  },
+  {
+   "entity_id": 859180293,
+   "capa": 0,
+   "px": [
+    2224,
+    4021
+   ],
+   "medio": "00000000190000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000",
+   "crudo": "050d363300000000b0080000b50f000000000000190000000000000000000000000682ea00000000000000"
+  },
+  {
+   "entity_id": 859442441,
+   "capa": 0,
+   "px": [
+    2031,
+    3921
+   ],
+   "medio": "00000000160000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000",
+   "crudo": "090d3a3300000000ef070000510f000000000000160000000000000000000000000683ea00000000000000"
+  },
+  {
+   "entity_id": 859507978,
+   "capa": 0,
+   "px": [
+    1618,
+    3787
+   ],
+   "medio": "00000000220000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000",
+   "crudo": "0a0d3b330000000052060000cb0e000000000000220000000000000000000000000683ea00000000000000"
+  },
+  {
+   "entity_id": 859573515,
+   "capa": 0,
+   "px": [
+    1841,
+    3819
+   ],
+   "medio": "00000000230000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000",
+   "crudo": "0b0d3c330000000031070000eb0e000000000000230000000000000000000000000683ea00000000000000"
+  },
+  {
+   "entity_id": 859639052,
+   "capa": 0,
+   "px": [
+    1455,
+    3691
+   ],
+   "medio": "006abbccc54bc471afdf0015ad170100",
+   "marca": 76,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000",
+   "crudo": "0c0d3d3300000000af0500006b0e0000006abbccc54bc471afdf0015ad1701004c0686ea00000000000000"
+  },
+  {
+   "entity_id": 859704589,
+   "capa": 0,
+   "px": [
+    1070,
+    3505
+   ],
+   "medio": "00000000270000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000",
+   "crudo": "0d0d3e33000000002e040000b10d000000000000270000000000000000000000000686ea00000000000000"
+  },
+  {
+   "entity_id": 859770126,
+   "capa": 0,
+   "px": [
+    1232,
+    3602
+   ],
+   "medio": "00000000270000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000",
+   "crudo": "0e0d3f3300000000d0040000120e000000000000270000000000000000000000000686ea00000000000000"
+  },
+  {
+   "entity_id": 859901200,
+   "capa": 0,
+   "px": [
+    1581,
+    3375
+   ],
+   "medio": "00000000230000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000",
+   "crudo": "100d4133000000002d0600002f0d000000000000230000000000000000000000000686ea00000000000000"
+  },
+  {
+   "entity_id": 860097811,
+   "capa": 0,
+   "px": [
+    1742,
+    3213
+   ],
+   "medio": "00000000260000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000",
+   "crudo": "130d443300000000ce0600008d0c000000000000260000000000000000000000000684ea00000000000000"
+  },
+  {
+   "entity_id": 860163348,
+   "capa": 0,
+   "px": [
+    1105,
+    2832
+   ],
+   "medio": "00c8b2efaff300ec00f0c24f007d0800",
+   "marca": 4,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000",
+   "crudo": "140d45330000000051040000100b000000c8b2efaff300ec00f0c24f007d0800040684ea00000000000000"
+  },
+  {
+   "entity_id": 860228885,
+   "capa": 0,
+   "px": [
+    1968,
+    3087
+   ],
+   "medio": "00000000280000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000",
+   "crudo": "150d463300000000b00700000f0c000000000000280000000000000000000000000684ea00000000000000"
+  },
+  {
+   "entity_id": 860294422,
+   "capa": 0,
+   "px": [
+    783,
+    2704
+   ],
+   "medio": "00a4bbccc54bc471afdf004f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "160d4733000000000f030000900a000000a4bbccc54bc471afdf004f00000000000665ea00000000000000"
+  },
+  {
+   "entity_id": 860359959,
+   "capa": 0,
+   "px": [
+    1037,
+    2639
+   ],
+   "medio": "00ccc04db3bd00f0c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "170d4833000000000d0400004f0a000000ccc04db3bd00f0c24f000000000000000665ea00000000000000"
+  },
+  {
+   "entity_id": 860425496,
+   "capa": 0,
+   "px": [
+    1137,
+    2447
+   ],
+   "medio": "00ccc04db3bd00f0c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "180d493300000000710400008f09000000ccc04db3bd00f0c24f000000000000000665ea00000000000000"
+  },
+  {
+   "entity_id": 860491033,
+   "capa": 0,
+   "px": [
+    1452,
+    2446
+   ],
+   "medio": "000000001c0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "190d4a3300000000ac0500008e090000000000001c0000000000000000000000000665ea00000000000000"
+  },
+  {
+   "entity_id": 860556570,
+   "capa": 0,
+   "px": [
+    1293,
+    2318
+   ],
+   "medio": "00ccc04db3bd00000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "1a0d4b33000000000d0500000e09000000ccc04db3bd00000000000000000000000665ea00000000000000"
+  },
+  {
+   "entity_id": 860622107,
+   "capa": 0,
+   "px": [
+    1840,
+    2497
+   ],
+   "medio": "00000000280000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000",
+   "crudo": "1b0d4c330000000030070000c109000000000000280000000000000000000000000682ea00000000000000"
+  },
+  {
+   "entity_id": 860687644,
+   "capa": 0,
+   "px": [
+    2126,
+    2318
+   ],
+   "medio": "00ccc04db3bd00000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000",
+   "crudo": "1c0d4d33000000004e0800000e09000000ccc04db3bd00000000000000000000000682ea00000000000000"
+  },
+  {
+   "entity_id": 860753181,
+   "capa": 0,
+   "px": [
+    2353,
+    2157
+   ],
+   "medio": "006aa5c9aa51a4ec0000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000",
+   "crudo": "1d0d4e3300000000310900006d080000006aa5c9aa51a4ec0000000000000000000682ea00000000000000"
+  },
+  {
+   "entity_id": 860818718,
+   "capa": 0,
+   "px": [
+    2287,
+    1934
+   ],
+   "medio": "00ccc04db3bd002e3133342e3130342e",
+   "marca": 50,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000",
+   "crudo": "1e0d4f3300000000ef0800008e07000000ccc04db3bd002e3133342e3130342e320682ea00000000000000"
+  },
+  {
+   "entity_id": 860884255,
+   "capa": 0,
+   "px": [
+    2067,
+    1808
+   ],
+   "medio": "006aa5c9aa51a4ec0000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000",
+   "crudo": "1f0d5033000000001308000010070000006aa5c9aa51a4ec0000000000000000000682ea00000000000000"
+  },
+  {
+   "entity_id": 861015329,
+   "capa": 0,
+   "px": [
+    3118,
+    1773
+   ],
+   "medio": "0043aff0aff300ec00f0c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000",
+   "crudo": "210d5233000000002e0c0000ed0600000043aff0aff300ec00f0c24f00000000000683ea00000000000000"
+  },
+  {
+   "entity_id": 861080866,
+   "capa": 0,
+   "px": [
+    2545,
+    1291
+   ],
+   "medio": "00000000250000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000",
+   "crudo": "220d533300000000f10900000b05000000000000250000000000000000000000000683ea00000000000000"
+  },
+  {
+   "entity_id": 861146403,
+   "capa": 0,
+   "px": [
+    2829,
+    1360
+   ],
+   "medio": "000000002b0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000",
+   "crudo": "230d5433000000000d0b000050050000000000002b0000000000000000000000000683ea00000000000000"
+  },
+  {
+   "entity_id": 861211940,
+   "capa": 0,
+   "px": [
+    2962,
+    1611
+   ],
+   "medio": "00000000160000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000",
+   "crudo": "240d553300000000920b00004b06000000000000160000000000000000000000000683ea00000000000000"
+  },
+  {
+   "entity_id": 861277477,
+   "capa": 0,
+   "px": [
+    3439,
+    1585
+   ],
+   "medio": "00ccc04db3bd00000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000",
+   "crudo": "250d5633000000006f0d00003106000000ccc04db3bd00000000000000000000000686ea00000000000000"
+  },
+  {
+   "entity_id": 861408551,
+   "capa": 0,
+   "px": [
+    3889,
+    1490
+   ],
+   "medio": "0070b2a7abacc37ebef0c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000",
+   "crudo": "270d583300000000310f0000d20500000070b2a7abacc37ebef0c24f00000000000686ea00000000000000"
+  },
+  {
+   "entity_id": 861474088,
+   "capa": 0,
+   "px": [
+    4078,
+    1612
+   ],
+   "medio": "0073c5ecb3bd00710000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000",
+   "crudo": "280d593300000000ee0f00004c0600000073c5ecb3bd00710000000000000000000686ea00000000000000"
+  },
+  {
+   "entity_id": 861539625,
+   "capa": 0,
+   "px": [
+    4239,
+    1742
+   ],
+   "medio": "00a4bbccc54bc471afdf004f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000",
+   "crudo": "290d5a33000000008f100000ce06000000a4bbccc54bc471afdf004f00000000000686ea00000000000000"
+  },
+  {
+   "entity_id": 861605162,
+   "capa": 0,
+   "px": [
+    4115,
+    1997
+   ],
+   "medio": "006ab2a7abacc37ebef0c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000",
+   "crudo": "2a0d5b330000000013100000cd070000006ab2a7abacc37ebef0c24f00000000000684ea00000000000000"
+  },
+  {
+   "entity_id": 861670699,
+   "capa": 0,
+   "px": [
+    3889,
+    2108
+   ],
+   "medio": "00d1a57eaff3007ebef0c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000",
+   "crudo": "2b0d5c3300000000310f00003c08000000d1a57eaff3007ebef0c24f00000000000684ea00000000000000"
+  },
+  {
+   "entity_id": 861801773,
+   "capa": 0,
+   "px": [
+    3439,
+    2385
+   ],
+   "medio": "000000001a0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000",
+   "crudo": "2d0d5e33000000006f0d000051090000000000001a0000000000000000000000000684ea00000000000000"
+  },
+  {
+   "entity_id": 861998384,
+   "capa": 0,
+   "px": [
+    3251,
+    2453
+   ],
+   "medio": "00000000de30322e0000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "300d613300000000b30c00009509000000000000de30322e0000000000000000000665ea00000000000000"
+  },
+  {
+   "entity_id": 862194995,
+   "capa": 0,
+   "px": [
+    2415,
+    2865
+   ],
+   "medio": "000000002b0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "330d6433000000006f090000310b0000000000002b0000000000000000000000000665ea00000000000000"
+  },
+  {
+   "entity_id": 862391606,
+   "capa": 0,
+   "px": [
+    3311,
+    3024
+   ],
+   "medio": "00a4aeefacf5bcd8a4ec000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000",
+   "crudo": "360d673300000000ef0c0000d00b000000a4aeefacf5bcd8a4ec000000000000000682ea00000000000000"
+  },
+  {
+   "entity_id": 862588217,
+   "capa": 0,
+   "px": [
+    2479,
+    3439
+   ],
+   "medio": "000000001a0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000",
+   "crudo": "390d6a3300000000af0900006f0d0000000000001a0000000000000000000000000683ea00000000000000"
+  },
+  {
+   "entity_id": 862653754,
+   "capa": 0,
+   "px": [
+    2676,
+    3343
+   ],
+   "medio": "00000000290000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000",
+   "crudo": "3a0d6b3300000000740a00000f0d000000000000290000000000000000000000000683ea00000000000000"
+  },
+  {
+   "entity_id": 862719291,
+   "capa": 0,
+   "px": [
+    2607,
+    3565
+   ],
+   "medio": "00000000260000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000",
+   "crudo": "3b0d6c33000000002f0a0000ed0d000000000000260000000000000000000000000683ea00000000000000"
+  },
+  {
+   "entity_id": 862784828,
+   "capa": 0,
+   "px": [
+    2769,
+    3657
+   ],
+   "medio": "0070a872b6b4a4ec00ec004f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000",
+   "crudo": "3c0d6d3300000000d10a0000490e00000070a872b6b4a4ec00ec004f00000000000683ea00000000000000"
+  },
+  {
+   "entity_id": 862850365,
+   "capa": 0,
+   "px": [
+    2932,
+    3726
+   ],
+   "medio": "00a4aeefacf5bcd8a4ec004f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000",
+   "crudo": "3d0d6e3300000000740b00008e0e000000a4aeefacf5bcd8a4ec004f00000000000683ea00000000000000"
+  },
+  {
+   "entity_id": 862915902,
+   "capa": 0,
+   "px": [
+    4072,
+    2643
+   ],
+   "medio": "00d1a57eaff300ec00f0c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "3e0d6f3300000000e80f0000530a000000d1a57eaff300ec00f0c24f00000000000665ea00000000000000"
+  },
+  {
+   "entity_id": 864030031,
+   "capa": 0,
+   "px": [
+    7438,
+    2160
+   ],
+   "medio": "000000001a0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000",
+   "crudo": "4f0d8033000000000e1d000070080000000000001a0000000000000000000000000684ea00000000000000"
+  },
+  {
+   "entity_id": 864095568,
+   "capa": 0,
+   "px": [
+    7635,
+    2269
+   ],
+   "medio": "00a4a872b6b4a4ec00003a15dedc0000",
+   "marca": 76,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000",
+   "crudo": "500d813300000000d31d0000dd08000000a4a872b6b4a4ec00003a15dedc00004c0684ea00000000000000"
+  },
+  {
+   "entity_id": 864161105,
+   "capa": 0,
+   "px": [
+    6768,
+    1806
+   ],
+   "medio": "00000000280000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000",
+   "crudo": "510d823300000000701a00000e07000000000000280000000000000000000000000684ea00000000000000"
+  },
+  {
+   "entity_id": 864947549,
+   "capa": 0,
+   "px": [
+    8947,
+    2164
+   ],
+   "medio": "000000002b0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000",
+   "crudo": "5d0d8e3300000000f322000074080000000000002b0000000000000000000000000682ea00000000000000"
+  },
+  {
+   "entity_id": 865209697,
+   "capa": 0,
+   "px": [
+    9200,
+    1556
+   ],
+   "medio": "0070bb42c452c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000",
+   "crudo": "610d923300000000f0230000140600000070bb42c452c471afdf000000000000000686ea00000000000000"
+  },
+  {
+   "entity_id": 865275234,
+   "capa": 0,
+   "px": [
+    9006,
+    1455
+   ],
+   "medio": "006abb42c452c471afdf004f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000",
+   "crudo": "620d9333000000002e230000af050000006abb42c452c471afdf004f00000000000686ea00000000000000"
+  },
+  {
+   "entity_id": 865602919,
+   "capa": 0,
+   "px": [
+    8044,
+    975
+   ],
+   "medio": "00a4b2a7abacc37ebef0c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000",
+   "crudo": "670d9833000000006c1f0000cf03000000a4b2a7abacc37ebef0c24f00000000000684ea00000000000000"
+  },
+  {
+   "entity_id": 865668456,
+   "capa": 0,
+   "px": [
+    7857,
+    862
+   ],
+   "medio": "0070b2a7abacc37ebef0c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000",
+   "crudo": "680d993300000000b11e00005e0300000070b2a7abacc37ebef0c24f00000000000684ea00000000000000"
+  },
+  {
+   "entity_id": 865996141,
+   "capa": 0,
+   "px": [
+    6672,
+    624
+   ],
+   "medio": "00000000260000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "6d0d9e3300000000101a00007002000000000000260000000000000000000000000665ea00000000000000"
+  },
+  {
+   "entity_id": 866061678,
+   "capa": 0,
+   "px": [
+    6511,
+    948
+   ],
+   "medio": "00000000230000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "6e0d9f33000000006f190000b403000000000000230000000000000000000000000665ea00000000000000"
+  },
+  {
+   "entity_id": 866127215,
+   "capa": 0,
+   "px": [
+    6352,
+    785
+   ],
+   "medio": "00a4a5c9aa51a4ec0000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "6f0da03300000000d01800001103000000a4a5c9aa51a4ec0000000000000000000665ea00000000000000"
+  },
+  {
+   "entity_id": 866192752,
+   "capa": 0,
+   "px": [
+    6735,
+    1084
+   ],
+   "medio": "00a4a872b6b4a4ec00f3c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000",
+   "crudo": "700da133000000004f1a00003c04000000a4a872b6b4a4ec00f3c24f00000000000682ea00000000000000"
+  },
+  {
+   "entity_id": 866389363,
+   "capa": 0,
+   "px": [
+    7380,
+    1394
+   ],
+   "medio": "006aa5c9aa51a4ec00df000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000",
+   "crudo": "730da43300000000d41c000072050000006aa5c9aa51a4ec00df000000000000000682ea00000000000000"
+  },
+  {
+   "entity_id": 866454900,
+   "capa": 0,
+   "px": [
+    7631,
+    1535
+   ],
+   "medio": "0043aff0aff300000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000",
+   "crudo": "740da53300000000cf1d0000ff0500000043aff0aff300000000000000000000000682ea00000000000000"
+  },
+  {
+   "entity_id": 866520437,
+   "capa": 0,
+   "px": [
+    5808,
+    1362
+   ],
+   "medio": "006aaeefacf5bcd8a4ec000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000",
+   "crudo": "750da63300000000b016000052050000006aaeefacf5bcd8a4ec000000000000000683ea00000000000000"
+  },
+  {
+   "entity_id": 866585974,
+   "capa": 0,
+   "px": [
+    6835,
+    1560
+   ],
+   "medio": "00000000190000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000",
+   "crudo": "760da73300000000b31a00001806000000000000190000000000000000000000000683ea00000000000000"
+  },
+  {
+   "entity_id": 866651511,
+   "capa": 0,
+   "px": [
+    6577,
+    1681
+   ],
+   "medio": "007809007b023b550a003a1589ec0200",
+   "marca": 76,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000",
+   "crudo": "770da83300000000b119000091060000007809007b023b550a003a1589ec02004c0683ea00000000000000"
+  },
+  {
+   "entity_id": 866717048,
+   "capa": 0,
+   "px": [
+    6288,
+    1602
+   ],
+   "medio": "007809007b023b550a003a1589ec0200",
+   "marca": 76,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000",
+   "crudo": "780da933000000009018000042060000007809007b023b550a003a1589ec02004c0683ea00000000000000"
+  },
+  {
+   "entity_id": 866782585,
+   "capa": 0,
+   "px": [
+    6061,
+    1476
+   ],
+   "medio": "006aaeefacf5bcd8a4ec004f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000",
+   "crudo": "790daa3300000000ad170000c4050000006aaeefacf5bcd8a4ec004f00000000000683ea00000000000000"
+  },
+  {
+   "entity_id": 866848122,
+   "capa": 0,
+   "px": [
+    5550,
+    1387
+   ],
+   "medio": "000000001e0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000",
+   "crudo": "7a0dab3300000000ae1500006b050000000000001e0000000000000000000000000686ea00000000000000"
+  },
+  {
+   "entity_id": 866913659,
+   "capa": 0,
+   "px": [
+    5422,
+    1038
+   ],
+   "medio": "006ac565adbbaefcaff3c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000",
+   "crudo": "7b0dac33000000002e1500000e040000006ac565adbbaefcaff3c24f00000000000686ea00000000000000"
+  },
+  {
+   "entity_id": 866979196,
+   "capa": 0,
+   "px": [
+    5520,
+    822
+   ],
+   "medio": "000000002c0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000",
+   "crudo": "7c0dad33000000009015000036030000000000002c0000000000000000000000000686ea00000000000000"
+  },
+  {
+   "entity_id": 867044733,
+   "capa": 0,
+   "px": [
+    5775,
+    657
+   ],
+   "medio": "0070aeefacf5bcd8a4ec000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000",
+   "crudo": "7d0dae33000000008f160000910200000070aeefacf5bcd8a4ec000000000000000686ea00000000000000"
+  },
+  {
+   "entity_id": 867110270,
+   "capa": 0,
+   "px": [
+    6061,
+    721
+   ],
+   "medio": "0070aeefacf5bcd8a4ec000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000",
+   "crudo": "7e0daf3300000000ad170000d10200000070aeefacf5bcd8a4ec000000000000000686ea00000000000000"
+  },
+  {
+   "entity_id": 867175807,
+   "capa": 0,
+   "px": [
+    5295,
+    1200
+   ],
+   "medio": "00000000270000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000",
+   "crudo": "7f0db03300000000af140000b004000000000000270000000000000000000000000684ea00000000000000"
+  },
+  {
+   "entity_id": 867241344,
+   "capa": 0,
+   "px": [
+    4976,
+    1583
+   ],
+   "medio": "006ab2a7abacc37ebef0c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000",
+   "crudo": "800db13300000000701300002f060000006ab2a7abacc37ebef0c24f00000000000684ea00000000000000"
+  },
+  {
+   "entity_id": 867306881,
+   "capa": 0,
+   "px": [
+    4721,
+    1712
+   ],
+   "medio": "00a4bb42c452c471afdf004f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000",
+   "crudo": "810db2330000000071120000b006000000a4bb42c452c471afdf004f00000000000684ea00000000000000"
+  },
+  {
+   "entity_id": 867372418,
+   "capa": 0,
+   "px": [
+    5232,
+    1421
+   ],
+   "medio": "006aaeefacf5bcd8a4ec000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000",
+   "crudo": "820db33300000000701400008d050000006aaeefacf5bcd8a4ec000000000000000684ea00000000000000"
+  },
+  {
+   "entity_id": 867437955,
+   "capa": 0,
+   "px": [
+    5040,
+    1074
+   ],
+   "medio": "000000001b0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000",
+   "crudo": "830db43300000000b013000032040000000000001b0000000000000000000000000684ea00000000000000"
+  },
+  {
+   "entity_id": 867503492,
+   "capa": 0,
+   "px": [
+    4657,
+    1003
+   ],
+   "medio": "000000001d0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60037,
+   "cola": "00000000000000",
+   "crudo": "840db5330000000031120000eb030000000000001d0000000000000000000000000685ea00000000000000"
+  },
+  {
+   "entity_id": 867569029,
+   "capa": 0,
+   "px": [
+    4430,
+    1129
+   ],
+   "medio": "006ab2a7abacc37ebef0c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60037,
+   "cola": "00000000000000",
+   "crudo": "850db633000000004e11000069040000006ab2a7abacc37ebef0c24f00000000000685ea00000000000000"
+  },
+  {
+   "entity_id": 867634566,
+   "capa": 0,
+   "px": [
+    4239,
+    1294
+   ],
+   "medio": "00a4b2a7abacc37ebef0c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60037,
+   "cola": "00000000000000",
+   "crudo": "860db733000000008f1000000e05000000a4b2a7abacc37ebef0c24f00000000000685ea00000000000000"
+  },
+  {
+   "entity_id": 867700103,
+   "capa": 0,
+   "px": [
+    1325,
+    1134
+   ],
+   "medio": "0070b0adc0aec37ebef0c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "870db833000000002d0500006e0400000070b0adc0aec37ebef0c24f00000000000665ea00000000000000"
+  },
+  {
+   "entity_id": 867765640,
+   "capa": 0,
+   "px": [
+    1295,
+    1394
+   ],
+   "medio": "00a4aeefacf5bcd8a4ec004f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "880db933000000000f0500007205000000a4aeefacf5bcd8a4ec004f00000000000665ea00000000000000"
+  },
+  {
+   "entity_id": 867831177,
+   "capa": 0,
+   "px": [
+    1519,
+    912
+   ],
+   "medio": "006ab0adc0aec37ebef0c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "890dba3300000000ef05000090030000006ab0adc0aec37ebef0c24f00000000000665ea00000000000000"
+  },
+  {
+   "entity_id": 867896714,
+   "capa": 0,
+   "px": [
+    1745,
+    818
+   ],
+   "medio": "006ab0adc0aec37ebef0c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "8a0dbb3300000000d106000032030000006ab0adc0aec37ebef0c24f00000000000665ea00000000000000"
+  },
+  {
+   "entity_id": 867962251,
+   "capa": 0,
+   "px": [
+    1969,
+    879
+   ],
+   "medio": "006aa5c9aa51a4ec00f0c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "8b0dbc3300000000b10700006f030000006aa5c9aa51a4ec00f0c24f00000000000665ea00000000000000"
+  },
+  {
+   "entity_id": 868027788,
+   "capa": 0,
+   "px": [
+    2513,
+    816
+   ],
+   "medio": "0000005c010200040e32000080060300",
+   "marca": 4,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000",
+   "crudo": "8c0dbd3300000000d1090000300300000000005c010200040e32000080060300040682ea00000000000000"
+  },
+  {
+   "entity_id": 868093325,
+   "capa": 0,
+   "px": [
+    2799,
+    671
+   ],
+   "medio": "00d1a57eaff300ec0000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000",
+   "crudo": "8d0dbe3300000000ef0a00009f02000000d1a57eaff300ec0000000000000000000682ea00000000000000"
+  },
+  {
+   "entity_id": 868158862,
+   "capa": 0,
+   "px": [
+    3086,
+    527
+   ],
+   "medio": "00ccc04db3bd00f300ec000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000",
+   "crudo": "8e0dbf33000000000e0c00000f02000000ccc04db3bd00f300ec000000000000000682ea00000000000000"
+  },
+  {
+   "entity_id": 868224399,
+   "capa": 0,
+   "px": [
+    3408,
+    652
+   ],
+   "medio": "006aa872b6b4a4ec00ec004f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000",
+   "crudo": "8f0dc03300000000500d00008c020000006aa872b6b4a4ec00ec004f00000000000682ea00000000000000"
+  },
+  {
+   "entity_id": 868289936,
+   "capa": 0,
+   "px": [
+    3662,
+    782
+   ],
+   "medio": "00a4a872b6b4a4ec0000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000",
+   "crudo": "900dc133000000004e0e00000e03000000a4a872b6b4a4ec0000000000000000000682ea00000000000000"
+  },
+  {
+   "entity_id": 871628846,
+   "capa": 0,
+   "px": [
+    7567,
+    3184
+   ],
+   "medio": "000000002b0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000",
+   "crudo": "2e00f433000000008f1d0000700c0000000000002b0000000000000000000000000686ea00000000000000"
+  },
+  {
+   "entity_id": 871759920,
+   "capa": 0,
+   "px": [
+    2395,
+    2310
+   ],
+   "medio": "00430100e002380002006015213b0300",
+   "marca": 76,
+   "orient": 6,
+   "sprite": 60305,
+   "cola": "00000280140000",
+   "crudo": "3000f633000000005b0900000609000000430100e002380002006015213b03004c0691eb00000280140000"
+  },
+  {
+   "entity_id": 871890994,
+   "capa": 0,
+   "px": [
+    9025,
+    2313
+   ],
+   "medio": "00ccc04db3bd0071afdf0000ce750000",
+   "marca": 4,
+   "orient": 6,
+   "sprite": 60305,
+   "cola": "00000280140000",
+   "crudo": "3200f83300000000412300000909000000ccc04db3bd0071afdf0000ce750000040691eb00000280140000"
+  }
+ ]
+}

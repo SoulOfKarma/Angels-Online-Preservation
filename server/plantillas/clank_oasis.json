@@ -1,0 +1,3291 @@
+{
+ "_nota": "Clank Oasis (stage 407), tercera parada de Cybertronica, del cliente OFICIAL de Taiwan (8.7.5.7). Poblado desde UNA sola sesion. Su tornado de vuelta, en (8,5), NO aparecio en el primer recorrido y si en el segundo: no hay que dibujarlo a mano, hay que pasar por el. Los objetos van CRUDOS.",
+ "stage": 407,
+ "spawns": [
+  {
+   "entity_id": 1974077466,
+   "nombre": "Spell Analyst",
+   "npc_type": 24772,
+   "sprite": 40100,
+   "klass": 400,
+   "monstruo": false,
+   "tile": [
+    130,
+    62
+   ],
+   "direccion": 3,
+   "visible": 1,
+   "nombre_original": "綠洲法術研究員"
+  },
+  {
+   "entity_id": 1974143003,
+   "nombre": "Technique Analyst",
+   "npc_type": 24773,
+   "sprite": 40098,
+   "klass": 400,
+   "monstruo": false,
+   "tile": [
+    124,
+    82
+   ],
+   "direccion": 7,
+   "visible": 1,
+   "nombre_original": "綠洲招式研究員"
+  },
+  {
+   "entity_id": 1974208540,
+   "nombre": "Oasis Merchant",
+   "npc_type": 24775,
+   "sprite": 40125,
+   "klass": 400,
+   "monstruo": false,
+   "tile": [
+    158,
+    95
+   ],
+   "direccion": 6,
+   "visible": 1,
+   "nombre_original": "綠洲雜貨商"
+  },
+  {
+   "entity_id": 1974274077,
+   "nombre": "Oasis Mechanic",
+   "npc_type": 24774,
+   "sprite": 40160,
+   "klass": 400,
+   "monstruo": false,
+   "tile": [
+    143,
+    89
+   ],
+   "direccion": 7,
+   "visible": 1,
+   "nombre_original": "綠洲維修員"
+  },
+  {
+   "entity_id": 1974339614,
+   "nombre": "Oasis Banker",
+   "npc_type": 24776,
+   "sprite": 40396,
+   "klass": 400,
+   "monstruo": false,
+   "tile": [
+    157,
+    78
+   ],
+   "direccion": 6,
+   "visible": 1,
+   "nombre_original": "綠洲銀行員"
+  },
+  {
+   "entity_id": 1975715891,
+   "nombre": "Cupid",
+   "npc_type": 1502,
+   "sprite": 40006,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    185,
+    94
+   ],
+   "direccion": 6,
+   "visible": 1,
+   "nombre_original": "邱比特"
+  },
+  {
+   "entity_id": 1980369018,
+   "nombre": "Dark City Totem",
+   "npc_type": 1938,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    138,
+    70
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nombre_original": "永夜城圖騰"
+  },
+  {
+   "entity_id": 1981941906,
+   "nombre": "Iron Totem",
+   "npc_type": 1939,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    144,
+    74
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nombre_original": "鐵輪堡圖騰"
+  },
+  {
+   "entity_id": 1982007443,
+   "nombre": "Breeze Totem",
+   "npc_type": 1940,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    140,
+    77
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nombre_original": "和風林圖騰"
+  },
+  {
+   "entity_id": 1982072980,
+   "nombre": "Aurora Totem",
+   "npc_type": 1937,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    132,
+    74
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nombre_original": "聖光城圖騰"
+  },
+  {
+   "entity_id": 1982924961,
+   "nombre": "Amara",
+   "npc_type": 24780,
+   "sprite": 40258,
+   "klass": 400,
+   "monstruo": false,
+   "tile": [
+    176,
+    73
+   ],
+   "direccion": 6,
+   "visible": 1,
+   "nombre_original": "阿瑪拉"
+  },
+  {
+   "entity_id": 1983252646,
+   "nombre": "Grayson",
+   "npc_type": 24760,
+   "sprite": 40710,
+   "klass": 400,
+   "monstruo": false,
+   "tile": [
+    143,
+    130
+   ],
+   "direccion": 7,
+   "visible": 1,
+   "nombre_original": "格雷森"
+  },
+  {
+   "entity_id": 1983318183,
+   "nombre": "Saidi",
+   "npc_type": 24761,
+   "sprite": 40054,
+   "klass": 400,
+   "monstruo": false,
+   "tile": [
+    95,
+    65
+   ],
+   "direccion": 5,
+   "visible": 1,
+   "nombre_original": "賽迪"
+  },
+  {
+   "entity_id": 1983383720,
+   "nombre": "Mortimer",
+   "npc_type": 24762,
+   "sprite": 40380,
+   "klass": 400,
+   "monstruo": false,
+   "tile": [
+    202,
+    109
+   ],
+   "direccion": 7,
+   "visible": 1,
+   "nombre_original": "莫提默"
+  },
+  {
+   "entity_id": 1983514794,
+   "nombre": "Repair Bot",
+   "npc_type": 23584,
+   "sprite": 111449,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    47,
+    19
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 400,
+   "nombre_original": "電子維修機"
+  },
+  {
+   "entity_id": 1983711405,
+   "nombre": "Repair Bot",
+   "npc_type": 23584,
+   "sprite": 111449,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    47,
+    21
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 400,
+   "nombre_original": "電子維修機"
+  },
+  {
+   "entity_id": 1984170164,
+   "nombre": "Repair Bot",
+   "npc_type": 23584,
+   "sprite": 111449,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    21,
+    35
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 400,
+   "nombre_original": "電子維修機"
+  },
+  {
+   "entity_id": 1984235701,
+   "nombre": "Repair Bot",
+   "npc_type": 23584,
+   "sprite": 111449,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    20,
+    35
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 400,
+   "nombre_original": "電子維修機"
+  },
+  {
+   "entity_id": 1984301238,
+   "nombre": "Repair Bot",
+   "npc_type": 23584,
+   "sprite": 111449,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    17,
+    35
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 400,
+   "nombre_original": "電子維修機"
+  },
+  {
+   "entity_id": 1984432312,
+   "nombre": "Repair Bot",
+   "npc_type": 23584,
+   "sprite": 111449,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    25,
+    35
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 400,
+   "nombre_original": "電子維修機"
+  },
+  {
+   "entity_id": 1984563386,
+   "nombre": "Repair Bot",
+   "npc_type": 23584,
+   "sprite": 111449,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    12,
+    34
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 400,
+   "nombre_original": "電子維修機"
+  },
+  {
+   "entity_id": 1984759997,
+   "nombre": "Repair Bot",
+   "npc_type": 23584,
+   "sprite": 111449,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    15,
+    35
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 400,
+   "nombre_original": "電子維修機"
+  },
+  {
+   "entity_id": 1985415367,
+   "nombre": "Repair Bot",
+   "npc_type": 23584,
+   "sprite": 111449,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    95,
+    10
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400,
+   "nombre_original": "電子維修機"
+  },
+  {
+   "entity_id": 1985480904,
+   "nombre": "Repair Bot",
+   "npc_type": 23584,
+   "sprite": 111449,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    106,
+    10
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400,
+   "nombre_original": "電子維修機"
+  },
+  {
+   "entity_id": 1985546441,
+   "nombre": "Repair Bot",
+   "npc_type": 23584,
+   "sprite": 111449,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    123,
+    18
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 400,
+   "nombre_original": "電子維修機"
+  },
+  {
+   "entity_id": 1985611978,
+   "nombre": "Repair Bot",
+   "npc_type": 23584,
+   "sprite": 111449,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    100,
+    7
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 400,
+   "nombre_original": "電子維修機"
+  },
+  {
+   "entity_id": 1985677515,
+   "nombre": "Repair Bot",
+   "npc_type": 23584,
+   "sprite": 111449,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    103,
+    7
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400,
+   "nombre_original": "電子維修機"
+  },
+  {
+   "entity_id": 1985743052,
+   "nombre": "Repair Bot",
+   "npc_type": 23584,
+   "sprite": 111449,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    109,
+    10
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 400,
+   "nombre_original": "電子維修機"
+  },
+  {
+   "entity_id": 1985808589,
+   "nombre": "Greenery Guard",
+   "npc_type": 23586,
+   "sprite": 111452,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    156,
+    31
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 403,
+   "nombre_original": "綠地護衛"
+  },
+  {
+   "entity_id": 1985874126,
+   "nombre": "Greenery Guard",
+   "npc_type": 23586,
+   "sprite": 111452,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    170,
+    27
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 403,
+   "nombre_original": "綠地護衛"
+  },
+  {
+   "entity_id": 1985939663,
+   "nombre": "Greenery Guard",
+   "npc_type": 23586,
+   "sprite": 111452,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    168,
+    31
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 403,
+   "nombre_original": "綠地護衛"
+  },
+  {
+   "entity_id": 1986005200,
+   "nombre": "Greenery Guard",
+   "npc_type": 23586,
+   "sprite": 111452,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    179,
+    29
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 403,
+   "nombre_original": "綠地護衛"
+  },
+  {
+   "entity_id": 1986070737,
+   "nombre": "Greenery Guard",
+   "npc_type": 23586,
+   "sprite": 111452,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    158,
+    37
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 403,
+   "nombre_original": "綠地護衛"
+  },
+  {
+   "entity_id": 1986267348,
+   "nombre": "Greenery Guard",
+   "npc_type": 23586,
+   "sprite": 111452,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    190,
+    30
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 403,
+   "nombre_original": "綠地護衛"
+  },
+  {
+   "entity_id": 1986398422,
+   "nombre": "Greenery Guard",
+   "npc_type": 23586,
+   "sprite": 111452,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    186,
+    16
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 403,
+   "nombre_original": "綠地護衛"
+  },
+  {
+   "entity_id": 1986463959,
+   "nombre": "Greenery Guard",
+   "npc_type": 23586,
+   "sprite": 111452,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    227,
+    36
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 403,
+   "nombre_original": "綠地護衛"
+  },
+  {
+   "entity_id": 1986660570,
+   "nombre": "Greenery Guard",
+   "npc_type": 23586,
+   "sprite": 111452,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    237,
+    34
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 403,
+   "nombre_original": "綠地護衛"
+  },
+  {
+   "entity_id": 1986791644,
+   "nombre": "Greenery Guard",
+   "npc_type": 23586,
+   "sprite": 111452,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    198,
+    60
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 403,
+   "nombre_original": "綠地護衛"
+  },
+  {
+   "entity_id": 1986857181,
+   "nombre": "Greenery Guard",
+   "npc_type": 23586,
+   "sprite": 111452,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    216,
+    60
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 403,
+   "nombre_original": "綠地護衛"
+  },
+  {
+   "entity_id": 1986922718,
+   "nombre": "Greenery Guard",
+   "npc_type": 23586,
+   "sprite": 111452,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    216,
+    43
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 403,
+   "nombre_original": "綠地護衛"
+  },
+  {
+   "entity_id": 1987184866,
+   "nombre": "Greenery Guard",
+   "npc_type": 23586,
+   "sprite": 111452,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    231,
+    44
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 403,
+   "nombre_original": "綠地護衛"
+  },
+  {
+   "entity_id": 1987250403,
+   "nombre": "Greenery Guard",
+   "npc_type": 23586,
+   "sprite": 111452,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    252,
+    48
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 403,
+   "nombre_original": "綠地護衛"
+  },
+  {
+   "entity_id": 1987315940,
+   "nombre": "Greenery Guard",
+   "npc_type": 23586,
+   "sprite": 111452,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    251,
+    45
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 403,
+   "nombre_original": "綠地護衛"
+  },
+  {
+   "entity_id": 1987381477,
+   "nombre": "Greenery Guard",
+   "npc_type": 23586,
+   "sprite": 111452,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    233,
+    45
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 403,
+   "nombre_original": "綠地護衛"
+  },
+  {
+   "entity_id": 1987774699,
+   "nombre": "Greenery Guard",
+   "npc_type": 23586,
+   "sprite": 111452,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    281,
+    63
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 403,
+   "nombre_original": "綠地護衛"
+  },
+  {
+   "entity_id": 1987971310,
+   "nombre": "Greenery Guard",
+   "npc_type": 23586,
+   "sprite": 111452,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    283,
+    53
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 403,
+   "nombre_original": "綠地護衛"
+  },
+  {
+   "entity_id": 1988036847,
+   "nombre": "Greenery Guard",
+   "npc_type": 23586,
+   "sprite": 111452,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    284,
+    56
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 403,
+   "nombre_original": "綠地護衛"
+  },
+  {
+   "entity_id": 1988102384,
+   "nombre": "Omni Butler",
+   "npc_type": 23592,
+   "sprite": 111451,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    100,
+    47
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415,
+   "nombre_original": "全能管家巴特羅"
+  },
+  {
+   "entity_id": 1988692217,
+   "nombre": "Garden Bot",
+   "npc_type": 23585,
+   "sprite": 111450,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    24,
+    59
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 401,
+   "nombre_original": "花園維護機"
+  },
+  {
+   "entity_id": 1988823291,
+   "nombre": "Garden Bot",
+   "npc_type": 23585,
+   "sprite": 111450,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    76,
+    69
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 401,
+   "nombre_original": "花園維護機"
+  },
+  {
+   "entity_id": 1989085439,
+   "nombre": "Garden Bot",
+   "npc_type": 23585,
+   "sprite": 111450,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    71,
+    78
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 401,
+   "nombre_original": "花園維護機"
+  },
+  {
+   "entity_id": 1989150976,
+   "nombre": "Garden Bot",
+   "npc_type": 23585,
+   "sprite": 111450,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    48,
+    50
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 401,
+   "nombre_original": "花園維護機"
+  },
+  {
+   "entity_id": 1989478661,
+   "nombre": "Garden Bot",
+   "npc_type": 23585,
+   "sprite": 111450,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    129,
+    29
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 401,
+   "nombre_original": "花園維護機"
+  },
+  {
+   "entity_id": 1989544198,
+   "nombre": "Garden Bot",
+   "npc_type": 23585,
+   "sprite": 111450,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    125,
+    17
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 401,
+   "nombre_original": "花園維護機"
+  },
+  {
+   "entity_id": 1989675272,
+   "nombre": "Garden Bot",
+   "npc_type": 23585,
+   "sprite": 111450,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    118,
+    16
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 401,
+   "nombre_original": "花園維護機"
+  },
+  {
+   "entity_id": 1989740809,
+   "nombre": "Garden Bot",
+   "npc_type": 23585,
+   "sprite": 111450,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    125,
+    26
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 401,
+   "nombre_original": "花園維護機"
+  },
+  {
+   "entity_id": 1990134031,
+   "nombre": "Garden Bot",
+   "npc_type": 23585,
+   "sprite": 111450,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    147,
+    53
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 401,
+   "nombre_original": "花園維護機"
+  },
+  {
+   "entity_id": 1990199568,
+   "nombre": "Garden Bot",
+   "npc_type": 23585,
+   "sprite": 111450,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    162,
+    55
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 401,
+   "nombre_original": "花園維護機"
+  },
+  {
+   "entity_id": 1990461716,
+   "nombre": "Shade Guardian",
+   "npc_type": 23593,
+   "sprite": 111454,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    227,
+    63
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415,
+   "nombre_original": "綠蔭守護者卡帝安"
+  },
+  {
+   "entity_id": 1991182623,
+   "nombre": "Shadow Guard",
+   "npc_type": 23587,
+   "sprite": 111453,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    249,
+    75
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 405,
+   "nombre_original": "潛影守衛"
+  },
+  {
+   "entity_id": 1991248160,
+   "nombre": "Shadow Guard",
+   "npc_type": 23587,
+   "sprite": 111453,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    245,
+    88
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 405,
+   "nombre_original": "潛影守衛"
+  },
+  {
+   "entity_id": 1991313697,
+   "nombre": "Shadow Guard",
+   "npc_type": 23587,
+   "sprite": 111453,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    251,
+    84
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 405,
+   "nombre_original": "潛影守衛"
+  },
+  {
+   "entity_id": 1991444771,
+   "nombre": "Shadow Guard",
+   "npc_type": 23587,
+   "sprite": 111453,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    247,
+    76
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 405,
+   "nombre_original": "潛影守衛"
+  },
+  {
+   "entity_id": 1991510308,
+   "nombre": "Shadow Guard",
+   "npc_type": 23587,
+   "sprite": 111453,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    220,
+    98
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 405,
+   "nombre_original": "潛影守衛"
+  },
+  {
+   "entity_id": 1991575845,
+   "nombre": "Shadow Guard",
+   "npc_type": 23587,
+   "sprite": 111453,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    215,
+    89
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 405,
+   "nombre_original": "潛影守衛"
+  },
+  {
+   "entity_id": 1991641382,
+   "nombre": "Shadow Guard",
+   "npc_type": 23587,
+   "sprite": 111453,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    205,
+    75
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 405,
+   "nombre_original": "潛影守衛"
+  },
+  {
+   "entity_id": 1991706919,
+   "nombre": "Shadow Guard",
+   "npc_type": 23587,
+   "sprite": 111453,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    212,
+    75
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 405,
+   "nombre_original": "潛影守衛"
+  },
+  {
+   "entity_id": 1991772456,
+   "nombre": "Shadow Guard",
+   "npc_type": 23587,
+   "sprite": 111453,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    203,
+    84
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 405,
+   "nombre_original": "潛影守衛"
+  },
+  {
+   "entity_id": 1991837993,
+   "nombre": "Shadow Guard",
+   "npc_type": 23587,
+   "sprite": 111453,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    216,
+    98
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 405,
+   "nombre_original": "潛影守衛"
+  },
+  {
+   "entity_id": 1991903530,
+   "nombre": "Shadow Guard",
+   "npc_type": 23587,
+   "sprite": 111453,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    205,
+    107
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 405,
+   "nombre_original": "潛影守衛"
+  },
+  {
+   "entity_id": 1991969067,
+   "nombre": "Shadow Guard",
+   "npc_type": 23587,
+   "sprite": 111453,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    205,
+    103
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 405,
+   "nombre_original": "潛影守衛"
+  },
+  {
+   "entity_id": 1992034604,
+   "nombre": "Shadow Guard",
+   "npc_type": 23587,
+   "sprite": 111453,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    206,
+    102
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 405,
+   "nombre_original": "潛影守衛"
+  },
+  {
+   "entity_id": 1992100141,
+   "nombre": "Shadow Guard",
+   "npc_type": 23587,
+   "sprite": 111453,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    217,
+    103
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 405,
+   "nombre_original": "潛影守衛"
+  },
+  {
+   "entity_id": 1992165678,
+   "nombre": "Shadow Guard",
+   "npc_type": 23587,
+   "sprite": 111453,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    213,
+    107
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 405,
+   "nombre_original": "潛影守衛"
+  },
+  {
+   "entity_id": 1992231215,
+   "nombre": "Shadow Guard",
+   "npc_type": 23587,
+   "sprite": 111453,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    225,
+    126
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 405,
+   "nombre_original": "潛影守衛"
+  },
+  {
+   "entity_id": 1992296752,
+   "nombre": "Shadow Guard",
+   "npc_type": 23587,
+   "sprite": 111453,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    215,
+    120
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 405,
+   "nombre_original": "潛影守衛"
+  },
+  {
+   "entity_id": 1992427826,
+   "nombre": "Shadow Guard",
+   "npc_type": 23587,
+   "sprite": 111453,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    224,
+    119
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 405,
+   "nombre_original": "潛影守衛"
+  },
+  {
+   "entity_id": 1992689974,
+   "nombre": "Shadow Guard",
+   "npc_type": 23587,
+   "sprite": 111453,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    197,
+    130
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 405,
+   "nombre_original": "潛影守衛"
+  },
+  {
+   "entity_id": 1992755511,
+   "nombre": "Shadow Guard",
+   "npc_type": 23587,
+   "sprite": 111453,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    189,
+    131
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 405,
+   "nombre_original": "潛影守衛"
+  },
+  {
+   "entity_id": 1994787158,
+   "nombre": "E-Retreat Statue",
+   "npc_type": 23591,
+   "sprite": 111456,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    263,
+    144
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 413,
+   "nombre_original": "菁英-退敵鐵像"
+  },
+  {
+   "entity_id": 1994852695,
+   "nombre": "E-Retreat Statue",
+   "npc_type": 23591,
+   "sprite": 111456,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    272,
+    115
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 413,
+   "nombre_original": "菁英-退敵鐵像"
+  },
+  {
+   "entity_id": 1994918232,
+   "nombre": "E-Retreat Statue",
+   "npc_type": 23591,
+   "sprite": 111456,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    263,
+    129
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 413,
+   "nombre_original": "菁英-退敵鐵像"
+  },
+  {
+   "entity_id": 1994983769,
+   "nombre": "E-Retreat Statue",
+   "npc_type": 23591,
+   "sprite": 111456,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    263,
+    132
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 413,
+   "nombre_original": "菁英-退敵鐵像"
+  },
+  {
+   "entity_id": 1995049306,
+   "nombre": "E-Retreat Statue",
+   "npc_type": 23591,
+   "sprite": 111456,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    268,
+    118
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 413,
+   "nombre_original": "菁英-退敵鐵像"
+  },
+  {
+   "entity_id": 1997080953,
+   "nombre": "E-Shadow Guard",
+   "npc_type": 23590,
+   "sprite": 111453,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    215,
+    147
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 411,
+   "nombre_original": "菁英-潛影守衛"
+  },
+  {
+   "entity_id": 1997146490,
+   "nombre": "E-Shadow Guard",
+   "npc_type": 23590,
+   "sprite": 111453,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    202,
+    155
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 411,
+   "nombre_original": "菁英-潛影守衛"
+  },
+  {
+   "entity_id": 1997277564,
+   "nombre": "E-Shadow Guard",
+   "npc_type": 23590,
+   "sprite": 111453,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    201,
+    154
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 411,
+   "nombre_original": "菁英-潛影守衛"
+  },
+  {
+   "entity_id": 1997343101,
+   "nombre": "E-Shadow Guard",
+   "npc_type": 23590,
+   "sprite": 111453,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    208,
+    147
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 411,
+   "nombre_original": "菁英-潛影守衛"
+  },
+  {
+   "entity_id": 2006649355,
+   "nombre": "Shadow Guard",
+   "npc_type": 23587,
+   "sprite": 111453,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    208,
+    120
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 405,
+   "nombre_original": "潛影守衛"
+  },
+  {
+   "entity_id": 2016021146,
+   "nombre": "Shadow Guard",
+   "npc_type": 23587,
+   "sprite": 111453,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    155,
+    122
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 405,
+   "nombre_original": "潛影守衛"
+  },
+  {
+   "entity_id": 2016086683,
+   "nombre": "Shadow Guard",
+   "npc_type": 23587,
+   "sprite": 111453,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    169,
+    105
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 405,
+   "nombre_original": "潛影守衛"
+  },
+  {
+   "entity_id": 2016152220,
+   "nombre": "Shadow Guard",
+   "npc_type": 23587,
+   "sprite": 111453,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    167,
+    117
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 405,
+   "nombre_original": "潛影守衛"
+  },
+  {
+   "entity_id": 2016217757,
+   "nombre": "Shadow Guard",
+   "npc_type": 23587,
+   "sprite": 111453,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    147,
+    117
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 405,
+   "nombre_original": "潛影守衛"
+  },
+  {
+   "entity_id": 2016283294,
+   "nombre": "Shadow Guard",
+   "npc_type": 23587,
+   "sprite": 111453,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    157,
+    106
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 405,
+   "nombre_original": "潛影守衛"
+  },
+  {
+   "entity_id": 2018314941,
+   "nombre": "Boundary Ward",
+   "npc_type": 23588,
+   "sprite": 111455,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    55,
+    86
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 407,
+   "nombre_original": "護區石像"
+  },
+  {
+   "entity_id": 2021722865,
+   "nombre": "Boundary Ward",
+   "npc_type": 23588,
+   "sprite": 111455,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    68,
+    110
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 407,
+   "nombre_original": "護區石像"
+  },
+  {
+   "entity_id": 2022968068,
+   "nombre": "Retreat Statue",
+   "npc_type": 23589,
+   "sprite": 111456,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    22,
+    119
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 409,
+   "nombre_original": "退敵鐵像"
+  },
+  {
+   "entity_id": 2023492364,
+   "nombre": "Retreat Statue",
+   "npc_type": 23589,
+   "sprite": 111456,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    65,
+    145
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 409,
+   "nombre_original": "退敵鐵像"
+  },
+  {
+   "entity_id": 2023623438,
+   "nombre": "Retreat Statue",
+   "npc_type": 23589,
+   "sprite": 111456,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    68,
+    139
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 409,
+   "nombre_original": "退敵鐵像"
+  },
+  {
+   "entity_id": 2023688975,
+   "nombre": "Retreat Statue",
+   "npc_type": 23589,
+   "sprite": 111456,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    70,
+    142
+   ],
+   "direccion": 3,
+   "visible": 0,
+   "nivel": 409,
+   "nombre_original": "退敵鐵像"
+  },
+  {
+   "entity_id": 2023754512,
+   "nombre": "Retreat Statue",
+   "npc_type": 23589,
+   "sprite": 111456,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    78,
+    150
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 409,
+   "nombre_original": "退敵鐵像"
+  },
+  {
+   "entity_id": 2024672030,
+   "nombre": "Boundary Ward",
+   "npc_type": 23588,
+   "sprite": 111455,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    88,
+    92
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 407,
+   "nombre_original": "護區石像"
+  },
+  {
+   "entity_id": 2024737567,
+   "nombre": "Boundary Ward",
+   "npc_type": 23588,
+   "sprite": 111455,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    103,
+    103
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 407,
+   "nombre_original": "護區石像"
+  },
+  {
+   "entity_id": 2024868641,
+   "nombre": "Boundary Ward",
+   "npc_type": 23588,
+   "sprite": 111455,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    106,
+    97
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 407,
+   "nombre_original": "護區石像"
+  },
+  {
+   "entity_id": 2024934178,
+   "nombre": "Boundary Ward",
+   "npc_type": 23588,
+   "sprite": 111455,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    104,
+    91
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 407,
+   "nombre_original": "護區石像"
+  },
+  {
+   "entity_id": 2024999715,
+   "nombre": "Boundary Ward",
+   "npc_type": 23588,
+   "sprite": 111455,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    111,
+    103
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 407,
+   "nombre_original": "護區石像"
+  },
+  {
+   "entity_id": 2025065252,
+   "nombre": "Boundary Ward",
+   "npc_type": 23588,
+   "sprite": 111455,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    130,
+    120
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 407,
+   "nombre_original": "護區石像"
+  },
+  {
+   "entity_id": 2025130789,
+   "nombre": "Boundary Ward",
+   "npc_type": 23588,
+   "sprite": 111455,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    106,
+    101
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "nivel": 407,
+   "nombre_original": "護區石像"
+  },
+  {
+   "entity_id": 2025196326,
+   "nombre": "Boundary Ward",
+   "npc_type": 23588,
+   "sprite": 111455,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    96,
+    100
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 407,
+   "nombre_original": "護區石像"
+  },
+  {
+   "entity_id": 2025261863,
+   "nombre": "Boundary Ward",
+   "npc_type": 23588,
+   "sprite": 111455,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    92,
+    90
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 407,
+   "nombre_original": "護區石像"
+  },
+  {
+   "entity_id": 2025327400,
+   "nombre": "Boundary Ward",
+   "npc_type": 23588,
+   "sprite": 111455,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    77,
+    113
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 407,
+   "nombre_original": "護區石像"
+  },
+  {
+   "entity_id": 2025524011,
+   "nombre": "Boundary Ward",
+   "npc_type": 23588,
+   "sprite": 111455,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    66,
+    103
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 407,
+   "nombre_original": "護區石像"
+  },
+  {
+   "entity_id": 2025917233,
+   "nombre": "Retreat Statue",
+   "npc_type": 23589,
+   "sprite": 111456,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    115,
+    131
+   ],
+   "direccion": 1,
+   "visible": 0,
+   "nivel": 409,
+   "nombre_original": "退敵鐵像"
+  },
+  {
+   "entity_id": 2025982770,
+   "nombre": "Retreat Statue",
+   "npc_type": 23589,
+   "sprite": 111456,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    120,
+    133
+   ],
+   "direccion": 4,
+   "visible": 0,
+   "nivel": 409,
+   "nombre_original": "退敵鐵像"
+  },
+  {
+   "entity_id": 2026179381,
+   "nombre": "Retreat Statue",
+   "npc_type": 23589,
+   "sprite": 111456,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    139,
+    146
+   ],
+   "direccion": 0,
+   "visible": 0,
+   "nivel": 409,
+   "nombre_original": "退敵鐵像"
+  },
+  {
+   "entity_id": 2026244918,
+   "nombre": "Retreat Statue",
+   "npc_type": 23589,
+   "sprite": 111456,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    156,
+    143
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 409,
+   "nombre_original": "退敵鐵像"
+  },
+  {
+   "entity_id": 2026375992,
+   "nombre": "Shadow Guard",
+   "npc_type": 23587,
+   "sprite": 111453,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    172,
+    143
+   ],
+   "direccion": 7,
+   "visible": 0,
+   "nivel": 405,
+   "nombre_original": "潛影守衛"
+  },
+  {
+   "entity_id": 2026441529,
+   "nombre": "Shadow Guard",
+   "npc_type": 23587,
+   "sprite": 111453,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    156,
+    136
+   ],
+   "direccion": 5,
+   "visible": 0,
+   "nivel": 405,
+   "nombre_original": "潛影守衛"
+  },
+  {
+   "entity_id": 2026572603,
+   "nombre": "Shadow Guard",
+   "npc_type": 23587,
+   "sprite": 111453,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    187,
+    130
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 405,
+   "nombre_original": "潛影守衛"
+  },
+  {
+   "entity_id": 2026638140,
+   "nombre": "Shadow Guard",
+   "npc_type": 23587,
+   "sprite": 111453,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    184,
+    134
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 405,
+   "nombre_original": "潛影守衛"
+  }
+ ],
+ "recursos": [
+  {
+   "entity_id": 1964246916,
+   "capa": 0,
+   "px": [
+    278,
+    185
+   ],
+   "medio": "00cfa95aa74ab3bd0000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60001,
+   "cola": "00000481030000",
+   "crudo": "840714750000000016010000b900000000cfa95aa74ab3bd0000000000000000000661ea00000481030000",
+   "que_es": "tornado (portal)"
+  },
+  {
+   "entity_id": 1965295508,
+   "capa": 0,
+   "px": [
+    3280,
+    623
+   ],
+   "medio": "00a4b2a7abacc37ebef0c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000",
+   "crudo": "9407247500000000d00c00006f02000000a4b2a7abacc37ebef0c24f00000000000683ea00000000000000"
+  },
+  {
+   "entity_id": 1965361045,
+   "capa": 0,
+   "px": [
+    594,
+    1952
+   ],
+   "medio": "006aa872b6b4a4ec0000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000",
+   "crudo": "950725750000000052020000a0070000006aa872b6b4a4ec0000000000000000000684ea00000000000000"
+  },
+  {
+   "entity_id": 1965819804,
+   "capa": 0,
+   "px": [
+    1712,
+    2431
+   ],
+   "medio": "00a4b0adc0aec37ebef0c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000",
+   "crudo": "9c072c7500000000b00600007f09000000a4b0adc0aec37ebef0c24f00000000000686ea00000000000000"
+  },
+  {
+   "entity_id": 1965950878,
+   "capa": 0,
+   "px": [
+    2065,
+    2355
+   ],
+   "medio": "0070a872b6b4a4ec0000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "9e072e750000000011080000330900000070a872b6b4a4ec0000000000000000000665ea00000000000000"
+  },
+  {
+   "entity_id": 1966016415,
+   "capa": 0,
+   "px": [
+    2419,
+    2416
+   ],
+   "medio": "0070bbccc54bc471afdf004f00c60300",
+   "marca": 76,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "9f072f750000000073090000700900000070bbccc54bc471afdf004f00c603004c0665ea00000000000000"
+  },
+  {
+   "entity_id": 1966081952,
+   "capa": 0,
+   "px": [
+    1648,
+    2705
+   ],
+   "medio": "006ab0adc0aec37ebef0c24f007d0000",
+   "marca": 162,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "a00730750000000070060000910a0000006ab0adc0aec37ebef0c24f007d0000a20665ea00000000000000"
+  },
+  {
+   "entity_id": 1966147489,
+   "capa": 0,
+   "px": [
+    1873,
+    2541
+   ],
+   "medio": "0070b0adc0aec37ebef0c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "a10731750000000051070000ed0900000070b0adc0aec37ebef0c24f00000000000665ea00000000000000"
+  },
+  {
+   "entity_id": 1967458229,
+   "capa": 0,
+   "px": [
+    3119,
+    686
+   ],
+   "medio": "0070a5c9aa51a4ec00ec004f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000",
+   "crudo": "b5074575000000002f0c0000ae0200000070a5c9aa51a4ec00ec004f00000000000684ea00000000000000"
+  },
+  {
+   "entity_id": 1967720377,
+   "capa": 0,
+   "px": [
+    3081,
+    513
+   ],
+   "medio": "006aa5c9aa51a4ec00ec0003239d0900",
+   "marca": 96,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000",
+   "crudo": "b907497500000000090c000001020000006aa5c9aa51a4ec00ec0003239d0900600682ea00000000000000"
+  },
+  {
+   "entity_id": 1967851451,
+   "capa": 0,
+   "px": [
+    3309,
+    399
+   ],
+   "medio": "00a4aeefacf5bcd8a4ec000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000",
+   "crudo": "bb074b7500000000ed0c00008f01000000a4aeefacf5bcd8a4ec000000000000000683ea00000000000000"
+  },
+  {
+   "entity_id": 1967916988,
+   "capa": 0,
+   "px": [
+    3470,
+    494
+   ],
+   "medio": "006aa5c9aa51a4ec00003a15587c0200",
+   "marca": 163,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000",
+   "crudo": "bc074c75000000008e0d0000ee010000006aa5c9aa51a4ec00003a15587c0200a30683ea00000000000000"
+  },
+  {
+   "entity_id": 1967982525,
+   "capa": 0,
+   "px": [
+    3630,
+    560
+   ],
+   "medio": "000000001e0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000",
+   "crudo": "bd074d75000000002e0e000030020000000000001e0000000000000000000000000683ea00000000000000"
+  },
+  {
+   "entity_id": 1968048062,
+   "capa": 0,
+   "px": [
+    3596,
+    367
+   ],
+   "medio": "000000001c0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000",
+   "crudo": "be074e75000000000c0e00006f010000000000001c0000000000000000000000000683ea00000000000000"
+  },
+  {
+   "entity_id": 1968113599,
+   "capa": 0,
+   "px": [
+    3828,
+    501
+   ],
+   "medio": "0070aeefacf5bcd8a4ec004f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000",
+   "crudo": "bf074f7500000000f40e0000f50100000070aeefacf5bcd8a4ec004f00000000000686ea00000000000000"
+  },
+  {
+   "entity_id": 1968179136,
+   "capa": 0,
+   "px": [
+    3858,
+    688
+   ],
+   "medio": "006aa872b6b4a4ec0000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000",
+   "crudo": "c007507500000000120f0000b0020000006aa872b6b4a4ec0000000000000000000686ea00000000000000"
+  },
+  {
+   "entity_id": 1968244673,
+   "capa": 0,
+   "px": [
+    4045,
+    622
+   ],
+   "medio": "00a4a872b6b4a4ec0000000055000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000",
+   "crudo": "c107517500000000cd0f00006e02000000a4a872b6b4a4ec0000000055000000000686ea00000000000000"
+  },
+  {
+   "entity_id": 1968310210,
+   "capa": 0,
+   "px": [
+    4111,
+    814
+   ],
+   "medio": "000000001f0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000",
+   "crudo": "c2075275000000000f1000002e030000000000001f0000000000000000000000000686ea00000000000000"
+  },
+  {
+   "entity_id": 1968703432,
+   "capa": 0,
+   "px": [
+    5010,
+    1011
+   ],
+   "medio": "006aa872b6b4a4ec0000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "c80758750000000092130000f3030000006aa872b6b4a4ec0000000000000000000665ea00000000000000"
+  },
+  {
+   "entity_id": 1968834506,
+   "capa": 0,
+   "px": [
+    4468,
+    1521
+   ],
+   "medio": "0070bb42c452c471afdf004200000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000",
+   "crudo": "ca075a750000000074110000f10500000070bb42c452c471afdf004200000000000684ea00000000000000"
+  },
+  {
+   "entity_id": 1968965580,
+   "capa": 0,
+   "px": [
+    4909,
+    1776
+   ],
+   "medio": "006aaeefacf5bcd8a4ec000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000",
+   "crudo": "cc075c75000000002d130000f0060000006aaeefacf5bcd8a4ec000000000000000684ea00000000000000"
+  },
+  {
+   "entity_id": 1969031117,
+   "capa": 0,
+   "px": [
+    4688,
+    1682
+   ],
+   "medio": "00a4aeefacf5bcd8a4ec004f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000",
+   "crudo": "cd075d7500000000501200009206000000a4aeefacf5bcd8a4ec004f00000000000684ea00000000000000"
+  },
+  {
+   "entity_id": 1969162191,
+   "capa": 0,
+   "px": [
+    2895,
+    1517
+   ],
+   "medio": "00000000250000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60037,
+   "cola": "00000000000000",
+   "crudo": "cf075f75000000004f0b0000ed05000000000000250000000000000000000000000685ea00000000000000"
+  },
+  {
+   "entity_id": 1969227728,
+   "capa": 0,
+   "px": [
+    3120,
+    1615
+   ],
+   "medio": "0070aeefacf5bcd8a4ec004f00430000",
+   "marca": 82,
+   "orient": 6,
+   "sprite": 60037,
+   "cola": "00000000000000",
+   "crudo": "d007607500000000300c00004f0600000070aeefacf5bcd8a4ec004f00430000520685ea00000000000000"
+  },
+  {
+   "entity_id": 1969293265,
+   "capa": 0,
+   "px": [
+    5301,
+    852
+   ],
+   "medio": "00a4a8b3c37ebef0c24f004f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000",
+   "crudo": "d107617500000000b51400005403000000a4a8b3c37ebef0c24f004f00000000000686ea00000000000000"
+  },
+  {
+   "entity_id": 1969358802,
+   "capa": 0,
+   "px": [
+    5207,
+    1103
+   ],
+   "medio": "00cfa95aa74ab3bd00df004f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000",
+   "crudo": "d207627500000000571400004f04000000cfa95aa74ab3bd00df004f00000000000686ea00000000000000"
+  },
+  {
+   "entity_id": 1969424339,
+   "capa": 0,
+   "px": [
+    5522,
+    909
+   ],
+   "medio": "00a4bbccc54bc471afdf004f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000",
+   "crudo": "d307637500000000921500008d03000000a4bbccc54bc471afdf004f00000000000686ea00000000000000"
+  },
+  {
+   "entity_id": 1969489876,
+   "capa": 0,
+   "px": [
+    5614,
+    691
+   ],
+   "medio": "006abbccc54bc471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000",
+   "crudo": "d407647500000000ee150000b3020000006abbccc54bc471afdf000000000000000686ea00000000000000"
+  },
+  {
+   "entity_id": 1969555413,
+   "capa": 0,
+   "px": [
+    5836,
+    814
+   ],
+   "medio": "00c8b2efaff300d8a4ec004f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000",
+   "crudo": "d507657500000000cc1600002e03000000c8b2efaff300d8a4ec004f00000000000686ea00000000000000"
+  },
+  {
+   "entity_id": 1969752024,
+   "capa": 0,
+   "px": [
+    5933,
+    531
+   ],
+   "medio": "00c8b2efaff300000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000",
+   "crudo": "d8076875000000002d1700001302000000c8b2efaff300000000000000000000000683ea00000000000000"
+  },
+  {
+   "entity_id": 1970145246,
+   "capa": 0,
+   "px": [
+    7347,
+    1324
+   ],
+   "medio": "006ab2a7abacc37ebef0c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000",
+   "crudo": "de076e7500000000b31c00002c050000006ab2a7abacc37ebef0c24f00000000000682ea00000000000000"
+  },
+  {
+   "entity_id": 1970210783,
+   "capa": 0,
+   "px": [
+    7408,
+    1040
+   ],
+   "medio": "006ab4c6a8ebc37ebef0c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000",
+   "crudo": "df076f7500000000f01c000010040000006ab4c6a8ebc37ebef0c24f00000000000682ea00000000000000"
+  },
+  {
+   "entity_id": 1970604005,
+   "capa": 0,
+   "px": [
+    7568,
+    1197
+   ],
+   "medio": "00000000280000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000",
+   "crudo": "e507757500000000901d0000ad04000000000000280000000000000000000000000684ea00000000000000"
+  },
+  {
+   "entity_id": 1971259375,
+   "capa": 0,
+   "px": [
+    9006,
+    2031
+   ],
+   "medio": "00ec0c00e0028ef50c002115cc5f0900",
+   "marca": 56,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000",
+   "crudo": "ef077f75000000002e230000ef07000000ec0c00e0028ef50c002115cc5f0900380683ea00000000000000"
+  },
+  {
+   "entity_id": 1971324912,
+   "capa": 0,
+   "px": [
+    9041,
+    1838
+   ],
+   "medio": "006aa872b6b4a4ec0000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000",
+   "crudo": "f007807500000000512300002e070000006aa872b6b4a4ec0000000000000000000683ea00000000000000"
+  },
+  {
+   "entity_id": 1971652597,
+   "capa": 0,
+   "px": [
+    7312,
+    1936
+   ],
+   "medio": "00000000240000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60037,
+   "cola": "00000000000000",
+   "crudo": "f507857500000000901c00009007000000000000240000000000000000000000000685ea00000000000000"
+  },
+  {
+   "entity_id": 1971718134,
+   "capa": 0,
+   "px": [
+    7406,
+    2126
+   ],
+   "medio": "00a4bbccc54bc471afdf004f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60037,
+   "cola": "00000000000000",
+   "crudo": "f607867500000000ee1c00004e08000000a4bbccc54bc471afdf004f00000000000685ea00000000000000"
+  },
+  {
+   "entity_id": 1971783671,
+   "capa": 0,
+   "px": [
+    1903,
+    2925
+   ],
+   "medio": "00a4b0adc0aec37ebef0c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000",
+   "crudo": "f7078775000000006f0700006d0b000000a4b0adc0aec37ebef0c24f00000000000682ea00000000000000"
+  },
+  {
+   "entity_id": 1971849208,
+   "capa": 0,
+   "px": [
+    1684,
+    3022
+   ],
+   "medio": "0073c5ecb3bd00fcaff3c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000",
+   "crudo": "f80788750000000094060000ce0b00000073c5ecb3bd00fcaff3c24f00000000000682ea00000000000000"
+  },
+  {
+   "entity_id": 1971914745,
+   "capa": 0,
+   "px": [
+    1802,
+    3211
+   ],
+   "medio": "0070aeefacf5bcd8a4ec004f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000",
+   "crudo": "f9078975000000000a0700008b0c00000070aeefacf5bcd8a4ec004f00000000000682ea00000000000000"
+  },
+  {
+   "entity_id": 1971980282,
+   "capa": 0,
+   "px": [
+    1651,
+    3351
+   ],
+   "medio": "0070b0adc0aec37ebef0c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000",
+   "crudo": "fa078a750000000073060000170d00000070b0adc0aec37ebef0c24f00000000000682ea00000000000000"
+  },
+  {
+   "entity_id": 1972570115,
+   "capa": 0,
+   "px": [
+    722,
+    3667
+   ],
+   "medio": "0070a872b6b4a4ec00ec004f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000",
+   "crudo": "0308937500000000d2020000530e00000070a872b6b4a4ec00ec004f00000000000684ea00000000000000"
+  },
+  {
+   "entity_id": 1973225485,
+   "capa": 0,
+   "px": [
+    2032,
+    4495
+   ],
+   "medio": "00a4a5c9aa51a4ec0000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000",
+   "crudo": "0d089d7500000000f00700008f11000000a4a5c9aa51a4ec0000000000000000000686ea00000000000000"
+  },
+  {
+   "entity_id": 1973291022,
+   "capa": 0,
+   "px": [
+    2126,
+    4372
+   ],
+   "medio": "006abbccc54bc471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000",
+   "crudo": "0e089e75000000004e08000014110000006abbccc54bc471afdf000000000000000686ea00000000000000"
+  },
+  {
+   "entity_id": 1973356559,
+   "capa": 0,
+   "px": [
+    2291,
+    4493
+   ],
+   "medio": "00d1a57eaff300ec0000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000",
+   "crudo": "0f089f7500000000f30800008d11000000d1a57eaff300ec0000000000000000000686ea00000000000000"
+  },
+  {
+   "entity_id": 1973422096,
+   "capa": 0,
+   "px": [
+    2347,
+    4686
+   ],
+   "medio": "00d1a57eaff3007ebef0c24f007d0000",
+   "marca": 162,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000",
+   "crudo": "1008a075000000002b0900004e12000000d1a57eaff3007ebef0c24f007d0000a20682ea00000000000000"
+  },
+  {
+   "entity_id": 1973487633,
+   "capa": 0,
+   "px": [
+    2548,
+    4784
+   ],
+   "medio": "00ccc04db3bd00ec0000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000",
+   "crudo": "1108a17500000000f4090000b012000000ccc04db3bd00ec0000000000000000000682ea00000000000000"
+  },
+  {
+   "entity_id": 1973880855,
+   "capa": 0,
+   "px": [
+    4178,
+    4465
+   ],
+   "medio": "0070b0adc0aec37ebef0c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000",
+   "crudo": "1708a7750000000052100000711100000070b0adc0aec37ebef0c24f00000000000683ea00000000000000"
+  },
+  {
+   "entity_id": 1973946392,
+   "capa": 0,
+   "px": [
+    4429,
+    4598
+   ],
+   "medio": "006abbccc54bc471afdf004f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000",
+   "crudo": "1808a875000000004d110000f6110000006abbccc54bc471afdf004f00000000000683ea00000000000000"
+  },
+  {
+   "entity_id": 1974732836,
+   "capa": 0,
+   "px": [
+    2545,
+    3631
+   ],
+   "medio": "006abbccc54bc471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000",
+   "crudo": "2408b47500000000f10900002f0e0000006abbccc54bc471afdf000000000000000684ea00000000000000"
+  },
+  {
+   "entity_id": 1974863910,
+   "capa": 0,
+   "px": [
+    2385,
+    3531
+   ],
+   "medio": "000000002c0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000",
+   "crudo": "2608b6750000000051090000cb0d0000000000002c0000000000000000000000000684ea00000000000000"
+  },
+  {
+   "entity_id": 1974929447,
+   "capa": 0,
+   "px": [
+    2162,
+    3427
+   ],
+   "medio": "00ccc04db3bd003903004c03846d0000",
+   "marca": 58,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000",
+   "crudo": "2708b7750000000072080000630d000000ccc04db3bd003903004c03846d00003a0684ea00000000000000"
+  },
+  {
+   "entity_id": 1974994984,
+   "capa": 0,
+   "px": [
+    2008,
+    3346
+   ],
+   "medio": "00d1a57eaff300ec0000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000",
+   "crudo": "2808b87500000000d8070000120d000000d1a57eaff300ec0000000000000000000684ea00000000000000"
+  },
+  {
+   "entity_id": 1975060521,
+   "capa": 0,
+   "px": [
+    3278,
+    2990
+   ],
+   "medio": "000000002b0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000",
+   "crudo": "2908b97500000000ce0c0000ae0b0000000000002b0000000000000000000000000686ea00000000000000"
+  },
+  {
+   "entity_id": 1975126058,
+   "capa": 0,
+   "px": [
+    3184,
+    3280
+   ],
+   "medio": "000000002b0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000",
+   "crudo": "2a08ba7500000000700c0000d00c0000000000002b0000000000000000000000000686ea00000000000000"
+  },
+  {
+   "entity_id": 1975322669,
+   "capa": 0,
+   "px": [
+    3022,
+    2928
+   ],
+   "medio": "000000002a0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000",
+   "crudo": "2d08bd7500000000ce0b0000700b0000000000002a0000000000000000000000000686ea00000000000000"
+  },
+  {
+   "entity_id": 1975453743,
+   "capa": 0,
+   "px": [
+    3404,
+    3407
+   ],
+   "medio": "00a4b0adc0aec37ebef0c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "2f08bf75000000004c0d00004f0d000000a4b0adc0aec37ebef0c24f00000000000665ea00000000000000"
+  },
+  {
+   "entity_id": 1975650354,
+   "capa": 0,
+   "px": [
+    3956,
+    3694
+   ],
+   "medio": "00ccc04db3bd00000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "3208c27500000000740f00006e0e000000ccc04db3bd00000000000000000000000665ea00000000000000"
+  },
+  {
+   "entity_id": 1975781428,
+   "capa": 0,
+   "px": [
+    4268,
+    2413
+   ],
+   "medio": "0070a872b6b4a4ec0000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60051,
+   "cola": "00002280140000",
+   "crudo": "3408c47500000000ac1000006d0900000070a872b6b4a4ec0000000000000000000693ea00002280140000",
+   "que_es": "Aurora Totem"
+  },
+  {
+   "entity_id": 1975846965,
+   "capa": 0,
+   "px": [
+    4451,
+    2489
+   ],
+   "medio": "006aa5c9aa51a4ec0000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60054,
+   "cola": "00002280140000",
+   "crudo": "3508c5750000000063110000b9090000006aa5c9aa51a4ec0000000000000000000696ea00002280140000",
+   "que_es": "Breeze Totem"
+  },
+  {
+   "entity_id": 1975912502,
+   "capa": 0,
+   "px": [
+    4634,
+    2402
+   ],
+   "medio": "00840500df028cd80500aa15d96d0200",
+   "marca": 58,
+   "orient": 6,
+   "sprite": 60053,
+   "cola": "00002280140000",
+   "crudo": "3608c675000000001a1200006209000000840500df028cd80500aa15d96d02003a0695ea00002280140000",
+   "que_es": "Iron Totem"
+  },
+  {
+   "entity_id": 1975978039,
+   "capa": 0,
+   "px": [
+    4433,
+    2314
+   ],
+   "medio": "00000000870000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60052,
+   "cola": "00002280140000",
+   "crudo": "3708c77500000000511100000a09000000000000870000000000000000000000000694ea00002280140000",
+   "que_es": "Dark City Totem"
+  },
+  {
+   "entity_id": 1976109113,
+   "capa": 0,
+   "px": [
+    8012,
+    2542
+   ],
+   "medio": "0070c565adbbaefcaff3c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "3908c975000000004c1f0000ee0900000070c565adbbaefcaff3c24f00000000000665ea00000000000000"
+  },
+  {
+   "entity_id": 1976174650,
+   "capa": 0,
+   "px": [
+    7857,
+    2642
+   ],
+   "medio": "0070c565adbbaefcaff3c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "3a08ca7500000000b11e0000520a00000070c565adbbaefcaff3c24f00000000000665ea00000000000000"
+  },
+  {
+   "entity_id": 1976240187,
+   "capa": 0,
+   "px": [
+    7727,
+    2769
+   ],
+   "medio": "000000002a0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "3b08cb75000000002f1e0000d10a0000000000002a0000000000000000000000000665ea00000000000000"
+  },
+  {
+   "entity_id": 1976305724,
+   "capa": 0,
+   "px": [
+    7535,
+    2837
+   ],
+   "medio": "00a4b0adc0aec37ebef0c24f002f0b00",
+   "marca": 4,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "3c08cc75000000006f1d0000150b000000a4b0adc0aec37ebef0c24f002f0b00040665ea00000000000000"
+  },
+  {
+   "entity_id": 1976371261,
+   "capa": 0,
+   "px": [
+    6925,
+    2799
+   ],
+   "medio": "0070a5c9aa51a4ec00df000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000",
+   "crudo": "3d08cd75000000000d1b0000ef0a00000070a5c9aa51a4ec00df000000000000000684ea00000000000000"
+  },
+  {
+   "entity_id": 1976436798,
+   "capa": 0,
+   "px": [
+    6700,
+    2701
+   ],
+   "medio": "006b010051150c510600a91655520000",
+   "marca": 162,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000",
+   "crudo": "3e08ce75000000002c1a00008d0a0000006b010051150c510600a91655520000a20684ea00000000000000"
+  },
+  {
+   "entity_id": 1976502335,
+   "capa": 0,
+   "px": [
+    7129,
+    2896
+   ],
+   "medio": "006ab0adc0aec37ebef0c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000",
+   "crudo": "3f08cf7500000000d91b0000500b0000006ab0adc0aec37ebef0c24f00000000000684ea00000000000000"
+  },
+  {
+   "entity_id": 1976567872,
+   "capa": 0,
+   "px": [
+    6511,
+    2609
+   ],
+   "medio": "00a4aeefacf5bcd8a4ec000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000",
+   "crudo": "4008d075000000006f190000310a000000a4aeefacf5bcd8a4ec000000000000000684ea00000000000000"
+  },
+  {
+   "entity_id": 1976633409,
+   "capa": 0,
+   "px": [
+    7249,
+    3085
+   ],
+   "medio": "006abb42c452c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000",
+   "crudo": "4108d17500000000511c00000d0c0000006abb42c452c471afdf000000000000000684ea00000000000000"
+  },
+  {
+   "entity_id": 1976698946,
+   "capa": 0,
+   "px": [
+    6963,
+    3240
+   ],
+   "medio": "00a4bb42c452c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000",
+   "crudo": "4208d27500000000331b0000a80c000000a4bb42c452c471afdf000000000000000686ea00000000000000"
+  },
+  {
+   "entity_id": 1976764483,
+   "capa": 0,
+   "px": [
+    7182,
+    3311
+   ],
+   "medio": "000000002a000000a700000055000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000",
+   "crudo": "4308d375000000000e1c0000ef0c0000000000002a000000a700000055000000000686ea00000000000000"
+  },
+  {
+   "entity_id": 1976830020,
+   "capa": 0,
+   "px": [
+    6766,
+    3312
+   ],
+   "medio": "00ffb66a301569a307007b02477f0800",
+   "marca": 58,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000",
+   "crudo": "4408d475000000006e1a0000f00c000000ffb66a301569a307007b02477f08003a0686ea00000000000000"
+  },
+  {
+   "entity_id": 1976895557,
+   "capa": 0,
+   "px": [
+    6987,
+    3568
+   ],
+   "medio": "00ccc04db3bd0071afdf004f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60038,
+   "cola": "00000000000000",
+   "crudo": "4508d575000000004b1b0000f00d000000ccc04db3bd0071afdf004f00000000000686ea00000000000000"
+  },
+  {
+   "entity_id": 1977026631,
+   "capa": 0,
+   "px": [
+    7183,
+    3729
+   ],
+   "medio": "000000002c0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000",
+   "crudo": "4708d775000000000f1c0000910e0000000000002c0000000000000000000000000682ea00000000000000"
+  },
+  {
+   "entity_id": 1977092168,
+   "capa": 0,
+   "px": [
+    6963,
+    3824
+   ],
+   "medio": "000000001c0000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000",
+   "crudo": "4808d87500000000331b0000f00e0000000000001c0000000000000000000000000682ea00000000000000"
+  },
+  {
+   "entity_id": 1977157705,
+   "capa": 0,
+   "px": [
+    7249,
+    3918
+   ],
+   "medio": "00cfa95aa74ab3bd00ec000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000",
+   "crudo": "4908d97500000000511c00004e0f000000cfa95aa74ab3bd00ec000000000000000682ea00000000000000"
+  },
+  {
+   "entity_id": 1977223242,
+   "capa": 0,
+   "px": [
+    7442,
+    4046
+   ],
+   "medio": "0043aff0aff3007ebef0c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000",
+   "crudo": "4a08da7500000000121d0000ce0f00000043aff0aff3007ebef0c24f00000000000682ea00000000000000"
+  },
+  {
+   "entity_id": 1977288779,
+   "capa": 0,
+   "px": [
+    7663,
+    4138
+   ],
+   "medio": "00a4b0adc0aec37ebef0c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60034,
+   "cola": "00000000000000",
+   "crudo": "4b08db7500000000ef1d00002a10000000a4b0adc0aec37ebef0c24f00000000000682ea00000000000000"
+  },
+  {
+   "entity_id": 1977419853,
+   "capa": 0,
+   "px": [
+    6478,
+    4075
+   ],
+   "medio": "00d0b8adb241aff3004f000055000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000",
+   "crudo": "4d08dd75000000004e190000eb0f000000d0b8adb241aff3004f000055000000000683ea00000000000000"
+  },
+  {
+   "entity_id": 1977485390,
+   "capa": 0,
+   "px": [
+    6222,
+    3983
+   ],
+   "medio": "00000000170000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000",
+   "crudo": "4e08de75000000004e1800008f0f000000000000170000000000000000000000000683ea00000000000000"
+  },
+  {
+   "entity_id": 1977550927,
+   "capa": 0,
+   "px": [
+    6187,
+    4207
+   ],
+   "medio": "00000000220000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60035,
+   "cola": "00000000000000",
+   "crudo": "4f08df75000000002b1800006f10000000000000220000000000000000000000000683ea00000000000000"
+  },
+  {
+   "entity_id": 1977682001,
+   "capa": 0,
+   "px": [
+    5903,
+    4335
+   ],
+   "medio": "0070a8b3c37ebef0c24f000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000",
+   "crudo": "5108e175000000000f170000ef1000000070a8b3c37ebef0c24f000000000000000684ea00000000000000"
+  },
+  {
+   "entity_id": 1977747538,
+   "capa": 0,
+   "px": [
+    5682,
+    4432
+   ],
+   "medio": "006ab2a7abacc37ebef0c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000",
+   "crudo": "5208e275000000003216000050110000006ab2a7abacc37ebef0c24f00000000000684ea00000000000000"
+  },
+  {
+   "entity_id": 1977813075,
+   "capa": 0,
+   "px": [
+    5495,
+    4556
+   ],
+   "medio": "0070a5c9aa51a4ec0000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000",
+   "crudo": "5308e3750000000077150000cc1100000070a5c9aa51a4ec0000000000000000000684ea00000000000000"
+  },
+  {
+   "entity_id": 1978009686,
+   "capa": 0,
+   "px": [
+    5517,
+    3634
+   ],
+   "medio": "00a4b2a7abacc37ebef0c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "5608e675000000008d150000320e000000a4b2a7abacc37ebef0c24f00000000000665ea00000000000000"
+  },
+  {
+   "entity_id": 1978140760,
+   "capa": 0,
+   "px": [
+    4940,
+    3822
+   ],
+   "medio": "006ab0adc0aec37ebef0c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "5808e875000000004c130000ee0e0000006ab0adc0aec37ebef0c24f00000000000665ea00000000000000"
+  },
+  {
+   "entity_id": 1978206297,
+   "capa": 0,
+   "px": [
+    4784,
+    3918
+   ],
+   "medio": "006ab0adc0aec37ebef0c24f003b0300",
+   "marca": 58,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "5908e97500000000b01200004e0f0000006ab0adc0aec37ebef0c24f003b03003a0665ea00000000000000"
+  },
+  {
+   "entity_id": 1978337371,
+   "capa": 0,
+   "px": [
+    6770,
+    4688
+   ],
+   "medio": "0070bb42c452c471afdf004f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000",
+   "crudo": "5b08eb7500000000721a0000501200000070bb42c452c471afdf004f00000000000684ea00000000000000"
+  },
+  {
+   "entity_id": 1978402908,
+   "capa": 0,
+   "px": [
+    6988,
+    4596
+   ],
+   "medio": "00000000270000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000",
+   "crudo": "5c08ec75000000004c1b0000f411000000000000270000000000000000000000000684ea00000000000000"
+  },
+  {
+   "entity_id": 1978468445,
+   "capa": 0,
+   "px": [
+    6862,
+    4873
+   ],
+   "medio": "00a4bb42c452c471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000",
+   "crudo": "5d08ed7500000000ce1a00000913000000a4bb42c452c471afdf000000000000000684ea00000000000000"
+  },
+  {
+   "entity_id": 1978533982,
+   "capa": 0,
+   "px": [
+    6577,
+    4816
+   ],
+   "medio": "0073c5ecb3bd00000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60036,
+   "cola": "00000000000000",
+   "crudo": "5e08ee7500000000b1190000d01200000073c5ecb3bd00000000000000000000000684ea00000000000000"
+  },
+  {
+   "entity_id": 1982138517,
+   "capa": 0,
+   "px": [
+    3951,
+    4398
+   ],
+   "medio": "00000000170000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "95082576000000006f0f00002e11000000000000170000000000000000000000000665ea00000000000000"
+  },
+  {
+   "entity_id": 1982859424,
+   "capa": 0,
+   "px": [
+    5806,
+    3023
+   ],
+   "medio": "00cfa95aa74ab3bd004f004f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60005,
+   "cola": "00000000000000",
+   "crudo": "a008307600000000ae160000cf0b000000cfa95aa74ab3bd004f004f00000000000665ea00000000000000"
+  },
+  {
+   "entity_id": 1983056035,
+   "capa": 0,
+   "px": [
+    2560,
+    3115
+   ],
+   "medio": "00a4bbccc54bc471afdf000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60305,
+   "cola": "00000280140000",
+   "crudo": "a308337600000000000a00002b0c000000a4bbccc54bc471afdf000000000000000691eb00000280140000"
+  },
+  {
+   "entity_id": 1983121572,
+   "capa": 0,
+   "px": [
+    5678,
+    3589
+   ],
+   "medio": "006aa5c9aa51a4ec00f0c24f00000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60305,
+   "cola": "00000280140000",
+   "crudo": "a4083476000000002e160000050e0000006aa5c9aa51a4ec00f0c24f00000000000691eb00000280140000"
+  },
+  {
+   "entity_id": 1983187109,
+   "capa": 0,
+   "px": [
+    7766,
+    2022
+   ],
+   "medio": "00000000230000000000000000000000",
+   "marca": 0,
+   "orient": 6,
+   "sprite": 60305,
+   "cola": "00000280140000",
+   "crudo": "a508357600000000561e0000e607000000000000230000000000000000000000000691eb00000280140000"
+  }
+ ]
+}

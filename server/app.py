@@ -90,6 +90,22 @@ def _portales():
 # se pago caro una vez: cada copia que se olvidaba dejaba un mapa entero sin
 # IA. Aqui esta una sola vez.
 MAPAS_APARTE = {41: 'lyceum.json', 57: 'fighting_palace.json'}
+# DONDE APARECE EL JUGADOR al entrar a cada Training Area por el dialogo del
+# Terra Keeper. La casilla es (136,72) en las cuatro, leida del minimapa en el
+# cliente oficial. Estaba en (202,109), que es la casilla de VUELTA -- donde
+# se aparece en Mysterious Garden al salir -- y por eso el jugador entraba en
+# el sitio equivocado.
+DESTINOS_ENTRENAMIENTO = {
+    7505: (135, (136, 72), 'Training Area C'),
+    7506: (136, (136, 72), 'Training Area D'),
+    7507: (118, (136, 72), 'Training Area A'),
+    7508: (134, (136, 72), 'Training Area B'),
+}
+ETAPAS_ENTRENAMIENTO = frozenset(destino[0]
+                                 for destino in DESTINOS_ENTRENAMIENTO.values())
+ENTIDAD_SALIDA_ENTRENAMIENTO_B = 0x06380409
+EVENTO_SALIDA_ENTRENAMIENTO_A = bytes.fromhex('ef020a5003')
+RETORNO_ENTRENAMIENTO = (22, (201, 108), 'Mysterious Garden')
 
 
 def mapas_poblados():
@@ -783,10 +799,16 @@ def _viajar_dentro_del_mapa(ses, addr, por, motivo=''):
     lleg = por['llegada']
     yo = ses.personaje.entity_id
     fuera = []
-    d = por.get('direccion')
-    if d is not None:
-        fuera.append(struct.pack('<HIB', 0x0016, yo, int(d)))
-    fuera.append(struct.pack('<H', 0x0012) + bytes(7))
+    # NO TODOS LOS SALTOS INTERNOS MANDAN LO MISMO. Los de Forbidden Sector y
+    # Lost Trail traen el 0x0016 y el 0x0012; el de vuelta de las estatuas de
+    # Seaside Grotto no trae ninguno de los dos -- se busco en toda la sesion
+    # y no hay ni un 0x0016 -- y lo unico que llega es el 0x0003. Los portales
+    # asi se marcan con solo_0003.
+    if not por.get('solo_0003'):
+        d = por.get('direccion')
+        if d is not None:
+            fuera.append(struct.pack('<HIB', 0x0016, yo, int(d)))
+        fuera.append(struct.pack('<H', 0x0012) + bytes(7))
     fuera.append(struct.pack('<HIII', 0x0003, yo, lleg[0], lleg[1]))
     ses.personaje.tile_x, ses.personaje.tile_y = lleg
     ses.enviar(*fuera)
@@ -3149,6 +3171,15 @@ class Servidor:
             log.debug(f"[{addr}] radar (0x012B) respondido para stage {stage_z}")
             return
 
+        # --- salida de Training Area A -------------------------------
+        if (opcode == 0x000D and ses.rol == 'mundo' and ses.personaje
+                and ses.personaje.stage == 118 and len(cuerpo) == 9
+            and struct.unpack_from('<I', cuerpo, 0)[0] == ses.personaje.entity_id
+            and cuerpo[4:] == EVENTO_SALIDA_ENTRENAMIENTO_A):
+            _st_retorno, _tile_retorno, _nombre_retorno = RETORNO_ENTRENAMIENTO
+            _cerrar_viaje(ses, addr, _st_retorno, _tile_retorno, _nombre_retorno)
+            return
+
         # --- dialogo con los NPC -------------------------------------
         # Secuencia establecida con una captura con marca de tiempo:
         #   0x0005 [LE32 entity] clic   ->  0x0012 primera linea
@@ -3157,6 +3188,13 @@ class Servidor:
         if opcode == 0x0005 and ses.rol == 'mundo' and len(cuerpo) >= 4:
             import dialogos
             ent = struct.unpack_from('<I', cuerpo, 0)[0]
+            if (ses.personaje
+                    and ses.personaje.stage in ETAPAS_ENTRENAMIENTO
+                    and ent == ENTIDAD_SALIDA_ENTRENAMIENTO_B):
+                _st_retorno, _tile_retorno, _nombre_retorno = RETORNO_ENTRENAMIENTO
+                _cerrar_viaje(ses, addr, _st_retorno, _tile_retorno,
+                              _nombre_retorno)
+                return
             # ESTATUA QUE TELETRANSPORTA. Va lo primero porque no es un NPC ni
             # un monstruo: es un objeto de mapa, y el resto del manejador ni
             # lo reconoceria.
@@ -3404,6 +3442,8 @@ class Servidor:
                     _el, entidad=ent, val=val,
                     nombre=_nombre_entidad(ses, ent),
                     stage=getattr(ses.personaje, 'stage', 0)
+                    if ses.personaje else 0,
+                    nivel=getattr(ses.personaje, 'nivel', 0)
                     if ses.personaje else 0) if _el else (struct.pack('<H', 0x0012) + dialogos.FIN,)
                 # Solo la PRIMERA linea de dialogo. El cliente espera una,
                 # pide "siguiente" con 0x000B valor 1, y recien entonces le
@@ -3425,7 +3465,12 @@ class Servidor:
 
 
                 # Elecciones especiales
-                if _el == 10125 and ses.personaje:
+                if _el in DESTINOS_ENTRENAMIENTO and ses.personaje:
+                    _st_area, _tile_area, _nombre_area = DESTINOS_ENTRENAMIENTO[_el]
+                    ses.viaje_pendiente = (_st_area, _tile_area, _nombre_area)
+                    log.info(f"[{addr}] Terra Keeper: {_nombre_area}, "
+                             f"stage {_st_area} en {_tile_area} al cerrar el dialogo")
+                elif _el == 10125 and ses.personaje:
                     # "Quit the training": el traslado NO va aqui. Medido:
                     # al decir que si el servidor manda el 10127, el cliente
                     # pide la linea siguiente, llega el cierre del cuadro y
