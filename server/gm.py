@@ -96,8 +96,16 @@ def poner_nivel(ses, n: int) -> str:
     p.mp_max = max(p.mp_max, 300 + p.nivel * 15)
     p.hp = a._vida_max(p)
     p.mp = a._mana_max(p)
+    import skills as _sk
+    if not getattr(p, 'banco_habilidades', None):
+        p.banco_habilidades = {}
+    nuevas, added = _sk.completar_ranuras_extra(
+        p.habilidades, p.nivel, p.banco_habilidades)
+    if added:
+        p.habilidades = nuevas
+        p.class_id = _sk.calcular_class_id([h[0] for h in p.habilidades])
     exp_sig = min(0xFFFFFFFF, _cb.exp_para_nivel(p.nivel + 1))
-    ses.enviar(
+    paquetes = [
         _cl.aviso(f"Level set to {p.nivel}.", tipo=0, msg_id=_cl.MSG_ITEM),
         _cb.atributo(yo, p.hp, _cb.KIND_HP),
         _cb.atributo(yo, p.mp, _cb.KIND_MP),
@@ -108,12 +116,30 @@ def poner_nivel(ses, n: int) -> str:
         + struct.pack('<BII', 32, min(0xFFFFFFFF, p.exp), 0),
         _cb.efecto_level_up(yo, es_skill=False),
         a._stats_ses(ses),
-    )
+    ]
+    for i, (sid, _nv, _xp) in enumerate(added):
+        ranura = len(p.habilidades) - len(added) + i + 1
+        paquetes.append(_cl.aviso(_sk.nombre_rama(sid), tipo=7, msg_id=424))
+        for nid, nom in (_sk.hechizos_de_rama(sid) or []):
+            paquetes.append(struct.pack('<HIB', 0x001D, yo, 1)
+                            + struct.pack('<BII', _cl.KIND_HECHIZO, nid, 1))
+            paquetes.append(_cl.aviso(nom, tipo=7, msg_id=_cl.MSG_HECHIZO))
+        paquetes.append(_cl.aviso(
+            'Skill slot %d unlocked (%s). Change it at the Skill Angel.'
+            % (ranura, _sk.nombre_rama(sid)),
+            tipo=0, msg_id=_cl.MSG_ITEM))
+    if added:
+        paquetes.append(_cl.arbol(p.habilidades, banco=p.banco_habilidades))
+    ses.enviar(*paquetes)
     if getattr(ses, 'usuario', None):
         cuentas.guardar_progreso(ses.usuario, cid, p.nivel, p.exp,
                                  p.hp, p.mp, p.habilidades,
                                  hp_max=p.hp_max, mp_max=p.mp_max)
-    return f"level {p.nivel}"
+        if added:
+            cuentas.guardar_clase(ses.usuario, cid, p.class_id)
+            cuentas.guardar_banco_habilidades(ses.usuario, cid, p.banco_habilidades)
+    extra = f", {len(added)} extra skill slot(s)" if added else ""
+    return f"level {p.nivel}{extra}"
 
 
 def poner_skills(ses, n: int) -> str:

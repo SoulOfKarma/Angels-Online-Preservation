@@ -182,6 +182,29 @@ def ranura_que_se_abre(nivel: int) -> int:
 RAMAS_RELLENO = (20, 21, 22, 23, 31, 30, 29, 28, 27, 26, 25, 24)
 
 
+def completar_ranuras_extra(habilidades, nivel, banco=None):
+    """Open the extra skill slots this level has earned.
+
+    Slot 7 at 301, slot 8 at 351, slot 9 at 401. A character who does not
+    yet have the six base slots is left alone. Returns (habilidades, added).
+    """
+    habs = [tuple(h) if isinstance(h, (list, tuple)) else (int(h), 1, 0)
+            for h in (habilidades or [])]
+    if len(habs) < RANURAS_BASE:
+        return habs, []
+    banco = banco if isinstance(banco, dict) else {}
+    added = []
+    while len(habs) < ranuras_de_habilidad(nivel):
+        sid = rama_de_relleno(habs)
+        if not sid:
+            break
+        nv, xp = banco.get(sid, (1, 0))
+        fila = (sid, nv, xp)
+        habs.append(fila)
+        added.append(fila)
+    return habs, added
+
+
 def rama_de_relleno(ya_llevadas) -> int:
     """La primera rama de oficio que ese personaje no tenga, o 0."""
     puestas = set()
