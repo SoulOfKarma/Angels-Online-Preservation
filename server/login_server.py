@@ -71,7 +71,11 @@ def usuario_de_auth(cuerpo: bytes) -> str:
     return cuerpo[:fin if fin >= 0 else 0].decode('ascii', 'replace')
 
 
-def respuesta_error(codigo: int = 1) -> bytes:
+ERROR_GENERICO = 1
+ERROR_PASSWORD_INCORRECTA = 3
+
+
+def respuesta_error(codigo: int = ERROR_GENERICO) -> bytes:
     """Respuesta de login rechazado: 0x0000 con codigo de error no-cero.
 
     El campo [2-3] del bloque de cuenta es el codigo de error; un valor

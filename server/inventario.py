@@ -1089,6 +1089,66 @@ _VEL_MONTURA = {}
 OFF_MEJORA = 83
 
 
+_VINCULACIONES = None
+
+
+def vinculaciones_de(item_id):
+    """Limite y activacion por equipo declarados por el cliente."""
+    global _VINCULACIONES
+    if _VINCULACIONES is None:
+        import sqlite3
+        db = pathlib.Path(__file__).parent.parent / 'corpus' / 'content.db'
+        tabla = {}
+        with sqlite3.connect(f'{db.as_uri()}?mode=ro', uri=True) as con:
+            for nombre in TABLAS_ITEM:
+                try:
+                    filas = con.execute(
+                        f'SELECT id, "綁定次數", "裝備綁定" FROM {nombre}')
+                    for iid, limite, equipo in filas:
+                        try:
+                            tabla[int(iid)] = (max(0, int(limite or 0)), equipo == '是')
+                        except (TypeError, ValueError):
+                            continue
+                except sqlite3.OperationalError:
+                    continue
+        _VINCULACIONES = tabla
+    return _VINCULACIONES.get(int(item_id), (0, False))
+
+
+def vincular_equipo(item_id, char_id, estado):
+    """Consume una vinculacion una sola vez para el mismo propietario.
+
+    El estado viaja con las mejoras de la pieza, no con el tipo de item.
+    Una transferencia futura debe conservar este estado completo.
+    """
+    limite, al_equipar = vinculaciones_de(item_id)
+    if not limite or not al_equipar:
+        return False
+    v = estado.get('vinculacion')
+    if v and v.get('item_id') == item_id and v.get('dueno') == char_id:
+        return False
+    restantes = int(v['restantes']) if v and v.get('item_id') == item_id else limite
+    if restantes <= 0:
+        raise ValueError('El objeto no tiene vinculaciones disponibles')
+    estado['vinculacion'] = {'item_id': item_id, 'dueno': char_id,
+                             'restantes': restantes - 1}
+    return True
+
+
+def marcar_vinculacion(entrada, estado):
+    v = (estado or {}).get('vinculacion')
+    if not v:
+        return entrada
+    base = 6 if entrada[:2] == struct.pack('<H', 0x001B) else 0
+    b = bytearray(entrada)
+    if len(b) <= base + 58:
+        return entrada
+    if struct.unpack_from('<I', b, base + 9)[0] != v['item_id']:
+        return entrada
+    b[base + 57] = max(0, min(255, int(v['restantes'])))
+    return bytes(b)
+
+
 def marcar_mejora(entrada: bytes, veces: int) -> bytes:
     """Escribe el +N en una entrada ya armada.
 
@@ -1706,7 +1766,8 @@ def _entrada(char_id: int, ranura: int, item_id: int, cant: int,
         # personaje en ropa interior.
         puesta = es_equipo(ranura)
         struct.pack_into('<I', e, 53, char_id if char_id else (dueno or 0))
-        e[57] = 2 if puesta else 3
+        limite, al_equipar = vinculaciones_de(item_id)
+        e[57] = min(255, max(0, limite - int(puesta and al_equipar)))
         e[58] = 1
         # Offset 51 (0x33) es el campo que le indica al cliente que esta entrada
         # mide 119 bytes (86 + 33 extra). NUNCA debe alterarse en un equipable.
@@ -1751,6 +1812,7 @@ def completo(char_id: int, items, dueno: int = None, mejoras=None,
         _e = _entrada(char_id, ran, iid, cnt, ins, dueno, mascota=pet_spec)
         if not es_mascota(iid):
             _m = mejoras.get(ran)
+            _e = marcar_vinculacion(_e, _m)
             if _m and _m.get('veces'):
                 _e = marcar_mejora(_e, _m['veces'])
             if _m and _m.get('extra'):

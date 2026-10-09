@@ -120,4 +120,7 @@ def guardar(usuario: str, p: dict, archivo: pathlib.Path):
     c['personajes'] = [x for x in c['personajes'] if x.get('ranura') != p['ranura']]
     c['personajes'].append(p)
     c['personajes'].sort(key=lambda x: x.get('ranura', 0))
-    archivo.write_text(json.dumps(d, indent=2, ensure_ascii=False), encoding='utf-8')
+    # Usar el mismo guardado atómico que el resto del sistema. Se importa
+    # aquí para conservar la compatibilidad con las llamadas existentes.
+    import cuentas
+    cuentas.guardar_documento(d)

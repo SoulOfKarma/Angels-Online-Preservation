@@ -450,7 +450,7 @@ def _parchear_stage_xml(raw: bytes, modo_Norm: str) -> bytes:
     decorado, clima = ESTACIONES.get(modo_Norm, (None, '無'))
 
     # fuera el decorado y el clima que hubiera
-    tag = re.sub('\s*裝飾地圖檔="[^"]*"', '', tag)
+    tag = re.sub(r'\s*裝飾地圖檔="[^"]*"', '', tag)
     tag = re.sub('天氣="[^"]*"', '天氣="%s"' % clima, tag)
     if '天氣=' not in tag:
         tag = tag.replace('/>', '天氣="%s" />' % clima)
@@ -819,7 +819,7 @@ def quitar_logo_arranque() -> bool:
 # el del pak -- lo mismo que se hace con el mapa de decoracion de la
 # estacion. Para deshacerlo basta borrar ese archivo.
 RUTA_SKILL_XML = 'setting/eng/skill.xml'
-_RE_EXCLUSION = re.compile('\s*互斥\d+="[^"]*"')
+_RE_EXCLUSION = re.compile(r'\s*互斥\d+="[^"]*"')
 
 
 def quitar_exclusion_ramas() -> int:

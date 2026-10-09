@@ -7,9 +7,9 @@ EXPERIMENTO A CORRER:
   3. Entrar 3 veces seguidas con la clave  BBBBBB
   4. python tools/analizar_auth.py 3
 
-El byte que sea IGUAL dentro de cada grupo y DISTINTO entre grupos es el
-hash de la contrasena. Sin este experimento cualquier eleccion de offset es
-una conjetura -- ya fallaron dos.
+Los bytes estables dentro de cada grupo y distintos entre grupos son
+candidatos, no una prueba de que sean el hash de la contrasena.
+No activar la validacion automaticamente con estos resultados.
 """
 import sys, pathlib
 
@@ -31,7 +31,7 @@ for o in range(73):
     if iguales_A and iguales_B and distinto:
         cand.append(o)
 
-print("bytes que dependen de la CONTRASENA (estables dentro de cada grupo,")
+print("bytes candidatos (estables dentro de cada grupo,")
 print("distintos entre grupos):")
 if not cand:
     print("   ninguno -- las dos claves dieron el mismo resultado, o la")
@@ -45,5 +45,14 @@ else:
     tramos.append((ini, prev))
     for a, b in tramos:
         print(f"   +{a}..{b}  ({b-a+1} bytes)")
-    print(f"\n-> poner OFF_HASH={tramos[0][0]} y LARGO_HASH={tramos[0][1]-tramos[0][0]+1}")
-    print("   en server/cuentas.py, y VALIDAR_PASSWORD = True")
+    print("\nNo activar VALIDAR_PASSWORD ni elegir solo el primer tramo.")
+    print("Un byte igual entre A y B puede pertenecer al mismo campo;")
+    print("un byte distinto tambien puede depender de la sesion.")
+    print("Conserva estas muestras y agrega otros tres ingresos con AAAAAA,")
+    print("reiniciando el cliente. Luego ejecuta de nuevo este analizador.")
+    if len(d) >= 3 * n:
+        C = d[2 * n:3 * n]
+        confirmados = [o for o in cand
+                       if all(x[o] == A[0][o] for x in C)]
+        print(f"Candidatos que vuelven al valor de A: {len(confirmados)}/{len(cand)}")
+        print("Esto sigue sin confirmar el algoritmo ni el campo completo.")

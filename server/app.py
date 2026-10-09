@@ -587,6 +587,13 @@ def _mover_inst(ses, origen: int, destino: int):
     mej = getattr(ses.personaje, 'mejoras', None) if ses.personaje else None
     if mej is None:
         return
+    # Migracion de objetos que ya estaban equipados antes de este cambio.
+    # La bolsa ya fue movida por el caller; la pieza de origen esta en d.
+    import inventario as _iv
+    if _iv.es_equipo(o) and d in ses.inventario:
+        estado = mej.get(o, {})
+        if _iv.vincular_equipo(int(ses.inventario[d]), ses.personaje.char_id, estado):
+            mej[o] = estado
     a = mej.pop(o, None)
     b = mej.pop(d, None)
     if a is not None:
@@ -727,6 +734,14 @@ def _refrescar(ses, ranuras, con_oro=False):
                 # nombre ni el "has been intensified ( N ) times" del tooltip,
                 # por mucho que el servidor lleve la cuenta.
                 _mej = (getattr(ses.personaje, 'mejoras', None) or {}).get(r) if ses.personaje else None
+                if ses.personaje and inv.es_equipo(r):
+                    estado = _mej if _mej is not None else {}
+                    if inv.vincular_equipo(int(ses.inventario[r]), cid, estado):
+                        ses.personaje.mejoras[r] = estado
+                        _mej = estado
+                        if getattr(ses, 'usuario', None):
+                            cuentas.guardar_mejoras(ses.usuario, cid, ses.personaje.mejoras)
+                _linea = inv.marcar_vinculacion(_linea, _mej)
                 if _mej and _mej.get('veces'):
                     _linea = inv.marcar_mejora(_linea, _mej['veces'])
                 # Y los stats del martillo verde, que van en la misma entrada en
@@ -743,6 +758,10 @@ def _refrescar(ses, ranuras, con_oro=False):
         else:
             dueno = ses.personaje.entity_id if ses.personaje else cid
             fuera.append(inv.vaciar_ranura(dueno, r))
+    if ses.personaje and getattr(ses, 'usuario', None):
+        mejoras = getattr(ses.personaje, 'mejoras', {})
+        if any(v.get('vinculacion') for v in mejoras.values()):
+            cuentas.guardar_mejoras(ses.usuario, cid, mejoras)
     return fuera
 
 
@@ -3046,7 +3065,12 @@ class Servidor:
             cuenta, motivo = cuentas.validar(usuario, cuerpo)
             if cuenta is None:
                 log.warning(f"[{addr}] LOGIN RECHAZADO usuario='{usuario}': {motivo}")
-                ses.enviar_crudo(login_server.respuesta_error())
+                codigo_error = (
+                    login_server.ERROR_PASSWORD_INCORRECTA
+                    if 'contrasena incorrecta' in motivo
+                    else login_server.ERROR_GENERICO
+                )
+                ses.enviar_crudo(login_server.respuesta_error(codigo_error))
                 return
             log.info(f"[{addr}] LOGIN usuario='{usuario}' aceptado ({motivo})")
             # Solo lo que este guardado de verdad. Nada inventado.

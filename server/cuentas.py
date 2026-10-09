@@ -15,10 +15,17 @@ descifrar el formato comparando varios intentos con credenciales conocidas.
 import json
 import pathlib
 import datetime
+import hashlib
+import os
+import tempfile
+import threading
 
 BASE = pathlib.Path(__file__).parent.parent / 'data'
 ARCHIVO = BASE / 'cuentas.json'
 MUESTRAS = pathlib.Path(__file__).parent.parent / 'logs' / 'auth_muestras'
+_LOCK = threading.RLock()
+GUARDAR_AUTH_CRUDO = os.environ.get('AO_GUARDAR_AUTH_CRUDO', '0') == '1'
+REGISTRAR_HASH_PRIMER_LOGIN = os.environ.get('AO_REGISTRAR_PRIMER_HASH', '0') == '1'
 
 POR_DEFECTO = {
     "cuentas": {
@@ -33,11 +40,59 @@ POR_DEFECTO = {
 
 
 def cargar():
+    """Carga las cuentas y recupera automáticamente un backup válido."""
+    with _LOCK:
+        BASE.mkdir(parents=True, exist_ok=True)
+        if not ARCHIVO.exists():
+            guardar_documento(POR_DEFECTO)
+        try:
+            return json.loads(ARCHIVO.read_text(encoding='utf-8'))
+        except (OSError, json.JSONDecodeError):
+            backup = ARCHIVO.with_suffix('.json.bak')
+            if backup.exists():
+                datos = json.loads(backup.read_text(encoding='utf-8'))
+                guardar_documento(datos)
+                return datos
+            raise
+
+
+def guardar_documento(datos: dict):
+    """Escribe cuentas.json sin dejarlo truncado si el proceso falla.
+
+    Todas las escrituras del módulo deben pasar por aquí. Primero se genera
+    un archivo temporal, se fuerza a disco y finalmente se reemplaza el
+    archivo original de forma atómica.
+    """
     BASE.mkdir(parents=True, exist_ok=True)
-    if not ARCHIVO.exists():
-        ARCHIVO.write_text(json.dumps(POR_DEFECTO, indent=2, ensure_ascii=False),
-                           encoding='utf-8')
-    return json.loads(ARCHIVO.read_text(encoding='utf-8'))
+    temporal = None
+    try:
+        fd, temporal = tempfile.mkstemp(
+            prefix='cuentas_', suffix='.tmp', dir=str(BASE)
+        )
+        with os.fdopen(fd, 'w', encoding='utf-8', newline='\n') as archivo:
+            json.dump(datos, archivo, indent=2, ensure_ascii=False)
+            archivo.flush()
+            os.fsync(archivo.fileno())
+
+        if ARCHIVO.exists():
+            backup = ARCHIVO.with_suffix('.json.bak')
+            try:
+                os.replace(str(ARCHIVO), str(backup))
+            except OSError:
+                pass
+        os.replace(str(temporal), str(ARCHIVO))
+        temporal = None
+    finally:
+        if temporal:
+            try:
+                os.remove(temporal)
+            except OSError:
+                pass
+
+
+def _guardar(datos: dict):
+    with _LOCK:
+        guardar_documento(datos)
 
 
 # VALIDACION DE CONTRASENA: DESACTIVADA, y la razon importa.
@@ -56,9 +111,11 @@ def cargar():
 # una clave A y varios con una clave B, y comparar. Ver tools/analizar_auth.py.
 # Hasta entonces NO se valida: es preferible aceptar todo a rechazar ingresos
 # legitimos con una regla inventada.
-VALIDAR_PASSWORD = False
-OFF_HASH = 54
-LARGO_HASH = 16
+VALIDAR_PASSWORD = os.environ.get('AO_VALIDAR_PASSWORD', '0') == '1'
+# El experimento controlado confirmó que este bloque de 32 bytes es estable
+# para la misma cuenta/clave y cambia al cambiar la clave.
+OFF_HASH = 21
+LARGO_HASH = 32
 
 
 def hash_de_auth(cuerpo: bytes) -> str:
@@ -88,8 +145,9 @@ def validar(usuario: str, cuerpo_auth: bytes = b'') -> tuple:
         # clientes distintos, cada uno con su propio usuario guardado.
         cta = {'password': '', 'personajes': []}
         d['cuentas'][usuario] = cta
-        ARCHIVO.write_text(json.dumps(d, indent=2, ensure_ascii=False),
-                           encoding='utf-8')
+        _guardar(d)
+        if VALIDAR_PASSWORD and not REGISTRAR_HASH_PRIMER_LOGIN:
+            return None, "cuenta nueva: requiere registro inicial controlado"
         return cta, f"cuenta '{usuario}' creada en el primer ingreso"
 
     h = hash_de_auth(cuerpo_auth)
@@ -101,8 +159,10 @@ def validar(usuario: str, cuerpo_auth: bytes = b'') -> tuple:
 
     guardado = cta.get('hash')
     if not guardado:
+        if not REGISTRAR_HASH_PRIMER_LOGIN:
+            return None, "cuenta sin credencial registrada"
         cta['hash'] = h
-        ARCHIVO.write_text(json.dumps(d, indent=2, ensure_ascii=False), encoding='utf-8')
+        _guardar(d)
         return cta, "contrasena registrada en el primer ingreso"
     if guardado != h:
         return None, "contrasena incorrecta"
@@ -117,7 +177,13 @@ def guardar_muestra_auth(bloque: bytes, nota: str = ""):
     """
     MUESTRAS.mkdir(parents=True, exist_ok=True)
     marca = datetime.datetime.now().strftime('%Y%m%d_%H%M%S_%f')
-    (MUESTRAS / f"auth_{marca}.bin").write_bytes(bloque)
+    digest = hashlib.sha256(bloque).hexdigest()
+    (MUESTRAS / f"auth_{marca}.sha256").write_text(digest, encoding='ascii')
+    # Solo se habilita durante el experimento controlado de analizar_auth.py.
+    # Después debe volver a quedar desactivado porque el paquete puede
+    # contener datos de sesión.
+    if GUARDAR_AUTH_CRUDO:
+        (MUESTRAS / f"auth_{marca}.bin").write_bytes(bloque)
     if nota:
         (MUESTRAS / f"auth_{marca}.txt").write_text(nota, encoding='utf-8')
 
@@ -236,8 +302,7 @@ def borrar_personaje(usuario: str, ranura: int):
         if p.get('ranura') == ranura:
             char_id = p.get('char_id')
             del c['personajes'][i]
-            ARCHIVO.write_text(json.dumps(d, ensure_ascii=False, indent=1),
-                               encoding='utf-8')
+            _guardar(d)
             return char_id
     return None
 
@@ -260,13 +325,12 @@ def guardar_inventario(usuario: str, char_id: int, bolsa: dict,
                 p['mejoras'] = {str(k): v
                                 for k, v in sorted(mejoras.items())
                                 if v and (v.get('veces') or v.get('gemas')
-                                          or v.get('extra'))}
+                                          or v.get('extra') or v.get('vinculacion'))}
             if cantidades is not None:
                 p['cantidades'] = {str(k): int(v)
                                    for k, v in sorted(cantidades.items())
                                    if int(v) > 1 and int(k) in bolsa}
-            ARCHIVO.write_text(json.dumps(d, indent=2, ensure_ascii=False),
-                               encoding='utf-8')
+            _guardar(d)
             return
 
 
@@ -287,9 +351,8 @@ def guardar_mejoras(usuario: str, char_id: int, mejoras: dict):
         if p.get('char_id') == char_id:
             p['mejoras'] = {str(k): v for k, v in sorted((mejoras or {}).items())
                             if v and (v.get('veces') or v.get('gemas')
-                                      or v.get('extra'))}
-            ARCHIVO.write_text(json.dumps(d, indent=2, ensure_ascii=False),
-                               encoding='utf-8')
+                                      or v.get('extra') or v.get('vinculacion'))}
+            _guardar(d)
             return
 
 
@@ -302,8 +365,7 @@ def guardar_checkpoint(usuario: str, char_id: int, stage: int, tx: int, ty: int)
     for p in c.get('personajes', []):
         if p.get('char_id') == char_id:
             p['checkpoint'] = {'stage': int(stage), 'tile': [int(tx), int(ty)]}
-            ARCHIVO.write_text(json.dumps(d, indent=2, ensure_ascii=False),
-                               encoding='utf-8')
+            _guardar(d)
             return
 
 
@@ -321,8 +383,7 @@ def guardar_habilidades(usuario: str, char_id: int, habilidades):
             for h in habilidades:
                 if isinstance(h, (list, tuple)) and len(h) >= 2:
                     banco[str(h[0])] = [int(h[1]), int(h[2]) if len(h) > 2 else 0]
-            ARCHIVO.write_text(json.dumps(d, indent=2, ensure_ascii=False),
-                               encoding='utf-8')
+            _guardar(d)
             return
 
 
@@ -335,8 +396,7 @@ def guardar_hechizos(usuario: str, char_id: int, hechizos):
     for p in c.get('personajes', []):
         if p.get('char_id') == char_id:
             p['hechizos_aprendidos'] = list(hechizos)
-            ARCHIVO.write_text(json.dumps(d, indent=2, ensure_ascii=False),
-                               encoding='utf-8')
+            _guardar(d)
             return
 
 
@@ -349,8 +409,7 @@ def guardar_banco_habilidades(usuario: str, char_id: int, banco: dict):
     for p in c.get('personajes', []):
         if p.get('char_id') == char_id:
             p['banco_habilidades'] = {str(k): list(v) for k, v in banco.items()}
-            ARCHIVO.write_text(json.dumps(d, indent=2, ensure_ascii=False),
-                               encoding='utf-8')
+            _guardar(d)
             return
 
 
@@ -362,8 +421,7 @@ def guardar_clase(usuario: str, char_id: int, class_id: int):
     for p in c.get('personajes', []):
         if p.get('char_id') == char_id:
             p['class_id'] = class_id
-            ARCHIVO.write_text(json.dumps(d, indent=2, ensure_ascii=False),
-                               encoding='utf-8')
+            _guardar(d)
             return
 
 
@@ -376,8 +434,7 @@ def guardar_posicion(usuario: str, char_id: int, tile_x: int, tile_y: int):
     for p in c.get('personajes', []):
         if p.get('char_id') == char_id:
             p['tile_x'], p['tile_y'] = int(tile_x), int(tile_y)
-            ARCHIVO.write_text(json.dumps(d, indent=2, ensure_ascii=False),
-                               encoding='utf-8')
+            _guardar(d)
             return
 
 
@@ -389,8 +446,7 @@ def guardar_tutorial(usuario: str, char_id: int, etapa: int):
     for p in c.get('personajes', []):
         if p.get('char_id') == char_id:
             p['tutorial'] = int(etapa)
-            ARCHIVO.write_text(json.dumps(d, indent=2, ensure_ascii=False),
-                               encoding='utf-8')
+            _guardar(d)
             return
 
 
@@ -402,8 +458,7 @@ def guardar_oro(usuario: str, char_id: int, oro: int):
     for p in c.get('personajes', []):
         if p.get('char_id') == char_id:
             p['oro'] = int(oro)
-            ARCHIVO.write_text(json.dumps(d, indent=2, ensure_ascii=False),
-                               encoding='utf-8')
+            _guardar(d)
             return
 
 
@@ -416,8 +471,7 @@ def guardar_barra(usuario: str, char_id: int, barra: list):
     for p in c.get('personajes', []):
         if p.get('char_id') == char_id:
             p['barra'] = list(barra)
-            ARCHIVO.write_text(json.dumps(d, indent=2, ensure_ascii=False),
-                               encoding='utf-8')
+            _guardar(d)
             return
 
 
@@ -430,8 +484,7 @@ def guardar_mapa(usuario: str, char_id: int, stage: int, tile_x: int, tile_y: in
         if p.get('char_id') == char_id:
             p['stage_id'] = int(stage)
             p['tile_x'], p['tile_y'] = int(tile_x), int(tile_y)
-            ARCHIVO.write_text(json.dumps(d, indent=2, ensure_ascii=False),
-                               encoding='utf-8')
+            _guardar(d)
             return
 
 
@@ -444,8 +497,7 @@ def guardar_faccion(usuario: str, char_id: int, faccion: str):
     for p in c.get('personajes', []):
         if p.get('char_id') == char_id:
             p['faction'] = faccion
-            ARCHIVO.write_text(json.dumps(d, indent=2, ensure_ascii=False),
-                               encoding='utf-8')
+            _guardar(d)
             return
 
 
@@ -488,8 +540,7 @@ def guardar_progreso(usuario: str, char_id: int, nivel: int, exp: int,
                 for h in habilidades:
                     if isinstance(h, (list, tuple)) and len(h) >= 2:
                         banco[str(h[0])] = [int(h[1]), int(h[2]) if len(h) > 2 else 0]
-            ARCHIVO.write_text(json.dumps(d, indent=2, ensure_ascii=False),
-                               encoding='utf-8')
+            _guardar(d)
             return
 
 
@@ -511,8 +562,7 @@ def guardar_sistemas(usuario: str, char_id: int, p):
         fila['estrellas'] = [list(x) for x in (getattr(p, 'estrellas', None) or [])]
         fila['casa'] = {'muebles': [int(x) for x in
                                     ((getattr(p, 'casa', None) or {}).get('muebles') or [])]}
-        ARCHIVO.write_text(json.dumps(d, indent=2, ensure_ascii=False),
-                           encoding='utf-8')
+        _guardar(d)
         return
 
 
@@ -525,8 +575,7 @@ def guardar_banco(usuario: str, char_id: int, banco: dict):
     for p in c.get('personajes', []):
         if p.get('char_id') == char_id:
             p['banco'] = {str(k): v for k, v in sorted(banco.items())}
-            ARCHIVO.write_text(json.dumps(d, indent=2, ensure_ascii=False),
-                               encoding='utf-8')
+            _guardar(d)
             return
 
 
@@ -539,8 +588,7 @@ def guardar_buffs(usuario: str, char_id: int, buffs: dict):
     for p in c.get('personajes', []):
         if p.get('char_id') == char_id:
             p['buffs'] = buffs
-            ARCHIVO.write_text(json.dumps(d, indent=2, ensure_ascii=False),
-                               encoding='utf-8')
+            _guardar(d)
             return
 
 
@@ -570,8 +618,7 @@ def guardar_mascota(usuario: str, char_id: int, mascota: dict, mascotas: dict = 
                 m_dict[r_key] = limpia
             else:
                 p.pop('mascota', None)
-            ARCHIVO.write_text(json.dumps(d, indent=2, ensure_ascii=False),
-                               encoding='utf-8')
+            _guardar(d)
             return
 
 
@@ -588,9 +635,5 @@ def guardar_rango(usuario: str, char_id: int, rango: int, creditos: int = None):
             p['rango'] = max(1, min(20, int(rango or 1)))
             if creditos is not None:
                 p['creditos'] = int(creditos or 0)
-            ARCHIVO.write_text(json.dumps(d, indent=2, ensure_ascii=False),
-                               encoding='utf-8')
+            _guardar(d)
             return
-
-
-
