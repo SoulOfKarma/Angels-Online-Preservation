@@ -24,7 +24,7 @@ DRESS_DIR = ROOT / "docs" / "dress"
 SHARE_DRESS = ROOT / "share" / "items" / "dress"
 EXTRACT = Path(r"C:\Program Files (x86)\Angels Online\extracted")
 
-TABLES = ("item", "item2", "item3", "item4", "item5", "item6", "item7", "item8")
+TABLES = ("item", "item2", "item3", "item4", "item5", "item6", "item7", "item8", "item9")
 JUNK_NAME = re.compile(r"^(基本名稱|名稱|name|編號)$", re.I)
 LV_NAME = re.compile(r"(?i)\blv\.?\s*(\d+)\b")
 # Gem tooltips put the socket level in the description, not 物品等級.

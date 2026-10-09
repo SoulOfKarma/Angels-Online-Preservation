@@ -1,13 +1,35 @@
 """CHARDEF.XML + char*.obd lookups, same path as angelsonline.wiki."""
 from __future__ import annotations
 
+import os
 import re
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
 from shp_icon import PAK_ORDER
 
-EXTRACT = Path(r"C:\Program Files (x86)\Angels Online\extracted")
+
+def _extract_root() -> Path:
+    """First extracted client that exists. AO_EXTRACT overrides the search."""
+    candidates = []
+    env = os.environ.get("AO_EXTRACT")
+    if env:
+        candidates.append(Path(env))
+    candidates.extend([
+        Path.home() / "OneDrive" / "Desktop" / "Angels Online" / "extracted",
+        Path.home() / "Desktop" / "Angels Online" / "extracted",
+        Path(r"C:\Program Files (x86)\Angels Online\extracted"),
+    ])
+    existing = [cand for cand in candidates if cand.is_dir()]
+    for cand in existing:
+        if (cand / "update26").is_dir() or (cand / "UPDATE26").is_dir():
+            return cand
+    if existing:
+        return existing[0]
+    return candidates[-1]
+
+
+EXTRACT = _extract_root()
 DIR_RE = re.compile(r"(?i)[\\/]chr[\\/]([ih])(\d+)([gbl]*)")
 
 

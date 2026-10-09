@@ -9,6 +9,10 @@ from pathlib import Path
 from client_pd_map import find_spr, load_ride_rows, parse_obd, ride_by_appearance
 from ewsp import decode_wait, pack_atlas
 
+# The wiki dummy is the classic ~82px body. Later packs also ship a taller
+# Wait.spr (12xxxx) in the same folder; that one floats above this body.
+CLASSIC_BODY = 82
+
 ROOT = Path(__file__).resolve().parents[1]
 DB = ROOT / "corpus" / "content.db"
 PD_DIR = ROOT / "docs" / "pd"
@@ -70,7 +74,7 @@ def load_dolls(db: Path) -> dict[int, dict]:
 def load_items(db: Path) -> list[dict]:
     con = sqlite3.connect(db)
     out = []
-    for table in ("item", "item2", "item3", "item4", "item5", "item6", "item7", "item8"):
+    for table in ("item", "item2", "item3", "item4", "item5", "item6", "item7", "item8", "item9"):
         cols = {c[1] for c in con.execute(f"pragma table_info({table})")}
         if "id" not in cols or "原型外觀" not in cols or "物品類別" not in cols:
             continue
@@ -118,7 +122,8 @@ def extract_sprite(path: Path, key: str, dests: list[Path], cache: dict) -> dict
 
 
 def ensure_sprite(path: Path, key: str, dests: list[Path], cache: dict, pd: dict) -> str | None:
-    if key in pd["sprites"]:
+    existing = pd["sprites"].get(key)
+    if existing and (not existing.get("sourceAsset") or existing.get("sourceAsset") == str(path)):
         return key
     rec = extract_sprite(path, key, dests, cache)
     if not rec:
@@ -127,17 +132,38 @@ def ensure_sprite(path: Path, key: str, dests: list[Path], cache: dict, pd: dict
     return key
 
 
+_wait_choice: dict[str, Path] = {}
+
+
+def classic_wait(path: Path | None) -> Path | None:
+    """Prefer the Wait.spr that matches the classic paper-doll body."""
+    if path is None:
+        return None
+    folder = str(path.parent)
+    if folder in _wait_choice:
+        return _wait_choice[folder]
+    waits = [p for p in path.parent.iterdir() if p.suffix.lower() == ".spr" and "wait" in p.name.lower()]
+    best, best_score = path, 10**9
+    for cand in waits or [path]:
+        frames = decode_wait(cand)
+        if not frames:
+            continue
+        score = abs(frames[0]["height"] - CLASSIC_BODY)
+        if score < best_score:
+            best, best_score = cand, score
+    _wait_choice[folder] = best
+    return best
+
+
 def resolve_item(comp: int, sex: str, obd_items: dict) -> tuple[str, Path, Path | None] | None:
     suf = "g" if sex == "female" else "b"
     rec = obd_items.get((comp, suf)) or obd_items.get((comp, "")) or obd_items.get((comp, suf + "l"))
     if not rec:
         return None
-    wait = find_spr(rec["folder"], rec["wait"])
+    wait = classic_wait(find_spr(rec["folder"], rec["wait"]))
     if wait is None:
         return None
     sit = find_spr(rec["folder"], rec["sit"]) if rec.get("sit") else None
-    key = f"item-{comp}{rec.get('folder','')[-1] if rec['folder'][-1:].lower() in 'gbl' else suf}"
-    # stable wiki-like keys
     key = f"item-{comp}{suf}"
     return key, wait, sit
 
