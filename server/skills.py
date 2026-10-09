@@ -182,6 +182,29 @@ def ranura_que_se_abre(nivel: int) -> int:
 RAMAS_RELLENO = (20, 21, 22, 23, 31, 30, 29, 28, 27, 26, 25, 24)
 
 
+def completar_ranuras_extra(habilidades, nivel, banco=None):
+    """Open the extra skill slots this level has earned.
+
+    Slot 7 at 301, slot 8 at 351, slot 9 at 401. A character who does not
+    yet have the six base slots is left alone. Returns (habilidades, added).
+    """
+    habs = [tuple(h) if isinstance(h, (list, tuple)) else (int(h), 1, 0)
+            for h in (habilidades or [])]
+    if len(habs) < RANURAS_BASE:
+        return habs, []
+    banco = banco if isinstance(banco, dict) else {}
+    added = []
+    while len(habs) < ranuras_de_habilidad(nivel):
+        sid = rama_de_relleno(habs)
+        if not sid:
+            break
+        nv, xp = banco.get(sid, (1, 0))
+        fila = (sid, nv, xp)
+        habs.append(fila)
+        added.append(fila)
+    return habs, added
+
+
 def rama_de_relleno(ya_llevadas) -> int:
     """La primera rama de oficio que ese personaje no tenga, o 0."""
     puestas = set()
@@ -276,7 +299,7 @@ def info_pergamino(item_id: int):
     try:
         con = sqlite3.connect(DB_PATH)
         row = None
-        for tbl in ('item', 'item2', 'item3', 'item4', 'item5', 'item6', 'item7', 'item8'):
+        for tbl in ('item', 'item2', 'item3', 'item4', 'item5', 'item6', 'item7', 'item8', 'item9'):
             try:
                 row = con.execute(
                     f'SELECT "物品類別", "動態資料1", "技能限制1", "技能限制2", "技能限制3", "技能限制4", "技能限制5", "技能等限", "基本名稱", "物品等級" FROM {tbl} WHERE id = ?',
