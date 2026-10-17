@@ -2868,6 +2868,11 @@ def _armar_portal_al_llegar(ses, addr, destino_tile, casillas):
             if ses.personaje:
                 p_act = _portal_en(ses.personaje.stage, *destino_tile)
                 if p_act:
+                    if ses.personaje.stage == 500 and p_act.get('entity') == 701:
+                        c_vis = _casa_actual(ses)
+                        if c_vis and c_vis.owner_id != ses.personaje.char_id:
+                            _salir_de_casa(ses, addr)
+                            return
                     if p_act.get('preguntar'):
                         import dialogos as _dlg
                         _cfg = _portales()
@@ -3058,7 +3063,13 @@ def _casa_click(ses, ent):
             ses.enviar(struct.pack('<HB', 0x004B, category))
         return True
     name, face = names[ent]
-    if ent != 260300 and (c.owner_id != ses.personaje.char_id or not c.cleanliness):
+    if ent in (2603, 260300) and c.owner_id != ses.personaje.char_id:
+        c.check_daily_reset()
+        if ses.personaje.char_id not in c.voted_users_today:
+            g = [dialogos.armar_linea(7897, face, [7898, 7899])[2:]]
+        else:
+            g = [dialogos.armar_linea(7922, face, [7899])[2:]]
+    elif ent != 260300 and (c.owner_id != ses.personaje.char_id or not c.cleanliness):
         g = [dialogos.armar_linea(7873 if c.owner_id != ses.personaje.char_id else 7923, face, [])[2:]]
     else:
         g = dialogos.propio(name, entidad=0, val=face,
@@ -11197,7 +11208,7 @@ class Servidor:
                 return
             salida = []
             for sid in ids:
-                salida.append(clases.aviso(clases.nombre(sid)))
+                salida.append(clases.aviso(clases.nombre(sid), tipo=7, msg_id=clases.MSG_HABILIDAD))
             # El arbol completo. Sin el, el panel de habilidades del cliente
             # sale lleno de interrogantes: no conoce las otras treinta.
             salida.append(clases.arbol(ids))
@@ -13394,6 +13405,11 @@ class Servidor:
                         if portal_match:
                             break
                 if portal_match:
+                    if ses.personaje.stage == 500 and (portal_match.get('entity') == 701 or ent == 701):
+                        c_vis = _casa_actual(ses)
+                        if c_vis and c_vis.owner_id != ses.personaje.char_id:
+                            _salir_de_casa(ses, addr)
+                            return
                     if portal_match.get('destino') is None and not portal_match.get('preguntar'):
                         log.debug(f"[{addr}] clic en tornado {ent}: sin destino, no viaja")
                         return
@@ -14269,6 +14285,11 @@ class Servidor:
                 elif (getattr(ses, 'dlg_portal', None)
                       and str(_el) in (ses.dlg_portal.get('destinos') or {})
                       and ses.personaje):
+                    if ses.personaje.stage == 500 and _el in (7889, 7890):
+                        _c_chk = _casa_actual(ses)
+                        if _c_chk and _c_chk.owner_id != ses.personaje.char_id:
+                            log.info(f"[{addr}] Visitor {ses.personaje.nombre} tried to enter owner private room {_el}, blocked.")
+                            return
                     # DESTINO PROPIO DEL PORTAL. Antes cada menu de portal
                     # habia que escribirlo a mano aqui con su rango de ids;
                     # asi el nudo de Teddy Amusement, que manda a dos puntos
@@ -14299,6 +14320,32 @@ class Servidor:
                     # Cancelar salida de la casa / Stay a bit longer
                     import dialogos as _dlg_close
                     ses.enviar(struct.pack('<H', 0x0012) + _dlg_close.FIN)
+                elif _el == 7898 and ses.personaje:
+                    # Maid Eilian: Votar por la casa visitada (Vote)
+                    import casas as _cs_vt, cuentas as _cta_vt, dialogos as _dlg_vt, clases as _cl_vt
+                    _c_vt = getattr(ses, 'casa_visitando', None) or _cs_vt.obtener_o_crear_casa(
+                        ses.personaje.char_id, ses.personaje.nombre, raw_data=getattr(ses.personaje, 'casa', None))
+                    _c_vt.check_daily_reset()
+                    _cid = int(ses.personaje.char_id)
+                    if _cid in _c_vt.voted_users_today:
+                        ses.enviar(_dlg_vt.armar_linea(7922, _dlg_vt.MAID_PORTRAIT, [7899]),
+                                   struct.pack('<H', 0x0012) + _dlg_vt.FIN)
+                    else:
+                        _c_vt.voted_users_today.add(_cid)
+                        _c_vt.votes_today += 1
+                        _c_vt.votes_total += 1
+                        if getattr(ses, 'usuario', None):
+                            _cta_vt.guardar_casa(ses.usuario, _c_vt.owner_id, _c_vt)
+                        _lv, _prev_m, _next_m = _cs_vt.info_nivel(_c_vt.calcular_magia())
+                        _rnk = _cs_vt.rango_casa(_c_vt)
+                        ses.enviar(_cs_vt.pkt_house_info(
+                            _lv, _c_vt.calcular_magia(), _next_m, _prev_m,
+                            _c_vt.bonus_pct, _c_vt.cleanliness,
+                            _c_vt.votes_total, _c_vt.votes_today,
+                            _c_vt.visitors_total, 0, _rnk,
+                            10 if _c_vt.is_open else 1))
+                        ses.enviar(_cl_vt.aviso("Thank you for voting!", tipo=0))
+                        ses.enviar_inmediato(struct.pack('<H', 0x0012) + _dlg_vt.FIN)
                 elif _el == 7912 and ses.personaje:
                     # Bendicion diaria de Maid Eilian
                     _casa_buff_diario(ses, addr)
@@ -15069,6 +15116,12 @@ class Servidor:
                     _viajar_por_portal(ses, addr, _por)
                     return
                 if _por is not None:
+                    if ses.personaje.stage == 500 and _por.get('entity') == 701:
+                        c_vis = _casa_actual(ses)
+                        if c_vis and c_vis.owner_id != ses.personaje.char_id:
+                            _cancelar_portal_armado(ses)
+                            _salir_de_casa(ses, addr)
+                            return
                     import dialogos as _dlg
                     _cfg = _portales()
                     # Cada tornado puede traer su propio menu: el del

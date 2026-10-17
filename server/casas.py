@@ -680,6 +680,35 @@ def _cargar_npcs_exhibicion():
     return _NPCS_EXHIBICION
 
 
+# Zonas amplias exteriores permitidas para exhibicion de casas en ciudades y bases.
+# Fuera de estas cajas delimitadoras estan los edificios/domos, pasillos estrechos,
+# puentes y periferias que no admiten casas.
+ZONAS_OUTDOOR_PERMITIDAS = {
+    # Angel House Area: Toda el area residencial es apta (excepto portal y bordes)
+    370: [(6, 6, 103, 58)],
+    # Aurora City: Gran plaza central abierta y avenida norte
+    3: [(120, 55, 230, 145), (170, 145, 215, 185)],
+    # Dark City: Gran plaza y bulevar central
+    26: [(125, 65, 265, 140)],
+    # Breeze Woods: Gran isla verde central
+    29: [(160, 90, 265, 145)],
+    # Iron Castle: Patio central de acero
+    38: [(135, 60, 265, 130)],
+    # Palm Base: Gran zona de dunas centrales y playas abiertas
+    88: [(90, 65, 220, 125), (125, 120, 175, 145), (15, 15, 50, 45)],
+}
+
+# Estructuras cerradas o interiores que deben excluirse explicitamente
+ZONAS_OUTDOOR_EXCLUIDAS = {
+    # Dark City: Monumento central de agua y plataforma
+    26: [(175, 80, 205, 102)],
+    # Iron Castle: Carpas cerradas del banco
+    38: [(135, 140, 165, 155)],
+    # Palm Base: Domo del Ocean Scholar (278, 138) y domo de Bankclerk Clair
+    88: [(260, 115, 300, 160), (170, 125, 210, 160)],
+}
+
+
 def validar_posicion_outdoor(stage: int, tile_x: int, tile_y: int,
                              exclude_cid: int = 0) -> tuple[bool, str]:
     """Valida si una casa exterior se puede colocar en esa coordenada del mapa."""
@@ -687,7 +716,7 @@ def validar_posicion_outdoor(stage: int, tile_x: int, tile_y: int,
     tx = int(tile_x)
     ty = int(tile_y)
 
-    # 1. Solo mapas de exhibicion autorizados
+    # 1. Solo mapas de exhibicion autorizados (bloquea interiores, casa stage 500, etc.)
     if st not in MAPAS_EXHIBICION:
         return False, "Houses can only be placed in Angel House Area, faction cities, or Palm Base."
 
@@ -702,12 +731,20 @@ def validar_posicion_outdoor(stage: int, tile_x: int, tile_y: int,
     except Exception:
         pass
 
-    # 3. Distancia a portales / tornados (minimo 7 casillas)
+    # 3. Delimitacion de zonas exteriores abiertas (prohibe colocar dentro de casas, domos o edificios)
+    zonas = ZONAS_OUTDOOR_PERMITIDAS.get(st)
+    if zonas:
+        en_zona = any(x1 <= tx <= x2 and y1 <= ty <= y2 for x1, y1, x2, y2 in zonas)
+        en_excl = any(x1 <= tx <= x2 and y1 <= ty <= y2 for x1, y1, x2, y2 in ZONAS_OUTDOOR_EXCLUIDAS.get(st, []))
+        if not en_zona or en_excl:
+            return False, "Houses require a wide open area (cannot be placed inside buildings, on bridges, stairs, or narrow paths)."
+
+    # 4. Distancia a portales / tornados (minimo 7 casillas)
     for px, py in TORNADOS_EXHIBICION.get(st, []):
         if max(abs(tx - px), abs(ty - py)) < 7:
             return False, "Cannot place house too close to a portal or entrance."
 
-    # 4. Espacio amplio despejado: huella de 5x5 casillas totalmente transitable
+    # 5. Espacio amplio despejado: huella de 5x5 casillas totalmente transitable
     # (descarta puentes estrechos, escaleras, arboles densos, pasillos y esquinas)
     try:
         import transitable as _tr

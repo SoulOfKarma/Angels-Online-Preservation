@@ -363,7 +363,7 @@ def paquete_quest_log(char_id: int, quests: list) -> bytes:
     return struct.pack('<HI', 0x0021, len(recs)) + b''.join(recs)
 
 
-def aviso(texto: str, tipo: int = 7, msg_id: int = MSG_HABILIDAD) -> bytes:
+def aviso(texto: str, tipo: int = 7, msg_id: int = MSG_TEXTO) -> bytes:
     """Sub-mensaje 0x000D: el cartel de 'aprendiste X' / 'obtuviste X'.
 
     Formato sacado de la captura: [LE16 id][U8 tipo][nombre NUL][2 ceros].

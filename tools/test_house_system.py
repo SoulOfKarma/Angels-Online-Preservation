@@ -551,6 +551,76 @@ class TestHouseSystem(unittest.TestCase):
         self.assertFalse(c.is_open)
 
 
+    def test_notice_aviso_default_msg_id(self):
+        import struct
+        import clases
+        # Default notice must use MSG_TEXTO (732: '%s') to avoid 'Learn spell' prefix
+        pkt = clases.aviso("Houses require a wide open area...")
+        op, msg_id, tipo = struct.unpack_from('<HHB', pkt, 0)
+        self.assertEqual(op, 0x000D)
+        self.assertEqual(msg_id, clases.MSG_TEXTO) # 732, not 333 (MSG_HABILIDAD)
+        self.assertEqual(tipo, 7)
+
+        # Explicit skill learning notice preserves MSG_HABILIDAD (333)
+        pkt_skill = clases.aviso("Sword", tipo=7, msg_id=clases.MSG_HABILIDAD)
+        _, msg_id_sk, _ = struct.unpack_from('<HHB', pkt_skill, 0)
+        self.assertEqual(msg_id_sk, 333)
+
+    def test_outdoor_building_and_dome_exclusions(self):
+        # Palm Base Ocean Scholar dome (278, 138) must be rejected
+        ok, reason = casas.validar_posicion_outdoor(88, 278, 138)
+        self.assertFalse(ok)
+        self.assertIn("wide open area", reason.lower())
+
+        # Palm Base Bankclerk Clair dome (185, 140) must be rejected
+        ok, reason = casas.validar_posicion_outdoor(88, 185, 140)
+        self.assertFalse(ok)
+        self.assertIn("wide open area", reason.lower())
+
+        # Palm Base open central sand (150, 95) is allowed
+        ok, reason = casas.validar_posicion_outdoor(88, 150, 95)
+        self.assertTrue(ok)
+        self.assertEqual(reason, "")
+
+        # Dark City monument exclusion (190, 90) must be rejected
+        ok, reason = casas.validar_posicion_outdoor(26, 190, 90)
+        self.assertFalse(ok)
+        self.assertIn("wide open area", reason.lower())
+
+        # Iron Castle bank tents exclusion (150, 145) must be rejected
+        ok, reason = casas.validar_posicion_outdoor(38, 150, 145)
+        self.assertFalse(ok)
+        self.assertIn("wide open area", reason.lower())
+
+    def test_visitor_maid_and_portal_restrictions(self):
+        import dialogos
+        # Setup house owned by Player 1
+        c = casas.CasaData(owner_id=1, owner_name="OwnerOne", deed_id=10115)
+        c.cleanliness = 500
+
+        # Owner dialogue with Maid Eilian: full owner options
+        g_owner = dialogos.propio('Maid Eilian', entidad=0, val=dialogos.MAID_PORTRAIT,
+                                  cleanliness=c.cleanliness, house_level=c.level)
+        self.assertIn(struct.pack('<H', 7912), g_owner[0]) # I need your blessing (7912)
+        self.assertIn(struct.pack('<H', 7910), g_owner[0]) # Receive Token (7910)
+
+        # Visitor dialogue (not voted yet): line 7897 with options [7898, 7899]
+        visitor_cid = 999
+        self.assertNotIn(visitor_cid, c.voted_users_today)
+        line_vis = dialogos.armar_linea(7897, dialogos.MAID_PORTRAIT, [7898, 7899])
+        self.assertIn(struct.pack('<I', 7898), line_vis) # 7898 ('Vote')
+        self.assertIn(struct.pack('<I', 7899), line_vis) # 7899 ("I'm leaving")
+
+        # After voting: line 7922 with option [7899] only
+        c.voted_users_today.add(visitor_cid)
+        c.votes_today += 1
+        c.votes_total += 1
+        self.assertIn(visitor_cid, c.voted_users_today)
+        line_voted = dialogos.armar_linea(7922, dialogos.MAID_PORTRAIT, [7899])
+        self.assertNotIn(struct.pack('<I', 7898), line_voted) # No 7898
+        self.assertIn(struct.pack('<I', 7899), line_voted)    # Only 7899
+
+
 if __name__ == '__main__':
     unittest.main()
 
