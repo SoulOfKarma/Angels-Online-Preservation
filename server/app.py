@@ -11727,7 +11727,7 @@ class Servidor:
                 ses.personaje.stage, ses.personaje.tile_x, ses.personaje.tile_y,
                 exclude_cid=ses.personaje.char_id)
             if not _ok:
-                ses.enviar(_cl.aviso(_motivo, tipo=0))
+                ses.enviar(_cl.aviso(_motivo, tipo=7))
                 return
             _pwd = ''
             if len(cuerpo) >= 37:
@@ -11763,10 +11763,10 @@ class Servidor:
                 ses.personaje.char_id, ses.personaje.nombre,
                 raw_data=getattr(ses.personaje, 'casa', None))
             if _c.is_open:
-                ses.enviar(_cl.aviso("Cannot decorate while house is on display. Please take it back first.", tipo=0))
+                ses.enviar(_cl.aviso("Cannot decorate while house is on display. Please take it back first.", tipo=7))
                 return
             if _c.owner_id != ses.personaje.char_id:
-                ses.enviar(_cl.aviso("Only the owner can decorate this house.", tipo=0))
+                ses.enviar(_cl.aviso("Only the owner can decorate this house.", tipo=7))
                 return
             if getattr(ses, 'house_furnish_pending', False):
                 return  # wait for 0x0009, never send a second map load
@@ -11805,7 +11805,7 @@ class Servidor:
                     ses.enviar(_cs.pkt_request_password(_target_eid))
                     return
                 if _pwd_sent != _c.password_md5:
-                    ses.enviar(_cl.aviso("Incorrect house password!", tipo=0))
+                    ses.enviar(_cl.aviso("Incorrect house password!", tipo=7))
                     return
             if _c.owner_id != ses.personaje.char_id:
                 _c.visitors_total += 1

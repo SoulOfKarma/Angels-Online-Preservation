@@ -442,13 +442,23 @@ def propio(nombre: str, faccion: str = "Heaven", jugador: str = "",
     # LOS BANQUEROS DE LAS CAPITALES. Se llaman "Bank Clerk" o "Banker" a
     # secas -- en Aurora, Iron Castle, Cherry, Gebuer, Memory Cave, Mysterious
     # Garden y Breeze Woods -- o "Bank Clerk Aibey/Aiky" en Dark City, y
-    # ninguna rama los cogia: el log decia "clic en la entidad 122139 (Bank
-    # Clerk): sin dialogo". Llevan el flujo medido en Steam Town, Edo y
-    # Shuwa: 5225 con [5030, 5032, 5033], la 5032 lleva a la 5236 (en
-    # respuesta_a) y la 5237 abre el almacen. Se compara el nombre ENTERO
-    # para no quitarle el turno a ningun banquero con rama propia.
+    # cada ciudad tiene su linea oficial de bienvenida (5232 en Breeze Woods,
+    # 5228 en Iron Castle, 5230 en Dark City y 5225 en Aurora City).
+    # Llevan el flujo medido en Steam Town, Edo y Shuwa: bienvenida con
+    # [5030, 5032, 5033], la 5032 lleva a la 5236 (en respuesta_a) y la
+    # 5237 abre el almacen. Se compara el nombre ENTERO para no quitarle el
+    # turno a ningun banquero con rama propia.
     if nom_lower in ('bank clerk', 'banker', 'bank clerk aibey', 'bank clerk aiky'):
-        return [armar_linea(5225, npc_val or val_por_entidad(entidad),
+        msg_banker = 5225
+        if stage == 29:
+            msg_banker = 5232  # Breeze Woods: "Hello, welcome to the bank in the Breeze Woods..."
+        elif stage == 38:
+            msg_banker = 5228  # Iron Castle: "Hello, ladies and gentlemen. This is the biggest bank in the Iron Castle..."
+        elif stage == 26:
+            msg_banker = 5230  # Dark City: "Hi, this is the underground bank in the Dark City..."
+        elif stage == 3:
+            msg_banker = 5225  # Aurora City: "Welcome, what can I do for you?"
+        return [armar_linea(msg_banker, npc_val or val_por_entidad(entidad),
                             [5030, 5032, 5033])[2:]]
 
     # --- Busy Market (region de Warring Realm) ---
@@ -1576,13 +1586,15 @@ def propio(nombre: str, faccion: str = "Heaven", jugador: str = "",
             # 5020:   Quit.
             return [armar_linea(504131, npc_val or 2,
                                 [504132, 504825, 505907, 510922, 511419, 5020])[2:]]
-        if nombre == 'Voucher Angel':
-            # Vende los dos Angelic Voucher, el de 100 y el de 10 millones
-            # (items 42399 y 42400). Los dos se compran y se venden al
-            # MISMO precio, asi que sirven para guardar oro sin perderlo,
-            # que es lo que el banco no deja hacer. La tienda es la 159 de
-            # shop.xml, que trae exactamente esos dos y nada mas.
-            return [armar_linea(507715, npc_val or 4, [5190, 5191])[2:]]
+
+    if nombre == 'Voucher Angel':
+        # Vende los dos Angelic Voucher, el de 100 y el de 10 millones
+        # (items 42399 y 42400). Los dos se compran y se venden al
+        # MISMO precio, asi que sirven para guardar oro sin perderlo,
+        # que es lo que el banco no deja hacer. La tienda es la 159 de
+        # shop.xml, que trae exactamente esos dos y nada mas.
+        # Presente en Angel Lyceum y en las 4 ciudades de faccion + Palm Base.
+        return [armar_linea(507715, npc_val or 4, [5190, 5191])[2:]]
 
     # --- Clank Oasis (407) y Commercial Street (419) ---
     # Los dos ultimos mapas de ALO TW, tambien sin captura. Las lineas
@@ -2996,8 +3008,12 @@ def respuesta_a(opcion_id: int, entidad: int = 0, val: int = 4,
         return (armar_linea(5236, val, [5237, 5238],
                             acciones=ACCIONES_ALMACEN.get(entidad, [])),)
 
+    if opcion_id == 5030:
+        # 5030: "How do I use it?" -> Guia oficial de uso de almacen y safe (5034)
+        return (armar_linea(5034, val, [5032, 5033]),)
+
     # Almacen / Banco (Bao Clerk y Chief Director)
-    if opcion_id in (5030, 5237, 508054, 508063, 516208):
+    if opcion_id in (5237, 508054, 508063, 516208):
         # Abrir almacen personal: WND_WAREHOUSE (opcode 0x002B)
         pkg_cierre = struct.pack('<H', 0x0012) + FIN
         # El almacen es el 0x004E, NO el 0x002B.

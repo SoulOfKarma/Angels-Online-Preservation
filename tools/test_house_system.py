@@ -577,8 +577,23 @@ class TestHouseSystem(unittest.TestCase):
         self.assertFalse(ok)
         self.assertIn("wide open area", reason.lower())
 
-        # Palm Base open central sand (150, 95) is allowed
+        # Palm Base open central sand (120, 80) is allowed
+        ok, reason = casas.validar_posicion_outdoor(88, 120, 80)
+        self.assertTrue(ok)
+        self.assertEqual(reason, "")
+
+        # Palm Base (150, 95) is too close to Dark City Totem (148, 91) with 5-tile NPC margin
         ok, reason = casas.validar_posicion_outdoor(88, 150, 95)
+        self.assertFalse(ok)
+        self.assertIn("npcs", reason.lower())
+
+        # Aurora City sidewalk/vereda (166, 144) must be rejected
+        ok, reason = casas.validar_posicion_outdoor(3, 166, 144)
+        self.assertFalse(ok)
+        self.assertIn("wide open area", reason.lower())
+
+        # Aurora City central cobblestone plaza (160, 105) is allowed
+        ok, reason = casas.validar_posicion_outdoor(3, 160, 105)
         self.assertTrue(ok)
         self.assertEqual(reason, "")
 
@@ -619,6 +634,39 @@ class TestHouseSystem(unittest.TestCase):
         line_voted = dialogos.armar_linea(7922, dialogos.MAID_PORTRAIT, [7899])
         self.assertNotIn(struct.pack('<I', 7898), line_voted) # No 7898
         self.assertIn(struct.pack('<I', 7899), line_voted)    # Only 7899
+
+    def test_banker_and_voucher_angel_system(self):
+        import dialogos
+        # Voucher Angel works across all 4 faction cities + Palm Base + Lyceum
+        for st in (3, 26, 29, 38, 88, 41):
+            g = dialogos.propio('Voucher Angel', stage=st)
+            self.assertIsNotNone(g)
+            self.assertEqual(len(g), 1)
+            mid = int.from_bytes(g[0][:4], 'little')
+            self.assertEqual(mid, 507715)
+
+        # Faction city bank greetings
+        g_breeze = dialogos.propio('Banker', stage=29)
+        self.assertEqual(int.from_bytes(g_breeze[0][:4], 'little'), 5232)
+
+        g_iron = dialogos.propio('Bank Clerk', stage=38)
+        self.assertEqual(int.from_bytes(g_iron[0][:4], 'little'), 5228)
+
+        g_dark = dialogos.propio('Bank Clerk Aiky', stage=26)
+        self.assertEqual(int.from_bytes(g_dark[0][:4], 'little'), 5230)
+
+        g_aurora = dialogos.propio('Bank Clerk', stage=3)
+        self.assertEqual(int.from_bytes(g_aurora[0][:4], 'little'), 5225)
+
+        # Option 5030 ("How do I use it?") gives official guide line 5034
+        resp_5030 = dialogos.respuesta_a(5030, 4)
+        mid_guide = int.from_bytes(resp_5030[0][2:6], 'little')
+        self.assertEqual(mid_guide, 5034)
+
+        # Option 5032 asks which warehouse to use (line 5236)
+        resp_5032 = dialogos.respuesta_a(5032, 4)
+        mid_wh = int.from_bytes(resp_5032[0][2:6], 'little')
+        self.assertEqual(mid_wh, 5236)
 
 
 if __name__ == '__main__':

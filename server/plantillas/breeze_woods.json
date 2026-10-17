@@ -33,7 +33,7 @@
     {
       "entity_id": 121924,
       "nombre": "Banker",
-      "npc_type": 34,
+      "npc_type": 1686,
       "sprite": 40034,
       "klass": 199,
       "monstruo": false,
@@ -47,7 +47,7 @@
     {
       "entity_id": 121925,
       "nombre": "Banker",
-      "npc_type": 34,
+      "npc_type": 1686,
       "sprite": 40034,
       "klass": 199,
       "monstruo": false,
@@ -61,7 +61,7 @@
     {
       "entity_id": 121926,
       "nombre": "Banker",
-      "npc_type": 34,
+      "npc_type": 1686,
       "sprite": 40034,
       "klass": 199,
       "monstruo": false,
@@ -89,7 +89,7 @@
     {
       "entity_id": 121928,
       "nombre": "Banker",
-      "npc_type": 34,
+      "npc_type": 1686,
       "sprite": 40034,
       "klass": 199,
       "monstruo": false,
@@ -257,7 +257,7 @@
     {
       "entity_id": 121940,
       "nombre": "Banker",
-      "npc_type": 34,
+      "npc_type": 1686,
       "sprite": 40034,
       "klass": 199,
       "monstruo": false,
@@ -1099,6 +1099,20 @@
       "direccion": 6,
       "visible": 1,
       "puesto_por": "npcs_del_cliente"
+    },
+    {
+      "entity_id": 121998,
+      "nombre": "Voucher Angel",
+      "npc_type": 14334,
+      "sprite": 40041,
+      "klass": 200,
+      "monstruo": false,
+      "tile": [
+        313,
+        142
+      ],
+      "direccion": 0,
+      "visible": 1
     }
   ],
   "recursos": [

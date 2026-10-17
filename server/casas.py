@@ -686,10 +686,10 @@ def _cargar_npcs_exhibicion():
 ZONAS_OUTDOOR_PERMITIDAS = {
     # Angel House Area: Toda el area residencial es apta (excepto portal y bordes)
     370: [(6, 6, 103, 58)],
-    # Aurora City: Gran plaza central abierta y avenida norte
-    3: [(120, 55, 230, 145), (170, 145, 215, 185)],
+    # Aurora City: Gran plaza central abierta de adoquines amarillos (excluye aceras, cafes y edificios)
+    3: [(130, 75, 195, 135)],
     # Dark City: Gran plaza y bulevar central
-    26: [(125, 65, 265, 140)],
+    26: [(135, 65, 255, 135)],
     # Breeze Woods: Gran isla verde central
     29: [(160, 90, 265, 145)],
     # Iron Castle: Patio central de acero
@@ -755,10 +755,10 @@ def validar_posicion_outdoor(stage: int, tile_x: int, tile_y: int,
     except Exception:
         pass
 
-    # 5. Distancia a NPCs interactivos / tiendas / tablones (minimo 4 casillas)
+    # 5. Distancia a NPCs interactivos / tiendas / tablones (minimo 5 casillas)
     npcs = _cargar_npcs_exhibicion().get(st, set())
     for nx, ny in npcs:
-        if max(abs(tx - nx), abs(ty - ny)) < 4:
+        if max(abs(tx - nx), abs(ty - ny)) < 5:
             return False, "Cannot place house too close to NPCs."
 
     # 6. Distancia a otras casas exteriores ya colocadas (minimo 4 casillas)
