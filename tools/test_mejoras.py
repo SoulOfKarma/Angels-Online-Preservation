@@ -187,7 +187,7 @@ def test_el_tope_de_huecos_son_cinco():
 def test_el_pienso_de_mascota():
     """El 7094, que en Celestia no se vende y no se pudo medir."""
     assert m.clase_de(7094) == 'pienso_mascota'
-    assert m.stats_de_mejora(7094, 'mascota', 3) == {'atk': 24}
+    assert m.stats_de_mejora(7094, 'mascota', 3) == {'atk': 24, 'matk': 24, 'dfs': 15, 'mdef': 15, 'hp': 150}
     assert not m.puede_mejorar(7094, 10, 'arma', 0)[0]
 
 
@@ -388,29 +388,34 @@ def test_las_mejoras_sobreviven_a_reconectar():
     veinte sitios que guardan la bolsa y solo uno que toca las mejoras.
     """
     import json as _json
-    import os
-    import shutil
     import sys as _s
     import tempfile
+    from unittest.mock import patch
     _s.path.insert(0, str(RAIZ / 'server'))
     import cuentas
 
-    if not cuentas.ARCHIVO.exists():
-        return
-    bak = os.path.join(tempfile.gettempdir(), 'test_mejoras_cuentas.bak')
-    shutil.copy(str(cuentas.ARCHIVO), bak)
-    try:
-        d = _json.loads(cuentas.ARCHIVO.read_text(encoding='utf-8'))
-        usuario = sorted(d['cuentas'])[0]
-        pjs = d['cuentas'][usuario].get('personajes') or []
-        if not pjs:
-            return
-        cid = pjs[0]['char_id']
+    with tempfile.TemporaryDirectory(prefix='ao_mejoras_') as directory:
+      base = pathlib.Path(directory)
+      with patch.multiple(cuentas, BASE=base, DB_PATH=base / 'cuentas.db',
+                          ARCHIVO=base / 'cuentas.json', BACKUPS_DIR=base / 'backups'), \
+           patch.object(cuentas, '_notificar_cambio'):
+        cuentas._init_db()
+        usuario, cid = 'test_only', 1
+        fixture = dict(char_id=cid, ranura=0, nombre='Test Only', tile_x=1,
+                       tile_y=1, habilidades=[], barra=[], quests=[], inventario={})
+        con = cuentas._get_conn()
+        try:
+            con.execute('INSERT INTO cuentas(usuario,password) VALUES (?,?)', (usuario, ''))
+            con.execute('INSERT INTO personajes(usuario,char_id,ranura,nombre,datos) VALUES (?,?,?,?,?)',
+                        (usuario, cid, 0, fixture['nombre'], _json.dumps(fixture)))
+            con.commit()
+        finally:
+            con.close()
         antes = {6: {'veces': 15, 'gemas': [3001], 'huecos': 1,
                      'extra': {'atk': 210, 'hp': 240}},
                  9: {'veces': 0, 'gemas': [], 'extra': {}}}
         cuentas.guardar_mejoras(usuario, cid, antes)
-        d2 = _json.loads(cuentas.ARCHIVO.read_text(encoding='utf-8'))
+        d2 = cuentas.cargar()
         p = cuentas.personaje_de(d2['cuentas'][usuario], 0)
         despues = getattr(p, 'mejoras', None) or {}
         assert despues.get(6) == antes[6], despues
@@ -418,8 +423,6 @@ def test_las_mejoras_sobreviven_a_reconectar():
         assert all(isinstance(k, int) for k in despues), list(despues)
         # Una casilla sin nada no ocupa sitio en el guardado.
         assert 9 not in despues, despues
-    finally:
-        shutil.copy(bak, str(cuentas.ARCHIVO))
 
 
 def test_ninguna_llamada_manda_el_inventario_sin_las_mejoras():

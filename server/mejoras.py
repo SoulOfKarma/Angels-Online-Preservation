@@ -297,7 +297,7 @@ def puede_perforar(item_id, nivel_equipo: int, tipo: str):
 
 
 def perforar(estado: dict, ranura, item_id, nivel_equipo: int, tipo: str,
-             exito_seguro: bool = False, rng=None):
+             exito_seguro: bool = False, rng=None, bono_primer_hueco: float = 0.0):
     """Abre un hueco de gema. CUIDADO: fallar aqui cuesta caro.
 
     El martillo no se porta como el mortero. Su descripcion lo dice: "No
@@ -323,7 +323,10 @@ def perforar(estado: dict, ranura, item_id, nivel_equipo: int, tipo: str,
     # vacios, esa frase no tendria sentido.
     if st.get('huecos', 0) > len(st['gemas']):
         return False, 'hay que engarzar una gema antes de abrir otro hueco'
-    if exito_seguro or rng.random() < probabilidad(st.get('huecos', 0)):
+    chance = probabilidad(st.get('huecos', 0))
+    if st.get('huecos', 0) == 0:
+        chance = min(1.0, chance + max(0.0, bono_primer_hueco))
+    if exito_seguro or rng.random() < chance:
         st['huecos'] = st.get('huecos', 0) + 1
         return True, 'hueco abierto (%d)' % st['huecos']
     # Al fallar se pierde el ultimo hueco y lo que llevara dentro.
@@ -640,7 +643,7 @@ def tirar_verde(rangos, todos: bool = False, rng=None):
 
 
 def aplicar(estado: dict, ranura, item_id, nivel_equipo: int, tipo: str,
-            exito_seguro: bool = False, rng=None):
+            exito_seguro: bool = False, rng=None, bono_cuarta_mejora: float = 0.0):
     """Usa un objeto de mejora sobre la pieza de esa ranura.
 
     `estado` es el diccionario de mejoras del personaje, {ranura: {...}}. Se
@@ -661,7 +664,10 @@ def aplicar(estado: dict, ranura, item_id, nivel_equipo: int, tipo: str,
     ok, motivo = puede_mejorar(item_id, nivel_equipo, tipo, st['veces'])
     if not ok:
         return False, motivo
-    if not exito_seguro and rng.random() >= probabilidad(st['veces']):
+    chance = probabilidad(st['veces'])
+    if st['veces'] == 3:
+        chance = min(1.0, chance + max(0.0, bono_cuarta_mejora))
+    if not exito_seguro and rng.random() >= chance:
         # AL FALLAR SE BAJA UN NIVEL. Lo dice la descripcion, aunque se leyo
         # mal la primera vez: "No damage to the gear if the enhancement fails
         # but the number of times the gear has been enhanced decreases by 1".

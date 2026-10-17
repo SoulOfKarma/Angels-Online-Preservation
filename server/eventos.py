@@ -256,6 +256,34 @@ class Contexto:
     def dueno_del_tesoro(self):
         return True
 
+    # -- casas --
+    def es_dueno_casa(self):
+        return True
+
+    def nivel_casa(self):
+        return 1
+
+    def casa_disco_party(self):
+        return False
+
+    def casa_puede_buff_diario(self):
+        return True
+
+    def casa_tiene_voto(self):
+        return True
+
+    def casa_limpieza(self):
+        return 1000
+
+    def casa_dueno_en_casa(self):
+        return True
+
+    def casa_es_pareja(self):
+        return False
+
+    def casa_tamano(self):
+        return 0
+
     # -- azar, aparte para poder fijarlo en las pruebas --
     def sorteo100(self):
         return random.randint(1, 100)
@@ -341,13 +369,32 @@ def evaluar(numero, parms, ctx):
         return _cmp(_p(parms, 0), ctx.teamid(), _p(parms, 1))
     if numero == 56:                                    # IS_LIVE()
         return ctx.vivo()
+    if numero == 58:                                    # HOUSE_IS_OWNER()
+        return ctx.es_dueno_casa()
+    if numero == 59:                                    # HOUSE_LEVEL(cmp, lv)
+        return _cmp(_p(parms, 0), ctx.nivel_casa(), _p(parms, 1))
+    if numero == 60:                                    # DISCO_PARTY(is_active)
+        return ctx.casa_disco_party() == bool(_p(parms, 0))
+    if numero == 61:                                    # COMPOUND_BUFF()
+        return ctx.casa_puede_buff_diario()
+    if numero == 62:                                    # HOUSE_HAVE_VOTE()
+        return ctx.casa_tiene_voto()
+    if numero == 63:                                    # HOUSE_NEATNESS(cmp, val)
+        return _cmp(_p(parms, 0), ctx.casa_limpieza(), _p(parms, 1))
+    if numero == 64:                                    # HOUSE_OWNER_AT_HOME()
+        return ctx.casa_dueno_en_casa()
+    if numero == 65:                                    # HOUSE_OWNER_PARTNER()
+        return ctx.casa_es_pareja()
+    if numero == 70:                                    # HOUSE_SIZE(cmp, sz)
+        return _cmp(_p(parms, 0), ctx.casa_tamano(), _p(parms, 1))
     return None
 
 
 # Las condiciones que evaluar() sabe contestar. Un Contexto declara en su
 # `sabe` las que de verdad puede alimentar, que siempre es un subconjunto.
 SE_EVALUAN = frozenset((1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15, 16,
-                        17, 20, 21, 22, 29, 30, 31, 38, 39, 48, 56))
+                        17, 20, 21, 22, 29, 30, 31, 38, 39, 48, 56,
+                        58, 59, 60, 61, 62, 63, 64, 65, 70))
 
 
 def _pares(parms):
@@ -448,6 +495,22 @@ def traducir(numero, parms):
         return ('cambiar_evento', _p(parms, 0))
     if numero == 78:
         return ('chat_npc', [m for m in parms[0:5] if m])
+    if numero == 89:
+        return ('salir_de_casa',)
+    if numero == 90:
+        return ('casa_buff_diario',)
+    if numero == 91:
+        return ('casa_abrir_pets',)
+    if numero == 92:
+        return ('casa_abrir_mobgen',)
+    if numero == 93:
+        return ('casa_limpiar', _p(parms, 0), _p(parms, 1), _p(parms, 2))
+    if numero == 94:
+        return ('casa_abrir_voto',)
+    if numero == 95:
+        return ('casa_ver_notas',)
+    if numero == 96:
+        return ('casa_hitparade',)
     if numero == 104:
         return ('variable', 'restar', _p(parms, 0), _p(parms, 1), _p(parms, 2))
     return None
@@ -456,7 +519,8 @@ def traducir(numero, parms):
 # Las acciones que traducir() convierte en efecto.
 SE_TRADUCEN = frozenset((1, 3, 4, 7, 8, 9, 10, 12, 13, 14, 18, 19, 20, 21, 24,
                          25, 29, 30, 31, 33, 36, 39, 41, 42, 47, 51, 52, 53,
-                         54, 55, 56, 57, 60, 63, 67, 70, 72, 78, 81, 104))
+                         54, 55, 56, 57, 60, 63, 67, 70, 72, 78, 81,
+                         89, 90, 91, 92, 93, 94, 95, 96, 104))
 def _alguna(condiciones, ctx):
     for c in condiciones:
         r = evaluar(c[0], c[1], ctx)

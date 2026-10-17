@@ -38,6 +38,7 @@ manda como parametro en la primera linea de Angel Raphael.
 import json
 import pathlib
 import struct
+from house_services import MAID_PORTRAIT, MAID_SPRITE
 
 PLANTILLA = pathlib.Path(__file__).parent / 'plantillas' / 'dialogos_guide_palace.json'
 FIN = bytes(9)                      # nueve ceros = cerrar el cuadro
@@ -220,6 +221,16 @@ def _cargar_npcs():
 
 def info_npc(entidad: int):
     """Devuelve dict con nombre, sprite y stage de la entidad, o None si no existe."""
+    if entidad in (2603, 260300):
+        return {'nombre': 'Maid Eilian', 'sprite': MAID_SPRITE, 'stage': 500}
+    if entidad in (2604, 260400, 500004, 721):
+        return {'nombre': 'Eliot', 'sprite': 40066, 'stage': 500}
+    if entidad in (2605, 260500, 500005, 731):
+        return {'nombre': 'Alfred', 'sprite': 40266, 'stage': 500}
+    if entidad in (2625, 262501, 262502):
+        return {'nombre': "Suft's Mailbox", 'sprite': 60241, 'stage': 500}
+    if entidad == 723:
+        return {'nombre': 'The Safe', 'sprite': 60306, 'stage': 500}
     return _cargar_npcs().get(entidad)
 
 
@@ -228,6 +239,8 @@ def val_por_entidad(entidad: int, val_defecto: int = 3) -> int:
     info = info_npc(entidad)
     if info:
         spr = info.get('sprite', 0)
+        if spr == 40182:
+            return 182
         if 40200 <= spr < 41000:
             return 1000 + (spr - 40200)
         if 40000 <= spr < 50000:
@@ -373,11 +386,48 @@ CUPID_POR_ENTIDAD = {
 def propio(nombre: str, faccion: str = "Heaven", jugador: str = "",
            visto_michael: bool = False, stage: int = 0,
            registrado: bool = None, entidad: int = 0, val: int = 0,
-           en_progreso: bool = False, graduado: bool = False):
+           en_progreso: bool = False, graduado: bool = False,
+           cleanliness: int = None, house_level: int = None):
     """Una linea de dialogo para ese NPC, o None si no se le conoce ninguna."""
     npc_val = val or (val_por_entidad(entidad, 0) if entidad else 0)
 
     nom_lower = (nombre or '').lower().strip()
+    if nom_lower in ('maid eilian', 'eilian') or entidad in (260300, 2603):
+        v = MAID_PORTRAIT
+        if cleanliness is not None and cleanliness == 0:
+            # Casa sucia (Clean: 0): requiere limpieza previa
+            # Opciones oficiales: [7901 ("Clean the house"), 7891 ("Leave")]
+            return [armar_linea(7906, v, [7901, 7891])[2:]]
+        else:
+            # Casa limpia (Clean > 0): opciones completas de casa
+            # Opciones oficiales: [7912 (I need your blessing), 7910 (Receive Token), 7872 (About House Cleaning), 7905 (About Voting), 7904 (About Mercenary Tokens), 7903 (About Maid Eilian Blessing), 7891 (Leave)]
+            return [armar_linea(7900, v, [7912, 7910, 7872, 7905, 7904, 7903, 7891])[2:]]
+
+    if nom_lower in ('pet care machine', 'raise-a-pet machine', 'eliot') or entidad in (260400, 500004, 2604, 721):
+        # Pet Care Machine / Eliot (Raise-a-Pet Room) - desbloquea a nivel 3
+        v = 0  # machine: text/options only, not Eliot's character portrait
+        if house_level is not None and house_level < 3:
+            return [armar_linea(7878, v, [7877])[2:]]
+        else:
+            return [armar_linea(7874, v, [7876, 7875, 7877])[2:]]
+
+    if nom_lower in ('monster hatching machine', 'hatching machine', 'alfred') or entidad in (260500, 500005, 2605, 731):
+        # Monster Hatching Machine / Alfred (Monster Room) - desbloquea a nivel 6
+        v = 0  # machine: text/options only, not Alfred's character portrait
+        if house_level is not None and house_level < 6:
+            return [armar_linea(7886, v, [7885])[2:]]
+        else:
+            return [armar_linea(7882, v, [7884, 7883, 7885])[2:]]
+
+    if nom_lower in ("suft's mailbox", "mailbox") or entidad in (262501, 262502, 2625, 722, 732):
+        v = 0
+        if house_level is not None and house_level < 4:
+            return [armar_linea(7852, v, [7850])[2:]]
+        return [armar_linea(7847, v, [7849, 7848, 7850])[2:]]
+
+    if nom_lower in ('the safe', 'safe') or entidad in (723,):
+        v = npc_val or val_por_entidad(entidad, 60306)
+        return [armar_linea(7862, v, [7864, 7863, 7865])[2:]]
     if nom_lower == 'leif' or entidad == 90405000:
         return [armar_linea(156616, npc_val or val_por_entidad(entidad), [])[2:]]
     if nom_lower in ('mr. fleming', 'fleming', 'mr fleming') or entidad == 90406000:
@@ -2381,6 +2431,62 @@ def respuesta_a(opcion_id: int, entidad: int = 0, val: int = 4,
                 nombre: str = '', stage: int = 0, nivel: int = 0,
                 faccion: str = "Heaven", graduado: bool = False):
     """Devuelve tupla de sub-mensajes: apertura de tienda y/o cierre/continuacion de dialogo."""
+    # Maid Eilian (Stage 500)
+    if opcion_id == 7872: # About House Cleaning -> 7906 con opciones [7901 (Clean the house), 7891 (Leave)]
+        return (armar_linea(7906, MAID_PORTRAIT, [7901, 7891]),)
+    if opcion_id in (7901, 7916): # Clean the house (logica con soap en app.py)
+        cierre = struct.pack('<H', 0x0012) + FIN
+        return (armar_linea(7916, MAID_PORTRAIT, []), cierre)
+    if opcion_id == 7905: # About Voting -> 7909
+        return (armar_linea(7909, MAID_PORTRAIT, [7891]),)
+    if opcion_id == 7904: # About Mercenary Tokens -> 7908
+        return (armar_linea(7908, MAID_PORTRAIT, [7910, 7891]),)
+    if opcion_id == 7903: # About Maid Eilian Blessing -> 7907
+        return (armar_linea(7907, MAID_PORTRAIT, [7912, 7891]),)
+    # Pet Care Machine / Eliot
+    if opcion_id == 7875: # Tell me about the Raise-a-Pet Room -> 7879
+        return (armar_linea(7879, 0, [7876, 7877]),)
+    if opcion_id == 7876: # Activate the Raise-a-Pet Room
+        cierre = struct.pack('<H', 0x0012) + FIN
+        return (cierre,)
+    if opcion_id == 7877: # I'm leaving
+        return (struct.pack('<H', 0x0012) + FIN,)
+
+    # Monster Hatching Machine / Alfred
+    if opcion_id == 7883: # Tell me about the Monster Hatching Machine -> 7887
+        return (armar_linea(7887, 0, [7884, 7885]),)
+    if opcion_id == 7884: # Use the Monster Hatching Machine
+        cierre = struct.pack('<H', 0x0012) + FIN
+        return (cierre,)
+    if opcion_id == 7885: # I'm leaving
+        return (struct.pack('<H', 0x0012) + FIN,)
+
+    # Suft's Mailbox
+    if opcion_id == 7848: # Tell me about Suft's Mailbox -> 7851
+        return (armar_linea(7851, 0, [7849, 7850]),)
+    if opcion_id == 7849: # Submit order -> 7853
+        return (armar_linea(7853, 0, [7854, 7855, 7856, 7857, 7858, 7850]),)
+    if opcion_id in (7850, 7865): # I'm leaving
+        return (struct.pack('<H', 0x0012) + FIN,)
+
+    # The Safe
+    if opcion_id == 7863: # Tell me about the Safe -> 7866
+        return (armar_linea(7866, 60306, [7864, 7865]),)
+    if opcion_id == 7864: # Use the Safe -> 7868
+        return (armar_linea(7868, 60306, [7869, 7870, 7865]),)
+    if opcion_id == 7869: # Individual Storage, hydrated by app with actual contents
+        cierre = struct.pack('<H', 0x0012) + FIN
+        return (struct.pack('<HH', 0x004E, 0), cierre)
+    if opcion_id == 7870:
+        # No guild membership/storage backend exists yet (Ctx.tiene_guild
+        # returns False). Never substitute the personal bank for guild data.
+        import clases
+        return (clases.aviso("Guild Storage requires an available guild storage service.", tipo=0),
+                struct.pack('<H', 0x0012) + FIN)
+
+    if opcion_id in (7891, 7894, 7899): # Leave / Stay / Close
+        return (struct.pack('<H', 0x0012) + FIN,)
+
     # --- Clank Oasis (407) y Commercial Street (419) ---
     # Las cuatro opciones son las mismas en los dos mapas (ver la nota de
     # propio()), asi que la tienda la decide el STAGE. El par que les toca

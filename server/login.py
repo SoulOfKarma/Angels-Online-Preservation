@@ -234,6 +234,11 @@ def secuencia(p: Personaje):
             # inventario del personaje que se grabo; ahora se arma con el del
             # jugador, asi que cada item aparece en su ranura.
             import inventario as _inv
+            # Asegurar deed activa en slot 376 para WND_HOUSEINFO (Take Back sub_622D90 / Show)
+            deed_activa = 10115
+            if getattr(p, 'casa', None) and isinstance(p.casa, dict):
+                deed_activa = int(p.casa.get('deed_id') or 10115)
+            p.inventario[376] = deed_activa
             # Con la cantidad de cada cosa: el oro vive en la ranura 0 y su
             # item_id siempre es 1 (ITEM_ORO) y su cantidad es p.oro.
             # Con la cantidad REAL de cada casilla: aqui iba un 1 fijo, asi
@@ -287,7 +292,7 @@ def secuencia(p: Personaje):
             salida.append(struct.pack('<H', 0x0196) + bytes(b))
         else:
             salida.append(struct.pack('<H', op) + base)   # plantilla tal cual
-    salida += poblar(p.stage)
+    salida += poblar(p.stage, player_level=p.nivel)
     # Atributos nativos iniciales del personaje (HP, MP, EXP bar)
     import combate as _cb_ini
     hp_val = 280 if (not p.habilidades and p.nivel == 1 and p.hp <= 205) else p.hp
@@ -375,6 +380,7 @@ PLAYGROUND_MONSTERS = {
         (915, 224, "Little Slarm", (201, 35)),
         (916, 224, "Little Slarm", (208, 32)),
     ],
+    500: [],  # House Monster Room (vacía por defecto como en Global)
 }
 
 
@@ -730,6 +736,29 @@ def portales_de(stage: int):
     return salida
 
 
+def _map_object_spawn(entity_id: int, sprite: int, tile: tuple, direccion: int = 6,
+                      mirror=None) -> bytes:
+    """Arma un spawn de objeto de mapa (0x000E) como tornados, buzones o maquinas."""
+    f = PLANTILLAS / 'portales.json'
+    if not f.exists():
+        return b''
+    cfg = json.loads(f.read_text(encoding='utf-8'))
+    base_hex = cfg.get('plantilla_hex')
+    if not base_hex:
+        return b''
+    b = bytearray(bytes.fromhex(base_hex))
+    if mirror is not None:
+        # IGG sub_5EF410: wire flags bit 2 enables SP_ATTRIB_MIRROR
+        # (0x00800000). Static single-view sprites ignore direction changes.
+        flags = struct.unpack_from('<I', b, 4)[0]
+        struct.pack_into('<I', b, 4, flags | 2 if mirror else flags & ~2)
+    struct.pack_into('<I', b, 0, entity_id)
+    struct.pack_into('<II', b, 8, tile[0] * 32 + 16, tile[1] * 32 + 16)
+    b[33] = direccion & 0xFF
+    struct.pack_into('<I', b, 34, sprite)
+    return struct.pack('<H', 0x000E) + bytes(b)
+
+
 # UNA SOLA TABLA de plantillas de mapa. Antes habia TRES listas
 # paralelas -- esta, la de _nombre_entidad y la de la IA de monstruos --
 # y cada mapa nuevo habia que anadirlo a las tres a mano. Fallo cuatro
@@ -1080,10 +1109,62 @@ PLANTILLAS_POR_STAGE = {
 }
 
 
-def poblar(stage: int):
+HOUSE_INTERACTIVE_IDS = tuple(
+    [260300, 262501, 701, 702, 703, 720, 721, 723, 731]
+    + list(range(500020, 500030))
+)
+
+
+def interactivos_casa(player_level=1):
+    """Servicios IGG de default.mpc; posiciones de portales ya verificadas."""
+    salida = portales_de(500)
+    # 1. Main Room:
+    # NPC 2603 with the house-maid visual from npc.obd (not placeholder n015).
+    import house_services as hs
+    salida.append(_npc_spawn(260300, 2603, "Maid Eilian", hs.MAID_TILE,
+                             sprite=hs.MAID_SPRITE, klass=200, direccion=hs.MAID_DIRECTION))
+    salida.append(_map_object_spawn(720, 60155, (27, 31)))
+    for eid, (sprite, tile, _skill, _category, _note) in hs.PRODUCTION.items():
+        salida.append(_map_object_spawn(eid, sprite, tile,
+                                       mirror=hs.PRODUCTION_MIRROR.get(eid)))
+    for eid in hs.RESOURCES:
+        resource = hs.resource_for(eid, player_level)
+        salida.append(objeto_de_mapa(resource))
+        salida.append(objeto_nombrado(resource))
+
+    # 2. Pet Room / Raise-a-Pet Room:
+    # Buzon de pedidos. La maquina de pets es el huevo 60155 (entidad 720).
+    salida.append(_map_object_spawn(721, 62358, hs.MAILBOX_TILE))
+    # The Safe (objeto 60306) en (40, 26)
+    salida.append(_map_object_spawn(723, 60306, (40, 26), mirror=False))
+
+    # 3. Monster Room / Monster Hatching Room:
+    # Monster Hatching Machine (objeto 60155) en (85, 31)
+    salida.append(_map_object_spawn(731, 60155, (85, 31)))
+
+    return salida
+
+
+def poblar(stage: int, player_level=1):
     """NPC, monstruos, portales y totems propios del mapa."""
+    if stage == 500:
+        return interactivos_casa(player_level)
     salida = npc_de_los_xml(stage)
     salida += portales_de(stage)
+    try:
+        import casas as _cs_pob
+        if stage in _cs_pob.MAPAS_EXHIBICION:
+            for _c_act in _cs_pob.casas_en_stage(stage):
+                salida.append(_cs_pob.pkt_outdoor_house(
+                    _c_act.outdoor_obj_id, _c_act.model_id,
+                    _c_act.outdoor_px[0], _c_act.outdoor_px[1],
+                    _c_act.house_name, _c_act.owner_name,
+                    dir_rot=_c_act.outdoor_dir,
+                    house_size_level=_c_act.size_level,
+                    house_level=_c_act.level
+                ))
+    except Exception:
+        log.exception('login.poblar: error al enviar casas exteriores')
     if stage == 57:
         # Fighting Palace: los diez Angel Raphael y los cuatro totems, con los
         # 0x0008 tal cual los manda Celestia. Antes estaban en posiciones
@@ -1160,8 +1241,10 @@ def poblar(stage: int):
                  len(d43.get('recursos', [])))
         return salida
     if stage in PLAYGROUND_MONSTERS and stage not in _pg:
-        for eid, ntype, nom, tile in PLAYGROUND_MONSTERS[stage]:
-            salida.append(_npc_spawn(eid, ntype, nom, tile, klass=1))
+        for item in PLAYGROUND_MONSTERS[stage]:
+            eid, ntype, nom, tile = item[:4]
+            sp = item[4] if len(item) > 4 else 0
+            salida.append(_npc_spawn(eid, ntype, nom, tile, sprite=sp, klass=1))
         return salida
     f = PLANTILLAS / 'lyceum.json'
     if stage != 41 or not f.exists():
@@ -1217,7 +1300,9 @@ def _ficha(p, base):
     d = m.parse(base)
     d['entity_id'] = p.entity_id
     d['tile_x'], d['tile_y'] = p.tile_x, p.tile_y
-    d['flags'] = 0
+    # Bit 0x80000000 permite que el cliente ejecute los botones de WND_HOUSEINFO (Show, Take Back, Decorate)
+    # y valida la condicion (*(_DWORD *)(player + 480) & 0x80000000) en Angel.exe (sub_5BA840..sub_5BA8F0)
+    d['flags'] = 0x80000000
     # En 0x0002, el mapa/stage real va en el offset 3953 (offset 3235 dentro de 'resto')
     r = bytearray(d['resto'])
     if len(r) >= 3239:

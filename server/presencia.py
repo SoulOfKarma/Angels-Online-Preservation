@@ -254,6 +254,15 @@ def clave_de_mapa(ses, stage):
     lo que hacen las copias de instancia del juego (平行空間=15, repartidas
     por grupo): dos grupos en la Magic Kichen Path no se cruzan.
     """
+    # Stage 500 is a parallel house space.  Players only share visibility
+    # when they are visiting the same owner's house; otherwise every house
+    # would leak into the same room.
+    if int(stage) == 500:
+        casa = getattr(ses, 'casa_visitando', None)
+        owner_id = getattr(casa, 'owner_id', None)
+        if owner_id is None and getattr(ses, 'personaje', None):
+            owner_id = getattr(ses.personaje, 'char_id', 0)
+        return (500, 'house', int(owner_id or 0))
     try:
         import eventos_mundo as _evm
         if _evm.grupo_de_instancia(stage):

@@ -214,6 +214,17 @@ a guess, it says so.
   - Proper right-click handling: container 16 (`usebankitem`) withdraws from bank slot to bag, and container 17 (`usecharitem`) deposits from bag slot into bank without slot misalignment or item collisions.
   - Seamless drag-and-drop between bank and bag (or within bank slots) mapping genuine slot IDs (1..48 in bank, 20..163 in bag).
 - **Robust Inventory Packet Sync**: stackable consumables, slot-by-slot delta sync via official `0x001B` without client stream desynchronization.
+- **IGG House System & Private Space (Stage 500)**:
+  - **Deed Activation & Stage 500 Instancing**: using or purchasing house deeds (10115..10117, 17934..17937) creates and activates private residential instances on Stage 500 (Stage Type 255) with persistent ownership in SQLite (`casas`, `casas_muebles`, `cuentas_casas_servicios`).
+  - **Furnish Mode & Free Placement**: toggle furnish mode via `0x0136`/`0x0137` with graceful exit (`0x0138`). Dynamic placement, movement, and retrieval of furniture items (slots 376..496) mapped from `furniture.xml`, calculating decoration score and room capacity.
+  - **House Bulletin & Guest Access**: house bulletin board (`2625`) outside and inside for entering own house, visiting friends/strangers with password protection (`0x0135`), guestbook greeting, and message logs.
+  - **Maid Eilian (`2603`)**: authentic sprite (`40182`) and portrait (`182`) located at `(44, 80)`. Offers house information, daily blessing buffs (2292..2295 for EXP/Combat boosts), party/ball hosting, and service shortcuts without accidental ejection.
+  - **Cleanliness & Liquid Soap System**: dynamic cleanliness tracking capped at 1000. Using soap items (Liquid Soap 10118) raises cleanliness; maintaining $\ge 500$ grants a scaling character bonus (+1% up to +10% EXP multiplier).
+  - **Private Rooms & Authentic Layout**:
+    - Doorstep portal 701 at `(45, 78)` leading to private utility rooms.
+    - **Raise-a-pet Room**: Pet Care Machine (`721`), Safe / House Storage (`723`), Suft's Mailbox (`262501`) at `(37, 25)` for producer orders, and return portal (`702`) back to the main house hall.
+    - **Monster Hatching Room**: Monster Incubator Machine (`731`) and return portal (`703`). Clean room layout matching authentic IGG structure.
+  - **House Services & Producer Orders**: safe item deposit/withdrawal (`house_services.py`), automated producer material deliveries via Suft's Mailbox (`producer_orders.py`), and Mercenary Token consumption (`10581` -> buff 2254, 8 hours).
 
 **The customised client**
 

@@ -224,6 +224,17 @@ Path`, `Third Spirit`, `Limit Breaker`, `Shadow Meld`, `Killer Intent`) y la
   - Resolución limpia de click derecho: contenedor 16 (`usebankitem`) retira de la casilla del banco a la mochila, y contenedor 17 (`usecharitem`) deposita de la casilla de la mochila al banco sin desalineación ni cruce de slots.
   - Arrastre fluido de objetos entre banco y mochila (o reordenamiento dentro del banco) respetando ranuras auténticas (1..48 en banco, 20..163 en mochila).
 - **Gestión de inventario robusta**: apilamiento de consumibles, actualización casilla por casilla con el `0x001B` oficial sin desincronizar la lectura del cliente.
+- **Sistema de Casas y Espacio Privado IGG (Stage 500)**:
+  - **Activación de Escrituras e Instancias**: comprar o usar escrituras de casa (10115..10117, 17934..17937) crea y activa residencias privadas en el Stage 500 (Stage Type 255) con persistencia en SQLite (`casas`, `casas_muebles`, `cuentas_casas_servicios`).
+  - **Modo Amueblar y Decoración Libre**: alternancia de modo amueblar con `0x0136`/`0x0137` y salida segura con `0x0138`. Colocación, movimiento y guardado de muebles (ranuras 376..496) leídos de `furniture.xml`, con cálculo de puntuación decorativa y capacidad de sala.
+  - **Tablón de Casas y Acceso de Visitas**: tablón residencial (`2625`) exterior e interior para entrar a la casa propia, visitar amigos o desconocidos con protección por contraseña (`0x0135`), firmas en el libro de visitas y registro de mensajes.
+  - **Maid Eilian (`2603`)**: sprite auténtico (`40182`) y retrato (`182`) ubicada en `(44, 80)`. Proporciona información de la casa, bendiciones diarias (buffs 2292..2295 con bonos de EXP y combate), organización de bailes/fiestas y accesos a servicios sin expulsión involuntaria.
+  - **Limpieza y Jabón Líquido**: seguimiento dinámico de limpieza con tope de 1000. El uso de jabón líquido (10118) restaura la limpieza; mantener $\ge 500$ otorga una bonificación de personaje (+1% hasta +10% de EXP multiplicador).
+  - **Salas Privadas y Distribución Auténtica**:
+    - Portal 701 situado en el umbral `(45, 78)` que conecta con las salas de utilidades.
+    - **Raise-a-pet Room**: Máquina de Cuidado de Mascotas (`721`), Caja Fuerte / Almacén de Casa (`723`), Buzón de Suft (`262501`) en `(37, 25)` para pedidos de productor, y portal de retorno (`702`) al vestíbulo principal.
+    - **Monster Hatching Room**: Máquina Incubadora de Monstruos (`731`) y portal de retorno (`703`), con mapa despejado fiel al cliente IGG oficial.
+  - **Servicios de Casa y Pedidos de Productor**: depósito y retiro seguro en la caja fuerte (`house_services.py`), entregas automatizadas de suministros y materiales de producción en el Buzón de Suft (`producer_orders.py`), y consumo directo de Mercenary Token (`10581` -> buff 2254, 8 horas de duración).
 
 **El cliente, personalizado**
 

@@ -17742,6 +17742,78 @@
     "dibujar": true,
     "nota": "Mystic Space -> Sunshine Palace. Tornado del propio map132.mpc (evento 1: CHANGE_MAP(131, 2)); la llegada es el TAG 2 de map131.mpc."
    }
+  ],
+  "500": [
+   {
+    "entity": 701,
+    "tile": [
+     45,
+     78
+    ],
+    "trigger_tile": [
+     45,
+     78
+    ],
+    "msg": 7888,
+    "opciones": [
+     7889,
+     7890,
+     7891,
+     7894
+    ],
+    "destinos": {
+     "7889": {
+      "destino": 500,
+      "llegada": [
+       36,
+       28
+      ]
+     },
+     "7890": {
+      "destino": 500,
+      "llegada": [
+       94,
+       29
+      ]
+     }
+    },
+    "nota": "Stage 500 house doorway portal, outside the lower doorstep",
+    "preguntar": true,
+    "dibujar": true,
+    "radio": 1
+   },
+   {
+    "entity": 702,
+    "tile": [
+     41,
+     30
+    ],
+    "destino": 500,
+    "llegada": [
+     44,
+     80
+    ],
+    "nota": "Stage 500 courtyard/pet room return portal",
+    "preguntar": false,
+    "dibujar": true,
+    "radio": 2
+   },
+   {
+    "entity": 703,
+    "tile": [
+     99,
+     31
+    ],
+    "destino": 500,
+    "llegada": [
+     44,
+     80
+    ],
+    "nota": "Stage 500 monster room return portal",
+    "preguntar": false,
+    "dibujar": true,
+    "radio": 2
+   }
   ]
  },
  "sprite": 60001,

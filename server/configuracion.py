@@ -44,14 +44,17 @@ def es_fin_de_semana() -> bool:
 
 def multiplicador_exp(buffs: dict = None) -> float:
     """Calcula el multiplicador total de EXP de personaje teniendo en cuenta:
-    tasa base + evento semanal + buffs o tarjetas de doble EXP activas."""
+    tasa base + evento semanal + buffs o tarjetas de doble EXP activas + bonos de casa/maid."""
     m = TASA_EXP_BASE
     if es_fin_de_semana():
         m *= BONUS_EVENTO_EXP
-    if buffs and buffs.get('doble_exp'):
-        m *= 2.0
-    if buffs and buffs.get('triple_exp'):
-        m *= 3.0
+    if buffs:
+        if buffs.get('doble_exp'):
+            m *= 2.0
+        if buffs.get('triple_exp'):
+            m *= 3.0
+        # House cleanliness belongs to the house magic index. Eilian's
+        # 2292..2295 affect equipment enhancement, never character EXP.
     return m
 
 

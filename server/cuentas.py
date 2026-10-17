@@ -543,6 +543,14 @@ def personaje_de(cuenta, ranura=0):
                 _cant_limpia[int(_k)] = int(_v[1])
         else:
             _inv_limpio[int(_k)] = _v
+    _casa_limpia = dict(p.get('casa') or {})
+    if _casa_limpia:
+        _casa_limpia['is_open'] = False
+        _casa_limpia['outdoor_obj_id'] = 0
+        if _casa_limpia.get('deed_id'):
+            _inv_limpio[376] = int(_casa_limpia['deed_id'])
+    if 376 not in _inv_limpio:
+        _inv_limpio[376] = 10115
     return Personaje(
         entity_id=1000 + p['char_id'] % 1000,
         char_id=p['char_id'],
@@ -576,10 +584,9 @@ def personaje_de(cuenta, ranura=0):
         permisos=[str(x) for x in (p.get('permisos') or [])],
         estrellas=[tuple(x) for x in (p.get('estrellas') or [])
                    if isinstance(x, (list, tuple)) and len(x) >= 2],
-        casa={'muebles': [int(x) for x in
-                          ((p.get('casa') or {}).get('muebles') or [])]},
+        casa=_casa_limpia,
         buffs={int(k): v for k, v in (p.get('buffs') or {}).items()
-               if isinstance(v, dict) and v.get('fin', 0) > _ahora()},
+               if str(k).isdigit() and isinstance(v, dict) and v.get('fin', 0) > _ahora()},
         class_id=p.get('class_id', 0),
         creditos=int(p.get('creditos', 0) or 0),
         rango=max(1, min(20, int(p.get('rango', 1) or 1))),
@@ -663,7 +670,8 @@ def guardar_inventario(usuario: str, char_id: int, bolsa: dict,
             p['mejoras'] = {str(k): v
                             for k, v in sorted(mejoras.items(), key=_slot_sort_key)
                             if v and (v.get('veces') or v.get('gemas')
-                                      or v.get('extra') or v.get('vinculacion'))}
+                                      or v.get('extra') or v.get('vinculacion')
+                                      or v.get('house_egg_deadline') or v.get('mercenary_token_deadline'))}
         if cantidades is not None:
             p['cantidades'] = {str(k): int(v)
                                for k, v in sorted(cantidades.items(), key=_slot_sort_key)
@@ -677,7 +685,8 @@ def guardar_mejoras(usuario: str, char_id: int, mejoras: dict):
     def _mut(p):
         p['mejoras'] = {str(k): v for k, v in sorted((mejoras or {}).items(), key=_slot_sort_key)
                         if v and (v.get('veces') or v.get('gemas')
-                                  or v.get('extra') or v.get('vinculacion'))}
+                                  or v.get('extra') or v.get('vinculacion')
+                                  or v.get('house_egg_deadline') or v.get('mercenary_token_deadline'))}
     _actualizar_personaje(usuario, char_id, _mut)
 
 
@@ -805,9 +814,102 @@ def guardar_sistemas(usuario: str, char_id: int, p):
         fila['cartas'] = sorted({int(x) for x in (getattr(p, 'cartas', None) or [])})
         fila['permisos'] = sorted({str(x) for x in (getattr(p, 'permisos', None) or [])})
         fila['estrellas'] = [list(x) for x in (getattr(p, 'estrellas', None) or [])]
-        fila['casa'] = {'muebles': [int(x) for x in
-                                    ((getattr(p, 'casa', None) or {}).get('muebles') or [])]}
+        c_val = getattr(p, 'casa', None)
+        if hasattr(c_val, 'serializar'):
+            fila['casa'] = c_val.serializar()
+        elif isinstance(c_val, dict):
+            fila['casa'] = dict(c_val)
+        else:
+            fila['casa'] = {}
     _actualizar_personaje(usuario, char_id, _mut)
+
+
+def guardar_casa(usuario: str, char_id: int, casa):
+    def _mut(fila):
+        if hasattr(casa, 'serializar'):
+            fila['casa'] = casa.serializar()
+        elif isinstance(casa, dict):
+            fila['casa'] = dict(casa)
+        else:
+            fila['casa'] = {}
+    _actualizar_personaje(usuario, char_id, _mut)
+
+
+def guardar_casa_e_inventario(usuario: str, char_id: int, casa, bolsa: dict,
+                               cantidades=None, mejoras=None):
+    """Commit a decoration save atomically.
+
+    Placing and taking back furniture changes both the house and the
+    Furniture bag.  Persisting those in separate transactions can duplicate
+    or lose an item if the process stops between writes.
+    """
+    casa_data = casa.serializar() if hasattr(casa, 'serializar') else dict(casa or {})
+    with _LOCK:
+        con = _get_conn()
+        try:
+            con.execute('BEGIN IMMEDIATE')
+            row = con.execute(
+                'SELECT datos FROM personajes WHERE usuario=? AND char_id=?',
+                (usuario, int(char_id))).fetchone()
+            if row is None:
+                raise ValueError('Character no longer exists.')
+            datos = json.loads(row[0])
+            datos['casa'] = casa_data
+            datos['inventario'] = {
+                str(k): v for k, v in sorted(bolsa.items(), key=_slot_sort_key)
+            }
+            if cantidades is not None:
+                datos['cantidades'] = {
+                    str(k): int(v)
+                    for k, v in sorted(cantidades.items(), key=_slot_sort_key)
+                    if (int(v) > 1 or 497 <= int(k) <= 556)
+                    and (int(k) in bolsa or str(k) in bolsa)
+                }
+            if mejoras is not None:
+                datos['mejoras'] = {
+                    str(k): v
+                    for k, v in sorted(mejoras.items(), key=_slot_sort_key)
+                    if v and (v.get('veces') or v.get('gemas')
+                              or v.get('extra') or v.get('vinculacion')
+                              or v.get('house_egg_deadline') or v.get('mercenary_token_deadline'))
+                }
+            con.execute(
+                'UPDATE personajes SET datos=?, actualizado_en=CURRENT_TIMESTAMP '
+                'WHERE usuario=? AND char_id=?',
+                (json.dumps(datos, ensure_ascii=False), usuario, int(char_id)))
+            con.commit()
+        except Exception:
+            con.rollback()
+            raise
+        finally:
+            con.close()
+    _notificar_cambio(inmediato=True)
+
+
+def todas_las_casas_abiertas() -> list:
+    """Return all open outdoor house data saved across all characters."""
+    out = []
+    with _LOCK:
+        con = _get_conn()
+        try:
+            cur = con.execute('SELECT char_id, nombre, datos FROM personajes')
+            for row in cur:
+                if not row[2]:
+                    continue
+                try:
+                    cid = int(row[0])
+                    nom = row[1] or ''
+                    d = json.loads(row[2])
+                    c = d.get('casa')
+                    if isinstance(c, dict) and c.get('is_open') and c.get('outdoor_stage'):
+                        out.append((cid, nom, c))
+                except Exception:
+                    pass
+        except Exception:
+            pass
+        finally:
+            con.close()
+    return out
 
 
 def guardar_cardbook(usuario: str, char_id: int, plan):
@@ -887,6 +989,39 @@ def guardar_mascota(usuario: str, char_id: int, mascota: dict, mascotas: dict = 
         else:
             p.pop('mascota', None)
     _actualizar_personaje(usuario, char_id, _mut)
+
+
+def confirmar_entrega_productor(usuario, char_id, consumption, rewards, bonus=None):
+    """Atomically apply only the validated order slots and its reward deltas.
+
+    Never replaces inventory from a session snapshot or falls back to another
+    character. apply_delivery validates all affected slots before any write.
+    """
+    from producer_orders import apply_delivery
+    import combate
+    with _LOCK:
+        con = _get_conn()
+        try:
+            con.execute('BEGIN IMMEDIATE')
+            row = con.execute('SELECT datos FROM personajes WHERE usuario=? AND char_id=?',
+                              (usuario, char_id)).fetchone()
+            if not row:
+                raise ValueError('Producer delivery character not found')
+            before = json.loads(row[0])
+            after, touched = apply_delivery(before, consumption, rewards, bonus,
+                                             combate.exp_para_nivel, combate.nivel_maximo(),
+                                             combate.rango_de_creditos)
+            con.execute('UPDATE personajes SET datos=?, actualizado_en=CURRENT_TIMESTAMP '
+                        'WHERE usuario=? AND char_id=?',
+                        (json.dumps(after, ensure_ascii=False), usuario, char_id))
+            con.commit()
+            _notificar_cambio()
+            return after, touched
+        except Exception:
+            con.rollback()
+            raise
+        finally:
+            con.close()
 
 
 def guardar_rango(usuario: str, char_id: int, rango: int, creditos: int = None):

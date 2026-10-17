@@ -1223,6 +1223,25 @@ def vincular_equipo(item_id, char_id, estado):
     return True
 
 
+def marcar_caducidad_mercenario(entrada, estado):
+    """IGG item +46 (entry +47) is absolute expiry, not remaining minutes.
+
+    The item tooltip calls sub_5C3710(expiry), subtracting synchronized
+    server time. Do not alter +50, the variable-entry size field.
+    """
+    deadline = (estado or {}).get('mercenary_token_deadline')
+    if not deadline:
+        return entrada
+    base = 6 if entrada[:2] == struct.pack('<H', 0x001B) else 0
+    if len(entrada) < base + 86 or struct.unpack_from('<I', entrada, base + 9)[0] != 10581:
+        return entrada
+    b = bytearray(entrada)
+    struct.pack_into('<I', b, base + 47, max(0, min(0xffffffff, int(deadline))))
+    # Native flags +57 bit 1 denotes a minute-count item, not a timestamp.
+    b[base + 58] &= ~2
+    return bytes(b)
+
+
 def marcar_vinculacion(entrada, estado):
     v = (estado or {}).get('vinculacion')
     if not v:
@@ -1915,6 +1934,7 @@ def completo(char_id: int, items, dueno: int = None, mejoras=None,
         _e = _entrada(char_id, ran, iid, cnt, ins, dueno, mascota=pet_spec)
         if not es_mascota(iid):
             _m = mejoras.get(ran)
+            _e = marcar_caducidad_mercenario(_e, _m)
             _e = marcar_vinculacion(_e, _m)
             if _m and _m.get('veces'):
                 _e = marcar_mejora(_e, _m['veces'])

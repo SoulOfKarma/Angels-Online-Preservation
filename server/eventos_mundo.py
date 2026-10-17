@@ -66,6 +66,15 @@ SABE = frozenset((
     39,     # GROUP
     56,     # IS_LIVE
     3,      # PROPERTY (solo nivel y rango)
+    58,     # HOUSE_IS_OWNER
+    59,     # HOUSE_LEVEL
+    60,     # DISCO_PARTY
+    61,     # COMPOUND_BUFF
+    62,     # HOUSE_HAVE_VOTE
+    63,     # HOUSE_NEATNESS
+    64,     # HOUSE_OWNER_AT_HOME
+    65,     # HOUSE_OWNER_PARTNER
+    70,     # HOUSE_SIZE
 ))
 
 # Las ranuras ocultas donde misiones.py ya pone los contadores de caceria.
@@ -434,6 +443,78 @@ class ContextoSesion(ev.Contexto):
             return max(1, int(n or 1))
         except Exception:
             return 1
+
+    # -- casas ------------------------------------------------------------
+    def _obtener_casa_actual(self):
+        cv = getattr(self.ses, 'casa_visitando', None)
+        if cv:
+            return cv
+        if self.p:
+            try:
+                import casas as _cas
+                return _cas.obtener_o_crear_casa(
+                    self.p.char_id, self.p.nombre,
+                    raw_data=getattr(self.p, 'casa', None))
+            except Exception:
+                return None
+        return None
+
+    def es_dueno_casa(self):
+        c = self._obtener_casa_actual()
+        if not c or not self.p:
+            return False
+        return int(getattr(c, 'owner_id', 0)) == int(getattr(self.p, 'char_id', 0))
+
+    def nivel_casa(self):
+        c = self._obtener_casa_actual()
+        if not c:
+            return 1
+        try:
+            import casas as _cas
+            return _cas.nivel_de_magia(c.calcular_magia())
+        except Exception:
+            return 1
+
+    def casa_disco_party(self):
+        c = self._obtener_casa_actual()
+        return bool(c and getattr(c, 'ball_active', False))
+
+    def casa_puede_buff_diario(self):
+        c = self._obtener_casa_actual()
+        if not c or not self.p:
+            return False
+        import time
+        hoy = time.strftime('%Y-%m-%d')
+        ultimo = getattr(self.p, 'ultimo_house_buff', None)
+        return ultimo != hoy
+
+    def casa_tiene_voto(self):
+        c = self._obtener_casa_actual()
+        if not c or not self.p:
+            return False
+        c.check_daily_reset()
+        cid = int(getattr(self.p, 'char_id', 0))
+        return cid not in c.voted_users_today
+
+    def casa_limpieza(self):
+        c = self._obtener_casa_actual()
+        return int(getattr(c, 'cleanliness', 1000) if c else 1000)
+
+    def casa_dueno_en_casa(self):
+        c = self._obtener_casa_actual()
+        if not c:
+            return False
+        owner_id = int(getattr(c, 'owner_id', 0))
+        if self.p and int(getattr(self.p, 'char_id', 0)) == owner_id:
+            return True
+        return False
+
+    def casa_es_pareja(self):
+        return False
+
+    def casa_tamano(self):
+        c = self._obtener_casa_actual()
+        return int(getattr(c, 'size_level', 0) if c else 0)
 
     # -- aplicacion local de efectos durante la ejecucion de un evento ----
     def aplicar_efecto_local(self, ef):

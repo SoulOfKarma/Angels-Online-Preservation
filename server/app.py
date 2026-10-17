@@ -281,7 +281,10 @@ def _portal_en(stage, tx, ty):
         # 1 que pide queda fuera. El minimo se sigue aplicando a los que no
         # declaran ninguno.
         r = por['radio'] if por.get('radio') else max(2, cfg.get('radio', 2))
-        if abs(por['tile'][0] - tx) <= r and abs(por['tile'][1] - ty) <= r:
+        # Algunas puertas dibujan el tornado fuera de los limites caminables.
+        # En ese caso el arte usa ``tile`` y la zona pisable ``trigger_tile``.
+        trigger = por.get('trigger_tile') or por['tile']
+        if abs(trigger[0] - tx) <= r and abs(trigger[1] - ty) <= r:
             return por
     return None
 
@@ -301,6 +304,12 @@ def _nombre_entidad(ses, entity_id: int) -> str:
     import login as _lg
     if entity_id in _lg.TOTEMS_PUESTOS:
         return _lg.TOTEMS_PUESTOS[entity_id]
+    if entity_id in (2603, 260300):
+        return 'Maid Eilian'
+    if entity_id in (2604, 500004):
+        return 'Pet Care Machine'
+    if entity_id in (2605, 500005):
+        return 'Monster Hatching Machine'
 
     import dialogos as _dlg
     info = _dlg.info_npc(entity_id)
@@ -341,9 +350,11 @@ def _monstruos_de(stage: int):
                     for e in d.get('spawns', []) if e.get('monstruo') and not e.get('apagado')}
     # Los mapas sin plantilla o cuya plantilla no traiga monstruos usan la lista escrita a mano
     if not bichos and stage in _lg.PLAYGROUND_MONSTERS:
-        bichos = {eid: combate.Monstruo(eid, ntype, nom, tile,
-                                       sprite=_lg.sprite_de(ntype, 42107) if ntype == 224 else _lg.sprite_de(ntype, 0))
-                for eid, ntype, nom, tile in _lg.PLAYGROUND_MONSTERS[stage]}
+        bichos = {}
+        for item in _lg.PLAYGROUND_MONSTERS[stage]:
+            eid, ntype, nom, tile = item[:4]
+            sp = item[4] if len(item) > 4 else (_lg.sprite_de(ntype, 42107) if ntype == 224 else _lg.sprite_de(ntype, 0))
+            bichos[eid] = combate.Monstruo(eid, ntype, nom, tile, sprite=sp)
     return bichos
 
 
@@ -760,6 +771,7 @@ def _refrescar(ses, ranuras, con_oro=False):
                         _mej = estado
                         if getattr(ses, 'usuario', None):
                             cuentas.guardar_mejoras(ses.usuario, cid, ses.personaje.mejoras)
+                _linea = inv.marcar_caducidad_mercenario(_linea, _mej)
                 _linea = inv.marcar_vinculacion(_linea, _mej)
                 if _mej and _mej.get('veces'):
                     _linea = inv.marcar_mejora(_linea, _mej['veces'])
@@ -1426,6 +1438,11 @@ def _usar_mejora(ses, addr, ranura, objetivo) -> bool:
     nivel_pieza = _iv.nivel_de_item(pieza) if hasattr(_iv, 'nivel_de_item') else 0
     tipo = _tipo_de_pieza(pieza, objetivo)
     seguro = getattr(_cf, 'MEJORAS_SIEMPRE_EXITO', False)
+    _buffs_eilian = getattr(p, 'buffs', {}) or {}
+    blessing = _buffs_eilian.get('eilian_blessing') or next(
+        (_buffs_eilian[bid] for bid in (2295, 2294, 2293, 2292) if bid in _buffs_eilian), {})
+    if not isinstance(blessing, dict) or blessing.get('fin', 0) <= time.time():
+        blessing = {}
 
     if _iv.es_mascota(pieza):
         import mascotas as _ms_app
@@ -1468,12 +1485,14 @@ def _usar_mejora(ses, addr, ranura, objetivo) -> bool:
             ok, msg = True, 'atributos nuevos: %s' % est['extra']
     elif clase == 'perforar':
         ok, msg = _mj.perforar(p.mejoras, objetivo, item, nivel_pieza, tipo,
-                               exito_seguro=seguro)
+                               exito_seguro=seguro,
+                               bono_primer_hueco=blessing.get('pierce_first_pct', 0) / 100.0)
     elif clase in ('gema', 'gema_mascota'):
         ok, msg = _mj.engarzar(p.mejoras, objetivo, item, nivel_pieza, tipo)
     else:
         ok, msg = _mj.aplicar(p.mejoras, objetivo, item, nivel_pieza, tipo,
-                              exito_seguro=seguro)
+                              exito_seguro=seguro,
+                              bono_cuarta_mejora=blessing.get('enhance_fourth_pct', 0) / 100.0)
 
     nombre = _nombre_item(pieza)
     veces = (p.mejoras.get(objetivo) or {}).get('veces', 0)
@@ -2411,6 +2430,9 @@ def _viajar_dentro_del_mapa(ses, addr, por, motivo=''):
         fuera.append(struct.pack('<H', 0x0012) + bytes(7))
     fuera.append(struct.pack('<HIII', 0x0003, yo, lleg[0], lleg[1]))
     ses.personaje.tile_x, ses.personaje.tile_y = lleg
+    if ses.personaje.stage == 500 and not getattr(ses, 'house_furnishing', False):
+        import login as _lg_house
+        fuera.extend(_lg_house.interactivos_casa(player_level=ses.personaje.nivel))
     ses.enviar(*fuera)
     # Si la casilla de llegada cae dentro del radio de OTRO portal del mismo
     # mapa, se marca como pisada: si no, el jugador rebotaria al primer paso.
@@ -2534,6 +2556,728 @@ def _cancelar_portal_armado(ses):
         except Exception:
             pass
         ses.portal_armado = None
+
+
+def _entrar_a_casa(ses, addr, casa):
+    """Enter the client's special stage-500 parallel space safely."""
+    import casas as _cs
+    p = getattr(ses, 'personaje', None)
+    if not p:
+        return
+    if p.stage != _cs.STAGE_HOUSE:
+        ses.house_return_pos = (p.stage, (p.tile_x, p.tile_y))
+    try:
+        import presencia as _pres
+        _pres.salir(ses, avisar=True)
+    except Exception:
+        log.exception('casas: no se pudo dejar la presencia exterior')
+    ses.casa_visitando = casa
+    ses.house_transition = getattr(ses, 'house_transition', 0) + 1
+    ses.house_room_ready = False
+    ses.house_furnishing = False
+    ses.house_furnish_pending = False
+    p.stage = _cs.STAGE_HOUSE
+    p.tile_x, p.tile_y = 42, 80
+    ses.monstruos = {}
+    ses.mapa_cambiado_en = time.time()
+    # Stage 500 is intentionally not persisted as the character's normal
+    # location.  A reconnect returns to the exterior instead of getting
+    # trapped in a house whose session instance no longer exists.
+    ses.enviar(_cs.pkt_cambiar_mapa_house(
+        _cs.STAGE_HOUSE, casa.exterior_table_id, casa.size_level))
+
+
+def _salir_de_casa(ses, addr):
+    ses.house_room_ready = False
+    prev = getattr(ses, 'house_return_pos', None)
+    if not prev:
+        prev = (41, (192, 175))
+    ses.casa_visitando = None
+    ses.house_furnishing = False
+    ses.house_furnish_pending = False
+    dst_stage, dst_tile = prev
+    _viajar_por_portal(ses, addr, {'destino': dst_stage, 'llegada': dst_tile}, motivo='saliendo de la casa')
+
+
+def _paquetes_ocultar_interactivos_casa():
+    """Despawn de Maid, maquinas y portales para el modo decoracion."""
+    import combate as _cb_house
+    # Los NPC y mascotas nacen con 0x0008 y salen con 0x0007.
+    npc_ids = [260300, 260400, 260500, 262501, 262502]
+    npc_ids.extend(range(8101, 8110))
+    npc_ids.extend(range(8201, 8207))
+    salida = [_cb_house.despawn_monstruo(eid) for eid in npc_ids]
+    # IGG sub_5F0350: 0x000F actualiza un objeto NOMBRADO (46 bytes),
+    # no lo elimina. Un <HI> provoca lecturas fuera del paquete. 0x0007
+    # (sub_5ECA40) elimina cualquier entidad, incluidos objetos de mapa.
+    import house_services as _hs_hide
+    obj_ids = [701, 702, 703, 720, 721, 723, 731]
+    obj_ids.extend(_hs_hide.PRODUCTION)
+    obj_ids.extend(_hs_hide.RESOURCES)
+    salida.extend(_cb_house.despawn_monstruo(eid) for eid in obj_ids)
+    return salida
+
+
+def _ocultar_interactivos_casa(ses):
+    ses.enviar(*_paquetes_ocultar_interactivos_casa())
+
+
+def _mostrar_interactivos_casa(ses):
+    """Restaura las entidades fijas al abandonar el editor."""
+    import login as _lg_house
+    ses.enviar(*_lg_house.interactivos_casa(player_level=ses.personaje.nivel))
+
+
+def _casa_paquetes_decorar(ses, casa):
+    """Open editor, then trigger IGG sub_66C880(..., 1) via slot update.
+
+    0x013E creates the widgets but does not fill owner/icon. The inventory
+    arrived before those widgets existed, so resend the equipped deed AFTER
+    opening them. House name (+7) remains independent of the owner's name.
+    """
+    import casas
+    slot = casas.SLOT_DEED
+    ses.inventario[slot] = casa.deed_id
+    ses.personaje.inventario[slot] = casa.deed_id
+    # 0x001B updates the slot but does NOT call sub_66C880(..., 1).
+    # 0x001A has the same entry layout; its handler upserts (no clear) and
+    # performs the owner/icon refresh. Send just the deed, not the whole bag.
+    refresh = [struct.pack('<H', 0x001A) + packet[2:]
+               for packet in _refrescar(ses, [slot])]
+    return [casas.pkt_enter_furnish_mode(casa.house_name or casa.owner_name,
+                                        casa.placed_furniture), *refresh]
+
+
+def _casa_salir_editor(ses, addr):
+    """A delayed Leave must never eject a subsequently reopened editor."""
+    import casas
+    ses.house_furnishing = False
+    ses.house_furnish_pending = False
+    ses.enviar(casas.pkt_leave_furnish_mode())
+    generation = getattr(ses, 'house_transition', 0)
+    def finish():
+        p = getattr(ses, 'personaje', None)
+        if (p and p.stage == casas.STAGE_HOUSE
+                and not getattr(ses, 'house_furnishing', False)
+                and not getattr(ses, 'house_furnish_pending', False)
+                and getattr(ses, 'house_transition', 0) == generation):
+            _salir_de_casa(ses, addr)
+    asyncio.get_event_loop().call_later(0.3, finish)
+
+
+def _salir_de_casa_despues_dialogo(ses, addr):
+    """Cambia de mapa una vez que el cliente ya proceso el FIN del dialogo."""
+    p = getattr(ses, 'personaje', None)
+    if p is not None and p.stage == 500 and not getattr(ses, 'house_furnishing', False):
+        _salir_de_casa(ses, addr)
+
+
+
+def _casa_actual(ses):
+    import casas
+    p = ses.personaje
+    return getattr(ses, 'casa_visitando', None) or casas.obtener_o_crear_casa(
+        p.char_id, p.nombre, raw_data=getattr(p, 'casa', None))
+
+
+def _casa_click(ses, ent):
+    """Resolve house-local IDs before map/global portal lookup."""
+    if not ses.personaje or ses.personaje.stage != 500:
+        return False
+    import house_services as hs, dialogos, clases
+    names = {260300: ('Maid Eilian', hs.MAID_PORTRAIT),
+             720: ('Pet Care Machine', 0),
+             721: ("Suft's Mailbox", 60241),
+             723: ('The Safe', 60306),
+             731: ('Monster Hatching Machine', 0),
+             262501: ("Suft's Mailbox", 60241)}
+    if ent not in names and ent not in hs.PRODUCTION:
+        return False
+    # An old portal dialogue must not turn a later Maid "Leave" into travel.
+    ses.dlg_portal = None
+    c = _casa_actual(ses)
+    if getattr(ses, 'house_furnishing', False):
+        return True
+    if ent in hs.PRODUCTION:
+        _sprite, tile, skill, category, note = hs.PRODUCTION[ent]
+        if c.owner_id != ses.personaje.char_id:
+            ses.enviar(dialogos.armar_linea(7873, 0, []))
+        elif not c.cleanliness:
+            ses.enviar(dialogos.armar_linea(7923, 0, []))
+        elif c.level < 2:
+            ses.enviar(dialogos.armar_linea(7871, 0, []))
+        elif not any(int(h[0]) == skill and int(h[1]) > 0
+                     for h in ses.personaje.habilidades):
+            ses.enviar(clases.aviso('', tipo=7, msg_id=note))
+        else:
+            # IGG sub_606950 registered at 1968+16*0x4B; body is one byte.
+            ses.house_make_station = ent
+            ses.enviar(struct.pack('<HB', 0x004B, category))
+        return True
+    name, face = names[ent]
+    if ent != 260300 and (c.owner_id != ses.personaje.char_id or not c.cleanliness):
+        g = [dialogos.armar_linea(7873 if c.owner_id != ses.personaje.char_id else 7923, face, [])[2:]]
+    else:
+        g = dialogos.propio(name, entidad=0, val=face,
+                           cleanliness=c.cleanliness, house_level=c.level)
+    if g:
+        ses.dlg_ent, ses.dlg_guion, ses.dlg_paso = ent, g, 1
+        ses.dlg_val = face
+        ses.enviar(dialogos.linea_de(g, 0, ses.personaje.nombre))
+    return True
+
+
+def _casa_submit_order(ses, option):
+    """One owned order: exact receipt/products and XML rewards, no fake payment."""
+    import house_services as hs, dialogos, clases, combate, inventario
+    from producer_orders import apply_delivery, reward_progress
+    p = getattr(ses, 'personaje', None)
+    if (option not in hs.ORDER_CATEGORIES or not p or p.stage != 500
+            or getattr(ses, 'dlg_ent', None) != 721):
+        return False
+    c = _casa_actual(ses)
+    def reply(message):
+        line = dialogos.armar_linea(message, 0, [7850])
+        ses.dlg_guion, ses.dlg_paso, ses.dlg_val = [line[2:]], 1, 0
+        ses.enviar(line)
+    if c.owner_id != p.char_id:
+        reply(7873)
+        return True
+    if not c.cleanliness or getattr(ses, 'house_furnishing', False):
+        reply(7923)
+        return True
+    if c.level < 4:
+        reply(7852)
+        return True
+    plan = hs.producer_order_plan(option, ses.inventario, _cantidades(ses),
+                                  _tope_bolsa(ses.inventario))
+    if not plan:
+        reply(7860)
+        return True
+    row, slots = plan
+    consumption = [(s, ses.inventario[s], amount, _cant_de(ses, s)) for s, amount in slots]
+    rewards = dict(exp=int(row.get('經驗值') or 0), oro=int(row.get('金錢') or 0),
+                   creditos=int(row.get('功勳值') or 0))
+    snapshot = dict(inventario={str(s): i for s, i in ses.inventario.items()},
+                    cantidades={str(s): n for s, n in _cantidades(ses).items()})
+    preview, _ = apply_delivery(snapshot, consumption, rewards)
+    bonus = None
+    bonus_item = int(row.get('額外獎賞') or 0)
+    if bonus_item and random.random() * 100 < float(row.get('獎賞機率') or 0):
+        future = {int(s): i for s, i in preview['inventario'].items()}
+        dest = next((s for s, i in future.items()
+                     if 20 <= s <= _tope_bolsa(future) and i == bonus_item
+                     and inventario.es_apilable(bonus_item)), None)
+        if dest is None:
+            dest = _ranura_libre(future)
+        if dest is None:
+            reply(7860)
+            return True
+        bonus = (dest, bonus_item, int(row.get('獎賞數量') or 1))
+    try:
+        if getattr(ses, 'usuario', None):
+            after, touched = cuentas.confirmar_entrega_productor(
+                ses.usuario, p.char_id, consumption, rewards, bonus)
+        else:
+            after, touched = apply_delivery(snapshot, consumption, rewards, bonus)
+    except Exception:
+        log.exception('house: producer delivery rejected without consumption')
+        reply(7860)
+        return True
+    # No await between planning, commit and applying these validated slot deltas.
+    consumed_all = {slot for slot, item, amount, expected in consumption if amount == expected}
+    for key in touched:
+        slot = int(key)
+        if key in after['inventario']:
+            item = after['inventario'][key]
+            if slot not in ses.inventario or slot in consumed_all:
+                _instancias(ses)[slot] = inventario.instancia_nueva()
+                p.mejoras.pop(slot, None)
+            ses.inventario[slot] = item
+            p.inventario[slot] = item
+            _cantidades(ses)[slot] = int(after['cantidades'].get(key, 1))
+        else:
+            ses.inventario.pop(slot, None)
+            p.inventario.pop(slot, None)
+            _cantidades(ses).pop(slot, None)
+            _instancias(ses).pop(slot, None)
+            p.mejoras.pop(slot, None)
+    progress = reward_progress(
+        dict(exp=p.exp, oro=ses.oro, creditos=p.creditos, nivel=p.nivel,
+             rango=p.rango, hp_max=p.hp_max, mp_max=p.mp_max), rewards,
+        combate.exp_para_nivel, combate.nivel_maximo(), combate.rango_de_creditos)
+    old_level, old_rank = p.nivel, p.rango
+    for key, value in progress.items():
+        setattr(p, key, value)
+    ses.oro = p.oro
+    actual, following = combate.exp_para_barra(p.nivel, p.exp)
+    ses.enviar(*_refrescar(ses, [int(s) for s in touched], con_oro=True),
+               struct.pack('<HIB', 0x001D, p.entity_id, 4)
+               + struct.pack('<BQ', 29, p.nivel)
+               + struct.pack('<BQ', 30, combate.exp_para_nivel(p.nivel))
+               + struct.pack('<BQ', 31, following) + struct.pack('<BQ', 32, actual),
+               combate.atributo(p.entity_id, p.creditos, combate.KIND_CREDITO),
+               combate.atributo(p.entity_id, p.rango, combate.KIND_RANGO), _stats_ses(ses))
+    if p.nivel > old_level:
+        ses.enviar(combate.efecto_level_up(p.entity_id))
+    if p.rango > old_rank:
+        ses.enviar(combate.efecto_level_up(p.entity_id, es_rango=True))
+    for amount, message in ((rewards['exp'], clases.MSG_EXP),
+                            (rewards['oro'], clases.MSG_PAGO), (rewards['creditos'], 642)):
+        if amount:
+            ses.enviar(clases.aviso(str(amount), tipo=0, msg_id=message))
+    reply(7859)
+    return True
+
+
+def _casa_tick_limpieza(ses, now=None, flush=False):
+    import casas
+    p = getattr(ses, 'personaje', None)
+    if p is None:
+        return
+    now = time.monotonic() if now is None else now
+    previous = getattr(ses, 'house_online_tick', None)
+    if getattr(ses, 'house_online_character', None) != p.char_id:
+        previous = None
+        ses.house_online_character = p.char_id
+    ses.house_online_tick = now
+    if previous is None:
+        return
+    # Count the owner's connection, including time spent outside their house.
+    c = casas.obtener_o_crear_casa(p.char_id, p.nombre, raw_data=getattr(p, 'casa', None))
+    changed = c.avanzar_tiempo_conectado(max(0.0, now - previous))
+    if changed or flush:
+        p.casa = c.serializar()
+        if getattr(ses, 'usuario', None):
+            cuentas.guardar_casa(ses.usuario, p.char_id, c)
+    if changed:
+        lv, prev, nxt = casas.info_nivel(c.calcular_magia())
+        ses.enviar_inmediato(casas.pkt_house_info(
+            lv, c.calcular_magia(), nxt, prev, c.bonus_pct, c.cleanliness,
+            c.votes_total, c.votes_today, c.visitors_total,
+            int(p.char_id not in c.voted_users_today), casas.rango_casa(c),
+            10 if c.is_open else 1))
+
+
+def _casa_invocar_mercenario(ses, tx=0, ty=0):
+    import house_services as hs, combate, clases, login
+    p = ses.personaje
+    contract = (getattr(p, 'buffs', {}) or {}).get(2254) or {}
+    now = time.time()
+    if contract.get('fin', 0) <= now:
+        ses.enviar(clases.aviso("Activate a Mercenary Token first.", tipo=0))
+        return
+    if now - getattr(ses, 'mercenary_last_cast', 0) < hs.TOKEN_COOLDOWN:
+        ses.enviar(clases.aviso("Summon Mercenary can be used every 3 minutes.", tipo=0))
+        return
+    row = hs.mercenary_for(p.nivel)
+    if not row:
+        return
+    info = hs.summon_stats(row)
+    old = getattr(ses, 'invocacion', None)
+    if old:
+        ses.enviar(combate.despawn_monstruo(old['entity_id']))
+    eid = p.entity_id + 8000
+    if max(abs(tx - p.tile_x), abs(ty - p.tile_y)) > 12 or not tx or not ty:
+        tx, ty = p.tile_x + 1, p.tile_y
+    ses.invocacion = dict(info, entity_id=eid, npc_type=row['id'],
+                         hp_max=info['hp'], defensa=info['def'],
+                         tile_x=tx, tile_y=ty, expira=min(contract['fin'], now + 3600),
+                         es_mercenario=True, stage=p.stage,
+                         objetivo=None, ultimo_ataque=0.0, proximo_paso=0.0)
+    ses.mercenary_last_cast = now
+    for slot, item in ses.inventario.items():
+        if item == 10581 and p.mejoras.get(slot, {}).get('mercenary_token_deadline') == contract['fin']:
+            p.mejoras[slot]['mercenary_next_summon'] = now + hs.TOKEN_COOLDOWN
+            _guardar_bolsa(ses, p.char_id)
+            break
+    spawn = login.spawn_invocacion(eid, row['id'], info['nombre'], (tx, ty), sprite=info['sprite'])
+    hp = combate.atributo(eid, 100, combate.KIND_HP)
+    ses.enviar(spawn, hp,
+               struct.pack('<HIBBI', 0x0013, p.entity_id, 1, 0x3d, eid),
+               struct.pack('<HIBBI', 0x0013, eid, 1, 0x3c, p.entity_id),
+               struct.pack('<HIBBII', 0x001D, p.entity_id, 1, 3, 2254, 180000))
+    import presencia
+    presencia.notificar_invocacion_spawn(ses, ses.invocacion, spawn, hp)
+
+
+
+
+def _casa_sincronizar_token(ses):
+    """Expire real inventory tokens; never grant a permanent summon skill."""
+    import house_services as hs, combate
+    p = ses.personaje
+    now = time.time()
+    touched = []
+    if not getattr(ses, 'house_mercenary_migrated', False):
+        legacy_fin = (p.buffs.get(2254) or {}).get('fin', 0)
+        if legacy_fin > now and 10581 not in ses.inventario.values():
+            slot = _meter(ses, 10581, 1)
+            if slot is not None:
+                p.mejoras.setdefault(slot, {})['mercenary_token_deadline'] = legacy_fin
+                touched.append(slot)
+            else:
+                return  # Retry when there is room, without extending the contract.
+        ses.house_mercenary_migrated = True
+    for slot, item in list(ses.inventario.items()):
+        if item != 10581:
+            continue
+        meta = p.mejoras.setdefault(slot, {})
+        if not meta.get('mercenary_token_deadline'):
+            # Preserve the remaining contract time of pre-fix characters.
+            legacy = (p.buffs.get(2254) or {}).get('fin', 0)
+            meta['mercenary_token_deadline'] = legacy if legacy > now else now + hs.TOKEN_SECONDS
+            touched.append(slot)
+        if meta['mercenary_token_deadline'] <= now:
+            _sacar(ses, slot, _cant_de(ses, slot))
+            p.mejoras.pop(slot, None)
+            touched.append(slot)
+    if touched:
+        ses.enviar_inmediato(*_refrescar(ses, touched))
+        _guardar_bolsa(ses, p.char_id)
+    summon = getattr(ses, 'invocacion', None)
+    if summon and summon.get('es_mercenario') and (summon.get('stage') != p.stage or summon['expira'] <= now):
+        ses.enviar_inmediato(combate.despawn_monstruo(summon['entity_id']))
+        ses.invocacion = None
+    if not getattr(ses, 'house_mercenary_skill_removed', False):
+        ses.enviar_inmediato(struct.pack('<HIBBII', 0x001D, p.entity_id, 1, 9, 2254, 0))
+        ses.house_mercenary_skill_removed = True
+
+
+def _casa_usar_token(ses, slot):
+    import house_services as hs, clases
+    p = ses.personaje
+    if p.nivel < 30:
+        ses.enviar(clases.aviso("Mercenary Token requires level 30.", tipo=0))
+        return
+    _casa_sincronizar_token(ses)
+    if ses.inventario.get(slot) != 10581:
+        return
+    meta = p.mejoras[slot]
+    fin = meta['mercenary_token_deadline']
+    ses.mercenary_last_cast = meta.get('mercenary_next_summon', 0) - hs.TOKEN_COOLDOWN
+    p.buffs[2254] = dict(fin=fin, nombre='Mercenary Token', icono=10794)
+    ses.enviar(struct.pack('<HIBBII', 0x001D, p.entity_id, 1, 4, 2254,
+                           max(0, int((fin - time.time()) * 1000))))
+    _casa_invocar_mercenario(ses)
+
+def _casa_tick_monstruos(ses):
+    """Materialize the real Monster Egg currently occupying each unlocked slot."""
+    p = getattr(ses, 'personaje', None)
+    if not p or p.stage != 500 or not getattr(ses, 'house_room_ready', False):
+        return
+    import house_services as hs, casas, combate, login
+    c = _casa_actual(ses)
+    now = time.time()
+    active = getattr(ses, 'house_egg_entities', None)
+    if active is None:
+        active = ses.house_egg_entities = {}
+    enabled = (c.owner_id == p.char_id and c.cleanliness > 0
+               and not getattr(ses, 'house_furnishing', False))
+    limit = casas.ranuras_mobgen_validas(c.level) if enabled else 0
+    eggs = hs.monster_eggs()
+    dirty = False
+    for slot in range(487, 497):
+        item = (getattr(ses, 'inventario', {}) or {}).get(slot)
+        row = eggs.get(item)
+        valid = bool(row and slot < 487 + limit)
+        uid = str(_inst(ses, slot)) if valid else ''
+        # Per-item metadata already travels with _mover_inst and is saved by
+        # guardar_mejoras. Network instance IDs are regenerated on reconnect.
+        metadata = getattr(p, 'mejoras', {}) or {}
+        egg_state = metadata.get(slot) or {}
+        deadline = egg_state.get('house_egg_deadline') if valid else None
+        if valid and deadline is None and int(row.get('持續時間') or 0) > 0:
+            deadline = now + int(row['持續時間']) * 60
+            if not isinstance(getattr(p, 'mejoras', None), dict):
+                p.mejoras = {}
+            p.mejoras.setdefault(slot, {})['house_egg_deadline'] = deadline
+            dirty = True
+        if deadline is not None and deadline <= now:
+            valid = False
+        old = active.get(slot)
+        if old and (not valid or old['uid'] != uid):
+            ses.enviar_inmediato(combate.despawn_monstruo(old['eid']))
+            (getattr(ses, 'monstruos', {}) or {}).pop(old['eid'], None)
+            active.pop(slot, None)
+            old = None
+        if not valid:
+            continue
+        if old:
+            monster = (getattr(ses, 'monstruos', {}) or {}).get(old['eid'])
+            if monster and monster.vivo:
+                continue
+            interval = int(row.get('動態資料2') or 0)
+            if monster and (not interval or now - (getattr(monster, 'muerto_en', None) or now) < max(3, interval)):
+                continue
+        npc = int(row.get('動態資料1') or 0)
+        mobrow = hs.xml_rows('monster.xml').get(npc)
+        if not mobrow:
+            continue
+        # New IDs avoid cached dead entities swallowing the next spawn.
+        seq = getattr(ses, 'house_egg_sequence', 0) + 1
+        ses.house_egg_sequence = seq
+        eid = 120000000 + seq
+        tile = (83 + (slot - 487) * 5, 23)
+        monster = combate.Monstruo(eid, npc, mobrow['名稱'], tile, sprite=int(mobrow['圖號']))
+        monster.house_egg = True
+        monster.generado = True  # the egg, not the normal map respawner, owns its lifecycle.
+        if getattr(ses, 'monstruos', None) is None:
+            ses.monstruos = {}
+        ses.monstruos[eid] = monster
+        if old:
+            ses.monstruos.pop(old['eid'], None)
+        active[slot] = dict(eid=eid, uid=uid)
+        ses.enviar_inmediato(login._npc_spawn(eid, npc, mobrow['名稱'], tile,
+                                            sprite=int(mobrow['圖號']), klass=1))
+    if dirty:
+        _guardar_bolsa(ses, p.char_id)
+
+def _casa_fabricar(ses, recipe_id):
+    """Run one XML recipe; the client requests the next queued unit after 0x4C."""
+    import house_services as hs, clases
+    station_id = getattr(ses, 'house_make_station', None)
+    station = hs.PRODUCTION.get(station_id)
+    if not station or not ses.personaje or ses.personaje.stage != 500:
+        return
+    c = _casa_actual(ses)
+    row = hs.recipe(recipe_id)
+    if row and row.get('參考掉寶') == '是':
+        ses.enviar(struct.pack('<H', 0x004D), clases.aviso(
+            "This recipe's random reward table is not reconstructed yet; no materials were used.", tipo=0))
+        return
+    if (not row or c.owner_id != ses.personaje.char_id or c.level < 2
+            or not c.cleanliness or getattr(ses, 'house_furnishing', False)):
+        ses.enviar(struct.pack('<H', 0x004D))
+        return
+    skill = station[2]
+    required_skill = int(row.get('技能1') or 0)
+    required_level = int(row.get('等級1') or 0)
+    if required_skill != skill or not any(
+            int(h[0]) == skill and int(h[1]) >= required_level
+            for h in ses.personaje.habilidades):
+        ses.enviar(struct.pack('<H', 0x004D))
+        return
+    task = getattr(ses, 'house_make_task', None)
+    if task and not task.cancelled():
+        return
+    def finish():
+        ses.house_make_task = None
+        if (not getattr(ses, 'conectado', True) or ses.personaje.stage != 500
+                or getattr(ses, 'house_make_station', None) != station_id):
+            return
+        current = _casa_actual(ses)
+        if not current.cleanliness or current.level < 2 or getattr(ses, 'house_furnishing', False):
+            ses.enviar_inmediato(struct.pack('<H', 0x004D))
+            return
+        from collections import Counter
+        needed = Counter()
+        for i in range(1, 7):
+            it, qty = int(row.get('原料%d' % i) or 0), int(row.get('數量%d' % i) or 0)
+            if it and qty:
+                needed[it] += qty
+        plan = []
+        for it, qty in needed.items():
+            for slot, item in sorted(ses.inventario.items()):
+                if not 20 <= slot <= _tope_bolsa(ses.inventario) or item != it:
+                    continue
+                take = min(qty, _cant_de(ses, slot))
+                plan.append((slot, take))
+                qty -= take
+                if qty == 0:
+                    break
+            if qty:
+                ses.enviar_inmediato(struct.pack('<H', 0x004D),
+                    clases.aviso("You don't have enough crafting materials.", tipo=0))
+                return
+        result_id = int(row.get('物品編號') or 0)
+        import inventario
+        if (not result_id or (_ranura_libre(ses.inventario) is None
+                and not (inventario.es_apilable(result_id) and result_id in ses.inventario.values())
+                and not any(_cant_de(ses, slot) == qty for slot, qty in plan))):
+            ses.enviar_inmediato(struct.pack('<H', 0x004D))
+            return
+        touched = [slot for slot, _ in plan]
+        for slot, qty in plan:
+            _sacar(ses, slot, qty)
+        success = random.randrange(100) < int(row.get('成功機率') or 100)
+        if success:
+            slot = _meter(ses, result_id, int(row.get('製作數量') or 1))
+            touched.append(slot)
+        _guardar_bolsa(ses, ses.personaje.char_id)
+        ses.enviar_inmediato(*_refrescar(ses, touched),
+                            struct.pack('<HBI', 0x004C, int(success), recipe_id))
+    delay = max(0.1, int(row.get('製作時間') or 1))
+    ses.house_make_task = asyncio.get_event_loop().call_later(delay, finish)
+
+def _casa_buff_diario(ses, addr):
+    import clases as _cl, casas as _cs_b, time as _time, dialogos as _dlg_b
+    p = getattr(ses, 'personaje', None)
+    if not p:
+        return
+    c = getattr(ses, 'casa_visitando', None) or _cs_b.obtener_o_crear_casa(
+        p.char_id, p.nombre, raw_data=getattr(p, 'casa', None))
+    if c.owner_id != p.char_id or c.cleanliness <= 0:
+        return
+    lv = max(1, min(15, _cs_b.nivel_de_magia(c.calcular_magia())))
+
+    hoy = _time.strftime('%Y-%m-%d')
+    if c.last_blessing_day == hoy or getattr(p, 'ultimo_house_buff', None) == hoy:
+        ses.enviar(_dlg_b.armar_linea(7921, _dlg_b.MAID_PORTRAIT, []), struct.pack('<H', 0x0012) + _dlg_b.FIN)
+        return
+
+    if lv < 4:
+        ses.enviar(_dlg_b.armar_linea(7920, _dlg_b.MAID_PORTRAIT, []), struct.pack('<H', 0x0012) + _dlg_b.FIN)
+        return
+
+    import house_services as _hs_b
+    profile = _hs_b.blessing_profile(lv)
+    tier = profile['tier']
+    msg_id = 7919
+
+    p.ultimo_house_buff = hoy
+    c.last_blessing_day = hoy
+    dur_ms = profile['duration_seconds'] * 1000
+    pfin = _time.time() + (dur_ms / 1000.0)
+    magic_id = 2291 + tier
+    p.buffs.pop('eilian_blessing', None)
+    p.buffs.pop(7903, None)
+    p.buffs[magic_id] = dict(profile, **{
+        'fin': pfin,
+        'nombre': f"Maid Eilian's Blessing {tier}",
+        'magic_id': magic_id,
+        'tier': tier,
+        'icono': 10829,
+    })
+    p.casa = c.serializar()
+    if getattr(ses, 'usuario', None):
+        cuentas.guardar_casa(ses.usuario, p.char_id, c)
+        cuentas.guardar_progreso(ses.usuario, p.char_id, p.nivel, p.exp,
+            p.hp, p.mp, p.habilidades, buffs=p.buffs)
+    ses.enviar(struct.pack('<HIBBII', 0x001D, p.entity_id, 1, 4, magic_id, dur_ms))
+    ses.enviar(_dlg_b.armar_linea(msg_id, _dlg_b.MAID_PORTRAIT, []), struct.pack('<H', 0x0012) + _dlg_b.FIN)
+    ses.enviar(_cl.aviso(f"Received Maid Eilian's Blessing {tier} for equipment enhancement (3 hours).", tipo=0, msg_id=_cl.MSG_ITEM))
+
+
+def _casa_recibir_token(ses, addr):
+    import clases as _cl, casas as _cs_tk, time as _time, dialogos as _dlg_tk
+    p = getattr(ses, 'personaje', None)
+    if not p:
+        return
+    c = getattr(ses, 'casa_visitando', None) or _cs_tk.obtener_o_crear_casa(
+        p.char_id, p.nombre, raw_data=getattr(p, 'casa', None))
+    if c.owner_id != p.char_id or c.cleanliness <= 0:
+        return
+    lv = max(1, min(15, _cs_tk.nivel_de_magia(c.calcular_magia())))
+
+    if lv < 2:
+        ses.enviar(_dlg_tk.armar_linea(7926, _dlg_tk.MAID_PORTRAIT, []), struct.pack('<H', 0x0012) + _dlg_tk.FIN)
+        return
+
+    hoy = _time.strftime('%Y-%m-%d')
+    # The map's original grant has no daily flag. Do not duplicate a live
+    # token or replace an 8-hour entitlement with another token.
+    misplaced = next((r for r, it in (getattr(ses, 'inventario', {}) or {}).items()
+                      if it == 10581 and 11 <= r < 20), None)
+    if misplaced is not None:
+        visible = _ranura_libre(ses.inventario)
+        if visible is None:
+            ses.enviar(_dlg_tk.armar_linea(7917, _dlg_tk.MAID_PORTRAIT, []))
+            return
+        ses.inventario[visible] = ses.inventario.pop(misplaced)
+        _cantidades(ses)[visible] = _cantidades(ses).pop(misplaced, 1)
+        _mover_inst(ses, misplaced, visible)
+        ses.enviar(*_refrescar(ses, [misplaced, visible]))
+        _guardar_bolsa(ses, p.char_id)
+        return
+    if (10581 in (getattr(ses, 'inventario', {}) or {}).values()
+            or (getattr(p, 'buffs', {}).get(2254) or {}).get('fin', 0) > _time.time()):
+        ses.enviar(_cl.aviso("You already have a Mercenary Token or an active contract.", tipo=0))
+        return
+    ranura_libre = _meter(ses, 10581, 1)
+    if ranura_libre is None:
+        ses.enviar(_dlg_tk.armar_linea(7917, _dlg_tk.MAID_PORTRAIT, []), struct.pack('<H', 0x0012) + _dlg_tk.FIN)
+        return
+
+    p.ultimo_mercenary_token = hoy
+    import house_services as hs
+    p.mejoras.setdefault(ranura_libre, {})['mercenary_token_deadline'] = _time.time() + hs.TOKEN_SECONDS
+    ses.enviar(*_refrescar(ses, [ranura_libre]))
+    _guardar_bolsa(ses, p.char_id)
+    ses.enviar(_dlg_tk.armar_linea(7918, _dlg_tk.MAID_PORTRAIT, []), struct.pack('<H', 0x0012) + _dlg_tk.FIN)
+    ses.enviar(_cl.aviso("Received Mercenary Token from Maid Eilian!", tipo=0, msg_id=_cl.MSG_ITEM))
+
+
+def _casa_abrir_pets(ses, addr):
+    import casas as _cs
+    p = getattr(ses, 'personaje', None)
+    if not p:
+        return
+    c = getattr(ses, 'casa_visitando', None) or _cs.obtener_o_crear_casa(p.char_id, p.nombre, raw_data=getattr(p, 'casa', None))
+    lv = _cs.nivel_de_magia(c.calcular_magia())
+    valid_slots = _cs.ranuras_mascotas_validas(lv)
+    ses.enviar(_cs.pkt_pet_slot_wnd(True, valid_slots, c.pet_radio))
+
+
+def _casa_abrir_mobgen(ses, addr):
+    import casas as _cs
+    p = getattr(ses, 'personaje', None)
+    if not p:
+        return
+    c = getattr(ses, 'casa_visitando', None) or _cs.obtener_o_crear_casa(p.char_id, p.nombre, raw_data=getattr(p, 'casa', None))
+    lv = _cs.nivel_de_magia(c.calcular_magia())
+    valid_slots = _cs.ranuras_mobgen_validas(lv)
+    ses.enviar(_cs.pkt_mobgen_slot_wnd(True, valid_slots))
+
+
+def _casa_limpiar(ses, addr, item_id, count, clean_amount):
+    import casas as _cs, clases as _cl, cuentas as _cta
+    p = getattr(ses, 'personaje', None)
+    if not p:
+        return
+    c = getattr(ses, 'casa_visitando', None) or _cs.obtener_o_crear_casa(p.char_id, p.nombre, raw_data=getattr(p, 'casa', None))
+    if c.cleanliness >= 1000:
+        ses.enviar(_cl.aviso("The house is already spotless!", tipo=0))
+        return
+    r = _ranura_de_item(ses, item_id)
+    if r is None or _cant_de(ses, r) < count:
+        ses.enviar(_cl.aviso(f"Need {count}x {_nombre_item(item_id)} to clean!", tipo=0))
+        return
+    _sacar(ses, r, count)
+    ses.enviar(*_refrescar(ses, [r]))
+    c.cleanliness = min(1000, c.cleanliness + clean_amount)
+    if getattr(ses, 'usuario', None):
+        _cta.guardar_casa(ses.usuario, c.owner_id, c)
+    lv, prev_m, next_m = _cs.info_nivel(c.calcular_magia())
+    rank = _cs.rango_casa(c)
+    v_rem = 1 if (p.char_id not in c.voted_users_today) else 0
+    ses.enviar(_cs.pkt_house_info(lv, c.calcular_magia(), next_m, prev_m, c.bonus_pct, c.cleanliness, c.votes_total, c.votes_today, c.visitors_total, v_rem, rank, 10 if c.is_open else 1))
+    ses.enviar(_cl.aviso(f"House cleaned! Cleanliness is now {c.cleanliness}.", tipo=0, msg_id=_cl.MSG_ITEM))
+
+
+def _casa_abrir_voto(ses, addr):
+    import casas as _cs
+    p = getattr(ses, 'personaje', None)
+    if not p:
+        return
+    c = getattr(ses, 'casa_visitando', None) or _cs.obtener_o_crear_casa(p.char_id, p.nombre, raw_data=getattr(p, 'casa', None))
+    ses.enviar(_cs.pkt_open_cast_vote(c.owner_name))
+
+
+def _casa_ver_notas(ses, addr):
+    import casas as _cs
+    p = getattr(ses, 'personaje', None)
+    if not p:
+        return
+    c = getattr(ses, 'casa_visitando', None) or _cs.obtener_o_crear_casa(p.char_id, p.nombre, raw_data=getattr(p, 'casa', None))
+    notes = c.vote_notes[:5]
+    ses.enviar(_cs.pkt_view_vote_notes(0, len(c.vote_notes), notes))
+
+
+def _casa_hitparade(ses, addr):
+    import casas as _cs
+    res = _cs.ranking_hitparade(31, 0)
+    ses.enviar(_cs.pkt_hitparade_data(31, 0, len(res), res))
 
 
 def _aplicar_efectos(ses, addr, efectos, motivo=''):
@@ -2718,6 +3462,22 @@ def _aplicar_efectos(ses, addr, efectos, motivo=''):
                                             motivo='por un evento del mapa%s' % motivo)
             elif que == 'dialogo':
                 _dialogo_del_mapa(ses, addr, estado.stage, int(ef[1]))
+            elif que == 'salir_de_casa':
+                _salir_de_casa(ses, addr)
+            elif que == 'casa_buff_diario':
+                _casa_buff_diario(ses, addr)
+            elif que == 'casa_abrir_pets':
+                _casa_abrir_pets(ses, addr)
+            elif que == 'casa_abrir_mobgen':
+                _casa_abrir_mobgen(ses, addr)
+            elif que == 'casa_limpiar':
+                _casa_limpiar(ses, addr, int(ef[1]), int(ef[2]), int(ef[3]))
+            elif que == 'casa_abrir_voto':
+                _casa_abrir_voto(ses, addr)
+            elif que == 'casa_ver_notas':
+                _casa_ver_notas(ses, addr)
+            elif que == 'casa_hitparade':
+                _casa_hitparade(ses, addr)
             elif que == 'generar':
                 # UNO por GENERATE. Los mapas repiten la accion para sacar
                 # varios: en 201 disparadores aparece el mismo GENERATE(tag)
@@ -3230,7 +3990,14 @@ def _herramienta_para(ses, herramienta):
 
 def _cuenta_de_veta(ses, stage, ent, mat):
     """La lista [sacadas, agotada_en] de esa veta, ya repuesta si toca."""
-    if es_instancia(stage):
+    if int(stage) == 500:
+        # Private houses must not share depletion with every other stage-500
+        # session. A level change also selects a different material tier.
+        import house_services as hs
+        vetas = ses.__dict__.setdefault('house_resource_state', {})
+        clave = (_casa_actual(ses).owner_id, int(ent),
+                 hs.resource_for(int(ent), ses.personaje.nivel)['material'])
+    elif es_instancia(stage):
         import eventos_mundo as _evm_r
         vetas = _evm_r.estado_de(ses).__dict__.setdefault('vetas', {})
         clave = int(ent)
@@ -3274,6 +4041,11 @@ def _recolectar(ses, addr, stage, ent):
     hacha para arboles, cana para peces) ni robot: 359.
     """
     mid, px = _veta_de(stage, ent)
+    if int(stage) == 500 and ses.personaje:
+        import house_services as hs
+        if ent in hs.RESOURCES:
+            resource = hs.resource_for(ent, ses.personaje.nivel)
+            mid, px = resource['material'], resource['px']
     if not mid or not ses.personaje:
         return False
     mat = _material(mid)
@@ -3380,6 +4152,11 @@ _SIG_OBJETO_CAMBIADO = [110_000_000]
 
 def _recursos_de_plantilla(stage):
     """Los recursos de la plantilla del mapa, tal cual (con 'crudo')."""
+    if int(stage) == 500:
+        import house_services as hs
+        return [dict(entity_id=eid, sprite=sprite, tile=tile,
+                     px=(tile[0] * 32 + 16, tile[1] * 32 + 16), material=material)
+                for eid, (sprite, tile, material) in hs.RESOURCES.items()]
     import login as _lg_r
     if stage not in _RECURSOS_COMPLETOS:
         rec = []
@@ -3714,6 +4491,14 @@ def _companeros(ses):
              and getattr(s, '_sala', None) is e
              and s.monstruos is e.monstruos]
     return vivos
+
+
+def _difundir_en_sala(ses, *pkts):
+    for comp in _companeros(ses):
+        try:
+            comp.enviar(*pkts)
+        except Exception:
+            pass
 
 
 def _entidades_propias(ses):
@@ -4283,7 +5068,8 @@ def _choques_al_llegar(ses, addr, st, llegada, token, vistos):
     andaba pidio otro movimiento, no se hace nada (lo hara el nuevo)."""
     p = ses.personaje
     if (not p or p.stage != st or getattr(ses, '_token_choque', None) is not token
-            or (p.tile_x, p.tile_y) != tuple(llegada)):
+            or (p.tile_x, p.tile_y) != tuple(llegada)
+            or getattr(ses, 'house_furnishing', False)):
         return
     import eventos as _ev_ch
     objs = (_ev_ch.del_stage(st) or {}).get('objetos') or {}
@@ -4906,6 +5692,12 @@ class Servidor:
                 if not p:
                     continue
 
+                try:
+                    _casa_tick_limpieza(ses)
+                    _casa_sincronizar_token(ses)
+                    _casa_tick_monstruos(ses)
+                except Exception:
+                    log.exception('casas: error al contar tiempo conectado')
                 yo = p.entity_id
                 sentado = getattr(ses, 'sentado', False)
                 ahora = time.time()
@@ -5067,6 +5859,10 @@ class Servidor:
         except (ConnectionResetError, ConnectionAbortedError, ConnectionError, asyncio.IncompleteReadError, OSError):
             pass
         finally:
+            try:
+                _casa_tick_limpieza(ses, flush=True)
+            except Exception:
+                log.exception('casas: error al guardar el tiempo conectado')
             if ses in self.mundos:
                 self.mundos.remove(ses)
             try:
@@ -5074,6 +5870,28 @@ class Servidor:
                 _pres.salir(ses)
             except Exception:
                 log.exception('presencia: fallo al salir')
+            try:
+                import casas as _cs_dis, cuentas as _cta_dis, struct as _st_dis
+                if getattr(ses, 'personaje', None):
+                    _c_act = _cs_dis.obtener_o_crear_casa(ses.personaje.char_id, ses.personaje.nombre)
+                    if _c_act and _c_act.is_open:
+                        out_stage = _c_act.outdoor_stage
+                        out_eid = _c_act.outdoor_obj_id
+                        _cs_dis.retirar_casa_outdoor(_c_act)
+                        _c_act.is_open = False
+                        ses.personaje.casa = _c_act.serializar()
+                        if getattr(ses, 'usuario', None):
+                            _cta_dis.guardar_casa(ses.usuario, ses.personaje.char_id, _c_act)
+                        if out_stage and out_eid:
+                            _despawn = _st_dis.pack('<HIB', 0x0007, int(out_eid), 0)
+                            for s in list(self.mundos):
+                                if s is not ses and getattr(s, 'personaje', None) and getattr(s.personaje, 'stage', None) == out_stage:
+                                    try:
+                                        s.enviar(_despawn)
+                                    except Exception:
+                                        pass
+            except Exception:
+                log.exception('casas: fallo al retirar casa en desconexion')
             try:
                 import equipos as _eq
                 _eq.salir(ses)
@@ -6586,6 +7404,59 @@ class Servidor:
                     ])
                     if int(f_pet.get('saciedad', 0)) > 100:
                         salida.append(struct.pack('<HIBBII', 0x001D, f_pet['entidad'], 1, 4, 3796, max(60000, (int(f_pet['saciedad']) - 100) * 60000)))
+                try:
+                    import casas as _cs_pop
+                    _c_own = _cs_pop.obtener_o_crear_casa(p.char_id, p.nombre, raw_data=getattr(p, 'casa', None))
+                    if p.stage in _cs_pop.MAPAS_EXHIBICION:
+                        for _c_act in _cs_pop.casas_en_stage(p.stage):
+                            salida.append(_cs_pop.pkt_outdoor_house(
+                                _c_act.outdoor_obj_id, _c_act.model_id,
+                                _c_act.outdoor_px[0], _c_act.outdoor_px[1],
+                                _c_act.house_name, _c_act.owner_name,
+                                dir_rot=_c_act.outdoor_dir,
+                                house_size_level=_c_act.size_level,
+                                house_level=_c_act.level
+                            ))
+                    if p.stage != 500:
+                        _lv, _prev_m, _next_m = _cs_pop.info_nivel(_c_own.calcular_magia())
+                        _rnk = _cs_pop.rango_casa(_c_own)
+                        _v_rem = 1 if (p.char_id not in _c_own.voted_users_today) else 0
+                        _ui_st = 10 if _c_own.is_open else 1
+                        salida.append(_cs_pop.pkt_house_info(_lv, _c_own.calcular_magia(), _next_m, _prev_m,
+                                                            _c_own.bonus_pct, _c_own.cleanliness,
+                                                            _c_own.votes_total, _c_own.votes_today,
+                                                            _c_own.visitors_total, _v_rem, _rnk,
+                                                            _ui_st))
+                        salida.append(_cs_pop.pkt_house_name(_c_own.house_name))
+                except Exception:
+                    log.exception('casas: fallo al sincronizar casas exteriores/info')
+                if p.stage == 500:
+                    try:
+                        import casas as _cs_in
+                        _c_cur = getattr(ses, 'casa_visitando', None)
+                        if not _c_cur:
+                            _c_cur = _cs_in.obtener_o_crear_casa(p.char_id, p.nombre, raw_data=getattr(p, 'casa', None))
+                            ses.casa_visitando = _c_cur
+                        if (getattr(ses, 'house_furnish_pending', False)
+                                and _c_cur.owner_id == p.char_id):
+                            salida.extend(_paquetes_ocultar_interactivos_casa())
+                            salida.extend(_casa_paquetes_decorar(ses, _c_cur))
+                            ses.house_furnish_pending = False
+                            ses.house_furnishing = True
+                        else:
+                            salida.append(_cs_in.pkt_visit_furniture_sync(
+                                _c_cur.placed_furniture))
+                        _lv, _prev_m, _next_m = _cs_in.info_nivel(_c_cur.calcular_magia())
+                        _rnk = _cs_in.rango_casa(_c_cur)
+                        _v_rem = 1 if (p.char_id not in _c_cur.voted_users_today) else 0
+                        salida.append(_cs_in.pkt_house_info(_lv, _c_cur.calcular_magia(), _next_m, _prev_m,
+                                                            _c_cur.bonus_pct, _c_cur.cleanliness,
+                                                            _c_cur.votes_total, _c_cur.votes_today,
+                                                            _c_cur.visitors_total, _v_rem, _rnk,
+                                                            10 if _c_cur.is_open else 1))
+                        salida.append(_cs_in.pkt_house_name(_c_cur.house_name))
+                    except Exception:
+                        log.exception('casas: fallo al enviar estado interior de casa')
                 ses.enviar(*salida)
                 log.info(f"[{addr}] 0x0002 mapa {p.stage} sincronizado para {p.nombre}")
             return
@@ -6612,6 +7483,11 @@ class Servidor:
             arma_puesta = ses.inventario.get(3, 0) if ses.inventario else 0
 
             mag = _cb.datos_magia(tipo) if tipo != _cb.ATAQUE_NORMAL else {}
+            if tipo == 2254 and ses.personaje:
+                slot = next((r for r, item in ses.inventario.items() if item == 10581), None)
+                if slot is not None:
+                    _casa_usar_token(ses, slot)
+                return
             es_invocacion = bool(mag.get('es_invocacion'))
             es_terreno = (bool(mag.get('es_terreno')) or (objetivo == 0 and tipo != _cb.ATAQUE_NORMAL)) and not es_invocacion
             es_self_aoe = bool(mag.get('es_self_aoe')) and not es_invocacion
@@ -8829,6 +9705,9 @@ class Servidor:
                     ses.enviar(*_cl2.otorgar_hechizos(p.entity_id, _todos_hech))
             for _inv_attr, _off_x in (('invocacion', 1), ('invocacion2', -1)):
                 inv = getattr(ses, _inv_attr, None)
+                if inv and inv.get('es_mercenario'):
+                    setattr(ses, _inv_attr, None)
+                    continue
                 if inv:
                     inv['tile_x'] = p.tile_x + _off_x
                     inv['tile_y'] = p.tile_y
@@ -8908,6 +9787,46 @@ class Servidor:
                 _pres.entrar(ses, p.stage)
             except Exception:
                 log.exception('presencia: fallo al entrar al mapa en 0x0009')
+
+            # Sincronizacion de housing en cambio de mapa
+            try:
+                import casas as _cs_s
+                if p.stage == 500:
+                    ses.house_room_ready = True
+                    _c_cur = getattr(ses, 'casa_visitando', None)
+                    if not _c_cur:
+                        _c_cur = _cs_s.obtener_o_crear_casa(p.char_id, p.nombre, raw_data=getattr(p, 'casa', None))
+                        ses.casa_visitando = _c_cur
+                    if getattr(ses, 'house_furnish_pending', False) and _c_cur.owner_id == p.char_id:
+                        _ocultar_interactivos_casa(ses)
+                        ses.enviar(*_casa_paquetes_decorar(ses, _c_cur))
+                        ses.house_furnishing = True
+                        ses.house_furnish_pending = False
+                    else:
+                        ses.enviar(_cs_s.pkt_visit_furniture_sync(_c_cur.placed_furniture))
+                    _lv, _prev_m, _next_m = _cs_s.info_nivel(_c_cur.calcular_magia())
+                    _rnk = _cs_s.rango_casa(_c_cur)
+                    _v_rem = 1 if (p.char_id not in _c_cur.voted_users_today) else 0
+                    ses.enviar(_cs_s.pkt_house_info(_lv, _c_cur.calcular_magia(), _next_m, _prev_m,
+                                                    _c_cur.bonus_pct, _c_cur.cleanliness,
+                                                    _c_cur.votes_total, _c_cur.votes_today,
+                                                    _c_cur.visitors_total, _v_rem, _rnk,
+                                                    10 if _c_cur.is_open else 1))
+                    ses.enviar(_cs_s.pkt_house_name(_c_cur.house_name))
+                elif p.stage in _cs_s.MAPAS_EXHIBICION:
+                    _c_own = _cs_s.obtener_o_crear_casa(p.char_id, p.nombre, raw_data=getattr(p, 'casa', None))
+                    _lv, _prev_m, _next_m = _cs_s.info_nivel(_c_own.calcular_magia())
+                    _rnk = _cs_s.rango_casa(_c_own)
+                    _v_rem = 1 if (p.char_id not in _c_own.voted_users_today) else 0
+                    _ui_st = 10 if _c_own.is_open else 1
+                    ses.enviar(_cs_s.pkt_house_info(_lv, _c_own.calcular_magia(), _next_m, _prev_m,
+                                                    _c_own.bonus_pct, _c_own.cleanliness,
+                                                    _c_own.votes_total, _c_own.votes_today,
+                                                    _c_own.visitors_total, _v_rem, _rnk,
+                                                    _ui_st))
+                    ses.enviar(_cs_s.pkt_house_name(_c_own.house_name))
+            except Exception:
+                log.exception('casas: fallo al sincronizar housing en 0x0009')
 
             log.info(f"[{addr}] mapa cargado exitosamente: stage {p.stage} "
                      f"tile ({p.tile_x},{p.tile_y})")
@@ -9290,6 +10209,23 @@ class Servidor:
                 log.warning(f"[{addr}] banco: movimiento {_ori} -> {_dst} no resuelto. Bolsa: {sorted(_bolsa)}, Banco: {sorted(_p.banco)}")
                 return
 
+            if _contenedor == 41:
+                # HitParade ranking request
+                import casas as _cs_hp
+                _rtype = cuerpo[1] if len(cuerpo) > 1 else 31
+                _page = struct.unpack_from('<I', cuerpo, 2)[0] if len(cuerpo) >= 6 else 0
+                _res = _cs_hp.ranking_hitparade(_rtype, _page)
+                ses.enviar(_cs_hp.pkt_hitparade_data(_rtype, _page, len(_res), _res))
+                return
+
+            if _contenedor == 42:
+                # Billboard ranking request
+                import casas as _cs_bb
+                _btype = cuerpo[1] if len(cuerpo) > 1 else 0
+                _res = _cs_bb.ranking_billboard(_btype)
+                ses.enviar(_cs_bb.pkt_billboard_data(_btype, len(_res), _res))
+                return
+
             if _contenedor != 11:
                 log.info(f"[{addr}] 0x002F con contenedor {_contenedor}: no es "
                          f"la mochila ni el panel de hechizos, se ignora "
@@ -9593,6 +10529,17 @@ class Servidor:
         # despues de hacer clic cerca de un NPC. Con marca de tiempo quedo
         # claro: lo que contesta el servidor es el contenido del contenedor
         # (0x001B) y los stats recalculados (0x0042), no un dialogo.
+        if opcode == 0x0036 and ses.rol == 'mundo' and len(cuerpo) == 4:
+            _casa_fabricar(ses, struct.unpack_from('<I', cuerpo)[0])
+            return
+
+        if opcode == 0x0037 and ses.rol == 'mundo':
+            _task = getattr(ses, 'house_make_task', None)
+            if _task:
+                _task.cancel()
+                ses.house_make_task = None
+            return
+
         if opcode == 0x0012 and ses.rol == 'mundo' and len(cuerpo) >= 4:
             import inventario as inv
             org, dst = struct.unpack_from('<HH', cuerpo, 0)
@@ -9603,6 +10550,22 @@ class Servidor:
                 log.warning(f"[{addr}] mover {org} -> {dst}: la ranura {org} esta vacia")
                 return
             it_org = bolsa[org]
+            if 477 <= dst <= 496:
+                import casas as _cs_slots, house_services as _hs_slots
+                _c_slots = _casa_actual(ses) if ses.personaje else None
+                _valid_slot = bool(_c_slots and ses.personaje.stage == 500
+                    and _c_slots.owner_id == ses.personaje.char_id
+                    and _c_slots.cleanliness > 0
+                    and not getattr(ses, 'house_furnishing', False))
+                if dst < 487:
+                    _valid_slot = (_valid_slot and inv.es_mascota(it_org)
+                        and dst < 477 + _cs_slots.ranuras_mascotas_validas(_c_slots.level))
+                else:
+                    _valid_slot = (_valid_slot and it_org in _hs_slots.monster_eggs()
+                        and dst < 487 + _cs_slots.ranuras_mobgen_validas(_c_slots.level))
+                if not _valid_slot:
+                    ses.enviar(*_refrescar(ses, [org, dst]))
+                    return
             if not inv.es_ranura_valida(it_org, dst):
                 log.warning(f"[{addr}] mover {org} -> {dst}: ranura no valida para item {it_org}")
                 ses.enviar(*_refrescar(ses, [org]))
@@ -9905,6 +10868,389 @@ class Servidor:
                     _cartas.registrar(ses, _ranura_card, _sacar, _refrescar)
             return
 
+        # Housing opcodes C2S 0x0136..0x0142
+        if opcode == 0x0139 and ses.rol == 'mundo' and ses.personaje:
+            # closehouse (C2S 313 / 0x0139): Take Back outdoor house.
+            # Verified in the 2026-10-16 Global proxy capture.
+            import casas as _cs, cuentas as _cta, combate as _cb
+            _c = _cs.obtener_o_crear_casa(
+                ses.personaje.char_id, ses.personaje.nombre,
+                raw_data=getattr(ses.personaje, 'casa', None))
+            _old_eid = _c.outdoor_obj_id
+            _old_stage = _c.outdoor_stage
+            _cs.retirar_casa_outdoor(_c)
+            _c.is_open = False
+            ses.personaje.casa = _c.serializar()
+            if getattr(ses, 'usuario', None):
+                _cta.guardar_casa(ses.usuario, ses.personaje.char_id, _c)
+            ses.enviar(_cs.pkt_open_close_state(False))
+            if _old_eid:
+                _despawn = _cb.despawn_monstruo(_old_eid)
+                _difundir_en_sala(ses, _despawn)
+                if _old_stage:
+                    for s in list(self.mundos):
+                        if s is not ses and getattr(s, 'personaje', None) and getattr(s.personaje, 'stage', None) == _old_stage:
+                            try:
+                                s.enviar(_despawn)
+                            except Exception:
+                                pass
+                ses.enviar(_despawn)
+            _lv, _prev_m, _next_m = _cs.info_nivel(_c.calcular_magia())
+            _rnk = _cs.rango_casa(_c)
+            _v_rem = 1 if ses.personaje.char_id not in _c.voted_users_today else 0
+            ses.enviar(_cs.pkt_house_info(
+                _lv, _c.calcular_magia(), _next_m, _prev_m, _c.bonus_pct,
+                _c.cleanliness, _c.votes_total, _c.votes_today,
+                _c.visitors_total, _v_rem, _rnk, 1))
+            ses.enviar(_cs.pkt_house_name(_c.house_name))
+            log.info('[%s] house closed by %s', addr, ses.personaje.nombre)
+            return
+
+        if opcode == 0x0137 and ses.rol == 'mundo' and ses.personaje:
+            # registryhouse (C2S 311 / 0x0137): Show outdoor house in exhibition map
+            import casas as _cs, clases as _cl, cuentas as _cta
+            if ses.personaje.stage not in _cs.MAPAS_EXHIBICION:
+                ses.enviar(_cl.aviso("Houses can only be placed in exhibition areas (Angel Lyceum, Capital cities).", tipo=0))
+                return
+            _pwd = ''
+            if len(cuerpo) >= 37:
+                _pwd = cuerpo[4:37].split(b'\x00', 1)[0].decode('latin-1', 'replace')
+            elif len(cuerpo) > 0:
+                _pwd = cuerpo.decode('latin-1', 'replace').strip('\x00')
+            _c = _cs.obtener_o_crear_casa(ses.personaje.char_id, ses.personaje.nombre, raw_data=getattr(ses.personaje, 'casa', None))
+            _c.password_md5 = _pwd
+            _px_x = int(ses.personaje.tile_x * 32)
+            _px_y = int(ses.personaje.tile_y * 32)
+            _cs.registrar_casa_outdoor(_c, ses.personaje.stage, _px_x, _px_y, dir_rot=0)
+            ses.personaje.casa = _c.serializar()
+            if getattr(ses, 'usuario', None):
+                _cta.guardar_casa(ses.usuario, ses.personaje.char_id, _c)
+            ses.enviar(_cs.pkt_open_close_state(True))
+            _pkt_out = _cs.pkt_outdoor_house(_c.outdoor_obj_id, _c.model_id, _px_x, _px_y, _c.house_name, ses.personaje.nombre, house_size_level=_c.size_level, house_level=_c.level)
+            ses.enviar(_pkt_out)
+            _difundir_en_sala(ses, _pkt_out)
+            _lv, _prev_m, _next_m = _cs.info_nivel(_c.calcular_magia())
+            _rnk = _cs.rango_casa(_c)
+            _v_rem = 1 if (ses.personaje.char_id not in _c.voted_users_today) else 0
+            ses.enviar(_cs.pkt_house_info(_lv, _c.calcular_magia(), _next_m, _prev_m, _c.bonus_pct, _c.cleanliness, _c.votes_total, _c.votes_today, _c.visitors_total, _v_rem, _rnk, 10))
+            ses.enviar(_cs.pkt_house_name(_c.house_name))
+            log.info('[%s] house opened by %s at stage %d (%d, %d)',
+                     addr, ses.personaje.nombre, ses.personaje.stage, _px_x, _px_y)
+            return
+
+        if opcode == 0x0136 and ses.rol == 'mundo' and ses.personaje:
+            # furnishhouse (C2S 310 / 0x0136): Decorate button clicked.
+            # Body is the deed item id (u32).  Verified in the Global capture.
+            import casas as _cs, clases as _cl
+            _c = getattr(ses, 'casa_visitando', None) or _cs.obtener_o_crear_casa(
+                ses.personaje.char_id, ses.personaje.nombre,
+                raw_data=getattr(ses.personaje, 'casa', None))
+            if _c.owner_id != ses.personaje.char_id:
+                ses.enviar(_cl.aviso("Only the owner can decorate this house.", tipo=0))
+                return
+            if getattr(ses, 'house_furnish_pending', False):
+                return  # wait for 0x0009, never send a second map load
+            if ses.personaje.stage != _cs.STAGE_HOUSE:
+                _entrar_a_casa(ses, addr, _c)
+                ses.house_furnish_pending = True
+            else:
+                ses.house_transition = getattr(ses, 'house_transition', 0) + 1
+                ses.casa_visitando = _c
+                ses.house_furnishing = True
+                _ocultar_interactivos_casa(ses)
+                ses.enviar(*_casa_paquetes_decorar(ses, _c))
+            log.info('[%s] house furnish mode: owner=%s furniture=%d',
+                     addr, ses.personaje.nombre, len(_c.placed_furniture))
+            return
+
+        if opcode == 0x0138 and ses.rol == 'mundo' and ses.personaje:
+            # leavefurnish (C2S 312 / 0x0138), no body. Boton Leave del editor de decoracion.
+            # Salir del modo decoracion y regresar al exterior de donde vino el jugador.
+            # NO enviar pkt_visit_furniture_sync (0x013F) aqui: WND_FURNITURELIST ya fue destruida
+            # por Lua (OnLeaveFurnish) y sub_66C020 crashea con access violation en el cliente.
+            import casas as _cs
+            _casa_salir_editor(ses, addr)
+            return
+
+        if opcode == 0x013A and ses.rol == 'mundo' and ses.personaje and len(cuerpo) >= 4:
+            # tryentryhouse (C2S 314 / 0x013A)
+            import casas as _cs, clases as _cl
+            _target_eid = struct.unpack_from('<I', cuerpo, 0)[0]
+            _c = _cs.casa_por_obj(_target_eid)
+            if not _c:
+                _c = _cs.obtener_o_crear_casa(ses.personaje.char_id, ses.personaje.nombre, raw_data=getattr(ses.personaje, 'casa', None))
+            if _c.owner_id != ses.personaje.char_id and _c.password_md5:
+                _pwd_sent = cuerpo[4:].decode('latin-1', 'replace').strip('\x00') if len(cuerpo) > 4 else ''
+                if not _pwd_sent:
+                    ses.enviar(_cs.pkt_request_password(_target_eid))
+                    return
+                if _pwd_sent != _c.password_md5:
+                    ses.enviar(_cl.aviso("Incorrect house password!", tipo=0))
+                    return
+            if _c.owner_id != ses.personaje.char_id:
+                _c.visitors_total += 1
+            _entrar_a_casa(ses, addr, _c)
+            ses.enviar(_cs.pkt_visit_furniture_sync(_c.placed_furniture))
+            _lv, _prev_m, _next_m = _cs.info_nivel(_c.calcular_magia())
+            _rnk = _cs.rango_casa(_c)
+            _v_rem = 1 if (ses.personaje.char_id not in _c.voted_users_today) else 0
+            ses.enviar(_cs.pkt_house_info(_lv, _c.calcular_magia(), _next_m, _prev_m, _c.bonus_pct, _c.cleanliness, _c.votes_total, _c.votes_today, _c.visitors_total, _v_rem, _rnk, 10 if _c.is_open else 1))
+            ses.enviar(_cs.pkt_house_name(_c.house_name))
+            log.info(f"[{addr}] {ses.personaje.nombre} entered house of {_c.owner_name}")
+            return
+
+        if opcode == 0x013B and ses.rol == 'mundo' and ses.personaje and len(cuerpo) >= 21:
+            # savefurniture
+            import casas as _cs, cuentas as _cta, clases as _cl
+            _c = getattr(ses, 'casa_visitando', None)
+            if (_c is None or _c.owner_id != ses.personaje.char_id
+                    or ses.personaje.stage != _cs.STAGE_HOUSE
+                    or not getattr(ses, 'house_furnishing', False)):
+                log.warning('[%s] savefurniture fuera de una sesion de decoracion valida', addr)
+                return
+            _f_cnt = struct.unpack_from('<I', cuerpo, 0)[0]
+            _cap = (_cs.CAPACIDAD_MUEBLES[_c.size_level]
+                    if _c.size_level < len(_cs.CAPACIDAD_MUEBLES) else 35)
+            if _f_cnt > _cap + 2:
+                log.warning('[%s] savefurniture invalido: count=%d body=%d cap=%d',
+                            addr, _f_cnt, len(cuerpo), _cap)
+                ses.enviar(_cl.aviso("The furniture layout was not saved: invalid data.", tipo=0))
+                return
+            try:
+                _nom_raw, _entries = _cs.parse_save_layout(cuerpo)
+            except ValueError as _err:
+                log.warning('[%s] savefurniture invalido: %s', addr, _err)
+                ses.enviar(_cl.aviso("The furniture layout was not saved: invalid data.", tipo=0))
+                return
+            for _entry in _entries:
+                if not _cs.item_a_mueble(_entry['item_id']):
+                    log.warning('[%s] savefurniture rechazo item no-mueble %d',
+                                addr, _entry['item_id'])
+                    ses.enviar(_cl.aviso("The furniture layout contains an invalid item.", tipo=0))
+                    return
+            _ordinary = [e for e in _entries
+                         if not _cs.es_escena_item(e['item_id'])
+                         and not _cs.es_estilo_exterior_item(e['item_id'])]
+            if len(_ordinary) > _cap:
+                ses.enviar(_cl.aviso(f"Exceeded furniture capacity for this house size ({_cap})!", tipo=0))
+                return
+            if sum(1 for e in _entries if _cs.es_escena_item(e['item_id'])) > 1:
+                return
+            if sum(1 for e in _entries if _cs.es_estilo_exterior_item(e['item_id'])) > 1:
+                return
+            _uids = [e['item_uid'] for e in _entries if e['item_uid']]
+            if len(_uids) != len(set(_uids)):
+                log.warning('[%s] savefurniture rechazo UIDs duplicados', addr)
+                return
+
+            # Reconcile the placed list with the dedicated Furniture bag.
+            # This makes Save atomic and prevents both duplication and loss.
+            _old_entries = list(_c.placed_furniture)
+            _old_counts = collections.Counter(e['item_id'] for e in _old_entries)
+            _new_counts = collections.Counter(e['item_id'] for e in _entries)
+            _add = _new_counts - _old_counts
+            _remove = _old_counts - _new_counts
+            _free_defaults = {9954: 1, 14660: 1}
+            _need = collections.Counter()
+            for _iid, _qty in _add.items():
+                _gratis = min(_qty, _free_defaults.get(_iid, 0)) if _old_counts[_iid] == 0 else 0
+                if _qty > _gratis:
+                    _need[_iid] = _qty - _gratis
+            _available = collections.Counter()
+            for _slot in range(_cs.SLOT_FURN_INI, _cs.SLOT_FURN_FIN + 1):
+                if _slot in ses.inventario:
+                    _available[int(ses.inventario[_slot])] += _cant_de(ses, _slot)
+            if any(_available[_iid] < _qty for _iid, _qty in _need.items()):
+                log.warning('[%s] savefurniture intento colocar muebles no poseidos: %s',
+                            addr, dict(_need - _available))
+                ses.enviar(_cl.aviso("The furniture layout was not saved: missing item.", tipo=0))
+                return
+            _consume_plan = []
+            for _iid, _qty in _need.items():
+                _left = _qty
+                for _slot in range(_cs.SLOT_FURN_INI, _cs.SLOT_FURN_FIN + 1):
+                    if _left <= 0:
+                        break
+                    if int(ses.inventario.get(_slot, 0)) != _iid:
+                        continue
+                    _take = min(_left, _cant_de(ses, _slot))
+                    _consume_plan.append((_slot, _take))
+                    _left -= _take
+            _return_entries = []
+            _remaining_remove = _remove.copy()
+            for _entry in _old_entries:
+                _iid = _entry['item_id']
+                if _remaining_remove[_iid] > 0:
+                    _remaining_remove[_iid] -= 1
+                    if _iid not in _free_defaults:
+                        _return_entries.append(_entry)
+            _occupied = sum(1 for s in range(_cs.SLOT_FURN_INI, _cs.SLOT_FURN_FIN + 1)
+                            if s in ses.inventario)
+            _slots_freed = sum(1 for s, n in _consume_plan
+                               if n >= _cant_de(ses, s))
+            if _occupied - _slots_freed + len(_return_entries) > 100:
+                ses.enviar(_cl.aviso("The Furniture bag needs more free slots.", tipo=0))
+                return
+
+            _inv_before = dict(ses.inventario)
+            _qty_before = dict(_cantidades(ses))
+            _inst_before = dict(_instancias(ses))
+            _touched = set()
+            try:
+                for _slot, _take in _consume_plan:
+                    _sacar(ses, _slot, _take)
+                    _touched.add(_slot)
+                for _entry in _return_entries:
+                    _slot = next((s for s in range(_cs.SLOT_FURN_INI,
+                                                   _cs.SLOT_FURN_FIN + 1)
+                                  if s not in ses.inventario), None)
+                    if _slot is None:
+                        raise RuntimeError('Furniture bag unexpectedly full')
+                    ses.inventario[_slot] = _entry['item_id']
+                    _cantidades(ses).pop(_slot, None)
+                    _uid = int(_entry.get('item_uid') or 0)
+                    _instancias(ses)[_slot] = struct.pack('<Q', _uid) if _uid else bytes(8)
+                    _touched.add(_slot)
+                if _nom_raw and any(ch.isalnum() for ch in _nom_raw):
+                    _c.house_name = _nom_raw[:16].strip()
+                _c.placed_furniture = _entries
+                ses.personaje.casa = _c.serializar()
+                if getattr(ses, 'usuario', None):
+                    _cta.guardar_casa_e_inventario(
+                        ses.usuario, ses.personaje.char_id, _c,
+                        ses.inventario, _cantidades(ses),
+                        getattr(ses.personaje, 'mejoras', None))
+            except Exception:
+                ses.inventario.clear()
+                ses.inventario.update(_inv_before)
+                _cantidades(ses).clear()
+                _cantidades(ses).update(_qty_before)
+                _instancias(ses).clear()
+                _instancias(ses).update(_inst_before)
+                _c.placed_furniture = _old_entries
+                ses.personaje.casa = _c.serializar()
+                log.exception('[%s] savefurniture rollback', addr)
+                ses.enviar(_cl.aviso("The furniture layout could not be saved.", tipo=0))
+                return
+            if _touched:
+                ses.enviar(*_refrescar(ses, sorted(_touched)))
+            _lv, _prev_m, _next_m = _cs.info_nivel(_c.calcular_magia())
+            _rnk = _cs.rango_casa(_c)
+            _v_rem = 1 if (ses.personaje.char_id not in _c.voted_users_today) else 0
+            ses.enviar(_cs.pkt_house_info(_lv, _c.calcular_magia(), _next_m, _prev_m, _c.bonus_pct, _c.cleanliness, _c.votes_total, _c.votes_today, _c.visitors_total, _v_rem, _rnk, 10 if _c.is_open else 1))
+            ses.enviar(_cs.pkt_house_name(_c.house_name))
+            log.info(f"[{addr}] saved {len(_entries)} furniture items for {_c.house_name} (magic: {_c.calcular_magia()}, lv: {_lv})")
+            return
+
+        if opcode == 0x013C and ses.rol == 'mundo' and ses.personaje and len(cuerpo) >= 4:
+            # IGG sub_6235D0 sends <H 0x013C, I ticket_id> for Ball Tickets.
+            import casas as _cs, cuentas as _cta, clases as _cl
+            _c = _cs.obtener_o_crear_casa(ses.personaje.char_id, ses.personaje.nombre, raw_data=getattr(ses.personaje, 'casa', None))
+            _value = struct.unpack_from('<I', cuerpo, 0)[0]
+            if _value in _cs.BALL_TICKETS:
+                if ses.personaje.stage != _cs.STAGE_HOUSE:
+                    ses.enviar(_cl.aviso("Ball Tickets can only be used inside your house.", tipo=0))
+                    return
+                _slot = _ranura_de_item(ses, _value)
+                if _slot is None:
+                    ses.enviar(_cl.aviso("The Ball Ticket is no longer in your inventory.", tipo=0))
+                    return
+                if not _c.iniciar_baile(_value):
+                    ses.enviar(_cl.aviso("The house level is too low, a ball is active, or its cooldown has not finished.", tipo=0))
+                    return
+                _sacar(ses, _slot, 1)
+                ses.enviar(*_refrescar(ses, [_slot]))
+                _guardar_bolsa(ses, ses.personaje.char_id)
+                ses.enviar(_cl.aviso("The house ball will begin in 3 minutes!", tipo=0, msg_id=_cl.MSG_ITEM))
+            else:
+                _c.options = _value
+            ses.personaje.casa = _c.serializar()
+            if getattr(ses, 'usuario', None):
+                _cta.guardar_casa(ses.usuario, ses.personaje.char_id, _c)
+            return
+
+        if opcode == 0x013D and ses.rol == 'mundo' and ses.personaje:
+            # Furniture Egg Machine.  The packet layout is verified, but the
+            # reward formula is not.  Never consume five real items using a
+            # guessed random table.
+            import casas as _cs, clases as _cl
+            ses.enviar(_cl.aviso(
+                "Furniture recycling is disabled until its original reward table is verified; no items were consumed.",
+                tipo=0))
+            return
+
+        if opcode == 0x013E and ses.rol == 'mundo' and ses.personaje and len(cuerpo) >= 4:
+            # sethousepetradio
+            import casas as _cs, cuentas as _cta
+            _c = _cs.obtener_o_crear_casa(ses.personaje.char_id, ses.personaje.nombre, raw_data=getattr(ses.personaje, 'casa', None))
+            _c.pet_radio = struct.unpack_from('<I', cuerpo, 0)[0]
+            ses.personaje.casa = _c.serializar()
+            if getattr(ses, 'usuario', None):
+                _cta.guardar_casa(ses.usuario, ses.personaje.char_id, _c)
+            return
+
+        if opcode == 0x013F and ses.rol == 'mundo' and ses.personaje and len(cuerpo) >= 1:
+            # trycastvote
+            import casas as _cs, clases as _cl, cuentas as _cta
+            _c = getattr(ses, 'casa_visitando', None) or _cs.obtener_o_crear_casa(ses.personaje.char_id, ses.personaje.nombre, raw_data=getattr(ses.personaje, 'casa', None))
+            _c.check_daily_reset()
+            _cid = int(ses.personaje.char_id)
+            if _cid in _c.voted_users_today:
+                ses.enviar(_cl.aviso("You have already voted for this house today!", tipo=0))
+                return
+            _c.voted_users_today.add(_cid)
+            _c.votes_today += 1
+            _c.votes_total += 1
+            _txt = cuerpo.decode('latin-1', 'replace').strip('\x00').strip()
+            if _txt:
+                _c.vote_notes.insert(0, {
+                    'sender_id': _cid,
+                    'sender_name': ses.personaje.nombre,
+                    'timestamp': int(time.time()),
+                    'text': _txt[:132]
+                })
+                if len(_c.vote_notes) > 50:
+                    _c.vote_notes = _c.vote_notes[:50]
+            if getattr(ses, 'usuario', None):
+                _cta.guardar_casa(ses.usuario, _c.owner_id, _c)
+            _lv, _prev_m, _next_m = _cs.info_nivel(_c.calcular_magia())
+            _rnk = _cs.rango_casa(_c)
+            ses.enviar(_cs.pkt_house_info(_lv, _c.calcular_magia(), _next_m, _prev_m, _c.bonus_pct, _c.cleanliness, _c.votes_total, _c.votes_today, _c.visitors_total, 0, _rnk, 10 if _c.is_open else 1))
+            ses.enviar(_cl.aviso("Thank you for voting!", tipo=0))
+            return
+
+        if opcode == 0x0140 and ses.rol == 'mundo' and ses.personaje and len(cuerpo) >= 2:
+            # votenotechangepage
+            import casas as _cs
+            _page = struct.unpack_from('<H', cuerpo, 0)[0]
+            _c = getattr(ses, 'casa_visitando', None) or _cs.obtener_o_crear_casa(ses.personaje.char_id, ses.personaje.nombre, raw_data=getattr(ses.personaje, 'casa', None))
+            _start = _page * 5
+            _notes = _c.vote_notes[_start:_start + 5]
+            ses.enviar(_cs.pkt_view_vote_notes(_page, len(_c.vote_notes), _notes))
+            return
+
+        if opcode in (0x0141, 0x0142) and ses.rol == 'mundo' and ses.personaje:
+            # trygotosenderhouse / gotobillboardhouse
+            import casas as _cs, clases as _cl
+            if opcode == 0x0141:
+                if len(cuerpo) != 38:
+                    return
+                _target_owner_id = struct.unpack_from('<I', cuerpo, 1)[0]
+            else:
+                if len(cuerpo) != 7:
+                    return
+                _target_owner_id = struct.unpack_from('<I', cuerpo, 3)[0]
+            _c = _cs.obtener_o_crear_casa(_target_owner_id, f"Owner_{_target_owner_id}")
+            _c.visitors_total += 1
+            _entrar_a_casa(ses, addr, _c)
+            ses.enviar(_cs.pkt_visit_furniture_sync(_c.placed_furniture))
+            _lv, _prev_m, _next_m = _cs.info_nivel(_c.calcular_magia())
+            _rnk = _cs.rango_casa(_c)
+            _v_rem = 1 if (ses.personaje.char_id not in _c.voted_users_today) else 0
+            ses.enviar(_cs.pkt_house_info(_lv, _c.calcular_magia(), _next_m, _prev_m, _c.bonus_pct, _c.cleanliness, _c.votes_total, _c.votes_today, _c.visitors_total, _v_rem, _rnk, 10 if _c.is_open else 1))
+            ses.enviar(_cs.pkt_house_name(_c.house_name))
+            return
+
         if opcode == 0x002E and ses.rol == 'mundo' and len(cuerpo) >= 4:
             import inventario as inv
             import clases as _c
@@ -10119,6 +11465,117 @@ class Servidor:
                 log.info('[%s] %s: +%d de SP (%d -> %d)'
                          % (addr, _nombre_item(item_id), _sp_item,
                             _antes, ses.sp))
+                return
+
+            # --- House System Consumables ---
+            # 1. Liquid Soap / Soap Powder
+            if item_id in (10603, 15163, 20077, 10626, 10627) and ses.personaje:
+                import casas as _cs_soap, clases as _cl_soap, cuentas as _cta_soap
+                _c = _cs_soap.obtener_o_crear_casa(ses.personaje.char_id, ses.personaje.nombre, raw_data=getattr(ses.personaje, 'casa', None))
+                if _c.cleanliness >= 1000:
+                    ses.enviar(_cl_soap.aviso("Your house is already sparkling clean!", tipo=0))
+                    return
+                _clean_map = _cs_soap.SOAP_CLEAN
+                _add_clean = _clean_map.get(item_id, 100 if item_id == 10627 else 500)
+                _c.cleanliness = min(1000, _c.cleanliness + _add_clean)
+                ses.personaje.casa = _c.serializar()
+                if getattr(ses, 'usuario', None):
+                    _cta_soap.guardar_casa(ses.usuario, ses.personaje.char_id, _c)
+                _sacar(ses, ranura, 1)
+                ses.enviar(*_refrescar(ses, [ranura]))
+                _guardar_bolsa(ses, cid)
+                # Actualizar buff de bono extra por limpieza arriba de 500
+                ses.personaje.buffs.pop('house_clean_bonus', None)
+                # Enviar siempre pkt_house_info para actualizar la ventana House Info inmediatamente
+                _lv, _prev_m, _next_m = _cs_soap.info_nivel(_c.calcular_magia())
+                _rnk = _cs_soap.rango_casa(_c)
+                _v_rem = 1 if (ses.personaje.char_id not in _c.voted_users_today) else 0
+                ses.enviar(_cs_soap.pkt_house_info(_lv, _c.calcular_magia(), _next_m, _prev_m, _c.bonus_pct, _c.cleanliness, _c.votes_total, _c.votes_today, _c.visitors_total, _v_rem, _rnk, 10 if _c.is_open else 1))
+                ses.enviar(_cl_soap.aviso(f"House cleanliness restored to {_c.cleanliness}!", tipo=0, msg_id=_cl_soap.MSG_ITEM))
+                log.info(f"[{addr}] used soap {item_id}: house cleanliness now {_c.cleanliness} (bonus={_c.bonus_pct}%)")
+                return
+
+            # 1b. House Deeds (10115, 10116, 10117, 17934..17937, 20076)
+            if item_id in (10115, 10116, 10117, 17934, 17935, 17936, 17937, 20076) and ses.personaje:
+                import casas as _cs_deed, clases as _cl_deed, cuentas as _cta_deed
+                _c = _cs_deed.obtener_o_crear_casa(ses.personaje.char_id, ses.personaje.nombre, raw_data=getattr(ses.personaje, 'casa', None))
+                if _c.deed_id == item_id:
+                    ses.inventario[_cs_deed.SLOT_DEED] = item_id
+                    ses.personaje.inventario[_cs_deed.SLOT_DEED] = item_id
+                    ses.enviar(*_refrescar(ses, [_cs_deed.SLOT_DEED]))
+                    return
+                # Do not resize the scene while it is being used, or orphan
+                # furniture when switching to a smaller house.
+                if ses.personaje.stage == _cs_deed.STAGE_HOUSE:
+                    ses.enviar(_cl_deed.aviso("Leave the house before changing its deed.", tipo=0))
+                    return
+                _candidate = _cs_deed.CasaData(_c.owner_id, _c.owner_name, item_id)
+                _placed = sum(not _cs_deed.es_escena_item(f['item_id'])
+                              and not _cs_deed.es_estilo_exterior_item(f['item_id'])
+                              for f in _c.placed_furniture)
+                if _placed > _candidate.capacidad_maxima:
+                    ses.enviar(_cl_deed.aviso(
+                        "Remove furniture before switching to this smaller house.", tipo=0))
+                    return
+                _c.deed_id = item_id
+                ses.personaje.casa = _c.serializar()
+                ses.inventario[376] = item_id
+                ses.personaje.inventario[376] = item_id
+                ses.enviar(*_refrescar(ses, [376]))
+                if getattr(ses, 'usuario', None):
+                    _cta_deed.guardar_casa(ses.usuario, ses.personaje.char_id, _c)
+                    _guardar_bolsa(ses, ses.personaje.char_id)
+                # Si la casa esta colocada afuera, actualizar su aspecto y tamano en vivo
+                if _c.is_open and _c.outdoor_stage:
+                    _pkt_out = _cs_deed.pkt_outdoor_house(
+                        _c.outdoor_obj_id, _c.model_id,
+                        _c.outdoor_px[0], _c.outdoor_px[1],
+                        _c.house_name, ses.personaje.nombre,
+                        dir_rot=_c.outdoor_dir,
+                        house_size_level=_c.size_level,
+                        house_level=_c.level
+                    )
+                    ses.enviar(_pkt_out)
+                    _difundir_en_sala(ses, _pkt_out)
+                _lv, _prev_m, _next_m = _cs_deed.info_nivel(_c.calcular_magia())
+                _rnk = _cs_deed.rango_casa(_c)
+                _v_rem = 1 if (ses.personaje.char_id not in _c.voted_users_today) else 0
+                ses.enviar(_cs_deed.pkt_house_info(_lv, _c.calcular_magia(), _next_m, _prev_m,
+                                                  _c.bonus_pct, _c.cleanliness,
+                                                  _c.votes_total, _c.votes_today,
+                                                  _c.visitors_total, _v_rem, _rnk,
+                                                  10 if _c.is_open else 1))
+                ses.enviar(_cl_deed.aviso(f"House upgraded to {_nombre_item(item_id)}! Capacity: {_c.capacidad_maxima}", tipo=0, msg_id=_cl_deed.MSG_ITEM))
+                log.info(f"[{addr}] used deed {item_id}: house size_level now {_c.size_level}, model {_c.model_id}")
+                return
+
+            # 2. Ball Tickets
+            if item_id in (9953, 20078, 15235, 15236, 16598, 28867) and ses.personaje:
+                import clases as _cl_ball
+                ses.enviar(_cl_ball.aviso(
+                    "This Ball Ticket variant is not enabled yet; no item was consumed.",
+                    tipo=0))
+                return
+
+            # 3. Furniture Hammer (11114..11121)
+            if item_id in range(11114, 11122) and ses.personaje:
+                import clases as _cl_hm
+                ses.enviar(_cl_hm.aviso(
+                    "Furniture Hammers are not enabled yet; no item was consumed.",
+                    tipo=0))
+                return
+
+            # 4. Party Candy (10569..10580)
+            if item_id in range(10569, 10581) and ses.personaje:
+                import clases as _cl_cnd
+                ses.enviar(_cl_cnd.aviso(
+                    "Party Candy awaits the verified Ball Party effects; no item was consumed.",
+                    tipo=0))
+                return
+
+            # 5. Mercenary Token (10581)
+            if item_id == 10581 and ses.personaje:
+                _casa_usar_token(ses, ranura)
                 return
 
             # Caso 0: CONSUMIBLE DE MASCOTA (使用目標="目標寵物").
@@ -10962,6 +12419,8 @@ class Servidor:
         if opcode == 0x0005 and ses.rol == 'mundo' and len(cuerpo) >= 4:
             import dialogos
             ent = struct.unpack_from('<I', cuerpo, 0)[0]
+            if _casa_click(ses, ent):
+                return
             if (ses.personaje
                     and ses.personaje.stage in ETAPAS_ENTRENAMIENTO
                     and ent == ENTIDAD_SALIDA_ENTRENAMIENTO_B):
@@ -10992,6 +12451,15 @@ class Servidor:
                 # VETA (objeto MATOBJ con su material de material.xml). No se
                 # pide la casilla: las vetas de los mapas abiertos vienen de
                 # capturas y en la plantilla solo traen el px.
+                if ses.personaje.stage == 500:
+                    import house_services as _hs_gather
+                    if ent in _hs_gather.RESOURCES:
+                        _c_gather = _casa_actual(ses)
+                        if (_c_gather.owner_id != ses.personaje.char_id
+                                or not _c_gather.cleanliness or _c_gather.level < 2
+                                or getattr(ses, 'house_furnishing', False)):
+                            ses.enviar(dialogos.armar_linea(7871, 0, []))
+                            return
                 if _recolectar(ses, addr, ses.personaje.stage, ent):
                     return
                 if _tile_obj is not None:
@@ -11304,6 +12772,20 @@ class Servidor:
                     _en_prog = bool(_mis.tiene_mision(ses.personaje, 100) and not _mis.mision_completada(ses.personaje, 100))
                     _reg = bool(_mis.mision_completada(ses.personaje, 100) or _mis.tiene_mision(ses.personaje, 101) or _reg)
 
+                _clean_house = None
+                _house_lvl = None
+                if ses.personaje:
+                    try:
+                        import casas as _cs_d
+                        _c_cur = getattr(ses, 'casa_visitando', None)
+                        if not _c_cur:
+                            _c_cur = _cs_d.obtener_o_crear_casa(ses.personaje.char_id, ses.personaje.nombre, raw_data=getattr(ses.personaje, 'casa', None))
+                        if _c_cur:
+                            _clean_house = int(getattr(_c_cur, 'cleanliness', 0))
+                            _house_lvl = _cs_d.nivel_de_magia(_c_cur.calcular_magia())
+                    except Exception:
+                        pass
+
                 g2 = dialogos.propio(
                         _nom_ent, faccion=faccion,
                         jugador=getattr(ses.personaje, 'nombre', '') if ses.personaje else '',
@@ -11313,7 +12795,9 @@ class Servidor:
                         registrado=_reg,
                         entidad=ent,
                         en_progreso=_en_prog,
-                        graduado=_es_grad)
+                        graduado=_es_grad,
+                        cleanliness=_clean_house,
+                        house_level=_house_lvl)
 
                 # El dialogo del ARBOL DEL MAPA cuando el NPC tiene uno que
                 # hace algo (opciones, acciones, ramas). Solo en instancias,
@@ -11323,7 +12807,7 @@ class Servidor:
                     try:
                         import dialogos_mapa as _dm_c
                         _st_c = getattr(ses.personaje, 'stage', 0)
-                        if es_instancia(_st_c) or not g2:
+                        if (es_instancia(_st_c) and _st_c != 500) or not g2:
                             _ret_c = dialogos.val_por_entidad(ent)
                             _raiz_c = _dm_c.raiz_interactiva(_st_c, _ret_c)
                             # Con la carrera (NPCKILLGAME) en marcha, el que la
@@ -11712,6 +13196,8 @@ class Servidor:
                                        % _nombre_entidad(ses, ent))
                     return
 
+                if _casa_submit_order(ses, _el):
+                    return
                 _fac_actual = getattr(ses.personaje, 'faction', 'Heaven') if ses.personaje else 'Heaven'
                 submsgs = dialogos.respuesta_a(
                     _el, entidad=ent, val=val,
@@ -11888,6 +13374,78 @@ class Servidor:
                     _falso['direccion'] = _d.get('direccion')
                     _viajar_por_portal(ses, addr, _falso,
                                        'por la opcion %d' % _el)
+                elif _el in (7891, 7899) and ses.personaje:
+                    # I'm leaving / Leave
+                    import dialogos as _dlg_close
+                    ses.enviar_inmediato(struct.pack('<H', 0x0012) + _dlg_close.FIN)
+                    es_portal_salida = (getattr(ses, 'dlg_portal', None) is not None or
+                                       getattr(ses, 'dlg_ent', None) == 701)
+                    ses.dlg_ent = None
+                    ses.dlg_guion = None
+                    ses.dlg_paso = 0
+                    ses.dlg_portal = None
+                    if ses.personaje.stage == 500 and es_portal_salida:
+                        asyncio.get_event_loop().call_later(
+                            0.75, _salir_de_casa_despues_dialogo, ses, addr)
+                elif _el == 7894 and ses.personaje:
+                    # Cancelar salida de la casa / Stay a bit longer
+                    import dialogos as _dlg_close
+                    ses.enviar(struct.pack('<H', 0x0012) + _dlg_close.FIN)
+                elif _el == 7912 and ses.personaje:
+                    # Bendicion diaria de Maid Eilian
+                    _casa_buff_diario(ses, addr)
+                elif _el == 7910 and ses.personaje:
+                    # Mercenary Token de Maid Eilian
+                    _casa_recibir_token(ses, addr)
+                elif _el in (7901, 7916) and ses.personaje:
+                    # Limpieza de casa con Maid Eilian: requiere Soap Powder o Liquid Soap
+                    import casas as _cs_cln, cuentas as _cta_cln, dialogos as _dlg_cln
+                    SOAP_ITEMS = _cs_cln.SOAP_CLEAN
+                    bolsa = getattr(ses, 'inventario', {}) or {}
+                    ranura_soap = None
+                    boost = 0
+                    for r, it in sorted(bolsa.items()):
+                        if it in SOAP_ITEMS:
+                            ranura_soap = r
+                            boost = SOAP_ITEMS[it]
+                            break
+                    if ranura_soap is not None:
+                        _sacar(ses, ranura_soap, 1)
+                        ses.enviar(*_refrescar(ses, [ranura_soap]))
+                        _c_cln = getattr(ses, 'casa_visitando', None) or _cs_cln.obtener_o_crear_casa(
+                            ses.personaje.char_id, ses.personaje.nombre, raw_data=getattr(ses.personaje, 'casa', None))
+                        _c_cln.cleanliness = min(1000, _c_cln.cleanliness + boost)
+                        ses.personaje.casa = _c_cln.serializar()
+                        ses.personaje.buffs.pop('house_clean_bonus', None)
+                        if getattr(ses, 'usuario', None):
+                            _cta_cln.guardar_casa(ses.usuario, ses.personaje.char_id, _c_cln)
+                        _lv, _prev_m, _next_m = _cs_cln.info_nivel(_c_cln.calcular_magia())
+                        _rnk = _cs_cln.rango_casa(_c_cln)
+                        _v_rem = 1 if (ses.personaje.char_id not in _c_cln.voted_users_today) else 0
+                        ses.enviar(_cs_cln.pkt_house_info(_lv, _c_cln.calcular_magia(), _next_m, _prev_m,
+                                                          _c_cln.bonus_pct, _c_cln.cleanliness,
+                                                          _c_cln.votes_total, _c_cln.votes_today,
+                                                          _c_cln.visitors_total, _v_rem, _rnk,
+                                                          10 if _c_cln.is_open else 1))
+                        # Maid Eilian contesta: "Bravo. Eilian loves to clean." (msg 7916)
+                        ses.enviar(_dlg_cln.armar_linea(7916, _dlg_cln.MAID_PORTRAIT, []), struct.pack('<H', 0x0012) + _dlg_cln.FIN)
+                        log.info(f"[{addr}] Casa limpiada con exito (cleanliness={_c_cln.cleanliness}) usando soap {bolsa.get(ranura_soap, 0)}")
+                    else:
+                        # No tiene jabon: "Master, please buy some Soap Powder for me. I can't clean the house without it." (msg 7915)
+                        ses.enviar(_dlg_cln.armar_linea(7915, _dlg_cln.MAID_PORTRAIT, []), struct.pack('<H', 0x0012) + _dlg_cln.FIN)
+                        log.info(f"[{addr}] Intento de limpieza de casa sin Soap Powder ni Liquid Soap")
+                elif _el == 7876 and ses.personaje:
+                    # Activate Raise-a-Pet Room
+                    import dialogos as _dlg_pet
+                    ses.enviar(struct.pack('<H', 0x0012) + _dlg_pet.FIN)
+                    _casa_abrir_pets(ses, addr)
+                    log.info(f"[{addr}] Pet Care Machine activated via dialog 7876")
+                elif _el == 7884 and ses.personaje:
+                    # Use Monster Hatching Machine
+                    import dialogos as _dlg_mob
+                    ses.enviar(struct.pack('<H', 0x0012) + _dlg_mob.FIN)
+                    _casa_abrir_mobgen(ses, addr)
+                    log.info(f"[{addr}] Monster Hatching Machine activated via dialog 7884")
                 elif 5807 <= _el <= 5811 and ses.personaje:
                     # West Playground A1..A5
                     _sincronizar_cambio_mapa(ses, 43, 186, 27)
@@ -12511,6 +14069,8 @@ class Servidor:
                     dist_to_dst = max(abs(cur_tx - dst_tx), abs(cur_ty - dst_ty))
                     if dist_to_dst <= 3:
                         _por = _portal_en(ses.personaje.stage, dst_tx, dst_ty)
+                if getattr(ses, 'house_furnishing', False):
+                    _por = None
 
                 # LA MARCA DURA MIENTRAS SE SIGA ENCIMA. Antes se borraba a
                 # los 2 segundos de cambiar de mapa, y ahi estaba el rebote: si
