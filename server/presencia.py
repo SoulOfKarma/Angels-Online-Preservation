@@ -60,6 +60,7 @@ mismo numero que el jugador ve en su propia ficha.
 import collections
 import logging
 import struct
+import inventario as _inv
 
 log = logging.getLogger('presencia')
 
@@ -184,13 +185,19 @@ def _spawn(ses):
     # en +96 iba el vestido, en +100 la segunda arma de fashion y en +106 la
     # insignia, y los demas jugadores salian con el cuerpo por defecto.
     bolsa = getattr(ses, 'inventario', None) or {}
+
     for idx, (r_fash, r_eq) in enumerate(((167, 1), (168, 2), (169, 3), (170, 4),
                                           (171, 5), (172, 6), (173, 7), (174, 10))):
         it = int(bolsa.get(r_fash) or bolsa.get(r_eq) or 0)
         struct.pack_into('<I', b, 64 + idx * 4, it)
     struct.pack_into('<I', b, 96, int(bolsa.get(3) or 0))
     struct.pack_into('<I', b, 100, int(bolsa.get(175) or 0))
-    struct.pack_into('<I', b, 106, 0)
+    # Burbuja de chat para otros jugadores: Angel.exe 0x5e997b lee dword ptr [packet + 0x6C]
+    # (offset 106 en 'b') y lo almacena en la ranura 15 (0xF) del equipo del personaje.
+    # Al hablar, Angel.exe (0x4b977a) consulta la ranura 15 para dibujar la burbuja.
+    # (El offset 62 NO es la burbuja: es el indicador de circulo de seleccion/aura en el suelo).
+    it_burbuja = int(bolsa.get(_inv.RANURA_BURBUJA) or 0)
+    struct.pack_into('<I', b, 106, it_burbuja)
 
     # Estado del personaje (+61): 7 sentado, 0 de pie. El 8 NO es "montado":
     # en 316 jugadores capturados el servidor real no lo usa nunca (0 con o
@@ -289,7 +296,7 @@ def entrar(ses, stage):
         if s is ses:
             continue
         # Presentar a 'ses' ante 's'
-        _mandar(s, yo_spawn, *_vestir(ses))
+        _mandar(s, yo_spawn, *_vestir(ses), *paquetes_puesto(ses))
         if ts_yo:
             _mandar(s, _cb.atributo(entidad_de(ses), ts_yo, _cb.KIND_TRANSFORM))
 
@@ -328,7 +335,7 @@ def entrar(ses, stage):
 
         # Presentar a 's' ante 'ses'
         s_spawn = _spawn(s)
-        _mandar(ses, s_spawn, *_vestir(s))
+        _mandar(ses, s_spawn, *_vestir(s), *paquetes_puesto(s))
         ts_s = transform_sprite_de(s)
         if ts_s:
             _mandar(ses, _cb.atributo(entidad_de(s), ts_s, _cb.KIND_TRANSFORM))
@@ -429,7 +436,7 @@ def notificar_transformacion(ses, trans_sprite: int):
             sp = _spawn(ses)
             for s in otros:
                 if sp:
-                    _mandar(s, sp, *_vestir(ses))
+                    _mandar(s, sp, *_vestir(ses), *paquetes_puesto(ses))
             log.info('%s deja de estar transformado: id publico %s -> %s',
                      getattr(ses.personaje, 'nombre', '?'), eid, entidad_de(ses))
             try:
@@ -455,9 +462,10 @@ def notificar_equipo(ses):
     import combate as _cb
     pkt_trans = _cb.atributo(entidad_de(ses), ts, _cb.KIND_TRANSFORM) if ts else None
     vestir = _vestir(ses)
+    puesto = paquetes_puesto(ses)
     for s in _vivas(stage):
         if s is not ses:
-            _mandar(s, yo_spawn, *vestir)
+            _mandar(s, yo_spawn, *vestir, *puesto)
             if pkt_trans:
                 _mandar(s, pkt_trans)
 
@@ -512,6 +520,85 @@ def cuantos(stage) -> int:
 
 def mapas_con_gente() -> dict:
     return {st: len(_vivas(st)) for st in list(_POR_MAPA) if _vivas(st)}
+
+
+def paquetes_puesto(ses) -> tuple:
+    """Paquetes S2C (0x000A accion 10 + 0x0043 kind 0) que dibujan el cartel del
+    puesto de venta (Stall) y su mensaje Hawk sobre un jugador para los demas.
+
+    Segun Angel.exe:
+      - FUN_005ecbd0 (0x000A): accion 10 (pkt+0x0A) y estilo 0..6 (pkt+0x0B)
+        llama a 0x650870(entity_ptr, estilo, "") que crea el boton flotante
+        encima del jugador con su entity_id en appdata.
+      - FUN_005f1110 (0x0043): kind 0 (pkt+6) y texto ASCIIZ (pkt+7)
+        llama a 0x650af0(entity_ptr, texto) para escribir el Hawk en el cartel.
+    """
+    pv = getattr(ses, 'puesto', None) or getattr(ses, 'puesto_venta', None)
+    if not pv:
+        return ()
+    eid = entidad_de(ses)
+    estilo = pv.get('estilo')
+    if estilo is None:
+        import inventario as _iv_est
+        estilo = _iv_est.estilo_puesto_de(getattr(ses, 'inventario', None))
+    estilo = max(0, min(6, int(estilo or 0)))
+    hawk = (pv.get('hawk') or '').encode('latin-1', 'replace')[:48]
+    pkt_accion = struct.pack('<HIIBBH', 0x000A, eid, 0, 10, estilo, 0)
+    pkt_hawk = struct.pack('<HIB', 0x0043, eid, 0) + hawk + b'\x00'
+    return (pkt_accion, pkt_hawk)
+
+
+def notificar_puesto(ses):
+    """Avisa a los demas jugadores del mapa que este jugador abrio o actualizo su puesto."""
+    stage = getattr(ses, '_mapa_presencia', None)
+    if stage is None and getattr(ses, 'personaje', None):
+        stage = clave_de_mapa(ses, getattr(ses.personaje, 'stage', None))
+    if stage is None:
+        return
+    pkts = paquetes_puesto(ses)
+    if not pkts:
+        return
+    for s in _vivas(stage):
+        if s is not ses:
+            _mandar(s, *pkts)
+
+
+def notificar_cierre_puesto(ses):
+    """Avisa a los demas jugadores del mapa que este jugador cerro su puesto."""
+    stage = getattr(ses, '_mapa_presencia', None)
+    if stage is None and getattr(ses, 'personaje', None):
+        stage = clave_de_mapa(ses, getattr(ses.personaje, 'stage', None))
+    if stage is None:
+        return
+    eid = entidad_de(ses)
+    # Accion 0 en 0x000A llama a 0x650a30 -> 0x5bbc90(4, eid), quitando el cartel
+    # flotante y cerrando WND_SALE_TRADE si alguien lo estaba mirando.
+    pkt_fin = struct.pack('<HIIBBH', 0x000A, eid, 0, 0, 0, 0)
+    for s in _vivas(stage):
+        if s is not ses:
+            _mandar(s, pkt_fin)
+
+
+def sesion_por_entidad(ses_consulta, eid: int):
+    """Busca la sesion de un jugador en el mapa actual por su entidad publica (o propia)."""
+    eid = int(eid or 0)
+    if not eid:
+        return None
+    stage = getattr(ses_consulta, '_mapa_presencia', None)
+    if stage is None and getattr(ses_consulta, 'personaje', None):
+        stage = clave_de_mapa(ses_consulta, getattr(ses_consulta.personaje, 'stage', None))
+    candidatos = list(_vivas(stage)) if stage is not None else []
+    for st_k in list(_POR_MAPA):
+        for s_extra in _vivas(st_k):
+            if s_extra not in candidatos:
+                candidatos.append(s_extra)
+    for s in candidatos:
+        if entidad_de(s) == eid:
+            return s
+        p = getattr(s, 'personaje', None)
+        if p and int(getattr(p, 'entity_id', 0) or 0) == eid and (getattr(s, 'puesto', None) or getattr(s, 'puesto_venta', None)):
+            return s
+    return None
 
 
 def notificar_invocacion_spawn(ses, inv, spawn_pkg, hp_pkg):
@@ -593,4 +680,71 @@ def notificar_mascota_despawn(ses, pet_eid):
     for s in _vivas(stage):
         if s is not ses:
             _mandar(s, pkt, pkt_despawn)
+
+
+def notificar_emocion(ses, emote_id: int):
+    """Envia S2C 0x0019 con el emote al jugador y a los demas en el mapa."""
+    p = getattr(ses, 'personaje', None)
+    if not p:
+        return
+    emo = int(emote_id) & 0xFF
+    # Paquete para el propio jugador (usa su entity_id de ficha 0x0002)
+    eid_propio = getattr(p, 'entity_id', None)
+    if eid_propio is not None:
+        pkt_propio = struct.pack('<HIB', 0x0019, int(eid_propio), emo)
+        ses.enviar(pkt_propio)
+
+    stage = getattr(ses, '_mapa_presencia', None)
+    if stage is None and p:
+        stage = clave_de_mapa(ses, getattr(p, 'stage', None))
+    if stage is not None:
+        eid_pub = entidad_de(ses)
+        pkt_pub = struct.pack('<HIB', 0x0019, int(eid_pub), emo)
+        for s in _vivas(stage):
+            if s is not ses:
+                _mandar(s, pkt_pub)
+
+
+def notificar_emocion_entidad(stage, entity_id: int, emote_id: int):
+    """Envia S2C 0x0019 con el emote para cualquier entidad (NPC, monstruo) a todos en el mapa."""
+    if stage is None:
+        return
+    pkt = struct.pack('<HIB', 0x0019, int(entity_id), int(emote_id) & 0xFF)
+    for s in _vivas(stage):
+        _mandar(s, pkt)
+
+
+def paquete_emotes_desbloqueados(emotes) -> bytes:
+    """Construye S2C 0x005C con el array de 37 bytes de emotes comprados/desbloqueados (12..48).
+
+    En Angel.exe FUN_006094a0 lee [opcode 0x005C][37 bytes] y almacena cada byte
+    en m_bEmotBuy[i] (offset 0x240 + i, que en game.getemotbuy(i - 1) se consulta
+    sumando el indice a 0x234). Luego invoca Lua CreateEmotionWndUpdate() para
+    refrescar la lista de la ventana si esta abierta.
+    """
+    emotes_set = set(emotes or [])
+    flags = bytearray(37)
+    for i in range(37):
+        if (12 + i) in emotes_set:
+            flags[i] = 1
+    return struct.pack('<H', 0x005C) + bytes(flags)
+
+
+def paquete_quick_emotes(entity_id: int, quick_emotes: dict) -> bytes:
+    """Construye S2C 0x001D con las 4 ranuras de emotes rapidos (Alt+1..Alt+4).
+
+    En Angel.exe FUN_005f0ef0 maneja 0x001D. Para kind=6 llama a FUN_005ffc70,
+    que guarda [this + slot*4 + 0x5dd8] = emote_id (o -1 / 0xFFFFFFFF si esta vacio).
+    """
+    items = []
+    for slot in range(4):
+        emo = quick_emotes.get(slot, -1)
+        if emo is None or emo < 0:
+            emo_val = 0xFFFFFFFF
+        else:
+            emo_val = int(emo) & 0xFFFF
+        items.append(struct.pack('<BII', 6, slot, emo_val))
+    return struct.pack('<HIB', 0x001D, int(entity_id), 4) + b''.join(items)
+
+
 

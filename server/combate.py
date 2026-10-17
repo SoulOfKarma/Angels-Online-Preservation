@@ -180,6 +180,20 @@ def _datos(npc_type: int):
                     # Protector y Earl Makice 12, Rock Slarm 5. Es el "Agr.
                     # Yes" de las tablas de la wiki.
                     'agro': max(0, _n(d.get('主動'))),
+                    'res_lightning': _n(d.get('res_lightning')),
+                    'res_fire': _n(d.get('res_fire')),
+                    'res_ice': _n(d.get('res_ice')),
+                    'res_corrosion': _n(d.get('res_corrosion')),
+                    'res_body': _n(d.get('res_body')),
+                    'res_mind': _n(d.get('res_mind')),
+                    'thnd_atk': _n(d.get('雷電攻擊')),
+                    'thnd_prob': _n(d.get('雷電機率')),
+                    'fire_atk': _n(d.get('火焰攻擊')),
+                    'fire_prob': _n(d.get('火焰機率')),
+                    'ice_atk': _n(d.get('寒冰攻擊')),
+                    'ice_prob': _n(d.get('寒冰機率')),
+                    'rotten_atk': _n(d.get('腐蝕攻擊')),
+                    'rotten_prob': _n(d.get('腐蝕機率')),
                 }
     return _MON.get(npc_type)
 
@@ -465,10 +479,11 @@ ATACANTE = [None]
 class Monstruo:
     """Un bicho vivo en el mapa."""
 
-    def __init__(self, entity_id, npc_type, nombre, tile, sprite=0):
+    def __init__(self, entity_id, npc_type, nombre, tile, sprite=0, stage=None):
         self.entity_id = entity_id
         self.npc_type = npc_type
         self.nombre = nombre
+        self.stage = stage
         # El sprite que venia en la captura. Hace falta al REAPARECER: si no
         # se guarda, el monstruo se reconstruye sin el y cae en la tabla por
         # defecto, que es la del Slarm. Por eso las Wild Lily, los Forest
@@ -517,6 +532,20 @@ class Monstruo:
         self.debuffs = {}
         self.dano_jugador = 0
         self.dano_pet = 0
+        self.res_lightning = d.get('res_lightning', 0)
+        self.res_fire = d.get('res_fire', 0)
+        self.res_ice = d.get('res_ice', 0)
+        self.res_corrosion = d.get('res_corrosion', 0)
+        self.res_body = d.get('res_body', 0)
+        self.res_mind = d.get('res_mind', 0)
+        self.thnd_atk = d.get('thnd_atk', 0)
+        self.thnd_prob = d.get('thnd_prob', 0)
+        self.fire_atk = d.get('fire_atk', 0)
+        self.fire_prob = d.get('fire_prob', 0)
+        self.ice_atk = d.get('ice_atk', 0)
+        self.ice_prob = d.get('ice_prob', 0)
+        self.rotten_atk = d.get('rotten_atk', 0)
+        self.rotten_prob = d.get('rotten_prob', 0)
 
     def registrar_dano(self, cantidad: int, es_pet: bool = False):
         """Acumula el dano real infligido al monstruo (jugador/invocacion/charmed vs mascota)."""
@@ -558,6 +587,15 @@ class Monstruo:
         """Aplica el 轉嫁法術 de un ataque: stun, sangrado, veneno o ralentizacion."""
         if not ef or not ef.get('dur_ms'):
             return None
+        # Resistencia del objetivo segun el tipo de debuff (體質型 vs res_body, 心靈型 vs res_mind):
+        if ef.get('tipo_mente') or ef.get('estado') in ('panico', 'confuso', 'silencio'):
+            res_val = getattr(self, 'res_mind', 0)
+            if res_val > 0 and random.randint(1, 100) <= min(90, res_val):
+                return None
+        elif ef.get('tipo_cuerpo') or ef.get('estado') in ('aturdido', 'lento', 'inmovilizado', 'sangrado', 'veneno'):
+            res_val = getattr(self, 'res_body', 0)
+            if res_val > 0 and random.randint(1, 100) <= min(90, res_val):
+                return None
         ahora = time.time()
         fin = ahora + ef['dur_ms'] / 1000.0
         if not hasattr(self, 'efectos_activos') or self.efectos_activos is None:
@@ -701,10 +739,25 @@ class Monstruo:
         import random as _r
         self.hp = self.hp_max
         self.muerto_en = None
-        radio = max(1, min(getattr(self, 'move_range', 0) or 0,
-                           RANGO_PASEO_MIN))
-        self.tile_x = max(0, self.spawn_x + _r.randint(-radio, radio))
-        self.tile_y = max(0, self.spawn_y + _r.randint(-radio, radio))
+        if getattr(self, 'es_estatico', False) or getattr(self, 'move_speed', 50) == 0 or getattr(self, 'move_range', 6) <= 0:
+            self.tile_x = self.spawn_x
+            self.tile_y = self.spawn_y
+        else:
+            radio = max(1, min(getattr(self, 'move_range', 0) or 0,
+                               RANGO_PASEO_MIN))
+            import transitable as _tr
+            st = getattr(self, 'stage', None)
+            candidato = None
+            for _ in range(10):
+                tx = max(0, self.spawn_x + _r.randint(-radio, radio))
+                ty = max(0, self.spawn_y + _r.randint(-radio, radio))
+                if st is None or _tr.se_pisa(st, tx, ty):
+                    candidato = (tx, ty)
+                    break
+            if candidato:
+                self.tile_x, self.tile_y = candidato
+            else:
+                self.tile_x, self.tile_y = self.spawn_x, self.spawn_y
         self.tile = [self.tile_x, self.tile_y]
         self.en_combate_con = None
         self.ultimo_ataque = 0.0
@@ -1337,10 +1390,22 @@ def datos_magia(magic_id: int) -> dict:
             res['move_speed_bonus'] = _num(d.get('move_speed') or d.get('移動速度'), 0)
             res['atk_speed_bonus'] = _num(d.get('atk_speed') or d.get('攻擊速度'), 0)
             res['crit_rate'] = _num(d.get('重擊機率') or d.get('爆擊率') or d.get('crit_rate'), 0)
-            res['res_elec'] = _num(d.get('雷電防禦'), 0)
-            res['res_fire'] = _num(d.get('火焰防禦'), 0)
-            res['res_ice'] = _num(d.get('寒冰防禦'), 0)
-            res['res_poison'] = _num(d.get('腐蝕防禦'), 0)
+            res['res_body'] = _num(d.get('res_body') or d.get('體質抵抗'), 0)
+            res['res_mind'] = _num(d.get('res_mind') or d.get('心靈抵抗'), 0)
+            res['res_elec'] = _num(d.get('res_lightning') or d.get('雷電防禦'), 0)
+            res['res_fire'] = _num(d.get('res_fire') or d.get('火焰防禦'), 0)
+            res['res_ice'] = _num(d.get('res_ice') or d.get('寒冰防禦'), 0)
+            res['res_poison'] = _num(d.get('res_corrosion') or d.get('腐蝕防禦'), 0)
+            res['atk_elec'] = _num(d.get('雷電攻擊'), 0)
+            res['prob_elec'] = _num(d.get('雷電機率'), 0)
+            res['atk_fire'] = _num(d.get('火焰攻擊'), 0)
+            res['prob_fire'] = _num(d.get('火焰機率'), 0)
+            res['atk_ice'] = _num(d.get('寒冰攻擊'), 0)
+            res['prob_ice'] = _num(d.get('寒冰機率'), 0)
+            res['atk_poison'] = _num(d.get('腐蝕攻擊'), 0)
+            res['prob_poison'] = _num(d.get('腐蝕機率'), 0)
+            res['tipo_cuerpo'] = (d.get('體質型') == '是')
+            res['tipo_mente'] = (d.get('心靈型') == '是')
             # Definicion de HP / MP:
             #   '最大值'       -> bono plano a Max HP / Max MP (hp_bonus / mp_bonus)
             #   '最大值百分比' -> bono porcentual a Max HP / Max MP (hp_pct / mp_pct)
@@ -2196,13 +2261,16 @@ def bono_velocidad(buffs=None, habilidades=None) -> float:
 CADENCIA_ATAQUE = 1.15
 
 
-def dano_recibido(ataque: int, defensa: int) -> int:
-    """Dano que recibe el jugador, ya reducido por su defensa."""
+def dano_recibido(ataque: int, defensa: int, elem_atk: int = 0, elem_def: int = 0) -> int:
+    """Dano que recibe el jugador, ya reducido por su defensa fisica y elemental."""
     def_eff = max(0, defensa)
     if ataque > def_eff:
         d = ataque - def_eff
     else:
         d = max(1, int(round(ataque * 0.05)))
+    if elem_atk > 0:
+        elem_d = max(0, elem_atk - max(0, elem_def))
+        d += elem_d
     return max(1, d)
 
 

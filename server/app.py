@@ -66,6 +66,23 @@ def defensa_jugador(ses) -> int:
         return 0
 
 
+def defensas_elementales_jugador(ses) -> dict:
+    """Las defensas de resistencia y elementales del personaje, leidas del 0x0042."""
+    try:
+        import struct as _s
+        raw = _stats_ses(ses)
+        return {
+            'stamina': _s.unpack_from('<H', raw, 70 + 2)[0],
+            'soul': _s.unpack_from('<H', raw, 74 + 2)[0],
+            'thnd': _s.unpack_from('<H', raw, 76 + 2)[0],
+            'fire': _s.unpack_from('<H', raw, 80 + 2)[0],
+            'ice': _s.unpack_from('<H', raw, 84 + 2)[0],
+            'rotten': _s.unpack_from('<H', raw, 88 + 2)[0],
+        }
+    except Exception:
+        return {'stamina': 5, 'soul': 5, 'thnd': 0, 'fire': 0, 'ice': 0, 'rotten': 0}
+
+
 def skills_arma_ses(ses):
     """Las habilidades de arma de lo equipado."""
     import clases as _cl
@@ -346,7 +363,7 @@ def _monstruos_de(stage: int):
             d = json.loads(f.read_text(encoding='utf-8'))
             bichos = {e['entity_id']: combate.Monstruo(e['entity_id'], e['npc_type'],
                                                      e['nombre'], e['tile'],
-                                                     e.get('sprite', 0))
+                                                     e.get('sprite', 0), stage=stage)
                     for e in d.get('spawns', []) if e.get('monstruo') and not e.get('apagado')}
     # Los mapas sin plantilla o cuya plantilla no traiga monstruos usan la lista escrita a mano
     if not bichos and stage in _lg.PLAYGROUND_MONSTERS:
@@ -354,7 +371,7 @@ def _monstruos_de(stage: int):
         for item in _lg.PLAYGROUND_MONSTERS[stage]:
             eid, ntype, nom, tile = item[:4]
             sp = item[4] if len(item) > 4 else (_lg.sprite_de(ntype, 42107) if ntype == 224 else _lg.sprite_de(ntype, 0))
-            bichos[eid] = combate.Monstruo(eid, ntype, nom, tile, sprite=sp)
+            bichos[eid] = combate.Monstruo(eid, ntype, nom, tile, sprite=sp, stage=stage)
     return bichos
 
 
@@ -482,9 +499,10 @@ def _tope_bolsa(bolsa) -> int:
     return TOPE_CON_MOCHILA if hay else TOPE_SIN_MOCHILA
 
 
-def _ranura_libre(bolsa, desde=20):
-    """Primera casilla vacia de la mochila, o None si esta llena."""
-    for r in range(desde, _tope_bolsa(bolsa) + 1):
+def _ranura_libre(bolsa, desde=20, hasta=None):
+    """Primera casilla vacia de la mochila o rango, o None si esta llena."""
+    limite = hasta if hasta is not None else _tope_bolsa(bolsa)
+    for r in range(desde, limite + 1):
         if r not in bolsa:
             return r
     return None
@@ -796,6 +814,77 @@ def _refrescar(ses, ranuras, con_oro=False):
     return fuera
 
 
+def _entrada_item_puesto(ses, ranura: int, cantidad: int) -> bytes:
+    """Devuelve los (85 + extra_len) bytes de la ficha de un item para S2C 0x0032.
+
+    En Angel.exe (FUN_00604710, 0x604965), cada entrada de venta del puesto
+    lleva 20 bytes de cabecera (<8sIII: instancia, cantidad, precio, item_id)
+    seguidos directamente del cuerpo de item que parsea FUN_00514d50 (la
+    entrada de 0x001B sin los 7 primeros bytes de cabecera/sub-opcode).
+    """
+    paquetes = _refrescar(ses, [int(ranura)], con_oro=False)
+    if not paquetes or len(paquetes[0]) < 15:
+        return b'\x00' * 85
+    cuerpo_item = bytearray(paquetes[0][7:])
+    struct.pack_into('<I', cuerpo_item, 4, max(1, int(cantidad)))
+    return bytes(cuerpo_item)
+
+
+def _paquete_vista_puesto(vendedor) -> bytes:
+    """Construye S2C 0x0032 (FUN_00604710) con las pestanas Sell y Buy del puesto."""
+    puesto = getattr(vendedor, 'puesto', None) or {}
+    p_vend = getattr(vendedor, 'personaje', None)
+    nombre = getattr(p_vend, 'nombre', '') or 'Stall'
+    nom_b = nombre.encode('latin-1', 'replace')[:16].ljust(17, b'\x00')
+    bolsa = getattr(vendedor, 'inventario', {}) or {}
+
+    ventas_limpias = []
+    for v in list(puesto.get('ventas') or []):
+        r = int(v['ranura'])
+        if bolsa.get(r) != v['item_id']:
+            continue
+        hay = _cant_de(vendedor, r)
+        if hay <= 0:
+            continue
+        v['cantidad'] = min(int(v['cantidad']), hay)
+        if v['cantidad'] > 0:
+            ventas_limpias.append(v)
+    puesto['ventas'] = ventas_limpias
+
+    compras_limpias = [
+        c for c in (puesto.get('compras') or [])
+        if int(c.get('cantidad', 0)) > 0 and int(c.get('item_id', 0)) > 0
+    ]
+    puesto['compras'] = compras_limpias
+
+    buf = bytearray(struct.pack('<H17sII', 0x0032, nom_b,
+                                len(ventas_limpias), len(compras_limpias)))
+    for v in ventas_limpias:
+        buf += struct.pack('<8sIII', v['instancia'], int(v['cantidad']),
+                           int(v['precio']), int(v['item_id']))
+        buf += _entrada_item_puesto(vendedor, v['ranura'], v['cantidad'])
+    for c in compras_limpias:
+        iid = int(c['item_id'])
+        buf += struct.pack('<IIIII', iid, 0, int(c['cantidad']),
+                           int(c['precio']), iid)
+    return bytes(buf)
+
+
+def _cerrar_puesto(ses, avisar_dueno: bool = True):
+    """Cierra el puesto de venta del jugador y avisa a los demas en su mapa."""
+    tenia = getattr(ses, 'puesto', None)
+    ses.puesto = None
+    if avisar_dueno and getattr(ses, 'personaje', None):
+        ses.enviar(struct.pack('<H', 0x0031))
+    if tenia and getattr(ses, 'personaje', None):
+        try:
+            import presencia as _pres
+            _pres.notificar_cierre_puesto(ses)
+        except Exception:
+            log.exception('presencia: fallo al notificar cierre de puesto')
+
+
+
 def _mejoras_de(ses):
     """Las mejoras del personaje de esa sesion, o None.
 
@@ -902,6 +991,7 @@ PALABRAS_GM = frozenset((
     'skills', 'spells', 'skillsall', 'learnall', 'skillall', 'skills5', 'skill5',
     'clearskills', 'clearskill',
     'pet', 'mascota',
+    'emote', 'emocion',
 ))
 
 
@@ -1015,6 +1105,25 @@ def _gm_parsear(texto: str):
                'pet', 'mascota'):
         import gm as _gm
         return _gm.parsear(texto)
+    if cmd in ('emote', 'e', 'emocion'):
+        if len(partes) < 2:
+            return ('err', 'usage: /emote <id 0..36> | /emote unlock <id> | /emote unlockall | /emote list')
+        sub = partes[1].lower()
+        if sub in ('unlockall', 'all'):
+            return ('emote_unlockall',)
+        if sub == 'list':
+            return ('emote_list',)
+        if sub in ('unlock', 'learn') and len(partes) >= 3:
+            try:
+                eid = int(partes[2], 0)
+                return ('emote_unlock', eid)
+            except ValueError:
+                return ('err', 'el id de emote debe ser un numero')
+        try:
+            emo_id = int(partes[1], 0)
+        except ValueError:
+            return ('err', 'el id de emote debe ser un numero')
+        return ('emote', emo_id)
     if cmd not in ('item', 'give', 'i'):
         return None
     if len(partes) < 2:
@@ -1045,9 +1154,56 @@ def _probar_gm(ses, cuerpo, addr) -> bool:
         ses.enviar(_cl.aviso(
             'GM: /item <id> [qty] | /level <n> | /levelall <n> | /skills [lv] | /skillsall [lv] | /skills5 | /clearskills | '
             '/pet level|exp|path|evolve | /rango [1..20] | '
-            '/estacion <normal|navidad|halloween|sakura|verano>',
+            '/estacion <normal|navidad|halloween|sakura|verano> | /emote <0..36> | /emote unlock <id> | /emote unlockall | /emote list',
             tipo=0, msg_id=_cl.MSG_ITEM))
         log.info('[%s] GM help' % (addr,))
+        return True
+    if leido[0] == 'emote' and ses.personaje:
+        import inventario as _iv_emo
+        emo_id = max(0, min(36, int(leido[1])))
+        if not _iv_emo.puede_usar_emocion(ses.personaje, emo_id):
+            ses.enviar(_cl.aviso("You have not unlocked this expression yet.", tipo=0, msg_id=_cl.MSG_ITEM))
+            return True
+        import presencia as _pr_emo
+        _pr_emo.notificar_emocion(ses, emo_id)
+        log.info(f"[{addr}] GM emote {emo_id} reproducido por {ses.personaje.nombre}")
+        return True
+    if leido[0] == 'emote_unlock' and ses.personaje:
+        emo_id = max(0, min(36, int(leido[1])))
+        emotes = getattr(ses.personaje, 'emotes', None)
+        if emotes is None:
+            emotes = set()
+            ses.personaje.emotes = emotes
+        emotes.add(emo_id)
+        if getattr(ses, 'usuario', None):
+            cuentas.guardar_emotes(ses.usuario, ses.personaje.char_id, emotes)
+        import presencia as _pr_emo
+        ses.enviar(
+            _cl.aviso(f"Emote {emo_id} unlocked!", tipo=0, msg_id=_cl.MSG_ITEM),
+            _pr_emo.paquete_emotes_desbloqueados(emotes)
+        )
+        _pr_emo.notificar_emocion(ses, emo_id)
+        log.info(f"[{addr}] GM desbloqueo emote {emo_id} para {ses.personaje.nombre}")
+        return True
+    if leido[0] == 'emote_unlockall' and ses.personaje:
+        emotes = getattr(ses.personaje, 'emotes', None)
+        if emotes is None:
+            emotes = set()
+            ses.personaje.emotes = emotes
+        for i in range(37):
+            emotes.add(i)
+        if getattr(ses, 'usuario', None):
+            cuentas.guardar_emotes(ses.usuario, ses.personaje.char_id, emotes)
+        import presencia as _pr_emo
+        ses.enviar(
+            _cl.aviso("All 37 emotes unlocked!", tipo=0, msg_id=_cl.MSG_ITEM),
+            _pr_emo.paquete_emotes_desbloqueados(emotes)
+        )
+        log.info(f"[{addr}] GM desbloqueo todos los emotes para {ses.personaje.nombre}")
+        return True
+    if leido[0] == 'emote_list' and ses.personaje:
+        adquiridos = sorted(getattr(ses.personaje, 'emotes', None) or [])
+        ses.enviar(_cl.aviso(f"Basic: 0..11 | Acquired: {adquiridos}", tipo=0, msg_id=_cl.MSG_ITEM))
         return True
     if leido[0] == 'err':
         ses.enviar(_cl.aviso(leido[1], tipo=0, msg_id=_cl.MSG_ITEM))
@@ -1806,6 +1962,178 @@ def _repartir_muerte(ses, m):
     return [(ses, 1.0, True)]
 
 
+# =========================================================================
+# INVOCACION DE ELEMENTAL LORDS EN PLAYGROUNDS (East 42 y West 43)
+# =========================================================================
+STAGES_PLAYGROUND = {42, 43}
+
+ELFOS_A_LORDS = {
+    1: (15, 'Wind Lord'),
+    2: (16, 'Fire Lord'),
+    3: (17, 'Water Lord'),
+    4: (18, 'Earth Lord'),
+}
+
+FRASES_LORDS_SPAWN = {
+    15: "Feel the wrath of the howling gale!",
+    16: "Tremble before the blazing inferno!",
+    17: "Drown in the depths of the icy tide!",
+    18: "The ancient earth trembles with my fury!",
+}
+
+FRASES_LORDS_DEFEAT = {
+    15: "The Wind Lord has been dispelled into the breeze!",
+    16: "The Fire Lord's flames have been extinguished!",
+    17: "The Water Lord has dissolved back into the tide!",
+    18: "The Earth Lord has crumbled to dust!",
+}
+
+_SIG_LORD_PLAYGROUND = [97_000_000]
+
+
+def _obtener_conteo_elfos(ses):
+    """Devuelve el diccionario de bajas de elfos para la sala compartida o la sesion."""
+    sala = _sala_de(ses)
+    if sala is not None:
+        if not hasattr(sala, 'conteo_elfos'):
+            sala.conteo_elfos = {}
+        return sala.conteo_elfos
+    if not hasattr(ses, 'conteo_elfos_playground'):
+        ses.conteo_elfos_playground = {}
+    return ses.conteo_elfos_playground
+
+
+def _invocar_lord_playground(ses, lord_type: int, lord_nombre: str, m_muerto, addr):
+    """Genera e invoca al Elemental Lord en la posicion donde murio el elfo."""
+    import combate as _cb
+    import login as _lg
+    import clases as _cl
+
+    st = ses.personaje.stage if ses.personaje else 42
+    nombre_mapa = {42: 'East Playground', 43: 'West Playground'}.get(st, f'Playground ({st})')
+
+    orig_x, orig_y = m_muerto.tile_x, m_muerto.tile_y
+    spawn_pos = (orig_x, orig_y)
+    if not _transitable.se_pisa(st, orig_x, orig_y):
+        for dx, dy in ((-1, 0), (1, 0), (0, -1), (0, 1), (-1, -1), (1, 1), (-1, 1), (1, -1)):
+            nx, ny = orig_x + dx, orig_y + dy
+            if _transitable.se_pisa(st, nx, ny):
+                spawn_pos = (nx, ny)
+                break
+
+    _SIG_LORD_PLAYGROUND[0] += 1
+    lord_eid = _SIG_LORD_PLAYGROUND[0]
+
+    nombre, sprite = _monstruo_bd(lord_type)
+    if not nombre or nombre == '?':
+        nombre = lord_nombre
+
+    lord = _cb.Monstruo(lord_eid, lord_type, nombre, list(spawn_pos), sprite, stage=st)
+    lord.generado = True
+    lord.es_lord_playground = True
+
+    if ses.monstruos is None:
+        ses.monstruos = {}
+    ses.monstruos[lord_eid] = lord
+
+    sala = _sala_de(ses)
+    if sala is not None and getattr(sala, 'monstruos', None) is not None:
+        sala.monstruos[lord_eid] = lord
+
+    sp_pkg = _lg._npc_spawn(lord_eid, lord_type, nombre, spawn_pos, sprite=sprite, klass=1)
+
+    aviso_texto = f"The {nombre} has appeared in {nombre_mapa} ({spawn_pos[0]}, {spawn_pos[1]})!"
+    aviso_pkg = _cl.aviso(aviso_texto, tipo=0, msg_id=_cl.MSG_ITEM)
+
+    frase_lord = FRASES_LORDS_SPAWN.get(lord_type, "Feel the elemental power!")
+    chat_pkg = _decir(lord_eid, nombre, frase_lord)
+
+    paquetes = [sp_pkg, aviso_pkg, chat_pkg]
+    ses.enviar_inmediato(*paquetes)
+    for comp in _companeros(ses):
+        try:
+            comp.enviar_inmediato(*paquetes)
+        except Exception:
+            pass
+
+    log.info(f"[{addr}] ¡{nombre} invocado en {nombre_mapa} {spawn_pos} (eid={lord_eid})!")
+    return lord
+
+
+def _procesar_baja_elfo_playground(ses, m, addr):
+    """Cuenta bajas de Elfos elementales en Playground (42/43) e invoca al Lord correspondiente."""
+    if not ses.personaje:
+        return
+    st = getattr(ses.personaje, 'stage', None)
+    if st not in STAGES_PLAYGROUND:
+        return
+    if m.npc_type not in ELFOS_A_LORDS:
+        return
+
+    import configuracion as _cfg
+    kills_necesarias = max(1, int(getattr(_cfg, 'KILLS_ELFOS_PARA_LORD', 10)))
+    max_activos = max(1, int(getattr(_cfg, 'MAX_LORDS_ACTIVOS_POR_ELEMENTO', 1)))
+
+    lord_type, lord_nombre = ELFOS_A_LORDS[m.npc_type]
+
+    monstruos_mapa = ses.monstruos or {}
+    activos = sum(
+        1 for b in monstruos_mapa.values()
+        if getattr(b, 'npc_type', None) == lord_type and getattr(b, 'vivo', False)
+    )
+
+    conteo = _obtener_conteo_elfos(ses)
+
+    if activos >= max_activos:
+        log.info(f"[{addr}] Elfo {m.nombre} derrotado en stage {st}, pero ya hay {activos} {lord_nombre} activo(s).")
+        conteo[m.npc_type] = min(conteo.get(m.npc_type, 0), kills_necesarias - 1)
+        return
+
+    conteo[m.npc_type] = conteo.get(m.npc_type, 0) + 1
+    actual = conteo[m.npc_type]
+
+    log.info(f"[{addr}] Elfo {m.nombre} derrotado en stage {st} ({actual}/{kills_necesarias} para invocar a {lord_nombre})")
+
+    if actual >= kills_necesarias:
+        conteo[m.npc_type] = 0
+        _invocar_lord_playground(ses, lord_type, lord_nombre, m, addr)
+
+
+def _procesar_muerte_lord_playground(ses, m, addr):
+    """Notifica la caida de un Elemental Lord en Playground."""
+    import clases as _cl
+    frase_derrota = FRASES_LORDS_DEFEAT.get(
+        m.npc_type,
+        f"The {m.nombre} has been defeated!"
+    )
+    aviso_pkg = _cl.aviso(frase_derrota, tipo=0, msg_id=_cl.MSG_ITEM)
+    ses.enviar_inmediato(aviso_pkg)
+    for comp in _companeros(ses):
+        try:
+            comp.enviar_inmediato(aviso_pkg)
+        except Exception:
+            pass
+    log.info(f"[{addr}] {m.nombre} (eid={m.entity_id}) ha sido derrotado en Playground.")
+
+
+def _despawn_monstruo_muerto(ses, m, objetivo):
+    """Manda el despawn del monstruo al jugador y a sus companeros, y limpia si fue generado."""
+    import combate as _cb
+    pkt = _cb.despawn_monstruo(objetivo)
+    ses.enviar_inmediato(pkt)
+    for _comp in _companeros(ses):
+        try:
+            _comp.enviar_inmediato(pkt)
+        except Exception:
+            pass
+    if getattr(m, 'generado', False):
+        if ses.monstruos:
+            ses.monstruos.pop(objetivo, None)
+        _s = _sala_de(ses)
+        if _s is not None and getattr(_s, 'monstruos', None):
+            _s.monstruos.pop(objetivo, None)
+
+
 def _procesar_muerte_monstruo(ses, m, yo, addr, espera=0.0):
     """Procesa respawn, EXP, subida de nivel, oro y drops cuando un monstruo es derrotado."""
     import combate as _cb
@@ -1819,6 +2147,12 @@ def _procesar_muerte_monstruo(ses, m, yo, addr, espera=0.0):
     if ses.personaje and ses.personaje.stage == 57 and m.npc_type == 224:
         ses.slarm_kills = getattr(ses, 'slarm_kills', 0) + 1
         log.info(f"[{addr}] Little Slarm derrotado en Fighting Palace ({ses.slarm_kills}/2)")
+
+    if ses.personaje and getattr(ses.personaje, 'stage', None) in STAGES_PLAYGROUND:
+        if m.npc_type in ELFOS_A_LORDS:
+            _procesar_baja_elfo_playground(ses, m, addr)
+        elif getattr(m, 'es_lord_playground', False) or m.npc_type in (15, 16, 17, 18):
+            _procesar_muerte_lord_playground(ses, m, addr)
 
     if ses.personaje:
         import misiones as _mis_muerte
@@ -1877,9 +2211,10 @@ def _procesar_muerte_monstruo(ses, m, yo, addr, espera=0.0):
         _bucle.call_later(_espera_muerte,
                           lambda p=_muerte: ses.enviar_inmediato(*p))
         _bucle.call_later(_espera_muerte + 2.5,
-                          lambda: ses.enviar_inmediato(_cb.despawn_monstruo(objetivo)))
+                          lambda: _despawn_monstruo_muerto(ses, m, objetivo))
     except Exception:
         ses.enviar(*_muerte)
+        _despawn_monstruo_muerto(ses, m, objetivo)
 
     def _respawn():
         # ENABLE_GENERATOR: mientras la zona siga encendida, cada baja se
@@ -1912,10 +2247,16 @@ def _procesar_muerte_monstruo(ses, m, yo, addr, espera=0.0):
         if not getattr(m, 'vivo', False):
             m.revivir()
             import login as _lg
-            ses.enviar_inmediato(_lg._npc_spawn(
+            _sp_pkg = _lg._npc_spawn(
                 objetivo, m.npc_type, m.nombre, (m.tile_x, m.tile_y),
-                sprite=getattr(m, 'sprite', 0), klass=1))
-            log.info(f"[{addr}] monstruo {m.nombre} (entidad {objetivo}) reaparecio")
+                sprite=getattr(m, 'sprite', 0), klass=1)
+            ses.enviar_inmediato(_sp_pkg)
+            for _comp in _companeros(ses):
+                try:
+                    _comp.enviar_inmediato(_sp_pkg)
+                except Exception:
+                    pass
+            log.info(f"[{addr}] monstruo {m.nombre} (entidad {objetivo}) reaparecio en ({m.tile_x}, {m.tile_y})")
 
     try:
         asyncio.get_event_loop().call_later(_cb.SEGUNDOS_REAPARICION, _respawn)
@@ -2456,6 +2797,8 @@ def _sincronizar_cambio_mapa(ses, stage_id: int, x: int = None, y: int = None):
     p = getattr(ses, 'personaje', None)
     if not p:
         return
+    if getattr(ses, 'puesto', None):
+        _cerrar_puesto(ses, avisar_dueno=True)
     import clases as _cl
     p.stage = stage_id
     if x is not None and y is not None:
@@ -4411,7 +4754,8 @@ def _poner_generado(ses, eid, npc_type, tile, zona):
     import combate as _cb_g
     import login as _lg_g
     nombre, sprite = _monstruo_bd(npc_type)
-    m = _cb_g.Monstruo(eid, npc_type, nombre, list(tile), sprite)
+    _st = getattr(getattr(ses, 'personaje', None), 'stage', None)
+    m = _cb_g.Monstruo(eid, npc_type, nombre, list(tile), sprite, stage=_st)
     m.generado = True
     m.zona_generador = int(zona)
     if ses.monstruos is None:
@@ -4885,7 +5229,10 @@ _MAPEO_BUFF = (('matk_pct', 'matk_pct'), ('mdef_pct', 'mdef_pct'), ('atk_pct', '
                ('matk_bonus', 'matk'), ('mdef_bonus', 'mdef'), ('hit_bonus', 'hit'),
                ('eva_bonus', 'eva'), ('mag_dmg_pct', 'mag_dmg_pct'),
                ('phys_dmg_pct', 'phys_dmg_pct'), ('hp_bonus', 'hp_bonus'),
-               ('mp_bonus', 'mp_bonus'), ('cast_redux', 'cast_redux'))
+               ('mp_bonus', 'mp_bonus'), ('cast_redux', 'cast_redux'),
+               ('res_body', 'res_body'), ('res_mind', 'res_mind'),
+               ('res_elec', 'res_lightning'), ('res_fire', 'res_fire'),
+               ('res_ice', 'res_ice'), ('res_poison', 'res_corrosion'))
 
 
 def _entrada_de_buff(mag, dur_s):
@@ -5656,8 +6003,14 @@ class Servidor:
                 for mid, m in list(monstruos.items()):
                     if not _en_instancia and m.toca_reaparecer():
                         m.revivir()
-                        ses.enviar(_lg._npc_spawn(m.entity_id, m.npc_type, m.nombre, m.spawn_tile, sprite=getattr(m, 'sprite', 0), klass=1))
-                        log.info(f"monstruo {m.nombre} (eid={m.entity_id}) reaparecio en {m.spawn_tile}")
+                        _sp_pkg = _lg._npc_spawn(m.entity_id, m.npc_type, m.nombre, (m.tile_x, m.tile_y), sprite=getattr(m, 'sprite', 0), klass=1)
+                        ses.enviar(_sp_pkg)
+                        for _comp in _companeros(ses):
+                            try:
+                                _comp.enviar_inmediato(_sp_pkg)
+                            except Exception:
+                                pass
+                        log.info(f"monstruo {m.nombre} (eid={m.entity_id}) reaparecio en ({m.tile_x}, {m.tile_y})")
 
                 out = ses.drenar()
                 if out and getattr(ses, 'writer', None):
@@ -5866,6 +6219,10 @@ class Servidor:
             if ses in self.mundos:
                 self.mundos.remove(ses)
             try:
+                _cerrar_puesto(ses, avisar_dueno=False)
+            except Exception:
+                pass
+            try:
                 import presencia as _pres
                 _pres.salir(ses)
             except Exception:
@@ -5944,6 +6301,7 @@ class Servidor:
         # se mira si el cuerpo trae texto ASCII que parezca un comando, y solo
         # en ese caso se consume el paquete. Si no lo es, sigue su camino.
         if (ses.rol == 'mundo' and getattr(ses, 'personaje', None)
+                and opcode not in (0x0022, 0x0023, 0x0024, 0x0025, 0x0026)
                 and _probar_gm(ses, cuerpo, addr)):
             return
         # EL CHAT. Lo que se escribe sin barra llega como c2s 0x000E: el
@@ -6160,6 +6518,34 @@ class Servidor:
                                 ses.enviar(_cb.atributo(p.entity_id, _ts, _cb.KIND_TRANSFORM))
                         else:
                             p.buffs.pop(_b_id, None)
+
+            # Expiracion de tarjeta de puesto (Stall Card) temporal activa:
+            if getattr(p, 'expiracion_puesto', 0) > 0:
+                _rem_puesto = p.expiracion_puesto - time.time()
+                if _rem_puesto <= 0:
+                    if inv.RANURA_PUESTO in ses.inventario:
+                        del ses.inventario[inv.RANURA_PUESTO]
+                        _cantidades(ses).pop(inv.RANURA_PUESTO, None)
+                    p.expiracion_puesto = 0.0
+                    if getattr(ses, 'usuario', None):
+                        cuentas.guardar_inventario(ses.usuario, p.char_id, ses.inventario,
+                                                   _cantidades(ses), expiracion_puesto=0.0)
+                else:
+                    def _expirar_tarjeta_login(ses_ref=ses, exp_ts=p.expiracion_puesto):
+                        if (getattr(ses_ref, 'personaje', None) and
+                            getattr(ses_ref.personaje, 'expiracion_puesto', 0) == exp_ts and
+                            inv.RANURA_PUESTO in getattr(ses_ref, 'inventario', {})):
+                            del ses_ref.inventario[inv.RANURA_PUESTO]
+                            _cantidades(ses_ref).pop(inv.RANURA_PUESTO, None)
+                            ses_ref.personaje.expiracion_puesto = 0.0
+                            import clases as _c
+                            ses_ref.enviar(_c.aviso("Your Stall Card has expired.", tipo=0, msg_id=_c.MSG_ITEM),
+                                           *_refrescar(ses_ref, [inv.RANURA_PUESTO]))
+                            if getattr(ses_ref, 'usuario', None):
+                                cuentas.guardar_inventario(ses_ref.usuario, ses_ref.personaje.char_id,
+                                                           ses_ref.inventario, _cantidades(ses_ref),
+                                                           expiracion_puesto=0.0)
+                    asyncio.get_event_loop().call_later(_rem_puesto, _expirar_tarjeta_login)
             # Creditos de rango. Van en su propio 0x0013, igual que los manda
             # el servidor real al usar un objeto que los sube. El rango de la
             # ficha lo decide el cliente a partir de este total.
@@ -6669,15 +7055,24 @@ class Servidor:
                                             m.ultimo_ataque = ahora
                                             if targ_eid == yo:
                                                 def_targ = defensa_jugador(ses)
+                                                def_elem = defensas_elementales_jugador(ses)
+                                                thnd_d = max(0, getattr(m, 'thnd_atk', 0) - def_elem['thnd'])
+                                                fire_d = max(0, getattr(m, 'fire_atk', 0) - def_elem['fire'])
+                                                ice_d = max(0, getattr(m, 'ice_atk', 0) - def_elem['ice'])
+                                                rot_d = max(0, getattr(m, 'rotten_atk', 0) - def_elem['rotten'])
+                                                elem_tot = thnd_d + fire_d + ice_d + rot_d
+                                                suyo = _cb.dano_recibido(m.pegar(), def_targ, elem_atk=elem_tot, elem_def=0)
                                             elif f_pet and targ_eid == pet_eid:
                                                 b_st_def = _ms.bonos_de_ficha(f_pet)
                                                 b_bf_def = _ms.bonos_buffs(f_pet)
                                                 def_targ = int(f_pet.get('dfs', 50)) + int(b_st_def.get('dfs', 0)) + int(b_bf_def.get('dfs', 0))
                                                 if int(f_pet.get('saciedad', 0)) > 100:
                                                     def_targ = int(round(def_targ * 1.4))
+                                                elem_tot = getattr(m, 'thnd_atk', 0) + getattr(m, 'fire_atk', 0) + getattr(m, 'ice_atk', 0) + getattr(m, 'rotten_atk', 0)
+                                                suyo = _cb.dano_recibido(m.pegar(), def_targ, elem_atk=elem_tot, elem_def=0)
                                             else:
                                                 def_targ = 100
-                                            suyo = _cb.dano_recibido(m.pegar(), def_targ)
+                                                suyo = _cb.dano_recibido(m.pegar(), def_targ)
                                             # En sigilo se esquiva: Sneak V da
                                             # un 75% (物理迴避). Un golpe esquivado
                                             # hace 0; no hay paquete de "Miss"
@@ -7468,7 +7863,7 @@ class Servidor:
             # ataque con la ventana de muerte abierta, y cada uno hacia que
             # el monstruo contraatacara: por eso seguian saliendo numeros de
             # dano sobre el cadaver.
-            if getattr(ses, 'muerto', False):
+            if getattr(ses, 'muerto', False) or getattr(ses, 'puesto', None):
                 return
             d3 = _cb.parsear_ataque(cuerpo)
             if not d3:
@@ -7573,11 +7968,9 @@ class Servidor:
                 # pega ya.
                 if _obj_act is None and tipo == _cb.ATAQUE_NORMAL:
                     ses.objetivo_actual = objetivo
-                    ses.ultimo_golpe = 0
                     _obj_act = objetivo
                 if _obj_act != objetivo:
                     ses.objetivo_actual = objetivo
-                    ses.ultimo_golpe = 0
 
             _ahora_atk = time.time()
 
@@ -8541,6 +8934,18 @@ class Servidor:
                                 buff_entry['mp_bonus'] = mag.get('mp_bonus')
                             if mag.get('cast_redux'):
                                 buff_entry['cast_redux'] = mag.get('cast_redux')
+                            if mag.get('res_body'):
+                                buff_entry['res_body'] = mag.get('res_body')
+                            if mag.get('res_mind'):
+                                buff_entry['res_mind'] = mag.get('res_mind')
+                            if mag.get('res_elec'):
+                                buff_entry['res_lightning'] = mag.get('res_elec')
+                            if mag.get('res_fire'):
+                                buff_entry['res_fire'] = mag.get('res_fire')
+                            if mag.get('res_ice'):
+                                buff_entry['res_ice'] = mag.get('res_ice')
+                            if mag.get('res_poison'):
+                                buff_entry['res_corrosion'] = mag.get('res_poison')
                             if es_target_pet and isinstance(f_pet_cast, dict):
                                 f_pet_cast.setdefault('buffs', {})[tipo] = dict(buff_entry)
                             elif _a_mi_b:
@@ -9949,6 +10354,379 @@ class Servidor:
                 cuentas.guardar_oro(ses.usuario, cid, ses.oro)
             return
 
+        # --- puestos de venta entre jugadores (Stalls: 0x0022..0x0026) ----
+        # Desensamblado en Angel.exe:
+        #   C2S 0x0022 (0x619A60): salestart (Set Stall + Hawk + Sell/Buy tabs)
+        #   C2S 0x0023 (0x61A250): saleclose (Close Stall)
+        #   C2S 0x0024 (0x61A2D0): ver puesto de otro jugador -> S2C 0x0032
+        #   C2S 0x0025 (0x61B8B0): comprar de la pestana Sell -> S2C 0x0033
+        #   C2S 0x0026 (0x61BD90): vender a la pestana Buy   -> S2C 0x004A
+        if opcode == 0x0022 and ses.rol == 'mundo' and ses.personaje and len(cuerpo) >= 61:
+            if getattr(ses, 'muerto', False) or getattr(ses, 'puesto', None):
+                return
+            import inventario as _iv
+            import presencia as _pres
+            bolsa = getattr(ses, 'inventario', {})
+            cid = ses.personaje.char_id
+            n_sell, n_buy, _ent_pkt = struct.unpack_from('<III', cuerpo, 0)
+            hawk_raw = cuerpo[12:61].split(b'\x00', 1)[0]
+            hawk = hawk_raw.decode('latin-1', 'replace').strip()
+            if not hawk:
+                hawk = f"{ses.personaje.nombre}'s Stall"
+
+            off = 61
+            ventas = []
+            ranuras_usadas = set()
+            ranuras_max = _iv.limite_ranuras_puesto(bolsa)
+            for _ in range(min(int(n_sell), ranuras_max)):
+                if off + 16 > len(cuerpo):
+                    break
+                inst8, cant, precio = struct.unpack_from('<8sII', cuerpo, off)
+                off += 16
+                if cant <= 0 or precio <= 0:
+                    continue
+                ranura = _iv.ranura_de_instancia(_instancias(ses), inst8, bolsa, cid)
+                if (ranura is None or _iv.es_equipo(ranura)
+                        or ranura == _iv.RANURA_ORO or ranura in ranuras_usadas):
+                    log.warning(f"[{addr}] puesto 0x0022: instancia {inst8.hex()} no valida (ranura={ranura})")
+                    continue
+                ranura = int(ranura)
+                hay = _cant_de(ses, ranura)
+                if hay <= 0:
+                    continue
+                cant_real = min(int(cant), hay)
+                _instancias(ses)[ranura] = inst8
+                ranuras_usadas.add(ranura)
+                ventas.append({
+                    'instancia': inst8,
+                    'ranura': ranura,
+                    'item_id': int(bolsa[ranura]),
+                    'cantidad': cant_real,
+                    'precio': min(int(precio), 2000000000),
+                })
+
+            compras = []
+            for _ in range(min(int(n_buy), ranuras_max)):
+                if off + 16 > len(cuerpo):
+                    break
+                item_id, _cero, cant, precio = struct.unpack_from('<IIII', cuerpo, off)
+                off += 16
+                if item_id <= 0 or cant <= 0 or precio <= 0:
+                    continue
+                compras.append({
+                    'item_id': int(item_id),
+                    'cantidad': min(int(cant), 9999),
+                    'precio': min(int(precio), 2000000000),
+                })
+
+            if not ventas and not compras:
+                return
+
+            if getattr(ses, 'recoleccion', None):
+                _parar_recoleccion(ses)
+            if getattr(ses, 'sentado', False):
+                ses.sentado = False
+
+            pos_x = int(getattr(ses.personaje, 'tile_x', 0) or 0)
+            pos_y = int(getattr(ses.personaje, 'tile_y', 0) or 0)
+            ses.puesto = {
+                'hawk': hawk,
+                'ventas': ventas,
+                'compras': compras,
+                'posicion': (pos_x, pos_y),
+            }
+
+            # S2C 0x0030 (FUN_00603f60): confirma apertura al dueno (salestartok)
+            pkt_ok = bytearray(struct.pack('<HII', 0x0030, len(ventas), len(compras)))
+            for v in ventas:
+                pkt_ok += struct.pack('<8sII', v['instancia'], v['cantidad'], v['precio'])
+            for c in compras:
+                pkt_ok += struct.pack('<IIII', c['item_id'], 0, c['cantidad'], c['precio'])
+            ses.enviar(bytes(pkt_ok))
+            _pres.notificar_puesto(ses)
+            log.info(f"[{addr}] puesto abierto '{hawk}': {len(ventas)} en venta, {len(compras)} en compra")
+            return
+
+        if opcode == 0x0023 and ses.rol == 'mundo' and ses.personaje:
+            _cerrar_puesto(ses, avisar_dueno=True)
+            log.info(f"[{addr}] puesto cerrado")
+            return
+
+        if opcode == 0x0024 and ses.rol == 'mundo' and ses.personaje and len(cuerpo) >= 4:
+            import clases as _c
+            import presencia as _pres
+            target_eid = struct.unpack_from('<I', cuerpo, 0)[0]
+            vendedor = _pres.sesion_por_entidad(ses, target_eid)
+            if vendedor is None and ses.personaje.entity_id == target_eid:
+                vendedor = ses
+            if not vendedor or not getattr(vendedor, 'puesto', None) or not getattr(vendedor, 'personaje', None):
+                ses.enviar(_c.aviso('That stall is no longer open.', tipo=0))
+                return
+            ses.enviar(_paquete_vista_puesto(vendedor))
+            log.info(f"[{addr}] viendo puesto de {vendedor.personaje.nombre} (eid={target_eid})")
+            return
+
+        if opcode == 0x0025 and ses.rol == 'mundo' and ses.personaje and len(cuerpo) >= 8:
+            import copy as _copy
+            import clases as _c
+            import inventario as _iv
+            import presencia as _pres
+            target_eid, n_items = struct.unpack_from('<II', cuerpo, 0)
+            vendedor = _pres.sesion_por_entidad(ses, target_eid)
+            if (not vendedor or vendedor is ses
+                    or not getattr(vendedor, 'puesto', None)
+                    or not getattr(vendedor, 'personaje', None)):
+                ses.enviar(_c.aviso('That stall is no longer open.', tipo=0))
+                return
+
+            puesto = vendedor.puesto
+            ventas = puesto.get('ventas') or []
+            bolsa_vend = getattr(vendedor, 'inventario', {})
+            cid_comp = ses.personaje.char_id
+            cid_vend = vendedor.personaje.char_id
+
+            tocadas_comp = []
+            tocadas_vend = []
+            avisos_comp = []
+            avisos_vend = []
+            pkts_0033 = []
+            oro_total = 0
+
+            off = 8
+            for _ in range(min(int(n_items), 50)):
+                if off + 12 > len(cuerpo):
+                    break
+                inst8, cant_pedida = struct.unpack_from('<8sI', cuerpo, off)
+                off += 12
+                if cant_pedida <= 0:
+                    continue
+                v = next((x for x in ventas if x['instancia'] == inst8 and x['cantidad'] > 0), None)
+                if not v:
+                    continue
+                r_vend = int(v['ranura'])
+                item_id = int(v['item_id'])
+                if bolsa_vend.get(r_vend) != item_id:
+                    v['cantidad'] = 0
+                    continue
+                disp = min(int(v['cantidad']), _cant_de(vendedor, r_vend))
+                cant_real = min(int(cant_pedida), disp)
+                if cant_real <= 0:
+                    continue
+                precio_u = int(v['precio'])
+                costo = cant_real * precio_u
+                if getattr(ses, 'oro', 0) < costo:
+                    avisos_comp.append(_c.aviso('Not enough Gold.', tipo=0))
+                    break
+
+                # Comprobar espacio antes de transferir
+                if not (_iv.es_apilable(item_id) and any(
+                        int(it) == item_id and int(rk) != _iv.RANURA_ORO and not _iv.es_equipo(int(rk))
+                        for rk, it in ses.inventario.items())):
+                    if _ranura_libre(ses.inventario) is None:
+                        avisos_comp.append(_c.aviso('Your backpack is full.', tipo=0))
+                        break
+
+                mej_copia = None
+                pet_copia = None
+                if not _iv.es_apilable(item_id):
+                    mej_orig = (getattr(vendedor.personaje, 'mejoras', None) or {}).get(r_vend)
+                    if mej_orig:
+                        mej_copia = _copy.deepcopy(mej_orig)
+                    mascotas_vend = getattr(vendedor.personaje, 'mascotas', None) or {}
+                    pet_orig = mascotas_vend.get(str(r_vend)) or mascotas_vend.get(r_vend)
+                    if pet_orig:
+                        pet_copia = _copy.deepcopy(pet_orig)
+
+                sacadas = _sacar(vendedor, r_vend, cant_real)
+                if sacadas <= 0:
+                    continue
+                r_comp = _meter(ses, item_id, sacadas)
+                if r_comp is None:
+                    # Revertir si por alguna razon no cupo
+                    _meter(vendedor, item_id, sacadas)
+                    break
+
+                if mej_copia is not None:
+                    if getattr(ses.personaje, 'mejoras', None) is None:
+                        ses.personaje.mejoras = {}
+                    ses.personaje.mejoras[int(r_comp)] = mej_copia
+                if pet_copia is not None:
+                    if not hasattr(ses.personaje, 'mascotas') or not isinstance(ses.personaje.mascotas, dict):
+                        ses.personaje.mascotas = {}
+                    pet_copia['ranura'] = int(r_comp)
+                    pet_copia['item'] = item_id
+                    pet_copia['instancia'] = 1000 + int(r_comp)
+                    pet_copia['fuera'] = False
+                    pet_copia['entidad'] = None
+                    ses.personaje.mascotas[str(r_comp)] = pet_copia
+
+                costo_real = sacadas * precio_u
+                ses.oro = max(0, getattr(ses, 'oro', 0) - costo_real)
+                ses.personaje.oro = ses.oro
+                vendedor.oro = min(2000000000, getattr(vendedor, 'oro', 0) + costo_real)
+                vendedor.personaje.oro = vendedor.oro
+                oro_total += costo_real
+
+                v['cantidad'] = max(0, int(v['cantidad']) - sacadas)
+                tocadas_comp.append(int(r_comp))
+                tocadas_vend.append(r_vend)
+                pkts_0033.append(struct.pack('<H8sI', 0x0033, inst8, sacadas))
+                nom_it = _nombre_item(item_id)
+                avisos_comp.append(_c.aviso(
+                    nom_it if sacadas == 1 else f'{sacadas}x {nom_it}',
+                    tipo=0, msg_id=_c.MSG_ITEM))
+                avisos_vend.append(_c.aviso(
+                    f"Sold {sacadas}x {nom_it} for {costo_real} Gold.", tipo=0))
+
+            puesto['ventas'] = [x for x in ventas if int(x.get('cantidad', 0)) > 0]
+
+            if not tocadas_comp:
+                if avisos_comp:
+                    ses.enviar(*avisos_comp)
+                return
+
+            ses.enviar(*_refrescar(ses, tocadas_comp, con_oro=True),
+                       _c.aviso(f'{oro_total} Gold', tipo=0, msg_id=_c.MSG_PAGO),
+                       *avisos_comp,
+                       _paquete_vista_puesto(vendedor))
+            _guardar_bolsa(ses, cid_comp)
+            if getattr(ses, 'usuario', None):
+                cuentas.guardar_oro(ses.usuario, cid_comp, ses.oro)
+
+            vendedor.enviar(*pkts_0033,
+                            *_refrescar(vendedor, tocadas_vend, con_oro=True),
+                            *avisos_vend)
+            vendedor.volcar()
+            _guardar_bolsa(vendedor, cid_vend)
+            if getattr(vendedor, 'usuario', None):
+                cuentas.guardar_oro(vendedor.usuario, cid_vend, vendedor.oro)
+            log.info(f"[{addr}] compro en puesto de {vendedor.personaje.nombre} por {oro_total} de oro")
+            return
+
+        if opcode == 0x0026 and ses.rol == 'mundo' and ses.personaje and len(cuerpo) >= 8:
+            import clases as _c
+            import inventario as _iv
+            import presencia as _pres
+            target_eid, n_items = struct.unpack_from('<II', cuerpo, 0)
+            comprador = _pres.sesion_por_entidad(ses, target_eid)
+            if (not comprador or comprador is ses
+                    or not getattr(comprador, 'puesto', None)
+                    or not getattr(comprador, 'personaje', None)):
+                ses.enviar(_c.aviso('That stall is no longer open.', tipo=0))
+                return
+
+            puesto = comprador.puesto
+            compras = puesto.get('compras') or []
+            cid_vend = ses.personaje.char_id
+            cid_comp = comprador.personaje.char_id
+
+            tocadas_vend = []
+            tocadas_comp = []
+            avisos_vend = []
+            avisos_comp = []
+            pkts_004a = []
+            oro_total = 0
+
+            off = 8
+            for _ in range(min(int(n_items), 50)):
+                if off + 8 > len(cuerpo):
+                    break
+                item_id, cant_ofrecida = struct.unpack_from('<II', cuerpo, off)
+                off += 8
+                if item_id <= 0 or cant_ofrecida <= 0:
+                    continue
+                c_entry = next((x for x in compras
+                                if int(x['item_id']) == int(item_id) and int(x['cantidad']) > 0), None)
+                if not c_entry:
+                    continue
+                precio_u = int(c_entry['precio'])
+                if precio_u <= 0:
+                    continue
+
+                # Buscar ranuras de mochila del visitante que tengan ese item_id
+                ranuras_disp = [
+                    int(r) for r, it in sorted(ses.inventario.items())
+                    if int(it) == int(item_id) and int(r) != _iv.RANURA_ORO and not _iv.es_equipo(int(r))
+                ]
+                total_en_bolsa = sum(_cant_de(ses, r) for r in ranuras_disp)
+                max_pagable = getattr(comprador, 'oro', 0) // precio_u
+                cant_real = min(int(cant_ofrecida), int(c_entry['cantidad']),
+                                total_en_bolsa, max_pagable)
+                if cant_real <= 0:
+                    if max_pagable <= 0:
+                        avisos_vend.append(_c.aviso('The stall owner does not have enough Gold.', tipo=0))
+                    continue
+
+                # Comprobar espacio en la mochila del dueno del puesto
+                if not (_iv.es_apilable(item_id) and any(
+                        int(it) == int(item_id) and int(rk) != _iv.RANURA_ORO and not _iv.es_equipo(int(rk))
+                        for rk, it in comprador.inventario.items())):
+                    if _ranura_libre(comprador.inventario) is None:
+                        avisos_vend.append(_c.aviso("The stall owner's backpack is full.", tipo=0))
+                        break
+
+                por_sacar = cant_real
+                sacadas_total = 0
+                for r_v in ranuras_disp:
+                    if por_sacar <= 0:
+                        break
+                    s = _sacar(ses, r_v, por_sacar)
+                    if s > 0:
+                        por_sacar -= s
+                        sacadas_total += s
+                        tocadas_vend.append(r_v)
+
+                if sacadas_total <= 0:
+                    continue
+
+                r_c = _meter(comprador, int(item_id), sacadas_total)
+                if r_c is None:
+                    _meter(ses, int(item_id), sacadas_total)
+                    break
+
+                tocadas_comp.append(int(r_c))
+                costo_real = sacadas_total * precio_u
+                comprador.oro = max(0, getattr(comprador, 'oro', 0) - costo_real)
+                comprador.personaje.oro = comprador.oro
+                ses.oro = min(2000000000, getattr(ses, 'oro', 0) + costo_real)
+                ses.personaje.oro = ses.oro
+                oro_total += costo_real
+
+                c_entry['cantidad'] = max(0, int(c_entry['cantidad']) - sacadas_total)
+                pkts_004a.append(struct.pack('<HIII', 0x004A, int(item_id), 0, sacadas_total))
+                nom_it = _nombre_item(int(item_id))
+                avisos_vend.append(_c.aviso(
+                    f"Sold {sacadas_total}x {nom_it} for {costo_real} Gold.", tipo=0))
+                avisos_comp.append(_c.aviso(
+                    nom_it if sacadas_total == 1 else f'{sacadas_total}x {nom_it}',
+                    tipo=0, msg_id=_c.MSG_ITEM))
+
+            puesto['compras'] = [x for x in compras if int(x.get('cantidad', 0)) > 0]
+
+            if not tocadas_vend:
+                if avisos_vend:
+                    ses.enviar(*avisos_vend)
+                return
+
+            ses.enviar(*_refrescar(ses, tocadas_vend, con_oro=True),
+                       _c.aviso(f'{oro_total} Gold', tipo=0, msg_id=_c.MSG_ITEM),
+                       *avisos_vend,
+                       _paquete_vista_puesto(comprador))
+            _guardar_bolsa(ses, cid_vend)
+            if getattr(ses, 'usuario', None):
+                cuentas.guardar_oro(ses.usuario, cid_vend, ses.oro)
+
+            comprador.enviar(*pkts_004a,
+                             *_refrescar(comprador, tocadas_comp, con_oro=True),
+                             _c.aviso(f'{oro_total} Gold', tipo=0, msg_id=_c.MSG_PAGO),
+                             *avisos_comp)
+            comprador.volcar()
+            _guardar_bolsa(comprador, cid_comp)
+            if getattr(comprador, 'usuario', None):
+                cuentas.guardar_oro(comprador.usuario, cid_comp, comprador.oro)
+            log.info(f"[{addr}] vendio al puesto de {comprador.personaje.nombre} por {oro_total} de oro")
+            return
+
         # --- separar un monton en dos -------------------------------------
         # Medido al sacar una pocion de una pila de seis:
         #     0b | 2b00 | 2900 | 01000000
@@ -10578,6 +11356,12 @@ class Servidor:
                     ses.enviar(_clf.aviso("Requires Finesse skill to dual-wield weapons.", tipo=0), *_refrescar(ses, [org]))
                     return
             cid = ses.personaje.char_id if ses.personaje else 4980
+            if inv.es_equipo(dst):
+                estado_org = (ses.personaje.mejoras or {}).get(org) if ses.personaje else None
+                if not inv.puede_equipar(it_org, cid, estado_org):
+                    import clases as _clf
+                    ses.enviar(_clf.aviso("Unable to equip the equipment.", tipo=0), *_refrescar(ses, [org]))
+                    return
             # Si equipa un arma/municion en la 3 o 4 incompatible con la otra mano
             # (ej. Staff/Spear con escudo, o Arco con escudo en vez de flechas, o Honda con flechas en vez de bolitas),
             # desequipar la otra mano a la mochila conservando su cantidad.
@@ -10614,6 +11398,12 @@ class Servidor:
                     log.warning(f"[{addr}] swap {org} <-> {dst}: ranura {org} no valida para item {it_dst}")
                     ses.enviar(*_refrescar(ses, [org, dst]))
                     return
+                if inv.es_equipo(org):
+                    estado_dst = (ses.personaje.mejoras or {}).get(dst) if ses.personaje else None
+                    if not inv.puede_equipar(it_dst, cid, estado_dst):
+                        import clases as _clf
+                        ses.enviar(_clf.aviso("Unable to equip the equipment.", tipo=0), *_refrescar(ses, [org, dst]))
+                        return
                 # Intercambio (swap) entre ranuras ocupadas
                 bolsa[org] = it_dst
                 bolsa[dst] = it_org
@@ -10624,6 +11414,14 @@ class Servidor:
                 _mover_inst(ses, org, 0xFFFF)
                 _mover_inst(ses, dst, org)
                 _mover_inst(ses, 0xFFFF, dst)
+                if ses.personaje:
+                    for _r_eq in (dst, org):
+                        if inv.es_equipo(_r_eq) and _r_eq in bolsa:
+                            _estado_eq = ses.personaje.mejoras.get(_r_eq, {})
+                            if inv.vincular_equipo(int(bolsa[_r_eq]), cid, _estado_eq):
+                                ses.personaje.mejoras[_r_eq] = _estado_eq
+                                if getattr(ses, 'usuario', None):
+                                    cuentas.guardar_mejoras(ses.usuario, cid, ses.personaje.mejoras)
                 _masc_p = getattr(ses.personaje, 'mascota', None) if ses.personaje else None
                 if isinstance(_masc_p, dict):
                     if _masc_p.get('ranura') == org:
@@ -10638,7 +11436,7 @@ class Servidor:
                           inv.actualizar_ranuras(cid, [
                     (dst, it_org, _c_org, _inst(ses, dst)),
                     (org, it_dst, _c_dst, _inst(ses, org)),
-                ], _dueno(ses), mascota=_masc_p)]
+                ], _dueno(ses), mascota=_masc_p, mejoras=getattr(ses.personaje, 'mejoras', None))]
                 if _extra_tocadas:
                     salida.extend(_refrescar(ses, _extra_tocadas))
                 if inv.es_equipo(org) or inv.es_equipo(dst):
@@ -10858,15 +11656,20 @@ class Servidor:
                 log.info('[%s] mascota renombrada a %s' % (addr, nom))
             return
 
-        # The client's Card/Furniture bag uses slots above 255. sub_61B000
-        # emits 0x0132 (<II>) instead of 0x002E (<BI>) for those slots.
+        # The client emits 0x0132 (<II>) instead of 0x002E (<BI>) for slots above 255 (sub_61B000).
+        # This includes card registration (276..325), furniture (326..425),
+        # chat bubble equip/unequip (616) and chat bubble bag (617..666).
         if opcode == 0x0132 and ses.rol == 'mundo' and ses.personaje:
             if len(cuerpo) == 8:
                 _ranura_card, _param_card = struct.unpack('<II', cuerpo)
                 if _param_card == 0:
                     import cartas as _cartas
-                    _cartas.registrar(ses, _ranura_card, _sacar, _refrescar)
-            return
+                    if _cartas.carta_de_item(getattr(ses, 'inventario', {}).get(_ranura_card)):
+                        if _cartas.registrar(ses, _ranura_card, _sacar, _refrescar):
+                            return
+            # Si no es un registro de carta, se procesa como 0x002E para ranuras > 255
+            # (por ejemplo, burbujas de chat 616..666).
+            opcode = 0x002E
 
         # Housing opcodes C2S 0x0136..0x0142
         if opcode == 0x0139 and ses.rol == 'mundo' and ses.personaje:
@@ -11263,7 +12066,10 @@ class Servidor:
             bolsa = getattr(ses, 'inventario', None)
             if bolsa is None:
                 return
-            if len(cuerpo) == 5:
+            if len(cuerpo) == 8:
+                ranura, target_raw = struct.unpack_from('<II', cuerpo, 0)
+                objetivo = target_raw if target_raw != 0 else None
+            elif len(cuerpo) == 5:
                 if cuerpo[4] == 0 and cuerpo[0] not in bolsa and struct.unpack_from('<I', cuerpo, 0)[0] in bolsa:
                     ranura = struct.unpack_from('<I', cuerpo, 0)[0]
                 else:
@@ -11819,7 +12625,12 @@ class Servidor:
             # Caso 1: Item equipable (clic derecho)
             if inv.es_equipo(ranura):
                 # Ya esta puesto -> desequipar a la bolsa
-                dst = _ranura_libre(bolsa, desde=20)
+                if ranura == inv.RANURA_BURBUJA:
+                    dst = _ranura_libre(bolsa, desde=inv.PRIMERA_RANURA_BURBUJA_BOLSA, hasta=inv.ULTIMA_RANURA_BURBUJA_BOLSA)
+                    if dst is None:
+                        dst = _ranura_libre(bolsa, desde=20, hasta=120)
+                else:
+                    dst = _ranura_libre(bolsa, desde=20)
                 if dst is None:
                     import clases as _clf_u
                     ses.enviar(_clf_u.aviso("Your backpack is full.", tipo=0))
@@ -11860,8 +12671,93 @@ class Servidor:
                 log.info(f"[{addr}] desequipar: item {it} ({ranura}) -> bolsa ({dst})")
                 return
 
+            # Caso 1.0: TARJETAS DE PUESTO (STALL CARDS).
+            # En Angel.exe, useextrasaleslot (0x584550) manda C2S 0x002E con la ranura.
+            # Los vales consumibles (491..493, 2701..2711, 15715..15717, 79745..79760)
+            # y las tarjetas directas (511..513, 2725..2733, 15718..15720) equipan la tarjeta
+            # en la ranura 166 (RANURA_PUESTO) para desbloquear puestos de 10 a 50 ranuras (sub_5C3860 / sub_5C39B0).
+            tarjeta_equipar = inv.resolver_tarjeta_puesto(item_id)
+            if tarjeta_equipar is not None:
+                if getattr(ses, 'puesto', None):
+                    ses.enviar(_c.aviso('Cannot use this item while running a stall.', tipo=0, msg_id=_c.MSG_ITEM))
+                    return
+                _sacar(ses, ranura, 1)
+                ses.inventario[inv.RANURA_PUESTO] = tarjeta_equipar
+                _cantidades(ses)[inv.RANURA_PUESTO] = 1
+                _instancias(ses)[inv.RANURA_PUESTO] = inv.instancia_nueva()
+
+                dur_s = inv.duracion_tarjeta_puesto(tarjeta_equipar)
+                expira_ts = 0.0
+                if dur_s > 0:
+                    expira_ts = time.time() + dur_s
+                    if ses.personaje:
+                        ses.personaje.expiracion_puesto = expira_ts
+                    def _expirar_tarjeta(ses_ref=ses, exp_ts=expira_ts):
+                        if (getattr(ses_ref, 'personaje', None) and
+                            getattr(ses_ref.personaje, 'expiracion_puesto', 0) == exp_ts and
+                            inv.RANURA_PUESTO in getattr(ses_ref, 'inventario', {})):
+                            del ses_ref.inventario[inv.RANURA_PUESTO]
+                            _cantidades(ses_ref).pop(inv.RANURA_PUESTO, None)
+                            ses_ref.personaje.expiracion_puesto = 0.0
+                            ses_ref.enviar(_c.aviso("Your Stall Card has expired.", tipo=0, msg_id=_c.MSG_ITEM),
+                                           *_refrescar(ses_ref, [inv.RANURA_PUESTO]))
+                            if getattr(ses_ref, 'usuario', None):
+                                cuentas.guardar_inventario(ses_ref.usuario, ses_ref.personaje.char_id,
+                                                           ses_ref.inventario, _cantidades(ses_ref),
+                                                           expiracion_puesto=0.0)
+                    asyncio.get_event_loop().call_later(dur_s, _expirar_tarjeta)
+                else:
+                    if ses.personaje:
+                        ses.personaje.expiracion_puesto = 0.0
+
+                nom_item_usado = _nombre_item(item_id)
+                salida = [_c.aviso(f'You used {nom_item_usado}!', tipo=0, msg_id=_c.MSG_ITEM)]
+                salida.extend(_refrescar(ses, [ranura, inv.RANURA_PUESTO]))
+                ses.enviar(*salida)
+                if getattr(ses, 'usuario', None):
+                    cuentas.guardar_inventario(ses.usuario, cid, bolsa, _cantidades(ses),
+                                               expiracion_puesto=expira_ts)
+                log.info(f"[{addr}] tarjeta de puesto activada: {item_id} -> {tarjeta_equipar} en ranura {inv.RANURA_PUESTO} (duracion {dur_s}s)")
+                return
+
+            # Caso 1.0b: TARJETAS DE EXPRESION / EMOCION (EMOTE CARDS).
+            # Items como 3262 (Wait), 3263 (Follow), 3274 (Cry), 3280 (Love), etc.
+            # Categoria '表情卡', con el id de emote en '動態資料1'.
+            if inv.es_tarjeta_emocion(item_id):
+                emo_id = inv.emote_de_tarjeta(item_id)
+                if emo_id is None:
+                    emo_id = 0
+                emotes_actuales = getattr(ses.personaje, 'emotes', None)
+                if emotes_actuales is None:
+                    emotes_actuales = set()
+                    ses.personaje.emotes = emotes_actuales
+                if emo_id in emotes_actuales:
+                    ses.enviar(_c.aviso("You have already learned this expression.", tipo=0, msg_id=_c.MSG_ITEM))
+                    return
+                _sacar(ses, ranura, 1)
+                emotes_actuales.add(emo_id)
+                import presencia as _pr_emo
+                _pr_emo.notificar_emocion(ses, emo_id)
+                nom_item_usado = _nombre_item(item_id)
+                salida = [
+                    _c.aviso(f"Learned expression: {nom_item_usado}!", tipo=0, msg_id=_c.MSG_ITEM),
+                    _pr_emo.paquete_emotes_desbloqueados(emotes_actuales),
+                    *_refrescar(ses, [ranura]),
+                ]
+                ses.enviar(*salida)
+                if ses.personaje and getattr(ses, 'usuario', None):
+                    cuentas.guardar_inventario(ses.usuario, cid, bolsa, _cantidades(ses))
+                    cuentas.guardar_emotes(ses.usuario, cid, emotes_actuales)
+                log.info(f"[{addr}] tarjeta de expresion aprendida: item {item_id} -> emote {emo_id} (ranura {ranura})")
+                return
+
             eq_slot = inv.ranura_equipo_de(item_id)
             if eq_slot is not None:
+                estado_org = (ses.personaje.mejoras or {}).get(ranura) if ses.personaje else None
+                if not inv.puede_equipar(item_id, cid, estado_org):
+                    import clases as _clf_e
+                    ses.enviar(_clf_e.aviso("Unable to equip the equipment.", tipo=0))
+                    return
                 _tiene_finesse = any((h[0] if isinstance(h, (list, tuple)) else h) == 16 for h in (getattr(ses.personaje, 'habilidades', None) or []))
                 # Si es un arma dual de fashion y 169 ya esta ocupado pero 170 esta libre:
                 if eq_slot == 169 and (169 in bolsa) and (170 not in bolsa) and inv.es_arma_dual(item_id):
@@ -12553,13 +13449,18 @@ class Servidor:
                 # antes de empezar a pegar.
                 if getattr(ses, 'objetivo_actual', None) != ent:
                     ses.objetivo_actual = ent
-                    ses.ultimo_golpe = 0
                 if not getattr(_m, 'encantado', False):
                     if getattr(ses, 'invocacion', None):
                         ses.invocacion['objetivo'] = _m
                     if getattr(ses, 'monstruo_encantado', None) and getattr(ses.monstruo_encantado, 'vivo', False):
                         ses.monstruo_encantado.charmed_objetivo = _m
-                ses.enviar(_cb0.atributo(ent, _m.porcentaje))
+                ses.enviar(_cb0.atributo(ent, _m.porcentaje if getattr(_m, 'vivo', False) else 0))
+                # El clic sobre un monstruo vivo ataca con golpe basico respetando alcance y cadencia.
+                # Como ultimo_golpe NO se resetea a 0, si este clic llega junto a un 0x0016
+                # la cadencia de _atacar descarta el segundo sin duplicar golpes.
+                if getattr(_m, 'vivo', False) and not getattr(_m, 'encantado', False) and not getattr(ses, 'muerto', False) and getattr(ses, 'personaje', None):
+                    self.manejar(ses, 0x0006, m, d, addr,
+                                 struct.pack('<HI', _cb0.ATAQUE_NORMAL, ent))
                 return
 
 
@@ -13785,6 +14686,40 @@ class Servidor:
             # porque los bytes altos son cero, pero rompe la 0x0c.
             accion = cuerpo[0]
             parametro = struct.unpack_from('<I', cuerpo, 1)[0]
+            if accion == 1 and ses.personaje and not getattr(ses, 'muerto', False):
+                # EMOTE / EMOCION (Alt+E o ranuras de acceso rapido).
+                # Angel.exe FUN_00614DA0(1, AppData) manda C2S 0x0016 [01] [LE32 emote_id].
+                # Se responde y difunde con S2C 0x0019 [LE32 entity_id][U8 emote_id] (FUN_005f2200).
+                import inventario as _iv_emo
+                if not _iv_emo.puede_usar_emocion(ses.personaje, parametro):
+                    import clases as _cl_emo
+                    ses.enviar(_cl_emo.aviso("You have not unlocked this expression yet.", tipo=0, msg_id=_cl_emo.MSG_ITEM))
+                    return
+                import presencia as _pr_emo
+                _pr_emo.notificar_emocion(ses, parametro)
+                log.info(f"[{addr}] emote {parametro} usado por {ses.personaje.nombre}")
+                return
+            if accion == 6 and ses.personaje:
+                # ASIGNAR / QUITAR EMOTE RAPIDO (Alt+1..Alt+4).
+                # Angel.exe FUN_00578E60 (dropemot) y FUN_00578EF0 (dropxquickemot)
+                # mandan C2S 0x0016 [06] [LE32 val].
+                # val = (slot << 16) | (emote_id & 0xFFFF).
+                # slot va de 0 a 3 (Alt+1..Alt+4).
+                # Si emote_id == 0xFFFF, la ranura se vacio / quito.
+                slot = (parametro >> 16) & 0xFFFF
+                emo_id = parametro & 0xFFFF
+                if 0 <= slot <= 3:
+                    if getattr(ses.personaje, 'quick_emotes', None) is None:
+                        ses.personaje.quick_emotes = {0: -1, 1: -1, 2: -1, 3: -1}
+                    if emo_id == 0xFFFF or emo_id == 0xFFFFFFFF:
+                        ses.personaje.quick_emotes[slot] = -1
+                        log.info(f"[{addr}] emote rapido Alt+{slot+1} quitado")
+                    else:
+                        ses.personaje.quick_emotes[slot] = emo_id
+                        log.info(f"[{addr}] emote rapido Alt+{slot+1} asignado a emote {emo_id}")
+                    if getattr(ses, 'usuario', None):
+                        cuentas.guardar_quick_emotes(ses.usuario, ses.personaje.char_id, ses.personaje.quick_emotes)
+                return
             if accion == 0x0C and ses.personaje and not getattr(ses, 'muerto', False):
                 # ATAQUE BASICO. El cliente NO manda 0x0006 para pegar sin
                 # habilidad ni espera a que se le conteste un clic: manda este
@@ -13814,6 +14749,8 @@ class Servidor:
                 log.info(f"[{addr}] revive en stage {p2.stage} ({rev_x},{rev_y})")
                 return
             if accion == 4 and ses.personaje:
+                if getattr(ses, 'puesto', None):
+                    return
                 yo = ses.personaje.entity_id
                 ses.sentado = not getattr(ses, 'sentado', False)
                 act_code = 8 if ses.sentado else 0
@@ -13903,6 +14840,22 @@ class Servidor:
 
         if opcode == 0x0004 and d:
             ses.ultimo_movimiento = time.time()
+            if getattr(ses, 'puesto', None):
+                ACK = Msg.registry[(0x006D, 's2c', '*')]
+                MOVE = Msg.registry[(0x0005, 's2c', '*')]
+                p = getattr(ses, 'personaje', None)
+                pos = (ses.puesto.get('posicion')
+                       or ((p.tile_x if p else d['cur_x'] // 32),
+                           (p.tile_y if p else d['cur_y'] // 32)))
+                if p:
+                    p.tile_x, p.tile_y = pos[0], pos[1]
+                yo = p.entity_id if p else (ses.entity_id or 1001)
+                tx, ty = pos[0] * 32, pos[1] * 32
+                ses.enviar(ACK.build(),
+                           MOVE.build(entity_id=yo, cur_x=tx, cur_y=ty, dst_x=tx, dst_y=ty,
+                                      speed=_velocidad_de(ses)))
+                log.info(f"[{addr}] movimiento bloqueado: puesto de venta abierto en {pos}")
+                return
             # Moverse corta la recoleccion, igual que levanta al sentado.
             if getattr(ses, 'recoleccion', None) and d.get('path'):
                 _parar_recoleccion(ses)
@@ -14032,12 +14985,18 @@ class Servidor:
                     _bi = (getattr(ses, 'monstruos', None) or {}).get(_obj)
                     if _bi is not None:
                         _alc = _cb_alcance(ses)
-                        _dd = max(abs(_bi.tile_x - ses.personaje.tile_x),
-                                  abs(_bi.tile_y - ses.personaje.tile_y))
-                        if _dd > _alc + 1:
+                        _dist_antes = max(abs(_bi.tile_x - _ox),
+                                          abs(_bi.tile_y - _oy))
+                        _dist_ahora = max(abs(_bi.tile_x - ses.personaje.tile_x),
+                                          abs(_bi.tile_y - ses.personaje.tile_y))
+                        if _dist_ahora > 20 or (_dist_ahora > _dist_antes and _dist_ahora > _alc + 1):
                             ses.objetivo_actual = None
                             log.info(f"[{addr}] objetivo soltado: te alejaste a "
-                                     f"{_dd} casillas del {_bi.nombre}")
+                                     f"{_dist_ahora} casillas del {_bi.nombre}")
+                        elif _dist_ahora <= _alc + 1 and getattr(_bi, 'vivo', False) and not getattr(ses, 'muerto', False):
+                            import combate as _cb_mv
+                            self.manejar(ses, 0x0006, m, d, addr,
+                                         struct.pack('<HI', _cb_mv.ATAQUE_NORMAL, _obj))
                 import clases as _cl3
                 # Portales: un solo camino, el de plantillas/portales.json.
                 # Antes habia otro bloque con areas enormes (tx<=32 y ty>=126

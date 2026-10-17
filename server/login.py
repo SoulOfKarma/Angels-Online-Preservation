@@ -103,6 +103,9 @@ class Personaje:
     apariencia: list = field(default_factory=lambda: [0, 0, 0, 8, 8])
     quest_kills: dict = field(default_factory=dict)  # {'qid_paso': count}
     cartas_canjes: list = field(default_factory=list)  # redeemed Card Book sets
+    expiracion_puesto: float = 0.0                      # timestamp expiracion tarjeta de puesto (0 = permanente)
+    emotes: set = field(default_factory=set)            # {emote_id, ...} adquiridos mediante tarjetas
+    quick_emotes: dict = field(default_factory=lambda: {0: -1, 1: -1, 2: -1, 3: -1})  # {slot 0..3: emote_id o -1}
 
 
 def _cargar_secuencia():
@@ -259,11 +262,10 @@ def secuencia(p: Personaje):
                       #   175       la insignia
                       #   176..275  la bolsa de Fashion (4 paginas de 25)
                       #   276..     las pestanas Card y Furniture de esa bolsa
-                      # El rango sale de las ranuras que de verdad usan los
-                      # personajes guardados: fashion en 176..199 y tarjetas
-                      # coleccionables en la 276 y la 277.
+                      #   616       la burbuja de chat puesta
+                      #   617..666  la bolsa de burbujas de chat
                       if (int(r) == _inv.RANURA_ORO or (it and int(it) > 0))
-                      and (int(r) <= 120 or 167 <= int(r) <= 556)]
+                      and (int(r) <= 120 or 166 <= int(r) <= 666)]
             salida.append(_inv.completo(p.char_id, _items, p.entity_id,
                                         mejoras=getattr(p, 'mejoras', None),
                                         mascota=getattr(p, 'mascota', None),
@@ -282,6 +284,9 @@ def secuencia(p: Personaje):
                 elif ent == 21:
                     struct.pack_into('<II', b, 8, 252, 27)
             salida.append(struct.pack('<H', 0x0008) + bytes(b))
+        elif op == 0x005C:
+            import presencia as _pr
+            salida.append(_pr.paquete_emotes_desbloqueados(getattr(p, 'emotes', None) or set()))
         elif op == 0x005D:
             salida.append(struct.pack('<HI', 0x005D, int(time.time())))
         elif op == 0x0196:
@@ -326,7 +331,11 @@ def secuencia(p: Personaje):
         + struct.pack('<BQ', 30, _u64(_cb_ini.exp_para_nivel(p.nivel)))
         + struct.pack('<BQ', 31, _u64(exp_siguiente_ui))
         + struct.pack('<BQ', 32, _u64(exp_actual_ui)))
+    # Emotes rapidos (Alt+1..Alt+4) en ranuras 0..3:
+    import presencia as _pr
+    salida.append(_pr.paquete_quick_emotes(p.entity_id, getattr(p, 'quick_emotes', None) or {}))
     return salida
+
 
 
 PLAYGROUND_MONSTERS = {

@@ -551,6 +551,11 @@ def personaje_de(cuenta, ranura=0):
             _inv_limpio[376] = int(_casa_limpia['deed_id'])
     if 376 not in _inv_limpio:
         _inv_limpio[376] = 10115
+    _exp_puesto = float(p.get('expiracion_puesto', 0) or 0.0)
+    if _exp_puesto > 0 and _ahora() >= _exp_puesto:
+        _inv_limpio.pop(166, None)
+        _cant_limpia.pop(166, None)
+        _exp_puesto = 0.0
     return Personaje(
         entity_id=1000 + p['char_id'] % 1000,
         char_id=p['char_id'],
@@ -596,6 +601,9 @@ def personaje_de(cuenta, ranura=0):
         mascotas=_cargar_mascotas(p),
         apariencia=list(p.get('apariencia') or [0, 0, 0, 8, 8]),
         quest_kills={str(k): int(v) for k, v in (p.get('quest_kills') or {}).items()},
+        expiracion_puesto=_exp_puesto,
+        emotes={int(x) for x in (p.get('emotes') or [])},
+        quick_emotes={int(k): int(v) for k, v in (p.get('quick_emotes') or {0: -1, 1: -1, 2: -1, 3: -1}).items()},
     )
 
 
@@ -663,7 +671,7 @@ def _slot_sort_key(item):
 
 
 def guardar_inventario(usuario: str, char_id: int, bolsa: dict,
-                       cantidades=None, mejoras=None):
+                       cantidades=None, mejoras=None, expiracion_puesto=None):
     def _mut(p):
         p['inventario'] = {str(k): v for k, v in sorted(bolsa.items(), key=_slot_sort_key)}
         if mejoras is not None:
@@ -676,6 +684,8 @@ def guardar_inventario(usuario: str, char_id: int, bolsa: dict,
             p['cantidades'] = {str(k): int(v)
                                for k, v in sorted(cantidades.items(), key=_slot_sort_key)
                                if (int(v) > 1 or 497 <= int(k) <= 556) and (int(k) in bolsa or str(k) in bolsa)}
+        if expiracion_puesto is not None:
+            p['expiracion_puesto'] = float(expiracion_puesto)
     _actualizar_personaje(usuario, char_id, _mut)
 
 
@@ -821,6 +831,8 @@ def guardar_sistemas(usuario: str, char_id: int, p):
             fila['casa'] = dict(c_val)
         else:
             fila['casa'] = {}
+        fila['emotes'] = sorted({int(x) for x in (getattr(p, 'emotes', None) or [])})
+        fila['quick_emotes'] = {str(k): int(v) for k, v in (getattr(p, 'quick_emotes', None) or {}).items()}
     _actualizar_personaje(usuario, char_id, _mut)
 
 
@@ -911,6 +923,17 @@ def todas_las_casas_abiertas() -> list:
             con.close()
     return out
 
+
+def guardar_emotes(usuario: str, char_id: int, emotes):
+    def _mut(fila):
+        fila['emotes'] = sorted({int(x) for x in (emotes or [])})
+    _actualizar_personaje(usuario, char_id, _mut)
+
+
+def guardar_quick_emotes(usuario: str, char_id: int, quick_emotes):
+    def _mut(fila):
+        fila['quick_emotes'] = {str(k): int(v) for k, v in (quick_emotes or {}).items()}
+    _actualizar_personaje(usuario, char_id, _mut)
 
 def guardar_cardbook(usuario: str, char_id: int, plan):
     """Commit card ownership/redemptions and inventory in ONE transaction.
