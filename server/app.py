@@ -11712,8 +11712,11 @@ class Servidor:
         if opcode == 0x0137 and ses.rol == 'mundo' and ses.personaje:
             # registryhouse (C2S 311 / 0x0137): Show outdoor house in exhibition map
             import casas as _cs, clases as _cl, cuentas as _cta
-            if ses.personaje.stage not in _cs.MAPAS_EXHIBICION:
-                ses.enviar(_cl.aviso("Houses can only be placed in exhibition areas (Angel Lyceum, Capital cities).", tipo=0))
+            _ok, _motivo = _cs.validar_posicion_outdoor(
+                ses.personaje.stage, ses.personaje.tile_x, ses.personaje.tile_y,
+                exclude_cid=ses.personaje.char_id)
+            if not _ok:
+                ses.enviar(_cl.aviso(_motivo, tipo=0))
                 return
             _pwd = ''
             if len(cuerpo) >= 37:
@@ -11748,6 +11751,9 @@ class Servidor:
             _c = getattr(ses, 'casa_visitando', None) or _cs.obtener_o_crear_casa(
                 ses.personaje.char_id, ses.personaje.nombre,
                 raw_data=getattr(ses.personaje, 'casa', None))
+            if _c.is_open:
+                ses.enviar(_cl.aviso("Cannot decorate while house is on display. Please take it back first.", tipo=0))
+                return
             if _c.owner_id != ses.personaje.char_id:
                 ses.enviar(_cl.aviso("Only the owner can decorate this house.", tipo=0))
                 return
@@ -11807,6 +11813,7 @@ class Servidor:
             import casas as _cs, cuentas as _cta, clases as _cl
             _c = getattr(ses, 'casa_visitando', None)
             if (_c is None or _c.owner_id != ses.personaje.char_id
+                    or _c.is_open
                     or ses.personaje.stage != _cs.STAGE_HOUSE
                     or not getattr(ses, 'house_furnishing', False)):
                 log.warning('[%s] savefurniture fuera de una sesion de decoracion valida', addr)

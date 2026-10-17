@@ -235,6 +235,10 @@ Path`, `Third Spirit`, `Limit Breaker`, `Shadow Meld`, `Killer Intent`) y la
     - **Raise-a-pet Room**: Máquina de Cuidado de Mascotas (`721`), Caja Fuerte / Almacén de Casa (`723`), Buzón de Suft (`262501`) en `(37, 25)` para pedidos de productor, y portal de retorno (`702`) al vestíbulo principal.
     - **Monster Hatching Room**: Máquina Incubadora de Monstruos (`731`) y portal de retorno (`703`), con mapa despejado fiel al cliente IGG oficial.
   - **Servicios de Casa y Pedidos de Productor**: depósito y retiro seguro en la caja fuerte (`house_services.py`), entregas automatizadas de suministros y materiales de producción en el Buzón de Suft (`producer_orders.py`), y consumo directo de Mercenary Token (`10581` -> buff 2254, 8 horas de duración).
+  - **Zonas de Exhibición Exterior y Restricciones de Colocación**:
+    - La exhibición exterior de casas (`0x0137`) está estrictamente limitada a las zonas residenciales y urbanas oficiales: **Área de Casas de Ángeles** (Stage 370), las cuatro capitales de facción (**Aurora City** 3, **Dark City** 26, **Breeze Woods** 29, **Iron Castle** 38) y **Palm Base** (88). Se bloquea la colocación en exteriores no autorizados, mazmorras o dentro de edificios.
+    - Validación de espacio abierto y despejado: requiere una huella transitable de $5 \times 5$ casillas sin obstáculos (bloqueando puentes estrechos, escaleras, pasarelas elevadas, zonas de árboles densos o callejones), un margen de seguridad de 6 casillas respecto a los bordes del mapa, distancia mínima de 7 casillas a portales/entradas y 4 casillas a NPCs y a otras casas de jugadores.
+    - Bloqueo de amueblar según visibilidad: la función de decorar (`0x0136`) se bloquea mientras la casa esté mostrada/visible en el exterior (`is_open`), y solo vuelve a permitirse cuando la casa no se está mostrando (tras pulsar *Take Back* / recoger casa con `0x0139`).
 
 **El cliente, personalizado**
 

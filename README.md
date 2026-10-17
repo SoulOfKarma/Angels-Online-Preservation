@@ -225,6 +225,10 @@ a guess, it says so.
     - **Raise-a-pet Room**: Pet Care Machine (`721`), Safe / House Storage (`723`), Suft's Mailbox (`262501`) at `(37, 25)` for producer orders, and return portal (`702`) back to the main house hall.
     - **Monster Hatching Room**: Monster Incubator Machine (`731`) and return portal (`703`). Clean room layout matching authentic IGG structure.
   - **House Services & Producer Orders**: safe item deposit/withdrawal (`house_services.py`), automated producer material deliveries via Suft's Mailbox (`producer_orders.py`), and Mercenary Token consumption (`10581` -> buff 2254, 8 hours).
+  - **Outdoor Exhibition Zones & Placement Restrictions**:
+    - Outdoor exhibition (`0x0137`) is strictly restricted to designated residential and city spaces: **Angel House Area** (Stage 370), the four faction capitals (**Aurora City** 3, **Dark City** 26, **Breeze Woods** 29, **Iron Castle** 38), and **Palm Base** (88). Placement in unauthorized wilderness, dungeons, or inside buildings is blocked.
+    - Placement validation enforces wide open ground: requires a full $5 \times 5$ walkable clear area (blocking placement on narrow bridges, stairs, catwalks, near trees, or in tight corridors), a 6-tile safe margin from map borders, at least 7 tiles distance from portals/entrances, and at least 4 tiles from NPCs and other outdoor houses.
+    - Decorating visibility lock: entering furnish mode (`0x0136`) is blocked while the house is currently on display outdoors (`is_open`), and only returns when the house is taken back/not showing (`0x0139`).
 
 **The customised client**
 

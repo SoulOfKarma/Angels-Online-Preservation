@@ -226,11 +226,14 @@ class TestHouseSystem(unittest.TestCase):
         self.assertTrue(eventos.evaluar(58, [], ctx)) # es dueno
         self.assertTrue(eventos.evaluar(59, [0, 1], ctx)) # nivel igual a 1
     def test_mapas_exhibicion_y_ui_flags(self):
-        # 1. Mapas de exhibicion validos
+        # 1. Mapas de exhibicion validos (Angel House Area, Faction Cities, Palm Base)
         self.assertIn(370, casas.MAPAS_EXHIBICION) # Angel House Area
-        self.assertIn(41, casas.MAPAS_EXHIBICION)  # Angel Lyceum
         self.assertIn(3, casas.MAPAS_EXHIBICION)   # Aurora City
-        self.assertIn(26, casas.MAPAS_EXHIBICION)  # Dark City / Iron Alley
+        self.assertIn(26, casas.MAPAS_EXHIBICION)  # Dark City
+        self.assertIn(29, casas.MAPAS_EXHIBICION)  # Breeze Woods
+        self.assertIn(38, casas.MAPAS_EXHIBICION)  # Iron Castle
+        self.assertIn(88, casas.MAPAS_EXHIBICION)  # Palm Base
+        self.assertNotIn(41, casas.MAPAS_EXHIBICION) # Angel Lyceum no es zona de casas
 
         # 2. UI flags en pkt_house_info (+37)
         # 10 = casa exterior abierta (activa Decorate 27627 y Take Back 27628)
@@ -488,6 +491,65 @@ class TestHouseSystem(unittest.TestCase):
         }
         m2 = configuracion.multiplicador_exp(buffs_eilian)
         self.assertAlmostEqual(m2, base_mult, places=3)
+
+    def test_outdoor_house_placement_zones_and_restrictions(self):
+        # 1. Angel House Area (370) open field is valid
+        ok, reason = casas.validar_posicion_outdoor(370, 46, 33)
+        self.assertTrue(ok)
+        self.assertEqual(reason, "")
+
+        # 2. Too close to portal in Angel House Area
+        ok, reason = casas.validar_posicion_outdoor(370, 22, 6)
+        self.assertFalse(ok)
+        self.assertIn("portal", reason.lower())
+
+        # 3. Too close to map borders
+        ok, reason = casas.validar_posicion_outdoor(370, 2, 2)
+        self.assertFalse(ok)
+        self.assertIn("border", reason.lower())
+
+        # 4. Narrow bridge / obstacle / water in Breeze Woods
+        ok, reason = casas.validar_posicion_outdoor(29, 200, 80)
+        self.assertFalse(ok)
+        self.assertIn("wide open area", reason.lower())
+
+        # 5. Overlapping or too close to an NPC
+        ok, reason = casas.validar_posicion_outdoor(29, 41, 64)
+        self.assertFalse(ok)
+
+        # 6. Unauthorized stages (Angel Lyceum, dungeons, inside house)
+        ok, reason = casas.validar_posicion_outdoor(41, 147, 84)
+        self.assertFalse(ok)
+        self.assertIn("only be placed", reason.lower())
+
+        ok, reason = casas.validar_posicion_outdoor(500, 45, 80)
+        self.assertFalse(ok)
+        self.assertIn("only be placed", reason.lower())
+
+        # 7. Proximity to another outdoor house
+        c1 = casas.CasaData(owner_id=101, owner_name="P1", deed_id=10115)
+        casas.registrar_casa_outdoor(c1, stage=370, px_x=46 * 32, px_y=33 * 32)
+        try:
+            ok, reason = casas.validar_posicion_outdoor(370, 46, 33, exclude_cid=202)
+            self.assertFalse(ok)
+            self.assertIn("another house", reason.lower())
+
+            # Self exclusion allowed (e.g. repositioning)
+            ok, reason = casas.validar_posicion_outdoor(370, 46, 33, exclude_cid=101)
+            self.assertTrue(ok)
+        finally:
+            casas.retirar_casa_outdoor(c1)
+
+    def test_decorate_blocked_when_house_is_showing(self):
+        c = casas.CasaData(owner_id=555, owner_name="Owner", deed_id=10115)
+        c.is_open = True
+        # When house is visible / on display outdoors, decorate is blocked
+        self.assertTrue(c.is_open)
+
+        # When taken back / closed, decorate is unblocked
+        casas.retirar_casa_outdoor(c)
+        self.assertFalse(c.is_open)
+
 
 if __name__ == '__main__':
     unittest.main()

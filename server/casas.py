@@ -23,13 +23,8 @@ SLOT_PET_FIN = 486
 SLOT_MOB_INI = 487
 SLOT_MOB_FIN = 496
 
-# Mapas de exhibicion (Plaza del Angel, Area de Casas de Angeles, ciudades principales y villas)
-MAPAS_EXHIBICION = frozenset((
-    370, 41, 141, 241, 3, 4, 5, 26, 29, 34, 38, 87, 88, 89,
-    122, 125, 151, 153, 154, 155, 158, 163, 170, 182, 197,
-    210, 216, 223, 232, 238, 246, 259, 279, 288, 298, 308,
-    317, 320, 325, 335, 348, 351, 365, 372, 384
-))
+# Mapas de exhibicion autorizados: Area de Casas de Angeles, ciudades de facciones y Palm Base
+MAPAS_EXHIBICION = frozenset((370, 3, 26, 29, 38, 88))
 STAGE_HOUSE = 500
 
 # Valores de los propios item*.xml del cliente IGG (dinamica1/descripcion).
@@ -644,6 +639,102 @@ def obtener_o_crear_casa(owner_id: int, owner_name: str, deed_id: int = 10115, r
 
 def casa_por_obj(obj_id: int) -> CasaData:
     return _OBJ_A_CASA.get(int(obj_id))
+
+TORNADOS_EXHIBICION = {
+    370: [(22, 5)],
+    3: [(346, 20), (39, 186)],
+    26: [(7, 9), (211, 111)],
+    29: [(323, 182), (4, 18)],
+    38: [(34, 2), (336, 170)],
+    88: [(154, 39), (9, 117), (296, 92), (223, 83)],
+}
+
+_NPCS_EXHIBICION = None
+
+def _cargar_npcs_exhibicion():
+    global _NPCS_EXHIBICION
+    if _NPCS_EXHIBICION is not None:
+        return _NPCS_EXHIBICION
+    _NPCS_EXHIBICION = {}
+    plantillas_archivos = {
+        370: 'angel_house_area.json',
+        3: 'aurora_city.json',
+        26: 'dark_city.json',
+        29: 'breeze_woods.json',
+        38: 'iron_castle.json',
+        88: 'palm_base.json',
+    }
+    pdir = pathlib.Path(__file__).parent / 'plantillas'
+    for st, fname in plantillas_archivos.items():
+        coords = set()
+        fpath = pdir / fname
+        if fpath.exists():
+            try:
+                d = json.loads(fpath.read_text(encoding='utf-8'))
+                for s in d.get('spawns', []):
+                    if not s.get('monstruo') and s.get('tile'):
+                        coords.add((int(s['tile'][0]), int(s['tile'][1])))
+            except Exception:
+                pass
+        _NPCS_EXHIBICION[st] = coords
+    return _NPCS_EXHIBICION
+
+
+def validar_posicion_outdoor(stage: int, tile_x: int, tile_y: int,
+                             exclude_cid: int = 0) -> tuple[bool, str]:
+    """Valida si una casa exterior se puede colocar en esa coordenada del mapa."""
+    st = int(stage)
+    tx = int(tile_x)
+    ty = int(tile_y)
+
+    # 1. Solo mapas de exhibicion autorizados
+    if st not in MAPAS_EXHIBICION:
+        return False, "Houses can only be placed in Angel House Area, faction cities, or Palm Base."
+
+    # 2. Margen de bordes del mapa (minimo 6 casillas hacia adentro)
+    try:
+        import transitable as _tr
+        m = _tr._cargar().get(st)
+        if m:
+            w, h, _ = m
+            if tx < 6 or tx > w - 7 or ty < 6 or ty > h - 7:
+                return False, "Cannot place house too close to map borders."
+    except Exception:
+        pass
+
+    # 3. Distancia a portales / tornados (minimo 7 casillas)
+    for px, py in TORNADOS_EXHIBICION.get(st, []):
+        if max(abs(tx - px), abs(ty - py)) < 7:
+            return False, "Cannot place house too close to a portal or entrance."
+
+    # 4. Espacio amplio despejado: huella de 5x5 casillas totalmente transitable
+    # (descarta puentes estrechos, escaleras, arboles densos, pasillos y esquinas)
+    try:
+        import transitable as _tr
+        for dy in range(-2, 3):
+            for dx in range(-2, 3):
+                if not _tr.se_pisa(st, tx + dx, ty + dy):
+                    return False, "Houses require a wide open area (cannot be placed on bridges, stairs, near trees, or narrow paths)."
+    except Exception:
+        pass
+
+    # 5. Distancia a NPCs interactivos / tiendas / tablones (minimo 4 casillas)
+    npcs = _cargar_npcs_exhibicion().get(st, set())
+    for nx, ny in npcs:
+        if max(abs(tx - nx), abs(ty - ny)) < 4:
+            return False, "Cannot place house too close to NPCs."
+
+    # 6. Distancia a otras casas exteriores ya colocadas (minimo 4 casillas)
+    for c in casas_en_stage(st):
+        if c.owner_id == exclude_cid:
+            continue
+        ox = c.outdoor_px[0] // 32
+        oy = c.outdoor_px[1] // 32
+        if max(abs(tx - ox), abs(ty - oy)) < 4:
+            return False, "Cannot place house: location is too close to another house."
+
+    return True, ""
+
 
 def registrar_casa_outdoor(casa: CasaData, stage: int, px_x: int, px_y: int, dir_rot: int = 0):
     global _OUTDOOR_ID_GEN
