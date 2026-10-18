@@ -889,12 +889,14 @@ class TestHouseSystem(unittest.TestCase):
         self.assertNotIn(16982, ses.inventario.values())
         self.assertIn(16978, ses.inventario.values())
         self.assertEqual(ses.monstruos[9001].hp, 0)
-        # Success first leaves the mob stunned; despawn is delayed without playing death animation.
+        # Success leaves the mob stunned and then removes it directly: a capture
+        # must never reuse the normal monster-death animation.
         self.assertTrue(any(pkt[:2] == b'\x1d\x00' for pkt in ses.paquetes))
         self.assertEqual([delay for delay, _ in loop.calls],
-                         [1.3, 1.3 + combate.SEGUNDOS_REAPARICION])
+                         [2.0, 2.0 + combate.SEGUNDOS_REAPARICION])
         loop.calls[0][1]()
         self.assertTrue(any(pkt[:2] == b'\x07\x00' for pkt in ses.paquetes))
+        self.assertFalse(any(pkt[:2] == b'\x0a\x00' for pkt in ses.paquetes))
         # After respawn delay, the captured monster reappears on the map and revives
         loop.calls[1][1]()
         self.assertTrue(ses.monstruos[9001].vivo)

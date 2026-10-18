@@ -177,6 +177,10 @@ MONSTER_NAME_ALIASES = {
     'duty pig': ['hardworking pig'],
     'transport worker': ['transporter'],
     'transporter': ['transport worker'],
+    'riddle bishop': ['riddle city bishop', 'riddle city bishops', 'riddle bishops'],
+    'riddle bishops': ['riddle bishop', 'riddle city bishop', 'riddle city bishops'],
+    'riddle city bishop': ['riddle bishop', 'riddle bishops', 'riddle city bishops'],
+    'riddle city bishops': ['riddle bishop', 'riddle bishops', 'riddle city bishop'],
 }
 
 # Cadenas de misiones de comandantes de ciudad (orden canonico de Angel Online)
@@ -290,7 +294,42 @@ def _cargar_db():
             _NPC_INICIO = _DB.get('npc_inicio', {})
             _NPC_PASOS = _DB.get('npc_pasos', {})
             _REPETIBLES = set(_DB.get('repetibles', []))
-            log.info(f"Cargadas {len(_MISIONES)} misiones completas desde misiones_completas.json")
+
+            # Integrar pasos de caceria que requieren items visibles reales a _RECOLECCIONES
+            import inventario as _iv_rec
+            for k_c, v_c in list(_CACERIAS.items()):
+                tid = v_c.get('token_id')
+                if tid and not _iv_rec.es_item_oculto(tid):
+                    if k_c not in _RECOLECCIONES:
+                        _RECOLECCIONES[k_c] = {
+                            'qid': v_c.get('qid'),
+                            'paso': v_c.get('paso'),
+                            'siguiente_paso': v_c.get('siguiente_paso'),
+                            'cantidad': v_c.get('cantidad', 1),
+                            'items': [{'item_id': int(tid), 'cantidad': int(v_c.get('cantidad', 1))}],
+                            'monstruo_ids': list(v_c.get('monstruo_ids', [])),
+                            'monstruos': list(v_c.get('monstruos', [])),
+                            'npc_entrega': v_c.get('npc_entrega'),
+                            'mapa': v_c.get('mapa'),
+                        }
+
+            # Asegurar mapeo directo de Riddle Bishop (npc_type 911) para Black Crystals (12602) en Quest 976 paso 4
+            if '976_4' in _RECOLECCIONES:
+                r_976_4 = _RECOLECCIONES['976_4']
+                if 911 not in r_976_4.get('monstruo_ids', []):
+                    r_976_4.setdefault('monstruo_ids', []).append(911)
+                for _alias in ('riddle bishop', 'riddle city bishop', 'riddle city bishops', 'riddle bishops'):
+                    if _alias not in r_976_4.get('monstruos', []):
+                        r_976_4.setdefault('monstruos', []).append(_alias)
+            if '976_4' in _CACERIAS:
+                c_976_4 = _CACERIAS['976_4']
+                if 911 not in c_976_4.get('monstruo_ids', []):
+                    c_976_4.setdefault('monstruo_ids', []).append(911)
+                for _alias in ('riddle bishop', 'riddle city bishop', 'riddle city bishops', 'riddle bishops'):
+                    if _alias not in c_976_4.get('monstruos', []):
+                        c_976_4.setdefault('monstruos', []).append(_alias)
+
+            log.info(f"Cargadas {len(_MISIONES)} misiones completas desde misiones_completas.json (recolecciones: {len(_RECOLECCIONES)})")
             return
         except Exception as e:
             log.warning(f"Error cargando {RUTA_MISIONES_COMPLETAS}: {e}")
@@ -999,10 +1038,17 @@ def registrar_baja_monstruo(ses, npc_type: int, monster_name: str = None, en_com
             pasos = q_info.get('pasos', [])
             idx_p = pa - 1 if 0 < pa <= len(pasos) else 0
             if idx_p < len(pasos):
-                txt_paso = (pasos[idx_p].get('texto', '')).lower()
+                import re as _re_reg
+                raw_txt = pasos[idx_p].get('texto', '')
+                txt_clean = _re_reg.sub(r'\\n|[\r\n\t]+', ' ', raw_txt.lower())
+                txt_clean = _re_reg.sub(r'\s+', ' ', txt_clean)
                 cand_noms = [m_nom_clean] + MONSTER_NAME_ALIASES.get(m_nom_clean, [])
-                if any(cn in txt_paso for cn in cand_noms):
+                if any(cn in txt_clean for cn in cand_noms):
                     coincide = True
+                else:
+                    words = [w for w in _re_reg.findall(r'[a-z]+', m_nom_clean) if len(w) > 3 and w not in ('kill', 'defeat', 'city', 'great', 'little', 'young')]
+                    if words and all(w in txt_clean for w in words):
+                        coincide = True
 
         if coincide:
             cnt = int(p.quest_kills.get(k_cac, 0)) + 1
@@ -1169,10 +1215,27 @@ def verificar_botin_mision(ses, npc_type: int, monster_name: str = None) -> list
         if mision_completada(p, q):
             continue
         k_rec = f"{q}_{pa}"
-        if k_rec not in _RECOLECCIONES:
+        r_data = _RECOLECCIONES.get(k_rec)
+        if not r_data and k_rec in _CACERIAS:
+            c_data = _CACERIAS[k_rec]
+            tid = c_data.get('token_id')
+            import inventario as _iv_drop
+            if tid and not _iv_drop.es_item_oculto(tid):
+                r_data = {
+                    'qid': q,
+                    'paso': pa,
+                    'cantidad': c_data.get('cantidad', 1),
+                    'items': [{'item_id': int(tid), 'cantidad': int(c_data.get('cantidad', 1))}],
+                    'monstruo_ids': list(c_data.get('monstruo_ids', [])),
+                    'monstruos': list(c_data.get('monstruos', [])),
+                }
+        if not r_data:
             continue
-        r_data = _RECOLECCIONES[k_rec]
+
         req_items = r_data.get('items', [])
+        m_ids = r_data.get('monstruo_ids', [])
+        m_noms = [mn.lower().strip() for mn in r_data.get('monstruos', []) if isinstance(mn, str)]
+
         for req in req_items:
             iid = req.get('item_id')
             req_cnt = req.get('cantidad', 1)
@@ -1184,25 +1247,38 @@ def verificar_botin_mision(ses, npc_type: int, monster_name: str = None) -> list
                 continue
 
             # Comprobar si el monstruo coincide con el item o la misión
-            # 1. Nombre del monstruo coincide o está contenido en el nombre del item
-            # (Ej: "Wild Lily" en "Wild Lily's Petal", item 193)
-            item_nom = nombre_item(iid).lower()
             coincide = False
-            if m_nom and (m_nom in item_nom or item_nom in m_nom):
+            if npc_type and m_ids and npc_type in m_ids:
                 coincide = True
             elif npc_type and iid == npc_type:
                 coincide = True
             else:
+                item_nom = nombre_item(iid).lower()
+                if m_nom and (m_nom in item_nom or item_nom in m_nom):
+                    coincide = True
+                elif m_nom and m_noms:
+                    cand_noms = [m_nom] + MONSTER_NAME_ALIASES.get(m_nom, [])
+                    if any(any(mn in cn or cn in mn for mn in m_noms) for cn in cand_noms):
+                        coincide = True
+
+            if not coincide:
                 # Comprobar si la descripción del paso menciona a este monstruo
                 q_info = info_mision(q)
                 pasos = q_info.get('pasos', [])
                 idx_p = pa - 1 if 0 < pa <= len(pasos) else 0
                 if idx_p < len(pasos):
-                    txt_paso = (pasos[idx_p].get('texto', '')).lower()
+                    import re as _re_txt
+                    raw_txt = pasos[idx_p].get('texto', '')
+                    txt_clean = _re_txt.sub(r'\\n|[\r\n\t]+', ' ', raw_txt.lower())
+                    txt_clean = _re_txt.sub(r'\s+', ' ', txt_clean)
                     m_base = m_nom[2:].strip() if m_nom.startswith('e-') else m_nom
                     cand_noms = [m_nom, m_base] + MONSTER_NAME_ALIASES.get(m_nom, []) + MONSTER_NAME_ALIASES.get(m_base, [])
-                    if any(cn and cn in txt_paso for cn in cand_noms):
+                    if any(cn and cn in txt_clean for cn in cand_noms):
                         coincide = True
+                    else:
+                        words = [w for w in _re_txt.findall(r'[a-z]+', m_nom) if len(w) > 3 and w not in ('kill', 'defeat', 'city', 'great', 'little', 'young')]
+                        if words and all(w in txt_clean for w in words):
+                            coincide = True
 
             if coincide:
                 drops_mision.append((iid, 1))
@@ -1431,14 +1507,15 @@ def interactuar_npc(ses, npc_nombre: str, entidad: int = 0) -> tuple:
             _por_texto = npc_segun_texto(paso_actual.get('texto'), nom_clean)
             if (_por_texto is True) or (_por_texto is None and _coincide_compilado):
                 tipo_obj = paso_actual.get('tipo', 'hablar')
-                
-                # Objetivo de recoleccion
-                if tipo_obj == 'recolectar':
+                k_rec = f"{q}_{pa}"
+
+                # Objetivo de recoleccion (o paso con items requeridos)
+                if tipo_obj == 'recolectar' or k_rec in _RECOLECCIONES:
                     if not verificar_entrega_items(ses, q, pa):
                         return (True, 'recoleccion_incompleta', {'qid': q, 'paso': pa, 'nom_npc': npc_nombre})
 
                 # Objetivo de caceria
-                if tipo_obj == 'matar':
+                elif tipo_obj == 'matar':
                     req = paso_actual.get('cantidad', 1)
                     kills = (getattr(ses, 'quest_kills', {}) or {}).get((q, pa), 0)
                     if kills < req:

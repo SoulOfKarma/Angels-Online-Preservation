@@ -2332,7 +2332,10 @@ def _procesar_muerte_monstruo(ses, m, yo, addr, espera=0.0):
         _bucle = asyncio.get_event_loop()
         _bucle.call_later(_espera_muerte,
                           lambda p=_muerte: ses.enviar_inmediato(*p))
-        _bucle.call_later(_espera_muerte + 2.5,
+        # El cliente necesita conservar el NPC muerto el tiempo suficiente
+        # para reproducir Dead antes de recibir el despawn.  El oficial ronda
+        # un segundo; 1.25 s evita tanto el corte brusco como un cadaver largo.
+        _bucle.call_later(_espera_muerte + 1.25,
                           lambda: _despawn_monstruo_muerto(ses, m, objetivo))
     except Exception:
         ses.enviar(*_muerte)
@@ -3568,11 +3571,12 @@ def _intentar_captura_monstruo(ses, target_entity, addr='?'):
                     if getattr(ses, 'usuario', None):
                         cuentas.guardar_mascota(ses.usuario, p_ses.char_id, ficha, p_ses.mascotas)
 
-        # Al capturar con exito, el monstruo se stunea brevemente y luego se
-        # desvanece del mapa sin reproducir animacion de muerte (muerte_monstruo).
-        # Hacia el personaje se reproduce el efecto visual de captura.
+        # Al capturar con exito el monstruo queda inmovilizado bajo el cristal
+        # rojo y luego se retira directamente. Una captura NO es una muerte:
+        # no se manda HP=0 ni muerte_monstruo, porque ambas cosas reproducen
+        # la animacion Dead que el cliente oficial no usa aqui.
         capture_started = time.time()
-        capture_stun_seconds = 1.3
+        capture_stun_seconds = 2.0
         monster.hp = 0
         monster.muerto_en = capture_started
         monster.capturado_en = capture_started
@@ -8191,6 +8195,11 @@ class Servidor:
                                                                 ses.personaje.mascotas[str(_r_p)] = f_pet
                                                             pkgs_pet_muerte.extend(_refrescar(ses, [_r_p]))
                                                         ses.enviar_inmediato(*pkgs_pet_muerte)
+                                                        # Los paquetes de quitar/desenlazar no contienen
+                                                        # la entidad del monstruo y por eso no pasan por
+                                                        # _espejar. Avisar expresamente a los otros clientes.
+                                                        import presencia as _pr_pet_dead
+                                                        _pr_pet_dead.notificar_mascota_despawn(ses, pet_eid)
                                                         if getattr(ses, 'usuario', None) and ses.personaje:
                                                             cuentas.guardar_mascota(ses.usuario, ses.personaje.char_id, f_pet, getattr(ses.personaje, 'mascotas', None))
                                                     else:
@@ -8208,6 +8217,8 @@ class Servidor:
                                                     )
                                                     if ses.invocacion['hp'] <= 0:
                                                         ses.enviar_inmediato(_cb.despawn_monstruo(teid))
+                                                        import presencia as _pr_inv_dead
+                                                        _pr_inv_dead.notificar_invocacion_despawn(ses, teid)
                                                         ses.invocacion = None
                                                         m.en_combate_con = yo
                                                 elif getattr(ses, 'invocacion2', None) and teid == ses.invocacion2.get('entity_id'):
@@ -8219,6 +8230,8 @@ class Servidor:
                                                     )
                                                     if ses.invocacion2['hp'] <= 0:
                                                         ses.enviar_inmediato(_cb.despawn_monstruo(teid))
+                                                        import presencia as _pr_inv2_dead
+                                                        _pr_inv2_dead.notificar_invocacion_despawn(ses, teid)
                                                         ses.invocacion2 = None
                                                         m.en_combate_con = yo
 
@@ -8536,6 +8549,8 @@ class Servidor:
                                             pet_targ.registrar_dano(min(pet_targ.hp, dano_pet), es_pet=True)
                                             pet_targ.hp = max(0, pet_targ.hp - dano_pet)
                                             ses.enviar_inmediato(
+                                                _cb.ataque(pet_eid, pet_targ.entity_id,
+                                                           _cb.anim_de_monstruo(f_pet.get('nombre', ''))),
                                                 _cb.numero_de_dano(pet_eid, pet_targ.entity_id, dano_pet, ataque=sk_usada, efecto=ef_pet),
                                                 _cb.cierre_de_dano(pet_eid, pet_targ.entity_id, ataque=sk_usada, efecto=ef_pet),
                                                 _cb.numero_flotante(pet_targ.entity_id, dano_pet),
@@ -8567,6 +8582,8 @@ class Servidor:
                                             pet_targ.registrar_dano(min(pet_targ.hp, dano_pet), es_pet=True)
                                             pet_targ.hp = max(0, pet_targ.hp - dano_pet)
                                             ses.enviar_inmediato(
+                                                _cb.ataque(pet_eid, pet_targ.entity_id,
+                                                           _cb.anim_de_monstruo(f_pet.get('nombre', ''))),
                                                 _cb.numero_de_dano(pet_eid, pet_targ.entity_id, dano_pet, ataque=0, efecto=0),
                                                 _cb.cierre_de_dano(pet_eid, pet_targ.entity_id, ataque=0, efecto=0),
                                                 _cb.numero_flotante(pet_targ.entity_id, dano_pet),

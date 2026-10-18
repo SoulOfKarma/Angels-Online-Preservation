@@ -38,8 +38,8 @@ def test_capture_animation_keeps_effect_and_subtype_separate():
     assert len(packets) == 2
     assert int.from_bytes(packets[0][:2], 'little') == 0x0011  # red crystal effect 0x0011
     assert int.from_bytes(packets[1][:2], 'little') == 0x0011
-    assert packets[0][2] == 44  # Frozen Trap / Icy Trap effect id
-    assert packets[1][2] == 44
+    assert packets[0][2] == 36  # Icy Trap group; 44 is Frozen Trap (wrong AOE)
+    assert packets[1][2] == 36
     assert packets[0][3] & 0x80 == 0x00  # phase 0x00
     assert packets[1][3] & 0x80 == 0x80  # phase 0x80
     assert struct.unpack_from('<II', packets[0], 12) == (33, 44)
@@ -480,5 +480,54 @@ def test_summon_presence_broadcasts_klass_38_and_owner_links():
     assert struct.unpack_from('<I', link_owner, 2)[0] == owner_pub
     assert link_owner[7] == 0x3D
     assert struct.unpack_from('<I', link_owner, 8)[0] == 8001
+
+
+def test_other_player_receives_pet_and_summon_combat_packets():
+    """The shared-room mirror must carry the complete companion action."""
+    from unittest import mock
+    import app
+    import presencia
+
+    monster = combate.Monstruo(9001, 1, 'Lily', (10, 10))
+    shared = {9001: monster}
+
+    class DummySession:
+        def __init__(self, eid):
+            self.personaje = type('P', (), {'entity_id': eid, 'stage': 1})()
+            self.monstruos = shared
+            self.pet_entity_id = 7001 if eid == 100 else None
+            self.invocacion = {'entity_id': 8001} if eid == 100 else None
+            self.invocacion2 = None
+            self.cerrada = False
+            self.received = []
+
+        def enviar_sin_espejo(self, *packets):
+            self.received.extend(packets)
+
+        def volcar(self):
+            pass
+
+    owner = DummySession(100)
+    viewer = DummySession(200)
+    room = type('Room', (), {'stage': 1, 'monstruos': shared,
+                             'sesiones': [owner, viewer]})()
+    owner._sala = viewer._sala = room
+
+    pet_packets = (
+        combate.ataque(7001, 9001, combate.anim_de_monstruo('Lily')),
+        combate.numero_de_dano(7001, 9001, 25, ataque=0, efecto=0),
+        combate.cierre_de_dano(7001, 9001, ataque=0, efecto=0),
+    )
+    summon_packets = (
+        combate.ataque(8001, 9001, combate.anim_de_monstruo('Mercenary')),
+        combate.numero_de_dano(8001, 9001, 40, ataque=656, efecto=136),
+        combate.cierre_de_dano(8001, 9001, ataque=656, efecto=136),
+    )
+    with mock.patch.object(presencia, 'entidad_de', return_value=500100):
+        app._espejar(owner, pet_packets + summon_packets)
+
+    assert viewer.received == list(pet_packets + summon_packets)
+    assert [struct.unpack_from('<H', p)[0] for p in viewer.received].count(0x000A) == 2
+    assert [struct.unpack_from('<H', p)[0] for p in viewer.received].count(0x0011) == 4
 
 

@@ -2766,11 +2766,17 @@ def cierre_de_dano(atacante: int, objetivo: int,
 
 def efecto_captura(atacante: int, objetivo: int, x: int = 0, y: int = 0,
                    subtipo: int = 16979):
-    """Animacion de captura Poke Egg: Frozen Trap / Icy Trap (efecto 44) en el suelo bajo el objetivo."""
+    """Cristal rojo de captura, la variante de Icy Trap sobre el objetivo.
+
+    Icy Trap I..V usa el grupo visual 36 en magic.xml. Frozen Trap es el 44
+    y es otro hechizo/AOE. Con ataque=0 y tipo fisico/neutro el cliente toma
+    las secuencias especiales de captura 4607..4609 que m02.obd guarda en el
+    mismo directorio magic/036, en vez de la variante azul de Chaos.
+    """
     return [
-        numero_de_dano(atacante, objetivo, dano=0, ataque=0, efecto=44,
+        numero_de_dano(atacante, objetivo, dano=0, ataque=0, efecto=36,
                        cast_time=0, es_magia=False, tile_x=x, tile_y=y),
-        cierre_de_dano(atacante, objetivo, ataque=0, efecto=44,
+        cierre_de_dano(atacante, objetivo, ataque=0, efecto=36,
                        es_magia=False, tile_x=x, tile_y=y),
     ]
 
