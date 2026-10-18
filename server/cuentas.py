@@ -536,13 +536,14 @@ def personaje_de(cuenta, ranura=0):
     _inv_limpio = {}
     for _k, _v in p.get('inventario', {}).items():
         if isinstance(_v, (list, tuple)):
-            if not _v:
+            if not _v or not _v[0] or int(_v[0]) <= 0:
                 continue
             _inv_limpio[int(_k)] = int(_v[0])
             if len(_v) > 1 and int(_v[1]) > 1:
                 _cant_limpia[int(_k)] = int(_v[1])
         else:
-            _inv_limpio[int(_k)] = _v
+            if _v and int(_v) > 0:
+                _inv_limpio[int(_k)] = int(_v)
     _casa_limpia = dict(p.get('casa') or {})
     if _casa_limpia:
         _casa_limpia['is_open'] = False
@@ -717,7 +718,7 @@ def _slot_sort_key(item):
 def guardar_inventario(usuario: str, char_id: int, bolsa: dict,
                        cantidades=None, mejoras=None, expiracion_puesto=None):
     def _mut(p):
-        p['inventario'] = {str(k): v for k, v in sorted(bolsa.items(), key=_slot_sort_key)}
+        p['inventario'] = {str(k): int(v) for k, v in sorted(bolsa.items(), key=_slot_sort_key) if v and int(v) > 0}
         if mejoras is not None:
             p['mejoras'] = {str(k): v
                             for k, v in sorted(mejoras.items(), key=_slot_sort_key)
@@ -912,7 +913,7 @@ def guardar_casa_e_inventario(usuario: str, char_id: int, casa, bolsa: dict,
             datos = json.loads(row[0])
             datos['casa'] = casa_data
             datos['inventario'] = {
-                str(k): v for k, v in sorted(bolsa.items(), key=_slot_sort_key)
+                str(k): int(v) for k, v in sorted(bolsa.items(), key=_slot_sort_key) if v and int(v) > 0
             }
             if cantidades is not None:
                 datos['cantidades'] = {
@@ -998,7 +999,7 @@ def guardar_cardbook(usuario: str, char_id: int, plan):
             datos['cartas'] = sorted(set(int(x) for x in plan.personaje.cartas))
             datos['cartas_canjes'] = sorted(set(int(x) for x in
                                                  plan.personaje.cartas_canjes))
-            datos['inventario'] = {str(k): v for k, v in plan.inventario.items()}
+            datos['inventario'] = {str(k): int(v) for k, v in plan.inventario.items() if v and int(v) > 0}
             datos['cantidades'] = {str(k): int(v) for k, v in plan.cantidades.items()
                                     if int(k) in plan.inventario}
             datos['mejoras'] = {str(k): v for k, v in

@@ -863,7 +863,7 @@ def _refrescar(ses, ranuras, con_oro=False):
     mascotas_map = getattr(ses.personaje, 'mascotas', {}) if ses.personaje else {}
     _masc = getattr(ses.personaje, 'mascota', None) if ses.personaje else None
     for r in sorted(set(int(x) for x in ranuras if x is not None)):
-        if r in ses.inventario:
+        if r in ses.inventario and ses.inventario[r]:
             p_data = None
             es_pet = inv.es_mascota(int(ses.inventario[r]))
             if es_pet:
@@ -12444,7 +12444,9 @@ class Servidor:
                     _cantidades(ses)[_lib_rh] = _c_rh
                 _mover_inst(ses, 3, _lib_rh)
                 _extra_tocadas.extend([3, _lib_rh])
-            if dst in bolsa:
+            if dst in bolsa and not bolsa[dst]:
+                bolsa.pop(dst, None)
+            if dst in bolsa and bolsa[dst]:
                 it_dst = bolsa[dst]
                 if not inv.es_ranura_valida(it_dst, org):
                     log.warning(f"[{addr}] swap {org} <-> {dst}: ranura {org} no valida para item {it_dst}")

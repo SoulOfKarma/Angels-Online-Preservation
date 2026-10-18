@@ -2442,6 +2442,9 @@ def actualizar_ranuras(char_id: int, entradas, dueno: int = None,
     lista = []
     for r, i, c, ins in entradas:
         r, i, c = int(r), int(i), int(c)
+        if not i or i <= 0:
+            log.warning(f"actualizar_ranuras intento empaquetar item_id={i} en ranura {r} - omitido para evitar crash en Angel.exe")
+            continue
         pet_spec = None
         if es_mascota(i):
             if str(r) in mascotas:
@@ -2474,6 +2477,8 @@ def actualizar_ranura(char_id: int, ranura: int, item_id: int, cant: int,
     reenviar el 0x001A completo el cliente se quedaba con lo que ya tenia
     pintado y los items vendidos seguian viendose en la mochila.
     """
+    if not item_id or int(item_id) <= 0:
+        return vaciar_ranura(dueno if dueno is not None else char_id, ranura)
     return (struct.pack('<HI', 0x001B, 1)
             + _entrada(char_id, ranura, item_id, cant, inst, dueno,
                        mascota=mascota))

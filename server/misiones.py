@@ -191,6 +191,24 @@ _CADENAS_CIUDAD = {
     'chief assistant': [443, 444, 445, 446, 447, 448, 449, 450, 451, 452, 453, 454, 456, 457, 458],  # Iron Castle (38)
 }
 
+# Mapeo exacto de los 5 BOSSes y sus 5 piezas correspondientes para Quest 976 Paso 8
+BOSSES_976_8 = {
+    1220: 12605,  # Sword Jellyfish -> Life Diamond Shard
+    3587: 12606,  # Leech Mrs. Dorsa -> Life Diamond Chunk
+    3596: 12607,  # Hermit Hezon -> Life Diamond Fragment
+    4483: 12608,  # Purple Scorpion Issac -> Life Diamond Chip
+    4491: 12609,  # Destroyer Wesley -> Life Diamond Core
+}
+
+BOSS_NAMES_976_8 = {
+    'sword jellyfish': 12605,
+    'leech mrs. dorsa': 12606,
+    'leech mrs dorsa': 12606,
+    'hermit hezon': 12607,
+    'purple scorpion issac': 12608,
+    'destroyer wesley': 12609,
+}
+
 
 def normalizar_nombre_npc(nom: str) -> str:
     """Normaliza el nombre de un NPC para comparar el del mapa con el de la mision.
@@ -328,6 +346,41 @@ def _cargar_db():
                 for _alias in ('riddle bishop', 'riddle city bishop', 'riddle city bishops', 'riddle bishops'):
                     if _alias not in c_976_4.get('monstruos', []):
                         c_976_4.setdefault('monstruos', []).append(_alias)
+
+            # Quest 976 Paso 8: Los 5 BOSSes y sus 5 piezas correspondientes
+            _CACERIAS.pop('976_8', None)
+            _RECOLECCIONES['976_8'] = {
+                'qid': 976,
+                'paso': 8,
+                'siguiente_paso': 9,
+                'cantidad': 1,
+                'items': [
+                    {'item_id': 12605, 'cantidad': 1},
+                    {'item_id': 12606, 'cantidad': 1},
+                    {'item_id': 12607, 'cantidad': 1},
+                    {'item_id': 12608, 'cantidad': 1},
+                    {'item_id': 12609, 'cantidad': 1},
+                ],
+                'monstruo_ids': [1220, 3587, 3596, 4483, 4491],
+                'monstruos': [
+                    'sword jellyfish',
+                    'leech mrs. dorsa',
+                    'hermit hezon',
+                    'purple scorpion issac',
+                    'destroyer wesley',
+                ],
+                'npc_entrega': 'Villiersas',
+                'mapa': 'Palm Base',
+            }
+            if 976 in _MISIONES and len(_MISIONES[976].get('pasos', [])) >= 8:
+                _MISIONES[976]['pasos'][7]['tipo'] = 'recolectar'
+                _MISIONES[976]['pasos'][7]['items'] = [
+                    {'item_id': 12605, 'cantidad': 1},
+                    {'item_id': 12606, 'cantidad': 1},
+                    {'item_id': 12607, 'cantidad': 1},
+                    {'item_id': 12608, 'cantidad': 1},
+                    {'item_id': 12609, 'cantidad': 1},
+                ]
 
             log.info(f"Cargadas {len(_MISIONES)} misiones completas desde misiones_completas.json (recolecciones: {len(_RECOLECCIONES)})")
             return
@@ -736,7 +789,8 @@ def completar_mision(ses, qid: int, exp: int = 0, oro: int = 0,
         for ranura, iid in list(inv.items()):
             if iid in borrar_items:
                 r_int = int(ranura)
-                inv[r_int] = 0
+                inv.pop(r_int, None)
+                inv.pop(str(r_int), None)
                 cants.pop(r_int, None)
                 cants.pop(str(r_int), None)
                 envios.append(_inv.vaciar_ranura(dueno, r_int))
@@ -1157,7 +1211,8 @@ def fijar_token_mision(ses, token_id: int, cant: int = 1):
 
     if cant <= 0:
         if target_slot is not None:
-            inv[target_slot] = 0
+            inv.pop(target_slot, None)
+            inv.pop(str(target_slot), None)
             cants.pop(target_slot, None)
             cants.pop(str(target_slot), None)
             ses.inventario = inv
@@ -1214,6 +1269,23 @@ def verificar_botin_mision(ses, npc_type: int, monster_name: str = None) -> list
     for q, pa in list(p.quests or []):
         if mision_completada(p, q):
             continue
+
+        # Manejo especial para Quest 976 Paso 8: cada BOSS suelta su propia pieza específica al 100%
+        if q == 976 and pa == 8:
+            target_item = None
+            if npc_type in BOSSES_976_8:
+                target_item = BOSSES_976_8[npc_type]
+            elif m_nom:
+                for b_name, b_item in BOSS_NAMES_976_8.items():
+                    if b_name in m_nom or m_nom in b_name:
+                        target_item = b_item
+                        break
+            if target_item:
+                actual = sum(cants.get(r, 1) for r, it in inv.items() if it == target_item)
+                if actual < 1:
+                    drops_mision.append((target_item, 1))
+            continue
+
         k_rec = f"{q}_{pa}"
         r_data = _RECOLECCIONES.get(k_rec)
         if not r_data and k_rec in _CACERIAS:
@@ -1365,7 +1437,8 @@ def verificar_entrega_items(ses, qid: int, paso: int) -> bool:
                 act = cants.get(r_int, 1)
                 if act <= falta_quitar:
                     falta_quitar -= act
-                    inv[r_int] = 0
+                    inv.pop(r_int, None)
+                    inv.pop(str(r_int), None)
                     cants.pop(r_int, None)
                     cants.pop(str(r_int), None)
                     ses.enviar(_inv.vaciar_ranura(dueno, r_int))
