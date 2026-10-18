@@ -38,8 +38,8 @@ def test_capture_animation_keeps_effect_and_subtype_separate():
     assert len(packets) == 2
     assert int.from_bytes(packets[0][:2], 'little') == 0x0011  # red crystal effect 0x0011
     assert int.from_bytes(packets[1][:2], 'little') == 0x0011
-    assert packets[0][2] == 19  # red crystal (Fire Trap) effect id
-    assert packets[1][2] == 19
+    assert packets[0][2] == 44  # Frozen Trap / Icy Trap effect id
+    assert packets[1][2] == 44
     assert packets[0][3] & 0x80 == 0x00  # phase 0x00
     assert packets[1][3] & 0x80 == 0x80  # phase 0x80
     assert struct.unpack_from('<II', packets[0], 12) == (33, 44)
@@ -364,4 +364,121 @@ def test_inventory_swap_active_pet_preserves_instance_and_sends_0x0065():
     # 4. Outgoing packets include 0x0065 (_ms.armar)
     opcodes_sent = [struct.unpack_from('<H', p)[0] for p in ses.paquetes]
     assert 0x0065 in opcodes_sent
+
+
+def test_pet_presence_broadcasts_0x0050_with_owner_link_and_no_dummy_npc():
+    import presencia
+
+    class DummyP:
+        def __init__(self, name, cid, eid):
+            self.nombre = name
+            self.char_id = cid
+            self.entity_id = eid
+            self.tile_x = 50
+            self.tile_y = 50
+            self.stage = 1
+            self.mascota = {
+                'nombre': 'Kini',
+                'sprite': 3403,
+                'fuera': True,
+                'entidad': 7001,
+                'x': 51,
+                'y': 50,
+                'saciedad': 150,
+                'hp': 1000,
+                'hp_max': 1000,
+            }
+
+    class DummyS:
+        def __init__(self, name, cid, eid):
+            self.personaje = DummyP(name, cid, eid)
+            self.pet_entity_id = 7001
+            self.paquetes = []
+            self.conectada = True
+            self.rol = 'mundo'
+
+        def enviar(self, *pkts):
+            self.paquetes.extend(pkts)
+
+    owner = DummyS('Karma', 101, 2001)
+    viewer = DummyS('KarmaV3', 102, 2002)
+
+    pkts = presencia.paquetes_mascota(owner)
+    assert len(pkts) >= 3
+
+    # First packet MUST be 0x0050 (entidad_mundo)
+    opcodes = [struct.unpack_from('<H', p)[0] for p in pkts]
+    assert opcodes[0] == 0x0050
+    assert 0x0008 not in opcodes  # NO dummy NPC packet!
+
+    # 0x0050 payload: pet sprite 3403, name Kini, owner ID
+    p50 = pkts[0]
+    # offset 16 is pet name (first 2 bytes are opcode, so +18 in raw packet)
+    assert p50[18:22] == b'Kini'
+    # owner entity ID is at offset 75 (+2 opcode = 77)
+    owner_pub = presencia.entidad_de(owner)
+    assert struct.unpack_from('<I', p50, 77)[0] == owner_pub
+    # sprite is at offset 45 (+2 = 47)
+    assert struct.unpack_from('<H', p50, 47)[0] == 3403
+
+    # Link packet (0x001D kind 0x2A) connects owner_pub to pet 7001
+    link_pkt = pkts[1]
+    assert struct.unpack_from('<H', link_pkt)[0] == 0x001D
+    assert struct.unpack_from('<I', link_pkt, 2)[0] == owner_pub
+    assert link_pkt[7] == 0x2A
+    assert struct.unpack_from('<I', link_pkt, 8)[0] == 7001
+
+
+def test_summon_presence_broadcasts_klass_38_and_owner_links():
+    import presencia
+
+    class DummyP:
+        def __init__(self, name, cid, eid):
+            self.nombre = name
+            self.char_id = cid
+            self.entity_id = eid
+            self.tile_x = 60
+            self.tile_y = 60
+            self.stage = 1
+            self.mascota = None
+
+    class DummyS:
+        def __init__(self, name, cid, eid):
+            self.personaje = DummyP(name, cid, eid)
+            self.pet_entity_id = None
+            self.invocacion = {
+                'entity_id': 8001,
+                'npc_type': 1894,
+                'nombre': 'Mercenary',
+                'sprite': 40005,
+                'hp': 500,
+                'hp_max': 500,
+                'tile_x': 61,
+                'tile_y': 60,
+            }
+            self.invocacion2 = None
+            self.paquetes = []
+            self.conectada = True
+            self.rol = 'mundo'
+
+        def enviar(self, *pkts):
+            self.paquetes.extend(pkts)
+
+    owner = DummyS('Karma', 101, 2001)
+    pkts = presencia.paquetes_invocaciones(owner)
+    assert len(pkts) == 4
+
+    # Opcode 0x0008 with klass 38
+    opcodes = [struct.unpack_from('<H', p)[0] for p in pkts]
+    assert 0x0008 in opcodes
+    assert 0x0013 in opcodes
+
+    owner_pub = presencia.entidad_de(owner)
+    # Check 0x0013 link packets
+    link_owner = pkts[2]
+    assert struct.unpack_from('<H', link_owner)[0] == 0x0013
+    assert struct.unpack_from('<I', link_owner, 2)[0] == owner_pub
+    assert link_owner[7] == 0x3D
+    assert struct.unpack_from('<I', link_owner, 8)[0] == 8001
+
 

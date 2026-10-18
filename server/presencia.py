@@ -279,6 +279,91 @@ def clave_de_mapa(ses, stage):
     return stage
 
 
+_PL_MUNDO = [None]
+
+
+def _plantilla_mascota_mundo():
+    if _PL_MUNDO[0] is None:
+        import json as _json
+        _PL_MUNDO[0] = bytes.fromhex(_json.loads(
+            _inv.PLANTILLA_INI.read_text(encoding='utf-8'))['mascota_mundo'])
+    return _PL_MUNDO[0]
+
+
+def paquetes_mascota(ses_owner) -> list:
+    """Paquetes para presentar la mascota activa de ses_owner a otros jugadores.
+
+    En Angel.exe las mascotas NUNCA se spawnean con 0x0008 (_npc_spawn).
+    Se spawnean con s2c 0x0050 (entidad_mundo) llevando su sprite real, nombre,
+    y el id público del dueño (entidad_de(ses_owner)) junto al enlace 0x001D/0x0013.
+    """
+    p = getattr(ses_owner, 'personaje', None)
+    if not p:
+        return []
+    f_pet = getattr(p, 'mascota', None)
+    pet_eid = getattr(ses_owner, 'pet_entity_id', None)
+    if not isinstance(f_pet, dict) or not f_pet.get('fuera') or not pet_eid:
+        return []
+
+    import mascotas as _ms
+    import combate as _cb
+
+    owner_eid = entidad_de(ses_owner)
+    px = f_pet.get('x', getattr(p, 'tile_x', 0) + 1)
+    py = f_pet.get('y', getattr(p, 'tile_y', 0))
+
+    est = dict(f_pet)
+    est.update({
+        'entidad': pet_eid,
+        'x': px,
+        'y': py,
+        'dueno': owner_eid,
+        'dueno_nombre': p.nombre,
+        'tipo': f_pet.get('tipo', 0),
+        'sprite': f_pet.get('sprite', 0),
+        'nombre': f_pet.get('nombre', 'Pet'),
+    })
+
+    pkts = [
+        _ms.entidad_mundo(_plantilla_mascota_mundo(), est),
+        _ms.enlazar(owner_eid, pet_eid),
+        _cb.atributo(pet_eid, _ms.hp_eff(f_pet), _cb.KIND_HP),
+    ]
+    if int(f_pet.get('saciedad', 0)) > 100:
+        pkts.append(struct.pack('<HIBBII', 0x001D, pet_eid, 1, 4, 3796, max(60000, (int(f_pet['saciedad']) - 100) * 60000)))
+    return pkts
+
+
+def paquetes_invocaciones(ses_owner) -> list:
+    """Paquetes de invocaciones y mercenarios activos de ses_owner para otros jugadores."""
+    p = getattr(ses_owner, 'personaje', None)
+    if not p:
+        return []
+    import login as _lg
+    import combate as _cb
+    owner_pub_eid = entidad_de(ses_owner)
+    pkts = []
+    for inv_key in ('invocacion', 'invocacion2'):
+        inv = getattr(ses_owner, inv_key, None)
+        if inv and isinstance(inv, dict) and (inv.get('hp', 0) > 0 or inv.get('hp_max', 0) > 0):
+            eid = inv.get('entity_id')
+            if not eid:
+                continue
+            npc_t = inv.get('npc_type') or inv.get('npc_tipo', 9999)
+            tx = inv.get('tile_x', p.tile_x)
+            ty = inv.get('tile_y', p.tile_y)
+            sp_pkg = _lg.spawn_invocacion(eid, npc_t, inv.get('nombre', 'Summon'),
+                                          (tx, ty), sprite=inv.get('sprite', 0))
+            cur_hp = inv.get('hp', inv.get('hp_max', 1))
+            max_hp = max(1, inv.get('hp_max', 1))
+            hp_pct = max(1, min(100, int(100 * cur_hp / max_hp)))
+            hp_pkg = _cb.atributo(eid, hp_pct, _cb.KIND_HP)
+            link_owner = struct.pack('<HIBBI', 0x0013, owner_pub_eid, 1, 0x3d, eid)
+            link_inv = struct.pack('<HIBBI', 0x0013, eid, 1, 0x3c, owner_pub_eid)
+            pkts.extend([sp_pkg, hp_pkg, link_owner, link_inv])
+    return pkts
+
+
 def entrar(ses, stage):
     """El jugador llega a un mapa: se le presenta a los que ya estaban y al
     reves, incluyendo mascotas e invocaciones activas."""
@@ -300,32 +385,13 @@ def entrar(ses, stage):
         if ts_yo:
             _mandar(s, _cb.atributo(entidad_de(ses), ts_yo, _cb.KIND_TRANSFORM))
 
-        # Summons de 'ses' hacia 's'
-        for inv_key in ('invocacion', 'invocacion2'):
-            inv = getattr(ses, inv_key, None)
-            if inv and inv.get('hp', 0) > 0:
-                sp_pkg = _lg.spawn_invocacion(inv['entity_id'], inv.get('npc_tipo', 9999),
-                                              inv['nombre'], (inv.get('tile_x', 0), inv.get('tile_y', 0)),
-                                              sprite=inv.get('sprite', 0))
-                hp_pkg = _cb.atributo(inv['entity_id'], int(100 * inv['hp'] / max(1, inv.get('hp_max', 1))), _cb.KIND_HP)
-                _mandar(s, sp_pkg, hp_pkg)
+        # Summons / Mercenarios de 'ses' hacia 's'
+        _mandar(s, *paquetes_invocaciones(ses))
 
-        # Pet de 'ses' hacia 's'
-        if getattr(ses, 'pet_entity_id', None):
-            pet_spr = getattr(ses, 'pet_sprite', 0)
-            if not pet_spr:
-                pet_it = (getattr(ses, 'inventario', {}) or {}).get(9)
-                if pet_it:
-                    import inventario as _iv_p
-                    pet_spr = _iv_p.sprite_de_mascota(pet_it)
-            if pet_spr:
-                ses.pet_sprite = pet_spr
-                pet_pkg = _lg._npc_spawn(ses.pet_entity_id, 9999, "Pet",
-                                         (ses.personaje.tile_x + 1, ses.personaje.tile_y),
-                                         sprite=pet_spr)
-                _mandar(s, pet_pkg)
+        # Pet de 'ses' hacia 's' (con 0x0050, nombre y sprite real)
+        _mandar(s, *paquetes_mascota(ses))
 
-        # Monstruo encantado / mercenario de 'ses' hacia 's'
+        # Monstruo encantado de 'ses' hacia 's'
         m_enc_yo = getattr(ses, 'monstruo_encantado', None)
         if m_enc_yo and getattr(m_enc_yo, 'vivo', False) and m_enc_yo.hp > 0:
             m_pkg = _lg._npc_spawn(m_enc_yo.entity_id, m_enc_yo.tipo, m_enc_yo.nombre,
@@ -340,32 +406,13 @@ def entrar(ses, stage):
         if ts_s:
             _mandar(ses, _cb.atributo(entidad_de(s), ts_s, _cb.KIND_TRANSFORM))
 
-        # Summons de 's' hacia 'ses'
-        for inv_key in ('invocacion', 'invocacion2'):
-            inv = getattr(s, inv_key, None)
-            if inv and inv.get('hp', 0) > 0:
-                sp_pkg = _lg.spawn_invocacion(inv['entity_id'], inv.get('npc_tipo', 9999),
-                                              inv['nombre'], (inv.get('tile_x', 0), inv.get('tile_y', 0)),
-                                              sprite=inv.get('sprite', 0))
-                hp_pkg = _cb.atributo(inv['entity_id'], int(100 * inv['hp'] / max(1, inv.get('hp_max', 1))), _cb.KIND_HP)
-                _mandar(ses, sp_pkg, hp_pkg)
+        # Summons / Mercenarios de 's' hacia 'ses'
+        _mandar(ses, *paquetes_invocaciones(s))
 
-        # Pet de 's' hacia 'ses'
-        if getattr(s, 'pet_entity_id', None):
-            pet_spr = getattr(s, 'pet_sprite', 0)
-            if not pet_spr:
-                pet_it = (getattr(s, 'inventario', {}) or {}).get(9)
-                if pet_it:
-                    import inventario as _iv_p
-                    pet_spr = _iv_p.sprite_de_mascota(pet_it)
-            if pet_spr:
-                s.pet_sprite = pet_spr
-                pet_pkg = _lg._npc_spawn(s.pet_entity_id, 9999, "Pet",
-                                         (s.personaje.tile_x + 1, s.personaje.tile_y),
-                                         sprite=pet_spr)
-                _mandar(ses, pet_pkg)
+        # Pet de 's' hacia 'ses' (con 0x0050, nombre y sprite real)
+        _mandar(ses, *paquetes_mascota(s))
 
-        # Monstruo encantado / mercenario de 's' hacia 'ses'
+        # Monstruo encantado de 's' hacia 'ses'
         m_enc = getattr(s, 'monstruo_encantado', None)
         if m_enc and getattr(m_enc, 'vivo', False) and m_enc.hp > 0:
             m_pkg = _lg._npc_spawn(m_enc.entity_id, m_enc.tipo, m_enc.nombre,
@@ -602,15 +649,19 @@ def sesion_por_entidad(ses_consulta, eid: int):
 
 
 def notificar_invocacion_spawn(ses, inv, spawn_pkg, hp_pkg):
-    """Avisa a todos los demas jugadores del mapa que aparecio una invocacion."""
+    """Avisa a todos los demas jugadores del mapa que aparecio una invocacion o mercenario."""
     stage = getattr(ses, '_mapa_presencia', None)
     if stage is None and getattr(ses, 'personaje', None):
         stage = getattr(ses.personaje, 'stage', None)
-    if stage is None:
+    if stage is None or not inv:
         return
+    owner_pub_eid = entidad_de(ses)
+    eid = inv.get('entity_id') if isinstance(inv, dict) else 0
+    link_owner = struct.pack('<HIBBI', 0x0013, owner_pub_eid, 1, 0x3d, eid) if eid else b''
+    link_inv = struct.pack('<HIBBI', 0x0013, eid, 1, 0x3c, owner_pub_eid) if eid else b''
     for s in _vivas(stage):
         if s is not ses:
-            _mandar(s, spawn_pkg, hp_pkg)
+            _mandar(s, spawn_pkg, hp_pkg, link_owner, link_inv)
 
 
 def notificar_invocacion_movimiento(ses, entity_id, move_pkt):
@@ -640,19 +691,19 @@ def notificar_invocacion_despawn(ses, entity_id):
             _mandar(s, pkt_hp, pkt_despawn)
 
 
-def notificar_mascota_spawn(ses, pet_eid, sprite, tx, ty):
-    """Avisa a todos los demas jugadores del mapa que salio una mascota."""
+def notificar_mascota_spawn(ses, pet_eid=None, sprite=None, tx=None, ty=None):
+    """Avisa a todos los demas jugadores del mapa que salio o cambio una mascota."""
     stage = getattr(ses, '_mapa_presencia', None)
     if stage is None and getattr(ses, 'personaje', None):
         stage = getattr(ses.personaje, 'stage', None)
     if stage is None:
         return
-    import login as _lg
-    pet_pkg = _lg._npc_spawn(pet_eid, 9999, "Pet", (tx, ty), sprite=sprite)
-    ses.pet_sprite = sprite
+    pkts = paquetes_mascota(ses)
+    if not pkts:
+        return
     for s in _vivas(stage):
         if s is not ses:
-            _mandar(s, pet_pkg)
+            _mandar(s, *pkts)
 
 
 def notificar_mascota_movimiento(ses, pet_eid, move_pkt):
@@ -674,12 +725,15 @@ def notificar_mascota_despawn(ses, pet_eid):
         stage = getattr(ses.personaje, 'stage', None)
     if stage is None:
         return
+    import mascotas as _ms
     import combate as _cb
-    pkt = _cb.atributo(pet_eid, 0, _cb.VIDA)
-    pkt_despawn = _cb.despawn_monstruo(pet_eid)
+    owner_eid = entidad_de(ses)
+    pkt_despawn = _ms.quitar(pet_eid)
+    pkt_unlink = _ms.enlazar(owner_eid, 0)
+    pkt_hp = _cb.atributo(pet_eid, 0, _cb.VIDA)
     for s in _vivas(stage):
         if s is not ses:
-            _mandar(s, pkt, pkt_despawn)
+            _mandar(s, pkt_hp, pkt_unlink, pkt_despawn)
 
 
 def notificar_emocion(ses, emote_id: int):

@@ -1597,6 +1597,8 @@ def _pet_alternar(ses, addr, ranura):
             ses.enviar(_ms.paquete_orden(p.entity_id, 0x0B))
             ses.enviar(_ms.enlazar(p.entity_id, 0))
             ses.enviar(_ms.quitar(f['entidad']))
+            import presencia as _pr
+            _pr.notificar_mascota_despawn(ses, f['entidad'])
         f['entidad'] = None
         ses.pet_entity_id = None
         log.info('[%s] mascota guardada: %s' % (addr, f.get('nombre')))
@@ -1611,6 +1613,8 @@ def _pet_alternar(ses, addr, ranura):
         ses.enviar(_ms.paquete_orden(p.entity_id, 0x0B))
         ses.enviar(_ms.enlazar(p.entity_id, 0))
         ses.enviar(_ms.quitar(old_eid))
+        import presencia as _pr
+        _pr.notificar_mascota_despawn(ses, old_eid)
         ses.pet_entity_id = None
 
     if getattr(p, 'mascotas', None):
@@ -1649,6 +1653,8 @@ def _pet_alternar(ses, addr, ranura):
     if int(f.get('saciedad', 0)) > 100:
         pkgs_spawn.append(_st.pack('<HIBBII', 0x001D, f['entidad'], 1, 4, 3796, max(60000, (int(f['saciedad']) - 100) * 60000)))
     ses.enviar(*pkgs_spawn)
+    import presencia as _pr
+    _pr.notificar_mascota_spawn(ses)
     _guardar_bolsa(ses, p.char_id)
     log.info('[%s] mascota fuera: %s (entidad %d en %d,%d)'
              % (addr, f.get('nombre'), f['entidad'], px, py))
@@ -3347,6 +3353,8 @@ def _casa_invocar_mercenario(ses, tx=0, ty=0):
     old = getattr(ses, 'invocacion', None)
     if old:
         ses.enviar(combate.despawn_monstruo(old['entity_id']))
+        import presencia
+        presencia.notificar_invocacion_despawn(ses, old['entity_id'])
     eid = p.entity_id + 8000
     if max(abs(tx - p.tile_x), abs(ty - p.tile_y)) > 12 or not tx or not ty:
         tx, ty = p.tile_x + 1, p.tile_y
@@ -3408,6 +3416,8 @@ def _casa_sincronizar_token(ses):
     summon = getattr(ses, 'invocacion', None)
     if summon and summon.get('es_mercenario') and (summon.get('stage') != p.stage or summon['expira'] <= now):
         ses.enviar_inmediato(combate.despawn_monstruo(summon['entity_id']))
+        import presencia
+        presencia.notificar_invocacion_despawn(ses, summon['entity_id'])
         ses.invocacion = None
     if not getattr(ses, 'house_mercenary_skill_removed', False):
         ses.enviar_inmediato(struct.pack('<HIBBII', 0x001D, p.entity_id, 1, 9, 2254, 0))
@@ -7900,11 +7910,13 @@ class Servidor:
                                                 dst_x, dst_y = m.tile_x * 32, m.tile_y * 32
                                                 _pasos = max(abs(stx), abs(sty)) or 1
                                                 spd = m.move_speed or _cb.VELOCIDAD_PASEO
-                                                m.proximo_paso = ahora + (_pasos * 32.0 / spd)
-                                                ses.enviar(MOVE.build(entity_id=m.entity_id,
-                                                                      cur_x=cur_x, cur_y=cur_y,
-                                                                      dst_x=dst_x, dst_y=dst_y,
-                                                                      speed=spd))
+                                                _mv_ch = MOVE.build(entity_id=m.entity_id,
+                                                                    cur_x=cur_x, cur_y=cur_y,
+                                                                    dst_x=dst_x, dst_y=dst_y,
+                                                                    speed=spd)
+                                                ses.enviar(_mv_ch)
+                                                import presencia as _pr
+                                                _pr.notificar_invocacion_movimiento(ses, m.entity_id, _mv_ch)
                                     else:
                                         p_dx = p.tile_x - m.tile_x
                                         p_dy = p.tile_y - m.tile_y
@@ -7923,10 +7935,13 @@ class Servidor:
                                             _pasos = max(abs(stx), abs(sty)) or 1
                                             spd = m.move_speed or _cb.VELOCIDAD_PASEO
                                             m.proximo_paso = ahora + (_pasos * 32.0 / spd)
-                                            ses.enviar(MOVE.build(entity_id=m.entity_id,
+                                            _mv_ch = MOVE.build(entity_id=m.entity_id,
                                                                   cur_x=cur_x, cur_y=cur_y,
                                                                   dst_x=dst_x, dst_y=dst_y,
-                                                                  speed=spd))
+                                                                  speed=spd)
+                                            ses.enviar(_mv_ch)
+                                            import presencia as _pr
+                                            _pr.notificar_invocacion_movimiento(ses, m.entity_id, _mv_ch)
                                 continue
 
                             # El sangrado / veneno le resta vida aunque nadie lo toque,
@@ -11140,6 +11155,8 @@ class Servidor:
                 if f_pet.get('saciedad', 0) > 100:
                     _pkgs_pet.append(struct.pack('<HIBBII', 0x001D, f_pet['entidad'], 1, 4, 3796, 3436877059))
                 ses.enviar(*_pkgs_pet)
+                import presencia as _pr
+                _pr.notificar_mascota_spawn(ses)
 
             # Restauracion de buffs activos tras cambio de mapa
             now_t = time.time()
@@ -12528,24 +12545,6 @@ class Servidor:
                     salida.append(_cb.atributo(ses.personaje.entity_id, ses.personaje.mp, _cb.KIND_MP))
                 salida.append(_stats_ses(ses))
                 salida.extend(_apariencia(ses))
-            # Gestion de mascota en ranura 9
-            if dst == 9:
-                sp = inv.sprite_de_mascota(it)
-                pet_eid = (ses.personaje.entity_id if ses.personaje else 1001) + 5000
-                ses.pet_entity_id = pet_eid
-                ses.pet_sprite = sp
-                import login as _lg
-                salida.append(_lg._npc_spawn(pet_eid, 9999, "Pet", (ses.personaje.tile_x + 1, ses.personaje.tile_y), sprite=sp))
-                import presencia as _pr
-                _pr.notificar_mascota_spawn(ses, pet_eid, sp, ses.personaje.tile_x + 1, ses.personaje.tile_y)
-            elif org == 9 and dst != 9:
-                pet_eid = getattr(ses, 'pet_entity_id', None)
-                if pet_eid:
-                    import combate as _cb
-                    salida.append(_cb.atributo(pet_eid, 0, _cb.VIDA))
-                    import presencia as _pr
-                    _pr.notificar_mascota_despawn(ses, pet_eid)
-                    ses.pet_entity_id = None
             ses.enviar(*salida)
             if inv.es_equipo(org) or inv.es_equipo(dst):
                 import presencia as _pr
@@ -13787,12 +13786,6 @@ class Servidor:
                         ses.personaje.mp = _max_m
                     salida.append(_cb.atributo(ses.personaje.entity_id, ses.personaje.hp, _cb.KIND_HP))
                     salida.append(_cb.atributo(ses.personaje.entity_id, ses.personaje.mp, _cb.KIND_MP))
-                if ranura == 9 and getattr(ses, 'pet_entity_id', None):
-                    import combate as _cb
-                    salida.append(_cb.atributo(ses.pet_entity_id, 0, _cb.VIDA))
-                    import presencia as _pr
-                    _pr.notificar_mascota_despawn(ses, ses.pet_entity_id)
-                    ses.pet_entity_id = None
                 ses.enviar(*salida)
                 import presencia as _pr
                 _pr.notificar_equipo(ses)
@@ -13976,17 +13969,6 @@ class Servidor:
                         ses.personaje.mp = _max_m
                     salida.append(_cb.atributo(ses.personaje.entity_id, ses.personaje.hp, _cb.KIND_HP))
                     salida.append(_cb.atributo(ses.personaje.entity_id, ses.personaje.mp, _cb.KIND_MP))
-
-                if dst == 9:
-                    # Spawn de la mascota invocada
-                    sp = inv.sprite_de_mascota(item_id)
-                    pet_eid = (ses.personaje.entity_id if ses.personaje else 1001) + 5000
-                    ses.pet_entity_id = pet_eid
-                    ses.pet_sprite = sp
-                    import login as _lg
-                    salida.append(_lg._npc_spawn(pet_eid, 9999, "Pet", (ses.personaje.tile_x + 1, ses.personaje.tile_y), sprite=sp))
-                    import presencia as _pr
-                    _pr.notificar_mascota_spawn(ses, pet_eid, sp, ses.personaje.tile_x + 1, ses.personaje.tile_y)
 
                 ses.enviar(*salida)
                 import presencia as _pr
