@@ -622,7 +622,7 @@ def parchear_launcher():
         return
 
     puerto_ftp = int(getattr(_cf, 'PUERTO_UPDATE_FTP', 2121))
-    puerto_http = int(getattr(_cf, 'PUERTO_UPDATE_HTTP', 8080))
+    puerto_http = int(getattr(_cf, 'PUERTO_UPDATE_HTTP', 8280))
 
     # 1. reg.ini
     reg_ini = ruta_cli / 'reg.ini'
@@ -1180,9 +1180,9 @@ async def _manejar_http(reader: asyncio.StreamReader, writer: asyncio.StreamWrit
 
 
 async def iniciar_servidores_launcher():
-    """Inicia los servidores FTP (2121) y HTTP (8080) locales para START.EXE."""
+    """Inicia los servidores FTP y HTTP locales para START.EXE."""
     p_ftp = int(getattr(_cf, 'PUERTO_UPDATE_FTP', 2121))
-    p_http = int(getattr(_cf, 'PUERTO_UPDATE_HTTP', 8080))
+    p_http = int(getattr(_cf, 'PUERTO_UPDATE_HTTP', 8280))
     srvs = []
     try:
         s_ftp = await asyncio.start_server(_manejar_actualizacion, '127.0.0.1', p_ftp)

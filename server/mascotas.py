@@ -689,67 +689,33 @@ def entrada(plantilla: bytes, estado: dict) -> bytes:
 
 RANGO_NOMBRES = {
     1: 'Common',
-    2: 'Fine',
+    2: 'Good',
     3: 'Rare',
-    4: 'Top',
+    4: 'Awesome',
     5: 'Super',
 }
 
-RANGO_MULTIPLICADORES = {
-    1: 1.0,
-    2: 1.12,
-    3: 1.25,
-    4: 1.38,
-    5: 1.50,
-}
-
-
 def sortear_rango() -> tuple:
-    """Sortea el rango de calidad al capturar una mascota:
-    (rango_id, rango_nombre, estrellas_base, multiplicador)
-    - Common: 60% (0.1 ~ 0.4 estrellas)
-    - Fine:   24% (0.5 ~ 0.8 estrellas)
-    - Rare:   10% (0.9 ~ 1.2 estrellas)
-    - Top:    4%  (1.3 ~ 1.6 estrellas)
-    - Super:  2%  (1.7 ~ 2.0 estrellas)
-    """
+    """Sortea solamente la calidad: estrellas y bonos son independientes."""
     import random
     roll = random.random() * 100.0
     if roll < 60.0:
         rango = 1
-        st = random.randint(1, 4)    # 0.1 ~ 0.4 estrellas
     elif roll < 84.0:
         rango = 2
-        st = random.randint(5, 8)    # 0.5 ~ 0.8 estrellas
     elif roll < 94.0:
         rango = 3
-        st = random.randint(9, 12)   # 0.9 ~ 1.2 estrellas
     elif roll < 98.0:
         rango = 4
-        st = random.randint(13, 16)  # 1.3 ~ 1.6 estrellas
     else:
         rango = 5
-        st = random.randint(17, 20)  # 1.7 ~ 2.0 estrellas
-    nom = RANGO_NOMBRES[rango]
-    mult = RANGO_MULTIPLICADORES[rango]
-    return rango, nom, st, mult
+    return rango, RANGO_NOMBRES[rango]
 
 
 def aplicar_rango(ficha: dict, rango: int = 1, st: int = None, mult: float = None) -> dict:
-    """Aplica el rango de calidad y nivel de estrellas a los stats de una mascota."""
+    """Aplica la etiqueta de calidad sin alterar stats, bonos ni estrellas."""
     ficha['rango'] = int(rango or 1)
     ficha['rango_nombre'] = RANGO_NOMBRES.get(ficha['rango'], 'Common')
-    if mult is None:
-        mult = RANGO_MULTIPLICADORES.get(ficha['rango'], 1.0)
-    if st is not None:
-        ficha['estrellas'] = max(1, int(st))
-    if mult > 1.0:
-        for k in ('hp', 'hp_max', 'mp', 'mp_max', 'atk', 'dfs', 'matk', 'mdef', 'rigor', 'agilidad'):
-            if k in ficha:
-                ficha[k] = max(1, int(round(ficha[k] * mult)))
-    sp = int(ficha.get('sprite') or 0)
-    if sp:
-        ficha['bonos'] = bonos_estrellas(ficha['estrellas'], sprite=sp, estado=ficha)
     return ficha
 
 
@@ -791,8 +757,12 @@ def recien_nacida(nombre: str, sprite: int, nivel: int = 1,
     # Al comprar un huevo (原型), nace con 0 mejoras y sin bonos verdes (bonos={});
     # si nace ya evolucionada o es de etapa mayor, sortea sus bonos propios de pet.xml.
     es_huevo = (d.get('etapa') == '原型')
-    bonos_ini = {} if es_huevo else sortear_bonos(sprite)
-    st = max(1, int(estrellas or 1)) if es_huevo else calcular_estrellas_total(bonos_ini)
+    es_capturada = int(npc_type or 0) > 0
+    # A diferencia de un huevo de tienda, una mascota capturada ya nace con
+    # sus ocho bonos verdes. Su Star Level es la media de pet_star.xml, no
+    # una cifra fabricada a partir de Common/Good/Rare/Awesome/Super.
+    bonos_ini = sortear_bonos(sprite) if es_capturada or not es_huevo else {}
+    st = calcular_estrellas_total(bonos_ini) if bonos_ini else max(1, int(estrellas or 1))
     final_nombre = nombre if nombre and nombre != 'Pet' else (d.get('nombre') or nombre or 'Pet')
     f = {'nombre': final_nombre, 'sprite': sprite,
          'tipo': d.get('tipo', 0), 'nivel': nv,
@@ -1125,12 +1095,31 @@ def evolucionar(ficha: dict, rama: str) -> dict:
     destino = mean if rama == 'mean' else nice
     if not destino:
         return ficha
+    es_capturada = int(ficha.get('npc_type') or 0) > 0
     ficha['sprite'] = int(destino)
     d = ficha_de_sprite(destino)
     ficha['tipo'] = d.get('tipo', 0)
     if d.get('nombre'):
         ficha['nombre'] = d['nombre']
     ficha.update(stats_de(ficha['sprite'], ficha.get('nivel', 1)))
+    ficha['skills'] = list(skills_de(ficha['sprite'], ficha.get('nivel', 1)))
+    # Las dos etapas intermedias conservan las formas genericas del Monster
+    # Egg. En la evolucion avanzada (sin mas ramas) adopta por fin la especie
+    # original capturada, conservando el arquetipo de stats/skills de catch.xml.
+    if es_capturada and not any(ramas_de(destino)):
+        nombre_capturado = ficha.get('captured_name')
+        tipo_capturado = int(ficha.get('captured_tipo') or 0)
+        if not nombre_capturado or not tipo_capturado:
+            import house_services as _hs_cap
+            ident = _hs_cap.captured_monster_identity(ficha['npc_type'])
+            nombre_capturado = nombre_capturado or abreviar_nombre_pet(ident['nombre'])
+            tipo_capturado = tipo_capturado or int(ident['sprite'] or 0)
+        if nombre_capturado:
+            ficha['nombre'] = nombre_capturado
+            ficha['captured_name'] = nombre_capturado
+        if tipo_capturado:
+            ficha['tipo'] = tipo_capturado
+            ficha['captured_tipo'] = tipo_capturado
     # Al evolucionar, actualizar o sortear los bonos verdes propios de la nueva etapa
     nuevos_bonos = sortear_bonos(ficha['sprite'])
     bonos_ant = ficha.get('bonos') or {}
@@ -1138,7 +1127,7 @@ def evolucionar(ficha: dict, rama: str) -> dict:
         bonos_ant[k] = max(int(bonos_ant.get(k, 0)), v)
     # Limpiar stats que no pertenezcan a la nueva etapa si aun estaban en 0
     ficha['bonos'] = {k: v for k, v in bonos_ant.items() if v > 0}
-    ficha['estrellas'] = max(int(ficha.get('estrellas') or 1), calcular_estrellas_total(ficha['bonos']))
+    ficha['estrellas'] = calcular_estrellas_total(ficha['bonos'])
     return ficha
 
 

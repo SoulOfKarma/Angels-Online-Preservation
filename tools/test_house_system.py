@@ -800,13 +800,13 @@ class TestHouseSystem(unittest.TestCase):
             16982: 300, 20092: 300,
         })
         capturable = hs.capturable_monsters()
-        self.assertEqual(capturable[1217], 10592)
-        self.assertGreaterEqual(len(capturable), 98)
+        self.assertNotIn(1217, capturable)  # house boss egg is not a catch entry
+        self.assertGreaterEqual(len(capturable), 900)
         self.assertLess(hs.capture_chance(30, 100, 100),
                         hs.capture_chance(30, 1, 100))
         self.assertLess(hs.capture_chance(30, 1, 100),
                         hs.capture_chance(45, 1, 100))
-        self.assertEqual(hs.capture_chance(300, 1, 100), 100.0)
+        self.assertLess(hs.capture_chance(300, 1, 100, npc_type=7001), 100.0)
 
     def test_public_selector_channel_two_routes_to_broadcast(self):
         import app
@@ -860,7 +860,7 @@ class TestHouseSystem(unittest.TestCase):
                 self.personaje = type('P', (), {
                     'char_id': 111, 'entity_id': 111, 'stage': 41, 'mejoras': {},
                 })()
-                mob = combate.Monstruo(9001, 1217, 'Pontiff Hululu', (20, 20))
+                mob = combate.Monstruo(9001, 7001, 'Purple Evil Cat', (20, 20), 43210)
                 mob.hp = 1
                 mob.en_combate_con = 111
                 self.monstruos = {9001: mob}
@@ -869,14 +869,31 @@ class TestHouseSystem(unittest.TestCase):
             def enviar(self, *pkts):
                 self.paquetes.extend(pkts)
 
+            def enviar_inmediato(self, *pkts):
+                self.paquetes.extend(pkts)
+
+        class FakeLoop:
+            def __init__(self):
+                self.calls = []
+
+            def call_later(self, delay, callback):
+                self.calls.append((delay, callback))
+
         ses = MockSes()
+        loop = FakeLoop()
         with mock.patch.object(app.random, 'random', return_value=0.0), \
                 mock.patch.object(app, '_guardar_bolsa'), \
-                mock.patch.object(app, '_refrescar', return_value=[]):
+                mock.patch.object(app, '_refrescar', return_value=[]), \
+                mock.patch('asyncio.get_event_loop', return_value=loop):
             self.assertTrue(app._intentar_captura_monstruo(ses, 9001, 'test'))
         self.assertNotIn(16982, ses.inventario.values())
-        self.assertIn(10592, ses.inventario.values())
+        self.assertIn(16978, ses.inventario.values())
         self.assertEqual(ses.monstruos[9001].hp, 0)
+        # Success first leaves the mob stunned; despawn is delayed without playing death animation.
+        self.assertTrue(any(pkt[:2] == b'\x1d\x00' for pkt in ses.paquetes))
+        self.assertFalse(any(pkt[:2] == b'\x07\x00' for pkt in ses.paquetes))
+        self.assertEqual([delay for delay, _ in loop.calls], [1.3])
+        loop.calls[0][1]()
         self.assertTrue(any(pkt[:2] == b'\x07\x00' for pkt in ses.paquetes))
 
     def test_super_bc_trade_and_other_channels_consume_exact_items(self):
@@ -955,11 +972,11 @@ class TestHouseSystem(unittest.TestCase):
         import mascotas
 
         capturable = hs.capturable_monsters()
-        self.assertEqual(capturable[7001], 16971)  # Purple Evil Cat -> Evil Cat egg (NOT Winged Fish 16978!)
-        self.assertEqual(capturable[7002], 16971)  # Flaming Evil Cat -> Evil Cat egg
-        self.assertEqual(capturable[909], 3397)    # Heat Elf -> Fire Elf Egg
-        self.assertEqual(capturable[1201], 16978)  # Evil Fish -> Winged Fish egg
-        self.assertEqual(capturable[1217], 10592)  # Pontiff Hululu -> House Boss Egg
+        self.assertEqual(capturable[7001], 16978)  # exact catch.xml archetype
+        self.assertEqual(capturable[7002], 16978)
+        self.assertEqual(capturable[909], 16971)
+        self.assertEqual(capturable[1201], 16971)
+        self.assertNotIn(1217, capturable)          # only a house-hatching egg
         self.assertEqual(capturable[7014], 16975)  # Sky Winged Bird -> Monster Egg 16975 (NOT 63375 whistle!)
         self.assertEqual(capturable[7015], 16975)  # Earth Winged Bird -> Monster Egg 16975
 
@@ -989,19 +1006,20 @@ class TestHouseSystem(unittest.TestCase):
                 mock.patch.object(app, '_refrescar', return_value=[]):
             srv.manejar(ses, 0x002E, None, None, 'test', struct.pack('<BI', 42, 0x000FB0E3))
         self.assertEqual(ses.cantidades[42], 4)
-        self.assertIn(16971, ses.inventario.values())
-        pet_slot = next(r for r, iid in ses.inventario.items() if iid == 16971)
+        self.assertIn(16978, ses.inventario.values())
+        pet_slot = next(r for r, iid in ses.inventario.items() if iid == 16978)
         self.assertIn(str(pet_slot), ses.personaje.mascotas)
         pet_ficha = ses.personaje.mascotas[str(pet_slot)]
-        self.assertIn(pet_ficha['nombre'], ('Purple Cat', 'Purple Evil Cat'))
+        self.assertEqual(pet_ficha['nombre'], 'Monster Egg')
+        self.assertEqual(pet_ficha['captured_name'], 'Purple Cat')
         self.assertEqual(pet_ficha['npc_type'], 7001)
         self.assertIn('rango', pet_ficha)
         self.assertIn('estrellas', pet_ficha)
 
-        # Visual capture animation packets (0x000A throw + 0x0011 projectile/impact) and NO 0x0006 cast confirm
+        # Visual capture motion 0x000A and success visual 0x0011, without cast confirm 0x0006.
         self.assertFalse(any(p[:2] == b'\x06\x00' for p in ses.paquetes))
         self.assertTrue(any(p[:2] == b'\x0A\x00' for p in ses.paquetes))
-        self.assertTrue(any(p[:2] == b'\x11\x00' and (p[2] == 197 or p[2] == 0xC5) for p in ses.paquetes))
+        self.assertTrue(any(p[:2] == b'\x11\x00' for p in ses.paquetes))
 
     def test_poke_egg_requires_weakening_and_can_fail(self):
         import app
@@ -1048,15 +1066,21 @@ class TestHouseSystem(unittest.TestCase):
         self.assertTrue(any(b'Capture failed' in p for p in ses.paquetes))
         self.assertTrue(any(p[:2] == b'\x0A\x00' for p in ses.paquetes))
 
+        # The same monster cannot be spammed with more eggs after escaping.
+        ses.paquetes.clear()
+        ses.captura_pendiente = {'slot': 42, 'item': 16979, 'time': __import__('time').time()}
+        with mock.patch.object(app, '_guardar_bolsa'), \
+                mock.patch.object(app, '_refrescar', return_value=[]):
+            self.assertTrue(app._intentar_captura_monstruo(ses, 0x000FB0E4, 'test'))
+        self.assertEqual(ses.cantidades[42], 2)
+        self.assertTrue(any(b'already escaped' in p for p in ses.paquetes))
+
         # 3. Verify all 5 quality ranks are represented in sortear_rango
         ranks_seen = set()
         for _ in range(500):
-            r_id, r_nom, st, mult = mascotas.sortear_rango()
+            r_id, r_nom = mascotas.sortear_rango()
             ranks_seen.add(r_id)
-            self.assertIn(r_nom, ('Common', 'Fine', 'Rare', 'Top', 'Super'))
-            self.assertGreaterEqual(st, 1)
-            self.assertLessEqual(st, 20)
-            self.assertGreaterEqual(mult, 1.0)
+            self.assertIn(r_nom, ('Common', 'Good', 'Rare', 'Awesome', 'Super'))
         self.assertEqual(ranks_seen, {1, 2, 3, 4, 5})
 
     def test_ball_tickets_and_candy_rewards(self):

@@ -657,8 +657,21 @@ def _cargar_mascota(m) -> dict:
     f.setdefault('estrellas', 1)
     f.setdefault('rango', 1)
     f.setdefault('npc_type', 0)
-    if 'rango_nombre' not in f:
-        f['rango_nombre'] = getattr(_ms, 'RANGO_NOMBRES', {}).get(rango, 'Common')
+    f['rango_nombre'] = getattr(_ms, 'RANGO_NOMBRES', {}).get(rango, 'Common')
+    if int(f.get('npc_type') or 0) > 0:
+        # Repara fichas creadas por la implementación antigua: el rango no
+        # fabrica estrellas ni multiplica stats, y la forma avanzada debe ser
+        # la del monstruo capturado incluso después de reconectar.
+        f['estrellas'] = _ms.calcular_estrellas_total(f.get('bonos') or {})
+        if not any(_ms.ramas_de(sp)):
+            import house_services as _hs_cap
+            ident = _hs_cap.captured_monster_identity(f['npc_type'])
+            captured_name = f.get('captured_name') or _ms.abreviar_nombre_pet(ident['nombre'])
+            captured_tipo = int(f.get('captured_tipo') or ident['sprite'] or 0)
+            if captured_name:
+                f['nombre'] = f['captured_name'] = captured_name
+            if captured_tipo:
+                f['tipo'] = f['captured_tipo'] = captured_tipo
     return f
 
 

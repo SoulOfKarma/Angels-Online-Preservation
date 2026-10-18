@@ -3471,11 +3471,25 @@ def _intentar_captura_monstruo(ses, target_entity, addr='?'):
                                  msg_id=_cl_cap.MSG_TEXTO))
         return True
 
+    if getattr(monster, 'captura_fallida_en', None):
+        ses.enviar(_cl_cap.aviso(
+            'This monster has already escaped a capture attempt.', tipo=7,
+            msg_id=_cl_cap.MSG_TEXTO))
+        return True
+
     # El monstruo debe estar debilitado y el jugador debe haberlo golpeado primero
     p = getattr(ses, 'personaje', None)
     p_eid = getattr(p, 'entity_id', None) or getattr(ses, 'entity_id', None) or 1
     char_id = getattr(p, 'char_id', None)
     pet_eid = getattr(ses, 'pet_entity_id', None)
+    ident_cap = _hs_cap.captured_monster_identity(monster.npc_type)
+    player_level = int(getattr(p, 'nivel', 0) or 0)
+    monster_level = int(ident_cap.get('nivel') or 0)
+    if player_level and monster_level and player_level <= monster_level:
+        ses.enviar(_cl_cap.aviso(
+            'Your level must be higher than the monster level to capture it.',
+            tipo=7, msg_id=_cl_cap.MSG_TEXTO))
+        return True
 
     dano_por = getattr(monster, 'dano_por', None)
     if not isinstance(dano_por, dict):
@@ -3505,15 +3519,12 @@ def _intentar_captura_monstruo(ses, target_entity, addr='?'):
     _sacar(ses, slot, 1)
     touched = [slot]
 
-    # Visual capture animation (character throw + projectile fly + target impact).
+    # Visual de captura: el personaje realiza la animacion de lanzamiento hacia el monstruo.
+    # No se envia ningun efecto de dano ni veneno (efecto 63) sobre el monstruo.
     # NOTE: Never send confirmar_cast (0x0006) here, as that opcode puts
     # the client into a waiting cast state and locks character movement.
-    ef = int(_hs_cap.capture_egg_effects().get(item_id, 197))
-    anim_pkts = [
-        _cb_cap.ataque(p_eid, monster.entity_id, animacion=400, tipo=1),
-        _cb_cap.numero_de_dano(p_eid, monster.entity_id, dano=0, efecto=ef, cast_time=150, es_magia=True),
-        _cb_cap.cierre_de_dano(p_eid, monster.entity_id, efecto=ef, es_magia=True),
-    ]
+    anim_pkts = _cb_cap.efecto_captura(
+        p_eid, monster.entity_id, monster.tile_x, monster.tile_y, item_id)
     ses.enviar(*anim_pkts)
     for companion in _companeros(ses):
         try:
@@ -3524,14 +3535,15 @@ def _intentar_captura_monstruo(ses, target_entity, addr='?'):
     success = random.random() * 100.0 < chance
     if success:
         import mascotas as _ms_cap
-        rango, rango_nom, st_lvl, mult = _ms_cap.sortear_rango()
+        rango, rango_nom = _ms_cap.sortear_rango()
         short_name = _ms_cap.abreviar_nombre_pet(monster.nombre)
+        captured_tipo = int(getattr(monster, 'sprite', 0) or ident_cap.get('sprite') or 0)
         pet_meta = {
-            'nombre': short_name,
             'npc_type': int(monster.npc_type),
             'rango': rango,
             'rango_nombre': rango_nom,
-            'estrellas': st_lvl,
+            'captured_name': short_name,
+            'captured_tipo': captured_tipo,
         }
         destination = _meter(ses, output_item, 1, pet_metadata=pet_meta)
         if destination is not None:
@@ -3540,35 +3552,70 @@ def _intentar_captura_monstruo(ses, target_entity, addr='?'):
             if p_ses and getattr(p_ses, 'mascotas', None):
                 ficha = p_ses.mascotas.get(str(destination))
                 if ficha:
-                    _ms_cap.aplicar_rango(ficha, rango=rango, st=st_lvl, mult=mult)
+                    _ms_cap.aplicar_rango(ficha, rango=rango)
                     if getattr(ses, 'usuario', None):
                         cuentas.guardar_mascota(ses.usuario, p_ses.char_id, ficha, p_ses.mascotas)
 
+        # Al capturar con exito, el monstruo se stunea brevemente y luego se
+        # desvanece del mapa sin reproducir animacion de muerte (muerte_monstruo).
+        # Hacia el personaje se reproduce el efecto visual de captura.
+        capture_started = time.time()
+        capture_stun_seconds = 1.3
         monster.hp = 0
-        if not getattr(monster, 'muerto_en', None):
-            monster.muerto_en = time.time()
-        monster.capturado_en = monster.muerto_en
+        monster.muerto_en = capture_started
+        monster.capturado_en = capture_started
+        monster.aturdido_hasta = capture_started + capture_stun_seconds
         monster.en_combate_con = None
         monster.dano_por = {}
-        despawn = _cb_cap.despawn_monstruo(monster.entity_id)
-        ses.enviar(despawn)
+        stun_pkt = struct.pack('<HIBBII', 0x001D, monster.entity_id, 1, 4,
+                               1045, int(capture_stun_seconds * 1000))
+        succ_pkt = _cb_cap.efecto_magia_self_fin(p_eid, 197, item_id)
+        ses.enviar(stun_pkt, succ_pkt)
         for companion in _companeros(ses):
             try:
-                companion.enviar(despawn)
+                companion.enviar(stun_pkt, succ_pkt)
             except Exception:
                 pass
-        # Dynamically generated monsters have no ordinary map respawn.
-        if getattr(monster, 'generado', False):
-            (getattr(ses, 'monstruos', {}) or {}).pop(monster.entity_id, None)
+
+        def _capture_despawn(eid=monster.entity_id, captured_at=capture_started):
+            if getattr(monster, 'capturado_en', None) != captured_at:
+                return
+            packets = (
+                struct.pack('<HIBBII', 0x001D, eid, 1, 4, 1045, 0),
+                _cb_cap.despawn_monstruo(eid),
+            )
+            ses.enviar_inmediato(*packets)
+            for companion in _companeros(ses):
+                try:
+                    companion.enviar_inmediato(*packets)
+                except Exception:
+                    pass
+            # Dynamically generated monsters have no ordinary map respawn.
+            if getattr(monster, 'generado', False):
+                (getattr(ses, 'monstruos', {}) or {}).pop(eid, None)
+                room = _sala_de(ses)
+                if room is not None and getattr(room, 'monstruos', None):
+                    room.monstruos.pop(eid, None)
+
+        try:
+            import asyncio as _aio_capture
+            try:
+                loop = _aio_capture.get_running_loop()
+            except RuntimeError:
+                loop = _aio_capture.get_event_loop()
+            loop.call_later(capture_stun_seconds, _capture_despawn)
+        except Exception:
+            _capture_despawn()
         ses.enviar(_cl_cap.aviso(
             f'Capture successful! You obtained {rango_nom}-{monster.nombre} ({_nombre_item(output_item)}).',
             tipo=7, msg_id=_cl_cap.MSG_TEXTO))
         log.info('[%s] captured %s (npc=%s, rank=%s) with item %s at %.1f%%',
                  addr, monster.nombre, monster.npc_type, rango_nom, item_id, chance)
     else:
-        ses.enviar(_cl_cap.aviso(
-            f'Capture failed. The monster broke free! (Success chance was {chance:.1f}%)',
-            tipo=7, msg_id=_cl_cap.MSG_TEXTO))
+        # El servidor original no permite insistir con mas huevos sobre el
+        # mismo monstruo tras fallar; el bloqueo desaparece al reaparecer.
+        monster.captura_fallida_en = time.time()
+        ses.enviar(_cl_cap.aviso('Capture failed.', tipo=7, msg_id=_cl_cap.MSG_TEXTO))
         log.info('[%s] failed capture of %s (npc=%s) with item %s at %.1f%%',
                  addr, monster.nombre, monster.npc_type, item_id, chance)
 
@@ -16377,7 +16424,7 @@ class Servidor:
         #   1. Crea backups .bak de update26.pak, START.EXE y reg.ini si no existen
         #   2. Aplica MODO_ESTACION ('normal' por defecto, quitando Navidad) en update26.pak y map/map041.mpc
         #   3. Registra e inyecta el consumible custom 83266 (Rank Promotion Medal, sprite 8921) en item9.xml
-        #   4. Levanta los servidores locales FTP (2121) y HTTP (8080) para el launcher START.EXE
+        #   4. Levanta los servidores locales FTP (2121) y HTTP auxiliar para el launcher START.EXE
         try:
             import cliente_local as _cl_loc
             _modo_est = _cl_loc.aplicar_modo_estacion()

@@ -238,7 +238,11 @@ MODO_ESTACION = 'normal'
 # servidor. Dejarla vacia tambien vale.
 RUTA_CLIENTE = r'C:\AO\Angels Online'
 PUERTO_UPDATE_FTP = 2121
-PUERTO_UPDATE_HTTP = 8080
+# 8080 cae dentro de un intervalo TCP reservado por Windows en algunas
+# instalaciones (por ejemplo 8067-8166), lo que produce WinError 10013 aun
+# cuando ningun proceso lo este escuchando. 8280 conserva el mismo largo en
+# la URL parcheada de START.EXE y queda fuera de ese intervalo.
+PUERTO_UPDATE_HTTP = 8280
 
 
 # A que nivel sale una mascota nueva. Los stats los saca de petattrib con su

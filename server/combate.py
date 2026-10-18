@@ -2762,6 +2762,14 @@ def cierre_de_dano(atacante: int, objetivo: int,
     return struct.pack('<H', 0x0011) + bytes(b1)
 
 
+def efecto_captura(atacante: int, objetivo: int, x: int = 0, y: int = 0,
+                   subtipo: int = 197):
+    """Animacion de lanzamiento de captura Poke Egg (gesto de lanzamiento hacia el objetivo)."""
+    return [
+        ataque(atacante, objetivo, animacion=400, tipo=1),
+    ]
+
+
 def efecto_curacion_inicio(atacante: int, objetivo: int, cura_hp: int, efecto: int = 165) -> bytes:
     """Fase 0x00 de curacion 0x0011."""
     b0 = bytearray(23)

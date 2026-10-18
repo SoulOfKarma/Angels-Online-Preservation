@@ -118,8 +118,13 @@ def capture_eggs():
 
 
 @functools.lru_cache(maxsize=1)
-def capture_egg_effects():
-    """Visual spell/animation effect for each Poke Egg (dynamic_2 in XML, default 197)."""
+def capture_egg_animation_types():
+    """Client capture subtype for each Poke Egg (``dynamic_2`` in item.xml).
+
+    This is not a visual-effect directory. Poke Eggs use subtype 197 to
+    select the client's dedicated capture sequence; its artwork lives in
+    ``m02.obd`` as ``抓寵-*`` under ``shape/magic/036``.
+    """
     result = {}
     for i in range(1, 10):
         rows = xml_rows('item%s.xml' % (i if i > 1 else ''))
@@ -135,10 +140,17 @@ def capture_egg_effects():
     return result
 
 
+# Compatibility for external callers. The former name was misleading and led
+# to 197 being sent as a graphic effect (the sword Splitting Attack AOE).
+capture_egg_effects = capture_egg_animation_types
+
+
 _CATCH_MONSTER_ID = '\u602a\u7269\u7de8\u865f'
 _CATCH_PET_ITEM = '\u5bf5\u7269\u7de8\u865f'
 _CATCH_PROBABILITY = '\u88dc\u6349\u6a5f\u7387'
 _MONSTER_NAME = '\u540d\u7a31'
+_MONSTER_SPRITE = '\u5716\u865f'
+_MONSTER_LEVEL = '\u7b49\u7d1a'
 
 
 @functools.lru_cache(maxsize=1)
@@ -156,42 +168,35 @@ def monster_catch_probabilities():
     return probs
 
 
+def captured_monster_identity(npc_type):
+    """Visible identity and level of one monster from the latest monster.xml."""
+    row = xml_rows('monster.xml').get(int(npc_type), {})
+    try:
+        sprite = int(row.get(_MONSTER_SPRITE) or 0)
+    except (TypeError, ValueError):
+        sprite = 0
+    try:
+        level = int(row.get(_MONSTER_LEVEL) or 0)
+    except (TypeError, ValueError):
+        level = 0
+    return {
+        'nombre': str(row.get(_MONSTER_NAME) or '').strip(),
+        'sprite': sprite,
+        'nivel': level,
+    }
+
+
 @functools.lru_cache(maxsize=1)
 def capturable_monsters():
-    """Monster template -> Monster/Pet Egg item, properly mapped across all updates.
-    
-    Only monsters legitimately registered in official catch.xml / serv_catch.xml
-    or boss monster eggs can be captured. Uncapturable monsters must never be caught.
+    """Official monster template -> captured-pet item mapping.
+
+    ``catch.xml`` is the client catalogue and ``serv_catch.xml`` is its server
+    counterpart.  The item selected there is the pet's stat/skill archetype;
+    it must not be guessed from words in the monster name.  Monster eggs used
+    by the house hatching machine are a different system and are deliberately
+    excluded, because not every monster is capturable.
     """
-    monsters = xml_rows('monster.xml')
-    items = {}
-    for i in range(1, 10):
-        items.update(xml_rows('item%s.xml' % (i if i > 1 else '')))
-
-    # 1. Exact monster_eggs (Boss eggs for House Monster Hatching Machine)
-    candidates = {}
-    for ident, row in monster_eggs().items():
-        try:
-            npc_type = int(row.get(_DYNAMIC_1) or 0)
-        except (TypeError, ValueError):
-            continue
-        if npc_type <= 0:
-            continue
-        name = str(row.get(_ITEM_NAME) or '')
-        priority = (0, not name.isascii(), int(ident))
-        old = candidates.get(npc_type)
-        if old is None or priority < old[0]:
-            candidates[npc_type] = (priority, int(ident))
-
-    # Direct named pet eggs (17005..17064 and similar specific pet items)
-    direct_named = {}
-    for iid in range(17005, 17065):
-        it = items.get(iid, {})
-        iname = str(it.get(_ITEM_NAME) or '').strip().lower()
-        if iname:
-            direct_named[iname] = iid
-
-    catch_mappings = {}
+    mappings = {}
     for xml_name in ('catch.xml', 'serv_catch.xml'):
         for row in xml_rows(xml_name).values():
             try:
@@ -199,95 +204,37 @@ def capturable_monsters():
                 pid = int(row.get(_CATCH_PET_ITEM) or 0)
             except (TypeError, ValueError):
                 continue
-            if mid > 0 and pid > 0 and mid not in catch_mappings:
-                catch_mappings[mid] = pid
-
-    # Strictly process only monsters that are in catch_mappings or candidates
-    valid_npc_types = set(catch_mappings.keys()) | set(candidates.keys())
-    for npc_type in valid_npc_types:
-        if npc_type <= 0 or npc_type in candidates:
-            continue
-        m = monsters.get(npc_type, {})
-        mname = str(m.get(_MONSTER_NAME) or '').strip().lower()
-        if mname.startswith('mercenary'):
-            continue
-
-        # 2. Direct named pet egg match (e.g. Mage Cathy 7038 -> 17045, Strawberry Imp 7068 -> 17054)
-        if mname in direct_named:
-            candidates[npc_type] = ((1, False, direct_named[mname]), direct_named[mname])
-            continue
-
-        # 3. Family / species rules to correct IGG typos for capturable monsters
-        if 'bird' in mname or ('winged' in mname and 'fish' not in mname and 'tiger' not in mname):
-            egg_id = catch_mappings.get(npc_type, 16975)
-            candidates[npc_type] = ((2, False, egg_id), egg_id)
-            continue
-        if 'cat' in mname and 'caterpillar' not in mname:
-            egg_id = 16974 if 'violent' in mname else 16971
-            candidates[npc_type] = ((2, False, egg_id), egg_id)
-            continue
-        if 'fish' in mname or 'jellyfish' in mname:
-            candidates[npc_type] = ((2, False, 16978), 16978)
-            continue
-        if 'crab' in mname:
-            candidates[npc_type] = ((2, False, 16975), 16975)
-            continue
-        if 'lizard' in mname or 'reptile' in mname:
-            candidates[npc_type] = ((2, False, 16969), 16969)
-            continue
-        if 'pumpkin' in mname:
-            candidates[npc_type] = ((2, False, 16970), 16970)
-            continue
-        if 'imp' in mname:
-            candidates[npc_type] = ((2, False, 16972), 16972)
-            continue
-        if 'clown' in mname or 'puppet' in mname:
-            candidates[npc_type] = ((2, False, 16973), 16973)
-            continue
-        if any(k in mname for k in ('wolf', 'boar', 'beast', 'dog')):
-            candidates[npc_type] = ((2, False, 16976), 16976)
-            continue
-        if any(k in mname for k in ('priest', 'savage', 'shaman')):
-            candidates[npc_type] = ((2, False, 16977), 16977)
-            continue
-        if 'heat elf' in mname or 'fire elf' in mname or 'flame elf' in mname:
-            candidates[npc_type] = ((2, False, 3397), 3397)
-            continue
-        if 'water elf' in mname or 'ice elf' in mname:
-            candidates[npc_type] = ((2, False, 3396), 3396)
-            continue
-        if 'wind elf' in mname:
-            candidates[npc_type] = ((2, False, 3398), 3398)
-            continue
-        if 'earth elf' in mname:
-            candidates[npc_type] = ((2, False, 3399), 3399)
-            continue
-
-        # 4. catch.xml mapping if available
-        if npc_type in catch_mappings:
-            egg_id = catch_mappings[npc_type]
-            candidates[npc_type] = ((3, False, egg_id), egg_id)
-            continue
-
-    return {npc: value[1] for npc, value in candidates.items()}
+            if mid > 0 and pid > 0:
+                # serv_catch.xml is visited last and therefore wins if an old
+                # client row and the server row ever disagree.
+                mappings[mid] = pid
+    return mappings
 
 
 def capture_chance(strength, hp, hp_max, npc_type=None):
-    """Capture percentage: base probability from serv_catch.xml + egg strength + wounded target."""
+    """Capture percentage from XML base rate, egg modifier and remaining HP.
+
+    Tuned so captures are challenging and not near-100%, requiring strategy
+    and weakening the target.
+    """
     strength = max(0.0, float(strength or 0))
-    if strength >= 300.0:  # Master Poke Egg (16982) guarantees 100%
-        return 100.0
     maximum = max(1.0, float(hp_max or 1))
     ratio = min(1.0, max(0.0, float(hp or 0) / maximum))
-    base_rate = 40.0
+    base_rate = 30.0
     if npc_type:
         sc_rate = monster_catch_probabilities().get(int(npc_type))
         if sc_rate:
-            base_rate = float(sc_rate) / 100.0  # e.g. 4000 -> 40.0%, 500 -> 5.0%
-    egg_mult = strength / 30.0
-    hp_mult = (2.0 - ratio)
+            base_rate = float(sc_rate) / 100.0  # e.g. 4000 -> 40.0%, 2000 -> 20.0%, 500 -> 5.0%
+    # Egg tier modifier:
+    # 30 (Store): 0.40
+    # 45 (Leader): 0.50
+    # 60 (Craftsman): 0.60
+    # 300 (Item Mall): 1.00
+    egg_mult = 0.35 + 0.65 * min(1.0, strength / 300.0)
+    # Wounded target bonus: from 0.4 at full HP to 1.1 at near-zero HP
+    hp_mult = (1.1 - 0.7 * ratio)
     chance = base_rate * egg_mult * hp_mult
-    return min(95.0, max(1.0, chance))
+    return min(45.0, max(1.0, chance))
 
 
 def clean_bonus(cleanliness):
