@@ -1016,9 +1016,8 @@ class TestHouseSystem(unittest.TestCase):
         self.assertIn('rango', pet_ficha)
         self.assertIn('estrellas', pet_ficha)
 
-        # Visual capture motion 0x000A and success visual 0x0011, without cast confirm 0x0006.
+        # Visual capture: red crystal 0x0011 without cast confirm 0x0006.
         self.assertFalse(any(p[:2] == b'\x06\x00' for p in ses.paquetes))
-        self.assertTrue(any(p[:2] == b'\x0A\x00' for p in ses.paquetes))
         self.assertTrue(any(p[:2] == b'\x11\x00' for p in ses.paquetes))
 
     def test_poke_egg_requires_weakening_and_can_fail(self):
@@ -1064,9 +1063,21 @@ class TestHouseSystem(unittest.TestCase):
         self.assertEqual(ses.cantidades[42], 2)  # 1 egg consumed!
         self.assertEqual(ses.mob.hp, 20)        # Monster still alive!
         self.assertTrue(any(b'Capture failed' in p for p in ses.paquetes))
-        self.assertTrue(any(p[:2] == b'\x0A\x00' for p in ses.paquetes))
+        self.assertTrue(any(p[:2] == b'\x11\x00' for p in ses.paquetes))
 
-        # Retrying capture after failure is allowed: consumes another egg and plays visual.
+        # While alive, the monster cannot be captured again after escaping:
+        ses.paquetes.clear()
+        ses.captura_pendiente = {'slot': 42, 'item': 16979, 'time': __import__('time').time()}
+        with mock.patch.object(app, '_guardar_bolsa'), \
+                mock.patch.object(app, '_refrescar', return_value=[]):
+            self.assertTrue(app._intentar_captura_monstruo(ses, 0x000FB0E4, 'test'))
+        self.assertEqual(ses.cantidades[42], 2)
+        self.assertTrue(any(b'already escaped' in p for p in ses.paquetes))
+
+        # Once killed and respawned (revivir), the counter is reset and it CAN be captured again:
+        ses.mob.revivir()
+        ses.mob.hp = 20
+        ses.mob.en_combate_con = 1333
         ses.paquetes.clear()
         ses.captura_pendiente = {'slot': 42, 'item': 16979, 'time': __import__('time').time()}
         with mock.patch.object(app.random, 'random', return_value=99.9), \

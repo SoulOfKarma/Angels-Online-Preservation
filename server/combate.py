@@ -546,6 +546,7 @@ class Monstruo:
         self.ice_prob = d.get('ice_prob', 0)
         self.rotten_atk = d.get('rotten_atk', 0)
         self.rotten_prob = d.get('rotten_prob', 0)
+        self.captura_fallida_en = None
 
     def registrar_dano(self, cantidad: int, es_pet: bool = False):
         """Acumula el dano real infligido al monstruo (jugador/invocacion/charmed vs mascota)."""
@@ -768,6 +769,7 @@ class Monstruo:
         self.dano_por = {}
         if hasattr(self, 'debuffs') and self.debuffs:
             self.debuffs.clear()
+        self.captura_fallida_en = None
 
 
 
@@ -2763,12 +2765,10 @@ def cierre_de_dano(atacante: int, objetivo: int,
 
 
 def efecto_captura(atacante: int, objetivo: int, x: int = 0, y: int = 0,
-                   subtipo: int = 19):
-    """Animacion de lanzamiento de captura Poke Egg: lanzamiento (0x000A) + cristal rojo (0x0011 efecto 19)."""
+                   subtipo: int = 16979):
+    """Animacion de captura Poke Egg: el cristal rojo (efecto 19) sobre el objetivo."""
     return [
-        ataque(atacante, objetivo, animacion=400, tipo=1),
-        numero_de_dano(atacante, objetivo, dano=0, efecto=19, cast_time=150, es_magia=True, tile_x=x, tile_y=y),
-        cierre_de_dano(atacante, objetivo, efecto=19, es_magia=True, tile_x=x, tile_y=y),
+        efecto_magia_self_fin(atacante, 19, subtipo, objetivo=objetivo),
     ]
 
 
