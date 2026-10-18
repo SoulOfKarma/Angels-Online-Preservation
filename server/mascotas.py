@@ -733,6 +733,11 @@ def abreviar_nombre_pet(nombre: str) -> str:
         'Earth Winged Bird': 'Earth Bird',
         'Giant Rotten Bird': 'Rotten Bird',
         'Magic Pumpkinman': 'Pumpkinman',
+        'Mutated Chimera': 'Chimera',
+        'Twin-head Chimera': 'Twin Chimera',
+        'Mutated Pink Fruit': 'Pink Fruit',
+        'Mutated Hornet': 'Mut. Hornet',
+        'Mutant Earth Elf': 'Mutant Elf',
     }
     if s_nom in reemplazos:
         return reemplazos[s_nom]
@@ -741,6 +746,9 @@ def abreviar_nombre_pet(nombre: str) -> str:
         short = f"{parts[0]} {parts[-1]}"
         if len(short) <= 12:
             return short
+    elif len(parts) == 2 and parts[0] in ('Mutated', 'Mutant'):
+        if len(parts[1]) <= 12:
+            return parts[1]
     return s_nom[:12].strip()
 
 
@@ -856,6 +864,25 @@ def entidad_mundo(plantilla: bytes, estado: dict) -> bytes:
 def nombre_pedido(cuerpo: bytes) -> str:
     """Saca el nombre del c2s 0x003D."""
     return cuerpo.split(b'\0')[0].decode('latin1', 'replace').strip()
+
+
+def paquete_renombrar(pet_eid: int, nombre: str, resultado: int = 0) -> bytes:
+    """S2C 0x003D: Confirma al cliente (FUN_005a25a0 en Angel.exe) que la mascota fue renombrada.
+    Formato del paquete de red:
+      +0   u16 opcode (0x003D)
+      +2   u16 total_len
+      +4   u16 seq / unk (0)
+      +6   u16 resultado (0 = exito; != 0 aborta)
+      +8   u32 entity_id de la mascota
+      +12..+69 ceros (58 bytes de relleno)
+      +70  u16 offset relativo a +72 (0)
+      +72  nombre en bytes (hasta 12 chars + null)
+    """
+    nom_bytes = str(nombre or '').encode('latin1', 'replace')[:LARGO_NOMBRE] + b'\x00'
+    total_len = 72 + len(nom_bytes)
+    hdr = struct.pack('<HHHH', 0x003D, total_len, 0, resultado & 0xFFFF)
+    cuerpo = struct.pack('<I', int(pet_eid or 0) & 0xFFFFFFFF) + bytes(58) + struct.pack('<H', 0) + nom_bytes
+    return hdr + cuerpo
 
 
 # ---------------------------------------------------------------------------
@@ -1096,27 +1123,40 @@ def evolucionar(ficha: dict, rama: str) -> dict:
     if not destino:
         return ficha
     es_capturada = int(ficha.get('npc_type') or 0) > 0
+    nombre_actual = ficha.get('nombre')
+    es_renombrada = bool(ficha.get('renombrada'))
+    nombre_capturado = ficha.get('captured_name')
+
     ficha['sprite'] = int(destino)
     d = ficha_de_sprite(destino)
     ficha['tipo'] = d.get('tipo', 0)
-    if d.get('nombre'):
-        ficha['nombre'] = d['nombre']
     ficha.update(stats_de(ficha['sprite'], ficha.get('nivel', 1)))
     ficha['skills'] = list(skills_de(ficha['sprite'], ficha.get('nivel', 1)))
-    # Las dos etapas intermedias conservan las formas genericas del Monster
-    # Egg. En la evolucion avanzada (sin mas ramas) adopta por fin la especie
-    # original capturada, conservando el arquetipo de stats/skills de catch.xml.
-    if es_capturada and not any(ramas_de(destino)):
-        nombre_capturado = ficha.get('captured_name')
-        tipo_capturado = int(ficha.get('captured_tipo') or 0)
-        if not nombre_capturado or not tipo_capturado:
+
+    # Preservar el nombre de la mascota:
+    # 1. Si el jugador le cambio el nombre (renombrada), se mantiene SIEMPRE.
+    # 2. Si es una pet capturada, su nombre por defecto es el de la especie capturada (captured_name).
+    # 3. Solo si es una pet normal sin renombrar adopta el nombre de la nueva etapa.
+    if es_renombrada and nombre_actual:
+        ficha['nombre'] = nombre_actual
+    elif es_capturada:
+        if not nombre_capturado:
             import house_services as _hs_cap
             ident = _hs_cap.captured_monster_identity(ficha['npc_type'])
-            nombre_capturado = nombre_capturado or abreviar_nombre_pet(ident['nombre'])
-            tipo_capturado = tipo_capturado or int(ident['sprite'] or 0)
-        if nombre_capturado:
-            ficha['nombre'] = nombre_capturado
+            nombre_capturado = abreviar_nombre_pet(ident['nombre'])
             ficha['captured_name'] = nombre_capturado
+        ficha['nombre'] = nombre_capturado or nombre_actual
+    elif d.get('nombre') and not es_renombrada:
+        ficha['nombre'] = d['nombre']
+
+    # En la evolucion avanzada (sin mas ramas) adopta la apariencia (tipo/sprite)
+    # original capturada, conservando el arquetipo de stats/skills de catch.xml.
+    if es_capturada and not any(ramas_de(destino)):
+        tipo_capturado = int(ficha.get('captured_tipo') or 0)
+        if not tipo_capturado:
+            import house_services as _hs_cap
+            ident = _hs_cap.captured_monster_identity(ficha['npc_type'])
+            tipo_capturado = int(ident['sprite'] or 0)
         if tipo_capturado:
             ficha['tipo'] = tipo_capturado
             ficha['captured_tipo'] = tipo_capturado

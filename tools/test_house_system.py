@@ -1015,7 +1015,7 @@ class TestHouseSystem(unittest.TestCase):
         pet_slot = next(r for r, iid in ses.inventario.items() if iid == 16978)
         self.assertIn(str(pet_slot), ses.personaje.mascotas)
         pet_ficha = ses.personaje.mascotas[str(pet_slot)]
-        self.assertEqual(pet_ficha['nombre'], 'Monster Egg')
+        self.assertEqual(pet_ficha['nombre'], 'Purple Cat')
         self.assertEqual(pet_ficha['captured_name'], 'Purple Cat')
         self.assertEqual(pet_ficha['npc_type'], 7001)
         self.assertIn('rango', pet_ficha)

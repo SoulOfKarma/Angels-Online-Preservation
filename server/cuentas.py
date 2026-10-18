@@ -663,15 +663,27 @@ def _cargar_mascota(m) -> dict:
         # fabrica estrellas ni multiplica stats, y la forma avanzada debe ser
         # la del monstruo capturado incluso después de reconectar.
         f['estrellas'] = _ms.calcular_estrellas_total(f.get('bonos') or {})
+        import house_services as _hs_cap
+        ident = _hs_cap.captured_monster_identity(f['npc_type'])
+        captured_name = f.get('captured_name') or _ms.abreviar_nombre_pet(ident['nombre'])
+        captured_tipo = int(f.get('captured_tipo') or ident['sprite'] or 0)
+        f['captured_name'] = captured_name
+        if captured_tipo:
+            f['captured_tipo'] = captured_tipo
+
+        # Preservar el nombre:
+        # 1. Si fue renombrada por el jugador, mantenerla intacta.
+        # 2. Si no fue renombrada, asegurarse de que no quede con arquetipos genéricos
+        #    ('Clown', 'Blue Crab', 'Monster Egg', 'Pet') o nombres truncados ('Mutated Chin').
+        es_renombrada = bool(f.get('renombrada'))
+        cur_nom = f.get('nombre')
+        if not es_renombrada:
+            if not cur_nom or cur_nom in ('Clown', 'Blue Crab', 'Monster Egg', 'Pet', 'Mutated Chin', 'Mutated Chim'):
+                f['nombre'] = captured_name
+
         if not any(_ms.ramas_de(sp)):
-            import house_services as _hs_cap
-            ident = _hs_cap.captured_monster_identity(f['npc_type'])
-            captured_name = f.get('captured_name') or _ms.abreviar_nombre_pet(ident['nombre'])
-            captured_tipo = int(f.get('captured_tipo') or ident['sprite'] or 0)
-            if captured_name:
-                f['nombre'] = f['captured_name'] = captured_name
             if captured_tipo:
-                f['tipo'] = f['captured_tipo'] = captured_tipo
+                f['tipo'] = captured_tipo
     return f
 
 

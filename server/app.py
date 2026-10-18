@@ -726,7 +726,7 @@ def _meter(ses, item_id: int, n: int = 1, pet_metadata: dict = None) -> int:
             d_pet = inv.datos_mascota(item_id)
             if not hasattr(p_ses, 'mascotas') or not isinstance(p_ses.mascotas, dict):
                 p_ses.mascotas = {}
-            p_nom = (pet_metadata.get('nombre') if pet_metadata else None) or d_pet['nombre']
+            p_nom = (pet_metadata.get('nombre') if pet_metadata else None) or (pet_metadata.get('captured_name') if pet_metadata else None) or d_pet['nombre']
             p_st = max(1, int((pet_metadata.get('estrellas') if pet_metadata else None) or d_pet.get('estrellas') or 1))
             p_rg = int((pet_metadata.get('rango') if pet_metadata else None) or 1)
             p_mid = int((pet_metadata.get('npc_type') if pet_metadata else None) or 0)
@@ -1625,7 +1625,7 @@ def _pet_alternar(ses, addr, ranura):
     # Cada vez que sale es una entidad NUEVA
     p.mascota = f
     f['entidad'] = _pet_siguiente_entidad(ses)
-    f['instancia'] = 1000 + int(ranura)
+    f['instancia'] = int(f.get('instancia') or (1000 + int(ranura)))
     ses.pet_entity_id = f['entidad']
     px = getattr(p, 'tile_x', 0)
     py = getattr(p, 'tile_y', 0)
@@ -3540,6 +3540,7 @@ def _intentar_captura_monstruo(ses, target_entity, addr='?'):
         short_name = _ms_cap.abreviar_nombre_pet(monster.nombre)
         captured_tipo = int(getattr(monster, 'sprite', 0) or ident_cap.get('sprite') or 0)
         pet_meta = {
+            'nombre': short_name,
             'npc_type': int(monster.npc_type),
             'rango': rango,
             'rango_nombre': rango_nom,
@@ -12443,10 +12444,8 @@ class Servidor:
                 if isinstance(_masc_p, dict):
                     if _masc_p.get('ranura') == org:
                         _masc_p['ranura'] = dst
-                        _masc_p['instancia'] = 1000 + int(dst)
                     elif _masc_p.get('ranura') == dst:
                         _masc_p['ranura'] = org
-                        _masc_p['instancia'] = 1000 + int(org)
                 # El registro persistente de mascotas tambien sigue el swap.
                 # Sin esto, dos mascotas del Raise-a-Pet Room intercambiaban
                 # los items visibles pero conservaban la ficha/nombre de la
@@ -12457,11 +12456,9 @@ class Servidor:
                     _f_dst = _mascs_swap.pop(str(dst), None)
                     if _f_org:
                         _f_org['ranura'] = dst
-                        _f_org['instancia'] = 1000 + int(dst)
                         _mascs_swap[str(dst)] = _f_org
                     if _f_dst:
                         _f_dst['ranura'] = org
-                        _f_dst['instancia'] = 1000 + int(org)
                         _mascs_swap[str(org)] = _f_dst
                 # Las dos casillas en UN solo mensaje, con el estado de
                 # puesto de cada una, que es lo que hace el servidor real.
@@ -12471,6 +12468,9 @@ class Servidor:
                     (org, it_dst, _c_dst, _inst(ses, org)),
                 ], _dueno(ses), mascota=_masc_p, mejoras=getattr(ses.personaje, 'mejoras', None),
                 mascotas=getattr(ses.personaje, 'mascotas', None))]
+                if isinstance(_masc_p, dict) and _masc_p.get('fuera'):
+                    import mascotas as _ms_swp
+                    salida.append(_ms_swp.armar(_masc_p))
                 if _extra_tocadas:
                     salida.extend(_refrescar(ses, _extra_tocadas))
                 if inv.es_equipo(org) or inv.es_equipo(dst):
@@ -12505,15 +12505,16 @@ class Servidor:
             _masc_p = getattr(ses.personaje, 'mascota', None) if ses.personaje else None
             if isinstance(_masc_p, dict) and _masc_p.get('ranura') == org:
                 _masc_p['ranura'] = dst
-                _masc_p['instancia'] = 1000 + int(dst)
             if getattr(ses.personaje, 'mascotas', None):
                 _f_mv = ses.personaje.mascotas.pop(str(org), None) or ses.personaje.mascotas.pop(org, None)
                 if isinstance(_f_mv, dict):
                     _f_mv['ranura'] = dst
-                    _f_mv['instancia'] = 1000 + int(dst)
                     ses.personaje.mascotas[str(dst)] = _f_mv
             salida = [inv.acuse_movimiento(org)]
             salida.extend(_refrescar(ses, [org, dst] + _extra_tocadas))
+            if isinstance(_masc_p, dict) and _masc_p.get('fuera') and _masc_p.get('ranura') == dst:
+                import mascotas as _ms_mv
+                salida.append(_ms_mv.armar(_masc_p))
             if inv.es_equipo(org) or inv.es_equipo(dst):
                 if ses.personaje:
                     import combate as _cb
@@ -12684,17 +12685,34 @@ class Servidor:
             import mascotas as _ms
             ficha = getattr(ses.personaje, 'mascota', None) or {}
             nom = _ms.nombre_pedido(cuerpo)
-            if ficha and nom:
+            pet_eid = getattr(ses, 'pet_entity_id', None) or (ficha.get('entidad') if isinstance(ficha, dict) else 0) or 0
+            if (not ficha or not isinstance(ficha, dict)) and getattr(ses.personaje, 'mascotas', None):
+                for _m in ses.personaje.mascotas.values():
+                    if isinstance(_m, dict):
+                        ficha = _m
+                        break
+            if isinstance(ficha, dict) and nom:
+                nom = nom[:_ms.LARGO_NOMBRE].strip()
                 ficha['nombre'] = nom
+                ficha['renombrada'] = True
                 ses.personaje.mascota = ficha
                 r = ficha.get('ranura')
+                if getattr(ses.personaje, 'mascotas', None) and r is not None:
+                    ses.personaje.mascotas[str(r)] = ficha
+
+                salida_renom = [_ms.paquete_renombrar(pet_eid, nom, 0)]
                 if r is not None:
-                    ses.enviar(*_refrescar(ses, [r]))
-                ses.enviar(_ms.armar(ficha))
-                if getattr(ses, 'pet_entity_id', None) and ficha.get('fuera'):
-                    ses.enviar(_ms.entidad_mundo(_pet_plantilla(), ficha))
+                    salida_renom.extend(_refrescar(ses, [r]))
+                salida_renom.append(_ms.armar(ficha))
+                if pet_eid and ficha.get('fuera'):
+                    salida_renom.append(_ms.entidad_mundo(_pet_plantilla(), ficha))
+                ses.enviar(*salida_renom)
                 _guardar_bolsa(ses, ses.personaje.char_id)
-                log.info('[%s] mascota renombrada a %s' % (addr, nom))
+                if getattr(ses, 'usuario', None):
+                    cuentas.guardar_mascota(ses.usuario, ses.personaje.char_id, ficha, ses.personaje.mascotas)
+                log.info('[%s] mascota renombrada a %s (confirmado con S2C 0x003D)' % (addr, nom))
+            else:
+                ses.enviar(_ms.paquete_renombrar(pet_eid, '', 1))
             return
 
         # The client emits 0x0132 (<II>) instead of 0x002E (<BI>) for slots above 255 (sub_61B000).
