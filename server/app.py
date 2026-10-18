@@ -12678,14 +12678,15 @@ class Servidor:
             return
 
         # RENOMBRAR LA MASCOTA: c2s 0x003D, el cuerpo es el nombre pelado.
-        # Medido: se mando "Battlemaids" y luego "Battle", y el servidor
-        # contesto remandando la entrada del inventario. Sin nombre propio
-        # se queda con el de su clase.
+        # Medido en mundo_022355_871035: se mando "Battlemaids" y luego "Battle",
+        # y el servidor contesto UNICAMENTE con s2c 0x001B (_refrescar casilla).
+        # Enviar s2c 0x003D despacha en Angel.exe a FUN_005a25a0 (Mail/correo)
+        # y crashea con fallo de puntero nulo. Tampoco se debe reenviar 0x0050
+        # (crear entidad) porque corrompe la tabla de entidades del cliente.
         if opcode == 0x003D and ses.rol == 'mundo' and ses.personaje and cuerpo:
             import mascotas as _ms
             ficha = getattr(ses.personaje, 'mascota', None) or {}
             nom = _ms.nombre_pedido(cuerpo)
-            pet_eid = getattr(ses, 'pet_entity_id', None) or (ficha.get('entidad') if isinstance(ficha, dict) else 0) or 0
             if (not ficha or not isinstance(ficha, dict)) and getattr(ses.personaje, 'mascotas', None):
                 for _m in ses.personaje.mascotas.values():
                     if isinstance(_m, dict):
@@ -12700,19 +12701,15 @@ class Servidor:
                 if getattr(ses.personaje, 'mascotas', None) and r is not None:
                     ses.personaje.mascotas[str(r)] = ficha
 
-                salida_renom = [_ms.paquete_renombrar(pet_eid, nom, 0)]
+                # Medido en mundo_022355_871035: la respuesta a c2s 0x003D es
+                # UNICAMENTE el 0x001B de la casilla. Enviar 0x003D o 0x0050
+                # provoca un crash de puntero nulo en Angel.exe.
                 if r is not None:
-                    salida_renom.extend(_refrescar(ses, [r]))
-                salida_renom.append(_ms.armar(ficha))
-                if pet_eid and ficha.get('fuera'):
-                    salida_renom.append(_ms.entidad_mundo(_pet_plantilla(), ficha))
-                ses.enviar(*salida_renom)
+                    ses.enviar(*_refrescar(ses, [r]))
                 _guardar_bolsa(ses, ses.personaje.char_id)
                 if getattr(ses, 'usuario', None):
                     cuentas.guardar_mascota(ses.usuario, ses.personaje.char_id, ficha, ses.personaje.mascotas)
-                log.info('[%s] mascota renombrada a %s (confirmado con S2C 0x003D)' % (addr, nom))
-            else:
-                ses.enviar(_ms.paquete_renombrar(pet_eid, '', 1))
+                log.info('[%s] mascota renombrada a %s (actualizado en casilla %s)' % (addr, nom, r))
             return
 
         # The client emits 0x0132 (<II>) instead of 0x002E (<BI>) for slots above 255 (sub_61B000).

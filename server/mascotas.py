@@ -867,16 +867,10 @@ def nombre_pedido(cuerpo: bytes) -> str:
 
 
 def paquete_renombrar(pet_eid: int, nombre: str, resultado: int = 0) -> bytes:
-    """S2C 0x003D: Confirma al cliente (FUN_005a25a0 en Angel.exe) que la mascota fue renombrada.
-    Formato del paquete de red:
-      +0   u16 opcode (0x003D)
-      +2   u16 total_len
-      +4   u16 seq / unk (0)
-      +6   u16 resultado (0 = exito; != 0 aborta)
-      +8   u32 entity_id de la mascota
-      +12..+69 ceros (58 bytes de relleno)
-      +70  u16 offset relativo a +72 (0)
-      +72  nombre en bytes (hasta 12 chars + null)
+    """OBSOLETO / NO ENVIAR: En Angel.exe el opcode 0x003D despacha a FUN_005a25a0
+    (sistema de Correo/Mail) y causa crash por puntero nulo al desreferenciar
+    [ecx + 0x15130]. Medido en capturas oficiales (mundo_022355_871035), la respuesta
+    a c2s 0x003D es UNICAMENTE el s2c 0x001B de la casilla del inventario.
     """
     nom_bytes = str(nombre or '').encode('latin1', 'replace')[:LARGO_NOMBRE] + b'\x00'
     total_len = 72 + len(nom_bytes)

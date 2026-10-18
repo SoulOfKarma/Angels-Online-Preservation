@@ -220,7 +220,7 @@ def test_inventory_move_active_pet_preserves_instance_and_sends_0x0065():
     assert 0x0065 in opcodes_sent
 
 
-def test_pet_rename_handler_sets_renombrada_and_sends_0x003d_ack():
+def test_pet_rename_handler_sets_renombrada_and_sends_0x001b():
     from unittest import mock
     import app
 
@@ -270,13 +270,11 @@ def test_pet_rename_handler_sets_renombrada_and_sends_0x003d_ack():
     assert pet_ficha['nombre'] == 'Shadow'
     assert pet_ficha['renombrada'] is True
 
-    # 2. S2C 0x003D packet sent with result 0 and name "Shadow"
-    ack_pkts = [p for p in ses.paquetes if struct.unpack_from('<H', p)[0] == 0x003D]
-    assert len(ack_pkts) == 1
-    ack = ack_pkts[0]
-    assert struct.unpack_from('<H', ack, 6)[0] == 0  # success
-    assert struct.unpack_from('<I', ack, 8)[0] == 6001  # pet entity ID
-    assert ack[72:79] == b'Shadow\x00'
+    # 2. Only S2C 0x001B (inventory slot refresh) sent. S2C 0x003D / 0x0050 cause client crash.
+    opcodes = [struct.unpack_from('<H', p)[0] for p in ses.paquetes]
+    assert 0x001B in opcodes
+    assert 0x003D not in opcodes
+    assert 0x0050 not in opcodes
 
 
 def test_inventory_swap_active_pet_preserves_instance_and_sends_0x0065():
