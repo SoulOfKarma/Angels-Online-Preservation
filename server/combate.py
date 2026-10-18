@@ -2766,9 +2766,12 @@ def cierre_de_dano(atacante: int, objetivo: int,
 
 def efecto_captura(atacante: int, objetivo: int, x: int = 0, y: int = 0,
                    subtipo: int = 16979):
-    """Animacion de captura Poke Egg: el cristal rojo (efecto 19) sobre el objetivo."""
+    """Animacion de captura Poke Egg: cristal rojo (efecto 19) en el suelo bajo el objetivo."""
     return [
-        efecto_magia_self_fin(atacante, 19, subtipo, objetivo=objetivo),
+        numero_de_dano(atacante, objetivo, dano=0, ataque=0, efecto=19,
+                       cast_time=0, es_magia=False, tile_x=x, tile_y=y),
+        cierre_de_dano(atacante, objetivo, ataque=0, efecto=19,
+                       es_magia=False, tile_x=x, tile_y=y),
     ]
 
 

@@ -3597,6 +3597,26 @@ def _intentar_captura_monstruo(ses, target_entity, addr='?'):
                 if room is not None and getattr(room, 'monstruos', None):
                     room.monstruos.pop(eid, None)
 
+        def _capture_respawn(eid=monster.entity_id):
+            if getattr(monster, 'generado', False):
+                return
+            if (getattr(ses, 'monstruos', {}) or {}).get(eid) is not monster:
+                return
+            if not getattr(monster, 'vivo', False):
+                monster.revivir()
+                import login as _lg_cap
+                sp_pkg = _lg_cap._npc_spawn(
+                    eid, monster.npc_type, monster.nombre, (monster.tile_x, monster.tile_y),
+                    sprite=getattr(monster, 'sprite', 0), klass=1)
+                ses.enviar_inmediato(sp_pkg)
+                for comp in _companeros(ses):
+                    try:
+                        comp.enviar_inmediato(sp_pkg)
+                    except Exception:
+                        pass
+                log.info('[%s] captured monster %s (eid=%s) respawned at (%s, %s)',
+                         addr, monster.nombre, eid, monster.tile_x, monster.tile_y)
+
         try:
             import asyncio as _aio_capture
             try:
@@ -3604,6 +3624,7 @@ def _intentar_captura_monstruo(ses, target_entity, addr='?'):
             except RuntimeError:
                 loop = _aio_capture.get_event_loop()
             loop.call_later(capture_stun_seconds, _capture_despawn)
+            loop.call_later(capture_stun_seconds + _cb_cap.SEGUNDOS_REAPARICION, _capture_respawn)
         except Exception:
             _capture_despawn()
         ses.enviar(_cl_cap.aviso(

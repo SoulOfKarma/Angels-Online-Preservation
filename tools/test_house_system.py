@@ -891,10 +891,15 @@ class TestHouseSystem(unittest.TestCase):
         self.assertEqual(ses.monstruos[9001].hp, 0)
         # Success first leaves the mob stunned; despawn is delayed without playing death animation.
         self.assertTrue(any(pkt[:2] == b'\x1d\x00' for pkt in ses.paquetes))
-        self.assertFalse(any(pkt[:2] == b'\x07\x00' for pkt in ses.paquetes))
-        self.assertEqual([delay for delay, _ in loop.calls], [1.3])
+        self.assertEqual([delay for delay, _ in loop.calls],
+                         [1.3, 1.3 + combate.SEGUNDOS_REAPARICION])
         loop.calls[0][1]()
         self.assertTrue(any(pkt[:2] == b'\x07\x00' for pkt in ses.paquetes))
+        # After respawn delay, the captured monster reappears on the map and revives
+        loop.calls[1][1]()
+        self.assertTrue(ses.monstruos[9001].vivo)
+        self.assertEqual(ses.monstruos[9001].hp, ses.monstruos[9001].hp_max)
+        self.assertTrue(any(pkt[:2] == b'\x08\x00' for pkt in ses.paquetes))
 
     def test_super_bc_trade_and_other_channels_consume_exact_items(self):
         import app
