@@ -87,6 +87,176 @@ def monster_eggs():
             for ident, row in xml_rows('item%s.xml' % (i if i > 1 else '')).items()
             if row.get('物品類別') == '怪物蛋'}
 
+# Keep these names escaped so this protocol/data bridge is independent of the
+# Windows console code page used to launch the server.
+_ITEM_CATEGORY = '\u7269\u54c1\u985e\u5225'
+_ITEM_NAME = '\u57fa\u672c\u540d\u7a31'
+_DYNAMIC_1 = '\u52d5\u614b\u8cc7\u65991'
+_USE_FORMULA = '\u4f7f\u7528\u516c\u5f0f'
+_EMPTY_CAPTURE_EGG = '\u6293\u5bf5\u7a7a\u86cb'
+
+
+_DYNAMIC_2 = '\u52d5\u614b\u8cc7\u65992'
+
+
+@functools.lru_cache(maxsize=1)
+def capture_eggs():
+    """Released Poke Eggs and their XML capture strength."""
+    result = {}
+    for i in range(1, 10):
+        rows = xml_rows('item%s.xml' % (i if i > 1 else ''))
+        for ident, row in rows.items():
+            if (row.get(_ITEM_CATEGORY) != _EMPTY_CAPTURE_EGG
+                    or str(row.get(_USE_FORMULA) or '') != '19'
+                    or row.get(_ITEM_NAME) != 'Poke Egg'):
+                continue
+            try:
+                result[ident] = int(row.get(_DYNAMIC_1) or 0)
+            except (TypeError, ValueError):
+                continue
+    return result
+
+
+@functools.lru_cache(maxsize=1)
+def capture_egg_effects():
+    """Visual spell/animation effect for each Poke Egg (dynamic_2 in XML, default 197)."""
+    result = {}
+    for i in range(1, 10):
+        rows = xml_rows('item%s.xml' % (i if i > 1 else ''))
+        for ident, row in rows.items():
+            if (row.get(_ITEM_CATEGORY) != _EMPTY_CAPTURE_EGG
+                    or str(row.get(_USE_FORMULA) or '') != '19'
+                    or row.get(_ITEM_NAME) != 'Poke Egg'):
+                continue
+            try:
+                result[ident] = int(row.get(_DYNAMIC_2) or 197)
+            except (TypeError, ValueError):
+                result[ident] = 197
+    return result
+
+
+_CATCH_MONSTER_ID = '\u602a\u7269\u7de8\u865f'
+_CATCH_PET_ITEM = '\u5bf5\u7269\u7de8\u865f'
+_MONSTER_NAME = '\u540d\u7a31'
+
+
+@functools.lru_cache(maxsize=1)
+def capturable_monsters():
+    """Monster template -> Monster/Pet Egg item, properly mapped across all updates."""
+    monsters = xml_rows('monster.xml')
+    items = {}
+    for i in range(1, 10):
+        items.update(xml_rows('item%s.xml' % (i if i > 1 else '')))
+
+    # 1. Exact monster_eggs (Boss eggs for House Monster Hatching Machine)
+    candidates = {}
+    for ident, row in monster_eggs().items():
+        try:
+            npc_type = int(row.get(_DYNAMIC_1) or 0)
+        except (TypeError, ValueError):
+            continue
+        if npc_type <= 0:
+            continue
+        name = str(row.get(_ITEM_NAME) or '')
+        priority = (0, not name.isascii(), int(ident))
+        old = candidates.get(npc_type)
+        if old is None or priority < old[0]:
+            candidates[npc_type] = (priority, int(ident))
+
+    # Direct named pet eggs (17005..17064 and similar specific pet items)
+    direct_named = {}
+    for iid in range(17005, 17065):
+        it = items.get(iid, {})
+        iname = str(it.get(_ITEM_NAME) or '').strip().lower()
+        if iname:
+            direct_named[iname] = iid
+
+    catch_mappings = {}
+    for xml_name in ('catch.xml', 'serv_catch.xml'):
+        for row in xml_rows(xml_name).values():
+            try:
+                mid = int(row.get(_CATCH_MONSTER_ID) or 0)
+                pid = int(row.get(_CATCH_PET_ITEM) or 0)
+            except (TypeError, ValueError):
+                continue
+            if mid > 0 and pid > 0 and mid not in catch_mappings:
+                catch_mappings[mid] = pid
+
+    for npc_type, m in monsters.items():
+        if npc_type <= 0 or npc_type in candidates:
+            continue
+        mname = str(m.get(_MONSTER_NAME) or '').strip().lower()
+        if mname.startswith('mercenary'):
+            continue
+
+        # 2. Direct named pet egg match (e.g. Mage Cathy 7038 -> 17045, Strawberry Imp 7068 -> 17054)
+        if mname in direct_named:
+            candidates[npc_type] = ((1, False, direct_named[mname]), direct_named[mname])
+            continue
+
+        # 3. Family / species rules (fixes IGG catch.xml typos where cats gave Winged Fish 16978)
+        if 'cat' in mname and 'caterpillar' not in mname:
+            egg_id = 16974 if 'violent' in mname else 16971
+            candidates[npc_type] = ((2, False, egg_id), egg_id)
+            continue
+        if 'fish' in mname:
+            candidates[npc_type] = ((2, False, 16978), 16978)
+            continue
+        if 'crab' in mname:
+            candidates[npc_type] = ((2, False, 16975), 16975)
+            continue
+        if 'lizard' in mname or 'reptile' in mname:
+            candidates[npc_type] = ((2, False, 16969), 16969)
+            continue
+        if 'pumpkin' in mname:
+            candidates[npc_type] = ((2, False, 16970), 16970)
+            continue
+        if 'imp' in mname:
+            candidates[npc_type] = ((2, False, 16972), 16972)
+            continue
+        if 'clown' in mname or 'puppet' in mname:
+            candidates[npc_type] = ((2, False, 16973), 16973)
+            continue
+        if any(k in mname for k in ('wolf', 'boar', 'beast', 'dog')):
+            candidates[npc_type] = ((2, False, 16976), 16976)
+            continue
+        if any(k in mname for k in ('priest', 'savage', 'shaman')):
+            candidates[npc_type] = ((2, False, 16977), 16977)
+            continue
+        if 'heat elf' in mname or 'fire elf' in mname or 'flame elf' in mname:
+            candidates[npc_type] = ((2, False, 3397), 3397)
+            continue
+        if 'water elf' in mname or 'ice elf' in mname:
+            candidates[npc_type] = ((2, False, 3396), 3396)
+            continue
+        if 'wind elf' in mname:
+            candidates[npc_type] = ((2, False, 3398), 3398)
+            continue
+        if 'earth elf' in mname:
+            candidates[npc_type] = ((2, False, 3399), 3399)
+            continue
+
+        # 4. catch.xml mapping if available
+        if npc_type in catch_mappings:
+            egg_id = catch_mappings[npc_type]
+            candidates[npc_type] = ((3, False, egg_id), egg_id)
+            continue
+
+        # 5. General fallback
+        egg_id = 16969 + (npc_type % 10)
+        candidates[npc_type] = ((4, False, egg_id), egg_id)
+
+    return {npc: value[1] for npc, value in candidates.items()}
+
+
+def capture_chance(strength, hp, hp_max):
+    """Capture percentage: stronger egg + wounded target, capped at 95%."""
+    strength = max(0.0, float(strength or 0))
+    maximum = max(1.0, float(hp_max or 1))
+    ratio = min(1.0, max(0.0, float(hp or 0) / maximum))
+    return min(95.0, strength * (2.0 - ratio))
+
+
 def clean_bonus(cleanliness):
     # IGG sub_66A8B0: >100 -> +20%; 90..100 -> +10%; otherwise hidden.
     return 20 if cleanliness > 100 else 10 if cleanliness >= 90 else 0

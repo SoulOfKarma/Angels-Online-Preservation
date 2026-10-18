@@ -1314,6 +1314,7 @@ def _ficha(p, base):
     d['flags'] = 0x80000000
     # En 0x0002, el mapa/stage real va en el offset 3953 (offset 3235 dentro de 'resto')
     r = bytearray(d['resto'])
+
     if len(r) >= 3239:
         struct.pack_into('<I', r, 3235, p.stage)
         # Suprimir dialogo molesto "Set Deal Password or not?" (*(_BYTE *)(v17 + 632) = 1)

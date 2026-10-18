@@ -378,6 +378,75 @@ def aviso(texto: str, tipo: int = 7, msg_id: int = MSG_TEXTO) -> bytes:
             + struct.pack('<HB', msg_id, tipo) + n + bytes(3))
 
 
+def chat_publico(entity_id: int, canal: int, nombre: str, texto: str) -> bytes:
+    """S2C 0x0128 para los canales que usan una linea normal de chat."""
+    if int(canal) not in (2, 10):
+        raise ValueError('canal de chat no soportado')
+    autor = str(nombre or '').encode('latin-1', 'replace')[:16].ljust(17, b'\x00')
+    mensaje = str(texto or '').encode('latin-1', 'replace')[:1000] + b'\x00'
+    return struct.pack('<HIB17s', 0x0128, int(entity_id), int(canal), autor) + mensaje
+
+
+def chat_broadcast(entity_id: int, nombre: str, texto: str) -> bytes:
+    """Broadcast/Public: ``[public]name>text`` (style 1, string 181)."""
+    return chat_publico(entity_id, 2, nombre, texto)
+
+
+def chat_super_broadcast(entity_id: int, nombre: str, texto: str,
+                         portrait_selector: int = 0) -> bytes:
+    """Super Broadcast: banda grande con retrato, autor y mensaje.
+
+    La rama 11 quita el primer byte y lo conserva como selector del retrato.
+    Los paquetes oficiales usan ``'0'`` o ``'1'``; no debe fijarse siempre a
+    uno porque eso dibuja el avatar equivocado.
+    """
+    autor = str(nombre or '').encode('latin-1', 'replace')[:16].ljust(17, b'\x00')
+    selector = b'1' if int(portrait_selector or 0) else b'0'
+    mensaje = selector + str(texto or '').encode('latin-1', 'replace')[:999] + b'\x00'
+    return struct.pack('<HIB17s', 0x0128, int(entity_id), 11, autor) + mensaje
+
+
+def chat_trade(entity_id: int, nombre: str, texto: str) -> bytes:
+    """Trade: ``[Trade]name>text`` (style 2, string 198)."""
+    return chat_publico(entity_id, 10, nombre, texto)
+
+
+def chat_privado(entity_id: int, canal: int, nombre: str, texto: str) -> bytes:
+    """S2C 0x0126 para League=4, Team=5 y Marriage=14."""
+    if int(canal) not in (4, 5, 14):
+        raise ValueError('canal privado no soportado')
+    autor = str(nombre or '').encode('latin-1', 'replace')[:16].ljust(17, b'\x00')
+    mensaje = str(texto or '').encode('latin-1', 'replace')[:1000] + b'\x00'
+    return struct.pack('<HIBI17s', 0x0126, int(entity_id), int(canal), 0, autor) + mensaje
+
+
+def chat_team(entity_id: int, nombre: str, texto: str) -> bytes:
+    return chat_privado(entity_id, 5, nombre, texto)
+
+
+def chat_league(entity_id: int, nombre: str, texto: str) -> bytes:
+    return chat_privado(entity_id, 4, nombre, texto)
+
+
+def chat_marriage(entity_id: int, nombre: str, texto: str) -> bytes:
+    return chat_privado(entity_id, 14, nombre, texto)
+
+
+def chat_battle(nombre: str, texto: str, label_id: int = 2214) -> bytes:
+    """S2C 0x0139 para el canal Battle / Jabaly (sub_5F3CE0, string 2214)."""
+    autor = str(nombre or '').encode('latin-1', 'replace')[:16].ljust(17, b'\x00')
+    mensaje = str(texto or '').encode('latin-1', 'replace')[:1000] + b'\x00'
+    return struct.pack('<H17sI', 0x0139, autor, int(label_id)) + mensaje
+
+
+def chat_whisper(emisor: str, receptor: str, texto: str, err_code: int = 0) -> bytes:
+    """S2C 0x0127 para susurros privados (sub_5F36F0)."""
+    src = str(emisor or '').encode('latin-1', 'replace')[:16].ljust(17, b'\x00')
+    dst = str(receptor or '').encode('latin-1', 'replace')[:16].ljust(17, b'\x00')
+    mensaje = str(texto or '').encode('latin-1', 'replace')[:1000] + b'\x00'
+    return struct.pack('<HIH17s17sH', 0x0127, 0, int(err_code), src, dst, 0) + mensaje
+
+
 # Lo que el servidor entrega al elegir clase, leido del inventario capturado
 # justo despues: dos Sabre en las ranuras 3 y 4, los guantes en la 5 y los
 # zapatos en la 6. Antes de elegir solo estaban el oro y la prenda del cuerpo.

@@ -3,6 +3,7 @@ import os
 import sys
 import struct
 import unittest
+from unittest import mock
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'server')))
 
@@ -27,16 +28,18 @@ class TestHouseSystem(unittest.TestCase):
         self.assertEqual(casas.nivel_de_magia(999999), 15)
 
     def test_ranuras_por_nivel(self):
-        self.assertEqual(casas.ranuras_mascotas_validas(1), 0)
+        self.assertEqual(casas.ranuras_mascotas_validas(1), 1)
         self.assertEqual(casas.ranuras_mascotas_validas(3), 1)
+        self.assertEqual(casas.ranuras_mascotas_validas(4), 2)
         self.assertEqual(casas.ranuras_mascotas_validas(5), 2)
         self.assertEqual(casas.ranuras_mascotas_validas(7), 3)
         self.assertEqual(casas.ranuras_mascotas_validas(9), 4)
         self.assertEqual(casas.ranuras_mascotas_validas(12), 5)
         self.assertEqual(casas.ranuras_mascotas_validas(14), 6)
 
-        self.assertEqual(casas.ranuras_mobgen_validas(1), 0)
+        self.assertEqual(casas.ranuras_mobgen_validas(1), 1)
         self.assertEqual(casas.ranuras_mobgen_validas(6), 1)
+        self.assertEqual(casas.ranuras_mobgen_validas(8), 2)
         self.assertEqual(casas.ranuras_mobgen_validas(10), 2)
         self.assertEqual(casas.ranuras_mobgen_validas(13), 3)
 
@@ -643,7 +646,7 @@ class TestHouseSystem(unittest.TestCase):
             self.assertIsNotNone(g)
             self.assertEqual(len(g), 1)
             mid = int.from_bytes(g[0][:4], 'little')
-            self.assertEqual(mid, 507715)
+            self.assertEqual(mid, 508584)
 
         # Faction city bank greetings
         g_breeze = dialogos.propio('Banker', stage=29)
@@ -658,6 +661,11 @@ class TestHouseSystem(unittest.TestCase):
         g_aurora = dialogos.propio('Bank Clerk', stage=3)
         self.assertEqual(int.from_bytes(g_aurora[0][:4], 'little'), 5225)
 
+        # Palm Base bankers
+        for pb_name in ['Bankclerk Clair', 'Bankclerk Sien', 'Bankclerk Keda', 'Bankclerk Emmy', 'Banking Director']:
+            g_pb = dialogos.propio(pb_name, stage=88)
+            self.assertEqual(int.from_bytes(g_pb[0][:4], 'little'), 5225)
+
         # Option 5030 ("How do I use it?") gives official guide line 5034
         resp_5030 = dialogos.respuesta_a(5030, 4)
         mid_guide = int.from_bytes(resp_5030[0][2:6], 'little')
@@ -667,6 +675,603 @@ class TestHouseSystem(unittest.TestCase):
         resp_5032 = dialogos.respuesta_a(5032, 4)
         mid_wh = int.from_bytes(resp_5032[0][2:6], 'little')
         self.assertEqual(mid_wh, 5236)
+
+        # Voucher Angel response test
+        resp_va_info = dialogos.respuesta_a(508585, val=41)
+        self.assertEqual(len(resp_va_info), 2)
+        # Option 508586 gives shop 159
+        resp_va_shop = dialogos.respuesta_a(508586, val=41)
+        self.assertEqual(int.from_bytes(resp_va_shop[0][:2], 'little'), 0x0034)
+        # Option 508587 gives WND_EXCHANGE 0x0206
+        resp_va_exch = dialogos.respuesta_a(508587, val=41)
+        self.assertEqual(int.from_bytes(resp_va_exch[0][:2], 'little'), 0x0206)
+
+    def test_furniture_and_deeds_never_stack(self):
+        import inventario as inv
+        import app
+        # Furniture items and deeds are never stackable
+        self.assertFalse(inv.es_apilable(10115))  # Cottage Deed
+        self.assertFalse(inv.es_apilable(10116))  # Delicate House Deed
+        self.assertFalse(inv.es_apilable(9954))   # Furniture item
+        self.assertFalse(inv.es_apilable(10121))  # Furniture item
+
+        class MockSes:
+            def __init__(self):
+                self.inventario = {}
+                self.cantidades = {}
+                self.instancias = {}
+                self.personaje = type('P', (), {'char_id': 100, 'nombre': 'Tester', 'stage': 41, 'tile_x': 244, 'tile_y': 30, 'mejoras': {}})()
+                self.paquetes = []
+            def enviar(self, *pkts):
+                self.paquetes.extend(pkts)
+
+        ses = MockSes()
+        # Give 3 units of furniture item 9954
+        app._meter(ses, 9954, 3)
+        # Should allocate 3 separate slots in furniture bag (377..476)
+        furn_slots = [r for r, iid in ses.inventario.items() if iid == 9954]
+        self.assertEqual(len(furn_slots), 3)
+        for r in furn_slots:
+            self.assertTrue(377 <= r <= 476)
+            self.assertNotIn(r, ses.cantidades)
+            self.assertIn(r, ses.instancias)
+        # All 3 instances must be unique
+        instances = [ses.instancias[r] for r in furn_slots]
+        self.assertEqual(len(set(instances)), 3)
+
+    def test_chat_processing_channels_and_gm_slash(self):
+        import app
+        import clases as cl
+
+        class MockSes:
+            def __init__(self, name="AngelTester"):
+                self.inventario = {}
+                self.cantidades = {}
+                self.instancias = {}
+                self.personaje = type('P', (), {'char_id': 101, 'entity_id': 1001, 'nombre': name, 'stage': 41, 'tile_x': 244, 'tile_y': 30, 'nivel': 10, 'oro': 1000})()
+                self.rol = 'mundo'
+                self.paquetes = []
+            def enviar(self, *pkts):
+                self.paquetes.extend(pkts)
+
+        srv = app.Servidor('127.0.0.1', 8888, 8889, 8890)
+        ses = MockSes()
+        srv.mundos.append(ses)
+
+        # 1. Normal chat with command-like word "item 10115" without slash
+        ses.paquetes.clear()
+        srv._procesar_chat_mundo(ses, "item 10115 is my favorite", "127.0.0.1")
+        # Regular chat should broadcast local say, not trigger GM item command
+        self.assertNotIn(10115, ses.inventario.values())
+
+        # 2. Broadcast without ticket 2002
+        ses.paquetes.clear()
+        srv._procesar_chat_mundo(ses, "!Hello Angel Lyceum", "127.0.0.1")
+        # Player warned they need Broadcasting item
+        warn_text = [p for p in ses.paquetes if b"You need Broadcasting" in p]
+        self.assertTrue(len(warn_text) > 0)
+
+        # 3. Broadcast with ticket 2002
+        ses.inventario[25] = 2002
+        ses.paquetes.clear()
+        srv._procesar_chat_mundo(ses, "!Hello Angel Lyceum", "127.0.0.1")
+        self.assertNotIn(25, ses.inventario) # Consumed ticket
+        bc_pkts = [pkt for pkt in ses.paquetes if pkt[:2] == b'\x28\x01']
+        self.assertEqual(len(bc_pkts), 1)
+        self.assertEqual(bc_pkts[0][6], 2)
+        self.assertEqual(bc_pkts[0][7:24].rstrip(b'\x00'), b'AngelTester')
+        self.assertEqual(bc_pkts[0][24:], b'Hello Angel Lyceum\x00')
+        self.assertNotIn(b'[Broadcast]', bc_pkts[0])
+
+        # 4. Super Broadcast without ticket 2003
+        ses.paquetes.clear()
+        srv._procesar_chat_mundo(ses, "%Grand House Opening!", "127.0.0.1")
+        warn_sb = [p for p in ses.paquetes if b"You need Super Broadcasting" in p]
+        self.assertTrue(len(warn_sb) > 0)
+
+        # 5. Super Broadcast with ticket 2003
+        ses.inventario[26] = 2003
+        ses.paquetes.clear()
+        srv._procesar_chat_mundo(ses, "/sb Grand House Opening!", "127.0.0.1")
+        self.assertNotIn(26, ses.inventario) # Consumed ticket
+        sb_pkts = [pkt for pkt in ses.paquetes if pkt[:2] == b'\x28\x01']
+        self.assertEqual(len(sb_pkts), 1)
+        self.assertEqual(sb_pkts[0][6], 11)
+        self.assertEqual(sb_pkts[0][7:24].rstrip(b'\x00'), b'AngelTester')
+        self.assertEqual(sb_pkts[0][24:], b'0Grand House Opening!\x00')
+        self.assertNotIn(b'[Super Broadcast]', sb_pkts[0])
+
+        # 6. Trade channel with ticket 2002
+        ses.inventario[27] = 2002
+        ses.paquetes.clear()
+        srv._procesar_chat_mundo(ses, "@WTS Delicate House Deed", "127.0.0.1")
+        self.assertNotIn(27, ses.inventario) # Consumed ticket
+        tr_pkts = [pkt for pkt in ses.paquetes if pkt[:2] == b'\x28\x01']
+        self.assertEqual(len(tr_pkts), 1)
+        self.assertEqual(tr_pkts[0][6], 10)
+        self.assertEqual(tr_pkts[0][7:24].rstrip(b'\x00'), b'AngelTester')
+        self.assertEqual(tr_pkts[0][24:], b'WTS Delicate House Deed\x00')
+
+    def test_poke_eggs_and_capturable_list_come_from_xml(self):
+        import house_services as hs
+
+        self.assertEqual(hs.capture_eggs(), {
+            16979: 30, 16980: 45, 16981: 60,
+            16982: 300, 20092: 300,
+        })
+        capturable = hs.capturable_monsters()
+        self.assertEqual(capturable[1217], 10592)
+        self.assertGreaterEqual(len(capturable), 98)
+        self.assertLess(hs.capture_chance(30, 100, 100),
+                        hs.capture_chance(30, 1, 100))
+        self.assertLess(hs.capture_chance(30, 1, 100),
+                        hs.capture_chance(45, 1, 100))
+        self.assertEqual(hs.capture_chance(300, 1, 100), 95.0)
+
+    def test_public_selector_channel_two_routes_to_broadcast(self):
+        import app
+
+        srv = app.Servidor('127.0.0.1', 8888, 8889, 8890)
+        ses = type('S', (), {
+            'rol': 'mundo',
+            'personaje': type('P', (), {'nombre': 'SelectorTester'})(),
+        })()
+        body = struct.pack('<I', 0) + b'\x02Public selector works\x00'
+        with mock.patch.object(srv, '_procesar_chat_mundo') as process:
+            srv.manejar(ses, 0x0128, None, None, 'test', body)
+        process.assert_called_once_with(ses, '!Public selector works', 'test')
+
+    def test_native_chat_channel_packets_are_not_shifted(self):
+        import clases as cl
+
+        public = cl.chat_broadcast(0, 'Karma', 'public text')
+        trade = cl.chat_trade(0, 'Karma', 'trade text')
+        super_bc = cl.chat_super_broadcast(0, 'Karma', 'super text', 0)
+        team = cl.chat_team(123, 'Karma', 'team text')
+        league = cl.chat_league(123, 'Karma', 'league text')
+        marriage = cl.chat_marriage(123, 'Karma', 'marriage text')
+
+        self.assertEqual((int.from_bytes(public[:2], 'little'), public[6]),
+                         (0x0128, 2))
+        self.assertEqual((int.from_bytes(trade[:2], 'little'), trade[6]),
+                         (0x0128, 10))
+        self.assertEqual((int.from_bytes(super_bc[:2], 'little'), super_bc[6]),
+                         (0x0128, 11))
+        self.assertEqual(super_bc[24:], b'0super text\x00')
+        self.assertEqual((int.from_bytes(team[:2], 'little'), team[6]),
+                         (0x0126, 5))
+        self.assertEqual((int.from_bytes(league[:2], 'little'), league[6]),
+                         (0x0126, 4))
+        self.assertEqual((int.from_bytes(marriage[:2], 'little'), marriage[6]),
+                         (0x0126, 14))
+
+    def test_successful_poke_capture_consumes_egg_and_gives_monster_egg(self):
+        import app
+        import combate
+
+        class MockSes:
+            def __init__(self):
+                self.inventario = {20: 16982}
+                self.cantidades = {}
+                self.instancias = {}
+                self.captura_pendiente = {
+                    'slot': 20, 'item': 16982, 'time': __import__('time').time(),
+                }
+                self.personaje = type('P', (), {
+                    'char_id': 111, 'stage': 41, 'mejoras': {},
+                })()
+                mob = combate.Monstruo(9001, 1217, 'Pontiff Hululu', (20, 20))
+                mob.hp = 1
+                self.monstruos = {9001: mob}
+                self.paquetes = []
+
+            def enviar(self, *pkts):
+                self.paquetes.extend(pkts)
+
+        ses = MockSes()
+        with mock.patch.object(app.random, 'random', return_value=0.0), \
+                mock.patch.object(app, '_guardar_bolsa'), \
+                mock.patch.object(app, '_refrescar', return_value=[]):
+            self.assertTrue(app._intentar_captura_monstruo(ses, 9001, 'test'))
+        self.assertNotIn(16982, ses.inventario.values())
+        self.assertIn(10592, ses.inventario.values())
+        self.assertEqual(ses.monstruos[9001].hp, 0)
+        self.assertTrue(any(pkt[:2] == b'\x07\x00' for pkt in ses.paquetes))
+
+    def test_super_bc_trade_and_other_channels_consume_exact_items(self):
+        import app
+        import clases as cl
+
+        class MockSes:
+            def __init__(self, name="Karma"):
+                self.rol = 'mundo'
+                self.inventario = {}
+                self.cantidades = {}
+                self.instancias = {}
+                self.personaje = type('P', (), {
+                    'char_id': 777, 'entity_id': 1777, 'nombre': name,
+                    'stage': 41, 'tile_x': 100, 'tile_y': 100,
+                    'apariencia': [1], 'mejoras': {},
+                })()
+                self.paquetes = []
+
+            def enviar(self, *pkts):
+                self.paquetes.extend(pkts)
+
+        srv = app.Servidor('127.0.0.1', 8888, 8889, 8890)
+        ses = MockSes()
+        srv.mundos.append(ses)
+
+        with mock.patch.object(app, '_guardar_bolsa'), \
+                mock.patch.object(app, '_refrescar', return_value=[]):
+            # 1. Trade dropdown (0x0128 canal=10) consumes ONLY 2002 (Broadcasting) and emits canal=10
+            ses.inventario = {20: 2002, 21: 2003}
+            ses.paquetes.clear()
+            srv.manejar(ses, 0x0128, None, None, 'test', struct.pack('<IB', 0, 10) + b'WTB Pet Egg\x00')
+            self.assertNotIn(20, ses.inventario)
+            self.assertIn(21, ses.inventario)  # Super BC 2003 untouched!
+            tr_pkts = [p for p in ses.paquetes if p[:2] == b'\x28\x01']
+            self.assertEqual(len(tr_pkts), 1)
+            self.assertEqual(tr_pkts[0][6], 10)
+            self.assertEqual(tr_pkts[0][24:], b'WTB Pet Egg\x00')
+
+            # 2. Super Broadcast window (0x0128 canal=11, prefixed with '0') consumes 2003 and emits canal=11
+            ses.inventario = {20: 2002, 21: 2003}
+            ses.paquetes.clear()
+            srv.manejar(ses, 0x0128, None, None, 'test', struct.pack('<IB', 0, 11) + b'0TROLL\x00')
+            self.assertIn(20, ses.inventario)     # Regular BC 2002 untouched!
+            self.assertNotIn(21, ses.inventario)  # Super BC 2003 consumed!
+            sb_pkts = [p for p in ses.paquetes if p[:2] == b'\x28\x01']
+            self.assertEqual(len(sb_pkts), 1)
+            self.assertEqual(sb_pkts[0][6], 11)
+            self.assertEqual(sb_pkts[0][24:], b'0TROLL\x00')
+
+            # 3. Team (5), League (4), Marriage (14) via 0x0126 do NOT consume 2002 or 2003
+            ses.inventario = {20: 2002, 21: 2003}
+            for canal in (5, 4, 14):
+                ses.paquetes.clear()
+                body = struct.pack('<IBI', 0, canal, 0) + f'msg_{canal}\x00'.encode('latin-1')
+                srv.manejar(ses, 0x0126, None, None, 'test', body)
+                self.assertIn(20, ses.inventario)
+                self.assertIn(21, ses.inventario)
+                priv_pkts = [p for p in ses.paquetes if p[:2] == b'\x26\x01']
+                self.assertEqual(len(priv_pkts), 1)
+                self.assertEqual(priv_pkts[0][6], canal)
+
+            # 4. Battle (0x0133) does NOT consume 2002 or 2003 and emits S2C 0x0139
+            ses.paquetes.clear()
+            srv.manejar(ses, 0x0133, None, None, 'test', b'For Aurora!\x00')
+            self.assertIn(20, ses.inventario)
+            self.assertIn(21, ses.inventario)
+            bat_pkts = [p for p in ses.paquetes if p[:2] == b'\x39\x01']
+            self.assertEqual(len(bat_pkts), 1)
+            self.assertIn(b'For Aurora!\x00', bat_pkts[0])
+
+    def test_poke_egg_captures_catch_xml_monsters_and_creates_pet_ficha(self):
+        import app
+        import combate
+        import house_services as hs
+
+        capturable = hs.capturable_monsters()
+        self.assertEqual(capturable[7001], 16971)  # Purple Evil Cat -> Evil Cat egg (NOT Winged Fish 16978!)
+        self.assertEqual(capturable[7002], 16971)  # Flaming Evil Cat -> Evil Cat egg
+        self.assertEqual(capturable[909], 3397)    # Heat Elf -> Fire Elf Egg
+        self.assertEqual(capturable[1201], 16978)  # Evil Fish -> Winged Fish egg
+        self.assertEqual(capturable[1217], 10592)  # Pontiff Hululu -> House Boss Egg
+
+        class MockSes:
+            def __init__(self):
+                self.rol = 'mundo'
+                self.inventario = {42: 16982}
+                self.cantidades = {42: 5}
+                self.instancias = {42: 9042}
+                self.captura_pendiente = None
+                self.personaje = type('P', (), {
+                    'char_id': 222, 'entity_id': 1222, 'stage': 20, 'mejoras': {}, 'mascotas': {}, 'mascota': None,
+                })()
+                mob = combate.Monstruo(0x000FB0E3, 7001, 'Purple Evil Cat', (40, 40))
+                self.monstruos = {0x000FB0E3: mob}
+                self.paquetes = []
+
+            def enviar(self, *pkts):
+                self.paquetes.extend(pkts)
+
+        srv = app.Servidor('127.0.0.1', 8888, 8889, 8890)
+        ses = MockSes()
+        with mock.patch.object(app.random, 'random', return_value=0.0), \
+                mock.patch.object(app, '_guardar_bolsa'), \
+                mock.patch.object(app, '_refrescar', return_value=[]):
+            srv.manejar(ses, 0x002E, None, None, 'test', struct.pack('<BI', 42, 0x000FB0E3))
+        self.assertEqual(ses.cantidades[42], 4)
+        self.assertIn(16971, ses.inventario.values())
+        pet_slot = next(r for r, iid in ses.inventario.items() if iid == 16971)
+        self.assertIn(str(pet_slot), ses.personaje.mascotas)
+        self.assertEqual(ses.personaje.mascotas[str(pet_slot)]['nombre'], 'Evil Cat')
+
+        # Visual capture animation packets (0x0006 cast confirm + 0x0011 effect 197)
+        self.assertTrue(any(p[:2] == b'\x06\x00' for p in ses.paquetes))
+        self.assertTrue(any(p[:2] == b'\x11\x00' and (p[2] == 197 or p[2] == 0xC5) for p in ses.paquetes))
+
+    def test_ball_tickets_and_candy_rewards(self):
+        import time
+        # All ticket variants are recognized in BALL_TICKETS
+        for tid in (9953, 20078, 15235, 15236, 16598, 28867):
+            self.assertIn(tid, casas.BALL_TICKETS)
+
+        # Level 1 house can start a ball
+        c = casas.CasaData(owner_id=555, owner_name="HostHero", deed_id=10115)
+        self.assertEqual(c.level, 1)
+        now = int(time.time())
+        started = c.iniciar_baile(9953, now=now)
+        self.assertTrue(started)
+        self.assertTrue(c.ball_active)
+        self.assertGreater(c.ball_cooldown_until, now)
+
+        # Fast ticket 15235 also starts ball
+        c2 = casas.CasaData(owner_id=556, owner_name="HostHero2", deed_id=10115)
+        self.assertTrue(c2.iniciar_baile(15235, now=now))
+
+        # Ball announcement string 2395 formatting
+        announcement = "There will be a ball in %s(%d,%d)'s house after 3 minutes. All players are welcome to join the ball." % (c.owner_name, 150, 100)
+        self.assertIn("HostHero(150,100)'s house", announcement)
+
+    def test_raise_a_pet_room_system(self):
+        import inventario as inv
+        # Pet slots 477..486 accept pet and pet egg items
+        self.assertTrue(inv.es_ranura_valida(3393, 477)) # Pet item
+        self.assertFalse(inv.es_ranura_valida(10115, 477)) # Deed not allowed in pet slot
+
+        # Base house level 1 has 1 pet slot and 1 mobgen slot
+        self.assertEqual(casas.ranuras_mascotas_validas(1), 1)
+        self.assertEqual(casas.ranuras_mobgen_validas(1), 1)
+
+        # Care pets dictionary persists correctly in CasaData
+        c = casas.CasaData(owner_id=777, owner_name="PetLover", deed_id=10115)
+        c.care_pets[477] = {
+            'item_id': 3393,
+            'nombre': 'PetBuddy',
+            'sprite': 1001,
+            'nivel': 10,
+            'exp': 500
+        }
+        data = c.to_dict()
+        restored = casas.CasaData.from_dict(data)
+        self.assertIn(477, restored.care_pets)
+        self.assertEqual(restored.care_pets[477]['nombre'], 'PetBuddy')
+        self.assertEqual(restored.care_pets[477]['nivel'], 10)
+
+    def test_raise_a_pet_move_sync_does_not_break_house_loop(self):
+        import app
+
+        class MockSes:
+            def __init__(self):
+                self.usuario = None
+                self.inventario = {478: 3393}
+                self.cantidades = {}
+                self.instancias = {478: 1478}
+                self.paquetes = []
+                self.personaje = type('P', (), {
+                    'char_id': 91001,
+                    'entity_id': 191001,
+                    'nombre': 'PetRoomOwner',
+                    'stage': 500,
+                    'casa': None,
+                    'mascotas': {},
+                })()
+
+            def enviar(self, *pkts):
+                self.paquetes.extend(pkts)
+
+        # Reproduce el movimiento real del log: 477 -> 478.  Antes lanzaba
+        # AttributeError al intentar llamar inventario.nombre_item().
+        ses = MockSes()
+        casa = casas.CasaData(ses.personaje.char_id, ses.personaje.nombre)
+        casa.cleanliness = 1000
+        casa.care_pets['477'] = {
+            'item_id': 3393, 'name': "Brute's Egg", 'sprite': 44033,
+            'slot': 477, 'tile': [36, 28],
+        }
+        casas._CASAS_ACTIVAS[ses.personaje.char_id] = casa
+        ses.personaje.casa = casa.serializar()
+
+        srv = app.Servidor('127.0.0.1', 8888, 8889, 8890)
+        srv._sincronizar_ranura_pet_room(ses, 477, 478, 3393)
+
+        self.assertNotIn('477', casa.care_pets)
+        self.assertIn('478', casa.care_pets)
+        self.assertEqual(casa.care_pets['478']['name'], "Brute's Egg")
+        self.assertTrue(any(pkt[:2] == b'\x08\x00' for pkt in ses.paquetes))
+
+    def test_monster_room_spawns_and_retracts_moved_egg(self):
+        import app
+        import house_services as hs
+
+        eggs = hs.monster_eggs()
+        monsters = hs.xml_rows('monster.xml')
+        egg_id, _egg = next(
+            (iid, row) for iid, row in eggs.items()
+            if int(row.get('動態資料1') or 0) in monsters)
+
+        class MockSes:
+            def __init__(self):
+                self.usuario = None
+                self.house_room_ready = True
+                self.house_furnishing = False
+                self.house_egg_entities = {}
+                self.house_egg_sequence = 0
+                self.inventario = {487: egg_id}
+                self.cantidades = {}
+                self.instancias = {487: 4487}
+                self.monstruos = {}
+                self.paquetes = []
+                self.personaje = type('P', (), {
+                    'char_id': 91002,
+                    'entity_id': 191002,
+                    'nombre': 'MonsterRoomOwner',
+                    'stage': 500,
+                    'casa': None,
+                    'mejoras': {},
+                })()
+
+            def enviar_inmediato(self, *pkts):
+                self.paquetes.extend(pkts)
+
+        ses = MockSes()
+        casa = casas.CasaData(ses.personaje.char_id, ses.personaje.nombre)
+        casa.cleanliness = 1000
+        casas._CASAS_ACTIVAS[ses.personaje.char_id] = casa
+        ses.personaje.casa = casa.serializar()
+
+        app._casa_tick_monstruos(ses)
+        self.assertIn(487, ses.house_egg_entities)
+        self.assertTrue(any(pkt[:2] == b'\x08\x00' for pkt in ses.paquetes))
+
+        ses.paquetes.clear()
+        ses.inventario.pop(487)
+        app._casa_tick_monstruos(ses)
+        self.assertNotIn(487, ses.house_egg_entities)
+        self.assertTrue(any(pkt[:2] == b'\x07\x00' for pkt in ses.paquetes))
+
+    def test_stage_500_logout_sanitization(self):
+        import cuentas
+        # Player record saved in stage 500 (inside house)
+        raw_p = {
+            'char_id': 888,
+            'ranura': 0,
+            'nombre': 'HouseGuest',
+            'stage_id': 500,
+            'tile_x': 25,
+            'tile_y': 25,
+            'faction': 'Aurora',
+            'habilidades': [],
+            'barra': [],
+            'quests': [],
+            'inventario': {}
+        }
+        cuenta = {'personajes': [raw_p]}
+        personaje = cuentas.personaje_de(cuenta, ranura=0)
+        # Must be redirected to faction city (Aurora = stage 3) or Lyceum (41), NOT stage 500 void
+        self.assertNotEqual(personaje.stage, 500)
+        self.assertEqual(personaje.stage, 3)
+        self.assertEqual(personaje.tile_x, 150)
+        self.assertEqual(personaje.tile_y, 105)
+
+        # And entering house stage 500 must NOT be overridden by _ficha during live 0x0009 transitions
+        import login
+        p_house = login.Personaje(char_id=888, nombre='HouseOwner', stage=500)
+        p_house.tile_x, p_house.tile_y = 42, 80
+        p_house.checkpoint_stage = 18
+        p_house.checkpoint_x, p_house.checkpoint_y = 173, 45
+        sec = login._cargar_secuencia()
+        m2 = [x for x in sec if x['opcode'] == 2][0]
+        login._ficha(p_house, m2['datos'])
+        self.assertEqual(p_house.stage, 500)
+        self.assertEqual((p_house.tile_x, p_house.tile_y), (42, 80))
+
+    def test_deeds_go_to_backpack_and_not_furniture_bag(self):
+        import app
+        import inventario as inv
+        import casas
+
+        # Deeds must never be valid in furniture bag (377..476)
+        deeds = (10115, 10116, 10117, 17934, 17935, 17936, 17937, 20076)
+        for deed_id in deeds:
+            self.assertFalse(inv.es_ranura_valida(deed_id, 377))
+            self.assertTrue(inv.es_ranura_valida(deed_id, 376)) # Valid for deed slot
+            self.assertTrue(inv.es_ranura_valida(deed_id, 20))  # Valid for backpack
+            self.assertIsNone(casas.item_a_mueble(deed_id))     # Not treated as furniture
+
+        # Furniture style (e.g. 14841) IS valid in furniture bag
+        self.assertTrue(inv.es_ranura_valida(14841, 377))
+
+        class MockSes:
+            def __init__(self):
+                self.inventario = {}
+                self.cantidades = {}
+                self.instancias = {}
+                self.personaje = type('P', (), {'char_id': 999, 'nombre': 'DeedMaster', 'stage': 41, 'tile_x': 244, 'tile_y': 30, 'mejoras': {}})()
+                self.paquetes = []
+            def enviar(self, *pkts):
+                self.paquetes.extend(pkts)
+
+        ses = MockSes()
+        # Giving Luxurious Villa (17934) and Romantic Villa (10117)
+        r1 = app._meter(ses, 17934, 1)
+        r2 = app._meter(ses, 10117, 1)
+        # Must be in regular inventory bag (20..120), NOT in furniture bag (377..476)
+        self.assertTrue(20 <= r1 <= 120)
+        self.assertTrue(20 <= r2 <= 120)
+        self.assertNotIn(r1, range(377, 477))
+        self.assertNotIn(r2, range(377, 477))
+
+    def test_ball_cooldown_reset_command(self):
+        import gm
+        import casas
+        import time
+
+        class MockSes:
+            def __init__(self):
+                self.inventario = {}
+                self.personaje = type('P', (), {
+                    'char_id': 1234,
+                    'nombre': 'BallHost',
+                    'stage': 41,
+                    'casa': casas.CasaData(1234, 'BallHost', 10115).serializar()
+                })()
+                self.paquetes = []
+            def enviar(self, *pkts):
+                self.paquetes.extend(pkts)
+
+        ses = MockSes()
+        # Set cooldown active
+        c = casas.CasaData.deserializar(ses.personaje.casa)
+        c.ball_cooldown_until = int(time.time()) + 86400 * 3
+        c.ball_active = True
+        ses.personaje.casa = c.serializar()
+
+        # Run GM /ball reset
+        msg = gm.aplicar(ses, ('ball', 'reset'))
+        self.assertIn("reset", msg.lower())
+        c_after = casas.CasaData.deserializar(ses.personaje.casa)
+        self.assertEqual(c_after.ball_cooldown_until, 0)
+        self.assertFalse(c_after.ball_active)
+
+    def test_pet_room_training_exp_and_roaming(self):
+        import mascotas as ms
+        import configuracion as cfg
+
+        ficha = {
+            'nombre': 'WaterElf Egg',
+            'sprite': 3133,
+            'tipo': 44068,
+            'nivel': 1,
+            'hp': 127, 'hp_max': 127,
+            'mp': 96, 'mp_max': 96,
+            'exp': 0, 'exp_max': 72,
+            'saciedad': 100, 'intimidad': 60,
+            'estrellas': 1, 'mejoras': 0,
+            'ranura': 477, 'item': 18623
+        }
+
+        # Grant training EXP
+        mult = getattr(cfg, 'MULTIPLICADOR_EXP_PET', 1.0)
+        exp_tick = int(getattr(cfg, 'EXP_BASE_PET_ROOM_TICK', 15) * mult)
+        self.assertGreater(exp_tick, 0)
+
+        # Before training
+        self.assertEqual(ficha['nivel'], 1)
+        self.assertEqual(ficha['exp'], 0)
+
+        # Train 5 ticks (75 EXP) -> should level up from Lv.1 to Lv.2 (requires 72 exp)
+        subidos = ms.dar_exp(ficha, exp_tick * 5)
+        self.assertGreaterEqual(subidos, 1)
+        self.assertEqual(ficha['nivel'], 2)
+        self.assertEqual(ficha['exp'], 3) # 75 - 72 = 3
+
+        # armar packet 0x0065 contains level 2
+        pkt = ms.armar(ficha)
+        self.assertEqual(pkt[:2], b'\x65\x00')
+        self.assertEqual(int.from_bytes(pkt[33:37], 'little'), 2) # Level 2 at offset 31 (packet +2)
 
 
 if __name__ == '__main__':

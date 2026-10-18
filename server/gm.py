@@ -33,13 +33,14 @@ _CMDS_SKILLS5 = ('skills5', 'skill5')
 _CMDS_CLEARSKILLS = ('clearskills', 'clearskill')
 _CMDS_PET = ('pet', 'mascota')
 _CMDS_QUEST = ('quest', 'mision')
+_CMDS_BALL = ('ball', 'baile', 'fiesta')
 _CMDS = frozenset(('help',) + _CMDS_ITEM + _CMDS_LEVEL + _CMDS_LEVELALL
                   + _CMDS_SKILLS + _CMDS_SKILLSALL + _CMDS_SKILLS5
-                  + _CMDS_CLEARSKILLS + _CMDS_PET + _CMDS_QUEST)
+                  + _CMDS_CLEARSKILLS + _CMDS_PET + _CMDS_QUEST + _CMDS_BALL)
 
 AYUDA = ("GM: /item <id> [qty]  /level <n>  /levelall <n>  "
          "/skills [lv]  /skillsall [lv]  /skills5  /clearskills  "
-         "/pet level|exp|path|evolve  /quest <id> <step>  "
+         "/pet level|exp|path|evolve  /ball reset  /quest <id> <step>  "
          "/rango [1..20]  /estacion <normal|navidad|halloween|sakura|verano>")
 
 
@@ -113,7 +114,7 @@ def poner_nivel(ses, n: int) -> str:
         p.class_id = _sk.calcular_class_id([h[0] for h in p.habilidades])
     exp_sig = min(0xFFFFFFFF, _cb.exp_para_nivel(p.nivel + 1))
     paquetes = [
-        _cl.aviso(f"Level set to {p.nivel}.", tipo=0, msg_id=_cl.MSG_ITEM),
+        _cl.aviso(f"Level set to {p.nivel}.", tipo=0, msg_id=_cl.MSG_TEXTO),
         _cb.atributo(yo, p.hp, _cb.KIND_HP),
         _cb.atributo(yo, p.mp, _cb.KIND_MP),
         struct.pack('<HIB', 0x001D, yo, 4)
@@ -134,7 +135,7 @@ def poner_nivel(ses, n: int) -> str:
         paquetes.append(_cl.aviso(
             'Skill slot %d unlocked (%s). Change it at the Skill Angel.'
             % (ranura, _sk.nombre_rama(sid)),
-            tipo=0, msg_id=_cl.MSG_ITEM))
+            tipo=0, msg_id=_cl.MSG_TEXTO))
     if added:
         paquetes.append(_cl.arbol(p.habilidades, banco=p.banco_habilidades))
     ses.enviar(*paquetes)
@@ -168,7 +169,7 @@ def poner_skills(ses, n: int) -> str:
         for bh_id in list(p.banco_habilidades):
             p.banco_habilidades[bh_id] = (n, 0)
     salida = [
-        _cl.aviso(f"All current skills set to Level {n}.", tipo=0, msg_id=_cl.MSG_ITEM),
+        _cl.aviso(f"All current skills set to Level {n}.", tipo=0, msg_id=_cl.MSG_TEXTO),
         _cl.arbol(p.habilidades, banco=getattr(p, 'banco_habilidades', None)),
     ]
     _ids = [h[0] for h in p.habilidades]
@@ -236,7 +237,7 @@ def dar_hechizos_ramas(ses, nivel_tope: int | None = None, todos: bool = False,
         texto = (f"Learned {len(hech)} current-rank spells up to skill level "
                  f"{nivel_tope} from {', '.join(nombres)}.")
     salida = [
-        _cl.aviso(texto, tipo=0, msg_id=_cl.MSG_ITEM),
+        _cl.aviso(texto, tipo=0, msg_id=_cl.MSG_TEXTO),
     ]
     salida.extend(_cl.otorgar_hechizos(yo, [(m, lv) for m, _n, lv in hech]))
     ses.enviar(*salida)
@@ -270,7 +271,7 @@ def limpiar_hechizos(ses) -> str:
     import clases as _cl
     texto = (f"Cleared {len(previos)} learned spells. "
              "Log in again to drop the old icons.")
-    aviso = _cl.aviso(texto, tipo=0, msg_id=_cl.MSG_ITEM)
+    aviso = _cl.aviso(texto, tipo=0, msg_id=_cl.MSG_TEXTO)
     if p.barra:
         ses.enviar(aviso, _lg._barra(p, b''))
     else:
@@ -441,6 +442,9 @@ def parsear(texto: str):
             return ('quest', int(parts[1], 0), int(parts[2], 0))
         except ValueError:
             return ('err', 'quest id and step must be numbers')
+    if cmd in _CMDS_BALL:
+        sub = parts[1].lower() if len(parts) > 1 else 'reset'
+        return ('ball', sub)
     return None
 
 
@@ -466,7 +470,7 @@ def poner_quest(ses, qid: int, paso: int) -> str:
 def _avisar(ses, msg: str):
     import clases as _cl
     try:
-        ses.enviar(_cl.aviso(msg, tipo=0, msg_id=_cl.MSG_ITEM))
+        ses.enviar(_cl.aviso(msg, tipo=0, msg_id=_cl.MSG_TEXTO))
     except Exception:
         pass
 
@@ -513,6 +517,21 @@ def aplicar(ses, parsed) -> str:
             msg, pk = f"pet error: {e!r}", []
         if pk:
             ses.enviar(*pk)
+        _avisar(ses, msg)
+        return msg
+    if kind == 'ball':
+        p = getattr(ses, 'personaje', None)
+        if not p:
+            return "no character in world yet"
+        import casas as _cs_gm, cuentas as _cta_gm
+        _c_gm = _cs_gm.obtener_o_crear_casa(p.char_id, p.nombre, raw_data=getattr(p, 'casa', None))
+        _c_gm.ball_cooldown_until = 0
+        _c_gm.ball_active = False
+        _c_gm.ball_end_time = 0
+        p.casa = _c_gm.serializar()
+        if getattr(ses, 'usuario', None):
+            _cta_gm.guardar_casa(ses.usuario, p.char_id, _c_gm)
+        msg = "House ball cooldown has been reset! You can host a ball now."
         _avisar(ses, msg)
         return msg
     return "unknown"

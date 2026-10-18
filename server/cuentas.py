@@ -556,11 +556,24 @@ def personaje_de(cuenta, ranura=0):
         _inv_limpio.pop(166, None)
         _cant_limpia.pop(166, None)
         _exp_puesto = 0.0
+    _st = p.get('stage_id', 51)
+    _tx = p.get('tile_x', 150)
+    _ty = p.get('tile_y', 100)
+    if _st == 500:
+        _cp_st = int((p.get('checkpoint') or {}).get('stage', 0) or 0)
+        _cp_t = (p.get('checkpoint') or {}).get('tile') or [0, 0]
+        if _cp_st and _cp_st != 500:
+            _st = _cp_st
+            _tx, _ty = int(_cp_t[0] or 150), int(_cp_t[1] or 100)
+        else:
+            _fac = p.get('faction') or ''
+            _ciudades = {'Aurora': (3, 150, 105), 'Beasts': (26, 140, 150), 'Steel': (29, 150, 120), 'Shadow': (38, 150, 120)}
+            _st, _tx, _ty = _ciudades.get(_fac, (41, 244, 30))
     return Personaje(
         entity_id=1000 + p['char_id'] % 1000,
         char_id=p['char_id'],
         nombre=p['nombre'],
-        tile_x=p['tile_x'], tile_y=p['tile_y'],
+        tile_x=_tx, tile_y=_ty,
         habilidades=[tuple(x) for x in p['habilidades']],
         barra=list(p['barra']),
         quests=[tuple(x) for x in p['quests']],
@@ -575,7 +588,7 @@ def personaje_de(cuenta, ranura=0):
         cantidades=_cant_limpia,
         tutorial=p.get('tutorial', 0),
         oro=p.get('oro', 0),
-        stage=p.get('stage_id', 51),
+        stage=_st,
         faction=p.get('faction', 'Heaven'),
         nivel=p.get('nivel', 1),
         exp=p.get('exp', 0),

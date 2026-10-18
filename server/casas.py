@@ -50,15 +50,13 @@ def ranuras_mascotas_validas(nivel: int) -> int:
     if nivel >= 12: return 5
     if nivel >= 9: return 4
     if nivel >= 7: return 3
-    if nivel >= 5: return 2
-    if nivel >= 3: return 1
-    return 0
+    if nivel >= 4: return 2
+    return 1
 
 def ranuras_mobgen_validas(nivel: int) -> int:
     if nivel >= 13: return 3
-    if nivel >= 10: return 2
-    if nivel >= 6: return 1
-    return 0
+    if nivel >= 8: return 2
+    return 1
 
 _DATOS = None
 _MUEBLES_POR_ID = None
@@ -80,11 +78,18 @@ def _cargar_datos():
 def tabla() -> list:
     return _cargar_datos().get('muebles', [])
 
+DEED_ITEMS = frozenset((10115, 10116, 10117, 17934, 17935, 17936, 17937, 20076))
+
+def es_deed_item(item_id: int) -> bool:
+    return int(item_id or 0) in DEED_ITEMS
+
 def mueble(mid: int):
     _cargar_datos()
     return _MUEBLES_POR_ID.get(int(mid))
 
 def item_a_mueble(item_id: int) -> int:
+    if int(item_id or 0) in DEED_ITEMS:
+        return None
     d = _cargar_datos().get('item_to_furn', {})
     return d.get(str(item_id)) or d.get(int(item_id))
 
@@ -395,6 +400,7 @@ class CasaData:
         self.ball_type = 0 # 1=EXP, 2=Skill EXP
         self.ball_mult = 1.0
         self.pet_radio = 0
+        self.care_pets = {} # dict of slot str -> {'item_id': id, 'slot': slot, 'start_time': t, 'exp': exp}
         self.placed_furniture = [] # list of dicts: item_id, item_uid, dir, x, y, state, extra, expire
         self.vote_notes = [] # list of dicts: sender_id, sender_name, timestamp, text
         self.voted_users_today = set()
@@ -441,20 +447,26 @@ class CasaData:
         return self.cleanliness != old
 
     def iniciar_baile(self, ticket_id: int, now: int = None):
-        """Activa una fiesta usando los tiempos publicados por el item IGG."""
+        """Activa una fiesta usando los tiempos publicados por el item IGG o configurados."""
         cfg = BALL_TICKETS.get(int(ticket_id))
         now = int(time.time() if now is None else now)
-        if not cfg or self.level < 2 or self.ball_active or now < self.ball_cooldown_until:
+        if not cfg or self.level < 1 or self.ball_active or now < self.ball_cooldown_until:
             return False
-        cooldown_days = 3.0 if self.level >= 8 else 3.5
-        if cfg['fast']:
-            cooldown_days /= 2.0
+        import configuracion as _cfg_b
+        cd_custom = getattr(_cfg_b, 'COOLDOWN_BAILE_SEGUNDOS', None)
+        if cd_custom is not None:
+            self.ball_cooldown_until = now + int(cd_custom)
+        else:
+            cooldown_days = 3.0 if self.level >= 8 else 3.5
+            if cfg.get('fast'):
+                cooldown_days /= 2.0
+            self.ball_cooldown_until = now + int(cooldown_days * 86400)
+        prep_s = int(getattr(_cfg_b, 'TIEMPO_PREPARACION_BAILE_SEGUNDOS', 180))
         self.ball_active = True
-        self.ball_start_time = now + 180
+        self.ball_start_time = now + prep_s
         self.ball_end_time = self.ball_start_time + 3600
-        self.ball_cooldown_until = now + int(cooldown_days * 86400)
         self.ball_type = int(cfg['type'])
-        self.ball_mult = 1.5 if cfg['fast'] else 2.0
+        self.ball_mult = 1.5 if cfg.get('fast') else 2.0
         return True
 
     @property
@@ -553,6 +565,7 @@ class CasaData:
             'visitors_total': self.visitors_total,
             'options': self.options,
             'pet_radio': self.pet_radio,
+            'care_pets': dict(self.care_pets),
             'placed_furniture': [normalizar_entrada_mueble(x)
                                  for x in self.placed_furniture],
             'vote_notes': list(self.vote_notes),
@@ -587,6 +600,7 @@ class CasaData:
         c.visitors_total = int(data.get('visitors_total', 0))
         c.options = int(data.get('options', 0))
         c.pet_radio = int(data.get('pet_radio', 0))
+        c.care_pets = dict(data.get('care_pets') or {})
         c.placed_furniture = [normalizar_entrada_mueble(x)
                               for x in data.get('placed_furniture', [])
                               if isinstance(x, dict) and item_a_mueble(x.get('item_id', 0))]
@@ -606,6 +620,9 @@ class CasaData:
         c.outdoor_px = tuple(data.get('outdoor_px', (0, 0)))
         c.outdoor_dir = int(data.get('outdoor_dir', 0))
         return c
+
+    to_dict = serializar
+    from_dict = deserializar
 
 _CASAS_ACTIVAS = {}
 _OBJ_A_CASA = {}

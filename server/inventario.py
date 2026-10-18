@@ -124,15 +124,26 @@ def instancia_nueva() -> bytes:
 
 
 def es_apilable(item_id: int) -> bool:
-    """Si varias unidades de ese item comparten una sola casilla.
+    """Si varias unidades de ese item comparten una sola casilla."""
+    if not item_id or int(item_id) <= 0:
+        return False
+    if es_municion(item_id):
+        return True
+    if es_equipable(item_id):
+        return False
+    try:
+        import casas as _cs_ap
+        if _cs_ap.item_a_mueble(item_id) is not None:
+            return False
+    except Exception:
+        pass
+    cat = categoria_item(item_id)
+    if cat in ('傢俱', '家具', '房屋', '座騎', '機甲', '寵物', '寵物蛋', '怪物蛋'):
+        return False
+    if int(item_id) in (10115, 10116, 10117, 17934, 17935, 17936, 17937, 20076):
+        return False
+    return True
 
-    Todo lo que no se equipa se apila: pociones, galletas, pasto magico. En
-    la captura de Celestia se compran diez pociones rojas y ocupan UNA
-    casilla con cantidad diez; nuestro inventario era {ranura: item_id} sin
-    cantidades, asi que cada unidad pedia su propia casilla y al usar una se
-    borraba el monton entero.
-    """
-    return not es_equipable(item_id)
 
 
 # Que contenedor se esta tocando. Es el byte que va delante del id en el
@@ -165,7 +176,7 @@ def vaciar_ranura(dueno: int, ranura: int,
     #   616       burbuja de chat equipada
     #   617..666  bolsa de burbujas de chat
     # Esas casillas tambien aceptan el submensaje de vaciado con ranura u16.
-    if contenedor == CONT_MOCHILA and (ranura < 0 or (ranura > 154 and not (166 <= ranura <= 666))):
+    if contenedor == CONT_MOCHILA and (ranura < 0 or (ranura > 154 and not ((167 <= ranura <= 556) or (616 <= ranura <= 666)))):
         log.warning(f"Intento de vaciar ranura fuera de limites ({ranura}) en CONT_MOCHILA - omitido para evitar crash")
         return b''
     return struct.pack('<HIBBIH', 0x001B, 1, 2, contenedor, dueno, ranura)
@@ -1080,13 +1091,25 @@ def es_equipable(item_id: int) -> bool:
 
 def es_apilable(item_id: int) -> bool:
     """Si el item se puede acumular en una misma casilla (pociones, hojas, galletas, materiales, flechas y bolitas)."""
-    if not item_id:
+    if not item_id or int(item_id) <= 0:
         return False
     if es_municion(item_id):
         return True
     if es_equipable(item_id):
         return False
+    try:
+        import casas as _cs_ap
+        if _cs_ap.item_a_mueble(item_id) is not None:
+            return False
+    except Exception:
+        pass
+    cat = categoria_item(item_id)
+    if cat in ('傢俱', '家具', '房屋', '座騎', '機甲', '寵物', '寵物蛋', '怪物蛋'):
+        return False
+    if int(item_id) in (10115, 10116, 10117, 17934, 17935, 17936, 17937, 20076):
+        return False
     return True
+
 
 
 _OCULTO_CACHE = {}
@@ -1138,16 +1161,16 @@ def es_item_oculto(item_id: int) -> bool:
 
 
 def datos_mascota(item_id: int) -> dict:
-    """Nombre y sprite de una mascota, sacados de item.xml.
+    """Nombre y sprite de una mascota, sacados de item.xml y pet.xml.
 
-    El sprite es el 動態資料1 y el nombre el 基本名稱. Se comprobo con las dos
-    mascotas cuyo nombre no llegaba cortado en las capturas: la Battlemaid
-    (item 20012, 動態資料1 3200) y la Hicalu (17060, 3474); en las dos el
-    numero de item.xml es el mismo que viajaba en la entrada.
+    OJO: en mascotas.py y Angel.exe (sub_63DEF0 -> sub_5D2F90), 'sprite' es el
+    ID de pet.xml (動態資料1 en item.xml, < 35001) y 'tipo' es el grafico 2D
+    (圖號1 en pet.xml, >= 40000). Si 'sprite' >= 35001, sub_5D2F90 devuelve NULL
+    y el cliente crashea al mostrar el tooltip de la mascota.
     """
     if item_id in _PET_DATOS:
         return _PET_DATOS[item_id]
-    d = {'nombre': 'Pet', 'sprite': 0, 'estrellas': 1}
+    d = {'nombre': 'Pet', 'sprite': 3049, 'estrellas': 1, 'tipo': 44033}
     try:
         import sqlite3
         db = pathlib.Path(__file__).parent.parent / 'corpus' / 'content.db'
@@ -1155,10 +1178,13 @@ def datos_mascota(item_id: int) -> dict:
             row = fila_item(sqlite3.connect(db), '"基本名稱", "動態資料1"',
                             item_id)
             if row:
+                pet_id = int(row[1]) if str(row[1] or '').isdigit() else 3049
+                if pet_id <= 0 or pet_id >= 35001:
+                    pet_id = 3049
                 d = {'nombre': str(row[0] or 'Pet'),
-                     'sprite': int(row[1]) if str(row[1] or '').isdigit()
-                     else 0,
-                     'estrellas': 1}
+                     'sprite': pet_id,
+                     'estrellas': 1,
+                     'tipo': sprite_de_mascota(item_id)}
     except Exception:
         pass
     _PET_DATOS[item_id] = d
@@ -1166,14 +1192,14 @@ def datos_mascota(item_id: int) -> dict:
 
 
 def es_mascota(item_id: int) -> bool:
-    """Si el item es una mascota o huevo de mascota (categoria '寵物').
+    """Si el item es una mascota o huevo de mascota (categoria '寵物' / '寵物蛋' / '魔獸蛋').
     
     NO confundir con '機甲' (armaduras/partes de robot como Shark Armor 5293)
     ni '座騎' (monturas como Gryphon 21404), que van en la ranura 9/10 pero
     tienen estructura de equipo normal y durabilidad."""
     if item_id in (3396, 3397, 3398, 3399):
         return True
-    return categoria_item(item_id) == '寵物'
+    return categoria_item(item_id) in ('寵物', '寵物蛋', '魔獸蛋')
 
 
 def es_certificado_sangre(item_id: int) -> int:
@@ -1588,8 +1614,35 @@ def es_ranura_valida(item_id: int, ranura: int) -> bool:
     # 7. Bolsa de Fashion (176..275): SOLO ropa de fashion (紙娃娃)
     if 176 <= ranura <= 275:
         return es_item_fashion(item_id)
+    # 7b. Ranura de escritura de casa (376)
+    if ranura == 376:
+        return int(item_id) in (10115, 10116, 10117, 17934, 17935, 17936, 17937, 20076) or categoria_item(item_id) == '房屋'
+    # 7c. Bolsa de Muebles (377..476): muebles y decoracion
+    if 377 <= ranura <= 476:
+        if int(item_id) in (10115, 10116, 10117, 17934, 17935, 17936, 17937, 20076) or categoria_item(item_id) == '房屋':
+            return False
+        try:
+            import casas as _cs_val
+            if _cs_val.item_a_mueble(item_id) is not None:
+                return True
+        except Exception:
+            pass
+        return categoria_item(item_id) in ('傢俱', '家具')
+    # 7d. Raise-a-Pet Room (477..486): mascotas y huevos de mascotas
+    if 477 <= ranura <= 486:
+        return es_mascota(item_id) or categoria_item(item_id) in ('寵物', '寵物蛋')
+    # 7e. Monster Hatching Room (487..496): huevos de monstruo
+    if 487 <= ranura <= 496:
+        try:
+            import house_services as _hs_val
+            if int(item_id) in _hs_val.monster_eggs():
+                return True
+        except Exception:
+            pass
+        return categoria_item(item_id) == '怪物蛋' or 'egg' in str(categoria_item(item_id)).lower()
     # 8. Mochila normal (20..120): valida para cualquier item regular
     if 20 <= ranura <= 120:
+
         return True
     if es_mascota(item_id):
         # UNA MASCOTA NO ES UN ACCESORIO.
@@ -1982,23 +2035,31 @@ def sprite_de_mascota(item_id: int) -> int:
         return _PET_SPRITE_CACHE[item_id]
     import sqlite3
     db = pathlib.Path(__file__).parent.parent / 'corpus' / 'content.db'
-    sprite = 44069   # Default: Fire Elf Egg sprite
+    sprite = 44033   # Default: Brute's Egg / Pet sprite
     if db.exists():
         try:
             con = sqlite3.connect(db)
-            row = fila_item(con, '"動態資料1"', item_id)
-            if row and row[0]:
-                pet_id = str(row[0]).strip()
-                import xml.etree.ElementTree as ET
-                p_xml = pathlib.Path('f:/Ao Proyect/AO/data/game_xml/setting_full/setting/eng/pet.xml')
-                if p_xml.exists():
-                    tree = ET.parse(p_xml)
-                    for elem in tree.getroot():
-                        if elem.attrib.get('編號') == pet_id:
-                            sp = elem.attrib.get('圖號1')
-                            if sp and sp.isdigit():
-                                sprite = int(sp)
-                                break
+            row = fila_item(con, '"動態資料1", "圖號1"', item_id)
+            if row:
+                dyn1 = str(row[0] or '').strip()
+                if dyn1.isdigit():
+                    pet_id = int(dyn1)
+                    import house_services as _hs_pet
+                    p_rows = _hs_pet.xml_rows('pet.xml')
+                    if pet_id in p_rows:
+                        sp = p_rows[pet_id].get('圖號1')
+                        if sp and str(sp).isdigit():
+                            sprite = int(sp)
+                    if sprite == 44033:
+                        m_rows = _hs_pet.xml_rows('monster.xml')
+                        if pet_id in m_rows:
+                            sp_m = m_rows[pet_id].get('圖號')
+                            if sp_m and str(sp_m).isdigit():
+                                sprite = int(sp_m)
+                if sprite == 44033 and row[1]:
+                    sp_direct = str(row[1]).strip()
+                    if sp_direct.isdigit() and int(sp_direct) >= 40000:
+                        sprite = int(sp_direct)
         except Exception:
             pass
     _PET_SPRITE_CACHE[item_id] = sprite
@@ -2127,6 +2188,11 @@ def _entrada(char_id: int, ranura: int, item_id: int, cant: int,
                      or (mascota.get('ranura') is None
                          and mascota.get('item') == item_id))):
             est_pet = dict(mascota)
+            sp_cur = int(est_pet.get('sprite') or 0)
+            if sp_cur <= 0 or sp_cur >= 35001:
+                est_pet['sprite'] = int(d.get('sprite') or 3049)
+                if not est_pet.get('tipo'):
+                    est_pet['tipo'] = int(d.get('tipo') or sprite_de_mascota(item_id))
         else:
             import configuracion as _cf
             est_pet = _ms.recien_nacida(
@@ -2352,7 +2418,8 @@ def acuse_movimiento(ranura: int, accion: int = 0x0012) -> bytes:
 
 
 def actualizar_ranuras(char_id: int, entradas, dueno: int = None,
-                       mascota: dict = None, mejoras: dict = None) -> bytes:
+                       mascota: dict = None, mejoras: dict = None,
+                       mascotas: dict = None) -> bytes:
     """0x001B con varias casillas de una vez.
 
     Es lo que manda el servidor al equipar: en la captura, mover la prenda
@@ -2364,10 +2431,19 @@ def actualizar_ranuras(char_id: int, entradas, dueno: int = None,
     entradas: iterable de (ranura, item_id, cantidad, instancia).
     """
     mejoras = mejoras or {}
+    mascotas = mascotas or {}
     lista = []
     for r, i, c, ins in entradas:
         r, i, c = int(r), int(i), int(c)
-        _e = _entrada(char_id, r, i, c, ins, dueno, mascota=mascota)
+        pet_spec = None
+        if es_mascota(i):
+            if str(r) in mascotas:
+                pet_spec = mascotas[str(r)]
+            elif r in mascotas:
+                pet_spec = mascotas[r]
+            elif isinstance(mascota, dict) and (mascota.get('ranura') == r or (mascota.get('ranura') is None and mascota.get('item') == i)):
+                pet_spec = mascota
+        _e = _entrada(char_id, r, i, c, ins, dueno, mascota=pet_spec)
         if not es_mascota(i):
             _m = mejoras.get(r)
             _e = marcar_vinculacion(_e, _m)

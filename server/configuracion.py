@@ -18,6 +18,15 @@ TASA_DROP_BASE = 0.001          # Multiplicador de probabilidad de drop de items
 TASA_ORO_BASE = 7.5           # Multiplicador de oro obtenido de monstruos
 
 # =====================================================================
+# CONFIGURACION DE CASAS, BAILES Y PET ROOM
+# =====================================================================
+MULTIPLICADOR_EXP_PET = 1.0           # Multiplicador de EXP para mascotas en el patio de crianza (477..486)
+EXP_BASE_PET_ROOM_TICK = 15           # EXP base por tick (~5 segundos) para mascotas entrenando en casa
+COOLDOWN_BAILE_SEGUNDOS = 60          # Cooldown en segundos para volver a usar un Ball Ticket (por defecto 60s para testing rapido)
+TIEMPO_PREPARACION_BAILE_SEGUNDOS = 180 # Tiempo de preparacion antes del baile (oficial 180s = 3 minutos)
+DURACION_BAILE_SEGUNDOS = 60           # Duracion del baile una vez iniciado (por defecto 60s)
+
+# =====================================================================
 # CONFIGURACION DE EVENTOS DE FIN DE SEMANA / SEMANALES
 # =====================================================================
 # Si es True, activa automaticamente el bono de fin de semana (Viernes, Sabado y Domingo)

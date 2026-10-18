@@ -448,7 +448,11 @@ def propio(nombre: str, faccion: str = "Heaven", jugador: str = "",
     # [5030, 5032, 5033], la 5032 lleva a la 5236 (en respuesta_a) y la
     # 5237 abre el almacen. Se compara el nombre ENTERO para no quitarle el
     # turno a ningun banquero con rama propia.
-    if nom_lower in ('bank clerk', 'banker', 'bank clerk aibey', 'bank clerk aiky'):
+    # LOS BANQUEROS DE LAS CAPITALES Y CIUDADES (Aurora, Iron Castle, Dark City,
+    # Breeze Woods, Palm Base, Cherry Village, Gebuer Vale, Memory Cave, etc.)
+    if ((any(b in nom_lower for b in ('bank clerk', 'banker', 'bankclerk', 'banking director'))
+         or entidad in (122367, 122368, 122369, 122379, 122390))
+            and not any(ex in nom_lower for ex in ('staff', 'elf', 'florentia'))):
         msg_banker = 5225
         if stage == 29:
             msg_banker = 5232  # Breeze Woods: "Hello, welcome to the bank in the Breeze Woods..."
@@ -456,8 +460,8 @@ def propio(nombre: str, faccion: str = "Heaven", jugador: str = "",
             msg_banker = 5228  # Iron Castle: "Hello, ladies and gentlemen. This is the biggest bank in the Iron Castle..."
         elif stage == 26:
             msg_banker = 5230  # Dark City: "Hi, this is the underground bank in the Dark City..."
-        elif stage == 3:
-            msg_banker = 5225  # Aurora City: "Welcome, what can I do for you?"
+        elif stage in (3, 88):
+            msg_banker = 5225  # Aurora City / Palm Base: "Welcome, what can I do for you?"
         return [armar_linea(msg_banker, npc_val or val_por_entidad(entidad),
                             [5030, 5032, 5033])[2:]]
 
@@ -853,8 +857,6 @@ def propio(nombre: str, faccion: str = "Heaven", jugador: str = "",
         return [armar_linea(5257, npc_val or 75, [5190, 5191])[2:]]
     if 'Cooking Clerk' in nombre:
         return [armar_linea(5258, npc_val or 74, [5190, 5191])[2:]]
-    if 'Bankclerk' in nombre:
-        return [armar_linea(5236, npc_val or 35, [5237, 5238])[2:]]
     if 'General Campbell' in nombre:
         return [armar_linea(72700, npc_val or 104, [])[2:]]
     if 'Ocean Scholar' in nombre:
@@ -871,7 +873,7 @@ def propio(nombre: str, faccion: str = "Heaven", jugador: str = "",
         return [armar_linea(76322, npc_val or 187, [])[2:]]
     if 'BattlefieldAngel' in nombre or 'PuqiVillageAngel' in nombre:
         return [armar_linea(50001, npc_val or 112, [])[2:]]
-    if any(d in nombre for d in ['Trade Director', 'Science Director', 'Prod. Director', 'Banking Director', 'Gravity Boffin']):
+    if any(d in nombre for d in ['Trade Director', 'Science Director', 'Prod. Director', 'Gravity Boffin']):
         return [armar_linea(7538, npc_val or 23, [])[2:]]
     if any(m in nombre for m in ['Merchant Corian', 'Merchant Kulepas', 'Scholar Oxford']):
         return [armar_linea(7537, npc_val or 29, [])[2:]]
@@ -1588,13 +1590,14 @@ def propio(nombre: str, faccion: str = "Heaven", jugador: str = "",
                                 [504132, 504825, 505907, 510922, 511419, 5020])[2:]]
 
     if nombre == 'Voucher Angel':
-        # Vende los dos Angelic Voucher, el de 100 y el de 10 millones
-        # (items 42399 y 42400). Los dos se compran y se venden al
-        # MISMO precio, asi que sirven para guardar oro sin perderlo,
-        # que es lo que el banco no deja hacer. La tienda es la 159 de
-        # shop.xml, que trae exactamente esos dos y nada mas.
-        # Presente en Angel Lyceum y en las 4 ciudades de faccion + Palm Base.
-        return [armar_linea(507715, npc_val or 4, [5190, 5191])[2:]]
+        # msg.xml lines 508584..508590:
+        # 508584: "Greetings, Angel! I'm the Voucher Angel. Can I help you with anything?"
+        # Options:
+        #   508585: "What are Angelic Vouchers?"
+        #   508586: "Buy Angelic Vouchers" (Shop 159)
+        #   508587: "Exchange Angelic Vouchers" (WND_EXCHANGE 0x0206)
+        #   508588: "Leave"
+        return [armar_linea(508584, npc_val or 41, [508585, 508586, 508587, 508588])[2:]]
 
     # --- Clank Oasis (407) y Commercial Street (419) ---
     # Los dos ultimos mapas de ALO TW, tambien sin captura. Las lineas
@@ -2378,6 +2381,7 @@ TIENDAS_POR_OPCION = {
     504139: 595, # Enhanced Pestle and Ride Feed -> Shop 595
     504138: 57,  # Spell V Scrolls, Classic Trinkets -> Shop 57
     504136: 56,  # Robots, Production Gears or Collection Cores -> Shop 56
+    508586: 159, # Voucher Angel: Buy Angelic Vouchers -> Shop 159
 }
 
 
@@ -2395,6 +2399,11 @@ ACCIONES_ALMACEN = {
     123276: [1000078, 1000079],   # City Banker (Edo City)
     123373: [1000122, 1000123],   # Fruity Bank Cler (Fruity Village)
     123438: [1000078, 1000079],   # Shuwa Bank Clerk (Shuwa Market)
+    122367: [1000160, 1000161],   # Bankclerk Clair (Palm Base)
+    122368: [1000167, 1000168],   # Bankclerk Sien (Palm Base)
+    122369: [1000174, 1000175],   # Bankclerk Keda (Palm Base)
+    122390: [1000181, 1000182],   # Bankclerk Emmy (Palm Base)
+    122379: [1000160, 1000161],   # Banking Director (Palm Base)
 }
 
 
@@ -3105,8 +3114,29 @@ def respuesta_a(opcion_id: int, entidad: int = 0, val: int = 4,
     # Village; sin ellos el dialogo se quedaba abierto al decir que no.
     if opcion_id in (5012, 5191, 5242, 5046, 5059, 5064, 5271, 7536, 5238, 7933, 7983, 7991,
                      5278, 5371, 112004, 5033, 5020, 121004,
-                     8387, 508047, 508056, 508064, 504133):  # Quit / cerrar
+                     8387, 508047, 508056, 508064, 504133, 508588):  # Quit / cerrar
         return (struct.pack('<H', 0x0012) + FIN,)
+
+    # Voucher Angel (NPC 14334)
+    if opcion_id == 508585:
+        # "What are Angelic Vouchers?"
+        return (
+            armar_linea(508589, val, []),
+            armar_linea(508590, val, [508586, 508587, 508588]),
+        )
+    if opcion_id == 508586:
+        # "Buy Angelic Vouchers" -> Open Shop 159
+        pkg_tienda = struct.pack('<HH', 0x0034, 159)
+        pkg_cierre = struct.pack('<H', 0x0012) + FIN
+        return (pkg_tienda, pkg_cierre)
+    if opcion_id == 508587:
+        # "Exchange Angelic Vouchers" -> Open WND_EXCHANGE (0x0206)
+        recetas = [11342, 11343, 12961, 12962, 12963, 12964, 12965]
+        pkg_exch = struct.pack('<HI', 0x0206, len(recetas)) + b''.join(
+            struct.pack('<II', r, 0) for r in recetas
+        )
+        pkg_cierre = struct.pack('<H', 0x0012) + FIN
+        return (pkg_exch, pkg_cierre)
 
     # Angel Raphael (Fighting Palace): 5063 "I'm ready to go to the Angel Lyceum."
     if opcion_id == 5063:
