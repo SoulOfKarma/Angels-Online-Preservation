@@ -678,11 +678,105 @@ def entrada(plantilla: bytes, estado: dict) -> bytes:
         struct.pack_into('<I', e, off_b, bono_val)
     # Offset 222: nivel de estrellas general (1 = 0.1 estrellas)
     struct.pack_into('<I', e, 222, st_lvl & 0xFFFFFFFF)
+    # Offset 226: ID del monstruo capturado en monster.xml (para sub_514940 / Antetype: %s)
+    npc_mid = int(estado.get('npc_type') or 0) & 0xFFFFFFFF
+    struct.pack_into('<I', e, 226, npc_mid)
+    # Offset 230: Rango / calidad de la mascota (sub_5148F0: 1=Common, 2=Good, 3=Rare, 4=Awesome/Top, 5=Super)
+    rango_val = max(0, min(5, int(estado.get('rango') or (1 if npc_mid else 0))))
+    e[230] = rango_val
     return bytes(e)
 
 
+RANGO_NOMBRES = {
+    1: 'Common',
+    2: 'Good',
+    3: 'Rare',
+    4: 'Top',
+    5: 'Super',
+}
+
+RANGO_MULTIPLICADORES = {
+    1: 1.0,
+    2: 1.15,
+    3: 1.25,
+    4: 1.35,
+    5: 1.50,
+}
+
+
+def sortear_rango() -> tuple:
+    """Sortea el rango de calidad al capturar una mascota:
+    (rango_id, rango_nombre, estrellas_base, multiplicador)
+    - Common: 70%
+    - Good: 20%
+    - Top: 8%
+    - Super: 2%
+    """
+    import random
+    roll = random.random() * 100.0
+    if roll < 70.0:
+        rango = 1
+        st = random.randint(2, 5)   # 0.2 ~ 0.5 estrellas
+    elif roll < 90.0:
+        rango = 2
+        st = random.randint(6, 10)  # 0.6 ~ 1.0 estrellas
+    elif roll < 98.0:
+        rango = 4
+        st = random.randint(11, 15) # 1.1 ~ 1.5 estrellas
+    else:
+        rango = 5
+        st = random.randint(16, 20) # 1.6 ~ 2.0 estrellas
+    nom = RANGO_NOMBRES[rango]
+    mult = RANGO_MULTIPLICADORES[rango]
+    return rango, nom, st, mult
+
+
+def aplicar_rango(ficha: dict, rango: int = 1, st: int = None, mult: float = None) -> dict:
+    """Aplica el rango de calidad y nivel de estrellas a los stats de una mascota."""
+    ficha['rango'] = int(rango or 1)
+    ficha['rango_nombre'] = RANGO_NOMBRES.get(ficha['rango'], 'Common')
+    if mult is None:
+        mult = RANGO_MULTIPLICADORES.get(ficha['rango'], 1.0)
+    if st is not None:
+        ficha['estrellas'] = max(1, int(st))
+    if mult > 1.0:
+        for k in ('hp', 'hp_max', 'mp', 'mp_max', 'atk', 'dfs', 'matk', 'mdef', 'rigor', 'agilidad'):
+            if k in ficha:
+                ficha[k] = max(1, int(round(ficha[k] * mult)))
+    sp = int(ficha.get('sprite') or 0)
+    if sp:
+        ficha['bonos'] = bonos_estrellas(ficha['estrellas'], sprite=sp, estado=ficha)
+    return ficha
+
+
+def abreviar_nombre_pet(nombre: str) -> str:
+    """Formatea el nombre para los 12 bytes del campo de apodo en el paquete de inventario."""
+    if not nombre:
+        return 'Pet'
+    s_nom = str(nombre).strip()
+    if len(s_nom) <= 12:
+        return s_nom
+    reemplazos = {
+        'Purple Evil Cat': 'Purple Cat',
+        'Flaming Evil Cat': 'Flaming Cat',
+        'Sky Winged Bird': 'Sky Bird',
+        'Earth Winged Bird': 'Earth Bird',
+        'Giant Rotten Bird': 'Rotten Bird',
+        'Magic Pumpkinman': 'Pumpkinman',
+    }
+    if s_nom in reemplazos:
+        return reemplazos[s_nom]
+    parts = s_nom.split()
+    if len(parts) >= 3:
+        short = f"{parts[0]} {parts[-1]}"
+        if len(short) <= 12:
+            return short
+    return s_nom[:12].strip()
+
+
 def recien_nacida(nombre: str, sprite: int, nivel: int = 1,
-                  hp: int = 127, mp: int = 70, estrellas: int = 1) -> dict:
+                  hp: int = 127, mp: int = 70, estrellas: int = 1,
+                  rango: int = 1, npc_type: int = 0) -> dict:
     """Una mascota de ese sprite, con su tipo, nombre y stats de pet.xml.
 
     El 'tipo' (el 圖號1) es imprescindible: dejandolo en cero el cliente no
@@ -695,12 +789,15 @@ def recien_nacida(nombre: str, sprite: int, nivel: int = 1,
     es_huevo = (d.get('etapa') == '原型')
     bonos_ini = {} if es_huevo else sortear_bonos(sprite)
     st = max(1, int(estrellas or 1)) if es_huevo else calcular_estrellas_total(bonos_ini)
-    f = {'nombre': d.get('nombre') or nombre, 'sprite': sprite,
+    final_nombre = nombre if nombre and nombre != 'Pet' else (d.get('nombre') or nombre or 'Pet')
+    f = {'nombre': final_nombre, 'sprite': sprite,
          'tipo': d.get('tipo', 0), 'nivel': nv,
          'hp': hp, 'hp_max': hp, 'mp': mp, 'mp_max': mp,
          'exp': 0, 'exp_max': exp_para_subir(nv, sprite),
          'saciedad': 100, 'intimidad': 60,
          'estrellas': st,
+         'rango': int(rango or 1),
+         'npc_type': int(npc_type or 0),
          'mejoras': 0,
          'bonos': bonos_ini,
          'skills': list(skills_de(sprite, nv))}

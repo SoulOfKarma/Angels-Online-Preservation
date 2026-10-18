@@ -646,13 +646,19 @@ def _cargar_mascota(m) -> dict:
     if d.get('tipo'):
         f['tipo'] = d['tipo']
     st = _ms.stats_de(sp, nv)
+    rango = int(f.get('rango') or 1)
+    mult = getattr(_ms, 'RANGO_MULTIPLICADORES', {}).get(rango, 1.0)
     for k, v in st.items():
         if k in ('hp', 'mp') and f.get(k, 0) > 0:
             continue
-        f[k] = v
+        f[k] = max(1, int(round(v * mult))) if mult > 1.0 else v
     f.setdefault('saciedad', 100)
     f.setdefault('intimidad', 60)
     f.setdefault('estrellas', 1)
+    f.setdefault('rango', 1)
+    f.setdefault('npc_type', 0)
+    if 'rango_nombre' not in f:
+        f['rango_nombre'] = getattr(_ms, 'RANGO_NOMBRES', {}).get(rango, 'Common')
     return f
 
 

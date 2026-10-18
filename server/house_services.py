@@ -137,12 +137,32 @@ def capture_egg_effects():
 
 _CATCH_MONSTER_ID = '\u602a\u7269\u7de8\u865f'
 _CATCH_PET_ITEM = '\u5bf5\u7269\u7de8\u865f'
+_CATCH_PROBABILITY = '\u88dc\u6349\u6a5f\u7387'
 _MONSTER_NAME = '\u540d\u7a31'
 
 
 @functools.lru_cache(maxsize=1)
+def monster_catch_probabilities():
+    """Base catch probability (out of 10000) from serv_catch.xml."""
+    probs = {}
+    for row in xml_rows('serv_catch.xml').values():
+        try:
+            mid = int(row.get(_CATCH_MONSTER_ID) or 0)
+            rate = int(row.get(_CATCH_PROBABILITY) or 4000)
+        except (TypeError, ValueError):
+            continue
+        if mid > 0:
+            probs[mid] = rate
+    return probs
+
+
+@functools.lru_cache(maxsize=1)
 def capturable_monsters():
-    """Monster template -> Monster/Pet Egg item, properly mapped across all updates."""
+    """Monster template -> Monster/Pet Egg item, properly mapped across all updates.
+    
+    Only monsters legitimately registered in official catch.xml / serv_catch.xml
+    or boss monster eggs can be captured. Uncapturable monsters must never be caught.
+    """
     monsters = xml_rows('monster.xml')
     items = {}
     for i in range(1, 10):
@@ -182,9 +202,12 @@ def capturable_monsters():
             if mid > 0 and pid > 0 and mid not in catch_mappings:
                 catch_mappings[mid] = pid
 
-    for npc_type, m in monsters.items():
+    # Strictly process only monsters that are in catch_mappings or candidates
+    valid_npc_types = set(catch_mappings.keys()) | set(candidates.keys())
+    for npc_type in valid_npc_types:
         if npc_type <= 0 or npc_type in candidates:
             continue
+        m = monsters.get(npc_type, {})
         mname = str(m.get(_MONSTER_NAME) or '').strip().lower()
         if mname.startswith('mercenary'):
             continue
@@ -194,12 +217,15 @@ def capturable_monsters():
             candidates[npc_type] = ((1, False, direct_named[mname]), direct_named[mname])
             continue
 
-        # 3. Family / species rules (fixes IGG catch.xml typos where cats gave Winged Fish 16978)
+        # 3. Family / species rules to correct IGG typos for capturable monsters
+        if 'bird' in mname or ('winged' in mname and 'fish' not in mname and 'tiger' not in mname):
+            candidates[npc_type] = ((2, False, 63375), 63375)
+            continue
         if 'cat' in mname and 'caterpillar' not in mname:
             egg_id = 16974 if 'violent' in mname else 16971
             candidates[npc_type] = ((2, False, egg_id), egg_id)
             continue
-        if 'fish' in mname:
+        if 'fish' in mname or 'jellyfish' in mname:
             candidates[npc_type] = ((2, False, 16978), 16978)
             continue
         if 'crab' in mname:
@@ -242,19 +268,25 @@ def capturable_monsters():
             candidates[npc_type] = ((3, False, egg_id), egg_id)
             continue
 
-        # 5. General fallback
-        egg_id = 16969 + (npc_type % 10)
-        candidates[npc_type] = ((4, False, egg_id), egg_id)
-
     return {npc: value[1] for npc, value in candidates.items()}
 
 
-def capture_chance(strength, hp, hp_max):
-    """Capture percentage: stronger egg + wounded target, capped at 95%."""
+def capture_chance(strength, hp, hp_max, npc_type=None):
+    """Capture percentage: base probability from serv_catch.xml + egg strength + wounded target."""
     strength = max(0.0, float(strength or 0))
+    if strength >= 300.0:  # Master Poke Egg (16982) guarantees 100%
+        return 100.0
     maximum = max(1.0, float(hp_max or 1))
     ratio = min(1.0, max(0.0, float(hp or 0) / maximum))
-    return min(95.0, strength * (2.0 - ratio))
+    base_rate = 40.0
+    if npc_type:
+        sc_rate = monster_catch_probabilities().get(int(npc_type))
+        if sc_rate:
+            base_rate = float(sc_rate) / 100.0  # e.g. 4000 -> 40.0%, 500 -> 5.0%
+    egg_mult = strength / 30.0
+    hp_mult = (2.0 - ratio)
+    chance = base_rate * egg_mult * hp_mult
+    return min(95.0, max(1.0, chance))
 
 
 def clean_bonus(cleanliness):

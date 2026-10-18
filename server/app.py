@@ -660,7 +660,7 @@ def _mover_inst(ses, origen: int, destino: int):
         mej[o] = b
 
 
-def _meter(ses, item_id: int, n: int = 1) -> int:
+def _meter(ses, item_id: int, n: int = 1, pet_metadata: dict = None) -> int:
     """Mete n unidades en la mochila y devuelve la casilla que las lleva.
 
     Si el item se apila y ya hay un monton suyo, se suma ahi en vez de
@@ -726,15 +726,23 @@ def _meter(ses, item_id: int, n: int = 1) -> int:
             d_pet = inv.datos_mascota(item_id)
             if not hasattr(p_ses, 'mascotas') or not isinstance(p_ses.mascotas, dict):
                 p_ses.mascotas = {}
+            p_nom = (pet_metadata.get('nombre') if pet_metadata else None) or d_pet['nombre']
+            p_st = max(1, int((pet_metadata.get('estrellas') if pet_metadata else None) or d_pet.get('estrellas') or 1))
+            p_rg = int((pet_metadata.get('rango') if pet_metadata else None) or 1)
+            p_mid = int((pet_metadata.get('npc_type') if pet_metadata else None) or 0)
             f_new = _ms_new.recien_nacida(
-                d_pet['nombre'], d_pet['sprite'],
+                p_nom, d_pet['sprite'],
                 nivel=max(1, getattr(_cf_new, 'MASCOTA_NIVEL_INICIAL', 1)),
-                estrellas=max(1, int(d_pet.get('estrellas') or 1))
+                estrellas=p_st,
+                rango=p_rg,
+                npc_type=p_mid
             )
             f_new['ranura'] = r
             f_new['item'] = item_id
             f_new['instancia'] = 1000 + int(r)
             f_new['fuera'] = False
+            if pet_metadata and isinstance(pet_metadata, dict):
+                f_new.update(pet_metadata)
             p_ses.mascotas[str(r)] = f_new
             if not getattr(p_ses, 'mascota', None) or p_ses.mascota.get('ranura') == r:
                 p_ses.mascota = f_new
@@ -3479,18 +3487,18 @@ def _intentar_captura_monstruo(ses, target_entity, addr='?'):
         return True
 
     chance = _hs_cap.capture_chance(strengths[item_id], max(1, monster.hp),
-                                    monster.hp_max)
+                                    monster.hp_max, npc_type=monster.npc_type)
     _sacar(ses, slot, 1)
     touched = [slot]
 
-    # Visual capture animation (Poke Egg formula 19 / effect 197)
+    # Visual capture animation (Poke Egg formula 19 / effect 197).
+    # NOTE: Never send confirmar_cast (0x0006) here, as that opcode puts
+    # the client into a waiting cast state and locks character movement.
     p = getattr(ses, 'personaje', None)
     p_eid = getattr(p, 'entity_id', None) or getattr(ses, 'entity_id', None) or 1
     ef = int(_hs_cap.capture_egg_effects().get(item_id, 197))
     if monster:
         anim_pkts = [
-            _cb_cap.confirmar_cast(monster.entity_id, monster.tile_x, monster.tile_y),
-            _cb_cap.efecto_magia_self_inicio(p_eid, ef, item_id, cast_time=100, objetivo=monster.entity_id),
             _cb_cap.efecto_magia_self_fin(p_eid, ef, item_id, objetivo=monster.entity_id),
         ]
         ses.enviar(*anim_pkts)
@@ -3502,9 +3510,27 @@ def _intentar_captura_monstruo(ses, target_entity, addr='?'):
 
     success = random.random() * 100.0 < chance
     if success:
-        destination = _meter(ses, output_item, 1)
+        import mascotas as _ms_cap
+        rango, rango_nom, st_lvl, mult = _ms_cap.sortear_rango()
+        short_name = _ms_cap.abreviar_nombre_pet(monster.nombre)
+        pet_meta = {
+            'nombre': short_name,
+            'npc_type': int(monster.npc_type),
+            'rango': rango,
+            'rango_nombre': rango_nom,
+            'estrellas': st_lvl,
+        }
+        destination = _meter(ses, output_item, 1, pet_metadata=pet_meta)
         if destination is not None:
             touched.append(destination)
+            p_ses = getattr(ses, 'personaje', None)
+            if p_ses and getattr(p_ses, 'mascotas', None):
+                ficha = p_ses.mascotas.get(str(destination))
+                if ficha:
+                    _ms_cap.aplicar_rango(ficha, rango=rango, st=st_lvl, mult=mult)
+                    if getattr(ses, 'usuario', None):
+                        cuentas.guardar_mascota(ses.usuario, p_ses.char_id, ficha, p_ses.mascotas)
+
         monster.hp = 0
         if not getattr(monster, 'muerto_en', None):
             monster.muerto_en = now_cap
@@ -3522,13 +3548,13 @@ def _intentar_captura_monstruo(ses, target_entity, addr='?'):
         if getattr(monster, 'generado', False):
             (getattr(ses, 'monstruos', {}) or {}).pop(monster.entity_id, None)
         ses.enviar(_cl_cap.aviso(
-            f'Capture successful! You obtained {_nombre_item(output_item)}.',
+            f'Capture successful! You obtained {rango_nom}-{monster.nombre} ({_nombre_item(output_item)}).',
             tipo=7, msg_id=_cl_cap.MSG_TEXTO))
-        log.info('[%s] captured %s (npc=%s) with item %s at %.1f%%',
-                 addr, monster.nombre, monster.npc_type, item_id, chance)
+        log.info('[%s] captured %s (npc=%s, rank=%s) with item %s at %.1f%%',
+                 addr, monster.nombre, monster.npc_type, rango_nom, item_id, chance)
     else:
         ses.enviar(_cl_cap.aviso(
-            f'Capture failed. Success chance was {chance:.1f}%.',
+            f'Capture failed. The monster broke free! (Success chance was {chance:.1f}%)',
             tipo=7, msg_id=_cl_cap.MSG_TEXTO))
         log.info('[%s] failed capture of %s (npc=%s) with item %s at %.1f%%',
                  addr, monster.nombre, monster.npc_type, item_id, chance)

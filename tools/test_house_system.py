@@ -806,7 +806,7 @@ class TestHouseSystem(unittest.TestCase):
                         hs.capture_chance(30, 1, 100))
         self.assertLess(hs.capture_chance(30, 1, 100),
                         hs.capture_chance(45, 1, 100))
-        self.assertEqual(hs.capture_chance(300, 1, 100), 95.0)
+        self.assertEqual(hs.capture_chance(300, 1, 100), 100.0)
 
     def test_public_selector_channel_two_routes_to_broadcast(self):
         import app
@@ -986,10 +986,14 @@ class TestHouseSystem(unittest.TestCase):
         self.assertIn(16971, ses.inventario.values())
         pet_slot = next(r for r, iid in ses.inventario.items() if iid == 16971)
         self.assertIn(str(pet_slot), ses.personaje.mascotas)
-        self.assertEqual(ses.personaje.mascotas[str(pet_slot)]['nombre'], 'Evil Cat')
+        pet_ficha = ses.personaje.mascotas[str(pet_slot)]
+        self.assertIn(pet_ficha['nombre'], ('Purple Cat', 'Purple Evil Cat'))
+        self.assertEqual(pet_ficha['npc_type'], 7001)
+        self.assertIn('rango', pet_ficha)
+        self.assertIn('estrellas', pet_ficha)
 
-        # Visual capture animation packets (0x0006 cast confirm + 0x0011 effect 197)
-        self.assertTrue(any(p[:2] == b'\x06\x00' for p in ses.paquetes))
+        # Visual capture animation packet (0x0011 effect 197), and NO 0x0006 cast confirm (which froze client)
+        self.assertFalse(any(p[:2] == b'\x06\x00' for p in ses.paquetes))
         self.assertTrue(any(p[:2] == b'\x11\x00' and (p[2] == 197 or p[2] == 0xC5) for p in ses.paquetes))
 
     def test_ball_tickets_and_candy_rewards(self):
