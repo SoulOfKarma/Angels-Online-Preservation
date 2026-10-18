@@ -3460,15 +3460,7 @@ def _intentar_captura_monstruo(ses, target_entity, addr='?'):
         return True
 
     monster = (getattr(ses, 'monstruos', {}) or {}).get(int(target_entity))
-    now_cap = time.time()
-    recien_muerto = (
-        monster is not None
-        and not getattr(monster, 'vivo', False)
-        and getattr(monster, 'muerto_en', None)
-        and (now_cap - float(monster.muerto_en)) <= 5.0
-        and getattr(monster, 'capturado_en', None) != getattr(monster, 'muerto_en', None)
-    )
-    if monster is None or (not getattr(monster, 'vivo', False) and not recien_muerto):
+    if monster is None or not getattr(monster, 'vivo', False):
         ses.enviar(_cl_cap.aviso('Select a living monster to capture.', tipo=7,
                                  msg_id=_cl_cap.MSG_TEXTO))
         return True
@@ -3476,6 +3468,28 @@ def _intentar_captura_monstruo(ses, target_entity, addr='?'):
     output_item = _hs_cap.capturable_monsters().get(int(monster.npc_type))
     if not output_item:
         ses.enviar(_cl_cap.aviso('This pet cannot be captured.', tipo=7,
+                                 msg_id=_cl_cap.MSG_TEXTO))
+        return True
+
+    # El monstruo debe estar debilitado y el jugador debe haberlo golpeado primero
+    p = getattr(ses, 'personaje', None)
+    p_eid = getattr(p, 'entity_id', None) or getattr(ses, 'entity_id', None) or 1
+    char_id = getattr(p, 'char_id', None)
+    pet_eid = getattr(ses, 'pet_entity_id', None)
+
+    dano_por = getattr(monster, 'dano_por', None)
+    if not isinstance(dano_por, dict):
+        dano_por = {}
+    in_combat = getattr(monster, 'en_combate_con', None) in (p_eid, pet_eid)
+    dealt_damage = (
+        (char_id is not None and dano_por.get(int(char_id), 0) > 0)
+        or in_combat
+        or (getattr(monster, 'dano_jugador', 0) > 0 and not dano_por)
+        or (getattr(monster, 'dano_pet', 0) > 0 and not dano_por)
+    )
+
+    if monster.hp >= monster.hp_max or not dealt_damage:
+        ses.enviar(_cl_cap.aviso('You must attack and weaken the monster before capturing it!', tipo=7,
                                  msg_id=_cl_cap.MSG_TEXTO))
         return True
 
@@ -3491,22 +3505,21 @@ def _intentar_captura_monstruo(ses, target_entity, addr='?'):
     _sacar(ses, slot, 1)
     touched = [slot]
 
-    # Visual capture animation (Poke Egg formula 19 / effect 197).
+    # Visual capture animation (character throw + projectile fly + target impact).
     # NOTE: Never send confirmar_cast (0x0006) here, as that opcode puts
     # the client into a waiting cast state and locks character movement.
-    p = getattr(ses, 'personaje', None)
-    p_eid = getattr(p, 'entity_id', None) or getattr(ses, 'entity_id', None) or 1
     ef = int(_hs_cap.capture_egg_effects().get(item_id, 197))
-    if monster:
-        anim_pkts = [
-            _cb_cap.efecto_magia_self_fin(p_eid, ef, item_id, objetivo=monster.entity_id),
-        ]
-        ses.enviar(*anim_pkts)
-        for companion in _companeros(ses):
-            try:
-                companion.enviar(*anim_pkts)
-            except Exception:
-                pass
+    anim_pkts = [
+        _cb_cap.ataque(p_eid, monster.entity_id, animacion=400, tipo=1),
+        _cb_cap.numero_de_dano(p_eid, monster.entity_id, dano=0, efecto=ef, cast_time=150, es_magia=True),
+        _cb_cap.cierre_de_dano(p_eid, monster.entity_id, efecto=ef, es_magia=True),
+    ]
+    ses.enviar(*anim_pkts)
+    for companion in _companeros(ses):
+        try:
+            companion.enviar(*anim_pkts)
+        except Exception:
+            pass
 
     success = random.random() * 100.0 < chance
     if success:
@@ -3533,7 +3546,7 @@ def _intentar_captura_monstruo(ses, target_entity, addr='?'):
 
         monster.hp = 0
         if not getattr(monster, 'muerto_en', None):
-            monster.muerto_en = now_cap
+            monster.muerto_en = time.time()
         monster.capturado_en = monster.muerto_en
         monster.en_combate_con = None
         monster.dano_por = {}

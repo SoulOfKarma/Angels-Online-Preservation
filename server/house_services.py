@@ -219,7 +219,8 @@ def capturable_monsters():
 
         # 3. Family / species rules to correct IGG typos for capturable monsters
         if 'bird' in mname or ('winged' in mname and 'fish' not in mname and 'tiger' not in mname):
-            candidates[npc_type] = ((2, False, 63375), 63375)
+            egg_id = catch_mappings.get(npc_type, 16975)
+            candidates[npc_type] = ((2, False, egg_id), egg_id)
             continue
         if 'cat' in mname and 'caterpillar' not in mname:
             egg_id = 16974 if 'violent' in mname else 16971

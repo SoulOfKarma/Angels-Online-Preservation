@@ -858,10 +858,11 @@ class TestHouseSystem(unittest.TestCase):
                     'slot': 20, 'item': 16982, 'time': __import__('time').time(),
                 }
                 self.personaje = type('P', (), {
-                    'char_id': 111, 'stage': 41, 'mejoras': {},
+                    'char_id': 111, 'entity_id': 111, 'stage': 41, 'mejoras': {},
                 })()
                 mob = combate.Monstruo(9001, 1217, 'Pontiff Hululu', (20, 20))
                 mob.hp = 1
+                mob.en_combate_con = 111
                 self.monstruos = {9001: mob}
                 self.paquetes = []
 
@@ -951,6 +952,7 @@ class TestHouseSystem(unittest.TestCase):
         import app
         import combate
         import house_services as hs
+        import mascotas
 
         capturable = hs.capturable_monsters()
         self.assertEqual(capturable[7001], 16971)  # Purple Evil Cat -> Evil Cat egg (NOT Winged Fish 16978!)
@@ -958,6 +960,8 @@ class TestHouseSystem(unittest.TestCase):
         self.assertEqual(capturable[909], 3397)    # Heat Elf -> Fire Elf Egg
         self.assertEqual(capturable[1201], 16978)  # Evil Fish -> Winged Fish egg
         self.assertEqual(capturable[1217], 10592)  # Pontiff Hululu -> House Boss Egg
+        self.assertEqual(capturable[7014], 16975)  # Sky Winged Bird -> Monster Egg 16975 (NOT 63375 whistle!)
+        self.assertEqual(capturable[7015], 16975)  # Earth Winged Bird -> Monster Egg 16975
 
         class MockSes:
             def __init__(self):
@@ -970,6 +974,8 @@ class TestHouseSystem(unittest.TestCase):
                     'char_id': 222, 'entity_id': 1222, 'stage': 20, 'mejoras': {}, 'mascotas': {}, 'mascota': None,
                 })()
                 mob = combate.Monstruo(0x000FB0E3, 7001, 'Purple Evil Cat', (40, 40))
+                mob.hp = 20  # Wounded target
+                mob.en_combate_con = 1222  # Player attacked it
                 self.monstruos = {0x000FB0E3: mob}
                 self.paquetes = []
 
@@ -992,9 +998,66 @@ class TestHouseSystem(unittest.TestCase):
         self.assertIn('rango', pet_ficha)
         self.assertIn('estrellas', pet_ficha)
 
-        # Visual capture animation packet (0x0011 effect 197), and NO 0x0006 cast confirm (which froze client)
+        # Visual capture animation packets (0x000A throw + 0x0011 projectile/impact) and NO 0x0006 cast confirm
         self.assertFalse(any(p[:2] == b'\x06\x00' for p in ses.paquetes))
+        self.assertTrue(any(p[:2] == b'\x0A\x00' for p in ses.paquetes))
         self.assertTrue(any(p[:2] == b'\x11\x00' and (p[2] == 197 or p[2] == 0xC5) for p in ses.paquetes))
+
+    def test_poke_egg_requires_weakening_and_can_fail(self):
+        import app
+        import combate
+        import mascotas
+
+        class MockSes:
+            def __init__(self):
+                self.rol = 'mundo'
+                self.inventario = {42: 16979}  # Standard Poke Egg
+                self.cantidades = {42: 3}
+                self.instancias = {42: 1042}
+                self.captura_pendiente = None
+                self.personaje = type('P', (), {
+                    'char_id': 333, 'entity_id': 1333, 'stage': 20, 'mejoras': {}, 'mascotas': {}, 'mascota': None,
+                })()
+                self.mob = combate.Monstruo(0x000FB0E4, 7001, 'Purple Evil Cat', (40, 40))
+                self.monstruos = {0x000FB0E4: self.mob}
+                self.paquetes = []
+
+            def enviar(self, *pkts):
+                self.paquetes.extend(pkts)
+
+        srv = app.Servidor('127.0.0.1', 8888, 8889, 8890)
+
+        # 1. Target at full HP (not attacked / weakened): Rejected, egg NOT consumed!
+        ses = MockSes()
+        ses.captura_pendiente = {'slot': 42, 'item': 16979, 'time': __import__('time').time()}
+        self.assertTrue(app._intentar_captura_monstruo(ses, 0x000FB0E4, 'test'))
+        self.assertEqual(ses.cantidades[42], 3)  # Egg preserved!
+        self.assertTrue(any(b'weaken' in p for p in ses.paquetes))
+
+        # 2. Target weakened, but capture roll fails: Egg consumed, monster stays alive, animation played!
+        ses.paquetes.clear()
+        ses.mob.hp = 20
+        ses.mob.en_combate_con = 1333
+        ses.captura_pendiente = {'slot': 42, 'item': 16979, 'time': __import__('time').time()}
+        with mock.patch.object(app.random, 'random', return_value=99.9), \
+                mock.patch.object(app, '_guardar_bolsa'), \
+                mock.patch.object(app, '_refrescar', return_value=[]):
+            self.assertTrue(app._intentar_captura_monstruo(ses, 0x000FB0E4, 'test'))
+        self.assertEqual(ses.cantidades[42], 2)  # 1 egg consumed!
+        self.assertEqual(ses.mob.hp, 20)        # Monster still alive!
+        self.assertTrue(any(b'Capture failed' in p for p in ses.paquetes))
+        self.assertTrue(any(p[:2] == b'\x0A\x00' for p in ses.paquetes))
+
+        # 3. Verify all 5 quality ranks are represented in sortear_rango
+        ranks_seen = set()
+        for _ in range(500):
+            r_id, r_nom, st, mult = mascotas.sortear_rango()
+            ranks_seen.add(r_id)
+            self.assertIn(r_nom, ('Common', 'Fine', 'Rare', 'Top', 'Super'))
+            self.assertGreaterEqual(st, 1)
+            self.assertLessEqual(st, 20)
+            self.assertGreaterEqual(mult, 1.0)
+        self.assertEqual(ranks_seen, {1, 2, 3, 4, 5})
 
     def test_ball_tickets_and_candy_rewards(self):
         import time

@@ -689,7 +689,7 @@ def entrada(plantilla: bytes, estado: dict) -> bytes:
 
 RANGO_NOMBRES = {
     1: 'Common',
-    2: 'Good',
+    2: 'Fine',
     3: 'Rare',
     4: 'Top',
     5: 'Super',
@@ -697,9 +697,9 @@ RANGO_NOMBRES = {
 
 RANGO_MULTIPLICADORES = {
     1: 1.0,
-    2: 1.15,
+    2: 1.12,
     3: 1.25,
-    4: 1.35,
+    4: 1.38,
     5: 1.50,
 }
 
@@ -707,25 +707,29 @@ RANGO_MULTIPLICADORES = {
 def sortear_rango() -> tuple:
     """Sortea el rango de calidad al capturar una mascota:
     (rango_id, rango_nombre, estrellas_base, multiplicador)
-    - Common: 70%
-    - Good: 20%
-    - Top: 8%
-    - Super: 2%
+    - Common: 60% (0.1 ~ 0.4 estrellas)
+    - Fine:   24% (0.5 ~ 0.8 estrellas)
+    - Rare:   10% (0.9 ~ 1.2 estrellas)
+    - Top:    4%  (1.3 ~ 1.6 estrellas)
+    - Super:  2%  (1.7 ~ 2.0 estrellas)
     """
     import random
     roll = random.random() * 100.0
-    if roll < 70.0:
+    if roll < 60.0:
         rango = 1
-        st = random.randint(2, 5)   # 0.2 ~ 0.5 estrellas
-    elif roll < 90.0:
+        st = random.randint(1, 4)    # 0.1 ~ 0.4 estrellas
+    elif roll < 84.0:
         rango = 2
-        st = random.randint(6, 10)  # 0.6 ~ 1.0 estrellas
+        st = random.randint(5, 8)    # 0.5 ~ 0.8 estrellas
+    elif roll < 94.0:
+        rango = 3
+        st = random.randint(9, 12)   # 0.9 ~ 1.2 estrellas
     elif roll < 98.0:
         rango = 4
-        st = random.randint(11, 15) # 1.1 ~ 1.5 estrellas
+        st = random.randint(13, 16)  # 1.3 ~ 1.6 estrellas
     else:
         rango = 5
-        st = random.randint(16, 20) # 1.6 ~ 2.0 estrellas
+        st = random.randint(17, 20)  # 1.7 ~ 2.0 estrellas
     nom = RANGO_NOMBRES[rango]
     mult = RANGO_MULTIPLICADORES[rango]
     return rango, nom, st, mult
