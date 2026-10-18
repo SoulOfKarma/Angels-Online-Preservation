@@ -3471,11 +3471,6 @@ def _intentar_captura_monstruo(ses, target_entity, addr='?'):
                                  msg_id=_cl_cap.MSG_TEXTO))
         return True
 
-    if getattr(monster, 'captura_fallida_en', None):
-        ses.enviar(_cl_cap.aviso(
-            'This monster has already escaped a capture attempt.', tipo=7,
-            msg_id=_cl_cap.MSG_TEXTO))
-        return True
 
     # El monstruo debe estar debilitado y el jugador debe haberlo golpeado primero
     p = getattr(ses, 'personaje', None)
@@ -3569,11 +3564,10 @@ def _intentar_captura_monstruo(ses, target_entity, addr='?'):
         monster.dano_por = {}
         stun_pkt = struct.pack('<HIBBII', 0x001D, monster.entity_id, 1, 4,
                                1045, int(capture_stun_seconds * 1000))
-        succ_pkt = _cb_cap.efecto_magia_self_fin(p_eid, 197, item_id)
-        ses.enviar(stun_pkt, succ_pkt)
+        ses.enviar(stun_pkt)
         for companion in _companeros(ses):
             try:
-                companion.enviar(stun_pkt, succ_pkt)
+                companion.enviar(stun_pkt)
             except Exception:
                 pass
 
@@ -3612,9 +3606,6 @@ def _intentar_captura_monstruo(ses, target_entity, addr='?'):
         log.info('[%s] captured %s (npc=%s, rank=%s) with item %s at %.1f%%',
                  addr, monster.nombre, monster.npc_type, rango_nom, item_id, chance)
     else:
-        # El servidor original no permite insistir con mas huevos sobre el
-        # mismo monstruo tras fallar; el bloqueo desaparece al reaparecer.
-        monster.captura_fallida_en = time.time()
         ses.enviar(_cl_cap.aviso('Capture failed.', tipo=7, msg_id=_cl_cap.MSG_TEXTO))
         log.info('[%s] failed capture of %s (npc=%s) with item %s at %.1f%%',
                  addr, monster.nombre, monster.npc_type, item_id, chance)

@@ -2763,10 +2763,12 @@ def cierre_de_dano(atacante: int, objetivo: int,
 
 
 def efecto_captura(atacante: int, objetivo: int, x: int = 0, y: int = 0,
-                   subtipo: int = 197):
-    """Animacion de lanzamiento de captura Poke Egg (gesto de lanzamiento hacia el objetivo)."""
+                   subtipo: int = 19):
+    """Animacion de lanzamiento de captura Poke Egg: lanzamiento (0x000A) + cristal rojo (0x0011 efecto 19)."""
     return [
         ataque(atacante, objetivo, animacion=400, tipo=1),
+        numero_de_dano(atacante, objetivo, dano=0, efecto=19, cast_time=150, es_magia=True, tile_x=x, tile_y=y),
+        cierre_de_dano(atacante, objetivo, efecto=19, es_magia=True, tile_x=x, tile_y=y),
     ]
 
 

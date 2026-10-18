@@ -34,9 +34,13 @@ def test_luxurious_poke_egg_is_not_guaranteed():
 
 
 def test_capture_animation_keeps_effect_and_subtype_separate():
-    packets = combate.efecto_captura(11, 22, 33, 44, 197)
-    assert len(packets) == 1
+    packets = combate.efecto_captura(11, 22, 33, 44, 19)
+    assert len(packets) == 3
     assert int.from_bytes(packets[0][:2], 'little') == 0x000A  # throw motion toward target
+    assert int.from_bytes(packets[1][:2], 'little') == 0x0011  # red crystal effect phase 0x00
+    assert int.from_bytes(packets[2][:2], 'little') == 0x0011  # red crystal effect phase 0x80
+    assert packets[1][2] == 19  # red crystal (Fire Trap) effect id
+    assert packets[2][2] == 19
 
 
 def test_quality_names_match_the_client_strings():
@@ -74,9 +78,12 @@ def test_captured_species_appears_at_advanced_evolution():
 
 def test_capture_visual_is_targeted_and_has_no_fake_attack_packet():
     pkts = combate.efecto_captura(1, 2, 61, 72)
-    assert len(pkts) == 1
+    assert len(pkts) == 3
     assert struct.unpack_from('<H', pkts[0])[0] == 0x000A
     assert struct.unpack_from('<II', pkts[0], 2) == (1, 2)
+    assert struct.unpack_from('<H', pkts[1])[0] == 0x0011
+    assert struct.unpack_from('<II', pkts[1], 4) == (1, 2)
+    assert struct.unpack_from('<II', pkts[1], 12) == (61, 72)
 
 
 def test_old_captured_pet_is_repaired_when_loaded():

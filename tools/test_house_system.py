@@ -1066,14 +1066,15 @@ class TestHouseSystem(unittest.TestCase):
         self.assertTrue(any(b'Capture failed' in p for p in ses.paquetes))
         self.assertTrue(any(p[:2] == b'\x0A\x00' for p in ses.paquetes))
 
-        # The same monster cannot be spammed with more eggs after escaping.
+        # Retrying capture after failure is allowed: consumes another egg and plays visual.
         ses.paquetes.clear()
         ses.captura_pendiente = {'slot': 42, 'item': 16979, 'time': __import__('time').time()}
-        with mock.patch.object(app, '_guardar_bolsa'), \
+        with mock.patch.object(app.random, 'random', return_value=99.9), \
+                mock.patch.object(app, '_guardar_bolsa'), \
                 mock.patch.object(app, '_refrescar', return_value=[]):
             self.assertTrue(app._intentar_captura_monstruo(ses, 0x000FB0E4, 'test'))
-        self.assertEqual(ses.cantidades[42], 2)
-        self.assertTrue(any(b'already escaped' in p for p in ses.paquetes))
+        self.assertEqual(ses.cantidades[42], 1)
+        self.assertTrue(any(b'Capture failed.' in p for p in ses.paquetes))
 
         # 3. Verify all 5 quality ranks are represented in sortear_rango
         ranks_seen = set()
