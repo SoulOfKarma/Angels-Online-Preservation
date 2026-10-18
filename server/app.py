@@ -14020,9 +14020,13 @@ class Servidor:
                 salida = []
                 tocadas = [ranura]
                 for rew_id, cant in recompensas:
-                    tocadas.append(_meter(ses, rew_id, max(1, int(cant))))
+                    dest = _meter(ses, rew_id, max(1, int(cant)))
+                    if dest is not None:
+                        tocadas.append(dest)
                     salida.append(_c.aviso(_nombre_item(rew_id), tipo=0, msg_id=_c.MSG_ITEM))
-                salida.extend(_refrescar(ses, tocadas))
+                import misiones as _mis_caj
+                salida.extend(_mis_caj.verificar_progreso_recoleccion(ses, [rew_id for rew_id, _ in recompensas]))
+                salida.extend(_refrescar(ses, [t for t in tocadas if t is not None]))
                 ses.enviar(*salida)
                 if ses.personaje and getattr(ses, 'usuario', None):
                     cuentas.guardar_inventario(ses.usuario, cid, bolsa,
@@ -14258,13 +14262,54 @@ class Servidor:
                 log.info(f"[{addr}] consumible usado: {item_id} (ranura {ranura}) -> {ef_con}")
                 return
 
-            # Caso 5b: BOLSAS DE LA SUERTE, HUEVOS Y REGALOS.
-            # Son 22.055 items entre las categorias 紅包 y 禮物 y hasta
-            # ahora no hacian nada al usarlos. Lo que sale esta en la
-            # columna 動態資料1 del propio item: o apunta a una fila de
-            # drop_table y se sortea con sus pesos, o apunta a un item
-            # suelto y se da ese. Ver server/bolsas.py.
+            # Caso 5a: OBJETOS DE MISION ABIERTOS CON PROBABILIDAD (Earth Fruit, Fire Heart)
             import bolsas as _bol
+            if item_id in _bol.OBJETOS_MISION_OPENABLES:
+                info_m = _bol.OBJETOS_MISION_OPENABLES[item_id]
+                _sacar(ses, ranura, 1)
+                import random as _rnd
+                exito = (_rnd.random() < info_m['prob'])
+                salida = []
+                tocadas = [ranura]
+                if exito:
+                    rew_id = info_m['recompensa']
+                    destino = _meter(ses, rew_id, 1)
+                    if destino is not None:
+                        tocadas.append(destino)
+                    salida.append(_c.aviso(info_m['msg_exito'], tipo=7, msg_id=_c.MSG_TEXTO))
+                    import misiones as _mis
+                    salida.extend(_mis.verificar_progreso_recoleccion(ses, [rew_id]))
+                    log.info(f"[{addr}] objeto mision {item_id} abierto con EXITO -> {rew_id} ({info_m['nombre_recompensa']})")
+                else:
+                    salida.append(_c.aviso(info_m['msg_fallo'], tipo=7, msg_id=_c.MSG_TEXTO))
+                    log.info(f"[{addr}] objeto mision {item_id} abierto: no dio recompensa")
+                salida.extend(_refrescar(ses, [t for t in tocadas if t is not None]))
+                ses.enviar(*salida)
+                if getattr(ses, 'usuario', None):
+                    cuentas.guardar_inventario(ses.usuario, cid, bolsa, _cantidades(ses))
+                return
+
+            # Caso 5b: PIEDRAS MAGICAS SELLADAS
+            if item_id in _bol.PIEDRAS_SELLADAS:
+                target_stone = _bol.PIEDRAS_SELLADAS[item_id]
+                _sacar(ses, ranura, 1)
+                destino = _meter(ses, target_stone, 1)
+                nom_stone = _nombre_item(target_stone)
+                tocadas = [ranura] + ([destino] if destino is not None else [])
+                salida = [
+                    _c.aviso(f"Unsealed {nom_stone}!", tipo=7, msg_id=_c.MSG_TEXTO),
+                    *_refrescar(ses, [t for t in tocadas if t is not None])
+                ]
+                ses.enviar(*salida)
+                if getattr(ses, 'usuario', None):
+                    cuentas.guardar_inventario(ses.usuario, cid, bolsa, _cantidades(ses))
+                log.info(f"[{addr}] piedra sellada {item_id} desellada -> {target_stone} ({nom_stone})")
+                return
+
+            # Caso 5c: BOLSAS DE LA SUERTE, HUEVOS Y REGALOS.
+            # Son miles de items entre las categorias 紅包, 禮物, 扭蛋, 禮盒, 寶箱.
+            # Lo que sale esta en la columna 動態資料1 del propio item: apunta
+            # a una fila de drop_table y se sortea con sus pesos reales.
             if _bol.es_bolsa(item_id):
                 premio = _bol.abrir(item_id)
                 if not premio:
@@ -14278,11 +14323,18 @@ class Servidor:
                 premio_id, premio_n = premio
                 _sacar(ses, ranura, 1)
                 destino = _meter(ses, premio_id, premio_n)
+                if destino is None:
+                    # Inventario lleno: devolver la bolsa
+                    _meter(ses, item_id, 1)
+                    ses.enviar(_c.aviso('Inventory is full.', tipo=7, msg_id=_c.MSG_TEXTO))
+                    return
                 nom_premio = _nombre_item(premio_id)
-                tocadas = [ranura] + ([destino] if destino is not None else [])
+                tocadas = [ranura, destino]
                 salida = [_c.aviso('You got %s x%d!' % (nom_premio, premio_n),
                                    tipo=7, msg_id=_c.MSG_TEXTO)]
-                salida.extend(_refrescar(ses, tocadas))
+                import misiones as _mis_bol
+                salida.extend(_mis_bol.verificar_progreso_recoleccion(ses, [premio_id]))
+                salida.extend(_refrescar(ses, [t for t in tocadas if t is not None]))
                 ses.enviar(*salida)
                 if getattr(ses, 'usuario', None):
                     cuentas.guardar_inventario(ses.usuario, cid, bolsa,

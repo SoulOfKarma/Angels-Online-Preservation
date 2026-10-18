@@ -2122,8 +2122,15 @@ def recompensas_caja(item_id: int):
         if any(r[0] in mascotas_elfo for r in rewards):
             return [(random.choice(mascotas_elfo), 1)]
 
-        # Lucky Bags / Red Envelopes / Eggs dan 1 item aleatorio
+        # Lucky Bags / Red Envelopes / Eggs dan 1 item aleatorio.
+        # Si bolsas.py tiene la tabla con pesos reales, dejar que bolsas.py lo gestione
         if cat in ('紅包', '扭蛋') or any(k in name.lower() for k in ('lucky', 'bag', 'egg')) or any(k in name for k in ('福袋', '蛋')):
+            try:
+                import bolsas as _bol
+                if _bol.es_bolsa(item_id):
+                    return None
+            except Exception:
+                pass
             return [random.choice(rewards)]
 
         # Cajas de regalo (Growth Boxes, Combines, Sets) dan todo el contenido

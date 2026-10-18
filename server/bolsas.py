@@ -103,8 +103,109 @@ def _cargar():
     return _CACHE
 
 
+_CACHE_EXTRA = None
+_DROPS_EXTRA = None
+
+
+def _cargar_drops_extra():
+    global _DROPS_EXTRA
+    if _DROPS_EXTRA is not None:
+        return _DROPS_EXTRA
+    _DROPS_EXTRA = {}
+    p = pathlib.Path(__file__).parent / 'plantillas' / 'drops_bolsas.json'
+    if p.exists():
+        try:
+            import json
+            _DROPS_EXTRA = json.loads(p.read_text(encoding='utf-8'))
+        except Exception as e:
+            log.warning('no se pudo cargar drops_bolsas.json (%s: %s)', type(e).__name__, e)
+    return _DROPS_EXTRA
+
+
+def _cargar_extra():
+    global _CACHE_EXTRA
+    if _CACHE_EXTRA is not None:
+        return _CACHE_EXTRA
+    _CACHE_EXTRA = {}
+    drops_extra = _cargar_drops_extra()
+    if not drops_extra:
+        return _CACHE_EXTRA
+    db = _db()
+    if not db.exists():
+        return _CACHE_EXTRA
+    try:
+        con = sqlite3.connect(db)
+        cache_base = _cargar()
+        tablas_db = {str(r[0]) for r in con.execute('select id from drop_table')}
+        openable_cats = (CAT_BOLSA, CAT_REGALO, '扭蛋', '禮盒', '寶箱')
+        for t in TABLAS_ITEM:
+            cols = [c[1] for c in con.execute('pragma table_info(%s)' % t)]
+            if COL_CATEGORIA not in cols or COL_DINAMICO not in cols:
+                continue
+            for iid, cat, din in con.execute(
+                    'select id, "%s", "%s" from %s where "%s" in (?, ?, ?, ?, ?)'
+                    % (COL_CATEGORIA, COL_DINAMICO, t, COL_CATEGORIA),
+                    openable_cats):
+                d = str(din or '').strip()
+                try:
+                    clave = int(iid)
+                except (TypeError, ValueError):
+                    continue
+                if clave in cache_base or clave in _CACHE_EXTRA or not d or d == '0':
+                    continue
+                # Si no estaba en el drop_table de content.db pero esta en drops_bolsas.json
+                # o es de una categoria extendida (扭蛋, 禮盒, 寶箱) que esta en drop_table
+                if d not in tablas_db and (d in drops_extra or (d.isdigit() and int(d) in drops_extra)):
+                    _CACHE_EXTRA[clave] = ('tabla', d)
+                elif cat in ('扭蛋', '禮盒', '寶箱') and d in tablas_db:
+                    _CACHE_EXTRA[clave] = ('tabla', d)
+        con.close()
+    except Exception as e:
+        log.warning('no se pudo cargar cache extra de bolsas (%s: %s)', type(e).__name__, e)
+    return _CACHE_EXTRA
+
+
+# Items especiales de mision que se abren con probabilidad (Earth Fruit, Fire Heart)
+OBJETOS_MISION_OPENABLES = {
+    12603: {  # Earth Fruit
+        'recompensa': 12604,  # Elite Core
+        'prob': 0.50,        # 50% de probabilidad al abrir
+        'nombre_recompensa': 'Elite Core',
+        'msg_exito': 'You got Elite Core x1!',
+        'msg_fallo': 'The Earth Fruit did not contain an Elite Core.',
+        'qid': 976,
+    },
+    8396: {   # Fire Heart
+        'recompensa': 8397,   # Mutant Element
+        'prob': 0.40,        # 40% segun serv_drop.xml
+        'nombre_recompensa': 'Mutant Element',
+        'msg_exito': 'You got Mutant Element x1!',
+        'msg_fallo': 'The Fire Heart crumbled to ash.',
+        'qid': 912,
+    }
+}
+
+
+# Piedras magicas selladas: al hacer clic derecho se desellan a su version activa
+PIEDRAS_SELLADAS = {
+    35533: 35530,  # Grand Angel Magic Stone
+    40530: 40533,  # Exu Angel Magic Stone
+    58143: 58146,  # Virt Angel Magic Stone
+    60534: 63816,  # Kyrio Angel Magic Stone
+    63813: 63816,  # Kyrio Angel Magic Stone
+    64974: 64977,  # Opha Angel Magic Stone
+    66633: 66636,  # Cheru Angel Magic Stone
+    69931: 69934,  # Sera Angel Magic Stone
+    72572: 72575,  # Singing Angel Magic Stone
+    75122: 75125,  # Angel Magic Stone
+    78143: 78146,  # Meteor Angel Magic Stone
+    81301: 81304,  # Starfall Angel Magic Stone
+}
+
+
 def es_bolsa(item_id: int) -> bool:
-    return int(item_id or 0) in _cargar()
+    iid = int(item_id or 0)
+    return iid in _cargar() or iid in _cargar_extra()
 
 
 _TABLA_CACHE = {}
@@ -140,6 +241,11 @@ def _sorteo(tabla_id):
             except Exception:
                 log.debug('no se pudo leer la tabla %s', tabla_id,
                           exc_info=True)
+        if not opciones:
+            drops_extra = _cargar_drops_extra()
+            raw_ops = drops_extra.get(str(tabla_id)) or drops_extra.get(int(tabla_id) if str(tabla_id).isdigit() else -1)
+            if raw_ops:
+                opciones = [(int(it), int(ct), int(pr)) for it, ct, pr in raw_ops]
         _TABLA_CACHE[tabla_id] = opciones
     if not opciones:
         return None
@@ -158,7 +264,8 @@ def _sorteo(tabla_id):
 
 def abrir(item_id: int):
     """Que sale de esa bolsa: (item, cuantos), o None si no se puede abrir."""
-    que = _cargar().get(int(item_id or 0))
+    iid = int(item_id or 0)
+    que = _cargar().get(iid) or _cargar_extra().get(iid)
     if not que:
         return None
     clase, valor = que
