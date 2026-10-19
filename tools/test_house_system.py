@@ -682,9 +682,11 @@ class TestHouseSystem(unittest.TestCase):
         # Option 508586 gives shop 159
         resp_va_shop = dialogos.respuesta_a(508586, val=41)
         self.assertEqual(int.from_bytes(resp_va_shop[0][:2], 'little'), 0x0034)
-        # Option 508587 gives WND_EXCHANGE 0x0206
+        # Option 508587 opens the official exchange group 254.  The S2C
+        # handler FUN_005f4890 is opcode 0x0151; 0x0206 is only the internal
+        # WND_EXCHANGE identifier and crashes this client when sent as opcode.
         resp_va_exch = dialogos.respuesta_a(508587, val=41)
-        self.assertEqual(int.from_bytes(resp_va_exch[0][:2], 'little'), 0x0206)
+        self.assertEqual(resp_va_exch[0], struct.pack('<HI', 0x0151, 254))
 
     def test_furniture_and_deeds_never_stack(self):
         import inventario as inv
@@ -838,10 +840,11 @@ class TestHouseSystem(unittest.TestCase):
         self.assertEqual((int.from_bytes(super_bc[:2], 'little'), super_bc[6]),
                          (0x0128, 11))
         self.assertEqual(super_bc[24:], b'0super text\x00')
+        # Equipo 4 y liga 5, del cliente (REA: envio 0x6366a0, etiqueta 0x632e70).
         self.assertEqual((int.from_bytes(team[:2], 'little'), team[6]),
-                         (0x0126, 5))
-        self.assertEqual((int.from_bytes(league[:2], 'little'), league[6]),
                          (0x0126, 4))
+        self.assertEqual((int.from_bytes(league[:2], 'little'), league[6]),
+                         (0x0126, 5))
         self.assertEqual((int.from_bytes(marriage[:2], 'little'), marriage[6]),
                          (0x0126, 14))
 

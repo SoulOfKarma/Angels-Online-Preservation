@@ -205,6 +205,19 @@ def _spawn(ses):
     # pone una pose de descanso y le borra la forma al personaje.
     b[61] = 7 if getattr(ses, 'sentado', False) else 0
 
+    # Gremio / Liga sobre la cabeza (Angel.exe 0x5e98b0 offset +0x74 en paquete, +0x73 logo):
+    try:
+        import gremios as _grm_p
+        cid_p = getattr(p, 'char_id', 0)
+        if cid_p:
+            g_p = _grm_p.obtener_gremio_de(cid_p)
+            if g_p:
+                b[113] = int(g_p.get('logo_id', 0) or 0) & 0xFF
+                g_nom = str(g_p.get('nombre', '')).encode('latin-1', 'replace')[:15] + b'\x00'
+                b[114:114 + len(g_nom)] = g_nom
+    except Exception:
+        pass
+
     return struct.pack('<H', APARECE) + bytes(b)
 
 
@@ -235,6 +248,8 @@ def _vivas(stage):
             continue
         if getattr(s, 'cerrada', False):
             continue
+        if isinstance(stage, tuple) and stage[0] == 501 and clave_de_mapa(s, 501) != stage:
+            continue
         vivas.append(s)
     _POR_MAPA[stage] = vivas
     return vivas
@@ -264,6 +279,9 @@ def clave_de_mapa(ses, stage):
     # Stage 500 is a parallel house space.  Players only share visibility
     # when they are visiting the same owner's house; otherwise every house
     # would leak into the same room.
+    if int(stage) == 501:
+        import granja_liga
+        return granja_liga.clave(ses)
     if int(stage) == 500:
         casa = getattr(ses, 'casa_visitando', None)
         owner_id = getattr(casa, 'owner_id', None)

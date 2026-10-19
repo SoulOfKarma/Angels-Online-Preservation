@@ -123,6 +123,85 @@ def _init_db():
                 nota TEXT NOT NULL DEFAULT ''
             );
             ''')
+            con.execute('''
+            CREATE TABLE IF NOT EXISTS gremios (
+                guild_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                nombre TEXT NOT NULL UNIQUE COLLATE NOCASE,
+                lider_char_id INTEGER NOT NULL,
+                nivel INTEGER NOT NULL DEFAULT 1,
+                logo_id INTEGER NOT NULL DEFAULT 0,
+                fondos INTEGER NOT NULL DEFAULT 0,
+                reputacion INTEGER NOT NULL DEFAULT 0,
+                cartel TEXT NOT NULL DEFAULT '',
+                rango_0 TEXT NOT NULL DEFAULT 'Colonel',
+                rango_1 TEXT NOT NULL DEFAULT 'Vice-colonel',
+                rango_2 TEXT NOT NULL DEFAULT 'Cadre',
+                rango_3 TEXT NOT NULL DEFAULT 'Members',
+                perm_0 INTEGER NOT NULL DEFAULT -1,
+                perm_1 INTEGER NOT NULL DEFAULT 16973824,
+                perm_2 INTEGER NOT NULL DEFAULT 65536,
+                perm_3 INTEGER NOT NULL DEFAULT 0,
+                creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            );
+            ''')
+            # Las bases anteriores a la contribucion de liga ya tienen la tabla.
+            if 'reputacion' not in {r[1] for r in con.execute('PRAGMA table_info(gremios)')}:
+                con.execute('ALTER TABLE gremios ADD COLUMN reputacion INTEGER NOT NULL DEFAULT 0')
+            con.execute('''
+            CREATE TABLE IF NOT EXISTS gremio_miembros (
+                guild_id INTEGER NOT NULL,
+                char_id INTEGER PRIMARY KEY,
+                nombre TEXT NOT NULL,
+                nivel INTEGER NOT NULL DEFAULT 1,
+                clase_id INTEGER NOT NULL DEFAULT 1,
+                rango INTEGER NOT NULL DEFAULT 3,
+                contribucion INTEGER NOT NULL DEFAULT 0,
+                ingreso_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                FOREIGN KEY (guild_id) REFERENCES gremios(guild_id) ON DELETE CASCADE
+            );
+            ''')
+            con.execute('CREATE INDEX IF NOT EXISTS idx_gremio_miembros_guild ON gremio_miembros(guild_id);')
+            con.execute('CREATE TABLE IF NOT EXISTS liga_farm_retorno ('
+                        'char_id INTEGER PRIMARY KEY, guild_id INTEGER NOT NULL, '
+                        'stage INTEGER NOT NULL, x INTEGER NOT NULL, y INTEGER NOT NULL)')
+            con.execute('''
+            CREATE TABLE IF NOT EXISTS gremio_territorios (
+                tw_stage INTEGER PRIMARY KEY,
+                guild_id INTEGER NOT NULL,
+                capturado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                FOREIGN KEY (guild_id) REFERENCES gremios(guild_id) ON DELETE CASCADE
+            );
+            ''')
+            con.execute('CREATE INDEX IF NOT EXISTS idx_gremio_territorios_guild ON gremio_territorios(guild_id);')
+            con.execute('''
+            CREATE TABLE IF NOT EXISTS liga_granja_cultivos (
+                guild_id INTEGER NOT NULL,
+                plot_id INTEGER NOT NULL,
+                char_id INTEGER NOT NULL,
+                char_name TEXT NOT NULL,
+                crop_id INTEGER NOT NULL,
+                sembrado_en INTEGER NOT NULL,
+                madura_en INTEGER NOT NULL,
+                marchita_en INTEGER NOT NULL,
+                riego_count INTEGER NOT NULL DEFAULT 0,
+                abono_count INTEGER NOT NULL DEFAULT 0,
+                cosechado_count INTEGER NOT NULL DEFAULT 0,
+                PRIMARY KEY (guild_id, plot_id)
+            );
+            ''')
+            # BANCO DE LIGA: los objetos por casilla. El oro va en gremios.fondos.
+            con.execute('''
+            CREATE TABLE IF NOT EXISTS gremio_banco (
+                guild_id INTEGER NOT NULL,
+                ranura INTEGER NOT NULL,
+                item_id INTEGER NOT NULL,
+                cantidad INTEGER NOT NULL DEFAULT 1,
+                datos TEXT NOT NULL DEFAULT '{}',
+                PRIMARY KEY (guild_id, ranura)
+            );
+            ''')
+            if 'datos' not in {r[1] for r in con.execute('PRAGMA table_info(gremio_banco)')}:
+                con.execute("ALTER TABLE gremio_banco ADD COLUMN datos TEXT NOT NULL DEFAULT '{}'")
             for clave, (valor, nota) in CONFIGURACION_POR_DEFECTO.items():
                 con.execute('INSERT OR IGNORE INTO configuracion (clave, valor, nota) VALUES (?, ?, ?)',
                             (clave, valor, nota))
@@ -1102,5 +1181,647 @@ def guardar_rango(usuario: str, char_id: int, rango: int, creditos: int = None):
     _actualizar_personaje(usuario, char_id, _mut)
 
 
+# =========================================================================
+# OPERACIONES DE BASE DE DATOS PARA GREMIOS (GUILDS / LIGAS)
+# =========================================================================
+
+def _fila_a_gremio(row) -> dict:
+    if not row:
+        return None
+    return {
+        'guild_id': int(row[0]),
+        'nombre': str(row[1]),
+        'lider_char_id': int(row[2]),
+        'nivel': int(row[3]),
+        'logo_id': int(row[4]),
+        'fondos': int(row[5]),
+        'cartel': str(row[6] or ''),
+        'rangos': [str(row[7]), str(row[8]), str(row[9]), str(row[10])],
+        'permisos': [int(row[11]), int(row[12]), int(row[13]), int(row[14])],
+        'creado_en': str(row[15]),
+        'reputacion': int(row[16]),
+    }
+
+
+def db_crear_gremio(nombre: str, lider_char_id: int, lider_nombre: str,
+                    lider_nivel: int = 1, lider_clase: int = 1,
+                    logo_id: int = 0, cartel: str = '', usuario=None, oro_final=None) -> int:
+    with _LOCK:
+        con = _get_conn()
+        try:
+            cur = con.cursor()
+            cur.execute('BEGIN IMMEDIATE')
+            if usuario is not None:
+                row = cur.execute('SELECT ranura, datos FROM personajes WHERE usuario=? AND char_id=?',
+                                  (usuario, lider_char_id)).fetchone()
+                if not row or oro_final is None or int(oro_final) < 0:
+                    raise ValueError('No se puede cobrar la creacion de la liga')
+                pj = json.loads(row[1])
+                pj['oro'] = int(oro_final)
+                cur.execute('UPDATE personajes SET datos=?, actualizado_en=CURRENT_TIMESTAMP '
+                            'WHERE usuario=? AND ranura=?',
+                            (json.dumps(pj, ensure_ascii=False), usuario, row[0]))
+            cur.execute('''
+            INSERT INTO gremios (nombre, lider_char_id, logo_id, cartel)
+            VALUES (?, ?, ?, ?)
+            ''', (nombre, lider_char_id, logo_id, cartel))
+            gid = cur.lastrowid
+            cur.execute('''
+            INSERT INTO gremio_miembros (guild_id, char_id, nombre, nivel, clase_id, rango, contribucion)
+            VALUES (?, ?, ?, ?, ?, 0, 0)
+            ''', (gid, lider_char_id, lider_nombre, lider_nivel, lider_clase))
+            con.commit()
+            _notificar_cambio()
+            return gid
+        except Exception:
+            con.rollback()
+            raise
+        finally:
+            con.close()
+
+
+def db_obtener_gremio(guild_id: int):
+    if not guild_id:
+        return None
+    with _LOCK:
+        con = _get_conn()
+        try:
+            row = con.execute('''
+            SELECT guild_id, nombre, lider_char_id, nivel, logo_id, fondos, cartel,
+                   rango_0, rango_1, rango_2, rango_3,
+                   perm_0, perm_1, perm_2, perm_3, creado_en, reputacion
+            FROM gremios WHERE guild_id = ?
+            ''', (guild_id,)).fetchone()
+            return _fila_a_gremio(row)
+        finally:
+            con.close()
+
+
+def db_obtener_gremio_por_nombre(nombre: str):
+    if not nombre:
+        return None
+    with _LOCK:
+        con = _get_conn()
+        try:
+            row = con.execute('''
+            SELECT guild_id, nombre, lider_char_id, nivel, logo_id, fondos, cartel,
+                   rango_0, rango_1, rango_2, rango_3,
+                   perm_0, perm_1, perm_2, perm_3, creado_en, reputacion
+            FROM gremios WHERE nombre = ? COLLATE NOCASE
+            ''', (nombre.strip(),)).fetchone()
+            return _fila_a_gremio(row)
+        finally:
+            con.close()
+
+
+def db_obtener_gremio_de_personaje(char_id: int):
+    if not char_id:
+        return None
+    with _LOCK:
+        con = _get_conn()
+        try:
+            row = con.execute('''
+            SELECT g.guild_id, g.nombre, g.lider_char_id, g.nivel, g.logo_id, g.fondos, g.cartel,
+                   g.rango_0, g.rango_1, g.rango_2, g.rango_3,
+                   g.perm_0, g.perm_1, g.perm_2, g.perm_3, g.creado_en, g.reputacion
+            FROM gremios g
+            JOIN gremio_miembros m ON g.guild_id = m.guild_id
+            WHERE m.char_id = ?
+            ''', (char_id,)).fetchone()
+            return _fila_a_gremio(row)
+        finally:
+            con.close()
+
+
+def db_obtener_miembros_gremio(guild_id: int) -> list:
+    if not guild_id:
+        return []
+    with _LOCK:
+        con = _get_conn()
+        try:
+            cur = con.cursor()
+            cur.execute('''
+            SELECT char_id, nombre, nivel, clase_id, rango, contribucion, ingreso_en
+            FROM gremio_miembros
+            WHERE guild_id = ?
+            ORDER BY rango ASC, nivel DESC
+            ''', (guild_id,))
+            res = []
+            for r in cur.fetchall():
+                res.append({
+                    'char_id': int(r[0]),
+                    'nombre': str(r[1]),
+                    'nivel': int(r[2]),
+                    'clase_id': int(r[3]),
+                    'rango': int(r[4]),
+                    'contribucion': int(r[5]),
+                    'ingreso_en': str(r[6]),
+                })
+            return res
+        finally:
+            con.close()
+
+
+def db_contribuir_gremio(usuario: str, char_id: int, guild_id: int,
+                         puntos: int, bolsa: dict, cantidades: dict):
+    """Guarda materiales consumidos y reputacion en la misma transaccion."""
+    puntos = int(puntos)
+    if not usuario or puntos <= 0:
+        raise ValueError('contribucion invalida')
+    with _LOCK:
+        con = _get_conn()
+        try:
+            con.execute('BEGIN IMMEDIATE')
+            row = con.execute('SELECT ranura, datos FROM personajes WHERE usuario = ? AND char_id = ?',
+                              (usuario, char_id)).fetchone()
+            miembro = con.execute('SELECT contribucion FROM gremio_miembros WHERE guild_id = ? AND char_id = ?',
+                                  (guild_id, char_id)).fetchone()
+            guild = con.execute('SELECT reputacion FROM gremios WHERE guild_id = ?', (guild_id,)).fetchone()
+            if not row or not miembro or not guild:
+                raise ValueError('personaje o liga inexistente')
+            if int(miembro[0]) + puntos > 0xffffffff or int(guild[0]) + puntos > 0xffffffff:
+                raise ValueError('limite de reputacion alcanzado')
+            import gremios
+            nuevo_nivel = gremios.nivel_por_reputacion(int(guild[0]) + puntos)
+            con.execute('UPDATE gremios SET nivel=MAX(nivel, ?) WHERE guild_id=?',
+                        (nuevo_nivel, guild_id))
+            ranura, datos = row
+            pj = json.loads(datos)
+            pj['inventario'] = {str(k): int(v) for k, v in sorted(bolsa.items(), key=_slot_sort_key)
+                                if v and int(v) > 0}
+            pj['cantidades'] = {str(k): int(v) for k, v in sorted(cantidades.items(), key=_slot_sort_key)
+                                if (int(v) > 1 or 497 <= int(k) <= 556)
+                                and (int(k) in bolsa or str(k) in bolsa)}
+            con.execute('UPDATE personajes SET datos = ?, actualizado_en = CURRENT_TIMESTAMP '
+                        'WHERE usuario = ? AND ranura = ?',
+                        (json.dumps(pj, ensure_ascii=False), usuario, ranura))
+            con.execute('UPDATE gremios SET reputacion = reputacion + ? WHERE guild_id = ?',
+                        (puntos, guild_id))
+            con.execute('UPDATE gremio_miembros SET contribucion = contribucion + ? '
+                        'WHERE guild_id = ? AND char_id = ?', (puntos, guild_id, char_id))
+            con.commit()
+            _notificar_cambio()
+        except Exception:
+            con.rollback()
+            raise
+        finally:
+            con.close()
+
+
+def db_agregar_miembro_gremio(guild_id: int, char_id: int, nombre: str,
+                              nivel: int = 1, clase_id: int = 1,
+                              rango: int = 3, contribucion: int = 0):
+    with _LOCK:
+        con = _get_conn()
+        try:
+            con.execute('''
+            INSERT INTO gremio_miembros
+            (guild_id, char_id, nombre, nivel, clase_id, rango, contribucion)
+            VALUES (?, ?, ?, ?, ?, ?, ?)
+            ''', (guild_id, char_id, nombre, nivel, clase_id, rango, contribucion))
+            con.commit()
+            _notificar_cambio()
+        except Exception:
+            con.rollback()
+            raise
+        finally:
+            con.close()
+
+
+def db_remover_miembro_gremio(char_id: int):
+    with _LOCK:
+        con = _get_conn()
+        try:
+            con.execute('DELETE FROM gremio_miembros WHERE char_id = ?', (char_id,))
+            con.commit()
+            _notificar_cambio()
+        except Exception:
+            con.rollback()
+            raise
+        finally:
+            con.close()
+
+
+def db_actualizar_rango_miembro(char_id: int, nuevo_rango: int):
+    with _LOCK:
+        con = _get_conn()
+        try:
+            con.execute('UPDATE gremio_miembros SET rango = ? WHERE char_id = ?',
+                        (nuevo_rango, char_id))
+            con.commit()
+            _notificar_cambio()
+        except Exception:
+            con.rollback()
+            raise
+        finally:
+            con.close()
+
+
+def db_actualizar_cartel_gremio(guild_id: int, nuevo_cartel: str):
+    with _LOCK:
+        con = _get_conn()
+        try:
+            con.execute('UPDATE gremios SET cartel = ? WHERE guild_id = ?',
+                        (nuevo_cartel, guild_id))
+            con.commit()
+            _notificar_cambio()
+        except Exception:
+            con.rollback()
+            raise
+        finally:
+            con.close()
+
+
+def db_actualizar_logo_gremio(guild_id: int, nuevo_logo: int):
+    with _LOCK:
+        con = _get_conn()
+        try:
+            con.execute('UPDATE gremios SET logo_id = ? WHERE guild_id = ?',
+                        (nuevo_logo, guild_id))
+            con.commit()
+            _notificar_cambio()
+        except Exception:
+            con.rollback()
+            raise
+        finally:
+            con.close()
+
+
+def db_actualizar_permisos_gremio(guild_id: int, rango_idx: int, nuevo_perm: int):
+    if not (0 <= rango_idx <= 3):
+        return
+    col = f'perm_{rango_idx}'
+    with _LOCK:
+        con = _get_conn()
+        try:
+            con.execute(f'UPDATE gremios SET {col} = ? WHERE guild_id = ?',
+                        (nuevo_perm, guild_id))
+            con.commit()
+            _notificar_cambio()
+        except Exception:
+            con.rollback()
+            raise
+        finally:
+            con.close()
+
+
+def db_actualizar_nombre_rango_gremio(guild_id: int, rango_idx: int, nuevo_nombre: str):
+    if not (0 <= rango_idx <= 3):
+        return
+    col = f'rango_{rango_idx}'
+    with _LOCK:
+        con = _get_conn()
+        try:
+            con.execute(f'UPDATE gremios SET {col} = ? WHERE guild_id = ?',
+                        (nuevo_nombre, guild_id))
+            con.commit()
+            _notificar_cambio()
+        except Exception:
+            con.rollback()
+            raise
+        finally:
+            con.close()
+
+
+def db_transferir_liderazgo_gremio(guild_id: int, nuevo_lider_char_id: int):
+    with _LOCK:
+        con = _get_conn()
+        try:
+            con.execute('BEGIN IMMEDIATE')
+            anterior = con.execute('SELECT lider_char_id FROM gremios WHERE guild_id=?',
+                                   (guild_id,)).fetchone()
+            nuevo = con.execute('SELECT 1 FROM gremio_miembros WHERE guild_id=? AND char_id=?',
+                                (guild_id, nuevo_lider_char_id)).fetchone()
+            if not anterior or not nuevo or anterior[0] == nuevo_lider_char_id:
+                raise ValueError('Transferencia de liga invalida')
+            con.execute('UPDATE gremio_miembros SET rango=1 WHERE guild_id=? AND char_id=?',
+                        (guild_id, anterior[0]))
+            con.execute('UPDATE gremio_miembros SET rango=0 WHERE guild_id=? AND char_id=?',
+                        (guild_id, nuevo_lider_char_id))
+            con.execute('UPDATE gremios SET lider_char_id = ? WHERE guild_id = ?',
+                        (nuevo_lider_char_id, guild_id))
+            con.commit()
+            _notificar_cambio()
+        except Exception:
+            con.rollback()
+            raise
+        finally:
+            con.close()
+
+
+def db_disolver_gremio(guild_id: int):
+    with _LOCK:
+        con = _get_conn()
+        try:
+            con.execute('DELETE FROM gremio_miembros WHERE guild_id = ?', (guild_id,))
+            con.execute('DELETE FROM gremios WHERE guild_id = ?', (guild_id,))
+            con.commit()
+            _notificar_cambio()
+        except Exception:
+            con.rollback()
+            raise
+        finally:
+            con.close()
+
+
 # Inicializar base de datos y migrar si es necesario al importar el modulo
 _init_db()
+
+
+# =========================================================================
+# BANCO DE LIGA
+# =========================================================================
+
+def db_banco_gremio(guild_id: int) -> dict:
+    """{ranura: (item_id, cantidad)} del banco de la liga."""
+    with _LOCK:
+        con = _get_conn()
+        try:
+            return {int(r): (int(i), int(c)) for r, i, c in con.execute(
+                'SELECT ranura, item_id, cantidad FROM gremio_banco WHERE guild_id = ?',
+                (int(guild_id),))}
+        finally:
+            con.close()
+
+
+def db_banco_gremio_detallado(guild_id: int) -> dict:
+    """Como db_banco_gremio, incluyendo los datos de cada objeto."""
+    with _LOCK:
+        con = _get_conn()
+        try:
+            return {int(r): (int(i), int(c), json.loads(d or '{}')) for r, i, c, d in con.execute(
+                'SELECT ranura, item_id, cantidad, datos FROM gremio_banco WHERE guild_id = ?',
+                (int(guild_id),))}
+        finally:
+            con.close()
+
+
+def db_mover_banco_gremio(usuario, char_id, guild_id, ranura, depositar,
+                           registro, bolsa, cantidades, mejoras, mascotas, mascota):
+    """Mueve el objeto y guarda la mochila en una sola transaccion SQLite."""
+    with _LOCK:
+        con = _get_conn()
+        try:
+            con.execute('BEGIN IMMEDIATE')
+            row = con.execute('SELECT ranura, datos FROM personajes WHERE usuario=? AND char_id=?',
+                              (usuario, char_id)).fetchone()
+            miembro = con.execute('SELECT 1 FROM gremio_miembros WHERE guild_id=? AND char_id=?',
+                                  (guild_id, char_id)).fetchone()
+            actual = con.execute('SELECT item_id, cantidad, datos FROM gremio_banco '
+                                 'WHERE guild_id=? AND ranura=?', (guild_id, ranura)).fetchone()
+            if not row or not miembro or (depositar and actual) or (not depositar and not actual):
+                raise ValueError('movimiento de banco invalido')
+            if not depositar and (int(actual[0]), int(actual[1]), json.loads(actual[2] or '{}')) != registro:
+                raise ValueError('el objeto del banco cambio')
+            pj = json.loads(row[1])
+            pj['inventario'] = {str(k): int(v) for k, v in bolsa.items() if v and int(v) > 0}
+            pj['cantidades'] = {str(k): int(v) for k, v in cantidades.items()
+                                if (int(v) > 1 or 497 <= int(k) <= 556)
+                                and (int(k) in bolsa or str(k) in bolsa)}
+            pj['mejoras'] = {str(k): v for k, v in mejoras.items() if v}
+            pj['mascotas'] = {str(k): {ck: cv for ck, cv in v.items() if ck != 'entidad'}
+                              for k, v in mascotas.items() if isinstance(v, dict)}
+            if mascota:
+                pj['mascota'] = {k: v for k, v in mascota.items() if k != 'entidad'}
+            else:
+                pj.pop('mascota', None)
+            con.execute('UPDATE personajes SET datos=?, actualizado_en=CURRENT_TIMESTAMP '
+                        'WHERE usuario=? AND ranura=?',
+                        (json.dumps(pj, ensure_ascii=False), usuario, row[0]))
+            if depositar:
+                item, cantidad, datos = registro
+                con.execute('INSERT INTO gremio_banco (guild_id, ranura, item_id, cantidad, datos) '
+                            'VALUES (?, ?, ?, ?, ?)',
+                            (guild_id, ranura, item, cantidad, json.dumps(datos, ensure_ascii=False)))
+            else:
+                con.execute('DELETE FROM gremio_banco WHERE guild_id=? AND ranura=?', (guild_id, ranura))
+            con.commit()
+            _notificar_cambio()
+        except Exception:
+            con.rollback()
+            raise
+        finally:
+            con.close()
+
+
+def db_mover_oro_banco_gremio(usuario, char_id, guild_id, cambio_banco, oro):
+    """Actualiza oro del personaje y de la liga sin dejar una mitad guardada."""
+    with _LOCK:
+        con = _get_conn()
+        try:
+            con.execute('BEGIN IMMEDIATE')
+            row = con.execute('SELECT ranura, datos FROM personajes WHERE usuario=? AND char_id=?',
+                              (usuario, char_id)).fetchone()
+            miembro = con.execute('SELECT 1 FROM gremio_miembros WHERE guild_id=? AND char_id=?',
+                                  (guild_id, char_id)).fetchone()
+            fondos = con.execute('SELECT fondos FROM gremios WHERE guild_id=?', (guild_id,)).fetchone()
+            if not row or not miembro or not fondos or not 0 <= int(fondos[0]) + cambio_banco <= 0xffffffff:
+                raise ValueError('movimiento de oro invalido')
+            pj = json.loads(row[1])
+            pj['oro'] = int(oro)
+            con.execute('UPDATE personajes SET datos=?, actualizado_en=CURRENT_TIMESTAMP '
+                        'WHERE usuario=? AND ranura=?',
+                        (json.dumps(pj, ensure_ascii=False), usuario, row[0]))
+            con.execute('UPDATE gremios SET fondos=fondos+? WHERE guild_id=?', (cambio_banco, guild_id))
+            con.commit()
+            _notificar_cambio()
+        except Exception:
+            con.rollback()
+            raise
+        finally:
+            con.close()
+
+
+def db_poner_banco_gremio(guild_id: int, ranura: int, item_id: int, cantidad: int):
+    with _LOCK:
+        con = _get_conn()
+        try:
+            con.execute('INSERT OR REPLACE INTO gremio_banco (guild_id, ranura, item_id, cantidad) '
+                        'VALUES (?, ?, ?, ?)', (int(guild_id), int(ranura), int(item_id), int(cantidad)))
+            con.commit()
+        finally:
+            con.close()
+
+
+def db_quitar_banco_gremio(guild_id: int, ranura: int):
+    with _LOCK:
+        con = _get_conn()
+        try:
+            con.execute('DELETE FROM gremio_banco WHERE guild_id = ? AND ranura = ?',
+                        (int(guild_id), int(ranura)))
+            con.commit()
+        finally:
+            con.close()
+
+
+def db_poner_fondos_gremio(guild_id: int, fondos: int):
+    with _LOCK:
+        con = _get_conn()
+        try:
+            con.execute('UPDATE gremios SET fondos = ? WHERE guild_id = ?',
+                        (max(0, int(fondos)), int(guild_id)))
+            con.commit()
+        finally:
+            con.close()
+
+
+# OPERACIONES DE TERRITORIO Y TOTEM WAR
+def db_asignar_territorio_gremio(tw_stage: int, guild_id: int):
+    """Asigna la propiedad de un campo de batalla (tw_stage 200..207) a una liga."""
+    with _LOCK:
+        con = _get_conn()
+        try:
+            con.execute('INSERT OR REPLACE INTO gremio_territorios (tw_stage, guild_id, capturado_en) '
+                        'VALUES (?, ?, CURRENT_TIMESTAMP)', (int(tw_stage), int(guild_id)))
+            con.commit()
+            _notificar_cambio()
+        finally:
+            con.close()
+
+
+def db_obtener_dueno_de_territorio(tw_stage: int):
+    """Devuelve el guild_id que posee el territorio tw_stage, o None."""
+    with _LOCK:
+        con = _get_conn()
+        try:
+            row = con.execute('SELECT guild_id FROM gremio_territorios WHERE tw_stage = ?',
+                              (int(tw_stage),)).fetchone()
+            return int(row[0]) if row else None
+        finally:
+            con.close()
+
+
+def db_gremio_tiene_territorio(guild_id: int) -> bool:
+    """Si la liga posee algun territorio (condicion 28: HAVE_GUILD_REGION)."""
+    if not guild_id:
+        return False
+    with _LOCK:
+        con = _get_conn()
+        try:
+            row = con.execute('SELECT 1 FROM gremio_territorios WHERE guild_id = ? LIMIT 1',
+                              (int(guild_id),)).fetchone()
+            return bool(row)
+        finally:
+            con.close()
+
+
+def db_obtener_territorios_de_gremio(guild_id: int) -> list:
+    """Lista de tw_stage que posee una liga."""
+    if not guild_id:
+        return []
+    with _LOCK:
+        con = _get_conn()
+        try:
+            rows = con.execute('SELECT tw_stage FROM gremio_territorios WHERE guild_id = ?',
+                               (int(guild_id),)).fetchall()
+            return [int(r[0]) for r in rows]
+        finally:
+            con.close()
+
+
+def db_antiguedad_miembro_gremio(char_id: int) -> int:
+    """Segundos transcurridos desde que el personaje ingreso a su gremio (condicion 82)."""
+    if not char_id:
+        return 0
+    with _LOCK:
+        con = _get_conn()
+        try:
+            row = con.execute("SELECT strftime('%s', 'now') - strftime('%s', ingreso_en) "
+                              "FROM gremio_miembros WHERE char_id = ?", (int(char_id),)).fetchone()
+            if row and row[0] is not None:
+                return max(0, int(row[0]))
+        finally:
+            con.close()
+    return 0
+
+
+# OPERACIONES DE CULTIVOS DE GRANJA DE LIGA
+def db_guardar_cultivo(guild_id: int, plot_id: int, char_id: int, char_name: str,
+                       crop_id: int, sembrado_en: int, madura_en: int, marchita_en: int):
+    with _LOCK:
+        con = _get_conn()
+        try:
+            con.execute('''
+            INSERT OR REPLACE INTO liga_granja_cultivos
+            (guild_id, plot_id, char_id, char_name, crop_id, sembrado_en, madura_en, marchita_en, riego_count, abono_count, cosechado_count)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, 0, 0, 0)
+            ''', (int(guild_id), int(plot_id), int(char_id), str(char_name), int(crop_id),
+                  int(sembrado_en), int(madura_en), int(marchita_en)))
+            con.commit()
+        finally:
+            con.close()
+
+
+def db_obtener_cultivos_gremio(guild_id: int) -> list:
+    with _LOCK:
+        con = _get_conn()
+        try:
+            rows = con.execute('''
+            SELECT plot_id, char_id, char_name, crop_id, sembrado_en, madura_en, marchita_en, riego_count, abono_count, cosechado_count
+            FROM liga_granja_cultivos WHERE guild_id = ?
+            ''', (int(guild_id),)).fetchall()
+            res = []
+            for r in rows:
+                res.append({
+                    'plot_id': int(r[0]), 'char_id': int(r[1]), 'char_name': r[2],
+                    'crop_id': int(r[3]), 'sembrado_en': int(r[4]), 'madura_en': int(r[5]),
+                    'marchita_en': int(r[6]), 'riego_count': int(r[7]), 'abono_count': int(r[8]),
+                    'cosechado_count': int(r[9])
+                })
+            return res
+        finally:
+            con.close()
+
+
+def db_obtener_cultivo(guild_id: int, plot_id: int):
+    with _LOCK:
+        con = _get_conn()
+        try:
+            r = con.execute('''
+            SELECT plot_id, char_id, char_name, crop_id, sembrado_en, madura_en, marchita_en, riego_count, abono_count, cosechado_count
+            FROM liga_granja_cultivos WHERE guild_id = ? AND plot_id = ?
+            ''', (int(guild_id), int(plot_id))).fetchone()
+            if not r:
+                return None
+            return {
+                'plot_id': int(r[0]), 'char_id': int(r[1]), 'char_name': r[2],
+                'crop_id': int(r[3]), 'sembrado_en': int(r[4]), 'madura_en': int(r[5]),
+                'marchita_en': int(r[6]), 'riego_count': int(r[7]), 'abono_count': int(r[8]),
+                'cosechado_count': int(r[9])
+            }
+        finally:
+            con.close()
+
+
+def db_actualizar_riego_cultivo(guild_id: int, plot_id: int):
+    with _LOCK:
+        con = _get_conn()
+        try:
+            con.execute('UPDATE liga_granja_cultivos SET riego_count = riego_count + 1 WHERE guild_id = ? AND plot_id = ?',
+                        (int(guild_id), int(plot_id)))
+            con.commit()
+        finally:
+            con.close()
+
+
+def db_actualizar_abono_cultivo(guild_id: int, plot_id: int):
+    with _LOCK:
+        con = _get_conn()
+        try:
+            con.execute('UPDATE liga_granja_cultivos SET abono_count = abono_count + 1 WHERE guild_id = ? AND plot_id = ?',
+                        (int(guild_id), int(plot_id)))
+            con.commit()
+        finally:
+            con.close()
+
+
+def db_eliminar_cultivo(guild_id: int, plot_id: int):
+    with _LOCK:
+        con = _get_conn()
+        try:
+            con.execute('DELETE FROM liga_granja_cultivos WHERE guild_id = ? AND plot_id = ?',
+                        (int(guild_id), int(plot_id)))
+            con.commit()
+        finally:
+            con.close()
+

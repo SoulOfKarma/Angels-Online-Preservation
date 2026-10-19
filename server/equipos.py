@@ -91,13 +91,23 @@ def grupo_de(ses):
     return list(_GRUPOS.get(lider) or []) if lider else []
 
 
+def cuantos(ses) -> int:
+    """Numero de miembros en el grupo de ses, o 1 si va solo."""
+    g = grupo_de(ses)
+    return len(g) if g else 1
+
+
+def lider_de(ses) -> int:
+    """char_id del lider del grupo de ses, o 0 si no esta en un grupo."""
+    return _DE_QUIEN.get(_char_id(ses), 0)
+
+
 def cartel_de_invitacion(ses_lider) -> bytes:
-    """El s2c 0x0023 que le saca el cuadro al invitado (38 bytes con opcode)."""
-    b = bytearray(36)
+    """El s2c 0x0023 que le saca el cuadro al invitado (38 bytes cuerpo, 40 bytes con opcode)."""
+    b = bytearray(38)
     struct.pack_into('<I', b, 0, _char_id(ses_lider))
     n = _nombre(ses_lider).encode('ascii', 'replace')[:16]
     b[4:4 + len(n)] = n
-    b[21] = 0
     return struct.pack('<H', CARTEL) + bytes(b)
 
 
@@ -137,33 +147,96 @@ def _vida_pct(s):
     return max(0, min(100, int(round((getattr(p, 'hp', 0) or 0) * 100.0 / tope))))
 
 
-def lista_del_grupo(lider_id, para=None) -> bytes:
-    """El s2c 0x0024 con los miembros, tal como lo arma el servidor real.
+def _mp_pct(s):
+    p = getattr(s, 'personaje', None)
+    if p is None:
+        return 0
+    try:
+        import app as _app
+        tope = _app._mana_max(p, getattr(s, 'inventario', None))
+    except Exception:
+        tope = getattr(p, 'mp_max', 100)
+    tope = max(1, int(tope or 1), int(getattr(p, 'mp', 0) or 0))
+    return max(0, min(100, int(round((getattr(p, 'mp', 0) or 0) * 100.0 / tope))))
 
-    `para` es quien la va a recibir: la entidad de cada miembro (+4) es la
-    que ESE cliente conoce (ver _entidad_vista)."""
+
+def serializar_miembro(s, para=None) -> bytes:
+    """Bloque de 78 bytes con los datos de un miembro para 0x0024 y 0x0026.
+
+    Estructura exacta verificada en Angel.exe (0x506fc0, 0x603ba0, 0x58bc00):
+      +0   u32 char_id
+      +4   u32 entity_id (vista por 'para', 0 si esta en otro mapa)
+      +8   16 B nombre (ASCIIZ nulo-rellenado)
+      +24  u8 nivel
+      +25  u32 stage (el id de mapa donde esta el miembro)
+      +29  u16 tile_x
+      +31  u16 tile_y
+      +33  u16 hp_pct (0..100)
+      +35  u16 mp_pct (0..100)
+      +37  10 * u16 buffs (20 bytes)
+      +57  10 * u16 debuffs (20 bytes)
+      +77  u8 genero (0=masculino, 1=femenino)
+    """
+    p = getattr(s, 'personaje', None)
+    b = bytearray(TAM_MIEMBRO)
+    struct.pack_into('<I', b, 0, _char_id(s))
+    struct.pack_into('<I', b, 4, _entidad_vista(s, para))
+    n = _nombre(s).encode('ascii', 'replace')[:16]
+    b[8:8 + len(n)] = n
+    if p is not None:
+        b[24] = max(1, min(255, int(getattr(p, 'nivel', 1) or 1)))
+        struct.pack_into('<I', b, 25, int(getattr(p, 'stage', 0) or 0))
+        struct.pack_into('<H', b, 29, max(0, int(getattr(p, 'tile_x', 0) or 0)))
+        struct.pack_into('<H', b, 31, max(0, int(getattr(p, 'tile_y', 0) or 0)))
+        struct.pack_into('<H', b, 33, _vida_pct(s))
+        struct.pack_into('<H', b, 35, _mp_pct(s))
+        buffs = getattr(p, 'buffs', {}) or {}
+        if isinstance(buffs, dict):
+            b_ids = [int(bid) for bid in buffs.keys() if str(bid).isdigit()][:10]
+            for idx, bid in enumerate(b_ids):
+                struct.pack_into('<H', b, 37 + idx * 2, bid & 0xFFFF)
+        b[77] = int(getattr(p, 'genero', 0) or 0) & 1
+    return bytes(b)
+
+
+ACTUALIZACION = 0x0026  # s2c 0x0026 (80 bytes con opcode)
+
+
+def paquete_actualizacion_miembro(s, para=None) -> bytes:
+    """El s2c 0x0026 (80 B con opcode) que actualiza vida, mana y posicion de un miembro."""
+    return struct.pack('<H', ACTUALIZACION) + serializar_miembro(s, para)
+
+
+def notificar_stats(ses):
+    """Envia 0x0026 a todos los companeros del grupo cuando cambian HP, MP o posicion."""
+    lider = _DE_QUIEN.get(_char_id(ses))
+    if not lider:
+        return
+    miembros = _GRUPOS.get(lider) or []
+    if len(miembros) <= 1:
+        return
+    for otro in miembros:
+        if otro is not ses:
+            try:
+                otro.enviar(paquete_actualizacion_miembro(ses, para=otro))
+                if hasattr(otro, 'volcar'):
+                    otro.volcar()
+            except Exception:
+                pass
+
+
+def lista_del_grupo(lider_id, para=None) -> bytes:
+    """El s2c 0x0024 con los miembros, tal como lo arma el servidor real."""
     miembros = _GRUPOS.get(lider_id) or []
-    b = bytearray(CABECERA + TAM_MIEMBRO * len(miembros))
-    struct.pack_into('<I', b, 0, 0x0000006A)
-    b[4] = 0
-    struct.pack_into('<I', b, 5, int(lider_id))
-    b[9] = len(miembros) & 0xFF
-    for i, s in enumerate(miembros):
-        o = CABECERA + i * TAM_MIEMBRO
-        p = getattr(s, 'personaje', None)
-        struct.pack_into('<I', b, o, _char_id(s))
-        struct.pack_into('<I', b, o + 4, _entidad_vista(s, para))
-        n = _nombre(s).encode('ascii', 'replace')[:16]
-        b[o + 8:o + 8 + len(n)] = n
-        if p is not None:
-            struct.pack_into('<H', b, o + 24,
-                             min(0xFFFF, int(getattr(p, 'nivel', 1) or 1)))
-            struct.pack_into('<H', b, o + 26, 0)
-            struct.pack_into('<I', b, o + 28, int(getattr(p, 'class_id', 1) or 1))
-            # Sobre la vida maxima de verdad (con equipo y pasivas), no la
-            # base guardada: con 600k de vida y 30k de base salia al 100%.
-            struct.pack_into('<H', b, o + 32, _vida_pct(s))
-    return struct.pack('<H', LISTA) + bytes(b)
+    cab = bytearray(CABECERA)
+    struct.pack_into('<I', cab, 0, 0x0000006A)
+    cab[4] = 0
+    struct.pack_into('<I', cab, 5, int(lider_id))
+    cab[9] = len(miembros) & 0xFF
+    partes = [cab]
+    for s in miembros:
+        partes.append(serializar_miembro(s, para))
+    return struct.pack('<H', LISTA) + b''.join(partes)
 
 
 def _avisar(lider_id):
@@ -201,6 +274,8 @@ def invitar(ses, nombre_invitado, buscar_sesion):
         mio = _char_id(ses)
         _GRUPOS[mio] = [ses]
         _DE_QUIEN[mio] = mio
+    if len(_GRUPOS.get(mio, [])) >= 5:
+        return False, 'el grupo ya esta lleno (maximo 5)'
     _PENDIENTES[_char_id(otro)] = mio
     try:
         otro.enviar(cartel_de_invitacion(ses))
@@ -333,15 +408,39 @@ def ascender(ses, objetivo):
 EXPULSAR = 2
 ASCENDER = 3
 DEJAR = 4
+DESHACER = 5
+RECHAZAR = 7
+
+
+def rechazar(ses):
+    """El invitado rechaza la invitacion (c2s 0x0018 07, groupdeny)."""
+    yo = _char_id(ses)
+    lider = _PENDIENTES.pop(yo, None)
+    if lider:
+        log.info('%s rechaza la invitacion al grupo de %s', _nombre(ses), lider)
+        return True
+    return False
+
+
+def deshacer(ses):
+    """El lider deshace el grupo entero (c2s 0x0018 05, groupdisband)."""
+    yo = _char_id(ses)
+    lider = _DE_QUIEN.get(yo)
+    if lider == yo:
+        return salir(ses)
+    return False
 
 
 def accion(ses, codigo, cuerpo=b''):
     """El c2s 0x0018: [u8 accion][u32 id del miembro, si va a alguien].
 
-    Medido en el IGG: 01 aceptar; 04 dejar el grupo (Leave Team); 02 con el
-    id de un miembro, al que luego se vuelve a invitar (expulsar); 03 con el
-    id del lider, mandado por otro miembro (pasar el mando). El 02 y el 03
-    no traen respuesta capturada: son lo que sugiere lo que pasa despues.
+    Mapeo de acciones segun nativas de Angel.exe (0x6152b0):
+      01: groupjoin / aceptar
+      02: groupkick / expulsar (con target_id)
+      03: grouppromote / ascender lider (con target_id)
+      04: groupleave / salir
+      05: groupdisband / deshacer grupo
+      07: groupdeny / rechazar invitacion
     """
     objetivo = struct.unpack_from('<I', cuerpo, 1)[0] if len(cuerpo) >= 5 else 0
     if codigo == ACEPTAR:
@@ -350,6 +449,12 @@ def accion(ses, codigo, cuerpo=b''):
         return 'expulsar' if expulsar(ses, objetivo) else 'nada'
     if codigo == ASCENDER:
         return 'ascender' if ascender(ses, objetivo) else 'nada'
+    if codigo == DESHACER:
+        return 'deshacer' if deshacer(ses) else 'nada'
+    if codigo == RECHAZAR:
+        return 'rechazar' if rechazar(ses) else 'nada'
+    if codigo == DEJAR:
+        return 'salir' if salir(ses) else 'nada'
     return 'salir' if salir(ses) else 'nada'
 
 

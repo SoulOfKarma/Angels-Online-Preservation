@@ -420,12 +420,20 @@ def chat_privado(entity_id: int, canal: int, nombre: str, texto: str) -> bytes:
     return struct.pack('<HIBI17s', 0x0126, int(entity_id), int(canal), 0, autor) + mensaje
 
 
+# CANAL 4 = EQUIPO y 5 = LIGA. Sacado del cliente con REA (19/10/2026): el
+# envio (0x6366a0) manda el 4 desde la pestana de equipo -- si no hay grupo
+# avisa "You are not a member of any teams." -- y el 5 desde la de liga --
+# "You are not in any league now." --, y al recibir (0x5f3c40 -> 0x632e70)
+# el 4 sale con la etiqueta de equipo y el 5 con la de liga. Estaban al reves.
+CANAL_EQUIPO, CANAL_LIGA, CANAL_MATRIMONIO = 4, 5, 14
+
+
 def chat_team(entity_id: int, nombre: str, texto: str) -> bytes:
-    return chat_privado(entity_id, 5, nombre, texto)
+    return chat_privado(entity_id, CANAL_EQUIPO, nombre, texto)
 
 
 def chat_league(entity_id: int, nombre: str, texto: str) -> bytes:
-    return chat_privado(entity_id, 4, nombre, texto)
+    return chat_privado(entity_id, CANAL_LIGA, nombre, texto)
 
 
 def chat_marriage(entity_id: int, nombre: str, texto: str) -> bytes:

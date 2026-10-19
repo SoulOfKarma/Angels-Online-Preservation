@@ -34,14 +34,21 @@ _CMDS_CLEARSKILLS = ('clearskills', 'clearskill')
 _CMDS_PET = ('pet', 'mascota')
 _CMDS_QUEST = ('quest', 'mision')
 _CMDS_BALL = ('ball', 'baile', 'fiesta')
+_CMDS_GUILDLEVEL = ('guildlevel', 'glevel', 'gldlevel', 'gldlvl', 'guildlvl', 'glvl', 'guildrank', 'grank', 'setguildlevel')
+_CMDS_GUILDREP = ('guildrep', 'grep', 'gldrep')
+_CMDS_GUILD = ('guild', 'gremio', 'liga')
+_CMDS_TW = ('settw', 'settotemwar', 'tw', 'totemwar')
+_CMDS_FARM = ('plant', 'sembrar', 'farm', 'granja')
 _CMDS = frozenset(('help',) + _CMDS_ITEM + _CMDS_LEVEL + _CMDS_LEVELALL
                   + _CMDS_SKILLS + _CMDS_SKILLSALL + _CMDS_SKILLS5
-                  + _CMDS_CLEARSKILLS + _CMDS_PET + _CMDS_QUEST + _CMDS_BALL)
+                  + _CMDS_CLEARSKILLS + _CMDS_PET + _CMDS_QUEST + _CMDS_BALL
+                  + _CMDS_GUILDLEVEL + _CMDS_GUILDREP + _CMDS_GUILD
+                  + _CMDS_TW + _CMDS_FARM)
 
-AYUDA = ("GM: /item <id> [qty]  /level <n>  /levelall <n>  "
+AYUDA = ("GM: /item <id> [qty]  /level <n>  /levelall <n>  /guildlevel <1..10>  /guildrep <n>  "
          "/skills [lv]  /skillsall [lv]  /skills5  /clearskills  "
          "/pet level|exp|path|evolve  /ball reset  /quest <id> <step>  "
-         "/rango [1..20]  /estacion <normal|navidad|halloween|sakura|verano>")
+         "/rango [1..20]  /estacion <normal|navidad|halloween|sakura|verano>  /farm enter  /plant <id>")
 
 
 def _app():
@@ -362,6 +369,8 @@ def texto_de(cuerpo: bytes):
     for off in (0, 1, 2, 4):
         if len(cuerpo) <= off:
             continue
+        if off > 0 and (32 <= cuerpo[off - 1] < 127):
+            continue
         chunk = cuerpo[off:]
         nul = chunk.find(b'\x00')
         if nul >= 0:
@@ -445,6 +454,32 @@ def parsear(texto: str):
     if cmd in _CMDS_BALL:
         sub = parts[1].lower() if len(parts) > 1 else 'reset'
         return ('ball', sub)
+    if cmd in _CMDS_GUILDLEVEL:
+        if len(parts) < 2:
+            return ('err', 'usage: /guildlevel <1..10>')
+        try:
+            return ('guildlevel', int(parts[1], 0))
+        except ValueError:
+            return ('err', 'usage: /guildlevel <1..10>')
+    if cmd in _CMDS_GUILDREP:
+        if len(parts) < 2:
+            return ('err', 'usage: /guildrep <amount>')
+        try:
+            return ('guildrep', int(parts[1], 0))
+        except ValueError:
+            return ('err', 'usage: /guildrep <amount>')
+    if cmd in _CMDS_GUILD:
+        if len(parts) >= 3 and parts[1].lower() in ('level', 'rank', 'lvl', 'nv', 'nivel'):
+            try:
+                return ('guildlevel', int(parts[2], 0))
+            except ValueError:
+                return ('err', 'usage: /guild level <1..10>')
+        if len(parts) >= 3 and parts[1].lower() in ('rep', 'reputacion', 'fame'):
+            try:
+                return ('guildrep', int(parts[2], 0))
+            except ValueError:
+                return ('err', 'usage: /guild rep <amount>')
+        return ('guild', parts[1:] if len(parts) > 1 else [])
     return None
 
 
@@ -532,6 +567,63 @@ def aplicar(ses, parsed) -> str:
         if getattr(ses, 'usuario', None):
             _cta_gm.guardar_casa(ses.usuario, p.char_id, _c_gm)
         msg = "House ball cooldown has been reset! You can host a ball now."
+        _avisar(ses, msg)
+        return msg
+    if kind == 'guildlevel':
+        import gremios as _grm_cmd
+        p = getattr(ses, 'personaje', None)
+        if not p:
+            return "no character in world yet"
+        g = _grm_cmd.obtener_gremio_de(p.char_id)
+        if not g:
+            _avisar(ses, "You are not in a league.")
+            return "not in a league"
+        target_lvl = max(1, min(10, int(parsed[1])))
+        umbrales = _grm_cmd.umbrales_nivel()
+        target_rep = umbrales[target_lvl - 1]
+        with cuentas._LOCK:
+            con = cuentas._get_conn()
+            try:
+                con.execute('UPDATE gremios SET nivel = ?, reputacion = max(reputacion, ?) WHERE guild_id = ?',
+                            (target_lvl, target_rep, g['guild_id']))
+                con.commit()
+                cuentas._notificar_cambio()
+            finally:
+                con.close()
+        actualizado = cuentas.db_obtener_gremio(g['guild_id'])
+        mundos = getattr(ses, 'mundos_ref', None) or [ses]
+        for s_m in _grm_cmd.miembros_online_de(g['guild_id'], mundos):
+            s_m.enviar(_grm_cmd.paquete_datos_gremio(actualizado, s_m.personaje.char_id))
+        ses.enviar(_grm_cmd.paquete_datos_gremio(actualizado, p.char_id))
+        msg = f"League '{g['nombre']}' promoted to level/rank {target_lvl} (Rep: {actualizado['reputacion']})."
+        _avisar(ses, msg)
+        return msg
+    if kind == 'guildrep':
+        import gremios as _grm_cmd
+        p = getattr(ses, 'personaje', None)
+        if not p:
+            return "no character in world yet"
+        g = _grm_cmd.obtener_gremio_de(p.char_id)
+        if not g:
+            _avisar(ses, "You are not in a league.")
+            return "not in a league"
+        rep_val = max(0, int(parsed[1]))
+        calc_lvl = _grm_cmd.nivel_por_reputacion(rep_val)
+        with cuentas._LOCK:
+            con = cuentas._get_conn()
+            try:
+                con.execute('UPDATE gremios SET reputacion = ?, nivel = max(nivel, ?) WHERE guild_id = ?',
+                            (rep_val, calc_lvl, g['guild_id']))
+                con.commit()
+                cuentas._notificar_cambio()
+            finally:
+                con.close()
+        actualizado = cuentas.db_obtener_gremio(g['guild_id'])
+        mundos = getattr(ses, 'mundos_ref', None) or [ses]
+        for s_m in _grm_cmd.miembros_online_de(g['guild_id'], mundos):
+            s_m.enviar(_grm_cmd.paquete_datos_gremio(actualizado, s_m.personaje.char_id))
+        ses.enviar(_grm_cmd.paquete_datos_gremio(actualizado, p.char_id))
+        msg = f"League '{g['nombre']}' reputation set to {rep_val} (Level: {actualizado['nivel']})."
         _avisar(ses, msg)
         return msg
     return "unknown"

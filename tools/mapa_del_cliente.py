@@ -116,6 +116,11 @@ def mapas_del_cliente():
     salida = {}
     for p in glob.glob(str(PAKS / '*' / 'map' / '*.mpc')):
         m = re.fullmatch(r'map(\d+)\.mpc', os.path.basename(p))
+        if os.path.basename(p).lower() == 'farm.mpc':
+            o = _orden(os.path.dirname(os.path.dirname(p)))
+            if 501 not in salida or o > salida[501][0]:
+                salida[501] = (o, p)
+            continue
         if not m:
             continue        # 1map906.mpc y companía: no son escenarios
         st = int(m.group(1))

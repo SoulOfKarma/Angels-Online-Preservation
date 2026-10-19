@@ -244,6 +244,23 @@ a guess, it says so.
     - **Banker Guide (Option 5030)**: Correctly displays the official storage usage explanation (5034) with warehouse and safe usage instructions, rather than prematurely opening storage.
     - **Breeze Woods Bankers Fix**: Corrected NPC type (`npc_type: 1686`, sprite 40034) for all five Breeze Woods bank clerks.
     - **Universal Voucher Angel Spawns**: Spawned Voucher Angel (`npc_type: 14334`, `sprite: 40041`) near the banks in all four faction cities (Aurora City `[313, 150]`, Dark City `[165, 144]`, Breeze Woods `[313, 142]`, Iron Castle `[141, 136]`), Palm Base (`[154, 76]`), and Angel Lyceum (`[181, 98]`). Lifted the `stage == 41` restriction in `dialogos.py` to allow exchanging 10M and 100M Angelic Vouchers (Shop 159) everywhere.
+- **League / Guild System (Ligas)**:
+  - **Creation Across All Four Cities**: League Clerks in Aurora, Breeze, Iron, and Dark cities route cleanly to dialogue tree 5776, validating Level 25+, Peerage Rank 3+, and 60,000 gold. Triggers native creation window via `0x001D` action 20.
+  - **Immediate Login Sync**: `0x0055` (`paquete_datos_gremio`), `0x0058` (member roster), and `0x0056` (announcement bulletin) delivered immediately upon connection (`0x0002`) without requiring a map transition.
+  - **Overhead Name & Crest (`0x0001`)**: Displays official guild logo ID (byte 113) and ASCIIZ league name (byte 114) hovering above player characters.
+  - **Guild Warehouse / Vault (`0x0059`)**: Distinct from personal storage (`0x004E`). Enforces granular permissions (`GUILD_PERM_WITHDRAW_ITEM = 1`, `GUILD_PERM_WITHDRAW_MONEY = 2`), atomic SQLite item/gold transfers, and preserves pet/enhancement metadata.
+  - **Reputation & Promotion**: Progression thresholds loaded from `update26/setting/level.xml` (0 to 9,375,000 reputation across levels 1 to 10). Material contributions processed via C2S `0x004B` using `guild_contrib.xml`.
+  - **Chat Routing**: Automatic routing for league channel 5 (`@`, `/g `, `/guild `, `/l `, `/league `) and party channel 4 (`#`, `/t `, `/team `, `/p `, `/party `).
+  - **GM Management**: Dedicated commands `/guildlevel <1..10>` and `/guildrep <amount>`, completely isolated from character level `/level <1..471>`.
+- **Guild Farm (Stage 501)**:
+  - **Gated Access**: Gated to League Level $\ge 6$ on server side; opened via native UI button (`0x014C`) or `/farm enter`.
+  - **Isolated Instances & Persistence**: Isolated per-guild room `(501, 'league', guild_id)`. Entering logs prior stage and tile; exiting through the authentic tornado at `(97, 8)` returns the character to their exact origin.
+  - **Crop Lifecycle**: Planting via `/plant <crop_id> [plot_id 1..200]`, watering via C2S `0x014D`, fertilizing via C2S `0x014E`, and harvesting via C2S `0x014F` with maturity validation, authentic harvest items from `crops.xml`, and native EXP floating packets.
+- **Totem War Infrastructure & Private Territories**:
+  - **Territory Ownership**: Dedicated `gremio_territorios` tracking, GM assignment (`/settw <tw_stage> <guild_id>`, `/tw list`), and event condition checks (28 `HAVE_GUILD_REGION`, 76 `SPEC_MAP_OWN_GUILD`, 82 `GUILD_MEMBER_TIME` $\ge$ 3 days).
+  - **Heaven General (Tree 5920)**: Populated in all 4 cities, offering rank badge shop 71 (items 3735..3748), daily combat/production reward boxes (3776..3783, 9255..9258, 13409..13412), hidden daily token 3754, and territory teleport (`GOTO_GUILD_REGION`).
+  - **Terra Keeper (Tree 5936) & Governor (Tree 5940)**: Gated entry to private territory areas (Area I stage 50, Area II stage 100, Area III stage 117, Area IV stage 377) and Thorn Wasteland stage 16 routing. Governor provides personal bank, guild vault, and Regression Scroll (3734).
+- **17 Dungeons & Instances Generated**: 17 instance map templates generated with parallel map execution, boss spawns, and guaranteed boss loot drops (Chaos bosses, Bashi's Gaze, quest progression drops).
 
 **The customised client**
 

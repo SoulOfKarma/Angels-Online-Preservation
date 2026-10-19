@@ -2460,6 +2460,12 @@ def opciones_de(linea: bytes):
     return [struct.unpack_from('<I', linea, base + 4 * k)[0] for k in range(n)]
 
 
+# Las opciones "I wish to use the Guild's warehouse." de los banqueros de cada
+# ciudad, y "Guild Storage" del Safe (msg.xml del cliente).
+OPCIONES_ALMACEN_LIGA = frozenset((5238, 7870, 508064, 508887, 509791, 510119, 511094,
+                                   511745, 512980, 514109, 514647, 515199, 515842, 516209))
+
+
 def respuesta_a(opcion_id: int, entidad: int = 0, val: int = 4,
                 nombre: str = '', stage: int = 0, nivel: int = 0,
                 faccion: str = "Heaven", graduado: bool = False):
@@ -2510,12 +2516,11 @@ def respuesta_a(opcion_id: int, entidad: int = 0, val: int = 4,
     if opcion_id == 7869: # Individual Storage, hydrated by app with actual contents
         cierre = struct.pack('<H', 0x0012) + FIN
         return (struct.pack('<HH', 0x004E, 0), cierre)
-    if opcion_id == 7870:
-        # No guild membership/storage backend exists yet (Ctx.tiene_guild
-        # returns False). Never substitute the personal bank for guild data.
-        import clases
-        return (clases.aviso("Guild Storage requires an available guild storage service.", tipo=0),
-                struct.pack('<H', 0x0012) + FIN)
+    if opcion_id in OPCIONES_ALMACEN_LIGA:
+        # El ALMACEN DE LA LIGA: s2c 0x0059 (ver gremios.paquete_banco_gremio).
+        # Va de marcador, como el 0x004E del propio: app.py lo sustituye por
+        # el de la liga del jugador, o avisa si no tiene liga.
+        return (struct.pack('<HI', 0x0059, 0), struct.pack('<H', 0x0012) + FIN)
 
     if opcion_id in (7891, 7894, 7899): # Leave / Stay / Close
         return (struct.pack('<H', 0x0012) + FIN,)
@@ -3143,11 +3148,12 @@ def respuesta_a(opcion_id: int, entidad: int = 0, val: int = 4,
         pkg_cierre = struct.pack('<H', 0x0012) + FIN
         return (pkg_tienda, pkg_cierre)
     if opcion_id == 508587:
-        # "Exchange Angelic Vouchers" -> Open WND_EXCHANGE (0x0206)
-        recetas = [11342, 11343, 12961, 12962, 12963, 12964, 12965]
-        pkg_exch = struct.pack('<HI', 0x0206, len(recetas)) + b''.join(
-            struct.pack('<II', r, 0) for r in recetas
-        )
+        # S2C 0x0151 [u32 exchange_group].  FUN_005f4890 reads the group at
+        # body+0, creates WND_ITEM/CreateExchangeWnd and fills the recipes
+        # locally from exchange.xml.  WND_EXCHANGE is a window name, not the
+        # network opcode 0x0206 (sending that value crashes the IGG client).
+        # Recipes 11342/11343 belong to the official voucher group 254.
+        pkg_exch = struct.pack('<HI', 0x0151, 254)
         pkg_cierre = struct.pack('<H', 0x0012) + FIN
         return (pkg_exch, pkg_cierre)
 
@@ -3155,12 +3161,19 @@ def respuesta_a(opcion_id: int, entidad: int = 0, val: int = 4,
         # Past the Time Spirit no abre una tienda: 659 es el grupo de
         # exchange.xml. shop.xml solo llega hasta 226, por eso la antigua
         # respuesta 0x0034/659 mostraba una ventana vacia.
-        recetas = [21575, 21576, 21577]
-        pkg_exch = struct.pack('<HI', 0x0206, len(recetas)) + b''.join(
-            struct.pack('<II', r, 0) for r in recetas
-        )
+        # S2C 0x0151 entrega el ID de grupo; el cliente carga por su cuenta
+        # las recetas 21575..21577 desde exchange.xml.
+        pkg_exch = struct.pack('<HI', 0x0151, 659)
+        # Las recetas 21576/21577 tienen limite diario (10). Al abrir la
+        # ventana el cliente vacia su mapa de contadores; si el servidor no
+        # envia 0x018B, las considera temporalmente bloqueadas. El cuerpo es
+        # [u32 cantidad][u32 receta, u32 usados]... (FUN_005f4ac0).
+        # Todavia no se ha usado ninguna al comenzar la sesion.
+        pkg_limites = struct.pack('<HI', 0x018B, 2)
+        pkg_limites += struct.pack('<II', 21576, 0)
+        pkg_limites += struct.pack('<II', 21577, 0)
         pkg_cierre = struct.pack('<H', 0x0012) + FIN
-        return (pkg_exch, pkg_cierre)
+        return (pkg_exch, pkg_limites, pkg_cierre)
 
     # Angel Raphael (Fighting Palace): 5063 "I'm ready to go to the Angel Lyceum."
     if opcion_id == 5063:

@@ -848,6 +848,48 @@ _JEFES_CHAOS = frozenset({
 })
 
 
+_TIPOS_DE_TROPA = None
+
+
+def es_de_tropa(npc_type: int) -> bool:
+    """Si ese tipo sale en GRUPO (mas de 2 en un mismo mapa): monstruo comun.
+
+    Muchas instancias marcan con 王 a casi todo -- Leviathan's Bedroom a 540
+    bichos, Botti Palace a 422, la Dinosaur Arena a 350 -- y con eso todos
+    soltaban botin al 100%, como un jefe, y llenaban la mochila. Un jefe sale
+    uno (o dos) por mapa; lo que sale en tropa no lo es aunque lleve la marca.
+    Se cuenta en las plantillas y en las zonas que saca el mapa por evento.
+    """
+    global _TIPOS_DE_TROPA
+    if _TIPOS_DE_TROPA is None:
+        import collections as _co
+        import json as _js
+        tropa = set()
+        try:
+            import login as _lg_t
+            for f in set(_lg_t.PLANTILLAS_POR_STAGE.values()):
+                try:
+                    d = _js.loads((pathlib.Path(__file__).parent / 'plantillas' / f)
+                                  .read_text(encoding='utf-8'))
+                except Exception:
+                    continue
+                c = _co.Counter(int(e.get('npc_type') or 0) for e in d.get('spawns', [])
+                                if e.get('monstruo') and not e.get('apagado'))
+                tropa |= {t for t, n in c.items() if n > 2}
+        except Exception:
+            pass
+        try:
+            import eventos as _ev_t
+            for d in _ev_t._datos()['stages'].values():
+                for g in (d.get('generadores') or {}).values():
+                    if int(g.get('cuantos') or 0) > 2:
+                        tropa |= {int(t) for t in g.get('tipos') or []}
+        except Exception:
+            pass
+        _TIPOS_DE_TROPA = frozenset(tropa)
+    return int(npc_type or 0) in _TIPOS_DE_TROPA
+
+
 def _cargar_drops_plantilla() -> dict:
     global _DROPS_PLANTILLA
     if _DROPS_PLANTILLA is None:
@@ -1091,7 +1133,7 @@ def botin_items(npc_type: int, nombre: str = '', nivel: int = 0) -> list:
     # tienen botin al 100%; los demas pasan por la probabilidad normal. Fuera
     # de esos mapas se conserva el comportamiento previo de los jefes.
     jefe_garantizado = (npc_type in _JEFES_CHAOS if npc_type in _MONSTRUOS_CHAOS
-                        else es_jefe(npc_type))
+                        else (es_jefe(npc_type) and not es_de_tropa(npc_type)))
     if jefe_garantizado:
         drops.append(random.choice(candidatos))
         return drops

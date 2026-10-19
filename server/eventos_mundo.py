@@ -64,6 +64,13 @@ SABE = frozenset((
     30,     # TIMER_ENABLE   (los temporizadores ya corren: app._arrancar_temporizador)
     31,     # TIMER_COUNTER
     39,     # GROUP
+    48,     # TEAMID
+    21,     # HAVE_GUILD
+    28,     # HAVE_GUILD_REGION
+    33,     # GUILD_PERM
+    34,     # GUILD_LEVEL
+    76,     # SPEC_MAP_OWN_GUILD
+    82,     # GUILD_MEMBER_TIME
     56,     # IS_LIVE
     3,      # PROPERTY (solo nivel y rango)
     58,     # HOUSE_IS_OWNER
@@ -154,8 +161,14 @@ class EstadoDeMapa:
         for m in (monstruos or {}).values():
             if not getattr(m, 'vivo', False):
                 continue
-            z = self.zona_de(getattr(m, 'spawn_tile', None)
-                             or (getattr(m, 'spawn_x', 0), getattr(m, 'spawn_y', 0)))
+            # La zona apuntada en la plantilla manda (tools/zonas_de_plantilla.py);
+            # 0 = de la plantilla y sin zona. Si no hay, por cercania, como siempre.
+            z = getattr(m, 'zona_plantilla', None)
+            if z is None:
+                z = self.zona_de(getattr(m, 'spawn_tile', None)
+                                 or (getattr(m, 'spawn_x', 0), getattr(m, 'spawn_y', 0)))
+            elif z == 0:
+                z = None
             if z is not None:
                 cuenta[z] = cuenta.get(z, 0) + 1
         return cuenta
@@ -279,6 +292,9 @@ def estado_de(ses):
     mapa limpio y hay que volver a ponerle lo hecho.
     """
     stage = getattr(getattr(ses, 'personaje', None), 'stage', 0) or 0
+    if stage == 501:
+        import granja_liga
+        return granja_liga.sala(ses)
     e = getattr(ses, 'estado_mapa', None)
     if e is not None and e.stage == stage:
         return e
@@ -443,6 +459,71 @@ class ContextoSesion(ev.Contexto):
             return max(1, int(n or 1))
         except Exception:
             return 1
+
+    def teamid(self):
+        try:
+            import equipos as _eq
+            return _eq.lider_de(self.ses)
+        except Exception:
+            return 0
+
+    def tiene_guild(self):
+        if not self.p:
+            return False
+        try:
+            import gremios as _grm
+            return bool(_grm.obtener_gremio_de(self.p.char_id))
+        except Exception:
+            return False
+
+    def nivel_liga(self):
+        import gremios
+        g = gremios.obtener_gremio_de(self.p.char_id) if self.p else None
+        return int(g['nivel']) if g else 0
+
+    def permiso_liga(self, permiso):
+        import gremios
+        g = gremios.obtener_gremio_de(self.p.char_id) if self.p else None
+        return bool(g and gremios._tiene_permiso(g, self.p.char_id, permiso))
+
+    def tiene_region_liga(self):
+        """Condicion 28: HAVE_GUILD_REGION(). Si la liga del jugador posee algun territorio."""
+        if not self.p:
+            return False
+        try:
+            import gremios as _grm
+            g = _grm.obtener_gremio_de(self.p.char_id)
+            if not g:
+                return False
+            import cuentas as _cta
+            return _cta.db_gremio_tiene_territorio(g['guild_id'])
+        except Exception:
+            return False
+
+    def liga_posee_territorio(self, tw_stage):
+        """Condicion 76: SPEC_MAP_OWN_GUILD(tw_stage). Si la liga del jugador posee ese campo de batalla."""
+        if not self.p:
+            return False
+        try:
+            import gremios as _grm
+            g = _grm.obtener_gremio_de(self.p.char_id)
+            if not g:
+                return False
+            import cuentas as _cta
+            dueno = _cta.db_obtener_dueno_de_territorio(tw_stage)
+            return dueno == g['guild_id']
+        except Exception:
+            return False
+
+    def antiguedad_en_liga(self):
+        """Condicion 82: segundos que el personaje lleva como miembro de su liga."""
+        if not self.p:
+            return 0
+        try:
+            import cuentas as _cta
+            return _cta.db_antiguedad_miembro_gremio(self.p.char_id)
+        except Exception:
+            return 0
 
     # -- casas ------------------------------------------------------------
     def _obtener_casa_actual(self):
@@ -621,8 +702,14 @@ def al_pisar(ses, tile, solo_chocar=False):
     if not evento:
         return []
     ctx = ContextoSesion(ses, estado)
-    disparo = ev.DISPAROS_AL_PASAR if not ctx.es_alma else (ev.ALMA_PISA,
-                                                           ev.ALMA_CHOCA)
+    # El VIVO solo pisa y choca; los de alma (8 y 9) son para el muerto. Antes
+    # el vivo disparaba tambien los de alma, y en los 61 eventos en que son
+    # distintos eso saltaba la mecanica: en la Dinosaur Arena el tornado del
+    # Asiento del Rey Dragon ("solo se sale convertido en alma") devolvia al
+    # vivo a la entrada, y en Gulp Room el vivo recibia el "no se puede" Y
+    # ademas el GOTO del alma. Ningun evento tiene solo disparos de alma.
+    disparo = (ev.PISAR, ev.CHOCAR) if not ctx.es_alma else (ev.ALMA_PISA,
+                                                             ev.ALMA_CHOCA)
     if solo_chocar:
         disparo = (ev.CHOCAR,) if not ctx.es_alma else (ev.ALMA_CHOCA,)
     return _sin_mision(estado.stage, evento, _permiso_una_vez(

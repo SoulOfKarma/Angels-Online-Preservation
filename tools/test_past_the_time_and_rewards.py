@@ -66,10 +66,19 @@ class TestPastTheTimeAndQuestRewards(unittest.TestCase):
         # 659 is an exchange group, not a shop (shop.xml ends at 226).
         self.assertNotIn(158514, dialogos.TIENDAS_POR_OPCION)
         resp_exchange = dialogos.respuesta_a(158514)
-        self.assertEqual(struct.unpack_from('<H', resp_exchange[0], 0)[0], 0x0206)
-        self.assertEqual(struct.unpack_from('<I', resp_exchange[0], 2)[0], 3)
-        recetas = [struct.unpack_from('<I', resp_exchange[0], 6 + 8 * i)[0]
-                   for i in range(3)]
+        # FUN_005f4890 (S2C 0x0151) receives one u32 exchange-group ID and
+        # constructs WND_EXCHANGE from the client's local exchange.xml.
+        self.assertEqual(resp_exchange[0], struct.pack('<HI', 0x0151, 659))
+        # FUN_005f4ac0 (S2C 0x018B) initializes the per-recipe counters.
+        # Without these entries, daily recipes are rendered in red as
+        # "Temporary can't exchange" even when the player has materials.
+        self.assertEqual(
+            resp_exchange[1],
+            struct.pack('<HI', 0x018B, 2)
+            + struct.pack('<II', 21576, 0)
+            + struct.pack('<II', 21577, 0),
+        )
+        recetas = [21575, 21576, 21577]
         self.assertEqual(recetas, [21575, 21576, 21577])
         for recipe_id in recetas:
             receta = app._obtener_receta_exchange(recipe_id)

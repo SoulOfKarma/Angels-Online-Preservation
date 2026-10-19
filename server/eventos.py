@@ -224,6 +224,21 @@ class Contexto:
     def tiene_guild(self):
         return False
 
+    def nivel_liga(self):
+        return 0
+
+    def permiso_liga(self, permiso):
+        return False
+
+    def tiene_region_liga(self):
+        return False
+
+    def liga_posee_territorio(self, tw_stage):
+        return False
+
+    def antiguedad_en_liga(self):
+        return 0
+
     def tiene_estado_magico(self, estado):
         return False
 
@@ -348,6 +363,16 @@ def evaluar(numero, parms, ctx):
         return ctx.es_gm()
     if numero == 21:                                    # HAVE_GUILD()
         return ctx.tiene_guild()
+    if numero == 28:                                    # HAVE_GUILD_REGION()
+        return ctx.tiene_region_liga()
+    if numero == 33:                                    # GUILD_PERM(permiso)
+        return ctx.permiso_liga(_p(parms, 0))
+    if numero == 34:                                    # GUILD_LEVEL(cmp, nivel)
+        return _cmp(_p(parms, 0), ctx.nivel_liga(), _p(parms, 1))
+    if numero == 76:                                    # SPEC_MAP_OWN_GUILD(tw_stage)
+        return ctx.liga_posee_territorio(_p(parms, 0))
+    if numero == 82:                                    # GUILD_MEMBER_TIME(segundos)
+        return ctx.antiguedad_en_liga() >= _p(parms, 0)
     if numero == 22:                                    # PARA_ENTER(mapa)
         return ctx.puede_entrar_en_paralelo(_p(parms, 0))
     if numero == 29:                                    # MAPVAR(mapa, var, cmp, v)
@@ -393,8 +418,8 @@ def evaluar(numero, parms, ctx):
 # Las condiciones que evaluar() sabe contestar. Un Contexto declara en su
 # `sabe` las que de verdad puede alimentar, que siempre es un subconjunto.
 SE_EVALUAN = frozenset((1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15, 16,
-                        17, 20, 21, 22, 29, 30, 31, 38, 39, 48, 56,
-                        58, 59, 60, 61, 62, 63, 64, 65, 70))
+                        17, 20, 21, 22, 28, 29, 30, 31, 33, 34, 38, 39, 48, 56,
+                        58, 59, 60, 61, 62, 63, 64, 65, 70, 76, 82))
 
 
 def _pares(parms):
@@ -415,12 +440,12 @@ def traducir(numero, parms):
     if numero == 3:
         return ('viajar', _p(parms, 0), _p(parms, 1))
     if numero == 37:
-        # CHANGE_MAP a un CANAL: (mapa, canal, tag). Los tornados de los
-        # Playground preguntan "Training Palace" x3 y cada opcion lleva
-        # [44, 0|1|2, tag]: A1, A2 y A3 (stages 44, 144 y 244, el mismo
-        # map044). El canal no se distingue, igual que los Playground A1..A5
-        # ya iban todos al mismo stage: va al mapa base y a la casilla del tag.
-        return ('viajar', _p(parms, 0), _p(parms, 2))
+        # CHANGE_PARA_MAP (mapa, paralelo, tag). Usado por los Terra Keeper de
+        # mapas de territorio (map016, etc.) para saltar a Area I..IV (50, 100, 117, 377).
+        return ('cambiar_mapa_paralelo', _p(parms, 0), _p(parms, 1), _p(parms, 2))
+    if numero == 50:
+        # GOTO_GUILD_REGION: teletransporte al territorio o area de liga.
+        return ('ir_a_region_liga',)
     if numero == 4:
         return ('paso', _p(parms, 0), _p(parms, 1))
     if numero == 7:
@@ -446,8 +471,15 @@ def traducir(numero, parms):
     if numero == 21:
         return ('npc', _p(parms, 0), _p(parms, 1), _p(parms, 2),
                 _p(parms, 3), _p(parms, 4))
+    if numero == 22:
+        # OPEN_BANK(tipo): 0 personal, 1 liga. Usado por el Governor de Areas 50/100/117/377.
+        return ('abrir_banco', _p(parms, 0))
     if numero == 24:
         return ('cerrar_dialogo',)
+    if numero == 34:
+        # EVENT_ACT_OPEN_CREATE_GUILD (eventdef.xml): abre la ventana de crear
+        # liga. La del League Clerk de las cuatro ciudades (dialogo 5776).
+        return ('abrir_crear_liga',)
     if numero == 25:
         return ('dialogo', _p(parms, 0))
     if numero == 29:
@@ -517,8 +549,8 @@ def traducir(numero, parms):
 
 
 # Las acciones que traducir() convierte en efecto.
-SE_TRADUCEN = frozenset((1, 3, 4, 7, 8, 9, 10, 12, 13, 14, 18, 19, 20, 21, 24,
-                         25, 29, 30, 31, 33, 36, 39, 41, 42, 47, 51, 52, 53,
+SE_TRADUCEN = frozenset((1, 3, 4, 7, 8, 9, 10, 12, 13, 14, 18, 19, 20, 21, 22, 24,
+                         25, 34, 37, 29, 30, 31, 33, 36, 39, 41, 42, 47, 50, 51, 52, 53,
                          54, 55, 56, 57, 60, 63, 67, 70, 72, 78, 81,
                          89, 90, 91, 92, 93, 94, 95, 96, 104))
 def _alguna(condiciones, ctx):

@@ -778,6 +778,7 @@ def _map_object_spawn(entity_id: int, sprite: int, tile: tuple, direccion: int =
 # faltaba en la de la IA. El Lyceum y el Fighting Palace NO van aqui:
 # se tratan aparte y cada consumidor los anade si los necesita.
 PLANTILLAS_POR_STAGE = {
+    501 : 'league_farm.json',
     # Las dos primeras salas de Magic Kichen Path, la instancia a la
     # que se entra por el tornado de (250,171) de Lava Cave. Pobladas
     # desde una captura del cliente GLOBAL, cuyo 0x0008 mide 46 bytes
@@ -1160,6 +1161,9 @@ def interactivos_casa(player_level=1):
 
 def poblar(stage: int, player_level=1):
     """NPC, monstruos, portales y totems propios del mapa."""
+    if stage == 501:
+        import granja_liga
+        return [_map_object_spawn(granja_liga.PORTAL_ENTIDAD, 60001, granja_liga.PORTAL_TILE)]
     if stage == 500:
         return interactivos_casa(player_level)
     salida = npc_de_los_xml(stage)

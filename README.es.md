@@ -254,6 +254,23 @@ Path`, `Third Spirit`, `Limit Breaker`, `Shadow Meld`, `Killer Intent`) y la
     - **Guía del Banquero (Opción 5030)**: Muestra correctamente la explicación oficial del funcionamiento del almacén y las cajas fuertes (5034) en lugar de abrir el almacén prematuramente.
     - **Corrección de Banqueros en Breeze Woods**: Corregido el tipo de entidad (`npc_type: 1686`, sprite 40034) para los cinco cajeros del banco de Breeze Woods.
     - **Aparición Universal de Voucher Angel**: Añadido el NPC Voucher Angel (`npc_type: 14334`, `sprite: 40041`) junto a los bancos de las cuatro capitales de facción (Aurora City `[313, 150]`, Dark City `[165, 144]`, Breeze Woods `[313, 142]`, Iron Castle `[141, 136]`), en Palm Base (`[154, 76]`) y en Angel Lyceum (`[181, 98]`). Eliminada la restricción de `stage == 41` en `dialogos.py` para permitir canjear los Angelic Vouchers de 10M y 100M (Tienda 159) en todo el juego.
+- **Sistema de Ligas y Gremios (Guild / League)**:
+  - **Creación en las cuatro ciudades**: Los League Clerks en Aurora, Breeze, Iron y Dark enrutan al diálogo 5776, validando nivel 25+, rango de personaje 3+ y 60.000 de oro. Abre la ventana de creación nativa mediante `0x001D` acción 20.
+  - **Sincronización en Login**: Los paquetes `0x0055` (`paquete_datos_gremio`), `0x0058` (lista de miembros) y `0x0056` (cartel de liga) se envían de inmediato al conectar (`0x0002`) sin requerir cambio de mapa.
+  - **Nombre y Emblema Flotante (`0x0001`)**: Muestra el ID de logotipo oficial (byte 113) y el nombre ASCIIZ del clan (byte 114) flotando sobre la cabeza del personaje.
+  - **Almacén de Liga (`0x0059`)**: Independiente del banco personal (`0x004E`). Control de permisos por rango (`GUILD_PERM_WITHDRAW_ITEM = 1`, `GUILD_PERM_WITHDRAW_MONEY = 2`), movimientos SQLite atómicos y conservación íntegra de mejoras y datos de mascota.
+  - **Reputación y Subida de Rango**: Umbrales leídos de `update26/setting/level.xml` (0 a 9.375.000 de reputación en niveles 1 a 10). Aportación de materiales mediante C2S `0x004B` según `guild_contrib.xml`.
+  - **Enrutamiento de Chat**: Enrutamiento directo al canal de liga 5 (`@`, `/g `, `/guild `, `/l `, `/league `) y al canal de grupo 4 (`#`, `/t `, `/team `, `/p `, `/party `).
+  - **Administración GM**: Comandos dedicados `/guildlevel <1..10>` y `/guildrep <cantidad>`, totalmente aislados del nivel de personaje `/level <1..471>`.
+- **Granja de Liga (Guild Farm - Stage 501)**:
+  - **Control de Acceso**: Exige Nivel de Liga $\ge 6$ comprobado en el servidor; acceso por botón nativo de la UI (`0x014C`) o `/farm enter`.
+  - **Instancias Aisladas y Retorno**: Instancia privada por clan `(501, 'league', guild_id)`. Se guardan las coordenadas de origen; el tornado original en `(97, 8)` devuelve al jugador al mapa y posición exactos de donde entró.
+  - **Ciclo de Siembra y Cosecha**: Siembra con `/plant <crop_id> [plot_id 1..200]`, riego con C2S `0x014D`, abono con C2S `0x014E` y cosecha con C2S `0x014F`, con comprobación de madurez, drops auténticos de `crops.xml` y paquetes flotantes de experiencia.
+- **Territorios y NPCs de Totem War**:
+  - **Propiedad de Territorios**: Tabla `gremio_territorios`, comandos de asignación GM (`/settw <tw_stage> <guild_id>`, `/tw list`) y condiciones de scripts (28 `HAVE_GUILD_REGION`, 76 `SPEC_MAP_OWN_GUILD`, 82 `GUILD_MEMBER_TIME` $\ge$ 3 días).
+  - **Heaven General (Árbol 5920)**: Presente en las 4 capitales; tienda 71 de insignias de clan (3735..3748), entrega diaria de cofres de combate/producción (3776..3783, 9255..9258, 13409..13412), sello diario 3754 y teletransporte a territorio (`GOTO_GUILD_REGION`).
+  - **Terra Keeper (Árbol 5936) y Governor (Árbol 5940)**: Control de acceso a áreas de territorio (Área I stage 50, Área II stage 100, Área III stage 117, Área IV stage 377) y accesos especiales desde Thorn Wasteland (stage 16). El Governor provee banco personal, almacén de clan y Regression Scroll (3734).
+- **17 Mazmorras e Instancias Generadas**: 17 plantillas de mapa de instancia operativas en mapas paralelos con spawns de bosses y drops garantizados (bosses Chaos, Bashi's Gaze, ítems de misión).
 
 **El cliente, personalizado**
 
