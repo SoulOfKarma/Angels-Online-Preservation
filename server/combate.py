@@ -830,6 +830,14 @@ def botin(nivel_monstruo: int = 1, npc_type: int = 0) -> int:
 _DROPS_CACHE = {}
 _DROPS_PLANTILLA = None
 _MON_INFO_CACHE = {}
+_DROP_OFICIAL_CACHE = {}
+
+# En los XML de las dos instancias Chaos todos los monstruos vienen marcados
+# con 王, incluidos los mobs comunes.  Esa marca sirve para sus inmunidades,
+# pero no significa que todos tengan botin garantizado.  achievement.xml es
+# mas preciso: identifica como Boss/C-Boss a estos tres NPC.
+_MONSTRUOS_CHAOS = frozenset(range(23673, 23725)) | {23745, 23839}
+_JEFES_CHAOS = frozenset({23688, 23714, 23839})
 
 
 def _cargar_drops_plantilla() -> dict:
@@ -962,7 +970,7 @@ def _nivel_plausible(lista_raw, nivel_monstruo: int) -> bool:
 
 def botin_items(npc_type: int, nombre: str = '', nivel: int = 0) -> list:
     """Items que suelta el monstruo de drops_monstruos.json o content.db con multiplicador de drops."""
-    global _DROPS_CACHE, _MON_INFO_CACHE
+    global _DROPS_CACHE, _MON_INFO_CACHE, _DROP_OFICIAL_CACHE
     if npc_type in _DROPS_CACHE:
         candidatos = _DROPS_CACHE[npc_type]
     else:
@@ -972,10 +980,11 @@ def botin_items(npc_type: int, nombre: str = '', nivel: int = 0) -> list:
         drops_por_nom = plantilla.get('por_nombre') or {}
         drops_por_nv = plantilla.get('por_nivel') or {}
 
-        # 1. Buscar por npc_type directo en drops_monstruos.json
-        lista_raw = drops_por_id.get(str(npc_type))
+        lista_raw = None
+        tabla_oficial = False
 
-        # Consultar nombre, nivel y drop_id en content.db si hace falta
+        # Resolver primero el drop_id REAL. Las claves de la plantilla son
+        # IDs de tablas, no npc_type; ambos numeros pueden coincidir por azar.
         mon_nom = nombre
         mon_nv = nivel
         mon_did = None
@@ -996,8 +1005,9 @@ def botin_items(npc_type: int, nombre: str = '', nivel: int = 0) -> list:
                         mon_nom = mon_nom or str(mrow[1] or '').strip()
                         mon_nv = mon_nv or int(mrow[2] or 1)
                         _MON_INFO_CACHE[npc_type] = (mon_did, mon_nom, mon_nv)
-                        if not lista_raw and mon_did:
+                        if mon_did:
                             lista_raw = drops_por_id.get(mon_did)
+                            tabla_oficial = bool(lista_raw)
                         if not lista_raw and mon_did:
                             dt = con.execute('select * from drop_table where id=?', (mon_did,)).fetchone()
                             if dt:
@@ -1009,8 +1019,14 @@ def botin_items(npc_type: int, nombre: str = '', nivel: int = 0) -> list:
                                     if it and str(it).isdigit() and int(it) > 0:
                                         c_val = int(cnt) if cnt and str(cnt).isdigit() else 1
                                         candidatos.append((int(it), c_val))
+                                tabla_oficial = bool(candidatos)
                 except Exception:
                     pass
+
+        # Compatibilidad con filas antiguas sin drop_id propio.
+        if not lista_raw and not candidatos and not mon_did:
+            lista_raw = drops_por_id.get(str(npc_type))
+            tabla_oficial = bool(lista_raw)
 
         # 2. Fallback por nombre del monstruo en serv_drop.xml / drop.xml
         if not lista_raw and not candidatos and mon_nom:
@@ -1021,6 +1037,8 @@ def botin_items(npc_type: int, nombre: str = '', nivel: int = 0) -> list:
                     if nom_k.startswith(pref) and nom_k[len(pref):] in drops_por_nom:
                         lista_raw = drops_por_nom[nom_k[len(pref):]]
                         break
+            if lista_raw:
+                tabla_oficial = True
             # EL NOMBRE NO BASTA: hay bichos homonimos con cien niveles de
             # diferencia. El juego reusa nombres, y buscar la tabla de drops
             # por el nombre hace que el grande herede la del chico:
@@ -1036,6 +1054,7 @@ def botin_items(npc_type: int, nombre: str = '', nivel: int = 0) -> list:
             # vale y se pasa al cubo de nivel, que da equipo de su nivel.
             if lista_raw and mon_nv and not _nivel_plausible(lista_raw, mon_nv):
                 lista_raw = None
+                tabla_oficial = False
 
         # 3. Fallback por bucket de nivel para regiones nuevas (Forest, Desert, Candy, Floating, etc.)
         if not lista_raw and not candidatos and drops_por_nv:
@@ -1054,16 +1073,18 @@ def botin_items(npc_type: int, nombre: str = '', nivel: int = 0) -> list:
                     candidatos.append((int(par[0]), max(1, int(par[1]))))
 
         _DROPS_CACHE[npc_type] = candidatos
+        _DROP_OFICIAL_CACHE[npc_type] = tabla_oficial
 
     import configuracion
     drops = []
     if not candidatos:
         return drops
-    # LOS JEFES SUELTAN SIEMPRE. No es una tirada con mejor suerte: es que
-    # un jefe no se va nunca con las manos vacias, siempre cae algo de su
-    # lista. El juego los marca con la columna 王 ("rey") de la tabla
-    # monster, y hay 1.513.
-    if es_jefe(npc_type):
+    # Los mapas Chaos marcan todos sus mobs con 王. Solo sus bosses oficiales
+    # tienen botin al 100%; los demas pasan por la probabilidad normal. Fuera
+    # de esos mapas se conserva el comportamiento previo de los jefes.
+    jefe_garantizado = (npc_type in _JEFES_CHAOS if npc_type in _MONSTRUOS_CHAOS
+                        else es_jefe(npc_type))
+    if jefe_garantizado:
         drops.append(random.choice(candidatos))
         return drops
     prob = min(0.95, 0.90 * configuracion.multiplicador_drop())

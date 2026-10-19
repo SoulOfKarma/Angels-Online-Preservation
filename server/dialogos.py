@@ -2391,7 +2391,6 @@ TIENDAS_POR_OPCION = {
     504138: 57,  # Spell V Scrolls, Classic Trinkets -> Shop 57
     504136: 56,  # Robots, Production Gears or Collection Cores -> Shop 56
     508586: 159, # Voucher Angel: Buy Angelic Vouchers -> Shop 159
-    158514: 659, # Past the Time Spirit: Exchange Time Crystal -> Shop 659
 }
 
 
@@ -3146,6 +3145,17 @@ def respuesta_a(opcion_id: int, entidad: int = 0, val: int = 4,
     if opcion_id == 508587:
         # "Exchange Angelic Vouchers" -> Open WND_EXCHANGE (0x0206)
         recetas = [11342, 11343, 12961, 12962, 12963, 12964, 12965]
+        pkg_exch = struct.pack('<HI', 0x0206, len(recetas)) + b''.join(
+            struct.pack('<II', r, 0) for r in recetas
+        )
+        pkg_cierre = struct.pack('<H', 0x0012) + FIN
+        return (pkg_exch, pkg_cierre)
+
+    if opcion_id == 158514:
+        # Past the Time Spirit no abre una tienda: 659 es el grupo de
+        # exchange.xml. shop.xml solo llega hasta 226, por eso la antigua
+        # respuesta 0x0034/659 mostraba una ventana vacia.
+        recetas = [21575, 21576, 21577]
         pkg_exch = struct.pack('<HI', 0x0206, len(recetas)) + b''.join(
             struct.pack('<II', r, 0) for r in recetas
         )

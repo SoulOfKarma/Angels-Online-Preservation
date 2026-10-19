@@ -142,7 +142,7 @@ def test_los_cubos_llegan_hasta_el_ultimo_bicho():
     assert max(cubos) >= 470, cubos[-5:]
 
 
-def test_los_jefes_sueltan_siempre():
+def test_los_jefes_fuera_de_chaos_sueltan_siempre():
     """Un jefe no se va nunca con las manos vacias.
 
     Los marca la columna 王 ("rey") de la tabla monster de content.db: son
@@ -160,6 +160,52 @@ def test_los_jefes_sueltan_siempre():
         combate._DROPS_CACHE.clear()
         for _ in range(200):
             assert combate.botin_items(npc_type, nombre, nivel), nombre
+
+
+def test_mobs_chaos_no_sueltan_siempre_aunque_tengan_marca_rey():
+    """La marca 王 de los mobs Chaos no los convierte en bosses de drop."""
+    import configuracion as cf
+    original = cf.TASA_DROP_BASE
+    try:
+        cf.TASA_DROP_BASE = 0.0
+        for npc_type, nombre, nivel in (
+                (23673, 'C-Barren Warrior', 218),
+                (23710, 'C-Meister', 458)):
+            assert cb.es_jefe(npc_type), nombre + ' viene marcado como boss'
+            cb._DROPS_CACHE.pop(npc_type, None)
+            cb._DROP_OFICIAL_CACHE.pop(npc_type, None)
+            assert not cb.botin_items(npc_type, nombre, nivel)
+            assert cb._DROPS_CACHE.get(npc_type), 'debe conservar fallback por nivel'
+            assert not cb._DROP_OFICIAL_CACHE.get(npc_type)
+    finally:
+        cf.TASA_DROP_BASE = original
+
+
+def test_solo_bosses_oficiales_de_chaos_sueltan_siempre():
+    """Los Boss/C-Boss confirmados en achievement.xml conservan el 100%."""
+    import configuracion as cf
+    original = cf.TASA_DROP_BASE
+    try:
+        cf.TASA_DROP_BASE = 0.0
+        for npc_type, nombre, nivel in (
+                (23688, 'C-Dragon Emperor', 250),
+                (23714, 'C-Time Lady', 460),
+                (23839, "Ba'shin", 470)):
+            cb._DROPS_CACHE.pop(npc_type, None)
+            cb._DROP_OFICIAL_CACHE.pop(npc_type, None)
+            assert cb.botin_items(npc_type, nombre, nivel), nombre
+    finally:
+        cf.TASA_DROP_BASE = original
+
+
+def test_npc_type_no_colisiona_con_id_de_tabla_ajena():
+    """C-Dragon Emperor 23688 usa drop_id 27233, no tabla 23688."""
+    cb._DROPS_CACHE.pop(23688, None)
+    cb._DROP_OFICIAL_CACHE.pop(23688, None)
+    cb.botin_items(23688, 'C-Dragon Emperor', 250)
+    esperado = [tuple(x) for x in cb._cargar_drops_plantilla()['por_nivel']['250']]
+    assert cb._DROPS_CACHE[23688] == esperado
+    assert not cb._DROP_OFICIAL_CACHE[23688]
 
 
 def test_los_bichos_normales_no_son_jefes():

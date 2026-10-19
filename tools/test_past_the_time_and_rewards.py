@@ -57,14 +57,25 @@ class TestPastTheTimeAndQuestRewards(unittest.TestCase):
         lineas = dialogos.propio('Past the Time Spirit', entidad=900, nivel=250)
         self.assertEqual(struct.unpack_from('<H', lineas[0], 4)[0], 1342)
 
-    def test_past_the_time_spirit_warps_and_shop(self):
-        """Test warps to Stage 413, 414 and shop 659."""
+    def test_past_the_time_spirit_warps_and_exchange(self):
+        """Test warps and the official Time Crystal exchange group 659."""
         # Warps from Rainbow Town (Stage 308)
         self.assertEqual(dialogos.VIAJES_POR_OPCION.get((308, 158416)), (413, [20, 11]))
         self.assertEqual(dialogos.VIAJES_POR_OPCION.get((308, 158417)), (414, [289, 7]))
 
-        # Shop 659
-        self.assertEqual(dialogos.TIENDAS_POR_OPCION.get(158514), 659)
+        # 659 is an exchange group, not a shop (shop.xml ends at 226).
+        self.assertNotIn(158514, dialogos.TIENDAS_POR_OPCION)
+        resp_exchange = dialogos.respuesta_a(158514)
+        self.assertEqual(struct.unpack_from('<H', resp_exchange[0], 0)[0], 0x0206)
+        self.assertEqual(struct.unpack_from('<I', resp_exchange[0], 2)[0], 3)
+        recetas = [struct.unpack_from('<I', resp_exchange[0], 6 + 8 * i)[0]
+                   for i in range(3)]
+        self.assertEqual(recetas, [21575, 21576, 21577])
+        for recipe_id in recetas:
+            receta = app._obtener_receta_exchange(recipe_id)
+            self.assertIsNotNone(receta)
+            self.assertTrue(receta['materiales'])
+            self.assertTrue(receta['premios'])
 
         # Close options cleanly return FIN
         resp = dialogos.respuesta_a(158418)
