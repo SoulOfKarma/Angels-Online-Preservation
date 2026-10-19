@@ -813,6 +813,22 @@ def completar_mision(ses, qid: int, exp: int = 0, oro: int = 0,
 
     # 4. Recompensas por defecto si no vienen fijadas
     recomp = info.get('recompensa', {})
+    if qid == 976:
+        # Recompensa oficial de Quest 976 ("Nature is Crying for Help"):
+        # EXP dependiente del nivel (Lv<90: 36M, Lv 90-94: 48M, Lv>=95: 72M)
+        # 1x Weekly Quest Mark (item 12611), sin costo de oro, 50 creditos.
+        lvl = getattr(p, 'nivel', 1) or 1
+        if lvl >= 95:
+            exp = 72000000
+        elif lvl >= 90:
+            exp = 48000000
+        else:
+            exp = 36000000
+        oro = 0
+        creditos_honor = 50
+        if not items and not recomp.get('items'):
+            items = [{'item_id': 12611, 'cantidad': 1}]
+
     if exp <= 0:
         exp = recomp.get('exp', 0)
     if oro <= 0:
@@ -829,7 +845,7 @@ def completar_mision(ses, qid: int, exp: int = 0, oro: int = 0,
         p.oro = ses.oro
         dueno = getattr(ses, 'entity_id', char_id)
         envios.append(_inv_oro.actualizar_ranura(char_id, _inv_oro.RANURA_ORO, _inv_oro.ITEM_ORO, ses.oro, dueno=dueno))
-        envios.append(_cl.aviso(str(oro), tipo=0, msg_id=_cl.MSG_PAGO))
+        envios.append(_cl.aviso(f"{oro} Gold", tipo=0, msg_id=_cl.MSG_ITEM))
         if getattr(ses, 'usuario', None):
             cuentas.guardar_oro(ses.usuario, char_id, ses.oro)
 
@@ -872,8 +888,16 @@ def completar_mision(ses, qid: int, exp: int = 0, oro: int = 0,
         inv = getattr(ses, 'inventario', {}) or {}
         cants = getattr(ses, 'cantidades', {}) or {}
         for it in items:
-            item_id = it if isinstance(it, int) else it[1]
-            cant = 1 if isinstance(it, int) else (it[2] if len(it) > 2 else 1)
+            if isinstance(it, int):
+                item_id, cant = it, 1
+            elif isinstance(it, dict):
+                item_id = int(it.get('item_id') or it.get('id') or 0)
+                cant = int(it.get('cantidad') or it.get('count') or 1)
+            elif isinstance(it, (list, tuple)):
+                item_id = it[1] if len(it) > 1 else it[0]
+                cant = it[2] if len(it) > 2 else 1
+            else:
+                continue
             ranura_libre = None
             for r in range(20, 60):
                 if r not in inv or inv[r] == 0:
@@ -884,6 +908,9 @@ def completar_mision(ses, qid: int, exp: int = 0, oro: int = 0,
                 cants[ranura_libre] = cant
                 ses.inventario = inv
                 ses.cantidades = cants
+                if p is not None:
+                    p.inventario = inv
+                    p.cantidades = cants
                 envios.append(_inv.actualizar_ranura(char_id, ranura_libre, item_id, cant))
                 nom_it = nombre_item(item_id)
                 envios.append(_cl.aviso(nom_it, tipo=0, msg_id=_cl.MSG_ITEM))

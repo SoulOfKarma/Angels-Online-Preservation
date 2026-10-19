@@ -1,0 +1,6197 @@
+{
+ "_nota": "c_dinosaur_arena (stage 413). POBLADO DESDE EL CLIENTE, no desde una captura: los generadores de monstruos son objetos del propio map413.mpc -- el monstruo en el u16 del +34, la zona en el +21, el tiempo en el +38 y cuantos en el +42. Eso da el censo COMPLETO del mapa, que una captura no puede dar porque solo trae lo que estuvo a la vista. El entity_id es fabricado y estable, no el del servidor. Las casillas son las del TAG de cada generador; los que no declaran TAG ponen sus monstruos en la casilla del generador y en un anillo de radio 3 a su alrededor, que es la dispersion MEDIDA en el stage 73. Los objetos de mapa son los del .mpc cuyo id esta en la lista de los que el servidor manda de verdad, con el cuerpo del 0x000E copiado de una captura del mismo objeto. Los tornados se dibujan aparte, desde portales.json. Ver tools/poblar_del_cliente.py.",
+ "stage": 413,
+ "spawns": [
+  {
+   "entity_id": 91300000,
+   "nombre": "C-Dragon Emperor",
+   "npc_type": 23688,
+   "sprite": 43167,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    172,
+    97
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 250
+  },
+  {
+   "entity_id": 91300001,
+   "nombre": "C-Barren Warrior",
+   "npc_type": 23673,
+   "sprite": 43039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    46,
+    35
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 218
+  },
+  {
+   "entity_id": 91300002,
+   "nombre": "C-Barren Warrior",
+   "npc_type": 23673,
+   "sprite": 43039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    41,
+    30
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 218
+  },
+  {
+   "entity_id": 91300003,
+   "nombre": "C-Barren Warrior",
+   "npc_type": 23673,
+   "sprite": 43039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    41,
+    35
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 218
+  },
+  {
+   "entity_id": 91300004,
+   "nombre": "C-Barren Warrior",
+   "npc_type": 23673,
+   "sprite": 43039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    41,
+    40
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 218
+  },
+  {
+   "entity_id": 91300005,
+   "nombre": "C-Barren Warrior",
+   "npc_type": 23673,
+   "sprite": 43039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    46,
+    30
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 218
+  },
+  {
+   "entity_id": 91300006,
+   "nombre": "C-Barren Warrior",
+   "npc_type": 23673,
+   "sprite": 43039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    46,
+    40
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 218
+  },
+  {
+   "entity_id": 91300007,
+   "nombre": "C-Barren Warrior",
+   "npc_type": 23673,
+   "sprite": 43039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    51,
+    30
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 218
+  },
+  {
+   "entity_id": 91300008,
+   "nombre": "C-Barren Warrior",
+   "npc_type": 23673,
+   "sprite": 43039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    51,
+    35
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 218
+  },
+  {
+   "entity_id": 91300009,
+   "nombre": "C-Barren Warrior",
+   "npc_type": 23673,
+   "sprite": 43039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    51,
+    40
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 218
+  },
+  {
+   "entity_id": 91300010,
+   "nombre": "C-Barren Warrior",
+   "npc_type": 23673,
+   "sprite": 43039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    36,
+    26
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 218
+  },
+  {
+   "entity_id": 91300011,
+   "nombre": "C-Barren Warrior",
+   "npc_type": 23673,
+   "sprite": 43039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    36,
+    31
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 218
+  },
+  {
+   "entity_id": 91300012,
+   "nombre": "C-Barren Warrior",
+   "npc_type": 23673,
+   "sprite": 43039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    36,
+    36
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 218
+  },
+  {
+   "entity_id": 91300013,
+   "nombre": "C-Barren Warrior",
+   "npc_type": 23673,
+   "sprite": 43039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    40,
+    45
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 218
+  },
+  {
+   "entity_id": 91300014,
+   "nombre": "C-Barren Warrior",
+   "npc_type": 23673,
+   "sprite": 43039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    41,
+    25
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 218
+  },
+  {
+   "entity_id": 91300015,
+   "nombre": "C-Barren Warrior",
+   "npc_type": 23673,
+   "sprite": 43039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    45,
+    45
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 218
+  },
+  {
+   "entity_id": 91300016,
+   "nombre": "C-Barren Warrior",
+   "npc_type": 23673,
+   "sprite": 43039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    46,
+    25
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 218
+  },
+  {
+   "entity_id": 91300017,
+   "nombre": "C-Barren Warrior",
+   "npc_type": 23673,
+   "sprite": 43039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    50,
+    45
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 218
+  },
+  {
+   "entity_id": 91300018,
+   "nombre": "C-Barren Warrior",
+   "npc_type": 23673,
+   "sprite": 43039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    51,
+    25
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 218
+  },
+  {
+   "entity_id": 91300019,
+   "nombre": "C-Barren Warrior",
+   "npc_type": 23673,
+   "sprite": 43039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    55,
+    45
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 218
+  },
+  {
+   "entity_id": 91300020,
+   "nombre": "C-Barren Warrior",
+   "npc_type": 23673,
+   "sprite": 43039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    56,
+    25
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 218
+  },
+  {
+   "entity_id": 91300021,
+   "nombre": "C-Iron Can Snail",
+   "npc_type": 23675,
+   "sprite": 43106,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    56,
+    30
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 220
+  },
+  {
+   "entity_id": 91300022,
+   "nombre": "C-Iron Can Snail",
+   "npc_type": 23675,
+   "sprite": 43106,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    61,
+    24
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 220
+  },
+  {
+   "entity_id": 91300023,
+   "nombre": "C-Iron Can Snail",
+   "npc_type": 23675,
+   "sprite": 43106,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    61,
+    29
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 220
+  },
+  {
+   "entity_id": 91300024,
+   "nombre": "C-Iron Can Snail",
+   "npc_type": 23675,
+   "sprite": 43106,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    47,
+    20
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 220
+  },
+  {
+   "entity_id": 91300025,
+   "nombre": "C-Iron Can Snail",
+   "npc_type": 23675,
+   "sprite": 43106,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    52,
+    20
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 220
+  },
+  {
+   "entity_id": 91300026,
+   "nombre": "C-Iron Can Snail",
+   "npc_type": 23675,
+   "sprite": 43106,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    57,
+    19
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 220
+  },
+  {
+   "entity_id": 91300027,
+   "nombre": "C-Iron Can Snail",
+   "npc_type": 23675,
+   "sprite": 43106,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    62,
+    19
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 220
+  },
+  {
+   "entity_id": 91300028,
+   "nombre": "C-Iron Can Snail",
+   "npc_type": 23675,
+   "sprite": 43106,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    66,
+    24
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 220
+  },
+  {
+   "entity_id": 91300029,
+   "nombre": "C-Iron Can Snail",
+   "npc_type": 23675,
+   "sprite": 43106,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    66,
+    29
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 220
+  },
+  {
+   "entity_id": 91300030,
+   "nombre": "C-Iron Can Snail",
+   "npc_type": 23675,
+   "sprite": 43106,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    67,
+    18
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 220
+  },
+  {
+   "entity_id": 91300031,
+   "nombre": "C-Iron Can Snail",
+   "npc_type": 23675,
+   "sprite": 43106,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    60,
+    43
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 220
+  },
+  {
+   "entity_id": 91300032,
+   "nombre": "C-Iron Can Snail",
+   "npc_type": 23675,
+   "sprite": 43106,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    65,
+    43
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 220
+  },
+  {
+   "entity_id": 91300033,
+   "nombre": "C-Iron Can Snail",
+   "npc_type": 23675,
+   "sprite": 43106,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    40,
+    15
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 220
+  },
+  {
+   "entity_id": 91300034,
+   "nombre": "C-Iron Can Snail",
+   "npc_type": 23675,
+   "sprite": 43106,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    70,
+    42
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 220
+  },
+  {
+   "entity_id": 91300035,
+   "nombre": "C-Iron Can Snail",
+   "npc_type": 23675,
+   "sprite": 43106,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    71,
+    23
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 220
+  },
+  {
+   "entity_id": 91300036,
+   "nombre": "C-Crystal Dragon Turtle",
+   "npc_type": 23674,
+   "sprite": 43043,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    31,
+    28
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 220
+  },
+  {
+   "entity_id": 91300037,
+   "nombre": "C-Crystal Dragon Turtle",
+   "npc_type": 23674,
+   "sprite": 43043,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    31,
+    33
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 220
+  },
+  {
+   "entity_id": 91300038,
+   "nombre": "C-Crystal Dragon Turtle",
+   "npc_type": 23674,
+   "sprite": 43043,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    25,
+    18
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 220
+  },
+  {
+   "entity_id": 91300039,
+   "nombre": "C-Crystal Dragon Turtle",
+   "npc_type": 23674,
+   "sprite": 43043,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    30,
+    16
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 220
+  },
+  {
+   "entity_id": 91300040,
+   "nombre": "C-Crystal Dragon Turtle",
+   "npc_type": 23674,
+   "sprite": 43043,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    35,
+    14
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 220
+  },
+  {
+   "entity_id": 91300041,
+   "nombre": "C-Crystal Dragon Turtle",
+   "npc_type": 23674,
+   "sprite": 43043,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    38,
+    50
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 220
+  },
+  {
+   "entity_id": 91300042,
+   "nombre": "C-Crystal Dragon Turtle",
+   "npc_type": 23674,
+   "sprite": 43043,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    43,
+    50
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 220
+  },
+  {
+   "entity_id": 91300043,
+   "nombre": "C-Crystal Dragon Turtle",
+   "npc_type": 23674,
+   "sprite": 43043,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    48,
+    50
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 220
+  },
+  {
+   "entity_id": 91300044,
+   "nombre": "C-Crystal Dragon Turtle",
+   "npc_type": 23674,
+   "sprite": 43043,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    53,
+    50
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 220
+  },
+  {
+   "entity_id": 91300045,
+   "nombre": "C-Crystal Dragon Turtle",
+   "npc_type": 23674,
+   "sprite": 43043,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    20,
+    13
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 220
+  },
+  {
+   "entity_id": 91300046,
+   "nombre": "C-Crystal Dragon Turtle",
+   "npc_type": 23674,
+   "sprite": 43043,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    25,
+    13
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 220
+  },
+  {
+   "entity_id": 91300047,
+   "nombre": "C-Crystal Dragon Turtle",
+   "npc_type": 23674,
+   "sprite": 43043,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    58,
+    50
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 220
+  },
+  {
+   "entity_id": 91300048,
+   "nombre": "C-Crystal Dragon Turtle",
+   "npc_type": 23674,
+   "sprite": 43043,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    47,
+    12
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 220
+  },
+  {
+   "entity_id": 91300049,
+   "nombre": "C-Crystal Dragon Turtle",
+   "npc_type": 23674,
+   "sprite": 43043,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    52,
+    12
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 220
+  },
+  {
+   "entity_id": 91300050,
+   "nombre": "C-Crystal Dragon Turtle",
+   "npc_type": 23674,
+   "sprite": 43043,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    30,
+    11
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 220
+  },
+  {
+   "entity_id": 91300051,
+   "nombre": "C-Crystal Dragon Turtle",
+   "npc_type": 23674,
+   "sprite": 43043,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    40,
+    10
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 220
+  },
+  {
+   "entity_id": 91300052,
+   "nombre": "C-Crystal Dragon Turtle",
+   "npc_type": 23674,
+   "sprite": 43043,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    35,
+    9
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 220
+  },
+  {
+   "entity_id": 91300053,
+   "nombre": "C-Crystal Dragon Turtle",
+   "npc_type": 23674,
+   "sprite": 43043,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    55
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 220
+  },
+  {
+   "entity_id": 91300054,
+   "nombre": "C-Crystal Dragon Turtle",
+   "npc_type": 23674,
+   "sprite": 43043,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    44,
+    55
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 220
+  },
+  {
+   "entity_id": 91300055,
+   "nombre": "C-Crystal Dragon Turtle",
+   "npc_type": 23674,
+   "sprite": 43043,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    49,
+    55
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 220
+  },
+  {
+   "entity_id": 91300056,
+   "nombre": "C-Adventure Chair Ralon",
+   "npc_type": 23676,
+   "sprite": 43061,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    71,
+    28
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300057,
+   "nombre": "C-Adventure Chair Ralon",
+   "npc_type": 23676,
+   "sprite": 43061,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    72,
+    14
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300058,
+   "nombre": "C-Adventure Chair Ralon",
+   "npc_type": 23676,
+   "sprite": 43061,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    75,
+    33
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300059,
+   "nombre": "C-Adventure Chair Ralon",
+   "npc_type": 23676,
+   "sprite": 43061,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    75,
+    39
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300060,
+   "nombre": "C-Adventure Chair Ralon",
+   "npc_type": 23676,
+   "sprite": 43061,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    57,
+    9
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300061,
+   "nombre": "C-Adventure Chair Ralon",
+   "npc_type": 23676,
+   "sprite": 43061,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    76,
+    19
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300062,
+   "nombre": "C-Adventure Chair Ralon",
+   "npc_type": 23676,
+   "sprite": 43061,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    76,
+    24
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300063,
+   "nombre": "C-Adventure Chair Ralon",
+   "npc_type": 23676,
+   "sprite": 43061,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    45,
+    7
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300064,
+   "nombre": "C-Adventure Chair Ralon",
+   "npc_type": 23676,
+   "sprite": 43061,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    50,
+    7
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300065,
+   "nombre": "C-Adventure Chair Ralon",
+   "npc_type": 23676,
+   "sprite": 43061,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    75,
+    44
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300066,
+   "nombre": "C-Adventure Chair Ralon",
+   "npc_type": 23676,
+   "sprite": 43061,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    40,
+    5
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300067,
+   "nombre": "C-Adventure Chair Ralon",
+   "npc_type": 23676,
+   "sprite": 43061,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    80,
+    29
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300068,
+   "nombre": "C-Adventure Chair Ralon",
+   "npc_type": 23676,
+   "sprite": 43061,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    80,
+    34
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300069,
+   "nombre": "C-Adventure Chair Ralon",
+   "npc_type": 23676,
+   "sprite": 43061,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    80,
+    39
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300070,
+   "nombre": "C-Adventure Chair Ralon",
+   "npc_type": 23676,
+   "sprite": 43061,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    80,
+    44
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300071,
+   "nombre": "C-Adventure Chair Ralon",
+   "npc_type": 23676,
+   "sprite": 43061,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    55,
+    4
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300072,
+   "nombre": "C-Adventure Chair Ralon",
+   "npc_type": 23676,
+   "sprite": 43061,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    81,
+    16
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300073,
+   "nombre": "C-Adventure Chair Ralon",
+   "npc_type": 23676,
+   "sprite": 43061,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    81,
+    21
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300074,
+   "nombre": "C-Adventure Chair Ralon",
+   "npc_type": 23676,
+   "sprite": 43061,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    70,
+    47
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300075,
+   "nombre": "C-Adventure Chair Ralon",
+   "npc_type": 23676,
+   "sprite": 43061,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    63,
+    48
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300076,
+   "nombre": "C-Clawed Swift Dragon",
+   "npc_type": 23677,
+   "sprite": 43088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    85,
+    26
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300077,
+   "nombre": "C-Clawed Swift Dragon",
+   "npc_type": 23677,
+   "sprite": 43088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    85,
+    31
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300078,
+   "nombre": "C-Clawed Swift Dragon",
+   "npc_type": 23677,
+   "sprite": 43088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    85,
+    36
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300079,
+   "nombre": "C-Clawed Swift Dragon",
+   "npc_type": 23677,
+   "sprite": 43088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    86,
+    14
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300080,
+   "nombre": "C-Clawed Swift Dragon",
+   "npc_type": 23677,
+   "sprite": 43088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    86,
+    19
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300081,
+   "nombre": "C-Clawed Swift Dragon",
+   "npc_type": 23677,
+   "sprite": 43088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    85,
+    41
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300082,
+   "nombre": "C-Clawed Swift Dragon",
+   "npc_type": 23677,
+   "sprite": 43088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    90,
+    24
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300083,
+   "nombre": "C-Clawed Swift Dragon",
+   "npc_type": 23677,
+   "sprite": 43088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    90,
+    29
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300084,
+   "nombre": "C-Clawed Swift Dragon",
+   "npc_type": 23677,
+   "sprite": 43088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    90,
+    34
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300085,
+   "nombre": "C-Clawed Swift Dragon",
+   "npc_type": 23677,
+   "sprite": 43088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    90,
+    39
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300086,
+   "nombre": "C-Clawed Swift Dragon",
+   "npc_type": 23677,
+   "sprite": 43088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    91,
+    13
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300087,
+   "nombre": "C-Clawed Swift Dragon",
+   "npc_type": 23677,
+   "sprite": 43088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    91,
+    18
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300088,
+   "nombre": "C-Clawed Swift Dragon",
+   "npc_type": 23677,
+   "sprite": 43088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    95,
+    23
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300089,
+   "nombre": "C-Clawed Swift Dragon",
+   "npc_type": 23677,
+   "sprite": 43088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    95,
+    28
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300090,
+   "nombre": "C-Clawed Swift Dragon",
+   "npc_type": 23677,
+   "sprite": 43088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    95,
+    33
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300091,
+   "nombre": "C-Clawed Swift Dragon",
+   "npc_type": 23677,
+   "sprite": 43088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    95,
+    38
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300092,
+   "nombre": "C-Clawed Swift Dragon",
+   "npc_type": 23677,
+   "sprite": 43088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    95,
+    43
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300093,
+   "nombre": "C-Clawed Swift Dragon",
+   "npc_type": 23677,
+   "sprite": 43088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    75,
+    49
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300094,
+   "nombre": "C-Clawed Swift Dragon",
+   "npc_type": 23677,
+   "sprite": 43088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    96,
+    15
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300095,
+   "nombre": "C-Clawed Swift Dragon",
+   "npc_type": 23677,
+   "sprite": 43088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    68,
+    52
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300096,
+   "nombre": "C-Sharp Fang Tiger",
+   "npc_type": 23678,
+   "sprite": 43070,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    100,
+    20
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 224
+  },
+  {
+   "entity_id": 91300097,
+   "nombre": "C-Sharp Fang Tiger",
+   "npc_type": 23678,
+   "sprite": 43070,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    100,
+    25
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 224
+  },
+  {
+   "entity_id": 91300098,
+   "nombre": "C-Sharp Fang Tiger",
+   "npc_type": 23678,
+   "sprite": 43070,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    100,
+    30
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 224
+  },
+  {
+   "entity_id": 91300099,
+   "nombre": "C-Sharp Fang Tiger",
+   "npc_type": 23678,
+   "sprite": 43070,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    100,
+    35
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 224
+  },
+  {
+   "entity_id": 91300100,
+   "nombre": "C-Sharp Fang Tiger",
+   "npc_type": 23678,
+   "sprite": 43070,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    100,
+    40
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 224
+  },
+  {
+   "entity_id": 91300101,
+   "nombre": "C-Sharp Fang Tiger",
+   "npc_type": 23678,
+   "sprite": 43070,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    105,
+    17
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 224
+  },
+  {
+   "entity_id": 91300102,
+   "nombre": "C-Sharp Fang Tiger",
+   "npc_type": 23678,
+   "sprite": 43070,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    105,
+    22
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 224
+  },
+  {
+   "entity_id": 91300103,
+   "nombre": "C-Sharp Fang Tiger",
+   "npc_type": 23678,
+   "sprite": 43070,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    105,
+    27
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 224
+  },
+  {
+   "entity_id": 91300104,
+   "nombre": "C-Sharp Fang Tiger",
+   "npc_type": 23678,
+   "sprite": 43070,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    105,
+    32
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 224
+  },
+  {
+   "entity_id": 91300105,
+   "nombre": "C-Sharp Fang Tiger",
+   "npc_type": 23678,
+   "sprite": 43070,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    63,
+    53
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 224
+  },
+  {
+   "entity_id": 91300106,
+   "nombre": "C-Sharp Fang Tiger",
+   "npc_type": 23678,
+   "sprite": 43070,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    110,
+    19
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 224
+  },
+  {
+   "entity_id": 91300107,
+   "nombre": "C-Sharp Fang Tiger",
+   "npc_type": 23678,
+   "sprite": 43070,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    110,
+    24
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 224
+  },
+  {
+   "entity_id": 91300108,
+   "nombre": "C-Sharp Fang Tiger",
+   "npc_type": 23678,
+   "sprite": 43070,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    110,
+    29
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 224
+  },
+  {
+   "entity_id": 91300109,
+   "nombre": "C-Sharp Fang Tiger",
+   "npc_type": 23678,
+   "sprite": 43070,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    110,
+    34
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 224
+  },
+  {
+   "entity_id": 91300110,
+   "nombre": "C-Sharp Fang Tiger",
+   "npc_type": 23678,
+   "sprite": 43070,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    54,
+    55
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 224
+  },
+  {
+   "entity_id": 91300111,
+   "nombre": "C-Bosen Dino",
+   "npc_type": 23684,
+   "sprite": 43057,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    30,
+    96
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 235
+  },
+  {
+   "entity_id": 91300112,
+   "nombre": "C-Barren Warrior",
+   "npc_type": 23673,
+   "sprite": 43039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    188,
+    33
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 218
+  },
+  {
+   "entity_id": 91300113,
+   "nombre": "C-Barren Warrior",
+   "npc_type": 23673,
+   "sprite": 43039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    183,
+    28
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 218
+  },
+  {
+   "entity_id": 91300114,
+   "nombre": "C-Barren Warrior",
+   "npc_type": 23673,
+   "sprite": 43039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    183,
+    33
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 218
+  },
+  {
+   "entity_id": 91300115,
+   "nombre": "C-Barren Warrior",
+   "npc_type": 23673,
+   "sprite": 43039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    183,
+    38
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 218
+  },
+  {
+   "entity_id": 91300116,
+   "nombre": "C-Barren Warrior",
+   "npc_type": 23673,
+   "sprite": 43039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    188,
+    28
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 218
+  },
+  {
+   "entity_id": 91300117,
+   "nombre": "C-Barren Warrior",
+   "npc_type": 23673,
+   "sprite": 43039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    188,
+    38
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 218
+  },
+  {
+   "entity_id": 91300118,
+   "nombre": "C-Barren Warrior",
+   "npc_type": 23673,
+   "sprite": 43039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    193,
+    28
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 218
+  },
+  {
+   "entity_id": 91300119,
+   "nombre": "C-Barren Warrior",
+   "npc_type": 23673,
+   "sprite": 43039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    193,
+    33
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 218
+  },
+  {
+   "entity_id": 91300120,
+   "nombre": "C-Barren Warrior",
+   "npc_type": 23673,
+   "sprite": 43039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    178,
+    23
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 218
+  },
+  {
+   "entity_id": 91300121,
+   "nombre": "C-Barren Warrior",
+   "npc_type": 23673,
+   "sprite": 43039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    178,
+    28
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 218
+  },
+  {
+   "entity_id": 91300122,
+   "nombre": "C-Barren Warrior",
+   "npc_type": 23673,
+   "sprite": 43039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    178,
+    33
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 218
+  },
+  {
+   "entity_id": 91300123,
+   "nombre": "C-Barren Warrior",
+   "npc_type": 23673,
+   "sprite": 43039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    178,
+    38
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 218
+  },
+  {
+   "entity_id": 91300124,
+   "nombre": "C-Barren Warrior",
+   "npc_type": 23673,
+   "sprite": 43039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    183,
+    23
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 218
+  },
+  {
+   "entity_id": 91300125,
+   "nombre": "C-Barren Warrior",
+   "npc_type": 23673,
+   "sprite": 43039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    189,
+    23
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 218
+  },
+  {
+   "entity_id": 91300126,
+   "nombre": "C-Barren Warrior",
+   "npc_type": 23673,
+   "sprite": 43039,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    194,
+    23
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 218
+  },
+  {
+   "entity_id": 91300127,
+   "nombre": "C-Iron Can Snail",
+   "npc_type": 23675,
+   "sprite": 43106,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    173,
+    23
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 220
+  },
+  {
+   "entity_id": 91300128,
+   "nombre": "C-Iron Can Snail",
+   "npc_type": 23675,
+   "sprite": 43106,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    198,
+    28
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 220
+  },
+  {
+   "entity_id": 91300129,
+   "nombre": "C-Iron Can Snail",
+   "npc_type": 23675,
+   "sprite": 43106,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    173,
+    28
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 220
+  },
+  {
+   "entity_id": 91300130,
+   "nombre": "C-Iron Can Snail",
+   "npc_type": 23675,
+   "sprite": 43106,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    197,
+    18
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 220
+  },
+  {
+   "entity_id": 91300131,
+   "nombre": "C-Iron Can Snail",
+   "npc_type": 23675,
+   "sprite": 43106,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    173,
+    33
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 220
+  },
+  {
+   "entity_id": 91300132,
+   "nombre": "C-Iron Can Snail",
+   "npc_type": 23675,
+   "sprite": 43106,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    199,
+    23
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 220
+  },
+  {
+   "entity_id": 91300133,
+   "nombre": "C-Iron Can Snail",
+   "npc_type": 23675,
+   "sprite": 43106,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    173,
+    38
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 220
+  },
+  {
+   "entity_id": 91300134,
+   "nombre": "C-Iron Can Snail",
+   "npc_type": 23675,
+   "sprite": 43106,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    202,
+    15
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 220
+  },
+  {
+   "entity_id": 91300135,
+   "nombre": "C-Iron Can Snail",
+   "npc_type": 23675,
+   "sprite": 43106,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    168,
+    22
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 220
+  },
+  {
+   "entity_id": 91300136,
+   "nombre": "C-Iron Can Snail",
+   "npc_type": 23675,
+   "sprite": 43106,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    204,
+    20
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 220
+  },
+  {
+   "entity_id": 91300137,
+   "nombre": "C-Magic Dragon Ambassador",
+   "npc_type": 23685,
+   "sprite": 43166,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    254,
+    148
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 240
+  },
+  {
+   "entity_id": 91300138,
+   "nombre": "C-Cartastolov",
+   "npc_type": 23687,
+   "sprite": 43168,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    35,
+    154
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 245
+  },
+  {
+   "entity_id": 91300139,
+   "nombre": "C-Dragon Blader",
+   "npc_type": 23680,
+   "sprite": 43124,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    204,
+    25
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 225
+  },
+  {
+   "entity_id": 91300140,
+   "nombre": "C-Dragon Blader",
+   "npc_type": 23680,
+   "sprite": 43124,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    207,
+    13
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 225
+  },
+  {
+   "entity_id": 91300141,
+   "nombre": "C-Dragon Blader",
+   "npc_type": 23680,
+   "sprite": 43124,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    209,
+    18
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 225
+  },
+  {
+   "entity_id": 91300142,
+   "nombre": "C-Dragon Blader",
+   "npc_type": 23680,
+   "sprite": 43124,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    209,
+    23
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 225
+  },
+  {
+   "entity_id": 91300143,
+   "nombre": "C-Dragon Blader",
+   "npc_type": 23680,
+   "sprite": 43124,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    168,
+    27
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 225
+  },
+  {
+   "entity_id": 91300144,
+   "nombre": "C-Dragon Blader",
+   "npc_type": 23680,
+   "sprite": 43124,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    168,
+    32
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 225
+  },
+  {
+   "entity_id": 91300145,
+   "nombre": "C-Dragon Blader",
+   "npc_type": 23680,
+   "sprite": 43124,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    212,
+    11
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 225
+  },
+  {
+   "entity_id": 91300146,
+   "nombre": "C-Dragon Blader",
+   "npc_type": 23680,
+   "sprite": 43124,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    179,
+    49
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 225
+  },
+  {
+   "entity_id": 91300147,
+   "nombre": "C-Dragon Blader",
+   "npc_type": 23680,
+   "sprite": 43124,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    214,
+    16
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 225
+  },
+  {
+   "entity_id": 91300148,
+   "nombre": "C-Dragon Blader",
+   "npc_type": 23680,
+   "sprite": 43124,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    214,
+    21
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 225
+  },
+  {
+   "entity_id": 91300149,
+   "nombre": "C-Dragon Blader",
+   "npc_type": 23680,
+   "sprite": 43124,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    174,
+    51
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 225
+  },
+  {
+   "entity_id": 91300150,
+   "nombre": "C-Dragon Blader",
+   "npc_type": 23680,
+   "sprite": 43124,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    184,
+    51
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 225
+  },
+  {
+   "entity_id": 91300151,
+   "nombre": "C-Dragon Blader",
+   "npc_type": 23680,
+   "sprite": 43124,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    189,
+    52
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 225
+  },
+  {
+   "entity_id": 91300152,
+   "nombre": "C-Dragon Blader",
+   "npc_type": 23680,
+   "sprite": 43124,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    194,
+    52
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 225
+  },
+  {
+   "entity_id": 91300153,
+   "nombre": "C-Dragon Blader",
+   "npc_type": 23680,
+   "sprite": 43124,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    163,
+    21
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 225
+  },
+  {
+   "entity_id": 91300154,
+   "nombre": "C-Silverhelm Dragon",
+   "npc_type": 23681,
+   "sprite": 43079,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    163,
+    26
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 226
+  },
+  {
+   "entity_id": 91300155,
+   "nombre": "C-Silverhelm Dragon",
+   "npc_type": 23681,
+   "sprite": 43079,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    163,
+    31
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 226
+  },
+  {
+   "entity_id": 91300156,
+   "nombre": "C-Silverhelm Dragon",
+   "npc_type": 23681,
+   "sprite": 43079,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    158,
+    22
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 226
+  },
+  {
+   "entity_id": 91300157,
+   "nombre": "C-Silverhelm Dragon",
+   "npc_type": 23681,
+   "sprite": 43079,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    158,
+    27
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 226
+  },
+  {
+   "entity_id": 91300158,
+   "nombre": "C-Silverhelm Dragon",
+   "npc_type": 23681,
+   "sprite": 43079,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    158,
+    32
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 226
+  },
+  {
+   "entity_id": 91300159,
+   "nombre": "C-Silverhelm Dragon",
+   "npc_type": 23681,
+   "sprite": 43079,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    153,
+    22
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 226
+  },
+  {
+   "entity_id": 91300160,
+   "nombre": "C-Silverhelm Dragon",
+   "npc_type": 23681,
+   "sprite": 43079,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    153,
+    27
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 226
+  },
+  {
+   "entity_id": 91300161,
+   "nombre": "C-Silverhelm Dragon",
+   "npc_type": 23681,
+   "sprite": 43079,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    153,
+    32
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 226
+  },
+  {
+   "entity_id": 91300162,
+   "nombre": "C-Silverhelm Dragon",
+   "npc_type": 23681,
+   "sprite": 43079,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    152,
+    50
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 226
+  },
+  {
+   "entity_id": 91300163,
+   "nombre": "C-Silverhelm Dragon",
+   "npc_type": 23681,
+   "sprite": 43079,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    157,
+    52
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 226
+  },
+  {
+   "entity_id": 91300164,
+   "nombre": "C-Silverhelm Dragon",
+   "npc_type": 23681,
+   "sprite": 43079,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    148,
+    22
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 226
+  },
+  {
+   "entity_id": 91300165,
+   "nombre": "C-Silverhelm Dragon",
+   "npc_type": 23681,
+   "sprite": 43079,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    148,
+    27
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 226
+  },
+  {
+   "entity_id": 91300166,
+   "nombre": "C-Silverhelm Dragon",
+   "npc_type": 23681,
+   "sprite": 43079,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    148,
+    32
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 226
+  },
+  {
+   "entity_id": 91300167,
+   "nombre": "C-Silverhelm Dragon",
+   "npc_type": 23681,
+   "sprite": 43079,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    169,
+    54
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 226
+  },
+  {
+   "entity_id": 91300168,
+   "nombre": "C-Silverhelm Dragon",
+   "npc_type": 23681,
+   "sprite": 43079,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    179,
+    54
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 226
+  },
+  {
+   "entity_id": 91300169,
+   "nombre": "C-Thunder Dragon",
+   "npc_type": 23682,
+   "sprite": 43064,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    217,
+    11
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 226
+  },
+  {
+   "entity_id": 91300170,
+   "nombre": "C-Thunder Dragon",
+   "npc_type": 23682,
+   "sprite": 43064,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    219,
+    16
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 226
+  },
+  {
+   "entity_id": 91300171,
+   "nombre": "C-Thunder Dragon",
+   "npc_type": 23682,
+   "sprite": 43064,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    224,
+    12
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 226
+  },
+  {
+   "entity_id": 91300172,
+   "nombre": "C-Thunder Dragon",
+   "npc_type": 23682,
+   "sprite": 43064,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    224,
+    17
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 226
+  },
+  {
+   "entity_id": 91300173,
+   "nombre": "C-Thunder Dragon",
+   "npc_type": 23682,
+   "sprite": 43064,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    225,
+    41
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 226
+  },
+  {
+   "entity_id": 91300174,
+   "nombre": "C-Thunder Dragon",
+   "npc_type": 23682,
+   "sprite": 43064,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    199,
+    54
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 226
+  },
+  {
+   "entity_id": 91300175,
+   "nombre": "C-Thunder Dragon",
+   "npc_type": 23682,
+   "sprite": 43064,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    204,
+    55
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 226
+  },
+  {
+   "entity_id": 91300176,
+   "nombre": "C-Thunder Dragon",
+   "npc_type": 23682,
+   "sprite": 43064,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    229,
+    10
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 226
+  },
+  {
+   "entity_id": 91300177,
+   "nombre": "C-Thunder Dragon",
+   "npc_type": 23682,
+   "sprite": 43064,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    229,
+    15
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 226
+  },
+  {
+   "entity_id": 91300178,
+   "nombre": "C-Thunder Dragon",
+   "npc_type": 23682,
+   "sprite": 43064,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    229,
+    20
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 226
+  },
+  {
+   "entity_id": 91300179,
+   "nombre": "C-Thunder Dragon",
+   "npc_type": 23682,
+   "sprite": 43064,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    229,
+    36
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 226
+  },
+  {
+   "entity_id": 91300180,
+   "nombre": "C-Thunder Dragon",
+   "npc_type": 23682,
+   "sprite": 43064,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    164,
+    56
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 226
+  },
+  {
+   "entity_id": 91300181,
+   "nombre": "C-Thunder Dragon",
+   "npc_type": 23682,
+   "sprite": 43064,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    174,
+    56
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 226
+  },
+  {
+   "entity_id": 91300182,
+   "nombre": "C-Thunder Dragon",
+   "npc_type": 23682,
+   "sprite": 43064,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    184,
+    56
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 226
+  },
+  {
+   "entity_id": 91300183,
+   "nombre": "C-Thunder Dragon",
+   "npc_type": 23682,
+   "sprite": 43064,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    209,
+    56
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 226
+  },
+  {
+   "entity_id": 91300184,
+   "nombre": "C-Flaming Turtle Dragon",
+   "npc_type": 23683,
+   "sprite": 43046,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    230,
+    41
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 228
+  },
+  {
+   "entity_id": 91300185,
+   "nombre": "C-Flaming Turtle Dragon",
+   "npc_type": 23683,
+   "sprite": 43046,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    232,
+    25
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 228
+  },
+  {
+   "entity_id": 91300186,
+   "nombre": "C-Flaming Turtle Dragon",
+   "npc_type": 23683,
+   "sprite": 43046,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    230,
+    46
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 228
+  },
+  {
+   "entity_id": 91300187,
+   "nombre": "C-Flaming Turtle Dragon",
+   "npc_type": 23683,
+   "sprite": 43046,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    234,
+    10
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 228
+  },
+  {
+   "entity_id": 91300188,
+   "nombre": "C-Flaming Turtle Dragon",
+   "npc_type": 23683,
+   "sprite": 43046,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    234,
+    15
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 228
+  },
+  {
+   "entity_id": 91300189,
+   "nombre": "C-Flaming Turtle Dragon",
+   "npc_type": 23683,
+   "sprite": 43046,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    234,
+    20
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 228
+  },
+  {
+   "entity_id": 91300190,
+   "nombre": "C-Flaming Turtle Dragon",
+   "npc_type": 23683,
+   "sprite": 43046,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    234,
+    30
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 228
+  },
+  {
+   "entity_id": 91300191,
+   "nombre": "C-Flaming Turtle Dragon",
+   "npc_type": 23683,
+   "sprite": 43046,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    234,
+    35
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 228
+  },
+  {
+   "entity_id": 91300192,
+   "nombre": "C-Flaming Turtle Dragon",
+   "npc_type": 23683,
+   "sprite": 43046,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    235,
+    40
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 228
+  },
+  {
+   "entity_id": 91300193,
+   "nombre": "C-Flaming Turtle Dragon",
+   "npc_type": 23683,
+   "sprite": 43046,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    235,
+    45
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 228
+  },
+  {
+   "entity_id": 91300194,
+   "nombre": "C-Flaming Turtle Dragon",
+   "npc_type": 23683,
+   "sprite": 43046,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    237,
+    25
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 228
+  },
+  {
+   "entity_id": 91300195,
+   "nombre": "C-Flaming Turtle Dragon",
+   "npc_type": 23683,
+   "sprite": 43046,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    239,
+    7
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 228
+  },
+  {
+   "entity_id": 91300196,
+   "nombre": "C-Flaming Turtle Dragon",
+   "npc_type": 23683,
+   "sprite": 43046,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    239,
+    12
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 228
+  },
+  {
+   "entity_id": 91300197,
+   "nombre": "C-Flaming Turtle Dragon",
+   "npc_type": 23683,
+   "sprite": 43046,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    239,
+    17
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 228
+  },
+  {
+   "entity_id": 91300198,
+   "nombre": "C-Flaming Turtle Dragon",
+   "npc_type": 23683,
+   "sprite": 43046,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    239,
+    30
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 228
+  },
+  {
+   "entity_id": 91300199,
+   "nombre": "C-Dragon Blader",
+   "npc_type": 23680,
+   "sprite": 43124,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    143,
+    166
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 225
+  },
+  {
+   "entity_id": 91300200,
+   "nombre": "C-Dragon Blader",
+   "npc_type": 23680,
+   "sprite": 43124,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    138,
+    161
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 225
+  },
+  {
+   "entity_id": 91300201,
+   "nombre": "C-Dragon Blader",
+   "npc_type": 23680,
+   "sprite": 43124,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    138,
+    166
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 225
+  },
+  {
+   "entity_id": 91300202,
+   "nombre": "C-Dragon Blader",
+   "npc_type": 23680,
+   "sprite": 43124,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    133,
+    156
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 225
+  },
+  {
+   "entity_id": 91300203,
+   "nombre": "C-Dragon Blader",
+   "npc_type": 23680,
+   "sprite": 43124,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    133,
+    161
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 225
+  },
+  {
+   "entity_id": 91300204,
+   "nombre": "C-Dragon Blader",
+   "npc_type": 23680,
+   "sprite": 43124,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    133,
+    166
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 225
+  },
+  {
+   "entity_id": 91300205,
+   "nombre": "C-Dragon Blader",
+   "npc_type": 23680,
+   "sprite": 43124,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    138,
+    156
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 225
+  },
+  {
+   "entity_id": 91300206,
+   "nombre": "C-Dragon Blader",
+   "npc_type": 23680,
+   "sprite": 43124,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    128,
+    151
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 225
+  },
+  {
+   "entity_id": 91300207,
+   "nombre": "C-Dragon Blader",
+   "npc_type": 23680,
+   "sprite": 43124,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    128,
+    156
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 225
+  },
+  {
+   "entity_id": 91300208,
+   "nombre": "C-Dragon Blader",
+   "npc_type": 23680,
+   "sprite": 43124,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    128,
+    161
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 225
+  },
+  {
+   "entity_id": 91300209,
+   "nombre": "C-Dragon Blader",
+   "npc_type": 23680,
+   "sprite": 43124,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    128,
+    166
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 225
+  },
+  {
+   "entity_id": 91300210,
+   "nombre": "C-Dragon Blader",
+   "npc_type": 23680,
+   "sprite": 43124,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    133,
+    151
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 225
+  },
+  {
+   "entity_id": 91300211,
+   "nombre": "C-Dragon Blader",
+   "npc_type": 23680,
+   "sprite": 43124,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    123,
+    146
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 225
+  },
+  {
+   "entity_id": 91300212,
+   "nombre": "C-Dragon Blader",
+   "npc_type": 23680,
+   "sprite": 43124,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    123,
+    151
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 225
+  },
+  {
+   "entity_id": 91300213,
+   "nombre": "C-Dragon Blader",
+   "npc_type": 23680,
+   "sprite": 43124,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    123,
+    156
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 225
+  },
+  {
+   "entity_id": 91300214,
+   "nombre": "C-Thunder Dragon",
+   "npc_type": 23682,
+   "sprite": 43064,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    123,
+    161
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 226
+  },
+  {
+   "entity_id": 91300215,
+   "nombre": "C-Thunder Dragon",
+   "npc_type": 23682,
+   "sprite": 43064,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    123,
+    166
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 226
+  },
+  {
+   "entity_id": 91300216,
+   "nombre": "C-Thunder Dragon",
+   "npc_type": 23682,
+   "sprite": 43064,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    118,
+    149
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 226
+  },
+  {
+   "entity_id": 91300217,
+   "nombre": "C-Thunder Dragon",
+   "npc_type": 23682,
+   "sprite": 43064,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    118,
+    154
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 226
+  },
+  {
+   "entity_id": 91300218,
+   "nombre": "C-Thunder Dragon",
+   "npc_type": 23682,
+   "sprite": 43064,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    118,
+    159
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 226
+  },
+  {
+   "entity_id": 91300219,
+   "nombre": "C-Thunder Dragon",
+   "npc_type": 23682,
+   "sprite": 43064,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    118,
+    164
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 226
+  },
+  {
+   "entity_id": 91300220,
+   "nombre": "C-Thunder Dragon",
+   "npc_type": 23682,
+   "sprite": 43064,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    128,
+    146
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 226
+  },
+  {
+   "entity_id": 91300221,
+   "nombre": "C-Thunder Dragon",
+   "npc_type": 23682,
+   "sprite": 43064,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    113,
+    147
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 226
+  },
+  {
+   "entity_id": 91300222,
+   "nombre": "C-Thunder Dragon",
+   "npc_type": 23682,
+   "sprite": 43064,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    113,
+    152
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 226
+  },
+  {
+   "entity_id": 91300223,
+   "nombre": "C-Thunder Dragon",
+   "npc_type": 23682,
+   "sprite": 43064,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    113,
+    157
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 226
+  },
+  {
+   "entity_id": 91300224,
+   "nombre": "C-Thunder Dragon",
+   "npc_type": 23682,
+   "sprite": 43064,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    113,
+    162
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 226
+  },
+  {
+   "entity_id": 91300225,
+   "nombre": "C-Thunder Dragon",
+   "npc_type": 23682,
+   "sprite": 43064,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    133,
+    143
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 226
+  },
+  {
+   "entity_id": 91300226,
+   "nombre": "C-Thunder Dragon",
+   "npc_type": 23682,
+   "sprite": 43064,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    108,
+    149
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 226
+  },
+  {
+   "entity_id": 91300227,
+   "nombre": "C-Thunder Dragon",
+   "npc_type": 23682,
+   "sprite": 43064,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    108,
+    154
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 226
+  },
+  {
+   "entity_id": 91300228,
+   "nombre": "C-Thunder Dragon",
+   "npc_type": 23682,
+   "sprite": 43064,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    108,
+    159
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 226
+  },
+  {
+   "entity_id": 91300229,
+   "nombre": "C-Steel Armor Tiger",
+   "npc_type": 23689,
+   "sprite": 43073,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    134,
+    138
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 228
+  },
+  {
+   "entity_id": 91300230,
+   "nombre": "C-Steel Armor Tiger",
+   "npc_type": 23689,
+   "sprite": 43073,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    139,
+    137
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 228
+  },
+  {
+   "entity_id": 91300231,
+   "nombre": "C-Steel Armor Tiger",
+   "npc_type": 23689,
+   "sprite": 43073,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    144,
+    134
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 228
+  },
+  {
+   "entity_id": 91300232,
+   "nombre": "C-Steel Armor Tiger",
+   "npc_type": 23689,
+   "sprite": 43073,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    149,
+    133
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 228
+  },
+  {
+   "entity_id": 91300233,
+   "nombre": "C-Steel Armor Tiger",
+   "npc_type": 23689,
+   "sprite": 43073,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    136,
+    132
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 228
+  },
+  {
+   "entity_id": 91300234,
+   "nombre": "C-Steel Armor Tiger",
+   "npc_type": 23689,
+   "sprite": 43073,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    160,
+    132
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 228
+  },
+  {
+   "entity_id": 91300235,
+   "nombre": "C-Steel Armor Tiger",
+   "npc_type": 23689,
+   "sprite": 43073,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    154,
+    131
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 228
+  },
+  {
+   "entity_id": 91300236,
+   "nombre": "C-Steel Armor Tiger",
+   "npc_type": 23689,
+   "sprite": 43073,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    167,
+    130
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 228
+  },
+  {
+   "entity_id": 91300237,
+   "nombre": "C-Steel Armor Tiger",
+   "npc_type": 23689,
+   "sprite": 43073,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    103,
+    149
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 228
+  },
+  {
+   "entity_id": 91300238,
+   "nombre": "C-Steel Armor Tiger",
+   "npc_type": 23689,
+   "sprite": 43073,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    103,
+    154
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 228
+  },
+  {
+   "entity_id": 91300239,
+   "nombre": "C-Steel Armor Tiger",
+   "npc_type": 23689,
+   "sprite": 43073,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    103,
+    159
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 228
+  },
+  {
+   "entity_id": 91300240,
+   "nombre": "C-Steel Armor Tiger",
+   "npc_type": 23689,
+   "sprite": 43073,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    141,
+    129
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 228
+  },
+  {
+   "entity_id": 91300241,
+   "nombre": "C-Steel Armor Tiger",
+   "npc_type": 23689,
+   "sprite": 43073,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    131,
+    128
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 228
+  },
+  {
+   "entity_id": 91300242,
+   "nombre": "C-Steel Armor Tiger",
+   "npc_type": 23689,
+   "sprite": 43073,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    146,
+    128
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 228
+  },
+  {
+   "entity_id": 91300243,
+   "nombre": "C-Steel Armor Tiger",
+   "npc_type": 23689,
+   "sprite": 43073,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    136,
+    127
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 228
+  },
+  {
+   "entity_id": 91300244,
+   "nombre": "C-Steel Armor Tiger",
+   "npc_type": 23689,
+   "sprite": 43073,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    159,
+    127
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 228
+  },
+  {
+   "entity_id": 91300245,
+   "nombre": "C-Steel Armor Tiger",
+   "npc_type": 23689,
+   "sprite": 43073,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    172,
+    127
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 228
+  },
+  {
+   "entity_id": 91300246,
+   "nombre": "C-Steel Armor Tiger",
+   "npc_type": 23689,
+   "sprite": 43073,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    151,
+    126
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 228
+  },
+  {
+   "entity_id": 91300247,
+   "nombre": "C-Steel Armor Tiger",
+   "npc_type": 23689,
+   "sprite": 43073,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    164,
+    125
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 228
+  },
+  {
+   "entity_id": 91300248,
+   "nombre": "C-Steel Armor Tiger",
+   "npc_type": 23689,
+   "sprite": 43073,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    98,
+    149
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 228
+  },
+  {
+   "entity_id": 91300249,
+   "nombre": "C-Horned Bump Dragon",
+   "npc_type": 23691,
+   "sprite": 43084,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    98,
+    154
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 230
+  },
+  {
+   "entity_id": 91300250,
+   "nombre": "C-Horned Bump Dragon",
+   "npc_type": 23691,
+   "sprite": 43084,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    98,
+    159
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 230
+  },
+  {
+   "entity_id": 91300251,
+   "nombre": "C-Horned Bump Dragon",
+   "npc_type": 23691,
+   "sprite": 43084,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    93,
+    153
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 230
+  },
+  {
+   "entity_id": 91300252,
+   "nombre": "C-Horned Bump Dragon",
+   "npc_type": 23691,
+   "sprite": 43084,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    93,
+    158
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 230
+  },
+  {
+   "entity_id": 91300253,
+   "nombre": "C-Horned Bump Dragon",
+   "npc_type": 23691,
+   "sprite": 43084,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    88,
+    152
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 230
+  },
+  {
+   "entity_id": 91300254,
+   "nombre": "C-Horned Bump Dragon",
+   "npc_type": 23691,
+   "sprite": 43084,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    88,
+    157
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 230
+  },
+  {
+   "entity_id": 91300255,
+   "nombre": "C-Horned Bump Dragon",
+   "npc_type": 23691,
+   "sprite": 43084,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    141,
+    124
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 230
+  },
+  {
+   "entity_id": 91300256,
+   "nombre": "C-Horned Bump Dragon",
+   "npc_type": 23691,
+   "sprite": 43084,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    146,
+    123
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 230
+  },
+  {
+   "entity_id": 91300257,
+   "nombre": "C-Horned Bump Dragon",
+   "npc_type": 23691,
+   "sprite": 43084,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    85,
+    125
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 230
+  },
+  {
+   "entity_id": 91300258,
+   "nombre": "C-Horned Bump Dragon",
+   "npc_type": 23691,
+   "sprite": 43084,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    151,
+    121
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 230
+  },
+  {
+   "entity_id": 91300259,
+   "nombre": "C-Horned Bump Dragon",
+   "npc_type": 23691,
+   "sprite": 43084,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    84,
+    162
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 230
+  },
+  {
+   "entity_id": 91300260,
+   "nombre": "C-Horned Bump Dragon",
+   "npc_type": 23691,
+   "sprite": 43084,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    83,
+    119
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 230
+  },
+  {
+   "entity_id": 91300261,
+   "nombre": "C-Horned Bump Dragon",
+   "npc_type": 23691,
+   "sprite": 43084,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    83,
+    151
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 230
+  },
+  {
+   "entity_id": 91300262,
+   "nombre": "C-Horned Bump Dragon",
+   "npc_type": 23691,
+   "sprite": 43084,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    83,
+    156
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 230
+  },
+  {
+   "entity_id": 91300263,
+   "nombre": "C-Horned Bump Dragon",
+   "npc_type": 23691,
+   "sprite": 43084,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    146,
+    118
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 230
+  },
+  {
+   "entity_id": 91300264,
+   "nombre": "C-Horned Bump Dragon",
+   "npc_type": 23691,
+   "sprite": 43084,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    80,
+    124
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 230
+  },
+  {
+   "entity_id": 91300265,
+   "nombre": "C-Horned Bump Dragon",
+   "npc_type": 23691,
+   "sprite": 43084,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    80,
+    129
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 230
+  },
+  {
+   "entity_id": 91300266,
+   "nombre": "C-Horned Bump Dragon",
+   "npc_type": 23691,
+   "sprite": 43084,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    152,
+    116
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 230
+  },
+  {
+   "entity_id": 91300267,
+   "nombre": "C-Horned Bump Dragon",
+   "npc_type": 23691,
+   "sprite": 43084,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    88,
+    115
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 230
+  },
+  {
+   "entity_id": 91300268,
+   "nombre": "C-Horned Bump Dragon",
+   "npc_type": 23691,
+   "sprite": 43084,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    157,
+    115
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 230
+  },
+  {
+   "entity_id": 91300269,
+   "nombre": "C-Bloody Thorn Dragon",
+   "npc_type": 23692,
+   "sprite": 43100,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    94,
+    113
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 230
+  },
+  {
+   "entity_id": 91300270,
+   "nombre": "C-Bloody Thorn Dragon",
+   "npc_type": 23692,
+   "sprite": 43100,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    181,
+    113
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 230
+  },
+  {
+   "entity_id": 91300271,
+   "nombre": "C-Bloody Thorn Dragon",
+   "npc_type": 23692,
+   "sprite": 43100,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    186,
+    113
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 230
+  },
+  {
+   "entity_id": 91300272,
+   "nombre": "C-Bloody Thorn Dragon",
+   "npc_type": 23692,
+   "sprite": 43100,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    162,
+    112
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 230
+  },
+  {
+   "entity_id": 91300273,
+   "nombre": "C-Bloody Thorn Dragon",
+   "npc_type": 23692,
+   "sprite": 43100,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    171,
+    112
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 230
+  },
+  {
+   "entity_id": 91300274,
+   "nombre": "C-Bloody Thorn Dragon",
+   "npc_type": 23692,
+   "sprite": 43100,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    99,
+    111
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 230
+  },
+  {
+   "entity_id": 91300275,
+   "nombre": "C-Bloody Thorn Dragon",
+   "npc_type": 23692,
+   "sprite": 43100,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    176,
+    111
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 230
+  },
+  {
+   "entity_id": 91300276,
+   "nombre": "C-Bloody Thorn Dragon",
+   "npc_type": 23692,
+   "sprite": 43100,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    104,
+    110
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 230
+  },
+  {
+   "entity_id": 91300277,
+   "nombre": "C-Bloody Thorn Dragon",
+   "npc_type": 23692,
+   "sprite": 43100,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    157,
+    110
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 230
+  },
+  {
+   "entity_id": 91300278,
+   "nombre": "C-Bloody Thorn Dragon",
+   "npc_type": 23692,
+   "sprite": 43100,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    191,
+    109
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 230
+  },
+  {
+   "entity_id": 91300279,
+   "nombre": "C-Bloody Thorn Dragon",
+   "npc_type": 23692,
+   "sprite": 43100,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    89,
+    108
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 230
+  },
+  {
+   "entity_id": 91300280,
+   "nombre": "C-Bloody Thorn Dragon",
+   "npc_type": 23692,
+   "sprite": 43100,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    94,
+    108
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 230
+  },
+  {
+   "entity_id": 91300281,
+   "nombre": "C-Bloody Thorn Dragon",
+   "npc_type": 23692,
+   "sprite": 43100,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    181,
+    108
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 230
+  },
+  {
+   "entity_id": 91300282,
+   "nombre": "C-Bloody Thorn Dragon",
+   "npc_type": 23692,
+   "sprite": 43100,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    186,
+    108
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 230
+  },
+  {
+   "entity_id": 91300283,
+   "nombre": "C-Bloody Thorn Dragon",
+   "npc_type": 23692,
+   "sprite": 43100,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    162,
+    107
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 230
+  },
+  {
+   "entity_id": 91300284,
+   "nombre": "C-Mystic Huge Shrimp",
+   "npc_type": 23690,
+   "sprite": 43120,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    78,
+    119
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 228
+  },
+  {
+   "entity_id": 91300285,
+   "nombre": "C-Mystic Huge Shrimp",
+   "npc_type": 23690,
+   "sprite": 43120,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    78,
+    149
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 228
+  },
+  {
+   "entity_id": 91300286,
+   "nombre": "C-Mystic Huge Shrimp",
+   "npc_type": 23690,
+   "sprite": 43120,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    78,
+    154
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 228
+  },
+  {
+   "entity_id": 91300287,
+   "nombre": "C-Mystic Huge Shrimp",
+   "npc_type": 23690,
+   "sprite": 43120,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    78,
+    159
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 228
+  },
+  {
+   "entity_id": 91300288,
+   "nombre": "C-Mystic Huge Shrimp",
+   "npc_type": 23690,
+   "sprite": 43120,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    75,
+    124
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 228
+  },
+  {
+   "entity_id": 91300289,
+   "nombre": "C-Mystic Huge Shrimp",
+   "npc_type": 23690,
+   "sprite": 43120,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    75,
+    129
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 228
+  },
+  {
+   "entity_id": 91300290,
+   "nombre": "C-Mystic Huge Shrimp",
+   "npc_type": 23690,
+   "sprite": 43120,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    75,
+    134
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 228
+  },
+  {
+   "entity_id": 91300291,
+   "nombre": "C-Mystic Huge Shrimp",
+   "npc_type": 23690,
+   "sprite": 43120,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    73,
+    145
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 228
+  },
+  {
+   "entity_id": 91300292,
+   "nombre": "C-Mystic Huge Shrimp",
+   "npc_type": 23690,
+   "sprite": 43120,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    73,
+    150
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 228
+  },
+  {
+   "entity_id": 91300293,
+   "nombre": "C-Mystic Huge Shrimp",
+   "npc_type": 23690,
+   "sprite": 43120,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    73,
+    155
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 228
+  },
+  {
+   "entity_id": 91300294,
+   "nombre": "C-Mystic Huge Shrimp",
+   "npc_type": 23690,
+   "sprite": 43120,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    73,
+    160
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 228
+  },
+  {
+   "entity_id": 91300295,
+   "nombre": "C-Mystic Huge Shrimp",
+   "npc_type": 23690,
+   "sprite": 43120,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    70,
+    120
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 228
+  },
+  {
+   "entity_id": 91300296,
+   "nombre": "C-Mystic Huge Shrimp",
+   "npc_type": 23690,
+   "sprite": 43120,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    70,
+    125
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 228
+  },
+  {
+   "entity_id": 91300297,
+   "nombre": "C-Mystic Huge Shrimp",
+   "npc_type": 23690,
+   "sprite": 43120,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    70,
+    130
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 228
+  },
+  {
+   "entity_id": 91300298,
+   "nombre": "C-Mystic Huge Shrimp",
+   "npc_type": 23690,
+   "sprite": 43120,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    70,
+    135
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 228
+  },
+  {
+   "entity_id": 91300299,
+   "nombre": "Arena Attendant",
+   "npc_type": 7998,
+   "sprite": 43032,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    25,
+    6
+   ],
+   "direccion": 2,
+   "visible": 0
+  },
+  {
+   "entity_id": 91300300,
+   "nombre": "Lobby Guards",
+   "npc_type": 7999,
+   "sprite": 43032,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    143,
+    36
+   ],
+   "direccion": 2,
+   "visible": 0
+  },
+  {
+   "entity_id": 91300301,
+   "nombre": "Hall Guards",
+   "npc_type": 8000,
+   "sprite": 43033,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    220,
+    152
+   ],
+   "direccion": 2,
+   "visible": 0
+  },
+  {
+   "entity_id": 91300302,
+   "nombre": "Palace Guards",
+   "npc_type": 8801,
+   "sprite": 43031,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    99,
+    106
+   ],
+   "direccion": 2,
+   "visible": 0
+  },
+  {
+   "entity_id": 91300303,
+   "nombre": "Praetorian Guards",
+   "npc_type": 8802,
+   "sprite": 43034,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    167,
+    107
+   ],
+   "direccion": 2,
+   "visible": 0
+  },
+  {
+   "entity_id": 91300304,
+   "nombre": "Bringer of Doom",
+   "npc_type": 8806,
+   "sprite": 43031,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    211,
+    115
+   ],
+   "direccion": 2,
+   "visible": 0
+  },
+  {
+   "entity_id": 91300305,
+   "nombre": "C-Mini Rex",
+   "npc_type": 23693,
+   "sprite": 43088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    178,
+    96
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300306,
+   "nombre": "C-Mini Rex",
+   "npc_type": 23693,
+   "sprite": 43088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    173,
+    91
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300307,
+   "nombre": "C-Mini Rex",
+   "npc_type": 23693,
+   "sprite": 43088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    177,
+    101
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300308,
+   "nombre": "C-Mini Rex",
+   "npc_type": 23693,
+   "sprite": 43088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    178,
+    91
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300309,
+   "nombre": "C-Mini Rex",
+   "npc_type": 23693,
+   "sprite": 43088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    182,
+    101
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300310,
+   "nombre": "C-Mini Rex",
+   "npc_type": 23693,
+   "sprite": 43088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    183,
+    91
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300311,
+   "nombre": "C-Mini Rex",
+   "npc_type": 23693,
+   "sprite": 43088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    183,
+    96
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300312,
+   "nombre": "C-Mini Rex",
+   "npc_type": 23693,
+   "sprite": 43088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    172,
+    102
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300313,
+   "nombre": "C-Mini Rex",
+   "npc_type": 23693,
+   "sprite": 43088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    187,
+    101
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300314,
+   "nombre": "C-Mini Rex",
+   "npc_type": 23693,
+   "sprite": 43088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    168,
+    88
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300315,
+   "nombre": "C-Mini Rex",
+   "npc_type": 23693,
+   "sprite": 43088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    188,
+    92
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300316,
+   "nombre": "C-Mini Rex",
+   "npc_type": 23693,
+   "sprite": 43088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    167,
+    93
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300317,
+   "nombre": "C-Mini Rex",
+   "npc_type": 23693,
+   "sprite": 43088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    167,
+    98
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300318,
+   "nombre": "C-Mini Rex",
+   "npc_type": 23693,
+   "sprite": 43088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    192,
+    97
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300319,
+   "nombre": "C-Mini Rex",
+   "npc_type": 23693,
+   "sprite": 43088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    192,
+    102
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300320,
+   "nombre": "C-Mini Rex",
+   "npc_type": 23693,
+   "sprite": 43088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    162,
+    91
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300321,
+   "nombre": "C-Mini Rex",
+   "npc_type": 23693,
+   "sprite": 43088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    162,
+    96
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300322,
+   "nombre": "C-Mini Rex",
+   "npc_type": 23693,
+   "sprite": 43088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    162,
+    101
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300323,
+   "nombre": "C-Mini Rex",
+   "npc_type": 23693,
+   "sprite": 43088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    197,
+    96
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300324,
+   "nombre": "C-Mini Rex",
+   "npc_type": 23693,
+   "sprite": 43088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    197,
+    101
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300325,
+   "nombre": "C-Mini Rex",
+   "npc_type": 23693,
+   "sprite": 43088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    157,
+    99
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300326,
+   "nombre": "C-Mini Rex",
+   "npc_type": 23693,
+   "sprite": 43088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    157,
+    104
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300327,
+   "nombre": "C-Mini Rex",
+   "npc_type": 23693,
+   "sprite": 43088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    202,
+    120
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300328,
+   "nombre": "C-Mini Rex",
+   "npc_type": 23693,
+   "sprite": 43088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    203,
+    69
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300329,
+   "nombre": "C-Mini Rex",
+   "npc_type": 23693,
+   "sprite": 43088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    194,
+    68
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300330,
+   "nombre": "C-Mini Rex",
+   "npc_type": 23693,
+   "sprite": 43088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    204,
+    125
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300331,
+   "nombre": "C-Mini Rex",
+   "npc_type": 23693,
+   "sprite": 43088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    207,
+    120
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300332,
+   "nombre": "C-Mini Rex",
+   "npc_type": 23693,
+   "sprite": 43088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    148,
+    66
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300333,
+   "nombre": "C-Mini Rex",
+   "npc_type": 23693,
+   "sprite": 43088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    153,
+    66
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300334,
+   "nombre": "C-Mini Rex",
+   "npc_type": 23693,
+   "sprite": 43088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    208,
+    66
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 91300335,
+   "nombre": "C-Blade Thorny Dragon",
+   "npc_type": 23679,
+   "sprite": 43097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    156,
+    57
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 224
+  },
+  {
+   "entity_id": 91300336,
+   "nombre": "C-Blade Thorny Dragon",
+   "npc_type": 23679,
+   "sprite": 43097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    189,
+    57
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 224
+  },
+  {
+   "entity_id": 91300337,
+   "nombre": "C-Blade Thorny Dragon",
+   "npc_type": 23679,
+   "sprite": 43097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    194,
+    57
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 224
+  },
+  {
+   "entity_id": 91300338,
+   "nombre": "C-Blade Thorny Dragon",
+   "npc_type": 23679,
+   "sprite": 43097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    169,
+    59
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 224
+  },
+  {
+   "entity_id": 91300339,
+   "nombre": "C-Blade Thorny Dragon",
+   "npc_type": 23679,
+   "sprite": 43097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    179,
+    59
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 224
+  },
+  {
+   "entity_id": 91300340,
+   "nombre": "C-Blade Thorny Dragon",
+   "npc_type": 23679,
+   "sprite": 43097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    199,
+    59
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 224
+  },
+  {
+   "entity_id": 91300341,
+   "nombre": "C-Blade Thorny Dragon",
+   "npc_type": 23679,
+   "sprite": 43097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    204,
+    60
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 224
+  },
+  {
+   "entity_id": 91300342,
+   "nombre": "C-Blade Thorny Dragon",
+   "npc_type": 23679,
+   "sprite": 43097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    214,
+    60
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 224
+  },
+  {
+   "entity_id": 91300343,
+   "nombre": "C-Blade Thorny Dragon",
+   "npc_type": 23679,
+   "sprite": 43097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    161,
+    61
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 224
+  },
+  {
+   "entity_id": 91300344,
+   "nombre": "C-Blade Thorny Dragon",
+   "npc_type": 23679,
+   "sprite": 43097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    174,
+    61
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 224
+  },
+  {
+   "entity_id": 91300345,
+   "nombre": "C-Blade Thorny Dragon",
+   "npc_type": 23679,
+   "sprite": 43097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    184,
+    61
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 224
+  },
+  {
+   "entity_id": 91300346,
+   "nombre": "C-Blade Thorny Dragon",
+   "npc_type": 23679,
+   "sprite": 43097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    209,
+    61
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 224
+  },
+  {
+   "entity_id": 91300347,
+   "nombre": "C-Blade Thorny Dragon",
+   "npc_type": 23679,
+   "sprite": 43097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    151,
+    55
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 224
+  },
+  {
+   "entity_id": 91300348,
+   "nombre": "C-Blade Thorny Dragon",
+   "npc_type": 23679,
+   "sprite": 43097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    219,
+    61
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 224
+  },
+  {
+   "entity_id": 91300349,
+   "nombre": "C-Blade Thorny Dragon",
+   "npc_type": 23679,
+   "sprite": 43097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    151,
+    60
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 224
+  },
+  {
+   "entity_id": 91300350,
+   "nombre": "C-Blade Thorny Dragon",
+   "npc_type": 23679,
+   "sprite": 43097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    189,
+    62
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 224
+  },
+  {
+   "entity_id": 91300351,
+   "nombre": "C-Blade Thorny Dragon",
+   "npc_type": 23679,
+   "sprite": 43097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    194,
+    62
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 224
+  },
+  {
+   "entity_id": 91300352,
+   "nombre": "C-Blade Thorny Dragon",
+   "npc_type": 23679,
+   "sprite": 43097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    199,
+    64
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 224
+  },
+  {
+   "entity_id": 91300353,
+   "nombre": "C-Blade Thorny Dragon",
+   "npc_type": 23679,
+   "sprite": 43097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    214,
+    65
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 224
+  },
+  {
+   "entity_id": 91300354,
+   "nombre": "C-Blade Thorny Dragon",
+   "npc_type": 23679,
+   "sprite": 43097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    224,
+    64
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 224
+  },
+  {
+   "entity_id": 91300355,
+   "nombre": "C-Blade Thorny Dragon",
+   "npc_type": 23679,
+   "sprite": 43097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    219,
+    66
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 224
+  },
+  {
+   "entity_id": 91300356,
+   "nombre": "C-Blade Thorny Dragon",
+   "npc_type": 23679,
+   "sprite": 43097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    224,
+    69
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 224
+  },
+  {
+   "entity_id": 91300357,
+   "nombre": "C-Blade Thorny Dragon",
+   "npc_type": 23679,
+   "sprite": 43097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    146,
+    52
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 224
+  },
+  {
+   "entity_id": 91300358,
+   "nombre": "C-Blade Thorny Dragon",
+   "npc_type": 23679,
+   "sprite": 43097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    213,
+    70
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 224
+  },
+  {
+   "entity_id": 91300359,
+   "nombre": "C-Blade Thorny Dragon",
+   "npc_type": 23679,
+   "sprite": 43097,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    146,
+    57
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 224
+  },
+  {
+   "entity_id": 91300360,
+   "nombre": "Ba'shin's Gaze",
+   "npc_type": 23724,
+   "sprite": 111552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    35,
+    4
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 250
+  },
+  {
+   "entity_id": 91300361,
+   "nombre": "Ba'shin's Gaze",
+   "npc_type": 23724,
+   "sprite": 111552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    30,
+    4
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 250
+  },
+  {
+   "entity_id": 91300362,
+   "nombre": "Ba'shin's Gaze",
+   "npc_type": 23724,
+   "sprite": 111552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    20,
+    4
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 250
+  },
+  {
+   "entity_id": 91300363,
+   "nombre": "Ba'shin's Gaze",
+   "npc_type": 23724,
+   "sprite": 111552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    15,
+    4
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 250
+  },
+  {
+   "entity_id": 91300364,
+   "nombre": "Ba'shin's Gaze",
+   "npc_type": 23724,
+   "sprite": 111552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    15,
+    9
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 250
+  },
+  {
+   "entity_id": 91300365,
+   "nombre": "Ba'shin's Gaze",
+   "npc_type": 23724,
+   "sprite": 111552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    15,
+    14
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 250
+  },
+  {
+   "entity_id": 91300366,
+   "nombre": "Ba'shin's Gaze",
+   "npc_type": 23724,
+   "sprite": 111552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    10,
+    4
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 250
+  },
+  {
+   "entity_id": 91300367,
+   "nombre": "Ba'shin's Gaze",
+   "npc_type": 23724,
+   "sprite": 111552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    10,
+    9
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 250
+  },
+  {
+   "entity_id": 91300368,
+   "nombre": "Ba'shin's Gaze",
+   "npc_type": 23724,
+   "sprite": 111552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    5,
+    4
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 250
+  },
+  {
+   "entity_id": 91300369,
+   "nombre": "Ba'shin's Gaze",
+   "npc_type": 23724,
+   "sprite": 111552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    5,
+    9
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 250
+  },
+  {
+   "entity_id": 91300370,
+   "nombre": "Ba'shin's Gaze",
+   "npc_type": 23724,
+   "sprite": 111552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    68,
+    57
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 250
+  },
+  {
+   "entity_id": 91300371,
+   "nombre": "Ba'shin's Gaze",
+   "npc_type": 23724,
+   "sprite": 111552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    34,
+    58
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 250
+  },
+  {
+   "entity_id": 91300372,
+   "nombre": "Ba'shin's Gaze",
+   "npc_type": 23724,
+   "sprite": 111552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    59,
+    58
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 250
+  },
+  {
+   "entity_id": 91300373,
+   "nombre": "Ba'shin's Gaze",
+   "npc_type": 23724,
+   "sprite": 111552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    60
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 250
+  },
+  {
+   "entity_id": 91300374,
+   "nombre": "Ba'shin's Gaze",
+   "npc_type": 23724,
+   "sprite": 111552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    44,
+    60
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 250
+  }
+ ],
+ "recursos": [
+  {
+   "entity_id": 101300000,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    8468,
+    1328
+   ],
+   "tile": [
+    264,
+    41
+   ],
+   "crudo": "20b709060000000014210000300500000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 101300001,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    8530,
+    1264
+   ],
+   "tile": [
+    266,
+    39
+   ],
+   "crudo": "21b709060000000052210000f00400000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 101300002,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    8370,
+    1264
+   ],
+   "tile": [
+    261,
+    39
+   ],
+   "crudo": "22b7090600000000b2200000f00400000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 101300003,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    8453,
+    1168
+   ],
+   "tile": [
+    264,
+    36
+   ],
+   "crudo": "23b709060000000005210000900400000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 101300004,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    8645,
+    1200
+   ],
+   "tile": [
+    270,
+    37
+   ],
+   "crudo": "24b7090600000000c5210000b00400000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 101300005,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    8588,
+    1136
+   ],
+   "tile": [
+    268,
+    35
+   ],
+   "crudo": "25b70906000000008c210000700400000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 101300006,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    8652,
+    1392
+   ],
+   "tile": [
+    270,
+    43
+   ],
+   "crudo": "26b7090600000000cc210000700500000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 101300007,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    8858,
+    1232
+   ],
+   "tile": [
+    276,
+    38
+   ],
+   "crudo": "27b70906000000009a220000d00400000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 101300008,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    8373,
+    880
+   ],
+   "tile": [
+    261,
+    27
+   ],
+   "crudo": "28b7090600000000b5200000700300000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 101300009,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    8493,
+    1040
+   ],
+   "tile": [
+    265,
+    32
+   ],
+   "crudo": "29b70906000000002d210000100400000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 101300010,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    8695,
+    1040
+   ],
+   "tile": [
+    271,
+    32
+   ],
+   "crudo": "2ab7090600000000f7210000100400000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 101300011,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    8514,
+    1744
+   ],
+   "tile": [
+    266,
+    54
+   ],
+   "crudo": "2bb709060000000042210000d00600000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 101300012,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    8188,
+    1808
+   ],
+   "tile": [
+    255,
+    56
+   ],
+   "crudo": "2cb7090600000000fc1f0000100700000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 101300013,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    7971,
+    1680
+   ],
+   "tile": [
+    249,
+    52
+   ],
+   "crudo": "2db7090600000000231f0000900600000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 101300014,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    8024,
+    1584
+   ],
+   "tile": [
+    250,
+    49
+   ],
+   "crudo": "2eb7090600000000581f0000300600000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 101300015,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    8665,
+    592
+   ],
+   "tile": [
+    270,
+    18
+   ],
+   "crudo": "2fb7090600000000d9210000500200000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 101300016,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    8874,
+    560
+   ],
+   "tile": [
+    277,
+    17
+   ],
+   "crudo": "30b7090600000000aa220000300200000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 101300017,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    8947,
+    720
+   ],
+   "tile": [
+    279,
+    22
+   ],
+   "crudo": "31b7090600000000f3220000d00200000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 101300018,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    9060,
+    1072
+   ],
+   "tile": [
+    283,
+    33
+   ],
+   "crudo": "32b709060000000064230000300400000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 101300019,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    8950,
+    784
+   ],
+   "tile": [
+    279,
+    24
+   ],
+   "crudo": "33b7090600000000f6220000100300000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 101300020,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    9070,
+    1520
+   ],
+   "tile": [
+    283,
+    47
+   ],
+   "crudo": "34b70906000000006e230000f00500000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 101300021,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    8577,
+    1392
+   ],
+   "tile": [
+    268,
+    43
+   ],
+   "crudo": "35b709060000000081210000700500000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 101300022,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    9126,
+    752
+   ],
+   "tile": [
+    285,
+    23
+   ],
+   "crudo": "36b7090600000000a6230000f00200000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 101300023,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    8841,
+    2064
+   ],
+   "tile": [
+    276,
+    64
+   ],
+   "crudo": "37b709060000000089220000100800000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 101300024,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    8634,
+    2128
+   ],
+   "tile": [
+    269,
+    66
+   ],
+   "crudo": "38b7090600000000ba210000500800000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 101300025,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    9404,
+    2032
+   ],
+   "tile": [
+    293,
+    63
+   ],
+   "crudo": "39b7090600000000bc240000f00700000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 101300026,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    7518,
+    1456
+   ],
+   "tile": [
+    234,
+    45
+   ],
+   "crudo": "3ab70906000000005e1d0000b00500000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 101300027,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    7563,
+    1136
+   ],
+   "tile": [
+    236,
+    35
+   ],
+   "crudo": "3bb70906000000008b1d0000700400000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 101300028,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    7852,
+    1072
+   ],
+   "tile": [
+    245,
+    33
+   ],
+   "crudo": "3cb7090600000000ac1e0000300400000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 101300029,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    7986,
+    656
+   ],
+   "tile": [
+    249,
+    20
+   ],
+   "crudo": "3db7090600000000321f0000900200000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 101300030,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    8108,
+    336
+   ],
+   "tile": [
+    253,
+    10
+   ],
+   "crudo": "3eb7090600000000ac1f0000500100000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 101300031,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    7997,
+    240
+   ],
+   "tile": [
+    249,
+    7
+   ],
+   "crudo": "3fb70906000000003d1f0000f00000000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 101300032,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    7363,
+    272
+   ],
+   "tile": [
+    230,
+    8
+   ],
+   "crudo": "40b7090600000000c31c0000100100000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 101300033,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    6496,
+    3952
+   ],
+   "tile": [
+    203,
+    123
+   ],
+   "crudo": "41b709060000000060190000700f00000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 101300034,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    6624,
+    3984
+   ],
+   "tile": [
+    207,
+    124
+   ],
+   "crudo": "42b7090600000000e0190000900f00000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 101300035,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    6752,
+    4016
+   ],
+   "tile": [
+    211,
+    125
+   ],
+   "crudo": "43b7090600000000601a0000b00f00000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 101300036,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    6880,
+    4048
+   ],
+   "tile": [
+    215,
+    126
+   ],
+   "crudo": "44b7090600000000e01a0000d00f00000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 101300037,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    7165,
+    1328
+   ],
+   "tile": [
+    223,
+    41
+   ],
+   "crudo": "45b7090600000000fd1b0000300500000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  }
+ ]
+}

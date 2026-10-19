@@ -387,11 +387,17 @@ def propio(nombre: str, faccion: str = "Heaven", jugador: str = "",
            visto_michael: bool = False, stage: int = 0,
            registrado: bool = None, entidad: int = 0, val: int = 0,
            en_progreso: bool = False, graduado: bool = False,
-           cleanliness: int = None, house_level: int = None):
+           cleanliness: int = None, house_level: int = None, nivel: int = None):
     """Una linea de dialogo para ese NPC, o None si no se le conoce ninguna."""
     npc_val = val or (val_por_entidad(entidad, 0) if entidad else 0)
 
     nom_lower = (nombre or '').lower().strip()
+    if nom_lower in ('past the time spirit', 'time spirit') or entidad in (24798, 2479800, 90308000):
+        v = npc_val or val_por_entidad(entidad, 1342)
+        if nivel is not None and nivel < 250:
+            return [armar_linea(158401, v, [158418])[2:]]
+        return [armar_linea(158421, v, [158416, 158417, 158514, 158418])[2:]]
+
     if nom_lower in ('maid eilian', 'eilian') or entidad in (260300, 2603):
         v = MAID_PORTRAIT
         if cleanliness is not None and cleanliness == 0:
@@ -2382,6 +2388,7 @@ TIENDAS_POR_OPCION = {
     504138: 57,  # Spell V Scrolls, Classic Trinkets -> Shop 57
     504136: 56,  # Robots, Production Gears or Collection Cores -> Shop 56
     508586: 159, # Voucher Angel: Buy Angelic Vouchers -> Shop 159
+    158514: 659, # Past the Time Spirit: Exchange Time Crystal -> Shop 659
 }
 
 
@@ -2426,6 +2433,9 @@ VIAJES_POR_OPCION = {
     # son distintas entre si y ninguna se parece a las de Shuwa.
     (259, 125310): (261, [10, 11]),
     (259, 125311): (262, [17, 7]),
+    # Past the Time Spirit (Rainbow Town, Stage 308)
+    (308, 158416): (413, [20, 11]),    # Chaos-Dinosaur Arena (Tag 1)
+    (308, 158417): (414, [289, 7]),    # Chaos-End Time (Tag 1)
 }
 
 
@@ -3114,7 +3124,8 @@ def respuesta_a(opcion_id: int, entidad: int = 0, val: int = 4,
     # Village; sin ellos el dialogo se quedaba abierto al decir que no.
     if opcion_id in (5012, 5191, 5242, 5046, 5059, 5064, 5271, 7536, 5238, 7933, 7983, 7991,
                      5278, 5371, 112004, 5033, 5020, 121004,
-                     8387, 508047, 508056, 508064, 504133, 508588):  # Quit / cerrar
+                     8387, 508047, 508056, 508064, 504133, 508588,
+                     158418, 158515):  # Quit / cerrar
         return (struct.pack('<H', 0x0012) + FIN,)
 
     # Voucher Angel (NPC 14334)

@@ -854,6 +854,8 @@ PLANTILLAS_POR_STAGE = {
     395 : 'warring_realm.json',             # Warring Realm, desde 394 Champions' Arena. 166 bichos
     403 : 'dragons_lair.json',              # Dragon's Lair, desde 402 Seaside Grotto. 134 bichos
     411 : 'core_zone.json',                 # Core Zone, desde 410 Steely Circuit. 203 bichos
+    413 : 'c_dinosaur_arena.json',          # Chaos-Dinosaur Arena, desde Rainbow Town. 375 bichos
+    414 : 'c_end_time.json',                # Chaos-End Time, desde Rainbow Town. 310 bichos
     422 : 'secret_peak.json',
     # Estas dos no estaban ni anotadas en portales.json: su tornado falta
     # entero en el json, no es que estuviera en null. Salieron barriendo el

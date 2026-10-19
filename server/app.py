@@ -3301,10 +3301,12 @@ def _casa_submit_order(ses, option):
         ses.enviar(combate.efecto_level_up(p.entity_id))
     if p.rango > old_rank:
         ses.enviar(combate.efecto_level_up(p.entity_id, es_rango=True))
-    for amount, message in ((rewards['exp'], clases.MSG_EXP),
-                            (rewards['oro'], clases.MSG_PAGO), (rewards['creditos'], 642)):
-        if amount:
-            ses.enviar(clases.aviso(str(amount), tipo=0, msg_id=message))
+    if rewards.get('exp'):
+        ses.enviar(clases.aviso(str(rewards['exp']), tipo=0, msg_id=clases.MSG_EXP))
+    if rewards.get('oro'):
+        ses.enviar(clases.aviso(f"{rewards['oro']} Gold", tipo=0, msg_id=clases.MSG_ITEM))
+    if rewards.get('creditos'):
+        ses.enviar(clases.aviso(str(rewards['creditos']), tipo=0, msg_id=642))
     reply(7859)
     return True
 
@@ -14888,7 +14890,8 @@ class Servidor:
                         en_progreso=_en_prog,
                         graduado=_es_grad,
                         cleanliness=_clean_house,
-                        house_level=_house_lvl)
+                        house_level=_house_lvl,
+                        nivel=getattr(ses.personaje, 'nivel', 1) if ses.personaje else 1)
 
                 # El dialogo del ARBOL DEL MAPA cuando el NPC tiene uno que
                 # hace algo (opciones, acciones, ramas). Solo en instancias,
