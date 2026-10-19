@@ -2770,17 +2770,17 @@ def cierre_de_dano(atacante: int, objetivo: int,
 
 def efecto_cristal_captura(atacante: int, objetivo: int,
                            x: int = 0, y: int = 0):
-    """Cristal rojo del intento, tanto si la captura acierta como si falla.
+    """Icy Trap del intento, tanto si la captura acierta como si falla.
 
-    Las piezas rojas 4607 y 4610 estan fisicamente en ``shape/magic/019``.
-    Hay que mandar sus dos fases 0x00/0x80: una fase suelta no llega a
-    reproducirse en Angel.exe. Esto no altera HP ni estado del monstruo.
+    ``magic.xml`` confirma que el efecto 36 pertenece a Icy Trap. El efecto
+    19 usado antes pertenece a Fire Trap y no debe formar parte de la
+    captura. Se mandan ambas fases sin alterar HP ni estado del monstruo.
     """
     return [
-        numero_de_dano(atacante, objetivo, dano=0, ataque=0, efecto=19,
-                       cast_time=0, es_magia=False, tile_x=x, tile_y=y),
-        cierre_de_dano(atacante, objetivo, ataque=0, efecto=19,
-                       es_magia=False, tile_x=x, tile_y=y),
+        numero_de_dano(atacante, objetivo, dano=0, ataque=0, efecto=36,
+                       cast_time=0, es_magia=True, tile_x=x, tile_y=y),
+        cierre_de_dano(atacante, objetivo, ataque=0, efecto=36,
+                       es_magia=True, tile_x=x, tile_y=y),
     ]
 
 
@@ -2788,8 +2788,7 @@ def efecto_captura(atacante: int, objetivo: int, x: int = 0, y: int = 0,
                    subtipo: int = 16979):
     """Absorcion de una captura conseguida hacia el jugador.
 
-    Esta es la secuencia que ya producia correctamente el movimiento al
-    jugador. Se envia despues del cristal 19 y solo cuando el sorteo acierta.
+    Se envia despues de Icy Trap y solamente cuando el sorteo acierta.
     """
     return [
         numero_de_dano(atacante, objetivo, dano=0, ataque=0, efecto=302,

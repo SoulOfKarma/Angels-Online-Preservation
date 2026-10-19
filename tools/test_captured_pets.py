@@ -34,14 +34,14 @@ def test_luxurious_poke_egg_is_not_guaranteed():
         300, 99, 100, npc_type=7001)
 
 
-def test_capture_animation_uses_dedicated_red_capture_resource():
+def test_successful_capture_uses_absorption_after_icy_trap():
     packets = combate.efecto_captura(11, 22, 33, 44, 16982)
     assert len(packets) == 2
-    assert int.from_bytes(packets[0][:2], 'little') == 0x0011  # red crystal effect 0x0011
+    assert int.from_bytes(packets[0][:2], 'little') == 0x0011
     assert int.from_bytes(packets[1][:2], 'little') == 0x0011
     effect_start = packets[0][2] | ((packets[0][3] & 0x0F) << 8)
     effect_end = packets[1][2] | ((packets[1][3] & 0x0F) << 8)
-    assert effect_start == 302  # magic/302, dedicated red Poke Egg effect
+    assert effect_start == 302  # absorption toward the player, success only
     assert effect_end == 302
     assert packets[0][3] & 0x80 == 0x00  # phase 0x00
     assert packets[1][3] & 0x80 == 0x80  # phase 0x80
@@ -51,10 +51,10 @@ def test_capture_animation_uses_dedicated_red_capture_resource():
     assert struct.unpack_from('<H', packets[0], 23)[0] == 0  # no attack skill id
 
 
-def test_failed_attempt_uses_complete_red_crystal_resource_19():
+def test_failed_attempt_uses_complete_icy_trap_resource_36():
     packets = combate.efecto_cristal_captura(11, 22, 33, 44)
     assert len(packets) == 2
-    assert [p[2] | ((p[3] & 0x0F) << 8) for p in packets] == [19, 19]
+    assert [p[2] | ((p[3] & 0x0F) << 8) for p in packets] == [36, 36]
     assert packets[0][3] & 0x80 == 0x00
     assert packets[1][3] & 0x80 == 0x80
     assert all(struct.unpack_from('<II', p, 12) == (33, 44) for p in packets)

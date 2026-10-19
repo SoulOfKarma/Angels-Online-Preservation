@@ -3543,7 +3543,7 @@ def _intentar_captura_monstruo(ses, target_entity, addr='?'):
     _sacar(ses, slot, 1)
     touched = [slot]
 
-    # El cristal rojo del intento necesita sus dos fases para reproducirse.
+    # Icy Trap necesita sus dos fases para reproducirse.
     # No captura ni modifica al monstruo por si mismo.
     crystal_pkts = _cb_cap.efecto_cristal_captura(
         p_eid, monster.entity_id, monster.tile_x, monster.tile_y)
@@ -3556,10 +3556,9 @@ def _intentar_captura_monstruo(ses, target_entity, addr='?'):
 
     success = random.random() * 100.0 < chance
     if success:
-        # Tras el cristal, la absorcion que viaja hacia el jugador se manda
-        # solamente al acertar.
-        # NOTE: Never send confirmar_cast (0x0006) here: deja al cliente
-        # esperando un cast y bloquea el movimiento del personaje.
+        # Al acertar, despues de Icy Trap se reproduce la absorcion que lleva
+        # visualmente la mascota hacia el jugador. En un fallo no se envia.
+        # Nunca mandar confirmar_cast (0x0006): bloquea el movimiento.
         success_pkts = _cb_cap.efecto_captura(
             p_eid, monster.entity_id, monster.tile_x, monster.tile_y, item_id)
         ses.enviar(*success_pkts)
@@ -3592,8 +3591,8 @@ def _intentar_captura_monstruo(ses, target_entity, addr='?'):
                     if getattr(ses, 'usuario', None):
                         cuentas.guardar_mascota(ses.usuario, p_ses.char_id, ficha, p_ses.mascotas)
 
-        # Al capturar con exito el monstruo queda inmovilizado bajo el cristal
-        # rojo y luego se retira directamente. Una captura NO es una muerte:
+        # Al capturar con exito el monstruo queda inmovilizado bajo Icy Trap
+        # y luego se retira directamente. Una captura NO es una muerte:
         # no se manda HP=0 ni muerte_monstruo, porque ambas cosas reproducen
         # la animacion Dead que el cliente oficial no usa aqui.
         capture_started = time.time()
