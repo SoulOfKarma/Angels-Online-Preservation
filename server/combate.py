@@ -835,9 +835,10 @@ _DROP_OFICIAL_CACHE = {}
 # En los XML de las dos instancias Chaos todos los monstruos vienen marcados
 # con 王, incluidos los mobs comunes.  Esa marca sirve para sus inmunidades,
 # pero no significa que todos tengan botin garantizado.  achievement.xml es
-# mas preciso: identifica como Boss/C-Boss a estos tres NPC.
+# mas preciso. Ba'shin's Gaze es el guardian de ambas instancias y tambien
+# conserva botin garantizado en sus dos variantes.
 _MONSTRUOS_CHAOS = frozenset(range(23673, 23725)) | {23745, 23839}
-_JEFES_CHAOS = frozenset({23688, 23714, 23839})
+_JEFES_CHAOS = frozenset({23688, 23714, 23724, 23745, 23839})
 
 
 def _cargar_drops_plantilla() -> dict:

@@ -190,6 +190,8 @@ def test_solo_bosses_oficiales_de_chaos_sueltan_siempre():
         for npc_type, nombre, nivel in (
                 (23688, 'C-Dragon Emperor', 250),
                 (23714, 'C-Time Lady', 460),
+                (23724, "Ba'shin's Gaze", 250),
+                (23745, "Ba'shin's Gaze", 460),
                 (23839, "Ba'shin", 470)):
             cb._DROPS_CACHE.pop(npc_type, None)
             cb._DROP_OFICIAL_CACHE.pop(npc_type, None)
