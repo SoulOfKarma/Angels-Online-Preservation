@@ -704,7 +704,9 @@ def npc_de_los_xml(stage: int, desde=900):
     salida = []
     for k, e in enumerate(d.get(str(stage), [])):
         salida.append(_npc_spawn(desde + k, e['npc_type'], e['nombre'],
-                                 e['tile'], e.get('sprite', 0)))
+                                 e['tile'], e.get('sprite', 0),
+                                 klass=e.get('klass', 199),
+                                 direccion=e.get('dir', 6)))
     return salida
 
 

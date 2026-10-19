@@ -11,6 +11,7 @@ import combate
 import cuentas
 import house_services as hs
 import mascotas
+import presencia
 
 
 def test_only_official_catch_xml_decides_the_archetype():
@@ -33,19 +34,75 @@ def test_luxurious_poke_egg_is_not_guaranteed():
         300, 99, 100, npc_type=7001)
 
 
-def test_capture_animation_keeps_effect_and_subtype_separate():
+def test_capture_animation_uses_dedicated_red_capture_resource():
     packets = combate.efecto_captura(11, 22, 33, 44, 16982)
     assert len(packets) == 2
     assert int.from_bytes(packets[0][:2], 'little') == 0x0011  # red crystal effect 0x0011
     assert int.from_bytes(packets[1][:2], 'little') == 0x0011
-    assert packets[0][2] == 36  # Icy Trap group; 44 is Frozen Trap (wrong AOE)
-    assert packets[1][2] == 36
+    effect_start = packets[0][2] | ((packets[0][3] & 0x0F) << 8)
+    effect_end = packets[1][2] | ((packets[1][3] & 0x0F) << 8)
+    assert effect_start == 302  # magic/302, dedicated red Poke Egg effect
+    assert effect_end == 302
     assert packets[0][3] & 0x80 == 0x00  # phase 0x00
     assert packets[1][3] & 0x80 == 0x80  # phase 0x80
     assert struct.unpack_from('<II', packets[0], 12) == (33, 44)
     assert struct.unpack_from('<II', packets[1], 12) == (33, 44)
-    assert packets[0][22] == 2  # es_magia=False (no orange runic ring on caster)
+    assert packets[0][22] == 1  # SP_CLASS_MAGIC, as registered in m02.obd
     assert struct.unpack_from('<H', packets[0], 23)[0] == 0  # no attack skill id
+
+
+def test_failed_attempt_uses_complete_red_crystal_resource_19():
+    packets = combate.efecto_cristal_captura(11, 22, 33, 44)
+    assert len(packets) == 2
+    assert [p[2] | ((p[3] & 0x0F) << 8) for p in packets] == [19, 19]
+    assert packets[0][3] & 0x80 == 0x00
+    assert packets[1][3] & 0x80 == 0x80
+    assert all(struct.unpack_from('<II', p, 12) == (33, 44) for p in packets)
+
+
+def test_pet_dawn_shield_uses_official_magic_packet_type():
+    dawn = combate.datos_magia(2327)
+    assert dawn['nombre'] == 'Dawn Shield VIII'
+    assert dawn['efecto'] == 23
+    assert dawn['es_magia_visual'] is True
+    start = combate.efecto_magia_self_inicio(
+        6001, dawn['efecto'], 2327, cast_time=dawn['cast_time'], es_magia=True)
+    end = combate.efecto_magia_self_fin(
+        6001, dawn['efecto'], 2327, es_magia=True)
+    assert start[2] == 23 and end[2] == 23
+    assert start[22] == 1 and end[22] == 1
+    assert struct.unpack_from('<H', start, 23)[0] == 2327
+    assert struct.unpack_from('<H', start, 20)[0] == 1000
+
+    tendon = combate.datos_magia(4143)
+    assert tendon['nombre'] == 'Tendon Chop VIII'
+    assert tendon['es_magia_visual'] is False
+
+
+def test_pet_and_summon_actions_are_visible_to_other_players():
+    class DummySession:
+        def __init__(self, eid):
+            self.personaje = type('P', (), {'stage': 308, 'entity_id': eid})()
+            self._mapa_presencia = 308
+            self.writer = object()
+            self.sent = []
+
+        def enviar(self, *packets):
+            self.sent.extend(packets)
+
+    owner = DummySession(1001)
+    observer = DummySession(1002)
+    old = list(presencia._POR_MAPA.get(308, []))
+    try:
+        presencia._POR_MAPA[308] = [owner, observer]
+        packets = (combate.ataque(6001, 7001, 832),
+                   combate.numero_de_dano(6001, 7001, 50,
+                                           ataque=4143, efecto=148))
+        presencia.notificar_companero_accion(owner, *packets)
+        assert observer.sent == list(packets)
+        assert owner.sent == []
+    finally:
+        presencia._POR_MAPA[308] = old
 
 
 def test_quality_names_match_the_client_strings():

@@ -12,6 +12,7 @@ import misiones
 import login
 import clases
 import combate
+import app
 
 
 class TestPastTheTimeAndQuestRewards(unittest.TestCase):
@@ -38,6 +39,23 @@ class TestPastTheTimeAndQuestRewards(unittest.TestCase):
         self.assertIn(158417, ops)  # Chaos-End Time
         self.assertIn(158514, ops)  # Exchange Time Crystal
         self.assertIn(158418, ops)  # Leave
+
+    def test_stage_308_local_entity_resolves_to_past_not_global_npc_900(self):
+        """The real map click uses local entity 900, not npc_type 24798."""
+        ses = SimpleNamespace(personaje=SimpleNamespace(stage=308))
+        self.assertEqual(app._nombre_entidad(ses, 900), 'Past the Time Spirit')
+        spawned = login.npc_de_los_xml(308)
+        self.assertEqual(len(spawned), 1)
+        pkt = spawned[0]
+        self.assertEqual(struct.unpack_from('<I', pkt, 2)[0], 900)
+        self.assertEqual(struct.unpack_from('<I', pkt, 36)[0], 40542)
+        self.assertEqual(pkt[35], 6)
+        self.assertEqual(struct.unpack_from('<I', pkt, 42)[0], 199)
+        self.assertEqual(struct.unpack_from('<H', pkt, 47)[0], 24798)
+
+        # The local entity id 900 must not select another NPC's portrait.
+        lineas = dialogos.propio('Past the Time Spirit', entidad=900, nivel=250)
+        self.assertEqual(struct.unpack_from('<H', lineas[0], 4)[0], 1342)
 
     def test_past_the_time_spirit_warps_and_shop(self):
         """Test warps to Stage 413, 414 and shop 659."""

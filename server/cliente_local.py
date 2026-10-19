@@ -339,6 +339,40 @@ def _parchear_item9_xml_bytes(xml_bytes: bytes) -> bytes:
     return txt.encode('utf-8')
 
 
+_MARCAS_EQUIPO_XML = (
+    '右手裝備=', '左手裝備=', '頭部裝備=', '身體裝備=',
+    '身體袍=', '手部裝備=', '腳部裝備=', '飾品裝備=',
+    '背部裝備=', '頭部面罩=',
+)
+
+
+def _parchear_equipo_ligado_vendible_xml_bytes(xml_bytes: bytes) -> bytes:
+    """Da precio de venta NPC al equipo ligado que carece de el.
+
+    Los premios S/Fine (por ejemplo Silent Scream 48357) traen
+    ``不可交易`` para impedir comercio entre jugadores y un precio de lista,
+    pero no ``收購價格``. El cliente por ello no los admite en la cesta del
+    vendedor. Se conserva la prohibicion de comerciarlos y solo se agrega el
+    valor de recompra, igual a la mitad del precio de lista que ya aplica el
+    servidor.
+    """
+    txt = xml_bytes.decode('utf-8', errors='ignore')
+
+    def _parchear(m):
+        tag = m.group(0)
+        if ('不可交易="是"' not in tag or '收購價格=' in tag
+                or not any(marca in tag for marca in _MARCAS_EQUIPO_XML)):
+            return tag
+        precio_m = re.search(r'價格="(\d+)"', tag)
+        if not precio_m:
+            return tag
+        precio_venta = max(1, int(precio_m.group(1)) // 2)
+        return tag[:-2].rstrip() + f' 收購價格="{precio_venta}" />'
+
+    txt = re.sub(r'<道具\b[^>]*?/>', _parchear, txt)
+    return txt.encode('utf-8')
+
+
 def registrar_medalla_en_servidor():
     """Asegura que el item 83266 exista en content.db, extracted_paks y client_tables.json."""
     # 1. extracted_paks/update26/setting/eng/item9.xml
@@ -563,13 +597,22 @@ def aplicar_modo_estacion(modo: str = None) -> str:
     bak26 = _asegurar_bak(pak26)
     reemplazos = {}
 
-    # El item custom
-    f_item9 = RAIZ_PROYECTO / 'extracted_paks' / 'update26' / 'setting' / 'eng' / 'item9.xml'
-    raw_item9 = (f_item9.read_bytes() if f_item9.exists()
-                 else _extraer_archivo_pak(bak26 if bak26.exists() else pak26,
-                                           r'SETTING\ENG\ITEM9.XML'))
-    if raw_item9:
-        reemplazos[r'SETTING\ENG\ITEM9.XML'] = _parchear_item9_xml_bytes(raw_item9)
+    # Tablas de items: conservar el consumible custom y permitir vender a NPC
+    # el equipo ligado de recompensa sin volverlo comerciable entre jugadores.
+    for numero in range(1, 10):
+        nombre = 'item.xml' if numero == 1 else f'item{numero}.xml'
+        ruta_pak = rf'SETTING\ENG\{nombre.upper()}'
+        f_item = (RAIZ_PROYECTO / 'extracted_paks' / 'update26' /
+                  'setting' / 'eng' / nombre)
+        raw_item = (f_item.read_bytes() if f_item.exists()
+                    else _extraer_archivo_pak(
+                        bak26 if bak26.exists() else pak26, ruta_pak))
+        if not raw_item:
+            continue
+        if numero == 9:
+            raw_item = _parchear_item9_xml_bytes(raw_item)
+        raw_item = _parchear_equipo_ligado_vendible_xml_bytes(raw_item)
+        reemplazos[ruta_pak] = raw_item
 
     # La estacion en stage.xml: se parte SIEMPRE del original del .bak
     raw_stage = _extraer_archivo_pak(bak26 if bak26.exists() else pak26,

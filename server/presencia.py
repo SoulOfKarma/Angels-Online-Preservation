@@ -718,6 +718,26 @@ def notificar_mascota_movimiento(ses, pet_eid, move_pkt):
             _mandar(s, move_pkt)
 
 
+def notificar_companero_accion(ses, *paquetes):
+    """Replica ataques/skills de pets, mercenarios e invocaciones en el mapa.
+
+    Spawn y movimiento ya se compartian, pero sus 0x000A/0x0011 solo se
+    enviaban al dueno; para los demas la criatura se acercaba al monstruo y
+    quedaba inmovil, sin ataque, efecto ni cambio de HP visible.
+    """
+    stage = getattr(ses, '_mapa_presencia', None)
+    if stage is None and getattr(ses, 'personaje', None):
+        stage = clave_de_mapa(ses, getattr(ses.personaje, 'stage', None))
+    if stage is None:
+        return
+    limpios = tuple(p for p in paquetes if p)
+    if not limpios:
+        return
+    for s in _vivas(stage):
+        if s is not ses:
+            _mandar(s, *limpios)
+
+
 def notificar_mascota_despawn(ses, pet_eid):
     """Avisa a todos los demas jugadores del mapa que se guardo la mascota."""
     stage = getattr(ses, '_mapa_presencia', None)

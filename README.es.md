@@ -194,6 +194,9 @@ Path`, `Third Spirit`, `Limit Breaker`, `Shadow Meld`, `Killer Intent`) y la
     también sin captura, con los bloques 516648-516657 y 517063-517068 de `msg.xml`. Van por
     **stage** porque `Spell Analyst` y `Technique Analyst` se repiten en los dos mapas con
     tiendas distintas: 223/224 en Clank Oasis y 225/226 en Commercial Street
+- **Past the Time Spirit y misión semanal 976**:
+  - El NPC de Rainbow Town usa su sprite oficial (`40542`), retrato (`1342`), orientación sur y requisito de nivel 250. Su menú abre Chaos-Dinosaur Arena (Stage 413), Chaos-End Time (Stage 414), la tienda 659 de Time Crystals o cierra el diálogo.
+  - *Nature is Crying for Help* entrega la EXP oficial por nivel (36M antes de nivel 90, 48M entre 90-94 y 72M desde nivel 95), un Weekly Quest Mark (`12611`) y 50 Honor Credits. No cobra ni entrega oro, eliminando el mensaje erróneo `Pay 29480`.
 - **Sistema Integral de Mascotas (Pets al 85-90% de desarrollo)**:
   - **Invocación y Gestión de Barra**: Invocación con clic derecho en mochila, compatibilidad total con accesos rápidos F1-F12 y alternancia de múltiples mascotas. Al cambiar de mascota se despawnea y desvincula limpiamente la anterior sin dejar entidades fantasma (`0x000E`, `0x001B`, `0x015E`).
   - **Evolución y Etapas de Crecimiento**: Rompimiento del huevo automático a nivel 15 pasando a Junior Pet, y evoluciones por certificados (Medium Blood Certificate a nivel 35, Advanced Blood Certificate a nivel 55) con regeneración limpia de entidad y modelo.
@@ -202,6 +205,9 @@ Path`, `Third Spirit`, `Limit Breaker`, `Shadow Meld`, `Killer Intent`) y la
   - **Tooltips Detallados de Inventario (231 bytes)**: Muestra el desglose de stats base y bono verde (`Attack 606 (444 + 162) Star Level: 0.4`), el nivel global `Star Level: 0.4` y el contador `has been intensified ( N ) times`.
   - **Ficha de Estado (`0x0065`)**: Muestra los atributos de combate efectivos resaltados en verde, valores base, 3 casillas de habilidades de mascota, resistencias elementales y estrellas.
   - **Órdenes e IA de Mascota (`0x003E` / `0x001D`)**: Compatibilidad con órdenes de Quieta (0), Seguir (1) y Atacar (2).
+  - **Monstruos capturados y Poke Eggs**: la lista de especies capturables y la probabilidad base salen de `catch.xml`; las variantes de huevo modifican la probabilidad en vez de garantizar un 100%. Si falla, se consume el huevo y ese mismo spawn queda bloqueado hasta matarlo y esperar su respawn. El fallo muestra solo el cristal rojo; el éxito añade absorción, stun y desaparición retardada por captura.
+  - **Identidad fiel de la mascota capturada**: se conservan la especie, nombre, arquetipo de combate, familia de habilidades y calidad Common/Good/Rare/Awesome/Super durante el crecimiento y la evolución, sin convertirla en otra criatura ni inflar sus estrellas.
+  - **Combate de compañeros visible para terceros**: los jugadores cercanos reciben ataques, habilidades, buffs, curaciones y cambios de HP de mascotas, invocaciones y mercenarios. Las habilidades físicas y mágicas usan su ruta visual correcta, incluido Dawn Shield sin el AoE ajeno de Wraith Hell Flame.
 - **Sistema de SP (Holy Power / Lámparas de SP)**:
   - Acumulación de puntos de SP en combate hasta el tope (2000 SP / 4 lámparas), con persistencia completa al reconectar.
   - Ejecución de habilidades instantáneas de SP (`Earth Blessing V`, `Shark Shift V`, `Angel Protection`, etc.) con temporizadores de tics, regeneración de HP/MP y aumento de estadísticas.
@@ -215,6 +221,7 @@ Path`, `Third Spirit`, `Limit Breaker`, `Shadow Meld`, `Killer Intent`) y la
   - **Efectos secundarios de invocaciones y tótems**: tótems e invocaciones aplican sus auras y DoTs automáticos (ej. *Black Thorn Totem* aplica corrosión y lentitud), respetando la regla oficial de no coexistencia con *Guardian Star (Starchaos)*.
   - **Gestión de cuentas y borrado de personajes**: resolución de cierre/crash del cliente al borrar personajes mediante envío crudo de `0x0004`, junto con persistencia transparente en SQLite `cuentas.db`.
 - **Equipamiento vinculado y Enchanted Fashion con Residual Times = 0**: validación de pertenencia por `char_id` (offset 53 del paquete `0x001B` / `sub_58B640` en `Angel.exe`). Si el jugador es el dueño del ítem, puede equiparlo libremente aunque le queden 0 usos restantes.
+- **Venta a NPC de equipo S/Fine vinculado**: el cliente conserva esos premios como no comerciables entre jugadores, pero añade un precio de recompra de NPC equivalente a la mitad del precio de lista para que las armas y armaduras ligadas no se acumulen permanentemente.
 - **Switch de armas (ranuras 11 y 12)**: alternancia rápida de conjuntos de armas con recálculo dinámico de estadísticas y bonos correspondientes.
 - **Sistema de Mejoras de Equipo (Pestles, Enhanced Pestles y Piercing Hammers)**:
   - Soporte completo para mejorar y perforar (abrir huecos) en equipo de nivel 410+ utilizando las herramientas de tier 40 (40-Star Lucky Enhanced Pestle, 40-Star Lucky Piercing Hammer y morteros generales).
@@ -263,12 +270,14 @@ El servidor deja el cliente local listo al arrancar, siempre con un `.bak` antes
   nunca las comprobó; quien se negaba era el selector del cliente
 - **Rank Promotion Medal** (83266), con los créditos que pide cada rango leídos de la columna
   `功勳` de `level.xml` y la banderola de rango (`0x0020` con `effect_id` 3)
+- **Datos de recompra para equipo vinculado** aplicados desde `item.xml` hasta `item9.xml`, conservando
+  el bloqueo de comercio entre jugadores y permitiendo vender los premios S/Fine elegibles a tiendas
 - **Launcher** en español e inglés, con botones para abrir varias copias del cliente a la vez
 - **Pantalla del logo de arranque** vaciada
 
 **A medias**
 
-- **Sistema Online / Presencia Multijugador**: los jugadores se ven entre sí en el mapa (`0x0001` oficial de 128 bytes), ven el movimiento ajeno en tiempo real (`0x0005`) y sincronizan transformaciones (`0x0013`). Falta pulir la sincronización visual de mascotas, esbirros/mercenarios en pantallas de terceros y la visualización completa de sets/skins de fashion en otros jugadores.
+- **Sistema Online / Presencia Multijugador**: los jugadores se ven entre sí en el mapa (`0x0001` oficial de 128 bytes), ven el movimiento ajeno en tiempo real (`0x0005`) y sincronizan transformaciones (`0x0013`) y acciones de combate de sus compañeros. Falta pulir la visualización completa de sets/skins de fashion en otros jugadores.
 - **Sistema de Equipos / Teams**: el servidor detecta y recibe las solicitudes (`0x0017`), pero el flujo de aceptación, la barra de equipo en pantalla, compartir experiencia y la gestión de miembros (`0x0018`) está en fase de desarrollo.
 - **Flag de Oro / Gold Cap**: implementado pero pendiente de testeo exhaustivo en cliente.
 - Diálogos de NPC: 17 de los 52 del Lyceum tienen su texto y sus opciones, más expansión

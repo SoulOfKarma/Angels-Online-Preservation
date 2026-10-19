@@ -393,7 +393,10 @@ def propio(nombre: str, faccion: str = "Heaven", jugador: str = "",
 
     nom_lower = (nombre or '').lower().strip()
     if nom_lower in ('past the time spirit', 'time spirit') or entidad in (24798, 2479800, 90308000):
-        v = npc_val or val_por_entidad(entidad, 1342)
+        # El entity_id local de este NPC es 900, pero tambien existe un NPC
+        # global 900 con otro retrato. Su sprite oficial 40542 corresponde al
+        # retrato 1342; no se debe resolver por el id local.
+        v = val or 1342
         if nivel is not None and nivel < 250:
             return [armar_linea(158401, v, [158418])[2:]]
         return [armar_linea(158421, v, [158416, 158417, 158514, 158418])[2:]]

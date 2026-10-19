@@ -831,7 +831,10 @@ def completar_mision(ses, qid: int, exp: int = 0, oro: int = 0,
 
     if exp <= 0:
         exp = recomp.get('exp', 0)
-    if oro <= 0:
+    # Quest 976 declara explicitamente cero oro. No volver a rellenarlo desde
+    # una recompensa importada antigua (esa era la ruta que resucitaba el
+    # mensaje nativo "Pay 29480" aun despues de poner oro = 0 arriba).
+    if oro <= 0 and qid != 976:
         oro = recomp.get('oro', 0)
     if creditos_honor <= 0:
         creditos_honor = recomp.get('creditos', 0)

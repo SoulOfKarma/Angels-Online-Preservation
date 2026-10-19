@@ -1023,9 +1023,13 @@ class TestHouseSystem(unittest.TestCase):
         self.assertIn('rango', pet_ficha)
         self.assertIn('estrellas', pet_ficha)
 
-        # Visual capture: red crystal 0x0011 without cast confirm 0x0006.
+        # Success: complete red crystal (19) + complete absorption (302),
+        # without the cast confirmation 0x0006 that locks movement.
         self.assertFalse(any(p[:2] == b'\x06\x00' for p in ses.paquetes))
-        self.assertTrue(any(p[:2] == b'\x11\x00' for p in ses.paquetes))
+        capture_fx = [p for p in ses.paquetes if p[:2] == b'\x11\x00']
+        self.assertEqual(len(capture_fx), 4)
+        effects = [p[2] | ((p[3] & 0x0F) << 8) for p in capture_fx]
+        self.assertEqual(effects, [19, 19, 302, 302])
 
     def test_poke_egg_requires_weakening_and_can_fail(self):
         import app
@@ -1058,7 +1062,9 @@ class TestHouseSystem(unittest.TestCase):
         self.assertEqual(ses.cantidades[42], 3)  # Egg preserved!
         self.assertTrue(any(b'weaken' in p for p in ses.paquetes))
 
-        # 2. Target weakened, but capture roll fails: Egg consumed, monster stays alive, animation played!
+        # 2. Target weakened, but capture roll fails: egg consumed; the red
+        # crystal appears, but there is no absorption/stun/despawn and the
+        # monster stays alive and visible.
         ses.paquetes.clear()
         ses.mob.hp = 20
         ses.mob.en_combate_con = 1333
@@ -1069,8 +1075,16 @@ class TestHouseSystem(unittest.TestCase):
             self.assertTrue(app._intentar_captura_monstruo(ses, 0x000FB0E4, 'test'))
         self.assertEqual(ses.cantidades[42], 2)  # 1 egg consumed!
         self.assertEqual(ses.mob.hp, 20)        # Monster still alive!
+        self.assertTrue(ses.mob.vivo)
         self.assertTrue(any(b'Capture failed' in p for p in ses.paquetes))
-        self.assertTrue(any(p[:2] == b'\x11\x00' for p in ses.paquetes))
+        capture_fx = [p for p in ses.paquetes if p[:2] == b'\x11\x00']
+        self.assertEqual(len(capture_fx), 2)
+        effects = [p[2] | ((p[3] & 0x0F) << 8) for p in capture_fx]
+        self.assertEqual(effects, [19, 19])
+        self.assertEqual(capture_fx[0][3] & 0x80, 0)
+        self.assertEqual(capture_fx[1][3] & 0x80, 0x80)
+        self.assertFalse(any(p[:2] == b'\x1d\x00' for p in ses.paquetes))
+        self.assertFalse(any(p[:2] == b'\x07\x00' for p in ses.paquetes))
 
         # While alive, the monster cannot be captured again after escaping:
         ses.paquetes.clear()
@@ -1083,6 +1097,7 @@ class TestHouseSystem(unittest.TestCase):
 
         # Once killed and respawned (revivir), the counter is reset and it CAN be captured again:
         ses.mob.revivir()
+        self.assertIsNone(ses.mob.captura_fallida_en)
         ses.mob.hp = 20
         ses.mob.en_combate_con = 1333
         ses.paquetes.clear()

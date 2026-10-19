@@ -343,12 +343,10 @@ def _nombre_entidad(ses, entity_id: int) -> str:
                 except Exception:
                     pass
 
-    import dialogos as _dlg
-    info = _dlg.info_npc(entity_id)
-    if info and info.get('nombre'):
-        return info['nombre']
-
-    # Si es un NPC de quest de los xmls (entity_id >= 900)
+    # Los NPC de quest se numeran LOCALMENTE desde 900 en cada mapa. Hay que
+    # resolverlos antes del censo global de dialogos: el 900 de Rainbow Town
+    # es Past the Time Spirit, pero el mismo numero existe en el censo viejo
+    # con otro nombre y terminaba abriendo el dialogo generico de Jade Tassel.
     f_mapas = pathlib.Path(__file__).parent / 'plantillas' / 'npc_por_mapa.json'
     if f_mapas.exists() and entity_id >= 900 and getattr(ses, 'personaje', None):
         import json
@@ -357,6 +355,11 @@ def _nombre_entidad(ses, entity_id: int) -> str:
         idx = entity_id - 900
         if 0 <= idx < len(st_npcs):
             return st_npcs[idx].get('nombre', '')
+
+    import dialogos as _dlg
+    info = _dlg.info_npc(entity_id)
+    if info and info.get('nombre'):
+        return info['nombre']
     return ''
 
 
@@ -2266,6 +2269,11 @@ def _procesar_muerte_monstruo(ses, m, yo, addr, espera=0.0):
     objetivo = m.entity_id
     yo_muerte = yo
 
+    # Matar al monstruo termina el bloqueo dejado por una captura fallida.
+    # revivir() tambien lo limpia como segunda garantia para cualquier otro
+    # camino de respawn.
+    m.captura_fallida_en = None
+
     if ses.personaje and ses.personaje.stage == 57 and m.npc_type == 224:
         ses.slarm_kills = getattr(ses, 'slarm_kills', 0) + 1
         log.info(f"[{addr}] Little Slarm derrotado en Fighting Palace ({ses.slarm_kills}/2)")
@@ -3535,21 +3543,32 @@ def _intentar_captura_monstruo(ses, target_entity, addr='?'):
     _sacar(ses, slot, 1)
     touched = [slot]
 
-    # Visual de captura: el personaje realiza la animacion de lanzamiento hacia el monstruo.
-    # No se envia ningun efecto de dano ni veneno (efecto 63) sobre el monstruo.
-    # NOTE: Never send confirmar_cast (0x0006) here, as that opcode puts
-    # the client into a waiting cast state and locks character movement.
-    anim_pkts = _cb_cap.efecto_captura(
-        p_eid, monster.entity_id, monster.tile_x, monster.tile_y, item_id)
-    ses.enviar(*anim_pkts)
+    # El cristal rojo del intento necesita sus dos fases para reproducirse.
+    # No captura ni modifica al monstruo por si mismo.
+    crystal_pkts = _cb_cap.efecto_cristal_captura(
+        p_eid, monster.entity_id, monster.tile_x, monster.tile_y)
+    ses.enviar(*crystal_pkts)
     for companion in _companeros(ses):
         try:
-            companion.enviar(*anim_pkts)
+            companion.enviar(*crystal_pkts)
         except Exception:
             pass
 
     success = random.random() * 100.0 < chance
     if success:
+        # Tras el cristal, la absorcion que viaja hacia el jugador se manda
+        # solamente al acertar.
+        # NOTE: Never send confirmar_cast (0x0006) here: deja al cliente
+        # esperando un cast y bloquea el movimiento del personaje.
+        success_pkts = _cb_cap.efecto_captura(
+            p_eid, monster.entity_id, monster.tile_x, monster.tile_y, item_id)
+        ses.enviar(*success_pkts)
+        for companion in _companeros(ses):
+            try:
+                companion.enviar(*success_pkts)
+            except Exception:
+                pass
+
         import mascotas as _ms_cap
         rango, rango_nom = _ms_cap.sortear_rango()
         short_name = _ms_cap.abreviar_nombre_pet(monster.nombre)
@@ -3650,6 +3669,10 @@ def _intentar_captura_monstruo(ses, target_entity, addr='?'):
         log.info('[%s] captured %s (npc=%s, rank=%s) with item %s at %.1f%%',
                  addr, monster.nombre, monster.npc_type, rango_nom, item_id, chance)
     else:
+        # El intento queda gastado para ESTE spawn, pero el monstruo sigue
+        # exactamente como estaba: vivo, con el mismo HP y visible. Solo se
+        # vio el cristal inicial; no se manda absorcion, stun, muerte ni
+        # despawn en un fallo.
         monster.captura_fallida_en = time.time()
         ses.enviar(_cl_cap.aviso('Capture failed.', tipo=7, msg_id=_cl_cap.MSG_TEXTO))
         log.info('[%s] failed capture of %s (npc=%s) with item %s at %.1f%%',
@@ -7739,6 +7762,9 @@ class Servidor:
                                             else:
                                                 pkgs_inv_hit.append(_cb.atributo(targ.entity_id, targ.porcentaje))
                                                 ses.enviar_inmediato(*pkgs_inv_hit)
+                                            import presencia as _pr_inv_action
+                                            _pr_inv_action.notificar_companero_accion(
+                                                ses, *pkgs_inv_hit)
                                     else:
                                         if (inv.get('move_speed', 50) or 0) > 0 and ahora >= inv.get('proximo_paso', 0):
                                             dx = targ.tile_x - inv['tile_x']
@@ -8425,10 +8451,20 @@ class Servidor:
                                                 f_pet['mp'] = int(f_pet.get('mp_max') or 100)
                                                 p.mp = _mana_max(p, ses.inventario)
                                             ef_p_bf = int(sk_p_mag.get('efecto') or 251)
+                                            _pkgs_pet_buff_vis = (
+                                                _cb.efecto_magia_self_inicio(
+                                                    int(pet_eid), ef_p_bf, sk_p_id,
+                                                    cast_time=int(sk_p_mag.get('cast_time') or 100),
+                                                    es_magia=bool(sk_p_mag.get('es_magia_visual'))),
+                                                _cb.efecto_magia_self_fin(
+                                                    int(pet_eid), ef_p_bf, sk_p_id,
+                                                    es_magia=bool(sk_p_mag.get('es_magia_visual'))),
+                                                struct.pack('<HIBBII', 0x001D,
+                                                            int(pet_eid), 1, 4,
+                                                            sk_p_id, dur_ms_p),
+                                            )
                                             ses.enviar_inmediato(
-                                                _cb.efecto_magia_self_inicio(int(pet_eid), ef_p_bf, sk_p_id, cast_time=100),
-                                                _cb.efecto_magia_self_fin(int(pet_eid), ef_p_bf, sk_p_id),
-                                                struct.pack('<HIBBII', 0x001D, int(pet_eid), 1, 4, sk_p_id, dur_ms_p),
+                                                *_pkgs_pet_buff_vis,
                                                 struct.pack('<HIBBII', 0x001D, yo, 1, 4, sk_p_id, dur_ms_p),
                                                 _cb.atributo(int(pet_eid), _ms.hp_eff(f_pet), _cb.KIND_HP),
                                                 _cb.atributo(yo, p.hp, _cb.KIND_HP),
@@ -8436,6 +8472,9 @@ class Servidor:
                                                 _ms.armar(f_pet),
                                                 _stats_ses(ses),
                                             )
+                                            import presencia as _pr_pet_buff
+                                            _pr_pet_buff.notificar_companero_accion(
+                                                ses, *_pkgs_pet_buff_vis)
                                             def _expirar_pet_self_buff(bid=sk_p_id, f_ts=fin_p):
                                                 pj_cur = getattr(ses, 'personaje', None)
                                                 if not pj_cur:
@@ -8502,6 +8541,12 @@ class Servidor:
                                                 ])
                                             if pkgs_c_p:
                                                 ses.enviar_inmediato(*pkgs_c_p)
+                                                import presencia as _pr_pet_cure
+                                                # Los demas clientes necesitan los efectos y
+                                                # atributos, no la ficha privada 0x0050.
+                                                _pr_pet_cure.notificar_companero_accion(
+                                                    ses, *(p for p in pkgs_c_p
+                                                           if p[:2] != struct.pack('<H', 0x0050)))
                                             log.info(f"[{addr}] mascota {f_pet.get('nombre')} lanzo curacion {sk_p_id} ({sk_p_mag.get('nombre')}, +{cura_p} HP)")
                                             break
 
@@ -8544,20 +8589,36 @@ class Servidor:
 
                                         if sk_usada:
                                             sk_datos = _cb.datos_magia(sk_usada)
+                                            _pet_skill_magic = bool(
+                                                sk_datos.get('es_magia_visual'))
                                             cd_sk_atk = max(1000, int(sk_datos.get('cd_ms') or 2000))
                                             cd_pet[sk_usada] = ahora + (cd_sk_atk / 1000.0)
                                             ef_pet = sk_datos.get('efecto') or 101
-                                            dano_pet = max(25, int(base_matk_pet * 2.2) - (getattr(pet_targ, 'mdef', 0) // 3))
+                                            _poder_pet = (base_matk_pet if _pet_skill_magic
+                                                          else base_atk_pet)
+                                            _def_pet_targ = (getattr(pet_targ, 'mdef', 0)
+                                                             if _pet_skill_magic
+                                                             else getattr(pet_targ, 'defensa', 0))
+                                            dano_pet = max(25, int(_poder_pet * 2.2)
+                                                            - (_def_pet_targ // 3))
                                             pet_targ.registrar_dano(min(pet_targ.hp, dano_pet), es_pet=True)
                                             pet_targ.hp = max(0, pet_targ.hp - dano_pet)
-                                            ses.enviar_inmediato(
+                                            _pkgs_pet_hit = (
                                                 _cb.ataque(pet_eid, pet_targ.entity_id,
                                                            _cb.anim_de_monstruo(f_pet.get('nombre', ''))),
-                                                _cb.numero_de_dano(pet_eid, pet_targ.entity_id, dano_pet, ataque=sk_usada, efecto=ef_pet),
-                                                _cb.cierre_de_dano(pet_eid, pet_targ.entity_id, ataque=sk_usada, efecto=ef_pet),
+                                                _cb.numero_de_dano(pet_eid, pet_targ.entity_id, dano_pet,
+                                                                   ataque=sk_usada, efecto=ef_pet,
+                                                                   es_magia=_pet_skill_magic),
+                                                _cb.cierre_de_dano(pet_eid, pet_targ.entity_id,
+                                                                   ataque=sk_usada, efecto=ef_pet,
+                                                                   es_magia=_pet_skill_magic),
                                                 _cb.numero_flotante(pet_targ.entity_id, dano_pet),
                                                 _cb.atributo(pet_targ.entity_id, pet_targ.porcentaje if pet_targ.hp > 0 else 0)
                                             )
+                                            ses.enviar_inmediato(*_pkgs_pet_hit)
+                                            import presencia as _pr_pet_hit
+                                            _pr_pet_hit.notificar_companero_accion(
+                                                ses, *_pkgs_pet_hit)
                                             _combo_p = _cb.combo_de(sk_usada)
                                             if _combo_p and _combo_p.get('golpes', 1) > 1:
                                                 _golpes = _combo_p['golpes']
@@ -8567,12 +8628,20 @@ class Servidor:
                                                         if not getattr(pet_targ, 'vivo', False) or pet_targ.hp <= 0:
                                                             return
                                                         pet_targ.hp = max(0, pet_targ.hp - k_dmg)
-                                                        ses.enviar_inmediato(
-                                                            _cb.numero_de_dano(pet_eid, pet_targ.entity_id, k_dmg, ataque=sk_usada, efecto=ef_pet),
-                                                            _cb.cierre_de_dano(pet_eid, pet_targ.entity_id, ataque=sk_usada, efecto=ef_pet),
+                                                        _pkgs_pet_subhit = (
+                                                            _cb.numero_de_dano(pet_eid, pet_targ.entity_id, k_dmg,
+                                                                               ataque=sk_usada, efecto=ef_pet,
+                                                                               es_magia=_pet_skill_magic),
+                                                            _cb.cierre_de_dano(pet_eid, pet_targ.entity_id,
+                                                                               ataque=sk_usada, efecto=ef_pet,
+                                                                               es_magia=_pet_skill_magic),
                                                             _cb.numero_flotante(pet_targ.entity_id, k_dmg),
                                                             _cb.atributo(pet_targ.entity_id, pet_targ.porcentaje if pet_targ.hp > 0 else 0)
                                                         )
+                                                        ses.enviar_inmediato(*_pkgs_pet_subhit)
+                                                        import presencia as _pr_pet_subhit
+                                                        _pr_pet_subhit.notificar_companero_accion(
+                                                            ses, *_pkgs_pet_subhit)
                                                         if pet_targ.hp <= 0:
                                                             _procesar_muerte_monstruo(ses, pet_targ, yo, addr, espera=0.1)
                                                     try:
@@ -8583,7 +8652,7 @@ class Servidor:
                                             dano_pet = max(10, int(base_atk_pet * 1.2) - (getattr(pet_targ, 'defensa', 0) // 3))
                                             pet_targ.registrar_dano(min(pet_targ.hp, dano_pet), es_pet=True)
                                             pet_targ.hp = max(0, pet_targ.hp - dano_pet)
-                                            ses.enviar_inmediato(
+                                            _pkgs_pet_basic = (
                                                 _cb.ataque(pet_eid, pet_targ.entity_id,
                                                            _cb.anim_de_monstruo(f_pet.get('nombre', ''))),
                                                 _cb.numero_de_dano(pet_eid, pet_targ.entity_id, dano_pet, ataque=0, efecto=0),
@@ -8591,6 +8660,10 @@ class Servidor:
                                                 _cb.numero_flotante(pet_targ.entity_id, dano_pet),
                                                 _cb.atributo(pet_targ.entity_id, pet_targ.porcentaje if pet_targ.hp > 0 else 0)
                                             )
+                                            ses.enviar_inmediato(*_pkgs_pet_basic)
+                                            import presencia as _pr_pet_basic
+                                            _pr_pet_basic.notificar_companero_accion(
+                                                ses, *_pkgs_pet_basic)
                                         if pet_targ.hp <= 0:
                                             pet_targ.hp = 0
                                             ses.pet_objetivo = None

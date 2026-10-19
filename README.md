@@ -184,6 +184,9 @@ a guess, it says so.
     They key off the **stage**, because `Spell Analyst` and `Technique Analyst` appear in both
     maps with different shops: 223/224 in Clank Oasis and 225/226 in Commercial Street
   - **Faction Hubs & Outposts**: Cherry Village, Memory Cave, Mysterious Garden,
+- **Past the Time Spirit & Weekly Quest 976**:
+  - The Rainbow Town NPC uses its official sprite (`40542`), portrait (`1342`), south-facing direction, and level 250 gate. Its menu opens Chaos-Dinosaur Arena (Stage 413), Chaos-End Time (Stage 414), Time Crystal exchange shop 659, or leaves the dialogue.
+  - *Nature is Crying for Help* awards the official level-scaled EXP (36M below level 90, 48M at levels 90-94, and 72M from level 95), one Weekly Quest Mark (`12611`), and 50 Honor Credits. It neither charges nor awards gold, eliminating the erroneous `Pay 29480` message.
 - **Comprehensive Pet System (85-90% Complete)**:
   - **Summoning & Hotkey Management**: Right-click bag summoning, hotkey bar (F1-F12) activation, and multi-pet management. Switching pets cleanly despawns the previous entity without leaving ghost duplicates (`0x000E`, `0x001B`, `0x015E`).
   - **Evolution & Growth Stages**: Automatic form progression from Egg to Junior Pet at level 15, and certificate-driven evolutions (Medium Blood Certificate at Lvl 35, Advanced Blood Certificate at Lvl 55) with instant model/sprite refresh.
@@ -192,6 +195,9 @@ a guess, it says so.
   - **Complete 231-Byte Inventory Tooltips**: Displays individual base and green star bonuses (`Attack 606 (444 + 162) Star Level: 0.4`), overall `Star Level: 0.4`, and `has been intensified ( N ) times`.
   - **Pet Status Window (`0x0065`)**: Displays green highlighted effective combat stats, base values, active pet skill slots, elemental resistances, and star ratings.
   - **Pet AI & Commands (`0x003E` / `0x001D`)**: Full support for Quiet (0), Follow (1), and Attack (2) companion modes.
+  - **Captured Monsters & Poke Eggs**: capture eligibility and base probability come from `catch.xml`; egg variants modify the chance instead of forcing 100% success. A failed attempt consumes the egg and locks that living spawn until it is killed and respawns. Failure shows only the red capture crystal; success adds the absorption effect, stun, and delayed capture despawn.
+  - **Faithful Captured Pet Identity**: captured species, names, combat archetypes, skill families, and Common/Good/Rare/Awesome/Super quality are preserved through growth and evolution without inventing unrelated forms or inflating star levels.
+  - **Shared Companion Combat Visuals**: nearby players receive attacks, skills, buffs, healing, and HP changes from pets, summons, and mercenaries. Magical and physical pet skills use their matching visual packet path, including Dawn Shield without the unrelated Wraith Hell Flame AoE.
 - **SP System (Holy Power / SP Lamps)**:
   - SP point generation from combat actions up to maximum capacity (2000 SP / 4 lamps). Full session persistence across logouts.
   - Instant SP skill execution (e.g., `Earth Blessing V`, `Shark Shift V`, `Angel Protection`) with tick timers, HP/MP recovery, and stat enhancements.
@@ -205,6 +211,7 @@ a guess, it says so.
   - **Summon & Totem Secondary Effects**: summons and totems trigger their automated auras and DoTs (e.g. *Black Thorn Totem* corrosive DoT and slow), enforcing official non-coexistence rules with *Guardian Star (Starchaos)*.
   - **Account & Character Management**: safe character deletion via raw `0x0004` response preventing client crashes, alongside transparent SQLite `cuentas.db` migration from legacy `cuentas.json`.
 - **Bound Equipment & Enchanted Fashion with Residual Times = 0**: ownership verified by persistent `char_id` (offset 53 of packet `0x001B` / `sub_58B640` in `Angel.exe`). If the player is the registered owner, the item can be equipped freely even when 0 residual times remain.
+- **NPC Sale of Bound S/Fine Equipment**: the local client keeps reward equipment non-tradable between players while adding an NPC buyback price equal to half its list price, so high-tier bound weapons and armor no longer accumulate permanently.
 - **Weapon Switching (Slots 11 & 12)**: quick swapping between primary and alternate weapon sets with dynamic stat and bonus recalculations.
 - **Equipment Enhancement & Piercing System (Pestles, Enhanced Pestles, Piercing Hammers)**:
   - Full support for enhancing and socketing level 410+ endgame equipment using tier 40 tools (40-Star Lucky Enhanced Pestle, 40-Star Lucky Piercing Hammer, and standard pestles).
@@ -253,12 +260,14 @@ The server prepares the local client on startup, always taking a `.bak` first:
   never checked them; it was the client's picker that refused
 - **Rank Promotion Medal** (83266), with each rank's credits read from the `功勳` column of
   `level.xml` and the rank banner (`0x0020` with `effect_id` 3)
+- **Bound equipment NPC buyback data** patched across `item.xml` through `item9.xml`, preserving
+  the no-player-trade flag while allowing eligible S/Fine rewards to be sold to shops
 - **Launcher** in Spanish and English, with buttons to open several clients at once
 - **Startup logo screen** blanked
 
 **Partly**
 
-- **Multiplayer Online Presence**: players see each other on map screens via official 128-byte `0x0001`, synchronize real-time movement (`0x0005`), and synchronize transformations (`0x0013`). Visual synchronization of pets, third-party minions/mercenaries, and complete third-party fashion skin overlays is currently being refined.
+- **Multiplayer Online Presence**: players see each other on map screens via official 128-byte `0x0001`, synchronize real-time movement (`0x0005`), transformations (`0x0013`), and companion combat actions. Complete third-party fashion skin overlays are still being refined.
 - **Party / Teams System**: server recognizes and logs incoming team invitations (`0x0017`), but party acceptance handling, UI group bar, shared EXP, and member management (`0x0018`) are in progress.
 - **Gold Cap / Gold Flag**: implemented, but thorough in-client testing is pending.
 - NPC dialogue: 17 of the Lyceum's 52 NPCs have their text and options, plus

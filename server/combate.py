@@ -1134,7 +1134,8 @@ def datos_magia(magic_id: int) -> dict:
            'efecto': EFECTO_GOLPE, 'hp': 0, 'cd_ms': 1000, 'dur_ms': 0,
            'cast_time': 100, 'crit_rate': 0, 'phys_mit': 0, 'mag_mit': 0,
            'es_auto': False, 'es_cura': False, 'es_buff': False,
-           'es_ataque': False, 'es_pasiva': False}
+           'es_ataque': False, 'es_pasiva': False,
+           'es_magia_visual': False}
     d = {}
     if db.exists():
         try:
@@ -1235,6 +1236,9 @@ def datos_magia(magic_id: int) -> dict:
             desc = str(d.get('desc') or d.get('說明') or '')
             act = str(d.get('施展動作') or '')
             res['accion'] = act
+            # magic.xml distingue "施法動作" (cast) de "攻擊動作"
+            # (ataque fisico). Ese dato decide el byte 20 del 0x0011.
+            res['es_magia_visual'] = '\u65bd\u6cd5' in act
             res['target'] = target
             res['area'] = _num(d.get('範圍'), 0)
             res['es_terreno'] = (target == '地面')
@@ -2764,20 +2768,34 @@ def cierre_de_dano(atacante: int, objetivo: int,
     return struct.pack('<H', 0x0011) + bytes(b1)
 
 
-def efecto_captura(atacante: int, objetivo: int, x: int = 0, y: int = 0,
-                   subtipo: int = 16979):
-    """Cristal rojo de captura, la variante de Icy Trap sobre el objetivo.
+def efecto_cristal_captura(atacante: int, objetivo: int,
+                           x: int = 0, y: int = 0):
+    """Cristal rojo del intento, tanto si la captura acierta como si falla.
 
-    Icy Trap I..V usa el grupo visual 36 en magic.xml. Frozen Trap es el 44
-    y es otro hechizo/AOE. Con ataque=0 y tipo fisico/neutro el cliente toma
-    las secuencias especiales de captura 4607..4609 que m02.obd guarda en el
-    mismo directorio magic/036, en vez de la variante azul de Chaos.
+    Las piezas rojas 4607 y 4610 estan fisicamente en ``shape/magic/019``.
+    Hay que mandar sus dos fases 0x00/0x80: una fase suelta no llega a
+    reproducirse en Angel.exe. Esto no altera HP ni estado del monstruo.
     """
     return [
-        numero_de_dano(atacante, objetivo, dano=0, ataque=0, efecto=36,
+        numero_de_dano(atacante, objetivo, dano=0, ataque=0, efecto=19,
                        cast_time=0, es_magia=False, tile_x=x, tile_y=y),
-        cierre_de_dano(atacante, objetivo, ataque=0, efecto=36,
+        cierre_de_dano(atacante, objetivo, ataque=0, efecto=19,
                        es_magia=False, tile_x=x, tile_y=y),
+    ]
+
+
+def efecto_captura(atacante: int, objetivo: int, x: int = 0, y: int = 0,
+                   subtipo: int = 16979):
+    """Absorcion de una captura conseguida hacia el jugador.
+
+    Esta es la secuencia que ya producia correctamente el movimiento al
+    jugador. Se envia despues del cristal 19 y solo cuando el sorteo acierta.
+    """
+    return [
+        numero_de_dano(atacante, objetivo, dano=0, ataque=0, efecto=302,
+                       cast_time=0, es_magia=True, tile_x=x, tile_y=y),
+        cierre_de_dano(atacante, objetivo, ataque=0, efecto=302,
+                       es_magia=True, tile_x=x, tile_y=y),
     ]
 
 
@@ -2845,7 +2863,7 @@ def gcd_paquete() -> bytes:
 
 
 def efecto_magia_self_inicio(yo: int, ef: int, tipo: int, cast_time: int = 100,
-                             objetivo: int = None) -> bytes:
+                             objetivo: int = None, es_magia: bool = False) -> bytes:
     """Fase 0x00 del efecto visual 0x0011 de un buff.
 
     +2 es QUIEN lo lanza (hace la animacion de lanzar) y +6 sobre QUIEN cae.
@@ -2855,7 +2873,7 @@ def efecto_magia_self_inicio(yo: int, ef: int, tipo: int, cast_time: int = 100,
     b0[1] = (ef >> 8) & 0x0F
     struct.pack_into('<II', b0, 2, yo, yo if objetivo is None else objetivo)
     struct.pack_into('<H', b0, 18, cast_time & 0xFFFF)
-    b0[20] = 2
+    b0[20] = 1 if es_magia else 2
     struct.pack_into('<H', b0, 21, tipo & 0xFFFF)
     return struct.pack('<H', 0x0011) + bytes(b0)
 
@@ -2908,14 +2926,15 @@ def entidad_aliada(entidad: int, a: int = 30, b: int = 15) -> bytes:
                        int(a) & 0xFFFFFFFF, int(b) & 0xFFFFFFFF, 0)
 
 
-def efecto_magia_self_fin(yo: int, ef: int, tipo: int, objetivo: int = None) -> bytes:
+def efecto_magia_self_fin(yo: int, ef: int, tipo: int, objetivo: int = None,
+                          es_magia: bool = False) -> bytes:
     """Fase 0x80 del efecto visual 0x0011 de un buff (ver el de inicio)."""
     b1 = bytearray(23)
     b1[0] = ef & 0xFF
     b1[1] = 0x80 | ((ef >> 8) & 0x0F)
     struct.pack_into('<II', b1, 2, yo, yo if objetivo is None else objetivo)
     struct.pack_into('<H', b1, 18, 0)
-    b1[20] = 2
+    b1[20] = 1 if es_magia else 2
     struct.pack_into('<H', b1, 21, tipo & 0xFFFF)
     return struct.pack('<H', 0x0011) + bytes(b1)
 
