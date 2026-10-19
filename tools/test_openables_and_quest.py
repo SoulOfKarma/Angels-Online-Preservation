@@ -135,3 +135,4 @@ if __name__ == '__main__':
     test_sealed_magic_stones()
     test_extra_bags_from_drops_bolsas()
     print("Todos los tests de openables y misiones pasaron exitosamente!")
+

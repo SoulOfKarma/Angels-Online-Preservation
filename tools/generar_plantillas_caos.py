@@ -33,3 +33,4 @@ for stage, nombre, boss_extra in [
     }, ensure_ascii=False, indent=1), encoding='utf-8')
     mobs = sum(1 for e in sp if e.get('monstruo'))
     print(f"{nombre}.json: {len(sp)} spawns ({mobs} monsters, {len(sp)-mobs} NPCs) and {len(rec)} map objects")
+

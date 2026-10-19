@@ -96,3 +96,4 @@ if __name__ == '__main__':
     test_black_crystal_progress_notification()
     test_lorin_npc_interaction_and_delivery()
     print("All Riddle Bishop quest tests passed successfully!")
+
