@@ -170,8 +170,7 @@ def test_mobs_chaos_no_sueltan_siempre_aunque_tengan_marca_rey():
         cf.TASA_DROP_BASE = 0.0
         for npc_type, nombre, nivel in (
                 (23673, 'C-Barren Warrior', 218),
-                (23710, 'C-Meister', 458)):
-            assert cb.es_jefe(npc_type), nombre + ' viene marcado como boss'
+                (23694, 'C-Chef Hoppler', 445)):
             cb._DROPS_CACHE.pop(npc_type, None)
             cb._DROP_OFICIAL_CACHE.pop(npc_type, None)
             assert not cb.botin_items(npc_type, nombre, nivel)
@@ -181,21 +180,47 @@ def test_mobs_chaos_no_sueltan_siempre_aunque_tengan_marca_rey():
         cf.TASA_DROP_BASE = original
 
 
-def test_solo_bosses_oficiales_de_chaos_sueltan_siempre():
-    """Los Boss/C-Boss confirmados en achievement.xml conservan el 100%."""
+def test_bosses_de_ambas_areas_chaos_sueltan_siempre():
+    """Todos los bosses de progresion de las dos areas conservan el 100%."""
     import configuracion as cf
     original = cf.TASA_DROP_BASE
     try:
         cf.TASA_DROP_BASE = 0.0
         for npc_type, nombre, nivel in (
+                (23684, 'C-Bosen Dino', 235),
+                (23685, 'C-Magic Dragon Ambassador', 240),
+                (23687, 'C-Cartastolov', 245),
                 (23688, 'C-Dragon Emperor', 250),
-                (23714, 'C-Time Lady', 460),
                 (23724, "Ba'shin's Gaze", 250),
+                (23709, 'C-Angry Rabbit', 456),
+                (23710, 'C-Meister', 458),
+                (23711, 'C-Oathbound Messenger', 459),
+                (23712, 'C-Ghost King', 460),
+                (23713, 'C-Fallen Swordsman', 460),
+                (23714, 'C-Time Lady', 460),
                 (23745, "Ba'shin's Gaze", 460),
                 (23839, "Ba'shin", 470)):
             cb._DROPS_CACHE.pop(npc_type, None)
             cb._DROP_OFICIAL_CACHE.pop(npc_type, None)
             assert cb.botin_items(npc_type, nombre, nivel), nombre
+    finally:
+        cf.TASA_DROP_BASE = original
+
+
+def test_invocaciones_y_mobs_de_end_time_no_son_drop_garantizado():
+    """CE, soldados, simbolos y Axialus no llenan la bolsa al matarlos."""
+    import configuracion as cf
+    original = cf.TASA_DROP_BASE
+    try:
+        cf.TASA_DROP_BASE = 0.0
+        for npc_type, nombre, nivel in (
+                (23704, 'CE-Chef Hoppler', 455),
+                (23715, 'C-Ghost Rabbit Soldier', 450),
+                (23718, 'C-Axialus Shade', 460),
+                (23721, 'C-Symbol of Healing', 450)):
+            cb._DROPS_CACHE.pop(npc_type, None)
+            cb._DROP_OFICIAL_CACHE.pop(npc_type, None)
+            assert not cb.botin_items(npc_type, nombre, nivel), nombre
     finally:
         cf.TASA_DROP_BASE = original
 
