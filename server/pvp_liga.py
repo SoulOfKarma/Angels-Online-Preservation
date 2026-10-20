@@ -62,19 +62,108 @@ def rivales_en_area(ses, cx, cy, radio):
     return salida
 
 
-def atacar(ses, otro, tipo, mag, arma, en_area=False):
+def _multiplicador(ses, tipo, mag, magia):
+    """(mult, var_pct) del golpe, con las MISMAS reglas que el ataque a
+    monstruos de app: poder del hechizo, 1.2/1.35 de las fisicas, 傷害係數,
+    % del equipo y % de los buffs. Sin el critico."""
+    import combate, inventario
+    p = ses.personaje
+    mult, var_pct = 1.0, 0.03
+    if magia:
+        base = float(mag.get('dano_base') or 0)
+        denom = float(mag.get('base_denom') or 200) or 200.0
+        mult = base / denom if base > 0 else 1.0
+        var_pct = 0.05
+        if mag.get('dano_var'):
+            var_pct = min(0.15, max(0.02, float(mag['dano_var']) / denom))
+        if mag.get('dano_coef'):
+            mult *= float(mag['dano_coef']) / 100.0
+    elif tipo != combate.ATAQUE_NORMAL:
+        combo = combate.combo_de(tipo)
+        mult = 1.2 if (combo and combo.get('golpes', 1) > 1) else 1.35
+        if mag.get('dano_coef'):
+            mult *= float(mag['dano_coef']) / 100.0
+    mods = inventario.modificadores_porcentuales_equipo(getattr(ses, 'inventario', None) or {})
+    pct = mods.get('mag_dmg_pct' if magia else 'phys_dmg_pct', 0)
+    if pct > 0:
+        mult *= 1.0 + pct / 100.0
+    pct_b = combate.pct_dano_buffs(getattr(p, 'buffs', None), magia)
+    if pct_b:
+        mult *= 1.0 + pct_b / 100.0
+    return mult, var_pct
+
+
+def _prob_critico(ses):
+    import time, app
+    extra = 0
+    for b in (getattr(ses.personaje, 'buffs', None) or {}).values():
+        if isinstance(b, dict) and b.get('fin', 0) > time.time() and 'crit' in b:
+            extra += b['crit']
+    return min(0.90, (app.critico_jugador(ses) + extra) / 100.0)
+
+
+# Ajuste global del dano entre jugadores (1.0 = como contra un monstruo de esa
+# defensa). Sin datos del oficial; si en PvP se muere demasiado rapido, bajarlo.
+FACTOR_PVP = 1.0
+
+
+def dano_pvp(atk, defensa, mult, var_pct):
+    """Formula de AO entre jugadores: (ATAQUE - DEFENSA) x multiplicador.
+
+    La defensa se resta ANTES de multiplicar por la habilidad. Con la de los
+    monstruos (multiplicar y luego restar) una magia de x8 con Spl Atk
+    101.435 contra 102.735 de Spl Dfs seguia haciendo ~700.000: se cargaba a
+    un Archer de 233.000 de vida de un golpe (20/10/2026). Si la defensa
+    supera al ataque queda la mitigacion suave 420/(DEF+420), que es un
+    rasguno, como debe ser entre stats parecidas."""
+    import random
+    defensa = max(0, int(defensa))
+    atk = max(0, int(atk))
+    mult = float(mult) * FACTOR_PVP
+    resta = (atk - defensa) * mult
+    suave = atk * mult * (420.0 / (defensa + 420.0) if defensa > 0 else 1.0)
+    base = max(1.0, resta, suave)
+    return max(1, int(round(base * (1.0 + random.uniform(-var_pct, var_pct)))))
+
+
+def mitigacion(otro, magia):
+    """Lo que deja pasar la victima (0..1): la mitigacion del equipo
+    (phys/mag_mit_mult) y la de sus buffs activos ('mit' / 'mag_mit', el
+    物理/魔法傷害抵銷 de magic.xml), igual que cuando le pega un monstruo
+    (app, IA de monstruos). En PvP no se miraba ninguna de las dos."""
+    import time, inventario
+    factor = 1.0
+    mods = inventario.modificadores_porcentuales_equipo(getattr(otro, 'inventario', None) or {})
+    mult = mods.get('mag_mit_mult' if magia else 'phys_mit_mult', 1.0)
+    if 0 < mult < 1.0:
+        factor *= mult
+    ahora = time.time()
+    clave = 'mag_mit' if magia else 'mit'
+    for b in (getattr(getattr(otro, 'personaje', None), 'buffs', None) or {}).values():
+        if isinstance(b, dict) and b.get('fin', 0) > ahora and b.get(clave):
+            factor *= max(0.0, 1.0 - float(b[clave]) / 100.0)
+    return factor
+
+
+def atacar(ses, otro, tipo, mag, arma, en_area=False, golpes=None, separacion=None):
     """Llamar despues de validar la cadencia/cooldown general en app.
 
     Con `en_area` es un golpe de habilidad de AREA: el alcance y el coste ya
     los cobro la habilidad (el rival esta dentro del radio), asi que no se
-    miran ni se cobran otra vez. Antes las de area solo buscaban monstruos y
-    a los jugadores no les llegaba nada (log del 20/10: Dimension Shift)."""
-    import app, combate, presencia, skills, transitable
+    miran ni se cobran otra vez, y la animacion ya la puso la habilidad.
+
+    LOS COMBOS PEGAN TODOS SUS GOLPES (combate.combo_de), cada uno con su
+    critico, como contra monstruos; antes en PvP solo salia el primero.
+    `golpes` y `separacion` los fija quien llama (las AoE de combo)."""
+    import asyncio, random
+    import app, combate, skills, transitable
     if not permitido(ses, otro):
         return False
     p, q = ses.personaje, otro.personaje
     if tipo != combate.ATAQUE_NORMAL and not mag.get('es_ataque') and not en_area:
         return False
+    if tipo != combate.ATAQUE_NORMAL and mag.get('no_jugadores'):
+        return False          # 不能對玩家施放 de magic.xml
     if not en_area:
         alcance = combate.alcance_arma(arma) if tipo == combate.ATAQUE_NORMAL else max(1, mag.get('rango', 1))
         if max(abs(p.tile_x-q.tile_x), abs(p.tile_y-q.tile_y)) > alcance+1:
@@ -87,23 +176,62 @@ def atacar(ses, otro, tipo, mag, arma, en_area=False):
         p.mp -= mp
         ses.sp = int(getattr(ses, 'sp', 0) or 0) - sp
         p.sp = ses.sp
-    st, defensa = app._stats_ses(ses), app._stats_ses(otro)
     magia = tipo != combate.ATAQUE_NORMAL and skills.skill_de_magia(tipo) in (1,2,3,4)
-    atk = struct.unpack_from('<I', st, 46 if magia else 26)[0]
-    dfs = struct.unpack_from('<I', defensa, 50 if magia else 38)[0]
-    if magia:
-        atk = int(atk * (float(mag.get('dano_base') or 200) / float(mag.get('base_denom') or 200)))
-    elif tipo != combate.ATAQUE_NORMAL:
+    atk = struct.unpack_from('<I', app._stats_ses(ses), 46 if magia else 26)[0]
+    dfs = struct.unpack_from('<I', app._stats_ses(otro), 54 if magia else 38)[0]
+    if not magia and tipo != combate.ATAQUE_NORMAL:
         atk += int(round(combate.stance_de(tipo) * combate.PESO_STANCE))
-    dano = combate.dano_recibido(atk, dfs)
-    q.hp = max(0, q.hp-dano)
+    mult, var_pct = _multiplicador(ses, tipo, mag, magia)
+    crit = _prob_critico(ses)
+    combo = combate.combo_de(tipo) if tipo != combate.ATAQUE_NORMAL else None
+    n = max(1, int(golpes)) if golpes is not None else (combo['golpes'] if combo else 1)
+    sep = separacion if separacion is not None else max(0.05, (combo or {}).get('intervalo_ms', 200) / 1000.0)
+    efecto = combate.efecto_de_ataque(tipo) if tipo != combate.ATAQUE_NORMAL else 0
+
+    def _golpe(primero=False):
+        if not permitido(ses, otro):
+            return
+        es_crit = random.random() < crit
+        dano = dano_pvp(atk, dfs, mult * (1.5 if es_crit else 1.0), var_pct)
+        dano = max(1, int(round(dano * mitigacion(otro, magia))))
+        _aplicar(ses, otro, dano, es_crit, primero and not en_area, tipo, efecto, magia)
+
+    _golpe(primero=True)
+    if n > 1:
+        try:
+            bucle = asyncio.get_event_loop()
+            for k in range(1, n):
+                bucle.call_later(sep * k, _golpe)
+        except RuntimeError:
+            pass
+    if not en_area:
+        ses.enviar(combate.atributo(p.entity_id, p.mp, combate.KIND_MP),
+                   combate.atributo(p.entity_id, ses.sp, combate.KIND_SP))
+        if getattr(ses, 'usuario', None):
+            cuentas.guardar_progreso(ses.usuario, p.char_id, p.nivel, p.exp, p.hp, p.mp, sp=ses.sp)
+    return True
+
+
+def _aplicar(ses, otro, dano, es_crit, con_efecto, tipo, efecto, magia):
+    """Un golpe ya calculado: vida, paquetes a todos los que lo ven y muerte."""
+    import combate, presencia
+    p, q = ses.personaje, otro.personaje
+    q.hp = max(0, q.hp - dano)
     apub, bpub = presencia.entidad_de(ses), presencia.entidad_de(otro)
     visibles = presencia._vivas(presencia.clave_de_mapa(ses, p.stage))
+    tipo_num = combate.TIPO_DANO_CRITICO if es_crit else combate.TIPO_DANO
     for visor in visibles:
         a = p.entity_id if visor is ses else apub
         b = q.entity_id if visor is otro else bpub
-        pkts = [combate.ataque(a, b), combate.numero_flotante(b, dano),
-                combate.atributo(b, q.hp, combate.KIND_HP)]
+        pkts = []
+        if con_efecto and efecto:
+            # El efecto de la habilidad sobre el rival, UNA vez por uso.
+            pkts += [combate.numero_de_dano(a, b, dano, tipo, efecto=efecto, cast_time=0, es_magia=magia),
+                     combate.cierre_de_dano(a, b, tipo, efecto=efecto, es_magia=magia)]
+        elif con_efecto:
+            pkts.append(combate.ataque(a, b))
+        pkts += [combate.numero_flotante(b, dano, tipo_num),
+                 combate.atributo(b, q.hp, combate.KIND_HP)]
         if not q.hp:
             if visor is otro:
                 # La victima muere como cuando la mata un monstruo (app, IA de
@@ -114,10 +242,13 @@ def atacar(ses, otro, tipo, mag, arma, en_area=False):
                          combate.atributo(b, 0, combate.KIND_HP)]
             else:
                 pkts.append(combate.muerte_monstruo(b, a))
-        mandar = getattr(visor, 'enviar_sin_espejo', visor.enviar)
-        mandar(*pkts)
-    ses.enviar(combate.atributo(p.entity_id, p.mp, combate.KIND_MP),
-               combate.atributo(p.entity_id, ses.sp, combate.KIND_SP))
+        mandar = getattr(visor, 'enviar_sin_espejo', None) or visor.enviar
+        try:
+            mandar(*pkts)
+            if hasattr(visor, 'volcar'):
+                visor.volcar()
+        except Exception:
+            pass
     if not q.hp:
         otro.muerto = True
         otro.objetivo_actual = None
@@ -127,9 +258,6 @@ def atacar(ses, otro, tipo, mag, arma, en_area=False):
                 lambda d: d.update(pvp_deaths=int(d.get('pvp_deaths', 0))+1))
     if getattr(otro, 'usuario', None):
         cuentas.guardar_progreso(otro.usuario, q.char_id, q.nivel, q.exp, q.hp, q.mp)
-    if getattr(ses, 'usuario', None):
-        cuentas.guardar_progreso(ses.usuario, p.char_id, p.nivel, p.exp, p.hp, p.mp, sp=ses.sp)
-    return True
 
 
 def _contar_baja(ses, p):

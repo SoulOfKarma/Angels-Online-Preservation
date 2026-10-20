@@ -1259,6 +1259,9 @@ def datos_magia(magic_id: int) -> dict:
             # el efecto 511 y su hijo el 13374, que lleva el 493 -- las lanzas
             # que caen -- y los 3500 de poder del tooltip.
             res['multi_golpe_area'] = d.get('範圍多次單體攻擊') == '是'
+            # 不能對玩家施放: el hechizo no se puede usar contra jugadores (71 en
+            # magic.xml). Lo mira pvp_liga.atacar.
+            res['no_jugadores'] = d.get('不能對玩家施放') == '是'
             res['hijo_area'] = _num(d.get('轉嫁法術'), 0) if res['multi_golpe_area'] else 0
             res['sigilo'] = d.get('魔法狀態') == '潛行'
             res['esquiva_fis'] = _num(d.get('物理迴避'), 0)
@@ -1946,6 +1949,23 @@ def combo_de(magic_id: int):
                 'dano': ef.get('dano_golpe', 0),
                 'es_ricochet': ef.get('es_ricochet', False)}
     return None
+
+
+# Las AoE de combo (Bullet Arrow, Steel Rain, Sword of Kings...) sueltan TODOS
+# sus golpes durante la animacion, que es una sola. Con el 連擊間隔 de
+# magic.xml (250 ms) los 12 golpes de Bullet Arrow V tardaban 3 s, mucho mas
+# lentos que en el juego (lo noto el usuario el 20/10/2026). Se comprimen para
+# que la rafaga entera quepa en DURACION_RAFAGA_AOE.
+DURACION_RAFAGA_AOE = 1.2
+
+
+def separacion_aoe(combo) -> float:
+    """Segundos entre golpes de una AoE de combo."""
+    if not combo or combo.get('golpes', 1) <= 1:
+        return 0.2
+    golpes = int(combo['golpes'])
+    sep = max(0.06, combo.get('intervalo_ms', 200) / 1000.0)
+    return max(0.06, min(sep, DURACION_RAFAGA_AOE / max(1, golpes - 1)))
 
 
 def cura_por_tics(magic_id: int):

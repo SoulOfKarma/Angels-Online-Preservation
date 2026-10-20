@@ -6378,6 +6378,59 @@ def _tw_sacar_de_las_arenas():
                 log.exception('Totem War: no se pudo sacar a alguien de la arena')
 
 
+_PERGAMINOS_REVIVIR = {}
+
+
+def _pergamino_revivir(item_id):
+    """El % de vida con que revive ese objeto (使用公式 10), o None."""
+    if item_id not in _PERGAMINOS_REVIVIR:
+        pct = None
+        try:
+            import sqlite3
+            import inventario as _iv_rv
+            con = sqlite3.connect(pathlib.Path(__file__).resolve().parent.parent / 'corpus' / 'content.db')
+            try:
+                fila = _iv_rv.fila_item(con, '"使用公式", "動態資料1"', item_id)
+            finally:
+                con.close()
+            if fila and str(fila[0] or '').strip() == '10':
+                pct = max(1, min(100, int(fila[1] or 100)))
+        except Exception:
+            log.exception('pergamino de revivir %s', item_id)
+        _PERGAMINOS_REVIVIR[item_id] = pct
+    return _PERGAMINOS_REVIVIR[item_id]
+
+
+def _usar_pergamino_revivir(ses, addr, ranura, pct):
+    """Revive alli mismo con el pct% de vida y mana y gasta el pergamino."""
+    import combate as _cb_rv
+    import clases as _cl_rv
+    p = ses.personaje
+    if not p or not getattr(ses, 'muerto', False):
+        ses.enviar(_cl_rv.aviso('You can only use this item when your character is dead.', tipo=0))
+        return
+    p.hp = max(1, _vida_max(p) * pct // 100)
+    p.mp = max(0, _mana_max(p) * pct // 100)
+    ses.muerto = False
+    ses.fantasma = False
+    _sacar(ses, ranura, 1)
+    ses.enviar(*_refrescar(ses, [ranura]),
+               _cb_rv.atributo(p.entity_id, 0, _cb_rv.KIND_ESTADO),
+               _cb_rv.atributo(p.entity_id, p.hp, _cb_rv.KIND_HP),
+               _cb_rv.atributo(p.entity_id, p.mp, _cb_rv.KIND_MP),
+               struct.pack('<HIII', 0x000A, p.entity_id, 0, 0))
+    try:
+        import presencia as _pr_rv
+        _pr_rv.entrar(ses, p.stage)      # que los demas lo vean de pie otra vez
+    except Exception:
+        log.debug('pergamino de revivir: presencia', exc_info=True)
+    _guardar_bolsa(ses, p.char_id)
+    if getattr(ses, 'usuario', None):
+        cuentas.guardar_progreso(ses.usuario, p.char_id, p.nivel, p.exp, p.hp, p.mp,
+                                 sp=getattr(ses, 'sp', None))
+    log.info('[%s] %s revive con un pergamino (%d%%)', addr, p.nombre, pct)
+
+
 def _plantar_con_clic(ses, addr, plot):
     """Clic en una parcela libre de la granja: planta la primera semilla."""
     import granja_liga as _fl
@@ -10139,6 +10192,12 @@ class Servidor:
             _contribuir_liga(ses, cuerpo, self.mundos)
             return
 
+        # FUSION (ventana WND_FUSE): ver fusion.py.
+        if opcode == 0x0147 and ses.rol == 'mundo' and ses.personaje and len(cuerpo) >= 9:
+            import fusion as _fus
+            _fus.procesar(ses, addr, cuerpo)
+            return
+
         if opcode == 0x012F and ses.rol == 'mundo' and ses.personaje and len(cuerpo) >= 4:
             _ofrenda_al_totem(ses, addr, cuerpo)
             return
@@ -10865,8 +10924,22 @@ class Servidor:
                     # en guerra y en campo de guerra; lo filtra pvp_liga).
                     try:
                         import pvp_liga as _pvp_ar
-                        for _riv_ar in _pvp_ar.rivales_en_area(ses, cx, cy, area):
-                            _pvp_ar.atacar(ses, _riv_ar, tipo, mag, None, en_area=True)
+                        _riv_lista = _pvp_ar.rivales_en_area(ses, cx, cy, area)
+                        if _riv_lista:
+                            # Los golpes del combo tambien a los jugadores. En
+                            # las rafagas (formula 36) y los rebotes los golpes
+                            # se reparten al azar entre todos los del area, asi
+                            # que a cada rival le toca su parte; en las de area
+                            # normales cada golpe le da a todos.
+                            _cmb_pv = _cb.combo_de(tipo)
+                            _g_pv = _cmb_pv['golpes'] if _cmb_pv else 1
+                            if _cmb_pv and (str(mag.get('formula') or mag.get('公式') or '') == '36'
+                                            or _cmb_pv.get('es_ricochet')):
+                                _n_obj = len(_riv_lista) + len(blancos)
+                                _g_pv = max(1, int(round(_g_pv / float(max(1, _n_obj)))))
+                            for _riv_ar in _riv_lista:
+                                _pvp_ar.atacar(ses, _riv_ar, tipo, mag, None, en_area=True,
+                                               golpes=_g_pv, separacion=_cb.separacion_aoe(_cmb_pv))
                     except Exception:
                         log.exception('PvP de area')
 
@@ -10927,7 +11000,7 @@ class Servidor:
                             # Rafaga aleatoria en area (Steel Rain, Sword of Kings, Quake Spear, Flaming Blade Rain, etc.)
                             # Distribuye N golpes aleatorios entre los enemigos vivos del area.
                             _golpes_aoe = _combo_aoe.get('golpes', 1) if _combo_aoe else 1
-                            _sep_aoe = max(0.08, _combo_aoe.get('intervalo_ms', 200) / 1000.0) if _combo_aoe else 0.2
+                            _sep_aoe = _cb.separacion_aoe(_combo_aoe)
                             vivos_ini = [b for b in blancos if getattr(b, 'vivo', False) and not getattr(b, 'encantado', False)]
                             if vivos_ini:
                                 b_primero = random.choice(vivos_ini)
@@ -10968,7 +11041,7 @@ class Servidor:
                                     _tipo_num_k = _cb.TIPO_DANO_CRITICO if _c_k else _cb.TIPO_DANO
                                     ses.enviar_inmediato(
                                         _cb.atributo(tgt.entity_id, tgt.porcentaje),
-                                        _cb.numero_flotante(tgt.entity_id, _d_k, _tipo_num_k), *_ef_hijo(tgt.entity_id),
+                                        _cb.numero_flotante(tgt.entity_id, _d_k, _tipo_num_k),
                                     )
                                     if not tgt.vivo:
                                         _procesar_muerte_monstruo(ses, tgt, yo, addr, espera=0.0)
@@ -11006,7 +11079,7 @@ class Servidor:
                                     b.en_combate_con = yo
 
                             _golpes_aoe = _combo_aoe.get('golpes', 1) if _combo_aoe else 1
-                            _sep_aoe = max(0.08, _combo_aoe.get('intervalo_ms', 200) / 1000.0) if _combo_aoe else 0.2
+                            _sep_aoe = _cb.separacion_aoe(_combo_aoe)
                             for _gk in range(1, _golpes_aoe + 1):
                                 def _subgolpe_ricochet(k_idx=_gk):
                                     if not ses.personaje or getattr(ses, 'muerto', False):
@@ -11023,7 +11096,7 @@ class Servidor:
                                     _tipo_num_k = _cb.TIPO_DANO_CRITICO if _c_k else _cb.TIPO_DANO
                                     ses.enviar_inmediato(
                                         _cb.atributo(tgt.entity_id, tgt.porcentaje),
-                                        _cb.numero_flotante(tgt.entity_id, _d_k, _tipo_num_k), *_ef_hijo(tgt.entity_id),
+                                        _cb.numero_flotante(tgt.entity_id, _d_k, _tipo_num_k),
                                     )
                                     if not tgt.vivo:
                                         _procesar_muerte_monstruo(ses, tgt, yo, addr, espera=0.0)
@@ -11061,7 +11134,7 @@ class Servidor:
 
                             if _combo_aoe and _combo_aoe.get('golpes', 1) > 1:
                                 _golpes_aoe = _combo_aoe['golpes']
-                                _sep_aoe = max(0.08, _combo_aoe.get('intervalo_ms', 200) / 1000.0)
+                                _sep_aoe = _cb.separacion_aoe(_combo_aoe)
                                 for _gk in range(1, _golpes_aoe):
                                     def _subgolpe_aoe(k_idx=_gk):
                                         if not ses.personaje or getattr(ses, 'muerto', False):
@@ -11078,7 +11151,7 @@ class Servidor:
                                             _tipo_num_k = _cb.TIPO_DANO_CRITICO if _c_k else _cb.TIPO_DANO
                                             ses.enviar_inmediato(
                                                 _cb.atributo(tgt.entity_id, tgt.porcentaje),
-                                                _cb.numero_flotante(tgt.entity_id, _d_k, _tipo_num_k), *_ef_hijo(tgt.entity_id),
+                                                _cb.numero_flotante(tgt.entity_id, _d_k, _tipo_num_k),
                                             )
                                             if not tgt.vivo:
                                                 _procesar_muerte_monstruo(ses, tgt, yo, addr, espera=0.0)
@@ -14762,6 +14835,16 @@ class Servidor:
                 else:
                     return
 
+            # PERGAMINOS DE REVIVIR (使用公式 10): "When the character is dead,
+            # right click the item to revive the character in the original
+            # location". 動態資料1 es el % de vida y mana con que se levanta:
+            # Revival Scroll 3697 20, High-effect 11723 50, Enhanced 15248 100.
+            # No lo trataba nadie y el objeto no hacia nada.
+            _rev = _pergamino_revivir(int(bolsa[ranura]))
+            if _rev is not None:
+                _usar_pergamino_revivir(ses, addr, ranura, _rev)
+                return
+
             # Poke Egg (XML formula 19): activate the target cursor.  Some
             # client builds include the entity in this same 0x002E; others
             # send the monster afterwards in the regular 0x0005 click.
@@ -17712,6 +17795,12 @@ class Servidor:
                 qid_borrar = parametro
                 import misiones as _mis_del
                 _mis_del.abandonar_mision(ses, qid_borrar)
+                return
+            if accion == 47 and ses.personaje:
+                # FUSION de transformacion: OK / Cancelar de la vista previa
+                # (fuse.l: game.netcommand(47, 1|0)). Ver fusion.py.
+                import fusion as _fus47
+                _fus47.aceptar_forma(ses, addr, bool(parametro))
                 return
             if accion == 0x0D and ses.personaje and not getattr(ses, 'muerto', False):
                 # WEAPON SWITCH (Alt+~ / Boton [ I ] [ II ])
