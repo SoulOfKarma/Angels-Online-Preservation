@@ -3427,6 +3427,14 @@ def _npc_type_de(stage, ent):
     return _NPC_TYPE_CACHE[st].get(int(ent or 0))
 
 
+# Como se repinta el almacen de la liga despues de mover algo. El tipo 1 del
+# 0x0059 (REA 0x607670) solo vacia y rellena la lista del cliente (this+0x61d0,
+# FUN_00514aa0 libera cada objeto), pero NO repinta la ventana: la casilla de
+# lo que se saco se quedaba con el icono viejo y un "0" (visto el 20/10/2026).
+# Con el tipo 2 el cliente rehace la ventana (CreateBankWnd) con la lista nueva.
+_TIPO_REFRESCO_LIGA = 2
+
+
 def _banco_liga_depositar(ses, addr, arg1, arg2, arg3):
     """0x0038 con el ALMACEN DE LA LIGA abierto: oro (0,0,monto) u objeto de la
     mochila (casilla, destino). Depositar puede cualquier miembro."""
@@ -3506,7 +3514,7 @@ def _banco_liga_depositar(ses, addr, arg1, arg2, arg3):
         ses.enviar(_iv.vaciar_ranura(p.entity_id, arg1), _stats_ses(ses))
         log.info('[%s] banco de liga %s: guardado %s x%d en %d', addr, g['nombre'], it, cn, dest)
     g = _grm.obtener_gremio_de(p.char_id)
-    ses.enviar(_grm.paquete_banco_gremio(g, p.char_id, p.entity_id, tipo=1))
+    ses.enviar(_grm.paquete_banco_gremio(g, p.char_id, p.entity_id, tipo=_TIPO_REFRESCO_LIGA))
 
 
 def _banco_liga_002f(ses, addr, cmd, cuerpo):
@@ -3541,7 +3549,7 @@ def _banco_liga_002f(ses, addr, cmd, cuerpo):
         else:
             ses.enviar(clases_aviso("Your league rank cannot withdraw from the league warehouse."))
         ses.enviar(_grm.paquete_banco_gremio(_grm.obtener_gremio_de(p.char_id), p.char_id,
-                                             p.entity_id, tipo=1))
+                                             p.entity_id, tipo=_TIPO_REFRESCO_LIGA))
         return
     if ori in banco and dst >= 20:
         _banco_liga_retirar(ses, addr, ori, dst, 0)
@@ -3550,7 +3558,7 @@ def _banco_liga_002f(ses, addr, cmd, cuerpo):
         _banco_liga_depositar(ses, addr, ori, dst if 1 <= dst <= tope else 0, 0)
         return
     log.info('[%s] banco de liga: movimiento %d -> %d sin resolver', addr, ori, dst)
-    ses.enviar(_grm.paquete_banco_gremio(g, p.char_id, p.entity_id, tipo=1))
+    ses.enviar(_grm.paquete_banco_gremio(g, p.char_id, p.entity_id, tipo=_TIPO_REFRESCO_LIGA))
 
 
 def _banco_liga_retirar(ses, addr, arg1, arg2, arg3):
@@ -3569,7 +3577,7 @@ def _banco_liga_retirar(ses, addr, arg1, arg2, arg3):
     es_oro = (arg1 == 0 and arg2 == 0)
     if not _grm.puede_sacar(g, p.char_id, oro=es_oro):
         ses.enviar(clases_aviso("Your league rank cannot withdraw from the league warehouse."))
-        ses.enviar(_grm.paquete_banco_gremio(g, p.char_id, p.entity_id, tipo=1))
+        ses.enviar(_grm.paquete_banco_gremio(g, p.char_id, p.entity_id, tipo=_TIPO_REFRESCO_LIGA))
         return
     if es_oro:
         fondos = int(g.get('fondos', 0) or 0)
@@ -3632,7 +3640,7 @@ def _banco_liga_retirar(ses, addr, arg1, arg2, arg3):
         ses.enviar(*_refrescar(ses, [dest]), _stats_ses(ses))
         log.info('[%s] banco de liga %s: sacado %s x%d de %d', addr, g['nombre'], it, cn, arg1)
     g = _grm.obtener_gremio_de(p.char_id)
-    ses.enviar(_grm.paquete_banco_gremio(g, p.char_id, p.entity_id, tipo=1))
+    ses.enviar(_grm.paquete_banco_gremio(g, p.char_id, p.entity_id, tipo=_TIPO_REFRESCO_LIGA))
 
 
 def clases_aviso(texto):

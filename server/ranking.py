@@ -126,6 +126,11 @@ def paquete(tipo, alineacion, pagina, filas):
     son las columnas Level, Members (en lo personal la clase) y Faction. El
     0x014B que se usaba antes es el del ranking de las CASAS (FUN_005efec0):
     no trae esas columnas y salian en 0 y "Aurora".
+
+    La columna Faction sale del ULTIMO u32 (f, +0x30 de la fila; FUN_0060bb30
+    lo copia al [0xe] del elemento de la lista): con f a 0 todas las ligas
+    salian "Aurora", tambien Moonlights, que es Beasts (20/10/2026). Va en
+    e y en f, 0 Aurora .. 3 Shadow.
     """
     alineacion = min(max(int(alineacion), 0), 4)
     pagina = min(max(int(pagina), 0), PAGINAS - 1)
@@ -134,7 +139,7 @@ def paquete(tipo, alineacion, pagina, filas):
         struct.pack('<II17sIIIQI', f['a'] & 0xFFFFFFFF, 0,
                     (f['nombre'] or '').encode('latin-1', 'replace')[:16].ljust(17, b'\0'),
                     f['nivel'] & 0xFFFFFFFF, f['segundo'] & 0xFFFFFFFF, f['faccion'] & 0xFFFFFFFF,
-                    max(0, int(f['puntos'])) & 0xFFFFFFFFFFFFFFFF, 0)
+                    max(0, int(f['puntos'])) & 0xFFFFFFFFFFFFFFFF, f['faccion'] & 0xFFFFFFFF)
         for f in trozo)
     return struct.pack('<HIBBIH', 0x0133, 0, int(tipo) & 0xFF, alineacion, pagina,
                        len(trozo)) + cuerpo
