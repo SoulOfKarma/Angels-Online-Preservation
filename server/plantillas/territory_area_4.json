@@ -1,0 +1,2258 @@
+{
+ "_nota": "territory_area_4 (stage 377). POBLADO DESDE EL CLIENTE, no desde una captura: los generadores de monstruos son objetos del propio map377.mpc -- el monstruo en el u16 del +34, la zona en el +21, el tiempo en el +38 y cuantos en el +42. Eso da el censo COMPLETO del mapa, que una captura no puede dar porque solo trae lo que estuvo a la vista. El entity_id es fabricado y estable, no el del servidor. Las casillas son las del TAG de cada generador; los que no declaran TAG ponen sus monstruos en la casilla del generador y en un anillo de radio 3 a su alrededor, que es la dispersion MEDIDA en el stage 73. Los objetos de mapa son los del .mpc cuyo id esta en la lista de los que el servidor manda de verdad, con el cuerpo del 0x000E copiado de una captura del mismo objeto. Los tornados se dibujan aparte, desde portales.json. Ver tools/poblar_del_cliente.py.",
+ "stage": 377,
+ "spawns": [
+  {
+   "entity_id": 87700000,
+   "nombre": "Busy Jackstraw",
+   "npc_type": 708,
+   "sprite": 42004,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    133,
+    89
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 87700001,
+   "nombre": "Busy Jackstraw",
+   "npc_type": 708,
+   "sprite": 42004,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    114,
+    86
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 87700002,
+   "nombre": "Busy Jackstraw",
+   "npc_type": 708,
+   "sprite": 42004,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    106,
+    73
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 87700003,
+   "nombre": "Busy Jackstraw",
+   "npc_type": 708,
+   "sprite": 42004,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    84,
+    88
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 87700004,
+   "nombre": "Busy Jackstraw",
+   "npc_type": 708,
+   "sprite": 42004,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    123,
+    111
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 87700005,
+   "nombre": "Busy Jackstraw",
+   "npc_type": 708,
+   "sprite": 42004,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    138,
+    104
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 87700006,
+   "nombre": "Softy Navy",
+   "npc_type": 23262,
+   "sprite": 43969,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    168,
+    39
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 190
+  },
+  {
+   "entity_id": 87700007,
+   "nombre": "Softy Navy",
+   "npc_type": 23262,
+   "sprite": 43969,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    163,
+    34
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 190
+  },
+  {
+   "entity_id": 87700008,
+   "nombre": "Softy Navy",
+   "npc_type": 23262,
+   "sprite": 43969,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    163,
+    39
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 190
+  },
+  {
+   "entity_id": 87700009,
+   "nombre": "Softy Navy",
+   "npc_type": 23262,
+   "sprite": 43969,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    163,
+    44
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 190
+  },
+  {
+   "entity_id": 87700010,
+   "nombre": "Softy Navy",
+   "npc_type": 23262,
+   "sprite": 43969,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    168,
+    34
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 190
+  },
+  {
+   "entity_id": 87700011,
+   "nombre": "Softy Navy",
+   "npc_type": 23262,
+   "sprite": 43969,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    44,
+    49
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 190
+  },
+  {
+   "entity_id": 87700012,
+   "nombre": "Softy Navy",
+   "npc_type": 23262,
+   "sprite": 43969,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    44
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 190
+  },
+  {
+   "entity_id": 87700013,
+   "nombre": "Softy Navy",
+   "npc_type": 23262,
+   "sprite": 43969,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    49
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 190
+  },
+  {
+   "entity_id": 87700014,
+   "nombre": "Softy Navy",
+   "npc_type": 23262,
+   "sprite": 43969,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    54
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 190
+  },
+  {
+   "entity_id": 87700015,
+   "nombre": "Softy Navy",
+   "npc_type": 23262,
+   "sprite": 43969,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    44,
+    44
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 190
+  },
+  {
+   "entity_id": 87700016,
+   "nombre": "Bat Yaksha",
+   "npc_type": 23263,
+   "sprite": 43970,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    161,
+    146
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 211
+  },
+  {
+   "entity_id": 87700017,
+   "nombre": "Bat Yaksha",
+   "npc_type": 23263,
+   "sprite": 43970,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    156,
+    141
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 211
+  },
+  {
+   "entity_id": 87700018,
+   "nombre": "Bat Yaksha",
+   "npc_type": 23263,
+   "sprite": 43970,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    156,
+    146
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 211
+  },
+  {
+   "entity_id": 87700019,
+   "nombre": "Bat Yaksha",
+   "npc_type": 23263,
+   "sprite": 43970,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    156,
+    151
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 211
+  },
+  {
+   "entity_id": 87700020,
+   "nombre": "Prankster Wolf",
+   "npc_type": 23264,
+   "sprite": 43931,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    66,
+    160
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 87700021,
+   "nombre": "Prankster Wolf",
+   "npc_type": 23264,
+   "sprite": 43931,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    61,
+    155
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 87700022,
+   "nombre": "Prankster Wolf",
+   "npc_type": 23264,
+   "sprite": 43931,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    61,
+    160
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 87700023,
+   "nombre": "Prankster Wolf",
+   "npc_type": 23264,
+   "sprite": 43931,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    61,
+    165
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 87700024,
+   "nombre": "Prankster Wolf",
+   "npc_type": 23264,
+   "sprite": 43931,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    66,
+    155
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 87700025,
+   "nombre": "Prankster Wolf",
+   "npc_type": 23264,
+   "sprite": 43931,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    66,
+    165
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 87700026,
+   "nombre": "Prankster Wolf",
+   "npc_type": 23264,
+   "sprite": 43931,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    71,
+    155
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 87700027,
+   "nombre": "Prankster Wolf",
+   "npc_type": 23264,
+   "sprite": 43931,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    71,
+    160
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 87700028,
+   "nombre": "Prankster Wolf",
+   "npc_type": 23264,
+   "sprite": 43931,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    71,
+    165
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 87700029,
+   "nombre": "Prankster Wolf",
+   "npc_type": 23264,
+   "sprite": 43931,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    56,
+    150
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 87700030,
+   "nombre": "Bat Yaksha",
+   "npc_type": 23263,
+   "sprite": 43970,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    34,
+    46
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 211
+  },
+  {
+   "entity_id": 87700031,
+   "nombre": "Bat Yaksha",
+   "npc_type": 23263,
+   "sprite": 43970,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    34,
+    51
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 211
+  },
+  {
+   "entity_id": 87700032,
+   "nombre": "Bat Yaksha",
+   "npc_type": 23263,
+   "sprite": 43970,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    32,
+    56
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 211
+  },
+  {
+   "entity_id": 87700033,
+   "nombre": "Bat Yaksha",
+   "npc_type": 23263,
+   "sprite": 43970,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    44,
+    54
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 211
+  },
+  {
+   "entity_id": 87700034,
+   "nombre": "Bat Yaksha",
+   "npc_type": 23263,
+   "sprite": 43970,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    158,
+    36
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 211
+  },
+  {
+   "entity_id": 87700035,
+   "nombre": "Bat Yaksha",
+   "npc_type": 23263,
+   "sprite": 43970,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    158,
+    41
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 211
+  },
+  {
+   "entity_id": 87700036,
+   "nombre": "Bat Yaksha",
+   "npc_type": 23263,
+   "sprite": 43970,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    158,
+    46
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 211
+  },
+  {
+   "entity_id": 87700037,
+   "nombre": "Bat Yaksha",
+   "npc_type": 23263,
+   "sprite": 43970,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    168,
+    44
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 211
+  },
+  {
+   "entity_id": 87700038,
+   "nombre": "Prankster Wolf",
+   "npc_type": 23264,
+   "sprite": 43931,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    21,
+    129
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 87700039,
+   "nombre": "Prankster Wolf",
+   "npc_type": 23264,
+   "sprite": 43931,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    16,
+    124
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 87700040,
+   "nombre": "Prankster Wolf",
+   "npc_type": 23264,
+   "sprite": 43931,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    16,
+    129
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 87700041,
+   "nombre": "Prankster Wolf",
+   "npc_type": 23264,
+   "sprite": 43931,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    16,
+    134
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 87700042,
+   "nombre": "Prankster Wolf",
+   "npc_type": 23264,
+   "sprite": 43931,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    21,
+    124
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 87700043,
+   "nombre": "Prankster Wolf",
+   "npc_type": 23264,
+   "sprite": 43931,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    21,
+    134
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 87700044,
+   "nombre": "Prankster Wolf",
+   "npc_type": 23264,
+   "sprite": 43931,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    26,
+    124
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 87700045,
+   "nombre": "Prankster Wolf",
+   "npc_type": 23264,
+   "sprite": 43931,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    26,
+    129
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 87700046,
+   "nombre": "Prankster Wolf",
+   "npc_type": 23264,
+   "sprite": 43931,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    26,
+    134
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 87700047,
+   "nombre": "Prankster Wolf",
+   "npc_type": 23264,
+   "sprite": 43931,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    11,
+    119
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 222
+  },
+  {
+   "entity_id": 87700048,
+   "nombre": "Knitting Spider",
+   "npc_type": 23265,
+   "sprite": 43941,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    80,
+    161
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 232
+  },
+  {
+   "entity_id": 87700049,
+   "nombre": "Knitting Spider",
+   "npc_type": 23265,
+   "sprite": 43941,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    76,
+    156
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 232
+  },
+  {
+   "entity_id": 87700050,
+   "nombre": "Knitting Spider",
+   "npc_type": 23265,
+   "sprite": 43941,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    76,
+    166
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 232
+  },
+  {
+   "entity_id": 87700051,
+   "nombre": "Knitting Spider",
+   "npc_type": 23265,
+   "sprite": 43941,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    81,
+    156
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 232
+  },
+  {
+   "entity_id": 87700052,
+   "nombre": "Knitting Spider",
+   "npc_type": 23265,
+   "sprite": 43941,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    81,
+    166
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 232
+  },
+  {
+   "entity_id": 87700053,
+   "nombre": "Knitting Spider",
+   "npc_type": 23265,
+   "sprite": 43941,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    85,
+    161
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 232
+  },
+  {
+   "entity_id": 87700054,
+   "nombre": "Knitting Spider",
+   "npc_type": 23265,
+   "sprite": 43941,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    86,
+    155
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 232
+  },
+  {
+   "entity_id": 87700055,
+   "nombre": "Knitting Spider",
+   "npc_type": 23265,
+   "sprite": 43941,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    86,
+    166
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 232
+  },
+  {
+   "entity_id": 87700056,
+   "nombre": "Knitting Spider",
+   "npc_type": 23265,
+   "sprite": 43941,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    76,
+    151
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 232
+  },
+  {
+   "entity_id": 87700057,
+   "nombre": "Knitting Spider",
+   "npc_type": 23265,
+   "sprite": 43941,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    76,
+    171
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 232
+  },
+  {
+   "entity_id": 87700058,
+   "nombre": "Knitting Spider",
+   "npc_type": 23265,
+   "sprite": 43941,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    25,
+    151
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 232
+  },
+  {
+   "entity_id": 87700059,
+   "nombre": "Knitting Spider",
+   "npc_type": 23265,
+   "sprite": 43941,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    20,
+    146
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 232
+  },
+  {
+   "entity_id": 87700060,
+   "nombre": "Knitting Spider",
+   "npc_type": 23265,
+   "sprite": 43941,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    20,
+    151
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 232
+  },
+  {
+   "entity_id": 87700061,
+   "nombre": "Knitting Spider",
+   "npc_type": 23265,
+   "sprite": 43941,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    20,
+    156
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 232
+  },
+  {
+   "entity_id": 87700062,
+   "nombre": "Knitting Spider",
+   "npc_type": 23265,
+   "sprite": 43941,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    25,
+    146
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 232
+  },
+  {
+   "entity_id": 87700063,
+   "nombre": "Knitting Spider",
+   "npc_type": 23265,
+   "sprite": 43941,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    25,
+    156
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 232
+  },
+  {
+   "entity_id": 87700064,
+   "nombre": "Knitting Spider",
+   "npc_type": 23265,
+   "sprite": 43941,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    30,
+    146
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 232
+  },
+  {
+   "entity_id": 87700065,
+   "nombre": "Knitting Spider",
+   "npc_type": 23265,
+   "sprite": 43941,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    30,
+    151
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 232
+  },
+  {
+   "entity_id": 87700066,
+   "nombre": "Knitting Spider",
+   "npc_type": 23265,
+   "sprite": 43941,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    30,
+    156
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 232
+  },
+  {
+   "entity_id": 87700067,
+   "nombre": "Knitting Spider",
+   "npc_type": 23265,
+   "sprite": 43941,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    15,
+    141
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 232
+  },
+  {
+   "entity_id": 87700068,
+   "nombre": "Drifting Droplet",
+   "npc_type": 23266,
+   "sprite": 110037,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    90,
+    160
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 240
+  },
+  {
+   "entity_id": 87700069,
+   "nombre": "Drifting Droplet",
+   "npc_type": 23266,
+   "sprite": 110037,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    91,
+    165
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 240
+  },
+  {
+   "entity_id": 87700070,
+   "nombre": "Drifting Droplet",
+   "npc_type": 23266,
+   "sprite": 110037,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    81,
+    171
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 240
+  },
+  {
+   "entity_id": 87700071,
+   "nombre": "Drifting Droplet",
+   "npc_type": 23266,
+   "sprite": 110037,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    91,
+    152
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 240
+  },
+  {
+   "entity_id": 87700072,
+   "nombre": "Drifting Droplet",
+   "npc_type": 23266,
+   "sprite": 110037,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    96,
+    152
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 240
+  },
+  {
+   "entity_id": 87700073,
+   "nombre": "Drifting Droplet",
+   "npc_type": 23266,
+   "sprite": 110037,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    16,
+    119
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 240
+  },
+  {
+   "entity_id": 87700074,
+   "nombre": "Drifting Droplet",
+   "npc_type": 23266,
+   "sprite": 110037,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    21,
+    119
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 240
+  },
+  {
+   "entity_id": 87700075,
+   "nombre": "Drifting Droplet",
+   "npc_type": 23266,
+   "sprite": 110037,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    26,
+    119
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 240
+  },
+  {
+   "entity_id": 87700076,
+   "nombre": "Drifting Droplet",
+   "npc_type": 23266,
+   "sprite": 110037,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    11,
+    124
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 240
+  },
+  {
+   "entity_id": 87700077,
+   "nombre": "Drifting Droplet",
+   "npc_type": 23266,
+   "sprite": 110037,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    11,
+    129
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 240
+  },
+  {
+   "entity_id": 87700078,
+   "nombre": "Drifting Droplet",
+   "npc_type": 23266,
+   "sprite": 110037,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    15,
+    146
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 240
+  },
+  {
+   "entity_id": 87700079,
+   "nombre": "Drifting Droplet",
+   "npc_type": 23266,
+   "sprite": 110037,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    15,
+    151
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 240
+  },
+  {
+   "entity_id": 87700080,
+   "nombre": "Drifting Droplet",
+   "npc_type": 23266,
+   "sprite": 110037,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    15,
+    156
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 240
+  },
+  {
+   "entity_id": 87700081,
+   "nombre": "Drifting Droplet",
+   "npc_type": 23266,
+   "sprite": 110037,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    11,
+    161
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 240
+  },
+  {
+   "entity_id": 87700082,
+   "nombre": "Drifting Droplet",
+   "npc_type": 23266,
+   "sprite": 110037,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    16,
+    161
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 240
+  },
+  {
+   "entity_id": 87700083,
+   "nombre": "Drifting Droplet",
+   "npc_type": 23266,
+   "sprite": 110037,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    81,
+    151
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 240
+  },
+  {
+   "entity_id": 87700084,
+   "nombre": "Drifting Droplet",
+   "npc_type": 23266,
+   "sprite": 110037,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    63,
+    150
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 240
+  },
+  {
+   "entity_id": 87700085,
+   "nombre": "Drifting Droplet",
+   "npc_type": 23266,
+   "sprite": 110037,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    63,
+    170
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 240
+  },
+  {
+   "entity_id": 87700086,
+   "nombre": "Drifting Droplet",
+   "npc_type": 23266,
+   "sprite": 110037,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    68,
+    150
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 240
+  },
+  {
+   "entity_id": 87700087,
+   "nombre": "Drifting Droplet",
+   "npc_type": 23266,
+   "sprite": 110037,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    86,
+    147
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 240
+  },
+  {
+   "entity_id": 87700088,
+   "nombre": "Drifting Droplet",
+   "npc_type": 23266,
+   "sprite": 110037,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    44,
+    145
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 240
+  },
+  {
+   "entity_id": 87700089,
+   "nombre": "Drifting Droplet",
+   "npc_type": 23266,
+   "sprite": 110037,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    140
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 240
+  },
+  {
+   "entity_id": 87700090,
+   "nombre": "Drifting Droplet",
+   "npc_type": 23266,
+   "sprite": 110037,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    145
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 240
+  },
+  {
+   "entity_id": 87700091,
+   "nombre": "Drifting Droplet",
+   "npc_type": 23266,
+   "sprite": 110037,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    150
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 240
+  },
+  {
+   "entity_id": 87700092,
+   "nombre": "Drifting Droplet",
+   "npc_type": 23266,
+   "sprite": 110037,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    44,
+    140
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 240
+  },
+  {
+   "entity_id": 87700093,
+   "nombre": "Guardian Yasha",
+   "npc_type": 23267,
+   "sprite": 43953,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    19,
+    166
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 250
+  },
+  {
+   "entity_id": 87700094,
+   "nombre": "Drifting Droplet",
+   "npc_type": 23266,
+   "sprite": 110037,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    20,
+    141
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 240
+  },
+  {
+   "entity_id": 87700095,
+   "nombre": "Drifting Droplet",
+   "npc_type": 23266,
+   "sprite": 110037,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    21,
+    161
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 240
+  },
+  {
+   "entity_id": 87700096,
+   "nombre": "Drifting Droplet",
+   "npc_type": 23266,
+   "sprite": 110037,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    26,
+    161
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 240
+  },
+  {
+   "entity_id": 87700097,
+   "nombre": "Drifting Droplet",
+   "npc_type": 23266,
+   "sprite": 110037,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    30,
+    141
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 240
+  },
+  {
+   "entity_id": 87700098,
+   "nombre": "Drifting Droplet",
+   "npc_type": 23266,
+   "sprite": 110037,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    31,
+    161
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 240
+  },
+  {
+   "entity_id": 87700099,
+   "nombre": "Softy Navy",
+   "npc_type": 23262,
+   "sprite": 43969,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    166,
+    142
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 190
+  },
+  {
+   "entity_id": 87700100,
+   "nombre": "Softy Navy",
+   "npc_type": 23262,
+   "sprite": 43969,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    161,
+    137
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 190
+  },
+  {
+   "entity_id": 87700101,
+   "nombre": "Softy Navy",
+   "npc_type": 23262,
+   "sprite": 43969,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    166,
+    137
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 190
+  },
+  {
+   "entity_id": 87700102,
+   "nombre": "Softy Navy",
+   "npc_type": 23262,
+   "sprite": 43969,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    166,
+    147
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 190
+  },
+  {
+   "entity_id": 87700103,
+   "nombre": "Softy Navy",
+   "npc_type": 23262,
+   "sprite": 43969,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    171,
+    137
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 190
+  },
+  {
+   "entity_id": 87700104,
+   "nombre": "Drifting Droplet",
+   "npc_type": 23266,
+   "sprite": 110037,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    73,
+    146
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 240
+  },
+  {
+   "entity_id": 87700105,
+   "nombre": "Drifting Droplet",
+   "npc_type": 23266,
+   "sprite": 110037,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    78,
+    146
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 240
+  },
+  {
+   "entity_id": 87700106,
+   "nombre": "Drifting Droplet",
+   "npc_type": 23266,
+   "sprite": 110037,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    58,
+    145
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 240
+  },
+  {
+   "entity_id": 87700107,
+   "nombre": "Drifting Droplet",
+   "npc_type": 23266,
+   "sprite": 110037,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    58,
+    170
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 240
+  },
+  {
+   "entity_id": 87700108,
+   "nombre": "Drifting Droplet",
+   "npc_type": 23266,
+   "sprite": 110037,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    63,
+    145
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 240
+  }
+ ],
+ "recursos": [
+  {
+   "entity_id": 97700000,
+   "sprite": 60300,
+   "capa": 2,
+   "px": [
+    2493,
+    4080
+   ],
+   "tile": [
+    77,
+    127
+   ],
+   "crudo": "a0c8d20502000000bd090000f00f00000000000027000000000000001a000000dc068ceb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60300"
+  },
+  {
+   "entity_id": 97700001,
+   "sprite": 60474,
+   "capa": 2,
+   "px": [
+    3328,
+    2064
+   ],
+   "tile": [
+    104,
+    64
+   ],
+   "crudo": "a1c8d20502000000000d0000100800000000000027000000000000001a000000dc063aec00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60474"
+  },
+  {
+   "entity_id": 97700002,
+   "sprite": 60466,
+   "capa": 0,
+   "px": [
+    1503,
+    3088
+   ],
+   "tile": [
+    46,
+    96
+   ],
+   "crudo": "a2c8d20500000000df050000100c00000000000027000000000000001a000000dc0632ec00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60466"
+  },
+  {
+   "entity_id": 97700003,
+   "sprite": 60454,
+   "capa": 0,
+   "px": [
+    5992,
+    1936
+   ],
+   "tile": [
+    187,
+    60
+   ],
+   "crudo": "a3c8d2050000000068170000900700000000000027000000000000001a000000dc0626ec00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60454"
+  },
+  {
+   "entity_id": 97700004,
+   "sprite": 60425,
+   "capa": 0,
+   "px": [
+    5640,
+    1968
+   ],
+   "tile": [
+    176,
+    61
+   ],
+   "crudo": "a4c8d2050000000008160000b00700000000000027000000000000001a000000dc0609ec00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60425"
+  },
+  {
+   "entity_id": 97700005,
+   "sprite": 60465,
+   "capa": 0,
+   "px": [
+    1776,
+    3216
+   ],
+   "tile": [
+    55,
+    100
+   ],
+   "crudo": "a5c8d20500000000f0060000900c00000000000027000000000000001a000000dc0631ec00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60465"
+  },
+  {
+   "entity_id": 97700006,
+   "sprite": 60432,
+   "capa": 2,
+   "px": [
+    4451,
+    752
+   ],
+   "tile": [
+    139,
+    23
+   ],
+   "crudo": "a6c8d2050200000063110000f00200000000000027000000000000001a000000dc0610ec00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60432"
+  },
+  {
+   "entity_id": 97700007,
+   "sprite": 60432,
+   "capa": 0,
+   "px": [
+    4381,
+    688
+   ],
+   "tile": [
+    136,
+    21
+   ],
+   "crudo": "a7c8d205000000001d110000b00200000000000027000000000000001a000000dc0610ec00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60432"
+  },
+  {
+   "entity_id": 97700008,
+   "sprite": 60451,
+   "capa": 2,
+   "px": [
+    4119,
+    1040
+   ],
+   "tile": [
+    128,
+    32
+   ],
+   "crudo": "a8c8d2050200000017100000100400000000000027000000000000001a000000dc0623ec00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60451"
+  },
+  {
+   "entity_id": 97700009,
+   "sprite": 60453,
+   "capa": 0,
+   "px": [
+    6139,
+    1808
+   ],
+   "tile": [
+    191,
+    56
+   ],
+   "crudo": "a9c8d20500000000fb170000100700000000000027000000000000001a000000dc0625ec00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60453"
+  },
+  {
+   "entity_id": 97700010,
+   "sprite": 60491,
+   "capa": 0,
+   "px": [
+    3033,
+    1424
+   ],
+   "tile": [
+    94,
+    44
+   ],
+   "crudo": "aac8d20500000000d90b0000900500000000000027000000000000001a000000dc064bec00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60491"
+  },
+  {
+   "entity_id": 97700011,
+   "sprite": 60425,
+   "capa": 2,
+   "px": [
+    5456,
+    2032
+   ],
+   "tile": [
+    170,
+    63
+   ],
+   "crudo": "abc8d2050200000050150000f00700000000000027000000000000001a000000dc0609ec00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60425"
+  },
+  {
+   "entity_id": 97700012,
+   "sprite": 60450,
+   "capa": 2,
+   "px": [
+    4227,
+    1424
+   ],
+   "tile": [
+    132,
+    44
+   ],
+   "crudo": "acc8d2050200000083100000900500000000000027000000000000001a000000dc0622ec00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60450"
+  },
+  {
+   "entity_id": 97700013,
+   "sprite": 60474,
+   "capa": 0,
+   "px": [
+    3247,
+    2160
+   ],
+   "tile": [
+    101,
+    67
+   ],
+   "crudo": "adc8d20500000000af0c0000700800000000000027000000000000001a000000dc063aec00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60474"
+  },
+  {
+   "entity_id": 97700014,
+   "sprite": 60469,
+   "capa": 0,
+   "px": [
+    3758,
+    4080
+   ],
+   "tile": [
+    117,
+    127
+   ],
+   "crudo": "aec8d20500000000ae0e0000f00f00000000000027000000000000001a000000dc0635ec00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60469"
+  },
+  {
+   "entity_id": 97700015,
+   "sprite": 60468,
+   "capa": 0,
+   "px": [
+    3469,
+    4080
+   ],
+   "tile": [
+    108,
+    127
+   ],
+   "crudo": "afc8d205000000008d0d0000f00f00000000000027000000000000001a000000dc0634ec00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60468"
+  },
+  {
+   "entity_id": 97700016,
+   "sprite": 60473,
+   "capa": 0,
+   "px": [
+    5831,
+    3152
+   ],
+   "tile": [
+    182,
+    98
+   ],
+   "crudo": "b0c8d20500000000c7160000500c00000000000027000000000000001a000000dc0639ec00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60473"
+  },
+  {
+   "entity_id": 97700017,
+   "sprite": 60472,
+   "capa": 2,
+   "px": [
+    5514,
+    3344
+   ],
+   "tile": [
+    172,
+    104
+   ],
+   "crudo": "b1c8d205020000008a150000100d00000000000027000000000000001a000000dc0638ec00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60472"
+  },
+  {
+   "entity_id": 97700018,
+   "sprite": 60470,
+   "capa": 2,
+   "px": [
+    4663,
+    3664
+   ],
+   "tile": [
+    145,
+    114
+   ],
+   "crudo": "b2c8d2050200000037120000500e00000000000027000000000000001a000000dc0636ec00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60470"
+  },
+  {
+   "entity_id": 97700019,
+   "sprite": 60470,
+   "capa": 0,
+   "px": [
+    4956,
+    3568
+   ],
+   "tile": [
+    154,
+    111
+   ],
+   "crudo": "b3c8d205000000005c130000f00d00000000000027000000000000001a000000dc0636ec00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60470"
+  },
+  {
+   "entity_id": 97700020,
+   "sprite": 60488,
+   "capa": 2,
+   "px": [
+    945,
+    2288
+   ],
+   "tile": [
+    29,
+    71
+   ],
+   "crudo": "b4c8d20502000000b1030000f00800000000000027000000000000001a000000dc0648ec00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60488"
+  },
+  {
+   "entity_id": 97700021,
+   "sprite": 60487,
+   "capa": 0,
+   "px": [
+    1864,
+    624
+   ],
+   "tile": [
+    58,
+    19
+   ],
+   "crudo": "b5c8d2050000000048070000700200000000000027000000000000001a000000dc0647ec00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60487"
+  },
+  {
+   "entity_id": 97700022,
+   "sprite": 60497,
+   "capa": 0,
+   "px": [
+    405,
+    272
+   ],
+   "tile": [
+    12,
+    8
+   ],
+   "crudo": "b6c8d2050000000095010000100100000000000027000000000000001a000000dc0651ec00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60497"
+  },
+  {
+   "entity_id": 97700023,
+   "sprite": 60487,
+   "capa": 2,
+   "px": [
+    2259,
+    752
+   ],
+   "tile": [
+    70,
+    23
+   ],
+   "crudo": "b7c8d20502000000d3080000f00200000000000027000000000000001a000000dc0647ec00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60487"
+  },
+  {
+   "entity_id": 97700024,
+   "sprite": 60494,
+   "capa": 0,
+   "px": [
+    1599,
+    2288
+   ],
+   "tile": [
+    49,
+    71
+   ],
+   "crudo": "b8c8d205000000003f060000f00800000000000027000000000000001a000000dc064eec00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60494"
+  },
+  {
+   "entity_id": 97700025,
+   "sprite": 60493,
+   "capa": 0,
+   "px": [
+    1902,
+    2128
+   ],
+   "tile": [
+    59,
+    66
+   ],
+   "crudo": "b9c8d205000000006e070000500800000000000027000000000000001a000000dc064dec00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60493"
+  },
+  {
+   "entity_id": 97700026,
+   "sprite": 60488,
+   "capa": 0,
+   "px": [
+    800,
+    2256
+   ],
+   "tile": [
+    25,
+    70
+   ],
+   "crudo": "bac8d2050000000020030000d00800000000000027000000000000001a000000dc0648ec00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60488"
+  },
+  {
+   "entity_id": 97700027,
+   "sprite": 60485,
+   "capa": 0,
+   "px": [
+    6056,
+    4688
+   ],
+   "tile": [
+    189,
+    146
+   ],
+   "crudo": "bbc8d20500000000a8170000501200000000000027000000000000001a000000dc0645ec00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60485"
+  },
+  {
+   "entity_id": 97700028,
+   "sprite": 60484,
+   "capa": 2,
+   "px": [
+    6153,
+    4432
+   ],
+   "tile": [
+    192,
+    138
+   ],
+   "crudo": "bcc8d2050200000009180000501100000000000027000000000000001a000000dc0644ec00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60484"
+  },
+  {
+   "entity_id": 97700029,
+   "sprite": 60476,
+   "capa": 0,
+   "px": [
+    5293,
+    5520
+   ],
+   "tile": [
+    165,
+    172
+   ],
+   "crudo": "bdc8d20500000000ad140000901500000000000027000000000000001a000000dc063cec00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60476"
+  },
+  {
+   "entity_id": 97700030,
+   "sprite": 60476,
+   "capa": 2,
+   "px": [
+    4998,
+    5584
+   ],
+   "tile": [
+    156,
+    174
+   ],
+   "crudo": "bec8d2050200000086130000d01500000000000027000000000000001a000000dc063cec00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60476"
+  },
+  {
+   "entity_id": 97700031,
+   "sprite": 60481,
+   "capa": 0,
+   "px": [
+    5845,
+    5488
+   ],
+   "tile": [
+    182,
+    171
+   ],
+   "crudo": "bfc8d20500000000d5160000701500000000000027000000000000001a000000dc0641ec00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60481"
+  },
+  {
+   "entity_id": 97700032,
+   "sprite": 60483,
+   "capa": 0,
+   "px": [
+    6162,
+    5200
+   ],
+   "tile": [
+    192,
+    162
+   ],
+   "crudo": "c0c8d2050000000012180000501400000000000027000000000000001a000000dc0643ec00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60483"
+  },
+  {
+   "entity_id": 97700033,
+   "sprite": 60477,
+   "capa": 2,
+   "px": [
+    5959,
+    4144
+   ],
+   "tile": [
+    186,
+    129
+   ],
+   "crudo": "c1c8d2050200000047170000301000000000000027000000000000001a000000dc063dec00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60477"
+  },
+  {
+   "entity_id": 97700034,
+   "sprite": 60477,
+   "capa": 0,
+   "px": [
+    5876,
+    4080
+   ],
+   "tile": [
+    183,
+    127
+   ],
+   "crudo": "c2c8d20500000000f4160000f00f00000000000027000000000000001a000000dc063dec00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60477"
+  },
+  {
+   "entity_id": 97700035,
+   "sprite": 60480,
+   "capa": 0,
+   "px": [
+    4523,
+    5584
+   ],
+   "tile": [
+    141,
+    174
+   ],
+   "crudo": "c3c8d20500000000ab110000d01500000000000027000000000000001a000000dc0640ec00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60480"
+  },
+  {
+   "entity_id": 97700036,
+   "sprite": 60496,
+   "capa": 2,
+   "px": [
+    614,
+    240
+   ],
+   "tile": [
+    19,
+    7
+   ],
+   "crudo": "c4c8d2050200000066020000f00000000000000027000000000000001a000000dc0650ec00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60496"
+  },
+  {
+   "entity_id": 97700037,
+   "sprite": 60489,
+   "capa": 0,
+   "px": [
+    2864,
+    1552
+   ],
+   "tile": [
+    89,
+    48
+   ],
+   "crudo": "c5c8d20500000000300b0000100600000000000027000000000000001a000000dc0649ec00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60489"
+  },
+  {
+   "entity_id": 97700038,
+   "sprite": 60479,
+   "capa": 2,
+   "px": [
+    4487,
+    5328
+   ],
+   "tile": [
+    140,
+    166
+   ],
+   "crudo": "c6c8d2050200000087110000d01400000000000027000000000000001a000000dc063fec00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60479"
+  },
+  {
+   "entity_id": 97700039,
+   "sprite": 60448,
+   "capa": 0,
+   "px": [
+    6122,
+    1456
+   ],
+   "tile": [
+    191,
+    45
+   ],
+   "crudo": "c7c8d20500000000ea170000b00500000000000027000000000000001a000000dc0620ec00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60448"
+  },
+  {
+   "entity_id": 97700040,
+   "sprite": 60447,
+   "capa": 0,
+   "px": [
+    6039,
+    1296
+   ],
+   "tile": [
+    188,
+    40
+   ],
+   "crudo": "c8c8d2050000000097170000100500000000000027000000000000001a000000dc061fec00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60447"
+  }
+ ]
+}

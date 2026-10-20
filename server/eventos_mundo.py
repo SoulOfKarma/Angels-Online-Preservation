@@ -50,6 +50,9 @@ RADIO_ZONA = 4
 # Las condiciones que este contexto puede contestar de verdad. Lo que no
 # este aqui sale como "no se sabe" y su disparador no salta.
 SABE = frozenset((
+    32,     # IS_PVP_ON (Totem War)
+    75,     # SPEC_MAP_OWN_ALIGNMENT
+    77,     # PVP_IS_GUARD_OWNER
     2,      # QUEST_STEP
     6,      # BAGITEM
     7,      # QUESTITEM (ranuras ocultas 497..556)
@@ -73,6 +76,8 @@ SABE = frozenset((
     82,     # GUILD_MEMBER_TIME
     56,     # IS_LIVE
     3,      # PROPERTY (solo nivel y rango)
+    4,      # SKILL_LEVEL: las puertas rojas y la de magia de Gulp Room 2
+    5,      # EQUIPITEM
     58,     # HOUSE_IS_OWNER
     59,     # HOUSE_LEVEL
     60,     # DISCO_PARTY
@@ -405,6 +410,22 @@ class ContextoSesion(ev.Contexto):
                 except Exception:
                     pass
         return max(0, delta)
+
+    def equipado(self, item):
+        # De 0 a 19 va el equipo puesto.
+        return self._contar(item, 0, BOLSA_PRIMERA - 1)
+
+    def nivel_de_skill(self, skill):
+        # habilidades = [(rama, nivel, exp)]; la rama es la de skills.NOMBRE_RAMA,
+        # la misma numeracion que el SKILL_LEVEL del eventdef (9 Sword, 10 Axe,
+        # 11 Spear, 17 Longbow; 1 Life, 2 Wraith, 3 Chaos, 4 Earth).
+        for h in (getattr(self.p, 'habilidades', None) or []):
+            try:
+                if int(h[0]) == int(skill):
+                    return int(h[1])
+            except (TypeError, ValueError, IndexError):
+                continue
+        return 0
 
     def huecos_libres(self):
         if not self.p:
@@ -746,8 +767,9 @@ def evento_del_monstruo(stage, npc_type):
 def al_morir_monstruo(ses, monstruo):
     """Los efectos de que muera un bicho: botines y pasos de mision."""
     estado = estado_de(ses)
-    evento = evento_del_monstruo(estado.stage,
-                                 getattr(monstruo, 'npc_type', 0) or 0)
+    # Los de MAKE_REVENGE_DNA_MONSTER llevan su propio evento de muerte.
+    evento = getattr(monstruo, 'evento_muerte', None) or evento_del_monstruo(
+        estado.stage, getattr(monstruo, 'npc_type', 0) or 0)
     if not evento:
         return []
     ctx = ContextoSesion(ses, estado)

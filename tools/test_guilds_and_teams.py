@@ -53,6 +53,8 @@ class MockPersonaje:
         self.mp = mp
         self.mp_max = 300
         self.entity_id = 1000 + char_id
+        # Una liga es de una faccion: invitar a otra da el 746 del cliente.
+        self.faction = 'Beasts'
         self.genero = 0
         self.oro = 100000
         self.buffs = {}

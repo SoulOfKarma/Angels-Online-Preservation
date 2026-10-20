@@ -56,7 +56,37 @@ def linea_libre(stage, desde, hasta):
     """Si se puede ir en linea recta de una casilla a otra sin pisar pared."""
     if not conocido(stage):
         return True
-    return all(se_pisa(stage, x, y) for x, y in _linea(desde, hasta))
+    anterior = desde
+    for x, y in _linea(desde, hasta):
+        if not se_pisa(stage, x, y):
+            return False
+        if x != anterior[0] and y != anterior[1]:
+            if not (se_pisa(stage, x, anterior[1]) and se_pisa(stage, anterior[0], y)):
+                return False
+        anterior = x, y
+    return True
+
+
+def paso_hacia(stage, desde, hasta, limite=4096):
+    """Un unico segmento seguro de regreso; BFS acotada para rodear paredes."""
+    from collections import deque
+    desde, hasta = tuple(desde), tuple(hasta)
+    if desde == hasta:
+        return desde
+    cola, anterior = deque([desde]), {desde: None}
+    while cola and len(anterior) < limite:
+        x, y = cola.popleft()
+        for dx, dy in ((0,1),(1,0),(0,-1),(-1,0), (1,1),(1,-1),(-1,1),(-1,-1)):
+            t = x+dx, y+dy
+            if t in anterior or not linea_libre(stage, (x,y), t):
+                continue
+            anterior[t] = (x,y)
+            if t == hasta:
+                while anterior[t] != desde:
+                    t = anterior[t]
+                return t
+            cola.append(t)
+    return desde
 
 
 def avanzar(stage, desde, objetivo, pasos, parar_a=0):
@@ -89,12 +119,14 @@ def avanzar(stage, desde, objetivo, pasos, parar_a=0):
                 if not se_pisa(stage, nx, ny):
                     continue
                 # En diagonal, que no corte una esquina de pared.
-                if dx and dy and not (se_pisa(stage, x + dx, y) or se_pisa(stage, x, y + dy)):
+                if dx and dy and not (se_pisa(stage, x + dx, y) and se_pisa(stage, x, y + dy)):
                     continue
                 d = (tx - nx) ** 2 + (ty - ny) ** 2
                 if d < actual and (mejor is None or d < mejor[0]):
                     mejor = (d, nx, ny)
         if mejor is None:
             break
+        if not linea_libre(stage, desde, (mejor[1], mejor[2])):
+            break  # Un MOVE solo dibuja un segmento, no una ruta doblada.
         _, x, y = mejor
     return x, y

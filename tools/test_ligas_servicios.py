@@ -170,15 +170,21 @@ class TestServiciosLiga(unittest.TestCase):
         srv = app.Servidor('127.0.0.1', 9999)
 
         # 1. Sembrar en parcela 1
-        ok = farm.plantar(self.jefe, 1, crop_id=1)
+        self.jefe.personaje.tile_x, self.jefe.personaje.tile_y = farm.coordenadas_de_parcela(1)
+        ok = farm.plantar(self.jefe, 1, crop_id=6)
         self.assertTrue(ok)
         c = cuentas.db_obtener_cultivo(self.gid, 1)
         self.assertIsNotNone(c)
-        self.assertEqual(c['crop_id'], 1)
+        self.assertEqual(c['crop_id'], 6)
 
         # 2. Poblar cultivos
         spawns = farm.poblar_cultivos(self.jefe)
-        self.assertEqual(len(spawns), 1)
+        # La tierra de las 70 parcelas es permanente; el cultivo de la 1 va
+        # encima en su propia entidad.
+        sprites = [int.from_bytes(x[36:40], 'little') for x in spawns
+                   if x[:2] == (0x015D).to_bytes(2, 'little')]
+        self.assertEqual(sprites.count(farm.SPRITE_TIERRA), 70)
+        self.assertEqual(len(sprites) - sprites.count(farm.SPRITE_TIERRA), 1)
 
         # 3. Regar con C2S 0x014D
         eid = farm.CROP_BASE_EID + 1
@@ -201,8 +207,9 @@ class TestServiciosLiga(unittest.TestCase):
             con.execute('UPDATE liga_granja_cultivos SET madura_en = 0 WHERE guild_id=? AND plot_id=1', (self.gid,))
 
         srv.manejar(self.jefe, 0x014F, None, None, 'test', struct.pack('<I', eid))
-        # Despues de cosechar, el cultivo se borra de la parcela
-        self.assertIsNone(cuentas.db_obtener_cultivo(self.gid, 1))
+        # La primera cosecha del propietario es reservada; no borra las seis
+        # cosechas normales de los companeros (string.xml3166).
+        self.assertIsNotNone(cuentas.db_obtener_cultivo(self.gid, 1))
         # Y se recibe el objeto cosechado en la bolsa
         self.assertTrue(any(v > 0 for v in self.jefe.inventario.values()))
 

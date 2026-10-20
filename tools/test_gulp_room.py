@@ -97,7 +97,10 @@ def test_el_laberinto_del_77_esta_entero():
 
 
 def test_los_cuartos_estan_poblados():
-    esperado = {76: 272, 77: 1, 78: 70, 79: 518}
+    # Sin las zonas que solo salen POR EVENTO (jefes y oleadas, ver
+    # poblar_del_cliente.zonas_de_evento) y con los cristales del Evil Eye
+    # recortados a uno por generador (gulp_room_4.json, 'recortados').
+    esperado = {76: 209, 77: 0, 78: 69, 79: 309}
     for st in CUARTOS:
         assert st in login.PLANTILLAS_POR_STAGE, st
         d = _plantilla(st)
@@ -112,18 +115,25 @@ def test_el_censo_es_el_que_declara_el_cliente():
     cat = pob._catalogo()
     for st in CUARTOS:
         m = cli.mapa(st)
+        fuera = pob.zonas_de_evento(st)
         delcliente = collections.Counter()
         for g in m.generadores():
-            if g['tipo'] in cat:
-                delcliente[cat[g['tipo']][0]] += max(1, g['cantidad'])
-        dela = collections.Counter(e['nombre'] for e in _plantilla(st)['spawns'])
+            if g['tipo'] in cat and not (g['zona'] and g['zona'] in fuera):
+                delcliente[cat[g['tipo']][0]] += max(
+                    1, min(pob.TOPE_POR_GENERADOR, g['cantidad']))
+        d = _plantilla(st)
+        for nombre, n in (d.get('recortados') or {}).items():
+            assert n <= delcliente.get(nombre, 0), (st, nombre, n)
+            delcliente[nombre] = n
+        dela = collections.Counter(e['nombre'] for e in d['spawns']
+                                   if e.get('puesto_por') != 'npcs_del_cliente')
         assert dela == delcliente, (st, dela - delcliente, delcliente - dela)
 
 
 def test_los_cuartos_tienen_sus_objetos_de_mapa():
     """Un mapa sin objetos se ve vacio. Los que el servidor manda de verdad
     se sacan del .mpc y su cuerpo se copia de una captura del mismo objeto."""
-    esperado = {76: 20, 77: 2, 78: 278, 79: 18}
+    esperado = {76: 33, 77: 91, 78: 281, 79: 32}
     for st in CUARTOS:
         rec = _plantilla(st)['recursos']
         assert len(rec) == esperado[st], (st, len(rec), esperado[st])

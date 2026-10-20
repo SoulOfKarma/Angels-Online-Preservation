@@ -111,6 +111,22 @@ def test_depositar_y_que_el_miembro_sin_permiso_no_saque():
     cuentas.db_disolver_gremio(g['guild_id'])
 
 
+def test_mover_dentro_del_almacen_de_la_liga_no_toca_el_banco_personal():
+    jefe, _, g = _liga()
+    app._banco_liga_depositar(jefe, 't', 20, 0, 0)
+    app._banco_liga_depositar(jefe, 't', 21, 0, 0)
+    gid = g['guild_id']
+    assert cuentas.db_banco_gremio(gid) == {1: (4, 1), 2: (5, 1)}
+    jefe.personaje.banco = {1: (999, 1)}
+    assert cuentas.db_intercambiar_banco_gremio(gid, 1, 7)      # a una vacia
+    assert cuentas.db_banco_gremio(gid) == {7: (4, 1), 2: (5, 1)}
+    assert cuentas.db_intercambiar_banco_gremio(gid, 2, 7)      # intercambio
+    assert cuentas.db_banco_gremio(gid) == {2: (4, 1), 7: (5, 1)}
+    assert not cuentas.db_intercambiar_banco_gremio(gid, 30, 31)
+    assert jefe.personaje.banco == {1: (999, 1)}
+    cuentas.db_disolver_gremio(gid)
+
+
 if __name__ == '__main__':
     fallos = 0
     for nombre, fn in sorted(globals().items()):

@@ -271,6 +271,11 @@ def _dialogo_de_estatua(e):
 
 def _portal_en(stage, tx, ty):
     """El tornado que se esta pisando, o None."""
+    import territorios_liga
+    if int(stage) in territorios_liga.AREAS:
+        p = territorios_liga.portal(stage)
+        if max(abs(tx-p['tile'][0]), abs(ty-p['tile'][1])) <= 2:
+            return p
     if int(stage) == 501:
         import granja_liga as farm
         if max(abs(tx - farm.PORTAL_TILE[0]), abs(ty - farm.PORTAL_TILE[1])) <= 2:
@@ -334,6 +339,9 @@ def _nombre_entidad(ses, entity_id: int) -> str:
     if entity_id in (2605, 500005):
         return 'Monster Hatching Machine'
 
+    _ne = _npc_evento(ses, entity_id)
+    if _ne:
+        return _ne[1]
     if getattr(ses, 'personaje', None):
         st = ses.personaje.stage
         p_name = _lg.PLANTILLAS_POR_STAGE.get(st)
@@ -402,6 +410,15 @@ def _monstruos_de(stage: int):
             eid, ntype, nom, tile = item[:4]
             sp = item[4] if len(item) > 4 else (_lg.sprite_de(ntype, 42107) if ntype == 224 else _lg.sprite_de(ntype, 0))
             bichos[eid] = combate.Monstruo(eid, ntype, nom, tile, sprite=sp, stage=stage)
+    # TOTEM WAR: el totem del centro de las arenas 200..207 (totem_war.py).
+    import totem_war as _tw_m
+    if _tw_m.es_mapa_tw(stage):
+        _tot = _tw_m.crear_totem(stage)
+        bichos[_tot.entity_id] = _tot
+        if _tw_m.es_arena(stage):
+            for _fu in _tw_m.crear_fuertes(stage):
+                bichos[_fu.entity_id] = _fu
+            PUNTOS_DE_ZONA.update(_tw_m.puntos_de_zona(stage))
     return bichos
 
 
@@ -1173,7 +1190,8 @@ PALABRAS_GM = frozenset((
     'guildlevel', 'glevel', 'gldlevel', 'gldlvl', 'guildlvl', 'glvl', 'guildrank', 'grank', 'setguildlevel',
     'guildrep', 'grep', 'gldrep',
     'guild', 'gremio', 'liga',
-    'settw', 'settotemwar', 'tw', 'totemwar',
+    'settw', 'settotemwar', 'tw', 'totemwar', 'twstart', 'twstop',
+    'notice', 'aviso', 'anuncio', 'gmsg', 'twtotem',
     'plant', 'sembrar',
     'farm', 'granja',
 ))
@@ -1312,13 +1330,26 @@ def _gm_parsear(texto: str):
         return ('emote', emo_id)
     if cmd in ('settw', 'settotemwar'):
         if len(partes) < 3:
-            return ('err', 'usage: /settw <tw_stage 200..207> <guild_id>')
+            return ('err', 'usage: /settw <field or 200..207> <league_id>')
         try:
             return ('settw', int(partes[1], 0), int(partes[2], 0))
         except ValueError:
-            return ('err', 'usage: /settw <tw_stage 200..207> <guild_id>')
+            return ('err', 'usage: /settw <field or 200..207> <league_id>')
     if cmd in ('tw', 'totemwar'):
         return ('tw', partes[1:] if len(partes) > 1 else [])
+    if cmd == 'twstart':
+        return ('tw', ['start'] + partes[1:])
+    if cmd == 'twstop':
+        return ('tw', ['stop'])
+    if cmd == 'twtotem':
+        try:
+            return ('twtotem', int(partes[1]))
+        except (IndexError, ValueError):
+            return ('err', 'usage: /twtotem <level 1..8>')
+    if cmd in ('notice', 'aviso', 'anuncio', 'gmsg'):
+        if len(partes) < 2:
+            return ('err', 'usage: /notice <texto>')
+        return ('notice', ' '.join(partes[1:]))
     if cmd in ('plant', 'sembrar'):
         if len(partes) < 2:
             return ('err', 'usage: /plant <crop_id> [plot_id 1..200]')
@@ -1386,7 +1417,9 @@ def _probar_gm(ses, cuerpo, addr) -> bool:
         ses.enviar(_cl.aviso(
             'GM: /item <id> [qty] | /level <n> | /levelall <n> | /skills [lv] | /skillsall [lv] | /skills5 | /clearskills | '
             '/pet level|exp|path|evolve | /rango [1..20] | '
-            '/estacion <normal|navidad|halloween|sakura|verano> | /emote <0..36> | /emote unlock <id> | /emote unlockall | /emote list',
+            '/estacion <normal|navidad|halloween|sakura|verano> | /emote <0..36> | /emote unlock <id> | /emote unlockall | /emote list | '
+            '/quest <id> <step> | /ball reset | /glevel <1..10> | /grep <n> | /farm [enter|seeds|tools|pests] | /plant <crop> [plot] | '
+            '/tw | /twstart [min] | /twstop | /settw <field> <league_id> | /twtotem <1..8> | /notice <text>',
             tipo=0, msg_id=_cl.MSG_TEXTO))
         log.info('[%s] GM help' % (addr,))
         return True
@@ -1613,15 +1646,86 @@ def _probar_gm(ses, cuerpo, addr) -> bool:
         log.info('[%s] GM rango -> %d (%s)' % (addr, _rk_new, _tit))
         return True
     if leido[0] == 'settw':
-        tw_stage, gid = int(leido[1]), int(leido[2])
+        # /settw <campo o arena> <liga>: vale el campo (16 Thorn Wasteland) o
+        # su clave 200..207. Ademas de la liga, el campo pasa a la faccion de
+        # su lider y el totem se vuelve a levantar con el nombre nuevo.
+        import totem_war as _tw_set
+        tw_stage, gid = _tw_set._tw(int(leido[1])), int(leido[2])
         import cuentas as _cta_tw
-        _cta_tw.db_asignar_territorio_gremio(tw_stage, gid)
+        try:
+            _cta_tw.db_asignar_territorio_gremio(tw_stage, gid)
+        except ValueError as exc:
+            ses.enviar(_cl.aviso(str(exc), tipo=0))
+            return True
         g_info = _cta_tw.db_obtener_gremio(gid)
         g_name = g_info['nombre'] if g_info else f"ID {gid}"
+        try:
+            _lid = None
+            for _s_l in _tw_sesiones():
+                if getattr(_s_l.personaje, 'char_id', None) == (g_info or {}).get('lider_char_id'):
+                    _lid = _s_l.personaje
+            _f_set = _tw_set.codigo_faccion(_lid or ses.personaje)
+            if _f_set in _tw_set.TAG_DE_FACCION:
+                _tw_set.poner_faccion_duena(tw_stage, _f_set)
+            _tw_relevantar(_tw_set.TW_A_CAMPO.get(tw_stage, tw_stage)
+                           if _tw_set.MODO == 'antigua' else tw_stage)
+            _tw_difundir(_tw_set.paquete_territorios())
+        except Exception:
+            log.exception('GM settw: faccion y totem')
         ses.enviar(_cl.aviso(f"Territory {tw_stage} assigned to league '{g_name}' (ID {gid}).", tipo=0, msg_id=_cl.MSG_TEXTO))
         log.info(f"[{addr}] GM settw: stage {tw_stage} -> league {gid}")
         return True
+    if leido[0] == 'twtotem':
+        # /twtotem <nivel 1..8>: el nivel del totem del campo donde estas.
+        import totem_war as _tw_lv
+        st_lv = ses.personaje.stage
+        if not _tw_lv.es_mapa_tw(st_lv):
+            ses.enviar(_cl.aviso('You are not in a Totem War field.', tipo=0))
+            return True
+        nv = max(1, min(_tw_lv.NIVEL_MAX_TOTEM, int(leido[1])))
+        import cuentas as _cta_lv
+        with _cta_lv._LOCK:
+            _tw_lv._tabla_nivel()
+            con = _cta_lv._get_conn()
+            try:
+                con.execute('INSERT OR REPLACE INTO tw_totem_nivel (tw_stage, nivel, puntos) VALUES (?,?,0)',
+                            (_tw_lv._tw(st_lv), nv))
+                con.commit()
+            finally:
+                con.close()
+        ses.enviar(_cl.aviso('Totem of this field set to level %d.' % nv, tipo=0))
+        return True
+    if leido[0] == 'notice':
+        # El cartel de arriba de la pantalla, a todos los conectados.
+        import totem_war as _tw_nt
+        _tw_difundir(_tw_nt.cartel_deslizante(leido[1]))
+        log.info(f"[{addr}] GM notice: {leido[1]!r}")
+        return True
+    if leido[0] == 'tw' and leido[1] and str(leido[1][0]).lower() in ('start', 'on', 'stop', 'off', 'end'):
+        import totem_war as _tw_gm
+        sub = str(leido[1][0]).lower()
+        if sub in ('start', 'on'):
+            try:
+                minutos = max(1, int(leido[1][1])) if len(leido[1]) > 1 else _tw_gm.MINUTOS_GM
+            except ValueError:
+                minutos = _tw_gm.MINUTOS_GM
+            ya = _tw_gm.iniciar(minutos, por=getattr(ses.personaje, 'nombre', 'gm'))
+            ses.enviar(_cl.aviso('Totem War %s: %d min.' % ('timer reset' if ya else 'started', minutos),
+                                 tipo=0, msg_id=_cl.MSG_TEXTO))
+        else:
+            if not _tw_gm.terminar(por=getattr(ses.personaje, 'nombre', 'gm')):
+                ses.enviar(_cl.aviso('Totem War is not running.', tipo=0, msg_id=_cl.MSG_TEXTO))
+        log.info(f"[{addr}] GM tw {leido[1]}")
+        return True
     if leido[0] == 'tw':
+        import totem_war as _tw_st
+        if _tw_st.activa():
+            ses.enviar(_cl.aviso('Totem War running: %d min left.' % max(1, _tw_st.restante() // 60),
+                                 tipo=0, msg_id=_cl.MSG_TEXTO))
+        for _st_tw in sorted(_tw_st.TW_A_CAMPO):
+            ses.enviar(_cl.aviso('%s: %s' % (_tw_st.NOMBRE_TW[_st_tw],
+                                             _tw_st.NOMBRE_FACCION.get(_tw_st.faccion_duena(_st_tw), 'Neutral')),
+                                 tipo=0, msg_id=_cl.MSG_TEXTO))
         import cuentas as _cta_tw
         with _cta_tw._LOCK:
             con = _cta_tw._get_conn()
@@ -1645,8 +1749,25 @@ def _probar_gm(ses, cuerpo, addr) -> bool:
     if leido[0] == 'farm' and ses.personaje:
         import granja_liga as _fl_cmd
         sub = str(leido[1][0]).lower() if leido[1] else ''
+        if sub in ('pests', 'plagas'):
+            import farm_mecanicas
+            farm_mecanicas.invocar_plagas(ses)
+            return True
         if sub in ('enter', 'go', 'visit', 'ir', 'entrar'):
             _entrar_granja_liga(ses, addr)
+            return True
+        if sub in ('seeds', 'semillas'):
+            _gm_dar_item(ses, 23826, 10)
+            _gm_dar_item(ses, 23828, 5)
+            _gm_dar_item(ses, 24113, 1)
+            ses.enviar(_cl.aviso('Received Farm Seeds (10 Sunflower, 5 Rose, 1 War Rose)!', tipo=0, msg_id=_cl.MSG_TEXTO))
+            return True
+        if sub in ('tools', 'herramientas'):
+            _gm_dar_item(ses, 23821, 5)
+            _gm_dar_item(ses, 23822, 5)
+            _gm_dar_item(ses, 23823, 5)
+            _gm_dar_item(ses, 23824, 5)
+            ses.enviar(_cl.aviso('Received Farm Tools (Fertilizer, Sprinkler, Pesticide)!', tipo=0, msg_id=_cl.MSG_TEXTO))
             return True
         g = _fl_cmd.liga_autorizada(ses)
         if not g:
@@ -2517,6 +2638,15 @@ def _procesar_muerte_monstruo(ses, m, yo, addr, espera=0.0):
     objetivo = m.entity_id
     yo_muerte = yo
 
+    if getattr(m, 'es_totem_tw', False) and ses.personaje:
+        _tw_totem_roto(ses, m, addr)
+        # Como en Celestia: vida 0 y fuera (0x0007). La muerte de monstruo
+        # (0x0008) sobre el objeto totem cerraba el cliente (20/10/2026).
+        ses.enviar(_cb.atributo(objetivo, 0), _cb.despawn_monstruo(objetivo))
+        # Un objetivo de guerra no entrega el botin/EXP del fort usado como
+        # plantilla ni participa en el respawn de monstruos comunes.
+        return
+
     # Matar al monstruo termina el bloqueo dejado por una captura fallida.
     # revivir() tambien lo limpia como segunda garantia para cualquier otro
     # camino de respawn.
@@ -3209,6 +3339,17 @@ def _sincronizar_cambio_mapa(ses, stage_id: int, x: int = None, y: int = None):
     if getattr(ses, 'puesto', None):
         _cerrar_puesto(ses, avisar_dueno=True)
     import clases as _cl
+    import territorios_liga as _territorio
+    if int(stage_id) in _territorio.AREAS and not _territorio.autorizado(ses, stage_id):
+        ses.enviar(_cl.aviso('Only the league owning this territory may enter.', tipo=0))
+        return
+    # TOTEM WAR: en guerra el campo te lleva a su arena (200..207) y sin
+    # guerra la arena te devuelve al campo.
+    import totem_war as _tw_c
+    _st_tw = _tw_c.redirigir(ses, stage_id, x, y)
+    if _st_tw[0] != stage_id:
+        log.info('Totem War: stage %s -> %s %s', stage_id, _st_tw[0], _st_tw[1:])
+        stage_id, x, y = _st_tw
     p.stage = stage_id
     if x is not None and y is not None:
         p.tile_x, p.tile_y = x, y
@@ -3219,7 +3360,8 @@ def _sincronizar_cambio_mapa(ses, stage_id: int, x: int = None, y: int = None):
     ses.enviar(_cl.cambiar_mapa(stage_id))
 
     if getattr(ses, 'usuario', None):
-        cuentas.guardar_mapa(ses.usuario, p.char_id, stage_id, p.tile_x, p.tile_y)
+        _g_st, _g_x, _g_y = _tw_c.stage_para_guardar(stage_id, p.tile_x, p.tile_y, ses)
+        cuentas.guardar_mapa(ses.usuario, p.char_id, _g_st, _g_x, _g_y)
 
 
 # DIALOGOS DE NPC SIN RETRATO. Los guardias de las paredes de luz de la
@@ -3230,9 +3372,27 @@ def _sincronizar_cambio_mapa(ses, stage_id: int, x: int = None, y: int = None):
 # Cartastolov y Praetorian -> "Go to challenge the Dragon Emperor" (GOTO_TAG 2,
 # dentro del Asiento del Rey Dragon).
 DIALOGO_DE_NPC = {}
+# map176.mpc: objeto40332, npc8903, u32+30 =10000. La raiz es
+# una cadena lineal y por eso raiz_interactiva no la seleccionaba.
+DIALOGO_DE_NPC[(176, 8903)] = 10000
+# Gulp Room 3: el Exit Guide (2095) que saca el monumento (zonas 74/75/76,
+# segun la variable 0 que sorteo la muerte de Overlord Legte). Su raiz 1001,
+# "You can get out of this Maze if you follow my directions", no lleva retrato.
+DIALOGO_DE_NPC[(78, 2095)] = 1001
 for _st_dn in (168, 413):
     DIALOGO_DE_NPC.update({(_st_dn, 7999): 10004, (_st_dn, 8000): 10005,
                            (_st_dn, 8801): 10006, (_st_dn, 8802): 10007})
+# El resto sale del +30 de cada NPC en el .mpc (tools/dialogo_npc_del_cliente.py):
+# asi hablan el Assoc. Pioneer y Researcher Polo de Gulp Room 2 y Hank de la 4,
+# cuyas raices no llevan retrato. Lo puesto a mano arriba manda.
+try:
+    import json as _json_dn
+    for _st_dn, _por_npc in _json_dn.loads((pathlib.Path(__file__).parent / 'plantillas'
+                                        / 'dialogo_npc_mapa.json').read_text(encoding='utf-8')).items():
+        for _npc_dn, _raiz_dn in _por_npc.items():
+            DIALOGO_DE_NPC.setdefault((int(_st_dn), int(_npc_dn)), int(_raiz_dn))
+except Exception:
+    log.warning('sin plantillas/dialogo_npc_mapa.json: los NPC sin retrato no hablaran')
 _NPC_TYPE_CACHE = {}
 
 # EL LEAGUE CLERK DE LAS CUATRO CIUDADES. Su raiz (5776: requisitos, como
@@ -3346,6 +3506,50 @@ def _banco_liga_depositar(ses, addr, arg1, arg2, arg3):
         ses.enviar(_iv.vaciar_ranura(p.entity_id, arg1), _stats_ses(ses))
         log.info('[%s] banco de liga %s: guardado %s x%d en %d', addr, g['nombre'], it, cn, dest)
     g = _grm.obtener_gremio_de(p.char_id)
+    ses.enviar(_grm.paquete_banco_gremio(g, p.char_id, p.entity_id, tipo=1))
+
+
+def _banco_liga_002f(ses, addr, cmd, cuerpo):
+    """0x002F con el ALMACEN DE LA LIGA abierto. Son los mismos comandos que
+    el banco personal (medido en hestia.log el 19/10/2026 con la ventana de
+    la liga): 16 [casilla] clic derecho en el almacen -> a la mochila; 17
+    [casilla] clic derecho en la mochila -> al almacen; 14/23 [origen][destino]
+    arrastrar. Antes caian en el banco PERSONAL ("casilla 2 no esta en banco
+    {}") y el objeto se quedaba dentro sin poder sacarlo."""
+    import gremios as _grm
+    p = ses.personaje
+    g = _grm.obtener_gremio_de(p.char_id)
+    if not g:
+        ses.banco_activo = None
+        return
+    gid = int(g['guild_id'])
+    if cmd == 16:
+        _banco_liga_retirar(ses, addr, struct.unpack_from('<I', cuerpo, 1)[0], 0, 0)
+        return
+    if cmd == 17:
+        _banco_liga_depositar(ses, addr, struct.unpack_from('<I', cuerpo, 1)[0], 0, 0)
+        return
+    ori, dst = struct.unpack_from('<II', cuerpo, 1)
+    bolsa = getattr(ses, 'inventario', {}) or {}
+    banco = cuentas.db_banco_gremio(gid)
+    tope = _grm.CASILLAS_BANCO_GREMIO
+    if ori in banco and 1 <= dst <= tope and dst != ori and dst < 20:
+        # dentro del almacen: mover o intercambiar (pide permiso de sacar)
+        if _grm.puede_sacar(g, p.char_id):
+            if cuentas.db_intercambiar_banco_gremio(gid, ori, dst):
+                log.info('[%s] banco de liga %s: casilla %d -> %d', addr, g['nombre'], ori, dst)
+        else:
+            ses.enviar(clases_aviso("Your league rank cannot withdraw from the league warehouse."))
+        ses.enviar(_grm.paquete_banco_gremio(_grm.obtener_gremio_de(p.char_id), p.char_id,
+                                             p.entity_id, tipo=1))
+        return
+    if ori in banco and dst >= 20:
+        _banco_liga_retirar(ses, addr, ori, dst, 0)
+        return
+    if ori in bolsa and ori >= 20:
+        _banco_liga_depositar(ses, addr, ori, dst if 1 <= dst <= tope else 0, 0)
+        return
+    log.info('[%s] banco de liga: movimiento %d -> %d sin resolver', addr, ori, dst)
     ses.enviar(_grm.paquete_banco_gremio(g, p.char_id, p.entity_id, tipo=1))
 
 
@@ -3484,6 +3688,12 @@ def _portal_por_evento(ses, addr, por):
 
 def _viajar_por_portal(ses, addr, por, motivo=''):
     """Manda al jugador por un tornado que no pregunta."""
+    if por.get('salir_territorio'):
+        import territorios_liga, eventos
+        st = territorios_liga.salida(ses)
+        cas = eventos.casillas_de_tag(st, 1) or [(100, 100)]
+        _sincronizar_cambio_mapa(ses, st, *cas[0])
+        return
     if por.get('salir_granja') and ses.personaje.stage == 501:
         import granja_liga
         st, x, y = granja_liga.retorno(ses)
@@ -4763,6 +4973,10 @@ def _aplicar_efectos(ses, addr, efectos, motivo=''):
                 log.info('[%s] League Clerk: ventana de crear liga%s', addr, motivo)
             elif que == 'cambiar_mapa_paralelo' and p:
                 dst, par, tag = int(ef[1]), int(ef[2]), int(ef[3])
+                import territorios_liga
+                if dst in territorios_liga.AREAS and not territorios_liga.autorizado(ses, dst, par):
+                    ses.enviar(_cl.aviso('Only the league owning this territory may enter.', tipo=0))
+                    continue
                 cas = _ev.casillas_de_tag(dst, tag)
                 if cas:
                     ses.paralelo_actual = par
@@ -4770,7 +4984,8 @@ def _aplicar_efectos(ses, addr, efectos, motivo=''):
                                        motivo='por cambiar_mapa_paralelo%s' % motivo)
             elif que == 'ir_a_region_liga' and p:
                 if p.stage in (50, 100, 117, 377):
-                    ret_st = getattr(ses, 'territorio_retorno_stage', 16)
+                    import territorios_liga
+                    ret_st = territorios_liga.salida(ses)
                     cas = _ev.casillas_de_tag(ret_st, 1) or [(100, 100)]
                     _viajar_por_portal(ses, addr, {'destino': ret_st, 'llegada': tuple(cas[0])},
                                        motivo='retorno de area de liga')
@@ -4781,13 +4996,19 @@ def _aplicar_efectos(ses, addr, efectos, motivo=''):
                         import cuentas as _cta_tr
                         terrs = _cta_tr.db_obtener_territorios_de_gremio(g['guild_id'])
                         if terrs:
+                            # "Send me to the League Manor" (Heaven General): al
+                            # CAMPO del territorio, junto a su Terra Keeper, que
+                            # es quien abre las Areas I..IV. Antes llevaba
+                            # directo al Territory Area I.
+                            import totem_war as _tw_rg
                             tw_stage = terrs[0]
-                            par = max(0, min(7, tw_stage - 200))
-                            ses.territorio_retorno_stage = p.stage
-                            cas = _ev.casillas_de_tag(50, 1) or [(100, 100)]
-                            ses.paralelo_actual = par
-                            _viajar_por_portal(ses, addr, {'destino': 50, 'llegada': tuple(cas[0])},
-                                               motivo='ir_a_region_liga')
+                            campo = _tw_rg.TW_A_CAMPO.get(int(tw_stage))
+                            cas_tk = _tw_rg.junto_al_terra_keeper(campo) if campo else None
+                            if campo and cas_tk:
+                                _viajar_por_portal(ses, addr, {'destino': campo, 'llegada': tuple(cas_tk)},
+                                                   motivo='ir_a_region_liga (Terra Keeper)')
+                            else:
+                                ses.enviar(_cl.aviso("Your league does not own any territory.", tipo=0))
                         else:
                             ses.enviar(_cl.aviso("Your league does not own any territory.", tipo=0))
                     else:
@@ -4808,6 +5029,9 @@ def _aplicar_efectos(ses, addr, efectos, motivo=''):
                 _casa_abrir_voto(ses, addr)
             elif que == 'casa_ver_notas':
                 _casa_ver_notas(ses, addr)
+            elif que == 'abrir_ranking' and p:
+                import ranking as _rk_ev
+                ses.enviar(_rk_ev.abrir_ventana(p.entity_id))
             elif que == 'casa_hitparade':
                 _casa_hitparade(ses, addr)
             elif que == 'generar':
@@ -4818,6 +5042,21 @@ def _aplicar_efectos(ses, addr, efectos, motivo=''):
                 # diez GENERATE(75) por oleada. Sacando la zona entera en cada
                 # uno salian 300 monstruos donde el mapa pide 10.
                 _generar_zona(ses, addr, estado.stage, int(ef[1]), cuantos=1)
+            elif que == 'revivir' and p and getattr(ses, 'muerto', False):
+                # REBORN alli mismo: fuera el modo fantasma, vida y mana llenos
+                # y el 0x000A con que se levanta.
+                import combate as _cb_rb
+                p.hp, p.mp = _vida_max(p), _mana_max(p)
+                ses.muerto = False
+                ses.fantasma = False
+                ses.enviar(_cb_rb.atributo(p.entity_id, 0, _cb_rb.KIND_ESTADO),
+                           _cb_rb.atributo(p.entity_id, p.hp, _cb_rb.KIND_HP),
+                           _cb_rb.atributo(p.entity_id, p.mp, _cb_rb.KIND_MP),
+                           struct.pack('<HIII', 0x000A, p.entity_id, 0, 0))
+                log.info('[%s] %s revive alli mismo%s', addr, p.nombre, motivo)
+            elif que == 'monstruo_evento':
+                _monstruo_con_evento(ses, addr, estado.stage, int(ef[1]), int(ef[2]),
+                                     int(ef[3]), int(ef[4]))
             elif que == 'juego_matar':
                 # NPCKILLGAME. La carrera de la sala 2 de la Magic Kichen Path:
                 # "limpia mas enemigos que los del Evil Lyceum en 10 minutos".
@@ -5021,7 +5260,14 @@ CORREA_INSTANCIA = 14
 def _volver_a_casa(ses, m, ahora):
     sx, sy = getattr(m, 'spawn_x', m.tile_x), getattr(m, 'spawn_y', m.tile_y)
     if (m.tile_x, m.tile_y) == (sx, sy):
+        m.volviendo_casa = False
         return
+    if int(ses.personaje.stage) in (168, 176, 413):
+        m.volviendo_casa = True
+        sx, sy = _transitable.paso_hacia(ses.personaje.stage, (m.tile_x, m.tile_y), (sx, sy))
+        if (m.tile_x, m.tile_y) == (sx, sy):
+            m.volviendo_casa = False
+            return
     spd = getattr(m, 'move_speed', 0) or 100
     try:
         MOVE_V = Msg.registry[(0x0005, 's2c', '*')]
@@ -5627,6 +5873,35 @@ _SIG_GENERADO = [96_000_000]
 TOPE_GENERADOS = 30
 
 
+_NPCS_XML = None
+
+
+def _npc_de_npc_xml(npc_type):
+    """(nombre, sprite) de npc.xml, o None si no es un NPC."""
+    global _NPCS_XML
+    if _NPCS_XML is None:
+        import sqlite3
+        _NPCS_XML = {}
+        try:
+            con = sqlite3.connect(str(pathlib.Path(__file__).parent.parent / 'corpus' / 'content.db'))
+            for i, spr, nom in con.execute('select id, sprite_id, name from npc'):
+                if str(i).isdigit():
+                    _NPCS_XML[int(i)] = (nom or 'NPC', int(spr) if str(spr or '').isdigit() else 0)
+            con.close()
+        except Exception:
+            log.exception('no pude leer npc de content.db')
+    return _NPCS_XML.get(int(npc_type))
+
+
+def _npc_evento(ses, ent):
+    """(npc_type, nombre) si ent es un NPC puesto por un evento del mapa."""
+    try:
+        import eventos_mundo as _evm_n
+        return (getattr(_evm_n.estado_de(ses), 'npcs_evento', None) or {}).get(int(ent or 0))
+    except Exception:
+        return None
+
+
 def _monstruo_bd(npc_type):
     """(nombre, sprite) de monster.xml, via corpus/content.db."""
     global _MONSTRUOS_BD
@@ -5765,12 +6040,58 @@ def _texto_string(sid):
     return _STRINGS.get(int(sid), '')
 
 
+def _monstruo_con_evento(ses, addr, stage, npc_type, evento, segundos, tag):
+    """MAKE_REVENGE_DNA_MONSTER: un monstruo en el TAG que, al morir, dispara
+    `evento` del mapa (no el de su tipo) y se va solo pasados `segundos`."""
+    import eventos as _ev_r
+    import combate as _cb_r
+    cas = _ev_r.casillas_de_tag(stage, tag)
+    if not cas or not ses.personaje:
+        log.debug('[%s] MAKE_REVENGE_DNA_MONSTER: el tag %s de %s no existe', addr, tag, stage)
+        return None
+    eid = _SIG_GENERADO[0]
+    _SIG_GENERADO[0] += 1
+    m = _poner_generado(ses, eid, npc_type, list(cas[0]), 0)
+    if m is None:
+        return None
+    m.evento_muerte = int(evento)
+    log.info('[%s] MAKE_REVENGE_DNA_MONSTER %s (%d) en el tag %d %s, evento %d, %ds',
+             addr, m.nombre, npc_type, tag, tuple(cas[0]), evento, segundos)
+    if segundos > 0:
+        def _fuera():
+            if getattr(m, 'vivo', False):
+                m.vivo = False
+                m.hp = 0
+                try:
+                    ses.enviar_inmediato(_cb_r.despawn_monstruo(eid))
+                except Exception:
+                    pass
+        try:
+            asyncio.get_event_loop().call_later(segundos, _fuera)
+        except Exception:
+            pass
+    return m
+
+
 def _poner_generado(ses, eid, npc_type, tile, zona):
     """Crea y manda un bicho generado por evento (las antorchas encendidas de
     la sala 1 de la Magic Kichen Path son bichos asi)."""
     import combate as _cb_g
     import login as _lg_g
     nombre, sprite = _monstruo_bd(npc_type)
+    if nombre == '?':
+        # No es un monstruo sino un NPC de npc.xml: el Exit Guide (2095) que
+        # sale en Gulp Room 3 al tocar el monumento tras Overlord Legte. Va
+        # como NPC (klass 199), sin vida ni IA, y habla por DIALOGO_DE_NPC.
+        _npc_g = _npc_de_npc_xml(npc_type)
+        if _npc_g:
+            import eventos_mundo as _evm_g
+            _est_g = _evm_g.estado_de(ses)
+            _est_g.__dict__.setdefault('npcs_evento', {})[int(eid)] = (int(npc_type), _npc_g[0])
+            ses.enviar(_lg_g._npc_spawn(eid, npc_type, _npc_g[0], tuple(tile),
+                                        sprite=_npc_g[1], klass=199, direccion=6))
+            log.info('NPC de evento %s (%d) en %s, zona %d', _npc_g[0], npc_type, tuple(tile), zona)
+            return None
     _st = getattr(getattr(ses, 'personaje', None), 'stage', None)
     m = _cb_g.Monstruo(eid, npc_type, nombre, list(tile), sprite, stage=_st)
     m.generado = True
@@ -5825,6 +6146,9 @@ _SALAS_DEL_MUNDO = {}
 def _sala_para(ses):
     """La sala que le toca al entrar en su mapa actual."""
     st = int(ses.personaje.stage)
+    import territorios_liga
+    if st in territorios_liga.AREAS:
+        return territorios_liga.sala(ses)
     if st == 501:
         import granja_liga
         return granja_liga.sala(ses)
@@ -5933,6 +6257,245 @@ def _espejar(ses, submsgs):
             log.debug('no se pudo reenviar a un companero', exc_info=True)
 
 
+# --------------------------------------------------------------------------
+# TOTEM WAR (ver totem_war.py): lo que necesita las sesiones y las salas.
+# --------------------------------------------------------------------------
+
+def _tw_sesiones():
+    """Todas las sesiones del mundo con personaje."""
+    import presencia as _pr_tw
+    vistas, salida = set(), []
+    for st in list(_pr_tw._POR_MAPA):
+        for s in _pr_tw._vivas(st):
+            if id(s) not in vistas:
+                vistas.add(id(s))
+                salida.append(s)
+    return salida
+
+
+def _tw_difundir(*pkts):
+    for s in _tw_sesiones():
+        try:
+            s.enviar_inmediato(*pkts)
+        except Exception:
+            log.debug('Totem War: no se pudo avisar a una sesion', exc_info=True)
+
+
+def _cb_mod():
+    import combate as _cb_x
+    return _cb_x
+
+
+def _tw_relevantar(stage):
+    """Vuelve a levantar el totem de la arena, con el nombre de su duena."""
+    import totem_war as _tw_r
+    sala = _SALAS_DEL_MUNDO.get(int(stage))
+    if sala is None or not sala.monstruos:
+        return
+    m = sala.monstruos.get(_tw_r.eid_totem(stage))
+    if m is None:
+        m = _tw_r.crear_totem(stage)
+        sala.monstruos[m.entity_id] = m
+    m.nombre = _tw_r.nombre_totem(stage)
+    m.revivir()
+    # La vida (0x0013) justo detras: sin ella el cartel salia sin barra.
+    pkts = (_cb_mod().despawn_monstruo(m.entity_id), _tw_r.spawn_totem(m),
+            _cb_mod().atributo(m.entity_id, m.porcentaje))
+    # Cada uno recibe su secuencia UNA vez y sin espejo: con enviar_inmediato
+    # cada envio se replicaba a los demas de la sala y las copias cruzadas de
+    # quitar/poner dejaban el totem quitado en uno de los dos clientes
+    # (20/10/2026: "en un lado estaba y en el otro no").
+    for s in list(sala.sesiones):
+        if getattr(getattr(s, 'personaje', None), 'stage', None) == int(stage):
+            try:
+                mandar = getattr(s, 'enviar_sin_espejo', None) or s.enviar
+                mandar(*pkts)
+                if hasattr(s, 'volcar'):
+                    s.volcar()
+            except Exception:
+                pass
+
+
+def _tw_levantar_todos():
+    """Activar los totems no es una solicitud de viaje de los jugadores."""
+    import totem_war as _tw_l
+    for st in (_tw_l.TOTEM_CAMPO if _tw_l.MODO == 'antigua' else _tw_l.TW_A_CAMPO):
+        _tw_relevantar(st)
+    # Quien ya este en un campo de guerra entra en modo PvP sin cambiar de mapa.
+    for s in _tw_sesiones():
+        try:
+            _tw_al_entrar(s)
+        except Exception:
+            log.debug('Totem War: modo PvP al empezar', exc_info=True)
+
+
+def _tw_totem_roto(ses, m, addr):
+    import totem_war as _tw_k
+    if not _tw_k.activa():
+        return
+    texto = _tw_k.capturado(ses, m)
+    if not texto:
+        _tw_relevantar(int(m.stage))
+        return
+    log.info('[%s] %s', addr, texto)
+    # Como Celestia al romperlo: el anuncio y los territorios (0x0131), de
+    # donde el cliente saca el emblema de faccion del cartel del totem. Sin el
+    # 0x0131 seguia el de la duena anterior (Beast sobre un totem de Aurora).
+    _tw_difundir(*_tw_k.anuncio(texto))
+    _tw_difundir(_tw_k.paquete_territorios())
+    try:
+        asyncio.get_event_loop().call_later(_tw_k.SEGUNDOS_RELEVANTAR,
+                                            lambda st=int(m.stage): _tw_relevantar(st))
+    except Exception:
+        _tw_relevantar(int(m.stage))
+
+
+def _tw_sacar_de_las_arenas():
+    """Al acabar la guerra, los que sigan en una arena vuelven a su campo."""
+    import totem_war as _tw_s
+    for s in _tw_sesiones():
+        p = s.personaje
+        if getattr(s, 'tw_modo_pvp', False) and p is not None:
+            s.tw_modo_pvp = False
+            s.enviar(_tw_s.modo_pvp(p.entity_id, False))
+        if _tw_s.es_arena(getattr(p, 'stage', 0)):
+            try:
+                st, x, y = _tw_s.redirigir(s, p.stage, p.tile_x, p.tile_y)
+                _sincronizar_cambio_mapa(s, st, x, y)
+                s.volcar()
+            except Exception:
+                log.exception('Totem War: no se pudo sacar a alguien de la arena')
+
+
+def _plantar_con_clic(ses, addr, plot):
+    """Clic en una parcela libre de la granja: planta la primera semilla."""
+    import granja_liga as _fl
+    import clases as _cl_pc
+    bolsa = ses.inventario or {}
+    for ranura in sorted(r for r in bolsa if 20 <= int(r) <= 199):
+        crop = _fl.cultivo_de_semilla(bolsa[ranura])
+        if crop is None:
+            continue
+        if _fl.plantar(ses, plot, crop):
+            _sacar(ses, ranura, 1)
+            ses.enviar(*_refrescar(ses, [ranura]))
+            _guardar_bolsa(ses, ses.personaje.char_id)
+            log.info('[%s] planta %s (cultivo %s) en la parcela %s', addr, bolsa.get(ranura), crop, plot)
+        else:
+            ses.enviar(_cl_pc.aviso('You can only plant on a free plot next to you, '
+                                    'one crop per person at a time.', tipo=0))
+        return
+    ses.enviar(_cl_pc.aviso('You have no farm seeds in your backpack.', tipo=0))
+
+
+def _ofrenda_al_totem(ses, addr, cuerpo):
+    """c2s 0x012F "Offer resource" de la ventana del totem.
+
+    REA 0061c840 (game.toteminvestconfirm): [u32 n] y n x [u32 a][u32 b][u32
+    cantidad], las casillas de la ventana de ofrendas con algo dentro. a/b son
+    la casilla de la mochila y el objeto; se acepta cualquiera de los dos
+    ordenes, mirando cual cuadra con la mochila. Cada 200 unidades de un
+    material dan sus puntos (textos del Terra Keeper, ofrendas_totem.json).
+    """
+    import totem_war as _tw_o
+    import clases as _cl_o
+    p = ses.personaje
+    if not _tw_o.es_mapa_tw(p.stage):
+        return
+    m = (ses.monstruos or {}).get(_tw_o.eid_totem(p.stage))
+    if m is None or _tw_o.codigo_faccion(p) != _tw_o.faccion_duena(p.stage):
+        ses.enviar(_cl_o.aviso('Only the faction that holds this totem can offer resources.', tipo=0))
+        return
+    n = struct.unpack_from('<I', cuerpo, 0)[0]
+    bolsa = ses.inventario or {}
+    cants = _cantidades(ses)
+    total, tocadas = 0, []
+    for k in range(min(int(n), 16)):
+        off = 4 + k * 12
+        if off + 12 > len(cuerpo):
+            break
+        a, b, cant = struct.unpack_from('<III', cuerpo, off)
+        ranura, item = (a, b) if bolsa.get(a) == b else ((b, a) if bolsa.get(b) == a else (None, None))
+        if ranura is None:
+            continue
+        pts = _tw_o.puntos_de_ofrenda(item)
+        tiene = int(cants.get(ranura, 1) or 1)
+        lotes = min(int(cant), tiene) // _tw_o.UNIDAD_OFRENDA
+        if not pts or lotes <= 0:
+            continue
+        _sacar(ses, ranura, lotes * _tw_o.UNIDAD_OFRENDA)
+        tocadas.append(ranura)
+        total += pts * lotes
+    if not total:
+        ses.enviar(_cl_o.aviso('These materials cannot be offered (units of 200 production goods).', tipo=0))
+        return
+    antes = _tw_o.nivel_totem(p.stage)[0]
+    nivel, _pts = _tw_o.sumar_puntos_totem(p.stage, total)
+    ses.enviar(*_refrescar(ses, tocadas))
+    _guardar_bolsa(ses, p.char_id)
+    ses.enviar(_tw_o.ventana_totem(m, crear=False),
+               _cl_o.aviso('The totem gains %d experience.' % total, tipo=0))
+    if nivel > antes:
+        _tw_difundir(*_tw_o.anuncio('%s: the totem of %s reaches level %d!' % (
+            _tw_o.nombre_totem(p.stage), _cl_o.nombre_de_mapa(p.stage), nivel)))
+    log.info('[%s] ofrenda al totem de %s: +%d (nivel %d)', addr, p.stage, total, nivel)
+
+
+def _tw_al_entrar(ses):
+    """Al cargar una arena: el totem a la vista (el primero de la sala no
+    lo recibe de _entrar_en_sala) y cuanto le queda a la guerra."""
+    import totem_war as _tw_e
+    p = ses.personaje
+    if not _tw_e.es_mapa_tw(getattr(p, 'stage', 0)):
+        if getattr(ses, 'tw_modo_pvp', False):
+            # Salio de la arena: fuera el modo PvP (aura, marcador, musica).
+            ses.tw_modo_pvp = False
+            ses.enviar(_tw_e.modo_pvp(p.entity_id, False))
+        return
+    # Las rejas de luz, puertas y bases de torre de la arena (no hay plantilla).
+    _obj_ar = _tw_e.objetos_arena(p.stage) if _tw_e.es_arena(p.stage) else []
+    if _obj_ar:
+        ses.enviar(*_obj_ar)
+    # Los portales de cristal de cada faccion: NPC con su dialogo del mapa
+    # (DIALOGO_DE_NPC, del +30 del .mpc). Se registran como NPC de la sala
+    # para que el clic encuentre su tipo y su nombre.
+    try:
+        import eventos_mundo as _evm_ar
+        import login as _lg_ar
+        _reg_ar = _evm_ar.estado_de(ses).__dict__.setdefault('npcs_evento', {})
+        for _eid_n, _tipo_n, _nom_n, _tile_n, _spr_n in (
+                _tw_e.npcs_arena(p.stage) if _tw_e.es_arena(p.stage) else ()):
+            _reg_ar[_eid_n] = (_tipo_n, _nom_n)
+            ses.enviar(_lg_ar._npc_spawn(_eid_n, _tipo_n, _nom_n, _tile_n, sprite=_spr_n,
+                                         klass=199, direccion=6))
+    except Exception:
+        log.exception('Totem War: NPC de la arena')
+    m = (ses.monstruos or {}).get(_tw_e.eid_totem(p.stage))
+    sala = getattr(ses, '_sala', None)
+    if sala is None or len(sala.sesiones) <= 1:
+        import login as _lg_fu
+        for _fu in (ses.monstruos or {}).values():
+            if getattr(_fu, 'es_fuerte_tw', False) and _fu.vivo:
+                ses.enviar(_lg_fu._monster_spawn(_fu.entity_id, _fu.npc_type, _fu.nombre,
+                                                 (_fu.tile_x, _fu.tile_y), sprite=_fu.sprite))
+    # En la guerra antigua el campo es un mapa abierto: el totem (0x012E) se
+    # le manda a cada uno que entra, no solo al primero de la sala.
+    if m is not None and m.vivo and (sala is None or len(sala.sesiones) <= 1
+                                     or not _tw_e.es_arena(p.stage)):
+        ses.enviar(_tw_e.spawn_totem(m), _cb_mod().atributo(m.entity_id, m.porcentaje))
+    if _tw_e.activa():
+        import clases as _cl_e
+        # El modo PvP del cliente; el 1751 ("You are in the Totem Battlefield
+        # (PVP Area)...") lo escribe el propio cliente con este paquete.
+        ses.tw_modo_pvp = True
+        ses.enviar(_tw_e.modo_pvp(p.entity_id, True, _tw_e.STR_ARENA),
+                   _tw_e.kills_ko(p.entity_id, _tw_e._RONDA.get(p.char_id, 0),
+                                  int(getattr(p, 'pvp_kills', 0) or 0)))
+        ses.enviar(_cl_e.aviso('Totem War: %d min left. %s holds this field.' % (
+            max(1, _tw_e.restante() // 60),
+            _tw_e.NOMBRE_FACCION.get(_tw_e.faccion_duena(p.stage), 'Nobody')), tipo=0))
+
+
 def _entrar_en_sala(ses, addr):
     """En el 0x0009 de una sala de instancia: se engancha a los bichos de la
     sala (los crea la primera vez) y, si la sala ya tenia historia, le pone al
@@ -5979,7 +6542,10 @@ def _entrar_en_sala(ses, addr):
             continue
         if getattr(m, 'en_combate_con', None) not in vivos_en_sala:
             m.en_combate_con = None
-        if getattr(m, 'generado', False):
+        if getattr(m, 'es_totem_tw', False):
+            import totem_war as _tw_er
+            dentro.append(_tw_er.spawn_totem(m))      # objeto de su faccion
+        elif getattr(m, 'generado', False):
             dentro.append(_lg_r._npc_spawn(eid, m.npc_type, m.nombre, (m.tile_x, m.tile_y),
                                            sprite=getattr(m, 'sprite', 0), klass=1))
         else:
@@ -6086,6 +6652,12 @@ def _recorrer_dialogo_mapa(ses, addr, stage, nodo):
              ' opciones %s' % [o[0] for o in opciones] if opciones else '')
     if efectos:
         _aplicar_efectos(ses, addr, efectos, ' (dialogo %s)' % nodo)
+    # TOTEM WAR: el Terra Keeper del campo contesta "Okay...Let's get going!"
+    # (8272) y el nodo no lleva accion: el viaje a la arena lo hace el
+    # servidor (_sincronizar_cambio_mapa lo redirige a la 200..207).
+    # (Aqui habia un atajo que viajaba OTRA VEZ a la arena tras el 8272. El
+    # arbol ya lo hace con su CHANGE_MAP(205, tag): 5 si tu faccion es la
+    # duena, 1..4 por faccion en guerra. Con los dos, el viaje salia doble.)
     return True
 
 
@@ -6177,6 +6749,8 @@ def _mapa_de_paso(m, stage):
     Uno de cada doce bichos aparece en una casilla que NO se pisa: los del
     agua, los de la lava y los que vuelan. A esos no se les aplica: si no,
     se quedarian clavados o saldrian a tierra y no volverian."""
+    if int(stage or 0) in (168, 176, 413):
+        return stage
     v = getattr(m, '_anda_por_tierra', None)
     if v is None:
         sx, sy = getattr(m, 'spawn_x', m.tile_x), getattr(m, 'spawn_y', m.tile_y)
@@ -7916,6 +8490,13 @@ class Servidor:
                 st, x, y = _farm_guard.retorno(ses)
                 _sincronizar_cambio_mapa(ses, st, x, y)
                 return
+        import territorios_liga as _tr_guard
+        if getattr(getattr(ses, 'personaje', None), 'stage', None) in _tr_guard.AREAS:
+            if not _tr_guard.autorizado(ses, ses.personaje.stage):
+                st = _tr_guard.salida(ses)
+                cas = __import__('eventos').casillas_de_tag(st, 1) or [(100, 100)]
+                _sincronizar_cambio_mapa(ses, st, *cas[0])
+                return
         # COMANDO DE GM.
         # Requiere la barra '/' para no interceptar palabras de chat normales (como 'item').
         # Con barra el cliente AO envia 0x0001 (sin la barra). En 0x000E se exige que empiece con '/'.
@@ -8767,6 +9348,11 @@ class Servidor:
                                                     (p.tile_x, p.tile_y))):
                                 m.en_combate_con = yo
 
+                            if getattr(m, 'volviendo_casa', False):
+                                m.en_combate_con = None
+                                if ahora >= getattr(m, 'proximo_paso', 0):
+                                    _volver_a_casa(ses, m, ahora)
+                                continue
                             # 1. Monstruo en combate (jugador, mascota, invocacion o charmed)
                             targ_eid = getattr(m, 'en_combate_con', None)
                             if targ_eid is not None:
@@ -9532,6 +10118,10 @@ class Servidor:
             _contribuir_liga(ses, cuerpo, self.mundos)
             return
 
+        if opcode == 0x012F and ses.rol == 'mundo' and ses.personaje and len(cuerpo) >= 4:
+            _ofrenda_al_totem(ses, addr, cuerpo)
+            return
+
         if opcode == 0x014C and ses.rol == 'mundo' and ses.personaje:
             if not cuerpo:
                 _entrar_granja_liga(ses, addr)
@@ -9574,6 +10164,13 @@ class Servidor:
                     _pres.entrar(ses, p.stage)
                 except Exception:
                     log.exception('presencia: fallo al entrar al mapa')
+                # El totem del campo (y el modo PvP si hay guerra) tambien al
+                # CONECTARSE en un campo de guerra: solo se mandaba al cambiar
+                # de mapa (0x0009) y quien entraba al juego ahi no lo veia.
+                try:
+                    _tw_al_entrar(ses)
+                except Exception:
+                    log.exception('Totem War al conectarse')
                 if getattr(p, 'habilidades', None):
                     ses.enviar(_cl.arbol(p.habilidades, banco=getattr(p, 'banco_habilidades', None)))
                     _ids = [h[0] for h in p.habilidades]
@@ -9924,7 +10521,28 @@ class Servidor:
                 else:
                     ses.ultimo_golpe = _ahora_atk
 
+            # TOTEM DE LA GUERRA: la faccion duena no le pega (ni se ve el
+            # numero de dano); si es neutro le pega cualquiera.
+            _tot = (getattr(ses, 'monstruos', None) or {}).get(objetivo)
+            if _tot is not None and getattr(_tot, 'es_fuerte_tw', False):
+                import totem_war as _tw_pf
+                if not _tw_pf.puede_pegar_fuerte(ses, _tot):
+                    import clases as _cl_pf
+                    ses.enviar(_cl_pf.aviso('You cannot attack the fortress of your own faction.'
+                                            if _tw_pf.activa() else 'The totem battle has not begun.', tipo=0))
+                    return
+            if _tot is not None and getattr(_tot, 'es_totem_tw', False):
+                import totem_war as _tw_pg
+                if not _tw_pg.puede_pegar(ses, _tot):
+                    import clases as _cl_pg
+                    ses.enviar(_cl_pg.aviso(_tw_pg.motivo_no_pegar(ses, _tot), tipo=0))
+                    return
             # Si es Invocacion (Summon Skeleton, Mummy, Leech, Azrael, Demon, etc.)
+            import pvp_liga as _pvp
+            _rival = _pvp.objetivo(ses, objetivo)
+            if _rival is not None and (tipo == _cb.ATAQUE_NORMAL or mag.get('es_ataque')):
+                _pvp.atacar(ses, _rival, tipo, mag, arma_puesta)
+                return
             if es_invocacion:
                 if getattr(ses, 'sentado', False):
                     ses.sentado = False
@@ -10214,6 +10832,22 @@ class Servidor:
                         )
 
                     blancos = [b for b in bichos.values() if b.vivo and max(abs(b.tile_x - cx), abs(b.tile_y - cy)) <= area]
+                    if any(getattr(b, 'es_totem_tw', False) for b in blancos):
+                        import totem_war as _tw_ao
+                        blancos = [b for b in blancos if not getattr(b, 'es_totem_tw', False)
+                                   or _tw_ao.puede_pegar(ses, b)]
+                    if any(getattr(b, 'es_fuerte_tw', False) for b in blancos):
+                        import totem_war as _tw_af
+                        blancos = [b for b in blancos if not getattr(b, 'es_fuerte_tw', False)
+                                   or _tw_af.puede_pegar_fuerte(ses, b)]
+                    # PvP de AREA: los jugadores rivales dentro del radio (solo
+                    # en guerra y en campo de guerra; lo filtra pvp_liga).
+                    try:
+                        import pvp_liga as _pvp_ar
+                        for _riv_ar in _pvp_ar.rivales_en_area(ses, cx, cy, area):
+                            _pvp_ar.atacar(ses, _riv_ar, tipo, mag, None, en_area=True)
+                    except Exception:
+                        log.exception('PvP de area')
 
                     if blancos:
                         habs = ses.personaje.habilidades if ses.personaje else None
@@ -11981,6 +12615,22 @@ class Servidor:
                 _entrar_en_sala(ses, addr)
             except Exception:
                 log.exception('no se pudo entrar en la sala del mapa')
+            try:
+                _tw_al_entrar(ses)
+            except Exception:
+                log.exception('Totem War al entrar')
+            # GRANJA DE LA LIGA: las 200 parcelas y los cultivos. Al entrar el
+            # cliente manda el 0x0009, no el 0x0002 (hestia.log 19/10/2026:
+            # REQ_0009 -> "mapa cargado exitosamente: stage 501"), y esto solo
+            # estaba en la rama del 0x0002: no se mandaba nunca.
+            if p.stage == 501:
+                try:
+                    import granja_liga as _fl9
+                    _pk9 = _fl9.poblar_cultivos(ses)
+                    ses.enviar(*_pk9)
+                    log.info('[%s] granja: %d parcelas/cultivos enviados', addr, len(_pk9))
+                except Exception:
+                    log.exception('granja: no se pudieron mandar las parcelas')
             ses.enviar(_stats_ses(ses))
             if p.habilidades:
                 _ids = [h[0] for h in p.habilidades]
@@ -12775,6 +13425,10 @@ class Servidor:
                          f"{_sk.nombre_rama(_dentro)} (Lv {_nv_rec}) "
                          f"-> clase={_p.class_id} ({len(_nuevos)} hechizos iniciales)")
                 return
+            if _contenedor in (14, 16, 17, 23) and getattr(ses, 'banco_activo', None) == 'liga':
+                _banco_liga_002f(ses, addr, _contenedor, cuerpo)
+                return
+
             if _contenedor == 16:
                 # Click derecho en casilla del BANCO (usebankitem) -> Retirar a la mochila
                 import inventario as _iv3
@@ -12911,6 +13565,16 @@ class Servidor:
                         return
 
                 log.warning(f"[{addr}] banco: movimiento {_ori} -> {_dst} no resuelto. Bolsa: {sorted(_bolsa)}, Banco: {sorted(_p.banco)}")
+                return
+
+            if _contenedor in (26, 27):
+                # El Rank List de las ciudades (ver ranking.py): 26 pide una
+                # pagina de la lista, 27 solo avisa de que se abrio.
+                if _contenedor == 26:
+                    import ranking as _rk
+                    _pk_rk = _rk.respuesta(cuerpo)
+                    if _pk_rk:
+                        ses.enviar(_pk_rk)
                 return
 
             if _contenedor == 41:
@@ -14126,6 +14790,19 @@ class Servidor:
                             return
             item_id = bolsa[ranura]
             cid = ses.personaje.char_id if ses.personaje else 4980
+
+            # SEMILLA DE LA GRANJA (categoria 農場種子, formula de uso 26; el
+            # cultivo va en 動態資料1). Se planta en la parcela libre mas
+            # cercana de la granja de la liga (ver granja_liga.py).
+            if ses.personaje:
+                import granja_liga as _gl_sem
+                _cult_sem = _gl_sem.cultivo_de_semilla(item_id)
+                if _cult_sem is not None:
+                    if _gl_sem.plantar_semilla(ses, _cult_sem, objetivo):
+                        _sacar(ses, ranura, 1)
+                        ses.enviar(*_refrescar(ses, [ranura]))
+                        _guardar_bolsa(ses, cid)
+                    return
 
             # Caso 0: objeto que da CREDITOS DE RANGO.
             #
@@ -15539,6 +16216,24 @@ class Servidor:
             # llega a mandar el 0x0006 y parecia que "no deja atacar".
             import combate as _cb0
             _m = (getattr(ses, 'monstruos', None) or {}).get(ent)
+            if _m is None:
+                import pvp_liga
+                _rival = pvp_liga.objetivo(ses, ent)
+                if _rival is not None:
+                    ses.objetivo_actual = ent
+                    ses.enviar(_cb0.atributo(ent, _rival.personaje.hp, _cb0.KIND_HP))
+                    if pvp_liga.permitido(ses, _rival):
+                        self.manejar(ses, 0x0006, m, d, addr,
+                                     struct.pack('<HI', _cb0.ATAQUE_NORMAL, ent))
+                    return
+            if _m is not None and getattr(_m, 'es_totem_tw', False) and ses.personaje:
+                # El totem de tu faccion no se ataca: se abre su ventana
+                # (0x012F: nivel, Fortification, Offer resource). Medido en
+                # Celestia: clic 0x0005 en el totem -> 0x012F.
+                import totem_war as _tw_cl
+                if _tw_cl.codigo_faccion(ses.personaje) == _tw_cl.faccion_duena(_m.stage):
+                    ses.enviar(_tw_cl.ventana_totem(_m))
+                    return
             if _m is not None:
                 if _intentar_captura_monstruo(ses, ent, addr):
                     return
@@ -15646,6 +16341,17 @@ class Servidor:
 
                 if _st_ent and ses.personaje and (not getattr(ses.personaje, 'stage', 0) or ses.personaje.stage != _st_ent):
                     ses.personaje.stage = _st_ent
+
+                # GRANJA: pulsar una parcela de tierra libre planta la primera
+                # semilla de granja que haya en la mochila (log del 20/10:
+                # HABLAR_NPC 70500024 "sin nombre registrado" y no pasaba nada).
+                # Una semilla concreta se planta usandola junto a la parcela.
+                if ses.personaje and int(getattr(ses.personaje, 'stage', 0)) == 501:
+                    import granja_liga as _fl_cl
+                    _plot_cl = _fl_cl.parcela_de_entidad(ent)
+                    if _plot_cl is not None:
+                        _plantar_con_clic(ses, addr, _plot_cl)
+                        return
 
                 _nom_ent = _nombre_entidad(ses, ent) or ''
                 if not _nom_ent:
@@ -15823,6 +16529,11 @@ class Servidor:
                     try:
                         import dialogos_mapa as _dm_c
                         _st_c = getattr(ses.personaje, 'stage', 0)
+                        if _nom_ent == 'Rank List':
+                            import ranking as _rk
+                            ses.enviar(_rk.abrir_ventana(ses.personaje.entity_id))
+                            log.info(f"[{addr}] Rank List: ventana del ranking")
+                            return
                         if _nom_ent == 'Heaven General':
                             ses.dlg_quest_ofrecida = None
                             ses.dlg_quest_fase = None
@@ -15841,6 +16552,14 @@ class Servidor:
                         if _nom_ent == 'Terra Keeper':
                             ses.dlg_quest_ofrecida = None
                             ses.dlg_quest_fase = None
+                            try:
+                                import totem_war as _tw_tk
+                                _txt_tk = _tw_tk.dueno_del_campo(_st_c)
+                                if _txt_tk:
+                                    import clases as _cl_tk
+                                    ses.enviar(_cl_tk.aviso(_txt_tk, tipo=0))
+                            except Exception:
+                                log.debug('Terra Keeper: dueno del campo', exc_info=True)
                             if _recorrer_dialogo_mapa(ses, addr, _st_c, 5936):
                                 return
                         _raiz_ent = DIALOGO_DE_ENTIDAD.get((int(_st_c), int(ent)))
@@ -15851,7 +16570,9 @@ class Servidor:
                             _ret_c = dialogos.val_por_entidad(ent)
                             _raiz_c = _dm_c.raiz_interactiva(_st_c, _ret_c)
                             # Guardias sin retrato: su dialogo va por tipo de NPC.
-                            _raiz_npc = DIALOGO_DE_NPC.get((int(_st_c), _npc_type_de(_st_c, ent)))
+                            _ne_c = _npc_evento(ses, ent)
+                            _raiz_npc = DIALOGO_DE_NPC.get((int(_st_c), _ne_c[0] if _ne_c
+                                                            else _npc_type_de(_st_c, ent)))
                             if _raiz_npc:
                                 _raiz_c = _raiz_npc
                             # Con la carrera (NPCKILLGAME) en marcha, el que la
@@ -16920,6 +17641,19 @@ class Servidor:
                 self.manejar(ses, 0x0006, m, d, addr,
                              struct.pack('<HI', _cb5.ATAQUE_NORMAL, parametro))
                 return
+            if accion == 3 and ses.personaje and getattr(ses, 'muerto', False):
+                # QUEDARSE COMO ALMA. Medido en Celestia (mundo_203502_844482
+                # t=25.0): c2s 0x0016 [03 ...] -> s2c 0x0013 (yo, tipo 28,
+                # 0x08000000) y 0x000A (yo, 0, 0, 0). Anda con su sprite de
+                # muerto, nada le hace dano (ses.muerto sigue) y pisa/pulsa
+                # con los disparadores de alma (ALMA_PISA, ALMA_PULSA).
+                import combate as _cb_al
+                ses.fantasma = True
+                _yo_al = ses.personaje.entity_id
+                ses.enviar(_cb_al.atributo(_yo_al, _cb_al.ESTADO_FANTASMA, _cb_al.KIND_ESTADO),
+                           struct.pack('<HIII', 0x000A, _yo_al, 0, 0))
+                log.info(f"[{addr}] {ses.personaje.nombre} sigue como alma")
+                return
             if accion == 2 and ses.personaje and getattr(ses, 'muerto', False):
                 # "Return to Angel Lyceum to revive". La ventana la abre el
                 # cliente al morir y contesta con este 0x0016 [02 00 00 00 00];
@@ -16933,6 +17667,10 @@ class Servidor:
                 p2.stage = getattr(p2, 'checkpoint_stage', 0) or 41
                 p2.tile_x, p2.tile_y = rev_x, rev_y
                 ses.muerto = False
+                if getattr(ses, 'fantasma', False):
+                    import combate as _cb_fx
+                    ses.fantasma = False
+                    ses.enviar(_cb_fx.atributo(p2.entity_id, 0, _cb_fx.KIND_ESTADO))
                 _sincronizar_cambio_mapa(ses, p2.stage, rev_x, rev_y)
                 if getattr(ses, 'usuario', None):
                     cuentas.guardar_progreso(ses.usuario, p2.char_id,
@@ -17448,6 +18186,8 @@ class Servidor:
         tareas.append(gm.consola(self))
         tareas.append(gm.cola(self))
         tareas.append(cuentas.tarea_backup_periodico())
+        import totem_war as _tw_reloj
+        tareas.append(_tw_reloj.reloj())
 
         # SEÑUELOS: el binario muestra que la ip y el puerto del mundo NO
         # salen del redirect sino de la lista de servidores (sub_51A370 los

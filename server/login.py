@@ -213,6 +213,11 @@ def secuencia(p: Personaje):
             if not mando_quests:
                 salida.append(_quests(p, base))
                 mando_quests = True
+        elif op == 0x0131:
+            # No repetir los propietarios del servidor grabado (Degenerates,
+            # AllStars, FastCrew). El mapa debe mostrar la propiedad local.
+            import totem_war
+            salida.append(totem_war.paquete_territorios())
         elif op == 0x005B:
             salida.append(_barra(p, base))
         elif op == 0x0014:
@@ -778,6 +783,10 @@ def _map_object_spawn(entity_id: int, sprite: int, tile: tuple, direccion: int =
 # faltaba en la de la IA. El Lyceum y el Fighting Palace NO van aqui:
 # se tratan aparte y cada consumidor los anade si los necesita.
 PLANTILLAS_POR_STAGE = {
+    50: 'territory_area_1.json',
+    100: 'territory_area_2.json',
+    117: 'territory_area_3.json',
+    377: 'territory_area_4.json',
     501 : 'league_farm.json',
     # Las dos primeras salas de Magic Kichen Path, la instancia a la
     # que se entra por el tornado de (250,171) de Lava Cave. Pobladas
@@ -1167,6 +1176,9 @@ def poblar(stage: int, player_level=1):
     if stage == 500:
         return interactivos_casa(player_level)
     salida = npc_de_los_xml(stage)
+    import territorios_liga
+    if stage in territorios_liga.AREAS:
+        salida += territorios_liga.paquetes(stage)
     salida += portales_de(stage)
     try:
         import casas as _cs_pob

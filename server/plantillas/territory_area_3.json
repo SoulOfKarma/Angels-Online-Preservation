@@ -1,0 +1,2108 @@
+{
+ "_nota": "territory_area_3 (stage 117). POBLADO DESDE EL CLIENTE, no desde una captura: los generadores de monstruos son objetos del propio map117.mpc -- el monstruo en el u16 del +34, la zona en el +21, el tiempo en el +38 y cuantos en el +42. Eso da el censo COMPLETO del mapa, que una captura no puede dar porque solo trae lo que estuvo a la vista. El entity_id es fabricado y estable, no el del servidor. Las casillas son las del TAG de cada generador; los que no declaran TAG ponen sus monstruos en la casilla del generador y en un anillo de radio 3 a su alrededor, que es la dispersion MEDIDA en el stage 73. Los objetos de mapa son los del .mpc cuyo id esta en la lista de los que el servidor manda de verdad, con el cuerpo del 0x000E copiado de una captura del mismo objeto. Los tornados se dibujan aparte, desde portales.json. Ver tools/poblar_del_cliente.py.",
+ "stage": 117,
+ "spawns": [
+  {
+   "entity_id": 61700000,
+   "nombre": "Busy Jackstraw",
+   "npc_type": 708,
+   "sprite": 42004,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    133,
+    89
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 61700001,
+   "nombre": "Busy Jackstraw",
+   "npc_type": 708,
+   "sprite": 42004,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    114,
+    86
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 61700002,
+   "nombre": "Busy Jackstraw",
+   "npc_type": 708,
+   "sprite": 42004,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    106,
+    73
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 61700003,
+   "nombre": "Busy Jackstraw",
+   "npc_type": 708,
+   "sprite": 42004,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    84,
+    88
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 61700004,
+   "nombre": "Busy Jackstraw",
+   "npc_type": 708,
+   "sprite": 42004,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    123,
+    111
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 61700005,
+   "nombre": "Busy Jackstraw",
+   "npc_type": 708,
+   "sprite": 42004,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    138,
+    104
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 61700006,
+   "nombre": "Startled Scarecow",
+   "npc_type": 6038,
+   "sprite": 43399,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    168,
+    39
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 130
+  },
+  {
+   "entity_id": 61700007,
+   "nombre": "Startled Scarecow",
+   "npc_type": 6038,
+   "sprite": 43399,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    163,
+    34
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 130
+  },
+  {
+   "entity_id": 61700008,
+   "nombre": "Startled Scarecow",
+   "npc_type": 6038,
+   "sprite": 43399,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    163,
+    39
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 130
+  },
+  {
+   "entity_id": 61700009,
+   "nombre": "Startled Scarecow",
+   "npc_type": 6038,
+   "sprite": 43399,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    163,
+    44
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 130
+  },
+  {
+   "entity_id": 61700010,
+   "nombre": "Startled Scarecow",
+   "npc_type": 6038,
+   "sprite": 43399,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    168,
+    34
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 130
+  },
+  {
+   "entity_id": 61700011,
+   "nombre": "Startled Scarecow",
+   "npc_type": 6038,
+   "sprite": 43399,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    44,
+    49
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 130
+  },
+  {
+   "entity_id": 61700012,
+   "nombre": "Startled Scarecow",
+   "npc_type": 6038,
+   "sprite": 43399,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    44
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 130
+  },
+  {
+   "entity_id": 61700013,
+   "nombre": "Startled Scarecow",
+   "npc_type": 6038,
+   "sprite": 43399,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    49
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 130
+  },
+  {
+   "entity_id": 61700014,
+   "nombre": "Startled Scarecow",
+   "npc_type": 6038,
+   "sprite": 43399,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    54
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 130
+  },
+  {
+   "entity_id": 61700015,
+   "nombre": "Startled Scarecow",
+   "npc_type": 6038,
+   "sprite": 43399,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    44,
+    44
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 130
+  },
+  {
+   "entity_id": 61700016,
+   "nombre": "Thunderer",
+   "npc_type": 6039,
+   "sprite": 43372,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    161,
+    146
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 139
+  },
+  {
+   "entity_id": 61700017,
+   "nombre": "Thunderer",
+   "npc_type": 6039,
+   "sprite": 43372,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    156,
+    141
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 139
+  },
+  {
+   "entity_id": 61700018,
+   "nombre": "Thunderer",
+   "npc_type": 6039,
+   "sprite": 43372,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    156,
+    146
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 139
+  },
+  {
+   "entity_id": 61700019,
+   "nombre": "Thunderer",
+   "npc_type": 6039,
+   "sprite": 43372,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    156,
+    151
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 139
+  },
+  {
+   "entity_id": 61700020,
+   "nombre": "Purply Toast",
+   "npc_type": 6040,
+   "sprite": 43351,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    66,
+    160
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 146
+  },
+  {
+   "entity_id": 61700021,
+   "nombre": "Purply Toast",
+   "npc_type": 6040,
+   "sprite": 43351,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    61,
+    155
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 146
+  },
+  {
+   "entity_id": 61700022,
+   "nombre": "Purply Toast",
+   "npc_type": 6040,
+   "sprite": 43351,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    61,
+    160
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 146
+  },
+  {
+   "entity_id": 61700023,
+   "nombre": "Purply Toast",
+   "npc_type": 6040,
+   "sprite": 43351,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    61,
+    165
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 146
+  },
+  {
+   "entity_id": 61700024,
+   "nombre": "Purply Toast",
+   "npc_type": 6040,
+   "sprite": 43351,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    66,
+    155
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 146
+  },
+  {
+   "entity_id": 61700025,
+   "nombre": "Purply Toast",
+   "npc_type": 6040,
+   "sprite": 43351,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    66,
+    165
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 146
+  },
+  {
+   "entity_id": 61700026,
+   "nombre": "Purply Toast",
+   "npc_type": 6040,
+   "sprite": 43351,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    71,
+    155
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 146
+  },
+  {
+   "entity_id": 61700027,
+   "nombre": "Purply Toast",
+   "npc_type": 6040,
+   "sprite": 43351,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    71,
+    160
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 146
+  },
+  {
+   "entity_id": 61700028,
+   "nombre": "Purply Toast",
+   "npc_type": 6040,
+   "sprite": 43351,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    71,
+    165
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 146
+  },
+  {
+   "entity_id": 61700029,
+   "nombre": "Purply Toast",
+   "npc_type": 6040,
+   "sprite": 43351,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    56,
+    150
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 146
+  },
+  {
+   "entity_id": 61700030,
+   "nombre": "Thunderer",
+   "npc_type": 6039,
+   "sprite": 43372,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    34,
+    46
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 139
+  },
+  {
+   "entity_id": 61700031,
+   "nombre": "Thunderer",
+   "npc_type": 6039,
+   "sprite": 43372,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    34,
+    51
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 139
+  },
+  {
+   "entity_id": 61700032,
+   "nombre": "Thunderer",
+   "npc_type": 6039,
+   "sprite": 43372,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    32,
+    56
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 139
+  },
+  {
+   "entity_id": 61700033,
+   "nombre": "Thunderer",
+   "npc_type": 6039,
+   "sprite": 43372,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    44,
+    54
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 139
+  },
+  {
+   "entity_id": 61700034,
+   "nombre": "Thunderer",
+   "npc_type": 6039,
+   "sprite": 43372,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    158,
+    36
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 139
+  },
+  {
+   "entity_id": 61700035,
+   "nombre": "Thunderer",
+   "npc_type": 6039,
+   "sprite": 43372,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    158,
+    41
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 139
+  },
+  {
+   "entity_id": 61700036,
+   "nombre": "Thunderer",
+   "npc_type": 6039,
+   "sprite": 43372,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    158,
+    46
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 139
+  },
+  {
+   "entity_id": 61700037,
+   "nombre": "Thunderer",
+   "npc_type": 6039,
+   "sprite": 43372,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    168,
+    44
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 139
+  },
+  {
+   "entity_id": 61700038,
+   "nombre": "Purply Toast",
+   "npc_type": 6040,
+   "sprite": 43351,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    21,
+    129
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 146
+  },
+  {
+   "entity_id": 61700039,
+   "nombre": "Purply Toast",
+   "npc_type": 6040,
+   "sprite": 43351,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    16,
+    124
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 146
+  },
+  {
+   "entity_id": 61700040,
+   "nombre": "Purply Toast",
+   "npc_type": 6040,
+   "sprite": 43351,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    16,
+    129
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 146
+  },
+  {
+   "entity_id": 61700041,
+   "nombre": "Purply Toast",
+   "npc_type": 6040,
+   "sprite": 43351,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    16,
+    134
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 146
+  },
+  {
+   "entity_id": 61700042,
+   "nombre": "Purply Toast",
+   "npc_type": 6040,
+   "sprite": 43351,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    21,
+    124
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 146
+  },
+  {
+   "entity_id": 61700043,
+   "nombre": "Purply Toast",
+   "npc_type": 6040,
+   "sprite": 43351,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    21,
+    134
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 146
+  },
+  {
+   "entity_id": 61700044,
+   "nombre": "Purply Toast",
+   "npc_type": 6040,
+   "sprite": 43351,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    26,
+    124
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 146
+  },
+  {
+   "entity_id": 61700045,
+   "nombre": "Purply Toast",
+   "npc_type": 6040,
+   "sprite": 43351,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    26,
+    129
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 146
+  },
+  {
+   "entity_id": 61700046,
+   "nombre": "Purply Toast",
+   "npc_type": 6040,
+   "sprite": 43351,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    26,
+    134
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 146
+  },
+  {
+   "entity_id": 61700047,
+   "nombre": "Purply Toast",
+   "npc_type": 6040,
+   "sprite": 43351,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    11,
+    119
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 146
+  },
+  {
+   "entity_id": 61700048,
+   "nombre": "Blue Bramblebird",
+   "npc_type": 6041,
+   "sprite": 43403,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    80,
+    161
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 155
+  },
+  {
+   "entity_id": 61700049,
+   "nombre": "Blue Bramblebird",
+   "npc_type": 6041,
+   "sprite": 43403,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    76,
+    156
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 155
+  },
+  {
+   "entity_id": 61700050,
+   "nombre": "Blue Bramblebird",
+   "npc_type": 6041,
+   "sprite": 43403,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    76,
+    166
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 155
+  },
+  {
+   "entity_id": 61700051,
+   "nombre": "Blue Bramblebird",
+   "npc_type": 6041,
+   "sprite": 43403,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    81,
+    156
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 155
+  },
+  {
+   "entity_id": 61700052,
+   "nombre": "Blue Bramblebird",
+   "npc_type": 6041,
+   "sprite": 43403,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    81,
+    166
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 155
+  },
+  {
+   "entity_id": 61700053,
+   "nombre": "Blue Bramblebird",
+   "npc_type": 6041,
+   "sprite": 43403,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    85,
+    161
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 155
+  },
+  {
+   "entity_id": 61700054,
+   "nombre": "Blue Bramblebird",
+   "npc_type": 6041,
+   "sprite": 43403,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    86,
+    155
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 155
+  },
+  {
+   "entity_id": 61700055,
+   "nombre": "Blue Bramblebird",
+   "npc_type": 6041,
+   "sprite": 43403,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    86,
+    166
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 155
+  },
+  {
+   "entity_id": 61700056,
+   "nombre": "Blue Bramblebird",
+   "npc_type": 6041,
+   "sprite": 43403,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    76,
+    151
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 155
+  },
+  {
+   "entity_id": 61700057,
+   "nombre": "Blue Bramblebird",
+   "npc_type": 6041,
+   "sprite": 43403,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    76,
+    171
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 155
+  },
+  {
+   "entity_id": 61700058,
+   "nombre": "Blue Bramblebird",
+   "npc_type": 6041,
+   "sprite": 43403,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    25,
+    151
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 155
+  },
+  {
+   "entity_id": 61700059,
+   "nombre": "Blue Bramblebird",
+   "npc_type": 6041,
+   "sprite": 43403,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    20,
+    146
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 155
+  },
+  {
+   "entity_id": 61700060,
+   "nombre": "Blue Bramblebird",
+   "npc_type": 6041,
+   "sprite": 43403,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    20,
+    151
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 155
+  },
+  {
+   "entity_id": 61700061,
+   "nombre": "Blue Bramblebird",
+   "npc_type": 6041,
+   "sprite": 43403,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    20,
+    156
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 155
+  },
+  {
+   "entity_id": 61700062,
+   "nombre": "Blue Bramblebird",
+   "npc_type": 6041,
+   "sprite": 43403,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    25,
+    146
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 155
+  },
+  {
+   "entity_id": 61700063,
+   "nombre": "Blue Bramblebird",
+   "npc_type": 6041,
+   "sprite": 43403,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    25,
+    156
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 155
+  },
+  {
+   "entity_id": 61700064,
+   "nombre": "Blue Bramblebird",
+   "npc_type": 6041,
+   "sprite": 43403,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    30,
+    146
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 155
+  },
+  {
+   "entity_id": 61700065,
+   "nombre": "Blue Bramblebird",
+   "npc_type": 6041,
+   "sprite": 43403,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    30,
+    151
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 155
+  },
+  {
+   "entity_id": 61700066,
+   "nombre": "Blue Bramblebird",
+   "npc_type": 6041,
+   "sprite": 43403,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    30,
+    156
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 155
+  },
+  {
+   "entity_id": 61700067,
+   "nombre": "Blue Bramblebird",
+   "npc_type": 6041,
+   "sprite": 43403,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    15,
+    141
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 155
+  },
+  {
+   "entity_id": 61700068,
+   "nombre": "Nine-day Thunderer",
+   "npc_type": 6042,
+   "sprite": 43373,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    90,
+    160
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 168
+  },
+  {
+   "entity_id": 61700069,
+   "nombre": "Nine-day Thunderer",
+   "npc_type": 6042,
+   "sprite": 43373,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    91,
+    165
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 168
+  },
+  {
+   "entity_id": 61700070,
+   "nombre": "Nine-day Thunderer",
+   "npc_type": 6042,
+   "sprite": 43373,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    81,
+    171
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 168
+  },
+  {
+   "entity_id": 61700071,
+   "nombre": "Nine-day Thunderer",
+   "npc_type": 6042,
+   "sprite": 43373,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    91,
+    152
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 168
+  },
+  {
+   "entity_id": 61700072,
+   "nombre": "Nine-day Thunderer",
+   "npc_type": 6042,
+   "sprite": 43373,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    96,
+    152
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 168
+  },
+  {
+   "entity_id": 61700073,
+   "nombre": "Nine-day Thunderer",
+   "npc_type": 6042,
+   "sprite": 43373,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    16,
+    119
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 168
+  },
+  {
+   "entity_id": 61700074,
+   "nombre": "Nine-day Thunderer",
+   "npc_type": 6042,
+   "sprite": 43373,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    21,
+    119
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 168
+  },
+  {
+   "entity_id": 61700075,
+   "nombre": "Nine-day Thunderer",
+   "npc_type": 6042,
+   "sprite": 43373,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    26,
+    119
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 168
+  },
+  {
+   "entity_id": 61700076,
+   "nombre": "Nine-day Thunderer",
+   "npc_type": 6042,
+   "sprite": 43373,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    11,
+    124
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 168
+  },
+  {
+   "entity_id": 61700077,
+   "nombre": "Nine-day Thunderer",
+   "npc_type": 6042,
+   "sprite": 43373,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    11,
+    129
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 168
+  },
+  {
+   "entity_id": 61700078,
+   "nombre": "Nine-day Thunderer",
+   "npc_type": 6042,
+   "sprite": 43373,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    15,
+    146
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 168
+  },
+  {
+   "entity_id": 61700079,
+   "nombre": "Nine-day Thunderer",
+   "npc_type": 6042,
+   "sprite": 43373,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    15,
+    151
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 168
+  },
+  {
+   "entity_id": 61700080,
+   "nombre": "Nine-day Thunderer",
+   "npc_type": 6042,
+   "sprite": 43373,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    15,
+    156
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 168
+  },
+  {
+   "entity_id": 61700081,
+   "nombre": "Nine-day Thunderer",
+   "npc_type": 6042,
+   "sprite": 43373,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    11,
+    161
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 168
+  },
+  {
+   "entity_id": 61700082,
+   "nombre": "Nine-day Thunderer",
+   "npc_type": 6042,
+   "sprite": 43373,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    16,
+    161
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 168
+  },
+  {
+   "entity_id": 61700083,
+   "nombre": "Nine-day Thunderer",
+   "npc_type": 6042,
+   "sprite": 43373,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    81,
+    151
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 168
+  },
+  {
+   "entity_id": 61700084,
+   "nombre": "Nine-day Thunderer",
+   "npc_type": 6042,
+   "sprite": 43373,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    63,
+    150
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 168
+  },
+  {
+   "entity_id": 61700085,
+   "nombre": "Nine-day Thunderer",
+   "npc_type": 6042,
+   "sprite": 43373,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    63,
+    170
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 168
+  },
+  {
+   "entity_id": 61700086,
+   "nombre": "Nine-day Thunderer",
+   "npc_type": 6042,
+   "sprite": 43373,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    68,
+    150
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 168
+  },
+  {
+   "entity_id": 61700087,
+   "nombre": "Nine-day Thunderer",
+   "npc_type": 6042,
+   "sprite": 43373,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    86,
+    147
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 168
+  },
+  {
+   "entity_id": 61700088,
+   "nombre": "Nine-day Thunderer",
+   "npc_type": 6042,
+   "sprite": 43373,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    44,
+    145
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 168
+  },
+  {
+   "entity_id": 61700089,
+   "nombre": "Nine-day Thunderer",
+   "npc_type": 6042,
+   "sprite": 43373,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    140
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 168
+  },
+  {
+   "entity_id": 61700090,
+   "nombre": "Nine-day Thunderer",
+   "npc_type": 6042,
+   "sprite": 43373,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    145
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 168
+  },
+  {
+   "entity_id": 61700091,
+   "nombre": "Nine-day Thunderer",
+   "npc_type": 6042,
+   "sprite": 43373,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    150
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 168
+  },
+  {
+   "entity_id": 61700092,
+   "nombre": "Nine-day Thunderer",
+   "npc_type": 6042,
+   "sprite": 43373,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    44,
+    140
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 168
+  },
+  {
+   "entity_id": 61700093,
+   "nombre": "Dragon Emperor Rex",
+   "npc_type": 6043,
+   "sprite": 43167,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    19,
+    166
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 180
+  },
+  {
+   "entity_id": 61700094,
+   "nombre": "Startled Scarecow",
+   "npc_type": 6038,
+   "sprite": 43399,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    166,
+    142
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 130
+  },
+  {
+   "entity_id": 61700095,
+   "nombre": "Startled Scarecow",
+   "npc_type": 6038,
+   "sprite": 43399,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    161,
+    137
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 130
+  },
+  {
+   "entity_id": 61700096,
+   "nombre": "Startled Scarecow",
+   "npc_type": 6038,
+   "sprite": 43399,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    166,
+    137
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 130
+  },
+  {
+   "entity_id": 61700097,
+   "nombre": "Startled Scarecow",
+   "npc_type": 6038,
+   "sprite": 43399,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    166,
+    147
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 130
+  },
+  {
+   "entity_id": 61700098,
+   "nombre": "Startled Scarecow",
+   "npc_type": 6038,
+   "sprite": 43399,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    171,
+    137
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 130
+  }
+ ],
+ "recursos": [
+  {
+   "entity_id": 71700000,
+   "sprite": 60300,
+   "capa": 2,
+   "px": [
+    2493,
+    4080
+   ],
+   "tile": [
+    77,
+    127
+   ],
+   "crudo": "200e460402000000bd090000f00f00000000000027000000000000001a000000dc068ceb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60300"
+  },
+  {
+   "entity_id": 71700001,
+   "sprite": 60350,
+   "capa": 0,
+   "px": [
+    3773,
+    4080
+   ],
+   "tile": [
+    117,
+    127
+   ],
+   "crudo": "210e460400000000bd0e0000f00f00000000000027000000000000001a000000dc06beeb00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60350"
+  },
+  {
+   "entity_id": 71700002,
+   "sprite": 60365,
+   "capa": 4,
+   "px": [
+    4442,
+    752
+   ],
+   "tile": [
+    138,
+    23
+   ],
+   "crudo": "220e4604040000005a110000f00200000000000027000000000000001a000000dc06cdeb00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60365"
+  },
+  {
+   "entity_id": 71700003,
+   "sprite": 60365,
+   "capa": 4,
+   "px": [
+    4378,
+    688
+   ],
+   "tile": [
+    136,
+    21
+   ],
+   "crudo": "230e4604040000001a110000b00200000000000027000000000000001a000000dc06cdeb00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60365"
+  },
+  {
+   "entity_id": 71700004,
+   "sprite": 60347,
+   "capa": 0,
+   "px": [
+    6138,
+    1488
+   ],
+   "tile": [
+    191,
+    46
+   ],
+   "crudo": "240e460400000000fa170000d00500000000000027000000000000001a000000dc06bbeb00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60347"
+  },
+  {
+   "entity_id": 71700005,
+   "sprite": 60366,
+   "capa": 4,
+   "px": [
+    3240,
+    2128
+   ],
+   "tile": [
+    101,
+    66
+   ],
+   "crudo": "250e460404000000a80c0000500800000000000027000000000000001a000000dc06ceeb00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60366"
+  },
+  {
+   "entity_id": 71700006,
+   "sprite": 60353,
+   "capa": 2,
+   "px": [
+    4141,
+    976
+   ],
+   "tile": [
+    129,
+    30
+   ],
+   "crudo": "260e4604020000002d100000d00300000000000027000000000000001a000000dc06c1eb00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60353"
+  },
+  {
+   "entity_id": 71700007,
+   "sprite": 60355,
+   "capa": 2,
+   "px": [
+    4220,
+    1456
+   ],
+   "tile": [
+    131,
+    45
+   ],
+   "crudo": "270e4604020000007c100000b00500000000000027000000000000001a000000dc06c3eb00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60355"
+  },
+  {
+   "entity_id": 71700008,
+   "sprite": 60359,
+   "capa": 0,
+   "px": [
+    5572,
+    1968
+   ],
+   "tile": [
+    174,
+    61
+   ],
+   "crudo": "280e460400000000c4150000b00700000000000027000000000000001a000000dc06c7eb00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60359"
+  },
+  {
+   "entity_id": 71700009,
+   "sprite": 60366,
+   "capa": 4,
+   "px": [
+    3324,
+    2064
+   ],
+   "tile": [
+    103,
+    64
+   ],
+   "crudo": "290e460404000000fc0c0000100800000000000027000000000000001a000000dc06ceeb00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60366"
+  },
+  {
+   "entity_id": 71700010,
+   "sprite": 60423,
+   "capa": 0,
+   "px": [
+    6164,
+    5200
+   ],
+   "tile": [
+    192,
+    162
+   ],
+   "crudo": "2a0e46040000000014180000501400000000000027000000000000001a000000dc0607ec00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60423"
+  },
+  {
+   "entity_id": 71700011,
+   "sprite": 60349,
+   "capa": 0,
+   "px": [
+    6072,
+    1296
+   ],
+   "tile": [
+    189,
+    40
+   ],
+   "crudo": "2b0e460400000000b8170000100500000000000027000000000000001a000000dc06bdeb00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60349"
+  },
+  {
+   "entity_id": 71700012,
+   "sprite": 60361,
+   "capa": 0,
+   "px": [
+    5316,
+    2064
+   ],
+   "tile": [
+    166,
+    64
+   ],
+   "crudo": "2c0e460400000000c4140000100800000000000027000000000000001a000000dc06c9eb00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60361"
+  },
+  {
+   "entity_id": 71700013,
+   "sprite": 60351,
+   "capa": 2,
+   "px": [
+    3337,
+    3984
+   ],
+   "tile": [
+    104,
+    124
+   ],
+   "crudo": "2d0e460402000000090d0000900f00000000000027000000000000001a000000dc06bfeb00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60351"
+  },
+  {
+   "entity_id": 71700014,
+   "sprite": 60418,
+   "capa": 0,
+   "px": [
+    6131,
+    4496
+   ],
+   "tile": [
+    191,
+    140
+   ],
+   "crudo": "2e0e460400000000f3170000901100000000000027000000000000001a000000dc0602ec00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60418"
+  },
+  {
+   "entity_id": 71700015,
+   "sprite": 60420,
+   "capa": 2,
+   "px": [
+    6070,
+    4688
+   ],
+   "tile": [
+    189,
+    146
+   ],
+   "crudo": "2f0e460402000000b6170000501200000000000027000000000000001a000000dc0604ec00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60420"
+  },
+  {
+   "entity_id": 71700016,
+   "sprite": 60356,
+   "capa": 0,
+   "px": [
+    5778,
+    3152
+   ],
+   "tile": [
+    180,
+    98
+   ],
+   "crudo": "300e46040000000092160000500c00000000000027000000000000001a000000dc06c4eb00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60356"
+  },
+  {
+   "entity_id": 71700017,
+   "sprite": 60357,
+   "capa": 0,
+   "px": [
+    5504,
+    3344
+   ],
+   "tile": [
+    172,
+    104
+   ],
+   "crudo": "310e46040000000080150000100d00000000000027000000000000001a000000dc06c5eb00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60357"
+  },
+  {
+   "entity_id": 71700018,
+   "sprite": 60344,
+   "capa": 0,
+   "px": [
+    1518,
+    3056
+   ],
+   "tile": [
+    47,
+    95
+   ],
+   "crudo": "320e460400000000ee050000f00b00000000000027000000000000001a000000dc06b8eb00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60344"
+  },
+  {
+   "entity_id": 71700019,
+   "sprite": 60346,
+   "capa": 0,
+   "px": [
+    1792,
+    3216
+   ],
+   "tile": [
+    56,
+    100
+   ],
+   "crudo": "330e46040000000000070000900c00000000000027000000000000001a000000dc06baeb00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60346"
+  },
+  {
+   "entity_id": 71700020,
+   "sprite": 60430,
+   "capa": 0,
+   "px": [
+    808,
+    2256
+   ],
+   "tile": [
+    25,
+    70
+   ],
+   "crudo": "340e46040000000028030000d00800000000000027000000000000001a000000dc060eec00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60430"
+  },
+  {
+   "entity_id": 71700021,
+   "sprite": 60430,
+   "capa": 2,
+   "px": [
+    939,
+    2288
+   ],
+   "tile": [
+    29,
+    71
+   ],
+   "crudo": "350e460402000000ab030000f00800000000000027000000000000001a000000dc060eec00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60430"
+  },
+  {
+   "entity_id": 71700022,
+   "sprite": 60356,
+   "capa": 0,
+   "px": [
+    1586,
+    2224
+   ],
+   "tile": [
+    49,
+    69
+   ],
+   "crudo": "360e46040000000032060000b00800000000000027000000000000001a000000dc06c4eb00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60356"
+  },
+  {
+   "entity_id": 71700023,
+   "sprite": 60445,
+   "capa": 0,
+   "px": [
+    2992,
+    1424
+   ],
+   "tile": [
+    93,
+    44
+   ],
+   "crudo": "370e460400000000b00b0000900500000000000027000000000000001a000000dc061dec00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60445"
+  },
+  {
+   "entity_id": 71700024,
+   "sprite": 60443,
+   "capa": 0,
+   "px": [
+    2690,
+    1712
+   ],
+   "tile": [
+    84,
+    53
+   ],
+   "crudo": "380e460400000000820a0000b00600000000000027000000000000001a000000dc061bec00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60443"
+  },
+  {
+   "entity_id": 71700025,
+   "sprite": 60424,
+   "capa": 0,
+   "px": [
+    2383,
+    784
+   ],
+   "tile": [
+    74,
+    24
+   ],
+   "crudo": "390e4604000000004f090000100300000000000027000000000000001a000000dc0608ec00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60424"
+  },
+  {
+   "entity_id": 71700026,
+   "sprite": 60424,
+   "capa": 2,
+   "px": [
+    2091,
+    656
+   ],
+   "tile": [
+    65,
+    20
+   ],
+   "crudo": "3a0e4604020000002b080000900200000000000027000000000000001a000000dc0608ec00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60424"
+  },
+  {
+   "entity_id": 71700027,
+   "sprite": 60357,
+   "capa": 0,
+   "px": [
+    1774,
+    2096
+   ],
+   "tile": [
+    55,
+    65
+   ],
+   "crudo": "3b0e460400000000ee060000300800000000000027000000000000001a000000dc06c5eb00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60357"
+  },
+  {
+   "entity_id": 71700028,
+   "sprite": 60437,
+   "capa": 0,
+   "px": [
+    220,
+    592
+   ],
+   "tile": [
+    6,
+    18
+   ],
+   "crudo": "3c0e460400000000dc000000500200000000000027000000000000001a000000dc0615ec00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60437"
+  },
+  {
+   "entity_id": 71700029,
+   "sprite": 60439,
+   "capa": 0,
+   "px": [
+    562,
+    240
+   ],
+   "tile": [
+    17,
+    7
+   ],
+   "crudo": "3d0e46040000000032020000f00000000000000027000000000000001a000000dc0617ec00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60439"
+  },
+  {
+   "entity_id": 71700030,
+   "sprite": 60431,
+   "capa": 0,
+   "px": [
+    5879,
+    4080
+   ],
+   "tile": [
+    183,
+    127
+   ],
+   "crudo": "3e0e460400000000f7160000f00f00000000000027000000000000001a000000dc060fec00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60431"
+  },
+  {
+   "entity_id": 71700031,
+   "sprite": 60431,
+   "capa": 2,
+   "px": [
+    5958,
+    4176
+   ],
+   "tile": [
+    186,
+    130
+   ],
+   "crudo": "3f0e46040200000046170000501000000000000027000000000000001a000000dc060fec00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60431"
+  },
+  {
+   "entity_id": 71700032,
+   "sprite": 60429,
+   "capa": 0,
+   "px": [
+    4428,
+    5424
+   ],
+   "tile": [
+    138,
+    169
+   ],
+   "crudo": "400e4604000000004c110000301500000000000027000000000000001a000000dc060dec00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60429"
+  },
+  {
+   "entity_id": 71700033,
+   "sprite": 60428,
+   "capa": 2,
+   "px": [
+    4765,
+    5072
+   ],
+   "tile": [
+    148,
+    158
+   ],
+   "crudo": "410e4604020000009d120000d01300000000000027000000000000001a000000dc060cec00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60428"
+  },
+  {
+   "entity_id": 71700034,
+   "sprite": 60426,
+   "capa": 2,
+   "px": [
+    4957,
+    5616
+   ],
+   "tile": [
+    154,
+    175
+   ],
+   "crudo": "420e4604020000005d130000f01500000000000027000000000000001a000000dc060aec00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60426"
+  },
+  {
+   "entity_id": 71700035,
+   "sprite": 60426,
+   "capa": 0,
+   "px": [
+    5306,
+    5552
+   ],
+   "tile": [
+    165,
+    173
+   ],
+   "crudo": "430e460400000000ba140000b01500000000000027000000000000001a000000dc060aec00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60426"
+  },
+  {
+   "entity_id": 71700036,
+   "sprite": 60362,
+   "capa": 0,
+   "px": [
+    4656,
+    3632
+   ],
+   "tile": [
+    145,
+    113
+   ],
+   "crudo": "440e46040000000030120000300e00000000000027000000000000001a000000dc06caeb00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60362"
+  },
+  {
+   "entity_id": 71700037,
+   "sprite": 60421,
+   "capa": 2,
+   "px": [
+    5788,
+    5488
+   ],
+   "tile": [
+    180,
+    171
+   ],
+   "crudo": "450e4604020000009c160000701500000000000027000000000000001a000000dc0605ec00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60421"
+  },
+  {
+   "entity_id": 71700038,
+   "sprite": 60341,
+   "capa": 0,
+   "px": [
+    5948,
+    1936
+   ],
+   "tile": [
+    185,
+    60
+   ],
+   "crudo": "460e4604000000003c170000900700000000000027000000000000001a000000dc06b5eb00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60341"
+  },
+  {
+   "entity_id": 71700039,
+   "sprite": 60363,
+   "capa": 0,
+   "px": [
+    4980,
+    3568
+   ],
+   "tile": [
+    155,
+    111
+   ],
+   "crudo": "470e46040000000074130000f00d00000000000027000000000000001a000000dc06cbeb00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60363"
+  },
+  {
+   "entity_id": 71700040,
+   "sprite": 60342,
+   "capa": 0,
+   "px": [
+    6140,
+    1840
+   ],
+   "tile": [
+    191,
+    57
+   ],
+   "crudo": "480e460400000000fc170000300700000000000027000000000000001a000000dc06b6eb00000000000000",
+   "copiado_de": "cuerpo de una captura del objeto 60342"
+  }
+ ]
+}

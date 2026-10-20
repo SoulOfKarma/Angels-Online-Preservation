@@ -38,7 +38,34 @@ def _arbol(stage):
             _TODO = json.loads(RUTA.read_text(encoding='utf-8'))
         except Exception:
             _TODO = {}
+        try:
+            import totem_war as _tw
+            if _tw.MODO == 'antigua':
+                _terra_keeper_antiguo(_TODO)
+        except Exception:
+            log.exception('Terra Keeper antiguo')
     return _TODO.get(str(int(stage)), {})
+
+
+# EL TERRA KEEPER DE LA GUERRA ANTIGUA (totem_war.MODO = 'antigua'). Medido en
+# Celestia (mundo_130319_646053): con el campo de tu faccion dice 5937 y ofrece
+# 5961 / 5939 / 5938 / Quit, sin "Send me to the [Neo-Totem Defense]
+# battlefield!" (8283); sin el campo, 5932 ("your guild has not captured any
+# totems...") y nada mas, en vez de invitar a la arena (9013).
+MSG_NEO_TOTEM = 8283
+MSG_RAIZ_NEO_TOTEM = {5986, 5987, 5988, 9000, 9001, 9002, 9003, 9004}
+MSG_SIN_TOTEM = 5932
+
+
+def _terra_keeper_antiguo(todo):
+    for arbol in todo.values():
+        for n in arbol.values():
+            if n.get('o'):
+                n['o'] = [op for op in n['o'] if op[0] != MSG_NEO_TOTEM]
+            if n.get('m') in MSG_RAIZ_NEO_TOTEM and n.get('r'):
+                n['m'] = MSG_SIN_TOTEM
+                # Fuera la rama "hay guerra -> a la arena" (IS_PVP_ON, 32).
+                n['r'] = [r for r in n['r'] if not any(c[0] == 32 for c in r.get('si', ()))]
 
 
 def _raices(arbol):

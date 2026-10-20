@@ -130,10 +130,12 @@ def test_la_puerta_de_la_devil_kitchen_abre_su_menu():
     assert app._portal_en(73, 29, 203) is not None, 'no abre al pisarla'
 
 
-def test_la_tercera_sala_no_es_alcanzable_mientras_este_vacia():
-    """75 no tiene plantilla, asi que nadie debe poder entrar. El paso 74 -> 75
-    es el evento 5 de map074.mpc y NINGUN objeto del mapa lo dispara."""
-    assert 75 not in login.PLANTILLAS_POR_STAGE
+def test_a_la_tercera_sala_solo_se_entra_ganando_la_carrera():
+    """La sala 3 (75) ya esta poblada (magic_kichen_path_3.json), pero sigue
+    sin tornado que lleve a ella: se entra por el dialogo de victoria de la
+    carrera del Annoying Clerk (61102, "You win!"). El paso 74 -> 75 es el
+    evento 5 de map074.mpc y NINGUN objeto del mapa lo dispara."""
+    assert 75 in login.PLANTILLAS_POR_STAGE
     # los de 75 a 75 son sus dos portales internos, que no cuentan: solo
     # importa que no haya nada que LLEVE a 75 desde fuera.
     assert not any(p['destino'] == 75

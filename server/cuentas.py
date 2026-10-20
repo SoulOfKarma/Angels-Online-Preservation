@@ -1632,6 +1632,34 @@ def db_mover_oro_banco_gremio(usuario, char_id, guild_id, cambio_banco, oro):
             con.close()
 
 
+def db_intercambiar_banco_gremio(guild_id: int, origen: int, destino: int) -> bool:
+    """Mueve (o intercambia, si el destino esta ocupado) dos casillas del banco
+    de la liga en una transaccion. False si en el origen no hay nada."""
+    guild_id, origen, destino = int(guild_id), int(origen), int(destino)
+    if origen == destino:
+        return False
+    with _LOCK:
+        con = _get_conn()
+        try:
+            con.execute('BEGIN IMMEDIATE')
+            if not con.execute('SELECT 1 FROM gremio_banco WHERE guild_id=? AND ranura=?',
+                               (guild_id, origen)).fetchone():
+                con.rollback()
+                return False
+            # -1 de casilla puente para no chocar con la clave (guild_id, ranura)
+            con.execute('UPDATE gremio_banco SET ranura=-1 WHERE guild_id=? AND ranura=?', (guild_id, origen))
+            con.execute('UPDATE gremio_banco SET ranura=? WHERE guild_id=? AND ranura=?', (origen, guild_id, destino))
+            con.execute('UPDATE gremio_banco SET ranura=? WHERE guild_id=? AND ranura=-1', (destino, guild_id))
+            con.commit()
+            _notificar_cambio()
+            return True
+        except Exception:
+            con.rollback()
+            raise
+        finally:
+            con.close()
+
+
 def db_poner_banco_gremio(guild_id: int, ranura: int, item_id: int, cantidad: int):
     with _LOCK:
         con = _get_conn()
@@ -1671,6 +1699,15 @@ def db_asignar_territorio_gremio(tw_stage: int, guild_id: int):
     with _LOCK:
         con = _get_conn()
         try:
+            con.execute('BEGIN IMMEDIATE')
+            if int(tw_stage) not in range(200, 208):
+                raise ValueError('Invalid Totem War territory.')
+            if not con.execute('SELECT 1 FROM gremios WHERE guild_id=?', (int(guild_id),)).fetchone():
+                raise ValueError('The league does not exist.')
+            otro = con.execute('SELECT tw_stage FROM gremio_territorios WHERE guild_id=? AND tw_stage<>?',
+                               (int(guild_id), int(tw_stage))).fetchone()
+            if otro:
+                raise ValueError('Your league already owns another territory.')
             con.execute('INSERT OR REPLACE INTO gremio_territorios (tw_stage, guild_id, capturado_en) '
                         'VALUES (?, ?, CURRENT_TIMESTAMP)', (int(tw_stage), int(guild_id)))
             con.commit()

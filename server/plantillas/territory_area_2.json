@@ -1,0 +1,2274 @@
+{
+ "_nota": "territory_area_2 (stage 100). POBLADO DESDE EL CLIENTE, no desde una captura: los generadores de monstruos son objetos del propio map100.mpc -- el monstruo en el u16 del +34, la zona en el +21, el tiempo en el +38 y cuantos en el +42. Eso da el censo COMPLETO del mapa, que una captura no puede dar porque solo trae lo que estuvo a la vista. El entity_id es fabricado y estable, no el del servidor. Las casillas son las del TAG de cada generador; los que no declaran TAG ponen sus monstruos en la casilla del generador y en un anillo de radio 3 a su alrededor, que es la dispersion MEDIDA en el stage 73. Los objetos de mapa son los del .mpc cuyo id esta en la lista de los que el servidor manda de verdad, con el cuerpo del 0x000E copiado de una captura del mismo objeto. Los tornados se dibujan aparte, desde portales.json. Ver tools/poblar_del_cliente.py.",
+ "stage": 100,
+ "spawns": [
+  {
+   "entity_id": 60000000,
+   "nombre": "Busy Jackstraw",
+   "npc_type": 708,
+   "sprite": 42004,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    133,
+    89
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 60000001,
+   "nombre": "Busy Jackstraw",
+   "npc_type": 708,
+   "sprite": 42004,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    114,
+    86
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 60000002,
+   "nombre": "Busy Jackstraw",
+   "npc_type": 708,
+   "sprite": 42004,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    106,
+    73
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 60000003,
+   "nombre": "Busy Jackstraw",
+   "npc_type": 708,
+   "sprite": 42004,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    84,
+    88
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 60000004,
+   "nombre": "Busy Jackstraw",
+   "npc_type": 708,
+   "sprite": 42004,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    123,
+    111
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 60000005,
+   "nombre": "Busy Jackstraw",
+   "npc_type": 708,
+   "sprite": 42004,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    138,
+    104
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 60000006,
+   "nombre": "Savage Dogface",
+   "npc_type": 3501,
+   "sprite": 42087,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    171,
+    41
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 45
+  },
+  {
+   "entity_id": 60000007,
+   "nombre": "Savage Dogface",
+   "npc_type": 3501,
+   "sprite": 42087,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    166,
+    36
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 45
+  },
+  {
+   "entity_id": 60000008,
+   "nombre": "Savage Dogface",
+   "npc_type": 3501,
+   "sprite": 42087,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    166,
+    41
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 45
+  },
+  {
+   "entity_id": 60000009,
+   "nombre": "Savage Dogface",
+   "npc_type": 3501,
+   "sprite": 42087,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    166,
+    46
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 45
+  },
+  {
+   "entity_id": 60000010,
+   "nombre": "Savage Dogface",
+   "npc_type": 3501,
+   "sprite": 42087,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    171,
+    36
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 45
+  },
+  {
+   "entity_id": 60000011,
+   "nombre": "Savage Dogface",
+   "npc_type": 3501,
+   "sprite": 42087,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    166,
+    143
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 45
+  },
+  {
+   "entity_id": 60000012,
+   "nombre": "Savage Dogface",
+   "npc_type": 3501,
+   "sprite": 42087,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    161,
+    138
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 45
+  },
+  {
+   "entity_id": 60000013,
+   "nombre": "Savage Dogface",
+   "npc_type": 3501,
+   "sprite": 42087,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    161,
+    143
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 45
+  },
+  {
+   "entity_id": 60000014,
+   "nombre": "Savage Dogface",
+   "npc_type": 3501,
+   "sprite": 42087,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    161,
+    148
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 45
+  },
+  {
+   "entity_id": 60000015,
+   "nombre": "Savage Dogface",
+   "npc_type": 3501,
+   "sprite": 42087,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    166,
+    138
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 45
+  },
+  {
+   "entity_id": 60000016,
+   "nombre": "Savage Dogface",
+   "npc_type": 3501,
+   "sprite": 42087,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    44,
+    50
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 45
+  },
+  {
+   "entity_id": 60000017,
+   "nombre": "Savage Dogface",
+   "npc_type": 3501,
+   "sprite": 42087,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    45
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 45
+  },
+  {
+   "entity_id": 60000018,
+   "nombre": "Savage Dogface",
+   "npc_type": 3501,
+   "sprite": 42087,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    50
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 45
+  },
+  {
+   "entity_id": 60000019,
+   "nombre": "Savage Dogface",
+   "npc_type": 3501,
+   "sprite": 42087,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    55
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 45
+  },
+  {
+   "entity_id": 60000020,
+   "nombre": "Savage Dogface",
+   "npc_type": 3501,
+   "sprite": 42087,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    44,
+    45
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 45
+  },
+  {
+   "entity_id": 60000021,
+   "nombre": "Poo Poo Demon",
+   "npc_type": 3502,
+   "sprite": 42001,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    161,
+    39
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 55
+  },
+  {
+   "entity_id": 60000022,
+   "nombre": "Poo Poo Demon",
+   "npc_type": 3502,
+   "sprite": 42001,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    160,
+    44
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 55
+  },
+  {
+   "entity_id": 60000023,
+   "nombre": "Poo Poo Demon",
+   "npc_type": 3502,
+   "sprite": 42001,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    156,
+    34
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 55
+  },
+  {
+   "entity_id": 60000024,
+   "nombre": "Poo Poo Demon",
+   "npc_type": 3502,
+   "sprite": 42001,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    156,
+    39
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 55
+  },
+  {
+   "entity_id": 60000025,
+   "nombre": "Poo Poo Demon",
+   "npc_type": 3502,
+   "sprite": 42001,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    166,
+    148
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 55
+  },
+  {
+   "entity_id": 60000026,
+   "nombre": "Poo Poo Demon",
+   "npc_type": 3502,
+   "sprite": 42001,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    156,
+    140
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 55
+  },
+  {
+   "entity_id": 60000027,
+   "nombre": "Poo Poo Demon",
+   "npc_type": 3502,
+   "sprite": 42001,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    156,
+    145
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 55
+  },
+  {
+   "entity_id": 60000028,
+   "nombre": "Poo Poo Demon",
+   "npc_type": 3502,
+   "sprite": 42001,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    156,
+    150
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 55
+  },
+  {
+   "entity_id": 60000029,
+   "nombre": "Poo Poo Demon",
+   "npc_type": 3502,
+   "sprite": 42001,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    34,
+    41
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 55
+  },
+  {
+   "entity_id": 60000030,
+   "nombre": "Poo Poo Demon",
+   "npc_type": 3502,
+   "sprite": 42001,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    34,
+    46
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 55
+  },
+  {
+   "entity_id": 60000031,
+   "nombre": "Poo Poo Demon",
+   "npc_type": 3502,
+   "sprite": 42001,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    34,
+    51
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 55
+  },
+  {
+   "entity_id": 60000032,
+   "nombre": "Poo Poo Demon",
+   "npc_type": 3502,
+   "sprite": 42001,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    40
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 55
+  },
+  {
+   "entity_id": 60000033,
+   "nombre": "Fire Ghost Kid",
+   "npc_type": 3504,
+   "sprite": 42321,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    66,
+    160
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 75
+  },
+  {
+   "entity_id": 60000034,
+   "nombre": "Fire Ghost Kid",
+   "npc_type": 3504,
+   "sprite": 42321,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    61,
+    155
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 75
+  },
+  {
+   "entity_id": 60000035,
+   "nombre": "Fire Ghost Kid",
+   "npc_type": 3504,
+   "sprite": 42321,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    61,
+    160
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 75
+  },
+  {
+   "entity_id": 60000036,
+   "nombre": "Fire Ghost Kid",
+   "npc_type": 3504,
+   "sprite": 42321,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    61,
+    165
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 75
+  },
+  {
+   "entity_id": 60000037,
+   "nombre": "Fire Ghost Kid",
+   "npc_type": 3504,
+   "sprite": 42321,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    66,
+    155
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 75
+  },
+  {
+   "entity_id": 60000038,
+   "nombre": "Fire Ghost Kid",
+   "npc_type": 3504,
+   "sprite": 42321,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    66,
+    165
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 75
+  },
+  {
+   "entity_id": 60000039,
+   "nombre": "Fire Ghost Kid",
+   "npc_type": 3504,
+   "sprite": 42321,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    71,
+    155
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 75
+  },
+  {
+   "entity_id": 60000040,
+   "nombre": "Fire Ghost Kid",
+   "npc_type": 3504,
+   "sprite": 42321,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    71,
+    160
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 75
+  },
+  {
+   "entity_id": 60000041,
+   "nombre": "Fire Ghost Kid",
+   "npc_type": 3504,
+   "sprite": 42321,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    71,
+    165
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 75
+  },
+  {
+   "entity_id": 60000042,
+   "nombre": "Fire Ghost Kid",
+   "npc_type": 3504,
+   "sprite": 42321,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    56,
+    150
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 75
+  },
+  {
+   "entity_id": 60000043,
+   "nombre": "Fire Ghost Kid",
+   "npc_type": 3504,
+   "sprite": 42321,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    56,
+    155
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 75
+  },
+  {
+   "entity_id": 60000044,
+   "nombre": "Fire Ghost Kid",
+   "npc_type": 3504,
+   "sprite": 42321,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    56,
+    160
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 75
+  },
+  {
+   "entity_id": 60000045,
+   "nombre": "Terra Lampman",
+   "npc_type": 3503,
+   "sprite": 42282,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    22,
+    129
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 65
+  },
+  {
+   "entity_id": 60000046,
+   "nombre": "Terra Lampman",
+   "npc_type": 3503,
+   "sprite": 42282,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    17,
+    124
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 65
+  },
+  {
+   "entity_id": 60000047,
+   "nombre": "Terra Lampman",
+   "npc_type": 3503,
+   "sprite": 42282,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    17,
+    129
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 65
+  },
+  {
+   "entity_id": 60000048,
+   "nombre": "Terra Lampman",
+   "npc_type": 3503,
+   "sprite": 42282,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    17,
+    134
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 65
+  },
+  {
+   "entity_id": 60000049,
+   "nombre": "Terra Lampman",
+   "npc_type": 3503,
+   "sprite": 42282,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    22,
+    124
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 65
+  },
+  {
+   "entity_id": 60000050,
+   "nombre": "Terra Lampman",
+   "npc_type": 3503,
+   "sprite": 42282,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    22,
+    134
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 65
+  },
+  {
+   "entity_id": 60000051,
+   "nombre": "Terra Lampman",
+   "npc_type": 3503,
+   "sprite": 42282,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    27,
+    124
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 65
+  },
+  {
+   "entity_id": 60000052,
+   "nombre": "Terra Lampman",
+   "npc_type": 3503,
+   "sprite": 42282,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    27,
+    129
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 65
+  },
+  {
+   "entity_id": 60000053,
+   "nombre": "Terra Lampman",
+   "npc_type": 3503,
+   "sprite": 42282,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    27,
+    134
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 65
+  },
+  {
+   "entity_id": 60000054,
+   "nombre": "Terra Lampman",
+   "npc_type": 3503,
+   "sprite": 42282,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    12,
+    119
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 65
+  },
+  {
+   "entity_id": 60000055,
+   "nombre": "Terra Lampman",
+   "npc_type": 3503,
+   "sprite": 42282,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    12,
+    124
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 65
+  },
+  {
+   "entity_id": 60000056,
+   "nombre": "Terra Lampman",
+   "npc_type": 3503,
+   "sprite": 42282,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    12,
+    129
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 65
+  },
+  {
+   "entity_id": 60000057,
+   "nombre": "Declined Angel",
+   "npc_type": 3505,
+   "sprite": 42311,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    80,
+    161
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 85
+  },
+  {
+   "entity_id": 60000058,
+   "nombre": "Declined Angel",
+   "npc_type": 3505,
+   "sprite": 42311,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    76,
+    156
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 85
+  },
+  {
+   "entity_id": 60000059,
+   "nombre": "Declined Angel",
+   "npc_type": 3505,
+   "sprite": 42311,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    76,
+    166
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 85
+  },
+  {
+   "entity_id": 60000060,
+   "nombre": "Declined Angel",
+   "npc_type": 3505,
+   "sprite": 42311,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    81,
+    156
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 85
+  },
+  {
+   "entity_id": 60000061,
+   "nombre": "Declined Angel",
+   "npc_type": 3505,
+   "sprite": 42311,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    81,
+    166
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 85
+  },
+  {
+   "entity_id": 60000062,
+   "nombre": "Declined Angel",
+   "npc_type": 3505,
+   "sprite": 42311,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    85,
+    161
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 85
+  },
+  {
+   "entity_id": 60000063,
+   "nombre": "Declined Angel",
+   "npc_type": 3505,
+   "sprite": 42311,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    86,
+    155
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 85
+  },
+  {
+   "entity_id": 60000064,
+   "nombre": "Declined Angel",
+   "npc_type": 3505,
+   "sprite": 42311,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    86,
+    166
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 85
+  },
+  {
+   "entity_id": 60000065,
+   "nombre": "Declined Angel",
+   "npc_type": 3505,
+   "sprite": 42311,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    76,
+    151
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 85
+  },
+  {
+   "entity_id": 60000066,
+   "nombre": "Declined Angel",
+   "npc_type": 3505,
+   "sprite": 42311,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    76,
+    171
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 85
+  },
+  {
+   "entity_id": 60000067,
+   "nombre": "Declined Angel",
+   "npc_type": 3505,
+   "sprite": 42311,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    81,
+    151
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 85
+  },
+  {
+   "entity_id": 60000068,
+   "nombre": "Declined Angel",
+   "npc_type": 3505,
+   "sprite": 42311,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    81,
+    171
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 85
+  },
+  {
+   "entity_id": 60000069,
+   "nombre": "Sea Shark",
+   "npc_type": 3506,
+   "sprite": 42389,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    24,
+    151
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 95
+  },
+  {
+   "entity_id": 60000070,
+   "nombre": "Sea Shark",
+   "npc_type": 3506,
+   "sprite": 42389,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    19,
+    146
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 95
+  },
+  {
+   "entity_id": 60000071,
+   "nombre": "Sea Shark",
+   "npc_type": 3506,
+   "sprite": 42389,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    19,
+    151
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 95
+  },
+  {
+   "entity_id": 60000072,
+   "nombre": "Sea Shark",
+   "npc_type": 3506,
+   "sprite": 42389,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    19,
+    156
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 95
+  },
+  {
+   "entity_id": 60000073,
+   "nombre": "Sea Shark",
+   "npc_type": 3506,
+   "sprite": 42389,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    24,
+    146
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 95
+  },
+  {
+   "entity_id": 60000074,
+   "nombre": "Sea Shark",
+   "npc_type": 3506,
+   "sprite": 42389,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    24,
+    156
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 95
+  },
+  {
+   "entity_id": 60000075,
+   "nombre": "Sea Shark",
+   "npc_type": 3506,
+   "sprite": 42389,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    29,
+    146
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 95
+  },
+  {
+   "entity_id": 60000076,
+   "nombre": "Sea Shark",
+   "npc_type": 3506,
+   "sprite": 42389,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    29,
+    151
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 95
+  },
+  {
+   "entity_id": 60000077,
+   "nombre": "Sea Shark",
+   "npc_type": 3506,
+   "sprite": 42389,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    29,
+    156
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 95
+  },
+  {
+   "entity_id": 60000078,
+   "nombre": "Sea Shark",
+   "npc_type": 3506,
+   "sprite": 42389,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    14,
+    141
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 95
+  },
+  {
+   "entity_id": 60000079,
+   "nombre": "Sea Shark",
+   "npc_type": 3506,
+   "sprite": 42389,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    14,
+    146
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 95
+  },
+  {
+   "entity_id": 60000080,
+   "nombre": "Sea Shark",
+   "npc_type": 3506,
+   "sprite": 42389,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    14,
+    151
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 95
+  },
+  {
+   "entity_id": 60000081,
+   "nombre": "Animal Warrior",
+   "npc_type": 3507,
+   "sprite": 42517,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    44,
+    143
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 105
+  },
+  {
+   "entity_id": 60000082,
+   "nombre": "Animal Warrior",
+   "npc_type": 3507,
+   "sprite": 42517,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    138
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 105
+  },
+  {
+   "entity_id": 60000083,
+   "nombre": "Animal Warrior",
+   "npc_type": 3507,
+   "sprite": 42517,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    143
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 105
+  },
+  {
+   "entity_id": 60000084,
+   "nombre": "Animal Warrior",
+   "npc_type": 3507,
+   "sprite": 42517,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    148
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 105
+  },
+  {
+   "entity_id": 60000085,
+   "nombre": "Animal Warrior",
+   "npc_type": 3507,
+   "sprite": 42517,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    14,
+    156
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 105
+  },
+  {
+   "entity_id": 60000086,
+   "nombre": "Animal Warrior",
+   "npc_type": 3507,
+   "sprite": 42517,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    12,
+    161
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 105
+  },
+  {
+   "entity_id": 60000087,
+   "nombre": "Animal Warrior",
+   "npc_type": 3507,
+   "sprite": 42517,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    17,
+    161
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 105
+  },
+  {
+   "entity_id": 60000088,
+   "nombre": "Animal Warrior",
+   "npc_type": 3507,
+   "sprite": 42517,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    19,
+    141
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 105
+  },
+  {
+   "entity_id": 60000089,
+   "nombre": "Animal Warrior",
+   "npc_type": 3507,
+   "sprite": 42517,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    17,
+    119
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 105
+  },
+  {
+   "entity_id": 60000090,
+   "nombre": "Animal Warrior",
+   "npc_type": 3507,
+   "sprite": 42517,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    22,
+    119
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 105
+  },
+  {
+   "entity_id": 60000091,
+   "nombre": "Animal Warrior",
+   "npc_type": 3507,
+   "sprite": 42517,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    27,
+    119
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 105
+  },
+  {
+   "entity_id": 60000092,
+   "nombre": "Animal Warrior",
+   "npc_type": 3507,
+   "sprite": 42517,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    12,
+    134
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 105
+  },
+  {
+   "entity_id": 60000093,
+   "nombre": "Animal Warrior",
+   "npc_type": 3507,
+   "sprite": 42517,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    90,
+    160
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 105
+  },
+  {
+   "entity_id": 60000094,
+   "nombre": "Animal Warrior",
+   "npc_type": 3507,
+   "sprite": 42517,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    91,
+    165
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 105
+  },
+  {
+   "entity_id": 60000095,
+   "nombre": "Animal Warrior",
+   "npc_type": 3507,
+   "sprite": 42517,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    91,
+    152
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 105
+  },
+  {
+   "entity_id": 60000096,
+   "nombre": "Animal Warrior",
+   "npc_type": 3507,
+   "sprite": 42517,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    86,
+    150
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 105
+  },
+  {
+   "entity_id": 60000097,
+   "nombre": "Animal Warrior",
+   "npc_type": 3507,
+   "sprite": 42517,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    65,
+    150
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 105
+  },
+  {
+   "entity_id": 60000098,
+   "nombre": "Animal Warrior",
+   "npc_type": 3507,
+   "sprite": 42517,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    70,
+    150
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 105
+  },
+  {
+   "entity_id": 60000099,
+   "nombre": "Animal Warrior",
+   "npc_type": 3507,
+   "sprite": 42517,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    63,
+    170
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 105
+  },
+  {
+   "entity_id": 60000100,
+   "nombre": "Animal Warrior",
+   "npc_type": 3507,
+   "sprite": 42517,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    75,
+    146
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 105
+  },
+  {
+   "entity_id": 60000101,
+   "nombre": "Lion Knight",
+   "npc_type": 3508,
+   "sprite": 42555,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    19,
+    166
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 120
+  }
+ ],
+ "recursos": [
+  {
+   "entity_id": 107969,
+   "sprite": 60300,
+   "capa": 2,
+   "px": [
+    2493,
+    4077
+   ],
+   "tile": [
+    77,
+    127
+   ],
+   "crudo": "c1a5010002000000bd090000ed0f00000000000027000000000000001a000000dc068ceb00004080140000",
+   "copiado_de": "mundo_130330_681186_orden.jsonl"
+  },
+  {
+   "entity_id": 107970,
+   "sprite": 60138,
+   "capa": 0,
+   "px": [
+    4384,
+    668
+   ],
+   "tile": [
+    137,
+    20
+   ],
+   "crudo": "c2a5010000000000201100009c0200000000000027000000000000001a000000dc06eaea00000000000000",
+   "copiado_de": "mundo_130330_681186_orden.jsonl",
+   "nombre_visible": "Spot Alga",
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 107971,
+   "sprite": 60139,
+   "capa": 0,
+   "px": [
+    4449,
+    743
+   ],
+   "tile": [
+    139,
+    23
+   ],
+   "crudo": "c3a501000000000061110000e70200000000000027000000000000001a000000dc06ebea00000000000000",
+   "copiado_de": "mundo_130330_681186_orden.jsonl",
+   "nombre_visible": "Spot Alga",
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 107972,
+   "sprite": 60261,
+   "capa": 2,
+   "px": [
+    4232,
+    1421
+   ],
+   "tile": [
+    132,
+    44
+   ],
+   "crudo": "c4a5010002000000881000008d0500000000000027000000000000001a000000dc0665eb00000000000000",
+   "copiado_de": "mundo_130330_681186_orden.jsonl",
+   "nombre_visible": "Lycosa Den",
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 107973,
+   "sprite": 60246,
+   "capa": 0,
+   "px": [
+    6002,
+    1912
+   ],
+   "tile": [
+    187,
+    59
+   ],
+   "crudo": "c5a501000000000072170000780700000000000027000000000000001a000000dc0656eb00000000000000",
+   "copiado_de": "mundo_130330_681186_orden.jsonl",
+   "nombre_visible": "Black Silver",
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 107974,
+   "sprite": 60261,
+   "capa": 2,
+   "px": [
+    4101,
+    1054
+   ],
+   "tile": [
+    128,
+    32
+   ],
+   "crudo": "c6a5010002000000051000001e0400000000000027000000000000001a000000dc0665eb00000000000000",
+   "copiado_de": "mundo_130330_681186_orden.jsonl",
+   "nombre_visible": "Lycosa Den",
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 107975,
+   "sprite": 60259,
+   "capa": 2,
+   "px": [
+    5634,
+    1938
+   ],
+   "tile": [
+    176,
+    60
+   ],
+   "crudo": "c7a501000200000002160000920700000000000027000000000000001a000000dc0663eb00000000000000",
+   "copiado_de": "mundo_130330_681186_orden.jsonl",
+   "nombre_visible": "Primrose",
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 107976,
+   "sprite": 60259,
+   "capa": 0,
+   "px": [
+    5522,
+    2001
+   ],
+   "tile": [
+    172,
+    62
+   ],
+   "crudo": "c8a501000000000092150000d10700000000000027000000000000001a000000dc0663eb00000000000000",
+   "copiado_de": "mundo_130330_681186_orden.jsonl",
+   "nombre_visible": "Primrose",
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 107977,
+   "sprite": 60252,
+   "capa": 0,
+   "px": [
+    6133,
+    1432
+   ],
+   "tile": [
+    191,
+    44
+   ],
+   "crudo": "c9a5010000000000f5170000980500000000000027000000000000001a000000dc065ceb00000000000000",
+   "copiado_de": "mundo_130330_681186_orden.jsonl",
+   "nombre_visible": "Blood Bamboo",
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 107978,
+   "sprite": 60254,
+   "capa": 0,
+   "px": [
+    6052,
+    1318
+   ],
+   "tile": [
+    189,
+    41
+   ],
+   "crudo": "caa5010000000000a4170000260500000000000027000000000000001a000000dc065eeb00000000000000",
+   "copiado_de": "mundo_130330_681186_orden.jsonl",
+   "nombre_visible": "Blood Bamboo",
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 107979,
+   "sprite": 60340,
+   "capa": 0,
+   "px": [
+    5884,
+    4061
+   ],
+   "tile": [
+    183,
+    126
+   ],
+   "crudo": "cba5010000000000fc160000dd0f00000000000027000000000000001a000000dc06b4eb00000000000000",
+   "copiado_de": "mundo_130330_681186_orden.jsonl",
+   "nombre_visible": "Deep-sea Fish",
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 107980,
+   "sprite": 60249,
+   "capa": 0,
+   "px": [
+    1950,
+    3282
+   ],
+   "tile": [
+    60,
+    102
+   ],
+   "crudo": "cca50100000000009e070000d20c00000000000027000000000000001a000000dc0659eb00000000000000",
+   "copiado_de": "mundo_130330_681186_orden.jsonl",
+   "nombre_visible": "Gold",
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 107981,
+   "sprite": 60247,
+   "capa": 0,
+   "px": [
+    6117,
+    1831
+   ],
+   "tile": [
+    191,
+    57
+   ],
+   "crudo": "cda5010000000000e5170000270700000000000027000000000000001a000000dc0657eb00000000000000",
+   "copiado_de": "mundo_130330_681186_orden.jsonl",
+   "nombre_visible": "Black Silver",
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 107982,
+   "sprite": 60251,
+   "capa": 0,
+   "px": [
+    1845,
+    3235
+   ],
+   "tile": [
+    57,
+    101
+   ],
+   "crudo": "cea501000000000035070000a30c00000000000027000000000000001a000000dc065beb00000000000000",
+   "copiado_de": "mundo_130330_681186_orden.jsonl",
+   "nombre_visible": "Gold",
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 107983,
+   "sprite": 60255,
+   "capa": 0,
+   "px": [
+    3781,
+    4064
+   ],
+   "tile": [
+    118,
+    127
+   ],
+   "crudo": "cfa5010000000000c50e0000e00f00000000000027000000000000001a000000dc065feb00000000000000",
+   "copiado_de": "mundo_130330_681186_orden.jsonl",
+   "nombre_visible": "Birch",
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 107984,
+   "sprite": 60256,
+   "capa": 0,
+   "px": [
+    3858,
+    4018
+   ],
+   "tile": [
+    120,
+    125
+   ],
+   "crudo": "d0a5010000000000120f0000b20f00000000000027000000000000001a000000dc0660eb00000000000000",
+   "copiado_de": "mundo_130330_681186_orden.jsonl",
+   "nombre_visible": "Birch",
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 107985,
+   "sprite": 60258,
+   "capa": 2,
+   "px": [
+    4839,
+    3591
+   ],
+   "tile": [
+    151,
+    112
+   ],
+   "crudo": "d1a5010002000000e7120000070e00000000000027000000000000001a000000dc0662eb00000000000000",
+   "copiado_de": "mundo_130330_681186_orden.jsonl",
+   "nombre_visible": "Flame Bush",
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 107986,
+   "sprite": 60258,
+   "capa": 2,
+   "px": [
+    4981,
+    3527
+   ],
+   "tile": [
+    155,
+    110
+   ],
+   "crudo": "d2a501000200000075130000c70d00000000000027000000000000001a000000dc0662eb00000000000000",
+   "copiado_de": "mundo_130330_681186_orden.jsonl",
+   "nombre_visible": "Flame Bush",
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 107987,
+   "sprite": 60263,
+   "capa": 0,
+   "px": [
+    5612,
+    3264
+   ],
+   "tile": [
+    175,
+    102
+   ],
+   "crudo": "d3a5010000000000ec150000c00c00000000000027000000000000001a000000dc0667eb00000000000000",
+   "copiado_de": "mundo_130330_681186_orden.jsonl",
+   "nombre_visible": "Wanderer Den",
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 107988,
+   "sprite": 60263,
+   "capa": 0,
+   "px": [
+    5814,
+    3144
+   ],
+   "tile": [
+    181,
+    98
+   ],
+   "crudo": "d4a5010000000000b6160000480c00000000000027000000000000001a000000dc0667eb00000000000000",
+   "copiado_de": "mundo_130330_681186_orden.jsonl",
+   "nombre_visible": "Wanderer Den",
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 107989,
+   "sprite": 60144,
+   "capa": 0,
+   "px": [
+    942,
+    2284
+   ],
+   "tile": [
+    29,
+    71
+   ],
+   "crudo": "d5a5010000000000ae030000ec0800000000000027000000000000001a000000dc06f0ea00000000000000",
+   "copiado_de": "mundo_130330_681186_orden.jsonl",
+   "nombre_visible": "Tropic Fish",
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 107990,
+   "sprite": 60187,
+   "capa": 0,
+   "px": [
+    808,
+    2232
+   ],
+   "tile": [
+    25,
+    69
+   ],
+   "crudo": "d6a501000000000028030000b80800000000000027000000000000001a000000dc061beb00000000000000",
+   "copiado_de": "mundo_130330_681186_orden.jsonl",
+   "nombre_visible": "Tropic Fish",
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 107991,
+   "sprite": 60321,
+   "capa": 0,
+   "px": [
+    1610,
+    2241
+   ],
+   "tile": [
+    50,
+    70
+   ],
+   "crudo": "d7a50100000000004a060000c10800000000000027000000000000001a000000dc06a1eb00000000000000",
+   "copiado_de": "mundo_130330_681186_orden.jsonl",
+   "nombre_visible": "Bone Den",
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 107992,
+   "sprite": 60322,
+   "capa": 0,
+   "px": [
+    1821,
+    2121
+   ],
+   "tile": [
+    56,
+    66
+   ],
+   "crudo": "d8a50100000000001d070000490800000000000027000000000000001a000000dc06a2eb00000000000000",
+   "copiado_de": "mundo_130330_681186_orden.jsonl",
+   "nombre_visible": "Bone Den",
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 107993,
+   "sprite": 60309,
+   "capa": 0,
+   "px": [
+    2996,
+    1421
+   ],
+   "tile": [
+    93,
+    44
+   ],
+   "crudo": "d9a5010000000000b40b00008d0500000000000027000000000000001a000000dc0695eb00000000000000",
+   "copiado_de": "mundo_130330_681186_orden.jsonl",
+   "nombre_visible": "Aerolite",
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 107994,
+   "sprite": 60311,
+   "capa": 2,
+   "px": [
+    2911,
+    1502
+   ],
+   "tile": [
+    90,
+    46
+   ],
+   "crudo": "daa50100020000005f0b0000de0500000000000027000000000000001a000000dc0697eb00000000000000",
+   "copiado_de": "mundo_130330_681186_orden.jsonl",
+   "nombre_visible": "Aerolite",
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 107995,
+   "sprite": 60315,
+   "capa": 0,
+   "px": [
+    561,
+    216
+   ],
+   "tile": [
+    17,
+    6
+   ],
+   "crudo": "dba501000000000031020000d80000000000000027000000000000001a000000dc069beb00000000000000",
+   "copiado_de": "mundo_130330_681186_orden.jsonl",
+   "nombre_visible": "Beech",
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 107996,
+   "sprite": 60316,
+   "capa": 2,
+   "px": [
+    398,
+    294
+   ],
+   "tile": [
+    12,
+    9
+   ],
+   "crudo": "dca50100020000008e010000260100000000000027000000000000001a000000dc069ceb00000000000000",
+   "copiado_de": "mundo_130330_681186_orden.jsonl",
+   "nombre_visible": "Beech",
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 107997,
+   "sprite": 60327,
+   "capa": 2,
+   "px": [
+    2254,
+    760
+   ],
+   "tile": [
+    70,
+    23
+   ],
+   "crudo": "dda5010002000000ce080000f80200000000000027000000000000001a000000dc06a7eb00000000000000",
+   "copiado_de": "mundo_130330_681186_orden.jsonl",
+   "nombre_visible": "Thyme Bush",
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 107998,
+   "sprite": 60327,
+   "capa": 0,
+   "px": [
+    2105,
+    691
+   ],
+   "tile": [
+    65,
+    21
+   ],
+   "crudo": "dea501000000000039080000b30200000000000027000000000000001a000000dc06a7eb00000000000000",
+   "copiado_de": "mundo_130330_681186_orden.jsonl",
+   "nombre_visible": "Thyme Bush",
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 107999,
+   "sprite": 60312,
+   "capa": 0,
+   "px": [
+    4486,
+    5567
+   ],
+   "tile": [
+    140,
+    173
+   ],
+   "crudo": "dfa501000000000086110000bf1500000000000027000000000000001a000000dc0698eb00000000000000",
+   "copiado_de": "mundo_130330_681186_orden.jsonl",
+   "nombre_visible": "Violetnut",
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 108000,
+   "sprite": 60313,
+   "capa": 2,
+   "px": [
+    4773,
+    5089
+   ],
+   "tile": [
+    149,
+    159
+   ],
+   "crudo": "e0a5010002000000a5120000e11300000000000027000000000000001a000000dc0699eb00000000000000",
+   "copiado_de": "mundo_130330_681186_orden.jsonl",
+   "nombre_visible": "Violetnut",
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 108001,
+   "sprite": 60320,
+   "capa": 0,
+   "px": [
+    6091,
+    4331
+   ],
+   "tile": [
+    190,
+    135
+   ],
+   "crudo": "e1a5010000000000cb170000eb1000000000000027000000000000001a000000dc06a0eb00000000000000",
+   "copiado_de": "mundo_130330_681186_orden.jsonl",
+   "nombre_visible": "Cypress",
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 108002,
+   "sprite": 60318,
+   "capa": 0,
+   "px": [
+    6113,
+    4438
+   ],
+   "tile": [
+    191,
+    138
+   ],
+   "crudo": "e2a5010000000000e1170000561100000000000027000000000000001a000000dc069eeb00000000000000",
+   "copiado_de": "mundo_130330_681186_orden.jsonl",
+   "nombre_visible": "Cypress",
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 108003,
+   "sprite": 60328,
+   "capa": 0,
+   "px": [
+    5053,
+    5565
+   ],
+   "tile": [
+    157,
+    173
+   ],
+   "crudo": "e3a5010000000000bd130000bd1500000000000027000000000000001a000000dc06a8eb00000000000000",
+   "copiado_de": "mundo_130330_681186_orden.jsonl",
+   "nombre_visible": "Mambo Bush",
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 108004,
+   "sprite": 60328,
+   "capa": 2,
+   "px": [
+    5338,
+    5531
+   ],
+   "tile": [
+    166,
+    172
+   ],
+   "crudo": "e4a5010002000000da1400009b1500000000000027000000000000001a000000dc06a8eb00000000000000",
+   "copiado_de": "mundo_130330_681186_orden.jsonl",
+   "nombre_visible": "Mambo Bush",
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 108005,
+   "sprite": 60325,
+   "capa": 0,
+   "px": [
+    6140,
+    5105
+   ],
+   "tile": [
+    191,
+    159
+   ],
+   "crudo": "e5a5010000000000fc170000f11300000000000027000000000000001a000000dc06a5eb00000000000000",
+   "copiado_de": "mundo_130330_681186_orden.jsonl",
+   "nombre_visible": "Thunder Den",
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 108006,
+   "sprite": 60326,
+   "capa": 2,
+   "px": [
+    5861,
+    5468
+   ],
+   "tile": [
+    183,
+    170
+   ],
+   "crudo": "e6a5010002000000e51600005c1500000000000027000000000000001a000000dc06a6eb00000000000000",
+   "copiado_de": "mundo_130330_681186_orden.jsonl",
+   "nombre_visible": "Thunder Den",
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 108008,
+   "sprite": 60271,
+   "capa": 4,
+   "px": [
+    3319,
+    2050
+   ],
+   "tile": [
+    103,
+    64
+   ],
+   "crudo": "e8a5010004000000f70c0000020800000000000027000000000000001a000000dc066feb00000000000000",
+   "copiado_de": "mundo_130330_681186_orden.jsonl",
+   "nombre_visible": "Bloody Alga",
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 108009,
+   "sprite": 60270,
+   "capa": 4,
+   "px": [
+    3250,
+    2145
+   ],
+   "tile": [
+    101,
+    67
+   ],
+   "crudo": "e9a5010004000000b20c0000610800000000000027000000000000001a000000dc066eeb00000000000000",
+   "copiado_de": "mundo_130330_681186_orden.jsonl",
+   "nombre_visible": "Bloody Alga",
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 108010,
+   "sprite": 60340,
+   "capa": 2,
+   "px": [
+    5954,
+    4132
+   ],
+   "tile": [
+    186,
+    129
+   ],
+   "crudo": "eaa501000200000042170000241000000000000027000000000000001a000000dc06b4eb00000000000000",
+   "copiado_de": "mundo_130330_681186_orden.jsonl",
+   "nombre_visible": "Deep-sea Fish",
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000004"
+  }
+ ],
+ "_nota_recursos": "Recursos copiados de la captura de Celestia mundo_130330_681186_orden.jsonl (tools/recursos_de_captura.py), con su nombre."
+}

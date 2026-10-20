@@ -47,6 +47,12 @@ KIND_EXP = 4                # Alias retrocompatible
 # del personaje sale de ese total; los cortes entre un rango y otro NO estan
 # en los xml del cliente ni se han podido medir todavia.
 KIND_CREDITO = 49
+# ESTADO del personaje. Medido en Celestia (mundo_203502_844482 t=25.3): al
+# pedir quedarse como alma (c2s 0x0016 accion 3) llega 0x0013 tipo 28 con
+# 0x08000000 y un 0x000A (yo, 0, 0, 0). Es el bit que el cliente mira en
+# +0x1e0 para la musica de muerto (005b36a0): el modo FANTASMA.
+KIND_ESTADO = 28
+ESTADO_FANTASMA = 0x08000000
 # Rango del personaje (1..20, string.xml 1700..1719). En Angel.exe (sub_5FEB10,
 # offset 16920 de la tabla de 0x0013 -> kind 51), mandar 0x0013 con kind 51
 # actualiza en vivo tanto el requisito de rango (a2+1232) como el texto del
@@ -752,7 +758,8 @@ class Monstruo:
             for _ in range(10):
                 tx = max(0, self.spawn_x + _r.randint(-radio, radio))
                 ty = max(0, self.spawn_y + _r.randint(-radio, radio))
-                if st is None or _tr.se_pisa(st, tx, ty):
+                if ((st is None or _tr.se_pisa(st, tx, ty))
+                        and (st not in (168, 176, 413) or _tr.linea_libre(st, (self.spawn_x, self.spawn_y), (tx, ty)))):
                     candidato = (tx, ty)
                     break
             if candidato:
@@ -762,6 +769,7 @@ class Monstruo:
         self.tile = [self.tile_x, self.tile_y]
         self.en_combate_con = None
         self.ultimo_ataque = 0.0
+        self.volviendo_casa = False
         self.panico = False
         self.panico_hasta = 0.0
         self.dano_jugador = 0

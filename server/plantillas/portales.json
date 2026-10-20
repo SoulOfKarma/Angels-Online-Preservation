@@ -17892,6 +17892,662 @@
     "preguntar": false,
     "nota": "Salida de Chaos-End Time a Rainbow Town (Tag 61)."
    }
+  ],
+  "200": [
+   {
+    "entity": 70200000,
+    "tile": [
+     128,
+     128
+    ],
+    "destino": 8,
+    "llegada": [
+     103,
+     180
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Del mapa del cliente: map200.mpc, objeto 60001 en esa casilla, evento 1, que hace CHANGE_MAP(8, 30). Llegada (103, 180): la mas despejada de las 3 del TAG. Las casillas del TAG son [(103, 180), (92, 173), (97, 177)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
+   },
+   {
+    "entity": 70200001,
+    "tile": [
+     38,
+     106
+    ],
+    "destino": 8,
+    "llegada": [
+     103,
+     180
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Del mapa del cliente: map200.mpc, objeto 60001 en esa casilla, evento 1, que hace CHANGE_MAP(8, 30). Llegada (103, 180): la mas despejada de las 3 del TAG. Las casillas del TAG son [(103, 180), (92, 173), (97, 177)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
+   },
+   {
+    "entity": 70200002,
+    "tile": [
+     138,
+     21
+    ],
+    "destino": 8,
+    "llegada": [
+     103,
+     180
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Del mapa del cliente: map200.mpc, objeto 60001 en esa casilla, evento 1, que hace CHANGE_MAP(8, 30). Llegada (103, 180): la mas despejada de las 3 del TAG. Las casillas del TAG son [(103, 180), (92, 173), (97, 177)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
+   },
+   {
+    "entity": 70200003,
+    "tile": [
+     304,
+     80
+    ],
+    "destino": 8,
+    "llegada": [
+     103,
+     180
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Del mapa del cliente: map200.mpc, objeto 60001 en esa casilla, evento 1, que hace CHANGE_MAP(8, 30). Llegada (103, 180): la mas despejada de las 3 del TAG. Las casillas del TAG son [(103, 180), (92, 173), (97, 177)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
+   },
+   {
+    "entity": 70200004,
+    "tile": [
+     199,
+     172
+    ],
+    "destino": 8,
+    "llegada": [
+     103,
+     180
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Del mapa del cliente: map200.mpc, objeto 60001 en esa casilla, evento 1, que hace CHANGE_MAP(8, 30). Llegada (103, 180): la mas despejada de las 3 del TAG. Las casillas del TAG son [(103, 180), (92, 173), (97, 177)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
+   }
+  ],
+  "201": [
+   {
+    "entity": 70201000,
+    "tile": [
+     128,
+     128
+    ],
+    "destino": 9,
+    "llegada": [
+     145,
+     108
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Del mapa del cliente: map201.mpc, objeto 60001 en esa casilla, evento 1, que hace CHANGE_MAP(9, 30). Llegada (145, 108): la mas despejada de las 3 del TAG. Las casillas del TAG son [(145, 108), (153, 103), (139, 101)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
+   },
+   {
+    "entity": 70201001,
+    "tile": [
+     38,
+     106
+    ],
+    "destino": 9,
+    "llegada": [
+     145,
+     108
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Del mapa del cliente: map201.mpc, objeto 60001 en esa casilla, evento 1, que hace CHANGE_MAP(9, 30). Llegada (145, 108): la mas despejada de las 3 del TAG. Las casillas del TAG son [(145, 108), (153, 103), (139, 101)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
+   },
+   {
+    "entity": 70201002,
+    "tile": [
+     138,
+     21
+    ],
+    "destino": 9,
+    "llegada": [
+     145,
+     108
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Del mapa del cliente: map201.mpc, objeto 60001 en esa casilla, evento 1, que hace CHANGE_MAP(9, 30). Llegada (145, 108): la mas despejada de las 3 del TAG. Las casillas del TAG son [(145, 108), (153, 103), (139, 101)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
+   },
+   {
+    "entity": 70201003,
+    "tile": [
+     304,
+     80
+    ],
+    "destino": 9,
+    "llegada": [
+     145,
+     108
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Del mapa del cliente: map201.mpc, objeto 60001 en esa casilla, evento 1, que hace CHANGE_MAP(9, 30). Llegada (145, 108): la mas despejada de las 3 del TAG. Las casillas del TAG son [(145, 108), (153, 103), (139, 101)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
+   },
+   {
+    "entity": 70201004,
+    "tile": [
+     199,
+     172
+    ],
+    "destino": 9,
+    "llegada": [
+     145,
+     108
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Del mapa del cliente: map201.mpc, objeto 60001 en esa casilla, evento 1, que hace CHANGE_MAP(9, 30). Llegada (145, 108): la mas despejada de las 3 del TAG. Las casillas del TAG son [(145, 108), (153, 103), (139, 101)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
+   }
+  ],
+  "202": [
+   {
+    "entity": 70202000,
+    "tile": [
+     128,
+     128
+    ],
+    "destino": 11,
+    "llegada": [
+     187,
+     62
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Del mapa del cliente: map202.mpc, objeto 60001 en esa casilla, evento 1, que hace CHANGE_MAP(11, 30). Llegada (187, 62): la mas despejada de las 3 del TAG. Las casillas del TAG son [(187, 62), (200, 63), (188, 54)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
+   },
+   {
+    "entity": 70202001,
+    "tile": [
+     38,
+     106
+    ],
+    "destino": 11,
+    "llegada": [
+     187,
+     62
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Del mapa del cliente: map202.mpc, objeto 60001 en esa casilla, evento 1, que hace CHANGE_MAP(11, 30). Llegada (187, 62): la mas despejada de las 3 del TAG. Las casillas del TAG son [(187, 62), (200, 63), (188, 54)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
+   },
+   {
+    "entity": 70202002,
+    "tile": [
+     138,
+     21
+    ],
+    "destino": 11,
+    "llegada": [
+     187,
+     62
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Del mapa del cliente: map202.mpc, objeto 60001 en esa casilla, evento 1, que hace CHANGE_MAP(11, 30). Llegada (187, 62): la mas despejada de las 3 del TAG. Las casillas del TAG son [(187, 62), (200, 63), (188, 54)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
+   },
+   {
+    "entity": 70202003,
+    "tile": [
+     304,
+     80
+    ],
+    "destino": 11,
+    "llegada": [
+     187,
+     62
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Del mapa del cliente: map202.mpc, objeto 60001 en esa casilla, evento 1, que hace CHANGE_MAP(11, 30). Llegada (187, 62): la mas despejada de las 3 del TAG. Las casillas del TAG son [(187, 62), (200, 63), (188, 54)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
+   },
+   {
+    "entity": 70202004,
+    "tile": [
+     199,
+     172
+    ],
+    "destino": 11,
+    "llegada": [
+     187,
+     62
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Del mapa del cliente: map202.mpc, objeto 60001 en esa casilla, evento 1, que hace CHANGE_MAP(11, 30). Llegada (187, 62): la mas despejada de las 3 del TAG. Las casillas del TAG son [(187, 62), (200, 63), (188, 54)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
+   }
+  ],
+  "203": [
+   {
+    "entity": 70203000,
+    "tile": [
+     128,
+     128
+    ],
+    "destino": 12,
+    "llegada": [
+     283,
+     9
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Del mapa del cliente: map203.mpc, objeto 60001 en esa casilla, evento 1, que hace CHANGE_MAP(12, 30). Llegada (283, 9): la mas despejada de las 3 del TAG. Las casillas del TAG son [(284, 18), (283, 9), (293, 16)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
+   },
+   {
+    "entity": 70203001,
+    "tile": [
+     38,
+     106
+    ],
+    "destino": 12,
+    "llegada": [
+     283,
+     9
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Del mapa del cliente: map203.mpc, objeto 60001 en esa casilla, evento 1, que hace CHANGE_MAP(12, 30). Llegada (283, 9): la mas despejada de las 3 del TAG. Las casillas del TAG son [(284, 18), (283, 9), (293, 16)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
+   },
+   {
+    "entity": 70203002,
+    "tile": [
+     138,
+     21
+    ],
+    "destino": 12,
+    "llegada": [
+     283,
+     9
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Del mapa del cliente: map203.mpc, objeto 60001 en esa casilla, evento 1, que hace CHANGE_MAP(12, 30). Llegada (283, 9): la mas despejada de las 3 del TAG. Las casillas del TAG son [(284, 18), (283, 9), (293, 16)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
+   },
+   {
+    "entity": 70203003,
+    "tile": [
+     304,
+     80
+    ],
+    "destino": 12,
+    "llegada": [
+     283,
+     9
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Del mapa del cliente: map203.mpc, objeto 60001 en esa casilla, evento 1, que hace CHANGE_MAP(12, 30). Llegada (283, 9): la mas despejada de las 3 del TAG. Las casillas del TAG son [(284, 18), (283, 9), (293, 16)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
+   },
+   {
+    "entity": 70203004,
+    "tile": [
+     199,
+     172
+    ],
+    "destino": 12,
+    "llegada": [
+     283,
+     9
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Del mapa del cliente: map203.mpc, objeto 60001 en esa casilla, evento 1, que hace CHANGE_MAP(12, 30). Llegada (283, 9): la mas despejada de las 3 del TAG. Las casillas del TAG son [(284, 18), (283, 9), (293, 16)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
+   }
+  ],
+  "204": [
+   {
+    "entity": 70204000,
+    "tile": [
+     128,
+     128
+    ],
+    "destino": 15,
+    "llegada": [
+     144,
+     158
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Del mapa del cliente: map204.mpc, objeto 60001 en esa casilla, evento 1, que hace CHANGE_MAP(15, 30). Llegada (144, 158): la mas despejada de las 3 del TAG. Las casillas del TAG son [(144, 158), (153, 152), (146, 152)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
+   },
+   {
+    "entity": 70204001,
+    "tile": [
+     38,
+     106
+    ],
+    "destino": 15,
+    "llegada": [
+     144,
+     158
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Del mapa del cliente: map204.mpc, objeto 60001 en esa casilla, evento 1, que hace CHANGE_MAP(15, 30). Llegada (144, 158): la mas despejada de las 3 del TAG. Las casillas del TAG son [(144, 158), (153, 152), (146, 152)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
+   },
+   {
+    "entity": 70204002,
+    "tile": [
+     138,
+     21
+    ],
+    "destino": 15,
+    "llegada": [
+     144,
+     158
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Del mapa del cliente: map204.mpc, objeto 60001 en esa casilla, evento 1, que hace CHANGE_MAP(15, 30). Llegada (144, 158): la mas despejada de las 3 del TAG. Las casillas del TAG son [(144, 158), (153, 152), (146, 152)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
+   },
+   {
+    "entity": 70204003,
+    "tile": [
+     304,
+     80
+    ],
+    "destino": 15,
+    "llegada": [
+     144,
+     158
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Del mapa del cliente: map204.mpc, objeto 60001 en esa casilla, evento 1, que hace CHANGE_MAP(15, 30). Llegada (144, 158): la mas despejada de las 3 del TAG. Las casillas del TAG son [(144, 158), (153, 152), (146, 152)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
+   },
+   {
+    "entity": 70204004,
+    "tile": [
+     199,
+     172
+    ],
+    "destino": 15,
+    "llegada": [
+     144,
+     158
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Del mapa del cliente: map204.mpc, objeto 60001 en esa casilla, evento 1, que hace CHANGE_MAP(15, 30). Llegada (144, 158): la mas despejada de las 3 del TAG. Las casillas del TAG son [(144, 158), (153, 152), (146, 152)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
+   }
+  ],
+  "205": [
+   {
+    "entity": 70205000,
+    "tile": [
+     128,
+     128
+    ],
+    "destino": 16,
+    "llegada": [
+     153,
+     89
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Del mapa del cliente: map205.mpc, objeto 60001 en esa casilla, evento 1, que hace CHANGE_MAP(16, 30). Llegada (153, 89): la mas despejada de las 3 del TAG. Las casillas del TAG son [(157, 97), (170, 89), (153, 89)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
+   },
+   {
+    "entity": 70205001,
+    "tile": [
+     38,
+     106
+    ],
+    "destino": 16,
+    "llegada": [
+     153,
+     89
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Del mapa del cliente: map205.mpc, objeto 60001 en esa casilla, evento 1, que hace CHANGE_MAP(16, 30). Llegada (153, 89): la mas despejada de las 3 del TAG. Las casillas del TAG son [(157, 97), (170, 89), (153, 89)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
+   },
+   {
+    "entity": 70205002,
+    "tile": [
+     138,
+     21
+    ],
+    "destino": 16,
+    "llegada": [
+     153,
+     89
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Del mapa del cliente: map205.mpc, objeto 60001 en esa casilla, evento 1, que hace CHANGE_MAP(16, 30). Llegada (153, 89): la mas despejada de las 3 del TAG. Las casillas del TAG son [(157, 97), (170, 89), (153, 89)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
+   },
+   {
+    "entity": 70205003,
+    "tile": [
+     304,
+     80
+    ],
+    "destino": 16,
+    "llegada": [
+     153,
+     89
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Del mapa del cliente: map205.mpc, objeto 60001 en esa casilla, evento 1, que hace CHANGE_MAP(16, 30). Llegada (153, 89): la mas despejada de las 3 del TAG. Las casillas del TAG son [(157, 97), (170, 89), (153, 89)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
+   },
+   {
+    "entity": 70205004,
+    "tile": [
+     199,
+     172
+    ],
+    "destino": 16,
+    "llegada": [
+     153,
+     89
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Del mapa del cliente: map205.mpc, objeto 60001 en esa casilla, evento 1, que hace CHANGE_MAP(16, 30). Llegada (153, 89): la mas despejada de las 3 del TAG. Las casillas del TAG son [(157, 97), (170, 89), (153, 89)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
+   }
+  ],
+  "206": [
+   {
+    "entity": 70206000,
+    "tile": [
+     128,
+     128
+    ],
+    "destino": 17,
+    "llegada": [
+     39,
+     96
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Del mapa del cliente: map206.mpc, objeto 60001 en esa casilla, evento 1, que hace CHANGE_MAP(17, 30). Llegada (39, 96): la mas despejada de las 3 del TAG. Las casillas del TAG son [(49, 101), (55, 93), (39, 96)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
+   },
+   {
+    "entity": 70206001,
+    "tile": [
+     38,
+     106
+    ],
+    "destino": 17,
+    "llegada": [
+     39,
+     96
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Del mapa del cliente: map206.mpc, objeto 60001 en esa casilla, evento 1, que hace CHANGE_MAP(17, 30). Llegada (39, 96): la mas despejada de las 3 del TAG. Las casillas del TAG son [(49, 101), (55, 93), (39, 96)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
+   },
+   {
+    "entity": 70206002,
+    "tile": [
+     138,
+     21
+    ],
+    "destino": 17,
+    "llegada": [
+     39,
+     96
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Del mapa del cliente: map206.mpc, objeto 60001 en esa casilla, evento 1, que hace CHANGE_MAP(17, 30). Llegada (39, 96): la mas despejada de las 3 del TAG. Las casillas del TAG son [(49, 101), (55, 93), (39, 96)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
+   },
+   {
+    "entity": 70206003,
+    "tile": [
+     304,
+     80
+    ],
+    "destino": 17,
+    "llegada": [
+     39,
+     96
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Del mapa del cliente: map206.mpc, objeto 60001 en esa casilla, evento 1, que hace CHANGE_MAP(17, 30). Llegada (39, 96): la mas despejada de las 3 del TAG. Las casillas del TAG son [(49, 101), (55, 93), (39, 96)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
+   },
+   {
+    "entity": 70206004,
+    "tile": [
+     199,
+     172
+    ],
+    "destino": 17,
+    "llegada": [
+     39,
+     96
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Del mapa del cliente: map206.mpc, objeto 60001 en esa casilla, evento 1, que hace CHANGE_MAP(17, 30). Llegada (39, 96): la mas despejada de las 3 del TAG. Las casillas del TAG son [(49, 101), (55, 93), (39, 96)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
+   }
+  ],
+  "207": [
+   {
+    "entity": 70207000,
+    "tile": [
+     128,
+     128
+    ],
+    "destino": 21,
+    "llegada": [
+     161,
+     105
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Del mapa del cliente: map207.mpc, objeto 60001 en esa casilla, evento 1, que hace CHANGE_MAP(21, 30). Llegada (161, 105): la mas despejada de las 3 del TAG. Las casillas del TAG son [(151, 110), (161, 105), (150, 100)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
+   },
+   {
+    "entity": 70207001,
+    "tile": [
+     38,
+     106
+    ],
+    "destino": 21,
+    "llegada": [
+     161,
+     105
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Del mapa del cliente: map207.mpc, objeto 60001 en esa casilla, evento 1, que hace CHANGE_MAP(21, 30). Llegada (161, 105): la mas despejada de las 3 del TAG. Las casillas del TAG son [(151, 110), (161, 105), (150, 100)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
+   },
+   {
+    "entity": 70207002,
+    "tile": [
+     138,
+     21
+    ],
+    "destino": 21,
+    "llegada": [
+     161,
+     105
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Del mapa del cliente: map207.mpc, objeto 60001 en esa casilla, evento 1, que hace CHANGE_MAP(21, 30). Llegada (161, 105): la mas despejada de las 3 del TAG. Las casillas del TAG son [(151, 110), (161, 105), (150, 100)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
+   },
+   {
+    "entity": 70207003,
+    "tile": [
+     304,
+     80
+    ],
+    "destino": 21,
+    "llegada": [
+     161,
+     105
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Del mapa del cliente: map207.mpc, objeto 60001 en esa casilla, evento 1, que hace CHANGE_MAP(21, 30). Llegada (161, 105): la mas despejada de las 3 del TAG. Las casillas del TAG son [(151, 110), (161, 105), (150, 100)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
+   },
+   {
+    "entity": 70207004,
+    "tile": [
+     199,
+     172
+    ],
+    "destino": 21,
+    "llegada": [
+     161,
+     105
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Del mapa del cliente: map207.mpc, objeto 60001 en esa casilla, evento 1, que hace CHANGE_MAP(21, 30). Llegada (161, 105): la mas despejada de las 3 del TAG. Las casillas del TAG son [(151, 110), (161, 105), (150, 100)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
+   }
   ]
  },
  "sprite": 60001,

@@ -349,6 +349,13 @@ def al_entrar_jugador(ses, mundos):
     cid = _char_id(ses)
     if not cid:
         return
+    # Los territorios (0x0131): con ellos el cliente rellena el "Terra:" de la
+    # ficha y el mapa del mundo. Solo se mandaban al acabar la Totem War.
+    try:
+        import totem_war as _tw_t
+        ses.enviar(_tw_t.paquete_territorios())
+    except Exception:
+        log.debug('territorios al entrar', exc_info=True)
     g = obtener_gremio_de(cid)
     if g:
         rango = _rango_de(g, cid)
@@ -458,6 +465,17 @@ def procesar_crear_gremio(ses, cuerpo: bytes, mundos):
         ses.volcar()
 
 
+MSG_FACCION_DISTINTA = 746
+MSG_LIGA_SIN_FACCION = 2141
+# Codigos de login.CODIGO_FACCION: 1 Aurora, 2 Beasts, 3 Steel, 4 Shadow.
+FACCIONES_DE_LIGA = (1, 2, 3, 4)
+
+
+def faccion_de(personaje):
+    import login as _lg
+    return int(_lg.CODIGO_FACCION.get(getattr(personaje, 'faction', '') or '', 5))
+
+
 def procesar_invitar_gremio(ses, cuerpo: bytes, mundos):
     """C2S 0x0042: [target_name (17B)]."""
     cid = _char_id(ses)
@@ -493,6 +511,19 @@ def procesar_invitar_gremio(ses, cuerpo: bytes, mundos):
     target_cid = _char_id(target_ses)
     if obtener_gremio_de(target_cid):
         ses.enviar(clases.aviso("The target is already in a league.", tipo=0))
+        return
+
+    # LA LIGA ES DE UNA FACCION: la de sus miembros. Textos del cliente
+    # (string.xml): 2141 "Unable to invite other players because the league
+    # is not in any faction." y 746 "%s is unable to join the league because
+    # of the different factions." (KarmaV3 de Beasts invito a KarmaV4 de
+    # Aurora y se envio igual, 20/10/2026).
+    f_liga, f_otro = faccion_de(p), faccion_de(target_ses.personaje)
+    if f_liga not in FACCIONES_DE_LIGA:
+        ses.enviar(clases.aviso('', tipo=0, msg_id=MSG_LIGA_SIN_FACCION))
+        return
+    if f_otro != f_liga:
+        ses.enviar(clases.aviso(target_name, tipo=0, msg_id=MSG_FACCION_DISTINTA))
         return
 
     # El limite depende del nivel, como en la ficha del cliente.
@@ -543,6 +574,12 @@ def procesar_comando_gremio(ses, cuerpo: bytes, mundos):
             if not g:
                 return
             if obtener_gremio_de(cid):
+                return
+            # Por si cambio de faccion entre la invitacion y la respuesta.
+            _lider = next((s for s in mundos
+                           if _char_id(s) == inv.get('inviter_cid')), None)
+            if _lider is not None and faccion_de(_lider.personaje) != faccion_de(p):
+                ses.enviar(clases.aviso(p.nombre, tipo=0, msg_id=MSG_FACCION_DISTINTA))
                 return
             if len(cuentas.db_obtener_miembros_gremio(gid)) >= limite_miembros(g.get('nivel', 1)):
                 ses.enviar(clases.aviso("The league is full.", tipo=0))

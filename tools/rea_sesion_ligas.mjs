@@ -19,8 +19,9 @@ const directory = resolve('docs/rea_evidence');
 await mkdir(directory, { recursive: true });
 console.log('REA_CONNECTED');
 let opened = false;
+const input = createInterface({ input: process.stdin, terminal: false });
 try {
-  for await (const line of createInterface({ input: process.stdin, terminal: false })) {
+  for await (const line of input) {
     if (!line.trim()) continue;
     const request = JSON.parse(line);
     if (request.name === 'exit') break;
@@ -32,18 +33,21 @@ try {
     }
     try {
       const result = await client.callTool({ name: request.name, arguments: request.arguments ?? {} },
-        undefined, { timeout: 600000, maxTotalTimeout: 1200000, resetTimeoutOnProgress: true });
+        { timeout: 600000, maxTotalTimeout: 1200000, resetTimeoutOnProgress: true });
       if (request.name === 'open_binary' && !result.isError) opened = true;
       if (request.name === 'close_binary' && !result.isError) opened = false;
       const file = `${Date.now()}_${request.name.replace(/[^a-z0-9_]/gi, '')}.json`;
       await writeFile(resolve(directory, file), JSON.stringify({ request, result }), { flag: 'wx' });
       const value = result.structuredContent ?? result.content;
-      console.log(JSON.stringify({ file, isError: result.isError, value }));
+      console.log(JSON.stringify({ file, isError: result.isError,
+        evidence_id: value?.evidence_id,
+        value: value?.normalized_result ?? value }));
     } catch (error) {
       console.log(JSON.stringify({ error: String(error) }));
     }
   }
 } finally {
+  input.close();
   if (opened) {
     const result = await client.callTool({ name: 'close_binary', arguments: {} });
     console.log(JSON.stringify({ closed: result }));

@@ -369,6 +369,15 @@ def evaluar(numero, parms, ctx):
         return ctx.permiso_liga(_p(parms, 0))
     if numero == 34:                                    # GUILD_LEVEL(cmp, nivel)
         return _cmp(_p(parms, 0), ctx.nivel_liga(), _p(parms, 1))
+    if numero == 32:                                    # IS_PVP_ON(): hay Totem War
+        import totem_war as _tw_e
+        return _tw_e.activa()
+    if numero == 75:                                    # SPEC_MAP_OWN_ALIGNMENT(tw_stage)
+        import totem_war as _tw_e
+        f = _tw_e.faccion_duena(_p(parms, 0))
+        return bool(f) and f == ctx.faccion()
+    if numero == 77:                                    # PVP_IS_GUARD_OWNER(n): sin guardias
+        return False
     if numero == 76:                                    # SPEC_MAP_OWN_GUILD(tw_stage)
         return ctx.liga_posee_territorio(_p(parms, 0))
     if numero == 82:                                    # GUILD_MEMBER_TIME(segundos)
@@ -471,6 +480,15 @@ def traducir(numero, parms):
     if numero == 21:
         return ('npc', _p(parms, 0), _p(parms, 1), _p(parms, 2),
                 _p(parms, 3), _p(parms, 4))
+    if numero == 16:
+        # REBORN: revivir alli mismo (el totem de tu faccion en la arena TW).
+        return ('revivir', _p(parms, 0))
+    if numero == 69:
+        # MAKE_REVENGE_DNA_MONSTER(tipo, evento, ?, segundos, tag): un monstruo
+        # en el TAG un rato, y al morir salta `evento`. Los cuatro "Chest
+        # Containing Pieces" (8206) del Pharaoh's Book de Unknown Chambers,
+        # cuyo evento 94601 da la pieza 22667 de la mision 946.
+        return ('monstruo_evento', _p(parms, 0), _p(parms, 1), _p(parms, 3), _p(parms, 4))
     if numero == 22:
         # OPEN_BANK(tipo): 0 personal, 1 liga. Usado por el Governor de Areas 50/100/117/377.
         return ('abrir_banco', _p(parms, 0))
@@ -541,6 +559,11 @@ def traducir(numero, parms):
         return ('casa_abrir_voto',)
     if numero == 95:
         return ('casa_ver_notas',)
+    if numero == 59:
+        # EVENT_ACT_HITPARADE: el cartel "Rank List" de las ciudades (en
+        # Breeze Woods es el evento 3 del mapa). Abre WND_HITPARADEWIN; ver
+        # ranking.py.
+        return ('abrir_ranking',)
     if numero == 96:
         return ('casa_hitparade',)
     if numero == 104:
@@ -552,7 +575,7 @@ def traducir(numero, parms):
 SE_TRADUCEN = frozenset((1, 3, 4, 7, 8, 9, 10, 12, 13, 14, 18, 19, 20, 21, 22, 24,
                          25, 34, 37, 29, 30, 31, 33, 36, 39, 41, 42, 47, 50, 51, 52, 53,
                          54, 55, 56, 57, 60, 63, 67, 70, 72, 78, 81,
-                         89, 90, 91, 92, 93, 94, 95, 96, 104))
+                         16, 59, 69, 89, 90, 91, 92, 93, 94, 95, 96, 104))
 def _alguna(condiciones, ctx):
     for c in condiciones:
         r = evaluar(c[0], c[1], ctx)

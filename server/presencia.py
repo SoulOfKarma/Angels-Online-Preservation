@@ -279,6 +279,9 @@ def clave_de_mapa(ses, stage):
     # Stage 500 is a parallel house space.  Players only share visibility
     # when they are visiting the same owner's house; otherwise every house
     # would leak into the same room.
+    import territorios_liga
+    if int(stage) in territorios_liga.AREAS:
+        return territorios_liga.clave(ses, stage)
     if int(stage) == 501:
         import granja_liga
         return granja_liga.clave(ses)

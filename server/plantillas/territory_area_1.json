@@ -1,0 +1,1494 @@
+{
+ "_nota": "territory_area_1 (stage 50). POBLADO DESDE EL CLIENTE, no desde una captura: los generadores de monstruos son objetos del propio map050.mpc -- el monstruo en el u16 del +34, la zona en el +21, el tiempo en el +38 y cuantos en el +42. Eso da el censo COMPLETO del mapa, que una captura no puede dar porque solo trae lo que estuvo a la vista. El entity_id es fabricado y estable, no el del servidor. Las casillas son las del TAG de cada generador; los que no declaran TAG ponen sus monstruos en la casilla del generador y en un anillo de radio 3 a su alrededor, que es la dispersion MEDIDA en el stage 73. Los objetos de mapa son los del .mpc cuyo id esta en la lista de los que el servidor manda de verdad, con el cuerpo del 0x000E copiado de una captura del mismo objeto. Los tornados se dibujan aparte, desde portales.json. Ver tools/poblar_del_cliente.py.",
+ "stage": 50,
+ "spawns": [
+  {
+   "entity_id": 55000000,
+   "nombre": "Busy Jackstraw",
+   "npc_type": 708,
+   "sprite": 42004,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    76,
+    60
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 55000001,
+   "nombre": "Busy Jackstraw",
+   "npc_type": 708,
+   "sprite": 42004,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    87,
+    53
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 55000002,
+   "nombre": "Busy Jackstraw",
+   "npc_type": 708,
+   "sprite": 42004,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    65,
+    60
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 55000003,
+   "nombre": "Evil Slarm",
+   "npc_type": 699,
+   "sprite": 42036,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    121,
+    86
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 15
+  },
+  {
+   "entity_id": 55000004,
+   "nombre": "Evil Slarm",
+   "npc_type": 699,
+   "sprite": 42036,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    116,
+    81
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 15
+  },
+  {
+   "entity_id": 55000005,
+   "nombre": "Evil Slarm",
+   "npc_type": 699,
+   "sprite": 42036,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    116,
+    86
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 15
+  },
+  {
+   "entity_id": 55000006,
+   "nombre": "Evil Slarm",
+   "npc_type": 699,
+   "sprite": 42036,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    121,
+    81
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 15
+  },
+  {
+   "entity_id": 55000007,
+   "nombre": "Evil Slarm",
+   "npc_type": 699,
+   "sprite": 42036,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    126,
+    84
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 15
+  },
+  {
+   "entity_id": 55000008,
+   "nombre": "One-eyed Bat",
+   "npc_type": 700,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    105,
+    86
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 24
+  },
+  {
+   "entity_id": 55000009,
+   "nombre": "One-eyed Bat",
+   "npc_type": 700,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    100,
+    82
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 24
+  },
+  {
+   "entity_id": 55000010,
+   "nombre": "One-eyed Bat",
+   "npc_type": 700,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    100,
+    87
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 24
+  },
+  {
+   "entity_id": 55000011,
+   "nombre": "One-eyed Bat",
+   "npc_type": 700,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    105,
+    81
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 24
+  },
+  {
+   "entity_id": 55000012,
+   "nombre": "One-eyed Bat",
+   "npc_type": 700,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    110,
+    83
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 24
+  },
+  {
+   "entity_id": 55000013,
+   "nombre": "Evil Slarm",
+   "npc_type": 699,
+   "sprite": 42036,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    50,
+    64
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 15
+  },
+  {
+   "entity_id": 55000014,
+   "nombre": "Evil Slarm",
+   "npc_type": 699,
+   "sprite": 42036,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    45,
+    59
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 15
+  },
+  {
+   "entity_id": 55000015,
+   "nombre": "Evil Slarm",
+   "npc_type": 699,
+   "sprite": 42036,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    45,
+    64
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 15
+  },
+  {
+   "entity_id": 55000016,
+   "nombre": "Evil Slarm",
+   "npc_type": 699,
+   "sprite": 42036,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    45,
+    69
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 15
+  },
+  {
+   "entity_id": 55000017,
+   "nombre": "Evil Slarm",
+   "npc_type": 699,
+   "sprite": 42036,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    50,
+    59
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 15
+  },
+  {
+   "entity_id": 55000018,
+   "nombre": "One-eyed Bat",
+   "npc_type": 700,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    78,
+    54
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 24
+  },
+  {
+   "entity_id": 55000019,
+   "nombre": "One-eyed Bat",
+   "npc_type": 700,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    73,
+    51
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 24
+  },
+  {
+   "entity_id": 55000020,
+   "nombre": "One-eyed Bat",
+   "npc_type": 700,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    78,
+    49
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 24
+  },
+  {
+   "entity_id": 55000021,
+   "nombre": "One-eyed Bat",
+   "npc_type": 700,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    81,
+    59
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 24
+  },
+  {
+   "entity_id": 55000022,
+   "nombre": "One-eyed Bat",
+   "npc_type": 700,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    83,
+    48
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 24
+  },
+  {
+   "entity_id": 55000023,
+   "nombre": "Evil Slarm",
+   "npc_type": 699,
+   "sprite": 42036,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    78,
+    8
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 15
+  },
+  {
+   "entity_id": 55000024,
+   "nombre": "Evil Slarm",
+   "npc_type": 699,
+   "sprite": 42036,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    73,
+    3
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 15
+  },
+  {
+   "entity_id": 55000025,
+   "nombre": "Evil Slarm",
+   "npc_type": 699,
+   "sprite": 42036,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    73,
+    8
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 15
+  },
+  {
+   "entity_id": 55000026,
+   "nombre": "Evil Slarm",
+   "npc_type": 699,
+   "sprite": 42036,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    83,
+    5
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 15
+  },
+  {
+   "entity_id": 55000027,
+   "nombre": "Evil Slarm",
+   "npc_type": 699,
+   "sprite": 42036,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    83,
+    10
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 15
+  },
+  {
+   "entity_id": 55000028,
+   "nombre": "One-eyed Bat",
+   "npc_type": 700,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    67,
+    10
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 24
+  },
+  {
+   "entity_id": 55000029,
+   "nombre": "One-eyed Bat",
+   "npc_type": 700,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    62,
+    11
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 24
+  },
+  {
+   "entity_id": 55000030,
+   "nombre": "One-eyed Bat",
+   "npc_type": 700,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    63,
+    5
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 24
+  },
+  {
+   "entity_id": 55000031,
+   "nombre": "One-eyed Bat",
+   "npc_type": 700,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    68,
+    5
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 24
+  },
+  {
+   "entity_id": 55000032,
+   "nombre": "One-eyed Bat",
+   "npc_type": 700,
+   "sprite": 42014,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    72,
+    13
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 24
+  },
+  {
+   "entity_id": 55000033,
+   "nombre": "Azrael Leader",
+   "npc_type": 707,
+   "sprite": 42207,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    11,
+    25
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 63
+  },
+  {
+   "entity_id": 55000034,
+   "nombre": "Savage Priest",
+   "npc_type": 704,
+   "sprite": 42088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    103,
+    37
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 48
+  },
+  {
+   "entity_id": 55000035,
+   "nombre": "Savage Priest",
+   "npc_type": 704,
+   "sprite": 42088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    98,
+    32
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 48
+  },
+  {
+   "entity_id": 55000036,
+   "nombre": "Savage Priest",
+   "npc_type": 704,
+   "sprite": 42088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    122,
+    17
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 48
+  },
+  {
+   "entity_id": 55000037,
+   "nombre": "Savage Priest",
+   "npc_type": 704,
+   "sprite": 42088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    117,
+    12
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 48
+  },
+  {
+   "entity_id": 55000038,
+   "nombre": "Savage Priest",
+   "npc_type": 704,
+   "sprite": 42088,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    117,
+    17
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 48
+  },
+  {
+   "entity_id": 55000039,
+   "nombre": "Tree Elf",
+   "npc_type": 703,
+   "sprite": 42044,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    107,
+    29
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 43
+  },
+  {
+   "entity_id": 55000040,
+   "nombre": "Tree Elf",
+   "npc_type": 703,
+   "sprite": 42044,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    102,
+    24
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 43
+  },
+  {
+   "entity_id": 55000041,
+   "nombre": "Tree Elf",
+   "npc_type": 703,
+   "sprite": 42044,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    107,
+    24
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 43
+  },
+  {
+   "entity_id": 55000042,
+   "nombre": "Dark Fungus",
+   "npc_type": 701,
+   "sprite": 42165,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    79,
+    79
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 35
+  },
+  {
+   "entity_id": 55000043,
+   "nombre": "Dark Fungus",
+   "npc_type": 701,
+   "sprite": 42165,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    74,
+    74
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 35
+  },
+  {
+   "entity_id": 55000044,
+   "nombre": "Dark Fungus",
+   "npc_type": 701,
+   "sprite": 42165,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    74,
+    79
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 35
+  },
+  {
+   "entity_id": 55000045,
+   "nombre": "Dark Fungus",
+   "npc_type": 701,
+   "sprite": 42165,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    40,
+    67
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 35
+  },
+  {
+   "entity_id": 55000046,
+   "nombre": "Dark Fungus",
+   "npc_type": 701,
+   "sprite": 42165,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    37,
+    72
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 35
+  },
+  {
+   "entity_id": 55000047,
+   "nombre": "Tree Elf",
+   "npc_type": 703,
+   "sprite": 42044,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    124,
+    12
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 43
+  },
+  {
+   "entity_id": 55000048,
+   "nombre": "Tree Elf",
+   "npc_type": 703,
+   "sprite": 42044,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    127,
+    17
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 43
+  },
+  {
+   "entity_id": 55000049,
+   "nombre": "Wild Lizardman",
+   "npc_type": 702,
+   "sprite": 42173,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    64,
+    78
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 38
+  },
+  {
+   "entity_id": 55000050,
+   "nombre": "Wild Lizardman",
+   "npc_type": 702,
+   "sprite": 42173,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    59,
+    73
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 38
+  },
+  {
+   "entity_id": 55000051,
+   "nombre": "Wild Lizardman",
+   "npc_type": 702,
+   "sprite": 42173,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    32,
+    75
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 38
+  },
+  {
+   "entity_id": 55000052,
+   "nombre": "Wild Lizardman",
+   "npc_type": 702,
+   "sprite": 42173,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    27,
+    71
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 38
+  },
+  {
+   "entity_id": 55000053,
+   "nombre": "Wild Lizardman",
+   "npc_type": 702,
+   "sprite": 42173,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    27,
+    76
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 38
+  },
+  {
+   "entity_id": 55000054,
+   "nombre": "Evil Wind Elf",
+   "npc_type": 705,
+   "sprite": 42059,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    40,
+    25
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 53
+  },
+  {
+   "entity_id": 55000055,
+   "nombre": "Evil Wind Elf",
+   "npc_type": 705,
+   "sprite": 42059,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    35,
+    20
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 53
+  },
+  {
+   "entity_id": 55000056,
+   "nombre": "Evil Wind Elf",
+   "npc_type": 705,
+   "sprite": 42059,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    35,
+    25
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 53
+  },
+  {
+   "entity_id": 55000057,
+   "nombre": "Mirror Elf",
+   "npc_type": 706,
+   "sprite": 42061,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    30,
+    23
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 55
+  },
+  {
+   "entity_id": 55000058,
+   "nombre": "Mirror Elf",
+   "npc_type": 706,
+   "sprite": 42061,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    29,
+    28
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 55
+  },
+  {
+   "entity_id": 55000059,
+   "nombre": "Evil Wind Elf",
+   "npc_type": 705,
+   "sprite": 42059,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    19,
+    22
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 53
+  },
+  {
+   "entity_id": 55000060,
+   "nombre": "Evil Wind Elf",
+   "npc_type": 705,
+   "sprite": 42059,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    14,
+    17
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 53
+  },
+  {
+   "entity_id": 55000061,
+   "nombre": "Mirror Elf",
+   "npc_type": 706,
+   "sprite": 42061,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    16,
+    27
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 55
+  },
+  {
+   "entity_id": 55000062,
+   "nombre": "Mirror Elf",
+   "npc_type": 706,
+   "sprite": 42061,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    9,
+    18
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 55
+  }
+ ],
+ "recursos": [
+  {
+   "entity_id": 102187,
+   "sprite": 60159,
+   "capa": 0,
+   "px": [
+    4619,
+    2829
+   ],
+   "tile": [
+    144,
+    88
+   ],
+   "crudo": "2b8f0100000000000b1200000d0b00000000000027000000000000001a000000dc06ffea00000000000000",
+   "copiado_de": "mundo_130341_992186_orden.jsonl",
+   "nombre_visible": "Obsidian",
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 102188,
+   "sprite": 60159,
+   "capa": 0,
+   "px": [
+    4515,
+    2555
+   ],
+   "tile": [
+    141,
+    79
+   ],
+   "crudo": "2c8f010000000000a3110000fb0900000000000027000000000000001a000000dc06ffea00000000000000",
+   "copiado_de": "mundo_130341_992186_orden.jsonl",
+   "nombre_visible": "Obsidian",
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 102189,
+   "sprite": 60161,
+   "capa": 2,
+   "px": [
+    1312,
+    2852
+   ],
+   "tile": [
+    41,
+    89
+   ],
+   "crudo": "2d8f01000200000020050000240b00000000000027000000000000001a000000dc0601eb00000000000000",
+   "copiado_de": "mundo_130341_992186_orden.jsonl",
+   "nombre_visible": "Steel",
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 102190,
+   "sprite": 60161,
+   "capa": 0,
+   "px": [
+    1138,
+    2708
+   ],
+   "tile": [
+    35,
+    84
+   ],
+   "crudo": "2e8f01000000000072040000940a00000000000027000000000000001a000000dc0601eb00000000000000",
+   "copiado_de": "mundo_130341_992186_orden.jsonl",
+   "nombre_visible": "Steel",
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 102191,
+   "sprite": 60166,
+   "capa": 0,
+   "px": [
+    2993,
+    439
+   ],
+   "tile": [
+    93,
+    13
+   ],
+   "crudo": "2f8f010000000000b10b0000b70100000000000027000000000000001a000000dc0606eb00000000000000",
+   "copiado_de": "mundo_130341_992186_orden.jsonl",
+   "nombre_visible": "Bauxite",
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 102192,
+   "sprite": 60166,
+   "capa": 2,
+   "px": [
+    2711,
+    354
+   ],
+   "tile": [
+    84,
+    11
+   ],
+   "crudo": "308f010002000000970a0000620100000000000027000000000000001a000000dc0606eb00000000000000",
+   "copiado_de": "mundo_130341_992186_orden.jsonl",
+   "nombre_visible": "Bauxite",
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000002"
+  },
+  {
+   "entity_id": 102193,
+   "sprite": 60183,
+   "capa": 0,
+   "px": [
+    3638,
+    2296
+   ],
+   "tile": [
+    113,
+    71
+   ],
+   "crudo": "318f010000000000360e0000f80800000000000027000000000000001a000000dc0617eb00000000000000",
+   "copiado_de": "mundo_130341_992186_orden.jsonl",
+   "nombre_visible": "Viburnum",
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 102194,
+   "sprite": 60183,
+   "capa": 2,
+   "px": [
+    3299,
+    2391
+   ],
+   "tile": [
+    103,
+    74
+   ],
+   "crudo": "328f010002000000e30c0000570900000000000027000000000000001a000000dc0617eb00000000000000",
+   "copiado_de": "mundo_130341_992186_orden.jsonl",
+   "nombre_visible": "Viburnum",
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 102195,
+   "sprite": 60124,
+   "capa": 2,
+   "px": [
+    2237,
+    2417
+   ],
+   "tile": [
+    69,
+    75
+   ],
+   "crudo": "338f010002000000bd080000710900000000000027000000000000001a000000dc06dcea00000000000000",
+   "copiado_de": "mundo_130341_992186_orden.jsonl",
+   "nombre_visible": "Melaleuca",
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 102196,
+   "sprite": 60124,
+   "capa": 0,
+   "px": [
+    2327,
+    2376
+   ],
+   "tile": [
+    72,
+    74
+   ],
+   "crudo": "348f01000000000017090000480900000000000027000000000000001a000000dc06dcea00000000000000",
+   "copiado_de": "mundo_130341_992186_orden.jsonl",
+   "nombre_visible": "Melaleuca",
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 102197,
+   "sprite": 60123,
+   "capa": 0,
+   "px": [
+    3758,
+    65
+   ],
+   "tile": [
+    117,
+    2
+   ],
+   "crudo": "358f010000000000ae0e0000410000000000000027000000000000001a000000dc06dbea00000000000000",
+   "copiado_de": "mundo_130341_992186_orden.jsonl",
+   "nombre_visible": "Wisteria",
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 102198,
+   "sprite": 60123,
+   "capa": 2,
+   "px": [
+    3471,
+    276
+   ],
+   "tile": [
+    108,
+    8
+   ],
+   "crudo": "368f0100020000008f0d0000140100000000000027000000000000001a000000dc06dbea00000000000000",
+   "copiado_de": "mundo_130341_992186_orden.jsonl",
+   "nombre_visible": "Wisteria",
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000001"
+  },
+  {
+   "entity_id": 102199,
+   "sprite": 60126,
+   "capa": 0,
+   "px": [
+    4332,
+    2879
+   ],
+   "tile": [
+    135,
+    89
+   ],
+   "crudo": "378f010000000000ec1000003f0b00000000000027000000000000001a000000dc06deea00000000000000",
+   "copiado_de": "mundo_130341_992186_orden.jsonl",
+   "nombre_visible": "Bright Bush",
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 102200,
+   "sprite": 60126,
+   "capa": 0,
+   "px": [
+    4432,
+    2729
+   ],
+   "tile": [
+    138,
+    85
+   ],
+   "crudo": "388f01000000000050110000a90a00000000000027000000000000001a000000dc06deea00000000000000",
+   "copiado_de": "mundo_130341_992186_orden.jsonl",
+   "nombre_visible": "Bright Bush",
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 102201,
+   "sprite": 60219,
+   "capa": 0,
+   "px": [
+    705,
+    2355
+   ],
+   "tile": [
+    22,
+    73
+   ],
+   "crudo": "398f010000000000c1020000330900000000000027000000000000001a000000dc063beb00000000000000",
+   "copiado_de": "mundo_130341_992186_orden.jsonl",
+   "nombre_visible": "Leafy Bush",
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 102202,
+   "sprite": 60219,
+   "capa": 2,
+   "px": [
+    1325,
+    2348
+   ],
+   "tile": [
+    41,
+    73
+   ],
+   "crudo": "3a8f0100020000002d0500002c0900000000000027000000000000001a000000dc063beb00000000000000",
+   "copiado_de": "mundo_130341_992186_orden.jsonl",
+   "nombre_visible": "Leafy Bush",
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 102203,
+   "sprite": 60220,
+   "capa": 2,
+   "px": [
+    4528,
+    382
+   ],
+   "tile": [
+    141,
+    11
+   ],
+   "crudo": "3b8f010002000000b01100007e0100000000000027000000000000001a000000dc063ceb00000000000000",
+   "copiado_de": "mundo_130341_992186_orden.jsonl",
+   "nombre_visible": "Angel Bush",
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 102204,
+   "sprite": 60220,
+   "capa": 2,
+   "px": [
+    3833,
+    250
+   ],
+   "tile": [
+    119,
+    7
+   ],
+   "crudo": "3c8f010002000000f90e0000fa0000000000000027000000000000001a000000dc063ceb00000000000000",
+   "copiado_de": "mundo_130341_992186_orden.jsonl",
+   "nombre_visible": "Angel Bush",
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 102205,
+   "sprite": 60202,
+   "capa": 2,
+   "px": [
+    3924,
+    2149
+   ],
+   "tile": [
+    122,
+    67
+   ],
+   "crudo": "3d8f010002000000540f0000650800000000000027000000000000001a000000dc062aeb00000000000000",
+   "copiado_de": "mundo_130341_992186_orden.jsonl",
+   "nombre_visible": "Bandit Den",
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 102206,
+   "sprite": 60202,
+   "capa": 2,
+   "px": [
+    4222,
+    2032
+   ],
+   "tile": [
+    131,
+    63
+   ],
+   "crudo": "3e8f0100020000007e100000f00700000000000027000000000000001a000000dc062aeb00000000000000",
+   "copiado_de": "mundo_130341_992186_orden.jsonl",
+   "nombre_visible": "Bandit Den",
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 102207,
+   "sprite": 60205,
+   "capa": 0,
+   "px": [
+    2114,
+    2727
+   ],
+   "tile": [
+    66,
+    85
+   ],
+   "crudo": "3f8f01000000000042080000a70a00000000000027000000000000001a000000dc062deb00000000000000",
+   "copiado_de": "mundo_130341_992186_orden.jsonl",
+   "nombre_visible": "Beastkin Den",
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 102208,
+   "sprite": 60205,
+   "capa": 2,
+   "px": [
+    1789,
+    2769
+   ],
+   "tile": [
+    55,
+    86
+   ],
+   "crudo": "408f010002000000fd060000d10a00000000000027000000000000001a000000dc062deb00000000000000",
+   "copiado_de": "mundo_130341_992186_orden.jsonl",
+   "nombre_visible": "Beastkin Den",
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 102209,
+   "sprite": 60204,
+   "capa": 2,
+   "px": [
+    2871,
+    849
+   ],
+   "tile": [
+    89,
+    26
+   ],
+   "crudo": "418f010002000000370b0000510300000000000027000000000000001a000000dc062ceb00000000000000",
+   "copiado_de": "mundo_130341_992186_orden.jsonl",
+   "nombre_visible": "Devil Den",
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 102210,
+   "sprite": 60204,
+   "capa": 0,
+   "px": [
+    3853,
+    975
+   ],
+   "tile": [
+    120,
+    30
+   ],
+   "crudo": "428f0100000000000d0f0000cf0300000000000027000000000000001a000000dc062ceb00000000000000",
+   "copiado_de": "mundo_130341_992186_orden.jsonl",
+   "nombre_visible": "Devil Den",
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000003"
+  },
+  {
+   "entity_id": 102211,
+   "sprite": 60075,
+   "capa": 0,
+   "px": [
+    3498,
+    2897
+   ],
+   "tile": [
+    109,
+    90
+   ],
+   "crudo": "438f010000000000aa0d0000510b00000000000027000000000000001a000000dc06abea00000000000000",
+   "copiado_de": "mundo_130341_992186_orden.jsonl",
+   "nombre_visible": "Meteor Alga",
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 102212,
+   "sprite": 60075,
+   "capa": 2,
+   "px": [
+    3323,
+    2946
+   ],
+   "tile": [
+    103,
+    92
+   ],
+   "crudo": "448f010002000000fb0c0000820b00000000000027000000000000001a000000dc06abea00000000000000",
+   "copiado_de": "mundo_130341_992186_orden.jsonl",
+   "nombre_visible": "Meteor Alga",
+   "marca_nombre": 220,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 102213,
+   "sprite": 60076,
+   "capa": 0,
+   "px": [
+    852,
+    2645
+   ],
+   "tile": [
+    26,
+    82
+   ],
+   "crudo": "458f01000000000054030000550a00000000000027000000000000001a000000dc06acea00000000000000",
+   "copiado_de": "mundo_130341_992186_orden.jsonl",
+   "nombre_visible": "Bright Alga",
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 102214,
+   "sprite": 60076,
+   "capa": 0,
+   "px": [
+    758,
+    2613
+   ],
+   "tile": [
+    23,
+    81
+   ],
+   "crudo": "468f010000000000f6020000350a00000000000027000000000000001a000000dc06acea00000000000000",
+   "copiado_de": "mundo_130341_992186_orden.jsonl",
+   "nombre_visible": "Bright Alga",
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 102215,
+   "sprite": 60143,
+   "capa": 0,
+   "px": [
+    2616,
+    73
+   ],
+   "tile": [
+    81,
+    2
+   ],
+   "crudo": "478f010000000000380a0000490000000000000027000000000000001a000000dc06efea00000000000000",
+   "copiado_de": "mundo_130341_992186_orden.jsonl",
+   "nombre_visible": "Fire Alga",
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  },
+  {
+   "entity_id": 102216,
+   "sprite": 60143,
+   "capa": 0,
+   "px": [
+    2489,
+    46
+   ],
+   "tile": [
+    77,
+    1
+   ],
+   "crudo": "488f010000000000b90900002e0000000000000027000000000000001a000000dc06efea00000000000000",
+   "copiado_de": "mundo_130341_992186_orden.jsonl",
+   "nombre_visible": "Fire Alga",
+   "marca_nombre": 109,
+   "cola_nombre": "0000000000000004"
+  }
+ ],
+ "_nota_recursos": "Recursos copiados de la captura de Celestia mundo_130341_992186_orden.jsonl (tools/recursos_de_captura.py), con su nombre."
+}

@@ -53,3 +53,7 @@ data/cuentas.bak
 # (tools/npcs_del_cliente.py, tools/objetos_de_mision.py). El historial de
 # git ya guarda la version anterior: subirlos solo es ruido.
 *.antes_*.bak
+
+# Volcados de REA/Ghidra (pseudo codigo del cliente): se regeneran con el MCP
+# rea y son codigo descompilado de IGG, no se publican.
+docs/rea_evidence/
