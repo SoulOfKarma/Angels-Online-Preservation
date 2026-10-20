@@ -1693,6 +1693,8 @@ def _probar_gm(ses, cuerpo, addr) -> bool:
                 con.commit()
             finally:
                 con.close()
+        # El totem pasa a ser el del nivel nuevo (tipo 21397 + nivel - 1).
+        _tw_relevantar(st_lv)
         ses.enviar(_cl.aviso('Totem of this field set to level %d.' % nv, tipo=0))
         return True
     if leido[0] == 'notice':
@@ -6300,14 +6302,15 @@ def _tw_relevantar(stage):
     sala = _SALAS_DEL_MUNDO.get(int(stage))
     if sala is None or not sala.monstruos:
         return
-    m = sala.monstruos.get(_tw_r.eid_totem(stage))
-    if m is None:
-        m = _tw_r.crear_totem(stage)
-        sala.monstruos[m.entity_id] = m
-    m.nombre = _tw_r.nombre_totem(stage)
-    m.revivir()
+    # Siempre un totem NUEVO, con id nuevo (ver totem_war.eid_totem), el
+    # tipo de su nivel (21397 + nivel - 1) y la vida entera.
+    eid_viejo = _tw_r.eid_totem(stage)
+    sala.monstruos.pop(eid_viejo, None)
+    _tw_r.nueva_generacion(stage)
+    m = _tw_r.crear_totem(stage)
+    sala.monstruos[m.entity_id] = m
     # La vida (0x0013) justo detras: sin ella el cartel salia sin barra.
-    pkts = (_cb_mod().despawn_monstruo(m.entity_id), _tw_r.spawn_totem(m),
+    pkts = (_cb_mod().despawn_monstruo(eid_viejo), _tw_r.spawn_totem(m),
             _cb_mod().atributo(m.entity_id, m.porcentaje))
     # Cada uno recibe su secuencia UNA vez y sin espejo: con enviar_inmediato
     # cada envio se replicaba a los demas de la sala y las copias cruzadas de
@@ -6444,6 +6447,8 @@ def _ofrenda_al_totem(ses, addr, cuerpo):
     ses.enviar(_tw_o.ventana_totem(m, crear=False),
                _cl_o.aviso('The totem gains %d experience.' % total, tipo=0))
     if nivel > antes:
+        if not _tw_o.activa():
+            _tw_relevantar(p.stage)
         _tw_difundir(*_tw_o.anuncio('%s: the totem of %s reaches level %d!' % (
             _tw_o.nombre_totem(p.stage), _cl_o.nombre_de_mapa(p.stage), nivel)))
     log.info('[%s] ofrenda al totem de %s: +%d (nivel %d)', addr, p.stage, total, nivel)

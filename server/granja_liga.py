@@ -118,7 +118,7 @@ def paquete_cultivo(entity_id, crop_id, nombre, tile, sprite, maduro=False):
     # EL CULTIVO, AL CENTRO DE LA PARCELA. La tierra se ancla en la esquina de
     # arriba del rombo y la planta en su base: en la misma posicion la planta
     # salia en la esquina (visto el 20/10/2026). La parcela mide 3 casillas.
-    dy = 0 if int(sprite or 0) == SPRITE_TIERRA else DESPLAZAMIENTO_CULTIVO_Y
+    dy = 0 if int(sprite or 0) in (SPRITE_TIERRA, SPRITE_TIERRA_MOJADA) else DESPLAZAMIENTO_CULTIVO_Y
     struct.pack_into('<IIII', b, 0, int(entity_id), 0, int(px[0]), int(px[1]) + dy)
     n = str(nombre).encode('latin-1', 'replace')[:16]
     b[16:16 + len(n)] = n
@@ -139,7 +139,10 @@ def poblar_cultivos(ses):
     cultivos = cuentas.db_obtener_cultivos_gremio(g['guild_id'])
     # En la granja no hay NPC: solo la tierra de las parcelas y el tornado
     # de salida. El "Farming Clerk" que habia aqui era inventado.
-    pkgs = paquetes_parcelas(ocupadas={int(c['plot_id']) for c in cultivos
+    pkgs = paquetes_parcelas(mojadas={int(c['plot_id']) for c in cultivos
+                                      if time.time() < c['marchita_en']
+                                      and int(c.get('riego_count') or 0) > 0},
+                             ocupadas={int(c['plot_id']) for c in cultivos
                                        if time.time() < c['marchita_en']})
     for c in cultivos:
         if time.time() >= c['marchita_en']:
@@ -258,6 +261,9 @@ def _objetos_parcela():
 # adelante los cultivos de crops.xml. Los 60005/60035 que el .mpc pone en esas
 # casillas son "TAG01"/"TAG03" con SP_ATTRIB_HIDE: marcadores invisibles.
 SPRITE_TIERRA = 66902
+# 66903 "土地濕潤": la tierra REGADA. Se pone al regar y vuelve a la seca
+# cuando el cultivo se cosecha del todo o se marchita.
+SPRITE_TIERRA_MOJADA = 66903
 
 
 # Cuanto mas abajo va la planta que la tierra. Cabeceras SHP (UPDATE8.PAK):
@@ -271,12 +277,15 @@ DESPLAZAMIENTO_CULTIVO_Y = 0
 # Etapas de crecimiento (server.obd): 66907 播種 siembra, 66906 發芽 brote,
 # 66904 生長 creciendo y, ya madura, el 外觀編號 del crops.xml (el fruto).
 SPRITE_SIEMBRA, SPRITE_BROTE, SPRITE_CRECIENDO = 66907, 66906, 66904
+SIEMBRA_SEGUNDOS = 5
 
 
 def cambios_de_etapa(sembrado, madura):
     """Instantes en que el cultivo cambia de sprite: brote, creciendo, maduro."""
+    # La siembra (un monticulo) dura poco: enseguida sale el brote, que es
+    # lo que se reconoce como planta; creciendo desde la mitad.
     d = max(0, int(madura) - int(sembrado))
-    return [int(sembrado) + d // 3, int(sembrado) + 2 * d // 3, int(madura)]
+    return [int(sembrado) + min(SIEMBRA_SEGUNDOS, d // 3), int(sembrado) + d // 2, int(madura)]
 
 
 def sprite_de_etapa(crop_id, sembrado, madura, ahora=None):
@@ -292,13 +301,23 @@ def sprite_de_etapa(crop_id, sembrado, madura, ahora=None):
     return SPRITE_SIEMBRA
 
 
-def paquetes_parcelas(ocupadas=()):
+def paquete_tierra(plot, mojada=False):
+    """La tierra de UNA parcela, seca o regada."""
+    tile = _parcelas().get(int(plot))
+    if not tile:
+        return b''
+    return paquete_cultivo(PARCELA_BASE_EID + int(plot), 0, '', tile,
+                           SPRITE_TIERRA_MOJADA if mojada else SPRITE_TIERRA)
+
+
+def paquetes_parcelas(ocupadas=(), mojadas=()):
     """La tierra de las 70 parcelas (PARCELAS_CULTIVO): s2c 0x015D con el
     sprite de tierra, entidad PARCELA_BASE_EID + N. Es permanente: el cultivo
     va en su propia entidad (CROP_BASE_EID + N) encima. Antes eran la misma y
     al plantar la parcela desaparecia. El +44 sale N en las dos (el indice de
     la ficha del 0x015F)."""
-    return [paquete_cultivo(PARCELA_BASE_EID + plot, 0, '', tile, SPRITE_TIERRA)
+    return [paquete_cultivo(PARCELA_BASE_EID + plot, 0, '', tile,
+                            SPRITE_TIERRA_MOJADA if plot in mojadas else SPRITE_TIERRA)
             for plot, tile in sorted(_parcelas().items()) if plot in PARCELAS_CULTIVO]
 
 

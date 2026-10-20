@@ -343,13 +343,42 @@ def _exportar_json_disco():
                 pass
 
 
+# El respaldo y el espejo cuentas.json van en un HILO APARTE. Se hacian en el
+# mismo hilo que atiende el juego, en CADA cambio (cuentas.json entero con
+# fsync, y cada 25 la copia de la base): al plantar en la granja el servidor
+# se quedaba medio segundo parado con el "Backup automatico" en medio
+# (hestia.log, 20/10/2026 16:19:38). Los cambios seguidos se juntan en uno.
+_PENDIENTE_RESPALDO = threading.Event()
+_RESPALDO_INMEDIATO = [False]
+_HILO_RESPALDO = [None]
+ESPERA_RESPALDO = 1.5
+
+
+def _trabajador_respaldo():
+    while True:
+        _PENDIENTE_RESPALDO.wait()
+        time.sleep(ESPERA_RESPALDO)       # junta los cambios que lleguen seguidos
+        _PENDIENTE_RESPALDO.clear()
+        inmediato, _RESPALDO_INMEDIATO[0] = _RESPALDO_INMEDIATO[0], False
+        try:
+            if inmediato or _CAMBIOS_DESDE_BACKUP >= 25 or (time.time() - _ULTIMO_BACKUP > 300):
+                hacer_backup(motivo="cambios_frecuentes")
+            else:
+                _exportar_json_disco()
+        except Exception:
+            log.exception("Error en el respaldo en segundo plano")
+
+
 def _notificar_cambio(inmediato=False):
     global _CAMBIOS_DESDE_BACKUP
     _CAMBIOS_DESDE_BACKUP += 1
-    if inmediato or _CAMBIOS_DESDE_BACKUP >= 25 or (time.time() - _ULTIMO_BACKUP > 300):
-        hacer_backup(motivo="cambios_frecuentes")
-    else:
-        _exportar_json_disco()
+    if inmediato:
+        _RESPALDO_INMEDIATO[0] = True
+    if _HILO_RESPALDO[0] is None or not _HILO_RESPALDO[0].is_alive():
+        _HILO_RESPALDO[0] = threading.Thread(target=_trabajador_respaldo, name='respaldo-cuentas',
+                                             daemon=True)
+        _HILO_RESPALDO[0].start()
+    _PENDIENTE_RESPALDO.set()
 
 
 async def tarea_backup_periodico(intervalo_segundos=300):

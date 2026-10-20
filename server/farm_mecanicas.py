@@ -112,7 +112,19 @@ def _experiencia(ses, exp=0, skill=0):
             p.mp_max += 15
             ses.enviar(combate.atributo(p.entity_id, p.nivel, 29),
                        combate.efecto_level_up(p.entity_id))
-        ses.enviar(combate.exp_paquete(p.entity_id, int(exp)))
+        # A nivel alto el porcentaje pasa de 4.294 millones y el 0x000B (u32)
+        # reventaba con struct.error: el riego no daba nada (20/10/2026).
+        # La barra va por el 0x001D de 64 bits (29 nivel, 30 base, 31
+        # siguiente, 32 actual), como en las recompensas de mision.
+        actual, siguiente = combate.exp_para_barra(p.nivel, p.exp)
+        ses.enviar(struct.pack('<HIB', 0x001D, p.entity_id, 4)
+                   + struct.pack('<BQ', 29, p.nivel)
+                   + struct.pack('<BQ', 30, combate.exp_para_nivel(p.nivel))
+                   + struct.pack('<BQ', 31, siguiente) + struct.pack('<BQ', 32, actual))
+        if int(exp) <= 0xFFFFFFFF:
+            ses.enviar(combate.exp_paquete(p.entity_id, int(exp)))
+        else:
+            ses.enviar(clases.aviso(str(int(exp)), tipo=0, msg_id=clases.MSG_EXP))
     if skill:
         nuevas = []
         for sid, nivel, puntos in p.habilidades or []:
@@ -213,6 +225,10 @@ def accion(ses, entity_id, nombre):
     actualizado = cuentas.db_obtener_cultivo(gid, plot)
     if actualizado:
         difundir(ses, paquete_estado_cultivo(actualizado))
+    if nombre == 'water':
+        import combate as _cb_t
+        difundir(ses, _cb_t.despawn_monstruo(farm.PARCELA_BASE_EID + int(plot)),
+                 farm.paquete_tierra(plot, mojada=True))
     ses.enviar(paquete_cuotas(ses))
     # string.xml 3165/3166 (la ayuda de la granja): Regar da [EXP], Abonar da
     # [Skill EXP] y Cosechar da [EXP and Skill EXP] mas el producto, "segun el
@@ -271,7 +287,9 @@ def programar_cultivo(ses, plot, crop, sembrado, madura, marchita):
         receptor = receptores[0]
         if borrar:
             # Marchito: fuera el cultivo; la tierra (su propia entidad) sigue.
-            difundir(receptor, combate.despawn_monstruo(eid))
+            difundir(receptor, combate.despawn_monstruo(eid),
+                     combate.despawn_monstruo(farm.PARCELA_BASE_EID + int(plot)),
+                     farm.paquete_tierra(plot))
         else:
             ahora = time.time() + 0.5
             difundir(receptor, combate.despawn_monstruo(eid), farm.paquete_cultivo(

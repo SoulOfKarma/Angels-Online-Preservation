@@ -56,7 +56,8 @@ TOTEM_NPC = 9847
 TOTEM_SPRITE = 43406
 TOTEM_TILE = (165, 97)
 TOTEM_BASE_EID = 95_000_000
-SEGUNDOS_RELEVANTAR = 8
+# Reaparece casi al instante (lo pidio el usuario: con 8 s se notaba).
+SEGUNDOS_RELEVANTAR = 1
 
 HORARIO = ((2, 21, 0), (5, 14, 0))       # (weekday, hora, minuto): mie 21:00, sab 14:00
 DURACION_HORARIO = 120                    # minutos
@@ -109,8 +110,21 @@ def es_mapa_tw(stage) -> bool:
     return st in TW_A_CAMPO
 
 
+# Cada vez que el totem se vuelve a levantar lleva un id NUEVO. Con el mismo
+# id, el cliente aun tenia la entidad muerta (le acababan de llegar dos
+# 0x0013 a 0 y el 0x0007): tardaba en verse y salia sin barra de vida
+# (sesion del 20/10/2026 15:42). Los ids siguen siendo distintos en sus 16
+# bits bajos, que es como indexa el cliente su tabla de entidades.
+_GENERACION = {}
+
+
 def eid_totem(stage) -> int:
-    return TOTEM_BASE_EID + _tw(stage)
+    return TOTEM_BASE_EID + 16 * _GENERACION.get(_tw(stage), 0) + _tw(stage)
+
+
+def nueva_generacion(stage):
+    k = _tw(stage)
+    _GENERACION[k] = (_GENERACION.get(k, 0) + 1) % 8
 
 
 def codigo_faccion(personaje) -> int:
@@ -485,7 +499,10 @@ def motivo_no_pegar(ses, m) -> str:
 def crear_totem(stage):
     """El Monstruo del totem para la sala compartida del mapa TW."""
     if MODO == 'antigua' and int(stage) in TOTEM_CAMPO:
-        m = _totem_clase()(eid_totem(stage), TOTEM_TIPO_CAMPO, nombre_totem(stage),
+        # monster.xml: 21397 "Totem Lv 1" (300.000 HP) .. 21404 "Totem Lv 8"
+        # (17.689.000 HP). El nivel lo suben las ofrendas.
+        tipo = TOTEM_TIPO_CAMPO + max(1, min(NIVEL_MAX_TOTEM, nivel_totem(stage)[0])) - 1
+        m = _totem_clase()(eid_totem(stage), tipo, nombre_totem(stage),
                            list(TOTEM_CAMPO[int(stage)]), sprite_totem(stage), stage=int(stage))
     else:
         m = _totem_clase()(eid_totem(stage), TOTEM_NPC, nombre_totem(stage),
@@ -610,6 +627,19 @@ def puntos_de_ofrenda(item_id) -> int:
 
 
 UNIDAD_OFRENDA = 200
+
+
+def reiniciar_nivel(stage):
+    """El totem que cae vuelve a nivel 1 (y a la vida de un Totem Lv 1)."""
+    with cuentas._LOCK:
+        _tabla_nivel()
+        con = cuentas._get_conn()
+        try:
+            con.execute('INSERT OR REPLACE INTO tw_totem_nivel (tw_stage, nivel, puntos) '
+                        'VALUES (?,1,0)', (_tw(stage),))
+            con.commit()
+        finally:
+            con.close()
 
 
 def sumar_puntos_totem(stage, puntos):
@@ -842,6 +872,7 @@ def capturado(ses, m):
     if not activa() or st not in TW_A_CAMPO:
         return None
     f = codigo_faccion(p)
+    reiniciar_nivel(st)
     try:
         import gremios as _grm_n
         sin_liga = not _grm_n.obtener_gremio_de(p.char_id)
