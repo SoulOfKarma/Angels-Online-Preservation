@@ -8933,6 +8933,14 @@ class Servidor:
                 _pres.entrar(ses, p.stage)
             except Exception:
                 log.exception('presencia: fallo al entrar al mapa en login')
+            # El totem del campo, haya guerra o no: AL ENTRAR AL JUEGO se pasa
+            # por aqui, no por el 0x0002 de "mapa cargado" (ese es solo al
+            # cambiar de mapa), y quien conectaba en el campo no lo veia
+            # (sesion del 20/10/2026 16:02: ni un 0x012E).
+            try:
+                _tw_al_entrar(ses)
+            except Exception:
+                log.exception('Totem War al conectarse')
             try:
                 import gremios as _grm_in
                 _grm_in.al_entrar_jugador(ses, self.mundos)
