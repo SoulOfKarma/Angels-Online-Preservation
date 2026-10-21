@@ -6595,7 +6595,7 @@ def _logros_contar(ses, clave, n=1, maximo=False, addr=None):
         log.exception('logros: contador %s', clave)
 
 
-def _logros_actualizar(ses, addr=None, enviar=False):
+def _logros_actualizar(ses, addr=None, enviar=False, silencioso=False):
     """Da los logros que ya cumple y, si cambio algo (o `enviar`), manda el
     0x0155 para que la ventana este al dia."""
     import logros as _lg_a
@@ -6603,6 +6603,18 @@ def _logros_actualizar(ses, addr=None, enviar=False):
     p = getattr(ses, 'personaje', None)
     if not p:
         return
+    # Con `silencioso` (al entrar, ANTES de la secuencia) no se manda nada:
+    # el cliente aun no tiene el personaje y un aviso, un Super BC o el
+    # 0x0155 antes del 0x0002 lo cerraba (22:00:21, 20/10/2026). Se guardan
+    # y se mandan despues con _logros_vaciar.
+    pendientes = ses.__dict__.setdefault('_logros_pendientes', [])
+
+    def mandar(*pk):
+        if silencioso:
+            pendientes.extend(pk)
+        else:
+            ses.enviar(*pk)
+
     _logros_datos(ses)
     if p.logros is None:
         p.logros = []
@@ -6631,8 +6643,8 @@ def _logros_actualizar(ses, addr=None, enviar=False):
         titulos_antes = set(_lg_a.titulos_de([l for l in p.logros if l not in nuevos]))
         for lid in nuevos:
             f = _lg_a.de_id(lid) or {}
-            ses.enviar(_cl_a.aviso('Achievement completed: [%s] (+%d points)'
-                                   % (f.get('nombre') or lid, int(f.get('puntos') or 0)), tipo=0))
+            mandar(_cl_a.aviso('Achievement completed: [%s] (+%d points)'
+                               % (f.get('nombre') or lid, int(f.get('puntos') or 0)), tipo=0))
         nuevos_t = set(_lg_a.titulos_de(p.logros)) - titulos_antes
         if nuevos_t:
             # Como en el original: la primera vez que se consigue un titulo
@@ -6642,6 +6654,10 @@ def _logros_actualizar(ses, addr=None, enviar=False):
             for _t in sorted(nuevos_t):
                 _bc = _cl_a.chat_super_broadcast(
                     0, p.nombre, '%s has obtained the title [%s]!' % (p.nombre, _lg_a.nombre_titulo(_t)), _sel)
+                if silencioso:
+                    # El Super BC a los demas va despues, junto con el resto.
+                    pendientes.append(('bc', _bc))
+                    continue
                 _receptores = {id(x): x for x in _tw_sesiones()}
                 _receptores[id(ses)] = ses
                 for _s_bc in _receptores.values():
@@ -6649,12 +6665,28 @@ def _logros_actualizar(ses, addr=None, enviar=False):
                         _s_bc.enviar(_bc)
                     except Exception:
                         pass
-            ses.enviar(_cl_a.aviso('New title unlocked! You will find it in the Title tab '
-                                   'after changing map.', tipo=0))
+            mandar(_cl_a.aviso('New title unlocked! You will find it in the Title tab '
+                               'after changing map.', tipo=0))
         _logros_guardar(ses)
         log.info('[%s] %s consigue los logros %s', addr, p.nombre, nuevos)
-    if nuevos or enviar:
+    if (nuevos or enviar) and not silencioso:
         ses.enviar(_lg_a.paquete(p, muertos, stats, ctx))
+
+
+def _logros_vaciar(ses):
+    """Manda lo que _logros_actualizar(silencioso=True) dejo guardado."""
+    pend = ses.__dict__.pop('_logros_pendientes', None) or []
+    for pk in pend:
+        try:
+            if isinstance(pk, tuple) and pk[0] == 'bc':
+                receptores = {id(x): x for x in _tw_sesiones()}
+                receptores[id(ses)] = ses
+                for s_bc in receptores.values():
+                    s_bc.enviar(pk[1])
+            else:
+                ses.enviar(pk)
+        except Exception:
+            log.debug('logros: pendiente', exc_info=True)
 
 
 def _logros_muerte(ses, addr, npc_type):
@@ -9135,7 +9167,7 @@ class Servidor:
             # 0x0155 los logros. Revisandolos despues, los titulos ganados al
             # entrar (los de ranking) no salian hasta otro cambio de mapa.
             try:
-                _logros_actualizar(ses, addr)
+                _logros_actualizar(ses, addr, silencioso=True)
             except Exception:
                 log.exception('logros antes de entrar')
             for sub in secuencia(p):
@@ -9287,8 +9319,10 @@ class Servidor:
                 _tw_al_entrar(ses)
             except Exception:
                 log.exception('Totem War al conectarse')
-            # LOGROS: el 0x0155 (ventana de logros) y el titulo puesto.
+            # LOGROS: el 0x0155 (ventana de logros) y el titulo puesto, y los
+            # avisos / Super BC que se guardaron antes de la secuencia.
             try:
+                _logros_vaciar(ses)
                 _logros_actualizar(ses, addr, enviar=True)
                 if getattr(p, 'titulo', 0):
                     import logros as _lg_in
