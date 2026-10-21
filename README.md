@@ -18,6 +18,19 @@ a guess, it says so.
 
 ## Actual state
 
+Oct 21 pet release: [scope, tests and remaining limitations](docs/ENTREGA_PETS_2026-10-21.md).
+
+Pet progression (Oct 21): fixed fusion blocked by initial bonus ranges,
+general-star desynchronization and the first enhancement feed missing its
+increment. Official enhancement coefficients remain unverified; existing
+pets are not automatically compensated.
+See [audit, fixes and tests](docs/PETS_ESTRELLAS_AUDITORIA_2026-10-21.md).
+Pet combos now send one skill effect followed by their damage ticks,
+without replaying the cast per hit. Player combat is unchanged by this fix.
+Equip Pet slot 558 now accepts 5.0+ star pets and applies/removes their green
+stat contribution. See [equipment and level-growth notes](docs/PET_EQUIP_Y_CRECIMIENTO_2026-10-21.md)
+for tests and the provenance/limits of the implemented rules.
+
 Lyceum services (Oct 21): Astrologer, Login Rewarder and Green Angel,
 including persistent fees/quotas, exchanges and level-21+ Straw drops.
 See the [NPC service notes](docs/LYCEUM_NPC_SERVICES_2026-10-21.md)

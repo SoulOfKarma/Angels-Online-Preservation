@@ -18,6 +18,19 @@ una suposición, lo dice.
 
 ## Estado real
 
+Entrega de pets del 21/10: [alcance, pruebas y pendientes](docs/ENTREGA_PETS_2026-10-21.md).
+
+Progresion de pets (21/10): corregidos el bloqueo de fusion por rangos
+iniciales, las estrellas generales desincronizadas y el primer pienso de
+mejora sin incremento. Los coeficientes oficiales de intensificacion siguen
+pendientes; no se compensan pets existentes automaticamente.
+Ver [auditoria, correcciones y pruebas](docs/PETS_ESTRELLAS_AUDITORIA_2026-10-21.md).
+Combos de pet: un solo efecto de skill y todos sus golpes de dano, sin
+recastear cada subgolpe. El combate del personaje no se modifica.
+Equip Pet: habilitado el slot 558 para pets de 5.0+ estrellas, con bonos
+verdes reales y retirada de stats al desequipar. Crecimiento por nivel y
+procedencia de las reglas en [la nota de equipo y crecimiento](docs/PET_EQUIP_Y_CRECIMIENTO_2026-10-21.md).
+
 Servicios de Lyceum (21/10): Astrologer, Login Rewarder y Green Angel,
 con costes/cuotas persistentes, canjes y Straws desde nivel 21. Detalles,
 pruebas y probabilidades provisionales en

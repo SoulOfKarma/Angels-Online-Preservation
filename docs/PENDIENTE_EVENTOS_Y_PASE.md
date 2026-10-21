@@ -150,8 +150,10 @@ Tabla de manejadores s2c: `FUN_005e5350`, hueco = `this + 0x7b0 + opcode*16`
   dar logros.
 - **Fly Book / Summon Book**: sin captura de qué manda el cliente al pinchar el
   retrato; se acepta char_id o entidad. Probar en el juego y mirar el log.
-- **Títulos nuevos**: solo llegan con el 0x0002 (al entrar o cambiar de mapa);
-  por REA no hay paquete para añadir uno suelto.
+- **Títulos nuevos: HECHO.** En caliente con el 0x001D código 56 [título][1]
+  (FUN_005f4d80 -> FUN_004cfc00, que enciende solo ese bit). El 0x0002 NO sirve:
+  su manejador destruye y rehace el personaje del cliente (FUN_005b8430(ent, 1))
+  y la mochila y el equipo se quedaban en blanco.
 
 ## Otros arreglos del 21/10/2026
 
@@ -163,5 +165,5 @@ Tabla de manejadores s2c: `FUN_005e5350`, hueco = `this + 0x7b0 + opcode*16`
 - **Regalos sin tabla** (1.766, p. ej. Enchanted-Cozy Xmas Suitcase): su
   `動態資料1` apunta a un monstruo cuya tabla de caída era del servidor. Se
   abren con la lista de su descripción (`bolsas.contenido_descrito`).
-- **Títulos sin cambiar de mapa**: se reenvía el 0x0002 (su manejador no carga
-  el mapa) y el 0x0042 detrás.
+- **Títulos sin cambiar de mapa**: 0x001D código 56 (ver arriba); el reenvío del
+  0x0002 se quitó porque vaciaba la mochila en el cliente.

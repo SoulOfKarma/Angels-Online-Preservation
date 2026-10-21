@@ -232,6 +232,21 @@ def bits_titulos(personaje) -> bytes:
     return bytes(b)
 
 
+CODIGO_TITULO_NUEVO = 56
+
+
+def paquete_titulo_nuevo(entidad, titulo, anadir=True) -> bytes:
+    """s2c 0x001D codigo 56: da (o quita) UN titulo sin tocar nada mas.
+
+    FUN_005f4d80 (hueco 0x4788 de la tabla de FUN_005fbdd0) llama a
+    FUN_004cfc00(titulo, b == 1), que enciende o apaga solo ese bit, y
+    refresca las paginas de titulos y de reputacion. El 0x0002 no vale para
+    esto: su manejador destruye y rehace el personaje del cliente y la
+    mochila y el equipo se quedaban en blanco (21/10/2026)."""
+    return _struct.pack('<HIBBII', 0x001D, int(entidad), 1, CODIGO_TITULO_NUEVO,
+                        int(titulo), 1 if anadir else 0)
+
+
 def paquete_titulo(entidad, titulo, es_yo) -> bytes:
     """s2c 0x001D codigo 57: el titulo que lleva puesto `entidad`."""
     return _struct.pack('<HIBBII', 0x001D, int(entidad), 1, CODIGO_TITULO,

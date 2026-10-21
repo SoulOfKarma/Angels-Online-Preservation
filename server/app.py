@@ -578,7 +578,8 @@ def _final_tutorial(ses, addr):
         ses.enviar(clases.aviso(_nombre_item(item_id), tipo=0,
                                 msg_id=clases.MSG_ITEM))
         ses.enviar(*inv.entregar(cid, item_id, ranura))
-    ses.enviar(inv.stats(bolsa, mejoras=_mejoras_de(ses)))
+    ses.enviar(inv.stats(bolsa, mejoras=_mejoras_de(ses),
+                         mascotas=getattr(ses.personaje, 'mascotas', None)))
     # Y al Lyceum.
     ses.personaje.stage = clases.STAGE_LYCEUM
     ses.personaje.tile_x, ses.personaje.tile_y = clases.TILE_LYCEUM
@@ -1964,6 +1965,11 @@ def _pet_alternar(ses, addr, ranura):
     import struct as _st
     import combate as _cb
     import mascotas as _ms
+    import pet_equipment as _peq
+    if int(ranura) == _peq.RANURA:
+        import clases as _cl_peq
+        ses.enviar(_cl_peq.aviso('Please un-equip this pet before summoning it.', tipo=0))
+        return
     f = _pet_ficha(ses, ranura)
     f['fuera'] = not f.get('fuera')
     p = ses.personaje
@@ -7160,17 +7166,12 @@ def _logros_actualizar(ses, addr=None, enviar=False, silencioso=False):
                         _s_bc.enviar(_bc)
                     except Exception:
                         pass
-            # Los titulos solo llegan con el 0x0002; su manejador no carga el
-            # mapa, asi que se reenvia ya (ver login.ficha_actual). Al entrar
-            # (silencioso) no hace falta: la secuencia trae el suyo.
-            if not silencioso:
-                try:
-                    import login as _lg_fi
-                    ses.enviar(_lg_fi.ficha_actual(p))
-                    ses.enviar(_stats_ses(ses))      # la ficha trae los stats sin buffs
-                except Exception:
-                    log.exception('logros: no se pudo reenviar la ficha')
-            mandar(_cl_a.aviso('New title unlocked! Check the Title tab.', tipo=0))
+            # El titulo, en caliente, con el 0x001D codigo 56 (ver
+            # logros.paquete_titulo_nuevo). NO con el 0x0002: ese rehace el
+            # personaje del cliente y dejaba la mochila y el equipo en blanco
+            # (titulo 137 de Pet Master - 15, 21/10/2026).
+            for _t in sorted(nuevos_t):
+                mandar(_lg_a.paquete_titulo_nuevo(p.entity_id, _t))
         _logros_guardar(ses)
         log.info('[%s] %s consigue los logros %s', addr, p.nombre, nuevos)
     if (nuevos or enviar) and not silencioso:
@@ -8187,7 +8188,8 @@ def _vida_max(p, bolsa=None) -> int:
                            getattr(p, 'habilidades', None), bolsa=b,
                            mejoras=getattr(p, 'mejoras', None),
                            buffs=__import__('logros').con_reputacion(getattr(p, 'buffs', None), p),
-                           mp_max=getattr(p, 'mp_max', 0))
+                           mp_max=getattr(p, 'mp_max', 0),
+                           mascotas=getattr(p, 'mascotas', None))
 
 
 def _mana_max(p, bolsa=None) -> int:
@@ -8202,7 +8204,8 @@ def _mana_max(p, bolsa=None) -> int:
     return inv.mana_maximo(getattr(p, 'mp_max', 0),
                            getattr(p, 'habilidades', None), bolsa=b,
                            mejoras=getattr(p, 'mejoras', None),
-                           buffs=__import__('logros').con_reputacion(getattr(p, 'buffs', None), p))
+                           buffs=__import__('logros').con_reputacion(getattr(p, 'buffs', None), p),
+                           mascotas=getattr(p, 'mascotas', None))
 
 
 def _cb_alcance(ses) -> int:
@@ -8233,7 +8236,8 @@ def _stats_ses(ses):
     buffs = _lg_st.con_reputacion(buffs, p)     # las stats fijas de la reputacion
     return inv.stats(bolsa, habs, hp=hp, hp_max=hp_max, mp=mp, mp_max=mp_max,
                      oro=oro, buffs=buffs, sp=sp, sp_max=bars,
-                     mejoras=getattr(p, 'mejoras', None) if p else None)
+                     mejoras=getattr(p, 'mejoras', None) if p else None,
+                     mascotas=getattr(p, 'mascotas', None) if p else None)
 
 
 def _otorgar_skill_exp(ses, p, yo, arma_puesta=0, magic_id=0, accion=None):
@@ -9891,7 +9895,7 @@ class Servidor:
                                  mp=p.mp, mp_max=p.mp_max,
                                  oro=p.oro, buffs=getattr(p, 'buffs', None),
                                  sp=ses.sp, sp_max=bars,
-                                 mejoras=_mejoras_de(ses)))
+                                 mejoras=_mejoras_de(ses), mascotas=getattr(p, 'mascotas', None)))
             import combate as _cb
             ses.enviar(_cb.atributo(p.entity_id, ses.sp, _cb.KIND_SP))
             if getattr(p, 'buffs', None):
@@ -10981,7 +10985,8 @@ class Servidor:
                                 if b_bf_atk.get('atk_speed'):
                                     cadencia_pet = max(0.75, cadencia_pet * (1.0 - min(0.40, b_bf_atk['atk_speed'] / 100.0)))
                                 if dist_pet <= r_pet:
-                                    if ahora - f_pet.get('ultimo_ataque', 0) >= cadencia_pet:
+                                    if (ahora - f_pet.get('ultimo_ataque', 0) >= cadencia_pet
+                                            and ahora >= f_pet.get('combo_hasta', 0)):
                                         f_pet['ultimo_ataque'] = ahora
                                         pet_targ.en_combate_con = pet_eid  # El monstruo enfoca a la mascota
                                         sks = f_pet.get('skills') or list(_ms.skills_de(f_pet.get('sprite', 3001), int(f_pet.get('nivel', 1))))
@@ -11037,33 +11042,14 @@ class Servidor:
                                                 ses, *_pkgs_pet_hit)
                                             _combo_p = _cb.combo_de(sk_usada)
                                             if _combo_p and _combo_p.get('golpes', 1) > 1:
-                                                _golpes = _combo_p['golpes']
-                                                _sep_p = max(0.05, _combo_p.get('intervalo_ms', 200) / 1000.0)
-                                                for _gk in range(1, _golpes):
-                                                    def _pet_subgolpe(k_dmg=dano_pet):
-                                                        if not getattr(pet_targ, 'vivo', False) or pet_targ.hp <= 0:
-                                                            return
-                                                        pet_targ.hp = max(0, pet_targ.hp - k_dmg)
-                                                        _pkgs_pet_subhit = (
-                                                            _cb.numero_de_dano(pet_eid, pet_targ.entity_id, k_dmg,
-                                                                               ataque=sk_usada, efecto=ef_pet,
-                                                                               es_magia=_pet_skill_magic),
-                                                            _cb.cierre_de_dano(pet_eid, pet_targ.entity_id,
-                                                                               ataque=sk_usada, efecto=ef_pet,
-                                                                               es_magia=_pet_skill_magic),
-                                                            _cb.numero_flotante(pet_targ.entity_id, k_dmg),
-                                                            _cb.atributo(pet_targ.entity_id, pet_targ.porcentaje if pet_targ.hp > 0 else 0)
-                                                        )
-                                                        ses.enviar_inmediato(*_pkgs_pet_subhit)
-                                                        import presencia as _pr_pet_subhit
-                                                        _pr_pet_subhit.notificar_companero_accion(
-                                                            ses, *_pkgs_pet_subhit)
-                                                        if pet_targ.hp <= 0:
-                                                            _procesar_muerte_monstruo(ses, pet_targ, yo, addr, espera=0.1)
-                                                    try:
-                                                        asyncio.get_event_loop().call_later(_sep_p * _gk, _pet_subgolpe)
-                                                    except Exception:
-                                                        pass
+                                                import pet_combos as _pet_combos
+                                                _dur_combo_pet = _pet_combos.programar_subgolpes(
+                                                    ses, f_pet, pet_eid, pet_targ, dano_pet, _combo_p,
+                                                    es_aoe=bool(sk_datos.get('es_aoe')),
+                                                    al_morir=lambda victima, _ses=ses, _yo=yo, _addr=addr:
+                                                        _procesar_muerte_monstruo(
+                                                            _ses, victima, _yo, _addr, espera=0.1))
+                                                f_pet['combo_hasta'] = ahora + _dur_combo_pet
                                         else:
                                             dano_pet = max(10, int(base_atk_pet * 1.2) - (getattr(pet_targ, 'defensa', 0) // 3))
                                             pet_targ.registrar_dano(min(pet_targ.hp, dano_pet), es_pet=True)
@@ -11087,30 +11073,45 @@ class Servidor:
                                 else:
                                     if ahora >= f_pet.get('proximo_paso', 0):
                                         spd_p = 140 if int(f_pet.get('saciedad', 0)) > 100 else 105
-                                        pasos_dar = min(max(1, dist_pet - 1), 4)
-                                        cur_px, cur_py = pet_x * 32, pet_y * 32
-                                        nx_p, ny_p = pet_x, pet_y
-                                        for _ in range(pasos_dar):
-                                            if nx_p < pet_targ.tile_x: nx_p += 1
-                                            elif nx_p > pet_targ.tile_x: nx_p -= 1
-                                            if ny_p < pet_targ.tile_y: ny_p += 1
-                                            elif ny_p > pet_targ.tile_y: ny_p -= 1
-                                        f_pet['x'] = nx_p
-                                        f_pet['y'] = ny_p
-                                        ses.pet_tile = [nx_p, ny_p]
-                                        dst_px, dst_py = nx_p * 32, ny_p * 32
-                                        f_pet['proximo_paso'] = ahora + (32.0 * pasos_dar / float(spd_p))
-                                        _p_mv = MOVE.build(entity_id=pet_eid, cur_x=cur_px, cur_y=cur_py, dst_x=dst_px, dst_y=dst_py, speed=spd_p)
-                                        ses.enviar(_p_mv)
-                                        import presencia as _pr
-                                        _pr.notificar_mascota_movimiento(ses, pet_eid, _p_mv)
+                                        # Por casillas que se pisan, como al seguir al jugador.
+                                        (nx_p, ny_p), _ok_pet = _transitable.tramo(
+                                            int(getattr(p, 'stage', 0) or 0), (pet_x, pet_y),
+                                            (pet_targ.tile_x, pet_targ.tile_y),
+                                            min(max(1, dist_pet - 1), 4), parar_a=1)
+                                        if (nx_p, ny_p) == (pet_x, pet_y):
+                                            # Sin paso posible: se queda y lo reintenta luego.
+                                            f_pet['proximo_paso'] = ahora + 0.5
+                                        else:
+                                            pasos_dar = max(1, max(abs(nx_p - pet_x), abs(ny_p - pet_y)))
+                                            cur_px, cur_py = pet_x * 32, pet_y * 32
+                                            f_pet['x'] = nx_p
+                                            f_pet['y'] = ny_p
+                                            ses.pet_tile = [nx_p, ny_p]
+                                            dst_px, dst_py = nx_p * 32, ny_p * 32
+                                            f_pet['proximo_paso'] = ahora + (32.0 * pasos_dar / float(spd_p))
+                                            _p_mv = MOVE.build(entity_id=pet_eid, cur_x=cur_px, cur_y=cur_py, dst_x=dst_px, dst_y=dst_py, speed=spd_p)
+                                            ses.enviar(_p_mv)
+                                            import presencia as _pr
+                                            _pr.notificar_mascota_movimiento(ses, pet_eid, _p_mv)
                             else:
                                 dp_x = p.tile_x - pet_x
                                 dp_y = p.tile_y - pet_y
                                 dist_jug = max(abs(dp_x), abs(dp_y))
                                 spd_p = 140 if int(f_pet.get('saciedad', 0)) > 100 else 105
-                                if dist_jug > 15:
-                                    f_pet['x'] = p.tile_x + 1
+                                # Va por casillas que se pisan (antes en linea
+                                # recta: cruzaba barrancos) y, si se queda
+                                # atras, corre para alcanzar en vez de
+                                # teletransportarse (21/10/2026). Solo salta
+                                # al lado si no hay camino o esta muy lejos.
+                                _st_pet = int(getattr(p, 'stage', 0) or 0)
+                                _fin_pet, _hay_camino = ((pet_x, pet_y), True)
+                                if 1 < dist_jug <= 30 and ahora >= f_pet.get('proximo_paso', 0):
+                                    _fin_pet, _hay_camino = _transitable.tramo(
+                                        _st_pet, (pet_x, pet_y), (p.tile_x, p.tile_y),
+                                        min(dist_jug - 1, 6 if dist_jug > 6 else 4), parar_a=1)
+                                if dist_jug > 30 or not _hay_camino:
+                                    _lado = p.tile_x + 1 if _transitable.se_pisa(_st_pet, p.tile_x + 1, p.tile_y) else p.tile_x
+                                    f_pet['x'] = _lado
                                     f_pet['y'] = p.tile_y
                                     ses.pet_tile = [f_pet['x'], f_pet['y']]
                                     cur_px, cur_py = f_pet['x'] * 32, f_pet['y'] * 32
@@ -11121,15 +11122,13 @@ class Servidor:
                                     )
                                     import presencia as _pr
                                     _pr.notificar_mascota_movimiento(ses, pet_eid, _p_mv)
-                                elif dist_jug > 1 and ahora >= f_pet.get('proximo_paso', 0):
-                                    pasos_dar = min(dist_jug - 1, 4)
+                                elif dist_jug > 1 and ahora >= f_pet.get('proximo_paso', 0) \
+                                        and _fin_pet != (pet_x, pet_y):
+                                    nx_j, ny_j = _fin_pet
+                                    pasos_dar = max(1, max(abs(nx_j - pet_x), abs(ny_j - pet_y)))
+                                    if dist_jug > 6:
+                                        spd_p = max(spd_p, 200)     # alcanzar corriendo
                                     cur_px, cur_py = pet_x * 32, pet_y * 32
-                                    nx_j, ny_j = pet_x, pet_y
-                                    for _ in range(pasos_dar):
-                                        if nx_j < p.tile_x: nx_j += 1
-                                        elif nx_j > p.tile_x: nx_j -= 1
-                                        if ny_j < p.tile_y: ny_j += 1
-                                        elif ny_j > p.tile_y: ny_j -= 1
                                     f_pet['x'] = nx_j
                                     f_pet['y'] = ny_j
                                     ses.pet_tile = [nx_j, ny_j]
@@ -11306,7 +11305,8 @@ class Servidor:
                               hp=p.hp, hp_max=p.hp_max,
                               mp=p.mp, mp_max=p.mp_max,
                               oro=getattr(ses, 'oro', p.oro), buffs=getattr(p, 'buffs', None),
-                              sp=ses.sp, sp_max=bars, mejoras=_mejoras_de(ses)),
+                              sp=ses.sp, sp_max=bars, mejoras=_mejoras_de(ses),
+                              mascotas=getattr(p, 'mascotas', None)),
                     *_apariencia(ses)
                 ]
                 # Restauracion de buffs activos al entrar al mundo (relog)
@@ -15037,6 +15037,25 @@ class Servidor:
                 log.warning(f"[{addr}] mover {org} -> {dst}: la ranura {org} esta vacia")
                 return
             it_org = bolsa[org]
+            # El slot Equip Pet (558) tiene requisitos de la instancia, no
+            # solo de su item_id. Validar tambien el sentido inverso del swap.
+            import pet_equipment as _peq_mv
+            for _origen_pet, _destino_pet in ((org, dst), (dst, org)):
+                if _destino_pet != _peq_mv.RANURA or not bolsa.get(_origen_pet):
+                    continue
+                _item_peq = bolsa[_origen_pet]
+                _registro_peq = getattr(ses.personaje, 'mascotas', None) or {}
+                _ficha_peq = _registro_peq.get(str(_origen_pet)) or _registro_peq.get(_origen_pet)
+                _activa_peq = getattr(ses.personaje, 'mascota', None)
+                if not _ficha_peq and isinstance(_activa_peq, dict) and _activa_peq.get('ranura') == _origen_pet:
+                    _ficha_peq = _activa_peq
+                _error_peq = ('Only pets can be equipped here.' if not inv.es_mascota(_item_peq)
+                              else _peq_mv.error_equipar(_ficha_peq))
+                if _error_peq:
+                    import clases as _cl_peq_mv
+                    ses.enviar(_cl_peq_mv.aviso(_error_peq, tipo=0),
+                               *_refrescar(ses, [org, dst]))
+                    return
             # ESCRITURAS DE CASA (Cottage, Delicate House, Romantic Villa,
             # Luxurious..., 房屋): NO son muebles. Son el tamano de la casa
             # (cuantos muebles caben) y viven en la casilla 376 o en la
@@ -15182,8 +15201,8 @@ class Servidor:
                 # casilla anterior.
                 _mascs_swap = getattr(ses.personaje, 'mascotas', None) if ses.personaje else None
                 if isinstance(_mascs_swap, dict):
-                    _f_org = _mascs_swap.pop(str(org), None)
-                    _f_dst = _mascs_swap.pop(str(dst), None)
+                    _f_org = _mascs_swap.pop(str(org), None) or _mascs_swap.pop(org, None)
+                    _f_dst = _mascs_swap.pop(str(dst), None) or _mascs_swap.pop(dst, None)
                     if _f_org:
                         _f_org['ranura'] = dst
                         _mascs_swap[str(dst)] = _f_org
@@ -15232,6 +15251,10 @@ class Servidor:
             _c_org = _cantidades(ses).pop(org, 1)
             _cantidades(ses)[dst] = _c_org
             _mover_inst(ses, org, dst)
+            if dst == _peq_mv.RANURA and ses.personaje:
+                _estado_peq = ses.personaje.mejoras.get(dst, {})
+                if inv.vincular_equipo(int(it), cid, _estado_peq):
+                    ses.personaje.mejoras[dst] = _estado_peq
             _masc_p = getattr(ses.personaje, 'mascota', None) if ses.personaje else None
             if isinstance(_masc_p, dict) and _masc_p.get('ranura') == org:
                 _masc_p['ranura'] = dst

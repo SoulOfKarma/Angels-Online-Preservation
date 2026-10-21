@@ -130,3 +130,46 @@ def avanzar(stage, desde, objetivo, pasos, parar_a=0):
             break  # Un MOVE solo dibuja un segmento, no una ruta doblada.
         _, x, y = mejor
     return x, y
+
+
+def camino(stage, desde, hasta, limite=4096):
+    """Las casillas del camino mas corto de `desde` a `hasta` (sin `desde`)
+    por casillas que se pisan; [] si no hay o ya esta. BFS acotada."""
+    from collections import deque
+    desde, hasta = (int(desde[0]), int(desde[1])), (int(hasta[0]), int(hasta[1]))
+    if desde == hasta:
+        return []
+    if not conocido(stage):
+        return list(_linea(desde, hasta))
+    cola, anterior = deque([desde]), {desde: None}
+    while cola and len(anterior) < limite:
+        x, y = cola.popleft()
+        for dx, dy in ((0, 1), (1, 0), (0, -1), (-1, 0), (1, 1), (1, -1), (-1, 1), (-1, -1)):
+            t = x + dx, y + dy
+            if t in anterior or not linea_libre(stage, (x, y), t):
+                continue
+            anterior[t] = (x, y)
+            if t == hasta:
+                ruta = []
+                while t != desde:
+                    ruta.append(t)
+                    t = anterior[t]
+                return ruta[::-1]
+            cola.append(t)
+    return []
+
+
+def tramo(stage, desde, hasta, pasos, parar_a=1):
+    """Hasta `pasos` casillas por el camino hacia `hasta`, parando a `parar_a`
+    de el y solo mientras la RECTA desde `desde` siga libre: el cliente anima
+    el movimiento en linea recta y no debe cruzar una pared. Devuelve
+    (casilla final, hay_camino)."""
+    ruta = camino(stage, desde, hasta)
+    if not ruta and tuple(desde) != tuple(hasta):
+        return tuple(desde), False
+    fin = tuple(desde)
+    for t in ruta[:max(0, len(ruta) - parar_a)][:pasos]:
+        if not linea_libre(stage, tuple(desde), t):
+            break
+        fin = t
+    return fin, True

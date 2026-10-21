@@ -421,10 +421,11 @@ def _fusion_mascota(ses, addr, aviso, principal, asistente, pocion, aleatorio):
     """string.xml 2783-2785 y la vista previa del cliente (FUN_005d3d30).
 
     Principal nivel 80+ y de rango alto, asistente nivel 60+, los dos vivos y
-    ninguno sacado. Exito: formula del cliente (FUN_00716cb0). Pasan hasta 3
+    ninguno sacado. Exito: politica configurada en exito_mascota. Pasan hasta 3
     atributos del asistente, solo los que en el principal no superan sus
-    estrellas + 10 (igual que la vista previa), en proporcion y con el tope
-    de pet.xml. Si falla, la mascota principal muere (2727), salvo con
+    estrellas + 10 (igual que la vista previa), en proporcion. Los rangos
+    iniciales de pet.xml NO son topes de crecimiento. Si falla, la mascota
+    principal muere (2727), salvo con
     pocion bendita. El asistente, la pocion y el aleatorio se gastan."""
     import random as _r
     import mascotas as _ms
@@ -477,20 +478,13 @@ def _fusion_mascota(ses, addr, aviso, principal, asistente, pocion, aleatorio):
         _cerrar(ses, addr, tocadas)
         log.info('[%s] %s: fusion de mascota fallida (%d%%)', addr, p.nombre, exito)
         return
-    rangos = _ms.rangos_bonos_de(int(m_p.get('sprite') or 0))
     pct = porcentaje_traspaso(d1)
-    tope_alcanzado = False
     for k in elegibles:
         suma = max(1, int(bon_a[k]) * pct // 100)
-        tope = int(rangos.get(k, (0, 1 << 30))[1])
         antes = int(bon_p.get(k) or 0)
-        nuevo = max(antes, min(tope, antes + suma))      # nunca baja
-        tope_alcanzado |= nuevo >= tope
-        bon_p[k] = nuevo
+        bon_p[k] = antes + suma
     m_p['bonos'] = bon_p
-    m_p['estrellas'] = max(estrellas, _ms.calcular_estrellas_total(bon_p))
-    if tope_alcanzado:
-        aviso('During the fusion process, the attribute of the Main Item reached its upper limit.')
+    m_p['estrellas'] = _ms.calcular_estrellas_total(bon_p)
     tocadas.add(principal)
     _cerrar(ses, addr, tocadas, principal)
     aviso('Pet fusion successful.')                            # 2728

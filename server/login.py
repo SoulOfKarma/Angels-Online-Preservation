@@ -1436,8 +1436,10 @@ def _ficha(p, base):
     import inventario as _inv
     _mej = getattr(p, 'mejoras', None)
     _buf = getattr(p, 'buffs', None)
-    hp_tope = _inv.vida_maxima(p.hp_max, p.habilidades, bolsa=p.inventario, mejoras=_mej, buffs=_buf, mp_max=p.mp_max)
-    mp_tope = _inv.mana_maximo(p.mp_max, p.habilidades, bolsa=p.inventario, mejoras=_mej, buffs=_buf)
+    hp_tope = _inv.vida_maxima(p.hp_max, p.habilidades, bolsa=p.inventario, mejoras=_mej, buffs=_buf, mp_max=p.mp_max,
+                              mascotas=getattr(p, 'mascotas', None))
+    mp_tope = _inv.mana_maximo(p.mp_max, p.habilidades, bolsa=p.inventario, mejoras=_mej, buffs=_buf,
+                              mascotas=getattr(p, 'mascotas', None))
     hp_val = 280 if (not p.habilidades and p.nivel == 1 and p.hp <= 205) else min(p.hp, hp_tope)
     hp_max_val = 280 if (not p.habilidades and p.nivel == 1 and p.hp_max <= 205) else hp_tope
     struct.pack_into('<IIII', st, 0, hp_val, hp_max_val, min(p.mp, mp_tope), mp_tope)

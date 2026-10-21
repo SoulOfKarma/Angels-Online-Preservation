@@ -600,25 +600,34 @@ def subir_estrella(ficha: dict, cantidad: int = 1) -> int:
     actualizando los bonos verdes especificos de los stats que esa mascota posee."""
     import random
     sp = int(ficha.get('sprite') or 0)
-    rangos = rangos_bonos_de(sp)
     bonos = dict(ficha.get('bonos') or {})
+    if cantidad <= 0:
+        return int(ficha.get('estrellas') or calcular_estrellas_total(bonos))
     tabla = cargar_pet_star()
     if not bonos:
         bonos = sortear_bonos(sp)
-    for k, (lo, hi) in rangos.items():
+    # Una pet de fusion conserva los bonos de su principal. No decidir que
+    # atributos puede mejorar por los rangos prestados de otra especie.
+    for k in STATS_BONO:
         cur_val = int(bonos.get(k, 0))
+        if cur_val <= 0:
+            continue
         cur_st = max(1, estrella_de_bono(cur_val, k))
+        if cur_st >= 80:
+            continue
         # Pequeña variacion por stat si se sube con Star-up Card (+10)
         delta = max(1, cantidad + (random.randint(-1, 1) if cantidad >= 5 else 0))
         new_st = min(80, cur_st + delta)
         req_lo = (tabla.get(new_st) or {}).get(k, cur_val + 1)
         req_hi = (tabla.get(min(80, new_st + 1)) or {}).get(k, req_lo + 5)
         if req_hi > req_lo + 1:
-            bonos[k] = random.randint(req_lo, req_hi - 1)
+            bonos[k] = max(cur_val, random.randint(req_lo, req_hi - 1))
         else:
-            bonos[k] = max(cur_val + 1, req_lo)
+            bonos[k] = max(cur_val, req_lo)
     ficha['bonos'] = bonos
-    nuevo = max(min(80, max(1, int(ficha.get('estrellas') or 1)) + cantidad), calcular_estrellas_total(bonos))
+    # La cifra general debe describir los bonos resultantes, no subir por
+    # separado cuando solo seis de los ocho atributos han crecido.
+    nuevo = calcular_estrellas_total(bonos)
     ficha['estrellas'] = nuevo
     return nuevo
 
@@ -638,12 +647,14 @@ def mejorar_mascota(ficha: dict) -> tuple:
     bonos = dict(ficha.get('bonos') or {})
     if not bonos:
         bonos = sortear_bonos(sp)
-    else:
-        for k, (lo, hi) in rangos.items():
-            inc = max(1, random.randint(max(1, lo // 2), max(2, hi // 2)))
-            bonos[k] = int(bonos.get(k, 0)) + inc
+    # Generar los bonos que faltan no sustituye el efecto del primer pienso.
+    # Conservamos la politica de incrementos existente hasta verificar la
+    # formula oficial; no presentar estos coeficientes como datos del XML.
+    for k, (lo, hi) in rangos.items():
+        inc = max(1, random.randint(max(1, lo // 2), max(2, hi // 2)))
+        bonos[k] = int(bonos.get(k, 0)) + inc
     ficha['bonos'] = bonos
-    ficha['estrellas'] = max(int(ficha.get('estrellas') or 1), calcular_estrellas_total(bonos))
+    ficha['estrellas'] = calcular_estrellas_total(bonos)
     return True, mej
 
 
