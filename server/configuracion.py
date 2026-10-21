@@ -6,6 +6,12 @@ sin tener que modificar la logica del servidor.
 """
 import datetime
 
+# Reconstruccion de servicios Lyceum: las probabilidades no vienen en los
+# XML publicos. Son parametros de compatibilidad, NO tasas oficiales IGG.
+ASTRO_PESOS_NORMAL = (1, 1, 1)  # intensidades I / II / III
+ASTRO_PESOS_CRISTAL = (1, 1, 4)  # el tooltip promete mayor chance de III
+STRAW_DROP_PROBABILIDAD = 0.50  # provisional; usuario recuerda caida alta
+
 
 # =====================================================================
 # MULTIPLICADORES BASE (Valores por defecto del servidor)
@@ -64,6 +70,8 @@ def multiplicador_exp(buffs: dict = None) -> float:
             m *= 3.0
         # House cleanliness belongs to the house magic index. Eilian's
         # 2292..2295 affect equipment enhancement, never character EXP.
+        import lyceum_services
+        m *= 1 + lyceum_services.bono(buffs, 'exp_extra_pct') / 100
     return m
 
 
@@ -75,6 +83,9 @@ def multiplicador_skill_exp(buffs: dict = None) -> float:
         m *= BONUS_EVENTO_SKILL
     if buffs and buffs.get('doble_skill_exp'):
         m *= 2.0
+    if buffs:
+        import lyceum_services
+        m *= 1 + lyceum_services.bono(buffs, 'skill_exp_extra_pct') / 100
     return m
 
 

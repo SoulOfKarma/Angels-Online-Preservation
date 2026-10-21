@@ -361,10 +361,15 @@ def bono_reputacion(conseguidos) -> dict:
 def con_reputacion(buffs, personaje):
     """Los buffs del personaje mas el bono de reputacion como uno permanente."""
     bono = bono_reputacion(getattr(personaje, 'logros', None) or []) if personaje is not None else {}
-    if not bono:
+    # Y lo que suben para siempre las semillas / frutos (inventario.stats_permanentes_de).
+    perm = getattr(personaje, 'stats_permanentes', None) if personaje is not None else None
+    if not bono and not perm:
         return buffs
     out = dict(buffs or {})
-    out[CLAVE_REPUTACION] = dict(bono, fin=float('inf'))
+    if bono:
+        out[CLAVE_REPUTACION] = dict(bono, fin=float('inf'))
+    if perm:
+        out['permanentes'] = dict(perm, fin=float('inf'))
     return out
 
 
@@ -490,6 +495,8 @@ def medir(f, personaje, ctx):
         return max(c('obtiene:%d' % _num(p1)), 1 if tiene else 0), max(1, _num(p2, 1))
     if regla == '獲得特定道具次數':
         return c('obtiene:%d' % _num(p1)), max(1, _num(p2, 1))
+    if regla == '獲得特定法術次數':
+        return c('buff:%d' % _num(p1)), max(1, _num(p2, 1))
     if regla in ('使用物品編號和數量', '使用特定道具次數'):
         return c('usa:%d' % _num(p1)), max(1, _num(p2, 1))
     mascotas = ctx.get('mascotas') or []

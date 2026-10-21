@@ -7,6 +7,13 @@ La LOGICA DE JUEGO no existe todavia (ver docs/05_SERVIDOR.md).
 Uso:
     python server/app.py [--host 127.0.0.1] [--port 16768]
 """
+import sys as _sys_alias
+# Arrancado como `python server/app.py`, este modulo se llama __main__ y un
+# `import app` en otro modulo (fusion, granja, farm_mecanicas...) cargaba una
+# SEGUNDA copia entera: 3,7 s con el servidor parado la primera vez que se
+# plantaba (log del 21/10/2026 13:14:16 -> 13:14:20) y un estado aparte.
+if __name__ == '__main__':
+    _sys_alias.modules.setdefault('app', _sys_alias.modules[__name__])
 import asyncio
 import argparse
 import os
@@ -3000,6 +3007,9 @@ def _procesar_muerte_monstruo(ses, m, yo, addr, espera=0.0):
 
         drops = (_cb.botin_items(m.npc_type, nombre=getattr(m, 'nombre', ''), nivel=getattr(m, 'nivel', 0))
                  if con_botin else [])
+        if con_botin:
+            import lyceum_services as _ly_drop
+            drops = list(drops) + _ly_drop.straw_drop_monstruo(ses.personaje.stage, m)
         if ses.personaje:
             import misiones as _mis_drop
             drops_mis = _mis_drop.verificar_botin_mision(ses, m.npc_type, getattr(m, 'nombre', ''))
@@ -4623,6 +4633,8 @@ def _casa_fabricar(ses, recipe_id):
         ses.enviar_inmediato(*_refrescar(ses, touched),
                             struct.pack('<HBI', 0x004C, int(success), recipe_id))
     delay = max(0.1, int(row.get('製作時間') or 1))
+    import lyceum_services as _ly_make
+    delay *= max(0.10, 1-_ly_make.bono(getattr(ses.personaje, 'buffs', None), 'fabricacion_pct')/100)
     ses.house_make_task = asyncio.get_event_loop().call_later(delay, finish)
 
 def _casa_buff_diario(ses, addr):
@@ -5626,6 +5638,8 @@ def _herramienta_para(ses, herramienta):
         return False, MSG_RECOLECTAR_MONTADO, 0
     velocidad = sum(_iv_h.velocidad_recoleccion(int(bolsa.get(r) or 0))
                     for r in range(1, 11) if bolsa.get(r))
+    import lyceum_services as _ly_gather
+    velocidad += _ly_gather.bono(getattr(ses.personaje, 'buffs', None), 'recoleccion_pct')
     if cat_m == '機甲':
         return True, None, velocidad
     ranuras = RANURAS_HERRAMIENTA.get(herramienta)
@@ -5785,6 +5799,14 @@ def _sacar_de_veta(ses, addr, stage, ent, mat, mid):
                 ses.enviar(*pkgs)
         except Exception:
             log.exception('progreso de recoleccion')
+        import lyceum_services as _ly_straw
+        import house_services as _hs_straw
+        _nivel_veta = int((_hs_straw.xml_rows('material.xml').get(int(mid)) or {}).get('等級限制') or 0)
+        for _straw_id, _straw_qty in _ly_straw.straw_drop(stage, _nivel_veta):
+            _slot_straw = _meter(ses, _straw_id, _straw_qty)
+            if _slot_straw is not None:
+                ses.enviar(*_refrescar(ses, [_slot_straw]),
+                           _cl_r.aviso(_nombre_item(_straw_id), tipo=0, msg_id=_cl_r.MSG_ITEM))
         _guardar_bolsa(ses, ses.personaje.char_id)
     log.info('[%s] veta %s (%s) en %s: %s, %d/%d', addr, ent, mat['nombre'], stage,
              dado, cuenta[0], mat['limite'])
@@ -6482,6 +6504,7 @@ def _logros_datos(ses):
     p.logros_cont = {}
     p.logros_dias = []
     p.titulo = 0
+    p.stats_permanentes = {}
     try:
         con = cuentas._get_conn()
         try:
@@ -6493,6 +6516,7 @@ def _logros_datos(ses):
         p.logros_cont = {str(k): int(v) for k, v in (d.get('logros_cont') or {}).items()}
         p.logros_dias = [str(x) for x in (d.get('logros_dias') or [])]
         p.titulo = int(d.get('titulo') or 0)
+        p.stats_permanentes = {str(k): int(v) for k, v in (d.get('permanentes') or {}).items()}
     except Exception:
         log.exception('logros: no se pudieron cargar las muertes / el titulo')
     import datetime as _dt_l
@@ -6624,6 +6648,63 @@ def _bonos_reclamar(ses, addr, accion, fid):
         log.info(f"[{addr}] bonos: fila {fid} -> {_gm_dar_item(ses, item_id, n)}")
     _bonos_guardar(ses)
     _bonos_enviar(ses)
+
+
+def _dar_exp_y_creditos(ses, exp=0, creditos=0):
+    """Suma exp de personaje y/o creditos de rango (cantidades absolutas), con
+    subida de nivel y de rango, como los premios de los pedidos de la casa."""
+    import combate, clases
+    from producer_orders import reward_progress
+    p = ses.personaje
+    progreso = reward_progress(
+        dict(exp=p.exp, oro=0, creditos=getattr(p, 'creditos', 0) or 0, nivel=p.nivel,
+             rango=getattr(p, 'rango', 1) or 1, hp_max=p.hp_max, mp_max=p.mp_max),
+        dict(exp=int(exp), creditos=int(creditos)),
+        combate.exp_para_nivel, combate.nivel_maximo(), combate.rango_de_creditos)
+    nivel_antes, rango_antes = p.nivel, getattr(p, 'rango', 1)
+    for k in ('exp', 'creditos', 'nivel', 'rango', 'hp_max', 'mp_max'):
+        setattr(p, k, progreso[k])
+    actual, siguiente = combate.exp_para_barra(p.nivel, p.exp)
+    ses.enviar(struct.pack('<HIB', 0x001D, p.entity_id, 4)
+               + struct.pack('<BQ', 29, p.nivel)
+               + struct.pack('<BQ', 30, combate.exp_para_nivel(p.nivel))
+               + struct.pack('<BQ', 31, siguiente) + struct.pack('<BQ', 32, actual),
+               combate.atributo(p.entity_id, p.creditos, combate.KIND_CREDITO),
+               combate.atributo(p.entity_id, p.rango, combate.KIND_RANGO), _stats_ses(ses))
+    if p.nivel > nivel_antes:
+        ses.enviar(combate.atributo(p.entity_id, p.nivel, 29), combate.efecto_level_up(p.entity_id))
+    if p.rango > rango_antes:
+        ses.enviar(combate.efecto_level_up(p.entity_id, es_rango=True))
+    if exp:
+        ses.enviar(clases.aviso(str(int(exp)), tipo=0, msg_id=clases.MSG_EXP))
+    if creditos:
+        ses.enviar(clases.aviso(str(int(creditos)), tipo=0, msg_id=642))
+    if getattr(ses, 'usuario', None):
+        cuentas.guardar_progreso(ses.usuario, p.char_id, p.nivel, p.exp, p.hp, p.mp, p.habilidades)
+
+
+def _dar_exp_habilidad(ses, skill_id, puntos):
+    """Suma skill exp a UNA habilidad (los Skill Bonus Voucher). False si no la tiene."""
+    import clases
+    p = ses.personaje
+    nuevas, dada = [], False
+    for sid, nivel, pts in p.habilidades or []:
+        if int(sid) == int(skill_id) and not dada:
+            pts += int(puntos)
+            tope = p.nivel + 11 if sid in range(20, 32) else p.nivel
+            while nivel < tope and pts >= max(1, clases.exp_requerida_skill(nivel, sid)):
+                pts -= max(1, clases.exp_requerida_skill(nivel, sid))
+                nivel += 1
+            pts = min(pts, max(1, clases.exp_requerida_skill(nivel, sid)))
+            dada = True
+            ses.enviar(clases.aviso_doble(clases.MSG_SKILL_EXP, clases.nombre(sid), str(int(puntos))))
+        nuevas.append((sid, nivel, pts))
+    if dada:
+        p.habilidades = nuevas
+        ses.enviar(clases.arbol(nuevas))
+        if getattr(ses, 'usuario', None):
+            cuentas.guardar_progreso(ses.usuario, p.char_id, p.nivel, p.exp, p.hp, p.mp, p.habilidades)
+    return dada
 
 
 # ---------------------------------------------------------------- PET AMPLIFY
@@ -15653,6 +15734,9 @@ class Servidor:
                 rec_id = struct.unpack_from('<I', cuerpo, 0)[0]
                 veces = 1
             veces = max(1, min(100, int(veces)))
+            import lyceum_services as _ly_exchange
+            if _ly_exchange.canjear(ses, rec_id, veces):
+                return
             receta = _obtener_receta_exchange(rec_id)
             if not receta:
                 ses.enviar(_cl.aviso("Invalid exchange recipe.", tipo=7, msg_id=_cl.MSG_TEXTO))
@@ -16263,10 +16347,53 @@ class Servidor:
                              % (addr, _cuanto, _f.get('nombre'), _sub,
                                 _f.get('nivel')))
                     return
-                # Los otros tres destinos todavia no se aplican; se dice en
-                # el log para no perderlos de vista.
-                log.info('[%s] vale de experiencia sin implementar: '
-                         'destino %d, %d puntos' % (addr, _dest, _cuanto))
+                # Personaje (1), habilidad (2, "choose a target skill": la
+                # habilidad llega en el objetivo del 0x002E) y honor (3, los
+                # creditos de rango). La medalla de rango tambien es destino 3
+                # y tiene su propio caso mas abajo.
+                import configuracion as _cf_vale
+                if not (_dest == inv.VALE_HONOR
+                        and int(item_id) == int(getattr(_cf_vale, 'ITEM_MEDALLA_RANGO', 83266))):
+                    if _dest == inv.VALE_HABILIDAD:
+                        habs_v = {int(h[0]) for h in (ses.personaje.habilidades or [])}
+                        if objetivo is None or int(objetivo) not in habs_v:
+                            log.info('[%s] vale de habilidad %s sin habilidad elegida (cuerpo %s)'
+                                     % (addr, item_id, cuerpo.hex()))
+                            ses.enviar(_c.aviso('Choose the skill to use it on.', tipo=7, msg_id=_c.MSG_TEXTO))
+                            return
+                    _sacar(ses, ranura, 1)
+                    ses.enviar(*_refrescar(ses, [ranura]))
+                    _guardar_bolsa(ses, cid)
+                    if _dest == inv.VALE_PERSONAJE:
+                        _dar_exp_y_creditos(ses, exp=_cuanto)
+                    elif _dest == inv.VALE_HONOR:
+                        _dar_exp_y_creditos(ses, creditos=_cuanto)
+                    elif _dest == inv.VALE_HABILIDAD:
+                        _dar_exp_habilidad(ses, int(objetivo), _cuanto)
+                    log.info('[%s] vale %s: destino %d, %d' % (addr, item_id, _dest, _cuanto))
+                    return
+
+            # Caso 0b: STATS PERMANENTES (Weight Seed, Attack Seed, Hero Fruit...).
+            _perm = inv.stats_permanentes_de(item_id)
+            if _perm and ses.personaje:
+                _logros_datos(ses)
+                p_perm = ses.personaje
+                acum = dict(getattr(p_perm, 'stats_permanentes', None) or {})
+                for k, v in _perm.items():
+                    acum[k] = int(acum.get(k, 0)) + int(v)
+                p_perm.stats_permanentes = acum
+                _sacar(ses, ranura, 1)
+                ses.enviar(*_refrescar(ses, [ranura]), _stats_ses(ses),
+                           _c.aviso('Your abilities were permanently improved.', tipo=7, msg_id=_c.MSG_TEXTO))
+                _guardar_bolsa(ses, cid)
+                if getattr(ses, 'usuario', None):
+                    try:
+                        cuentas._actualizar_personaje(ses.usuario, p_perm.char_id,
+                                                      lambda d: d.update(permanentes=acum))
+                    except Exception:
+                        log.exception('no se pudieron guardar los stats permanentes')
+                log.info('[%s] %s usa %s: %s (total %s)' % (addr, p_perm.nombre, item_id, _perm, acum))
+                return
 
 
             # Consumible custom: Medalla de ascenso de rango (+1 rango por uso)
@@ -17396,6 +17523,17 @@ class Servidor:
                     log.debug(f"[{addr}] clic en entidad {ent} sin nombre registrado")
                     return
 
+                import lyceum_services as _ly_npc
+                if ses.personaje and ses.personaje.stage == 41 and _nom_ent in _ly_npc.NOMBRES:
+                    g_servicio = dialogos.propio(_nom_ent, entidad=ent, stage=41)
+                    ses.dlg_ent, ses.dlg_guion, ses.dlg_paso = ent, g_servicio, 1
+                    ses.dlg_val = struct.unpack_from('<H', g_servicio[0], 4)[0]
+                    ses.dlg_quest_ofrecida = None
+                    ses._astro_pendiente = None
+                    ses._lyceum_exchange = None
+                    ses.enviar(dialogos.linea_de(g_servicio, 0, ses.personaje.nombre))
+                    return
+
                 g_quest = None
                 if ses.personaje:
                     proc, tipo_proc, datos_proc = _mis.interactuar_npc(ses, _nom_ent, entidad=ent)
@@ -17756,6 +17894,15 @@ class Servidor:
                     return
 
                 # Opciones de mision interactiva (Interes [Ayudar/Salir] o Propuesta [Aceptar/Rechazar])
+                import lyceum_services as _ly_op
+                _nom_servicio = _nombre_entidad(ses, ent)
+                if ses.personaje and ses.personaje.stage == 41 and _nom_servicio in _ly_op.NOMBRES:
+                    if _el not in _ops or not _ly_op.procesar_opcion(ses, _nom_servicio, _el):
+                        ses.dlg_ent = None
+                        ses._astro_pendiente = None
+                        ses.enviar(struct.pack('<H', 0x0012) + dialogos.FIN)
+                    return
+
                 if getattr(ses, 'dlg_quest_ofrecida', None):
                     qid_ofrecida = ses.dlg_quest_ofrecida
                     fase = getattr(ses, 'dlg_quest_fase', 'interes')

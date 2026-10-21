@@ -12,6 +12,32 @@ import cuentas
 _PROGRAMADOS = set()
 
 
+def refrescar_cultivo(ses, cultivo, actualizar_tierra=False):
+    """Reconstruye la representacion sin borrar ni resembrar el cultivo.
+
+    La tierra y la planta son entidades distintas en el mismo punto. Si cambia
+    la tierra, se inserta PRIMERO y la planta DESPUES, como al entrar a Farm.
+    005b85d0 reutiliza entidades existentes sin cambiar su secuencia: para
+    actualizar el sprite hay que retirar la entidad antes de recrearla.
+
+    No usar S2C0010 con efectos SP_CLASS_MAGIC (50076/50077): la prueba real
+    produjo artefactos. Queda pendiente validar su transporte, no sus nombres.
+    """
+    import combate, granja_liga as farm
+    plot = int(cultivo['plot_id'])
+    eid = farm.CROP_BASE_EID + plot
+    ahora = time.time()
+    pkts = [combate.despawn_monstruo(eid)]
+    if actualizar_tierra:
+        pkts.extend((combate.despawn_monstruo(farm.PARCELA_BASE_EID + plot),
+                     farm.paquete_tierra(plot, mojada=cultivo['riego_count'] > 0)))
+    pkts.extend((farm.paquete_cultivo(
+        eid, cultivo['crop_id'], cultivo['char_name'], farm.coordenadas_de_parcela(plot),
+        farm.sprite_de_etapa(cultivo['crop_id'], cultivo['sembrado_en'], cultivo['madura_en'], ahora),
+        maduro=ahora >= cultivo['madura_en']), paquete_estado_cultivo(cultivo)))
+    difundir(ses, *pkts)
+
+
 @functools.lru_cache(maxsize=None)
 def semilla_de_cultivo(crop_id):
     import inventario, pathlib, sqlite3
@@ -88,7 +114,10 @@ def _seleccion(ses, entity_id):
     if plot not in farm.PARCELAS_CULTIVO:
         return None
     xy = farm.coordenadas_de_parcela(plot)
-    if not xy or max(abs(p.tile_x-xy[0]), abs(p.tile_y-xy[1])) > farm.RADIO_PARCELA:
+    if not xy:
+        return None
+    if max(abs(p.tile_x-xy[0]), abs(p.tile_y-xy[1])) > farm.RADIO_INTERACCION:
+        _avisar(ses, 'Move closer to the crop to water, fertilize or harvest it.')
         return None
     c = cuentas.db_obtener_cultivo(g['guild_id'], plot)
     return (g, c) if c and farm.info_cultivo(c['crop_id']) else None
@@ -224,11 +253,7 @@ def accion(ses, entity_id, nombre):
         app._guardar_bolsa(ses, cid)
     actualizado = cuentas.db_obtener_cultivo(gid, plot)
     if actualizado:
-        difundir(ses, paquete_estado_cultivo(actualizado))
-    if nombre == 'water':
-        import combate as _cb_t
-        difundir(ses, _cb_t.despawn_monstruo(farm.PARCELA_BASE_EID + int(plot)),
-                 farm.paquete_tierra(plot, mojada=True))
+        refrescar_cultivo(ses, actualizado, actualizar_tierra=nombre == 'water')
     ses.enviar(paquete_cuotas(ses))
     # string.xml 3165/3166 (la ayuda de la granja): Regar da [EXP], Abonar da
     # [Skill EXP] y Cosechar da [EXP and Skill EXP] mas el producto, "segun el

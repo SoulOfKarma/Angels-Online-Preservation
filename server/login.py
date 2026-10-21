@@ -1290,6 +1290,10 @@ def poblar(stage: int, player_level=1):
                                      klass=e.get('klass', 200),
                                      direccion=e.get('direccion'),
                                      visible=e.get('visible', 1)))
+            if e.get('rotar_al_aparecer') and e.get('direccion') is not None:
+                # Algunos sprites necesitan actualizar la orientacion despues
+                # de crear su animacion, como los Raphael del Fighting Palace.
+                salida.append(rotar(e['entity_id'], e['direccion']))
             if 'Totem' in e['nombre']:
                 TOTEMS_PUESTOS[e['entity_id']] = e['nombre']
         for r in d43.get('recursos', []):
@@ -1320,7 +1324,12 @@ def poblar(stage: int, player_level=1):
     # servidor se caia al entrar en el Lyceum (KeyError 'hex').
     for e in d.get('spawns', []):
         if e.get('hex'):
-            salida.append(struct.pack('<H', 0x0008) + bytes.fromhex(e['hex']))
+            crudo = bytearray(bytes.fromhex(e['hex']))
+            if e.get('direccion') is not None:
+                # Una direccion explicita tambien debe aplicarse al spawn
+                # capturado: antes Astrologer ignoraba el campo del JSON.
+                crudo[33] = int(e['direccion']) & 0xFF
+            salida.append(struct.pack('<H', 0x0008) + bytes(crudo))
         else:
             salida.append(_npc_spawn(e['entity_id'], e['npc_type'],
                                      e['nombre'], tuple(e['tile']),
@@ -1328,6 +1337,8 @@ def poblar(stage: int, player_level=1):
                                      klass=e.get('klass', 200),
                                      direccion=e.get('direccion'),
                                      visible=e.get('visible', 1)))
+        if e.get('rotar_al_aparecer') and e.get('direccion') is not None:
+            salida.append(rotar(e['entity_id'], e['direccion']))
     # Los recursos del mapa: vetas de cobre, arboles, hierbas, madrigueras.
     for e in d.get('recursos', []):
         if 'hex' in e:

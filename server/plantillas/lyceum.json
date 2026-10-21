@@ -1657,6 +1657,8 @@
   {
    "entity_id": 405,
    "nombre": "Astrologer",
+   "direccion": 7,
+   "rotar_al_aparecer": true,
    "npc_type": 14701,
    "klass": 200,
    "monstruo": false,
@@ -1664,9 +1666,31 @@
     144,
     107
    ],
-   "msgid": 142535,
+   "msgid": 142501,
    "hex": "9501000001000000900000006b000000417374726f6c6f6765720000000000000005e69d00000000c8000000006d3900800c00000000000000000000000000",
    "sprite": 40422
+  },
+  {
+   "entity_id": 412,
+   "nombre": "Login Rewarder",
+   "npc_type": 24549,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [141, 106],
+   "msgid": 515006,
+   "sprite": 40003,
+   "direccion": 7
+  },
+  {
+   "entity_id": 413,
+   "nombre": "Green Angel",
+   "npc_type": 14907,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [215, 74],
+   "msgid": 513638,
+   "sprite": 40002,
+   "direccion": 7
   },
   {
    "entity_id": 406,

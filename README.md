@@ -18,6 +18,20 @@ a guess, it says so.
 
 ## Actual state
 
+Lyceum services (Oct 21): Astrologer, Login Rewarder and Green Angel,
+including persistent fees/quotas, exchanges and level-21+ Straw drops.
+See the [NPC service notes](docs/LYCEUM_NPC_SERVICES_2026-10-21.md)
+for evidence, tests and explicitly provisional drop/draw probabilities.
+Green Angel includes the mount catalog (group 401); Login Rewarder is at
+`(141,106)`. Straw drops now read missing monster levels from `monster.xml`.
+
+Farm interaction range and soil/crop refresh have been corrected;
+experimental action animations remain disabled pending client validation.
+See the [Farm investigation](docs/FARM_INTERACCIONES_2026-10-21.md).
+This release also includes the previously pending EXP/honor vouchers,
+permanent-stat items and `app` startup alias changes;
+see [release scope and validation](docs/ENTREGA_2026-10-21.md).
+
 **Works**
 
 - Login, character creation, selection and deletion, saved to disk

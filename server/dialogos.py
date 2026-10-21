@@ -1580,8 +1580,11 @@ def propio(nombre: str, faccion: str = "Heaven", jugador: str = "",
             # es una de las opciones, no la linea de apertura.
             return [armar_linea(505825, npc_val or 4,
                                 [505822, 505823, 505824, 505826])[2:]]
-        if nombre == 'Astrologer':
-            return [armar_linea(142535, npc_val or 4, [142536])[2:]]
+        if nombre in ('Astrologer', 'Login Rewarder', 'Green Angel'):
+            import lyceum_services
+            mid, opciones = lyceum_services.saludo(nombre)
+            cara = {'Astrologer': 422, 'Login Rewarder': 3, 'Green Angel': 2}[nombre]
+            return [armar_linea(mid, cara, opciones)[2:]]
         if nombre == 'Fortunia':
             # La cambiadora de vales. Su bloque es el 504131-504141:
             # saluda y ofrece cambiar vales o Convention Tickets, y detras

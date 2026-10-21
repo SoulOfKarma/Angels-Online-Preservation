@@ -18,6 +18,20 @@ una suposición, lo dice.
 
 ## Estado real
 
+Servicios de Lyceum (21/10): Astrologer, Login Rewarder y Green Angel,
+con costes/cuotas persistentes, canjes y Straws desde nivel 21. Detalles,
+pruebas y probabilidades provisionales en
+[la nota de servicios NPC](docs/LYCEUM_NPC_SERVICES_2026-10-21.md).
+Green Angel incluye el catalogo de monturas (grupo 401) y Login Rewarder
+queda en `(141,106)`. La caida de Straws usa el nivel real de `monster.xml`.
+
+Farm: corregidos el alcance de interaccion y el refresco tierra/planta;
+las animaciones experimentales quedan desactivadas, pendientes de validar.
+Ver [diagnostico y pruebas de Farm](docs/FARM_INTERACCIONES_2026-10-21.md).
+Esta entrega tambien incluye los cambios previos de vales de EXP/honor,
+estadisticas permanentes y alias de arranque de `app`;
+ver [alcance y validacion de la entrega](docs/ENTREGA_2026-10-21.md).
+
 **Funciona**
 
 - Login, creación, selección y borrado de personaje, con persistencia en disco

@@ -168,6 +168,10 @@ CAT_SEMILLA = '農場種子'      # 農場種子
 PARCELAS = range(1, 201)                      # TAG 1..200 de farm.mpc
 PARCELAS_CULTIVO = range(1, 71)               # 60005; las 130 restantes son 60035.
 RADIO_PARCELA = 4
+# El cliente se detiene a cinco casillas del centro de la parcela 67
+# (log21/10/2026:74,28 frente a69,28). La parcela ocupa un rombo ancho;
+# no usar el radio de siembra, que rechazaba las tres acciones silenciosamente.
+RADIO_INTERACCION = 6
 
 
 def cultivo_de_semilla(item_id: int):

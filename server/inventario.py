@@ -931,6 +931,8 @@ def stats(bolsa=None, habilidades: list = None,
                     ice_eff += b_data['res_ice']
                 if 'res_corrosion' in b_data:
                     rotten_eff += b_data['res_corrosion']
+                if b_data.get('carga'):
+                    load_max += b_data['carga']
 
     # TODO lo que va aqui se recorta al rango del campo. Sin esto, un solo
     # numero fuera de sitio -- un debuff que deje un stat en negativo, o un
@@ -2700,6 +2702,55 @@ def creditos_de(item_id: int) -> int:
                         _INVERSION[int(mid.group(1))] = int(mcr.group(1))
     return _INVERSION.get(int(item_id), 0)
 
+
+
+# OBJETOS DE STAT PERMANENTE (永久性效果="是"): Weight Seed (負重 +1200),
+# Attack Seed, Hero Fruit, Lvl 3 HP Source... Unos 95. Lo que suben va en las
+# mismas columnas que el equipo; se traducen a las claves de los buffs para
+# sumarlos como uno que no acaba (logros.con_reputacion).
+_COLS_PERMANENTES = (('負重', 'carga'), ('atk_avg', 'atk'), ('matk', 'matk'), ('def', 'def'),
+                     ('mdef', 'mdef'), ('accuracy', 'hit'), ('agility', 'eva'), ('hp', 'hp_bonus'),
+                     ('mp', 'mp_bonus'), ('crit_rate', 'crit'), ('res_body', 'res_body'),
+                     ('res_mind', 'res_mind'), ('res_lightning', 'res_lightning'),
+                     ('res_fire', 'res_fire'), ('res_ice', 'res_ice'), ('res_corrosion', 'res_corrosion'))
+_PERMANENTES = {}
+
+
+def stats_permanentes_de(item_id: int):
+    """{clave de buff: cuanto} si el item sube stats para siempre, o None."""
+    item_id = int(item_id)
+    if item_id in _PERMANENTES:
+        return _PERMANENTES[item_id]
+    r = None
+    try:
+        import sqlite3
+        db = pathlib.Path(__file__).parent.parent / 'corpus' / 'content.db'
+        con = sqlite3.connect(db)
+        for t in TABLAS_ITEM:
+            cols = [c[1] for c in con.execute('pragma table_info(%s)' % t)]
+            if '永久性效果' not in cols:
+                continue
+            usadas = [(c, k) for c, k in _COLS_PERMANENTES if c in cols]
+            fila = con.execute('select "永久性效果", %s from %s where id=?'
+                               % (', '.join('"%s"' % c for c, _ in usadas), t), (str(item_id),)).fetchone()
+            if not fila:
+                continue
+            if fila[0] == '是':
+                r = {}
+                for (c, k), v in zip(usadas, fila[1:]):
+                    try:
+                        v = int(float(v or 0))
+                    except (TypeError, ValueError):
+                        v = 0
+                    if v:
+                        r[k] = r.get(k, 0) + v
+                r = r or None
+            break
+        con.close()
+    except Exception:
+        pass
+    _PERMANENTES[item_id] = r
+    return r
 
 
 # Los vales de experiencia, categoria 經驗卷. Son 188 en el cliente y cada
