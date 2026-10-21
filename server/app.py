@@ -6728,6 +6728,156 @@ def _logros_poner_titulo(ses, addr, titulo):
     log.info('[%s] %s se pone el titulo %d', addr, p.nombre, titulo)
 
 
+def _sanear_escrituras(p, usuario, addr=None):
+    """Arregla al entrar lo que dejaron los fallos de las escrituras de casa:
+    una escritura en las casillas de muebles/mascotas/generadores vuelve a la
+    mochila, y si la casilla 376 tiene otra escritura que la de la casa, la
+    casa pasa a ser la de la casilla (la que el jugador ve puesta)."""
+    import casas as _cs_s
+    bolsa = getattr(p, 'inventario', None)
+    if not bolsa:
+        return
+    cambiado = False
+    for r in sorted(k for k in list(bolsa) if _cs_s.SLOT_FURN_INI <= int(k) <= _cs_s.SLOT_MOB_FIN):
+        if _cs_s.es_deed_item(bolsa[r]):
+            libre = _ranura_libre(bolsa, desde=20)
+            if libre is None:
+                continue
+            bolsa[libre] = bolsa.pop(r)
+            cambiado = True
+            log.info('[%s] %s: escritura %s sacada de la casilla de muebles %s a la %s',
+                     addr, p.nombre, bolsa[libre], r, libre)
+    puesta = bolsa.get(_cs_s.SLOT_DEED)
+    if puesta and _cs_s.es_deed_item(puesta) and isinstance(getattr(p, 'casa', None), dict):
+        if int(p.casa.get('deed_id') or 0) != int(puesta):
+            log.info('[%s] %s: la casa pasa de %s a %s (la escritura puesta)',
+                     addr, p.nombre, p.casa.get('deed_id'), puesta)
+            p.casa['deed_id'] = int(puesta)
+            c_act = _cs_s._CASAS_ACTIVAS.get(int(p.char_id))
+            if c_act is not None:
+                c_act.deed_id = int(puesta)
+            if usuario:
+                cuentas.guardar_casa(usuario, p.char_id,
+                                     c_act or _cs_s.obtener_o_crear_casa(p.char_id, p.nombre, raw_data=p.casa))
+    if cambiado and usuario:
+        cuentas.guardar_inventario(usuario, p.char_id, p.inventario, p.cantidades)             if hasattr(cuentas, 'guardar_inventario') else None
+
+
+_DATOS_USO = {}
+
+
+def _datos_uso(item_id):
+    """(使用公式, 動態資料1, nombre) de un objeto, de item*.xml."""
+    item_id = int(item_id)
+    if item_id not in _DATOS_USO:
+        r = (0, 0, '')
+        try:
+            import sqlite3
+            import inventario as _iv_du
+            con = sqlite3.connect(pathlib.Path(__file__).resolve().parent.parent / 'corpus' / 'content.db')
+            try:
+                fila = _iv_du.fila_item(con, '"使用公式", "動態資料1", "基本名稱"', item_id)
+            finally:
+                con.close()
+            if fila:
+                def _i(v):
+                    try:
+                        return int(v)
+                    except (TypeError, ValueError):
+                        return 0
+                r = (_i(fila[0]), _i(fila[1]), str(fila[2] or ''))
+        except Exception:
+            log.exception('datos de uso de %s', item_id)
+        _DATOS_USO[item_id] = r
+    return _DATOS_USO[item_id]
+
+
+def _usar_objeto_de_servicio(ses, addr, ranura, objetivo):
+    """Formulas de uso que el servidor no trataba (True si era una de ellas):
+
+      2   Fly Book (2987): "choose a head portrait of your teammate and you
+          will be transported to him". El objetivo es el companero elegido.
+      7   Summon Book (1333): lo mismo al reves, el companero viene a ti.
+      13  Spacious Iron Room (6853, 20083, 16242): 超空間鐵舖, "abre la tienda
+          de REPARACION" (修裝商店) -> la ventana de reparar, 0x004F [0][1].
+      14  Spacious Bank (6854, 20084, 16243) / Spacious Guild Bank (7173,
+          16244, con 動態資料1 = 1): el banco personal o el de la liga.
+
+    Los (Permanent) no se gastan; el resto, uno por uso que salga bien."""
+    import clases as _cl_s
+    p = ses.personaje
+    item_id = int(ses.inventario[ranura])
+    formula, dato1, nombre = _datos_uso(item_id)
+    if formula not in (2, 7, 13, 14):
+        return False
+    permanente = 'permanent' in nombre.lower()
+
+    def gastar():
+        if not permanente:
+            _sacar(ses, ranura, 1)
+            ses.enviar(*_refrescar(ses, [ranura]))
+            _guardar_bolsa(ses, p.char_id)
+
+    if formula in (2, 7):
+        import equipos as _eq_s
+        grupo = [s for s in _eq_s.grupo_de(ses) if s is not ses and getattr(s, 'personaje', None)]
+        if not grupo:
+            ses.enviar(_cl_s.aviso('You need to be in a team to use this item.', tipo=0))
+            return True
+        destino = None
+        if objetivo:
+            import presencia as _pr_s
+            for s in grupo:
+                if int(objetivo) in (int(s.personaje.char_id), int(s.personaje.entity_id),
+                                     int(_pr_s.entidad_de(s) or 0)):
+                    destino = s
+                    break
+        if destino is None:
+            if len(grupo) == 1:
+                destino = grupo[0]
+            else:
+                ses.enviar(_cl_s.aviso("Click the portrait of the teammate.", tipo=0))
+                return True
+        if getattr(destino, 'muerto', False) or getattr(ses, 'muerto', False):
+            ses.enviar(_cl_s.aviso('That cannot be done right now.', tipo=0))
+            return True
+        q = destino.personaje
+        if formula == 2:
+            _sincronizar_cambio_mapa(ses, q.stage, q.tile_x, q.tile_y)
+            log.info('[%s] %s usa %s y va junto a %s (%s %s,%s)', addr, p.nombre, nombre,
+                     q.nombre, q.stage, q.tile_x, q.tile_y)
+        else:
+            _sincronizar_cambio_mapa(destino, p.stage, p.tile_x, p.tile_y)
+            try:
+                destino.volcar()
+            except Exception:
+                pass
+            destino.enviar(_cl_s.aviso('%s summoned you.' % p.nombre, tipo=0))
+            log.info('[%s] %s usa %s y trae a %s', addr, p.nombre, nombre, q.nombre)
+        gastar()
+        return True
+    if formula == 13:
+        ses.enviar(struct.pack('<HBB', 0x004F, 0, 1))
+        gastar()
+        log.info('[%s] %s abre la reparacion con %s', addr, p.nombre, nombre)
+        return True
+    # formula 14: banco
+    if dato1 == 1 or 'guild' in nombre.lower():
+        import gremios as _grm_s
+        g = _grm_s.obtener_gremio_de(p.char_id)
+        if not g:
+            ses.enviar(_cl_s.aviso('You are not in a league.', tipo=0))
+            return True
+        ses.banco_activo = 'liga'
+        ses.enviar(_grm_s.paquete_banco_gremio(g, p.char_id, p.entity_id))
+    else:
+        ses.banco_activo = 'personal'
+        ses.enviar(_paquete_banco_personal(ses))
+    gastar()
+    log.info('[%s] %s abre el banco con %s', addr, p.nombre, nombre)
+    return True
+
+
 def _plantar_con_clic(ses, addr, plot):
     """Clic en una parcela libre de la granja: planta la primera semilla."""
     import granja_liga as _fl
@@ -9166,6 +9316,10 @@ class Servidor:
             # LOGROS ANTES de la secuencia: el 0x0002 lleva los titulos y el
             # 0x0155 los logros. Revisandolos despues, los titulos ganados al
             # entrar (los de ranking) no salian hasta otro cambio de mapa.
+            try:
+                _sanear_escrituras(p, usuario, addr)
+            except Exception:
+                log.exception('escrituras de casa al entrar')
             try:
                 _logros_actualizar(ses, addr, silencioso=True)
             except Exception:
@@ -14342,6 +14496,33 @@ class Servidor:
                 log.warning(f"[{addr}] mover {org} -> {dst}: la ranura {org} esta vacia")
                 return
             it_org = bolsa[org]
+            # ESCRITURAS DE CASA (Cottage, Delicate House, Romantic Villa,
+            # Luxurious..., 房屋): NO son muebles. Son el tamano de la casa
+            # (cuantos muebles caben) y viven en la casilla 376 o en la
+            # mochila. Arrastrarlas se trataba como un swap cualquiera: la
+            # 376 enseñaba la Villa con la casa aun de Cottage, y podian
+            # acabar en las casillas de muebles y salir en el panel de
+            # decorar como si lo fueran (21/10/2026).
+            import casas as _cs_dd
+            _deed_org = _cs_dd.es_deed_item(it_org) or inv.categoria_item(it_org) == '房屋'
+            if dst == _cs_dd.SLOT_DEED and org != dst:
+                if _deed_org:
+                    # Lo mismo que usarla: cambia el tamano de la casa y la
+                    # escritura vieja vuelve a la casilla de origen.
+                    self.manejar(ses, 0x002E, m, d, addr, struct.pack('<I', org))
+                else:
+                    ses.enviar(*_refrescar(ses, [org, dst]))
+                return
+            if org == _cs_dd.SLOT_DEED:
+                # La casa no se queda sin escritura: se cambia usando otra.
+                ses.enviar(*_refrescar(ses, [org, dst]))
+                return
+            if _deed_org and _cs_dd.SLOT_FURN_INI <= dst <= _cs_dd.SLOT_MOB_FIN:
+                import clases as _cl_dd
+                ses.enviar(_cl_dd.aviso('House deeds are not furniture: use it (or drop it on the '
+                                        'house slot) to change the size of your house.', tipo=0),
+                           *_refrescar(ses, [org, dst]))
+                return
             if 477 <= dst <= 496:
                 import casas as _cs_slots, house_services as _hs_slots
                 _c_slots = _casa_actual(ses) if ses.personaje else None
@@ -15181,6 +15362,10 @@ class Servidor:
                 _usar_pergamino_revivir(ses, addr, ranura, _rev)
                 return
 
+            # Libros de compañero y "Spacious" (formulas de uso 2, 7, 13, 14).
+            if _usar_objeto_de_servicio(ses, addr, ranura, objetivo):
+                return
+
             # Poke Egg (XML formula 19): activate the target cursor.  Some
             # client builds include the entity in this same 0x002E; others
             # send the monster afterwards in the regular 0x0005 click.
@@ -15406,12 +15591,12 @@ class Servidor:
             if item_id in (10603, 15163, 20077, 10626, 10627) and ses.personaje:
                 import casas as _cs_soap, clases as _cl_soap, cuentas as _cta_soap
                 _c = _cs_soap.obtener_o_crear_casa(ses.personaje.char_id, ses.personaje.nombre, raw_data=getattr(ses.personaje, 'casa', None))
-                if _c.cleanliness >= 1000:
+                if _c.cleanliness >= _cs_soap.MAX_LIMPIEZA:
                     ses.enviar(_cl_soap.aviso("Your house is already sparkling clean!", tipo=0))
                     return
                 _clean_map = _cs_soap.SOAP_CLEAN
                 _add_clean = _clean_map.get(item_id, 100 if item_id == 10627 else 500)
-                _c.cleanliness = min(1000, _c.cleanliness + _add_clean)
+                _c.cleanliness = min(_cs_soap.MAX_LIMPIEZA, _c.cleanliness + _add_clean)
                 ses.personaje.casa = _c.serializar()
                 if getattr(ses, 'usuario', None):
                     _cta_soap.guardar_casa(ses.usuario, ses.personaje.char_id, _c)
@@ -15425,7 +15610,9 @@ class Servidor:
                 _rnk = _cs_soap.rango_casa(_c)
                 _v_rem = 1 if (ses.personaje.char_id not in _c.voted_users_today) else 0
                 ses.enviar(_cs_soap.pkt_house_info(_lv, _c.calcular_magia(), _next_m, _prev_m, _c.bonus_pct, _c.cleanliness, _c.votes_total, _c.votes_today, _c.visitors_total, _v_rem, _rnk, 10 if _c.is_open else 1))
-                ses.enviar(_cl_soap.aviso(f"House cleanliness restored to {_c.cleanliness}!", tipo=7, msg_id=_cl_soap.MSG_TEXTO))
+                # string.xml 2407, el texto del juego.
+                ses.enviar(_cl_soap.aviso(f"The house is clean now! The cleanliness index was increased by {_add_clean}.",
+                                          tipo=7, msg_id=_cl_soap.MSG_TEXTO))
                 log.info(f"[{addr}] used soap {item_id}: house cleanliness now {_c.cleanliness} (bonus={_c.bonus_pct}%)")
                 return
 
@@ -15434,9 +15621,19 @@ class Servidor:
                 import casas as _cs_deed, clases as _cl_deed, cuentas as _cta_deed
                 _c = _cs_deed.obtener_o_crear_casa(ses.personaje.char_id, ses.personaje.nombre, raw_data=getattr(ses.personaje, 'casa', None))
                 if _c.deed_id == item_id:
+                    # La misma casa que ya tiene: se MUEVE a la 376 si esta
+                    # vacia. Antes se copiaba sin quitarla de su casilla y la
+                    # escritura se duplicaba (KarmaV3 acabo con dos Villas).
+                    if ses.inventario.get(_cs_deed.SLOT_DEED) == item_id or ranura == _cs_deed.SLOT_DEED:
+                        ses.enviar(_cl_deed.aviso("This is already the size of your house.", tipo=0),
+                                   *_refrescar(ses, [ranura]))
+                        return
+                    _sacar(ses, ranura, 1)
                     ses.inventario[_cs_deed.SLOT_DEED] = item_id
                     ses.personaje.inventario[_cs_deed.SLOT_DEED] = item_id
-                    ses.enviar(*_refrescar(ses, [_cs_deed.SLOT_DEED]))
+                    ses.enviar(*_refrescar(ses, [ranura, _cs_deed.SLOT_DEED]))
+                    if getattr(ses, 'usuario', None):
+                        _guardar_bolsa(ses, ses.personaje.char_id)
                     return
                 # Do not resize the scene while it is being used, or orphan
                 # furniture when switching to a smaller house.
@@ -17667,7 +17864,7 @@ class Servidor:
                         ses.enviar(*_refrescar(ses, [ranura_soap]))
                         _c_cln = getattr(ses, 'casa_visitando', None) or _cs_cln.obtener_o_crear_casa(
                             ses.personaje.char_id, ses.personaje.nombre, raw_data=getattr(ses.personaje, 'casa', None))
-                        _c_cln.cleanliness = min(1000, _c_cln.cleanliness + boost)
+                        _c_cln.cleanliness = min(_cs_cln.MAX_LIMPIEZA, _c_cln.cleanliness + boost)
                         ses.personaje.casa = _c_cln.serializar()
                         ses.personaje.buffs.pop('house_clean_bonus', None)
                         if getattr(ses, 'usuario', None):

@@ -28,7 +28,12 @@ MAPAS_EXHIBICION = frozenset((370, 3, 26, 29, 38, 88))
 STAGE_HOUSE = 500
 
 # Valores de los propios item*.xml del cliente IGG (dinamica1/descripcion).
-SOAP_CLEAN = {10627: 10, 10603: 500, 10626: 500, 15163: 500, 20077: 500}
+# Cuanto limpia cada jabon: el 動態資料1 de item.xml (formula de uso 18).
+# El Super Liquid Soap (10626) da 2500, no 500 como estaba.
+SOAP_CLEAN = {10627: 10, 10603: 500, 10626: 2500, 15163: 500, 20077: 500}
+# Tope del indice de limpieza. Era 1000 y con eso el Super Liquid Soap se
+# quedaba en nada; el campo del 0x0149 es un u16.
+MAX_LIMPIEZA = 5000
 BALL_TICKETS = {
     9953: {'type': 1, 'fast': False}, 20078: {'type': 1, 'fast': False},
     15235: {'type': 1, 'fast': True}, 15236: {'type': 2, 'fast': True},
