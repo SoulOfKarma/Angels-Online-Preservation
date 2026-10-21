@@ -93,6 +93,51 @@ datos de `extracted_paks/`.
   qué URL o qué paquete usa la pestaña y servir ahí una página propia (novedades
   del servidor, eventos activos).
 
+## Estado (21/10/2026, sesión con REA)
+
+Tabla de manejadores s2c: `FUN_005e5350`, hueco = `this + 0x7b0 + opcode*16`
+(comprobado con el 0x0155 en 0x1d00; `docs/cliente_global.md` dice 0x7a0).
+
+- **Online Bonus y Login Bonus: HECHO** (`server/bonos.py`). s2c 0x018A
+  (Online) y 0x016F (Login), mismo formato que mandó el servidor real al entrar
+  (plantillas `init_00_018A` / `init_01_016F`). Reclamar = 0x0016 acción 72 /
+  54 (53 = ventana vieja). Minutos del día y días del mes, guardados en la
+  clave `bonos` de la ficha.
+- **Exchange: HECHO**. Acción 73 con el 群組 de exchangegroup.xml -> s2c 0x0151
+  [u32 grupo]; el canje ya lo hacía el 0x0160/0x0148. Ninguno de los 8 grupos
+  tiene 限量類型.
+- **Angel Pass: HECHO (sin probar)** en `server/pase.py`. Con permiso del
+  usuario (21/10/2026), `cliente_local._parchear_battlepass_xml_bytes` alarga
+  en `update26.pak` la temporada 4 (Winter's Hymn Treasures, la más nueva) a
+  2601010000-2912312359; el cliente elige la temporada con el reloj del PC
+  (FUN_006f6d50 / FUN_006f50e0) y las cuatro acababan antes de hoy.
+  - c2s 0x0016 acción 74 [2 = comprar nivel | 3 = reclamar | 4 = comprar pase].
+  - s2c 0x018D estado completo [u32 temporada][u32 nivel][u32 exp del nivel]
+    [u32 reclamado gratis][u32 reclamado pago][u8 pase][u8 tareas cerradas]
+    + 4 listas x 10 x [u32 tarea][u32 progreso] (1-2 diarias, 3-4 semanales);
+    0x018E [u32 1|2] + 2 x 10 tareas (reinicio); 0x018F [lista][tarea][progreso];
+    0x0190 [u32 1|2][u32 nivel]; 0x0191 [u32 nivel][u32 exp]; 0x0192 [u32];
+    0x0193 (fin de tareas); 0x0194 [u8 pase][u32 reclamado pago]; 0x018C [u32 estado].
+  - Tareas contadas: monstruos por 系別, captura, fusión, baile, tótem roto,
+    granja (plantar/regar/abonar/cosechar), objeto de 蒐集道具類, login y
+    "completar tareas" (= exp de pase ganada). Sin contar todavía: recolectar,
+    producir, pedidos, Olympus Tower, GvG, Holy Battle, Angel Arena,
+    Elementary, eventos diarios, Star Sign.
+- **Event News: HECHO.** Con permiso, `activityurl.xml` apunta a
+  `http://127.0.0.1:8280/news.htm?p=news|events|info|notes` (HTTP de
+  `cliente_local`). Las noticias salen de `data/noticias.json`.
+- **Pet Amplify: abrir casilla y Re-Amplify HECHOS (sin probar)** en
+  `server/amplify.py`. El 0x0179 que se arma es idéntico byte a byte al del
+  servidor real (`plantillas/mundo_real/init_28_0179.bin`). c2s 0x015D abre
+  la siguiente casilla gastando los Amplify Hammer (40284-40286) que pide
+  `pet_inlay.xml`; c2s 0x015C [tipo][casilla 1..40] cambia atributo y/o valor
+  con un Re-Amplify Hammer (40287-40295). **Falta meter la mascota** en la
+  casilla: no se ha encontrado su c2s (no es 0x015E ni 0x015F; probablemente
+  un arrastre). Probar a soltar una mascota en una casilla abierta y mirar el
+  log. Sin mascota los bonos salen a 0 (la ayuda dice que el bono es el verde
+  de la mascota x el % de la casilla, con el tope de la sección 7), y
+  tampoco están los bonos especiales (屬性格數影響 de pet_inlay.xml).
+
 ## Otros pendientes sueltos
 
 - **Mercenario de la casa**: ahora sale el más fuerte con nivel <= el del
@@ -107,3 +152,16 @@ datos de `extracted_paks/`.
   retrato; se acepta char_id o entidad. Probar en el juego y mirar el log.
 - **Títulos nuevos**: solo llegan con el 0x0002 (al entrar o cambiar de mapa);
   por REA no hay paquete para añadir uno suelto.
+
+## Otros arreglos del 21/10/2026
+
+- **Sin `extracted_paks`** (instalación limpia del repo): al arrancar,
+  `server/paks_cliente.py` saca de los `.pak` del cliente la versión vigente
+  de cada `setting/*` a `extracted_paks/update26/setting/` (unos 250 MB, 7 s).
+  Lo destapó un jugador del repo público: usar una escritura reventaba en
+  `house_services.xml_rows`.
+- **Regalos sin tabla** (1.766, p. ej. Enchanted-Cozy Xmas Suitcase): su
+  `動態資料1` apunta a un monstruo cuya tabla de caída era del servidor. Se
+  abren con la lista de su descripción (`bolsas.contenido_descrito`).
+- **Títulos sin cambiar de mapa**: se reenvía el 0x0002 (su manejador no carga
+  el mapa) y el 0x0042 detrás.

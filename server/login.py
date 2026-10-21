@@ -168,6 +168,20 @@ def flags_de_mapa(stage, base=b''):
     return struct.pack('<HI', 0x0014, flags) + resto
 
 
+def ficha_actual(p: Personaje) -> bytes:
+    """El 0x0002 del personaje tal como esta ahora, para reenviarlo en caliente.
+
+    Su manejador (FUN_005e9c90) solo vuelca los campos del personaje -- stats,
+    titulos (+0x6d0 / +0x750 -> FUN_005eb0b0 / FUN_004cfd80)... -- y no carga
+    el mapa, asi que sirve para que un titulo nuevo salga sin cambiar de mapa.
+    """
+    global _SEC
+    if _SEC is None:
+        _SEC = _cargar_secuencia()
+    base = next(m['datos'] for m in _SEC if m['opcode'] == 0x0002)
+    return _ficha(p, base)
+
+
 def secuencia(p: Personaje):
     """Devuelve [bytes] -- cada uno un sub-mensaje listo (opcode incluido)."""
     global _SEC
@@ -225,6 +239,20 @@ def secuencia(p: Personaje):
             import logros as _lg_sec
             salida.append(_lg_sec.paquete(p, getattr(p, 'logros_muertos', None) or {},
                                           ctx=getattr(p, '_logros_ctx', None)))
+        elif op == 0x0179 and getattr(p, '_amplify', None) is not None:
+            # PET AMPLIFY: la plantilla es la de un personaje sin casillas.
+            import amplify as _amp_sec
+            salida.append(_amp_sec.paquete(p._amplify))
+        elif op in (0x016F, 0x018A) and getattr(p, '_bonos', None) is not None:
+            # LOGIN / ONLINE BONUS: la plantilla traia 1 dia y 0 minutos.
+            import bonos as _bn_sec
+            est = p._bonos
+            est.al_dia()
+            if op == 0x016F:
+                salida.append(_bn_sec.paquete_login(
+                    _bn_sec.dias_del_mes(getattr(p, 'logros_dias', None)), est.login))
+            else:
+                salida.append(_bn_sec.paquete_online(est.minutos, est.online))
         elif op == 0x005B:
             salida.append(_barra(p, base))
         elif op == 0x0014:

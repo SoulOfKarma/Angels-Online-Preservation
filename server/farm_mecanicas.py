@@ -237,6 +237,9 @@ def accion(ses, entity_id, nombre):
     _experiencia(ses, *recompensa(nombre, ses.personaje.nivel, actualizado or c))
     _avisar(ses, {'water': 'Watered successfully.', 'fertilize': 'Fertilized successfully.',
                  'harvest': 'Harvest successful!'}[nombre])
+    import app as _app_fm
+    _app_fm._pase_evento(ses, {'water': '澆水農作物類', 'fertilize': '施肥農作物類',
+                               'harvest': '採收農作物類'}[nombre])
     return True
 
 

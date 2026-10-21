@@ -43,6 +43,7 @@ mas vale que el jugador se quede con ella que perderla a cambio de nada.
 import logging
 import pathlib
 import random
+import re
 import sqlite3
 
 log = logging.getLogger('bolsas')
@@ -201,6 +202,101 @@ PIEDRAS_SELLADAS = {
     78143: 78146,  # Meteor Angel Magic Stone
     81301: 81304,  # Starfall Angel Magic Stone
 }
+
+
+# ---------------------------------------------------------------------------
+# REGALOS SIN TABLA: LO QUE DICE SU DESCRIPCION
+#
+# El 動態資料1 de esos regalos es un id de monster.xml (la Enchanted-Cozy Xmas
+# Suitcase (F), 50794, apunta al 19596 "附魔-暖愛聖誕淑女服飾衣箱", que es la
+# propia caja) y su 掉寶編號 es una tabla de caida que el cliente NO trae: era
+# del servidor oficial. Lo unico que queda es la descripcion, que lista el
+# contenido: "Requires 6 slots and above to open. Open to get: A, B, C..." da
+# TODO; "Open it to get one of the following things" / "a chance to get" da
+# UNO al azar. Son 1.766 regalos asi (21/10/2026, reporte del usuario).
+#
+# Los nombres se buscan como 原型名稱 + 基本名稱. Si hay varios objetos con el
+# mismo nombre (variantes de chico/chica, de nivel...), se toma el de id mas
+# cercano a la caja: salen en el mismo lote. Si un nombre no se encuentra, o
+# es una mascota, la caja no se abre (mejor que dar algo a medias).
+# ---------------------------------------------------------------------------
+
+_DESCRITOS = None
+_POR_NOMBRE = None
+_CAT = {}
+
+
+def _cargar_descripciones():
+    global _DESCRITOS, _POR_NOMBRE
+    if _DESCRITOS is not None:
+        return _DESCRITOS
+    _DESCRITOS, _POR_NOMBRE = {}, {}
+    db = _db()
+    if not db.exists():
+        return _DESCRITOS
+    try:
+        con = sqlite3.connect(db)
+        for t in TABLAS_ITEM:
+            cols = [c[1] for c in con.execute('pragma table_info(%s)' % t)]
+            if '說明定義' not in cols:
+                continue
+            for iid, pref, base, cat, desc in con.execute(
+                    'select id, "原型名稱", "基本名稱", "物品類別", "說明定義" from %s' % t):
+                try:
+                    iid = int(iid)
+                except (TypeError, ValueError):
+                    continue
+                nombre = ((pref or '') + (base or '')).strip().lower()
+                if nombre:
+                    _POR_NOMBRE.setdefault(nombre, []).append(iid)
+                _CAT[iid] = cat
+                if cat in (CAT_BOLSA, CAT_REGALO) and desc:
+                    _DESCRITOS[iid] = desc
+        con.close()
+    except Exception:
+        log.exception('no se pudieron leer las descripciones de los regalos')
+    return _DESCRITOS
+
+
+_RE_LISTA = re.compile(r'open[^:\n]{0,60}:\s*(.*)', re.S | re.I)
+
+
+def contenido_descrito(item_id: int):
+    """('todo' | 'uno', [(item, cantidad)], casillas pedidas) o None."""
+    import html
+    iid = int(item_id or 0)
+    desc = _cargar_descripciones().get(iid)
+    if not desc:
+        return None
+    desc = html.unescape(desc)
+    m = _RE_LISTA.search(desc)
+    if not m:
+        return None
+    cabecera = desc[:m.start(1)].lower()
+    modo = 'uno' if re.search(r'one of|chance|randomly|random', cabecera) else 'todo'
+    texto = re.sub(r'/c\$\d|/c\*', '', m.group(1))          # colores del cliente
+    texto = re.split(r'\n\s*\n|\(', texto)[0]
+    premios = []
+    for trozo in re.split(r'\n|,|\band\b', texto):
+        trozo = trozo.strip(' .;-\t')
+        if not trozo:
+            continue
+        cant = 1
+        mc = re.search(r'\s*[x×*]\s*(\d+)$', trozo)
+        if mc:
+            cant, trozo = int(mc.group(1)), trozo[:mc.start()].strip()
+        cands = _POR_NOMBRE.get(trozo.lower())
+        if not cands:
+            return None
+        elegido = min(cands, key=lambda c: abs(c - iid))
+        if _CAT.get(elegido) == '寵物':
+            return None
+        premios.append((elegido, cant))
+    if not premios:
+        return None
+    mh = re.search(r'requires (\d+) slots', desc, re.I)
+    huecos = int(mh.group(1)) if mh else (1 if modo == 'uno' else len(premios))
+    return modo, premios, huecos
 
 
 def es_bolsa(item_id: int) -> bool:

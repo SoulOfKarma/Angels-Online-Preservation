@@ -706,6 +706,13 @@ def _meter(ses, item_id: int, n: int = 1, pet_metadata: dict = None) -> int:
                 lambda: _logros_contar(ses, 'obtiene:%d' % int(item_id), int(n or 1)))
     except Exception:
         pass
+    try:
+        import pase as _ps_mt
+        if int(item_id) in _ps_mt.items_de_tareas() and getattr(ses, 'personaje', None):
+            asyncio.get_event_loop().call_soon(
+                lambda: _pase_evento(ses, '蒐集道具類', int(n or 1), int(item_id)))
+    except Exception:
+        pass
     import inventario as inv
     item_id = int(item_id)
     if inv.es_item_oculto(item_id):
@@ -6511,6 +6518,330 @@ def _logros_guardar(ses):
         log.exception('logros: no se pudo guardar')
 
 
+# ---------------------------------------------------------------- BONOS
+# Online Bonus y Login Bonus de la ventana Event Overview. Ver bonos.py.
+
+def _bonos_estado(ses):
+    """El bonos.Estado del personaje (se carga una vez de su ficha)."""
+    import json
+    import bonos
+    p = ses.personaje
+    est = getattr(p, '_bonos', None)
+    if est is None:
+        d = {}
+        try:
+            con = cuentas._get_conn()
+            try:
+                fila = con.execute('SELECT datos FROM personajes WHERE char_id=?', (int(p.char_id),)).fetchone()
+            finally:
+                con.close()
+            d = (json.loads(fila[0]) if fila and fila[0] else {}).get('bonos') or {}
+        except Exception:
+            log.exception('bonos: no se pudo cargar el estado')
+        est = p._bonos = bonos.Estado(d)
+    return est
+
+
+def _bonos_guardar(ses):
+    p = getattr(ses, 'personaje', None)
+    est = getattr(p, '_bonos', None) if p else None
+    if est is None or not getattr(ses, 'usuario', None):
+        return
+    datos = est.datos()
+    try:
+        cuentas._actualizar_personaje(ses.usuario, p.char_id, lambda d: d.update(bonos=datos))
+    except Exception:
+        log.exception('bonos: no se pudo guardar')
+
+
+def _bonos_enviar(ses):
+    """Los dos s2c con el contador y lo ya reclamado."""
+    import bonos
+    p = ses.personaje
+    est = _bonos_estado(ses)
+    est.al_dia()
+    ses.enviar(bonos.paquete_login(bonos.dias_del_mes(getattr(p, 'logros_dias', None)), est.login))
+    ses.enviar(bonos.paquete_online(est.minutos, est.online))
+
+
+def _bonos_tick(ses, now=None):
+    """Cuenta el tiempo conectado del dia; avisa al cliente cada minuto."""
+    import bonos
+    import datetime as _dt_b
+    p = getattr(ses, 'personaje', None)
+    if p is None:
+        return
+    now = time.monotonic() if now is None else now
+    antes = getattr(ses, '_bonos_tick', None)
+    ses._bonos_tick = now
+    if antes is None:
+        return
+    est = _bonos_estado(ses)
+    dia = est.dia
+    est.al_dia()
+    if est.dia != dia:
+        # Medianoche con el personaje dentro: cuenta como dia conectado.
+        hoy = _dt_b.date.today().isoformat()
+        dias = list(getattr(p, 'logros_dias', None) or [])
+        if hoy not in dias:
+            p.logros_dias = (dias + [hoy])[-400:]
+        _bonos_enviar(ses)
+    minutos = est.minutos
+    est.segundos += max(0.0, min(5.0, now - antes))
+    if est.minutos != minutos:
+        ses.enviar(bonos.paquete_online(est.minutos, est.online))
+        _bonos_guardar(ses)
+
+
+def _bonos_reclamar(ses, addr, accion, fid):
+    """c2s 0x0016 accion 54 (Login) / 72 (Online) / 53 (Online, la primera libre)."""
+    import bonos
+    import clases as _cl_b
+    p = ses.personaje
+    est = _bonos_estado(ses)
+    est.al_dia()
+    if accion == bonos.ACCION_LOGIN:
+        filas, contador, mascara = bonos.filas_login(), bonos.dias_del_mes(getattr(p, 'logros_dias', None)), est.login
+    else:
+        if accion == bonos.ACCION_ONLINE_VIEJA:
+            fid = bonos.siguiente_online(est) or 0
+        filas, contador, mascara = bonos.filas_online(), est.minutos, est.online
+    motivo = bonos.reclamable(filas, fid, contador, mascara)
+    if motivo:
+        log.info(f"[{addr}] bonos: accion {accion} fila {fid} rechazada ({motivo})")
+        _bonos_enviar(ses)
+        return
+    items = filas[int(fid)][1]
+    libres = sum(1 for r in range(20, _tope_bolsa(ses.inventario) + 1) if r not in ses.inventario)
+    if libres < len(items):
+        ses.enviar(_cl_b.aviso('Your bag is full.'))
+        return
+    if accion == bonos.ACCION_LOGIN:
+        est.login |= 1 << (int(fid) - 1)
+    else:
+        est.online |= 1 << (int(fid) - 1)
+    for item_id, n in items:
+        log.info(f"[{addr}] bonos: fila {fid} -> {_gm_dar_item(ses, item_id, n)}")
+    _bonos_guardar(ses)
+    _bonos_enviar(ses)
+
+
+# ---------------------------------------------------------------- PET AMPLIFY
+# Ver amplify.py.
+
+def _amplify_estado(ses):
+    import json
+    import amplify
+    p = ses.personaje
+    est = getattr(p, '_amplify', None)
+    if est is None:
+        d = {}
+        try:
+            con = cuentas._get_conn()
+            try:
+                fila = con.execute('SELECT datos FROM personajes WHERE char_id=?', (int(p.char_id),)).fetchone()
+            finally:
+                con.close()
+            d = (json.loads(fila[0]) if fila and fila[0] else {}).get('amplify') or {}
+        except Exception:
+            log.exception('amplify: no se pudo cargar el estado')
+        est = p._amplify = amplify.Estado(d)
+    return est
+
+
+def _amplify_guardar(ses):
+    p = getattr(ses, 'personaje', None)
+    est = getattr(p, '_amplify', None) if p else None
+    if est is None or not getattr(ses, 'usuario', None):
+        return
+    datos = est.datos()
+    try:
+        cuentas._actualizar_personaje(ses.usuario, p.char_id, lambda d: d.update(amplify=datos))
+    except Exception:
+        log.exception('amplify: no se pudo guardar')
+
+
+def _amplify_gastar(ses, ids, n):
+    """Quita n unidades entre esos objetos (en ese orden). False si no hay."""
+    if sum(_cant_total_item(ses, i) for i in ids) < n:
+        return False
+    tocadas = []
+    for i in ids:
+        if n <= 0:
+            break
+        q = min(n, _cant_total_item(ses, i))
+        if q:
+            tocadas += _consumir_item_total(ses, i, q)
+            n -= q
+    ses.enviar(*_refrescar(ses, sorted(set(tocadas))))
+    _guardar_bolsa(ses, ses.personaje.char_id)
+    return True
+
+
+def _amplify_c2s(ses, addr, opcode, cuerpo):
+    import amplify
+    import clases as _cl_am
+    est = _amplify_estado(ses)
+    if opcode == amplify.C2S_ABRIR:
+        filas = amplify.leer_abrir(cuerpo)
+        log.info(f"[{addr}] amplify: abrir casilla {est.abiertas + 1}, martillos {filas}")
+        if est.abiertas >= amplify.MAX_CASILLAS:
+            return
+        precio = amplify.coste(est.abiertas)
+        if not _amplify_gastar(ses, amplify.MARTILLO_ABRIR, precio):
+            ses.enviar(_cl_am.aviso("You don't have the right hammer.", tipo=7, msg_id=_cl_am.MSG_TEXTO))
+            return
+        est.abrir()
+    else:
+        pedido = amplify.leer_cambiar(cuerpo)
+        log.info(f"[{addr}] amplify: re-amplify {pedido}")
+        if not pedido:
+            return
+        tipo, casilla = int(pedido[0]), int(pedido[1]) - 1
+        if tipo not in amplify.MARTILLOS or not 0 <= casilla < est.abiertas:
+            return
+        if not _amplify_gastar(ses, amplify.MARTILLOS[tipo], 1):
+            ses.enviar(_cl_am.aviso("You don't have the right hammer.", tipo=7, msg_id=_cl_am.MSG_TEXTO))
+            return
+        est.cambiar(tipo, casilla)
+    ses.enviar(amplify.paquete(est))
+    _amplify_guardar(ses)
+
+
+# ---------------------------------------------------------------- ANGEL PASS
+# Ver pase.py. La temporada la elige el cliente con su battlepass.xml, que
+# cliente_local.py alarga en el pak.
+PASE_REGLAS_DE_LOGROS = (('captura:', ('抓寵類',)), ('fusion_cons:', ('融合道具類',)),
+                         ('fusion_pets', ('融合道具類',)), ('baile', ('舉辦舞會類', '參與舞會類')),
+                         ('totem_roto', ('參與圖騰戰類',)))
+
+
+def _pase_estado(ses):
+    import json
+    import pase
+    p = ses.personaje
+    est = getattr(p, '_pase', None)
+    if est is None:
+        d = {}
+        try:
+            con = cuentas._get_conn()
+            try:
+                fila = con.execute('SELECT datos FROM personajes WHERE char_id=?', (int(p.char_id),)).fetchone()
+            finally:
+                con.close()
+            d = (json.loads(fila[0]) if fila and fila[0] else {}).get('pase') or {}
+        except Exception:
+            log.exception('pase: no se pudo cargar el estado')
+        est = p._pase = pase.Estado(p.char_id, d)
+    return est
+
+
+def _pase_guardar(ses):
+    p = getattr(ses, 'personaje', None)
+    est = getattr(p, '_pase', None) if p else None
+    if est is None or not getattr(ses, 'usuario', None):
+        return
+    datos = est.datos()
+    try:
+        cuentas._actualizar_personaje(ses.usuario, p.char_id, lambda d: d.update(pase=datos))
+    except Exception:
+        log.exception('pase: no se pudo guardar')
+
+
+def _pase_al_dia(ses, enviar=True):
+    """Sortea las tareas del dia / semana nuevos y cuenta el login del dia."""
+    import pase
+    est = _pase_estado(ses)
+    cambios = est.al_dia()
+    if enviar:
+        for cual in cambios:
+            ses.enviar(pase.paquete_reinicio(est, cual))
+    if cambios:
+        _pase_evento(ses, '登入遊戲類', guardar=False)
+        _pase_guardar(ses)
+    return cambios
+
+
+def _pase_entrar(ses):
+    """Al entrar al mundo: el 0x018D con todo el estado."""
+    import pase
+    _pase_al_dia(ses, enviar=False)
+    ses.enviar(pase.paquete_estado(_pase_estado(ses)))
+
+
+def _pase_evento(ses, regla, n=1, param=None, guardar=True):
+    """Avanza las tareas de pase de esa regla y da la exp de las que se cumplen."""
+    import pase
+    if not getattr(ses, 'personaje', None):
+        return
+    try:
+        est = _pase_estado(ses)
+        tocadas, exp = est.contar(regla, n, param)
+        total = 0
+        while exp > 0:
+            total += exp
+            mas, exp = est.contar('完成通行證任務類', exp)
+            tocadas += mas
+        for t in tocadas:
+            ses.enviar(pase.paquete_tarea(*t))
+        if total:
+            est.sumar_exp(total)
+            ses.enviar(pase.paquete_nivel(est))
+        if tocadas and guardar:
+            _pase_guardar(ses)
+    except Exception:
+        log.exception('pase: evento %s', regla)
+
+
+def _pase_de_logros(ses, clave, n):
+    for prefijo, reglas in PASE_REGLAS_DE_LOGROS:
+        if str(clave).startswith(prefijo):
+            for regla in reglas:
+                _pase_evento(ses, regla, n)
+
+
+def _pase_accion(ses, addr, que):
+    """c2s 0x0016 accion 74: 2 comprar nivel, 3 reclamar, 4 comprar el pase."""
+    import pase
+    import clases as _cl_p
+    est = _pase_estado(ses)
+    t = pase.temporada()
+    if que == pase.ACC_RECLAMAR:
+        items = pase.premios_pendientes(est)
+        libres = sum(1 for r in range(20, _tope_bolsa(ses.inventario) + 1) if r not in ses.inventario)
+        if libres < len(items):
+            ses.enviar(_cl_p.aviso('Your bag is full.'))
+            return
+        for item_id, cant in items:
+            log.info(f"[{addr}] pase: {_gm_dar_item(ses, item_id, cant)}")
+        est.gratis = est.nivel
+        ses.enviar(pase.paquete_reclamado(1, est.gratis))
+        if est.pase:
+            est.pago = est.nivel
+            ses.enviar(pase.paquete_reclamado(2, est.pago))
+    elif que in (pase.ACC_NIVEL, pase.ACC_PASE):
+        item = int(t.get('升級道具ID' if que == pase.ACC_NIVEL else '開通道具ID') or 0)
+        if que == pase.ACC_NIVEL and est.nivel >= pase.nivel_max():
+            return
+        if que == pase.ACC_PASE and est.pase:
+            return
+        if not item or _cant_total_item(ses, item) < 1:
+            ses.enviar(_cl_p.aviso('You need %s.' % _nombre_item(item)))
+            return
+        ses.enviar(*_refrescar(ses, _consumir_item_total(ses, item, 1)))
+        _guardar_bolsa(ses, ses.personaje.char_id)
+        if que == pase.ACC_NIVEL:
+            est.nivel += 1
+            est.exp = 0
+            ses.enviar(pase.paquete_nivel(est))
+        else:
+            est.pase = True
+            ses.enviar(pase.paquete_pase(est))
+    else:
+        return
+    _pase_guardar(ses)
+
+
 def _logros_stats(ses):
     import struct as _st_l
     p = ses.personaje
@@ -6589,6 +6920,7 @@ def _logros_contar(ses, clave, n=1, maximo=False, addr=None):
             cont[clave] = max(int(cont.get(clave, 0) or 0), int(n))
         else:
             cont[clave] = int(cont.get(clave, 0) or 0) + int(n)
+            _pase_de_logros(ses, clave, n)
         _logros_actualizar(ses, addr, enviar=True)
         _logros_guardar(ses)
     except Exception:
@@ -6665,8 +6997,17 @@ def _logros_actualizar(ses, addr=None, enviar=False, silencioso=False):
                         _s_bc.enviar(_bc)
                     except Exception:
                         pass
-            mandar(_cl_a.aviso('New title unlocked! You will find it in the Title tab '
-                               'after changing map.', tipo=0))
+            # Los titulos solo llegan con el 0x0002; su manejador no carga el
+            # mapa, asi que se reenvia ya (ver login.ficha_actual). Al entrar
+            # (silencioso) no hace falta: la secuencia trae el suyo.
+            if not silencioso:
+                try:
+                    import login as _lg_fi
+                    ses.enviar(_lg_fi.ficha_actual(p))
+                    ses.enviar(_stats_ses(ses))      # la ficha trae los stats sin buffs
+                except Exception:
+                    log.exception('logros: no se pudo reenviar la ficha')
+            mandar(_cl_a.aviso('New title unlocked! Check the Title tab.', tipo=0))
         _logros_guardar(ses)
         log.info('[%s] %s consigue los logros %s', addr, p.nombre, nuevos)
     if (nuevos or enviar) and not silencioso:
@@ -6697,6 +7038,8 @@ def _logros_muerte(ses, addr, npc_type):
     if not p:
         return
     _logros_datos(ses)
+    import pase as _ps_m
+    _pase_evento(ses, '打怪類', 1, _ps_m.razas().get(int(npc_type or 0), 0))
     cuenta = int(npc_type or 0) in _lg_m.tipos_con_logro()
     if cuenta:
         p.logros_muertos[int(npc_type)] = p.logros_muertos.get(int(npc_type), 0) + 1
@@ -8281,6 +8624,13 @@ class Servidor:
                     _casa_tick_monstruos(ses)
                 except Exception:
                     log.exception('casas: error al contar tiempo conectado')
+                try:
+                    _bonos_tick(ses)
+                    if time.time() - getattr(ses, '_pase_visto', 0) >= 60:
+                        ses._pase_visto = time.time()
+                        _pase_al_dia(ses)
+                except Exception:
+                    log.exception('bonos: error al contar tiempo conectado')
                 yo = p.entity_id
                 sentado = getattr(ses, 'sentado', False)
                 ahora = time.time()
@@ -8451,6 +8801,10 @@ class Servidor:
                 _casa_tick_limpieza(ses, flush=True)
             except Exception:
                 log.exception('casas: error al guardar el tiempo conectado')
+            try:
+                _bonos_guardar(ses)
+            except Exception:
+                log.exception('bonos: error al guardar el tiempo conectado')
             if ses in self.mundos:
                 self.mundos.remove(ses)
             try:
@@ -9324,6 +9678,14 @@ class Servidor:
                 _logros_actualizar(ses, addr, silencioso=True)
             except Exception:
                 log.exception('logros antes de entrar')
+            try:
+                _bonos_estado(ses)
+            except Exception:
+                log.exception('bonos antes de entrar')
+            try:
+                _amplify_estado(ses)
+            except Exception:
+                log.exception('amplify antes de entrar')
             for sub in secuencia(p):
                 ses.enviar(sub)
             # El inventario va dentro de la secuencia de entrada: el 0x001A
@@ -9478,6 +9840,7 @@ class Servidor:
             try:
                 _logros_vaciar(ses)
                 _logros_actualizar(ses, addr, enviar=True)
+                _pase_entrar(ses)
                 if getattr(p, 'titulo', 0):
                     import logros as _lg_in
                     ses.enviar(_lg_in.paquete_titulo(p.entity_id, p.titulo, True))
@@ -15276,6 +15639,11 @@ class Servidor:
             ses.enviar(_cs.pkt_house_name(_c.house_name))
             return
 
+        # PET AMPLIFY: abrir casilla (0x015D) y Re-Amplify (0x015C). Ver amplify.py.
+        if opcode in (0x015D, 0x015C) and ses.rol == 'mundo' and ses.personaje:
+            _amplify_c2s(ses, addr, opcode, cuerpo)
+            return
+
         # WND_EXCHANGE (sendExchange Lua: opcode 0x0160 o 0x0148)
         if opcode in (0x0160, 0x0148) and ses.rol == 'mundo' and ses.personaje and len(cuerpo) >= 4:
             import clases as _cl
@@ -16578,6 +16946,39 @@ class Servidor:
                                                _cantidades(ses))
                 log.info('[%s] bolsa %s abierta -> %s x%d (%s)',
                          addr, item_id, premio_id, premio_n, nom_premio)
+                return
+
+            # Caso 5d: REGALOS SIN TABLA, con el contenido en su descripcion
+            # ("Requires 6 slots and above to open. Open to get: ..."). Ver
+            # bolsas.contenido_descrito.
+            descrito = _bol.contenido_descrito(item_id)
+            if descrito:
+                modo, premios, huecos = descrito
+                if modo == 'uno':
+                    premios = [random.choice(premios)]
+                libres = sum(1 for r in range(20, _tope_bolsa(bolsa) + 1) if r not in bolsa)
+                if libres + (1 if _cant_de(ses, ranura) == 1 else 0) < huecos:
+                    ses.enviar(_c.aviso('You need %d free slots to open this.' % huecos,
+                                        tipo=7, msg_id=_c.MSG_TEXTO))
+                    return
+                antes = set(bolsa.keys())
+                _sacar(ses, ranura, 1)
+                tocadas = [ranura]
+                salida = []
+                for premio_id, premio_n in premios:
+                    destino = _meter(ses, premio_id, premio_n)
+                    if destino is not None:
+                        tocadas.append(destino)
+                        salida.append(_c.aviso('You got %s x%d!' % (_nombre_item(premio_id), premio_n),
+                                               tipo=7, msg_id=_c.MSG_TEXTO))
+                tocadas = sorted(set(tocadas) | (set(bolsa.keys()) - antes))
+                import misiones as _mis_desc
+                salida.extend(_mis_desc.verificar_progreso_recoleccion(ses, [p for p, _ in premios]))
+                salida.extend(_refrescar(ses, tocadas))
+                ses.enviar(*salida)
+                if getattr(ses, 'usuario', None):
+                    cuentas.guardar_inventario(ses.usuario, cid, bolsa, _cantidades(ses))
+                log.info('[%s] regalo %s abierto (%s) -> %s', addr, item_id, modo, premios)
                 return
 
             # Caso 6: genuine Card Book cards. Validation and consumption
@@ -18330,6 +18731,29 @@ class Servidor:
                 import misiones as _mis_del
                 _mis_del.abandonar_mision(ses, qid_borrar)
                 return
+            if accion in (53, 54, 72) and ses.personaje:
+                # LOGIN / ONLINE BONUS de la ventana Event Overview
+                # (actboard.l: netcommand(54|72, fila); onlinereward.l: 53). Ver bonos.py.
+                _bonos_reclamar(ses, addr, accion, parametro)
+                return
+            if accion == 74 and ses.personaje:
+                # ANGEL PASS (battlepass.l OnBattlePassaActionOK). Ver pase.py.
+                _pase_accion(ses, addr, int(parametro))
+                return
+            if accion == 73 and ses.personaje:
+                # EXCHANGE de la ventana Event Overview: actboard.l
+                # OnClickABExchange -> netcommand(73, grupo). El boton lleva el
+                # 群組 de exchangegroup.xml (FUN_006d0a50 le pone row[1]).
+                # El s2c 0x0151 [u32 grupo] abre la ventana con las recetas de
+                # exchange.xml, como el NPC de los Angelic Vouchers; el canje
+                # llega luego por el 0x0160 / 0x0148.
+                import house_services as _hs73
+                if any(int(r.get('群組') or 0) == int(parametro)
+                       for r in _hs73.xml_rows('exchange.xml').values()):
+                    ses.enviar(struct.pack('<HI', 0x0151, int(parametro)))
+                else:
+                    log.info(f"[{addr}] exchange: grupo {parametro} sin recetas")
+                return
             if accion == 49 and ses.personaje:
                 # TITULO (game.equipcrown -> FUN_00614da0(0x31, id)). Ver logros.py.
                 _logros_poner_titulo(ses, addr, parametro)
@@ -18934,6 +19358,12 @@ def main():
         _raiz.addHandler(_fh)
     except Exception as _e:
         log.warning('no se pudo abrir el log de fichero: %s', _e)
+    # Sin extracted_paks (el repo no lo trae): las tablas salen del cliente.
+    try:
+        import paks_cliente
+        paks_cliente.asegurar_extraidos()
+    except Exception:
+        log.exception('no se pudieron sacar las tablas del cliente')
     try:
         asyncio.run(Servidor(a.host, a.port, a.fport, a.wport).correr())
     except KeyboardInterrupt:

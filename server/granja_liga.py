@@ -412,6 +412,8 @@ def plantar(ses, plot_id: int, crop_id: int = 1):
                  paquete_estado_cultivo(cuentas.db_obtener_cultivo(g['guild_id'], plot_id)))
         programar_cultivo(ses, plot_id, crop_id, now, madura_en, marchita_en)
     ses.enviar(clases.aviso(f"Planted {nombre} on plot {plot_id}!", tipo=0))
+    import app as _app_pl
+    _app_pl._pase_evento(ses, '種植農作物類')
     return True
 
 

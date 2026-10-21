@@ -2686,9 +2686,12 @@ def creditos_de(item_id: int) -> int:
             except Exception:
                 pass
         if not _INVERSION:
-            f = (pathlib.Path(__file__).parent.parent / 'extracted_paks' / 'data1'
-                 / 'setting' / 'eng' / 'investitem.xml')
-            if f.exists():
+            raiz_paks = pathlib.Path(__file__).parent.parent / 'extracted_paks'
+            # data1 en la extraccion completa; update26 en la que saca
+            # paks_cliente.py del cliente cuando no hay extracted_paks.
+            f = next((c for c in (raiz_paks / sub / 'setting' / 'eng' / 'investitem.xml'
+                                  for sub in ('data1', 'update26')) if c.exists()), None)
+            if f is not None:
                 txt = f.read_text(encoding='utf-8', errors='replace')
                 for trozo in re.findall(r'<投資物品[^>]*>', txt):
                     mid = re.search(r'編號="(\d+)"', trozo)

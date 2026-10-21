@@ -373,6 +373,46 @@ def _parchear_equipo_ligado_vendible_xml_bytes(xml_bytes: bytes) -> bytes:
     return txt.encode('utf-8')
 
 
+def _parchear_battlepass_xml_bytes(xml_bytes: bytes) -> bytes:
+    """Alarga la temporada pase.TEMPORADA del Angel Pass.
+
+    El cliente elige la temporada con el reloj del PC entre las filas de su
+    battlepass.xml (FUN_006f6d50) y las tres del pak acababan en 2025: la
+    ventana salia "Null". Pactado con el usuario el 21/10/2026.
+    """
+    import pase
+    txt = xml_bytes.decode('utf-8', errors='ignore')
+
+    def _fila(m):
+        tag = m.group(0)
+        for campo, valor in (('開始時間', pase.INICIO_TEMPORADA), ('結束時間', pase.FIN_TEMPORADA),
+                             ('任務結束時間', pase.FIN_TEMPORADA)):
+            tag = re.sub(r'(\s%s=")\d+(")' % campo, r'\g<1>%s\g<2>' % valor, tag)
+        return tag
+
+    txt = re.sub(r'<battlepass 編號="%d"[^>]*/>' % pase.TEMPORADA, _fila, txt)
+    return txt.encode('utf-8')
+
+
+URL_NOTICIAS = 'http://127.0.0.1:%d/news.htm?p=%s'
+BOTONES_NOTICIAS = (('Server News', 'news'), ('Events', 'events'),
+                    ('Server Info', 'info'), ('Game News', 'notes'))
+
+
+def _parchear_activityurl_xml_bytes(xml_bytes: bytes) -> bytes:
+    """Event News: los botones de activityurl.xml abren la pagina local
+    (/news.htm del HTTP del launcher) en vez de igg.com. Pactado con el
+    usuario el 21/10/2026."""
+    txt = xml_bytes.decode('utf-8', errors='ignore')
+    puerto = int(getattr(_cf, 'PUERTO_UPDATE_HTTP', 8280))
+    for i, (titulo, pagina) in enumerate(BOTONES_NOTICIAS, 1):
+        def _fila(m, titulo=titulo, pagina=pagina):
+            tag = re.sub(r'名稱="[^"]*"', '名稱="%s"' % titulo, m.group(0))
+            return re.sub(r'網址="[^"]*"', '網址="%s"' % (URL_NOTICIAS % (puerto, pagina)), tag)
+        txt = re.sub(r'<活動資訊 編號="%d"[^>]*/>' % i, _fila, txt)
+    return txt.encode('utf-8')
+
+
 def registrar_medalla_en_servidor():
     """Asegura que el item 83266 exista en content.db, extracted_paks y client_tables.json."""
     # 1. extracted_paks/update26/setting/eng/item9.xml
@@ -619,6 +659,13 @@ def aplicar_modo_estacion(modo: str = None) -> str:
                                      r'SETTING\ENG\STAGE.XML')
     if raw_stage:
         reemplazos[r'SETTING\ENG\STAGE.XML'] = _parchear_stage_xml(raw_stage, modo_Norm)
+
+    # Angel Pass y Event News, tambien desde el original del .bak.
+    for ruta_pak, parche in ((r'SETTING\BATTLEPASS.XML', _parchear_battlepass_xml_bytes),
+                             (r'SETTING\ENG\ACTIVITYURL.XML', _parchear_activityurl_xml_bytes)):
+        raw = _extraer_archivo_pak(bak26 if bak26.exists() else pak26, ruta_pak)
+        if raw:
+            reemplazos[ruta_pak] = parche(raw)
 
     # Los mapas de decoracion van sueltos en map\, que el cliente lee antes que los paks
     dir_map = ruta_cli / 'map'
@@ -1115,12 +1162,75 @@ def abrir_clientes(cuantos: int = 1) -> int:
     return abiertos
 
 
+ARCHIVO_NOTICIAS = RAIZ_PROYECTO / 'data' / 'noticias.json'
+
+
+def _noticias():
+    """[{fecha, titulo, texto}] de data/noticias.json (lo edita el GM a mano)."""
+    try:
+        return json.loads(ARCHIVO_NOTICIAS.read_text(encoding='utf-8'))
+    except Exception:
+        return [{'fecha': '', 'titulo': 'Welcome!',
+                 'texto': 'No news yet. Edit data/noticias.json on the server to add some.'}]
+
+
+def pagina_noticias(pagina: str) -> str:
+    """La pagina de Event News (activityurl.xml apunta aqui)."""
+    import html as _h
+    esc = _h.escape
+    cuerpo = []
+    if pagina == 'events':
+        import bonos, pase, fusion
+        cuerpo.append('<h2>Online Bonus</h2><ul>')
+        for fid, (mins, items) in sorted(bonos.filas_online().items()):
+            cuerpo.append('<li>%d min: %s</li>' % (mins, esc(', '.join(
+                '%dx %s' % (n, fusion.nombre(i)) for i, n in items))))
+        cuerpo.append('</ul><h2>Login Bonus (this month)</h2><ul>')
+        for fid, (dias, items) in sorted(bonos.filas_login().items()):
+            cuerpo.append('<li>%d days: %s</li>' % (dias, esc(', '.join(
+                '%dx %s' % (n, fusion.nombre(i)) for i, n in items))))
+        t = pase.temporada()
+        cuerpo.append('</ul><h2>Angel Pass</h2><p>Season: <b>%s</b>, %d levels. '
+                      'Complete daily and weekly quests to level up.</p>'
+                      % (esc(t.get('名稱', '')), pase.nivel_max()))
+    elif pagina == 'info':
+        cuerpo.append('<h2>Server Info</h2><ul>'
+                      '<li>Season mode: <b>%s</b></li>'
+                      '<li>Open the Event Overview window for Online / Login Bonus, '
+                      'Exchange shops and the Angel Pass.</li></ul>'
+                      % esc(str(getattr(_cf, 'MODO_ESTACION', 'normal'))))
+    else:
+        cuerpo.append('<h2>%s</h2>' % ('Game News' if pagina == 'notes' else 'Server News'))
+        for n in _noticias():
+            cuerpo.append('<div class="n"><div class="f">%s</div><h3>%s</h3><p>%s</p></div>'
+                          % (esc(str(n.get('fecha', ''))), esc(str(n.get('titulo', ''))),
+                             esc(str(n.get('texto', ''))).replace('\n', '<br>')))
+    menu = ''.join('<a href="/news.htm?p=%s">%s</a>' % (p, t) for t, p in BOTONES_NOTICIAS)
+    return ("<html><head><meta charset='utf-8'><title>Angels Online</title><style>"
+            "body{margin:0;background:#111622;color:#e6edf3;font-family:Tahoma,Arial,sans-serif;font-size:13px}"
+            ".m{background:#1a2234;padding:8px 12px;border-bottom:1px solid #354463}"
+            ".m a{color:#f5d76e;margin-right:14px;text-decoration:none;font-weight:bold}"
+            ".c{padding:10px 16px}h2{color:#f5d76e;font-size:16px}h3{margin:2px 0}"
+            ".n{background:#1a2234;border:1px solid #354463;padding:8px 10px;margin:8px 0}"
+            ".f{color:#8b949e;font-size:11px}</style></head><body>"
+            "<div class='m'>%s</div><div class='c'>%s</div></body></html>" % (menu, ''.join(cuerpo)))
+
+
 async def _manejar_http(reader: asyncio.StreamReader, writer: asyncio.StreamWriter):
     """Mini servidor HTTP para el panel embebido de START.EXE (permite cambiar modo estacional)."""
     try:
         req = await asyncio.wait_for(reader.read(2048), timeout=5.0)
         primera = req.decode('ascii', errors='ignore').splitlines()[0] if req else ''
         path = primera.split(' ')[1] if len(primera.split(' ')) > 1 else '/p.htm'
+
+        if path.startswith('/news.htm'):
+            pagina = path.split('p=', 1)[1].split('&')[0] if 'p=' in path else 'news'
+            html = pagina_noticias(pagina).encode('utf-8')
+            writer.write(b"HTTP/1.1 200 OK\r\nContent-Type: text/html; charset=utf-8\r\n"
+                         b"Cache-Control: no-cache\r\n"
+                         + f"Content-Length: {len(html)}\r\n\r\n".encode('ascii') + html)
+            await writer.drain()
+            return
 
         if 'modo=' in path:
             nuevo_m = path.split('modo=', 1)[1].split('&')[0].strip().lower()
