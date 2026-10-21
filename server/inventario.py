@@ -173,10 +173,12 @@ def vaciar_ranura(dueno: int, ranura: int,
     #   167..175  fashion equipada e insignia
     #   176..275  bolsa Fashion
     #   276..     pestanas Card y Furniture, hasta 556
+    #   559..598  las casillas de Pet Amplify (sin ellas, sacar la mascota
+    #             dejaba la 559 llena en el cliente y se cerraba, 21/10/2026)
     #   616       burbuja de chat equipada
     #   617..666  bolsa de burbujas de chat
     # Esas casillas tambien aceptan el submensaje de vaciado con ranura u16.
-    if contenedor == CONT_MOCHILA and (ranura < 0 or (ranura > 154 and not ((167 <= ranura <= 556) or (616 <= ranura <= 666)))):
+    if contenedor == CONT_MOCHILA and (ranura < 0 or (ranura > 154 and not ((167 <= ranura <= 556) or (559 <= ranura <= 598) or (616 <= ranura <= 666)))):
         log.warning(f"Intento de vaciar ranura fuera de limites ({ranura}) en CONT_MOCHILA - omitido para evitar crash")
         return b''
     return struct.pack('<HIBBIH', 0x001B, 1, 2, contenedor, dueno, ranura)
@@ -1630,6 +1632,9 @@ def es_ranura_valida(item_id: int, ranura: int) -> bool:
         except Exception:
             pass
         return categoria_item(item_id) in ('傢俱', '家具')
+    # 7c2. Pet Amplify (559..598): solo mascotas (ver amplify.py)
+    if 559 <= ranura <= 598:
+        return es_mascota(item_id)
     # 7d. Raise-a-Pet Room (477..486): mascotas y huevos de mascotas
     if 477 <= ranura <= 486:
         return es_mascota(item_id) or categoria_item(item_id) in ('寵物', '寵物蛋')

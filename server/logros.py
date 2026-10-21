@@ -363,13 +363,16 @@ def con_reputacion(buffs, personaje):
     bono = bono_reputacion(getattr(personaje, 'logros', None) or []) if personaje is not None else {}
     # Y lo que suben para siempre las semillas / frutos (inventario.stats_permanentes_de).
     perm = getattr(personaje, 'stats_permanentes', None) if personaje is not None else None
-    if not bono and not perm:
+    amp = getattr(personaje, 'stats_amplify', None) if personaje is not None else None
+    if not bono and not perm and not amp:
         return buffs
     out = dict(buffs or {})
     if bono:
         out[CLAVE_REPUTACION] = dict(bono, fin=float('inf'))
     if perm:
         out['permanentes'] = dict(perm, fin=float('inf'))
+    if amp:
+        out['pet_amplify'] = dict(amp, fin=float('inf'))
     return out
 
 

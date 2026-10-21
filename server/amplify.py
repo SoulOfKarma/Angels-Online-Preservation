@@ -48,6 +48,17 @@ VALOR_MIN, VALOR_MAX = 10, 50
 MARTILLO_ABRIR = (40284, 40285, 40286)
 MARTILLOS = {1: (40289, 40288, 40287), 2: (40292, 40291, 40290), 3: (40295, 40294, 40293)}
 TOPE = {1: 48000, 3: 38400, 8: 19200, 10: 12800, 11: 12800, 12: 12800, 13: 4000, 14: 4000}
+# Las casillas de Amplify en el inventario: soltar una mascota en la primera
+# manda el 0x0012 [20 -> 559] (log del 21/10/2026). Son 40.
+RANURA_INI = 559
+RANURA_FIN = RANURA_INI + MAX_CASILLAS - 1
+# Atributo de Amplify -> (clave del bono verde de la mascota, clave de buff).
+ATR_PET = {1: ('hp', 'hp_bonus'), 3: ('mp', 'mp_bonus'), 8: ('atk', 'atk'), 10: ('dfs', 'def'),
+           11: ('matk', 'matk'), 12: ('mdef', 'mdef'), 13: ('rigor', 'hit'), 14: ('agilidad', 'eva')}
+
+
+def es_ranura(r):
+    return RANURA_INI <= int(r) <= RANURA_FIN
 
 _RAIZ = pathlib.Path(__file__).resolve().parent.parent
 
@@ -101,19 +112,27 @@ class Estado:
             self.valores[casilla] = rnd.randint(VALOR_MIN, VALOR_MAX)
         return True
 
-    def bonos(self, verde_de=None):
-        """{atributo: bono} sumando casillas con mascota: el verde de la
-        mascota en ese atributo x el % de la casilla, con su tope."""
+    def tope(self, atributo):
+        """El "Current Max": crece con las casillas abiertas (con 4 de 40 la
+        ventana ensena HP 4800 = 48000 x 4 / 40)."""
+        return int(TOPE.get(atributo, 0) * self.abiertas / MAX_CASILLAS)
+
+    def bonos(self, verdes=None):
+        """{atributo: bono}: por cada casilla con mascota, su stat TOTAL (base +
+        verde) en el atributo de la casilla x el % de la casilla, con el Current Max.
+        `verdes` = [stats totales de la mascota o None] por casilla."""
         res = {a: 0 for a in ATRIBUTOS + EXTRA}
-        if not verde_de:
-            return res
         for i, (a, v) in enumerate(zip(self.atributos, self.valores)):
-            pet = self.mascotas[i] if i < len(self.mascotas) else 0
-            if pet:
-                res[a] += int((verde_de(pet, a) or 0) * v / 100)
-        for a, t in TOPE.items():
-            res[a] = min(res[a], t)
+            verde = verdes[i] if verdes and i < len(verdes) else None
+            if verde and a in ATR_PET:
+                res[a] += int(int(verde.get(ATR_PET[a][0]) or 0) * v / 100)
+        for a in TOPE:
+            res[a] = min(res[a], self.tope(a))
         return res
+
+    def buff(self, verdes=None):
+        """Los bonos con las claves de los stats (para logros.con_reputacion)."""
+        return {ATR_PET[a][1]: n for a, n in self.bonos(verdes).items() if a in ATR_PET and n}
 
 
 def _seccion(clave, cuerpo=b''):
@@ -124,8 +143,8 @@ def _mapa(valores):
     return struct.pack('<I', len(valores)) + b''.join(struct.pack('<HI', k, v) for k, v in valores)
 
 
-def paquete(est, verde_de=None):
-    bonos = est.bonos(verde_de)
+def paquete(est, verdes=None):
+    bonos = est.bonos(verdes)
     martillos = b''.join(struct.pack('<I', len(ids)) + b''.join(struct.pack('<I', i) for i in ids)
                          for ids in MARTILLOS.values())
     mascotas = [m for m in est.mascotas if m]

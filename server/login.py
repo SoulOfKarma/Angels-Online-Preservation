@@ -242,7 +242,7 @@ def secuencia(p: Personaje):
         elif op == 0x0179 and getattr(p, '_amplify', None) is not None:
             # PET AMPLIFY: la plantilla es la de un personaje sin casillas.
             import amplify as _amp_sec
-            salida.append(_amp_sec.paquete(p._amplify))
+            salida.append(_amp_sec.paquete(p._amplify, getattr(p, '_amplify_verdes', None)))
         elif op in (0x016F, 0x018A) and getattr(p, '_bonos', None) is not None:
             # LOGIN / ONLINE BONUS: la plantilla traia 1 dia y 0 minutos.
             import bonos as _bn_sec

@@ -651,6 +651,43 @@ def misiones_disponibles_npc(p, npc_nombre: str, stage: int = 0, entidad: int = 
     return disponibles
 
 
+# Las misiones de ALUMNO del Angel Lyceum: registro, firmas, notas y cursos.
+# Un graduado no las puede volver a hacer (un personaje de faccion Beasts que
+# hablo con el Angels' Tutor recibio 100 -> 101 -> 102, 21/10/2026). La 123
+# (Training top student) tampoco se puede EMPEZAR graduado, pero si se acepto
+# antes se puede terminar despues (wiki: Top Student Training, Notes).
+MISIONES_ALUMNO = frozenset({100, 101, 102} | set(range(106, 121)))
+MISION_TOP_STUDENT = 123
+
+
+def es_graduado(p) -> bool:
+    """Facción de ciudad, o la graduacion (102) / la eleccion de pais (103) hechas."""
+    if not p:
+        return False
+    fac = getattr(p, 'faction', 'Heaven') or 'Heaven'
+    if fac not in ('Heaven', 'Neutral', 'Neutrally'):
+        return True
+    return mision_completada(p, 102) or tiene_mision(p, 103) or mision_completada(p, 103)
+
+
+def cerrar_misiones_de_alumno(p) -> list:
+    """A un graduado le quita las misiones de alumno que tenga ACTIVAS por
+    error (las da por hechas). Devuelve las que toco."""
+    if not es_graduado(p):
+        return []
+    tocadas = []
+    nueva = []
+    for q, pa in (p.quests or []):
+        if q in MISIONES_ALUMNO and not mision_completada(p, q):
+            nueva.append((q, 999))
+            tocadas.append(q)
+        else:
+            nueva.append((q, pa))
+    if tocadas:
+        p.quests = nueva
+    return tocadas
+
+
 def aceptar_mision(ses, qid: int) -> bool:
     """Otorga la mision al jugador y la sincroniza con el cliente."""
     p = getattr(ses, 'personaje', None)
@@ -660,6 +697,9 @@ def aceptar_mision(ses, qid: int) -> bool:
     st, pa, comp = estado_mision(p, qid)
     if st and not comp:
         return False  # Ya activa
+    if es_graduado(p) and (qid in MISIONES_ALUMNO or (qid == MISION_TOP_STUDENT and not st)):
+        log.info(f"[{getattr(ses, 'addr', '')}] mision {qid} de alumno rechazada: ya esta graduado")
+        return False
     if st and comp and not es_repetible(qid):
         # Una mision no repetible no se vuelve a dar: con Training top student
         # (123) se podia aceptar y completar sin fin hablando con Michael.
@@ -1139,6 +1179,13 @@ def registrar_baja_monstruo(ses, npc_type: int, monster_name: str = None, en_com
                     if words and all(w in txt_clean for w in words):
                         coincide = True
 
+        if coincide and not (npc_type in m_ids or (token and npc_type == token)):
+            # Por nombre o por texto solo en el mapa del paso, si lo dice: un
+            # monstruo de nombre parecido en otro mapa no cuenta (21/10/2026).
+            _st_k = mapa_del_paso(q, pa)
+            if _st_k and int(getattr(p, 'stage', 0) or 0) != int(_st_k):
+                coincide = False
+
         if coincide:
             cnt = int(p.quest_kills.get(k_cac, 0)) + 1
             p.quest_kills[k_cac] = cnt
@@ -1285,6 +1332,83 @@ def incrementar_token_mision(ses, token_id: int, delta: int = 1) -> int:
     return nuevo
 
 
+_RE_ETIQUETA = None
+
+
+def _etiquetas_del_paso(texto):
+    """{item_id: etiqueta} de las lineas "Etiqueta: %item%" del texto del paso.
+
+    En "Withered Maneaters: %30751% / 25 Red Magatama" la etiqueta es el
+    MONSTRUO que suelta ese objeto; en "Aspen Wood: %49%" es el propio objeto.
+    """
+    global _RE_ETIQUETA
+    import re as _re_e
+    if _RE_ETIQUETA is None:
+        _RE_ETIQUETA = _re_e.compile(r"([A-Za-z][A-Za-z'\.\- ]{1,40}?)\s*[:：]\s*(?:/c\$\d)?%(\d+)%")
+    limpio = _re_e.sub(r'\\n|[\r\n\t]+', '\n', texto or '')
+    return {int(i): e.strip() for e, i in _RE_ETIQUETA.findall(limpio)}
+
+
+def _singular(nombre):
+    n = (nombre or '').lower().strip()
+    for suf in ('ies', 'es', 's'):
+        if n.endswith(suf) and len(n) > len(suf) + 2:
+            return n[:-len(suf)] + ('y' if suf == 'ies' else '')
+    return n
+
+
+def _mismo_nombre(a, b):
+    a, b = _singular(a), _singular(b)
+    return bool(a and b) and (a == b or a in b or b in a)
+
+
+_MAPA_FIABLE = {}
+
+
+def _nombres_en_mapa(stage):
+    """Nombres (minusculas) de los monstruos de la plantilla de ese mapa."""
+    import json
+    import sys
+    import login as _lg_m
+    mapas = dict(_lg_m.PLANTILLAS_POR_STAGE)
+    app_mod = sys.modules.get('app')
+    if app_mod is not None:
+        mapas.update(getattr(app_mod, 'MAPAS_APARTE', {}) or {})
+    nombre = mapas.get(int(stage))
+    if not nombre:
+        return set()
+    f = pathlib.Path(__file__).parent / 'plantillas' / nombre
+    if not f.exists():
+        return set()
+    try:
+        d = json.loads(f.read_text(encoding='utf-8'))
+    except Exception:
+        return set()
+    return {(e.get('nombre') or '').lower() for e in d.get('spawns', []) if e.get('monstruo')}
+
+
+def mapa_del_paso(qid, paso):
+    """El stage del paso SOLO si es fiable: si en ese mapa salen de verdad los
+    monstruos que nombra el paso. Un tercio de los pasos traen un stage que no
+    cuadra (la 154 paso 2 dice Building Blocks City y trae el de County), y
+    exigirlo rompia esas misiones. None = no se mira el mapa."""
+    clave = (int(qid), int(paso))
+    if clave in _MAPA_FIABLE:
+        return _MAPA_FIABLE[clave]
+    pasos = info_mision(qid).get('pasos', [])
+    p = pasos[paso - 1] if 0 < paso <= len(pasos) else {}
+    st = p.get('stage_id')
+    fiable = None
+    if st:
+        en_mapa = _nombres_en_mapa(st)
+        cands = [x for x in p.get('monstruos', []) if isinstance(x, str)]
+        cands += list(_etiquetas_del_paso(p.get('texto', '')).values())
+        if en_mapa and any(_mismo_nombre(c, n) for c in cands for n in en_mapa if n):
+            fiable = int(st)
+    _MAPA_FIABLE[clave] = fiable
+    return fiable
+
+
 def verificar_botin_mision(ses, npc_type: int, monster_name: str = None) -> list:
     """
     Comprueba si el monstruo derrotado debe soltar un objeto para una misión
@@ -1343,6 +1467,16 @@ def verificar_botin_mision(ses, npc_type: int, monster_name: str = None) -> list
         m_ids = r_data.get('monstruo_ids', [])
         m_noms = [mn.lower().strip() for mn in r_data.get('monstruos', []) if isinstance(mn, str)]
 
+        # Que objeto va con que criatura y en que mapa (texto y stage del
+        # paso). Matar un monstruo de Hidden Grove subia las cinco magatamas
+        # de Angelic Help (1163, Samara Woods) a la vez (21/10/2026).
+        _q_inf = info_mision(q)
+        _pasos_q = _q_inf.get('pasos', [])
+        _paso_q = _pasos_q[pa - 1] if 0 < pa <= len(_pasos_q) else {}
+        etiquetas = _etiquetas_del_paso(_paso_q.get('texto', ''))
+        _st_paso = mapa_del_paso(q, pa)
+        en_su_mapa = not _st_paso or int(getattr(p, 'stage', 0) or 0) == int(_st_paso)
+
         for req in req_items:
             iid = req.get('item_id')
             req_cnt = req.get('cantidad', 1)
@@ -1355,10 +1489,22 @@ def verificar_botin_mision(ses, npc_type: int, monster_name: str = None) -> list
 
             # Comprobar si el monstruo coincide con el item o la misión
             coincide = False
+            etiqueta = etiquetas.get(int(iid))
+            etiqueta_es_objeto = bool(etiqueta) and _mismo_nombre(etiqueta, nombre_item(iid))
             if npc_type and m_ids and npc_type in m_ids:
                 coincide = True
             elif npc_type and iid == npc_type:
                 coincide = True
+            elif etiqueta and not etiqueta_es_objeto:
+                # La linea dice que criatura lo suelta: solo esa, y en su mapa.
+                if en_su_mapa and m_nom:
+                    m_base_e = m_nom[2:].strip() if m_nom.startswith('e-') else m_nom
+                    coincide = any(_mismo_nombre(etiqueta, cn) for cn in
+                                   [m_nom, m_base_e] + MONSTER_NAME_ALIASES.get(m_nom, []))
+                if not coincide:
+                    continue
+            elif not en_su_mapa:
+                continue
             else:
                 item_nom = nombre_item(iid).lower()
                 if m_nom and (m_nom in item_nom or item_nom in m_nom):
@@ -1592,6 +1738,8 @@ def interactuar_npc(ses, npc_nombre: str, entidad: int = 0) -> tuple:
         # mediante graduacion con Angel Tutor cuando los creditos son >= 5.
         # Quest 103 (Choosing country) se completa al elegir faccion en Graduation Palace.
         if q in (102, 103):
+            continue
+        if q in MISIONES_ALUMNO and es_graduado(p):
             continue
         info = info_mision(q)
         pasos = info.get('pasos', [])

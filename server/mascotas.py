@@ -262,6 +262,26 @@ def bonos_de_ficha(estado: dict) -> dict:
     return calc
 
 
+def totales(estado: dict) -> dict:
+    """Los ocho stats TOTALES de la mascota (base + bono verde), los del
+    tooltip: "Maximum MP 2074 (1541 + 533)". Los usa el Pet Amplify."""
+    if not isinstance(estado, dict):
+        return {}
+    b = bonos_de_ficha(estado)
+    base = {'hp': estado.get('hp_max') or estado.get('hp'), 'mp': estado.get('mp_max') or estado.get('mp')}
+    for k in ('atk', 'dfs', 'matk', 'mdef', 'rigor', 'agilidad'):
+        base[k] = estado.get(k)
+    return {k: int(v or 0) + int(b.get(k, 0)) for k, v in base.items()}
+
+
+def uid_cliente(estado: dict) -> int:
+    """El id con el que el cliente conoce a la mascota (el +8 del 0x0065)."""
+    inst = estado.get('instancia') if isinstance(estado, dict) else None
+    if not inst and isinstance(estado, dict) and estado.get('ranura') is not None:
+        inst = 1000 + int(estado['ranura'])
+    return int(inst or 0) & 0xFFFFFFFF
+
+
 def buffs_activos_de(estado: dict, ahora: float = None) -> dict:
     """Devuelve y limpia los buffs activos en estado['buffs'] cuyo 'fin' > ahora."""
     if not isinstance(estado, dict):

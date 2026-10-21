@@ -263,7 +263,13 @@ def armar_linea(mid: int, val: int = 4, opts: list = None, strings: list = None,
     """
     opts = opts or []
     strings = strings or []
-    acciones = acciones or []
+    acciones = list(acciones or [])
+    # UNA ACCION POR OPCION, SIEMPRE. El 0x0012 del cliente (FUN_005ed670)
+    # lee las opciones y luego salta no*8 bytes -- opcion y accion -- antes de
+    # las cadenas. Sin acciones se comia el "1\0Nombre\0" y el %1 salia vacio
+    # (Michael: ", I am Lyceum leader Michael", 21/10/2026). El oficial manda
+    # 0 en las que no hacen nada (el Quit del 12301).
+    acciones += [0] * (len(opts) - len(acciones))
     cadenas_b = b''.join(s.encode('ascii', 'replace') + b'\x00' for s in strings)
     # El byte de relleno del +8 va SIEMPRE, con opciones o sin ellas. Se
     # llego a quitarlo creyendo que faltaba en las lineas con cadenas, por
@@ -699,8 +705,10 @@ def propio(nombre: str, faccion: str = "Heaven", jugador: str = "",
                     armar_linea(10133, 1, [])[2:],
                     armar_linea(10134, 1, [], ['1', jugador or '?'])[2:]]
         else:
-            # Angel Lyceum (stage 41): intro y opcion a Top Student Training (Quest 123)
-            return [armar_linea(12301, 1, [12302, 12303, 12304], ['1', jugador or '?'])[2:]]
+            # Angel Lyceum (stage 41): intro y opcion a Top Student Training
+            # (Quest 123), que un graduado ya no puede empezar.
+            ops = [12302, 12304] if graduado else [12302, 12303, 12304]
+            return [armar_linea(12301, 1, ops, ['1', jugador or '?'])[2:]]
 
     if "Angels' Tutor" in nombre or "Angel Tutor" in nombre or "Angels Tutor" in nombre:
         if graduado or faccion not in ("Heaven", "Neutral", "Neutrally"):

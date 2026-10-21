@@ -6804,6 +6804,43 @@ def _amplify_gastar(ses, ids, n):
     return True
 
 
+def _amplify_mascotas(ses):
+    """Por casilla abierta: (id de la mascota, sus stats totales)."""
+    import amplify
+    import inventario as _iv_am
+    import mascotas as _ms_am
+    est = _amplify_estado(ses)
+    p = ses.personaje
+    fichas = getattr(p, 'mascotas', None) or {}
+    bolsa = getattr(ses, 'inventario', None) or getattr(p, 'inventario', None) or {}
+    out = []
+    for i in range(est.abiertas):
+        r = amplify.RANURA_INI + i
+        it = bolsa.get(r) or bolsa.get(str(r))
+        if it and _iv_am.es_mascota(int(it)):
+            f = fichas.get(str(r)) or fichas.get(r) or {}
+            # El bono sale del stat TOTAL de la mascota (base
+            # + verde) y la lista del 0x0179 lleva el id con el que la conoce
+            # el cliente (el +8 del 0x0065).
+            out.append((_ms_am.uid_cliente(f), _ms_am.totales(f) if f else {}))
+        else:
+            out.append((0, None))
+    return out
+
+
+def _amplify_refrescar(ses, enviar=True):
+    """Recalcula las mascotas metidas y el bono a los stats del personaje."""
+    import amplify
+    est = _amplify_estado(ses)
+    mas = _amplify_mascotas(ses)
+    est.mascotas = [m for m, _ in mas]
+    verdes = [v for _, v in mas]
+    ses.personaje.stats_amplify = est.buff(verdes)
+    if enviar:
+        ses.enviar(amplify.paquete(est, verdes), _stats_ses(ses))
+    return verdes
+
+
 def _amplify_c2s(ses, addr, opcode, cuerpo):
     import amplify
     import clases as _cl_am
@@ -6830,7 +6867,7 @@ def _amplify_c2s(ses, addr, opcode, cuerpo):
             ses.enviar(_cl_am.aviso("You don't have the right hammer.", tipo=7, msg_id=_cl_am.MSG_TEXTO))
             return
         est.cambiar(tipo, casilla)
-    ses.enviar(amplify.paquete(est))
+    _amplify_refrescar(ses)
     _amplify_guardar(ses)
 
 
@@ -9807,11 +9844,21 @@ class Servidor:
             except Exception:
                 log.exception('logros antes de entrar')
             try:
+                import misiones as _mis_alu
+                _alu = _mis_alu.cerrar_misiones_de_alumno(p)
+                if _alu:
+                    log.info(f"[{addr}] graduado con misiones de alumno activas {_alu}: cerradas")
+                    if getattr(ses, 'usuario', None):
+                        cuentas.guardar_quests(ses.usuario, p.char_id, p.quests)
+            except Exception:
+                log.exception('misiones de alumno al entrar')
+            try:
                 _bonos_estado(ses)
             except Exception:
                 log.exception('bonos antes de entrar')
             try:
                 _amplify_estado(ses)
+                p._amplify_verdes = _amplify_refrescar(ses, enviar=False)
             except Exception:
                 log.exception('amplify antes de entrar')
             for sub in secuencia(p):
@@ -9969,6 +10016,9 @@ class Servidor:
                 _logros_vaciar(ses)
                 _logros_actualizar(ses, addr, enviar=True)
                 _pase_entrar(ses)
+                # Pet Amplify ya con el inventario de la sesion: el bono a los
+                # stats y el 0x0179 con las mascotas metidas.
+                _amplify_refrescar(ses)
                 if getattr(p, 'titulo', 0):
                     import logros as _lg_in
                     ses.enviar(_lg_in.paquete_titulo(p.entity_id, p.titulo, True))
@@ -15029,6 +15079,17 @@ class Servidor:
                 if not _valid_slot:
                     ses.enviar(*_refrescar(ses, [org, dst]))
                     return
+            import amplify as _amp_mv
+            if _amp_mv.es_ranura(dst) or _amp_mv.es_ranura(org):
+                if _amp_mv.es_ranura(dst) and (dst - _amp_mv.RANURA_INI >= _amplify_estado(ses).abiertas
+                                               or not inv.es_mascota(it_org)):
+                    import clases as _cl_amv
+                    ses.enviar(_cl_amv.aviso('This slot is locked!' if inv.es_mascota(it_org)
+                                             else 'Please insert a pet!'),
+                               *_refrescar(ses, [org, dst]))
+                    return
+                # Despues del movimiento: mascotas metidas, bono y 0x0179.
+                asyncio.get_event_loop().call_soon(lambda: _amplify_refrescar(ses))
             if not inv.es_ranura_valida(it_org, dst):
                 log.warning(f"[{addr}] mover {org} -> {dst}: ranura no valida para item {it_org}")
                 ses.enviar(*_refrescar(ses, [org]))
@@ -17743,7 +17804,11 @@ class Servidor:
                         registrado=_reg,
                         entidad=ent,
                         en_progreso=_en_prog,
-                        graduado=_es_grad,
+                        # Michael si ofrece el entrenamiento al graduado que ya
+                        # lo tenia (para terminarlo o cobrar el arma).
+                        graduado=_es_grad and not (
+                            _nom_ent == 'Michael' and ses.personaje
+                            and __import__('misiones').tiene_mision(ses.personaje, 123)),
                         cleanliness=_clean_house,
                         house_level=_house_lvl,
                         nivel=getattr(ses.personaje, 'nivel', 1) if ses.personaje else 1)
@@ -17787,7 +17852,15 @@ class Servidor:
                                     ses.enviar(_cl_tk.aviso(_txt_tk, tipo=0))
                             except Exception:
                                 log.debug('Terra Keeper: dueno del campo', exc_info=True)
-                            if _recorrer_dialogo_mapa(ses, addr, _st_c, 5936):
+                            # En los cuatro campos de entrenamiento (7, 20, 22, 28)
+                            # el acceso es libre: su dialogo propio 5975 ("...open
+                            # now on Michael's orders", "Go to the Training Area").
+                            # El arbol 5936 es el de la Totem War ("Your league
+                            # doesn't have the right of the land totem") y en el 20,
+                            # 22 y 28 tapaba el acceso (en el 7 no tiene ese nodo).
+                            import totem_war as _tw_tk2
+                            if (not _tw_tk2.es_totem_decorativo(_st_c)
+                                    and _recorrer_dialogo_mapa(ses, addr, _st_c, 5936)):
                                 return
                         _raiz_ent = DIALOGO_DE_ENTIDAD.get((int(_st_c), int(ent)))
                         if _raiz_ent and _recorrer_dialogo_mapa(ses, addr, _st_c, _raiz_ent):
@@ -18100,6 +18173,13 @@ class Servidor:
                             ses.dlg_ent, ses.dlg_guion, ses.dlg_paso = ent, g_pr, 1
                             ses.dlg_val = 1
                             ses.enviar(dialogos.linea_de(g_pr, 0, ses.personaje.nombre))
+                        return
+                if _el == 12308 and ses.personaje and _es_graduado(ses):
+                    import misiones as _mis_g123
+                    if not _mis_g123.tiene_mision(ses.personaje, 123):
+                        ses.enviar(struct.pack('<H', 0x0012) + dialogos.FIN)
+                        ses.dlg_ent = None
+                        log.info(f"[{addr}] Top Student Training: graduado, no se ofrece")
                         return
                 if _el == 12308:
                     import misiones as _mis_mich
