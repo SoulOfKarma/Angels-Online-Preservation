@@ -412,7 +412,7 @@ def _monstruos_de(stage: int):
             bichos[eid] = combate.Monstruo(eid, ntype, nom, tile, sprite=sp, stage=stage)
     # TOTEM WAR: el totem del centro de las arenas 200..207 (totem_war.py).
     import totem_war as _tw_m
-    if _tw_m.es_mapa_tw(stage):
+    if _tw_m.es_mapa_tw(stage) or _tw_m.es_totem_decorativo(stage):
         _tot = _tw_m.crear_totem(stage)
         bichos[_tot.entity_id] = _tot
         if _tw_m.es_arena(stage):
@@ -699,6 +699,13 @@ def _meter(ses, item_id: int, n: int = 1, pet_metadata: dict = None) -> int:
     ocupar una casilla nueva. Si es no-apilable (muebles, equipo, mascotas),
     asigna casillas individuales independientes con id de instancia unico.
     """
+    try:
+        import logros as _lg_m
+        if int(item_id) in _lg_m.items_contados()[0] and getattr(ses, 'personaje', None):
+            asyncio.get_event_loop().call_soon(
+                lambda: _logros_contar(ses, 'obtiene:%d' % int(item_id), int(n or 1)))
+    except Exception:
+        pass
     import inventario as inv
     item_id = int(item_id)
     if inv.es_item_oculto(item_id):
@@ -2126,6 +2133,7 @@ def _usar_mejora(ses, addr, ranura, objetivo) -> bool:
         ok, msg = _mj.aplicar(p.mejoras, objetivo, item, nivel_pieza, tipo,
                               exito_seguro=seguro,
                               bono_cuarta_mejora=blessing.get('enhance_fourth_pct', 0) / 100.0)
+        _logros_contar(ses, 'mejora_ok' if ok else 'mejora_fallo', addr=addr)
 
     nombre = _nombre_item(pieza)
     veces = (p.mejoras.get(objetivo) or {}).get('veces', 0)
@@ -2648,6 +2656,12 @@ def _procesar_muerte_monstruo(ses, m, yo, addr, espera=0.0):
         # Un objetivo de guerra no entrega el botin/EXP del fort usado como
         # plantilla ni participa en el respawn de monstruos comunes.
         return
+
+    # LOGROS: la baja cuenta para "matar N de este monstruo".
+    try:
+        _logros_muerte(ses, addr, getattr(m, 'npc_type', 0))
+    except Exception:
+        log.exception('logros al matar')
 
     # Matar al monstruo termina el bloqueo dejado por una captura fallida.
     # revivir() tambien lo limpia como segunda garantia para cualquier otro
@@ -3698,6 +3712,8 @@ def _portal_por_evento(ses, addr, por):
 
 def _viajar_por_portal(ses, addr, por, motivo=''):
     """Manda al jugador por un tornado que no pregunta."""
+    # El paso que estuviera a medias en el mapa de origen ya no cuenta.
+    _cancelar_portal_armado(ses)
     if por.get('salir_territorio'):
         import territorios_liga, eventos
         st = territorios_liga.salida(ses)
@@ -3755,11 +3771,18 @@ def _armar_portal_al_llegar(ses, addr, destino_tile, casillas):
         return
     vel = max(1, _velocidad_de(ses))
     espera = min(5.0, max(0.2, casillas * 25.0 / vel))
+    # El mapa en que se armo. Si antes de acabar el paso el jugador cambia de
+    # mapa (otro tornado, un teletransporte), la casilla de destino ya no es
+    # de este mapa: se miraba igual y saltaba el portal de esa misma casilla
+    # en el mapa NUEVO. South of Mirror Lake -> Sunflower Plain acababa en
+    # Spike Farm porque el paso iba a (7,178), junto al tornado de Spike
+    # Farm de Sunflower (5,181) (hestia.log, 20/10/2026 21:06:41).
+    stage_armado = ses.personaje.stage
 
     def _saltar():
         ses.portal_armado = None
         try:
-            if ses.personaje:
+            if ses.personaje and ses.personaje.stage == stage_armado:
                 p_act = _portal_en(ses.personaje.stage, *destino_tile)
                 if p_act:
                     if ses.personaje.stage == 500 and p_act.get('entity') == 701:
@@ -4344,6 +4367,8 @@ def _intentar_captura_monstruo(ses, target_entity, addr='?'):
         destination = _meter(ses, output_item, 1, pet_metadata=pet_meta)
         if destination is not None:
             touched.append(destination)
+            _logros_contar(ses, 'captura:%d' % int(monster.npc_type), addr=addr)
+            _logros_contar(ses, 'captura_rango:%d' % int(rango), addr=addr)
             p_ses = getattr(ses, 'personaje', None)
             if p_ses and getattr(p_ses, 'mascotas', None):
                 ficha = p_ses.mascotas.get(str(destination))
@@ -6348,6 +6373,7 @@ def _tw_totem_roto(ses, m, addr):
     if not texto:
         _tw_relevantar(int(m.stage))
         return
+    _logros_contar(ses, 'totem_roto', addr=addr)
     log.info('[%s] %s', addr, texto)
     # Como Celestia al romperlo: el anuncio y los territorios (0x0131), de
     # donde el cliente saca el emblema de faccion del cartel del totem. Sin el
@@ -6431,6 +6457,245 @@ def _usar_pergamino_revivir(ses, addr, ranura, pct):
     log.info('[%s] %s revive con un pergamino (%d%%)', addr, p.nombre, pct)
 
 
+# ---------------------------------------------------------------- LOGROS
+# Ver logros.py: el 0x0155 con el estado de la ventana de logros, los
+# titulos en el 0x0002 y el titulo puesto por el 0x001D codigo 57.
+INTERVALO_LOGROS = 3.0
+
+
+def _logros_datos(ses):
+    """Carga una vez lo que los logros guardan aparte: muertes por tipo y el
+    titulo puesto (claves 'logros_muertos' y 'titulo' de la ficha)."""
+    import json
+    p = ses.personaje
+    if getattr(p, '_logros_cargado', False):
+        return
+    p._logros_cargado = True
+    p.logros_muertos = {}
+    p.logros_cont = {}
+    p.logros_dias = []
+    p.titulo = 0
+    try:
+        con = cuentas._get_conn()
+        try:
+            fila = con.execute('SELECT datos FROM personajes WHERE char_id=?', (int(p.char_id),)).fetchone()
+        finally:
+            con.close()
+        d = json.loads(fila[0]) if fila and fila[0] else {}
+        p.logros_muertos = {int(k): int(v) for k, v in (d.get('logros_muertos') or {}).items()}
+        p.logros_cont = {str(k): int(v) for k, v in (d.get('logros_cont') or {}).items()}
+        p.logros_dias = [str(x) for x in (d.get('logros_dias') or [])]
+        p.titulo = int(d.get('titulo') or 0)
+    except Exception:
+        log.exception('logros: no se pudieron cargar las muertes / el titulo')
+    import datetime as _dt_l
+    hoy = _dt_l.date.today().isoformat()
+    if hoy not in p.logros_dias:
+        p.logros_dias = (p.logros_dias + [hoy])[-400:]
+
+
+def _logros_guardar(ses):
+    p = ses.personaje
+    if not getattr(ses, 'usuario', None):
+        return
+    muertos = {str(k): int(v) for k, v in (getattr(p, 'logros_muertos', None) or {}).items()}
+    titulo = int(getattr(p, 'titulo', 0) or 0)
+    cont = dict(getattr(p, 'logros_cont', None) or {})
+    dias = list(getattr(p, 'logros_dias', None) or [])
+    try:
+        cuentas.guardar_sistemas(ses.usuario, p.char_id, p)
+        cuentas._actualizar_personaje(ses.usuario, p.char_id,
+                                      lambda d: d.update(logros_muertos=muertos, titulo=titulo,
+                                                         logros_cont=cont, logros_dias=dias))
+    except Exception:
+        log.exception('logros: no se pudo guardar')
+
+
+def _logros_stats(ses):
+    import struct as _st_l
+    p = ses.personaje
+    try:
+        raw = _stats_ses(ses)
+        return {'hp_max': _vida_max(p), 'mp_max': _mana_max(p),
+                'atk': _st_l.unpack_from('<I', raw, 26)[0], 'dfs': _st_l.unpack_from('<I', raw, 38)[0],
+                'matk': _st_l.unpack_from('<I', raw, 46)[0], 'mdef': _st_l.unpack_from('<I', raw, 54)[0]}
+    except Exception:
+        return {'hp_max': getattr(p, 'hp_max', 0), 'mp_max': getattr(p, 'mp_max', 0)}
+
+
+_RANKING_CACHE = {'t': 0.0, 'listas': {}}
+
+
+def _listas_ranking(p):
+    """Las listas del Rank List para los logros de ranking, recalculadas como
+    mucho cada minuto (se leen de la base de datos entera)."""
+    import ranking as _rk_l
+    import logros as _lg_l
+    if time.time() - _RANKING_CACHE['t'] > 60:
+        _RANKING_CACHE['listas'] = {t: _rk_l.lista(t) for t in set(_lg_l.LISTA_DE_RANKING.values())}
+        _RANKING_CACHE['t'] = time.time()
+    try:
+        import gremios as _grm_l
+        g = _grm_l.obtener_gremio_de(p.char_id)
+        p.guild_id = int(g['guild_id']) if g else 0
+    except Exception:
+        p.guild_id = 0
+    return _RANKING_CACHE['listas']
+
+
+def _logros_ctx(ses):
+    """Lo que miran las reglas ampliadas de logros.medir."""
+    import logros as _lg_c
+    p = ses.personaje
+    num_pj = 1
+    try:
+        cuenta = cuentas.cargar()['cuentas'].get(getattr(ses, 'usuario', None)) or {}
+        num_pj = len(cuenta.get('personajes') or []) or 1
+    except Exception:
+        pass
+    hechizos_v = 0
+    try:
+        import combate as _cb_c
+        hechizos_v = sum(1 for h in (getattr(p, 'hechizos_aprendidos', None) or [])
+                         if str(_cb_c.datos_magia(int(h)).get('nombre') or '').endswith(' V'))
+    except Exception:
+        pass
+    ronda = 0
+    try:
+        import totem_war as _tw_c
+        ronda = int(_tw_c._RONDA.get(p.char_id, 0))
+    except Exception:
+        pass
+    return {'cont': getattr(p, 'logros_cont', None) or {},
+            'casa': _lg_c._casa(p),
+            'oro': int(getattr(ses, 'oro', 0) or getattr(p, 'oro', 0) or 0),
+            'bolsa': getattr(ses, 'inventario', None) or getattr(p, 'inventario', None) or {},
+            'mejoras': getattr(p, 'mejoras', None) or {},
+            'mascotas': [m for m in (getattr(p, 'mascotas', None) or {}).values() if isinstance(m, dict)],
+            'num_pj': num_pj, 'hechizos_v': hechizos_v, 'ronda_tw': ronda,
+            'dias': getattr(p, 'logros_dias', None) or []}
+
+
+def _logros_contar(ses, clave, n=1, maximo=False, addr=None):
+    """Suma (o con `maximo`, guarda el mayor) un contador de logros y mira si
+    ya se cumple alguno."""
+    p = getattr(ses, 'personaje', None)
+    if not p:
+        return
+    try:
+        _logros_datos(ses)
+        cont = p.logros_cont
+        if maximo:
+            cont[clave] = max(int(cont.get(clave, 0) or 0), int(n))
+        else:
+            cont[clave] = int(cont.get(clave, 0) or 0) + int(n)
+        _logros_actualizar(ses, addr, enviar=True)
+        _logros_guardar(ses)
+    except Exception:
+        log.exception('logros: contador %s', clave)
+
+
+def _logros_actualizar(ses, addr=None, enviar=False):
+    """Da los logros que ya cumple y, si cambio algo (o `enviar`), manda el
+    0x0155 para que la ventana este al dia."""
+    import logros as _lg_a
+    import clases as _cl_a
+    p = getattr(ses, 'personaje', None)
+    if not p:
+        return
+    _logros_datos(ses)
+    if p.logros is None:
+        p.logros = []
+    muertos = getattr(p, 'logros_muertos', None) or {}
+    stats = _logros_stats(ses)
+    nuevos = []
+    try:
+        ronda = _lg_a.comprobar_ranking(p.logros, _lg_a.puestos_de(p, _listas_ranking(p)))
+        nuevos += [l for l in ronda if _lg_a.otorgar(p.logros, l)]
+    except Exception:
+        log.exception('logros de ranking')
+    ctx = _logros_ctx(ses)
+    p._logros_ctx = ctx          # para el 0x0155 de los cambios de mapa (login.secuencia)
+    try:
+        ronda = _lg_a.comprobar_extra(p, p.logros, ctx)
+        nuevos += [l for l in ronda if _lg_a.otorgar(p.logros, l)]
+    except Exception:
+        log.exception('logros ampliados')
+    for _ in range(4):          # los de "tener otros logros" y los de puntos encadenan
+        ronda = _lg_a.comprobar(p, p.logros, muertos=muertos, stats=stats)
+        ronda = [l for l in ronda if _lg_a.otorgar(p.logros, l)]
+        if not ronda:
+            break
+        nuevos += ronda
+    if nuevos:
+        titulos_antes = set(_lg_a.titulos_de([l for l in p.logros if l not in nuevos]))
+        for lid in nuevos:
+            f = _lg_a.de_id(lid) or {}
+            ses.enviar(_cl_a.aviso('Achievement completed: [%s] (+%d points)'
+                                   % (f.get('nombre') or lid, int(f.get('puntos') or 0)), tipo=0))
+        nuevos_t = set(_lg_a.titulos_de(p.logros)) - titulos_antes
+        if nuevos_t:
+            # Como en el original: la primera vez que se consigue un titulo
+            # sale un Super BC gratis a todo el servidor anunciandolo.
+            _ap = getattr(p, 'apariencia', None) or [0]
+            _sel = int(_ap[0]) & 1 if _ap else 0
+            for _t in sorted(nuevos_t):
+                _bc = _cl_a.chat_super_broadcast(
+                    0, p.nombre, '%s has obtained the title [%s]!' % (p.nombre, _lg_a.nombre_titulo(_t)), _sel)
+                _receptores = {id(x): x for x in _tw_sesiones()}
+                _receptores[id(ses)] = ses
+                for _s_bc in _receptores.values():
+                    try:
+                        _s_bc.enviar(_bc)
+                    except Exception:
+                        pass
+            ses.enviar(_cl_a.aviso('New title unlocked! You will find it in the Title tab '
+                                   'after changing map.', tipo=0))
+        _logros_guardar(ses)
+        log.info('[%s] %s consigue los logros %s', addr, p.nombre, nuevos)
+    if nuevos or enviar:
+        ses.enviar(_lg_a.paquete(p, muertos, stats, ctx))
+
+
+def _logros_muerte(ses, addr, npc_type):
+    """Cuenta la baja para los logros de "matar N de este monstruo" y, como
+    mucho cada INTERVALO_LOGROS, mira si ya cumple alguno (nivel, puntos...)."""
+    import logros as _lg_m
+    p = getattr(ses, 'personaje', None)
+    if not p:
+        return
+    _logros_datos(ses)
+    cuenta = int(npc_type or 0) in _lg_m.tipos_con_logro()
+    if cuenta:
+        p.logros_muertos[int(npc_type)] = p.logros_muertos.get(int(npc_type), 0) + 1
+    ahora = time.time()
+    if cuenta or ahora - getattr(ses, '_logros_ultimo', 0) >= INTERVALO_LOGROS:
+        ses._logros_ultimo = ahora
+        _logros_actualizar(ses, addr, enviar=cuenta)
+
+
+def _logros_poner_titulo(ses, addr, titulo):
+    """c2s 0x0016 accion 49: ponerse (o quitarse con 0) un titulo."""
+    import logros as _lg_t
+    import presencia as _pr_t
+    p = ses.personaje
+    _logros_datos(ses)
+    titulo = int(titulo or 0)
+    if titulo and titulo not in set(_lg_t.titulos_de(p.logros or [])):
+        return
+    p.titulo = titulo
+    ses.enviar(_lg_t.paquete_titulo(p.entity_id, titulo, True))
+    try:
+        pub = _pr_t.entidad_de(ses)
+        for otro in _pr_t._vivas(_pr_t.clave_de_mapa(ses, p.stage)):
+            if otro is not ses:
+                getattr(otro, 'enviar_sin_espejo', otro.enviar)(_lg_t.paquete_titulo(pub, titulo, False))
+    except Exception:
+        log.debug('titulo a los demas', exc_info=True)
+    _logros_guardar(ses)
+    log.info('[%s] %s se pone el titulo %d', addr, p.nombre, titulo)
+
+
 def _plantar_con_clic(ses, addr, plot):
     """Clic en una parcela libre de la granja: planta la primera semilla."""
     import granja_liga as _fl
@@ -6512,6 +6777,11 @@ def _tw_al_entrar(ses):
     lo recibe de _entrar_en_sala) y cuanto le queda a la guerra."""
     import totem_war as _tw_e
     p = ses.personaje
+    if _tw_e.es_totem_decorativo(getattr(p, 'stage', 0)):
+        # Campo de entrenamiento: su totem, siempre a la vista y sin guerra.
+        _m_dec = (ses.monstruos or {}).get(_tw_e.eid_totem(p.stage))
+        if _m_dec is not None:
+            ses.enviar(_tw_e.spawn_totem(_m_dec), _cb_mod().atributo(_m_dec.entity_id, 100))
     if not _tw_e.es_mapa_tw(getattr(p, 'stage', 0)):
         if getattr(ses, 'tw_modo_pvp', False):
             # Salio de la arena: fuera el modo PvP (aura, marcador, musica).
@@ -7228,7 +7498,7 @@ def _vida_max(p, bolsa=None) -> int:
     return inv.vida_maxima(getattr(p, 'hp_max', 0),
                            getattr(p, 'habilidades', None), bolsa=b,
                            mejoras=getattr(p, 'mejoras', None),
-                           buffs=getattr(p, 'buffs', None),
+                           buffs=__import__('logros').con_reputacion(getattr(p, 'buffs', None), p),
                            mp_max=getattr(p, 'mp_max', 0))
 
 
@@ -7244,7 +7514,7 @@ def _mana_max(p, bolsa=None) -> int:
     return inv.mana_maximo(getattr(p, 'mp_max', 0),
                            getattr(p, 'habilidades', None), bolsa=b,
                            mejoras=getattr(p, 'mejoras', None),
-                           buffs=getattr(p, 'buffs', None))
+                           buffs=__import__('logros').con_reputacion(getattr(p, 'buffs', None), p))
 
 
 def _cb_alcance(ses) -> int:
@@ -7271,6 +7541,8 @@ def _stats_ses(ses):
     if sp is None and p is not None:
         sp = max(0, int(getattr(p, 'sp', 0) or 0))
         ses.sp = sp
+    import logros as _lg_st
+    buffs = _lg_st.con_reputacion(buffs, p)     # las stats fijas de la reputacion
     return inv.stats(bolsa, habs, hp=hp, hp_max=hp_max, mp=mp, mp_max=mp_max,
                      oro=oro, buffs=buffs, sp=sp, sp_max=bars,
                      mejoras=getattr(p, 'mejoras', None) if p else None)
@@ -8395,6 +8667,7 @@ class Servidor:
         if not _c.iniciar_baile(ticket_id, now=now):
             ses.enviar(_cl.aviso("Unable to start house ball.", tipo=7, msg_id=_cl.MSG_TEXTO))
             return
+        _logros_contar(ses, 'baile', addr=addr)
         if ranura is not None and ranura in ses.inventario:
             _sacar(ses, ranura, 1)
             ses.enviar(*_refrescar(ses, [ranura]))
@@ -8858,6 +9131,13 @@ class Servidor:
                 return
             ses.entity_id = p.entity_id
             ses.personaje = p
+            # LOGROS ANTES de la secuencia: el 0x0002 lleva los titulos y el
+            # 0x0155 los logros. Revisandolos despues, los titulos ganados al
+            # entrar (los de ranking) no salian hasta otro cambio de mapa.
+            try:
+                _logros_actualizar(ses, addr)
+            except Exception:
+                log.exception('logros antes de entrar')
             for sub in secuencia(p):
                 ses.enviar(sub)
             # El inventario va dentro de la secuencia de entrada: el 0x001A
@@ -9007,6 +9287,14 @@ class Servidor:
                 _tw_al_entrar(ses)
             except Exception:
                 log.exception('Totem War al conectarse')
+            # LOGROS: el 0x0155 (ventana de logros) y el titulo puesto.
+            try:
+                _logros_actualizar(ses, addr, enviar=True)
+                if getattr(p, 'titulo', 0):
+                    import logros as _lg_in
+                    ses.enviar(_lg_in.paquete_titulo(p.entity_id, p.titulo, True))
+            except Exception:
+                log.exception('logros al conectarse')
             try:
                 import gremios as _grm_in
                 _grm_in.al_entrar_jugador(ses, self.mundos)
@@ -9583,6 +9871,7 @@ class Servidor:
                                                             _cb.atributo(yo, 0, _cb.KIND_HP))
                                                         ses.muerto = True
                                                         m.en_combate_con = None
+                                                        _logros_contar(ses, 'muertes', addr=addr)
                                                     else:
                                                         if getattr(m, 'vivo', False) and m.hp > 0:
                                                             pkgs_imp_yo.extend(_procesar_triggers_buffs(ses, yo, m, addr=addr, en_ataque=False))
@@ -10946,7 +11235,7 @@ class Servidor:
                     if blancos:
                         habs = ses.personaje.habilidades if ses.personaje else None
                         buffs_activos = getattr(ses.personaje, 'buffs', None)
-                        st = _iv.stats(ses.inventario, habs, buffs=buffs_activos, mejoras=_mejoras_de(ses))
+                        st = _iv.stats(ses.inventario, habs, buffs=__import__('logros').con_reputacion(buffs_activos, ses.personaje), mejoras=_mejoras_de(ses))
                         if is_magic_skill:
                             ataque = struct.unpack_from('<I', st, 2 + 44)[0]
                             dano_base = mag.get('dano_base', 0)
@@ -11500,6 +11789,7 @@ class Servidor:
                             buff_entry['es_transform'] = mag.get('es_transformacion', False)
                             if mag.get('trans_sprite'):
                                 buff_entry['trans_sprite'] = int(mag['trans_sprite'])
+                                _logros_contar(ses, 'transforma:%d' % int(mag['trans_sprite']), addr=addr)
                             if mag.get('es_melee_trans'):
                                 buff_entry['es_melee_trans'] = True
                             if mag.get('matk_pct'):
@@ -12060,7 +12350,7 @@ class Servidor:
             import skills as _sk_mod
             habs = ses.personaje.habilidades if ses.personaje else None
             buffs_activos = getattr(ses.personaje, 'buffs', None)
-            st = _iv.stats(ses.inventario, habs, buffs=buffs_activos, mejoras=_mejoras_de(ses))
+            st = _iv.stats(ses.inventario, habs, buffs=__import__('logros').con_reputacion(buffs_activos, ses.personaje), mejoras=_mejoras_de(ses))
             is_magic_skill = bool(tipo != _cb.ATAQUE_NORMAL and (_sk_mod.skill_de_magia(tipo) in (1, 2, 3, 4)))
             if is_magic_skill:
                 ataque = struct.unpack_from('<I', st, 2 + 44)[0]
@@ -14453,6 +14743,11 @@ class Servidor:
             ses.enviar(_cs.pkt_house_name(_c.house_name))
             log.info('[%s] house opened by %s at stage %d (%d, %d)',
                      addr, ses.personaje.nombre, ses.personaje.stage, _px_x, _px_y)
+            # LOGROS de casa (展示房屋成功 "Display a Cottage", nivel, muebles...).
+            try:
+                _logros_actualizar(ses, addr, enviar=True)
+            except Exception:
+                log.exception('logros al exponer la casa')
             return
 
         if opcode == 0x0136 and ses.rol == 'mundo' and ses.personaje:
@@ -14715,6 +15010,7 @@ class Servidor:
             _c.voted_users_today.add(_cid)
             _c.votes_today += 1
             _c.votes_total += 1
+            _logros_contar(ses, 'voto', addr=addr)
             _txt = cuerpo.decode('latin-1', 'replace').strip('\x00').strip()
             if _txt:
                 _c.vote_notes.insert(0, {
@@ -14835,6 +15131,12 @@ class Servidor:
                 else:
                     return
 
+            try:
+                import logros as _lg_u
+                if int(bolsa[ranura]) in _lg_u.items_contados()[1]:
+                    _logros_contar(ses, 'usa:%d' % int(bolsa[ranura]), addr=addr)
+            except Exception:
+                pass
             # PERGAMINOS DE REVIVIR (使用公式 10): "When the character is dead,
             # right click the item to revive the character in the original
             # location". 動態資料1 es el % de vida y mana con que se levanta:
@@ -17295,6 +17597,7 @@ class Servidor:
                         _c_vt.voted_users_today.add(_cid)
                         _c_vt.votes_today += 1
                         _c_vt.votes_total += 1
+                        _logros_contar(ses, 'voto', addr=addr)
                         if getattr(ses, 'usuario', None):
                             _cta_vt.guardar_casa(ses.usuario, _c_vt.owner_id, _c_vt)
                         _lv, _prev_m, _next_m = _cs_vt.info_nivel(_c_vt.calcular_magia())
@@ -17795,6 +18098,10 @@ class Servidor:
                 qid_borrar = parametro
                 import misiones as _mis_del
                 _mis_del.abandonar_mision(ses, qid_borrar)
+                return
+            if accion == 49 and ses.personaje:
+                # TITULO (game.equipcrown -> FUN_00614da0(0x31, id)). Ver logros.py.
+                _logros_poner_titulo(ses, addr, parametro)
                 return
             if accion == 47 and ses.personaje:
                 # FUSION de transformacion: OK / Cancelar de la vista previa

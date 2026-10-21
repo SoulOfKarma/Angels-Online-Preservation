@@ -253,6 +253,11 @@ def _aplicar(ses, otro, dano, es_crit, con_efecto, tipo, efecto, magia):
         otro.muerto = True
         otro.objetivo_actual = None
         _contar_baja(ses, p)
+        try:
+            import app as _app_l
+            _app_l._logros_contar(otro, 'muertes')
+        except Exception:
+            log.exception('logros: muerte PvP')
         if getattr(otro, 'usuario', None):
             cuentas._actualizar_personaje(otro.usuario, q.char_id,
                 lambda d: d.update(pvp_deaths=int(d.get('pvp_deaths', 0))+1))

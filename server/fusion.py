@@ -349,6 +349,7 @@ def _fusion_consumible(ses, addr, aviso, principal, asistente, pocion, aleatorio
     tocadas.add(ranura)
     _cerrar(ses, addr, tocadas, ranura)
     aviso('Fusion successful: %s' % nombre(nuevo))
+    _logro(ses, 'fusion_cons:%d' % int(nuevo))
     log.info('[%s] %s fusiona %s + %s (pocion %s) -> %s', addr, p.nombre,
              nombre(it_p), nombre(it_a), nombre(it_pocion), nombre(nuevo))
 
@@ -493,6 +494,8 @@ def _fusion_mascota(ses, addr, aviso, principal, asistente, pocion, aleatorio):
     tocadas.add(principal)
     _cerrar(ses, addr, tocadas, principal)
     aviso('Pet fusion successful.')                            # 2728
+    _logro(ses, 'fusion_pets')
+    _logro(ses, 'fusion_estrellas', int(m_p.get('estrellas') or 1) // 10, maximo=True)
     log.info('[%s] %s: fusion de mascota %s %s (%d%%)', addr, p.nombre,
              m_p.get('nombre'), elegibles, exito)
 
@@ -685,5 +688,16 @@ def aplicar_forma(ses, addr, aviso):
     _cerrar(ses, addr, tocadas, ranura)
     aviso('Pet fusion result: %s' % nombre(pend['item']))      # 2723
     aviso('Pet fusion successful.')                            # 2728
+    _logro(ses, 'fusion_pet:%d' % int(pend['item']))
+    _logro(ses, 'fusion_pets')
     log.info('[%s] %s: transformacion -> %s (fuse_id %d, %d%%)', addr, p.nombre,
              nombre(pend['item']), pend['fuse_id'], exito)
+
+
+def _logro(ses, clave, n=1, maximo=False):
+    """Contador de logros de fusion (融合相關), ver app._logros_contar."""
+    try:
+        import app
+        app._logros_contar(ses, clave, n, maximo=maximo)
+    except Exception:
+        log.exception('logros de fusion')

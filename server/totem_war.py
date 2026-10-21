@@ -80,6 +80,16 @@ TOTEM_CAMPO = {8: (93, 176), 9: (147, 100), 11: (196, 56), 12: (288, 11),
 # El totem es el monstruo 21397 "Totem Lv 1" (el mismo en los doce campos de
 # Celestia); el nivel lo sube la liga con ofrendas (ventana 0x012F).
 TOTEM_TIPO_CAMPO = 21397
+# Los cuatro campos de ENTRENAMIENTO (sin guerra) tambien tienen su totem en
+# Celestia, junto al Terra Keeper; el minimapa lo marca. Casillas de los
+# 0x012E capturados, emparejadas con el Terra Keeper de la misma captura:
+# Sunflower Plain, Foggy Forest, Mysterious Garden y Megalith Plain. Son
+# decorativos: siempre a la vista y nunca se les puede pegar.
+TOTEM_ENTRENAMIENTO = {7: (216, 46), 20: (221, 56), 22: (206, 107), 28: (130, 92)}
+
+
+def es_totem_decorativo(stage) -> bool:
+    return int(stage or 0) in TOTEM_ENTRENAMIENTO
 
 
 def _tw(stage) -> int:
@@ -460,6 +470,8 @@ def _totem_clase():
         @hp.setter
         def hp(self, valor):
             viejo = self.__dict__.get('_hp')
+            if viejo is not None and valor < viejo and getattr(self, 'decorativo', False):
+                return            # el de un campo de entrenamiento no se rompe
             if viejo is not None and valor < viejo and activa():
                 # La guerra es de FACCIONES: cualquiera de otra faccion le pega,
                 # tenga liga o no. La liga solo decide si ademas se queda el
@@ -479,7 +491,7 @@ def puede_pegar(ses, m) -> bool:
     ya lo tiene. Neutro (nadie lo rompio): le pega cualquiera. La milicia y
     los de Heaven no son faccion de guerra y no le pegan."""
     p = getattr(ses, 'personaje', None)
-    if p is None or not activa():
+    if p is None or not activa() or es_totem_decorativo(getattr(m, 'stage', 0)):
         return False
     f = codigo_faccion(p)
     if f not in TAG_DE_FACCION:
@@ -498,6 +510,17 @@ def motivo_no_pegar(ses, m) -> str:
 
 def crear_totem(stage):
     """El Monstruo del totem para la sala compartida del mapa TW."""
+    if es_totem_decorativo(stage):
+        m = _totem_clase()(eid_totem(stage), TOTEM_TIPO_CAMPO, 'Totem',
+                           list(TOTEM_ENTRENAMIENTO[int(stage)]), SPRITE_TOTEM_NEUTRO, stage=int(stage))
+        m.decorativo = True
+        m.atk = m.matk = 0
+        m.agro = 0
+        m.move_range = m.move_speed = 0
+        m.es_estatico = True
+        m.generado = True
+        m.es_jefe = False
+        return m
     if MODO == 'antigua' and int(stage) in TOTEM_CAMPO:
         # monster.xml: 21397 "Totem Lv 1" (300.000 HP) .. 21404 "Totem Lv 8"
         # (17.689.000 HP). El nivel lo suben las ofrendas.
@@ -664,7 +687,7 @@ def sumar_puntos_totem(stage, puntos):
 
 
 def spawn_totem(m, nivel=1) -> bytes:
-    if MODO == 'antigua' and int(m.stage) in TOTEM_CAMPO:
+    if (MODO == 'antigua' and int(m.stage) in TOTEM_CAMPO) or es_totem_decorativo(m.stage):
         return spawn_totem_campo(m)
     """s2c 0x0140: el totem de la arena (REA 005ef5f0).
 

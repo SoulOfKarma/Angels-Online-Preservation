@@ -218,6 +218,13 @@ def secuencia(p: Personaje):
             # AllStars, FastCrew). El mapa debe mostrar la propiedad local.
             import totem_war
             salida.append(totem_war.paquete_territorios())
+        elif op == 0x0155:
+            # LOGROS. La plantilla traia el 0x0155 del personaje grabado
+            # (2 logros, "Score 4") y se repetia en CADA cambio de mapa,
+            # pisando el de verdad: la ventana salia toda a 0% (20/10/2026).
+            import logros as _lg_sec
+            salida.append(_lg_sec.paquete(p, getattr(p, 'logros_muertos', None) or {},
+                                          ctx=getattr(p, '_logros_ctx', None)))
         elif op == 0x005B:
             salida.append(_barra(p, base))
         elif op == 0x0014:
@@ -1426,6 +1433,30 @@ def _ficha(p, base):
         struct.pack_into('<I', crudo, 0xd4, int(p.char_id or 0))
     import cartas as _cartas
     _cartas.perfil(crudo, p)
+    # TITULOS (crown.xml): 128 bytes de bits en el +0x6d0 y el titulo puesto
+    # en el +0x750 (REA FUN_005e9c90 -> FUN_005eb0b0 / FUN_004cfd80). Los
+    # desbloquean los logros (columna 稱號 de achievement.xml). Ver logros.py.
+    if len(crudo) >= 0x754:
+        try:
+            import logros as _lg_f
+            crudo[0x6d0:0x750] = _lg_f.bits_titulos(p)
+            titulo = int(getattr(p, 'titulo', 0) or 0)
+            if not titulo:
+                import json as _js_f
+                import cuentas as _cta_f
+                con = _cta_f._get_conn()
+                try:
+                    fila = con.execute('SELECT datos FROM personajes WHERE char_id=?',
+                                       (int(p.char_id or 0),)).fetchone()
+                finally:
+                    con.close()
+                titulo = int((_js_f.loads(fila[0]) if fila and fila[0] else {}).get('titulo') or 0)
+            if titulo not in set(_lg_f.titulos_de(getattr(p, 'logros', None) or [])):
+                titulo = 0
+            struct.pack_into('<I', crudo, 0x750, titulo)
+        except Exception:
+            import logging as _lg_err
+            _lg_err.getLogger('login').exception('titulos en el 0x0002')
     return bytes(crudo)
 
 
