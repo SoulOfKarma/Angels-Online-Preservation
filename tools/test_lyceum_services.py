@@ -146,7 +146,8 @@ class TestLyceum(unittest.TestCase):
                                              (14565, 'skill', 'skill_exp_extra_pct', 4)):
                 e = ly.entrada_buff(mid)
                 fn = configuracion.multiplicador_exp if clave == 'exp' else configuracion.multiplicador_skill_exp
-                self.assertEqual(fn({mid: e}), fn()*factor)
+                # Los % de los buffs se SUMAN a la tasa: +100 % es +1 y +300 % es +3.
+                self.assertEqual(fn({mid: e}), fn() + (factor - 1))
                 e['fin'] = 0
                 self.assertEqual(fn({mid: e}), fn())
         self.assertEqual(ly.entrada_buff(14535)['carga'], 10000)

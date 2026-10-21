@@ -57,35 +57,74 @@ def es_fin_de_semana() -> bool:
     return dia in (4, 5, 6)
 
 
+# LOS BONOS DE EXP DE LOS BUFFS SE SUMAN AL MULTIPLICADOR, NO LO MULTIPLICAN
+# (pedido del usuario, 21/10/2026). Con TASA_SKILL_EXP_BASE = 1000 el golpe da
+# 1000 de skill exp; el Astro Pisces III (+300 % de skill exp) lo deja en
+# x1003, no en x4000. Igual con la EXP: una carta de doble EXP (100 en su
+# hechizo) es +1 y una x5 (400) es +4. El % sale del propio buff (los del
+# Lyceum lo traen en exp_extra_pct / skill_exp_extra_pct) o, si no, de las
+# columnas 經驗加倍 / 技能經驗加倍 de su hechizo en magic.
+_PCT_MAGIA = {}
+
+
+def _pct_de_magia(mid, columna):
+    clave = (int(mid), columna)
+    if clave not in _PCT_MAGIA:
+        v = 0
+        try:
+            import pathlib, sqlite3
+            con = sqlite3.connect(pathlib.Path(__file__).parent.parent / 'corpus' / 'content.db')
+            r = con.execute('select "%s" from magic where id=?' % columna, (str(int(mid)),)).fetchone()
+            con.close()
+            v = int(r[0]) if r and str(r[0] or '').isdigit() else 0
+        except Exception:
+            v = 0
+        _PCT_MAGIA[clave] = v
+    return _PCT_MAGIA[clave]
+
+
+def pct_buffs(buffs, campo, columna):
+    """Suma de los % de EXP (o skill exp) de los buffs activos."""
+    import time
+    ahora = time.time()
+    total = 0.0
+    for clave, e in (buffs or {}).items():
+        if not isinstance(e, dict) or e.get('fin', 0) <= ahora:
+            continue
+        if e.get(campo):
+            total += float(e[campo])
+            continue
+        mid = e.get('id') or (e.get('mag') or {}).get('id') or clave
+        if str(mid).isdigit():
+            total += _pct_de_magia(mid, columna)
+    return total
+
+
 def multiplicador_exp(buffs: dict = None) -> float:
-    """Calcula el multiplicador total de EXP de personaje teniendo en cuenta:
-    tasa base + evento semanal + buffs o tarjetas de doble EXP activas + bonos de casa/maid."""
+    """EXP de personaje: tasa base (x evento de fin de semana) + los % de los buffs."""
     m = TASA_EXP_BASE
     if es_fin_de_semana():
         m *= BONUS_EVENTO_EXP
     if buffs:
         if buffs.get('doble_exp'):
-            m *= 2.0
+            m += 1.0
         if buffs.get('triple_exp'):
-            m *= 3.0
+            m += 2.0
         # House cleanliness belongs to the house magic index. Eilian's
         # 2292..2295 affect equipment enhancement, never character EXP.
-        import lyceum_services
-        m *= 1 + lyceum_services.bono(buffs, 'exp_extra_pct') / 100
+        m += pct_buffs(buffs, 'exp_extra_pct', '經驗加倍') / 100
     return m
 
 
 def multiplicador_skill_exp(buffs: dict = None) -> float:
-    """Calcula el multiplicador total de EXP de habilidades teniendo en cuenta:
-    tasa base + evento semanal + cartas de skill exp activas."""
+    """Skill EXP: tasa base (x evento de fin de semana) + los % de los buffs."""
     m = TASA_SKILL_EXP_BASE
     if es_fin_de_semana():
         m *= BONUS_EVENTO_SKILL
-    if buffs and buffs.get('doble_skill_exp'):
-        m *= 2.0
     if buffs:
-        import lyceum_services
-        m *= 1 + lyceum_services.bono(buffs, 'skill_exp_extra_pct') / 100
+        if buffs.get('doble_skill_exp'):
+            m += 1.0
+        m += pct_buffs(buffs, 'skill_exp_extra_pct', '技能經驗加倍') / 100
     return m
 
 

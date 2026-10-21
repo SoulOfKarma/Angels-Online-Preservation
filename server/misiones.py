@@ -660,6 +660,11 @@ def aceptar_mision(ses, qid: int) -> bool:
     st, pa, comp = estado_mision(p, qid)
     if st and not comp:
         return False  # Ya activa
+    if st and comp and not es_repetible(qid):
+        # Una mision no repetible no se vuelve a dar: con Training top student
+        # (123) se podia aceptar y completar sin fin hablando con Michael.
+        log.info(f"[{getattr(ses, 'addr', '')}] mision {qid} ya completada y no repetible")
+        return False
 
     char_id = p.char_id
     nom = nombre_mision(qid)

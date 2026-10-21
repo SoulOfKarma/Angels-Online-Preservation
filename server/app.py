@@ -6707,6 +6707,51 @@ def _dar_exp_habilidad(ses, skill_id, puntos):
     return dada
 
 
+# ------------------------------------------------- TRAINING TOP STUDENT (123)
+# Premio: uno de los seis Top Student (wiki angels.wikidot.com, quest Top
+# Student Training). El dialogo del cliente solo ofrece "Choose fighter
+# weapon" (12319) o "Choose mage weapon" (12320): el de mago es el Staff y el
+# de luchador, el del tipo de arma que se lleve puesta (Dagger si ninguna).
+TOP_STUDENT_MAGO = 1516
+TOP_STUDENT_POR_TIPO = {'劍': 1513, '斧': 1514, '弓箭': 1515, '槍': 1517, '影刃': 14543}
+CLAVE_PREMIO_TOP_STUDENT = 'premio_quest:123'
+
+
+def _top_student_premio_guion():
+    import dialogos
+    return [dialogos.armar_linea(12317, 1, [])[2:],
+            dialogos.armar_linea(12318, 1, [12319, 12320])[2:]]
+
+
+def _top_student_reclamado(ses):
+    _logros_datos(ses)
+    return bool(ses.personaje.logros_cont.get(CLAVE_PREMIO_TOP_STUDENT))
+
+
+def _top_student_dar_premio(ses, addr, mago):
+    import inventario as _iv_ts
+    import misiones as _mis_ts
+    p = ses.personaje
+    if not _mis_ts.mision_completada(p, 123) or _top_student_reclamado(ses):
+        return
+    arma = TOP_STUDENT_MAGO
+    if not mago:
+        arma = 1513
+        for r in (3, 4, 11, 12):
+            it = ses.inventario.get(r)
+            if it and _iv_ts.categoria_item(int(it)) in TOP_STUDENT_POR_TIPO:
+                arma = TOP_STUDENT_POR_TIPO[_iv_ts.categoria_item(int(it))]
+                break
+    res = _gm_dar_item(ses, arma, 1)
+    if 'llena' in res:
+        import clases as _cl_ts
+        ses.enviar(_cl_ts.aviso('Your bag is full.'))
+        return
+    p.logros_cont[CLAVE_PREMIO_TOP_STUDENT] = 1
+    _logros_guardar(ses)
+    log.info(f"[{addr}] Training top student: premio {res}")
+
+
 # ---------------------------------------------------------------- PET AMPLIFY
 # Ver amplify.py.
 
@@ -8160,7 +8205,9 @@ def _otorgar_skill_exp(ses, p, yo, arma_puesta=0, magic_id=0, accion=None):
         return []
     import configuracion, cuentas, clases as _cl, combate as _cb, inventario as _iv
     pkgs = []
-    mult = configuracion.multiplicador_skill_exp()
+    # Con los buffs del personaje: el Astro Pisces III (+300 % de skill exp)
+    # no se notaba porque aqui no se pasaban (21/10/2026).
+    mult = configuracion.multiplicador_skill_exp(getattr(p, 'buffs', None))
     exp_ganada = max(1, int(round(1 * mult)))
 
     SKILLS_PRODUCTOR = {20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31}
@@ -17552,6 +17599,10 @@ class Servidor:
                                 g_comp = dp if dp else g_mis
                             else:
                                 g_comp = g_mis if g_mis else dp
+                            if qid_proc == 123 and tipo_proc == 'completada':
+                                # Training top student: Michael da a elegir el arma
+                                # (msg 12317/12318, opciones 12319 / 12320).
+                                g_comp = _top_student_premio_guion()
                             if g_comp:
                                 ses.dlg_ent, ses.dlg_guion, ses.dlg_paso = ent, g_comp, 1
                                 ses.dlg_val = struct.unpack_from('<H', g_comp[0], 4)[0] if len(g_comp[0]) >= 6 else 4
@@ -18030,7 +18081,26 @@ class Servidor:
                     log.info(f"[{addr}] Leccion {q_leccion} aceptada mediante opcion {_el}")
                     return
 
+                # Premio de Training top student: arma de luchador o de mago.
+                if _el in (12319, 12320) and ses.personaje:
+                    _top_student_dar_premio(ses, addr, _el == 12320)
+                    ses.enviar(struct.pack('<H', 0x0012) + dialogos.FIN)
+                    ses.dlg_ent = None
+                    return
+
                 # Evaluacion de Michael para Top Student Training (Quest 123)
+                if _el == 12308 and ses.personaje:
+                    import misiones as _mis_hecha
+                    if _mis_hecha.mision_completada(ses.personaje, 123):
+                        if _top_student_reclamado(ses):
+                            ses.enviar(struct.pack('<H', 0x0012) + dialogos.FIN)
+                            ses.dlg_ent = None
+                        else:
+                            g_pr = _top_student_premio_guion()
+                            ses.dlg_ent, ses.dlg_guion, ses.dlg_paso = ent, g_pr, 1
+                            ses.dlg_val = 1
+                            ses.enviar(dialogos.linea_de(g_pr, 0, ses.personaje.nombre))
+                        return
                 if _el == 12308:
                     import misiones as _mis_mich
                     nom = ses.personaje.nombre if ses.personaje else 'Jugador'
