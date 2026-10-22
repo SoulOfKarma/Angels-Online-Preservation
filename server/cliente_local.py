@@ -619,6 +619,30 @@ def _parchear_stage_xml(raw: bytes, modo_Norm: str) -> bytes:
     return txt.encode('utf-8')
 
 
+def _restaurar_sombra_totems_obd_bytes(raw: bytes) -> bytes:
+    """Deshacer exclusivamente el ajuste de sombra descartado del 21/10.
+
+    Restaurar solo la linea exacta que dejo ese parche en 60237..60240,
+    manteniendo otras personalizaciones y los nombres Big5 intactos.
+    """
+    def objeto(match):
+        block = match.group(0)
+        if not re.search(rb'(?m)^Sequence[ \t]*=[ \t]*602(?:37|38|39|40)[ \t]*\r?$', block):
+            return block
+        if not re.search(rb'(?m)^Process[ \t]*=[ \t]*SERV_CLASS_TOTEMOBJ[ \t]*\r?$', block):
+            return block
+
+        def flags(match_flags):
+            line = match_flags.group(0)
+            if line == b'Flags = SP_ATTRIB_DISTURB, SP_ATTRIB_HITTEST, SP_ATTRIB_BIAS':
+                return line.replace(b'SP_ATTRIB_BIAS', b'SP_ATTRIB_SHADOW, SP_ATTRIB_BIAS')
+            return line
+
+        return re.sub(rb'(?m)^Flags[ \t]*=[^\r\n]*', flags, block)
+
+    return re.sub(rb'(?ms)^\[OBJECT\][ \t]*\r?\n.*?(?=^\[|\Z)', objeto, raw)
+
+
 def aplicar_modo_estacion(modo: str = None) -> str:
     """Aplica la estacion en Lyceum, las cuatro ciudades y Palm Base,
     y el item custom 83266 en el cliente local."""
@@ -636,6 +660,14 @@ def aplicar_modo_estacion(modo: str = None) -> str:
         return modo_Norm
     bak26 = _asegurar_bak(pak26)
     reemplazos = {}
+
+    # Retirar el experimento de sombra, tambien si ya se aplico al cliente.
+    # No restaurar el .pak entero: conservar otras modificaciones locales.
+    raw_obd = _extraer_archivo_pak(pak26, r'SETTING\SERVER.OBD')
+    if raw_obd:
+        patched_obd = _restaurar_sombra_totems_obd_bytes(raw_obd)
+        if patched_obd != raw_obd:
+            reemplazos[r'SETTING\SERVER.OBD'] = patched_obd
 
     # Tablas de items: conservar el consumible custom y permitir vender a NPC
     # el equipo ligado de recompensa sin volverlo comerciable entre jugadores.

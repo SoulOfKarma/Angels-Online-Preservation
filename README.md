@@ -18,6 +18,10 @@ a guess, it says so.
 
 ## Actual state
 
+Crashing Hillock's totem is now at `(92,174)`, validated in game by the user.
+The unsuccessful shadow experiment is rolled back without changing war rules.
+See [position and rollback notes](docs/TOTEM_SOMBRA_2026-10-21.md).
+
 Buff resource and Peril Chasm collision fixes (Oct 21): maximum HP/MP buffs
 no longer refill current resources; conditional Meditate buffs select their
 XML effects. Blocked monster spawns no longer disable map collisions.

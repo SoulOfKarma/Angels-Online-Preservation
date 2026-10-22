@@ -18,6 +18,10 @@ una suposición, lo dice.
 
 ## Estado real
 
+Totem de Crashing Hillock en `(92,174)`, confirmado en el juego por el usuario.
+Se retira el experimento de sombra sin cambiar las reglas de guerra.
+Ver [posicion y restauracion visual](docs/TOTEM_SOMBRA_2026-10-21.md).
+
 Buffs y paredes (21/10): aumentar HP/MP maximos ya no rellena los recursos;
 los buffs condicionales de Meditate seleccionan sus efectos XML. Los spawns
 bloqueados de monstruos ya no desactivan las colisiones del mapa.

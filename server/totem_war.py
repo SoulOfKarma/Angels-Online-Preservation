@@ -74,8 +74,10 @@ MODO = 'antigua'
 # Los campos de la guerra antigua. Sunflower Plain (7), Foggy Forest (20),
 # Mysterious Garden (22) y Megalith Plain (28) tambien tenian totem en Celestia,
 # pero el usuario los deja como zonas de entrenamiento.
-# Casilla del totem de cada campo, medida en Celestia (0x012E, 20/10/2026).
-TOTEM_CAMPO = {8: (93, 176), 9: (147, 100), 11: (196, 56), 12: (288, 11),
+# Casillas medidas en Celestia (0x012E, 20/10/2026), salvo campo 8:
+# ajuste visual propuesto por el usuario el 21/10: (93,176) -> (92,174).
+# Confirmado por el usuario en pantalla; no desplazar los otros campos.
+TOTEM_CAMPO = {8: (92, 174), 9: (147, 100), 11: (196, 56), 12: (288, 11),
                15: (151, 156), 16: (162, 88), 17: (48, 95), 21: (153, 104)}
 # El totem es el monstruo 21397 "Totem Lv 1" (el mismo en los doce campos de
 # Celestia); el nivel lo sube la liga con ofrendas (ventana 0x012F).
