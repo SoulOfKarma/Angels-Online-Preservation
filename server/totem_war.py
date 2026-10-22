@@ -575,11 +575,20 @@ def spawn_totem_campo(m) -> bytes:
     struct.pack_into('<H', b, 34, sprite_totem(m.stage))
     b[38] = 0 if liga_duena(m.stage) else 8
     struct.pack_into('<H', b, 45, int(getattr(m, 'npc_type', TOTEM_TIPO_CAMPO)))
-    # EL NIVEL: FUN_0060b8b0 copia el u32 del +40 al nivel de la entidad
-    # (+0x24c, el mismo campo que el 0x0002 usa para el del jugador) y es el
-    # numero que sale junto al nombre de la liga. La plantilla traia 0 y el
-    # totem seguia en "1" aunque las ofrendas lo subieran (21/10/2026).
-    struct.pack_into('<I', b, 40, int(nivel_totem(m.stage)[0]))
+    # El cartel es la ventana 0x2fda (REA 0064ab90):
+    #   +40 nivel (+0x24c); el cartel pinta nivel + 1, por eso va nivel - 1.
+    #   barra roja 0x2fdd: vida +63 de un maximo +67 (en %, como el 0x0013).
+    #   barra azul 0x2fde: puntos +71 de los +75 que pide el siguiente nivel.
+    # El cliente lee hasta el +79; a la plantilla capturada le faltaba un
+    # byte, la vida quedaba con maximo 0 (sin barra roja) y la azul llena
+    # (21/10/2026).
+    if len(b) < 79:
+        b.extend(bytes(79 - len(b)))
+    nivel, puntos = nivel_totem(m.stage)
+    struct.pack_into('<I', b, 40, max(0, int(nivel) - 1))
+    vida = int(getattr(m, 'porcentaje', 100) or 0)
+    struct.pack_into('<IIII', b, 63, max(0, min(100, vida)), 100,
+                     int(puntos), puntos_para_subir(nivel))
     return struct.pack('<H', 0x012E) + bytes(b)
 
 
