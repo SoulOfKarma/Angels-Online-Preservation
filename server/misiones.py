@@ -1093,6 +1093,8 @@ def registrar_baja_monstruo(ses, npc_type: int, monster_name: str = None, en_com
 
     # Revisar cada mision activa una sola vez (evita duplicar conteos)
     for q, pa in list(p.quests):
+        if q == 1491:            # la cuenta supremo.py (Pearl / Ruby Cockatrice)
+            continue
         k_cac = f"{q}_{pa}"
         clave_tupla = (q, pa)
 
@@ -1426,7 +1428,7 @@ def verificar_botin_mision(ses, npc_type: int, monster_name: str = None) -> list
     cants = getattr(ses, 'cantidades', {}) or {}
 
     for q, pa in list(p.quests or []):
-        if mision_completada(p, q):
+        if mision_completada(p, q) or q == 1491:      # 1491: supremo.py
             continue
 
         # Manejo especial para Quest 976 Paso 8: cada BOSS suelta su propia pieza específica al 100%
@@ -1738,6 +1740,10 @@ def interactuar_npc(ses, npc_nombre: str, entidad: int = 0) -> tuple:
         # mediante graduacion con Angel Tutor cuando los creditos son >= 5.
         # Quest 103 (Choosing country) se completa al elegir faccion en Graduation Palace.
         if q in (102, 103):
+            continue
+        # La 1491 (Surpass Your Limits) la lleva supremo.py: los pasos
+        # compilados de quest.xml no se pueden usar tal cual.
+        if q == 1491:
             continue
         if q in MISIONES_ALUMNO and es_graduado(p):
             continue

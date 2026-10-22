@@ -18,6 +18,14 @@ a guess, it says so.
 
 ## Actual state
 
+Buff resource and Peril Chasm collision fixes (Oct 21): maximum HP/MP buffs
+no longer refill current resources; conditional Meditate buffs select their
+XML effects. Blocked monster spawns no longer disable map collisions.
+See [evidence, tests and remaining limits](docs/BUFFS_MP_Y_COLISIONES_2026-10-21.md).
+
+Aliua's quest preserves the existing skill slots, including slots 7–9,
+and never grants a tenth slot. See the [reward compatibility notes](docs/ALIUA_SIN_RANURAS_EXTRA_2026-10-21.md).
+
 Oct 21 pet release: [scope, tests and remaining limitations](docs/ENTREGA_PETS_2026-10-21.md).
 
 Pet progression (Oct 21): fixed fusion blocked by initial bonus ranges,

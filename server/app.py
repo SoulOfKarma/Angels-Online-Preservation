@@ -6758,6 +6758,144 @@ def _top_student_dar_premio(ses, addr, mago):
     log.info(f"[{addr}] Training top student: premio {res}")
 
 
+# ------------------------------------------------ ALIUA / SUPREME POWER
+# Ver supremo.py: la mision 1491 "Surpass Your Limits" y el logro 3715.
+
+def _logros_dar(ses, addr, lid):
+    """Da un logro a mano (los NPC觸發 que el servidor no vigila), con su
+    aviso, su titulo en caliente (0x001D codigo 56) y el Super BC."""
+    import logros as _lg_d
+    import clases as _cl_d
+    p = ses.personaje
+    _logros_datos(ses)
+    if p.logros is None:
+        p.logros = []
+    antes = set(_lg_d.titulos_de(p.logros))
+    if not _lg_d.otorgar(p.logros, lid):
+        return False
+    f = _lg_d.de_id(lid) or {}
+    ses.enviar(_cl_d.aviso('Achievement completed: [%s] (+%d points)'
+                           % (f.get('nombre') or lid, int(f.get('puntos') or 0)), tipo=0))
+    _ap = getattr(p, 'apariencia', None) or [0]
+    for _t in sorted(set(_lg_d.titulos_de(p.logros)) - antes):
+        ses.enviar(_lg_d.paquete_titulo_nuevo(p.entity_id, _t))
+        _bc = _cl_d.chat_super_broadcast(0, p.nombre, '%s has obtained the title [%s]!'
+                                         % (p.nombre, _lg_d.nombre_titulo(_t)), int(_ap[0]) & 1)
+        receptores = {id(x): x for x in _tw_sesiones()}
+        receptores[id(ses)] = ses
+        for _s in receptores.values():
+            try:
+                _s.enviar(_bc)
+            except Exception:
+                pass
+    _logros_guardar(ses)
+    _logros_actualizar(ses, addr, enviar=True)
+    log.info('[%s] %s consigue el logro %s', addr, p.nombre, lid)
+    return True
+
+
+def _aliua_mostrar(ses, ent, g):
+    import dialogos as _dl_al
+    ses.dlg_ent, ses.dlg_guion, ses.dlg_paso = ent, g, 1
+    ses.dlg_val = 2
+    ses.enviar(_dl_al.linea_de(g, 0, ses.personaje.nombre))
+
+
+def _aliua_hablar(ses, addr, ent):
+    import supremo as _su
+    _aliua_mostrar(ses, ent, _su.saludo())
+
+
+def _aliua_tokens(ses):
+    import misiones as _mis_al
+    import supremo as _su
+    return {t: _mis_al.obtener_token_mision(ses, t) for t in _su.TOKENS.values()}
+
+
+def _aliua_opcion(ses, addr, ent, op):
+    """Las opciones del dialogo de Aliua (149102..149126)."""
+    import misiones as _mis_al
+    import supremo as _su
+    import dialogos as _dl_al
+    p = ses.personaje
+    _logros_datos(ses)
+    cerrar = lambda: (ses.enviar(struct.pack('<H', 0x0012) + _dl_al.FIN), setattr(ses, 'dlg_ent', None))
+    if op in (_su.OP_NO, _su.OP_NO_PRUEBA, _su.OP_LUEGO):
+        cerrar()
+        return
+    if op == _su.OP_QUE_ES:
+        _aliua_mostrar(ses, ent, _su.explicacion())
+        return
+    if op == _su.OP_REQUISITOS:
+        _aliua_mostrar(ses, ent, _su.requisitos())
+        return
+    if op == _su.OP_ACEPTO_PRUEBA:
+        if _mis_al.aceptar_mision(ses, _su.MISION):
+            for t in _su.TOKENS.values():
+                _mis_al.fijar_token_mision(ses, t, 0)
+        _aliua_mostrar(ses, ent, _su.guion(149117))
+        return
+    paso = _mis_al.obtener_paso_actual(p, _su.MISION) if _mis_al.tiene_mision(p, _su.MISION) else 0
+    if op == _su.OP_SI_PODER:
+        mat = _su.material_listo(lambda it: _cant_total_item(ses, it))
+        if paso == 3 and mat:
+            ses.enviar(*_refrescar(ses, _consumir_item_total(ses, mat, _su.CANTIDAD_MATERIAL)))
+            _guardar_bolsa(ses, p.char_id)
+            _mis_al.completar_mision(ses, _su.MISION)
+        elif not _mis_al.mision_completada(p, _su.MISION):
+            cerrar()
+            return
+        # Aliua no abre slots: las ramas 7/8/9 siguen siendo por nivel.
+        _su.conceder_poder(p)
+        _logros_guardar(ses)
+        _aliua_mostrar(ses, ent, _su.guion(149127, 149128))
+        _logros_dar(ses, addr, _su.LOGRO)
+        log.info(f"[{addr}] {p.nombre} obtiene el Supreme Power")
+        return
+    # OP_QUIERO: lo que toque segun el estado.
+    if p.logros_cont.get(_su.CLAVE):
+        _aliua_mostrar(ses, ent, _su.guion(149112))
+    elif (getattr(p, 'faction', 'Heaven') or 'Heaven') in ('Heaven', 'Neutral', 'Neutrally'):
+        _aliua_mostrar(ses, ent, _su.guion(149129))
+    elif int(p.nivel) < _su.NIVEL_MINIMO:
+        _aliua_mostrar(ses, ent, _su.guion(149113))
+    elif _mis_al.mision_completada(p, _su.MISION):
+        _aliua_mostrar(ses, ent, _su.guion(149124, opts=[_su.OP_SI_PODER, _su.OP_LUEGO]))
+    elif not paso:
+        _aliua_mostrar(ses, ent, _su.guion(149114, opts=[_su.OP_ACEPTO_PRUEBA, _su.OP_NO_PRUEBA]))
+    elif paso <= 2:
+        if _su.bajas_hechas(_aliua_tokens(ses)):
+            _mis_al.avanzar_paso(ses, _su.MISION, 3)
+            _aliua_mostrar(ses, ent, _su.guion(149119, 149120))
+        else:
+            _aliua_mostrar(ses, ent, _su.guion(149118))
+    elif _su.material_listo(lambda it: _cant_total_item(ses, it)):
+        _aliua_mostrar(ses, ent, _su.guion(149122, 149123, 149124,
+                                           opts=[_su.OP_SI_PODER, _su.OP_LUEGO]))
+    else:
+        _aliua_mostrar(ses, ent, _su.guion(149121))
+
+
+def _aliua_baja(ses, npc_type):
+    """Cuenta los Pearl / Ruby Cockatrice de la prueba 1."""
+    import misiones as _mis_al
+    import supremo as _su
+    import clases as _cl_al
+    p = getattr(ses, 'personaje', None)
+    tok = _su.TOKENS.get(int(npc_type or 0))
+    if not p or not tok or not _mis_al.tiene_mision(p, _su.MISION) \
+            or _mis_al.obtener_paso_actual(p, _su.MISION) != 1:
+        return
+    n = _mis_al.obtener_token_mision(ses, tok)
+    if n >= _su.BAJAS:
+        return
+    n = _mis_al.incrementar_token_mision(ses, tok, 1)
+    nombre = 'Pearl Cockatrice' if int(npc_type) == _su.PEARL else 'Ruby Cockatrice'
+    ses.enviar(_cl_al.aviso('Defeated %s (%d/%d)' % (nombre, n, _su.BAJAS), tipo=0, msg_id=_cl_al.MSG_TEXTO))
+    if _su.bajas_hechas(_aliua_tokens(ses)):
+        _mis_al.avanzar_paso(ses, _su.MISION, 2)
+
+
 # ---------------------------------------------------------------- PET AMPLIFY
 # Ver amplify.py.
 
@@ -7204,6 +7342,7 @@ def _logros_muerte(ses, addr, npc_type):
     _logros_datos(ses)
     import pase as _ps_m
     _pase_evento(ses, '打怪類', 1, _ps_m.razas().get(int(npc_type or 0), 0))
+    _aliua_baja(ses, npc_type)
     cuenta = int(npc_type or 0) in _lg_m.tipos_con_logro()
     if cuenta:
         p.logros_muertos[int(npc_type)] = p.logros_muertos.get(int(npc_type), 0) + 1
@@ -7769,18 +7908,13 @@ def _quitar_token_oculto(ses, addr, item_id, cant=1):
 
 
 def _mapa_de_paso(m, stage):
-    """El stage con el que se mira por donde anda ese bicho, o 0 = sin limites.
+    """No inferir vuelo/noclip de una coordenada de spawn bloqueada.
 
-    Uno de cada doce bichos aparece en una casilla que NO se pisa: los del
-    agua, los de la lava y los que vuelan. A esos no se les aplica: si no,
-    se quedarian clavados o saldrian a tierra y no volverian."""
-    if int(stage or 0) in (168, 176, 413):
-        return stage
-    v = getattr(m, '_anda_por_tierra', None)
-    if v is None:
-        sx, sy = getattr(m, 'spawn_x', m.tile_x), getattr(m, 'spawn_y', m.tile_y)
-        v = m._anda_por_tierra = _transitable.se_pisa(stage, sx, sy)
-    return stage if v else 0
+    Peril Chasm tiene spawns capturados sobre celdas bloqueadas; devolver
+    stage 0 para ellos desactivaba TODAS sus colisiones durante la vida.
+    Un tipo de navegacion especial necesita datos explicitos, no ese atajo.
+    """
+    return int(stage or 0)
 
 
 _OBJETO_MAGIA = {}
@@ -7952,10 +8086,9 @@ def _buff_a_otro(s, tipo, entrada, dur_ms, mag, lanzador=None, ef=0):
     e['fin'] = time.time() + (dur_ms / 1000.0 if dur_ms > 0 else 300.0)
     p2.buffs[int(tipo)] = e
     yo2 = p2.entity_id
-    if mag.get('hp_bonus') or mag.get('hp_pct'):
-        p2.hp = _vida_max(p2, s.inventario)
-    if mag.get('mp_bonus') or mag.get('mp_pct'):
-        p2.mp = _mana_max(p2, s.inventario)
+    # Subir el maximo no cura ni devuelve mana. Solo recortar si disminuyo.
+    p2.hp = min(p2.hp, _vida_max(p2, s.inventario))
+    p2.mp = min(p2.mp, _mana_max(p2, s.inventario))
     s.enviar_inmediato(struct.pack('<HIBBII', 0x001D, yo2, 1, 4, int(tipo), max(0, int(dur_ms))),
                        _cb_o.atributo(yo2, p2.hp, _cb_o.KIND_HP),
                        _cb_o.atributo(yo2, p2.mp, _cb_o.KIND_MP),
@@ -10865,11 +10998,9 @@ class Servidor:
                                                 p.buffs = {}
                                             p.buffs[sk_p_id] = dict(b_entry_p)
                                             if sk_p_mag.get('hp_bonus') or sk_p_mag.get('hp_pct'):
-                                                f_pet['hp'] = int(f_pet.get('hp_max') or 100)
-                                                p.hp = _vida_max(p, ses.inventario)
+                                                p.hp = min(p.hp, _vida_max(p, ses.inventario))
                                             if sk_p_mag.get('mp_bonus') or sk_p_mag.get('mp_pct'):
-                                                f_pet['mp'] = int(f_pet.get('mp_max') or 100)
-                                                p.mp = _mana_max(p, ses.inventario)
+                                                p.mp = min(p.mp, _mana_max(p, ses.inventario))
                                             ef_p_bf = int(sk_p_mag.get('efecto') or 251)
                                             _pkgs_pet_buff_vis = (
                                                 _cb.efecto_magia_self_inicio(
@@ -12234,6 +12365,10 @@ class Servidor:
                 # Habilidad activa sobre uno mismo (F1, F2, F3, buffs o curaciones)
                 if tipo != _cb.ATAQUE_NORMAL or objetivo == yo:
                     mag = _cb.datos_magia(tipo)
+                    tipo_solicitado = tipo
+                    if mag.get('reuso_base_id'):
+                        mag = _cb.buff_al_reutilizar(tipo, getattr(ses.personaje, 'buffs', None))
+                        tipo = mag['id']
                     # Si es una habilidad pasiva, ignorar (no se castea activamente en la barra)
                     if mag.get('es_pasiva'):
                         return
@@ -12269,7 +12404,7 @@ class Servidor:
                             return
                         ses.personaje.mp = max(0, ses.personaje.mp - mp_coste)
 
-                    ef = _cb.efecto_de_ataque(tipo)
+                    ef = mag.get('efecto') or _cb.efecto_de_ataque(tipo)
                     cd_ms = mag.get('cd_ms', 2000)
                     dur_ms = mag.get('dur_ms', 0)
                     cast_time = _cb.calcular_cast_time(
@@ -12291,13 +12426,25 @@ class Servidor:
                     # durante 11; Earth Blessing: 對象="角色").
                     _tic = _cb.cura_por_tics(tipo)
                     if _tic and ses.personaje:
+                        # Reusar el mismo efecto reemplaza sus tics, no los
+                        # acumula. Los IDs distintos siguen siendo independientes.
+                        _curas = getattr(ses, '_curas_en_curso', None)
+                        if _curas is None:
+                            _curas = ses._curas_en_curso = {}
+                        _clave_tic = (tipo, int(pet_eid_cast) if es_target_pet else yo)
+                        _generacion_tic = object()
+                        _curas[_clave_tic] = _generacion_tic
+                        _propietario_tic = ses.personaje
                         def _curar_tic(n=0, a_pet=es_target_pet):
-                            if not ses.personaje or getattr(ses, 'muerto', False):
+                            if (ses.personaje is not _propietario_tic or getattr(ses, 'muerto', False)
+                                    or ses._curas_en_curso.get(_clave_tic) is not _generacion_tic):
                                 return
                             pkgs_tic = []
                             if a_pet:
                                 fp_t = getattr(ses.personaje, 'mascota', None)
                                 peid_t = getattr(ses, 'pet_entity_id', None)
+                                if fp_t is not f_pet_cast or peid_t != pet_eid_cast:
+                                    return
                                 if isinstance(fp_t, dict) and fp_t.get('fuera') and peid_t and _tic['hp'] > 0:
                                     antes_hp_p = int(fp_t.get('hp') or 0)
                                     tope_hp_p = int(fp_t.get('hp_max') or 100)
@@ -12347,6 +12494,8 @@ class Servidor:
                                         lambda: _curar_tic(n + 1, a_pet=a_pet))
                                 except Exception:
                                     pass
+                            elif ses._curas_en_curso.get(_clave_tic) is _generacion_tic:
+                                ses._curas_en_curso.pop(_clave_tic, None)
                         _curar_tic()
                         _detalle_tics = []
                         if _tic['hp']:
@@ -12611,15 +12760,11 @@ class Servidor:
                                 _cb.efecto_magia_self_fin(yo, ef, tipo, objetivo=targ_confirm),
                             ]
                             if cd_ms > 0:
-                                pkgs_buff.append(struct.pack('<HIBBII', 0x001D, yo, 1, 3, tipo, cd_ms))
-                                asyncio.get_event_loop().call_later(cd_ms / 1000.0, lambda: ses.enviar_inmediato(struct.pack('<HIBBII', 0x001D, yo, 1, 3, tipo, 0)))
+                                pkgs_buff.append(struct.pack('<HIBBII', 0x001D, yo, 1, 3, tipo_solicitado, cd_ms))
+                                asyncio.get_event_loop().call_later(cd_ms / 1000.0, lambda: ses.enviar_inmediato(struct.pack('<HIBBII', 0x001D, yo, 1, 3, tipo_solicitado, 0)))
 
                             if dur_ms > 0:
                                 if es_target_pet and isinstance(f_pet_cast, dict) and f_pet_cast.get('fuera') and pet_eid_cast:
-                                    if mag.get('hp_bonus') or mag.get('hp_pct'):
-                                        f_pet_cast['hp'] = int(f_pet_cast.get('hp_max') or 100)
-                                    if mag.get('mp_bonus') or mag.get('mp_pct'):
-                                        f_pet_cast['mp'] = int(f_pet_cast.get('mp_max') or 100)
                                     pkgs_buff.extend([
                                         struct.pack('<HIBBII', 0x001D, int(pet_eid_cast), 1, 4, tipo, dur_ms),
                                         _cb.atributo(int(pet_eid_cast), _ms.hp_eff(f_pet_cast), _cb.KIND_HP),
@@ -12629,14 +12774,8 @@ class Servidor:
                                     pass          # era para otro jugador: ya lo tiene
                                 else:
                                     pkgs_buff.append(struct.pack('<HIBBII', 0x001D, yo, 1, 4, tipo, dur_ms))
-                                    if mag.get('es_transformacion') or mag.get('hp_bonus') or mag.get('hp_pct'):
-                                        ses.personaje.hp = _vida_max(ses.personaje, ses.inventario)
-                                        if mag.get('hp_bonus'):
-                                            pkgs_buff.append(_cb.numero_flotante(yo, int(mag['hp_bonus']), _cb.TIPO_CURA_HP))
-                                    if mag.get('mp_bonus') or mag.get('mp_pct'):
-                                        ses.personaje.mp = _mana_max(ses.personaje, ses.inventario)
-                                        if mag.get('mp_bonus'):
-                                            pkgs_buff.append(_cb.numero_flotante(yo, int(mag['mp_bonus']), _cb.TIPO_CURA_MP))
+                                    ses.personaje.hp = min(ses.personaje.hp, _vida_max(ses.personaje, ses.inventario))
+                                    ses.personaje.mp = min(ses.personaje.mp, _mana_max(ses.personaje, ses.inventario))
                                     pkgs_buff.append(_cb.atributo(yo, ses.personaje.hp, _cb.KIND_HP))
                                     pkgs_buff.append(_cb.atributo(yo, ses.personaje.mp, _cb.KIND_MP))
                                     if mag.get('es_transformacion') and mag.get('trans_sprite'):
@@ -17654,6 +17793,10 @@ class Servidor:
                     log.debug(f"[{addr}] clic en entidad {ent} sin nombre registrado")
                     return
 
+                if ses.personaje and _nom_ent == 'Aliua':
+                    _aliua_hablar(ses, addr, ent)
+                    return
+
                 import lyceum_services as _ly_npc
                 if ses.personaje and ses.personaje.stage == 41 and _nom_ent in _ly_npc.NOMBRES:
                     g_servicio = dialogos.propio(_nom_ent, entidad=ent, stage=41)
@@ -18175,6 +18318,12 @@ class Servidor:
                     ses.dlg_ent = None
                     ses.enviar(struct.pack('<H', 0x0012) + dialogos.FIN)
                     log.info(f"[{addr}] Leccion {q_leccion} aceptada mediante opcion {_el}")
+                    return
+
+                # Aliua: el Supreme Power (supremo.py).
+                import supremo as _su_op
+                if _el in _su_op.OPCIONES and ses.personaje:
+                    _aliua_opcion(ses, addr, ent, _el)
                     return
 
                 # Premio de Training top student: arma de luchador o de mago.

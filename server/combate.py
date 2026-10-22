@@ -1356,7 +1356,7 @@ def datos_magia(magic_id: int) -> dict:
             # Ember Brand I..V (13841..13845) & Holy Brand I..V (15241..15245) - Formula 65:
             # Fase 1: golpe individual (狀態參數: 13846..13850 / 15246..15250) + marca DoT (動態參數1: 13976..13980 / 15251..15255)
             # Fase 2 (si el enemigo ya tiene la marca activa): consume la marca y detona AOE (動態參數2: 14036..14040 / 15256..15260)
-            if res['formula'] == 65 or (13841 <= magic_id <= 13845) or (15241 <= magic_id <= 15245):
+            if (res['formula'] == 65 and d.get('攻擊型') == '是') or (13841 <= magic_id <= 13845) or (15241 <= magic_id <= 15245):
                 res['es_brand'] = True
                 _b_hit = _num(d.get('狀態參數'), 0)
                 _b_dot = _num(d.get('動態參數1'), 0)
@@ -1371,6 +1371,13 @@ def datos_magia(magic_id: int) -> dict:
                     res['dano_coef'] = _num(_d_hit.get('傷害係數'), res['dano_coef'])
                     res['base_denom'] = _num(_d_hit.get('高權位'), res['base_denom']) or 200
                     res['efecto'] = _num(_d_hit.get('特效編號'), res['efecto'])
+
+            # Formula 65 tambien selecciona BUFFS al reutilizar (Meditate).
+            # No son marcas ofensivas ni una recuperacion completa de mana.
+            if res['formula'] == 65 and target == '自己' and d.get('攻擊型') != '是':
+                res['reuso_base_id'] = _num(d.get('動態參數1'), 0)
+                res['reuso_extra_id'] = _num(d.get('動態參數2'), 0)
+                res['reuso_prob'] = max(0, min(100, _num(d.get('動態參數3'), 100)))
 
             # Deteccion de invocaciones (Summon Skeleton, Summon Mummy, Ghostly Swordsman, etc.)
             res['invoca_npc'] = _num(d.get('動態參數1'), 0)
@@ -1916,6 +1923,32 @@ def _magic_xml():
             if _MAGIC_XML:
                 return _MAGIC_XML
     return _MAGIC_XML
+
+
+def buff_al_reutilizar(magic_id, buffs, ahora=None, azar=None):
+    """Resolver el hijo de un buff condicional sin tocar marcas ofensivas.
+
+    Primer uso: parametro 1. Con ese efecto aun activo: parametro 2 segun
+    la probabilidad del parametro 3. Se conservan coste/cadencia del padre.
+    El id del hijo se usa para los iconos y su expiracion, dejando al buff
+    base coexistir con la recuperacion periodica del segundo uso.
+    """
+    padre = datos_magia(int(magic_id))
+    base = int(padre.get('reuso_base_id') or 0)
+    extra = int(padre.get('reuso_extra_id') or 0)
+    if not base:
+        return padre
+    ahora = time.time() if ahora is None else ahora
+    activo = (buffs or {}).get(base) or (buffs or {}).get(str(base))
+    activo = isinstance(activo, dict) and activo.get('fin', 0) > ahora
+    lanzar = azar if azar is not None else random.randint
+    seleccionado = (extra if activo and extra and lanzar(1, 100) <= padre.get('reuso_prob', 100)
+                    else base)
+    resultado = dict(datos_magia(seleccionado))
+    for campo in ('mp', 'cost_sp', 'cd_ms', 'cast_time'):
+        if campo in padre:
+            resultado[campo] = padre[campo]
+    return resultado
 
 
 def combo_de(magic_id: int):

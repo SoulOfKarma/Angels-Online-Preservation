@@ -18,6 +18,14 @@ una suposición, lo dice.
 
 ## Estado real
 
+Buffs y paredes (21/10): aumentar HP/MP maximos ya no rellena los recursos;
+los buffs condicionales de Meditate seleccionan sus efectos XML. Los spawns
+bloqueados de monstruos ya no desactivan las colisiones del mapa.
+Ver [evidencia, pruebas y limites pendientes](docs/BUFFS_MP_Y_COLISIONES_2026-10-21.md).
+
+La quest de Aliua conserva las ranuras actuales, incluidas 7–9, y nunca
+concede una decima. Ver [compatibilidad del premio](docs/ALIUA_SIN_RANURAS_EXTRA_2026-10-21.md).
+
 Entrega de pets del 21/10: [alcance, pruebas y pendientes](docs/ENTREGA_PETS_2026-10-21.md).
 
 Progresion de pets (21/10): corregidos el bloqueo de fusion por rangos
