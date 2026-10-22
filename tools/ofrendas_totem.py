@@ -19,6 +19,30 @@ sys.path.insert(0, str(RAIZ / 'server'))
 import dialogos            # noqa: E402
 import inventario          # noqa: E402
 
+# Los textos del Terra Keeper usan OTROS nombres para muchos materiales (una
+# traduccion distinta de la del objeto). Se emparejan por nivel: cada linea de
+# puntos es un nivel de produccion, y en cada serie (lingote, madera, cuero,
+# hilo, piel de pez, aceite, carne de pez, carne) los objetos van por id en el
+# mismo orden. Asi el "Silver Ingot" de 48 es el Bauxite Ingot (no hay Silver
+# Ingot; la receta 1079 "Refined Silver" va con las de Bauxite), el "Purple
+# Ingot" de 210 el Violetnut y el "Crystal Ingot" de 140 el Aerolite
+# (21/10/2026: no dejaba ofrecer Bauxite ni Violetnut).
+ALIAS = {
+    'silver ingot': 107, 'coral strip': 251, 'delta strip': 252,
+    'purple crystal strip': 721, 'crystal beast leather lace': 1534,
+    'black sycee': 4214, 'shy batten': 4218, 'beast fell strip': 4222,
+    'cherry thread': 4230, 'cherry oil': 4226, 'beast filet': 4238, 'beast fillet': 4238,
+    'crystal ingot': 5362, 'spine battens': 5368, 'muskiness oil': 5374,
+    'muskiness thread': 5378, 'purple ingot': 5364, 'grace oil': 5376,
+    'grace thread': 5380,
+    'olivine shard': 19538, 'solitude lumber': 19540, 'soft carpet essence': 19542,
+    'soft carpet fibers': 19544, 'clawed beast hide': 19546, 'clawed beast filet': 19548,
+    'flat-bellied fish fillet': 19550,
+    'star core crystal': 21826, 'red wood block': 21828, 'papyrus wiring harness': 21832,
+    'thorn beast hide': 21834, 'spiked beast slices': 21836, 'tutank fish meat': 21838,
+    'tutank fish fat': 21840,
+}
+
 NODOS = ['1000058', '1000059', '1000060', '1000061', '1000062', '1000066', '1000067',
          '1000068', '1000069', '1000070', '1000071', '1000072', '1000073', '1000074',
          '1000091']
@@ -44,7 +68,7 @@ def main():
         if not pts:
             continue
         for nombre in re.findall(r'\[([^\]]+)\]', texto):
-            iid = por_nombre.get(nombre.strip().lower())
+            iid = ALIAS.get(nombre.strip().lower()) or por_nombre.get(nombre.strip().lower())
             if not iid:
                 # Los textos no siempre escriben el nombre igual que el objeto
                 # ("Leather lace" / "Leatherlace", "slice" / "slices"): se

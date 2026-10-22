@@ -575,6 +575,11 @@ def spawn_totem_campo(m) -> bytes:
     struct.pack_into('<H', b, 34, sprite_totem(m.stage))
     b[38] = 0 if liga_duena(m.stage) else 8
     struct.pack_into('<H', b, 45, int(getattr(m, 'npc_type', TOTEM_TIPO_CAMPO)))
+    # EL NIVEL: FUN_0060b8b0 copia el u32 del +40 al nivel de la entidad
+    # (+0x24c, el mismo campo que el 0x0002 usa para el del jugador) y es el
+    # numero que sale junto al nombre de la liga. La plantilla traia 0 y el
+    # totem seguia en "1" aunque las ofrendas lo subieran (21/10/2026).
+    struct.pack_into('<I', b, 40, int(nivel_totem(m.stage)[0]))
     return struct.pack('<H', 0x012E) + bytes(b)
 
 

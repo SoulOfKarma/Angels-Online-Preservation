@@ -7563,6 +7563,7 @@ def _ofrenda_al_totem(ses, addr, cuerpo):
     if m is None or _tw_o.codigo_faccion(p) != _tw_o.faccion_duena(p.stage):
         ses.enviar(_cl_o.aviso('Only the faction that holds this totem can offer resources.', tipo=0))
         return
+    import inventario as _iv_ofr
     n = struct.unpack_from('<I', cuerpo, 0)[0]
     bolsa = ses.inventario or {}
     cants = _cantidades(ses)
@@ -7572,12 +7573,21 @@ def _ofrenda_al_totem(ses, addr, cuerpo):
         if off + 12 > len(cuerpo):
             break
         a, b, cant = struct.unpack_from('<III', cuerpo, off)
-        ranura, item = (a, b) if bolsa.get(a) == b else ((b, a) if bolsa.get(b) == a else (None, None))
+        # Lo que manda de verdad el cliente es el id de instancia de 8 bytes
+        # del monton y los LOTES de 200 (21/10/2026: "ddbbc81f0f7b7f7d" + 1).
+        # Se deja tambien la lectura antigua casilla/objeto por si acaso.
+        ranura = _iv_ofr.ranura_de_instancia(_instancias(ses), cuerpo[off:off + 8], bolsa,
+                                             p.char_id)
+        item = bolsa.get(ranura) if ranura is not None else None
         if ranura is None:
+            ranura, item = (a, b) if bolsa.get(a) == b else ((b, a) if bolsa.get(b) == a else (None, None))
+        if ranura is None:
+            log.info('[%s] ofrenda: no se encuentra el monton %s', addr, cuerpo[off:off + 12].hex())
             continue
         pts = _tw_o.puntos_de_ofrenda(item)
         tiene = int(cants.get(ranura, 1) or 1)
-        lotes = min(int(cant), tiene) // _tw_o.UNIDAD_OFRENDA
+        unidades = int(cant) * _tw_o.UNIDAD_OFRENDA if int(cant) < _tw_o.UNIDAD_OFRENDA else int(cant)
+        lotes = min(unidades, tiene) // _tw_o.UNIDAD_OFRENDA
         if not pts or lotes <= 0:
             continue
         _sacar(ses, ranura, lotes * _tw_o.UNIDAD_OFRENDA)
@@ -7595,8 +7605,15 @@ def _ofrenda_al_totem(ses, addr, cuerpo):
     if nivel > antes:
         if not _tw_o.activa():
             _tw_relevantar(p.stage)
-        _tw_difundir(*_tw_o.anuncio('%s: the totem of %s reaches level %d!' % (
-            _tw_o.nombre_totem(p.stage), _cl_o.nombre_de_mapa(p.stage), nivel)))
+        # Solo a la liga duena, por su chat (no un cartel a todo el servidor).
+        try:
+            import gremios as _grm_of
+            _gid_of = _tw_o.liga_duena(p.stage)
+            if _gid_of:
+                _grm_of.mensaje_gremio(_gid_of, _tw_sesiones(), 'The totem of %s reaches level %d!' % (
+                    _cl_o.nombre_de_mapa(p.stage), nivel))
+        except Exception:
+            log.exception('aviso de nivel del totem')
     log.info('[%s] ofrenda al totem de %s: +%d (nivel %d)', addr, p.stage, total, nivel)
 
 
