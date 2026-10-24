@@ -61,11 +61,22 @@ def _con_nombre(linea: bytes, nombre: str) -> bytes:
     """
     if len(linea) <= 9 or linea[6] == 0:
         return linea
-    partes = linea[9:].split(b'\x00')
-    if len(partes) < 2:
-        return linea
-    partes[-2] = nombre.encode('ascii', 'replace')[:33]
-    return linea[:9] + b'\x00'.join(partes)
+    # Las opciones Y sus acciones preceden a las cadenas. No interpretar
+    # sus bytes como texto ni sobrescribir parametros ajenos al nombre.
+    inicio = 9 + 8 * linea[7]
+    fin = inicio
+    cadenas = []
+    for _ in range(linea[6]):
+        cero = linea.find(b'\x00', fin)
+        if cero < 0:
+            return linea
+        cadenas.append(linea[fin:cero])
+        fin = cero + 1
+    # El protocolo de sustitucion es pareja (indice, valor).
+    for i in range(0, len(cadenas) - 1, 2):
+        if cadenas[i] == b'1':
+            cadenas[i + 1] = nombre.encode('ascii', 'replace')[:33]
+    return linea[:inicio] + b''.join(s + b'\x00' for s in cadenas) + linea[fin:]
 
 
 def guion(entity_id: int):
@@ -3722,7 +3733,7 @@ def guion_de_mision(qid: int, npc_nombre: str = '', jugador: str = '', npc_val: 
     if not val_final:
         val_final = val_por_entidad(entidad, 3) if entidad else 3
 
-    cadenas = [jugador] if jugador else []
+    cadenas = ['1', jugador] if jugador else []
     nom_l = (npc_nombre or '').strip().lower()
 
     # Normalizar prefijos

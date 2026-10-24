@@ -14,7 +14,8 @@ Compatibilidad del servidor: Aliua NO concede ranuras ni habilidades al azar.
 Las ranuras 7, 8 y 9 ya las administra skills.py por nivel (301/351/401).
 Completar esta misión solo registra el poder y conserva el logro: no cambia
 las habilidades equipadas ni su banco, y nunca debe crear una décima rama.
-El cambio visual a PLV tampoco está implementado.
+El cambio visual a PLV usa el estado 0x02000000 del cliente; el nivel real
+y la progresion del servidor siguen intactos.
 """
 import dialogos
 
@@ -24,6 +25,24 @@ RETRATO = 2                      # sprite 40002 -> retrato 2 (como Michael 40001
 NIVEL_MINIMO = 401
 LOGRO = 3715
 CLAVE = 'supremo'                # en p.logros_cont
+ESTADO_SUPREMO = 0x02000000       # cliente sub_63AA20: PLV = nivel - 400
+ESTADO_PROPIO = 0x80000000       # mismo estado base de login._ficha (funciones de casa)
+
+
+def estado(personaje, base=ESTADO_PROPIO):
+    """Componer flags sin cambiar nivel, habilidades ni EXP.
+
+    No basta el nivel: hace falta la recompensa persistente de Aliua.
+    El cliente solo muestra PLV para niveles superiores a 400.
+    """
+    activo = (int(getattr(personaje, 'nivel', 0) or 0) >= NIVEL_MINIMO
+              and bool((getattr(personaje, 'logros_cont', None) or {}).get(CLAVE)))
+    return (int(base) & ~ESTADO_SUPREMO) | (ESTADO_SUPREMO if activo else 0)
+
+
+def paquete_estado(personaje, base=ESTADO_PROPIO):
+    import combate
+    return combate.atributo(personaje.entity_id, estado(personaje, base), combate.KIND_ESTADO)
 
 PEARL, RUBY = 20817, 20816
 TOKENS = {PEARL: 8783, RUBY: 8784}

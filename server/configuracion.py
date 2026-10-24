@@ -6,6 +6,10 @@ sin tener que modificar la logica del servidor.
 """
 import datetime
 
+# Horarios del cliente, interpretados en hora LOCAL del servidor como Totem War.
+# La duracion de Angel Arena es compatibilidad, no un dato oficial verificado.
+DURACION_ANGEL_ARENA_MIN = 30
+
 # Reconstruccion de servicios Lyceum: las probabilidades no vienen en los
 # XML publicos. Son parametros de compatibilidad, NO tasas oficiales IGG.
 ASTRO_PESOS_NORMAL = (1, 1, 1)  # intensidades I / II / III

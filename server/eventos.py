@@ -268,6 +268,9 @@ class Contexto:
     def teamid(self):
         return 0
 
+    def lleva_cristal(self):
+        return False
+
     def dueno_del_tesoro(self):
         return True
 
@@ -401,6 +404,8 @@ def evaluar(numero, parms, ctx):
                     _p(parms, 2))
     if numero == 48:                                    # TEAMID(cmp, teamid)
         return _cmp(_p(parms, 0), ctx.teamid(), _p(parms, 1))
+    if numero == 49:                                    # BATTLE_CHECK_CRYSTAL(has_crystal)
+        return bool(ctx.lleva_cristal()) == bool(_p(parms,0,1))
     if numero == 56:                                    # IS_LIVE()
         return ctx.vivo()
     if numero == 58:                                    # HOUSE_IS_OWNER()
@@ -427,7 +432,7 @@ def evaluar(numero, parms, ctx):
 # Las condiciones que evaluar() sabe contestar. Un Contexto declara en su
 # `sabe` las que de verdad puede alimentar, que siempre es un subconjunto.
 SE_EVALUAN = frozenset((1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15, 16,
-                        17, 20, 21, 22, 28, 29, 30, 31, 33, 34, 38, 39, 48, 56,
+                        17, 20, 21, 22, 28, 29, 30, 31, 33, 34, 38, 39, 48, 49, 56,
                         58, 59, 60, 61, 62, 63, 64, 65, 70, 76, 82))
 
 

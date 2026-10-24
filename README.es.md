@@ -18,6 +18,29 @@ una suposición, lo dice.
 
 ## Estado real
 
+Arena/Holy: controles GM de registro/entrada/inicio, Arena todos contra todos
+(eliminatorias opcionales), Holy naranja/azul, minas y salidas originales,
+observadores ocultos, chat de equipo y achievements originales persistentes.
+[Correcciones de runtime, piedras y EXP propia configurable](docs/HOLY_RUNTIME_Y_PASES_2026-10-22.md).
+[Dialogos reales del proxy y correccion de entrada con guardado real](docs/DIALOGOS_COMPETICIONES_PROXY_2026-10-22.md):
+comparacion semantica de inventario, confirmacion antes de cobrar y tasas4M/8M.
+[Guia de pruebas y limites de premios oficiales](docs/ARENA_HOLY_LOGROS_Y_PRUEBAS_2026-10-22.md).
+
+Outpost 47/48: PvP permanente y portales originales restaurados. Correcciones
+de Wolay, parametros de nombre, carga de mapas e invocaciones PvP/desconexion:
+[detalle y pruebas](docs/OUTPOST_Y_RUNTIME_2026-10-22.md).
+
+Supreme Power activa la etiqueta PLV sin cambiar nivel real ni ranuras.
+Restaurados Blessing Angel y el dialogo de viaje de BattlefieldAngel.
+Arena y Holy Battlefield tienen rondas persistentes, inscripciones, PvP propio
+y comandos GM separados. Holy incluye captura de cristales. Horarios del XML
+en hora local del servidor. Holy incorpora construccion persistente, estatuas
+y bloqueo de puertas. Trabajo aun incompleto: sin apertura automatica y con
+rondas GM con entrada normal (gold/piedra) hasta completar los premios oficiales. Olympus y las
+transferencias Census siguen pendientes.
+Ver [comandos, mapas y limites](docs/COMPETICIONES_GM_2026-10-22.md).
+Ver [alcance y reglas originales](docs/PLV_Y_COMPETICIONES_2026-10-22.md).
+
 Totem de Crashing Hillock en `(92,174)`, confirmado en el juego por el usuario.
 Se retira el experimento de sombra sin cambiar las reglas de guerra.
 Ver [posicion y restauracion visual](docs/TOTEM_SOMBRA_2026-10-21.md).

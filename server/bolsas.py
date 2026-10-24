@@ -466,10 +466,18 @@ def buff_de(item_id, ahora=0.0):
     if not mag or not mag.get('es_buff'):
         return None
     dur = int(mag.get('dur_ms') or 0)
+    if not dur and mag.get('formula')==2 and (mag.get('hp_cura_buff') or mag.get('mp_cura')):
+        return None  # Instant recovery is NOT a zero-duration stat buff.
     entrada = {'fin': ahora + dur / 1000.0, 'mag': mag, 'de_item': int(item_id)}
     for origen, destino in EQUIVALENCIAS:
         if mag.get(origen):
             entrada[destino] = mag[origen]
+    for key in ('atk_pct','def_pct','matk_pct','mdef_pct','hp_pct','mp_pct','mp_to_hp_pct',
+                'phys_mit_pct','mag_mit_pct','cast_redux','res_body','res_mind','res_elec',
+                'res_fire','res_ice','res_poison'):
+        if mag.get(key):entrada[key]=mag[key]
+    for source,target in (('atk_speed_bonus','atk_speed'),('crit_rate','crit'),('phys_mit','mit')):
+        if mag.get(source):entrada[target]=mag[source]
     return mid, entrada, dur
 
 

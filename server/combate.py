@@ -311,7 +311,8 @@ NIVEL_MAXIMO = 471
 
 def nivel_maximo() -> int:
     """El nivel mas alto al que se puede subir."""
-    return NIVEL_MAXIMO
+    _cargar_curva_nivel()
+    return min(600,max(_CURVA_NIVEL)) if _CURVA_NIVEL else NIVEL_MAXIMO
 
 
 def exp_para_nivel(nv: int) -> int:
@@ -480,6 +481,33 @@ def parsear_ataque(cuerpo: bytes) -> AtaqueInfo:
 # paquete de un cliente o el tic de IA de un jugador). La pone app.py; la lee
 # Monstruo.registrar_dano para saber de quien es cada golpe.
 ATACANTE = [None]
+
+
+def con_atacante(ses,callback):
+    """Bind delayed hits to their caster, not the last socket/AI tick."""
+    def ejecutar(*args,**kwargs):
+        previous=ATACANTE[0]
+        ATACANTE[0]=ses
+        try:return callback(*args,**kwargs)
+        finally:ATACANTE[0]=previous
+    return ejecutar
+
+
+def rehidratar_transformaciones(buffs):
+    """Restore XML-derived modifiers in saved/legacy shape buffs, no recast."""
+    for bid,entry in (buffs or {}).items():
+        if not isinstance(entry,dict) or entry.get('fin',0)<=time.time():continue
+        if not (entry.get('es_transform') or (entry.get('mag') or {}).get('es_transformacion')):continue
+        mag=datos_magia(int(bid))
+        if not mag.get('es_transformacion'):continue
+        entry.pop('mp',None);entry.pop('hp',None)  # Spell costs are not max-stat bonuses.
+        entry['mag']=mag;entry['es_transform']=True
+        entry['trans_sprite']=mag.get('trans_sprite',0)
+        entry['es_melee_trans']=bool(mag.get('es_melee_trans'))
+        for key in ('atk_pct','def_pct','matk_pct','mdef_pct','hp_pct','mp_pct','mp_to_hp_pct'):
+            if key in mag:entry[key]=mag[key]
+        entry['atk_speed']=mag.get('atk_speed_bonus',0)
+    return buffs
 
 
 class Monstruo:
@@ -1400,6 +1428,14 @@ def datos_magia(magic_id: int) -> dict:
                 any(k in nom_l for k in ('ghostly swordsman', 'shadow clone', 'avatar', 'putridox', 'minotaur', 'leech', 'azrael', 'muncher', 'totem', '1otem'))
             ) and not d.get('魔法狀態') and not ('soul shield' in nom_l) and not res.get('es_brand') and not (13595 <= magic_id <= 13599) and (d.get('變身型') != '是') and not ('shift' in nom_l and target == '自己')
             res['es_invocacion'] = bool(res['invoca_npc'] > 0 and is_real_summon)
+            # Formula29 is Avatar, not a self-buff. Parameter2 is clone power,
+            # NOT summon lifetime; lifetime comes from duration like the tooltip.
+            res['es_clon'] = res['formula']==29 and res['invoca_npc'] in (6269,6270)
+            if res['es_clon']:
+                res['es_invocacion'] = True
+                res['clon_sustituto'] = res['invoca_npc']==6269
+                res['clon_poder'] = _num(d.get('動態參數2'),0)
+                res['dur_invoca'] = max(1,res['dur_ms']//1000)
 
             # Robos de HP y MP (Forbidden Curse / Formula 39 y Bloodthirst Arrow / Formula 24)
             if res['formula'] in (24, 39) or (5116 <= magic_id <= 5120) or ('forbidden curse' in nom_l) or ('bloodthirst arrow' in nom_l):

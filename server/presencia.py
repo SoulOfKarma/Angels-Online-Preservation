@@ -76,6 +76,41 @@ _POR_MAPA = collections.defaultdict(list)
 _ENTIDADES_ASIGNADAS = set()
 
 
+def _observador(ses):
+    p = getattr(ses, 'personaje', None)
+    if not p or getattr(p,'stage',None) not in (112, 159, 239, 240):
+        return False
+    import competiciones as c
+    m = c._miembro(c.ronda(p.stage), ses)
+    return not m or m['espectador']
+
+
+def _solo_visible(func):
+    from functools import wraps
+    @wraps(func)
+    def enviar(ses, *args, **kwargs):
+        if not _observador(ses):
+            return func(ses, *args, **kwargs)
+    return enviar
+
+
+def _presentar(owner, viewer):
+    """Observers receive fighters but never publish themselves/companions."""
+    if _observador(owner):
+        return
+    import combate
+    import login
+    _mandar(viewer, _spawn(owner), *_vestir(owner), *paquetes_puesto(owner))
+    forma = transform_sprite_de(owner)
+    if forma:
+        _mandar(viewer, combate.atributo(entidad_de(owner), forma, combate.KIND_TRANSFORM))
+    _mandar(viewer, *paquetes_invocaciones(owner), *paquetes_mascota(owner))
+    m = getattr(owner, 'monstruo_encantado', None)
+    if m and getattr(m, 'vivo', False) and m.hp > 0:
+        _mandar(viewer, login._npc_spawn(m.entity_id, m.tipo, m.nombre,
+                (m.tile_x, m.tile_y), sprite=m.sprite), combate.atributo(m.entity_id, m.porcentaje))
+
+
 def entidad_de(ses) -> int:
     """El id con el que los DEMAS ven a este jugador en el cliente de Celestia."""
     e = getattr(ses, '_entidad_publica', None)
@@ -146,7 +181,8 @@ def _spawn(ses):
     p = getattr(ses, 'personaje', None)
     b = bytearray(PLANTILLA)
     struct.pack_into('<I', b, OFF_ENTIDAD, eid)
-    struct.pack_into('<I', b, 4, 0)
+    import supremo as _su_spawn
+    struct.pack_into('<I', b, 4, _su_spawn.estado(p, base=0))
     struct.pack_into('<I', b, OFF_X, tx)
     struct.pack_into('<I', b, OFF_Y, ty)
     n = nombre.encode('ascii', 'replace')[:TAM_NOMBRE - 1]
@@ -232,6 +268,12 @@ def _vestir(ses):
     armadura en la ranura del cuerpo encima del vestido de fashion. Cada
     cambio de equipo ya reenvia el 0x0001 entero (notificar_equipo).
     """
+    if getattr(getattr(ses,'personaje',None),'stage',None) in __import__('competiciones').MAPAS:
+        packets=__import__('competiciones').marcas_actor(ses,True)
+        carrier=(getattr(ses.personaje,'buffs',None) or {}).get(3141,{})
+        if carrier.get('hb_crystal') and carrier.get('fin',0)>__import__('time').time():
+            packets.append(__import__('holy_battlefield').estado_portador(ses,entidad_de(ses)))
+        return packets
     return []
 
 
@@ -255,8 +297,22 @@ def _vivas(stage):
     return vivas
 
 
+def para_receptor(ses,paquete):
+    """Long42's dispatcher actor must be the receiver's local player.
+
+    Native006000B0 rejects remote-player class80000102 as its first argument;
+    class1102 is the local player. The target is the separate first DWORD.
+    TEAMID and every other property keep their original actor unchanged.
+    """
+    p=getattr(ses,'personaje',None)
+    if (p and len(paquete)==16 and paquete[:2]==b'\x1d\0'
+            and paquete[6:8]==b'\x01\x2a'):
+        return paquete[:2]+struct.pack('<I',p.entity_id)+paquete[6:]
+    return paquete
+
+
 def _mandar(ses, *paquetes):
-    paquetes = [p for p in paquetes if p]
+    paquetes = [para_receptor(ses,p) for p in paquetes if p]
     if not paquetes:
         return
     try:
@@ -352,6 +408,8 @@ def paquetes_mascota(ses_owner) -> list:
     ]
     if int(f_pet.get('saciedad', 0)) > 100:
         pkts.append(struct.pack('<HIBBII', 0x001D, pet_eid, 1, 4, 3796, max(60000, (int(f_pet['saciedad']) - 100) * 60000)))
+    if p.stage in __import__('competiciones').MAPAS:
+        pkts.extend(__import__('competiciones').marcas_actor(ses_owner,True))
     return pkts
 
 
@@ -364,9 +422,10 @@ def paquetes_invocaciones(ses_owner) -> list:
     import combate as _cb
     owner_pub_eid = entidad_de(ses_owner)
     pkts = []
-    for inv_key in ('invocacion', 'invocacion2'):
+    for inv_key in ('invocacion', 'invocacion2','avatar_clon'):
         inv = getattr(ses_owner, inv_key, None)
-        if inv and isinstance(inv, dict) and (inv.get('hp', 0) > 0 or inv.get('hp_max', 0) > 0):
+        if (inv and isinstance(inv, dict) and inv.get('hp', 0) > 0
+                and inv.get('expira', float('inf')) > __import__('time').time()):
             eid = inv.get('entity_id')
             if not eid:
                 continue
@@ -375,6 +434,8 @@ def paquetes_invocaciones(ses_owner) -> list:
             ty = inv.get('tile_y', p.tile_y)
             sp_pkg = _lg.spawn_invocacion(eid, npc_t, inv.get('nombre', 'Summon'),
                                           (tx, ty), sprite=inv.get('sprite', 0))
+            if inv.get('es_clon'):
+                sp_pkg=__import__('avatar_clones').spawn(ses_owner,inv)
             cur_hp = inv.get('hp', inv.get('hp_max', 1))
             max_hp = max(1, inv.get('hp_max', 1))
             hp_pct = max(1, min(100, int(100 * cur_hp / max_hp)))
@@ -382,6 +443,8 @@ def paquetes_invocaciones(ses_owner) -> list:
             link_owner = struct.pack('<HIBBI', 0x0013, owner_pub_eid, 1, 0x3d, eid)
             link_inv = struct.pack('<HIBBI', 0x0013, eid, 1, 0x3c, owner_pub_eid)
             pkts.extend([sp_pkg, hp_pkg, link_owner, link_inv])
+    if pkts and p.stage in __import__('competiciones').MAPAS:
+        pkts.extend(__import__('competiciones').marcas_actor(ses_owner,True))
     return pkts
 
 
@@ -400,6 +463,10 @@ def entrar(ses, stage):
 
     for s in otros:
         if s is ses:
+            continue
+        if _observador(ses) or _observador(s):
+            _presentar(ses, s)
+            _presentar(s, ses)
             continue
         # Presentar a 'ses' ante 's'
         _mandar(s, yo_spawn, *_vestir(ses), *paquetes_puesto(ses))
@@ -456,6 +523,7 @@ def entrar(ses, stage):
                  getattr(ses.personaje, 'nombre', '?'), stage, len(otros))
 
 
+@_solo_visible
 def notificar_transformacion(ses, trans_sprite: int):
     """Avisa a todos los demas jugadores del mapa que este jugador cambio de forma."""
     stage = getattr(ses, '_mapa_presencia', None)
@@ -518,6 +586,7 @@ def notificar_transformacion(ses, trans_sprite: int):
             _mandar(s, pkt)
 
 
+@_solo_visible
 def notificar_equipo(ses):
     """Avisa a todos los demas jugadores del mapa que este jugador cambio de equipo o apariencia."""
     stage = getattr(ses, '_mapa_presencia', None)
@@ -542,6 +611,17 @@ def salir(ses, avisar=True):
     """El jugador deja el mapa (o se desconecta): se le borra de las demas
     pantallas."""
     stage = getattr(ses, '_mapa_presencia', None)
+    # Retirar las entidades del mapa VIEJO. En un viaje se conservan sus
+    # datos para reaparecer; al desconectar se eliminan definitivamente.
+    for key in ('invocacion', 'invocacion2','avatar_clon'):
+        inv = getattr(ses, key, None)
+        if inv:
+            if avisar and stage is not None:
+                notificar_invocacion_despawn(ses, inv['entity_id'])
+            inv['objetivo'] = None
+            inv.pop('objetivo_pvp', None)
+            if getattr(ses, 'desconectado', False):
+                setattr(ses, key, None)
     if stage is None:
         liberar_entidad(ses)
         return
@@ -557,6 +637,7 @@ def salir(ses, avisar=True):
     liberar_entidad(ses)
 
 
+@_solo_visible
 def mover(ses, cur_x, cur_y, dst_x, dst_y, velocidad=50):
     """Reenvia el paso de un jugador a los demas del mapa.
 
@@ -616,6 +697,7 @@ def paquetes_puesto(ses) -> tuple:
     return (pkt_accion, pkt_hawk)
 
 
+@_solo_visible
 def notificar_puesto(ses):
     """Avisa a los demas jugadores del mapa que este jugador abrio o actualizo su puesto."""
     stage = getattr(ses, '_mapa_presencia', None)
@@ -669,6 +751,7 @@ def sesion_por_entidad(ses_consulta, eid: int):
     return None
 
 
+@_solo_visible
 def notificar_invocacion_spawn(ses, inv, spawn_pkg, hp_pkg):
     """Avisa a todos los demas jugadores del mapa que aparecio una invocacion o mercenario."""
     stage = getattr(ses, '_mapa_presencia', None)
@@ -680,11 +763,15 @@ def notificar_invocacion_spawn(ses, inv, spawn_pkg, hp_pkg):
     eid = inv.get('entity_id') if isinstance(inv, dict) else 0
     link_owner = struct.pack('<HIBBI', 0x0013, owner_pub_eid, 1, 0x3d, eid) if eid else b''
     link_inv = struct.pack('<HIBBI', 0x0013, eid, 1, 0x3c, owner_pub_eid) if eid else b''
+    import competiciones as _c
+    marks=_c.marcas_actor(ses,True) if ses.personaje.stage in _c.MAPAS else []
+    if marks:ses.enviar(*_c.marcas_actor(ses))
     for s in _vivas(stage):
         if s is not ses:
-            _mandar(s, spawn_pkg, hp_pkg, link_owner, link_inv)
+            _mandar(s, spawn_pkg, hp_pkg, link_owner, link_inv,*marks)
 
 
+@_solo_visible
 def notificar_invocacion_movimiento(ses, entity_id, move_pkt):
     """Avisa a todos los demas jugadores del mapa que una invocacion se movio."""
     stage = getattr(ses, '_mapa_presencia', None)
@@ -712,6 +799,7 @@ def notificar_invocacion_despawn(ses, entity_id):
             _mandar(s, pkt_hp, pkt_despawn)
 
 
+@_solo_visible
 def notificar_mascota_spawn(ses, pet_eid=None, sprite=None, tx=None, ty=None):
     """Avisa a todos los demas jugadores del mapa que salio o cambio una mascota."""
     stage = getattr(ses, '_mapa_presencia', None)
@@ -720,6 +808,10 @@ def notificar_mascota_spawn(ses, pet_eid=None, sprite=None, tx=None, ty=None):
     if stage is None:
         return
     pkts = paquetes_mascota(ses)
+    import competiciones as _c
+    if ses.personaje.stage in _c.MAPAS:
+        pkts.extend(_c.marcas_actor(ses,True))
+        ses.enviar(*_c.marcas_actor(ses))
     if not pkts:
         return
     for s in _vivas(stage):
@@ -727,6 +819,7 @@ def notificar_mascota_spawn(ses, pet_eid=None, sprite=None, tx=None, ty=None):
             _mandar(s, *pkts)
 
 
+@_solo_visible
 def notificar_mascota_movimiento(ses, pet_eid, move_pkt):
     """Avisa a todos los demas jugadores del mapa que una mascota se movio."""
     stage = getattr(ses, '_mapa_presencia', None)
@@ -739,6 +832,7 @@ def notificar_mascota_movimiento(ses, pet_eid, move_pkt):
             _mandar(s, move_pkt)
 
 
+@_solo_visible
 def notificar_companero_accion(ses, *paquetes):
     """Replica ataques/skills de pets, mercenarios e invocaciones en el mapa.
 
@@ -777,6 +871,7 @@ def notificar_mascota_despawn(ses, pet_eid):
             _mandar(s, pkt_hp, pkt_unlink, pkt_despawn)
 
 
+@_solo_visible
 def notificar_emocion(ses, emote_id: int):
     """Envia S2C 0x0019 con el emote al jugador y a los demas en el mapa."""
     p = getattr(ses, 'personaje', None)

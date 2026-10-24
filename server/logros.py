@@ -461,6 +461,10 @@ def medir(f, personaje, ctx):
     regla = f.get('regla')
     p1, p2 = f.get('param1'), f.get('param2')
     cont = ctx.get('cont') or {}
+    import competicion_logros
+    competencia = competicion_logros.medir(f, cont)
+    if competencia is not None:
+        return competencia
 
     def c(clave):
         return int(cont.get(clave, 0) or 0)

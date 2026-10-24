@@ -49,6 +49,8 @@ class Session:
         self.ultimo_movimiento = time.time()
         self.ultimo_combate = 0.0
         self.ultimo_regen_tick = 0.0
+        self.mapa_cargando = False
+        self._mapa_ui_diferida = []
 
     # ---------------------------------------------------------------- salida
 
@@ -89,6 +91,10 @@ class Session:
                         submsgs = tuple(submsgs) + tuple(extra_b)
             except Exception:
                 pass
+        submsgs = self._filtrar_carga_mapa(submsgs)
+        if not submsgs:
+            return
+        self._registrar_flags_magicos(submsgs)
         self.salida.append(build_frame(pack_submessages(submsgs), self._next_seq()))
         # SALA DE INSTANCIA COMPARTIDA: lo que le pasa a un bicho de la sala
         # se lo ven todos los del grupo que esten en ella (app._espejar).
@@ -102,8 +108,54 @@ class Session:
     def enviar_sin_espejo(self, *submsgs):
         """Como enviar, pero sin reenviarlo al grupo: es lo que se usa para
         entregar lo que llega reenviado de otro, para que no rebote."""
+        submsgs = self._filtrar_carga_mapa(submsgs)
         if submsgs:
+            self._registrar_flags_magicos(submsgs)
             self.salida.append(build_frame(pack_submessages(submsgs), self._next_seq()))
+
+    def _registrar_flags_magicos(self,submsgs):
+        """Keep authoritative0185 snapshots so one mechanic preserves other bits."""
+        import struct
+        own=getattr(getattr(self,'personaje',None),'entity_id',None)
+        for packet in submsgs:
+            if len(packet)==14 and packet[:2]==b'\x85\x01':
+                entity,lo,hi=struct.unpack_from('<III',packet,2)
+                if entity==own:self.flags_magicos=(lo,hi)
+
+    def _filtrar_carga_mapa(self, submsgs):
+        """Every world CHANGE_MAP starts a barrier, including legacy travel.
+
+        Effects, moves, entities and stat snapshots emitted by timers during
+        loading belong to an unready scene. The ready handler rebuilds them
+        from current authoritative state. Inventory deltas/chat are independent
+        of the scene and are deferred, not lost or replayed before the ficha.
+        """
+        if self.rol != 'mundo':
+            return submsgs
+        cambio = next((i for i,s in enumerate(submsgs) if s[:2] == b'\x0c\x00'),None)
+        if cambio is not None:
+            self.mapa_cargando = True
+            self.mapa_cambiado_en = time.time()
+            # Keep the measured pre-travel sequence, but never world packets
+            # after CHANGE_MAP in the same call/frame.
+            prefijo, resto = submsgs[:cambio+1], submsgs[cambio+1:]
+        elif not self.mapa_cargando:
+            return submsgs
+        else:
+            prefijo, resto = (), submsgs
+        for sub in resto:
+            if sub[:2] in (b'\x1b\x00',b'\x0d\x00',b'\x28\x01',b'\x26\x01',b'\x27\x01'):
+                self._mapa_ui_diferida.append(sub)
+                if len(self._mapa_ui_diferida) > 256:
+                    self._mapa_ui_diferida.pop(0)
+        return prefijo
+
+    def terminar_carga_mapa(self):
+        """Flush only scene-independent UI AFTER the complete ready sequence."""
+        self.mapa_cargando = False
+        pendientes, self._mapa_ui_diferida = self._mapa_ui_diferida, []
+        if pendientes:
+            self.enviar_sin_espejo(*pendientes)
 
     def enviar_crudo(self, payload):
         """Envia un payload ya armado como cadena de sub-mensajes.

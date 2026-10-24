@@ -803,6 +803,7 @@ def stats(bolsa=None, habilidades: list = None,
     El efectivo es el base mas lo que suma cada pieza puesta y los bonus de
     habilidades pasivas segun el nivel de cada habilidad.
     """
+    __import__('combate').rehidratar_transformaciones(buffs)
     p = _plantillas()
     b = bytearray(bytes.fromhex(p['stats_sin_ropa']))
 
@@ -1368,6 +1369,20 @@ def marcar_caducidad_mercenario(entrada, estado):
     b = bytearray(entrada)
     struct.pack_into('<I', b, base + 47, max(0, min(0xffffffff, int(deadline))))
     # Native flags +57 bit 1 denotes a minute-count item, not a timestamp.
+    b[base + 58] &= ~2
+    return bytes(b)
+
+
+def marcar_caducidad_holy(entrada, estado):
+    """Holy passes and Arena equipment share the native absolute-expiry field."""
+    deadline = (estado or {}).get('holy_pass_fin') or (estado or {}).get('arena_premio_fin')
+    base = 6 if entrada[:2] == struct.pack('<H', 0x001B) else 0
+    if (not deadline or len(entrada) < base + 86
+            or struct.unpack_from('<I', entrada, base + 9)[0] not in
+                (16764,16765,28866,40921,(estado or {}).get('arena_premio_item'))):
+        return entrada
+    b = bytearray(entrada)
+    struct.pack_into('<I', b, base + 47, max(0,min(0xffffffff,int(deadline))))
     b[base + 58] &= ~2
     return bytes(b)
 
@@ -2301,8 +2316,9 @@ def completo(char_id: int, items, dueno: int = None, mejoras=None,
 
         _e = _entrada(char_id, ran, iid, cnt, ins, dueno, mascota=pet_spec)
         if not es_mascota(iid):
-            _m = mejoras.get(ran)
+            _m = mejoras.get(ran) or mejoras.get(str(ran))
             _e = marcar_caducidad_mercenario(_e, _m)
+            _e = marcar_caducidad_holy(_e, _m)
             _e = marcar_vinculacion(_e, _m)
             if _m and _m.get('veces'):
                 _e = marcar_mejora(_e, _m['veces'])
@@ -2316,7 +2332,7 @@ def completo(char_id: int, items, dueno: int = None, mejoras=None,
 
 
 def almacen(char_id: int, items, dueno: int = None,
-            tipo: int = 2) -> bytes:
+            tipo: int = 2, mejoras: dict = None) -> bytes:
     """Sub-mensaje 0x004E con el almacen del banco.
 
     El cuerpo es EL MISMO que el del 0x001A: un LE32 con el numero de
@@ -2344,9 +2360,11 @@ def almacen(char_id: int, items, dueno: int = None,
     for it in sorted(items, key=lambda x: int(x[0])):
         if int(it[1]) <= 0:
             continue
-        lista.append(entrada_banco(char_id, int(it[0]), int(it[1]),
+        e = entrada_banco(char_id, int(it[0]), int(it[1]),
                                    int(it[2]) if len(it) > 2 else 1,
-                                   it[3] if len(it) > 3 else None, dueno))
+                                   it[3] if len(it) > 3 else None, dueno)
+        key = -10000-int(it[0])
+        lista.append(marcar_caducidad_holy(e,(mejoras or {}).get(key) or (mejoras or {}).get(str(key))))
     return (struct.pack('<HI', 0x004E, tipo * 1000 + len(lista))
             + b''.join(lista))
 
@@ -2364,7 +2382,7 @@ def banco_vaciar_ranura(ranura: int) -> bytes:
 
 
 def banco_poner(char_id: int, ranura: int, item_id: int, cant: int = 1,
-                inst: bytes = None, dueno: int = None) -> bytes:
+                inst: bytes = None, dueno: int = None, mejoras: dict = None) -> bytes:
     """Sub-mensaje 0x001B con lo que queda en una casilla del banco.
 
     Es el segundo de los dos que contesta el servidor real al mover: la
@@ -2373,7 +2391,8 @@ def banco_poner(char_id: int, ranura: int, item_id: int, cant: int = 1,
     movido no se equipa y 123 cuando si.
     """
     return (struct.pack('<H', 0x001B) + struct.pack('<I', 1)
-            + entrada_banco(char_id, ranura, item_id, cant, inst, dueno))
+            + marcar_caducidad_holy(entrada_banco(char_id, ranura, item_id, cant, inst, dueno),
+                (mejoras or {}).get(-10000-int(ranura))))
 
 
 def entrada_banco(char_id: int, ranura: int, item_id: int, cant: int = 1,
@@ -2421,10 +2440,11 @@ def _entrada_marcada(char_id, ranura, item_id, cant, inst, dueno,
 
 
 def banco_sacar(char_id: int, ranura: int, item_id: int, cant: int = 1,
-                inst: bytes = None, dueno: int = None) -> bytes:
+                inst: bytes = None, dueno: int = None, mejoras: dict = None) -> bytes:
     """Sub-mensaje 0x001B con lo que llega a la mochila desde el almacen."""
     return (struct.pack('<H', 0x001B) + struct.pack('<I', 1)
-            + entrada_recuperada(char_id, ranura, item_id, cant, inst, dueno))
+            + marcar_caducidad_holy(entrada_recuperada(char_id, ranura, item_id, cant, inst, dueno),
+                (mejoras or {}).get(int(ranura))))
 
 
 def acuse_movimiento(ranura: int, accion: int = 0x0012) -> bytes:
@@ -2470,7 +2490,9 @@ def actualizar_ranuras(char_id: int, entradas, dueno: int = None,
                 pet_spec = mascota
         _e = _entrada(char_id, r, i, c, ins, dueno, mascota=pet_spec)
         if not es_mascota(i):
-            _m = mejoras.get(r)
+            _m = mejoras.get(r) or mejoras.get(str(r))
+            _e = marcar_caducidad_mercenario(_e, _m)
+            _e = marcar_caducidad_holy(_e, _m)
             _e = marcar_vinculacion(_e, _m)
             if _m and _m.get('veces'):
                 _e = marcar_mejora(_e, _m['veces'])
@@ -2541,6 +2563,7 @@ def efecto_consumible(item_id: int):
     db = pathlib.Path(__file__).parent.parent / 'corpus' / 'content.db'
     if not db.exists():
         return None
+    con = None
     try:
         con = sqlite3.connect(db)
         row = fila_item(con, '"動態資料1", "常駐法術", "物品類別", "基本名稱", "說明"', item_id)
@@ -2585,6 +2608,9 @@ def efecto_consumible(item_id: int):
 
     except Exception:
         return None
+    finally:
+        if con is not None:
+            con.close()
 
 
 def es_tarjeta_coleccion(item_id: int) -> bool:

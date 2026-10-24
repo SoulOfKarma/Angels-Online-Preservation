@@ -461,15 +461,24 @@ def _guardar(datos: dict):
 
 
 def guardar_personaje_nuevo(usuario: str, p: dict):
-    """Inserta o actualiza un personaje directamente en SQLite."""
+    """Create only: never replace an occupied slot or reuse another name."""
     with _LOCK:
         con = _get_conn()
         try:
+            con.execute('BEGIN IMMEDIATE')
             r = int(p.get('ranura', 0))
-            cid = int(p.get('char_id') or (1001 + r))
+            name = str(p.get('nombre', '')).strip()
+            if not name or not 0 <= r < 3:
+                raise ValueError('Invalid character name or slot')
+            if any(str(n).casefold() == name.casefold() for (n,) in con.execute('SELECT nombre FROM personajes')):
+                raise ValueError('Character name already exists')
+            if con.execute('SELECT 1 FROM personajes WHERE usuario=? AND ranura=?', (usuario,r)).fetchone():
+                raise ValueError('Character slot already occupied')
+            cid = max(1001, int(con.execute('SELECT COALESCE(MAX(char_id),1000)+1 FROM personajes').fetchone()[0]))
+            p.update(nombre=name, char_id=cid)
             con.execute("INSERT OR IGNORE INTO cuentas (usuario, password) VALUES (?, '')", (usuario,))
             con.execute(
-                "INSERT OR REPLACE INTO personajes (usuario, char_id, ranura, nombre, datos) VALUES (?, ?, ?, ?, ?)",
+                "INSERT INTO personajes (usuario, char_id, ranura, nombre, datos) VALUES (?, ?, ?, ?, ?)",
                 (usuario, cid, r, p.get('nombre', ''), json.dumps(p, ensure_ascii=False))
             )
             con.commit()
@@ -726,6 +735,7 @@ def personaje_de(cuenta, ranura=0):
         expiracion_puesto=_exp_puesto,
         emotes={int(x) for x in (p.get('emotes') or [])},
         quick_emotes={int(k): int(v) for k, v in (p.get('quick_emotes') or {0: -1, 1: -1, 2: -1, 3: -1}).items()},
+        chat_filtros={int(k):int(v) for k,v in (p.get('chat_filtros') or {}).items()},
     )
 
 
@@ -823,6 +833,37 @@ def _slot_sort_key(item):
         return (1, str(k))
 
 
+def inventario_equivalente(datos, bolsa, cantidades):
+    """Compare item quantities, not sparse JSON representations.
+
+    Saving omits singleton counts; login also synthesizes the active house
+    deed in376. Neither is an inventory transaction. Real stack/item changes
+    still fail the optimistic check; orphan count keys carry no item.
+    """
+    def foto(items, counts):
+        counts = {int(k):int(v) for k,v in (counts or {}).items()}
+        out = {}
+        for slot,value in (items or {}).items():
+            slot = int(slot)
+            embedded = 1
+            if isinstance(value,(list,tuple)):
+                if not value:
+                    continue
+                embedded = int(value[1]) if len(value)>1 else 1
+                value = value[0]
+            if not value or int(value)<=0:
+                continue
+            qty = counts.get(slot,embedded)
+            out[slot] = (int(value),max(0 if 497<=slot<=556 else 1,qty))
+        return out
+    saved = foto(datos.get('inventario'),datos.get('cantidades'))
+    current = foto(bolsa,cantidades)
+    deed = int((datos.get('casa') or {}).get('deed_id') or 10115)
+    if 376 not in saved and current.get(376)==(deed,1):
+        saved[376] = current[376]
+    return saved==current
+
+
 def guardar_inventario(usuario: str, char_id: int, bolsa: dict,
                        cantidades=None, mejoras=None, expiracion_puesto=None):
     def _mut(p):
@@ -832,7 +873,7 @@ def guardar_inventario(usuario: str, char_id: int, bolsa: dict,
                             for k, v in sorted(mejoras.items(), key=_slot_sort_key)
                             if v and (v.get('veces') or v.get('gemas')
                                       or v.get('extra') or v.get('vinculacion')
-                                      or v.get('house_egg_deadline') or v.get('mercenary_token_deadline'))}
+                                      or v.get('house_egg_deadline') or v.get('mercenary_token_deadline') or v.get('holy_pass_fin'))}
         if cantidades is not None:
             p['cantidades'] = {str(k): int(v)
                                for k, v in sorted(cantidades.items(), key=_slot_sort_key)
@@ -849,7 +890,7 @@ def guardar_mejoras(usuario: str, char_id: int, mejoras: dict):
         p['mejoras'] = {str(k): v for k, v in sorted((mejoras or {}).items(), key=_slot_sort_key)
                         if v and (v.get('veces') or v.get('gemas')
                                   or v.get('extra') or v.get('vinculacion')
-                                  or v.get('house_egg_deadline') or v.get('mercenary_token_deadline'))}
+                                  or v.get('house_egg_deadline') or v.get('mercenary_token_deadline') or v.get('holy_pass_fin'))}
     _actualizar_personaje(usuario, char_id, _mut)
 
 
@@ -986,6 +1027,7 @@ def guardar_sistemas(usuario: str, char_id: int, p):
             fila['casa'] = {}
         fila['emotes'] = sorted({int(x) for x in (getattr(p, 'emotes', None) or [])})
         fila['quick_emotes'] = {str(k): int(v) for k, v in (getattr(p, 'quick_emotes', None) or {}).items()}
+        fila['chat_filtros'] = {str(k):int(v) for k,v in (getattr(p,'chat_filtros',None) or {}).items()}
     _actualizar_personaje(usuario, char_id, _mut)
 
 
@@ -1036,7 +1078,7 @@ def guardar_casa_e_inventario(usuario: str, char_id: int, casa, bolsa: dict,
                     for k, v in sorted(mejoras.items(), key=_slot_sort_key)
                     if v and (v.get('veces') or v.get('gemas')
                               or v.get('extra') or v.get('vinculacion')
-                              or v.get('house_egg_deadline') or v.get('mercenary_token_deadline'))
+                              or v.get('house_egg_deadline') or v.get('mercenary_token_deadline') or v.get('holy_pass_fin'))
                 }
             con.execute(
                 'UPDATE personajes SET datos=?, actualizado_en=CURRENT_TIMESTAMP '
@@ -1087,6 +1129,22 @@ def guardar_quick_emotes(usuario: str, char_id: int, quick_emotes):
     def _mut(fila):
         fila['quick_emotes'] = {str(k): int(v) for k, v in (quick_emotes or {}).items()}
     _actualizar_personaje(usuario, char_id, _mut)
+
+def guardar_chat_filtros(usuario: str, char_id: int, filtros):
+    """Strict owner/character update: never fall back to another character."""
+    with _LOCK:
+        with _get_conn() as con:
+            rows=con.execute('SELECT rowid,datos FROM personajes WHERE usuario=? AND char_id=?',
+                             (usuario,char_id)).fetchall()
+            if len(rows)!=1:return False
+            rowid,raw=rows[0]
+            data=json.loads(raw)
+            data['chat_filtros']={str(k):int(v) for k,v in filtros.items()}
+            con.execute('UPDATE personajes SET datos=? WHERE rowid=? AND usuario=? AND char_id=?',
+                        (json.dumps(data,ensure_ascii=False),rowid,usuario,char_id))
+    _notificar_cambio()
+    return True
+
 
 def guardar_cardbook(usuario: str, char_id: int, plan):
     """Commit card ownership/redemptions and inventory in ONE transaction.

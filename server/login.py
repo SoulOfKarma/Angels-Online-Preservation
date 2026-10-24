@@ -106,6 +106,7 @@ class Personaje:
     expiracion_puesto: float = 0.0                      # timestamp expiracion tarjeta de puesto (0 = permanente)
     emotes: set = field(default_factory=set)            # {emote_id, ...} adquiridos mediante tarjetas
     quick_emotes: dict = field(default_factory=lambda: {0: -1, 1: -1, 2: -1, 3: -1})  # {slot 0..3: emote_id o -1}
+    chat_filtros: dict = field(default_factory=dict)  # tab0..3 -> native mask
 
 
 def _cargar_secuencia():
@@ -374,6 +375,7 @@ def secuencia(p: Personaje):
     # Emotes rapidos (Alt+1..Alt+4) en ranuras 0..3:
     import presencia as _pr
     salida.append(_pr.paquete_quick_emotes(p.entity_id, getattr(p, 'quick_emotes', None) or {}))
+    salida.extend(__import__('chat_filtros').paquetes(p))
     return salida
 
 
@@ -818,6 +820,7 @@ def _map_object_spawn(entity_id: int, sprite: int, tile: tuple, direccion: int =
 # faltaba en la de la IA. El Lyceum y el Fighting Palace NO van aqui:
 # se tratan aparte y cada consumidor los anade si los necesita.
 PLANTILLAS_POR_STAGE = {
+    114 : 'sign_up_office.json',          # NPC originales de map114.mpc; torneos aun no habilitados.
     50: 'territory_area_1.json',
     100: 'territory_area_2.json',
     117: 'territory_area_3.json',
@@ -1211,6 +1214,8 @@ def poblar(stage: int, player_level=1):
     if stage == 500:
         return interactivos_casa(player_level)
     salida = npc_de_los_xml(stage)
+    import competiciones
+    salida += competiciones.poblar(stage)
     import territorios_liga
     if stage in territorios_liga.AREAS:
         salida += territorios_liga.paquetes(stage)
@@ -1377,7 +1382,8 @@ def _ficha(p, base):
     d['tile_x'], d['tile_y'] = p.tile_x, p.tile_y
     # Bit 0x80000000 permite que el cliente ejecute los botones de WND_HOUSEINFO (Show, Take Back, Decorate)
     # y valida la condicion (*(_DWORD *)(player + 480) & 0x80000000) en Angel.exe (sub_5BA840..sub_5BA8F0)
-    d['flags'] = 0x80000000
+    import supremo as _su_ficha
+    d['flags'] = _su_ficha.estado(p)
     # En 0x0002, el mapa/stage real va en el offset 3953 (offset 3235 dentro de 'resto')
     r = bytearray(d['resto'])
 

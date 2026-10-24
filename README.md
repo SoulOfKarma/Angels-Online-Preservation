@@ -16,7 +16,30 @@ a guess, it says so.
 
 ---
 
+Arena/Holy: GM registration/join/begin controls, free-for-all Arena by default
+(optional brackets), orange/blue Holy teams, original mines and exits,
+hidden spectators, team chat and original achievement rules are connected.
+[Runtime fixes, timed passes and configurable custom EXP](docs/HOLY_RUNTIME_Y_PASES_2026-10-22.md).
+[Measured proxy dialogues and real-save admission fixes](docs/DIALOGOS_COMPETICIONES_PROXY_2026-10-22.md):
+semantic inventory checks, confirmation before charging, and4M/8M fees.
+[Testing guide and official reward-data limits](docs/ARENA_HOLY_LOGROS_Y_PRUEBAS_2026-10-22.md).
+
+Outpost 47/48 now has permanent faction PvP and original portals. Wolay,
+name parameters, map-loading races and summon PvP/disconnect cleanup are covered
+in the [runtime notes and verification](docs/OUTPOST_Y_RUNTIME_2026-10-22.md).
+
 ## Actual state
+
+Supreme Power now enables the client's PLV label without changing the real
+level or adding skill slots. Blessing Angel and BattlefieldAngel's lobby
+dialogue are restored. Arena/Holy Battlefield now have persistent rounds,
+registration, isolated PvP and separate GM commands; Holy includes crystal
+capture. XML schedules use server local time. Holy buildings now have
+persisted construction and gate collision rules.
+This is unfinished work: production scheduling is disabled and GM rounds are
+GM tests with normal gold/stone admission until the official reward pipeline is completed. Olympus and Census
+transfers remain pending. See [commands and limits](docs/COMPETICIONES_GM_2026-10-22.md).
+See [implementation scope and original competition rules](docs/PLV_Y_COMPETICIONES_2026-10-22.md).
 
 Crashing Hillock's totem is now at `(92,174)`, validated in game by the user.
 The unsuccessful shadow experiment is rolled back without changing war rules.

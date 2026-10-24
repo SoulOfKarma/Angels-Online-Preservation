@@ -13,7 +13,7 @@ import supremo
 
 def character(count):
     return SimpleNamespace(
-        char_id=123, nombre='Test', nivel=410,
+        char_id=123, entity_id=123, nombre='Test', nivel=410,
         habilidades=[(sid, 410 - sid, 10000 + sid) for sid in range(1, count + 1)],
         banco_habilidades={20: (300, 123456)}, logros_cont={'other': 7})
 
@@ -79,6 +79,7 @@ def test_real_dialogue_reward_preserves_nine_skills(monkeypatch, already_complet
         assert (p.habilidades, p.banco_habilidades) == before
         assert len(p.habilidades) == 9
     assert p.logros_cont['supremo'] == 1
+    assert supremo.paquete_estado(p) in packets
     assert achievements == [supremo.LOGRO, supremo.LOGRO]
     assert saved
     assert completed == ([] if already_completed else [supremo.MISION])

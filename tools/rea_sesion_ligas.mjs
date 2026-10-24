@@ -27,7 +27,7 @@ try {
     if (request.name === 'exit') break;
     if (request.name === 'schemas') {
       const list = await client.listTools();
-      console.log(JSON.stringify(list.tools.filter(t => request.tools.includes(t.name))
+      console.log(JSON.stringify(list.tools.filter(t => request.tools.includes('*') || request.tools.includes(t.name))
         .map(t => ({ name: t.name, inputSchema: t.inputSchema }))));
       continue;
     }

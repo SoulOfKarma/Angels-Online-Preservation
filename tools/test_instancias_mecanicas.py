@@ -219,6 +219,8 @@ def test_guerra_antigua_totem_en_el_campo(monkeypatch):
         assert not tw.es_mapa_tw(entrenamiento)
     monkeypatch.setattr(tw, 'liga_duena', lambda st: None)
     monkeypatch.setattr(tw, 'faccion_duena', lambda st: 1)
+    # No depender del nivel del totem que el usuario tenga en su cuenta real.
+    monkeypatch.setattr(tw, 'nivel_totem', lambda st: (1, 0))
     m = tw.crear_totem(16)
     assert (m.tile_x, m.tile_y) == (162, 88) and m.npc_type == 21397
     b = tw.spawn_totem(m)

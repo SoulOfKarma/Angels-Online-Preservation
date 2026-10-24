@@ -24,3 +24,7 @@ nueve habilidades, preservando también sus niveles y experiencia.
 
 No requiere migración de cuentas y no elimina ni cambia habilidades ya
 aprendidas. Reiniciar el servidor para cargar la separación explícita.
+
+Actualizacion 22/10: se incorpora la etiqueta PLV mediante el bit de estado
+del cliente, sin alterar nivel real ni ranuras. Ver
+[PLV y competiciones](PLV_Y_COMPETICIONES_2026-10-22.md).

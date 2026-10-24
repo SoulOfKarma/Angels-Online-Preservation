@@ -966,14 +966,13 @@ class TestHouseSystem(unittest.TestCase):
                 self.assertEqual(len(priv_pkts), 1)
                 self.assertEqual(priv_pkts[0][6], canal)
 
-            # 4. Battle (0x0133) does NOT consume 2002 or 2003 and emits S2C 0x0139
+            # 4. Battle is unavailable outside active Holy; never a global echo.
             ses.paquetes.clear()
             srv.manejar(ses, 0x0133, None, None, 'test', b'For Aurora!\x00')
             self.assertIn(20, ses.inventario)
             self.assertIn(21, ses.inventario)
             bat_pkts = [p for p in ses.paquetes if p[:2] == b'\x39\x01']
-            self.assertEqual(len(bat_pkts), 1)
-            self.assertIn(b'For Aurora!\x00', bat_pkts[0])
+            self.assertEqual(len(bat_pkts), 0)
 
     def test_poke_egg_captures_catch_xml_monsters_and_creates_pet_ficha(self):
         import app

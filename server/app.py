@@ -278,6 +278,9 @@ def _dialogo_de_estatua(e):
 
 def _portal_en(stage, tx, ty):
     """El tornado que se esta pisando, o None."""
+    import competiciones
+    if int(stage) in competiciones.MAPAS:
+        return competiciones.portal_en(int(stage), tx, ty)
     import territorios_liga
     if int(stage) in territorios_liga.AREAS:
         p = territorios_liga.portal(stage)
@@ -418,6 +421,9 @@ def _monstruos_de(stage: int):
             sp = item[4] if len(item) > 4 else (_lg.sprite_de(ntype, 42107) if ntype == 224 else _lg.sprite_de(ntype, 0))
             bichos[eid] = combate.Monstruo(eid, ntype, nom, tile, sprite=sp, stage=stage)
     # TOTEM WAR: el totem del centro de las arenas 200..207 (totem_war.py).
+    if stage == 112:
+        import holy_battlefield as _hb_m
+        bichos.update(_hb_m.monstruos())
     import totem_war as _tw_m
     if _tw_m.es_mapa_tw(stage) or _tw_m.es_totem_decorativo(stage):
         _tot = _tw_m.crear_totem(stage)
@@ -736,6 +742,8 @@ def _meter(ses, item_id: int, n: int = 1, pet_metadata: dict = None) -> int:
             if inv.es_equipo(r):
                 continue
             _cantidades(ses)[r] = _cant_de(ses, r) + n
+            import competiciones as _comp_pass
+            _comp_pass.activar_pase_nuevo(ses, r, item_id)
             return r
         r = _ranura_libre(bolsa)
         if r is None:
@@ -744,6 +752,8 @@ def _meter(ses, item_id: int, n: int = 1, pet_metadata: dict = None) -> int:
         _instancias(ses)[r] = inv.instancia_nueva()
         if n > 1:
             _cantidades(ses)[r] = n
+        import competiciones as _comp_pass
+        _comp_pass.activar_pase_nuevo(ses, r, item_id)
         return r
 
     import casas as _cs_m
@@ -775,6 +785,8 @@ def _meter(ses, item_id: int, n: int = 1, pet_metadata: dict = None) -> int:
     if p_ses:
         if getattr(p_ses, 'mejoras', None) and r in p_ses.mejoras:
             p_ses.mejoras.pop(r, None)
+        import competiciones as _comp_pass
+        _comp_pass.activar_pase_nuevo(ses, r, item_id)
         if inv.es_mascota(item_id):
             import mascotas as _ms_new, configuracion as _cf_new
             d_pet = inv.datos_mascota(item_id)
@@ -1002,6 +1014,7 @@ def _refrescar(ses, ranuras, con_oro=False):
                         if getattr(ses, 'usuario', None):
                             cuentas.guardar_mejoras(ses.usuario, cid, ses.personaje.mejoras)
                 _linea = inv.marcar_caducidad_mercenario(_linea, _mej)
+                _linea = inv.marcar_caducidad_holy(_linea, _mej)
                 _linea = inv.marcar_vinculacion(_linea, _mej)
                 if _mej and _mej.get('veces'):
                     _linea = inv.marcar_mejora(_linea, _mej['veces'])
@@ -1213,6 +1226,7 @@ PALABRAS_GM = frozenset((
     'guildrep', 'grep', 'gldrep',
     'guild', 'gremio', 'liga',
     'settw', 'settotemwar', 'tw', 'totemwar', 'twstart', 'twstop',
+    'aastart', 'aastop', 'aa', 'angelarena', 'hbstart', 'hbstop', 'hb', 'holybf', 'holybattlefield',
     'notice', 'aviso', 'anuncio', 'gmsg', 'twtotem',
     'plant', 'sembrar',
     'farm', 'granja',
@@ -1289,6 +1303,8 @@ def _gm_parsear(texto: str):
     if not partes:
         return None
     cmd = partes[0].lower()
+    if cmd in ('aastart', 'aastop', 'aa', 'angelarena', 'hbstart', 'hbstop', 'hb', 'holybf', 'holybattlefield'):
+        return ('competicion', cmd, partes[1:])
     if cmd == 'help':
         return ('help',)
     if cmd in ('sistemas', 'album', 'logros', 'cartas', 'estrellas', 'casa'):
@@ -1435,13 +1451,20 @@ def _probar_gm(ses, cuerpo, addr) -> bool:
     leido = _gm_parsear(texto)
     if leido is None:
         return False
+    if leido[0] == 'competicion' and ses.personaje:
+        import competiciones as _comp_gm
+        _comp_gm.comando_gm(ses, leido[1], leido[2])
+        return True
     if leido[0] == 'help':
         ses.enviar(_cl.aviso(
             'GM: /item <id> [qty] | /level <n> | /levelall <n> | /skills [lv] | /skillsall [lv] | /skills5 | /clearskills | '
             '/pet level|exp|path|evolve | /rango [1..20] | '
             '/estacion <normal|navidad|halloween|sakura|verano> | /emote <0..36> | /emote unlock <id> | /emote unlockall | /emote list | '
             '/quest <id> <step> | /ball reset | /glevel <1..10> | /grep <n> | /farm [enter|seeds|tools|pests] | /plant <crop> [plot] | '
-            '/tw | /twstart [min] | /twstop | /settw <field> <league_id> | /twtotem <1..8> | /notice <text>',
+            '/tw | /twstart [min] | /twstop | /settw <field> <league_id> | /twtotem <1..8> | '
+            '/aastart [min] [level] [registration_min] | /aastop [level] | '
+            '/hbstart [min] [registration_min] | /hbstop | /aa status | /hb status | /notice <text>',
+            '/aa lobby|enter|watch|begin|finish [level] | /hb lobby|enter|watch|begin|finish; /hbteam <text>',
             tipo=0, msg_id=_cl.MSG_TEXTO))
         log.info('[%s] GM help' % (addr,))
         return True
@@ -2668,6 +2691,11 @@ def _procesar_muerte_monstruo(ses, m, yo, addr, espera=0.0):
     objetivo = m.entity_id
     yo_muerte = yo
 
+    if getattr(m, 'es_estructura_hb', False):
+        # Building death/construction is persisted by Holy's own engine.
+        # Never award the guard's normal monster loot, EXP or respawn.
+        return
+
     if getattr(m, 'es_totem_tw', False) and ses.personaje:
         _tw_totem_roto(ses, m, addr)
         # Como en Celestia: vida 0 y fuera (0x0007). La muerte de monstruo
@@ -3121,6 +3149,9 @@ BONO_MONTURA = int(os.environ.get('AO_MONTURA_BONO', '150'))
 def _velocidad_de(ses) -> int:
     """Velocidad del 0x0005, con monturas y buffs activos de movimiento."""
     base = VELOCIDAD_JUGADOR
+    carrier=(getattr(getattr(ses,'personaje',None),'buffs',None) or {}).get(3141,{})
+    if carrier.get('hb_crystal') and carrier.get('fin',0)>time.time():
+        return base  # XML3141: movement is reduced to default, including mounts.
     try:
         import inventario as _inv
         bolsa = getattr(ses, 'inventario', None) or {}
@@ -3389,6 +3420,8 @@ def _sincronizar_cambio_mapa(ses, stage_id: int, x: int = None, y: int = None):
     if _st_tw[0] != stage_id:
         log.info('Totem War: stage %s -> %s %s', stage_id, _st_tw[0], _st_tw[1:])
         stage_id, x, y = _st_tw
+    _cancelar_portal_armado(ses)
+    __import__('competiciones').antes_de_viajar(ses, stage_id)
     p.stage = stage_id
     if x is not None and y is not None:
         p.tile_x, p.tile_y = x, y
@@ -3396,6 +3429,7 @@ def _sincronizar_cambio_mapa(ses, stage_id: int, x: int = None, y: int = None):
     ses.mapa_cambiado_en = time.time()
 
     # Unico paquete: decirle al cliente "carga este mapa"
+    ses.mapa_cargando = True
     ses.enviar(_cl.cambiar_mapa(stage_id))
 
     if getattr(ses, 'usuario', None):
@@ -3508,6 +3542,9 @@ def _banco_liga_depositar(ses, addr, arg1, arg2, arg3):
     else:
         bolsa = getattr(ses, 'inventario', {})
         if arg1 not in bolsa or not 20 <= arg1 <= _tope_bolsa(bolsa):
+            return
+        if __import__('arena_premios_compat').es_premio(ses,arg1):
+            ses.enviar(clases_aviso('Temporary Arena rewards cannot be transferred.'))
             return
         banco = cuentas.db_banco_gremio_detallado(gid)
         dest = arg2 if (1 <= arg2 <= _grm.CASILLAS_BANCO_GREMIO and arg2 not in banco) else next(
@@ -3703,7 +3740,7 @@ def _paquete_banco_personal(ses):
             _guardado.append((int(r), int(v[0]), int(v[1]) if len(v) > 1 else 1))
         else:
             _guardado.append((int(r), int(v), 1))
-    return _inv.almacen(p.char_id, _guardado, p.entity_id)
+    return _inv.almacen(p.char_id, _guardado, p.entity_id, mejoras=p.mejoras)
 
 
 def _portal_por_evento(ses, addr, por):
@@ -3737,6 +3774,14 @@ def _viajar_por_portal(ses, addr, por, motivo=''):
     """Manda al jugador por un tornado que no pregunta."""
     # El paso que estuviera a medias en el mapa de origen ya no cuenta.
     _cancelar_portal_armado(ses)
+    if por.get('arena_menu'):
+        __import__('angel_arena').abrir_menu(ses, addr)
+        return
+    if por.get('outpost_evento'):
+        import outpost_pvp
+        por = outpost_pvp.resolver_portal(ses, por)
+        if por is None:
+            return
     if por.get('salir_territorio'):
         import territorios_liga, eventos
         st = territorios_liga.salida(ses)
@@ -5075,6 +5120,10 @@ def _aplicar_efectos(ses, addr, efectos, motivo=''):
                         ses.enviar(_cl.aviso("You are not in a league.", tipo=0))
             elif que == 'dialogo':
                 _dialogo_del_mapa(ses, addr, estado.stage, int(ef[1]))
+            elif que == 'magia' and p and p.stage == 41 and int(ef[1]) in (6755, 6756):
+                # Blessing Angel: este CAST del NPC no es un ataque ni cobra MP.
+                import lyceum_services as _ly_bless
+                _ly_bless.bendecir(ses)
             elif que == 'salir_de_casa':
                 _salir_de_casa(ses, addr)
             elif que == 'casa_buff_diario':
@@ -5109,7 +5158,7 @@ def _aplicar_efectos(ses, addr, efectos, motivo=''):
                 p.hp, p.mp = _vida_max(p), _mana_max(p)
                 ses.muerto = False
                 ses.fantasma = False
-                ses.enviar(_cb_rb.atributo(p.entity_id, 0, _cb_rb.KIND_ESTADO),
+                ses.enviar(__import__('supremo').paquete_estado(p),
                            _cb_rb.atributo(p.entity_id, p.hp, _cb_rb.KIND_HP),
                            _cb_rb.atributo(p.entity_id, p.mp, _cb_rb.KIND_MP),
                            struct.pack('<HIII', 0x000A, p.entity_id, 0, 0))
@@ -5719,6 +5768,12 @@ def _recolectar(ses, addr, stage, ent):
     mat = _material(mid)
     if not mat:
         return False
+    if int(stage)==112:
+        try:
+            __import__('holy_battlefield').miembro(ses)
+        except __import__('competiciones').Rechazo as exc:
+            __import__('competiciones').aviso(ses,exc)
+            return True
     import clases as _cl_r
     p = ses.personaje
     puede, msg, velocidad = _herramienta_para(ses, mat.get('herramienta'))
@@ -5775,6 +5830,11 @@ def _sacar_de_veta(ses, addr, stage, ent, mat, mid):
     """Una vuelta de la barra: tira el dado y mete lo que salga. Devuelve si
     se puede seguir (queda material y cabe en la bolsa)."""
     import clases as _cl_r
+    if int(stage)==112:
+        try:
+            __import__('holy_battlefield').miembro(ses)
+        except __import__('competiciones').Rechazo:
+            return False
     cuenta = _cuenta_de_veta(ses, stage, ent, mat)
     if mat['limite'] and cuenta[0] >= mat['limite']:
         ses.enviar(_cl_r.aviso('', tipo=7, msg_id=MSG_SIN_MATERIAL))
@@ -5828,6 +5888,8 @@ _SIG_OBJETO_CAMBIADO = [110_000_000]
 
 def _recursos_de_plantilla(stage):
     """Los recursos de la plantilla del mapa, tal cual (con 'crudo')."""
+    if int(stage)==112:
+        return __import__('holy_battlefield').recursos()
     if int(stage) == 500:
         import house_services as hs
         return [dict(entity_id=eid, sprite=sprite, tile=tile,
@@ -6265,7 +6327,7 @@ def _entidades_propias(ses):
     ids = {int(p.entity_id)} if p else set()
     if getattr(ses, 'pet_entity_id', None):
         ids.add(int(ses.pet_entity_id))
-    for k in ('invocacion', 'invocacion2'):
+    for k in ('invocacion', 'invocacion2', 'avatar_clon'):
         inv = getattr(ses, k, None)
         if inv and inv.get('entity_id'):
             ids.add(int(inv['entity_id']))
@@ -6476,7 +6538,7 @@ def _usar_pergamino_revivir(ses, addr, ranura, pct):
     ses.fantasma = False
     _sacar(ses, ranura, 1)
     ses.enviar(*_refrescar(ses, [ranura]),
-               _cb_rv.atributo(p.entity_id, 0, _cb_rv.KIND_ESTADO),
+               __import__('supremo').paquete_estado(p),
                _cb_rv.atributo(p.entity_id, p.hp, _cb_rv.KIND_HP),
                _cb_rv.atributo(p.entity_id, p.mp, _cb_rv.KIND_MP),
                struct.pack('<HIII', 0x000A, p.entity_id, 0, 0))
@@ -6514,7 +6576,7 @@ def _logros_datos(ses):
     try:
         con = cuentas._get_conn()
         try:
-            fila = con.execute('SELECT datos FROM personajes WHERE char_id=?', (int(p.char_id),)).fetchone()
+            fila = con.execute('SELECT datos FROM personajes WHERE char_id=? AND usuario=?', (int(p.char_id),getattr(ses,'usuario',''))).fetchone()
         finally:
             con.close()
         d = json.loads(fila[0]) if fila and fila[0] else {}
@@ -6562,7 +6624,7 @@ def _bonos_estado(ses):
         try:
             con = cuentas._get_conn()
             try:
-                fila = con.execute('SELECT datos FROM personajes WHERE char_id=?', (int(p.char_id),)).fetchone()
+                fila = con.execute('SELECT datos FROM personajes WHERE char_id=? AND usuario=?', (int(p.char_id),getattr(ses,'usuario',''))).fetchone()
             finally:
                 con.close()
             d = (json.loads(fila[0]) if fila and fila[0] else {}).get('bonos') or {}
@@ -6848,6 +6910,13 @@ def _aliua_opcion(ses, addr, ent, op):
         # Aliua no abre slots: las ramas 7/8/9 siguen siendo por nivel.
         _su.conceder_poder(p)
         _logros_guardar(ses)
+        ses.enviar(_su.paquete_estado(p))
+        try:
+            import presencia as _pr_sup
+            _pr_sup.notificar_companero_accion(ses, __import__('combate').atributo(
+                _pr_sup.entidad_de(ses), _su.estado(p, base=0), __import__('combate').KIND_ESTADO))
+        except Exception:
+            log.debug('Supreme Power: actualizar estado publico', exc_info=True)
         _aliua_mostrar(ses, ent, _su.guion(149127, 149128))
         _logros_dar(ses, addr, _su.LOGRO)
         log.info(f"[{addr}] {p.nombre} obtiene el Supreme Power")
@@ -6909,7 +6978,7 @@ def _amplify_estado(ses):
         try:
             con = cuentas._get_conn()
             try:
-                fila = con.execute('SELECT datos FROM personajes WHERE char_id=?', (int(p.char_id),)).fetchone()
+                fila = con.execute('SELECT datos FROM personajes WHERE char_id=? AND usuario=?', (int(p.char_id),getattr(ses,'usuario',''))).fetchone()
             finally:
                 con.close()
             d = (json.loads(fila[0]) if fila and fila[0] else {}).get('amplify') or {}
@@ -7033,7 +7102,7 @@ def _pase_estado(ses):
         try:
             con = cuentas._get_conn()
             try:
-                fila = con.execute('SELECT datos FROM personajes WHERE char_id=?', (int(p.char_id),)).fetchone()
+                fila = con.execute('SELECT datos FROM personajes WHERE char_id=? AND usuario=?', (int(p.char_id),getattr(ses,'usuario',''))).fetchone()
             finally:
                 con.close()
             d = (json.loads(fila[0]) if fila and fila[0] else {}).get('pase') or {}
@@ -7621,6 +7690,8 @@ def _tw_al_entrar(ses):
     """Al cargar una arena: el totem a la vista (el primero de la sala no
     lo recibe de _entrar_en_sala) y cuanto le queda a la guerra."""
     import totem_war as _tw_e
+    import outpost_pvp as _outpost_e
+    _outpost_e.al_salir(ses)
     p = ses.personaje
     if _tw_e.es_totem_decorativo(getattr(p, 'stage', 0)):
         # Campo de entrenamiento: su totem, siempre a la vista y sin guerra.
@@ -7632,7 +7703,10 @@ def _tw_al_entrar(ses):
             # Salio de la arena: fuera el modo PvP (aura, marcador, musica).
             ses.tw_modo_pvp = False
             ses.enviar(_tw_e.modo_pvp(p.entity_id, False))
+        __import__('competiciones').al_entrar(ses)
+        _outpost_e.al_entrar(ses)
         return
+    __import__('competiciones').al_entrar(ses)
     # Las rejas de luz, puertas y bases de torre de la arena (no hay plantilla).
     _obj_ar = _tw_e.objetos_arena(p.stage) if _tw_e.es_arena(p.stage) else []
     if _obj_ar:
@@ -7704,6 +7778,8 @@ def _entrar_en_sala(ses, addr):
     e.sesiones.append(ses)
     ses._sala = e
     ses.espejo = _espejar
+    if p.stage==112:
+        __import__('holy_battlefield').sincronizar_monstruos(ses,sala=e)
     if e.monstruos is None:
         e.monstruos = ses.monstruos if ses.monstruos is not None else _monstruos_de(p.stage)
         ses.monstruos = e.monstruos
@@ -7787,6 +7863,7 @@ def _recorrer_dialogo_mapa(ses, addr, stage, nodo):
     ctx = _evm_d.ContextoSesion(ses)
     k, visto = str(int(nodo)), set()
     mensajes, efectos, opciones, cara = [], [], None, None
+    nombres_por_mensaje = {}
     while k and k != '0' and k not in visto and len(mensajes) < 8:
         visto.add(k)
         n = arbol.get(k)
@@ -7803,7 +7880,29 @@ def _recorrer_dialogo_mapa(ses, addr, stage, nodo):
         if n.get('m'):
             mensajes.append(int(n['m']))
             cara = cara or n.get('c')
+            # SET_PLAYERNAME(indice, ...) es dato del dialogo original,
+            # no una excepcion exclusiva de Census Angel.
+            nombres_por_mensaje[int(n['m'])] = [
+                s for num, parms in n.get('a', ()) if num == 2 and parms
+                for s in (str(parms[0]), p.nombre)]
+        if int(stage) == 41 and any(num in (29, 61) for num, _ in n.get('a', ())):
+            # Census: revisar el lote ANTES de TAKE_MONEY/CREATE_ITEM.
+            # SET_ALIGNMENT/GUILD_CHANGE_ALIGN todavia no tienen aplicador
+            # atomico; el dialogo informativo no debe cobrar por no cambiar nada.
+            import clases as _cl_census_pending
+            ses.dlg_mapa = None
+            ses.enviar(_cl_census_pending.aviso(
+                'Faction transfer is not implemented yet. No gold or item has been consumed.', tipo=0))
+            return True
         for num, parms in n.get('a', ()):
+            if int(stage) == 114 and num in (71, 83, 86, 116):
+                # Los textos/mapas existen, pero no la maquina de torneo.
+                # Nunca consumir piedras o premios antes de un viaje no implementado.
+                import clases as _cl_pending
+                ses.enviar(_cl_pending.aviso(
+                    'This competition is not implemented yet. No fee or entry item has been consumed.',
+                    tipo=0))
+                return True
             ef = _ev_d.traducir(num, parms)
             if ef is None:
                 log.debug('[%s] dialogo %s/%s: accion %s sin traducir',
@@ -7822,9 +7921,13 @@ def _recorrer_dialogo_mapa(ses, addr, stage, nodo):
     # Sin retrato si el nodo no trae uno (la antorcha, las tablillas): en el
     # oficial esos cuadros salen sin personaje. Con 3 salia una chica.
     cara = cara or 0
-    g = [_dl.armar_linea(mid, cara, [])[2:] for mid in mensajes[:-1]]
+    def cadenas(mid):
+        return nombres_por_mensaje.get(mid, [])
+    g = [_dl.armar_linea(mid, cara, [], strings=cadenas(mid))[2:] for mid in mensajes[:-1]]
     g.append(_dl.armar_linea(mensajes[-1], cara,
-                             [o[0] for o in opciones] if opciones else [])[2:])
+                             [o[0] for o in opciones] if opciones else [],
+                             strings=cadenas(mensajes[-1]),
+                             acciones=[o[1] for o in opciones] if opciones else [])[2:])
     ses.dlg_ent, ses.dlg_guion, ses.dlg_paso, ses.dlg_val = p.entity_id, g, 1, cara
     ses.dlg_mapa = ({'stage': stage, 'opciones': opciones, 'guion': g}
                     if opciones else None)
@@ -8187,6 +8290,9 @@ def _choques_al_llegar(ses, addr, st, llegada, token, vistos):
             or (p.tile_x, p.tile_y) != tuple(llegada)
             or getattr(ses, 'house_furnishing', False)):
         return
+    if st==112:
+        ses._holy_camino=None
+        __import__('holy_battlefield').contacto_cristal(ses)
     import eventos as _ev_ch
     objs = (_ev_ch.del_stage(st) or {}).get('objetos') or {}
     # UNA VEZ AL LLEGAR. Lo que el jugador ya estaba tocando al acabar el paso
@@ -8334,6 +8440,7 @@ def _vida_max(p, bolsa=None) -> int:
         b = getattr(p, 'inventario', None)
     if b is None and hasattr(p, 'ses'):
         b = getattr(p.ses, 'inventario', None)
+    __import__('combate').rehidratar_transformaciones(getattr(p,'buffs',None))
     return inv.vida_maxima(getattr(p, 'hp_max', 0),
                            getattr(p, 'habilidades', None), bolsa=b,
                            mejoras=getattr(p, 'mejoras', None),
@@ -8351,6 +8458,7 @@ def _mana_max(p, bolsa=None) -> int:
         b = getattr(p, 'inventario', None)
     if b is None and hasattr(p, 'ses'):
         b = getattr(p.ses, 'inventario', None)
+    __import__('combate').rehidratar_transformaciones(getattr(p,'buffs',None))
     return inv.mana_maximo(getattr(p, 'mp_max', 0),
                            getattr(p, 'habilidades', None), bolsa=b,
                            mejoras=getattr(p, 'mejoras', None),
@@ -8731,11 +8839,10 @@ class Servidor:
         self.desconocidos = collections.Counter()
         self.sesiones = 0
         self.mundos = []          # sesiones de mundo vivas, para el GM
-        # Traspaso login -> mundo. Son dos conexiones TCP distintas: cuando
-        # el cliente pide entrar (0x0006) anotamos aca que personaje eligio,
-        # y la conexion de mundo que llega despues lo levanta. Se indexa por
-        # IP porque el puerto de origen cambia entre las dos conexiones.
-        self.pendientes = {}
+        # Single account owner; one-use, 30-second login -> world handoff.
+        # Legacy client identifies this handoff by IP, not a session token.
+        from accesos import Accesos
+        self.accesos = Accesos()
 
     async def _patrulla_lyceum(self, ses):
         """Mueve a los House Pickets periodicamente para que patrullen el Angel Lyceum,
@@ -9116,6 +9223,10 @@ class Servidor:
         except (ConnectionResetError, ConnectionAbortedError, ConnectionError, asyncio.IncompleteReadError, OSError):
             pass
         finally:
+            ses.desconectado = True
+            _ia_task = getattr(ses, 'ia_monstruos_task', None)
+            if _ia_task:
+                _ia_task.cancel()
             try:
                 _casa_tick_limpieza(ses, flush=True)
             except Exception:
@@ -9126,6 +9237,10 @@ class Servidor:
                 log.exception('bonos: error al guardar el tiempo conectado')
             if ses in self.mundos:
                 self.mundos.remove(ses)
+            try:
+                __import__('competiciones').abandonar(ses)
+            except Exception:
+                log.exception('competition: disconnect')
             try:
                 _cerrar_puesto(ses, avisar_dueno=False)
             except Exception:
@@ -9230,6 +9345,7 @@ class Servidor:
                 except Exception as e:
                     log.warning(f"[{addr}] no se pudo guardar la posicion: {e}")
             base, nc, ns = grab.cerrar()
+            self.accesos.salir(ses)
             log.info(f"[{addr}] desconectado. opcodes vistos: "
                      f"{dict(ses.vistos.most_common(8))}")
             log.info(f"[{addr}] sesion grabada: {nc} B del cliente, "
@@ -9335,6 +9451,8 @@ class Servidor:
         """Procesa chat local, canales globales (Broadcast, Trade, Super Broadcast) con consumo de items y formato de color."""
         p = getattr(ses, 'personaje', None)
         if not p or not texto:
+            return
+        if getattr(p,'stage',None) in (112,159,239,240) and __import__('presencia')._observador(ses):
             return
         import clases as _cl
         txt_lower = texto.lower()
@@ -9678,6 +9796,9 @@ class Servidor:
 
     def manejar(self, ses, opcode, m, d, addr, cuerpo=b''):
         """Login: responde MOTD + personajes + redirect. Mundo: entra al juego."""
+        if (getattr(ses, 'mapa_cargando', False)
+                and opcode in (0x0004, 0x0005, 0x0006, 0x0007, 0x0016, 0x002E, 0x0151)):
+            return
         if getattr(getattr(ses, 'personaje', None), 'stage', None) == 501:
             import granja_liga as _farm_guard
             if not _farm_guard.liga_autorizada(ses):
@@ -9702,6 +9823,17 @@ class Servidor:
                 _es_cmd_gm = True
         if _es_cmd_gm and _probar_gm(ses, cuerpo, addr):
             return
+
+        if (getattr(ses, 'personaje', None) and getattr(ses.personaje,'stage',None) in (112,159,239,240)
+                and opcode in (0x0006, 0x000E, 0x0128, 0x0133)
+                and __import__('presencia')._observador(ses)):
+            return  # Observation is read-only, including heals/buffs and public chat.
+
+        if opcode == 0x0001 and getattr(ses, 'personaje', None) and cuerpo:
+            _battle_cmd = cuerpo.split(b'\x00',1)[0].decode('latin-1','replace').strip()
+            if _battle_cmd.lower().startswith('hbteam '):
+                __import__('holy_battlefield').chat_equipo(ses, _battle_cmd[7:])
+                return
 
         # Si el comando con barra no era de GM, pasarlo a procesar como comando de chat (/sb, /b, /trade, etc.)
         if opcode == 0x0001 and ses.rol == 'mundo' and getattr(ses, 'personaje', None) and cuerpo:
@@ -9785,17 +9917,8 @@ class Servidor:
 
         # Canal Battle / Jabaly (0x0133 -> S2C 0x0139 — NO gasta Broadcasting)
         if opcode == 0x0133 and ses.rol == 'mundo' and getattr(ses, 'personaje', None) and cuerpo:
-            import clases as _cl_bat
-            p = ses.personaje
             txt = cuerpo.split(b'\x00', 1)[0].decode('latin-1', 'replace').strip()
-            if txt:
-                pkt = _cl_bat.chat_battle(p.nombre, txt)
-                for s in list(self.mundos):
-                    if getattr(s, 'personaje', None):
-                        s.enviar(pkt)
-                if ses not in self.mundos:
-                    ses.enviar(pkt)
-                log.info('[%s] %s [Battle]: %s', addr, p.nombre, txt)
+            __import__('holy_battlefield').chat_equipo(ses, txt)
             return
 
         # Susurro privado / Whisper (0x0127 -> S2C 0x0127 — NO gasta Broadcasting)
@@ -9831,7 +9954,6 @@ class Servidor:
             return
         if opcode == 0x0002 and ses.rol == 'login':
             usuario = login_server.usuario_de_auth(cuerpo)
-            ses.usuario = usuario
             cuentas.guardar_muestra_auth(cuerpo, f"usuario='{usuario}' desde {addr}")
             cuenta, motivo = cuentas.validar(usuario, cuerpo)
             if cuenta is None:
@@ -9843,6 +9965,11 @@ class Servidor:
                 )
                 ses.enviar_crudo(login_server.respuesta_error(codigo_error))
                 return
+            if not self.accesos.login(ses, usuario):
+                log.warning('[%s] LOGIN RECHAZADO: cuenta ya conectada', addr)
+                ses.enviar_crudo(login_server.respuesta_error(login_server.ERROR_GENERICO))
+                return
+            ses.usuario = usuario
             log.info(f"[{addr}] LOGIN usuario='{usuario}' aceptado ({motivo})")
             # Solo lo que este guardado de verdad. Nada inventado.
             lista = list(cuenta.get('personajes', []))[:3]
@@ -9901,6 +10028,11 @@ class Servidor:
             # causa de aborto, no un cierre necesario. Mal interpretada.
             return
 
+        if ses.rol == 'login' and opcode in (0x0003, 0x0004, 0x0006):
+            key = getattr(ses, '_cuenta_autenticada', None)
+            if key is None or self.accesos.owners.get(key) is not ses:
+                return
+
         if opcode == 0x0003 and ses.rol == 'login':
             import personajes, pathlib as _pl
             d = personajes.parsear_creacion(cuerpo)
@@ -9915,7 +10047,12 @@ class Servidor:
             log.info(f"[{addr}] CREAR: elegido (bytes +1..+5) = "
                      f"{bytes(d.get('elegidos') or []).hex(' ')} -> "
                      f"apariencia={nuevo['apariencia']}")
-            personajes.guardar(ses.usuario, nuevo, cuentas.ARCHIVO)
+            try:
+                personajes.guardar(ses.usuario, nuevo, cuentas.ARCHIVO)
+            except ValueError as exc:
+                log.warning('[%s] CREAR RECHAZADO: %s', addr, exc)
+                ses.enviar(struct.pack('<HH', 0x0001, 1) + bytes(150))
+                return
             ses.enviar(personajes.respuesta_creacion(d['ranura'], nuevo))
             log.info(f"[{addr}] PERSONAJE CREADO '{nuevo['nombre']}' "
                      f"ranura={d['ranura']} id={nuevo['char_id']} "
@@ -9955,7 +10092,9 @@ class Servidor:
             cta = cuentas.cargar()['cuentas'].get(ses.usuario) or {}
             nombre = next((x['nombre'] for x in cta.get('personajes', [])
                            if x.get('ranura') == ranura), '?')
-            self.pendientes[addr[0]] = (ses.usuario, ranura)
+            if not self.accesos.reservar(ses, addr[0], ranura):
+                ses.enviar_crudo(login_server.respuesta_error(login_server.ERROR_GENERICO))
+                return
             log.info(f"[{addr}] ENTRAR AL MUNDO ranura={ranura} -> '{nombre}'")
             log.info(f"[{addr}] 0x0006 sprite: {txt}")
             ses.enviar(login_server.redirect(self.host, _pt))
@@ -9968,7 +10107,7 @@ class Servidor:
             # Se guarda el AUTH crudo para poder deducir su formato despues.
             if d and d.get('credenciales'):
                 cuentas.guardar_muestra_auth(d['credenciales'], f"desde {addr}")
-            usuario, ranura = self.pendientes.get(addr[0], (None, 0))
+            usuario, ranura = self.accesos.mundo(ses, addr[0]) or (None, 0)
             if usuario is None:
                 log.warning(f"[{addr}] conexion de mundo sin 0x0006 previo; "
                             f"no se sabe que personaje cargar")
@@ -10200,14 +10339,14 @@ class Servidor:
                 PROB_PASO = TICK_IA / _cb.SEGUNDOS_ENTRE_PASEOS
                 MOVE = Msg.registry[(0x0005, 's2c', '*')]
                 try:
-                    while getattr(ses, 'personaje', None):
+                    while getattr(ses, 'personaje', None) and not getattr(ses, 'desconectado', False):
                         # Cada 100 ms. Las cadencias de los monstruos van de
                         # 672 a 1120 ms: con un bucle de 300 ms un bicho de
                         # 1.0 s acababa pegando cada 1.2 s y a saltos, que es
                         # lo que se veia con las Lilys (lentas y no fluidas).
                         await asyncio.sleep(TICK_IA)
                         p = getattr(ses, 'personaje', None)
-                        if not p:
+                        if not p or getattr(ses, 'desconectado', False) or getattr(ses, 'mapa_cargando', False):
                             continue
                         _cb.ATACANTE[0] = ses
                         ahora = time.time()
@@ -10227,6 +10366,8 @@ class Servidor:
                             inv_list.append(('invocacion', ses.invocacion))
                         if getattr(ses, 'invocacion2', None):
                             inv_list.append(('invocacion2', ses.invocacion2))
+                        if getattr(ses, 'avatar_clon', None):
+                            inv_list.append(('avatar_clon',ses.avatar_clon))
 
                         for inv_key, inv in inv_list:
                             if ahora >= inv.get('expira', 0) or inv.get('hp', 0) <= 0:
@@ -10238,15 +10379,19 @@ class Servidor:
                                 setattr(ses, inv_key, None)
                                 log.info(f"[{addr}] invocacion {inv.get('nombre')} expirada/despawned")
                             else:
+                                import invocaciones_pvp as _inv_pvp
+                                if _inv_pvp.tick(ses, inv, ahora):
+                                    continue
                                 targ = inv.get('objetivo')
-                                if targ and (not getattr(targ, 'vivo', False) or targ.hp <= 0 or getattr(targ, 'encantado', False)):
+                                if targ and (not getattr(targ, 'vivo', False) or targ.hp <= 0 or getattr(targ, 'encantado', False)
+                                             or not __import__('holy_battlefield').puede_atacar(ses,targ)):
                                     inv['objetivo'] = None
                                     targ = None
 
                                 if not targ and (inv.get('move_speed', 50) or 0) <= 0:
                                     # Totem estático auto-adquiere cualquier monstruo hostil cercano dentro de su rango
                                     for cand_m in list(getattr(ses, 'monstruos', {}).values()):
-                                        if cand_m and getattr(cand_m, 'vivo', False) and cand_m.hp > 0 and not getattr(cand_m, 'encantado', False):
+                                        if cand_m and getattr(cand_m, 'vivo', False) and cand_m.hp > 0 and not getattr(cand_m, 'encantado', False) and __import__('holy_battlefield').puede_atacar(ses,cand_m):
                                             if max(abs(inv['tile_x'] - cand_m.tile_x), abs(inv['tile_y'] - cand_m.tile_y)) <= inv.get('atk_range', 10):
                                                 inv['objetivo'] = cand_m
                                                 targ = cand_m
@@ -10415,7 +10560,8 @@ class Servidor:
                             return not any(max(abs(mm.tile_x - _x), abs(mm.tile_y - _y)) <= RADIO_IA
                                            for _x, _y in _men)
                         for m in list((ses.monstruos or {}).values()):
-
+                            if getattr(m, 'es_estructura_hb', False):
+                                continue  # Holy buildings never use ordinary monster AI.
                             if not getattr(m, 'vivo', True):
                                 continue
                             if _ajenos_ia and (getattr(m, 'en_combate_con', None) in _ajenos_ia
@@ -10734,6 +10880,7 @@ class Servidor:
                                                         if 13675 <= int(bid) <= 13679 and isinstance(b, dict) and b.get('fin', 0) > ahora_imp
                                                     ), None)
 
+                                                    suyo = __import__('avatar_clones').absorber(ses,suyo)
                                                     pj.hp = max(0, pj.hp - suyo)
                                                     pkgs_imp_yo = [
                                                         _cb.numero_de_dano(m.entity_id, yo, suyo, ataque=656, efecto=ef_atk),
@@ -10927,7 +11074,8 @@ class Servidor:
                             # mascota: es aliado y no se le pega.
                             if pet_targ and (not getattr(pet_targ, 'vivo', False)
                                              or pet_targ.hp <= 0
-                                             or getattr(pet_targ, 'encantado', False)):
+                                             or getattr(pet_targ, 'encantado', False)
+                                             or not __import__('holy_battlefield').puede_atacar(ses,pet_targ)):
                                 pet_targ = None
                                 ses.pet_objetivo = None
 
@@ -10939,7 +11087,7 @@ class Servidor:
                                     cands = []
                                     m_list = list(ses.monstruos.values()) if isinstance(ses.monstruos, dict) else (ses.monstruos or [])
                                     for m_cand in m_list:
-                                        if getattr(m_cand, 'vivo', True) and getattr(m_cand, 'hp', 0) > 0 and not getattr(m_cand, 'encantado', False):
+                                        if getattr(m_cand, 'vivo', True) and getattr(m_cand, 'hp', 0) > 0 and not getattr(m_cand, 'encantado', False) and __import__('holy_battlefield').puede_atacar(ses,m_cand):
                                             d_pm = max(abs(m_cand.tile_x - p.tile_x), abs(m_cand.tile_y - p.tile_y))
                                             if getattr(m_cand, 'en_combate_con', None) in (yo, pet_eid):
                                                 cands.append((d_pm, m_cand))
@@ -10952,7 +11100,7 @@ class Servidor:
                                     cands = []
                                     m_list = list(ses.monstruos.values()) if isinstance(ses.monstruos, dict) else (ses.monstruos or [])
                                     for m_cand in m_list:
-                                        if getattr(m_cand, 'vivo', True) and getattr(m_cand, 'hp', 0) > 0 and not getattr(m_cand, 'encantado', False):
+                                        if getattr(m_cand, 'vivo', True) and getattr(m_cand, 'hp', 0) > 0 and not getattr(m_cand, 'encantado', False) and __import__('holy_battlefield').puede_atacar(ses,m_cand):
                                             d_pm = max(abs(m_cand.tile_x - p.tile_x), abs(m_cand.tile_y - p.tile_y))
                                             if d_pm <= 10:
                                                 cands.append((d_pm, m_cand))
@@ -11300,11 +11448,15 @@ class Servidor:
                     # log. Ahora se anota y la IA se vuelve a levantar.
                     log.exception(f"[{addr}] la IA de monstruos fallo, "
                                   f"se reinicia")
-                    if getattr(ses, 'personaje', None):
+                    if getattr(ses, 'personaje', None) and not getattr(ses, 'desconectado', False):
                         asyncio.get_event_loop().call_later(
-                            1.0, lambda: asyncio.create_task(_ia_monstruos()))
+                            1.0, _iniciar_ia_monstruos)
 
-            asyncio.create_task(_ia_monstruos())
+            def _iniciar_ia_monstruos():
+                if getattr(ses, 'personaje', None) and not getattr(ses, 'desconectado', False):
+                    ses.ia_monstruos_task = asyncio.create_task(_ia_monstruos())
+
+            _iniciar_ia_monstruos()
             log.info(f"[{addr}] entro al mundo: '{p.nombre}' entidad={p.entity_id} "
                      f"char_id={p.char_id} tile=({p.tile_x},{p.tile_y})")
             log.info(f"[{addr}] (credenciales NO validadas: formato aun sin descifrar)")
@@ -11609,6 +11761,12 @@ class Servidor:
             arma_puesta = ses.inventario.get(3, 0) if ses.inventario else 0
 
             mag = _cb.datos_magia(tipo) if tipo != _cb.ATAQUE_NORMAL else {}
+            if mag.get('formula')==7 and mag.get('es_terreno') and not mag.get('es_ataque'):
+                __import__('desplazamientos').lanzar(ses,tipo,mag,tx,ty)
+                return
+            if m is not None and not __import__('holy_battlefield').puede_atacar(ses,m):
+                if getattr(ses,'objetivo_actual',None)==objetivo:ses.objetivo_actual=None
+                return
             if tipo == 2254 and ses.personaje:
                 slot = next((r for r, item in ses.inventario.items() if item == 10581), None)
                 if slot is not None:
@@ -11770,6 +11928,10 @@ class Servidor:
             # TOTEM DE LA GUERRA: la faccion duena no le pega (ni se ve el
             # numero de dano); si es neutro le pega cualquiera.
             _tot = (getattr(ses, 'monstruos', None) or {}).get(objetivo)
+            if _tot is not None and getattr(_tot, 'es_estructura_hb', False):
+                # Construction objectives cannot be charmed/captured/sacrificed.
+                if tipo != _cb.ATAQUE_NORMAL and not mag.get('es_ataque'):
+                    return
             if _tot is not None and getattr(_tot, 'es_fuerte_tw', False):
                 import totem_war as _tw_pf
                 if not _tw_pf.puede_pegar_fuerte(ses, _tot):
@@ -11790,6 +11952,9 @@ class Servidor:
                 _pvp.atacar(ses, _rival, tipo, mag, arma_puesta)
                 return
             if es_invocacion:
+                if mag.get('es_clon'):
+                    __import__('avatar_clones').lanzar(ses,tipo,mag)
+                    return
                 if getattr(ses, 'sentado', False):
                     ses.sentado = False
                     ses.enviar(struct.pack('<HIII', 0x000A, yo, 0, 0))
@@ -12078,6 +12243,7 @@ class Servidor:
                         )
 
                     blancos = [b for b in bichos.values() if b.vivo and max(abs(b.tile_x - cx), abs(b.tile_y - cy)) <= area]
+                    blancos = [b for b in blancos if __import__('holy_battlefield').puede_atacar(ses,b)]
                     if any(getattr(b, 'es_totem_tw', False) for b in blancos):
                         import totem_war as _tw_ao
                         blancos = [b for b in blancos if not getattr(b, 'es_totem_tw', False)
@@ -12214,7 +12380,7 @@ class Servidor:
                                     elif tgt.en_combate_con != yo:
                                         tgt.en_combate_con = yo
                                 try:
-                                    asyncio.get_event_loop().call_later(_sep_aoe * _gk, _subgolpe_barrage)
+                                    asyncio.get_event_loop().call_later(_sep_aoe * _gk, _cb.con_atacante(ses,_subgolpe_barrage))
                                 except Exception:
                                     pass
 
@@ -12269,7 +12435,7 @@ class Servidor:
                                     elif tgt.en_combate_con != yo:
                                         tgt.en_combate_con = yo
                                 try:
-                                    asyncio.get_event_loop().call_later(_sep_aoe * _gk, _subgolpe_ricochet)
+                                    asyncio.get_event_loop().call_later(_sep_aoe * _gk, _cb.con_atacante(ses,_subgolpe_ricochet))
                                 except Exception:
                                     pass
 
@@ -12324,7 +12490,7 @@ class Servidor:
                                             elif tgt.en_combate_con != yo:
                                                 tgt.en_combate_con = yo
                                     try:
-                                        asyncio.get_event_loop().call_later(_sep_aoe * _gk, _subgolpe_aoe)
+                                        asyncio.get_event_loop().call_later(_sep_aoe * _gk, _cb.con_atacante(ses,_subgolpe_aoe))
                                     except Exception:
                                         pass
 
@@ -12361,7 +12527,7 @@ class Servidor:
                     )
                     ret_aoe = max(0.1, cast_time / 1000.0)
                     try:
-                        asyncio.get_event_loop().call_later(ret_aoe, _fin_aoe)
+                        asyncio.get_event_loop().call_later(ret_aoe, _cb.con_atacante(ses,_fin_aoe))
                     except Exception:
                         _fin_aoe()
 
@@ -13696,7 +13862,8 @@ class Servidor:
                                                es_magia=is_magic_skill, tile_x=_cx_br, tile_y=_cy_br),
                         )
                         for _bm in list(bichos.values()):
-                            if _bm.entity_id == m.entity_id or not _bm.vivo or getattr(_bm, 'encantado', False):
+                            if (_bm.entity_id == m.entity_id or not _bm.vivo or getattr(_bm, 'encantado', False)
+                                    or not __import__('holy_battlefield').puede_atacar(ses,_bm)):
                                 continue
                             if max(abs(_bm.tile_x - _cx_br), abs(_bm.tile_y - _cy_br)) <= _area_br:
                                 _c_br = random.random() < crit_prob
@@ -13718,7 +13885,7 @@ class Servidor:
                                     _procesar_muerte_monstruo(ses, _bm, yo, addr, espera=0.0)
                                 elif _bm.en_combate_con != yo:
                                     _bm.en_combate_con = yo
-                    bucle.call_later(_ret + (0.05 if _brand_detona else 0.25), _detonar_brand_aoe)
+                    bucle.call_later(_ret + (0.05 if _brand_detona else 0.25), _cb.con_atacante(ses,_detonar_brand_aoe))
 
                 # EL COMBO. Strangle Strike V pega NUEVE veces y el IV seis;
                 # todos los golpes usan mult_base_combo (habilidad + equipo + buffs)
@@ -13751,7 +13918,7 @@ class Servidor:
                                     log.exception(
                                         '[%s] fallo al matar con el combo'
                                         % addr)
-                        bucle.call_later(_ret + _sep * _k, _golpe)
+                        bucle.call_later(_ret + _sep * _k, _cb.con_atacante(ses,_golpe))
                     log.info('[%s] %s: combo de %d golpes cada %d ms'
                              % (addr, mag.get('nombre', tipo),
                                 _combo['golpes'],
@@ -13790,7 +13957,8 @@ class Servidor:
                         for mb in (ses.monstruos or {}).values():
                             # Igual que arriba: el rebote no salta a un aliado.
                             if (mb.entity_id in blancos_usados or not mb.vivo
-                                    or getattr(mb, 'encantado', False)):
+                                    or getattr(mb, 'encantado', False)
+                                    or not __import__('holy_battlefield').puede_atacar(ses,mb)):
                                 continue
                             dist = max(abs(mb.tile_x - _prev_x),
                                        abs(mb.tile_y - _prev_y))
@@ -13836,7 +14004,7 @@ class Servidor:
                 try:
                     _chain_delay = _ret + 0.3
                     asyncio.get_event_loop().call_later(
-                        _chain_delay, _hacer_chain_bounce)
+                        _chain_delay, _cb.con_atacante(ses,_hacer_chain_bounce))
                 except Exception:
                     _hacer_chain_bounce()
             if m.vivo:
@@ -13871,6 +14039,7 @@ class Servidor:
         # Tras un 0x000C el cliente contesta con un 0x0009 vacio y espera la
         # secuencia de entrada otra vez, ya con la ficha en el mapa nuevo.
         if opcode == 0x0009 and ses.rol == 'mundo' and ses.personaje:
+            ses.mapa_cargando = False
             import inventario as _iv2
             import clases as _cl2
             import combate as _cb2
@@ -13915,7 +14084,7 @@ class Servidor:
                     _todos_hech = sorted(set(_todos_hech) | set(p.hechizos_aprendidos))
                 if _todos_hech:
                     ses.enviar(*_cl2.otorgar_hechizos(p.entity_id, _todos_hech))
-            for _inv_attr, _off_x in (('invocacion', 1), ('invocacion2', -1)):
+            for _inv_attr, _off_x in (('invocacion', 1), ('invocacion2', -1), ('avatar_clon', 1)):
                 inv = getattr(ses, _inv_attr, None)
                 if inv and inv.get('es_mercenario'):
                     setattr(ses, _inv_attr, None)
@@ -13927,8 +14096,9 @@ class Servidor:
                     ses.enviar(
                         struct.pack('<HIBBI', 0x0013, p.entity_id, 1, 0x3d, inv['entity_id']),
                         struct.pack('<HIBBII', 0x001D, p.entity_id, 1, 0x2a, inv['entity_id'], 0),
-                        _lg2.spawn_invocacion(inv['entity_id'], inv['npc_type'], inv['nombre'], (inv['tile_x'], inv['tile_y']), sprite=inv['sprite']),
-                        _cb2.atributo(inv['entity_id'], 100, _cb2.KIND_HP),
+                        (__import__('avatar_clones').spawn(ses,inv) if inv.get('es_clon') else
+                         _lg2.spawn_invocacion(inv['entity_id'], inv['npc_type'], inv['nombre'], (inv['tile_x'], inv['tile_y']), sprite=inv['sprite'])),
+                        _cb2.atributo(inv['entity_id'], max(0,min(100,int(100*inv.get('hp',1)/max(1,inv.get('hp_max',1))))), _cb2.KIND_HP),
                         struct.pack('<HIBBI', 0x0013, inv['entity_id'], 1, 0x3c, p.entity_id)
                     )
 
@@ -14078,6 +14248,8 @@ class Servidor:
             except Exception:
                 log.exception('casas: fallo al sincronizar housing en 0x0009')
 
+            if hasattr(ses,'terminar_carga_mapa'):
+                ses.terminar_carga_mapa()
             log.info(f"[{addr}] mapa cargado exitosamente: stage {p.stage} "
                      f"tile ({p.tile_x},{p.tile_y})")
             return
@@ -14180,6 +14352,8 @@ class Servidor:
                                 f"no esta en la mochila")
                     continue
                 it_id = bolsa[ranura]
+                if __import__('arena_premios_compat').es_premio(ses,ranura):
+                    continue
                 vendidas = _sacar(ses, ranura, cant)
                 if not vendidas:
                     continue
@@ -14236,6 +14410,8 @@ class Servidor:
                     log.warning(f"[{addr}] puesto 0x0022: instancia {inst8.hex()} no valida (ranura={ranura})")
                     continue
                 ranura = int(ranura)
+                if __import__('arena_premios_compat').es_premio(ses,ranura):
+                    continue
                 hay = _cant_de(ses, ranura)
                 if hay <= 0:
                     continue
@@ -14352,6 +14528,8 @@ class Servidor:
                 item_id = int(v['item_id'])
                 if bolsa_vend.get(r_vend) != item_id:
                     v['cantidad'] = 0
+                    continue
+                if __import__('arena_premios_compat').es_premio(vendedor,r_vend):
                     continue
                 disp = min(int(v['cantidad']), _cant_de(vendedor, r_vend))
                 cant_real = min(int(cant_pedida), disp)
@@ -14492,6 +14670,7 @@ class Servidor:
                 ranuras_disp = [
                     int(r) for r, it in sorted(ses.inventario.items())
                     if int(it) == int(item_id) and int(r) != _iv.RANURA_ORO and not _iv.es_equipo(int(r))
+                    and not __import__('arena_premios_compat').es_premio(ses,int(r))
                 ]
                 total_en_bolsa = sum(_cant_de(ses, r) for r in ranuras_disp)
                 max_pagable = getattr(comprador, 'oro', 0) // precio_u
@@ -14611,6 +14790,9 @@ class Servidor:
             _ran = _dato_al & 0xFFFF
             _bolsa_al = getattr(ses, 'inventario', None) or {}
             _it_al = _bolsa_al.get(_ran)
+            if __import__('arena_premios_compat').es_premio(ses,_ran):
+                ses.enviar(clases_aviso('Temporary Arena rewards cannot become permanent collection bonuses.'))
+                return
             _cat = _alb.categoria_de(_it_al) if _it_al else ''
             if not _it_al or not _cat:
                 log.info('[%s] album: la ranura %d no tiene nada que entre '
@@ -14714,10 +14896,12 @@ class Servidor:
                     _v = _p.banco.pop(_ori)
                     _it, _cn = _v if isinstance(_v, (list, tuple)) else (_v, 1)
                     _bolsa[_d] = _it
+                    import competiciones as _comp_bank
+                    _comp_bank.mover_pase_banco(_p, _ori, _d, desde_banco=True)
                     if _cn > 1:
                         ses.cantidades[_d] = _cn
                     ses.enviar(
-                        _iv3.banco_sacar(_p.char_id, _d, _it, _cn, dueno=_p.entity_id),
+                        _iv3.banco_sacar(_p.char_id, _d, _it, _cn, dueno=_p.entity_id, mejoras=_p.mejoras),
                         _iv3.banco_vaciar_ranura(_ori),
                         _stats_ses(ses)
                     )
@@ -14745,10 +14929,12 @@ class Servidor:
                     _it = _bolsa.pop(_ori)
                     _cn = ses.cantidades.pop(_ori, 1)
                     _p.banco[_d] = (_it, _cn)
+                    import competiciones as _comp_bank
+                    _comp_bank.mover_pase_banco(_p, _ori, _d, hacia_banco=True)
                     ses.enviar(
                         _iv3.vaciar_ranura(_p.entity_id, _ori),
                         _stats_ses(ses),
-                        _iv3.banco_poner(_p.char_id, _d, _it, _cn, dueno=_p.entity_id)
+                        _iv3.banco_poner(_p.char_id, _d, _it, _cn, dueno=_p.entity_id, mejoras=_p.mejoras)
                     )
                     if getattr(ses, 'usuario', None):
                         cuentas.guardar_banco(ses.usuario, _p.char_id, _p.banco)
@@ -14769,6 +14955,9 @@ class Servidor:
 
                 # 1. Movimiento / intercambio DENTRO del banco (Bank -> Bank)
                 if _ori in _p.banco and 1 <= _dst <= 48:
+                    import competiciones as _comp_bank
+                    _comp_bank.mover_pase_banco(_p, _ori, _dst, desde_banco=True,
+                                               hacia_banco=True, intercambio=_dst in _p.banco)
                     if _dst in _p.banco:
                         _v_ori = _p.banco[_ori]
                         _v_dst = _p.banco[_dst]
@@ -14777,8 +14966,8 @@ class Servidor:
                         _it1, _cn1 = _v_ori if isinstance(_v_ori, (list, tuple)) else (_v_ori, 1)
                         _it2, _cn2 = _v_dst if isinstance(_v_dst, (list, tuple)) else (_v_dst, 1)
                         ses.enviar(
-                            _iv3.banco_poner(_p.char_id, _dst, _it1, _cn1, dueno=_p.entity_id),
-                            _iv3.banco_poner(_p.char_id, _ori, _it2, _cn2, dueno=_p.entity_id)
+                            _iv3.banco_poner(_p.char_id, _dst, _it1, _cn1, dueno=_p.entity_id, mejoras=_p.mejoras),
+                            _iv3.banco_poner(_p.char_id, _ori, _it2, _cn2, dueno=_p.entity_id, mejoras=_p.mejoras)
                         )
                         log.info(f"[{addr}] banco: swap casilla {_ori} ({_it1}) <-> {_dst} ({_it2})")
                     else:
@@ -14787,11 +14976,12 @@ class Servidor:
                         _p.banco[_dst] = (_it, _cn)
                         ses.enviar(
                             _iv3.banco_vaciar_ranura(_ori),
-                            _iv3.banco_poner(_p.char_id, _dst, _it, _cn, dueno=_p.entity_id)
+                            _iv3.banco_poner(_p.char_id, _dst, _it, _cn, dueno=_p.entity_id, mejoras=_p.mejoras)
                         )
                         log.info(f"[{addr}] banco: mover item {_it} de casilla {_ori} a {_dst}")
                     if getattr(ses, 'usuario', None):
                         cuentas.guardar_banco(ses.usuario, _p.char_id, _p.banco)
+                        _guardar_bolsa(ses, _p.char_id)
                     return
 
                 # 2. De MOCHILA a BANCO por arrastre (Mochila -> Bank)
@@ -14802,10 +14992,12 @@ class Servidor:
                         _it = _bolsa.pop(_ori)
                         _cn = ses.cantidades.pop(_ori, 1)
                         _p.banco[_d] = (_it, _cn)
+                        import competiciones as _comp_bank
+                        _comp_bank.mover_pase_banco(_p, _ori, _d, hacia_banco=True)
                         ses.enviar(
                             _iv3.vaciar_ranura(_p.entity_id, _ori),
                             _stats_ses(ses),
-                            _iv3.banco_poner(_p.char_id, _d, _it, _cn, dueno=_p.entity_id)
+                            _iv3.banco_poner(_p.char_id, _d, _it, _cn, dueno=_p.entity_id, mejoras=_p.mejoras)
                         )
                         if getattr(ses, 'usuario', None):
                             cuentas.guardar_banco(ses.usuario, _p.char_id, _p.banco)
@@ -14820,10 +15012,12 @@ class Servidor:
                         _v = _p.banco.pop(_ori)
                         _it, _cn = _v if isinstance(_v, (list, tuple)) else (_v, 1)
                         _bolsa[_d] = _it
+                        import competiciones as _comp_bank
+                        _comp_bank.mover_pase_banco(_p, _ori, _d, desde_banco=True)
                         if _cn > 1:
                             ses.cantidades[_d] = _cn
                         ses.enviar(
-                            _iv3.banco_sacar(_p.char_id, _d, _it, _cn, dueno=_p.entity_id),
+                            _iv3.banco_sacar(_p.char_id, _d, _it, _cn, dueno=_p.entity_id, mejoras=_p.mejoras),
                             _iv3.banco_vaciar_ranura(_ori),
                             _stats_ses(ses)
                         )
@@ -14934,10 +15128,12 @@ class Servidor:
                 _it = _bolsa.pop(_desde_bolsa)
                 _cn = ses.cantidades.pop(_desde_bolsa, 1)
                 _p.banco[_d] = (_it, _cn)
+                import competiciones as _comp_bank
+                _comp_bank.mover_pase_banco(_p, _desde_bolsa, _d, hacia_banco=True)
                 ses.enviar(
                     _iv3.vaciar_ranura(_p.entity_id, _desde_bolsa),
                     _stats_ses(ses),
-                    _iv3.banco_poner(_p.char_id, _d, _it, _cn, dueno=_p.entity_id)
+                    _iv3.banco_poner(_p.char_id, _d, _it, _cn, dueno=_p.entity_id, mejoras=_p.mejoras)
                 )
                 if getattr(ses, 'usuario', None):
                     cuentas.guardar_banco(ses.usuario, _p.char_id, _p.banco)
@@ -14986,10 +15182,12 @@ class Servidor:
                 _v = _p.banco.pop(arg1)
                 _it, _cn = _v if isinstance(_v, (list, tuple)) else (_v, 1)
                 _bolsa[_d] = _it
+                import competiciones as _comp_bank
+                _comp_bank.mover_pase_banco(_p, arg1, _d, desde_banco=True)
                 if _cn > 1:
                     ses.cantidades[_d] = _cn
                 ses.enviar(
-                    _iv3.banco_sacar(_p.char_id, _d, _it, _cn, dueno=_p.entity_id),
+                    _iv3.banco_sacar(_p.char_id, _d, _it, _cn, dueno=_p.entity_id, mejoras=_p.mejoras),
                     _iv3.banco_vaciar_ranura(arg1),
                     _stats_ses(ses)
                 )
@@ -15477,6 +15675,7 @@ class Servidor:
             if ranura is None:
                 log.info(f"[{addr}] Angels GO! sin Superwing en la mochila")
                 return
+            _cancelar_portal_armado(ses)
             _sacar(ses, ranura, 1)
             yo = ses.personaje.entity_id
             salida = [struct.pack('<H', 0x0012) + bytes(7)]
@@ -15495,13 +15694,12 @@ class Servidor:
             else:
                 # OTRO MAPA: se cierra como un tornado.
                 salida.append(struct.pack('<HIB', 0x0007, yo, 1))
-                ses.personaje.stage = dst
-                ses.monstruos = _monstruos_de(dst)
+                ses.enviar(*salida)
+                _sincronizar_cambio_mapa(ses,dst,*lleg)
+                dst = ses.personaje.stage
+                lleg = [ses.personaje.tile_x,ses.personaje.tile_y]
                 _en = _portal_en(dst, *lleg)
                 ses.portal_pisado = tuple(_en['tile']) if _en else None
-                ses.mapa_cambiado_en = time.time()
-                salida.append(_cgo.cambiar_mapa(dst))
-                ses.enviar(*salida)
             cid = ses.personaje.char_id
             _guardar_bolsa(ses, cid)
             if getattr(ses, 'usuario', None):
@@ -16154,6 +16352,9 @@ class Servidor:
                             return
             item_id = bolsa[ranura]
             cid = ses.personaje.char_id if ses.personaje else 4980
+            if int(item_id) in (16762,16763):
+                __import__('competiciones').desellar_pase(ses,ranura)
+                return
 
             # SEMILLA DE LA GRANJA (categoria 農場種子, formula de uso 26; el
             # cultivo va en 動態資料1). Se planta en la parcela libre mas
@@ -17238,6 +17439,8 @@ class Servidor:
                     if getattr(ses, 'usuario', None):
                         cuentas.guardar_inventario(ses.usuario, cid, bolsa,
                                                    _cantidades(ses))
+                        cuentas.guardar_progreso(ses.usuario,cid,ses.personaje.nivel,ses.personaje.exp,
+                            ses.personaje.hp,ses.personaje.mp,buffs=ses.personaje.buffs)
                     log.info('[%s] %s da el buff %s durante %ds',
                              addr, item_id, _mid_buff, _dur // 1000)
                     return
@@ -17668,6 +17871,11 @@ class Servidor:
             # llega a mandar el 0x0006 y parecia que "no deja atacar".
             import combate as _cb0
             _m = (getattr(ses, 'monstruos', None) or {}).get(ent)
+            if (_m is not None and getattr(_m,'es_estructura_hb',False)
+                    and not __import__('holy_battlefield').puede_atacar(ses,_m)):
+                ses.objetivo_actual=None
+                __import__('holy_battlefield').pulsar(ses,ent)
+                return
             if _m is None:
                 import pvp_liga
                 _rival = pvp_liga.objetivo(ses, ent)
@@ -17806,6 +18014,8 @@ class Servidor:
                         return
 
                 _nom_ent = _nombre_entidad(ses, ent) or ''
+                if ses.personaje and __import__('competiciones').pulsar(ses, ent):
+                    return
                 if not _nom_ent:
                     log.debug(f"[{addr}] clic en entidad {ent} sin nombre registrado")
                     return
@@ -17813,6 +18023,28 @@ class Servidor:
                 if ses.personaje and _nom_ent == 'Aliua':
                     _aliua_hablar(ses, addr, ent)
                     return
+
+                # Raiz del MPC por NPC, no por retrato compartido con otro angel.
+                _service_roots = {
+                    3: {'Sentinel Angel': 6200},
+                    26: {'Sentinel Angel': 6200},
+                    29: {'Sentinel Angel': 6200},
+                    38: {'Sentinel Angel': 6200},
+                    41: {'Blessing Angel': 5383, 'BattlefieldAngel': 7546,
+                         'Census Angel': 5829},
+                    114: {'Low-Tier Clerk': 7550, 'Mid-Tier Clerk': 7551,
+                          'High-Tier Clerk': 7552, 'BattlefieldClerk': 7581},
+                }
+                _service_root = _service_roots.get(
+                    getattr(ses.personaje, 'stage', 0), {}).get(_nom_ent)
+                if _service_root:
+                    if ses.personaje.stage == 114:
+                        import competiciones as _comp_clerk
+                        ses._competicion_clerk = _comp_clerk.CLERKS.get(_nom_ent, (None,))[0]
+                    ses.dlg_quest_ofrecida = None
+                    ses.dlg_quest_fase = None
+                    if _recorrer_dialogo_mapa(ses, addr, ses.personaje.stage, _service_root):
+                        return
 
                 import lyceum_services as _ly_npc
                 if ses.personaje and ses.personaje.stage == 41 and _nom_ent in _ly_npc.NOMBRES:
@@ -17926,7 +18158,7 @@ class Servidor:
                         lvl_act = getattr(ses.personaje, 'nivel', 1)
                         if req_lvl and lvl_act < req_lvl and flujo and flujo.get('rechazo_nivel'):
                             # Rechazo por nivel insuficiente
-                            sub_r = dialogos.armar_linea(flujo['rechazo_nivel'], dialogos.val_por_entidad(ent), [], strings=[nom2])
+                            sub_r = dialogos.armar_linea(flujo['rechazo_nivel'], dialogos.val_por_entidad(ent), [], strings=['1', nom2])
                             ses.dlg_ent = ent
                             ses.dlg_guion = [sub_r[2:]]
                             ses.dlg_paso = 1
@@ -18000,7 +18232,7 @@ class Servidor:
                 # hace algo (opciones, acciones, ramas). Solo en instancias,
                 # donde los NPC van guionados por el mapa, o si no hay otro:
                 # en las ciudades manda dialogos.propio(), que ya funciona.
-                if ses.personaje:
+                if ses.personaje and _nom_ent != 'Director Wolay':
                     try:
                         import dialogos_mapa as _dm_c
                         _st_c = getattr(ses.personaje, 'stage', 0)
@@ -18131,6 +18363,9 @@ class Servidor:
         # La eleccion en un dialogo del arbol del mapa (_recorrer_dialogo_mapa).
         # Solo si el cuadro abierto sigue siendo ese: si despues se abrio
         # otro, dlg_guion ya no es el mismo y lo atiende quien lo abrio.
+        if (opcode==0x000B and ses.rol=='mundo'
+                and __import__('competicion_dialogos').continuar(ses,d.get('valor',1) if d else 1)):
+            return
         _dlm = getattr(ses, 'dlg_mapa', None)
         if (opcode == 0x000B and ses.rol == 'mundo' and _dlm
                 and getattr(ses, 'dlg_guion', None) is _dlm.get('guion')):
@@ -18140,6 +18375,10 @@ class Servidor:
                 ses.dlg_mapa = None
                 _i = _dlg_m.indice_opcion(_v)
                 _ops = _dlm.get('opciones') or []
+                if 0 <= _i < len(_ops) and ses.personaje:
+                    import competiciones as _comp_op
+                    if _comp_op.opciones(ses, _ops[_i][0]):
+                        return
                 _sig = _ops[_i][1] if 0 <= _i < len(_ops) else 0
                 ses.dlg_ent = None
                 ses.enviar(struct.pack('<H', 0x0012) + _dlg_m.FIN)
@@ -18223,8 +18462,8 @@ class Servidor:
                             ses.dlg_quest_fase = 'propuesta'
                             lineas_prop = []
                             for m_hist in flujo.get('historia', []):
-                                lineas_prop.append(dialogos.armar_linea(m_hist, val, [], strings=[nom2])[2:])
-                            line_final = dialogos.armar_linea(flujo['propuesta'], val, flujo.get('ops_prop', []), strings=[nom2])
+                                lineas_prop.append(dialogos.armar_linea(m_hist, val, [], strings=['1', nom2])[2:])
+                            line_final = dialogos.armar_linea(flujo['propuesta'], val, flujo.get('ops_prop', []), strings=['1', nom2])
                             lineas_prop.append(line_final[2:])
                             ses.dlg_guion = lineas_prop
                             ses.dlg_paso = 1
@@ -18248,7 +18487,7 @@ class Servidor:
                             log.info(f"[{addr}] {nom2} ACEPTÓ la mision {qid_ofrecida} de {_nombre_entidad(ses, ent)}")
                             # Si hay diálogo de despedida/buena suerte (base + 8), mostrarlo
                             if flujo.get('exito'):
-                                line_exito = dialogos.armar_linea(flujo['exito'], val, [], strings=[nom2])
+                                line_exito = dialogos.armar_linea(flujo['exito'], val, [], strings=['1', nom2])
                                 ses.dlg_guion = [line_exito[2:]]
                                 ses.dlg_paso = 1
                                 ses.enviar(line_exito)
@@ -18375,7 +18614,7 @@ class Servidor:
                     nom = ses.personaje.nombre if ses.personaje else 'Jugador'
                     puntos = _mis_mich.obtener_token_mision(ses, 1394)
                     if puntos < 15:
-                        sub_msg = dialogos.armar_linea(12310, 1, [], strings=[nom])
+                        sub_msg = dialogos.armar_linea(12310, 1, [], strings=['1', nom])
                         ses.enviar(sub_msg, struct.pack('<H', 0x0012) + dialogos.FIN)
                         ses.dlg_ent = None
                     else:
@@ -18518,7 +18757,7 @@ class Servidor:
                         else:
                             _guardado.append((int(r), int(v), 1))
                     _real = _inv.almacen(ses.personaje.char_id, _guardado,
-                                         ses.personaje.entity_id)
+                                         ses.personaje.entity_id, mejoras=ses.personaje.mejoras)
                     submsgs = tuple(_real if m[:2] == struct.pack('<H', 0x004E) else m
                                     for m in submsgs)
                     ses.banco_activo = 'personal'
@@ -18915,8 +19154,8 @@ class Servidor:
                         }
                         st_dest, tile_dest = CIUDAD_POR_FACCION.get(
                             ses.personaje.faction, CIUDAD_DE_FACCION["Aurora"])
-                        _sincronizar_cambio_mapa(ses, st_dest, tile_dest[0], tile_dest[1])
-                        log.info(f"[{addr}] Director Wolay: retorno a {ses.personaje.faction} (stage {st_dest})")
+                        ses.viaje_pendiente = (st_dest, tile_dest, ses.personaje.faction)
+                        log.info(f"[{addr}] Director Wolay: retorno pendiente al cerrar 5082")
                 elif _el == 5058 and ses.personaje:
                     # Raphael (Fighting Palace): Repetir explicacion
                     nom = ses.personaje.nombre if ses.personaje else 'Jugador'
@@ -19123,6 +19362,11 @@ class Servidor:
             # porque los bytes altos son cero, pero rompe la 0x0c.
             accion = cuerpo[0]
             parametro = struct.unpack_from('<I', cuerpo, 1)[0]
+            if accion==7 and ses.personaje:
+                # Native updatechfilter ->650e00->614da0(7, tab<<16|mask).
+                # 5ffc90 restores it via long attribute7/subproperty tab.
+                __import__('chat_filtros').guardar(ses,parametro)
+                return
             if accion == 1 and ses.personaje and not getattr(ses, 'muerto', False):
                 # EMOTE / EMOCION (Alt+E o ranuras de acceso rapido).
                 # Angel.exe FUN_00614DA0(1, AppData) manda C2S 0x0016 [01] [LE32 emote_id].
@@ -19175,7 +19419,8 @@ class Servidor:
                 import combate as _cb_al
                 ses.fantasma = True
                 _yo_al = ses.personaje.entity_id
-                ses.enviar(_cb_al.atributo(_yo_al, _cb_al.ESTADO_FANTASMA, _cb_al.KIND_ESTADO),
+                ses.enviar(__import__('supremo').paquete_estado(
+                               ses.personaje, __import__('supremo').ESTADO_PROPIO | _cb_al.ESTADO_FANTASMA),
                            struct.pack('<HIII', 0x000A, _yo_al, 0, 0))
                 log.info(f"[{addr}] {ses.personaje.nombre} sigue como alma")
                 return
@@ -19195,7 +19440,7 @@ class Servidor:
                 if getattr(ses, 'fantasma', False):
                     import combate as _cb_fx
                     ses.fantasma = False
-                    ses.enviar(_cb_fx.atributo(p2.entity_id, 0, _cb_fx.KIND_ESTADO))
+                    ses.enviar(__import__('supremo').paquete_estado(p2))
                 _sincronizar_cambio_mapa(ses, p2.stage, rev_x, rev_y)
                 if getattr(ses, 'usuario', None):
                     cuentas.guardar_progreso(ses.usuario, p2.char_id,
@@ -19326,6 +19571,11 @@ class Servidor:
                 return
 
         if opcode == 0x0004 and d:
+            if __import__('desplazamientos').movimiento_obsoleto(ses,d['cur_x'],d['cur_y']):
+                # Acknowledge the old request without moving back across a
+                # local blink, including empty-path "I'm stuck" reports.
+                ses.enviar(Msg.registry[(0x006D,'s2c','*')].build())
+                return
             ses.ultimo_movimiento = time.time()
             if getattr(ses, 'puesto', None):
                 ACK = Msg.registry[(0x006D, 's2c', '*')]
@@ -19352,6 +19602,14 @@ class Servidor:
                     ses.enviar(struct.pack('<HIII', 0x000A, ses.personaje.entity_id, 0, 0))
             MOVE = Msg.registry[(0x0005, 's2c', '*')]
             ACK = Msg.registry[(0x006D, 's2c', '*')]
+            # Rechazar ANTES del ACK/MOVE: durante un viaje llegan paquetes
+            # que el cliente habia emitido desde el mapa anterior.
+            if ses.personaje:
+                _ox, _oy = d['cur_x'] // 32, d['cur_y'] // 32
+                if (time.time() - getattr(ses, 'mapa_cambiado_en', 0) < 3.0
+                        and max(abs(_ox - (ses.personaje.tile_x or 0)),
+                                abs(_oy - (ses.personaje.tile_y or 0))) > 15):
+                    return
             # RUTA VACIA: el cliente avisa de que esta parado y no tiene por
             # donde salir. Antes se salia de aqui sin contestar nada y el
             # cliente se quedaba esperando el acuse para siempre: eso era el
@@ -19375,6 +19633,15 @@ class Servidor:
             # Medido en Celestia: de 325 rutas de dos o mas tramos, en 291 el
             # servidor devuelve el PRIMER waypoint y en NINGUNA el ultimo.
             dst = d['path'][0]
+            if ses.personaje and ses.personaje.stage == 112:
+                import holy_battlefield as _hb_step
+                if _hb_step.bloquear_paso(ses,
+                        (ses.personaje.tile_x, ses.personaje.tile_y),
+                        (dst['x']//32, dst['y']//32)):
+                    _px_hb, _py_hb = ses.personaje.tile_x*32, ses.personaje.tile_y*32
+                    ses.enviar(ACK.build(), MOVE.build(entity_id=ses.personaje.entity_id,
+                        cur_x=_px_hb,cur_y=_py_hb,dst_x=_px_hb,dst_y=_py_hb,speed=_velocidad_de(ses)))
+                    return
             ses.enviar(ACK.build(),
                        MOVE.build(entity_id=ses.entity_id or 1001,
                                   cur_x=d['cur_x'], cur_y=d['cur_y'],
@@ -19417,6 +19684,13 @@ class Servidor:
                     return
                 ses.personaje.tile_x = dst['x'] // 32
                 ses.personaje.tile_y = dst['y'] // 32
+                if ses.personaje.stage==112:
+                    _hb_walk=__import__('holy_battlefield')
+                    _hb_wait=math.hypot(dst['x']-d['cur_x'],dst['y']-d['cur_y'])/max(1,_velocidad_de(ses))
+                    ses._holy_camino=(time.time()+_hb_wait,(_ox,_oy))
+                    if _hb_walk.paso_guardian(ses,(_ox,_oy),(ses.personaje.tile_x,ses.personaje.tile_y),demora=_hb_wait):
+                        return
+                    ses._holy_salto_pendiente=None
                 _armar_portal_al_llegar(
                     ses, addr, (ses.personaje.tile_x, ses.personaje.tile_y),
                     max(abs(ses.personaje.tile_x - _ox),
@@ -19746,6 +20020,8 @@ class Servidor:
         tareas.append(cuentas.tarea_backup_periodico())
         import totem_war as _tw_reloj
         tareas.append(_tw_reloj.reloj())
+        import competiciones as _comp_reloj
+        tareas.append(_comp_reloj.reloj())
 
         # SEÑUELOS: el binario muestra que la ip y el puerto del mundo NO
         # salen del redirect sino de la lista de servidores (sub_51A370 los

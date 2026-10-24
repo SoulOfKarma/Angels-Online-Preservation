@@ -18,6 +18,32 @@ GRUPOS_LOGIN = {515008: 526, 515009: 527, 515010: 528}
 GRUPO_GREEN = 401  # Catalogo completo: pociones, cervezas y nueve monturas.
 
 
+def bendecir(ses):
+    """Blessing Angel, map041: 6755 hasta nivel 50, 6756 desde 51, 2 horas.
+
+    No cobrar MP de una skill ni apilar los dos rangos al subir de nivel.
+    La duracion y los bonos vienen del magic.xml vigente.
+    """
+    import app, combate
+    p = ses.personaje
+    if not p or p.stage != 41 or getattr(ses, 'muerto', False):
+        return False
+    mid = 6756 if p.nivel >= 51 else 6755
+    mag = combate.datos_magia(mid)
+    duration = int(xml_rows('magic.xml')[mid]['持續時間'])
+    if getattr(p, 'buffs', None) is None:
+        p.buffs = {}
+    for previous in (6755, 6756):
+        if previous != mid and p.buffs.pop(previous, None) is not None:
+            ses.enviar(struct.pack('<HIBBII', 0x001D, p.entity_id, 1, 4, previous, 0))
+    entry = app._entrada_de_buff(mag, duration)
+    entry['persist_death'] = True
+    app._buff_a_otro(ses, mid, entry, duration * 1000, mag)
+    if getattr(ses, 'usuario', None):
+        cuentas.guardar_buffs(ses.usuario, p.char_id, p.buffs)
+    return True
+
+
 def saludo(nombre):
     return {'Astrologer': (142501, [142502, 142503, 142504, 142505]),
             'Login Rewarder': (515006, [515007, 515008, 515009, 515010, 515011]),

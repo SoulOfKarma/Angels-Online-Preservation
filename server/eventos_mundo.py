@@ -68,6 +68,7 @@ SABE = frozenset((
     31,     # TIMER_COUNTER
     39,     # GROUP
     48,     # TEAMID
+    49,     # BATTLE_CHECK_CRYSTAL
     21,     # HAVE_GUILD
     28,     # HAVE_GUILD_REGION
     33,     # GUILD_PERM
@@ -482,11 +483,21 @@ class ContextoSesion(ev.Contexto):
             return 1
 
     def teamid(self):
+        if self.p and self.p.stage==112:
+            import competiciones
+            m=competiciones._miembro(competiciones.ronda(112),self.ses)
+            return m['equipo'] if m and not m['espectador'] else 0
         try:
             import equipos as _eq
             return _eq.lider_de(self.ses)
         except Exception:
             return 0
+
+    def lleva_cristal(self):
+        if not self.p or self.p.stage!=112:return False
+        import competiciones
+        r=competiciones.ronda(112)
+        return bool(r and self.p.char_id in r.get('portadores',{}).values())
 
     def tiene_guild(self):
         if not self.p:

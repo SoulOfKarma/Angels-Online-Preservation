@@ -1,4 +1,4 @@
-"""Combate dirigido entre jugadores durante Totem War, nunca en zonas seguras."""
+"""Player combat: timed wars, competitions and permanent Outpost faction PvP."""
 import logging
 import struct
 import cuentas
@@ -32,7 +32,14 @@ def _por_que_no(ses, otro):
     p, q = getattr(ses, 'personaje', None), getattr(otro, 'personaje', None)
     if not p or not q or ses is otro or p.stage != q.stage:
         return 'no estan en el mismo mapa'
-    if not totem_war.activa() or not totem_war.es_mapa_tw(p.stage):
+    if presencia.clave_de_mapa(ses, p.stage) != presencia.clave_de_mapa(otro, q.stage):
+        return 'salas distintas'
+    import competiciones
+    competition_reason = competiciones.motivo_pvp(ses, otro)
+    if competition_reason is not None:
+        return competition_reason
+    import outpost_pvp
+    if not outpost_pvp.es_mapa(p.stage) and (not totem_war.activa() or not totem_war.es_mapa_tw(p.stage)):
         return 'sin Totem War o fuera de la arena'
     if presencia.clave_de_mapa(ses, p.stage) != presencia.clave_de_mapa(otro, q.stage):
         return 'salas distintas'
@@ -188,7 +195,10 @@ def atacar(ses, otro, tipo, mag, arma, en_area=False, golpes=None, separacion=No
     sep = separacion if separacion is not None else max(0.05, (combo or {}).get('intervalo_ms', 200) / 1000.0)
     efecto = combate.efecto_de_ataque(tipo) if tipo != combate.ATAQUE_NORMAL else 0
 
+    vida_objetivo = getattr(otro, 'competicion_vida', 0)
     def _golpe(primero=False):
+        if getattr(otro, 'competicion_vida', 0) != vida_objetivo:
+            return  # No transferir el resto del combo a su nueva vida/respawn.
         if not permitido(ses, otro):
             return
         es_crit = random.random() < crit
@@ -212,16 +222,17 @@ def atacar(ses, otro, tipo, mag, arma, en_area=False, golpes=None, separacion=No
     return True
 
 
-def _aplicar(ses, otro, dano, es_crit, con_efecto, tipo, efecto, magia):
+def _aplicar(ses, otro, dano, es_crit, con_efecto, tipo, efecto, magia, *, origen_eid=None):
     """Un golpe ya calculado: vida, paquetes a todos los que lo ven y muerte."""
     import combate, presencia
     p, q = ses.personaje, otro.personaje
+    dano = __import__('avatar_clones').absorber(otro,dano)
     q.hp = max(0, q.hp - dano)
     apub, bpub = presencia.entidad_de(ses), presencia.entidad_de(otro)
     visibles = presencia._vivas(presencia.clave_de_mapa(ses, p.stage))
     tipo_num = combate.TIPO_DANO_CRITICO if es_crit else combate.TIPO_DANO
     for visor in visibles:
-        a = p.entity_id if visor is ses else apub
+        a = origen_eid if origen_eid is not None else (p.entity_id if visor is ses else apub)
         b = q.entity_id if visor is otro else bpub
         pkts = []
         if con_efecto and efecto:
@@ -252,7 +263,13 @@ def _aplicar(ses, otro, dano, es_crit, con_efecto, tipo, efecto, magia):
     if not q.hp:
         otro.muerto = True
         otro.objetivo_actual = None
-        _contar_baja(ses, p)
+        import competiciones
+        if p.stage in competiciones.MAPAS:
+            competiciones.baja(ses, otro)
+            return  # no recompensas de Totem War ni penalizacion de EXP
+        import outpost_pvp
+        if not outpost_pvp.es_mapa(p.stage):
+            _contar_baja(ses, p)  # Outpost is not a source of TW credits/round kills.
         try:
             import app as _app_l
             _app_l._logros_contar(otro, 'muertes')
