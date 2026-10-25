@@ -96,3 +96,4 @@ def tick(r, stamp, interval=INTERVAL):
                 pkts.append(clases.arbol(p.habilidades))
 
         ses.enviar(*pkts)
+
