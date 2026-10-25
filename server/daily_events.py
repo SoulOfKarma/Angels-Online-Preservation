@@ -17,7 +17,17 @@ import uuid
 _DB=None
 _ROUNDS={}
 _ROOMS={}
+_ANUNCIOS_BATALLA=set()
+_ANUNCIOS_FIN=set()
 ALIASES={'bleach':0,'faction':1,'guard':2,'swindle':3,'quick':4,'joy':5,'happiness':6}
+
+
+def anuncio_banner(texto):
+    try:
+        import app, totem_war
+        app._tw_difundir(totem_war.cartel_deslizante(texto))
+    except Exception:
+        pass
 
 # Original string.xml titles/help and stage.xml maps. The weekly schedule
 # is configured separately; the original server's timetable is not in MPCs.
@@ -187,6 +197,11 @@ def iniciar_evento(alias,minutes=30,registration=5,start=None,identity=None):
         con.execute('BEGIN IMMEDIATE');_schema(con)
         for r in rounds:con.execute('INSERT INTO daily_rounds VALUES(?,?,?)',(r['id'],r['stage'],json.dumps(r)))
     _ROUNDS.update({r['id']:r for r in rounds})
+    name=GAMES[ALIASES[alias]][0]
+    if registration>0:
+        anuncio_banner('[Daily Event] %s registration is open! Sign up on the Daily Events board!'%name)
+    else:
+        anuncio_banner('[Daily Event] %s battle has begun! Enter now!'%name)
     return rounds
 
 
@@ -201,7 +216,12 @@ def _sessions(r):
 
 def _spawn_tile(r,team=1):
     import eventos
-    tag=team if r['kind'] in (0,1) else 1
+    if r['kind']==3:
+        tag={1:2,2:4,3:9,4:3}.get(team,2)
+    elif r['kind'] in (0,1):
+        tag=team
+    else:
+        tag=1
     tiles=eventos.casillas_de_tag(r['stage'],tag) or eventos.casillas_de_tag(r['stage'],1)
     if not tiles:raise Rechazo('The Daily Event entrance is unavailable.')
     return tuple(tiles[0])
@@ -229,9 +249,11 @@ def entrar(ses,stage):
         team=1
         if r['kind']==0:
             team=min((1,2),key=lambda t:sum(m['team']==t for m in r['members'].values()))
-        if r['kind']==1:
+        if r['kind'] in (1,3):
             team={'Aurora':1,'Beasts':2,'Steel':3,'Shadow':4}.get(p.faction,0)
-            if not team:raise Rechazo('Join a faction before entering Faction Showdown.')
+            if not team:
+                team=1 if r['kind']==3 else 0
+            if not team:raise Rechazo('Join a faction before entering %s.'%r['name'])
         tile=_spawn_tile(r,team)
         new=copy.deepcopy(r)
         new['members'][key]=dict(usuario=ses.usuario,char_id=p.char_id,name=p.nombre,level=p.nivel,
@@ -379,7 +401,9 @@ def motivo_pvp(ses,other):
     if not a or not b:return 'Unregistered Daily Event player'
     if getattr(ses,'muerto',False) or getattr(other,'muerto',False):return 'Dead player'
     if r['kind']==0:return '' if a['team']!=b['team'] else 'Same Daily Event team'
-    if r['kind']==3:return '' if getattr(ses,'_daily_unsafe',False) and getattr(other,'_daily_unsafe',False) else 'Daily Event safe zone'
+    if r['kind']==3:
+        if a['team']==b['team']:return 'Same faction'
+        return '' if getattr(ses,'_daily_unsafe',False) and getattr(other,'_daily_unsafe',False) else 'Daily Event safe zone'
     return 'This Daily Event does not permit player combat'
 
 
@@ -484,6 +508,10 @@ def _finish(r,cancel=False):
         player.personaje.buffs.pop('daily_joy',None)
         if getattr(player,'recoleccion',None):__import__('app')._parar_recoleccion(player)
         aviso(player,new['name']+' has ended.'+(' Claim your winning reward at Daily Events Clerk.' if new['members'][_key(player)]['team'] in teams else ''))
+    family=r.get('family',r['id'])
+    if not cancel and family not in _ANUNCIOS_FIN:
+        _ANUNCIOS_FIN.add(family)
+        anuncio_banner('[Daily Event] %s has ended! Claim your rewards at the Daily Events Clerk!'%new['name'])
 
 
 def _mechanics(r,now):
@@ -492,8 +520,9 @@ def _mechanics(r,now):
     if now<r.get('_tick',0)+1:return
     r['_tick']=now
     if r['kind']==3:
-        base=_spawn_tile(r)
         for player in players:
+            m_team=r['members'].get(_key(player),{}).get('team',1)
+            base=_spawn_tile(r,m_team)
             if getattr(player,'_daily_unsafe',False) and max(abs(player.personaje.tile_x-base[0]),abs(player.personaje.tile_y-base[1]))<=8:
                 player._daily_unsafe=False;aura(player,False)
     import combate,transitable,login
@@ -560,6 +589,10 @@ def cron(now=None):
             if r['phase']=='registration':
                 r['phase']='battle';_save(r)
                 changed=True
+                family=r.get('family',r['id'])
+                if family not in _ANUNCIOS_BATALLA:
+                    _ANUNCIOS_BATALLA.add(family)
+                    anuncio_banner('[Daily Event] %s battle has begun!'%r['name'])
                 for p in _sessions(r):
                     aura(p,r['kind']==0);aviso(p,r['name']+' has begun!')
             __import__('daily_experience').tick(r,stamp)

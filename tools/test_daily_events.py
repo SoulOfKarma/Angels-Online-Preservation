@@ -259,12 +259,37 @@ def test_daily_experience_tick_awards_periodic_exp_and_skill_exp(world):
     daily_experience.tick(r, stamp)
     assert s.personaje.exp > init_exp
     assert s.personaje.habilidades[0][2] > 0
-    # Floating exp and skill packets sent
-    assert any(p[:2] == b'\x0b\x00' for p in s.packets)
+    # Chat notices (0x000D) and status updates (0x001D) sent, NO fake damage/heal floats (0x000B)
+    assert any(p[:2] == b'\x0d\x00' for p in s.packets)
+    assert any(p[:2] == b'\x1d\x00' for p in s.packets)
+    assert not any(p[:2] == b'\x0b\x00' for p in s.packets)
     # Consecutive tick before interval does nothing
     exp_after = s.personaje.exp
     daily_experience.tick(r, stamp + 2)
     assert s.personaje.exp == exp_after
+
+
+def test_swindle_world_spawns_players_on_their_respective_faction_platforms(world):
+    daily.iniciar_evento('swindle', minutes=30, registration=0)
+    for faction, expected_tile in [
+        ('Aurora', (97, 158)),
+        ('Beasts', (95, 51)),
+        ('Steel', (305, 52)),
+        ('Shadow', (303, 155)),
+    ]:
+        p_ses = world.player(level=410)
+        p_ses.personaje.faction = faction
+        daily.entrar(p_ses, 375)
+        assert (p_ses.personaje.tile_x, p_ses.personaje.tile_y) == expected_tile
+
+
+def test_daily_banner_announcements_broadcast_top_notices(world, monkeypatch):
+    import totem_war
+    broadcasted = []
+    monkeypatch.setattr('app._tw_difundir', lambda *pkts: broadcasted.extend(pkts))
+    daily.iniciar_evento('guard', minutes=30, registration=5)
+    assert any(p[:2] == b'\x28\x01' for p in broadcasted)  # 0x0128 cartel_deslizante banner
+
 
 
 def test_daily_exit_portals_present_and_visible_in_all_daily_stages(world):

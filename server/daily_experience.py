@@ -8,9 +8,10 @@ import struct
 import time
 
 INTERVAL = 10  # Seconds between periodic ticks
-EXP_BASE_PER_LEVEL = 750  # Character EXP awarded per level per interval
-EXP_MINIMUM = 500  # Minimum character EXP per tick
-SKILL_EXP_AMOUNT = 15  # Skill EXP awarded to skills per interval
+EXP_PER_LEVEL = 4800  # Character EXP per level (~2M at level 410)
+EXP_CAP = 2_000_000  # Maximum character EXP per tick
+EXP_MINIMUM = 50_000  # Minimum character EXP per tick
+SKILL_EXP_AMOUNT = 100  # Skill EXP awarded to skills per interval (~100)
 
 
 def tick(r, stamp, interval=INTERVAL):
@@ -33,9 +34,9 @@ def tick(r, stamp, interval=INTERVAL):
         if not p or getattr(ses, 'muerto', False) or not getattr(p, 'vivo', True):
             continue
 
-        # Character EXP
+        # Character EXP: scale with level up to ~2M, no 0x000B fake damage/healing numbers
         mult_exp = configuracion.multiplicador_exp(getattr(p, 'buffs', None))
-        exp_gain = max(EXP_MINIMUM, int(p.nivel * EXP_BASE_PER_LEVEL * mult_exp))
+        exp_gain = min(EXP_CAP, max(EXP_MINIMUM, int(p.nivel * EXP_PER_LEVEL * mult_exp)))
 
         p.exp = max(int(p.exp or 0), combate.exp_para_nivel(p.nivel)) + exp_gain
         subio_nivel = False
@@ -54,12 +55,9 @@ def tick(r, stamp, interval=INTERVAL):
             + struct.pack('<BQ', 29, u64(p.nivel))
             + struct.pack('<BQ', 30, u64(combate.exp_para_nivel(p.nivel)))
             + struct.pack('<BQ', 31, u64(siguiente_exp))
-            + struct.pack('<BQ', 32, u64(actual_exp))
+            + struct.pack('<BQ', 32, u64(actual_exp)),
+            clases.aviso(str(int(exp_gain)), tipo=0, msg_id=clases.MSG_EXP)
         ]
-        if exp_gain <= 0xFFFFFFFF:
-            pkts.append(combate.exp_paquete(p.entity_id, int(exp_gain)))
-        else:
-            pkts.append(clases.aviso(str(int(exp_gain)), tipo=0, msg_id=clases.MSG_EXP))
 
         if subio_nivel:
             try:
@@ -67,9 +65,9 @@ def tick(r, stamp, interval=INTERVAL):
             except Exception:
                 pass
 
-        # Skill EXP
+        # Skill EXP: ~100 per interval, no 0x000B fake damage/healing numbers
         mult_skill = configuracion.multiplicador_skill_exp(getattr(p, 'buffs', None))
-        skill_gain = max(1, int(round(SKILL_EXP_AMOUNT * mult_skill)))
+        skill_gain = max(10, int(round(SKILL_EXP_AMOUNT * mult_skill)))
         nuevas_habs = []
         subio_skill = False
         for h in getattr(p, 'habilidades', []) or []:
@@ -87,13 +85,12 @@ def tick(r, stamp, interval=INTERVAL):
             if slv >= max_lv:
                 sexp = min(sexp, req)
             pkts.append(struct.pack('<HIBBII', 0x001D, p.entity_id, 1, 0, sid, sexp & 0xFFFFFFFF))
+            pkts.append(clases.aviso_doble(clases.MSG_SKILL_EXP, clases.nombre(sid), str(skill_gain)))
             nuevas_habs.append((sid, slv, sexp))
 
         if nuevas_habs:
             p.habilidades = nuevas_habs
-            pkts.append(combate.skill_exp_paquete(p.entity_id, skill_gain))
             if subio_skill:
                 pkts.append(clases.arbol(p.habilidades))
 
         ses.enviar(*pkts)
-

@@ -28,7 +28,7 @@ def portals(stage):
         0: [(20, 99), (370, 102)],                          # Bleach of Red
         1: [(31, 168), (182, 27), (460, 103), (308, 244)],  # Faction Showdown
         2: [(28, 25)],                                       # Angelic Guard (Training City clover arch)
-        3: [(155, 198)],                                     # Swindle World
+        3: [(88, 45), (88, 158), (312, 44), (310, 159)],    # Swindle World (4 faction platforms)
         4: [(301, 173)],                                     # Quick Reflexes
         5: [(5, 4)],                                         # Joy Angel Village
         6: [(350, 31)],                                      # Happiness Guard

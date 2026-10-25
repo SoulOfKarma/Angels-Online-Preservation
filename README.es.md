@@ -29,10 +29,12 @@ Bolsas de venta verificadas de2025 en On Sale/Fashion/Bubble; Top Sale usa compr
 Scrolls de ciudad, marcas Mark/Maple persistentes y libros de viaje de equipo atomicos.
 Daily Events: dos juegos distintos por dia en una rotacion semanal local
 configurable (42 filas por tramos), entrada automatica al tramo de nivel correspondiente,
-apertura atomica simultanea de los 4 tramos de nivel, entrega periodica de EXP y Skill EXP
-mientras se esta dentro de la zona de combate (daily_experience), warps de salida visibles y transitables hacia
+apertura atomica simultanea de los 4 tramos de nivel, entrega periodica de EXP (escalada por nivel hasta ~2M) y Skill EXP (~100)
+mediante avisos oficiales de sistema sin numeros flotantes de combate falso, aparicion y retorno por faccion en Swindle World
+(Aurora 97,158; Beasts 95,51; Steel 305,52; Shadow 303,155) con sus salidas dedicadas, anuncios deslizantes superiores
+tipo /notice al abrir registro, empezar combate y finalizar evento, warps de salida transitables hacia
 Angel Lyceum (radio 2, con salida bajo el arco de trebol en 28,25 para Training City) y preservacion del retorno original
-a la entrada al abrir cofres (ir_a_tag 1).
+a la base al abrir cofres.
 Comandos GM: /daily start y /daily enter. No se recuperaron los horarios ni probabilidades del servidor original.
 Angel Lyceum: NPCs restaurados
 Astral Angel (canje de Star Keys 393), Party Angel (cajas renewal y canje 245), Chat Bubble Exchange
