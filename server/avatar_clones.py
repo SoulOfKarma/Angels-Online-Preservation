@@ -1,7 +1,59 @@
 """Avatar formula29: separate companion slot, lifetime, combat/substitute roles."""
 import asyncio
+import random
 import struct
 import time
+
+
+def objetivo(ses,inv,target=None):
+    """Follow the owner's combat order; never acquire neutral/friendly NPCs."""
+    if inv.get('clon_sustituto'):inv['objetivo']=None;return
+    import holy_battlefield,daily_events
+    p=ses.personaje;monsters=getattr(ses,'monstruos',{}) or {}
+    def valid(m):
+        return (m is not None and monsters.get(m.entity_id) is m and getattr(m,'vivo',False)
+                and m.hp>0 and not getattr(m,'encantado',False)
+                and max(abs(m.tile_x-p.tile_x),abs(m.tile_y-p.tile_y))<=15
+                and holy_battlefield.puede_atacar(ses,m) and daily_events.can_target(ses,m))
+    selected=monsters.get(getattr(ses,'objetivo_actual',None))
+    target=next((m for m in (target,inv.get('objetivo'),selected) if valid(m)),None)
+    if target is None:
+        threats=[m for m in monsters.values() if getattr(m,'en_combate_con',None)==p.entity_id and valid(m)]
+        target=min(threats,key=lambda m:max(abs(m.tile_x-p.tile_x),abs(m.tile_y-p.tile_y)),default=None)
+    inv['objetivo']=target
+
+
+def ordenar(ses,target):
+    inv=getattr(ses,'avatar_clon',None)
+    if inv:objetivo(ses,inv,target)
+
+
+def atacar(ses,inv,target,ahora):
+    """Power Clone's basic hit uses its copied attack, crit and cadence."""
+    import app,combate,presencia,transitable
+    objetivo(ses,inv,target)
+    if inv.get('objetivo') is not target or inv.get('clon_sustituto'):return
+    origin=(inv['tile_x'],inv['tile_y']);end=(target.tile_x,target.tile_y)
+    if max(abs(end[0]-origin[0]),abs(end[1]-origin[1]))>inv['atk_range']:return
+    if ahora<inv.get('proximo_paso',0) or not transitable.linea_libre(ses.personaje.stage,origin,end):return
+    cadence=inv['cadencia']
+    if ahora-inv.get('ultimo_ataque',0)<cadence:return
+    critical=random.random()*100<inv['crit_rate']
+    inv['ultimo_ataque']=ahora
+    old=combate.ATACANTE[0];combate.ATACANTE[0]=ses
+    try:damage=target.recibir(inv['atk'],mult=1.5 if critical else 1.0)
+    finally:combate.ATACANTE[0]=old
+    if not getattr(target,'en_combate_con',None) and target.hp>0:target.en_combate_con=ses.personaje.entity_id
+    animation=combate.anim_de_arma(inv['arma'],ciclo_ms=int(cadence*1000))
+    packets=[combate.ataque(inv['entity_id'],target.entity_id,animation),
+             combate.numero_de_dano(inv['entity_id'],target.entity_id,damage,ataque=656),
+             combate.cierre_de_dano(inv['entity_id'],target.entity_id,ataque=656),
+             combate.numero_flotante(target.entity_id,damage,combate.TIPO_DANO_CRITICO if critical else combate.TIPO_DANO),
+             combate.atributo(target.entity_id,target.porcentaje if target.hp>0 else 0)]
+    ses.enviar_inmediato(*packets);presencia.notificar_companero_accion(ses,*packets)
+    if target.hp<=0:
+        inv['objetivo']=None
+        app._procesar_muerte_monstruo(ses,target,ses.personaje.entity_id,'Power Clone',espera=0.1)
 
 
 def spawn(ses,inv):
@@ -48,7 +100,9 @@ def lanzar(ses, tipo, mag):
         pct=max(1,int(mag['clon_poder']))
         stats=app._stats_ses(ses)
         hp=max(1,app._vida_max(p)*pct//100)
-        # Parameter2 is interpreted as a percentage of the owner's base stats.
+        # Parameter2 scales the owner's EFFECTIVE stats, including gear,
+        # passives and active transformations. V copies100%, not NPC6270's
+        # generic movement/range/critical and attack cadence.
         # This server-side scaling is explicit; no unrelated static NPC damage.
         eid=90_000_000+presencia.entidad_de(ses)*4+3
         inv=dict(entity_id=eid,npc_type=npc,nombre=p.nombre,sprite=info['sprite'],
@@ -56,12 +110,25 @@ def lanzar(ses, tipo, mag):
                  matk=struct.unpack_from('<I',stats,46)[0]*pct//100,
                  defensa=struct.unpack_from('<I',stats,38)[0]*pct//100,
                  mdef=struct.unpack_from('<I',stats,54)[0]*pct//100,
-                 move_speed=info.get('move_speed',70),atk_speed=info.get('atk_speed',70),
-                 atk_range=info.get('atk_range',1),skills=[],tile_x=p.tile_x+1,tile_y=p.tile_y,
+                 atk_l=struct.unpack_from('<I',stats,30)[0]*pct//100,
+                 mp=app._mana_max(p)*pct//100,mp_max=app._mana_max(p)*pct//100,
+                 accuracy=struct.unpack_from('<H',stats,60)[0]*pct//100,
+                 agility=struct.unpack_from('<H',stats,64)[0]*pct//100,
+                 crit_rate=struct.unpack_from('<H',stats,68)[0]*pct//100,
+                 move_speed=app._velocidad_de(ses),
+                 arma=ses.inventario.get(3,0),
+                 cadencia=combate.cadencia_ataque(p.buffs,p.habilidades,
+                     duales=app.lleva_duales_ses(ses),item_id=ses.inventario.get(3,0)),
+                 atk_range=app._cb_alcance(ses),skills=[],tile_x=p.tile_x+1,tile_y=p.tile_y,
                  expira=time.time()+mag['dur_invoca'],objetivo=None,ultimo_ataque=0,
                  es_clon=True,
                  clon_sustituto=bool(mag['clon_sustituto']))
         ses.avatar_clon=inv
+        inv['level']=p.nivel
+        for key,offset in (('res_body',72),('res_mind',76),('res_lightning',78),
+                           ('res_fire',82),('res_ice',86),('res_corrosion',90)):
+            inv[key]=struct.unpack_from('<H',stats,offset)[0]*pct//100 if len(stats)>=offset+2 else 0
+        objetivo(ses,inv)
         spawn_packet=spawn(ses,inv)
         health=combate.atributo(eid,100,combate.KIND_HP)
         ses.enviar(combate.cierre_de_dano(p.entity_id,p.entity_id,ataque=tipo,efecto=mag.get('efecto',0)),

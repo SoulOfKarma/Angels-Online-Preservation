@@ -1,0 +1,28 @@
+{
+ "source": "Local weekly rotation. The IGG client requests its calendar from the server (014B); no original schedule table was found in the installed PAKs.",
+ "registration_minutes": 15,
+ "duration_minutes": 30,
+ "presence_rewards": {
+  "enabled": true,
+  "interval_seconds": 60,
+  "exp_ppm": 100,
+  "skill_exp_ppm": 1000,
+  "source": "Local compatibility values: 0.01% of next character level and 0.1% of each skill level per minute; original server rates/interval not recovered."
+ },
+ "slots": [
+  {"day":0,"alias":"swindle","start":"18:00"},
+  {"day":0,"alias":"guard","start":"21:00"},
+  {"day":1,"alias":"quick","start":"18:00"},
+  {"day":1,"alias":"bleach","start":"21:00"},
+  {"day":2,"alias":"faction","start":"18:00"},
+  {"day":2,"alias":"joy","start":"21:00"},
+  {"day":3,"alias":"guard","start":"18:00"},
+  {"day":3,"alias":"swindle","start":"21:00"},
+  {"day":4,"alias":"happiness","start":"18:00"},
+  {"day":4,"alias":"quick","start":"21:00"},
+  {"day":5,"alias":"joy","start":"18:00"},
+  {"day":5,"alias":"faction","start":"21:00"},
+  {"day":6,"alias":"bleach","start":"18:00"},
+  {"day":6,"alias":"happiness","start":"21:00"}
+ ]
+}

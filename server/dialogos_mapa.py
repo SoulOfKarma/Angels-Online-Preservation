@@ -44,7 +44,11 @@ def _arbol(stage):
                 _terra_keeper_antiguo(_TODO)
         except Exception:
             log.exception('Terra Keeper antiguo')
-    return _TODO.get(str(int(stage)), {})
+    result=_TODO.get(str(int(stage)), {})
+    if int(stage)==41:
+        import olympus,recent_mall
+        return {**result,**olympus.datos()['nodes'],**recent_mall.datos()['nodes']}
+    return result
 
 
 # EL TERRA KEEPER DE LA GUERRA ANTIGUA (totem_war.MODO = 'antigua'). Medido en

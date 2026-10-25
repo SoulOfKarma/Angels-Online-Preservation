@@ -132,11 +132,12 @@ def multiplicador_skill_exp(buffs: dict = None) -> float:
     return m
 
 
-def multiplicador_drop() -> float:
+def multiplicador_drop(buffs: dict = None) -> float:
     """Calcula el multiplicador total de drops."""
     m = TASA_DROP_BASE
     if es_fin_de_semana():
         m *= 1.5
+    m += pct_buffs(buffs, 'drop_extra_pct', '\u6389\u5bf6\u52a0\u500d') / 100
     return m
 
 

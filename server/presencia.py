@@ -101,6 +101,7 @@ def _presentar(owner, viewer):
     import combate
     import login
     _mandar(viewer, _spawn(owner), *_vestir(owner), *paquetes_puesto(owner))
+    _mandar(viewer,*__import__('daily_events').marcas(owner,True))
     forma = transform_sprite_de(owner)
     if forma:
         _mandar(viewer, combate.atributo(entidad_de(owner), forma, combate.KIND_TRANSFORM))
@@ -336,6 +337,9 @@ def clave_de_mapa(ses, stage):
     # when they are visiting the same owner's house; otherwise every house
     # would leak into the same room.
     import territorios_liga
+    if int(stage) in __import__('daily_events').STAGES:
+        r=__import__('daily_events').actual(int(stage))
+        return (int(stage),'daily',(r or {}).get('id'))
     if int(stage) in territorios_liga.AREAS:
         return territorios_liga.clave(ses, stage)
     if int(stage) == 501:

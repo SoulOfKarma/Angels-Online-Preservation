@@ -50,6 +50,20 @@ def saludo(nombre):
             'Green Angel': (513638, [513639, 513640, 513641, 513642, 513643])}[nombre]
 
 
+def bendicion_party(ses):
+    """Original free Party Angel blessing, including production/EXP bonuses."""
+    import recent_mall,app,combate
+    if not recent_mall.cerca(ses,'Party Angel') or getattr(ses,'muerto',False):return False
+    if getattr(ses,'_recent_mall_npc',None)!='Party Angel':return False
+    mid=14955
+    duration=int(xml_rows('magic.xml')[mid]['\u6301\u7e8c\u6642\u9593'])
+    entry=entrada_buff(mid)
+    entry['drop_extra_pct']=int(xml_rows('magic.xml')[mid].get('\u6389\u5bf6\u52a0\u500d') or 0)
+    app._buff_a_otro(ses,mid,entry,duration*1000,combate.datos_magia(mid))
+    cuentas.guardar_buffs(ses.usuario,ses.personaje.char_id,ses.personaje.buffs)
+    return True
+
+
 def mostrar(ses, mensajes, opciones=()):
     import dialogos
     cara = getattr(ses, 'dlg_val', 4)
@@ -333,7 +347,7 @@ def canjear(ses, receta_id, veces):
     import app, clases, inventario
     row = xml_rows('exchange.xml').get(int(receta_id)) or {}
     grupo = int(row.get('群組') or 0)
-    if grupo not in (348, GRUPO_GREEN, 526, 527, 528):
+    if grupo not in (280, 348, GRUPO_GREEN, 526, 527, 528):
         return False
     def fallo(texto):
         ses.enviar(clases.aviso(texto, tipo=7, msg_id=clases.MSG_TEXTO))
@@ -341,6 +355,8 @@ def canjear(ses, receta_id, veces):
     if (ses.personaje.stage != 41 or getattr(ses, 'muerto', False)
             or getattr(ses, '_lyceum_exchange', None) != grupo):
         return fallo('Open this exchange at its NPC first.')
+    if grupo==280 and not __import__('olympus').cerca(ses,'Olly'):
+        return fallo('Return to Olly to exchange Olympus Certs.')
     receta = app._obtener_receta_exchange(receta_id)
     if not receta or not receta['materiales'] or not receta['premios']:
         return fallo('Invalid exchange recipe.')
@@ -388,6 +404,8 @@ def canjear(ses, receta_id, veces):
             if not r:
                 raise RuntimeError('Exchange character not found')
             d = json.loads(r[0])
+            if grupo==280 and not cuentas.inventario_equivalente(d,ses.inventario,app._cantidades(ses)):
+                return fallo('Inventory changed; reconnect before exchanging. No materials were consumed.')
             d.update(inventario={str(k):v for k,v in bolsa.items()},
                      cantidades={str(k):v for k,v in cantidades.items()})
             for slot in tocadas:

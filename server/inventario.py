@@ -1375,11 +1375,11 @@ def marcar_caducidad_mercenario(entrada, estado):
 
 def marcar_caducidad_holy(entrada, estado):
     """Holy passes and Arena equipment share the native absolute-expiry field."""
-    deadline = (estado or {}).get('holy_pass_fin') or (estado or {}).get('arena_premio_fin')
+    deadline = (estado or {}).get('holy_pass_fin') or (estado or {}).get('arena_premio_fin') or (estado or {}).get('mall_fin')
     base = 6 if entrada[:2] == struct.pack('<H', 0x001B) else 0
     if (not deadline or len(entrada) < base + 86
             or struct.unpack_from('<I', entrada, base + 9)[0] not in
-                (16764,16765,28866,40921,(estado or {}).get('arena_premio_item'))):
+                (16764,16765,28866,40921,(estado or {}).get('arena_premio_item'),(estado or {}).get('mall_item'))):
         return entrada
     b = bytearray(entrada)
     struct.pack_into('<I', b, base + 47, max(0,min(0xffffffff,int(deadline))))

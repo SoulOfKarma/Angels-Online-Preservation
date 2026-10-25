@@ -261,6 +261,9 @@ class Contexto:
     def puede_entrar_en_paralelo(self, mapa):
         return False
 
+    def estado_batalla(self,mapa,estado):
+        return None
+
     # -- grupo --
     def miembros_del_grupo(self, que=0):
         return 1
@@ -387,6 +390,8 @@ def evaluar(numero, parms, ctx):
         return ctx.antiguedad_en_liga() >= _p(parms, 0)
     if numero == 22:                                    # PARA_ENTER(mapa)
         return ctx.puede_entrar_en_paralelo(_p(parms, 0))
+    if numero == 46:                                    # BATTLEFIELD_STATE(mapa, estado)
+        return ctx.estado_batalla(_p(parms,0),_p(parms,1))
     if numero == 29:                                    # MAPVAR(mapa, var, cmp, v)
         return _cmp(_p(parms, 2),
                     ctx.variable_de_mapa(_p(parms, 0), _p(parms, 1)),
@@ -573,6 +578,10 @@ def traducir(numero, parms):
         return ('casa_hitparade',)
     if numero == 104:
         return ('variable', 'restar', _p(parms, 0), _p(parms, 1), _p(parms, 2))
+    if numero in (111,112):
+        return ('olympus',numero,_p(parms,0))
+    if numero == 107:
+        return ('daily_pk',)
     return None
 
 
@@ -580,7 +589,7 @@ def traducir(numero, parms):
 SE_TRADUCEN = frozenset((1, 3, 4, 7, 8, 9, 10, 12, 13, 14, 18, 19, 20, 21, 22, 24,
                          25, 34, 37, 29, 30, 31, 33, 36, 39, 41, 42, 47, 50, 51, 52, 53,
                          54, 55, 56, 57, 60, 63, 67, 70, 72, 78, 81,
-                         16, 59, 69, 89, 90, 91, 92, 93, 94, 95, 96, 104))
+                         16, 59, 69, 89, 90, 91, 92, 93, 94, 95, 96, 104, 107, 111, 112))
 def _alguna(condiciones, ctx):
     for c in condiciones:
         r = evaluar(c[0], c[1], ctx)

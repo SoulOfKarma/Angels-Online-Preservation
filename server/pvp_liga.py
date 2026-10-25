@@ -38,6 +38,8 @@ def _por_que_no(ses, otro):
     competition_reason = competiciones.motivo_pvp(ses, otro)
     if competition_reason is not None:
         return competition_reason
+    daily_reason=__import__('daily_events').motivo_pvp(ses,otro)
+    if daily_reason is not None:return daily_reason
     import outpost_pvp
     if not outpost_pvp.es_mapa(p.stage) and (not totem_war.activa() or not totem_war.es_mapa_tw(p.stage)):
         return 'sin Totem War o fuera de la arena'
@@ -267,6 +269,9 @@ def _aplicar(ses, otro, dano, es_crit, con_efecto, tipo, efecto, magia, *, orige
         if p.stage in competiciones.MAPAS:
             competiciones.baja(ses, otro)
             return  # no recompensas de Totem War ni penalizacion de EXP
+        if p.stage in __import__('daily_events').STAGES:
+            __import__('daily_events').baja(ses,otro)
+            return
         import outpost_pvp
         if not outpost_pvp.es_mapa(p.stage):
             _contar_baja(ses, p)  # Outpost is not a source of TW credits/round kills.

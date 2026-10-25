@@ -26,7 +26,7 @@ import pvp_liga
 def world(tmp_path, monkeypatch):
     db = tmp_path / 'events.db'
     monkeypatch.setattr(cuentas, 'DB_PATH', db)
-    monkeypatch.setattr(cuentas, '_notificar_cambio', lambda: None)
+    monkeypatch.setattr(cuentas, '_notificar_cambio', lambda **kw: None)
     monkeypatch.setattr(c, '_BASE', None)
     monkeypatch.setattr(c, '_RONDAS', {})
     # Stable default for tests asserting team-specific mechanics; production

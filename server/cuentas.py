@@ -720,6 +720,8 @@ def personaje_de(cuenta, ranura=0):
         permisos=[str(x) for x in (p.get('permisos') or [])],
         estrellas=[tuple(x) for x in (p.get('estrellas') or [])
                    if isinstance(x, (list, tuple)) and len(x) >= 2],
+        star_blessing=p.get('star_blessing') or {},
+        travel_mark=p.get('travel_mark') or {},
         casa=_casa_limpia,
         buffs={int(k): v for k, v in (p.get('buffs') or {}).items()
                if str(k).isdigit() and isinstance(v, dict) and v.get('fin', 0) > _ahora()},
@@ -873,7 +875,8 @@ def guardar_inventario(usuario: str, char_id: int, bolsa: dict,
                             for k, v in sorted(mejoras.items(), key=_slot_sort_key)
                             if v and (v.get('veces') or v.get('gemas')
                                       or v.get('extra') or v.get('vinculacion')
-                                      or v.get('house_egg_deadline') or v.get('mercenary_token_deadline') or v.get('holy_pass_fin'))}
+                                      or v.get('house_egg_deadline') or v.get('mercenary_token_deadline') or v.get('holy_pass_fin')
+                                      or v.get('arena_premio_fin') or v.get('mall_fin'))}
         if cantidades is not None:
             p['cantidades'] = {str(k): int(v)
                                for k, v in sorted(cantidades.items(), key=_slot_sort_key)
@@ -890,7 +893,8 @@ def guardar_mejoras(usuario: str, char_id: int, mejoras: dict):
         p['mejoras'] = {str(k): v for k, v in sorted((mejoras or {}).items(), key=_slot_sort_key)
                         if v and (v.get('veces') or v.get('gemas')
                                   or v.get('extra') or v.get('vinculacion')
-                                  or v.get('house_egg_deadline') or v.get('mercenary_token_deadline') or v.get('holy_pass_fin'))}
+                                  or v.get('house_egg_deadline') or v.get('mercenary_token_deadline') or v.get('holy_pass_fin')
+                                  or v.get('arena_premio_fin') or v.get('mall_fin'))}
     _actualizar_personaje(usuario, char_id, _mut)
 
 
@@ -1078,7 +1082,8 @@ def guardar_casa_e_inventario(usuario: str, char_id: int, casa, bolsa: dict,
                     for k, v in sorted(mejoras.items(), key=_slot_sort_key)
                     if v and (v.get('veces') or v.get('gemas')
                               or v.get('extra') or v.get('vinculacion')
-                              or v.get('house_egg_deadline') or v.get('mercenary_token_deadline') or v.get('holy_pass_fin'))
+                              or v.get('house_egg_deadline') or v.get('mercenary_token_deadline') or v.get('holy_pass_fin')
+                              or v.get('arena_premio_fin') or v.get('mall_fin'))
                 }
             con.execute(
                 'UPDATE personajes SET datos=?, actualizado_en=CURRENT_TIMESTAMP '

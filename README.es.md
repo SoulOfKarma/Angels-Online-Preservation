@@ -18,6 +18,28 @@ una suposición, lo dice.
 
 ## Estado real
 
+Olympus: Olly/Ozzy, canjes, mapas 217/332 con oleadas por piso y registros de
+Omos conectados a rankings. Item Mall: catalogo depurado excluyendo bolsas de evento/ligadas,
+piedras 5X y objetos con icono de interrogacion rojo (9407..9416); huevos de clase (80489..80495)
+ordenados al principio; compras/regalos y Store Cabinet con 1.000.000 AG iniciales. Star Blessing
+incluye mejoras, 27 recetas, longitud S2C 0x017F y correspondencia matriz/cartas/almacen corregidas,
+y uso atomico de Star Keys. Auto Divine llena las cartas de una en una; costes nativos,
+tiradas IV/V gratis, Stardust y premios de Bingo contrastados con capturas.
+Bolsas de venta verificadas de2025 en On Sale/Fashion/Bubble; Top Sale usa compras locales.
+Scrolls de ciudad, marcas Mark/Maple persistentes y libros de viaje de equipo atomicos.
+Daily Events: dos juegos distintos por dia en una rotacion semanal local
+configurable (42 filas por tramos), entrada automatica al tramo de nivel correspondiente,
+apertura atomica simultanea de los 4 tramos de nivel, entrega periodica de EXP y Skill EXP
+mientras se esta dentro de la zona de combate (daily_experience), warps de salida visibles y transitables hacia
+Angel Lyceum (radio 2, con salida bajo el arco de trebol en 28,25 para Training City) y preservacion del retorno original
+a la entrada al abrir cofres (ir_a_tag 1).
+Comandos GM: /daily start y /daily enter. No se recuperaron los horarios ni probabilidades del servidor original.
+Angel Lyceum: NPCs restaurados
+Astral Angel (canje de Star Keys 393), Party Angel (cajas renewal y canje 245), Chat Bubble Exchange
+(grupos 559, 570), Fashionable (recetas de vouchers) y Reissue Angel.
+Party Angel aplica Archangel's Secret original durante 12 horas; Compensation Angel retirado.
+[Fuentes, pruebas y limites](docs/MALL_STAR_FURNITURE_DAILY_2026-10-24.md).
+
 Arena/Holy: controles GM de registro/entrada/inicio, Arena todos contra todos
 (eliminatorias opcionales), Holy naranja/azul, minas y salidas originales,
 observadores ocultos, chat de equipo y achievements originales persistentes.
@@ -36,7 +58,7 @@ Arena y Holy Battlefield tienen rondas persistentes, inscripciones, PvP propio
 y comandos GM separados. Holy incluye captura de cristales. Horarios del XML
 en hora local del servidor. Holy incorpora construccion persistente, estatuas
 y bloqueo de puertas. Trabajo aun incompleto: sin apertura automatica y con
-rondas GM con entrada normal (gold/piedra) hasta completar los premios oficiales. Olympus y las
+rondas GM con entrada normal (gold/piedra) hasta completar los premios oficiales. Los premios semanales de Olympus y las
 transferencias Census siguen pendientes.
 Ver [comandos, mapas y limites](docs/COMPETICIONES_GM_2026-10-22.md).
 Ver [alcance y reglas originales](docs/PLV_Y_COMPETICIONES_2026-10-22.md).

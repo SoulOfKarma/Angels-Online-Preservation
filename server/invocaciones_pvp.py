@@ -53,7 +53,7 @@ def tick(ses, inv, ahora):
         return True
     if not transitable.linea_libre(p.stage, origen, destino):
         return True
-    cadencia = max(0.65, min(1.0, 1.264-0.00477*inv.get('atk_speed', 80)))
+    cadencia = inv.get('cadencia') or max(0.65, min(1.0, 1.264-0.00477*inv.get('atk_speed', 80)))
     if ahora-inv.get('ultimo_ataque', 0) < cadencia:
         return True
     tipo, magia, efecto, mult = 656, False, 0, 1.0

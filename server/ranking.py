@@ -75,6 +75,10 @@ def lista(tipo, alineacion=4):
     tipo = int(tipo)
     filtro = _FACCION_DE_ALINEACION.get(int(alineacion))
     filas = []
+    if tipo in (38,39):
+        import olympus
+        return [r for r in olympus.clasificacion(tipo)
+                if not filtro or r['faccion']==_FACCION_COLUMNA[filtro]][:POR_PAGINA*PAGINAS]
     if tipo == TIPO_LIGA:
         for gid, nom, niv, rep in _gremios():
             lider = _consulta('SELECT p.datos FROM gremios g JOIN personajes p '

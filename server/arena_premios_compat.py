@@ -45,7 +45,7 @@ def plan(r,cid,member,data,config):
         reclamar_hasta=finished+4*3600,puesto=place,armor_skill=armor,weapon_skill=weapon)
 
 
-def caducados(ses,now=None):
+def caducados(ses,now=None,*,campo_fin='arena_premio_fin',campo_item='arena_premio_item'):
     """Deadline metadata travels with normal equipment and personal-bank moves."""
     import app,cuentas,inventario,presencia
     p=getattr(ses,'personaje',None)
@@ -53,8 +53,8 @@ def caducados(ses,now=None):
     now=time.time() if now is None else now
     changed=[];bank=[]
     for slot,meta in list((p.mejoras or {}).items()):
-        if meta.get('arena_premio_fin',float('inf'))>now:continue
-        iid=meta.get('arena_premio_item')
+        if meta.get(campo_fin,float('inf'))>now:continue
+        iid=meta.get(campo_item)
         if slot>=0 and ses.inventario.get(slot)==iid:
             app._sacar(ses,slot,app._cant_de(ses,slot));changed.append(slot)
         elif slot<-10000:

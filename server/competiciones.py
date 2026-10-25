@@ -491,6 +491,8 @@ def al_entrar(ses):
         return
     if getattr(ses,'mapa_cargando',False):
         return
+    ses.enviar(__import__('star_blessing').paquete(p))
+    __import__('olympus').al_entrar(ses)
     __import__('arena_premios_compat').caducados(ses)
     old_stage = getattr(ses, '_competicion_stage', None)
     if old_stage in MAPAS and old_stage != p.stage:
@@ -502,6 +504,7 @@ def al_entrar(ses):
         if getattr(ses, 'competicion_pvp', False):
             ses.enviar(totem_war.modo_pvp(p.entity_id, False))
             ses.competicion_pvp = False
+        __import__('daily_events').al_entrar(ses)
         return
     r = ronda(p.stage)
     m = _miembro(r, ses)
@@ -700,7 +703,7 @@ def mover_pase_banco(p, origen, destino, *, desde_banco=False, hacia_banco=False
         mejoras.setdefault(dst, {})['holy_pass_fin'] = a
     if intercambio and b is not None:
         mejoras.setdefault(src, {})['holy_pass_fin'] = b
-    keys=('arena_premio_fin','arena_premio_item','arena_premio_ronda')
+    keys=('arena_premio_fin','arena_premio_item','arena_premio_ronda','mall_fin','mall_item')
     a={k:mejoras.get(src,{}).pop(k) for k in keys if k in mejoras.get(src,{})}
     b={k:mejoras.get(dst,{}).pop(k) for k in keys if k in mejoras.get(dst,{})}
     if a:mejoras.setdefault(dst,{}).update(a)
@@ -1067,12 +1070,18 @@ async def reloj():
     while True:
         try:
             cron()
+            try:
+                __import__('daily_events').cron()
+            except Exception:
+                log.exception('Daily Events clock')
             import holy_battlefield as hb
             hb.tick_cristales()
             tick_retornos()
             for ses in _sesiones():
                 depurar_pases(ses)
+                __import__('olympus').tick(ses)
                 __import__('arena_premios_compat').caducados(ses)
+                __import__('item_mall').caducados(ses)
                 __import__('competicion_premios').entregar(ses, automatico=True)
         except Exception:
             log.exception('competition clock')

@@ -107,6 +107,8 @@ class Personaje:
     emotes: set = field(default_factory=set)            # {emote_id, ...} adquiridos mediante tarjetas
     quick_emotes: dict = field(default_factory=lambda: {0: -1, 1: -1, 2: -1, 3: -1})  # {slot 0..3: emote_id o -1}
     chat_filtros: dict = field(default_factory=dict)  # tab0..3 -> native mask
+    star_blessing: dict = field(default_factory=dict)
+    travel_mark: dict = field(default_factory=dict)
 
 
 def _cargar_secuencia():
@@ -376,6 +378,7 @@ def secuencia(p: Personaje):
     import presencia as _pr
     salida.append(_pr.paquete_quick_emotes(p.entity_id, getattr(p, 'quick_emotes', None) or {}))
     salida.extend(__import__('chat_filtros').paquetes(p))
+    salida.append(__import__('star_blessing').paquete(p))
     return salida
 
 
@@ -778,7 +781,10 @@ def portales_de(stage: int):
     if not base_hex:
         return []
     salida = []
-    for por in cfg.get('mapas', {}).get(str(stage), []):
+    portals=list(cfg.get('mapas', {}).get(str(stage), []))
+    used={tuple(row['tile']) for row in portals}
+    portals.extend(row for row in __import__('daily_events').portales(stage) if tuple(row['tile']) not in used)
+    for por in portals:
         if not por.get('dibujar'):
             continue
         b = bytearray(bytes.fromhex(base_hex))
@@ -1170,6 +1176,8 @@ PLANTILLAS_POR_STAGE = {
 }
 
 
+PLANTILLAS_POR_STAGE.update({stage:'daily_%d.json'%stage for stage in __import__('daily_events').STAGES})
+
 HOUSE_INTERACTIVE_IDS = tuple(
     [260300, 262501, 701, 702, 703, 720, 721, 723, 731]
     + list(range(500020, 500030))
@@ -1214,6 +1222,10 @@ def poblar(stage: int, player_level=1):
     if stage == 500:
         return interactivos_casa(player_level)
     salida = npc_de_los_xml(stage)
+    import olympus
+    salida += olympus.poblar(stage)
+    import recent_mall
+    salida += recent_mall.poblar(stage)
     import competiciones
     salida += competiciones.poblar(stage)
     import territorios_liga

@@ -50,6 +50,8 @@ RADIO_ZONA = 4
 # Las condiciones que este contexto puede contestar de verdad. Lo que no
 # este aqui sale como "no se sabe" y su disparador no salta.
 SABE = frozenset((
+    46,     # BATTLEFIELD_STATE (native Daily entry/PK gates)
+    38,     # Olympus Mark / HAS_MAGIC
     32,     # IS_PVP_ON (Totem War)
     75,     # SPEC_MAP_OWN_ALIGNMENT
     77,     # PVP_IS_GUARD_OWNER
@@ -253,6 +255,9 @@ def grupo_de_instancia(stage):
 
 
 def _clave_corrida(ses):
+    p=getattr(ses,'personaje',None)
+    if getattr(p,'stage',0) in (217,332):
+        return ('solo',(getattr(ses,'usuario','').casefold(),p.char_id))
     try:
         import equipos as _eq
         cid = _eq._char_id(ses)
@@ -298,6 +303,9 @@ def estado_de(ses):
     mapa limpio y hay que volver a ponerle lo hecho.
     """
     stage = getattr(getattr(ses, 'personaje', None), 'stage', 0) or 0
+    if stage in __import__('daily_events').STAGES:
+        ses.estado_mapa=__import__('daily_events').sala(ses)
+        return ses.estado_mapa
     if stage == 501:
         import granja_liga
         return granja_liga.sala(ses)
@@ -439,6 +447,10 @@ class ContextoSesion(ev.Contexto):
         return int(getattr(self.p, 'oro', 0) or 0)
 
     # -- personaje --------------------------------------------------------
+    def tiene_estado_magico(self,estado):
+        import time
+        return (getattr(self.p,'buffs',{}) or {}).get(int(estado),{}).get('fin',0)>time.time()
+
     def nivel(self):
         return int(getattr(self.p, 'nivel', 0) or 0)
 
@@ -458,6 +470,14 @@ class ContextoSesion(ev.Contexto):
             self._vivos = self.estado.vivos_por_zona(
                 getattr(self.ses, 'monstruos', None))
         return int(self._vivos.get(int(tag), 0))
+
+    def estado_batalla(self,mapa,estado):
+        daily=__import__('daily_events')
+        if mapa not in daily.STAGES:return None
+        r=daily.actual(mapa)
+        if not r or daily._key(self.ses) not in r['members']:return False
+        phase={'registro':0,'combate':1,'final':2,'cerrada':2}[daily.fase(r)]
+        return phase==estado
 
     def variable_de_mapa(self, mapa, var):
         k = (int(mapa), int(var))
@@ -483,6 +503,9 @@ class ContextoSesion(ev.Contexto):
             return 1
 
     def teamid(self):
+        if self.p and self.p.stage in __import__('daily_events').STAGES:
+            daily=__import__('daily_events');r=daily.actual(self.p.stage)
+            return (r or {}).get('members',{}).get(daily._key(self.ses),{}).get('team',0)
         if self.p and self.p.stage==112:
             import competiciones
             m=competiciones._miembro(competiciones.ronda(112),self.ses)
@@ -777,6 +800,7 @@ def evento_del_monstruo(stage, npc_type):
 
 def al_morir_monstruo(ses, monstruo):
     """Los efectos de que muera un bicho: botines y pasos de mision."""
+    __import__('daily_events').muerte_monstruo(ses,monstruo)
     estado = estado_de(ses)
     # Los de MAKE_REVENGE_DNA_MONSTER llevan su propio evento de muerte.
     evento = getattr(monstruo, 'evento_muerte', None) or evento_del_monstruo(

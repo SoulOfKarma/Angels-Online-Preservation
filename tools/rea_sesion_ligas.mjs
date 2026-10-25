@@ -25,6 +25,10 @@ try {
     if (!line.trim()) continue;
     const request = JSON.parse(line);
     if (request.name === 'exit') break;
+    if (request.name === 'tool_names') {
+      console.log(JSON.stringify((await client.listTools()).tools.map(t => t.name)));
+      continue;
+    }
     if (request.name === 'schemas') {
       const list = await client.listTools();
       console.log(JSON.stringify(list.tools.filter(t => request.tools.includes('*') || request.tools.includes(t.name))
@@ -39,9 +43,13 @@ try {
       const file = `${Date.now()}_${request.name.replace(/[^a-z0-9_]/gi, '')}.json`;
       await writeFile(resolve(directory, file), JSON.stringify({ request, result }), { flag: 'wx' });
       const value = result.structuredContent ?? result.content;
+      const normalized = value?.normalized_result ?? value;
       console.log(JSON.stringify({ file, isError: result.isError,
         evidence_id: value?.evidence_id,
-        value: value?.normalized_result ?? value }));
+        value: request.compact && normalized?.pseudocode
+          ? { procedure: normalized.procedure?.name, pseudocode: normalized.pseudocode,
+              references: normalized.references, limitations: normalized.limitations }
+          : normalized }));
     } catch (error) {
       console.log(JSON.stringify({ error: String(error) }));
     }

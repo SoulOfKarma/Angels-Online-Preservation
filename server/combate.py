@@ -767,7 +767,7 @@ class Monstruo:
 
     def toca_reaparecer(self) -> bool:
         return (not self.vivo and self.muerto_en
-                and time.time() - self.muerto_en >= SEGUNDOS_REAPARICION)
+                and time.time() - self.muerto_en >= getattr(self,'daily_respawn',SEGUNDOS_REAPARICION))
 
     def revivir(self):
         """Vuelve a la vida cerca de su sitio, no clavado en el mismo punto."""
@@ -1054,7 +1054,7 @@ def _nivel_plausible(lista_raw, nivel_monstruo: int) -> bool:
     return mediana * 2 >= int(nivel_monstruo or 0)
 
 
-def botin_items(npc_type: int, nombre: str = '', nivel: int = 0) -> list:
+def botin_items(npc_type: int, nombre: str = '', nivel: int = 0, buffs=None) -> list:
     """Items que suelta el monstruo de drops_monstruos.json o content.db con multiplicador de drops."""
     global _DROPS_CACHE, _MON_INFO_CACHE, _DROP_OFICIAL_CACHE
     if npc_type in _DROPS_CACHE:
@@ -1173,7 +1173,7 @@ def botin_items(npc_type: int, nombre: str = '', nivel: int = 0) -> list:
     if jefe_garantizado:
         drops.append(random.choice(candidatos))
         return drops
-    prob = min(0.95, 0.90 * configuracion.multiplicador_drop())
+    prob = min(0.95, 0.90 * configuracion.multiplicador_drop(buffs))
     if random.random() < prob:
         drops.append(random.choice(candidatos))
     return drops
@@ -1842,15 +1842,10 @@ def datos_invocacion(npc_type: int) -> dict:
                 if val is not None and str(val).strip().isdigit() and int(val) > 0:
                     sks.append(int(val))
             nom_raw = str(r[0] or 'Summon')
-            # Solo reemplazar sufijos de rango I..V (T..X en Big5) si estan al final o aislados
-            import re
+            # Repair only damaged Big5 pairs. A plain English "V" is
+            # already rank5: replacing it with "III" mislabels every Star V.
             for k_b5, k_num in (('\ufffdT', ' I'), ('\ufffdU', ' II'), ('\ufffdV', ' III'), ('\ufffdW', ' IV'), ('\ufffdX', ' V')):
                 nom_raw = nom_raw.replace(k_b5, k_num)
-            nom_raw = re.sub(r'\bT\b', 'I', nom_raw)
-            nom_raw = re.sub(r'\bU\b', 'II', nom_raw)
-            nom_raw = re.sub(r'\bV\b', 'III', nom_raw)
-            nom_raw = re.sub(r'\bW\b', 'IV', nom_raw)
-            nom_raw = re.sub(r'\bX\b', 'V', nom_raw)
             nom_limpio = nom_raw.encode('ascii', 'ignore').decode('ascii').strip() or 'Summon'
             if '1otem' in nom_limpio:
                 nom_limpio = nom_limpio.replace('1otem', 'Totem')
