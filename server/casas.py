@@ -633,15 +633,34 @@ _CASAS_ACTIVAS = {}
 _OBJ_A_CASA = {}
 _OUTDOOR_ID_GEN = 600000
 
+
+def _vincular_propietario(casa, owner_id, owner_name):
+    """The character row/cache key owns the house, including legacy saves."""
+    old_name = casa.owner_name or ''
+    placeholder = f'Owner_{int(owner_id)}'
+    name = str(owner_name or old_name)
+    # Visitor/ranking lookups sometimes know only the ID. They must not
+    # replace the real owner's name with a generated display placeholder.
+    if name == placeholder and old_name:
+        name = old_name
+    if not casa.house_name or casa.house_name in (
+            "'s House", f"{old_name}'s House", f"{placeholder}'s House"):
+        casa.house_name = f"{name}'s House"
+    casa.owner_id = int(owner_id)
+    casa.owner_name = name
+
+
 def obtener_o_crear_casa(owner_id: int, owner_name: str, deed_id: int = 10115, raw_data: dict = None) -> CasaData:
     cid = int(owner_id)
     if cid in _CASAS_ACTIVAS:
         c = _CASAS_ACTIVAS[cid]
+        _vincular_propietario(c, cid, owner_name)
         c.check_daily_reset()
         return c
     if raw_data:
         c = CasaData.deserializar(raw_data)
         if c:
+            _vincular_propietario(c, cid, owner_name)
             # Migration from the original minimal schema: it stored only
             # furniture.xml ids and no placement metadata.
             if not c.placed_furniture and raw_data.get('muebles'):

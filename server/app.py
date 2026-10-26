@@ -7672,9 +7672,7 @@ def _sanear_escrituras(p, usuario, addr=None):
     mochila, y si la casilla 376 tiene otra escritura que la de la casa, la
     casa pasa a ser la de la casilla (la que el jugador ve puesta)."""
     import casas as _cs_s
-    bolsa = getattr(p, 'inventario', None)
-    if not bolsa:
-        return
+    bolsa = getattr(p, 'inventario', None) or {}
     cambiado = False
     for r in sorted(k for k in list(bolsa) if _cs_s.SLOT_FURN_INI <= int(k) <= _cs_s.SLOT_MOB_FIN):
         if _cs_s.es_deed_item(bolsa[r]):
@@ -7686,17 +7684,20 @@ def _sanear_escrituras(p, usuario, addr=None):
             log.info('[%s] %s: escritura %s sacada de la casilla de muebles %s a la %s',
                      addr, p.nombre, bolsa[libre], r, libre)
     puesta = bolsa.get(_cs_s.SLOT_DEED)
-    if puesta and _cs_s.es_deed_item(puesta) and isinstance(getattr(p, 'casa', None), dict):
-        if int(p.casa.get('deed_id') or 0) != int(puesta):
-            log.info('[%s] %s: la casa pasa de %s a %s (la escritura puesta)',
-                     addr, p.nombre, p.casa.get('deed_id'), puesta)
-            p.casa['deed_id'] = int(puesta)
-            c_act = _cs_s._CASAS_ACTIVAS.get(int(p.char_id))
-            if c_act is not None:
-                c_act.deed_id = int(puesta)
+    raw = getattr(p, 'casa', None)
+    if isinstance(raw, dict) and (raw or (puesta and _cs_s.es_deed_item(puesta))):
+        casa = _cs_s.obtener_o_crear_casa(p.char_id, p.nombre, raw_data=raw)
+        if puesta and _cs_s.es_deed_item(puesta):
+            casa.deed_id = int(puesta)
+        canonical = casa.serializar()
+        if any(raw.get(k) != canonical[k] for k in ('owner_id', 'owner_name', 'house_name', 'deed_id')):
+            # Repair the character's own record, preserving unknown legacy
+            # house fields along with all furniture, pets and upgrades.
+            p.casa = {**raw, **canonical}
             if usuario:
-                cuentas.guardar_casa(usuario, p.char_id,
-                                     c_act or _cs_s.obtener_o_crear_casa(p.char_id, p.nombre, raw_data=p.casa))
+                cuentas.guardar_casa(usuario, p.char_id, p.casa)
+            log.info('[%s] %s: casa vinculada a char_id=%s, escritura=%s',
+                     addr, p.nombre, p.char_id, casa.deed_id)
     if cambiado and usuario:
         cuentas.guardar_inventario(usuario, p.char_id, p.inventario, p.cantidades)             if hasattr(cuentas, 'guardar_inventario') else None
 
