@@ -4,10 +4,12 @@
  "duration_minutes": 30,
  "presence_rewards": {
   "enabled": true,
-  "interval_seconds": 60,
-  "exp_ppm": 100,
-  "skill_exp_ppm": 1000,
-  "source": "Local compatibility values: 0.01% of next character level and 0.1% of each skill level per minute; original server rates/interval not recovered."
+  "interval_seconds": 10,
+  "exp_per_level": 4800,
+  "exp_minimum": 50000,
+  "exp_cap": 2000000,
+  "skill_exp": 100,
+  "source": "Local values retained from Antigravity and Karma's requested 2M/100 rates; original server interval/formula not recovered."
  },
  "slots": [
   {"day":0,"alias":"swindle","start":"18:00"},

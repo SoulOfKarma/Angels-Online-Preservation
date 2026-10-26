@@ -102,6 +102,7 @@ def _presentar(owner, viewer):
     import login
     _mandar(viewer, _spawn(owner), *_vestir(owner), *paquetes_puesto(owner))
     _mandar(viewer,*__import__('daily_events').marcas(owner,True))
+    _mandar(viewer,*__import__('league_war').marks(owner,True))
     forma = transform_sprite_de(owner)
     if forma:
         _mandar(viewer, combate.atributo(entidad_de(owner), forma, combate.KIND_TRANSFORM))

@@ -1074,6 +1074,14 @@ async def reloj():
                 __import__('daily_events').cron()
             except Exception:
                 log.exception('Daily Events clock')
+            try:
+                __import__('elementary').cron()
+            except Exception:
+                log.exception('Angel Elementary clock')
+            try:
+                __import__('league_war').cron()
+            except Exception:
+                log.exception('League War clock')
             import holy_battlefield as hb
             hb.tick_cristales()
             tick_retornos()

@@ -483,7 +483,7 @@ def chat_whisper(emisor: str, receptor: str, texto: str, err_code: int = 0) -> b
 # en ranuras 3 y 4.
 ARMA_POR_SKILL = {
     8: 19850, 9: 10, 10: 19832, 11: 19838,
-    14: 19820, 17: 19844, 24: 19814, 32: 19856,
+    14: 19820, 17: 19844, 20: 63, 21: 22, 22: 21, 23: 20, 32: 19856,
 }
 # Con que mano se empuna. Las reglas salen de lo poco medido y de como
 # funcionan las clases en el juego:
@@ -540,22 +540,29 @@ def regalo(ids):
     primera que sea de arma; si no hay ninguna (las clases de produccion no
     la tienen), solo se dan los guantes y los zapatos.
     """
+    skill_ids = [s[0] if isinstance(s, (list, tuple)) else int(s) for s in (ids or [])]
     # El escudo no cuenta como arma principal: si lo lleva, va en la izquierda.
-    principal = next((i for i in ids
+    principal = next((i for i in skill_ids
                       if i in ARMA_POR_SKILL and i != SKILL_ESCUDO), None)
-    if principal is None and any(i in SKILLS_MAGIA for i in ids):
+    if principal is None and any(i in SKILLS_MAGIA for i in skill_ids):
         arma, principal = BASTON, 8
     else:
         arma = ARMA_POR_SKILL.get(principal)
     salida = []
     if arma is not None:
         salida.append((3, arma))
-    if SKILL_ESCUDO in ids:
+    if SKILL_ESCUDO in skill_ids:
         salida.append((4, ESCUDO))
     elif arma is not None and principal in DOS_ARMAS:
         salida.append((4, arma))
     elif principal == 17:
         salida.append((4, 458))    # Wooden Arrow
+
+    # Clases de productor: reciben el Freshman Cask (19814), el ride robot basico (ranura montura 10)
+    CLASES_PROD = {10, 11, 12, 13, 14, 15, 19, 20}
+    if any(i in SKILLS_PRODUCCION for i in skill_ids) or class_id(skill_ids) in CLASES_PROD:
+        salida.append((10, 19814))
+
     return salida
 
 
@@ -1099,6 +1106,10 @@ def premio_final(ids):
     mochila, empezando en la 20.
     """
     salida = [(5, 28), (6, 30)]
+    skill_ids = [s[0] if isinstance(s, (list, tuple)) else int(s) for s in (ids or [])]
+    CLASES_PROD = {10, 11, 12, 13, 14, 15, 19, 20}
+    if any(i in SKILLS_PRODUCCION for i in skill_ids) or class_id(skill_ids) in CLASES_PROD:
+        salida.append((10, 19814))
     for k, caja in enumerate(cajas_de(ids) + [GROWTH_BOX]):
         salida.append((20 + k, caja))
     return salida

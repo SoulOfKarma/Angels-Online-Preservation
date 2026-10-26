@@ -122,6 +122,9 @@ def _portales():
             rows=_PORTALES.setdefault('mapas',{}).setdefault(str(stage),[])
             used={tuple(row['tile']) for row in rows}
             rows.extend(row for row in daily_events.portales(stage) if tuple(row['tile']) not in used)
+        _PORTALES.setdefault('mapas',{})[str(__import__('elementary').STAGE)]=__import__('elementary').portales()
+        for stage in __import__('league_war').STAGES:
+            _PORTALES['mapas'][str(stage)]=__import__('league_war').portals(stage)
     return _PORTALES
 
 
@@ -129,7 +132,7 @@ def _portales():
 # que se tratan aparte. Estaba escrito a mano en tres sitios distintos y ya
 # se pago caro una vez: cada copia que se olvidaba dejaba un mapa entero sin
 # IA. Aqui esta una sola vez.
-MAPAS_APARTE = {41: 'lyceum.json'}
+MAPAS_APARTE = {41: 'lyceum.json', 57: 'fighting_palace'}
 # Hasta donde piensa un monstruo. Mas alla de esto el jugador no lo ve -- su
 # radio de vision son 38 casillas, medido -- asi que gastarle IA no sirve de
 # nada. Ver el bucle de IA, que corre diez veces por segundo.
@@ -397,6 +400,7 @@ def _nombre_entidad(ses, entity_id: int) -> str:
 def _monstruos_de(stage: int):
     """Los monstruos vivos del mapa, por entity_id."""
     if stage in __import__('daily_events').STAGES:return __import__('daily_events').monstruos(stage)
+    if stage in __import__('league_war').STAGES:return __import__('league_war').room(stage).monstruos
     import json
     import combate
     import login as _lg
@@ -581,29 +585,33 @@ def _final_tutorial(ses, addr):
     import clases
     import inventario as inv
     bolsa = getattr(ses, 'inventario', None)
-    if bolsa is None or not ses.personaje.habilidades:
+    if bolsa is None:
         return
-    cid = ses.personaje.char_id
-    ids = [h[0] for h in ses.personaje.habilidades]
+    cid = ses.personaje.char_id if getattr(ses, 'personaje', None) else 4980
+    ids = [h[0] if isinstance(h, (list, tuple)) else int(h)
+           for h in (getattr(ses.personaje, 'habilidades', None) or [])]
     for ranura, item_id in clases.premio_final(ids):
+        if ranura in bolsa and bolsa[ranura] == item_id:
+            continue
         if ranura in bolsa:
             ranura = _ranura_libre(bolsa)
-        bolsa[ranura] = item_id
-        ses.enviar(clases.aviso(_nombre_item(item_id), tipo=0,
-                                msg_id=clases.MSG_ITEM))
-        ses.enviar(*inv.entregar(cid, item_id, ranura))
+        if ranura is not None:
+            bolsa[ranura] = item_id
+            ses.enviar(clases.aviso(_nombre_item(item_id), tipo=0,
+                                    msg_id=clases.MSG_ITEM))
+            ses.enviar(*inv.entregar(cid, item_id, ranura))
     ses.enviar(inv.stats(bolsa, mejoras=_mejoras_de(ses),
                          mascotas=getattr(ses.personaje, 'mascotas', None)))
-    # Y al Lyceum.
-    ses.personaje.stage = clases.STAGE_LYCEUM
-    ses.personaje.tile_x, ses.personaje.tile_y = clases.TILE_LYCEUM
-    ses.monstruos = _monstruos_de(clases.STAGE_LYCEUM)
-    ses.enviar(clases.cambiar_mapa(clases.STAGE_LYCEUM))
+    ses.enviar(*_apariencia(ses))
+    import presencia as _pr
+    _pr.notificar_equipo(ses)
     if getattr(ses, 'usuario', None):
         cuentas.guardar_inventario(ses.usuario, cid, bolsa,
                                    _cantidades(ses))
         cuentas.guardar_mapa(ses.usuario, cid, clases.STAGE_LYCEUM,
                              *clases.TILE_LYCEUM)
+    # Y al Lyceum.
+    _sincronizar_cambio_mapa(ses, clases.STAGE_LYCEUM, *clases.TILE_LYCEUM)
     log.info(f"[{addr}] tutorial terminado: set completo, "
              f"{len(clases.cajas_de(ids)) + 1} cajas y al Angel Lyceum")
 
@@ -1236,7 +1244,8 @@ PALABRAS_GM = frozenset((
     'guild', 'gremio', 'liga',
     'settw', 'settotemwar', 'tw', 'totemwar', 'twstart', 'twstop',
     'aastart', 'aastop', 'aa', 'angelarena', 'hbstart', 'hbstop', 'hb', 'holybf', 'holybattlefield',
-    'daily', 'dailystart', 'dailystop',
+    'daily', 'dailystart', 'dailystop', 'quiz', 'gvg',
+    'recipes', 'recetas',
     'notice', 'aviso', 'anuncio', 'gmsg', 'twtotem',
     'plant', 'sembrar',
     'farm', 'granja',
@@ -1313,6 +1322,9 @@ def _gm_parsear(texto: str):
     if not partes:
         return None
     cmd = partes[0].lower()
+    if cmd in ('recipes','recetas'):return ('recipes',partes[1:])
+    if cmd=='quiz':return ('quiz',partes[1:])
+    if cmd=='gvg':return ('gvg',partes[1:])
     if cmd in ('daily','dailystart','dailystop'):
         return ('daily',cmd,partes[1:])
     if cmd in ('aastart', 'aastop', 'aa', 'angelarena', 'hbstart', 'hbstop', 'hb', 'holybf', 'holybattlefield'):
@@ -1463,6 +1475,15 @@ def _probar_gm(ses, cuerpo, addr) -> bool:
     leido = _gm_parsear(texto)
     if leido is None:
         return False
+    if leido[0]=='recipes' and ses.personaje:
+        __import__('production_sites').gm(ses,leido[1])
+        return True
+    if leido[0]=='gvg' and ses.personaje:
+        __import__('league_war').gm(ses,leido[1])
+        return True
+    if leido[0]=='quiz' and ses.personaje:
+        __import__('elementary').comando_gm(ses,leido[1])
+        return True
     if leido[0]=='daily' and ses.personaje:
         __import__('daily_events').comando_gm(ses,leido[1],leido[2])
         return True
@@ -1473,7 +1494,7 @@ def _probar_gm(ses, cuerpo, addr) -> bool:
     if leido[0] == 'help':
         ses.enviar(_cl.aviso(
             'GM: /item <id> [qty] | /level <n> | /levelall <n> | /skills [lv] | /skillsall [lv] | /skills5 | /clearskills | '
-            '/pet level|exp|path|evolve | /rango [1..20] | '
+            '/pet level|exp|path|evolve | /rango [1..20] | /recipes [all|weapon|armor|sewing|craft|cooking] [level] | '
             '/estacion <normal|navidad|halloween|sakura|verano> | /emote <0..36> | /emote unlock <id> | /emote unlockall | /emote list | '
             '/quest <id> <step> | /ball reset | /glevel <1..10> | /grep <n> | /farm [enter|seeds|tools|pests] | /plant <crop> [plot] | '
             '/tw | /twstart [min] | /twstop | /settw <field> <league_id> | /twtotem <1..8> | '
@@ -2512,7 +2533,7 @@ def _repartir_muerte(ses, m):
             if int(c) in por_cid and int(d) > 0}
     m.dano_por = {}
     grupo = _grupo_en_sala(ses)
-    if len(grupo) > 1:
+    if len(grupo) > 1 and __import__('equipos').modo_de(ses)==0:
         quien = random.choice(grupo)
         return [(s, 1.0 / len(grupo), s is quien) for s in grupo]
     if ses.personaje and int(ses.personaje.char_id) not in dano:
@@ -2705,6 +2726,8 @@ def _procesar_muerte_monstruo(ses, m, yo, addr, espera=0.0):
     import asyncio
     objetivo = m.entity_id
     yo_muerte = yo
+    if __import__('league_war').monster_dead(ses,m):
+        return
 
     if getattr(m, 'es_estructura_hb', False):
         # Building death/construction is persisted by Holy's own engine.
@@ -3440,6 +3463,7 @@ def _sincronizar_cambio_mapa(ses, stage_id: int, x: int = None, y: int = None):
         stage_id, x, y = _st_tw
     _cancelar_portal_armado(ses)
     __import__('daily_events').antes_viajar(ses,stage_id)
+    __import__('league_war').before_travel(ses,stage_id)
     __import__('competiciones').antes_de_viajar(ses, stage_id)
     p.stage = stage_id
     if x is not None and y is not None:
@@ -3795,6 +3819,9 @@ def _viajar_por_portal(ses, addr, por, motivo=''):
     """Manda al jugador por un tornado que no pregunta."""
     # El paso que estuviera a medias en el mapa de origen ya no cuenta.
     _cancelar_portal_armado(ses)
+    if 'gvg_portal' in por:
+        __import__('league_war').portal(ses,por)
+        return
     if por.get('arena_menu'):
         __import__('angel_arena').abrir_menu(ses, addr)
         return
@@ -4066,7 +4093,7 @@ def _casa_click(ses, ent):
         else:
             # IGG sub_606950 registered at 1968+16*0x4B; body is one byte.
             ses.house_make_station = ent
-            ses.enviar(struct.pack('<HB', 0x004B, category))
+            __import__('production_sites').window(ses,category)
         return True
     name, face = names[ent]
     if ent in (2603, 260300) and c.owner_id != ses.personaje.char_id:
@@ -4709,6 +4736,102 @@ def _casa_fabricar(ses, recipe_id):
     delay *= max(0.10, 1-_ly_make.bono(getattr(ses.personaje, 'buffs', None), 'fabricacion_pct')/100)
     ses.house_make_task = asyncio.get_event_loop().call_later(delay, finish)
 
+def _fabricar_receta(ses, recipe_id):
+    """Ejecuta una receta de produccion (make.xml) para clases de productores en cualquier lugar."""
+    import house_services as hs, clases, random
+    p = getattr(ses, 'personaje', None)
+    if not p:
+        return
+    row = hs.recipe(recipe_id)
+    if not row:
+        ses.enviar(struct.pack('<H', 0x004D))
+        return
+    if row.get('參考掉寶') == '是':
+        ses.enviar(struct.pack('<H', 0x004D), clases.aviso(
+            "This recipe's random reward table is not reconstructed yet; no materials were used.", tipo=0))
+        return
+    required_skill = int(row.get('技能1') or 0)
+    required_level = int(row.get('等級1') or 0)
+    if required_skill and not any(
+            int(h[0]) == required_skill and int(h[1]) >= required_level
+            for h in (p.habilidades or [])):
+        ses.enviar(struct.pack('<H', 0x004D),
+                   clases.aviso("Your skill level is insufficient to craft this item.", tipo=0))
+        return
+    task = getattr(ses, 'craft_task', None)
+    if task and not task.cancelled():
+        return
+    from collections import Counter
+    needed = Counter()
+    for i in range(1, 7):
+        it, qty = int(row.get('原料%d' % i) or 0), int(row.get('數量%d' % i) or 0)
+        if it and qty:
+            needed[it] += qty
+    plan = []
+    for it, qty in needed.items():
+        for slot, item in sorted((ses.inventario or {}).items()):
+            if not 20 <= slot <= _tope_bolsa(ses.inventario) or item != it:
+                continue
+            take = min(qty, _cant_de(ses, slot))
+            plan.append((slot, take))
+            qty -= take
+            if qty == 0:
+                break
+        if qty:
+            ses.enviar(struct.pack('<H', 0x004D),
+                       clases.aviso("You don't have enough crafting materials.", tipo=0))
+            return
+    result_id = int(row.get('物品編號') or 0)
+    import inventario
+    if (not result_id or (_ranura_libre(ses.inventario) is None
+            and not (inventario.es_apilable(result_id) and result_id in ses.inventario.values())
+            and not any(_cant_de(ses, slot) == qty for slot, qty in plan))):
+        ses.enviar(struct.pack('<H', 0x004D),
+                   clases.aviso("Your backpack is full.", tipo=0))
+        return
+
+    def finish():
+        ses.craft_task = None
+        if not getattr(ses, 'conectado', True) or not ses.personaje:
+            return
+        for slot, qty in plan:
+            if _cant_de(ses, slot) < qty:
+                ses.enviar_inmediato(struct.pack('<H', 0x004D))
+                return
+        touched = [slot for slot, _ in plan]
+        for slot, qty in plan:
+            _sacar(ses, slot, qty)
+        success = random.randrange(100) < int(row.get('成功機率') or 100)
+        pkgs = []
+        if success:
+            make_qty = int(row.get('製作數量') or 1)
+            slot = _meter(ses, result_id, make_qty)
+            if slot is not None:
+                touched.append(slot)
+            pkgs.append(clases.aviso(_nombre_item(result_id), tipo=0, msg_id=clases.MSG_ITEM))
+            if required_skill:
+                try:
+                    sk_pkgs = _otorgar_skill_exp(ses, ses.personaje, ses.personaje.entity_id,
+                                                 skills_forzadas={required_skill}, prob_override=1.0)
+                    pkgs.extend(sk_pkgs)
+                except Exception:
+                    log.exception('otorgar skill exp craft')
+        else:
+            pkgs.append(clases.aviso("Crafting failed.", tipo=0))
+        _guardar_bolsa(ses, ses.personaje.char_id)
+        pkgs.extend(_refrescar(ses, touched))
+        pkgs.append(struct.pack('<HBI', 0x004C, int(success), recipe_id))
+        ses.enviar_inmediato(*pkgs)
+
+    delay = max(0.1, int(row.get('製作時間') or 1))
+    import lyceum_services as _ly_make
+    delay *= max(0.10, 1 - _ly_make.bono(getattr(p, 'buffs', None), 'fabricacion_pct') / 100)
+    try:
+        import asyncio
+        ses.craft_task = asyncio.get_event_loop().call_later(delay, finish)
+    except Exception:
+        finish()
+
 def _casa_buff_diario(ses, addr):
     import clases as _cl, casas as _cs_b, time as _time, dialogos as _dlg_b
     p = getattr(ses, 'personaje', None)
@@ -4952,6 +5075,8 @@ def _aplicar_efectos(ses, addr, efectos, motivo=''):
                         pkgs_rec = _mis_col.verificar_progreso_recoleccion(ses, [ses.inventario.get(r) for r in tocadas])
                         if pkgs_rec:
                             ses.enviar(*pkgs_rec)
+            elif que == 'fabricar':
+                __import__('production_sites').open_station(ses,int(ef[1]))
             elif que == 'quitar':
                 tocadas = []
                 for item, cant in ef[1]:
@@ -5678,6 +5803,12 @@ ACCION_RECOLECTAR = 9           # tipo del 0x000A, medido en la Global
 # cuatro habilidades: Collect "a pair of gloves or a robot", Dig "a mine pick
 # or a robot", Lumber "an axe or a robot", Fishing "a rod or a robot".
 RANURAS_HERRAMIENTA = {'手套': (5, 171), '鐵鍬': (3, 4), '斧': (3, 4), '釣竿': (3, 4)}
+SKILL_POR_MATERIAL = {
+    '挖礦': 22,   # Dig
+    '伐木': 23,   # Lumber
+    '採藥': 20,   # Collect
+    '釣魚': 21,   # Fishing
+}
 DISTANCIA_RECOLECCION = 6       # casillas
 
 
@@ -5726,6 +5857,12 @@ def _herramienta_para(ses, herramienta):
     import lyceum_services as _ly_gather
     velocidad += _ly_gather.bono(getattr(ses.personaje, 'buffs', None), 'recoleccion_pct')
     if cat_m == '機甲':
+        # Optimizacion de recoleccion en robot mediante Drive (25)
+        p = getattr(ses, 'personaje', None)
+        if p and getattr(p, 'habilidades', None):
+            drive_lv = next((int(h[1]) for h in p.habilidades if int(h[0]) == 25), 0)
+            if drive_lv > 0:
+                velocidad += min(50, max(1, drive_lv // 5))
         return True, None, velocidad
     ranuras = RANURAS_HERRAMIENTA.get(herramienta)
     if not ranuras:
@@ -5788,6 +5925,8 @@ def _recolectar(ses, addr, stage, ent):
     hacha para arboles, cana para peces) ni robot: 359.
     """
     mid, px = _veta_de(stage, ent)
+    if stage in __import__('league_war').STAGES and not __import__('league_war').participating(ses):
+        __import__('league_war')._notice(ses,'Wait until League War begins before collecting.');return True
     if int(stage) in __import__('daily_events').STAGES and not __import__('daily_events').participando(ses):
         __import__('daily_events').aviso(ses,'Wait until the Daily Event begins before collecting.')
         return True
@@ -5808,8 +5947,27 @@ def _recolectar(ses, addr, stage, ent):
             __import__('competiciones').aviso(ses,exc)
             return True
     import clases as _cl_r
+    import house_services as _hs_mat
     p = ses.personaje
-    puede, msg, velocidad = _herramienta_para(ses, mat.get('herramienta'))
+    mat_xml = _hs_mat.xml_rows('material.xml').get(int(mid))
+    if stage in __import__('league_war').STAGES:
+        # material639 accepts any gathering profession. Use its current XML
+        # tool label instead of the lossy legacy materiales.json encoding.
+        mat=dict(mat,herramienta=(mat_xml or {}).get('\u88dd\u5099\u9650\u5236',''))
+        gather=max((int(h[1]) for h in p.habilidades if 20<=int(h[0])<=23),default=0)
+        if gather<int((mat_xml or {}).get('\u7b49\u7d1a\u9650\u5236') or 1):
+            __import__('league_war')._notice(ses,'A gathering skill of Level 91 is required.');return True
+    sk_req = SKILL_POR_MATERIAL.get((mat_xml or {}).get('使用技能'))
+    req_lvl = int((mat_xml or {}).get('等級限制') or 1)
+    if sk_req:
+        hab_sk = next((h for h in (p.habilidades or []) if int(h[0]) == sk_req), None)
+        if hab_sk is None or int(hab_sk[1]) < req_lvl:
+            nom_sk = _cl_r.nombre(sk_req)
+            ses.enviar(_cl_r.aviso_doble(356, nom_sk, str(req_lvl), tipo=7))
+            log.info('[%s] veta %s (%s): nivel de habilidad insuficiente (%s nv %s requerido)',
+                     addr, ent, mat.get('nombre'), nom_sk, req_lvl)
+            return True
+    puede, msg, velocidad = _herramienta_para(ses, mat.get('herramienta') or (mat_xml or {}).get('裝備限制'))
     if not puede:
         ses.enviar(_cl_r.aviso('', tipo=7, msg_id=msg))
         log.info('[%s] veta %s (%s): no puede recolectar (msg %s)', addr, ent, mat['nombre'], msg)
@@ -5818,6 +5976,7 @@ def _recolectar(ses, addr, stage, ent):
                   abs(int(px[1]) // 32 - int(getattr(p, 'tile_y', 0) or 0))) > DISTANCIA_RECOLECCION:
         ses.enviar(_cl_r.aviso('', tipo=7, msg_id=MSG_RECOLECTAR_LEJOS))
         return True
+    if stage in __import__('league_war').STAGES and not __import__('league_war').participating(ses):return False
     cuenta = _cuenta_de_veta(ses, stage, ent, mat)
     if mat['limite'] and cuenta[0] >= mat['limite']:
         ses.enviar(_cl_r.aviso('', tipo=7, msg_id=MSG_SIN_MATERIAL))
@@ -5869,6 +6028,7 @@ def _sacar_de_veta(ses, addr, stage, ent, mat, mid):
             __import__('holy_battlefield').miembro(ses)
         except __import__('competiciones').Rechazo:
             return False
+    if stage in __import__('league_war').STAGES and not __import__('league_war').participating(ses):return False
     cuenta = _cuenta_de_veta(ses, stage, ent, mat)
     if mat['limite'] and cuenta[0] >= mat['limite']:
         ses.enviar(_cl_r.aviso('', tipo=7, msg_id=MSG_SIN_MATERIAL))
@@ -5907,6 +6067,27 @@ def _sacar_de_veta(ses, addr, stage, ent, mat, mid):
             if _slot_straw is not None:
                 ses.enviar(*_refrescar(ses, [_slot_straw]),
                            _cl_r.aviso(_nombre_item(_straw_id), tipo=0, msg_id=_cl_r.MSG_ITEM))
+        # Otorgar Skill EXP de recoleccion y optimizaciones en robot (Drive / Mechanism)
+        sk_forzadas = set()
+        mat_xml = _hs_straw.xml_rows('material.xml').get(int(mid))
+        sk_mid = SKILL_POR_MATERIAL.get((mat_xml or {}).get('使用技能'))
+        if sk_mid and any(int(h[0]) == sk_mid for h in (ses.personaje.habilidades or [])):
+            sk_forzadas.add(sk_mid)
+        bolsa_cur = getattr(ses, 'inventario', {}) or {}
+        montura = int(bolsa_cur.get(10) or bolsa_cur.get(174) or 0)
+        import inventario as _iv_rec
+        if montura and _iv_rec.categoria_item(montura) == '機甲':
+            for s_opt in (24, 25):  # Mechanism (24) y Drive (25)
+                if any(int(h[0]) == s_opt for h in (ses.personaje.habilidades or [])):
+                    sk_forzadas.add(s_opt)
+        if sk_forzadas:
+            try:
+                sk_pkgs = _otorgar_skill_exp(ses, ses.personaje, ses.personaje.entity_id,
+                                             skills_forzadas=sk_forzadas, prob_override=1.0)
+                if sk_pkgs:
+                    ses.enviar(*sk_pkgs)
+            except Exception:
+                log.exception('otorgar skill exp recoleccion')
         _guardar_bolsa(ses, ses.personaje.char_id)
     log.info('[%s] veta %s (%s) en %s: %s, %d/%d', addr, ent, mat['nombre'], stage,
              dado, cuenta[0], mat['limite'])
@@ -5924,6 +6105,8 @@ def _recursos_de_plantilla(stage):
     """Los recursos de la plantilla del mapa, tal cual (con 'crudo')."""
     if int(stage)==112:
         return __import__('holy_battlefield').recursos()
+    if int(stage) in __import__('league_war').STAGES:
+        return __import__('league_war').resources(stage)
     if int(stage) == 500:
         import house_services as hs
         return [dict(entity_id=eid, sprite=sprite, tile=tile,
@@ -5932,7 +6115,7 @@ def _recursos_de_plantilla(stage):
     import login as _lg_r
     if stage not in _RECURSOS_COMPLETOS:
         rec = []
-        f = _lg_r.PLANTILLAS_POR_STAGE.get(stage)
+        f = mapas_poblados().get(stage)
         if f:
             try:
                 import json as _js
@@ -6010,7 +6193,7 @@ def _recurso_con_entidad(stage, ent):
     import login as _lg_r
     if stage not in _RECURSOS_POR_STAGE:
         idx = {}
-        f = _lg_r.PLANTILLAS_POR_STAGE.get(stage)
+        f = mapas_poblados().get(stage)
         if f:
             try:
                 import json as _js
@@ -6316,6 +6499,8 @@ _SALAS_DEL_MUNDO = {}
 def _sala_para(ses):
     """La sala que le toca al entrar en su mapa actual."""
     st = int(ses.personaje.stage)
+    if st in __import__('league_war').STAGES:
+        return __import__('league_war').room(st)
     if st in __import__('daily_events').STAGES:
         return __import__('daily_events').sala(ses)
     import territorios_liga
@@ -8547,8 +8732,8 @@ def _stats_ses(ses):
                      mascotas=getattr(p, 'mascotas', None) if p else None)
 
 
-def _otorgar_skill_exp(ses, p, yo, arma_puesta=0, magic_id=0, accion=None):
-    """Otorga Skill EXP en cada impacto de ataque o uso de habilidad activa (buff/cura/spell)."""
+def _otorgar_skill_exp(ses, p, yo, arma_puesta=0, magic_id=0, accion=None, skills_forzadas=None, prob_override=None):
+    """Otorga Skill EXP en cada impacto de ataque o uso de habilidad activa (buff/cura/spell/recoleccion/craft)."""
     if not p or not getattr(p, 'habilidades', None):
         return []
     import configuracion, cuentas, clases as _cl, combate as _cb, inventario as _iv
@@ -8571,31 +8756,27 @@ def _otorgar_skill_exp(ses, p, yo, arma_puesta=0, magic_id=0, accion=None):
 
     nuevas_habs = []
     subio_alguna = False
-    # Suben TODAS las habilidades del personaje, no solo la del arma. En las
-    # capturas de Celestia aparecen Reserve, Finesse, Grapple, Garment,
-    # Enhance y Sword con recuentos parecidos (23, 23, 23, 21, 20, 19 sobre
-    # 2824 golpes), asi que cada una tira su propia probabilidad por golpe.
-    # El valor base es 1: los "100 Exp" de la captura son el multiplicador de
-    # ese servidor.
-    # Que habilidades pueden subir con esta accion. Un espadachin no sube
-    # Cook ni Fishing por pegarle a un monstruo: cada habilidad tiene su
-    # actividad, declarada en skill.xml (ver clases.ACCION_POR_SKILL).
     mag_branch = _cl.skill_de_magia(magic_id) if magic_id else None
-    if accion is None:
+    if skills_forzadas is not None:
+        candidatas = set(skills_forzadas)
+    elif accion is not None:
+        candidatas = _cl.skills_que_suben(accion, skills_arma)
+        if mag_branch:
+            candidatas.add(mag_branch)
+    else:
         if mag_branch in (1, 2, 3, 4, 5, 6, 7, 8, 34, 35, 36) or (8 in skills_arma) or (magic_id and not skills_arma):
             accion = 'magia'
         elif 17 in skills_arma or mag_branch == 17:
             accion = 'distancia'      # con arco
         else:
             accion = 'melee'
-    # skills_arma va adentro: es lo que arrastra Shield con espada o hacha,
-    # y Snipe y Eagle Eye con arco.
-    candidatas = _cl.skills_que_suben(accion, skills_arma)
-    if mag_branch:
-        candidatas.add(mag_branch)
+        candidatas = _cl.skills_que_suben(accion, skills_arma)
+        if mag_branch:
+            candidatas.add(mag_branch)
+    prob = _cb.PROB_SKILL_EXP if prob_override is None else float(prob_override)
     for h in p.habilidades:
         sid, slv, sexp = h[0], h[1], h[2]
-        if sid not in candidatas or random.random() >= _cb.PROB_SKILL_EXP:
+        if sid not in candidatas or (prob < 1.0 and random.random() >= prob):
             nuevas_habs.append((sid, slv, sexp))
             continue
         sexp += exp_ganada
@@ -8625,6 +8806,11 @@ def _otorgar_skill_exp(ses, p, yo, arma_puesta=0, magic_id=0, accion=None):
         # Los porcentajes se actualizan con los 0x001D individuales; el arbol
         # completo solo hace falta cuando cambia el rango de una habilidad.
         pkgs.append(_cl.arbol(p.habilidades))
+        if getattr(ses, 'usuario', None):
+            try:
+                cuentas.guardar_habilidades(ses.usuario, p.char_id, p.habilidades)
+            except Exception:
+                pass
     if magic_id:
         pkgs.extend((_cb.atributo(yo, getattr(ses, 'sp', 0) or 0,
                                   _cb.KIND_SP),
@@ -9348,6 +9534,13 @@ class Servidor:
                 _eq.salir(ses)
             except Exception:
                 log.exception('equipos: fallo al salir del grupo')
+            if getattr(ses,'personaje',None) and getattr(ses,'usuario',None):
+                try:
+                    __import__('minigames').desconectar(ses)
+                    __import__('chatrooms').desconectar(ses)
+                    __import__('amigos').sincronizar(ses,self.mundos,notify=True,offline=True)
+                except Exception:
+                    log.exception('amigos: fallo al notificar desconexion')
             try:
                 import gremios as _grm
                 _grm.al_desconectar_jugador(ses, self.mundos)
@@ -9914,6 +10107,20 @@ class Servidor:
                     self._procesar_chat_mundo(ses, txt, addr)
             return
 
+        if __import__('league_war').process(ses,opcode,cuerpo):
+            return
+
+        if (ses.rol == 'mundo' and getattr(ses, 'personaje', None)
+                and opcode == 0x10):
+            __import__('minigames').procesar(ses,cuerpo,self.mundos)
+            return
+
+        if (ses.rol == 'mundo' and getattr(ses, 'personaje', None)
+                and (opcode in (0x120, 0x122, 0x124, 0x125, 0x129)
+                     or (opcode == 0x126 and len(cuerpo) >= 10 and cuerpo[4] in (6, 8)))):
+            __import__('chatrooms').procesar(ses, opcode, cuerpo, self.mundos)
+            return
+
         # Canales de grupo/liga/matrimonio (0x0126: Team=4, League=5, Marriage=14 — NO gastan Broadcasting)
         if opcode == 0x0126 and ses.rol == 'mundo' and getattr(ses, 'personaje', None) and cuerpo:
             import clases as _cl_priv
@@ -10376,6 +10583,12 @@ class Servidor:
                 _eq_in.al_cambiar_de_mapa(ses)
             except Exception:
                 log.exception('equipos: fallo al sincronizar grupo en login')
+            try:
+                __import__('elementary').loaded(ses)
+                __import__('league_war').loaded(ses)
+                __import__('social_state').loaded(ses,self.mundos)
+            except Exception:
+                log.exception('amigos: fallo al sincronizar contactos en login')
             # Iniciar tarea asincrona de IA para que los monstruos paseen por el mapa y ataquen
             async def _ia_monstruos():
                 import random, time
@@ -10618,6 +10831,8 @@ class Servidor:
                             return not any(max(abs(mm.tile_x - _x), abs(mm.tile_y - _y)) <= RADIO_IA
                                            for _x, _y in _men)
                         for m in list((ses.monstruos or {}).values()):
+                            if ses.personaje.stage in __import__('league_war').STAGES:
+                                continue
                             if __import__('daily_events').controls_ai(ses,m):
                                 continue
                             if getattr(m, 'es_estructura_hb', False):
@@ -10911,7 +11126,7 @@ class Servidor:
                                                     # reducen/reflejan parte del dano recibido al atacante sin repetir la animacion de casteo.
                                                     _dc_bid = next((
                                                         bid for bid, b in (pj.buffs or {}).items()
-                                                        if (5156 <= int(bid) <= 5160 or 13670 <= int(bid) <= 13674 or 5131 <= int(bid) <= 5135)
+                                                        if str(bid).isdigit() and (5156 <= int(bid) <= 5160 or 13670 <= int(bid) <= 13674 or 5131 <= int(bid) <= 5135)
                                                         and isinstance(b, dict) and b.get('fin', 0) > ahora_imp
                                                     ), None)
                                                     if _dc_bid is not None:
@@ -10937,7 +11152,7 @@ class Servidor:
                                                     # Shock Absorber (13675..13679): convierte un % del dano recibido en MP
                                                     _sa_bid = next((
                                                         bid for bid, b in (pj.buffs or {}).items()
-                                                        if 13675 <= int(bid) <= 13679 and isinstance(b, dict) and b.get('fin', 0) > ahora_imp
+                                                        if str(bid).isdigit() and 13675 <= int(bid) <= 13679 and isinstance(b, dict) and b.get('fin', 0) > ahora_imp
                                                     ), None)
 
                                                     suyo = __import__('avatar_clones').absorber(ses,suyo)
@@ -11534,9 +11749,19 @@ class Servidor:
                     if p2 is not None and (getattr(p2, 'nombre', '') or '') == n:
                         return s
                 return None
-            ok, por_que = _eq.invitar(ses, nombre, _por_nombre)
+            modo = cuerpo[-1] if len(cuerpo)>=18 and cuerpo[-1] in (0,1) else 0
+            ok, por_que = _eq.invitar(ses, nombre, _por_nombre, modo=modo)
             log.info("[%s] invita a '%s': %s", addr, nombre,
                      'cartel mandado' if ok else por_que)
+            return
+
+        if (opcode in (0x100,0x101,0x102,0x103,0x106,0x107) and ses.rol=='mundo' and ses.personaje):
+            __import__('correo').procesar(ses,opcode,cuerpo,self.mundos)
+            return
+
+        if (opcode in (0x19,0x1a,0x1b,0x1c,0x1e,0x1f,0x20,0x21)
+                and ses.rol == 'mundo' and ses.personaje
+                and __import__('amigos').procesar(ses,opcode,cuerpo,self.mundos)):
             return
 
         if opcode == 0x0018 and ses.rol == 'mundo':
@@ -11673,7 +11898,7 @@ class Servidor:
                 now_t = time.time()
                 if getattr(p, 'buffs', None):
                     for b_id, b_data in list(p.buffs.items()):
-                        if isinstance(b_data, dict):
+                        if str(b_id).isdigit() and isinstance(b_data, dict):
                             rem_s = b_data.get('fin', 0) - now_t
                             if rem_s > 0:
                                 rem_ms = int(rem_s * 1000)
@@ -12020,173 +12245,9 @@ class Servidor:
                 if mag.get('es_clon'):
                     __import__('avatar_clones').lanzar(ses,tipo,mag)
                     return
-                if getattr(ses, 'sentado', False):
-                    ses.sentado = False
-                    ses.enviar(struct.pack('<HIII', 0x000A, yo, 0, 0))
-
-                mp_coste = mag.get('mp', 0)
-                if ses.personaje and mp_coste > 0:
-                    if ses.personaje.mp < mp_coste:
-                        log.info(f"[{addr}] MP insuficiente ({ses.personaje.mp}/{mp_coste}) para invocacion {tipo}")
-                        return
-                    ses.personaje.mp = max(0, ses.personaje.mp - mp_coste)
-                    ses.enviar(_cb.atributo(yo, ses.personaje.mp, _cb.KIND_MP))
-
-                cost_sp = mag.get('cost_sp', 0)
-                if cost_sp > 0:
-                    if getattr(ses, 'sp', 0) < cost_sp:
-                        log.info(f"[{addr}] SP insuficiente ({getattr(ses, 'sp', 0)}/{cost_sp}) para invocacion {tipo}")
-                        return
-                    ses.sp -= cost_sp
-                    if ses.personaje:
-                        ses.personaje.sp = ses.sp
-                    ses.enviar(_cb.atributo(yo, ses.sp, _cb.KIND_SP), _stats_ses(ses))
-                _dar_sp(ses, yo, mag, addr)
-
-                cd_ms = mag.get('cd_ms', 2000)
-                cast_time = _cb.calcular_cast_time(
-                    mag.get('cast_time', 2000),
-                    buffs=getattr(ses.personaje, 'buffs', {}),
-                    habilidades=getattr(ses.personaje, 'habilidades', None),
-                    es_magia=True
-                )
-                ef = _cb.efecto_de_ataque(tipo) or mag.get('efecto', 9)
-
-                # Comprobar si tiene el buff Duo Summon (5136..5140) activo
-                duo_summon_activo = False
-                if ses.personaje and getattr(ses.personaje, 'buffs', None):
-                    _now_ds = time.time()
-                    for _bid, _bdata in list(ses.personaje.buffs.items()):
-                        try:
-                            _bid_int = int(_bid)
-                        except (TypeError, ValueError):
-                            continue
-                        if 5136 <= _bid_int <= 5140:
-                            if not isinstance(_bdata, dict) or _bdata.get('fin', _now_ds + 1) > _now_ds:
-                                duo_summon_activo = True
-                                break
-
-                if duo_summon_activo:
-                    if getattr(ses, 'invocacion', None) and not getattr(ses, 'invocacion2', None):
-                        summon_slot = 'invocacion2'
-                        summon_eid = yo + 8001 if ses.invocacion.get('entity_id') != yo + 8001 else yo + 8000
-                    elif not getattr(ses, 'invocacion', None):
-                        summon_slot = 'invocacion'
-                        _eid2 = ses.invocacion2.get('entity_id') if getattr(ses, 'invocacion2', None) else 0
-                        summon_eid = yo + 8000 if _eid2 != yo + 8000 else yo + 8001
-                    else:
-                        old_eid = ses.invocacion['entity_id']
-                        ses.enviar(_cb.atributo(old_eid, 0, _cb.KIND_HP),
-                                   _cb.despawn_monstruo(old_eid))
-                        ses.invocacion = ses.invocacion2
-                        summon_slot = 'invocacion2'
-                        summon_eid = yo + 8000 if ses.invocacion.get('entity_id') != yo + 8000 else yo + 8001
-                else:
-                    if getattr(ses, 'invocacion', None):
-                        old_eid = ses.invocacion['entity_id']
-                        ses.enviar(_cb.atributo(old_eid, 0, _cb.KIND_HP),
-                                   _cb.despawn_monstruo(old_eid),
-                                   struct.pack('<HIBBI', 0x0013, yo, 1, 0x3d, 0))
-                        ses.invocacion = None
-                    if getattr(ses, 'invocacion2', None):
-                        old_eid2 = ses.invocacion2['entity_id']
-                        ses.enviar(_cb.atributo(old_eid2, 0, _cb.KIND_HP),
-                                   _cb.despawn_monstruo(old_eid2),
-                                   struct.pack('<HIBBI', 0x0013, yo, 1, 0x3d, 0))
-                        ses.invocacion2 = None
-                    summon_slot = 'invocacion'
-                    summon_eid = yo + 8000
-
-                npc_t = mag.get('invoca_npc')
-                info_inv = _cb.datos_invocacion(npc_t)
-
-                # Coordenadas donde se invoca: si es totem, siempre a los pies del jugador; sino tx, ty o al lado
-                es_totem = 'totem' in str(info_inv.get('nombre', '')).lower() or (info_inv.get('move_speed', 70) or 0) <= 0
-                if es_totem and ses.personaje:
-                    stx, sty = ses.personaje.tile_x, ses.personaje.tile_y
-                elif tx > 0 and ty > 0 and ses.personaje and max(abs(tx - ses.personaje.tile_x), abs(ty - ses.personaje.tile_y)) <= 14:
-                    stx, sty = tx, ty
-                else:
-                    _off_sx = -1 if summon_slot == 'invocacion2' else 1
-                    stx = (ses.personaje.tile_x + _off_sx) if ses.personaje else tx
-                    sty = ses.personaje.tile_y if ses.personaje else ty
-
-                dur_s = mag.get('dur_invoca', 3600)
-                setattr(ses, summon_slot, {
-                    'entity_id': summon_eid,
-                    'npc_type': npc_t,
-                    'nombre': info_inv['nombre'],
-                    'sprite': info_inv['sprite'],
-                    'hp': info_inv['hp'],
-                    'hp_max': info_inv['hp'],
-                    'atk': info_inv['atk'],
-                    'defensa': info_inv['def'],
-                    'matk': info_inv.get('matk', 0),
-                    'mdef': info_inv.get('mdef', 0),
-                    'level': info_inv.get('level', 1),
-                    'accuracy': info_inv.get('accuracy', 50),
-                    'agility': info_inv.get('agility', 50),
-                    'crit_rate': info_inv.get('crit_rate', 5),
-                    'atk_range': 8 if es_totem else info_inv.get('atk_range', 1),
-                    'move_speed': 0 if es_totem else info_inv.get('move_speed', 70),
-                    'atk_speed': info_inv.get('atk_speed', 70),
-                    'skills': info_inv.get('skills', []),
-                    'tile_x': stx,
-                    'tile_y': sty,
-                    'expira': time.time() + dur_s,
-                    'objetivo': None,
-                    'ultimo_ataque': 0.0,
-                    'proximo_paso': 0.0,
-                })
-
-                import login as _lg
-                spawn_pkg = _lg.spawn_invocacion(summon_eid, npc_t, info_inv['nombre'], (stx, sty), sprite=info_inv['sprite'])
-                hp_pkg = _cb.atributo(summon_eid, 100, _cb.KIND_HP)
-                # Confirmar cast sobre el suelo (target=0, stx, sty) para que el ataud NO salga sobre la cabeza del jugador
-                atk_confirm = _cb.confirmar_cast(0, stx, sty)
-
-                # Paquetes iniciales: confirmacion al suelo, efecto del ataud unicamente en (stx, sty), GCD
-                ses.enviar(
-                    atk_confirm,
-                    _cb.numero_de_dano(yo, 0, 0, ataque=tipo, efecto=ef, cast_time=cast_time, es_magia=True, tile_x=stx, tile_y=sty),
-                    _cb.gcd_paquete()
-                )
-
-                def _fin_invoca():
-                    if not ses.personaje or getattr(ses, 'muerto', False):
-                        return
-                    pkgs_inv = [
-                        _cb.cierre_de_dano(yo, 0, ataque=tipo, efecto=ef, es_magia=True, tile_x=stx, tile_y=sty),
-                        struct.pack('<HIBBI', 0x0013, yo, 1, 0x3d, summon_eid),
-                        struct.pack('<HIBBII', 0x001D, yo, 1, 0x2a, summon_eid, 0),
-                        spawn_pkg,
-                        hp_pkg,
-                        struct.pack('<HIBBI', 0x0013, summon_eid, 1, 0x3c, yo),
-                    ]
-                    if cd_ms > 0:
-                        _sk_ids_copia = _cb.grupo_de(tipo)
-                        for sk_id in _sk_ids_copia:
-                            pkgs_inv.append(struct.pack('<HIBBII', 0x001D, yo, 1, 3, sk_id, cd_ms))
-                        asyncio.get_event_loop().call_later(cd_ms / 1000.0, lambda: ses.enviar_inmediato(*[
-                            struct.pack('<HIBBII', 0x001D, yo, 1, 3, sk_id, 0) for sk_id in _sk_ids_copia
-                        ]))
-
-                    pkgs_inv.extend(_otorgar_skill_exp(ses, ses.personaje, yo, magic_id=tipo))
-                    ses.enviar_inmediato(*pkgs_inv)
-                    import presencia as _pr
-                    _pr.notificar_invocacion_spawn(ses, getattr(ses, 'invocacion', None) or getattr(ses, 'invocacion2', None), spawn_pkg, hp_pkg)
-
-                _ret_inv = max(0.14, min(2.5, cast_time / 1000.0))
-                asyncio.get_event_loop().call_later(_ret_inv, _fin_invoca)
-
-                if getattr(ses, 'usuario', None):
-                    cuentas.guardar_progreso(ses.usuario, ses.personaje.char_id,
-                                             ses.personaje.nivel, ses.personaje.exp,
-                                             ses.personaje.hp, ses.personaje.mp,
-                                             ses.personaje.habilidades,
-                                             hp_max=ses.personaje.hp_max, mp_max=ses.personaje.mp_max, sp=getattr(ses, "sp", None), buffs=getattr(ses.personaje, "buffs", None) if ses.personaje else None)
-                log.info(f"[{addr}] invocacion {info_inv['nombre']} (npc_type {npc_t}, sprite {info_inv['sprite']}) invocada para jugador {yo} en ({stx},{sty})")
+                __import__('invocaciones').lanzar(ses,tipo,mag,tx,ty,addr)
                 return
+
 
             # Si es AOE (Ground AOE o Self AOE), ejecutarlo directamente
             if es_aoe:
@@ -12900,7 +12961,8 @@ class Servidor:
                             if _pg > 0 and not mag.get('es_transformacion'):
                                 _dict_b_obj = f_pet_cast.setdefault('buffs', {}) if (es_target_pet and isinstance(f_pet_cast, dict)) else ses.personaje.buffs
                                 for prev_bid, prev_bdata in list(_dict_b_obj.items()):
-                                    if int(prev_bid) != int(tipo) and isinstance(prev_bdata, dict) and int(prev_bdata.get('priority_group') or 0) == _pg:
+                                    if (str(prev_bid).isdigit() and int(prev_bid) != int(tipo)
+                                            and isinstance(prev_bdata, dict) and int(prev_bdata.get('priority_group') or 0) == _pg):
                                         _dict_b_obj.pop(prev_bid, None)
                                         ses.enviar(struct.pack('<HIBBII', 0x001D, targ_confirm, 1, 4, int(prev_bid), 0))
 
@@ -14115,6 +14177,9 @@ class Servidor:
             # Cargar la secuencia completa oficial del nuevo mapa (aparicion, capas, barra, stats, spawns y atributos)
             for sub in _lg2.secuencia(p):
                 ses.enviar(sub)
+            __import__('elementary').loaded(ses)
+            __import__('league_war').loaded(ses)
+            __import__('social_state').loaded(ses,self.mundos)
             try:
                 _entrar_en_sala(ses, addr)
             except Exception:
@@ -14207,7 +14272,7 @@ class Servidor:
             now_t = time.time()
             if getattr(p, 'buffs', None):
                 for b_id, b_data in list(p.buffs.items()):
-                    if isinstance(b_data, dict):
+                    if str(b_id).isdigit() and isinstance(b_data, dict):
                         rem_s = b_data.get('fin', 0) - now_t
                         if rem_s > 0:
                             rem_ms = int(rem_s * 1000)
@@ -14450,6 +14515,11 @@ class Servidor:
         #   C2S 0x0026 (0x61BD90): vender a la pestana Buy   -> S2C 0x004A
         if opcode == 0x0022 and ses.rol == 'mundo' and ses.personaje and len(cuerpo) >= 61:
             if getattr(ses, 'muerto', False) or getattr(ses, 'puesto', None):
+                return
+            if (es_instancia(ses.personaje.stage)
+                    and ses.personaje.stage not in __import__('daily_events').STAGES
+                    and ses.personaje.stage not in __import__('competiciones').MAPAS):
+                ses.enviar(clases_aviso('Stalls are unavailable inside regional instances.'))
                 return
             import inventario as _iv
             import presencia as _pres
@@ -14847,46 +14917,13 @@ class Servidor:
         # y se mira el subtipo.
         if (opcode == 0x0016 and ses.rol == 'mundo' and ses.personaje
                 and len(cuerpo) >= 1 and cuerpo[0] in (0x32, 0x33)):
-            _sub_al = cuerpo[0]
-            _dato_al = struct.unpack_from('<I', cuerpo, 1)[0] if len(cuerpo) >= 5 else 0
             import album as _alb
-            _p_al = ses.personaje
-            if getattr(_p_al, 'album', None) is None:
-                _p_al.album = {}
-            if _sub_al == 0x32:
-                log.info('[%s] album: abrir (0x0016/0x32) -> %s'
-                         % (addr, _alb.resumen(_p_al.album)['total']))
-                return
-            # Subtipo 0x33: meter una pieza. El u32 que acompana es, por
-            # lo que hace sendcollect en el binario, un u16 leido del
-            # objeto que esta en la casilla de soltar. Se toma como ranura
-            # y, si no cuadra, se registra con los bytes en vez de callar.
-            _ran = _dato_al & 0xFFFF
-            _bolsa_al = getattr(ses, 'inventario', None) or {}
-            _it_al = _bolsa_al.get(_ran)
-            if (__import__('arena_premios_compat').es_premio(ses,_ran)
-                    or __import__('item_mall').es_temporal(ses,_ran)
-                    or __import__('furniture_items').protegido(ses,_ran)):
-                ses.enviar(clases_aviso('Temporary rewards and Item Mall items cannot become permanent collection bonuses.'))
-                return
-            _cat = _alb.categoria_de(_it_al) if _it_al else ''
-            if not _it_al or not _cat:
-                log.info('[%s] album: la ranura %d no tiene nada que entre '
-                         '(item %s, cuerpo %s)'
-                         % (addr, _ran, _it_al, cuerpo.hex()))
-                return
-            _val = _alb.valor_de(_it_al)
-            _p_al.album[_cat] = int(_p_al.album.get(_cat, 0)) + _val
-            _bolsa_al.pop(_ran, None)
-            _cantidades(ses).pop(_ran, None)
-            ses.enviar(*_refrescar(ses, [_ran]), _stats_ses(ses))
-            if getattr(ses, 'usuario', None):
-                _guardar_bolsa(ses, _p_al.char_id)
-                cuentas.guardar_sistemas(ses.usuario, _p_al.char_id, _p_al)
-            log.info('[%s] album: item %d a %s (+%d, ahora %d); bonos %s'
-                     % (addr, _it_al, _cat, _val, _p_al.album[_cat],
-                        _alb.bonos(_p_al.album)))
+            if cuerpo[0]==0x32:
+                ses.enviar(_alb.paquete(ses.personaje))
+            elif len(cuerpo)==5:
+                _alb.registrar(ses,struct.unpack_from('<I',cuerpo,1)[0])
             return
+
 
         if opcode == 0x002F and ses.rol == 'mundo' and ses.personaje and len(cuerpo) >= 9:
             import inventario as _iv
@@ -14913,6 +14950,12 @@ class Servidor:
                 _fuera, _dentro = struct.unpack_from('<II', cuerpo, 1)
                 _p = ses.personaje
                 _habs = list(_p.habilidades or [])
+                if any(h[0] == _dentro for h in _habs):
+                    log.warning(f"[{addr}] cambio de rama: ya se lleva la rama {_dentro} ({_sk.nombre_rama(_dentro)})")
+                    return
+                if not (1 <= _dentro <= 36):
+                    log.warning(f"[{addr}] cambio de rama: rama invalida {_dentro}")
+                    return
                 _pos = next((k for k, h in enumerate(_habs) if h[0] == _fuera), None)
                 if _pos is None:
                     log.warning(f"[{addr}] cambio de rama: no se lleva la "
@@ -15297,6 +15340,10 @@ class Servidor:
             return
 
         # --- Descartar / Destruir item del inventario (papelera) ---------
+        if opcode == 0x004D and ses.rol == 'mundo' and ses.personaje:
+            __import__('love_broadcasting').procesar(ses,cuerpo)
+            return
+
         if opcode == 0x004C and ses.rol == 'mundo' and ses.personaje and cuerpo:
             import inventario as _iv
             import clases as _c
@@ -15369,6 +15416,9 @@ class Servidor:
                         items_vistos.add(item_id)
                         salida.append(clases.aviso(_nombre_item(item_id), tipo=0, msg_id=clases.MSG_ITEM))
                 salida.append(_iv.completo(cid, _con_oro(ses), _dueno(ses), _mejoras_de(ses)))
+                salida.extend(_apariencia(ses))
+                import presencia as _pr
+                _pr.notificar_equipo(ses)
 
             # Actualizar stats para Swordsman: Max HP = 304, MP = 154
             if ses.personaje:
@@ -15418,7 +15468,7 @@ class Servidor:
                         if hechizos
                         else " | SIN hechizos de nivel 1 para esa rama"))
 
-            _cid = clases.class_id(ids[0])
+            _cid = clases.class_id(ids)
             if _cid is not None and ses.personaje and getattr(ses, 'usuario', None):
                 cuentas.guardar_clase(ses.usuario, ses.personaje.char_id, _cid)
                 log.info(f"[{addr}] class_id {_cid} guardado")
@@ -15449,14 +15499,19 @@ class Servidor:
         # claro: lo que contesta el servidor es el contenido del contenedor
         # (0x001B) y los stats recalculados (0x0042), no un dialogo.
         if opcode == 0x0036 and ses.rol == 'mundo' and len(cuerpo) == 4:
-            _casa_fabricar(ses, struct.unpack_from('<I', cuerpo)[0])
+            recipe_id = struct.unpack_from('<I', cuerpo)[0]
+            if ses.personaje:__import__('production_sites').craft(ses,recipe_id)
             return
 
         if opcode == 0x0037 and ses.rol == 'mundo':
-            _task = getattr(ses, 'house_make_task', None)
-            if _task:
-                _task.cancel()
-                ses.house_make_task = None
+            for attr in ('house_make_task', 'craft_task'):
+                _task = getattr(ses, attr, None)
+                if _task:
+                    try:
+                        _task.cancel()
+                    except Exception:
+                        pass
+                    setattr(ses, attr, None)
             return
 
         if opcode == 0x0012 and ses.rol == 'mundo' and len(cuerpo) >= 4:
@@ -15747,7 +15802,7 @@ class Servidor:
         #   otro mapa   0x0012, 0x001B, 0x0042, 0x0013, 0x0007, 0x000C
         if opcode == 0x0151 and ses.rol == 'mundo' and len(cuerpo) >= 4:
             import clases as _cgo
-            if not ses.personaje:
+            if not ses.personaje or not tiene_faccion(ses.personaje):
                 return
             ido = struct.unpack_from('<I', cuerpo, 0)[0]
             d = _angels_go().get(str(ido))
@@ -15756,6 +15811,9 @@ class Servidor:
                             f"en jumpmap.xml: {ido}")
                 return
             dst, lleg = int(d['stage']), list(d['tile'])
+            if dst not in mapas_poblados():
+                log.warning(f"[{addr}] Angels GO! a un stage sin poblar: {dst}")
+                return
             ranura = _ranura_de_item(ses, ITEM_SUPERWING)
             if ranura is None:
                 log.info(f"[{addr}] Angels GO! sin Superwing en la mochila")
@@ -16397,6 +16455,8 @@ class Servidor:
                 return
 
             # Libros de compañero y "Spacious" (formulas de uso 2, 7, 13, 14).
+            if __import__('production_sites').use_plan(ses,ranura):
+                return
             if __import__('travel_items').usar(ses,ranura,objetivo):
                 return
             if _usar_objeto_de_servicio(ses, addr, ranura, objetivo):
@@ -16452,6 +16512,10 @@ class Servidor:
             item_id = bolsa[ranura]
             cid = ses.personaje.char_id if ses.personaje else 4980
             if ses.personaje and __import__('furniture_items').usar(ses,ranura):
+                return
+            if ses.personaje and __import__('league_war').use(ses,ranura):
+                return
+            if ses.personaje and __import__('minigames').usar(ses,ranura):
                 return
             if ses.personaje and __import__('recent_mall').usar(ses,ranura):
                 return
@@ -17105,17 +17169,14 @@ class Servidor:
                 if getattr(ses, 'puesto', None):
                     ses.enviar(_c.aviso('Cannot use this item while running a stall.', tipo=7, msg_id=_c.MSG_TEXTO))
                     return
-                _sacar(ses, ranura, 1)
-                ses.inventario[inv.RANURA_PUESTO] = tarjeta_equipar
-                _cantidades(ses)[inv.RANURA_PUESTO] = 1
-                _instancias(ses)[inv.RANURA_PUESTO] = inv.instancia_nueva()
-
+                import recent_mall as _stall_cards
+                try:
+                    tarjeta_equipar, expira_ts = _stall_cards.activar_puesto(ses, ranura)
+                except _stall_cards.Rechazo as exc:
+                    ses.enviar(_c.aviso(str(exc), tipo=7, msg_id=_c.MSG_TEXTO))
+                    return
                 dur_s = inv.duracion_tarjeta_puesto(tarjeta_equipar)
-                expira_ts = 0.0
                 if dur_s > 0:
-                    expira_ts = time.time() + dur_s
-                    if ses.personaje:
-                        ses.personaje.expiracion_puesto = expira_ts
                     def _expirar_tarjeta(ses_ref=ses, exp_ts=expira_ts):
                         if (getattr(ses_ref, 'personaje', None) and
                             getattr(ses_ref.personaje, 'expiracion_puesto', 0) == exp_ts and
@@ -17138,9 +17199,6 @@ class Servidor:
                 salida = [_c.aviso(f'You used {nom_item_usado}!', tipo=7, msg_id=_c.MSG_TEXTO)]
                 salida.extend(_refrescar(ses, [ranura, inv.RANURA_PUESTO]))
                 ses.enviar(*salida)
-                if getattr(ses, 'usuario', None):
-                    cuentas.guardar_inventario(ses.usuario, cid, bolsa, _cantidades(ses),
-                                               expiracion_puesto=expira_ts)
                 log.info(f"[{addr}] tarjeta de puesto activada: {item_id} -> {tarjeta_equipar} en ranura {inv.RANURA_PUESTO} (duracion {dur_s}s)")
                 return
 
@@ -17807,6 +17865,8 @@ class Servidor:
             log.info(f"[{addr}] usar item {item_id} (ranura {ranura}): sin accion")
             return
 
+        if __import__('elementary').procesar(ses,opcode,cuerpo):
+            return
         if __import__('daily_events').procesar(ses,opcode,cuerpo):
             return
         # REA:012B/012C/012D/012E are Item Mall, not radar/map entities.
@@ -17831,6 +17891,8 @@ class Servidor:
         if opcode == 0x0005 and ses.rol == 'mundo' and len(cuerpo) >= 4:
             import dialogos
             ent = struct.unpack_from('<I', cuerpo, 0)[0]
+            if ses.personaje and __import__('elementary').pulsar(ses,ent):
+                return
             if __import__('travel_items').pulsar(ses,ent):
                 return
             if _casa_click(ses, ent):
@@ -18364,6 +18426,11 @@ class Servidor:
                             if (not _tw_tk2.es_totem_decorativo(_st_c)
                                     and _recorrer_dialogo_mapa(ses, addr, _st_c, 5936)):
                                 return
+                        _npc_comercio = _npc_type_de(_st_c, ent)
+                        _raiz_comercio = DIALOGO_DE_NPC.get((int(_st_c), _npc_comercio))
+                        if (_raiz_comercio and _dm_c.es_comercio(_st_c, _raiz_comercio)
+                                and _recorrer_dialogo_mapa(ses, addr, _st_c, _raiz_comercio)):
+                            return
                         _raiz_ent = DIALOGO_DE_ENTIDAD.get((int(_st_c), int(ent)))
                         if _raiz_ent and _recorrer_dialogo_mapa(ses, addr, _st_c, _raiz_ent):
                             log.info(f"[{addr}] {_nom_ent}: dialogo del arbol del mapa ({_raiz_ent})")
@@ -18451,6 +18518,9 @@ class Servidor:
         # Solo si el cuadro abierto sigue siendo ese: si despues se abrio
         # otro, dlg_guion ya no es el mismo y lo atiende quien lo abrio.
         if (opcode==0x000B and ses.rol=='mundo'
+                and __import__('elementary').continuar(ses,d.get('valor',1) if d else 1)):
+            return
+        if (opcode==0x000B and ses.rol=='mundo'
                 and __import__('competicion_dialogos').continuar(ses,d.get('valor',1) if d else 1)):
             return
         _dlm = getattr(ses, 'dlg_mapa', None)
@@ -18491,7 +18561,20 @@ class Servidor:
             log.info(f"[{addr}] estatua: aceptado, salta a ({_x},{_y})")
             return
 
-        if opcode == 0x000B and ses.rol == 'mundo' and getattr(ses, 'dlg_ent', None):
+        if opcode == 0x000B and ses.rol == 'mundo':
+            if not getattr(ses, 'dlg_ent', None):
+                # Fallback defensivo: si el jugador estaba en Guide Palace (51)
+                # respondiendo a 5010 ("Yes.", valor=10) tras perderse dlg_ent
+                if ses.personaje and ses.personaje.stage == MAPA_DEL_TUTORIAL and d and d.get('valor') == 10:
+                    import dialogos
+                    nom = ses.personaje.nombre if ses.personaje else 'Jugador'
+                    submsg_5013 = dialogos.armar_linea(5013, 3, [], strings=[nom])
+                    submsg_fin = struct.pack('<H', 0x0012) + dialogos.FIN
+                    ses.enviar(submsg_5013, submsg_fin)
+                    _final_tutorial(ses, addr)
+                    log.info(f"[{addr}] Raphael: abandono tutorial (recuperado de sesion) -> enviado a Angel Lyceum (41)")
+                    return
+                return
             import dialogos
             ent, paso = ses.dlg_ent, getattr(ses, 'dlg_paso', 0)
             g = getattr(ses, 'dlg_guion', None) or []
@@ -18618,13 +18701,7 @@ class Servidor:
                     submsg_fin = struct.pack('<H', 0x0012) + dialogos.FIN
                     ses.enviar(submsg_5013, submsg_fin)
                     ses.dlg_ent = None
-                    import clases as _cl3
-                    ses.personaje.stage = 41
-                    ses.personaje.tile_x, ses.personaje.tile_y = (152, 74)
-                    ses.monstruos = _monstruos_de(41)
-                    ses.enviar(_cl3.cambiar_mapa(41))
-                    if getattr(ses, 'usuario', None):
-                        cuentas.guardar_mapa(ses.usuario, ses.personaje.char_id, 41, 152, 74)
+                    _final_tutorial(ses, addr)
                     log.info(f"[{addr}] Raphael: abandono tutorial -> enviado a Angel Lyceum (41)")
                     return
 
@@ -19277,8 +19354,10 @@ class Servidor:
                             if not _mis_opt.tiene_mision(ses.personaje, _qid_cand) or _mis_opt.es_repetible(_qid_cand):
                                 _mis_opt.aceptar_mision(ses, _qid_cand)
 
+                _fin_pkt = struct.pack('<H', 0x0012) + dialogos.FIN
                 termina = any(
-                    m.endswith(dialogos.FIN) or struct.unpack_from('<H', m, 0)[0] in (0x0034, 0x002B, 0x001D)
+                    (m == _fin_pkt or m == dialogos.FIN or (len(m) == 11 and m[:2] == struct.pack('<H', 0x0012) and m[2:] == dialogos.FIN))
+                    or struct.unpack_from('<H', m, 0)[0] in (0x0034, 0x002B, 0x001D)
                     for m in submsgs if len(m) >= 2
                 )
                 if termina:

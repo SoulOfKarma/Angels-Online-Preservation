@@ -1365,6 +1365,40 @@ def propio(nombre: str, faccion: str = "Heaven", jugador: str = "",
         return [armar_linea(70003, npc_val or 3, [5190, 5191])[2:]]
     if any(s in nombre for s in ['Art Salesman', 'Art Saleman']):
         return [armar_linea(70004, npc_val or 3, [5190, 5191])[2:]]
+
+    # Directores de produccion (Suft C of C)
+    if 'Weapon Director' in nombre:
+        return [armar_linea(70100, npc_val or 3, [5190, 5191])[2:]]
+    if 'Armor Director' in nombre:
+        return [armar_linea(70101, npc_val or 3, [5190, 5191])[2:]]
+    if 'Sewing Director' in nombre:
+        return [armar_linea(70102, npc_val or 3, [5190, 5191])[2:]]
+    if 'Cooking Director' in nombre:
+        return [armar_linea(70103, npc_val or 3, [5190, 5191])[2:]]
+    if 'Art Director' in nombre:
+        return [armar_linea(70104, npc_val or 3, [5190, 5191])[2:]]
+
+    # Clerks de Palm Base (Suft C of C)
+    if 'Weapon Clerk' in nombre:
+        return [armar_linea(70017, npc_val or 3, [5190, 5191])[2:]]
+    if 'Armor Clerk' in nombre:
+        return [armar_linea(70018, npc_val or 3, [5190, 5191])[2:]]
+    if 'Sewing Clerk' in nombre:
+        return [armar_linea(70019, npc_val or 3, [5190, 5191])[2:]]
+    if 'Cooking Clerk' in nombre:
+        return [armar_linea(70020, npc_val or 3, [5190, 5191])[2:]]
+    if 'Art Clerk' in nombre:
+        return [armar_linea(70021, npc_val or 3, [5190, 5191])[2:]]
+    if 'Palm Base Smith' in nombre:
+        return [armar_linea(5179, npc_val or 3, [5190, 5191])[2:]]
+    if 'Ironsmith' in nombre or 'Weapon Seller' in nombre:
+        return [armar_linea(5179, npc_val or 3, [5190, 5191])[2:]]
+    if any(k in nombre for k in ('W. Plan Seller', 'A. Plan Seller', 'C. Plan Seller', 'D. Plan Seller', 'F. Plan Seller')):
+        return [armar_linea(5179, npc_val or 3, [5190, 5191])[2:]]
+    if 'League Clerk' in nombre:
+        return [armar_linea(5776, npc_val or 3, [5777, 5779, 5781, 5191])[2:]]
+    if 'Clerk Aikin' in nombre:
+        return [armar_linea(5028, npc_val or 3, [5030, 5032, 5033])[2:]]
     # --- Whitefang Village (Stage 288 - Magma Flux) ---
     # Los Vulcan. Medido en mundo_165036_535764_orden.jsonl, nueve clics.
     #
@@ -1857,6 +1891,15 @@ TIENDAS_POR_NOMBRE = {
     'Cooking Salesman': 7,
     'Sewing Salesman': 5,
     'Art Saleman': 6,
+    'Art Salesman': 6,
+    'Weapon Seller': 2,
+    'Weapon Clerk': 2,
+    'Armor Clerk': 5,
+    'Sewing Clerk': 5,
+    'Cooking Clerk': 7,
+    'Art Clerk': 6,
+    'Palm Base Smith': 2,
+    'Ironsmith': 2,
     'Material Seller': 56,
     'Pet Expert': 69,
     'Rock Smith': 74,
@@ -3149,6 +3192,8 @@ def respuesta_a(opcion_id: int, entidad: int = 0, val: int = 4,
     # Angel Raphael (Guide Palace)
     if opcion_id == 5009:  # "I don't want to join in." -> 5010 (preguntar si esta seguro)
         return (armar_linea(5010, 3, [5011, 5012]),)
+    if opcion_id == 5011:  # "Yes." -> 5013 (confirmar viaje a Lyceum)
+        return (armar_linea(5013, 3, [], strings=[nombre or '1']), struct.pack('<H', 0x0012) + FIN)
     # 5278 y 5371 son los "Quit" de los dos vendedores de recetas de Snowball
     # Village; sin ellos el dialogo se quedaba abierto al decir que no.
     if opcion_id in (5012, 5191, 5242, 5046, 5059, 5064, 5271, 7536, 5238, 7933, 7983, 7991,

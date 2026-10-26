@@ -582,6 +582,10 @@ def misiones_disponibles_npc(p, npc_nombre: str, stage: int = 0, entidad: int = 
         qids = [q for q in cadena_orden if q in qids] + [q for q in qids if q not in cadena_orden]
 
     for qid in qids:
+        # The tutorial offer must not override Wolay's return-to-city menu
+        # for a graduated character whose old tutorial flags are incomplete.
+        if qid in MISIONES_ALUMNO and es_graduado(p):
+            continue
         info = info_mision(qid)
         # 0. Descartar misiones de prueba internas
         if qid in (1, 2) or info.get('tipo') == 'Test':

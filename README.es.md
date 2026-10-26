@@ -16,6 +16,11 @@ una suposición, lo dice.
 
 ---
 
+Servicios sociales, Album nativo, Angel Elementary y League War conectados.
+[Funcionamiento, comandos GM, premios comprobados y limites pendientes](docs/SOCIAL_ALBUM_QUIZ_GVG_2026-10-25.md).
+[Correcciones de GvG, persistencia social, Alone y produccion](docs/GVG_SOCIAL_PRODUCTION_FIXES_2026-10-25.md).
+[Recetas al instante, comando /recipes, ordenes y salida de Wolay](docs/PRODUCTION_FRIENDS_WOLAY_2026-10-25.md).
+
 ## Estado real
 
 Olympus: Olly/Ozzy, canjes, mapas 217/332 con oleadas por piso y registros de
@@ -27,6 +32,16 @@ y uso atomico de Star Keys. Auto Divine llena las cartas de una en una; costes n
 tiradas IV/V gratis, Stardust y premios de Bingo contrastados con capturas.
 Bolsas de venta verificadas de2025 en On Sale/Fashion/Bubble; Top Sale usa compras locales.
 Scrolls de ciudad, marcas Mark/Maple persistentes y libros de viaje de equipo atomicos.
+Clases de Produccion y Manufactura: reparado el flujo completo de recoleccion y fabricacion para Weaponsmith, Armorsmith, Tailor, Chef y Craft (Technician).
+Los nodos de recursos (Mineria/Dig, Tala/Lumber, Pesca/Fishing y Cosecha/Collect) exigen la posesion de la habilidad, nivel de habilidad requerido segun el nodo (aviso nativo 356), y herramientas adecuadas o montura robot.
+Las monturas robot (機甲) permiten recoleccion universal aplicando bonus de reduccion de tiempo por nivel de Drive (habilidad 25) y optimizacion de atributos por Mechanism (habilidad 24); cada extraccion exitosa otorga Skill EXP a la habilidad de recoleccion y a Drive y Mechanism si se esta montado en robot.
+Manufactura nativa (0x0036/0x0037) ligada a los aparatos originales en Lyceum, las cuatro ciudades, Palm Base y casa; recetas conocidas persistentes, planos consumidos al aprender, materiales y productos atomicos.
+Skill Angel permite el intercambio libre de habilidades (0x002F, contenedor 10) para productores, con calculo de class_id corregido para preservar la profesion de oficio aun llevando armas o dagas secundarias.
+Al elegir cualquier clase de productor se entrega automaticamente el robot basico `Freshman Cask` (19814) en la ranura de montura, y confirmar la salida del tutorial teletransporta directamente al Angel Lyceum.
+Zonas de Procesado de Material y NPCs de Produccion: restaurados los sprites, dialogos oficiales, tiendas de recetas/materiales y NPCs de canje (`Party Angel`, `Gear Clerk`, `Fashionable`) en Angel Lyceum, las cuatro ciudades de faccion (Aurora City, Dark City, Breeze Woods, Iron Castle) y Palm Base, incluyendo `Ironsmith`, `Salesmen`, `Directors`, `Clerks` y `Plan Sellers`.
+El canje en Party Angel soporta el `Renewal-Lv 200 Equipment Voucher` (72058) y la apertura de las cajas `Renewal-Lv200 Light Armor`, `Heavy Armor` y `Gown` (72059..72061).
+La tienda de canje de League War incluye todos los Battlefield Badges desde Lv 13 hasta Lv 28 (48017..48024, 79352..79359).
+Persistencia del Album (`cuentas.py`) corregida para preservar las listas de celdas `_entries` al iniciar sesion y guardar.
 Daily Events: dos juegos distintos por dia en una rotacion semanal local
 configurable (42 filas por tramos), entrada automatica al tramo de nivel correspondiente,
 apertura atomica simultanea de los 4 tramos de nivel, entrega periodica de EXP (escalada por nivel hasta ~2M) y Skill EXP (~100)

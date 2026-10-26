@@ -713,8 +713,9 @@ def personaje_de(cuenta, ranura=0):
         banco={int(k): (tuple(v) if isinstance(v, list) else v)
                for k, v in p.get('banco', {}).items()},
         banco_oro=int(p.get('banco_oro', 0)),
-        album={str(k): int(v) for k, v in (p.get('album') or {}).items()},
+        album={str(k): ([list(x) if isinstance(x, (list, tuple)) else x for x in v] if isinstance(v, (list, tuple)) else int(v)) for k, v in (p.get('album') or {}).items()},
         logros=[int(x) for x in (p.get('logros') or [])],
+        recetas=[int(x) for x in (p.get('recetas') or [])],
         cartas=[int(x) for x in (p.get('cartas') or [])],
         cartas_canjes=[int(x) for x in (p.get('cartas_canjes') or [])],
         permisos=[str(x) for x in (p.get('permisos') or [])],
@@ -1016,7 +1017,7 @@ def guardar_progreso(usuario: str, char_id: int, nivel: int, exp: int,
 
 def guardar_sistemas(usuario: str, char_id: int, p):
     def _mut(fila):
-        fila['album'] = {str(k): int(v)
+        fila['album'] = {str(k): ([list(x) if isinstance(x, (list, tuple)) else x for x in v] if isinstance(v, (list, tuple)) else int(v))
                          for k, v in (getattr(p, 'album', None) or {}).items()}
         fila['logros'] = sorted({int(x) for x in (getattr(p, 'logros', None) or [])})
         fila['cartas'] = sorted({int(x) for x in (getattr(p, 'cartas', None) or [])})

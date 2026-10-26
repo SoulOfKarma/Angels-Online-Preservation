@@ -254,6 +254,7 @@ def test_daily_experience_tick_awards_periodic_exp_and_skill_exp(world):
     import daily_experience
     s, r = start_player(world, 374, level=410)
     s.personaje.habilidades = [(1, 10, 0)]  # Sword skill
+    world.save(s)
     init_exp = s.personaje.exp
     stamp = r['start'] + 10
     daily_experience.tick(r, stamp)
@@ -267,6 +268,46 @@ def test_daily_experience_tick_awards_periodic_exp_and_skill_exp(world):
     exp_after = s.personaje.exp
     daily_experience.tick(r, stamp + 2)
     assert s.personaje.exp == exp_after
+
+
+def test_periodic_daily_reward_commits_progress_and_replay_receipt_together(world):
+    import daily_experience
+    s,r=start_player(world,374,level=410)
+    s.personaje.habilidades=[(1,10,0)];world.save(s)
+    stamp=r['start']+10
+    daily_experience.tick(r,stamp)
+    data=stored(world,s)
+    assert data['exp']==s.personaje.exp and data['habilidades']==[list(h) for h in s.personaje.habilidades]
+    before=s.personaje.exp
+    r.pop('_exp_tick',None)
+    daily_experience.tick(r,stamp)
+    assert s.personaje.exp==before
+    with sqlite3.connect(world.db) as con:
+        assert con.execute('SELECT COUNT(*) FROM daily_presence_awards').fetchone()[0]==1
+    daily_experience.tick(r,stamp+10)
+    assert s.personaje.exp>before
+
+
+def test_daily_reward_sql_failure_can_retry_without_partial_skill_or_exp(world):
+    import daily_experience
+    s,r=start_player(world,374,level=410)
+    s.personaje.habilidades=[(1,10,0)];world.save(s)
+    initial=s.personaje.exp;stamp=r['start']+10
+    with sqlite3.connect(world.db) as con:
+        con.execute("CREATE TRIGGER fail_daily BEFORE UPDATE ON personajes BEGIN SELECT RAISE(ABORT,'test'); END")
+    with pytest.raises(sqlite3.IntegrityError):daily_experience.tick(r,stamp)
+    assert s.personaje.exp==initial and s.personaje.habilidades==[(1,10,0)]
+    with sqlite3.connect(world.db) as con:con.execute('DROP TRIGGER fail_daily')
+    daily_experience.tick(r,stamp)
+    assert stored(world,s)['exp']==s.personaje.exp>initial
+
+
+def test_immediate_gm_daily_has_one_battle_banner_and_no_signup_banner(world,monkeypatch):
+    packets=[];monkeypatch.setattr(app,'_tw_difundir',lambda *pk:packets.extend(pk))
+    daily.iniciar_evento('guard',minutes=30,registration=0)
+    assert len(packets)==1 and b'battle has begun' in packets[0]
+    daily.cron()
+    assert len(packets)==1
 
 
 def test_swindle_world_spawns_players_on_their_respective_faction_platforms(world):

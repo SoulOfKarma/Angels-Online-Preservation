@@ -34,6 +34,44 @@ def test_compensation_angel_is_not_published_or_accessible():
     assert '513497' not in rm.datos()['nodes']
 
 
+def test_daily_clerk_blue_stall_card_exchange_then_native_use(world):
+    import inventario
+    s=world.player(items={20:22251});s.cantidades[20]=60;world.save(s)
+    s.personaje.stage=41;s.personaje.tile_x,s.personaje.tile_y=161,93
+    click(s,71410004);answer(s,1);answer(s,5)
+    assert s._lyceum_exchange==347
+    app.Servidor.__new__(app.Servidor).manejar(s,0x160,None,None,'test',struct.pack('<II',13723,1))
+    assert not total(s,22251) and total(s,15715)==1
+    slot=next(k for k,v in s.inventario.items() if v==15715)
+    use(s,slot)
+    assert s.inventario=={166:15718} and inventario.limite_ranuras_puesto(s.inventario)==35
+    data=stored(world,s)
+    assert data['inventario']=={'166':15718} and data['expiracion_puesto']==0
+    assert data['custom_field']=='preserve me'
+
+
+@pytest.mark.parametrize('voucher,card',[(491,511),(492,512),(493,513),(15715,15718),
+                                      (15716,15719),(15717,15720),(79745,511),
+                                      (79746,512),(79747,513),(2701,2725)])
+def test_stall_service_cards_are_not_treated_as_random_boxes(world,voucher,card):
+    import inventario
+    s=world.player(items={20:voucher})
+    activated,deadline=rm.activar_puesto(s,20)
+    assert activated==card and s.inventario=={166:card}
+    assert stored(world,s)['inventario']=={'166':card}
+    duration=inventario.duracion_tarjeta_puesto(card)
+    assert deadline==(world.now[0]+duration if duration else 0)
+
+
+def test_stall_card_activation_sql_failure_consumes_nothing(world):
+    s=world.player(items={20:15715});before=copy.deepcopy(stored(world,s))
+    with sqlite3.connect(world.db) as con:
+        con.execute("CREATE TRIGGER fail_card BEFORE UPDATE ON personajes BEGIN SELECT RAISE(ABORT,'test'); END")
+    with pytest.raises(sqlite3.IntegrityError):rm.activar_puesto(s,20)
+    assert stored(world,s)==before and s.inventario=={20:15715}
+    assert not any(b'You used' in p for p in s.packets)
+
+
 def use(s,slot):
     app.Servidor.__new__(app.Servidor).manejar(s,0x2e,None,None,'test',struct.pack('<I',slot))
 

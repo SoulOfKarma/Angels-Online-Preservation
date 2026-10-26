@@ -32,7 +32,7 @@ def recover():
             ('Fashionable',71410003,8994,40207,[158,91],504816,1006,7),
             ('Daily Events Clerk',71410004,8912,40209,[161,93],504318,1009,7),
             ('Astral Angel',71410005,24516,40051,[177,100],514507,51,5),
-            ('Party Angel',71410006,14419,40195,[174,91],509872,195,6),
+            ('Party Angel',71410006,14419,40195,[174,91],509872,195,5),
             ('Chat Bubble Exchange',71410007,24740,40035,[151,87],516361,35,7),
             ('Reissue Angel',71410008,24801,40002,[194,91],516960,2,2)):
         # NPC coordinates and directions come from UPDATE19/update24 sp_*.xml.
@@ -47,7 +47,9 @@ def recover():
             pending.extend([r['s']] if r.get('s') else [])
             pending.extend(v[1] for v in r.get('o',[]))
             pending.extend(v['ir'] for v in r.get('r',[]))
-    pending=list(PRODUCTS)+list(RETIRED_OPENABLES)+[64716,42591,42592,42593];seen=set();boxes={};metadata={}
+    # GvG redemption boxes remain service items, never extra Item Mall stock.
+    gvg=json.loads((ROOT/'server/plantillas/league_war.json').read_text('utf8'))
+    pending=list(PRODUCTS)+list(RETIRED_OPENABLES)+[64716,42591,42592,42593,63519]+[o['item'] for o in gvg['shop']];seen=set();boxes={};metadata={}
     groups={a[1][0] for n in nodes.values() for a in n.get('a',[]) if a[0]==98 and a[1]}
     recipes={i:r for i,r in xml_rows('exchange.xml').items()
              if int(r.get('\u7fa4\u7d44') or 0) in groups}
@@ -60,9 +62,16 @@ def recover():
         metadata[str(ident)]=dict(name=r.get('\u539f\u578b\u540d\u7a31','')+r['\u57fa\u672c\u540d\u7a31'],
                                  level=int(r.get('\u7b49\u7d1a\u9650\u5236') or 0),
                                  duration=int(r.get('\u6301\u7e8c\u6642\u9593') or 0))
+        if __import__('inventario').resolver_tarjeta_puesto(ident) is not None:continue
         if r.get('\u7269\u54c1\u985e\u5225') not in ('\u79ae\u7269','\u7d05\u5305'):continue
         table=int(r.get('\u52d5\u614b\u8cc7\u65991') or 0)
         d=drops.get(table)
+        # Original tooltips explicitly specify these fixed 20-potion bundles.
+        # Their server-only drop records are absent from the extracted XML.
+        if not d and ident in (48072,48073):
+            reward=48053 if ident==48072 else 48054
+            boxes[str(ident)]=dict(table=table,mode='all',rewards=[[reward,20,0]],source='original item tooltip')
+            pending.append(reward);continue
         if not d:
             if ident in PIEDRAS_SELLADAS:
                 pending.append(PIEDRAS_SELLADAS[ident]);continue

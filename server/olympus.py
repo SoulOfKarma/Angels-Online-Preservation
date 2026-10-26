@@ -88,6 +88,41 @@ def _schema(con):
                 '(usuario TEXT,char_id INTEGER,dia TEXT,fin REAL,PRIMARY KEY(usuario,char_id,dia))')
 
 
+def _progreso(con,ses,*,clear=False,elapsed=None):
+    """Counter update shares the run transaction; repeat finish packets do not count."""
+    row=con.execute('SELECT datos FROM personajes WHERE usuario=? AND char_id=?',
+                    (ses.usuario,ses.personaje.char_id)).fetchone()
+    if not row:raise ValueError('Olympus character no longer exists')
+    data=json.loads(row[0]);cont=data.setdefault('logros_cont',{})
+    if clear:cont['timed:217:clears']=int(cont.get('timed:217:clears',0))+1
+    if elapsed is not None:
+        key='timed:217:registered_seconds'
+        cont[key]=min(int(cont.get(key,elapsed)),elapsed)
+    con.execute('UPDATE personajes SET datos=? WHERE usuario=? AND char_id=?',
+                (json.dumps(data),ses.usuario,ses.personaje.char_id))
+    return dict(cont)
+
+
+def _mostrar_progreso(ses,cont):
+    import app,cuentas
+    app._logros_datos(ses)
+    ses.personaje.logros_cont.update(cont)
+    app._logros_actualizar(ses,'olympus',enviar=True)
+    cuentas._notificar_cambio(inmediato=True)
+
+
+def medir_logro(fila,cont):
+    rule=fila.get('regla');stage=int(fila.get('param1') or 0) if str(fila.get('param1') or '').isdigit() else 0
+    if rule=='\u5b8c\u6210\u8a08\u6642\u95dc\u5361\u6b21\u6578':
+        return int(cont.get('timed:%d:clears'%stage,0)),int(fila.get('param2') or 1)
+    if rule=='\u7d42\u7109\u4e4b\u5854\u767b\u8a18\u79d2\u6578' and str(fila.get('param2'))=='2':
+        from house_services import xml_rows
+        limit=int(xml_rows('achievement.xml').get(fila['id'],{}).get('\u53c3\u65783') or 0)
+        elapsed=cont.get('timed:%d:registered_seconds'%stage)
+        return int(elapsed is not None and limit>0 and elapsed<=limit),1
+    return None
+
+
 def _mark(ses):
     return (getattr(ses.personaje,'buffs',{}) or {}).get(MARK,{}).get('fin',0)>time.time()
 
@@ -268,12 +303,15 @@ def efecto(ses,action,param=0):
     elif action==112:
         rid=getattr(ses,'_olympus_run',None)
         if not rid:return False
+        cont=None
         with cuentas._LOCK,cuentas._get_conn() as con:
-            _schema(con)
-            con.execute('UPDATE olympus_runs SET restante=MAX(0,CAST(fin-? AS INTEGER)) '
+            con.execute('BEGIN IMMEDIATE');_schema(con)
+            changed=con.execute('UPDATE olympus_runs SET restante=MAX(0,CAST(fin-? AS INTEGER)) '
                         'WHERE id=? AND usuario=? AND char_id=? AND restante IS NULL AND fin>?',
                         (time.time(),rid,ses.usuario,p.char_id,time.time()))
+            if changed.rowcount:cont=_progreso(con,ses,clear=True)
         ses.enviar(struct.pack('<H',0x016B))
+        if cont is not None:_mostrar_progreso(ses,cont)
     return True
 
 
@@ -290,13 +328,15 @@ def registrar(ses):
         ses.enviar(clases.aviso('Only graduated faction members can register an Olympus result.',tipo=0))
         return
     with cuentas._LOCK,cuentas._get_conn() as con:
-        _schema(con)
-        row=con.execute('SELECT restante,registrado FROM olympus_runs WHERE id=? AND usuario=? AND char_id=?',
+        con.execute('BEGIN IMMEDIATE');_schema(con)
+        row=con.execute('SELECT restante,registrado,inicio,fin FROM olympus_runs WHERE id=? AND usuario=? AND char_id=?',
                         (rid,ses.usuario,p.char_id)).fetchone()
         if not row or row[0] is None:mostrar(ses,8306,1112);return
         if row[1]:mostrar(ses,8348,1112);return
         con.execute('UPDATE olympus_runs SET registrado=1,semana=?,nombre=?,nivel=?,rango=?,faccion=? WHERE id=?',
                     (_week(),p.nombre,p.nivel,p.rango,p.faction,rid))
+        cont=_progreso(con,ses,elapsed=max(0,int(row[3]-row[2]-row[0])))
+    _mostrar_progreso(ses,cont)
     mostrar(ses,8310,1112)
 
 

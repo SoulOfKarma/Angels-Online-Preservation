@@ -16,6 +16,11 @@ a guess, it says so.
 
 ---
 
+Social services, native Album, Angel Elementary and League War are connected.
+[Implemented behavior, GM commands, original reward evidence and remaining limits](docs/SOCIAL_ALBUM_QUIZ_GVG_2026-10-25.md).
+[GvG, social map persistence, Alone and production corrections](docs/GVG_SOCIAL_PRODUCTION_FIXES_2026-10-25.md).
+[Immediate recipe learning, /recipes, producer orders and Wolay exit](docs/PRODUCTION_FRIENDS_WOLAY_2026-10-25.md).
+
 Arena/Holy: GM registration/join/begin controls, free-for-all Arena by default
 (optional brackets), orange/blue Holy teams, original mines and exits,
 hidden spectators, team chat and original achievement rules are connected.
@@ -39,6 +44,16 @@ Auto Divine fills outcomes one card at a time; native Coin costs, free IV/V draw
 Stardust and screenshot Bingo rewards are connected. Latest verified 2025 Mall
 root bags populate On Sale/Fashion/Bubble; Top Sale uses local purchase history.
 City scrolls, persistent Mark/Maple destinations and party travel books are handled atomically.
+Producer Classes & Crafting: repaired full gathering and crafting pipeline for Weaponsmith, Armorsmith, Tailor, Chef, and Craft (Technician).
+Gathering nodes (Mining/Dig, Woodcutting/Lumber, Fishing, Herb/Foraging Collect) enforce skill presence, skill level requirements (native notice 356), and proper tools or robot mounts.
+Robot rides (機甲) enable universal gathering with Drive (skill 25) providing gathering speed reduction bonuses and Mechanism (skill 24) enhancing vehicle attributes; successful extraction awards Skill EXP to the gathering skill as well as Drive and Mechanism when mounted.
+Native manufacturing (`0x0036`/`0x0037`) uses the original stations in Lyceum, the four cities, Palm Base and houses; known recipes and blueprint learning persist, with atomic material consumption and product delivery.
+Skill Angel supports unrestricted skill exchanges (`0x002F`, container 10) for producer classes, with corrected `calcular_class_id` preserving craft professions even when equipping weapons or daggers.
+Choosing any producer class grants the basic robot ride `Freshman Cask` (19814) in the mount slot, and confirming tutorial completion warps directly to Angel Lyceum.
+Production & Material Processing Zones: restored sprites, official dialogues, recipe/material shops, and exchange NPCs (`Party Angel`, `Gear Clerk`, `Fashionable`) across Angel Lyceum, the four faction cities (Aurora City, Dark City, Breeze Woods, Iron Castle), and Palm Base, including `Ironsmith`, `Salesmen`, `Directors`, `Clerks`, and `Plan Sellers`.
+Party Angel exchanges now support `Renewal-Lv 200 Equipment Voucher` (72058) and opening `Renewal-Lv200 Light Armor`, `Heavy Armor`, and `Gown` boxes (72059..72061).
+League War redeem shop now includes all Battlefield Badges from Lv 13 to Lv 28 (48017..48024, 79352..79359).
+Album persistence (`cuentas.py`) preserves `_entries` cell lists across character login and save cycles.
 Daily Events: two distinct games per day in a configurable local weekly rotation (42 bracket rows);
 atomic simultaneous opening of all 4 level tiers, automatic character level bracket routing on entry,
 periodic EXP (scaled with level up to ~2M) and Skill EXP (~100) delivered via standard system notices without false combat float numbers,

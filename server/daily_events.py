@@ -190,7 +190,7 @@ def iniciar_evento(alias,minutes=30,registration=5,start=None,identity=None):
     begin=time.time()+registration*60 if start is None else start
     family=identity or uuid.uuid4().hex
     rounds=[dict(info(stage),id=family+'-%d'%stage,family=family,start=begin,
-                 end=begin+max(1,minutes)*60,phase='registration',members={},scores={},dead=[],
+                 end=begin+max(1,minutes)*60,phase='registration' if begin>time.time() else 'battle',members={},scores={},dead=[],
                  completed=False,wave=0,next_wave=begin,winners=[],reason='',return_at=0)
             for stage in stages]
     with cuentas._LOCK,cuentas._get_conn() as con:
@@ -198,7 +198,7 @@ def iniciar_evento(alias,minutes=30,registration=5,start=None,identity=None):
         for r in rounds:con.execute('INSERT INTO daily_rounds VALUES(?,?,?)',(r['id'],r['stage'],json.dumps(r)))
     _ROUNDS.update({r['id']:r for r in rounds})
     name=GAMES[ALIASES[alias]][0]
-    if registration>0:
+    if begin>time.time():
         anuncio_banner('[Daily Event] %s registration is open! Sign up on the Daily Events board!'%name)
     else:
         anuncio_banner('[Daily Event] %s battle has begun! Enter now!'%name)

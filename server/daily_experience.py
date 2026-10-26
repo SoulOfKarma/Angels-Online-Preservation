@@ -3,94 +3,79 @@
 While inside any active Daily Event map during the battle phase, participating
 players receive periodic character experience and skill experience bonuses.
 Amounts scale with character level and active buff multipliers.
+The reward and its per-character pulse receipt commit in one transaction.
 """
+import json
 import struct
-import time
 
-INTERVAL = 10  # Seconds between periodic ticks
-EXP_PER_LEVEL = 4800  # Character EXP per level (~2M at level 410)
-EXP_CAP = 2_000_000  # Maximum character EXP per tick
-EXP_MINIMUM = 50_000  # Minimum character EXP per tick
-SKILL_EXP_AMOUNT = 100  # Skill EXP awarded to skills per interval (~100)
+INTERVAL=10
+EXP_PER_LEVEL=4800
+EXP_CAP=2_000_000
+EXP_MINIMUM=50_000
+SKILL_EXP_AMOUNT=100
 
 
-def tick(r, stamp, interval=INTERVAL):
-    """Deliver periodic EXP and Skill EXP to all players inside the active battle round."""
-    if stamp < r.get('_exp_tick', 0) + interval:
-        return
-    r['_exp_tick'] = stamp
+def _award(ses,r,stamp,interval):
+    import app,clases,combate,configuracion,cuentas,daily_events
+    p=ses.personaje
+    if (daily_events.fase(r,stamp)!='combate' or p.stage!=r['stage']
+            or getattr(ses,'_daily_round',None)!=r['id']
+            or daily_events._key(ses) not in r['members']
+            or getattr(ses,'muerto',False) or getattr(ses,'desconectado',False)
+            or getattr(ses,'mapa_cargando',False)):return False
+    pulse=max(0,int((stamp-r['start'])//interval))
+    exp_gain=min(EXP_CAP,max(EXP_MINIMUM,int(p.nivel*EXP_PER_LEVEL*
+        configuracion.multiplicador_exp(p.buffs))))
+    skill_gain=max(10,int(round(SKILL_EXP_AMOUNT*configuracion.multiplicador_skill_exp(p.buffs))))
+    before=[list(h) for h in (p.habilidades or [])]
+    with cuentas._LOCK,cuentas._get_conn() as con:
+        con.execute('BEGIN IMMEDIATE')
+        con.execute('CREATE TABLE IF NOT EXISTS daily_presence_awards('
+                    'round_id TEXT,usuario TEXT,char_id INTEGER,pulse INTEGER,exp INTEGER,skill_exp INTEGER,'
+                    'PRIMARY KEY(round_id,usuario,char_id,pulse))')
+        key=(r['id'],ses.usuario.casefold(),p.char_id,pulse)
+        if con.execute('SELECT 1 FROM daily_presence_awards WHERE round_id=? AND usuario=? AND char_id=? AND pulse=?',key).fetchone():return False
+        row=con.execute('SELECT datos FROM personajes WHERE usuario=? AND char_id=?',(ses.usuario,p.char_id)).fetchone()
+        if not row:return False
+        data=json.loads(row[0])
+        if (int(data.get('nivel',p.nivel))!=p.nivel or int(data.get('exp',p.exp))!=p.exp
+                or data.get('habilidades',[])!=before):
+            return False  # A pending combat save must not overwrite newer progress.
+        old_level=p.nivel;new_level=old_level
+        data['exp']=max(int(p.exp or 0),combate.exp_para_nivel(old_level))+exp_gain
+        while new_level<combate.nivel_maximo() and data['exp']>=combate.exp_para_nivel(new_level+1):new_level+=1
+        data['nivel']=new_level
+        data['hp_max']=p.hp_max+(new_level-old_level)*25
+        data['mp_max']=p.mp_max+(new_level-old_level)*15
+        skills=[]
+        for sid,level,points in before:
+            points+=skill_gain
+            cap=min(combate.nivel_maximo(),new_level+(11 if sid in range(20,32) else 0))
+            while level<cap and points>=max(1,clases.exp_requerida_skill(level,sid)):
+                points-=max(1,clases.exp_requerida_skill(level,sid));level+=1
+            if level>=cap:points=min(points,max(1,clases.exp_requerida_skill(level,sid)))
+            skills.append([sid,level,points])
+        data['habilidades']=skills
+        con.execute('INSERT INTO daily_presence_awards VALUES(?,?,?,?,?,?)',(*key,exp_gain,skill_gain))
+        con.execute('UPDATE personajes SET datos=? WHERE usuario=? AND char_id=?',(json.dumps(data),ses.usuario,p.char_id))
+    p.exp=data['exp'];p.nivel=new_level;p.hp_max=data['hp_max'];p.mp_max=data['mp_max'];p.habilidades=[tuple(h) for h in skills]
+    cuentas._notificar_cambio(inmediato=True)
+    actual,next_exp=combate.exp_para_barra(p.nivel,p.exp)
+    packets=[struct.pack('<HIB',0x1d,p.entity_id,4)+struct.pack('<BQ',29,p.nivel)
+             +struct.pack('<BQ',30,combate.exp_para_nivel(p.nivel))+struct.pack('<BQ',31,next_exp)
+             +struct.pack('<BQ',32,actual),clases.aviso(str(exp_gain),tipo=0,msg_id=clases.MSG_EXP)]
+    if new_level>old_level:packets.extend([combate.efecto_level_up(p.entity_id),app._stats_ses(ses)])
+    for (sid,level,points),(_,old_skill,_) in zip(skills,before):
+        packets.append(struct.pack('<HIBBII',0x1d,p.entity_id,1,0,sid,points&0xffffffff))
+        packets.append(clases.aviso_doble(clases.MSG_SKILL_EXP,clases.nombre(sid),str(skill_gain)))
+        if level>old_skill:packets.append(clases.aviso_doble(clases.MSG_SKILL_SUBE,clases.nombre(sid)))
+    if any(a[1]!=b[1] for a,b in zip(skills,before)):packets.extend([clases.arbol(p.habilidades),app._stats_ses(ses)])
+    ses.enviar(*packets)
+    return True
 
-    import app
-    import clases
-    import combate
-    import configuracion
 
-    sessions = __import__('daily_events')._sessions(r)
-    if not sessions:
-        return
-
-    for ses in sessions:
-        p = getattr(ses, 'personaje', None)
-        if not p or getattr(ses, 'muerto', False) or not getattr(p, 'vivo', True):
-            continue
-
-        # Character EXP: scale with level up to ~2M, no 0x000B fake damage/healing numbers
-        mult_exp = configuracion.multiplicador_exp(getattr(p, 'buffs', None))
-        exp_gain = min(EXP_CAP, max(EXP_MINIMUM, int(p.nivel * EXP_PER_LEVEL * mult_exp)))
-
-        p.exp = max(int(p.exp or 0), combate.exp_para_nivel(p.nivel)) + exp_gain
-        subio_nivel = False
-        while p.nivel < combate.nivel_maximo() and p.exp >= combate.exp_para_nivel(p.nivel + 1):
-            p.nivel += 1
-            p.hp_max += 25
-            p.mp_max += 15
-            subio_nivel = True
-            ses.enviar(combate.atributo(p.entity_id, p.nivel, 29),
-                       combate.efecto_level_up(p.entity_id))
-
-        actual_exp, siguiente_exp = combate.exp_para_barra(p.nivel, p.exp)
-        u64 = lambda v: max(0, min(int(v or 0), 0xFFFFFFFFFFFFFFFF))
-        pkts = [
-            struct.pack('<HIB', 0x001D, p.entity_id, 4)
-            + struct.pack('<BQ', 29, u64(p.nivel))
-            + struct.pack('<BQ', 30, u64(combate.exp_para_nivel(p.nivel)))
-            + struct.pack('<BQ', 31, u64(siguiente_exp))
-            + struct.pack('<BQ', 32, u64(actual_exp)),
-            clases.aviso(str(int(exp_gain)), tipo=0, msg_id=clases.MSG_EXP)
-        ]
-
-        if subio_nivel:
-            try:
-                pkts.append(app._stats_ses(ses))
-            except Exception:
-                pass
-
-        # Skill EXP: ~100 per interval, no 0x000B fake damage/healing numbers
-        mult_skill = configuracion.multiplicador_skill_exp(getattr(p, 'buffs', None))
-        skill_gain = max(10, int(round(SKILL_EXP_AMOUNT * mult_skill)))
-        nuevas_habs = []
-        subio_skill = False
-        for h in getattr(p, 'habilidades', []) or []:
-            sid, slv, sexp = h[0], h[1], h[2]
-            sexp += skill_gain
-            max_lv = (p.nivel + 11) if sid in range(20, 32) else p.nivel
-            req = max(1, clases.exp_requerida_skill(slv, sid))
-            while sexp >= req and slv < max_lv:
-                sexp -= req
-                slv += 1
-                req = max(1, clases.exp_requerida_skill(slv, sid))
-                subio_skill = True
-                pkts.append(combate.efecto_level_up(p.entity_id, es_skill=True))
-                pkts.append(clases.aviso_doble(clases.MSG_SKILL_SUBE, clases.nombre(sid)))
-            if slv >= max_lv:
-                sexp = min(sexp, req)
-            pkts.append(struct.pack('<HIBBII', 0x001D, p.entity_id, 1, 0, sid, sexp & 0xFFFFFFFF))
-            pkts.append(clases.aviso_doble(clases.MSG_SKILL_EXP, clases.nombre(sid), str(skill_gain)))
-            nuevas_habs.append((sid, slv, sexp))
-
-        if nuevas_habs:
-            p.habilidades = nuevas_habs
-            if subio_skill:
-                pkts.append(clases.arbol(p.habilidades))
-
-        ses.enviar(*pkts)
+def tick(r,stamp,interval=INTERVAL):
+    import daily_events
+    if daily_events.fase(r,stamp)!='combate' or stamp<r.get('_exp_tick',0)+interval:return
+    for ses in daily_events._sessions(r):_award(ses,r,stamp,interval)
+    r['_exp_tick']=stamp

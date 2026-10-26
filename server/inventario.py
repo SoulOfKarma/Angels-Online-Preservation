@@ -179,7 +179,7 @@ def vaciar_ranura(dueno: int, ranura: int,
     #   616       burbuja de chat equipada
     #   617..666  bolsa de burbujas de chat
     # Esas casillas tambien aceptan el submensaje de vaciado con ranura u16.
-    if contenedor == CONT_MOCHILA and (ranura < 0 or (ranura > 154 and not ((167 <= ranura <= 556) or (558 <= ranura <= 598) or (616 <= ranura <= 666)))):
+    if contenedor == CONT_MOCHILA and (ranura < 0 or (ranura > 154 and not ((156 <= ranura <= 556) or (558 <= ranura <= 598) or (616 <= ranura <= 666)))):
         log.warning(f"Intento de vaciar ranura fuera de limites ({ranura}) en CONT_MOCHILA - omitido para evitar crash")
         return b''
     return struct.pack('<HIBBIH', 0x001B, 1, 2, contenedor, dueno, ranura)
@@ -1737,11 +1737,11 @@ VALES_TARJETA_PUESTO = {
     2711: 2733,     # Stall Gold Card 3 (30 Days)
     79760: 2733,    # Stall Gold Card 3 (30 Days)
 
-    # Purple Card 5 (Estilo 4 -> 35 ranuras)
-    15716: 15718,   # Stall Purple Card 5 (Permanence)
-
-    # Blue Card 5 (Estilo 5 -> 40 ranuras)
-    15715: 15719,   # Stall Blue Card 5 (Permanence)
+    # Native styles4/5 provide35/40 slots. English names of the hidden
+    # equipped cards15718/15719 are reversed relative to voucher tooltips.
+    # Resolve by the advertised capacity, not the hidden card's translation.
+    15715: 15718,   # Blue voucher:35 slots (style4)
+    15716: 15719,   # Purple voucher:40 slots (style5)
 
     # Black Card 5 (Estilo 6 -> 50 ranuras)
     15717: 15720,   # Stall Black Card 5 (Permanence)
@@ -2108,6 +2108,15 @@ def recompensas_caja(item_id: int):
     devuelve lista de (item_id, cantidad) a entregar. Si no, devuelve None."""
     if es_comida_mascota(item_id) or resolver_tarjeta_puesto(item_id) is not None:
         return None
+
+    # Cajas de equipo Renewal Lv200 (Party Angel)
+    if item_id == 72059:
+        return [(72043, 1), (72044, 1), (72045, 1), (72046, 1)]
+    if item_id == 72060:
+        return [(72047, 1), (72048, 1), (72049, 1), (72050, 1), (72051, 1)]
+    if item_id == 72061:
+        return [(72052, 1), (72053, 1), (72054, 1), (72055, 1)]
+
     import sqlite3, random
     db = pathlib.Path(__file__).parent.parent / 'corpus' / 'content.db'
     if not db.exists():

@@ -142,6 +142,35 @@ def test_timer_timeout_uses_original_return_tag(town,monkeypatch):
     assert w.trips[-1][1]==41 and not ot.clasificacion(38)
 
 
+def test_native_olympus_completion_and_omos_time_achievements_are_saved_once(town,monkeypatch):
+    w,s=town;s.personaje.stage=217
+    monkeypatch.setattr(app,'_buff_a_otro',lambda s,mid,entry,*a:s.personaje.buffs.update({mid:entry}))
+    assert ot.efecto(s,111,3600000)
+    w.now[0]+=120
+    assert ot.efecto(s,112) and 3218 in s.personaje.logros
+    assert stored(w,s)['logros_cont']['timed:217:clears']==1
+    assert ot.efecto(s,112)
+    assert stored(w,s)['logros_cont']['timed:217:clears']==1
+    assert 3222 not in s.personaje.logros
+    ot.registrar(s)
+    assert {3218,3222,3223}<=set(s.personaje.logros)
+    assert {3218,3222,3223}<=set(stored(w,s)['logros'])
+    assert stored(w,s)['logros_cont']['timed:217:registered_seconds']==120
+
+
+def test_olympus_finish_failure_keeps_run_unfinished_and_can_retry(town,monkeypatch):
+    w,s=town;s.personaje.stage=217
+    monkeypatch.setattr(app,'_buff_a_otro',lambda s,mid,entry,*a:s.personaje.buffs.update({mid:entry}))
+    ot.efecto(s,111,3600000)
+    with sqlite3.connect(w.db) as con:
+        con.execute("CREATE TRIGGER fail_olympus BEFORE UPDATE ON personajes BEGIN SELECT RAISE(ABORT,'test'); END")
+    with pytest.raises(sqlite3.IntegrityError):ot.efecto(s,112)
+    with sqlite3.connect(w.db) as con:
+        assert con.execute('SELECT restante FROM olympus_runs WHERE id=?',(s._olympus_run,)).fetchone()[0] is None
+        con.execute('DROP TRIGGER fail_olympus')
+    assert ot.efecto(s,112) and stored(w,s)['logros_cont']['timed:217:clears']==1
+
+
 def test_no_weekly_prize_is_reported_as_claimed(town):
     w,s=town
     click(s,71410001);answer(s,1)

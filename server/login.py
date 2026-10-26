@@ -109,6 +109,7 @@ class Personaje:
     chat_filtros: dict = field(default_factory=dict)  # tab0..3 -> native mask
     star_blessing: dict = field(default_factory=dict)
     travel_mark: dict = field(default_factory=dict)
+    recetas: list = field(default_factory=list)
 
 
 def _cargar_secuencia():
@@ -222,6 +223,10 @@ def secuencia(p: Personaje):
     mando_quests = False
     for m in sec:
         op, base = m['opcode'], m['datos']
+        if op in (0x0027,0x0040):
+            # Captured empty friend/trusted lists belong to another character.
+            # social_state restores the actual SQL state after scene loading.
+            continue
         if op == 0x0002:
             salida.append(_ficha(p, base))
             salida.append(_quests(p, b''))
@@ -242,6 +247,10 @@ def secuencia(p: Personaje):
             import logros as _lg_sec
             salida.append(_lg_sec.paquete(p, getattr(p, 'logros_muertos', None) or {},
                                           ctx=getattr(p, '_logros_ctx', None)))
+        elif op == 0x0156:
+            # Never restore the collection cells belonging to the captured
+            # character during login or a map change.
+            salida.append(__import__('album').paquete(p))
         elif op == 0x0179 and getattr(p, '_amplify', None) is not None:
             # PET AMPLIFY: la plantilla es la de un personaje sin casillas.
             import amplify as _amp_sec
@@ -308,7 +317,7 @@ def secuencia(p: Personaje):
                       #   616       la burbuja de chat puesta
                       #   617..666  la bolsa de burbujas de chat
                       if (int(r) == _inv.RANURA_ORO or (it and int(it) > 0))
-                      and (int(r) <= 120 or 166 <= int(r) <= 666)]
+                      and (int(r) <= 154 or 156 <= int(r) <= 666)]
             salida.append(_inv.completo(p.char_id, _items, p.entity_id,
                                         mejoras=getattr(p, 'mejoras', None),
                                         mascota=getattr(p, 'mascota', None),
@@ -784,6 +793,7 @@ def portales_de(stage: int):
     portals=list(cfg.get('mapas', {}).get(str(stage), []))
     used={tuple(row['tile']) for row in portals}
     portals.extend(row for row in __import__('daily_events').portales(stage) if tuple(row['tile']) not in used)
+    portals.extend(row for row in __import__('league_war').portals(stage) if tuple(row['tile']) not in used)
     for por in portals:
         if not por.get('dibujar'):
             continue
@@ -1222,6 +1232,8 @@ def poblar(stage: int, player_level=1):
     if stage == 500:
         return interactivos_casa(player_level)
     salida = npc_de_los_xml(stage)
+    salida += __import__('elementary').poblar(stage)
+    salida += __import__('league_war').populate(stage)
     import olympus
     salida += olympus.poblar(stage)
     import recent_mall
@@ -1516,6 +1528,9 @@ def _ficha(p, base):
         except Exception:
             import logging as _lg_err
             _lg_err.getLogger('login').exception('titulos en el 0x0002')
+    # REA5E9C90 copies the native recipe bitmap from packet+1877.
+    if len(crudo)>=1877+2048:
+        crudo[1877:1877+2048]=__import__('production_sites').bits(p)
     return bytes(crudo)
 
 

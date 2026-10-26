@@ -2397,7 +2397,9 @@ def bono_velocidad(buffs=None, habilidades=None) -> float:
     for mid, b in (buffs or {}).items():
         if not isinstance(b, dict) or b.get('fin', 0) <= ahora:
             continue
-        d = _magic_xml().get(int(mid), {})
+        # Field/album/house bonuses share this dictionary with native spells.
+        # Their named keys have no magic.xml entry and must not break attacks.
+        d = _magic_xml().get(int(mid), {}) if str(mid).isdigit() else {}
         try:
             v = float(d.get('攻擊速度') or 0)
         except (TypeError, ValueError):

@@ -380,7 +380,8 @@ def con_reputacion(buffs, personaje):
     perm = getattr(personaje, 'stats_permanentes', None) if personaje is not None else None
     amp = getattr(personaje, 'stats_amplify', None) if personaje is not None else None
     star = __import__('star_blessing').bonos(personaje) if personaje is not None else {}
-    if not bono and not perm and not amp and not star:
+    album = __import__('album').bono_buff(personaje) if personaje is not None else {}
+    if not bono and not perm and not amp and not star and not album:
         return buffs
     out = dict(buffs or {})
     if bono:
@@ -391,6 +392,8 @@ def con_reputacion(buffs, personaje):
         out['pet_amplify'] = dict(amp, fin=float('inf'))
     if star:
         out['star_blessing'] = dict(star, fin=float('inf'))
+    if album:
+        out['album'] = dict(album,fin=float('inf'))
     return out
 
 
@@ -468,6 +471,9 @@ def medir(f, personaje, ctx):
     competencia = competicion_logros.medir(f, cont)
     if competencia is not None:
         return competencia
+    olympic = __import__('olympus').medir_logro(f,cont)
+    if olympic is not None:
+        return olympic
 
     def c(clave):
         return int(cont.get(clave, 0) or 0)

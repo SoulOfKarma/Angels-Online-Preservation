@@ -346,6 +346,16 @@ def calcular_class_id(skill_ids) -> int:
     tiene_arma = bool(ids & {9, 10, 11, 32})
     tiene_arco = (17 in ids)
 
+    # Clases de oficios / produccion
+    # Si el personaje se especializa en un oficio artesano (Weaponsmith, Armorsmith,
+    # Tailor, Chef, Craft/Technician), prima su profesion de produccion.
+    if 26 in ids:  return 10  # Weaponsmith
+    if 27 in ids:  return 11  # Armorsmith
+    if 28 in ids:  return 12  # Tailor
+    if 31 in ids:  return 15  # Chef
+    if 29 in ids:  return 13  # Technician (Craft)
+    if 30 in ids and not (tiene_arma or tiene_magia): return 14  # Alchemist
+
     # Clases hibridas (magia + armas/arco)
     if tiene_magia and tiene_arco:
         return 18  # MagicBowman
@@ -368,14 +378,9 @@ def calcular_class_id(skill_ids) -> int:
     if 3 in ids:   return 3   # Wizard
     if 4 in ids:   return 4   # Magician
 
-    # Clases de produccion
-    if 26 in ids:  return 10  # Weaponsmith
-    if 27 in ids:  return 11  # Armorsmith
-    if 28 in ids:  return 12  # Tailor
-    if 29 in ids or 24 in ids: return 13  # Technician
-    if 30 in ids:  return 14  # Alchemist
-    if 31 in ids:  return 15  # Chef
+    # Productores recolectores puros (sin oficio de manufactura)
     if 22 in ids:  return 19  # Miner
+    if 24 in ids:  return 13  # Technician (Mechanism)
     if any(s in ids for s in (20, 21, 23, 25)): return 20  # Producer
 
     return 0  # Novice

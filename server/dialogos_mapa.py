@@ -20,6 +20,7 @@ arbol avanzaria la mision dos veces.
 import json
 import logging
 import pathlib
+from functools import lru_cache
 
 import eventos as ev
 
@@ -29,6 +30,30 @@ RUTA = pathlib.Path(__file__).parent / 'plantillas' / 'dialogos_mapa.json'
 MAX_LINEAS = 8
 
 _TODO = None
+
+
+@lru_cache(maxsize=None)
+def es_comercio(stage, raiz):
+    """Only native shop/dialogue paths, without quests or other services.
+
+    Use the MPC root for the exact NPC, including each level-band submenu.
+    Portraits and generic option IDs are shared by unrelated merchants.
+    """
+    tree=_arbol(stage);pending=[str(raiz)];seen=set();has_shop=False
+    while pending and len(seen)<64:
+        key=pending.pop()
+        if key=='0' or key in seen:continue
+        node=tree.get(key)
+        if node is None or node.get('r'):return False
+        seen.add(key)
+        for action,args in node.get('a',()):
+            if action not in (1,14,24):return False
+            if action==14:
+                if len(args)!=1 or args[0]<=0:return False
+                has_shop=True
+        pending.extend(str(target) for _,target in node.get('o',()))
+        if node.get('s'):pending.append(str(node['s']))
+    return not pending and has_shop
 
 
 def _arbol(stage):

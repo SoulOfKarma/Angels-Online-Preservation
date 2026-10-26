@@ -73,6 +73,11 @@ _GRUPOS = {}
 _DE_QUIEN = {}
 # char_id del invitado -> char_id del que le invito, mientras no conteste
 _PENDIENTES = {}
+_MODOS = {}  # leader -> 0 Share, 1 Alone (native C2S 0x0017 last byte)
+
+
+def modo_de(ses):
+    return _MODOS.get(lider_de(ses),0)
 
 
 def _char_id(ses) -> int:
@@ -108,6 +113,8 @@ def cartel_de_invitacion(ses_lider) -> bytes:
     struct.pack_into('<I', b, 0, _char_id(ses_lider))
     n = _nombre(ses_lider).encode('ascii', 'replace')[:16]
     b[4:4 + len(n)] = n
+    # REA602D80 reads packet+23 (body+21) for the invitation's mode.
+    b[21] = modo_de(ses_lider)
     return struct.pack('<H', CARTEL) + bytes(b)
 
 
@@ -230,7 +237,8 @@ def lista_del_grupo(lider_id, para=None) -> bytes:
     miembros = _GRUPOS.get(lider_id) or []
     cab = bytearray(CABECERA)
     struct.pack_into('<I', cab, 0, 0x0000006A)
-    cab[4] = 0
+    # REA506FC0 copies body+4 into GROUP_DROPITEM_TYPE.
+    cab[4] = _MODOS.get(lider_id,0)
     struct.pack_into('<I', cab, 5, int(lider_id))
     cab[9] = len(miembros) & 0xFF
     partes = [cab]
@@ -258,7 +266,7 @@ def al_cambiar_de_mapa(ses):
         _avisar(lider)
 
 
-def invitar(ses, nombre_invitado, buscar_sesion):
+def invitar(ses, nombre_invitado, buscar_sesion, modo=0):
     """El lider invita por nombre. `buscar_sesion` resuelve nombre -> sesion."""
     nombre_invitado = (nombre_invitado or '').strip()
     if not nombre_invitado or nombre_invitado == _nombre(ses):
@@ -270,16 +278,24 @@ def invitar(ses, nombre_invitado, buscar_sesion):
         return False, 'ya esta en un grupo'
     # El que invita arma el grupo si todavia no lo tiene.
     mio = _DE_QUIEN.get(_char_id(ses))
+    if mio and mio!=_char_id(ses):
+        return False, 'solo el lider puede invitar'
     if not mio:
         mio = _char_id(ses)
         _GRUPOS[mio] = [ses]
         _DE_QUIEN[mio] = mio
+        _MODOS[mio] = 1 if modo==1 else 0
     if len(_GRUPOS.get(mio, [])) >= 5:
         return False, 'el grupo ya esta lleno (maximo 5)'
+    # A rejected invitation leaves a one-person group. Retrying with Alone
+    # must use the new selection instead of retaining that group's Share.
+    if len(_GRUPOS.get(mio, [])) == 1:
+        _MODOS[mio] = 1 if modo == 1 else 0
     _PENDIENTES[_char_id(otro)] = mio
     try:
         otro.enviar(cartel_de_invitacion(ses))
     except Exception:
+        _PENDIENTES.pop(_char_id(otro),None)
         log.debug('no se pudo mandar el cartel', exc_info=True)
         return False, 'no se pudo avisar'
     log.info('%s invita a %s', _nombre(ses), nombre_invitado)
@@ -292,7 +308,7 @@ def aceptar(ses):
     lider = _PENDIENTES.pop(yo, None)
     if not lider or lider not in _GRUPOS:
         return False
-    if _DE_QUIEN.get(yo):
+    if _DE_QUIEN.get(yo) or len(_GRUPOS[lider])>=5:
         return False
     _GRUPOS[lider].append(ses)
     _DE_QUIEN[yo] = lider
@@ -350,6 +366,9 @@ def salir(ses):
         for s in list(miembros):
             _DE_QUIEN.pop(_char_id(s), None)
         _GRUPOS.pop(lider, None)
+        _MODOS.pop(lider,None)
+        for invited,owner in list(_PENDIENTES.items()):
+            if owner==lider:_PENDIENTES.pop(invited,None)
         todos = miembros + [ses]
         avisos = [aviso_de_salida(s) for s in todos]
         _mandar_a(todos, *avisos)
@@ -398,6 +417,9 @@ def ascender(ses, objetivo):
     nuevo = _char_id(otro)
     miembros = [otro] + [s for s in miembros if s is not otro]
     _GRUPOS[nuevo] = miembros
+    _MODOS[nuevo] = _MODOS.pop(lider,0)
+    for invited,owner in list(_PENDIENTES.items()):
+        if owner==lider:_PENDIENTES[invited]=nuevo
     for s in miembros:
         _DE_QUIEN[_char_id(s)] = nuevo
     _avisar(nuevo)
@@ -455,10 +477,11 @@ def accion(ses, codigo, cuerpo=b''):
         return 'rechazar' if rechazar(ses) else 'nada'
     if codigo == DEJAR:
         return 'salir' if salir(ses) else 'nada'
-    return 'salir' if salir(ses) else 'nada'
+    return 'nada'
 
 
 def olvidar_todo():
     _GRUPOS.clear()
     _DE_QUIEN.clear()
     _PENDIENTES.clear()
+    _MODOS.clear()
