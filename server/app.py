@@ -668,11 +668,17 @@ def _cant_de(ses, ranura: int) -> int:
 
 
 def _instancias(ses) -> dict:
-    """El id de instancia de ocho bytes de cada casilla ocupada."""
+    """The same per-character runtime IDs used by login.secuencia."""
+    import inventario as inv
     m = getattr(ses, 'instancias', None)
+    p = getattr(ses, 'personaje', None)
+    if p is not None:
+        initial = m if getattr(ses, '_instancias_personaje', p) is p else None
+        m = inv.instancias_del_personaje(p, initial)
+        ses._instancias_personaje = p
     if m is None:
         m = {}
-        ses.instancias = m
+    ses.instancias = m
     return m
 
 
@@ -16150,45 +16156,13 @@ class Servidor:
             # Reconcile the placed list with the dedicated Furniture bag.
             # This makes Save atomic and prevents both duplication and loss.
             _old_entries = list(_c.placed_furniture)
-            _old_counts = collections.Counter(e['item_id'] for e in _old_entries)
-            _new_counts = collections.Counter(e['item_id'] for e in _entries)
-            _add = _new_counts - _old_counts
-            _remove = _old_counts - _new_counts
-            _free_defaults = {9954: 1, 14660: 1}
-            _need = collections.Counter()
-            for _iid, _qty in _add.items():
-                _gratis = min(_qty, _free_defaults.get(_iid, 0)) if _old_counts[_iid] == 0 else 0
-                if _qty > _gratis:
-                    _need[_iid] = _qty - _gratis
-            _furn_slots = list(range(_cs.SLOT_FURN_INI, _cs.SLOT_FURN_FIN + 1))
-            _available = collections.Counter()
-            for _slot in _furn_slots:
-                if _slot in ses.inventario:
-                    _available[int(ses.inventario[_slot])] += _cant_de(ses, _slot)
-            if any(_available[_iid] < _qty for _iid, _qty in _need.items()):
-                log.warning('[%s] savefurniture intento colocar muebles no poseidos: %s',
-                            addr, dict(_need - _available))
-                ses.enviar(_cl.aviso("The furniture layout was not saved: missing item.", tipo=7, msg_id=_cl.MSG_TEXTO))
+            try:
+                _consume_plan, _return_entries = __import__('furniture_items').plan_layout(
+                    ses, _old_entries, _entries)
+            except ValueError as _err:
+                log.warning('[%s] savefurniture: %s', addr, _err)
+                ses.enviar(_cl.aviso(str(_err), tipo=0))
                 return
-            _consume_plan = []
-            for _iid, _qty in _need.items():
-                _left = _qty
-                for _slot in _furn_slots:
-                    if _left <= 0:
-                        break
-                    if int(ses.inventario.get(_slot, 0)) != _iid:
-                        continue
-                    _take = min(_left, _cant_de(ses, _slot))
-                    _consume_plan.append((_slot, _take))
-                    _left -= _take
-            _return_entries = []
-            _remaining_remove = _remove.copy()
-            for _entry in _old_entries:
-                _iid = _entry['item_id']
-                if _remaining_remove[_iid] > 0:
-                    _remaining_remove[_iid] -= 1
-                    if _iid not in _free_defaults:
-                        _return_entries.append(_entry)
             _occupied = sum(1 for s in range(_cs.SLOT_FURN_INI, _cs.SLOT_FURN_FIN + 1)
                             if s in ses.inventario)
             _slots_freed = sum(1 for s, n in _consume_plan
@@ -16200,6 +16174,9 @@ class Servidor:
             _inv_before = dict(ses.inventario)
             _qty_before = dict(_cantidades(ses))
             _inst_before = dict(_instancias(ses))
+            _mej_before = __import__('copy').deepcopy(getattr(ses.personaje, 'mejoras', {}) or {})
+            _house_before = __import__('copy').deepcopy(ses.personaje.casa)
+            _name_before = _c.house_name
             _touched = set()
             try:
                 for _slot, _take in _consume_plan:
@@ -16217,7 +16194,7 @@ class Servidor:
                     ses.inventario[_slot] = _entry['item_id']
                     _cantidades(ses).pop(_slot, None)
                     _uid = int(_entry.get('item_uid') or 0)
-                    _instancias(ses)[_slot] = struct.pack('<Q', _uid) if _uid else bytes(8)
+                    _instancias(ses)[_slot] = struct.pack('<Q', _uid) if _uid else __import__('inventario').instancia_nueva()
                     _touched.add(_slot)
                 if _nom_raw and any(ch.isalnum() for ch in _nom_raw):
                     _c.house_name = _nom_raw[:16].strip()
@@ -16236,7 +16213,9 @@ class Servidor:
                 _instancias(ses).clear()
                 _instancias(ses).update(_inst_before)
                 _c.placed_furniture = _old_entries
-                ses.personaje.casa = _c.serializar()
+                _c.house_name = _name_before
+                ses.personaje.mejoras = _mej_before
+                ses.personaje.casa = _house_before
                 log.exception('[%s] savefurniture rollback', addr)
                 ses.enviar(_cl.aviso("The furniture layout could not be saved.", tipo=0))
                 return

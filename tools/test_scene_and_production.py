@@ -75,7 +75,7 @@ def test_scene_sequence_uses_live_inventory_and_no_captured_empty_social_lists(w
     assert struct.unpack_from('<I',inventory,2)[0]>=4
     # The complete inventory includes backpack and reserved game-card cells.
     for slot in (121,154,156,159):
-        entry=__import__('inventario')._entrada(s.personaje.char_id,slot,s.inventario[slot],1,None,s.personaje.entity_id)
+        entry=__import__('inventario')._entrada(s.personaje.char_id,slot,s.inventario[slot],1,app._inst(s,slot),s.personaje.entity_id)
         assert entry in inventory
 
 

@@ -294,6 +294,7 @@ def secuencia(p: Personaje):
             if getattr(p, 'casa', None) and isinstance(p.casa, dict):
                 deed_activa = int(p.casa.get('deed_id') or 10115)
             p.inventario[376] = deed_activa
+            _instancias = _inv.sincronizar_instancias(p)
             # Con la cantidad de cada cosa: el oro vive en la ranura 0 y su
             # item_id siempre es 1 (ITEM_ORO) y su cantidad es p.oro.
             # Con la cantidad REAL de cada casilla: aqui iba un 1 fijo, asi
@@ -302,7 +303,8 @@ def secuencia(p: Personaje):
             # cantidad es p.oro.
             _items = [(int(r), _inv.ITEM_ORO if int(r) == _inv.RANURA_ORO else int(it),
                        p.oro if int(r) == _inv.RANURA_ORO
-                       else max(1, int((p.cantidades or {}).get(int(r), (p.cantidades or {}).get(str(r), 1)))))
+                       else max(1, int((p.cantidades or {}).get(int(r), (p.cantidades or {}).get(str(r), 1)))),
+                       _instancias[int(r)])
                       for r, it in p.inventario.items()
                       # DE LA 167 EN ADELANTE es todo del personaje y se
                       # quedaba fuera de este filtro, que solo dejaba pasar

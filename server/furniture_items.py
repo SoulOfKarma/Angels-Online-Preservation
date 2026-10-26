@@ -1,5 +1,47 @@
 """Furniture is tradable backpack stock until explicitly registered for decor."""
 import json
+from collections import Counter
+
+
+def plan_layout(ses, old, entries):
+    """Move exact copies between the bag and layout, without changing either."""
+    import app, casas
+    def key(entry):return int(entry['item_id']), int(entry.get('item_uid') or 0)
+    remaining = Counter(key(e) for e in old)
+    old_counts = Counter(int(e['item_id']) for e in old)
+    additions = []
+    for entry in entries:
+        identity = key(entry)
+        if remaining[identity]:
+            remaining[identity] -= 1
+        else:
+            additions.append(entry)
+    removed = []
+    for entry in old:
+        identity = key(entry)
+        if remaining[identity]:
+            remaining[identity] -= 1
+            if int(entry['item_id']) not in (9954, 14660):
+                removed.append(entry)
+    slots = sorted(s for s in ses.inventario if casas.SLOT_FURN_INI <= s <= casas.SLOT_FURN_FIN)
+    available = {s:app._cant_de(ses,s) for s in slots}
+    ids = {s:int.from_bytes(app._inst(ses,s),'little') for s in slots}
+    defaults = {9954:1,14660:1}
+    consume = Counter()
+    for entry in additions:
+        item, uid = key(entry)
+        if not old_counts[item] and defaults.get(item,0):
+            defaults[item] -= 1
+            continue
+        # A zero UID is accepted for old layouts; native nonzero UIDs must
+        # select the actual copy, even when many slots have the same item ID.
+        slot = next((s for s in slots if available[s] and ses.inventario[s] == item
+                     and (not uid or ids[s] == uid)), None)
+        if slot is None:
+            raise ValueError('The furniture layout was not saved: missing furniture copy.')
+        consume[slot] += 1
+        available[slot] -= 1
+    return list(consume.items()), removed
 
 
 def protegido(ses,slot):

@@ -151,7 +151,7 @@ def _copia(ses):
 
 
 def _confirmar(ses, plan):
-    import cuentas
+    import app, cuentas
     if not getattr(ses, 'usuario', None):
         raise ValueError('An authenticated character is required.')
     cuentas.guardar_cardbook(ses.usuario, ses.personaje.char_id, plan)
@@ -159,7 +159,9 @@ def _confirmar(ses, plan):
     ses.inventario.clear()
     ses.inventario.update(plan.inventario)
     ses.cantidades = plan.cantidades
-    ses.instancias = plan.instancias
+    ids = app._instancias(ses)
+    ids.clear()
+    ids.update(plan.instancias)
     for nombre in ('cartas', 'cartas_canjes', 'mejoras', 'mascota', 'mascotas'):
         nuevo = getattr(plan.personaje, nombre, {})
         if getattr(ses.personaje, nombre, None) != nuevo:
