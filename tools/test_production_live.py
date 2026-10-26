@@ -81,14 +81,14 @@ def test_bought_blueprint_can_manufacture_original_quality_variants(world,monkey
     assert struct.pack('<HBI',0x4c,1,19) in s.packets
 
 
-@pytest.mark.parametrize('ticket,item',[(1,35),(916,886),(921,887),(926,897),(931,898),(936,None)])
-def test_copper_gathering_has_original_order_rolls_not_an_extra_flat_chance(world,monkeypatch,ticket,item):
+@pytest.mark.parametrize('ticket,item',[(1,35),(1648,886),(1697,887),(1746,897),(1795,898),(1844,None)])
+def test_copper_gathering_uses_local_order_rate_and_original_corresponding_items(world,monkeypatch,ticket,item):
     s=world.player();s.personaje.stage=41
     monkeypatch.setattr(app,'_cuenta_de_veta',lambda *args:[0,0])
     monkeypatch.setattr(__import__('lyceum_services'),'straw_drop',lambda *args:[])
     monkeypatch.setattr(misiones,'verificar_progreso_recoleccion',lambda *args:[])
     def draw(start,end):
-        assert (start,end)==(1,1000)
+        assert (start,end)==(1,1960)
         return ticket
     monkeypatch.setattr(app.random,'randint',draw)
     assert app._sacar_de_veta(s,'test',41,999,app._material(1),1)

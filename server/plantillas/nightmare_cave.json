@@ -1,0 +1,752 @@
+{
+ "_nota": "nightmare_cave (stage 61). POBLADO DESDE EL CLIENTE, no desde una captura: los generadores de monstruos son objetos del propio map061.mpc -- el monstruo en el u16 del +34, la zona en el +21, el tiempo en el +38 y cuantos en el +42. Eso da el censo COMPLETO del mapa, que una captura no puede dar porque solo trae lo que estuvo a la vista. El entity_id es fabricado y estable, no el del servidor. Las casillas son las del TAG de cada generador; los que no declaran TAG ponen sus monstruos en la casilla del generador y en un anillo de radio 3 a su alrededor, que es la dispersion MEDIDA en el stage 73. Los objetos de mapa son los del .mpc cuyo id esta en la lista de los que el servidor manda de verdad, con el cuerpo del 0x000E copiado de una captura del mismo objeto. Los tornados se dibujan aparte, desde portales.json. Ver tools/poblar_del_cliente.py.",
+ "stage": 61,
+ "spawns": [
+  {
+   "entity_id": 56100000,
+   "nombre": "Cave Slarm",
+   "npc_type": 436,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    57,
+    40
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 40
+  },
+  {
+   "entity_id": 56100001,
+   "nombre": "Cave Slarm",
+   "npc_type": 436,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    52,
+    35
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 40
+  },
+  {
+   "entity_id": 56100002,
+   "nombre": "Cave Slarm",
+   "npc_type": 436,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    52,
+    40
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 40
+  },
+  {
+   "entity_id": 56100003,
+   "nombre": "Cave Slarm",
+   "npc_type": 436,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    52,
+    45
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 40
+  },
+  {
+   "entity_id": 56100004,
+   "nombre": "Cave Slarm",
+   "npc_type": 436,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    57,
+    35
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 40
+  },
+  {
+   "entity_id": 56100005,
+   "nombre": "Cave Slarm",
+   "npc_type": 436,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    57,
+    45
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 40
+  },
+  {
+   "entity_id": 56100006,
+   "nombre": "Cave Slarm",
+   "npc_type": 436,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    62,
+    35
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 40
+  },
+  {
+   "entity_id": 56100007,
+   "nombre": "Cave Slarm",
+   "npc_type": 436,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    47,
+    31
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 40
+  },
+  {
+   "entity_id": 56100008,
+   "nombre": "Cave Slarm",
+   "npc_type": 436,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    47,
+    36
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 40
+  },
+  {
+   "entity_id": 56100009,
+   "nombre": "Cave Slarm",
+   "npc_type": 436,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    47,
+    41
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 40
+  },
+  {
+   "entity_id": 56100010,
+   "nombre": "Cave Slarm",
+   "npc_type": 436,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    108,
+    114
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 40
+  },
+  {
+   "entity_id": 56100011,
+   "nombre": "Cave Slarm",
+   "npc_type": 436,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    103,
+    109
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 40
+  },
+  {
+   "entity_id": 56100012,
+   "nombre": "Cave Slarm",
+   "npc_type": 436,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    103,
+    117
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 40
+  },
+  {
+   "entity_id": 56100013,
+   "nombre": "Cave Slarm",
+   "npc_type": 436,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    108,
+    109
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 40
+  },
+  {
+   "entity_id": 56100014,
+   "nombre": "Cave Slarm",
+   "npc_type": 436,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    108,
+    119
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 40
+  },
+  {
+   "entity_id": 56100015,
+   "nombre": "Cave Slarm",
+   "npc_type": 436,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    113,
+    110
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 40
+  },
+  {
+   "entity_id": 56100016,
+   "nombre": "Cave Slarm",
+   "npc_type": 436,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    113,
+    115
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 40
+  },
+  {
+   "entity_id": 56100017,
+   "nombre": "Cave Slarm",
+   "npc_type": 436,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    113,
+    120
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 40
+  },
+  {
+   "entity_id": 56100018,
+   "nombre": "Cave Slarm",
+   "npc_type": 436,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    98,
+    106
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 40
+  },
+  {
+   "entity_id": 56100019,
+   "nombre": "Cave Slarm",
+   "npc_type": 436,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    98,
+    111
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 40
+  },
+  {
+   "entity_id": 56100020,
+   "nombre": "Cave Slarm",
+   "npc_type": 436,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    186,
+    81
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 40
+  },
+  {
+   "entity_id": 56100021,
+   "nombre": "Cave Slarm",
+   "npc_type": 436,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    181,
+    77
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 40
+  },
+  {
+   "entity_id": 56100022,
+   "nombre": "Cave Slarm",
+   "npc_type": 436,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    181,
+    82
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 40
+  },
+  {
+   "entity_id": 56100023,
+   "nombre": "Cave Slarm",
+   "npc_type": 436,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    186,
+    76
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 40
+  },
+  {
+   "entity_id": 56100024,
+   "nombre": "Cave Slarm",
+   "npc_type": 436,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    186,
+    86
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 40
+  },
+  {
+   "entity_id": 56100025,
+   "nombre": "Cave Slarm",
+   "npc_type": 436,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    191,
+    76
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 40
+  },
+  {
+   "entity_id": 56100026,
+   "nombre": "Cave Slarm",
+   "npc_type": 436,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    191,
+    81
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 40
+  },
+  {
+   "entity_id": 56100027,
+   "nombre": "Cave Slarm",
+   "npc_type": 436,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    191,
+    86
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 40
+  },
+  {
+   "entity_id": 56100028,
+   "nombre": "Cave Slarm",
+   "npc_type": 436,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    181,
+    87
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 40
+  },
+  {
+   "entity_id": 56100029,
+   "nombre": "Cave Slarm",
+   "npc_type": 436,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    176,
+    76
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 40
+  },
+  {
+   "entity_id": 56100030,
+   "nombre": "Cave Slarm",
+   "npc_type": 436,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    154,
+    50
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 40
+  },
+  {
+   "entity_id": 56100031,
+   "nombre": "Cave Slarm",
+   "npc_type": 436,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    149,
+    45
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 40
+  },
+  {
+   "entity_id": 56100032,
+   "nombre": "Cave Slarm",
+   "npc_type": 436,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    149,
+    50
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 40
+  },
+  {
+   "entity_id": 56100033,
+   "nombre": "Cave Slarm",
+   "npc_type": 436,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    153,
+    55
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 40
+  },
+  {
+   "entity_id": 56100034,
+   "nombre": "Cave Slarm",
+   "npc_type": 436,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    154,
+    45
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 40
+  },
+  {
+   "entity_id": 56100035,
+   "nombre": "Cave Slarm",
+   "npc_type": 436,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    159,
+    45
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 40
+  },
+  {
+   "entity_id": 56100036,
+   "nombre": "Cave Slarm",
+   "npc_type": 436,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    159,
+    51
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 40
+  },
+  {
+   "entity_id": 56100037,
+   "nombre": "Cave Slarm",
+   "npc_type": 436,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    144,
+    40
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 40
+  },
+  {
+   "entity_id": 56100038,
+   "nombre": "Cave Slarm",
+   "npc_type": 436,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    144,
+    45
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 40
+  },
+  {
+   "entity_id": 56100039,
+   "nombre": "Cave Slarm",
+   "npc_type": 436,
+   "sprite": 42107,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    144,
+    50
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 40
+  },
+  {
+   "entity_id": 56100040,
+   "nombre": "Upset Spirit",
+   "npc_type": 1926,
+   "sprite": 42019,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    166,
+    97
+   ],
+   "direccion": 2,
+   "visible": 0
+  },
+  {
+   "entity_id": 56100041,
+   "nombre": "Aimless Spirit",
+   "npc_type": 1927,
+   "sprite": 42019,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    131,
+    59
+   ],
+   "direccion": 2,
+   "visible": 0
+  },
+  {
+   "entity_id": 56100042,
+   "nombre": "Afeared Spirit",
+   "npc_type": 1924,
+   "sprite": 42019,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    41,
+    53
+   ],
+   "direccion": 2,
+   "visible": 0
+  },
+  {
+   "entity_id": 56100043,
+   "nombre": "Scared Spirit",
+   "npc_type": 1925,
+   "sprite": 42019,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    75,
+    99
+   ],
+   "direccion": 2,
+   "visible": 0
+  },
+  {
+   "npc_type": 1921,
+   "nombre": "Inspector Samir",
+   "tile": [
+    71,
+    15
+   ],
+   "sprite": 40003,
+   "entity_id": 56100100,
+   "klass": 199,
+   "monstruo": false,
+   "direccion": 6,
+   "visible": 1
+  },
+  {
+   "npc_type": 1922,
+   "nombre": "Inspector Labram",
+   "tile": [
+    77,
+    10
+   ],
+   "sprite": 40005,
+   "entity_id": 56100101,
+   "klass": 199,
+   "monstruo": false,
+   "direccion": 6,
+   "visible": 1
+  }
+ ],
+ "recursos": [
+  {
+   "entity_id": 66100000,
+   "sprite": 60097,
+   "capa": 2,
+   "px": [
+    1239,
+    1776
+   ],
+   "tile": [
+    38,
+    55
+   ],
+   "crudo": "209bf00302000000d7040000f00600000000000027000000000000001a000000dc06c1ea00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60097"
+  },
+  {
+   "entity_id": 66100001,
+   "sprite": 60097,
+   "capa": 2,
+   "px": [
+    2325,
+    3280
+   ],
+   "tile": [
+    72,
+    102
+   ],
+   "crudo": "219bf0030200000015090000d00c00000000000027000000000000001a000000dc06c1ea00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60097"
+  },
+  {
+   "entity_id": 66100002,
+   "sprite": 60097,
+   "capa": 0,
+   "px": [
+    5403,
+    3216
+   ],
+   "tile": [
+    168,
+    100
+   ],
+   "crudo": "229bf003000000001b150000900c00000000000027000000000000001a000000dc06c1ea00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60097"
+  },
+  {
+   "entity_id": 66100003,
+   "sprite": 60097,
+   "capa": 0,
+   "px": [
+    4283,
+    1968
+   ],
+   "tile": [
+    133,
+    61
+   ],
+   "crudo": "239bf00300000000bb100000b00700000000000027000000000000001a000000dc06c1ea00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60097"
+  }
+ ]
+}

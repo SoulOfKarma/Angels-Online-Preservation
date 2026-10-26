@@ -836,6 +836,7 @@ def _map_object_spawn(entity_id: int, sprite: int, tile: tuple, direccion: int =
 # faltaba en la de la IA. El Lyceum y el Fighting Palace NO van aqui:
 # se tratan aparte y cada consumidor los anade si los necesita.
 PLANTILLAS_POR_STAGE = {
+    61  : 'nightmare_cave.json',          # Original map061 MPC spawns and events.
     114 : 'sign_up_office.json',          # NPC originales de map114.mpc; torneos aun no habilitados.
     50: 'territory_area_1.json',
     100: 'territory_area_2.json',

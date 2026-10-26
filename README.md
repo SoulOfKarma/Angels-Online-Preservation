@@ -20,6 +20,7 @@ Social services, native Album, Angel Elementary and League War are connected.
 [Implemented behavior, GM commands, original reward evidence and remaining limits](docs/SOCIAL_ALBUM_QUIZ_GVG_2026-10-25.md).
 [GvG, social map persistence, Alone and production corrections](docs/GVG_SOCIAL_PRODUCTION_FIXES_2026-10-25.md).
 [Immediate recipe learning, /recipes, producer orders and Wolay exit](docs/PRODUCTION_FRIENDS_WOLAY_2026-10-25.md).
+[Gathering order rate, resource replenishment, Nightmare Cave and Love Broadcasting](docs/GATHERING_NIGHTMARE_LOVE_2026-10-26.md).
 
 Arena/Holy: GM registration/join/begin controls, free-for-all Arena by default
 (optional brackets), orange/blue Holy teams, original mines and exits,

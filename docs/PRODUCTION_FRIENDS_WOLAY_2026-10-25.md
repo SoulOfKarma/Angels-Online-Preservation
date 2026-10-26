@@ -36,13 +36,17 @@ delivered as an item. Missing original tables remain blocked before spending.
 
 ## Orders from gathering
 
-The original material.xml order drops are already in materiales.json and
-the real gathering roll. There is no added flat5% chance. Copper material1
-has total weight1000: ordinary copper900, rare material15, orders886/887/897/898
-at5 each and no output65. Thus an order replaces that attempt's normal output
-with a combined2% chance. Other resources have their own weights. Orders are
-present for Dig, Lumber, Collect and Fishing and are granted as normal inventory
-items. Order886 requests30 Copper Ingots, as specified in order.xml.
+The original material.xml order drops were already in materiales.json and
+in the gathering roll. Original Copper material1 has total weight1000:
+ordinary copper900, rare material15, orders886/887/897/898 at5 each and no
+output65 (a combined2% original order probability). Other resources have
+their own weights. Orders exist for Dig, Lumber, Collect and Fishing and are
+normal inventory items. Order886 requests30 Copper Ingots from order.xml.
+
+**2026-10-26:** at the user's request the combined producer-order rate now
+uses a local10% probability per attempt, preserving each resource's eligible
+orders and their relative weights. See
+[gathering changes](GATHERING_NIGHTMARE_LOVE_2026-10-26.md).
 
 ## Director Wolay
 

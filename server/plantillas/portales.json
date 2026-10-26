@@ -11,6 +11,22 @@
  ],
  "radio": 1,
  "mapas": {
+  "61": [
+   {
+    "entity": 66100900,
+    "tile": [
+     6,
+     5
+    ],
+    "destino": null,
+    "llegada": null,
+    "radio": 2,
+    "dibujar": true,
+    "preguntar": false,
+    "evento_cliente": true,
+    "nota": "map061.mpc event1: conditional return to faction field (8/9/28/25), native tag9."
+   }
+  ],
   "47": [
    {"entity":70474700,"tile":[37,182],"destino":41,"llegada":[175,89],"radio":1,"dibujar":true,"preguntar":false,"outpost_evento":906,"outpost_tag":1},
    {"entity":70474701,"tile":[75,172],"destino":47,"llegada":[146,187],"radio":1,"dibujar":true,"preguntar":false,"outpost_evento":905,"outpost_tag":5},

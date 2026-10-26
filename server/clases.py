@@ -406,6 +406,18 @@ def chat_super_broadcast(entity_id: int, nombre: str, texto: str,
     return struct.pack('<HIB17s', 0x0128, int(entity_id), 11, autor) + mensaje
 
 
+def chat_love_broadcast(entity_id: int, nombre: str, texto: str,
+                        portrait_selector: int = 0) -> bytes:
+    """Love channel15 selects native frame89;11 selects the Super BC frame85.
+
+    5F3B40 -> 6344A0(style2) -> 6345C0 also writes both lines in chat.
+    Preserve the original literal backslash-n separator for the love frame.
+    """
+    packet = bytearray(chat_super_broadcast(entity_id, nombre, texto, portrait_selector))
+    packet[6] = 15
+    return bytes(packet)
+
+
 def chat_trade(entity_id: int, nombre: str, texto: str) -> bytes:
     """Trade: ``[Trade]name>text`` (style 2, string 198)."""
     return chat_publico(entity_id, 10, nombre, texto)

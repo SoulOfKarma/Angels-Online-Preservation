@@ -31,9 +31,11 @@ def procesar(ses,body):
     try:recent_mall.cambiar(ses,{slot:1},[],transaccion=validate)
     except recent_mall.Rechazo as exc:notice(str(exc));return
     ses._love_next=time.time()+1
-    text=(message%target[0]).replace('\\n',' ')
-    packet=clases.chat_broadcast(0,ses.personaje.nombre,text)
+    text=message%target[0]
+    packet=clases.chat_love_broadcast(0,ses.personaje.nombre,text,
+                                      int((getattr(ses.personaje,'apariencia',None) or [0])[0])&1)
     recipients={id(s):s for s in app._tw_sesiones() if getattr(s,'personaje',None)
+                and getattr(s,'conectado',True) and not getattr(s,'cerrada',False)
                 and not getattr(s,'desconectado',False)}
     recipients[id(ses)]=ses
     for recipient in recipients.values():recipient.enviar(packet)

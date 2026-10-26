@@ -23,6 +23,7 @@ def test_love_original_dialog_confirm_consumes_one_and_broadcasts_to_both(world,
     public=[p for p in sender.packets if p[:2]==b'\x28\x01']
     assert len(public)==1 and public[0] in target.packets
     assert target.personaje.nombre.encode() in public[0]
+    assert public[0][6] == 15 and public[0][24:25] in (b'0', b'1')
     confirm(sender,target.personaje.nombre)
     assert sender.cantidades[20]==1  # duplicate confirm is not another purchase
 
@@ -44,6 +45,18 @@ def test_love_database_failure_keeps_item_and_does_not_announce(world):
     with pytest.raises(sqlite3.IntegrityError):confirm(sender,target.personaje.nombre)
     assert stored(world,sender)==before and sender.inventario=={20:4892}
     assert not target.packets
+
+
+def test_love_native_heart_frame_preserves_two_lines_and_sender_portrait(world):
+    sender=world.player(items={20:4458});target=world.player()
+    sender.personaje.apariencia[0]=1
+    confirm(sender,target.personaje.nombre)
+    packet=next(p for p in target.packets if p[:2]==b'\x28\x01')
+    assert packet[6]==15 and packet[24:25]==b'1'
+    from house_services import xml_rows
+    template=xml_rows('item.xml')[4458]
+    original=xml_rows('string.xml')[int(template['\u52d5\u614b\u8cc7\u65991'])]['\u6587\u5b57']
+    assert packet[25:-1].decode('latin1')==original%target.personaje.nombre
 
 
 @pytest.mark.parametrize('mode',[0,1])

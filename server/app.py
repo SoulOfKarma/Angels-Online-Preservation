@@ -315,7 +315,7 @@ def _portal_en(stage, tx, ty):
         # menu que hay -- el de Shuwa Market a Siam Square y el de Bayan
         # Village -- no abrian el cuadro NUNCA: el servidor ni siquiera los
         # encontraba al pisarlos.
-        if por.get('destino') is None and not por.get('preguntar'):
+        if por.get('destino') is None and not por.get('preguntar') and not por.get('evento_cliente'):
             continue
         # Radio propio si lo trae. El radio 1 global pide estar justo encima,
         # y eso no vale para todos: el tornado de Mushroom hacia Jade Vale
@@ -6036,19 +6036,14 @@ def _sacar_de_veta(ses, addr, stage, ent, mat, mid):
     cuenta[0] += 1
     if mat['limite'] and cuenta[0] >= mat['limite']:
         cuenta[1] = time.time()
-    total = sum(pr for _it, pr in mat['items']) + int(mat.get('no_produce') or 0)
-    tirada = random.randint(1, max(1, total))
-    dado = None
-    for it, pr in mat['items']:
-        tirada -= pr
-        if tirada <= 0:
-            dado = it
-            break
+    dado = __import__('gathering_rewards').roll(mat)
     if dado is not None:
         r = _meter(ses, int(dado), 1)
         if r is None:
             ses.enviar(_cl_r.aviso('Your backpack is full.', tipo=0))
             cuenta[0] -= 1
+            if cuenta[0] < mat['limite']:
+                cuenta[1] = 0.0
             return False
         ses.enviar(*_refrescar(ses, [r]))
         ses.enviar(_cl_r.aviso(_nombre_item(int(dado)), tipo=0, msg_id=_cl_r.MSG_ITEM))
@@ -6091,6 +6086,8 @@ def _sacar_de_veta(ses, addr, stage, ent, mat, mid):
         _guardar_bolsa(ses, ses.personaje.char_id)
     log.info('[%s] veta %s (%s) en %s: %s, %d/%d', addr, ent, mat['nombre'], stage,
              dado, cuenta[0], mat['limite'])
+    if mat['limite'] and cuenta[0] >= mat['limite']:
+        __import__('gathering_nodes').depleted(ses, stage, ent, mat, cuenta)
     return not (mat['limite'] and cuenta[0] >= mat['limite'])
 
 
@@ -6453,6 +6450,7 @@ def _poner_generado(ses, eid, npc_type, tile, zona):
         ses.monstruos = {}
     ses.monstruos[eid] = m
     ses.enviar(_lg_g._npc_spawn(eid, npc_type, nombre, tuple(tile), sprite=sprite, klass=1))
+    __import__('nightmare_cave').created(ses, m)
     frase = _texto_string(FRASE_AL_SALIR.get(int(npc_type), 0)) if int(npc_type) in FRASE_AL_SALIR else ''
     if frase:
         _hablar_monstruo(ses, m, frase)
@@ -8085,6 +8083,8 @@ def _recorrer_dialogo_mapa(ses, addr, stage, nodo):
     if not p:
         return False
     arbol = _dm._arbol(stage)
+    if __import__('nightmare_cave').before_dialogue(ses, int(stage), int(nodo)):
+        return True
     if __import__('recent_mall').antes_dialogo(ses,int(stage),int(nodo)):
         return True
     if __import__('olympus').antes_dialogo(ses,int(stage),int(nodo)):
@@ -10410,7 +10410,7 @@ class Servidor:
                 p._amplify_verdes = _amplify_refrescar(ses, enviar=False)
             except Exception:
                 log.exception('amplify antes de entrar')
-            for sub in secuencia(p):
+            for sub in __import__('gathering_nodes').scene(ses, secuencia(p)):
                 ses.enviar(sub)
             # El inventario va dentro de la secuencia de entrada: el 0x001A
             # se arma con el del personaje, asi que cada item ya sale en su
@@ -11837,7 +11837,7 @@ class Servidor:
                     _entrar_en_sala(ses, addr)
                     import granja_liga as _fl
                     ses.enviar(*_fl.poblar_cultivos(ses))
-                ses.enviar(*_lg.poblar(p.stage))
+                ses.enviar(*__import__('gathering_nodes').scene(ses, _lg.poblar(p.stage)))
                 # PRESENCIA: aqui, y no al mandar el 0x000C, porque hasta
                 # este momento el cliente no tiene el mapa cargado y los
                 # spawns que lleguen antes se pierden.
@@ -14175,7 +14175,7 @@ class Servidor:
             p = ses.personaje
             ses.monstruos = _monstruos_de(p.stage)
             # Cargar la secuencia completa oficial del nuevo mapa (aparicion, capas, barra, stats, spawns y atributos)
-            for sub in _lg2.secuencia(p):
+            for sub in __import__('gathering_nodes').scene(ses, _lg2.secuencia(p)):
                 ses.enviar(sub)
             __import__('elementary').loaded(ses)
             __import__('league_war').loaded(ses)
@@ -18079,6 +18079,9 @@ class Servidor:
 
 
 
+            if ses.personaje and __import__('nightmare_cave').pulsar(ses, ent, addr):
+                return
+
             # Los dialogos del tutorial van por entity_id (19 Raphael, 20
             # Interface Tutor, 21 Angel Aide) y esos numeros SE REPITEN en
             # otros mapas: en el Lyceum la 19 es el Magic Seller, la 20 el Bao
@@ -18522,6 +18525,9 @@ class Servidor:
             return
         if (opcode==0x000B and ses.rol=='mundo'
                 and __import__('competicion_dialogos').continuar(ses,d.get('valor',1) if d else 1)):
+            return
+        if (opcode == 0x000B and ses.rol == 'mundo'
+                and __import__('nightmare_cave').choose(ses, d.get('valor', 1) if d else 1)):
             return
         _dlm = getattr(ses, 'dlg_mapa', None)
         if (opcode == 0x000B and ses.rol == 'mundo' and _dlm

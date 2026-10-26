@@ -20,6 +20,7 @@ Servicios sociales, Album nativo, Angel Elementary y League War conectados.
 [Funcionamiento, comandos GM, premios comprobados y limites pendientes](docs/SOCIAL_ALBUM_QUIZ_GVG_2026-10-25.md).
 [Correcciones de GvG, persistencia social, Alone y produccion](docs/GVG_SOCIAL_PRODUCTION_FIXES_2026-10-25.md).
 [Recetas al instante, comando /recipes, ordenes y salida de Wolay](docs/PRODUCTION_FRIENDS_WOLAY_2026-10-25.md).
+[Ordenes de recoleccion, recursos, Nightmare Cave y Love Broadcasting](docs/GATHERING_NIGHTMARE_LOVE_2026-10-26.md).
 
 ## Estado real
 
