@@ -39,6 +39,7 @@ def pulsar(s, entity, addr):
         return False
     context = dict(character=p, stage=p.stage, tile=row['tile'], npc=row['npc_type'])
     s._nightmare_reward = None
+    s._nightmare_entry = None
     s._nightmare_npc = context
     if _near(s, context):
         s.dlg_mapa = None
@@ -87,10 +88,27 @@ def before_dialogue(s, stage, key):
     preview = stage == STAGE and 12 in actions
     select = stage == STAGE and 47 in actions
     summon = stage == STAGE and 31 in actions and 9 in actions
-    if not (permit or preview or select or summon):
+    entry = stage in ENTRANCE_STAGES and node.get('m') == 6022
+    if not (permit or preview or select or summon or entry):
         return False
     context = getattr(s, '_nightmare_npc', None)
     if not _near(s, context):
+        return True
+    if entry:
+        if context['npc'] != 1923:
+            return True
+        import eventos_mundo
+        if eventos_mundo.ContextoSesion(s).en_bolsa(2852) < 1:
+            app._recorrer_dialogo_mapa(s, getattr(s, 'addr', 'nightmare'), stage, 6019)
+            return True
+        destination = next((args for action, args in tree.get(str(node.get('s')), {}).get('a', [])
+                            if action == 3 and len(args) == 2 and args[0] == STAGE), None)
+        if destination:
+            _line(s, node)
+            # CHANGE_MAP follows message6022 in the native tree. Execute it
+            # only when the player finishes this exact warning dialogue.
+            s._nightmare_entry = dict(context=context, guion=s.dlg_guion,
+                                      destination=tuple(destination))
         return True
     if summon:
         if context['npc'] not in SPIRIT_ROOTS:
@@ -166,8 +184,27 @@ def _consumption(s, costs):
     return result
 
 
+def _finish_entry(s, value):
+    import app, dialogos, eventos_mundo
+    pending = getattr(s, '_nightmare_entry', None)
+    if not pending:
+        return False
+    s._nightmare_entry = None
+    if getattr(s, 'dlg_guion', None) is not pending['guion']:
+        return False
+    s.dlg_ent = s.dlg_mapa = None
+    s.enviar(struct.pack('<H', 0x12) + dialogos.FIN)
+    if (value == 1 and _near(s, pending['context'])
+            and eventos_mundo.ContextoSesion(s).en_bolsa(2852) >= 1):
+        stage, tag = pending['destination']
+        app._aplicar_efectos(s, getattr(s, 'addr', 'nightmare'), [('viajar', stage, tag)])
+    return True
+
+
 def choose(s, value):
     import app, clases, recent_mall
+    if _finish_entry(s, value):
+        return True
     pending = getattr(s, '_nightmare_reward', None)
     if not pending:
         return False

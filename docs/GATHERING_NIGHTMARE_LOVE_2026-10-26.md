@@ -69,6 +69,11 @@ Original sources: `map003/026/029/038.mpc` root6000, the four field MPC roots601
 - Exploring Members in stages8/9/25/28 require that permit, retain it and
   enter stage61/tag1. South of Mirror Lake preserves its additional quest
   option, so the entrance is not always the first menu option.
+  The map transition is deferred until C2S000B/1 finishes warning6022;
+  the dialogue closes before the map-change packet. Cancelling, replacing
+  the dialogue, moving away, dying or losing the permit cancels admission.
+  Repeated completion packets cannot travel twice. This follow-up passed40
+  tests covering the cave and NPC mission dialogue flows.
 - `nightmare_cave.json` is generated from original map061 generators:40
   passive Cave Slarm and four spirits. Inspector Samir and Inspector Labram
   are restored from the original NPC placements at71,15 and77,10.

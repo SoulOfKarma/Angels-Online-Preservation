@@ -78,11 +78,53 @@ def test_four_field_entries_require_but_preserve_passport(world, stage, has_pass
     if has_pass:
         entry_index = next(i for i, (message, _) in enumerate(s.dlg_mapa['opciones']) if message == 6020)
         action(world, s, 10 + entry_index)
+        assert not world.trips and s.personaje.stage == stage
+        assert struct.unpack_from('<I', s.packets[-1], 2)[0] == 6022
+        action(world, s, 1)  # Finish the warning before the map transition.
         assert world.trips and world.trips[-1][1] == 61
         assert s.inventario[20] == 2852
     else:
         action(world, s, 10)
         assert not world.trips
+
+
+def entry_warning(world, s):
+    s.personaje.stage = 28
+    click(world, s, 1923)
+    action(world, s, 10)
+    assert not world.trips and struct.unpack_from('<I', s.packets[-1], 2)[0] == 6022
+
+
+def test_entry_closes_warning_before_sending_map_change_and_ignores_repeat(world, monkeypatch):
+    s = world.player(items={20:2852})
+    entry_warning(world, s)
+    original = app._sincronizar_cambio_mapa
+    close = b'\x12\0' + __import__('dialogos').FIN
+    def travel(ses, stage, x, y):
+        assert ses.packets[-1] == close
+        ses.enviar(__import__('clases').cambiar_mapa(stage))
+        original(ses, stage, x, y)
+    monkeypatch.setattr(app, '_sincronizar_cambio_mapa', travel)
+    action(world, s, 1)
+    assert s.packets[-2] == close and s.packets[-1][:2] == b'\x0c\0'
+    assert len(world.trips) == 1 and s.inventario[20] == 2852
+    action(world, s, 1)
+    assert len(world.trips) == 1
+
+
+@pytest.mark.parametrize('reason', ['cancel', 'move', 'map', 'dead', 'pass', 'dialogue', 'npc'])
+def test_pending_entry_is_cancelled_when_warning_or_admission_is_no_longer_valid(world, reason):
+    s = world.player(items={20:2852})
+    entry_warning(world, s)
+    if reason == 'move':s.personaje.tile_x = 100
+    elif reason == 'map':s.personaje.stage = 29
+    elif reason == 'dead':s.muerto = True
+    elif reason == 'pass':s.inventario.clear()
+    elif reason == 'dialogue':
+        s.dlg_guion = [__import__('dialogos').armar_linea(6019, 7, [])[2:]]
+    elif reason == 'npc':click(world, s, 1923)
+    action(world, s, 0 if reason == 'cancel' else 1)
+    assert not world.trips and getattr(s, '_nightmare_entry', None) is None
 
 
 def test_native_population_has_slarm_spirits_inspectors_and_no_unsummoned_bosses():
