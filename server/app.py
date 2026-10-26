@@ -15193,7 +15193,7 @@ class Servidor:
             destino, origen = struct.unpack_from('<HH', cuerpo, 1)
             cuantas = struct.unpack_from('<I', cuerpo, 5)[0]
             bolsa = getattr(ses, 'inventario', {})
-            if origen not in bolsa or destino in bolsa or cuantas < 1:
+            if origen not in bolsa or destino in bolsa or cuantas < 1 or not _iv.es_ranura_valida(bolsa[origen], destino):
                 log.warning(f"[{addr}] separar invalido: {origen} -> {destino} "
                             f"x{cuantas}")
                 return

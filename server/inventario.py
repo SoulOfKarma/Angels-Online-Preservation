@@ -1637,6 +1637,11 @@ def look_de_burbuja(item_id: int) -> int:
     return _BURBUJA_LOOK_CACHE.get(int(item_id), 0)
 
 
+def es_carta(item_id: int) -> bool:
+    """True si el item es una carta coleccionable (卡片)."""
+    return categoria_item(item_id) == '卡片' or categoria_de(item_id) == '卡片'
+
+
 def es_ranura_valida(item_id: int, ranura: int) -> bool:
     """Verifica si un item puede colocarse en esa ranura especifica para evitar pisar armadura real con fashion."""
     if ranura == 558:  # Equip Pet; la elegibilidad de la ficha se valida en app
@@ -1667,6 +1672,9 @@ def es_ranura_valida(item_id: int, ranura: int) -> bool:
     # 7. Bolsa de Fashion (176..275): SOLO ropa de fashion (紙娃娃)
     if 176 <= ranura <= 275:
         return es_item_fashion(item_id)
+    # 7a. Bolsa de Cartas (276..375): SOLO cartas coleccionables (卡片)
+    if 276 <= ranura <= 375:
+        return es_carta(item_id)
     # 7b. Ranura de escritura de casa (376)
     if ranura == 376:
         return int(item_id) in (10115, 10116, 10117, 17934, 17935, 17936, 17937, 20076) or categoria_item(item_id) == '房屋'

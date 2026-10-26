@@ -1054,9 +1054,26 @@ def _nivel_plausible(lista_raw, nivel_monstruo: int) -> bool:
     return mediana * 2 >= int(nivel_monstruo or 0)
 
 
+# Tablas ponderadas originales de drop_table en content.db para los cuatro
+# jefes de Nightmare Cave (Bloody Hook, Soul Puller, Violent Cat, Evil Chieftain):
+# tres tiradas por muerte con ~98.15%–99.54% de peso para Dream Piece (3040).
+_DROPS_PONDERADOS_JEFES = {
+    420: (3, ((3040, 1, 981481), (5918, 1, 18519))),
+    422: (3, ((3040, 1, 981481), (5919, 1, 18519))),
+    424: (3, ((3040, 1, 990741), (5921, 1, 9259))),
+    426: (3, ((3040, 1, 99537), (5920, 1, 463))),
+}
+
+
 def botin_items(npc_type: int, nombre: str = '', nivel: int = 0, buffs=None) -> list:
     """Items que suelta el monstruo de drops_monstruos.json o content.db con multiplicador de drops."""
     global _DROPS_CACHE, _MON_INFO_CACHE, _DROP_OFICIAL_CACHE
+    _pond = _DROPS_PONDERADOS_JEFES.get(int(npc_type or 0))
+    if _pond is not None:
+        _tiradas, _entradas = _pond
+        _pares = [(it, cnt) for it, cnt, _w in _entradas]
+        _pesos = [_w for _it, _cnt, _w in _entradas]
+        return list(random.choices(_pares, weights=_pesos, k=_tiradas))
     if npc_type in _DROPS_CACHE:
         candidatos = _DROPS_CACHE[npc_type]
     else:
