@@ -413,68 +413,6 @@ El servidor deja el cliente local listo al arrancar, siempre con un `.bak` antes
 - **Launcher** en español e inglés, con botones para abrir varias copias del cliente a la vez
 - **Pantalla del logo de arranque** vaciada
 
-**A medias**
-
-- **Sistema Online / Presencia Multijugador**: los jugadores se ven entre sí en el mapa (`0x0001` oficial de 128 bytes), ven el movimiento ajeno en tiempo real (`0x0005`) y sincronizan transformaciones (`0x0013`) y acciones de combate de sus compañeros. Falta pulir la visualización completa de sets/skins de fashion en otros jugadores.
-- **Sistema de Equipos / Teams**: el servidor detecta y recibe las solicitudes (`0x0017`), pero el flujo de aceptación, la barra de equipo en pantalla, compartir experiencia y la gestión de miembros (`0x0018`) está en fase de desarrollo.
-- **Flag de Oro / Gold Cap**: implementado pero pendiente de testeo exhaustivo en cliente.
-- Diálogos de NPC: 17 de los 52 del Lyceum tienen su texto y sus opciones, más expansión
-  a vendedores regionales de habilidades.
-- **Habilidades y magias**: las ramas de combate cuerpo a cuerpo, AoEs, invocaciones y magia están
-  operativas (lanzamiento, costes, daño, buffs, debuffs, invocaciones y progresión). El arco ya
-  pega a distancia con su básico (Basic Shot I, alcance 12); falta confirmar si se dibuja la
-  flecha volando, porque el efecto solo se manda en las habilidades. La daga tiene menos pruebas.
-- Hechizos: salen en F1-F3, se lanzan, dan buff y hacen daño, pero faltan
-  algunos efectos visuales.
-- La fórmula de daño físico y mágico ahora escala con mitigación lineal de
-  defensa y atributos elementales, pero a niveles extremos (300+) o contra
-  monstruos con estadísticas atípicas puede requerir ajustes finos de calibración.
-- ~~Los combos se leen de `magic.xml` pero no se ejecutan~~ **resuelto**: los 475
-  (376 directos por `連擊次數` y 99 encadenados por `轉嫁法術`) se ejecutan, y los
-  golpes extra procesan la muerte del monstruo.
-- El efecto de lentitud se registra pero no cambia la velocidad de movimiento.
-- El bastón y el hacha usan la animación de ataque de la espada hasta que
-  alguien capture la suya.
-- Las monturas se equipan en la ranura 10 y sí dan velocidad, pero no la
-  correcta: dos monturas distintas que declaran el mismo `move_speed` dan
-  velocidades distintas en el servidor real, así que lo que aporta una
-  montura depende de su propia instancia y eso no viaja en `item.xml`.
-
-- **Sistema Integral de Misiones (1.489 quests)**:
-  - Catálogo completo compilado desde `quest.xml` con 1.489 misiones y 662 repetibles.
-  - Seguimiento dinámico de cacerías (877 objetivos de combate automáticos al matar monstruos en cualquier mapa con alias y nombres canónicos).
-  - Objetivos de recolección e **Inventario Oculto de Misiones**: items comunes van a la mochila visible, mientras que tokens y credenciales de categoría `5001` (como *Work ID* 78179 o *Microcoin* 78180) van a las ranuras ocultas `497..556`. Confirmado con el desensamblado de `Angel.exe`: `sub_4A48C0` (ventana Prop) solo itera `20..94`, mientras que `sub_4A47E0` (HUD de seguimiento) y `sub_4A4720` (entrega al NPC) iteran `20..154` y `497..556`. Esto permite ver el progreso en pantalla (`1 / 1.`) y entregar la misión sin saturar ni mostrar tokens en la mochila del jugador.
-  - Diálogos y flujo de NPCs corregidos: opciones alineadas con la UI original, comprobación de requisitos de nivel (ej. Mr. Fleming en Wise Institute nv. 380, Leif en Sandy Heights) y encadenamiento continuo de comandantes de ciudad.
-  - Interacción y entrega con NPCs (más de 1.500 puntos de entrega y 1.100 NPCs asignadores).
-  - Misiones repetibles y rotativas diarias/semanales.
-  - Teletransporte automático a mapas de instancia / entrenamiento vinculados a quests.
-  - Persistencia completa en base de datos SQLite y sincronización con el cliente vía paquetes `0x0021` y `0x0022`.
-  - Abandono y entrega 100% seguros: desensamblado de `Angel.exe` (`sub_602BD0` / `0x004A5390`) y capturas oficiales (`mundo_180305_971213_orden.jsonl`) para enviar únicamente `0x0022` modo 2, eliminando crashes de `_invalid_parameter_noinfo` y protegiendo slots de mochila fuera de límites (> 60).
-
-**No funciona**
-
-- La ID Card dibuja al personaje en ropa interior, aunque el muñeco del mundo
-  sí sale vestido. El `0x0179`, que era el último sospechoso, quedó
-  descartado: sus ids son martillos, no ropa (más abajo).
-- Los recursos no se recolectan, así que las nueve habilidades de recolección
-  y producción no suben nunca.
-- Faltan cinco NPC del Lyceum que nunca se capturaron.
-- Las contraseñas **no se validan**: el bloque de autenticación sigue sin
-  descifrar.
-- La puerta del buceo está **documentada pero no se aplica**: los dos
-  entrenadores, sus diálogos y las dos habilidades están capturados, pero el
-  portal a los mapas submarinos deja pasar a cualquiera.
-- Las instancias: nadie ha entrado en ninguna. **Hay cinco entradas
-  identificadas y dejadas apagadas**: Nightmare Palace, Half-beast Hamlet,
-  Giant Wooden Stairs (que tiene dos tornados al mismo sitio) y Chocolate
-  Forest. Están en `portales.json` con su casilla y su entidad pero con el
-  destino en null, y el servidor se las salta, así que pisarlas no hace nada.
-  De Lost Region y Horrible Lost Region están capturados el diálogo de
-  entrada, los dos modos y los mensajes de rechazo; sus monstruos se saben
-  por la wiki, sus posiciones no. Ojo con una cosa: ese diálogo de dos modos
-  **no** es como se entra a las instancias en general, la mayoría no pregunta
-  nada.
-
 ---
 
 ## El catálogo de objetos
@@ -714,86 +652,6 @@ la propia gema y esta tabla dice sobre que stat caen, y eso depende de donde
 se engarce: la misma runa da ataque magico en un arma y defensa magica en
 una armadura.
 
-## Fallos conocidos
-
-### La ficha de la mascota no se guarda
-
-Todo lo demás de las mascotas funciona: la entrada de inventario de 231
-bytes, la ventana con sus stats de verdad, sacarla y guardarla, renombrarla,
-la experiencia, subir de nivel y el árbol de evoluciones entero. Pero su
-ficha vive solo en memoria, así que vuelve al nivel 1 en cada reconexión. El
-objeto de la mochila sí persiste; lo que la mascota se ha vuelto, no.
-
-### El contador de crianza no se puede leer
-
-Cuando la mascota sube de nivel el cliente enseña una escena con tres
-opciones y avisa de que "(Your act affects Pet's growth)". Ese texto no
-viaja por la red: el cliente saca la escena de su propio `petaspect.xml` y
-de vuelta solo llega la opción elegida, en el `c2s 0x003E` con los valores
-4, 5 y 6 -- el mismo mensaje que lleva las órdenes con 0, 1 y 2.
-
-Así que el servidor nunca se entera de a qué escena se respondió, y por eso
-no puede saber cuánto valía la respuesta. Cada una de las 107 escenas tiene
-sus tres valores, de -3 a +3. Para cerrarlo, el servidor tiene que elegir él
-la escena y recordarla, en vez de dejar que la elija el cliente.
-
-### La ID Card dibuja al personaje desnudo
-
-El muñeco que camina por el mundo lleva su equipo bien, pero la figura del
-panel de la ID Card sale en ropa interior. Ahí el arma y los zapatos **sí**
-se dibujan; la que no se aplica es la prenda del cuerpo.
-
-**El último candidato quedó descartado (30/09/2026).** El `0x0179` se
-llevaba tiempo arrastrando como el mensaje que faltaba por mandar, con sus
-ids `40287..40295` tomados por sprites de ropa. No lo son: esos nueve
-números están literales en `setting/pet_inlay.xml`, con el mismo orden y la
-misma agrupación de tres en tres, y el ALIAS del archivo los llama
-`ItemID` con `Priority1/2/3`. Cruzados contra `item.xml` resultan ser
-**martillos** — Hammer, Attribute Hammer y Value Hammer, con sus variantes
-normal, untradable y de un día. El `0x0179` es una lista de objetos por
-prioridad para engarzar, es una tabla estática igual para todos, y no
-dibuja nada.
-
-Con eso caen los cuatro candidatos que había: `0x0149`, `0x0179`, la ficha
-`0x0002` y la correlación del requisito de habilidad. El mensaje que
-redibuja la figura **no está en nada de lo capturado hasta hoy**, así que
-sigue haciendo falta una captura con la ID Card **abierta** quitándose y
-poniéndose una prenda del cuerpo. Lo que ya no hace falta es buscar la
-tabla item → sprite: no existía.
-
-### La fórmula de daño se va a nivel alto
-
-`ataque x 33 / (33 + defensa)` cuadra con lo que hace un personaje de nivel
-bajo. A nivel 118 se equivoca por un factor de unas 75 veces. La relación
-resultó ser lineal en la defensa en vez de multiplicativa, con una pendiente
-que depende de los niveles en juego, y no hay muestras suficientes de varios
-rangos de nivel para fijarla.
-
-### La animación de ataque del bastón y el hacha
-
-El `0x000A` lleva un tipo y un número de animación, y el par depende del arma.
-Medido siguiendo los cambios de equipo dentro de cada sesión:
-
-| arma                  | tipo | animación |
-| --------------------- | ---- | --------- |
-| espada, daga          | 3    | 1480      |
-| lanza                 | 2    | 827       |
-| bastón                | 2    | 951       |
-| dos armas de una mano | 2    | 832       |
-
-El número no es una duración: la lanza pega más lento que la espada y sin
-embargo su número es menor. Lo que hace es elegir qué animación reproduce el
-cliente, así que mandar el equivocado hace que la lanza ataque como si
-llevaras dos armas y ni se vea el arma. El bastón y el hacha todavía caen en
-el par de la espada, así que una captura de alguien atacando con ellos
-completaría la tabla.
-
-### Fotos de fallos ya resueltos
-
-Las imágenes de `docs/capturas/` se conservan como registro. Los cinco están
-resueltos: el panel de habilidades y los hechizos de F1-F3, los diálogos y el
-movimiento de los NPC, abrir cajas, la tienda y los portales del suelo.
-
 ---
 
 ## Lo que está saltado a propósito
@@ -815,12 +673,21 @@ en `data/cuentas.json`. Si querés preparar una a mano, es un JSON normal:
 }
 ```
 
-**La contraseña NO se valida.** Entra cualquiera. El usuario sí se lee del
-mensaje de autenticación, pero el bloque donde viaja la contraseña no está
-descifrado, así que no hay con qué compararla. Se intentó dos veces dar con el
-campo y las dos salieron mal: una rechazaba logins válidos y la otra aceptaba
-todo porque el offset resultó ser una constante del cliente. Está documentado
-en `server/cuentas.py`.
+**La contraseña se valida, y se puede apagar.** El cliente manda en el
+mensaje de autenticación un hash de 32 bytes de la contraseña; el servidor lo
+guarda con sal en `data/cuentas.db`. Los interruptores están en la tabla
+`configuracion` de esa base y valen en el siguiente login, sin reiniciar:
+
+| clave | por defecto | qué hace |
+| --- | --- | --- |
+| `validar_password` | `1` | `1` comprueba la contraseña; `0` deja entrar a cualquiera |
+| `registrar_primer_hash` | `1` | una cuenta sin contraseña guardada se queda con la del primer ingreso (`0` la rechaza) |
+| `reemplazar_contrasena` | `0` | `1` guarda la nueva en vez de rechazar una que no coincide (para cambiarla: encender, entrar con la nueva, apagar) |
+| `guardar_auth_crudo` | `0` | `1` guarda el mensaje de autenticación entero en `logs/auth_muestras` |
+
+```sql
+UPDATE configuracion SET valor='0' WHERE clave='validar_password';
+```
 
 **No hay registro, ni correo, ni recuperación.** Es un servidor local.
 

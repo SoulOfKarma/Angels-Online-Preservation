@@ -401,67 +401,6 @@ The server prepares the local client on startup, always taking a `.bak` first:
 - **Launcher** in Spanish and English, with buttons to open several clients at once
 - **Startup logo screen** blanked
 
-**Partly**
-
-- **Multiplayer Online Presence**: players see each other on map screens via official 128-byte `0x0001`, synchronize real-time movement (`0x0005`), transformations (`0x0013`), and companion combat actions. Complete third-party fashion skin overlays are still being refined.
-- **Party / Teams System**: server recognizes and logs incoming team invitations (`0x0017`), but party acceptance handling, UI group bar, shared EXP, and member management (`0x0018`) are in progress.
-- **Gold Cap / Gold Flag**: implemented, but thorough in-client testing is pending.
-- NPC dialogue: 17 of the Lyceum's 52 NPCs have their text and options, plus
-  expansion to regional and dungeon skill vendors.
-- **Skills and spells**: melee combat, AoE spells, and magic trees are operational
-  (casting, costs, damage, buffs, debuffs, summons, and progression). The longbow now lands
-  its ranged basic (Basic Shot I, range 12); whether the arrow is drawn in flight is still
-  unconfirmed, since the effect is only sent for skills. The dagger has had less testing.
-- Spells: they show up on F1-F3, cast, buff and deal damage, but some visual
-  effects are still missing.
-- Physical and spell damage formulas now scale with linear defense mitigation
-  and elemental stats, though extreme high levels (300+) or monsters with outlier
-  attributes may still need fine calibration against packet captures.
-- ~~Combos are read from `magic.xml` but never executed~~ **fixed**: all 475 run (376 direct
-  via `連擊次數`, 99 chained via `轉嫁法術`), and the extra hits process the monster's death.
-- The slow effect is registered but doesn't change movement speed.
-- The staff and the axe use the sword's attack animation until someone
-  captures theirs.
-- Mounts equip to slot 10 and do speed you up, but not by the right amount:
-  two different mounts that declare the same `move_speed` give different
-  speeds in the real server, so what a mount contributes depends on its own
-  instance, and that doesn't travel in `item.xml`.
-
-- **Comprehensive Quest System (1,489 quests)**:
-  - Complete quest catalog compiled from `quest.xml` with 1,489 quests and 662 repeatable quests.
-  - Dynamic combat hunting tracking (877 automatic kill steps triggered by mob defeats across all maps with monster aliases and canonical naming).
-  - Item collection objectives & **Hidden Quest Inventory**: regular collectable items drop into the visible bag, while Category `5001` quest tokens/credentials (such as *Work ID* 78179 or *Microcoin* 78180) route to hidden slot range `497..556`. Confirmed via disassembly of `Angel.exe`: `sub_4A48C0` (Prop window) strictly loops `20..94`, while `sub_4A47E0` (HUD tracker counter) and `sub_4A4720` (NPC turn-in check) iterate `20..154` and `497..556`. This allows HUD tracking progress (`1 / 1.`) and turn-in without cluttering the player's visible backpack.
-  - Fixed NPC quest dialogue progression: UI option order matching official client, level requirement checks (e.g., Mr. Fleming in Wise Institute lv. 380, Leif in Sandy Heights), and continuous city commander quest chains.
-  - NPC interaction & turn-in flow (over 1,500 delivery points and 1,100 quest-giving NPCs).
-  - Repeatable, daily, and weekly rotating quest pools.
-  - Automatic warps to quest instances / training arenas tied to specific quest stages.
-  - Full persistence in SQLite and real-time client sync via opcodes `0x0021` and `0x0022`.
-  - 100% stable quest abandonment and completion: disassembled `Angel.exe` (`sub_602BD0` / `0x004A5390`) and analyzed official packet traces (`mundo_180305_971213_orden.jsonl`) to send only `0x0022` mode 2 on abandon, eliminating `_invalid_parameter_noinfo` crashes and protecting against out-of-bounds backpack slots (> 60).
-
-**Does not work**
-
-- The ID Card draws the character in their underwear, even though the sprite
-  in the world is dressed correctly. `0x0179`, the last suspect, was ruled
-  out: its ids are hammers, not clothing (see below).
-- Resources can't be gathered, so the nine skills tied to gathering and
-  crafting never level up.
-- Five of the Lyceum's NPCs were never captured and are missing.
-- Passwords are **not validated**: the auth block hasn't been decrypted.
-- The diving gate is **documented but not enforced**: both trainers, their
-  dialogue and the two skills are captured, but the portal into the
-  underwater maps still lets anyone through.
-- Instances: nobody has been inside any of them. **Five entrances are
-  identified and left switched off** -- Nightmare Palace, Half-beast Hamlet,
-  Giant Wooden Stairs (which has two tornados leading to the same place) and
-  Chocolate Forest. They sit in `portales.json` with their tile and their
-  entity but with a null destination, and the server skips them, so standing
-  on one does nothing. For Lost Region and Horrible Lost Region the entry
-  dialogue, the two modes and the rejection messages are captured; their
-  monsters are known from the wiki, their positions are not. Careful with one
-  thing: that two-mode dialogue is **not** how instances are entered in
-  general -- most ask nothing at all.
-- Friend list system: documented from packet captures, but not yet implemented.
-
 ---
 
 ## The item catalogue
@@ -702,84 +641,6 @@ gem itself and this table says which stat they land on, and that depends on
 where the gem is set: the same rune gives spell attack in a weapon and spell
 defence in armour.
 
-## Known issues
-
-### The pet's own record is not saved
-
-Everything else about pets works: the 231-byte inventory entry, the window
-with its real stats, summoning and putting away, renaming, experience,
-levelling and the whole evolution tree. But the pet's record lives only in
-memory, so it resets to level 1 on every reconnect. The bag item persists;
-what the pet has become does not.
-
-### The breeding counter cannot be read
-
-When a pet levels up the client shows a scene with three options and says
-"(Your act affects Pet's growth)". That text is not sent over the wire: the
-client picks the scene from its own `petaspect.xml` and only the chosen
-option travels back, in `c2s 0x003E` with the values 4, 5 and 6 -- the same
-message that carries pet orders with 0, 1 and 2.
-
-So the server never learns which scene the player answered, and therefore
-cannot tell what the answer was worth. Each of the 107 scenes has its own
-three values, from -3 to +3. To close this the server has to pick the scene
-itself and remember it, instead of letting the client choose.
-
-### The ID Card draws the character undressed
-
-The sprite walking around the world wears its gear correctly, but the figure
-inside the ID Card panel shows the character in their underwear. The weapon
-and the boots _are_ drawn there; it is the body garment that never applies.
-
-**The last candidate was ruled out (2026-09-30).** `0x0179` had been carried
-for a while as the message we were failing to send, with its ids
-`40287..40295` taken for clothing sprites. They are not: those nine numbers
-sit verbatim in `setting/pet_inlay.xml`, in the same order and the same
-groups of three, and the file's own ALIAS calls them `ItemID` with
-`Priority1/2/3`. Cross-referenced against `item.xml` they turn out to be
-**hammers** — Hammer, Attribute Hammer and Value Hammer, each in a normal,
-untradable and one-day variant. `0x0179` is a priority list of items for
-socketing, a static table identical for everyone, and it draws nothing.
-
-That closes out all four candidates: `0x0149`, `0x0179`, the character
-record `0x0002`, and the skill-requirement correlation. The message that
-redraws the figure **is not in anything captured so far**, so a capture
-taken with the ID Card **open** while taking a body garment off and putting
-it back on is still needed. What is no longer needed is the hunt for an
-item → sprite table: there never was one.
-
-### The damage formula drifts at high level
-
-`attack x 33 / (33 + defence)` matches what a low-level character does. At
-level 118 it is off by a factor of about 75. The relationship turned out to
-be linear in defence rather than multiplicative, with a slope that depends on
-the levels involved, and there aren't enough samples across level ranges to
-pin it down.
-
-### The staff and the axe attack animations
-
-The `0x000A` carries a type and an animation number, and the pair depends on
-the weapon. Measured by following the equipment changes inside each session:
-
-| weapon                 | type | animation |
-| ---------------------- | ---- | --------- |
-| sword, dagger          | 3    | 1480      |
-| spear                  | 2    | 827       |
-| staff                  | 2    | 951       |
-| two one-handed weapons | 2    | 832       |
-
-The number is not a duration: the spear swings slower than the sword and yet
-its number is lower. It selects which animation the client plays, so sending
-the wrong one makes a spear attack as if it were dual wielding, with the
-weapon not drawn at all. The staff and the axe still fall back to the sword's
-pair, so a capture of someone attacking with them would finish the table.
-
-### Screenshots of issues since fixed
-
-The images under `docs/capturas/` are kept as a record. All five have been
-resolved: the skill panel and the F1-F3 spells, NPC dialogue and movement,
-opening boxes, the shop, and the floor teleport zones.
-
 ---
 
 ## What is deliberately skipped
@@ -801,12 +662,21 @@ checked. These aren't bugs, they're decisions:
 }
 ```
 
-**Passwords are NOT validated.** Anything gets you in. The username is read
-from the auth message, but the block carrying the password hasn't been
-decrypted, so there's nothing to compare against. Finding that field was tried
-twice and both attempts were wrong: one rejected valid logins, the other
-accepted everything because the offset turned out to be a client-side
-constant. It's documented in `server/cuentas.py`.
+**Passwords are validated, and it can be switched off.** The client sends a
+32-byte hash of the password in the auth message; the server keeps it salted
+in `data/cuentas.db`. The switches live in the `configuracion` table of that
+database and take effect on the next login, without restarting:
+
+| key | default | what it does |
+| --- | --- | --- |
+| `validar_password` | `1` | `1` checks the password; `0` lets anyone in |
+| `registrar_primer_hash` | `1` | an account with no stored password keeps the one from its first login (`0` rejects it) |
+| `reemplazar_contrasena` | `0` | `1` stores the new password instead of rejecting a wrong one (to change one: turn on, log in with the new one, turn off) |
+| `guardar_auth_crudo` | `0` | `1` saves the whole auth message in `logs/auth_muestras` |
+
+```sql
+UPDATE configuracion SET valor='0' WHERE clave='validar_password';
+```
 
 **There's no sign-up, no email, no recovery.** It's a local server.
 
