@@ -298,7 +298,7 @@ Path`, `Third Spirit`, `Limit Breaker`, `Shadow Meld`, `Killer Intent`) y la
     tiendas distintas: 223/224 en Clank Oasis y 225/226 en Commercial Street
 - **Past the Time Spirit y misión semanal 976**:
   - El NPC de Rainbow Town usa su sprite oficial (`40542`), retrato (`1342`), orientación sur y requisito de nivel 250. Su menú abre Chaos-Dinosaur Arena (Stage 413), Chaos-End Time (Stage 414), la tienda 659 de Time Crystals o cierra el diálogo.
-  - *Nature is Crying for Help* entrega la EXP oficial por nivel (36M antes de nivel 90, 48M entre 90-94 y 72M desde nivel 95), un Weekly Quest Mark (`12611`) y 50 Honor Credits. No cobra ni entrega oro, eliminando el mensaje erróneo `Pay 29480`.
+  - _Nature is Crying for Help_ entrega la EXP oficial por nivel (36M antes de nivel 90, 48M entre 90-94 y 72M desde nivel 95), un Weekly Quest Mark (`12611`) y 50 Honor Credits. No cobra ni entrega oro, eliminando el mensaje erróneo `Pay 29480`.
 - **Sistema Integral de Mascotas (Pets al 85-90% de desarrollo)**:
   - **Invocación y Gestión de Barra**: Invocación con clic derecho en mochila, compatibilidad total con accesos rápidos F1-F12 y alternancia de múltiples mascotas. Al cambiar de mascota se despawnea y desvincula limpiamente la anterior sin dejar entidades fantasma (`0x000E`, `0x001B`, `0x015E`).
   - **Evolución y Etapas de Crecimiento**: Rompimiento del huevo automático a nivel 15 pasando a Junior Pet, y evoluciones por certificados (Medium Blood Certificate a nivel 35, Advanced Blood Certificate a nivel 55) con regeneración limpia de entidad y modelo.
@@ -316,11 +316,11 @@ Path`, `Third Spirit`, `Limit Breaker`, `Shadow Meld`, `Killer Intent`) y la
 - **Motor de Bufos, HoT y DoT**:
   - Gestión temporal de estados activos, ticks de regeneración de HP/MP, efectos de pociones y cartas de utilidad.
 - **Sistema de Combate y Habilidades de Alto Nivel**:
-  - **Combos multihit y ráfagas continuas**: soporte completo para habilidades encadenadas y ataques de ráfaga (fórmulas 36, 40 y 42, ej. *Rapidfire*, *Steel Rain*, *Victory Sword*, *Quake Spear*, *Strangle Strike*, *Windbreaker Arrow*). La animación de casteo/disparo del personaje se ejecuta **una sola vez** al inicio, mientras que los impactos subsiguientes impactan secuencialmente con intervalos naturales.
-  - **Distribución de ráfagas en área y rebotes**: ráfagas de área (*Steel Rain*, *Sword of Kings*, *Quake Spear*, *Flaming Blade Rain*) distribuyen sus N impactos aleatoriamente entre los enemigos vivos del área (o concentran todos los impactos si hay un solo objetivo). *Windbreaker Arrow* genera un tornado inicial en área y luego 5 a 10 impactos de rebote (ricochets) a enemigos cercanos.
-   - **Escalado de habilidades físicas y base en R.Atk**: las habilidades físicas escalan fielmente sobre el ataque de mano principal (R.Atk) y Stance Power (PESO_STANCE = 2.0) contra la defensa del objetivo. Los combos aplican una bonificación calibrada de +0.2x (1.2x por impacto) y los golpes únicos usan 1.35x, respetando la penalización oficial del 50% de daño contra jefes en *Rapidfire*.
-  - **Delegación de habilidades de tier alto**: habilidades lanzadoras de arquero y largo alcance (fórmulas 63 y 7, ej. *TNT Arrow*, *Aparctias Shot*, *Toma Tornado*, *Windbreaker Arrow*) resuelven sus sub-hechizos de combate para heredar Stance Power auténtico, radio de explosión de área (5-6 casillas) y efectos secundarios (derribo/knockback, silencio, DoT elemental y ceguera/blind).
-  - **Efectos secundarios de invocaciones y tótems**: tótems e invocaciones aplican sus auras y DoTs automáticos (ej. *Black Thorn Totem* aplica corrosión y lentitud), respetando la regla oficial de no coexistencia con *Guardian Star (Starchaos)*.
+  - **Combos multihit y ráfagas continuas**: soporte completo para habilidades encadenadas y ataques de ráfaga (fórmulas 36, 40 y 42, ej. _Rapidfire_, _Steel Rain_, _Victory Sword_, _Quake Spear_, _Strangle Strike_, _Windbreaker Arrow_). La animación de casteo/disparo del personaje se ejecuta **una sola vez** al inicio, mientras que los impactos subsiguientes impactan secuencialmente con intervalos naturales.
+  - **Distribución de ráfagas en área y rebotes**: ráfagas de área (_Steel Rain_, _Sword of Kings_, _Quake Spear_, _Flaming Blade Rain_) distribuyen sus N impactos aleatoriamente entre los enemigos vivos del área (o concentran todos los impactos si hay un solo objetivo). _Windbreaker Arrow_ genera un tornado inicial en área y luego 5 a 10 impactos de rebote (ricochets) a enemigos cercanos.
+  - **Escalado de habilidades físicas y base en R.Atk**: las habilidades físicas escalan fielmente sobre el ataque de mano principal (R.Atk) y Stance Power (PESO_STANCE = 2.0) contra la defensa del objetivo. Los combos aplican una bonificación calibrada de +0.2x (1.2x por impacto) y los golpes únicos usan 1.35x, respetando la penalización oficial del 50% de daño contra jefes en _Rapidfire_.
+  - **Delegación de habilidades de tier alto**: habilidades lanzadoras de arquero y largo alcance (fórmulas 63 y 7, ej. _TNT Arrow_, _Aparctias Shot_, _Toma Tornado_, _Windbreaker Arrow_) resuelven sus sub-hechizos de combate para heredar Stance Power auténtico, radio de explosión de área (5-6 casillas) y efectos secundarios (derribo/knockback, silencio, DoT elemental y ceguera/blind).
+  - **Efectos secundarios de invocaciones y tótems**: tótems e invocaciones aplican sus auras y DoTs automáticos (ej. _Black Thorn Totem_ aplica corrosión y lentitud), respetando la regla oficial de no coexistencia con _Guardian Star (Starchaos)_.
   - **Gestión de cuentas y borrado de personajes**: resolución de cierre/crash del cliente al borrar personajes mediante envío crudo de `0x0004`, junto con persistencia transparente en SQLite `cuentas.db`.
 - **Equipamiento vinculado y Enchanted Fashion con Residual Times = 0**: validación de pertenencia por `char_id` (offset 53 del paquete `0x001B` / `sub_58B640` en `Angel.exe`). Si el jugador es el dueño del ítem, puede equiparlo libremente aunque le queden 0 usos restantes.
 - **Venta a NPC de equipo S/Fine vinculado**: el cliente conserva esos premios como no comerciables entre jugadores, pero añade un precio de recompra de NPC equivalente a la mitad del precio de lista para que las armas y armaduras ligadas no se acumulen permanentemente.
@@ -329,7 +329,7 @@ Path`, `Third Spirit`, `Limit Breaker`, `Shadow Meld`, `Killer Intent`) y la
   - Soporte completo para mejorar y perforar (abrir huecos) en equipo de nivel 410+ utilizando las herramientas de tier 40 (40-Star Lucky Enhanced Pestle, 40-Star Lucky Piercing Hammer y morteros generales).
   - Engarce de gemas en huecos abiertos, martillo verde (reroll de stats adicionales leídos de `adv.xml`), probabilidades auténticas de éxito y bajada de nivel en caso de fallo.
 - **Sistema de Banco y Almacén Personal (Self Storage)**:
-  - Soporte completo para ingresar (`0x0038`) y retirar (`0x0039`) dinero del banco a través del diálogo nativo del cliente (*Sum*), con persistencia de `banco_oro` en SQLite `cuentas.db` y sincronización bidireccional en tiempo real.
+  - Soporte completo para ingresar (`0x0038`) y retirar (`0x0039`) dinero del banco a través del diálogo nativo del cliente (_Sum_), con persistencia de `banco_oro` en SQLite `cuentas.db` y sincronización bidireccional en tiempo real.
   - Resolución limpia de click derecho: contenedor 16 (`usebankitem`) retira de la casilla del banco a la mochila, y contenedor 17 (`usecharitem`) deposita de la casilla de la mochila al banco sin desalineación ni cruce de slots.
   - Arrastre fluido de objetos entre banco y mochila (o reordenamiento dentro del banco) respetando ranuras auténticas (1..48 en banco, 20..163 en mochila).
 - **Gestión de inventario robusta**: apilamiento de consumibles, actualización casilla por casilla con el `0x001B` oficial sin desincronizar la lectura del cliente.
@@ -349,7 +349,7 @@ Path`, `Third Spirit`, `Limit Breaker`, `Shadow Meld`, `Killer Intent`) y la
   - **Zonas de Exhibición Exterior y Restricciones de Colocación**:
     - La exhibición exterior de casas (`0x0137`) está estrictamente limitada a las zonas residenciales y urbanas oficiales: **Área de Casas de Ángeles** (Stage 370), las cuatro capitales de facción (**Aurora City** 3, **Dark City** 26, **Breeze Woods** 29, **Iron Castle** 38) y **Palm Base** (88). Se bloquea la colocación en exteriores no autorizados, mazmorras o dentro de edificios/domos (como el domo del Ocean Scholar `(278, 138)` en Palm Base).
     - Validación de espacio abierto y despejado: Aurora City queda estrictamente delimitada a la plaza central de adoquines amarillos (bloqueando aceras/veredas, mesas de café y edificios), Dark City incluye la exclusión del monumento central, e Iron Castle exige un margen mínimo de seguridad de 5 casillas respecto a todos los NPCs para garantizar que ninguna casa se monte encima ni interfiera con sus clics. Requiere una huella transitable de $5 \times 5$ casillas sin obstáculos (bloqueando puentes estrechos, escaleras, pasarelas elevadas, zonas de árboles densos o callejones), un margen de 6 casillas respecto a los bordes del mapa, distancia mínima de 7 casillas a portales/entradas y 4 casillas a otras casas exteriores.
-    - Bloqueo de amueblar según visibilidad: la función de decorar (`0x0136`) se bloquea mientras la casa esté mostrada/visible en el exterior (`is_open`), y solo vuelve a permitirse cuando la casa no se está mostrando (tras pulsar *Take Back* / recoger casa con `0x0139`).
+    - Bloqueo de amueblar según visibilidad: la función de decorar (`0x0136`) se bloquea mientras la casa esté mostrada/visible en el exterior (`is_open`), y solo vuelve a permitirse cuando la casa no se está mostrando (tras pulsar _Take Back_ / recoger casa con `0x0139`).
   - **Enrutamiento de Avisos al Chat (`tipo=7`) y Corrección de Prefijos (`0x000D`)**:
     - Las restricciones de colocación de casas, errores de amueblar y avisos de contraseña se envían con `tipo=7` y `MSG_TEXTO`, mostrando el texto limpiamente en la caja de chat inferior y suprimiendo por completo el letrero flotante amarillo en el centro de la pantalla.
   - **Banqueros de Ciudades y Voucher Angel**:
@@ -568,7 +568,7 @@ IGG cerró el juego en febrero de 2026, así que el cliente ya no se puede
 descargar de ellos. Esta es la copia con la que se desarrolla y se prueba
 este proyecto:
 
-**[Cliente de Angels Online 8.5.1.0](https://drive.google.com/file/d/13IOcTJUkX7LfsznZ8tobyu5c5MuXjpZK/view?usp=sharing)**
+**[Cliente de Angels Online 8.5.1.0](https://drive.google.com/file/d/1YcTsZ2LzVJgGwaSWZo1C0tE9dWOE31t_/view?usp=sharing)**
 
 Es el cliente de IGG, sin modificar. Está aquí porque un protocolo que no se
 puede ejecutar contra nada no sirve de mucho, y porque sin él no se puede
@@ -678,12 +678,12 @@ mensaje de autenticación un hash de 32 bytes de la contraseña; el servidor lo
 guarda con sal en `data/cuentas.db`. Los interruptores están en la tabla
 `configuracion` de esa base y valen en el siguiente login, sin reiniciar:
 
-| clave | por defecto | qué hace |
-| --- | --- | --- |
-| `validar_password` | `1` | `1` comprueba la contraseña; `0` deja entrar a cualquiera |
-| `registrar_primer_hash` | `1` | una cuenta sin contraseña guardada se queda con la del primer ingreso (`0` la rechaza) |
-| `reemplazar_contrasena` | `0` | `1` guarda la nueva en vez de rechazar una que no coincide (para cambiarla: encender, entrar con la nueva, apagar) |
-| `guardar_auth_crudo` | `0` | `1` guarda el mensaje de autenticación entero en `logs/auth_muestras` |
+| clave                   | por defecto | qué hace                                                                                                           |
+| ----------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------ |
+| `validar_password`      | `1`         | `1` comprueba la contraseña; `0` deja entrar a cualquiera                                                          |
+| `registrar_primer_hash` | `1`         | una cuenta sin contraseña guardada se queda con la del primer ingreso (`0` la rechaza)                             |
+| `reemplazar_contrasena` | `0`         | `1` guarda la nueva en vez de rechazar una que no coincide (para cambiarla: encender, entrar con la nueva, apagar) |
+| `guardar_auth_crudo`    | `0`         | `1` guarda el mensaje de autenticación entero en `logs/auth_muestras`                                              |
 
 ```sql
 UPDATE configuracion SET valor='0' WHERE clave='validar_password';

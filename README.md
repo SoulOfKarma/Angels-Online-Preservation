@@ -286,7 +286,7 @@ see [release scope and validation](docs/ENTREGA_2026-10-21.md).
   - **Faction Hubs & Outposts**: Cherry Village, Memory Cave, Mysterious Garden,
 - **Past the Time Spirit & Weekly Quest 976**:
   - The Rainbow Town NPC uses its official sprite (`40542`), portrait (`1342`), south-facing direction, and level 250 gate. Its menu opens Chaos-Dinosaur Arena (Stage 413), Chaos-End Time (Stage 414), Time Crystal exchange shop 659, or leaves the dialogue.
-  - *Nature is Crying for Help* awards the official level-scaled EXP (36M below level 90, 48M at levels 90-94, and 72M from level 95), one Weekly Quest Mark (`12611`), and 50 Honor Credits. It neither charges nor awards gold, eliminating the erroneous `Pay 29480` message.
+  - _Nature is Crying for Help_ awards the official level-scaled EXP (36M below level 90, 48M at levels 90-94, and 72M from level 95), one Weekly Quest Mark (`12611`), and 50 Honor Credits. It neither charges nor awards gold, eliminating the erroneous `Pay 29480` message.
 - **Comprehensive Pet System (85-90% Complete)**:
   - **Summoning & Hotkey Management**: Right-click bag summoning, hotkey bar (F1-F12) activation, and multi-pet management. Switching pets cleanly despawns the previous entity without leaving ghost duplicates (`0x000E`, `0x001B`, `0x015E`).
   - **Evolution & Growth Stages**: Automatic form progression from Egg to Junior Pet at level 15, and certificate-driven evolutions (Medium Blood Certificate at Lvl 35, Advanced Blood Certificate at Lvl 55) with instant model/sprite refresh.
@@ -304,11 +304,11 @@ see [release scope and validation](docs/ENTREGA_2026-10-21.md).
 - **Buffs, HoT & DoT Tick Engine**:
   - Timed buff management for self-buffs, regeneration ticks (Earth Blessing HP/MP HoT), potion effects, and long-duration utility cards.
 - **High-Tier Combat & Skill Progression**:
-  - **Multi-Hit Combos & Continuous Barrages**: full support for chained skills and continuous attacks (formulas 36, 40, and 42, e.g., *Rapidfire*, *Steel Rain*, *Victory Sword*, *Quake Spear*, *Strangle Strike*, *Windbreaker Arrow*). The player character model performs the casting/shooting animation strictly **once** at invocation, while subsequent combo hits land with smooth timing intervals.
-  - **Faithful AoE Barrage & Ricochet Distribution**: AoE barrages (*Steel Rain*, *Sword of Kings*, *Quake Spear*, *Flaming Blade Rain*) distribute their N combo strikes randomly among alive enemies in the area (focusing all strikes if a single target is present). Windbreaker Arrow executes an initial ground tornado AoE strike followed by 5 to 10 sequential ricochets against nearby enemies.
+  - **Multi-Hit Combos & Continuous Barrages**: full support for chained skills and continuous attacks (formulas 36, 40, and 42, e.g., _Rapidfire_, _Steel Rain_, _Victory Sword_, _Quake Spear_, _Strangle Strike_, _Windbreaker Arrow_). The player character model performs the casting/shooting animation strictly **once** at invocation, while subsequent combo hits land with smooth timing intervals.
+  - **Faithful AoE Barrage & Ricochet Distribution**: AoE barrages (_Steel Rain_, _Sword of Kings_, _Quake Spear_, _Flaming Blade Rain_) distribute their N combo strikes randomly among alive enemies in the area (focusing all strikes if a single target is present). Windbreaker Arrow executes an initial ground tornado AoE strike followed by 5 to 10 sequential ricochets against nearby enemies.
   - **Physical Skill Scaling & R.Atk Baseline**: physical skills scale faithfully from main-hand attack power (`R.Atk`) and Stance Power (`PESO_STANCE = 2.0`) against target defense. Combos apply a calibrated +0.2x boost (`1.2x` per hit) and single-hit strikes use `1.35x`, with Rapidfire applying its official 50% damage penalty against boss monsters.
-  - **High-Tier Skill Delegation**: launcher skills for archers and long-range classes (formulas 63 and 7, e.g., *TNT Arrow*, *Aparctias Shot*, *Toma Tornado*, *Windbreaker Arrow*) resolve their combat sub-spells to inherit genuine Stance Power, AoE explosion radii (5-6 tiles), and secondary debuffs (knockback, silence, elemental DoT, blind).
-  - **Summon & Totem Secondary Effects**: summons and totems trigger their automated auras and DoTs (e.g. *Black Thorn Totem* corrosive DoT and slow), enforcing official non-coexistence rules with *Guardian Star (Starchaos)*.
+  - **High-Tier Skill Delegation**: launcher skills for archers and long-range classes (formulas 63 and 7, e.g., _TNT Arrow_, _Aparctias Shot_, _Toma Tornado_, _Windbreaker Arrow_) resolve their combat sub-spells to inherit genuine Stance Power, AoE explosion radii (5-6 tiles), and secondary debuffs (knockback, silence, elemental DoT, blind).
+  - **Summon & Totem Secondary Effects**: summons and totems trigger their automated auras and DoTs (e.g. _Black Thorn Totem_ corrosive DoT and slow), enforcing official non-coexistence rules with _Guardian Star (Starchaos)_.
   - **Account & Character Management**: safe character deletion via raw `0x0004` response preventing client crashes, alongside transparent SQLite `cuentas.db` migration from legacy `cuentas.json`.
 - **Bound Equipment & Enchanted Fashion with Residual Times = 0**: ownership verified by persistent `char_id` (offset 53 of packet `0x001B` / `sub_58B640` in `Angel.exe`). If the player is the registered owner, the item can be equipped freely even when 0 residual times remain.
 - **NPC Sale of Bound S/Fine Equipment**: the local client keeps reward equipment non-tradable between players while adding an NPC buyback price equal to half its list price, so high-tier bound weapons and armor no longer accumulate permanently.
@@ -317,7 +317,7 @@ see [release scope and validation](docs/ENTREGA_2026-10-21.md).
   - Full support for enhancing and socketing level 410+ endgame equipment using tier 40 tools (40-Star Lucky Enhanced Pestle, 40-Star Lucky Piercing Hammer, and standard pestles).
   - Gem inlaying into sockets, Green Hammer rerolling (additional attribute rolls parsed from `adv.xml`), genuine success rates, and level penalties on failure.
 - **Personal Bank & Self Storage System**:
-  - Full support for depositing (`0x0038`) and withdrawing (`0x0039`) gold to/from the bank via the client's native *Sum* input dialog, with persistent `banco_oro` in SQLite `cuentas.db` and realtime two-way sync.
+  - Full support for depositing (`0x0038`) and withdrawing (`0x0039`) gold to/from the bank via the client's native _Sum_ input dialog, with persistent `banco_oro` in SQLite `cuentas.db` and realtime two-way sync.
   - Proper right-click handling: container 16 (`usebankitem`) withdraws from bank slot to bag, and container 17 (`usecharitem`) deposits from bag slot into bank without slot misalignment or item collisions.
   - Seamless drag-and-drop between bank and bag (or within bank slots) mapping genuine slot IDs (1..48 in bank, 20..163 in bag).
 - **Robust Inventory Packet Sync**: stackable consumables, slot-by-slot delta sync via official `0x001B` without client stream desynchronization.
@@ -553,7 +553,7 @@ taken with an **8.6.0.8**, and both speak the same thing.
 IGG took the game down in February 2026, so the client is no longer available
 from them. This is the copy this project is developed and tested against:
 
-**[Angels Online client 8.5.1.0](https://drive.google.com/file/d/13IOcTJUkX7LfsznZ8tobyu5c5MuXjpZK/view?usp=sharing)**
+**[Angels Online client 8.5.1.0](https://drive.google.com/file/d/1YcTsZ2LzVJgGwaSWZo1C0tE9dWOE31t_/view?usp=sharing)**
 
 It is IGG's client, unmodified. It is here because a protocol you cannot run
 against anything is not much use, and because without it none of the
@@ -667,12 +667,12 @@ checked. These aren't bugs, they're decisions:
 in `data/cuentas.db`. The switches live in the `configuracion` table of that
 database and take effect on the next login, without restarting:
 
-| key | default | what it does |
-| --- | --- | --- |
-| `validar_password` | `1` | `1` checks the password; `0` lets anyone in |
-| `registrar_primer_hash` | `1` | an account with no stored password keeps the one from its first login (`0` rejects it) |
-| `reemplazar_contrasena` | `0` | `1` stores the new password instead of rejecting a wrong one (to change one: turn on, log in with the new one, turn off) |
-| `guardar_auth_crudo` | `0` | `1` saves the whole auth message in `logs/auth_muestras` |
+| key                     | default | what it does                                                                                                             |
+| ----------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `validar_password`      | `1`     | `1` checks the password; `0` lets anyone in                                                                              |
+| `registrar_primer_hash` | `1`     | an account with no stored password keeps the one from its first login (`0` rejects it)                                   |
+| `reemplazar_contrasena` | `0`     | `1` stores the new password instead of rejecting a wrong one (to change one: turn on, log in with the new one, turn off) |
+| `guardar_auth_crudo`    | `0`     | `1` saves the whole auth message in `logs/auth_muestras`                                                                 |
 
 ```sql
 UPDATE configuracion SET valor='0' WHERE clave='validar_password';
