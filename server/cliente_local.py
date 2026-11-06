@@ -25,6 +25,47 @@ import configuracion as _cf
 
 log = logging.getLogger('cliente_local')
 
+# Los puertos del launcher que de verdad se usan en esta ejecucion. En
+# Windows el servicio winnat (Hyper-V/WSL/Docker) reserva rangos de puertos
+# que CAMBIAN en cada arranque (`netsh interface ipv4 show excludedportrange
+# protocol=tcp`): un puerto fijo acaba cayendo dentro tarde o temprano y el
+# bind falla con WinError 10013 aunque nadie lo use. Se prueba el configurado
+# y, si esta reservado u ocupado, el siguiente libre de 4 cifras (la URL que
+# se parchea en START.EXE solo admite 4). El elegido vale para todo: el
+# parche de START.EXE, reg.ini, activityurl.xml y el servidor.
+_PUERTOS_ELEGIDOS = {}
+
+
+def _puerto_abre(p: int) -> bool:
+    import socket
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    try:
+        if hasattr(socket, 'SO_EXCLUSIVEADDRUSE'):
+            s.setsockopt(socket.SOL_SOCKET, socket.SO_EXCLUSIVEADDRUSE, 1)
+        s.bind(('127.0.0.1', p))
+        return True
+    except OSError:
+        return False
+    finally:
+        s.close()
+
+
+def puerto_launcher(nombre: str, defecto: int) -> int:
+    """El puerto `nombre` de configuracion, o el primero libre de 4 cifras."""
+    if nombre in _PUERTOS_ELEGIDOS:
+        return _PUERTOS_ELEGIDOS[nombre]
+    base = int(getattr(_cf, nombre, defecto))
+    usados = set(_PUERTOS_ELEGIDOS.values())
+    elegido = base
+    for p in [base, *range(max(base + 1, 1024), 10000), *range(1024, min(base, 10000))]:
+        if p not in usados and _puerto_abre(p):
+            elegido = p
+            break
+    if elegido != base:
+        log.warning('Puerto %d (%s) reservado u ocupado; se usa %d', base, nombre, elegido)
+    _PUERTOS_ELEGIDOS[nombre] = elegido
+    return elegido
+
 RAIZ_PROYECTO = pathlib.Path(__file__).parent.parent
 
 # LA ESTACION NO ESTA EN map041.mpc. Esta en stage.xml, en la escena 41:
@@ -404,7 +445,7 @@ def _parchear_activityurl_xml_bytes(xml_bytes: bytes) -> bytes:
     (/news.htm del HTTP del launcher) en vez de igg.com. Pactado con el
     usuario el 21/10/2026."""
     txt = xml_bytes.decode('utf-8', errors='ignore')
-    puerto = int(getattr(_cf, 'PUERTO_UPDATE_HTTP', 8280))
+    puerto = puerto_launcher('PUERTO_UPDATE_HTTP', 8280)
     for i, (titulo, pagina) in enumerate(BOTONES_NOTICIAS, 1):
         def _fila(m, titulo=titulo, pagina=pagina):
             tag = re.sub(r'名稱="[^"]*"', '名稱="%s"' % titulo, m.group(0))
@@ -754,8 +795,8 @@ def parchear_launcher():
     if not ruta_cli.exists():
         return
 
-    puerto_ftp = int(getattr(_cf, 'PUERTO_UPDATE_FTP', 2121))
-    puerto_http = int(getattr(_cf, 'PUERTO_UPDATE_HTTP', 8280))
+    puerto_ftp = puerto_launcher('PUERTO_UPDATE_FTP', 2121)
+    puerto_http = puerto_launcher('PUERTO_UPDATE_HTTP', 8280)
 
     # 1. reg.ini
     reg_ini = ruta_cli / 'reg.ini'
@@ -1377,8 +1418,8 @@ async def _manejar_http(reader: asyncio.StreamReader, writer: asyncio.StreamWrit
 
 async def iniciar_servidores_launcher():
     """Inicia los servidores FTP y HTTP locales para START.EXE."""
-    p_ftp = int(getattr(_cf, 'PUERTO_UPDATE_FTP', 2121))
-    p_http = int(getattr(_cf, 'PUERTO_UPDATE_HTTP', 8280))
+    p_ftp = puerto_launcher('PUERTO_UPDATE_FTP', 2121)
+    p_http = puerto_launcher('PUERTO_UPDATE_HTTP', 8280)
     srvs = []
     try:
         s_ftp = await asyncio.start_server(_manejar_actualizacion, '127.0.0.1', p_ftp)

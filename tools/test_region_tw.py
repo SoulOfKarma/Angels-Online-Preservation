@@ -61,6 +61,32 @@ def test_spell_and_stance_merchants_use_mpc_before_unrelated_quest(world, monkey
     assert any(pk[:2] == b'\x34\0' and struct.unpack_from('<H', pk, 2)[0] == shop for pk in s.packets)
 
 
+@pytest.mark.parametrize('eid,shop', [(90425000, 228), (90425001, 227)])
+def test_sand_skill_shops_open_even_if_the_mpc_shop_action_is_missing(
+        world, monkeypatch, eid, shop):
+    s = world.player()
+    s.personaje.stage = 425
+    s.personaje.tile_x, s.personaje.tile_y = (186, 97) if shop == 228 else (222, 113)
+    server = app.Servidor('127.0.0.1', 0)
+    server.manejar(s, 5, None, {}, 'test', struct.pack('<IH', eid, 0))
+
+    choice_node = s.dlg_mapa['opciones'][0][1]
+    tree = json.loads(json.dumps(dialogos_mapa._TODO))
+    tree['425'][str(choice_node)] = {}
+    monkeypatch.setattr(dialogos_mapa, '_TODO', tree)
+    monkeypatch.setattr(
+        dialogos_mapa, '_CON_SP',
+        {stage: nodes for stage, nodes in dialogos_mapa._CON_SP.items() if stage != 425})
+    s.packets.clear()
+
+    server.manejar(s, 0xb, None, {'valor': 10}, 'test', b'\x0a')
+
+    assert s.packets == [
+        struct.pack('<HH', 0x0034, shop),
+        struct.pack('<H', 0x0012) + dialogos.FIN,
+    ]
+
+
 @pytest.mark.parametrize('flower,route', [(flower, route) for flower in FLOWERS['flores']
                                         for route in flower['rutas']],
                          ids=['%s-tag%s' % (flower['entidad'], route['tag'])

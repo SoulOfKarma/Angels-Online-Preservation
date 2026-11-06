@@ -18593,6 +18593,14 @@ class Servidor:
                     import competiciones as _comp_op
                     if _comp_op.opciones(ses, _ops[_i][0]):
                         return
+                _opcion = _ops[_i][0] if 0 <= _i < len(_ops) else 0
+                if _dlm.get('stage') == 425 and _opcion in (516649, 516651):
+                    _tienda = 228 if _opcion == 516649 else 227
+                    ses.dlg_ent = None
+                    ses.enviar(struct.pack('<HH', 0x0034, _tienda),
+                               struct.pack('<H', 0x0012) + _dlg_m.FIN)
+                    log.info(f"[{addr}] Bluesand skill shop opened: {_tienda}")
+                    return
                 _sig = _ops[_i][1] if 0 <= _i < len(_ops) else 0
                 ses.dlg_ent = None
                 ses.enviar(struct.pack('<H', 0x0012) + _dlg_m.FIN)

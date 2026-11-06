@@ -86,6 +86,72 @@ REGION30 = [(0, 'smap\\world89', 'map\\world800x600_30.mpc'),
             (1, 'smap\\world88', 'map\\world1024x768_30.mpc'),
             (2, 'smap\\world90', 'map\\world1280x720_30.mpc')]
 
+# Registrar recursos no amplia el switch de dibujo: la pagina Lua 30
+# (region 29) quedaba descartada por `cmp [ebp-8],29; ja epilogo`.
+DRAW_HOOK, DRAW_RESUME, DRAW_END = 0x5AA3E5, 0x5AA3EF, 0x5AA596
+DRAW_ORIGINAL = bytes.fromhex('837df81d0f87a7010000')
+DRAW_REGION = 0x5AC680
+
+
+def parchear_dibujo_region30(pe: bytearray) -> bytearray:
+    """Anade SOLO el despacho de pagina 30, sin cambiar los casos antiguos.
+
+    Acepta el IGG medido y el cliente ya parcheado (update32 / tooltip).
+    Una seccion propia evita pisar las cuevas usadas por esos parches.
+    Rechaza ejecutables diferentes y es idempotente.
+    """
+    secs, dllch = secciones(pe)
+    if dllch & 0x40 or any(s[0] == '.reloc' for s in secs):
+        raise ValueError('el ejecutable es reubicable')
+    hook = a_fichero(secs, DRAW_HOOK)
+    existing = next((s for s in secs if s[0] == '.twmap'), None)
+
+    def codigo(cave):
+        # Pagina 30 -> dibujar region 29; resto -> switch original.
+        code = bytearray.fromhex('837df81e750f6a1d8b4dfc')
+        code += b'\xe8' + rel32(cave + len(code), DRAW_REGION)
+        code += b'\xe9' + rel32(cave + len(code), DRAW_END)
+        code += DRAW_ORIGINAL[:4]
+        code += b'\x0f\x87' + struct.pack('<i', DRAW_END - (cave + len(code) + 6))
+        code += b'\xe9' + rel32(cave + len(code), DRAW_RESUME)
+        return code
+
+    if existing:
+        cave, raw = existing[1], existing[3]
+        code = codigo(cave)
+        expected = b'\xe9' + rel32(DRAW_HOOK, cave) + b'\x90' * 5
+        if pe[hook:hook + 10] != expected or pe[raw:raw + len(code)] != code:
+            raise ValueError('el parche .twmap existente no coincide')
+        return pe
+    if pe[hook:hook + len(DRAW_ORIGINAL)] != DRAW_ORIGINAL:
+        raise ValueError('el switch de mapa no es el IGG medido')
+    off = struct.unpack_from('<I', pe, 0x3C)[0]
+    n, optsize = struct.unpack_from('<H', pe, off + 6)[0], struct.unpack_from('<H', pe, off + 20)[0]
+    opt, table = off + 24, off + 24 + optsize
+    header = table + n * 40
+    section_align, file_align = struct.unpack_from('<II', pe, opt + 32)
+    size_headers = struct.unpack_from('<I', pe, opt + 60)[0]
+    if header + 40 > min(size_headers, min(s[3] for s in secs if s[3])):
+        raise ValueError('no hay espacio para otra cabecera PE')
+    if any(pe[header:header + 40]):
+        raise ValueError('la nueva cabecera PE no esta vacia')
+    def align(value, boundary):
+        return (value + boundary - 1) // boundary * boundary
+    rva = align(max(s[1] - BASE + max(s[2], s[4]) for s in secs), section_align)
+    cave = BASE + rva
+    code = codigo(cave)
+    raw = align(len(pe), file_align)
+    raw_size = align(len(code), file_align)
+    pe.extend(bytes(raw - len(pe)) + code + bytes(raw_size - len(code)))
+    pe[header:header + 40] = struct.pack('<8sIIIIIIHHI', b'.twmap\0\0', len(code), rva,
+                                      raw_size, raw, 0, 0, 0, 0, 0x60000020)
+    struct.pack_into('<H', pe, off + 6, n + 1)
+    struct.pack_into('<I', pe, opt + 56, align(rva + len(code), section_align))
+    struct.pack_into('<I', pe, opt + 4, struct.unpack_from('<I', pe, opt + 4)[0] + raw_size)
+    struct.pack_into('<I', pe, opt + 64, 0)
+    pe[hook:hook + 10] = b'\xe9' + rel32(DRAW_HOOK, cave) + b'\x90' * 5
+    return pe
+
 
 def parchear_region30(pe: bytearray, secs) -> None:
     h = a_fichero(secs, REG_HOOK)
@@ -153,10 +219,16 @@ def parchear(pe: bytearray) -> bytearray:
     salto = b'\xe9' + rel32(HOOK, CUEVA)
     pe[h:h + len(ORIGINAL)] = salto + b'\x90' * (len(ORIGINAL) - len(salto))
     parchear_region30(pe, secciones(pe)[0])
-    return pe
+    return parchear_dibujo_region30(pe)
 
 
 if __name__ == '__main__':
-    datos = bytearray(open(sys.argv[1], 'rb').read())
-    open(sys.argv[2], 'wb').write(parchear(datos))
-    print('escrito', sys.argv[2])
+    args = sys.argv[1:]
+    solo_mapa = '--solo-mapa' in args
+    args = [a for a in args if a != '--solo-mapa']
+    if len(args) != 2:
+        raise SystemExit('uso: parchear_angel_update32.py [--solo-mapa] entrada salida')
+    datos = bytearray(open(args[0], 'rb').read())
+    nuevo = parchear_dibujo_region30(datos) if solo_mapa else parchear(datos)
+    open(args[1], 'wb').write(nuevo)
+    print('escrito', args[1])

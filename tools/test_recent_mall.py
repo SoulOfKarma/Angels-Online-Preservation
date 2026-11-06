@@ -34,6 +34,26 @@ def test_compensation_angel_is_not_published_or_accessible():
     assert '513497' not in rm.datos()['nodes']
 
 
+def test_2026_anniversary_angel_opens_the_isolated_exchange(world):
+    import house_services as hs
+    s=world.player(items={20:85007});s.cantidades[20]=10;world.save(s)
+    s.personaje.stage=41;s.personaje.tile_x,s.personaje.tile_y=165,86
+    spawns=rm.poblar(41)
+    assert sum(struct.unpack_from('<I',packet,2)[0]==71410010 for packet in spawns)==1
+    click(s,71410010)
+    assert mid(s)==514661
+    answer(s,1);answer(s,0)
+    assert s._lyceum_exchange==2417
+    assert s._recent_mall_npc=='Anniversary Angel'
+    assert struct.pack('<HI',0x151,2417) in s.packets
+
+    recipe_id=next(rid for rid,row in hs.xml_rows('exchange.xml').items()
+                   if row.get('群組')=='2417' and row.get('材料1')=='85007')
+    app.Servidor.__new__(app.Servidor).manejar(
+        s,0x160,None,None,'test',struct.pack('<II',recipe_id,1))
+    assert not total(s,85007) and total(s,85008)==1
+
+
 def test_daily_clerk_blue_stall_card_exchange_then_native_use(world):
     import inventario
     s=world.player(items={20:22251});s.cantidades[20]=60;world.save(s)
@@ -246,4 +266,3 @@ def test_lyceum_has_astral_party_chatbubble_and_fashionable_npcs(world):
     answer(s, 1); assert mid(s) == 516365
     answer(s, 0); assert s._lyceum_exchange == 559
     click(s, 71410007); answer(s, 1); answer(s, 1); assert s._lyceum_exchange == 570
-

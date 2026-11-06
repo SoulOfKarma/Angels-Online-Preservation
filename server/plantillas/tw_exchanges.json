@@ -12733,6 +12733,16 @@
      ]
     ]
    ]
+  },
+  "2019294": {
+   "a": [
+    [
+     98,
+     [
+      2417
+     ]
+    ]
+   ]
   }
  },
  "node_owners": {
@@ -13018,7 +13028,8 @@
   "993500": "TW Fortunia",
   "993517": "TW Fortunia",
   "993502": "TW Fortunia",
-  "994100": "Fortunia"
+  "994100": "Fortunia",
+  "2019294": "Anniversary Angel"
  },
  "exchange_owners": {
   "2000": "Fortunia",
@@ -13248,7 +13259,8 @@
   "2413": "TW Fortunia",
   "2414": "TW Fortunia",
   "2415": "TW Fortunia",
-  "2416": "TW Fortunia"
+  "2416": "TW Fortunia",
+  "2417": "Anniversary Angel"
  },
  "npcs": [
   {
@@ -13290,6 +13302,19 @@
    "face": 2,
    "direccion": 5,
    "spawn_template": "Fortunia"
+  },
+  {
+   "nombre": "Anniversary Angel",
+   "entity_id": 71410010,
+   "npc_type": 14771,
+   "sprite": 40786,
+   "tile": [
+    165,
+    86
+   ],
+   "root": 514661,
+   "face": 1586,
+   "direccion": 5
   }
  ],
  "messages": {
@@ -13556,7 +13581,16 @@
   "994025": "20-star to 30-star",
   "994026": "19-star and below, and other items",
   "994027": "Other vouchers",
-  "994100": "TW Mall Anniversary - Coins, Keys and Lv 410 Sets"
+  "994100": "TW Mall Anniversary - Coins, Keys and Lv 410 Sets",
+  "514661": "It's time for the 2026 Mall Anniversary! I've prepared many gifts. If you have /c$22026 Mall Anniversary Gold Coins/c* or /c$22026 Mall Anniversary Silver Coins/c*, come and exchange them with me!",
+  "514662": "2026 Mall Anniversary Gold Coins and Silver Coins?",
+  "514663": "/c$22026 Mall Anniversary Gold Coins/c* and /c$22026 Mall Anniversary Silver Coins/c* are the main event currencies for this year's Angels Online Mall Anniversary. Top up to receive /c$22026 Mall Anniversary Gold Coins/c*. Purchase various /c$2 Value Packs/c* from the Mall to receive /c$22026 Mall Anniversary Gold Coins/c* or /c$22026 Mall Anniversary Silver Coins/c* with your purchase. Don't hesitate! If you miss it, you'll have to wait another year!",
+  "514664": "To make sure limited backpack space does not affect your rewards, you need at least /c$2 two free slots/c* in your backpack to claim a reward. Thank you for your understanding!",
+  "513667": "Anniversary Wave 1 (Badges)",
+  "509281": "Anniversary Wave 2 (Weapons)",
+  "509282": "Anniversary Wave 3 (Armor)",
+  "509283": "Anniversary Wave 4 (Accessories and Capes)",
+  "513668": "Anniversary Wave 5 (Mounts)"
  },
  "native_fortunia": {
   "root": 993500,
@@ -14626,5 +14660,75 @@
   ],
   "message": 994100,
   "source": "TW group 607 previously mixed into IGG Noryo"
- }
+ },
+ "isolated_group_map": {
+  "683": 2417
+ },
+ "new_group_recipe_ids": [
+  36227,
+  36228,
+  36229,
+  36230,
+  36231,
+  36232,
+  36233,
+  36234,
+  36235,
+  36236,
+  36237,
+  36238,
+  36239,
+  36240,
+  36241,
+  36242,
+  36243,
+  36244,
+  36245,
+  36246,
+  36247,
+  36248,
+  36249,
+  36250,
+  36251,
+  36252,
+  36253,
+  36254,
+  36255,
+  36256,
+  36257,
+  36258,
+  36259,
+  36260,
+  36261,
+  36262,
+  36263,
+  36264,
+  36265,
+  36266,
+  36267,
+  36268,
+  36269,
+  36270,
+  36271,
+  36272,
+  36273,
+  36274,
+  36275,
+  36276,
+  36277,
+  36278,
+  36279,
+  36280,
+  36281,
+  36282,
+  36283,
+  36284,
+  36285,
+  36286,
+  36287,
+  36288,
+  36289,
+  36290,
+  36291
+ ]
 }

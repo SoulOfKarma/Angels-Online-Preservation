@@ -65,6 +65,8 @@ def indice(raiz: pathlib.Path, nombres, solo_setting: bool = False) -> dict:
     vista = {}
     for n in sorted(nombres, key=lambda x: paks.numero(raiz / x)):
         base = raiz / n
+        if not base.is_dir():
+            continue
         dirs = [d for d in base.iterdir() if d.is_dir()
                 and (not solo_setting or d.name.lower() == 'setting')]
         for d in dirs:
@@ -302,6 +304,10 @@ def fusionar_obd_add(igg: bytes, tw_: bytes) -> bytes:
 
 def construir(con_paks: bool = True):
     """work/salida/setting (tablas fusionadas y traducidas) y work/salida/paks."""
+    faltantes = [n for n in PAKS_TW if not (TW / n).is_dir()]
+    if faltantes:
+        raise FileNotFoundError('faltan extracciones completas de Taiwan: %s'
+                                % ', '.join(faltantes))
     import shutil
     import traducir
     trad = traducir.Traductor()
@@ -365,13 +371,21 @@ def construir(con_paks: bool = True):
     if not con_paks:
         return
 
-    # Assets nuevos (ruta que IGG no tiene) -> update27..31.pak
+    # Assets nuevos (ruta que IGG no tiene) -> update27..32.pak
     igg_todo, tw_todo = indice_igg(), indice_tw()
     por_pak = collections.defaultdict(list)
     for r, (pak, f) in tw_todo.items():
         if (r in igg_todo and r not in REEMPLAZOS_TW) or r.startswith('setting\\'):
             continue
         por_pak[DESTINO_PAK[pak]].append((str(f.relative_to(TW / pak)), f))
+    main_l = RAIZ / 'extracted_paks' / 'update32_main_l_pestana_sand_castle.l'
+    if not main_l.is_file():
+        raise FileNotFoundError('falta el MAIN.L de Sand Castle Tales: %s' % main_l)
+    por_pak['update32'] = [
+        (rel, f) for rel, f in por_pak['update32']
+        if rel.replace('/', '\\').lower() != 'script\\main.l'
+    ]
+    por_pak['update32'].append(('SCRIPT\\MAIN.L', main_l))
     sys.path.insert(0, str(pathlib.Path(__file__).parent))
     import pak_tool
     (SALIDA / 'paks').mkdir(parents=True, exist_ok=True)
@@ -390,19 +404,23 @@ CLIENTE = pathlib.Path(r'C:\AO\Angels Online')
 BACKUPS = RAIZ / 'work' / 'backup'
 
 
-def instalar(con_paks: bool = True):
+def instalar(con_paks: bool = True, cliente: bool = True):
     """Lleva work/salida al cliente y a extracted_paks/update26, con respaldo.
 
     Las tablas van DENTRO de update26.pak (y de su .bak, del que el servidor
     saca stage.xml/battlepass/activityurl): asi los parches que aplica
     cliente_local.aplicar_modo_estacion al arrancar siguen mandando.
-    Los assets nuevos van en update27..31.pak, que el angel.dat IGG ya monta."""
+    Los assets nuevos van en update27..32.pak; update32 requiere el
+    angel.dat IGG parcheado. El MAIN.L guardado de Sand Castle Tales se
+    vuelve a incluir al reconstruir ese pak. Con cliente=False solo se
+    instala la vista extraida que usa el servidor; no se escribe en C:\\AO."""
     import datetime
     import shutil
     import pak_tool
     ts = datetime.datetime.now().strftime('%Y%m%d_%H%M%S')
     bk = BACKUPS / ts
-    (bk / 'cliente').mkdir(parents=True)
+    if cliente:
+        (bk / 'cliente').mkdir(parents=True)
     (bk / 'extracted_paks_update26').mkdir(parents=True)
     tablas = SALIDA / 'setting_update26'
     archivos = [f for f in tablas.rglob('*') if f.is_file()]
@@ -411,9 +429,10 @@ def instalar(con_paks: bool = True):
                     paks_nuevos=[p.name for p in nuevos_paks])
 
     # 1. respaldos
-    for n in ['update26.pak', 'update26.pak.bak'] + [p.name for p in nuevos_paks]:
-        if (CLIENTE / n).exists():
-            shutil.copy2(CLIENTE / n, bk / 'cliente' / n)
+    if cliente:
+        for n in ['update26.pak', 'update26.pak.bak'] + [p.name for p in nuevos_paks]:
+            if (CLIENTE / n).exists():
+                shutil.copy2(CLIENTE / n, bk / 'cliente' / n)
     dst_ext = IGG / 'update26'
     for f in archivos:
         rel = f.relative_to(tablas)
@@ -434,15 +453,17 @@ def instalar(con_paks: bool = True):
 
     # 3. update26.pak y su .bak
     mapa = {str(f.relative_to(tablas)).replace('/', '\\').upper(): f.read_bytes() for f in archivos}
-    for n in ('update26.pak', 'update26.pak.bak'):
-        if (CLIENTE / n).exists():
-            rep, add = pak_tool.actualizar(CLIENTE / n, mapa)
-            print('%s: %d reemplazados, %d anadidos' % (n, rep, add))
+    if cliente:
+        for n in ('update26.pak', 'update26.pak.bak'):
+            if (CLIENTE / n).exists():
+                rep, add = pak_tool.actualizar(CLIENTE / n, mapa)
+                print('%s: %d reemplazados, %d anadidos' % (n, rep, add))
 
     # 4. paks de assets
-    for p in nuevos_paks:
-        shutil.copy2(p, CLIENTE / p.name)
-        print('copiado', p.name)
+    if cliente:
+        for p in nuevos_paks:
+            shutil.copy2(p, CLIENTE / p.name)
+            print('copiado', p.name)
     (bk / 'instalacion.json').write_text(json.dumps(registro, indent=1), encoding='utf-8')
     print('listo. Para deshacer: python -I tools/tw_migracion.py desinstalar', ts)
 
@@ -543,9 +564,8 @@ def ajustes_wnd():
     * wnd05.xml, ventana Angels GO!: la lista de "Map Types" (id 28383)
       tenia rows="39"; con la categoria 40 (Sand Castle Tales) TW la sube a
       rows="40" y alto 460. Con 39 la categoria 40 no salia en la lista.
-    * wnd01.xml, mapa del mundo: TW anade la pestana 25516 "砂城秘譚" y le
-      pasa bsRadioEnd (fin del grupo). En IGG la pagina 7 ya tiene tres
-      botones anchos y "Switch Maps" en x=545, asi que va sola en la 8.
+    * wnd01.xml, mapa del mundo: las cuatro pestañas nuevas usan appdata=5,
+      como en Taiwan; se separan los botones y se desplaza "Switch Maps".
     Las versiones vigentes (update26 y update25) se copian a update26 y se
     meten en update26.pak y su .bak."""
     import paks
@@ -565,8 +585,8 @@ def ajustes_wnd():
                       'bsHCenter="" bsRadio=""  wsTab="" bsRadioEnd=""/>',
                       'title="Night City Code" appdata="7">\r\n\t\t<style wsVisible="" bsVCenter="" '
                       'bsHCenter="" bsRadio=""  wsTab=""/>', 1)
-        boton = ('\t<window class="WND_CLASS_BUTTON" id="25516" range="134,561,113,17" fcolor="101" '
-                 'font="1" icon="27108" check="27112" title="Sand Castle Tales" appdata="8">\r\n'
+        boton = ('\t<window class="WND_CLASS_BUTTON" id="25516" range="494,561,105,17" fcolor="101" '
+                 'font="1" icon="27108" check="27112" title="Sand Castle Tales" appdata="5">\r\n'
                  '\t\t<style wsVisible="" bsVCenter="" bsHCenter="" bsRadio=""  wsTab="" bsRadioEnd=""/>\r\n'
                  '\t\t<OnCommand>OnStageMapPage</OnCommand>\r\n\t</window>\r\n\r\n')
         ancla = t.find('<!--切換地圖-->')
@@ -575,14 +595,18 @@ def ajustes_wnd():
         ini = t.rfind('\n', 0, ancla) + 1
         t = t[:ini] + boton + t[ini:]
         cambios['setting\\eng\\wnd01.xml'] = t
-    # La pagina 8 no existe: script\main.l (update25) tiene MAX_MAPPAGE = 5 y
-    # las paginas de IGG van de appdata 3 a 7. La pestana va en la 7 con las
-    # otras tres, a 98 px cada una para no pisar "Switch Maps" (x=545).
-    anchos = {'25513': '134', '25514': '234', '25515': '334', '25516': '434'}
+    posiciones = {'25513': '134', '25514': '254', '25515': '374', '25516': '494'}
     t2 = t
-    for bid, x in anchos.items():
-        t2 = re.sub(r'(id="%s" range=")\d+,561,\d+,17(")' % bid, r'\g<1>%s,561,98,17\g<2>' % x, t2)
-    t2 = t2.replace('title="Sand Castle Tales" appdata="8"', 'title="Sand Castle Tales" appdata="7"')
+    for bid, x in posiciones.items():
+        t2 = re.sub(r'(id="%s" range=")\d+,561,\d+,17(")' % bid,
+                    r'\g<1>%s,561,105,17\g<2>' % x, t2)
+        t2 = re.sub(r'(<window class="WND_CLASS_BUTTON" id="%s"[^>]*\bappdata=")\d+(")' % bid,
+                    r'\g<1>5\2', t2)
+    switch, n = re.subn(r'(id="24750" range=")\d+,561,70,18(")',
+                        r'\g<1>617,561,70,18\2', t2, count=1)
+    if n != 1:
+        raise SystemExit('wnd01.xml: no se encontro el boton Switch Maps esperado')
+    t2 = switch
     if t2 != t:
         t = t2
         cambios['setting\\eng\\wnd01.xml'] = t
@@ -663,6 +687,8 @@ if __name__ == '__main__':
         instalar()
     elif orden == 'instalar_tablas':
         instalar(con_paks=False)
+    elif orden == 'instalar_servidor':
+        instalar(con_paks=False, cliente=False)
     elif orden == 'contenido':
         contenido()
     elif orden == 'msg_propios':

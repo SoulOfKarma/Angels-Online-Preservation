@@ -70,6 +70,19 @@ def test_all_removed_recipes_keep_native_costs_rewards_and_separate_groups():
     assert sum(r.get('群組') == '607' for r in current.values()) == 2
 
 
+def test_2026_anniversary_recipes_use_a_separate_english_group():
+    current=hs.xml_rows('exchange.xml')
+    ids=CONFIG['new_group_recipe_ids']
+    assert len(ids)==65
+    assert CONFIG['isolated_group_map']['683']==2417
+    assert CONFIG['exchange_owners']['2417']=='Anniversary Angel'
+    assert CONFIG['nodes']['2019294']['a']==[[98,[2417]]]
+    assert CONFIG['node_owners']['2019294']=='Anniversary Angel'
+    anniversary=[current[rid] for rid in ids]
+    assert all(row['群組']=='2417' and row['獎賞說明'].isascii()
+               for row in anniversary)
+
+
 def test_menu_labels_are_installed_english_and_every_group_is_reachable():
     texts = dialogos._cargar_msg_dict()
     for key,value in CONFIG['messages'].items():

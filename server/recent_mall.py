@@ -15,8 +15,8 @@ def datos():
     extra = directory/'tw_exchanges.json'
     if extra.exists():
         additions = json.loads(extra.read_text('utf8'))
-        for section in ('nodes','node_owners','exchange_owners'):
-            data[section].update(additions[section])
+        for section in ('nodes','node_owners','exchange_owners','messages'):
+            data.setdefault(section, {}).update(additions[section])
         data['npcs'].extend(additions['npcs'])
     # IGG repite por error el titulo de Noryo en el acceso a Winter Holiday.
     for option in data['nodes']['504816'].get('o', []):

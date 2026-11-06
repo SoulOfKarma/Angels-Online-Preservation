@@ -3341,6 +3341,11 @@ def _cargar_msg_dict() -> dict:
                 elem.clear()
         except Exception:
             pass
+    import recent_mall
+    for key, text in recent_mall.datos().get('messages', {}).items():
+        mid = int(key)
+        _MSG_IDS.add(mid)
+        _MSGS_DICT[mid] = text
     return _MSGS_DICT
 
 

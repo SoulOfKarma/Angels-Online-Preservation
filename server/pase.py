@@ -182,14 +182,29 @@ class Estado:
         t = temporada()
         dia, semana = _periodos(ahora)
         cambios = []
-        if dia != self.dia:
+        def falta_lista(lista, grupo):
+            ids_grupo = set(_grupo(grupo))
+            return bool(ids_grupo) and not any(
+                _n(tarea) in ids_grupo for tarea, _ in self.listas.get(lista, []))
+
+        falta_diarias = (
+            falta_lista(1, t.get('每日固定任務群組ID'))
+            or (_n(t.get('每日隨機任務數量')) > 0
+                and falta_lista(2, t.get('每日隨機任務群組ID')))
+        )
+        if dia != self.dia or falta_diarias:
             self.dia = dia
             self.listas[1] = [[i, 0] for i in _grupo(t.get('每日固定任務群組ID'))][:MAX_TAREAS]
             self.listas[2] = [[i, 0] for i in _sorteo('%d:%s:d' % (self.char_id, dia),
                                                        t.get('每日隨機任務群組ID'),
                                                        _n(t.get('每日隨機任務數量')))][:MAX_TAREAS]
             cambios.append(1)
-        if semana != self.semana:
+        falta_semanales = (
+            falta_lista(3, t.get('每週固定任務群組ID'))
+            or (_n(t.get('每週隨機任務數量')) > 0
+                and falta_lista(4, t.get('每週隨機任務群組ID')))
+        )
+        if semana != self.semana or falta_semanales:
             self.semana = semana
             self.listas[3] = [[i, 0] for i in _grupo(t.get('每週固定任務群組ID'))][:MAX_TAREAS]
             self.listas[4] = [[i, 0] for i in _sorteo('%d:%s:w' % (self.char_id, semana),

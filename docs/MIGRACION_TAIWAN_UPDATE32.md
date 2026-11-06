@@ -706,7 +706,8 @@ python -I tools/tw_migracion.py contenido
   pergamino en `content.db`; `/skills5` ya las enseña sin cambios.
 - **Interfaz** (`tw_migracion.py ajustes_wnd`, copia de lo que hizo TW):
   lista "Map Types" del Superwing `rows=40` en `wnd05.xml`; pestaña 25516
-  "Sand Castle Tales" en `wnd01.xml` (página 8).
+  "Sand Castle Tales" en `wnd01.xml`, junto con las otras tres pestañas
+  nuevas del mapa. Las cuatro usan `appdata=5`, como en Taiwan; no `7`.
 - **Drops**: las tablas de drop de los mobs nuevos (28174…) no vienen en el
   cliente TW (son del servidor oficial). Se usa el respaldo por nivel de
   `drops_monstruos.json` (cubos 400–470). Los mobs de tropa de las Chaos no
@@ -903,9 +904,30 @@ Pendiente de sistemas (necesitan código/captura, no solo datos): World Boss
 - Confirmado que Eternal es útil pero no cubre toda la rama 29–32.
 - Confirmado que el ejecutable Taiwan es la base más razonable para sistemas
   modernos.
-- No se modificó ninguna instalación externa ni ningún PAK.
-- La migración queda aplazada; este documento conserva el punto exacto desde
-  el cual retomarla.
+- En el corte del 26/10 no se modificó ninguna instalación externa ni ningún
+  PAK. La migración quedo aplazada en ese momento; el avance posterior figura
+  en la seccion siguiente.
+
+## Update32 Taiwan del 04/11/2026: preparacion Python y port a Rust
+
+El nuevo `update32.pak` fue respaldado antes de que el launcher Taiwan pueda
+reemplazarlo (SHA-256
+`f9b9bc0c4d543ec441dcb0ebfab81542e66aa805efffa3e72942286f6f965ffb`). Se
+integraron en el servidor F las 65 recetas del aniversario 2026 bajo el grupo
+2417, el NPC Anniversary Angel y sus textos ingleses. El grupo 683 de IGG se
+mantiene intacto. El cliente `C:\AO\Angels Online` ya tiene los PAK
+actualizados; sus respaldos estan en
+`G:\Ao Proyect Improved\AO 2\work\backup\20261105_204726` y
+`G:\Ao Proyect Improved\AO 2\work\backup\canjes_tw_20261105_204743`.
+El `angel.dat` de C ya cargaba `update32.pak` y no se reemplazo. La
+implementacion y los pasos pendientes de sincronizacion estan en
+[PORT_RUST.md](./PORT_RUST.md).
+
+Al reconstruir el PAK del cliente, incluir
+`extracted_paks/update32_main_l_pestana_sand_castle.l` como `SCRIPT\MAIN.L`
+para conservar la pestana Sand Castle Tales. Las insignias por piso, las
+tarjetas de puesto permanentes y la transformacion sellada aun requieren
+implementar y probar sus usos en Python; despues se sincronizan a Rust.
 
 ## NPC de spmsg, dialogos en chino, tope 481 y canjes del Lyceum (26/10/2026)
 
@@ -957,3 +979,54 @@ objetos de dentro y saca lo pendiente de `原型名稱`, `基本名稱` y `說�
 TW<->IGG tiene pares malos por reutilizacion de IDs (p. ej. 吉祥如意結 ->
 "Zionic-Tsubasa's Attack", 粉柔-貴雅小鹿斑比 -> "Shiny Mana Rune"); los que
 aparecieron van corregidos en ese manual, que manda sobre la memoria.
+
+### Restauracion del Mall y revision de Sand Castle Tales (05/11/2026)
+
+- El `update26.pak` activo de `C:\AO\Angels Online` habia perdido 25 filas
+  alcanzables desde el catalogo del Mall y conservaba campos traducidos solo
+  en `update26.pak.bak`. Se restauraron selectivamente las filas y textos,
+  manteniendo los atributos no textuales del paquete activo. El PAK instalado
+  tiene SHA-256
+  `14208477459d8ac2602cf6996d37693a16cd6b9c11c38ed4cd41d41fb42c9853`;
+  el original se guardo como
+  `C:\AO\Angels Online\update26.pak.pre_mall_restore_20261105.bak`.
+- `server/cliente_local.py::aplicar_modo_estacion` vuelve a escribir las
+  tablas `ITEM5.XML`–`ITEM9.XML` desde `extracted_paks/update26` al iniciar.
+  Por eso tambien se instalaron alli las tablas reparadas. La auditoria de
+  inicio verifico que los 3.582 objetos alcanzables en esa vista no faltan en
+  esas tablas ni conservan campos CJK traducibles sin traducir.
+- En el cliente C se verificaron la pestaña `25516`, `rows="40"` del
+  Superwing, los hooks de region 30 en `angel.dat` y los recursos
+  `WORLD88/89/90.SHP` y `WORLD*_30.MPC` de `update31.pak`/`update32.pak`.
+  `SCRIPT\MAIN.L` de `update32.pak` coincide con
+  `extracted_paks/update32_main_l_pestana_sand_castle.l`. El mapa aun no se
+  comprobo visualmente en partida; si sigue en blanco, hace falta una captura
+  para distinguir el mapa del mundo de los mapas de la region.
+- Revision adicional (05/11/2026): 18 bolsos/huevos de `ITEM9.XML` tenian
+  `動態資料1` enlazado a `drop.xml`, pero `說明定義` no incluia `%s`; el cliente
+  por eso no mostraba los contenidos aleatorios. Se agrego
+  `/c$2%s/c*`, preservando las descripciones existentes, en la fuente de F y
+  en `update26.pak`/`update26.pak.bak` del cliente C. Los 18 enlaces y las
+  941 entradas de ambos PAK se validaron. Respaldo:
+  `work/backup/mall_details_20261105_214726`.
+- El cliente C del servidor es distinto del cliente Global. En esta revision
+  solo se modifico `C:\AO\Angels Online`; los procesos Global que estaban
+  abiertos no se tocaron. `midage.ini` configura 1280x768, mientras el mapa
+  instalado para esa anchura es 1280x720; no se cambio la resolucion por
+  suposicion. Falta confirmar visualmente el mapa dentro del cliente C.
+
+### Sincronizacion adicional F/cliente C (05/11/2026)
+
+- `tools/tw_migracion.py ajustes_wnd` conserva `appdata=5` en las cuatro
+  pestañas nuevas, con 105 px de ancho y 15 px de separacion. Se aplico al
+  cliente C y se verificaron las 941 entradas de ambos PAK. Copia previa:
+  `work/backup/map_tabs_before_install_20261105_222210`.
+- En `item4.xml`, el ID 31916 tenia `Potent ` + `Blue Potion` en
+  `UPDATE16`, aunque el baseline Taiwan y `content.db` dicen `Potent ` +
+  `Blue Potion 6`. Se corrigio la fuente F y el `UPDATE16.PAK` del cliente C.
+  Copia previa: `work/backup/potion31916_before_install_20261105_222611`.
+  Los IDs 31716-31719, 48421, 74146 y 74147 ya coincidian con las traducciones
+  inglesas listadas en el baseline.
+- `server/pase.py` vuelve a sortear las listas diarias/semanales ausentes del
+  periodo vigente, y la prueba cubre el paquete enviado al cliente. El mapa y
+  las misiones aun requieren confirmacion visual dentro del cliente C.
