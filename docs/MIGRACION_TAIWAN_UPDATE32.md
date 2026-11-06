@@ -566,6 +566,335 @@ y sus pruebas se corrigieron para enviar sólo esos paquetes de seis bytes.
 9. implementación incremental con pruebas;
 10. paquete traducido reproducible y procedimiento de rollback.
 
+## Ejecución del 26 de octubre de 2026: contenido TW 27–32 dentro del cliente IGG
+
+Se cambió de estrategia respecto de la "Opción A": **no hace falta el exe de
+Taiwán**. Medido con REA (Ghidra) sobre `angel.dat` IGG desempaquetado con UPX
+(sha256 `7c1f8cc1…`): `WinMain` (0x533FD0) monta `update2.pak` … `update31.pak`
+(xref de la cadena `update31.pak` en 0x5341f7). No existe `update32.pak` en el
+binario, así que lo de TW 32 se funde en nuestro `update31.pak` (gana 32).
+`setting\BIG5\` de TW y `setting\eng\` de IGG tienen el mismo formato.
+
+Herramientas (todas en `tools/`):
+
+| Herramienta | Qué hace |
+|---|---|
+| `pak_tool.py` | list / verify / extract / manifest / build; lector con `lo \| hi<<16`, CRC, rutas seguras; `actualizar()` reemplaza **y añade** entradas |
+| `tw_migracion.py analizar` | qué trae TW 27–32 que IGG no tiene |
+| `tw_migracion.py memoria` | memoria zh→en: pares reales por ID y campo (TW chino ↔ IGG inglés), descarta pares con números distintos (IDs reutilizados por IGG) |
+| `tw_migracion.py construir` / `tablas` | fusiona tablas + traduce → `work/salida/setting_update26`; `construir` además arma `work/salida/paks/update27..31.pak` |
+| `tw_migracion.py instalar` / `instalar_tablas` | respalda en `work/backup/<ts>` y lleva todo al cliente y a `extracted_paks/update26` |
+| `tw_migracion.py desinstalar <ts>` | vuelve al estado de ese respaldo |
+| `tw_migracion.py contenido` | `corpus/content.db`: añade filas con ID nuevo y cambia textos chino→inglés; no toca nada más |
+| `traducir.py estado` / `exportar N M` | cobertura y lotes pendientes priorizados |
+
+Política de fusión: **IGG manda**. Fila o archivo que IGG ya tiene se queda
+igual (salvo traducir texto); de TW solo entra lo que IGG no tiene:
+
+- `setting\eng\*.xml`: filas con `編號` nuevo al final (item9 2.238 → 3.700,
+  exchange +12.294, magic +680, monster +194, stage +11, msg +632…).
+- Raíz de `setting\`: se añaden solo claves nuevas en `itemicon2-4`,
+  `skillicon`, `peticon`, `faceicon` (`id`), `shop` (`編號`), `level` (`等級`),
+  `pet_inlay`, `chardef` (`號碼` dentro de su sección) y los `.obd`
+  (`[OBJECT]` por `Sequence`: `char3/4`, `npc`, `common`, `mapobj`, `server`,
+  `m02`). Se quedan como IGG: `actboard`, `star_client`, `pet_star`, `fuse`,
+  `eventdef`, `globalwnd` (World Boss necesita servidor), `battlepass*`,
+  `midage.tic`, `system.xml` (las listas de carga TW e IGG son idénticas).
+- Assets (`shape`, `map`, `music`, `brush`, `script`, `bmp`): solo rutas
+  nuevas → `update27..31.pak` (12.472 archivos, ~495 MB).
+
+**Por qué las tablas van dentro de `update26.pak` y no en un pak superior.**
+`cliente_local.aplicar_modo_estacion` re-parchea `update26.pak` al arrancar el
+servidor (estación en `stage.xml` desde el `.bak`, medalla 83266 e
+item tables desde `extracted_paks/update26`, battlepass, activityurl). Un
+`update27.pak` con esas tablas taparía esos parches. Por eso `instalar`
+escribe las tablas en `update26.pak` **y** en `update26.pak.bak`.
+
+Traducción: solo campos de texto (`基本名稱`, `原型名稱`, `說明定義`, `文字`,
+`名稱`, `說明`, `獎賞說明`, `任務名稱`, `步驟NN`, `地點NN`, `承接NN`,
+`封號`…). Los valores en chino de enums (`是/否`, `物品類別`, `顏色`, `系別`,
+`HP定義`…) **no se traducen**: el exe los compara literalmente (IGG también
+los deja en chino). El texto se traduce por línea (`&#xA;` / `\n` literal) y
+los manuales usan `#` por número para cubrir todos los niveles.
+
+Orden de búsqueda: `work/traduccion/manual/*.json` → memoria exacta →
+plantilla numérica de la memoria. Estilo IGG: `祝福` = "Lucky",
+`打孔錘` = "Piercing Hammer", `強化錘` = "Enhanced Pestle", `N星` = "N-star",
+`頂級輕裝/重裝/法袍禮盒` = "Classic Light Armor/Heavy Armor/Gown Box",
+`福袋` = "Lucky Bag", `扭蛋` = "Egg", `附魔-` = "Enchanted-",
+`變身` = "Shapeshift:", `衣箱` = "Wardrobe Chest".
+
+Estado al cierre del 26/10/2026:
+
+- Instalado en `C:\AO\Angels Online`: `update26.pak` (+.bak) con 177
+  archivos de setting fusionados y `update27..31.pak` nuevos. Primer respaldo
+  (estado IGG puro): `work/backup/20261026_160246`.
+- `content.db`: +1.462 objetos (item9), +230 petattrib, +69 doll y el resto
+  de tablas al día; respaldo previo `work/backup/content_20261026_15*.db`.
+- Versión mostrada: `cliente_local.VERSION_CLIENTE = '8.7.6.1'` (reg.ini y
+  update3.ini). `angel.dat` solo la muestra; no viaja al servidor.
+- Traducción: memoria de 101.641 pares + lotes manuales 000–006 (1.750
+  segmentos, prioridad: nombres → contenido nuevo → descripciones). Quedan
+  ~53.800 segmentos (~900k caracteres), sobre todo descripciones y textos
+  JP/TW que ya traía el cliente IGG.
+- Suite completa: 373 fallos que **ya existían** (pasan por separado; dependen
+  del orden de ejecución). `test_mascotas` y `test_house_system` fallan igual
+  con los datos originales (comprobado restaurando content.db/level/petattrib).
+
+Para continuar la traducción:
+
+```text
+python -I tools/traducir.py exportar 250 8     # lotes en work/traduccion/lotes
+#  rellenar y guardar como work/traduccion/manual/lote_NNN.json
+python -I tools/tw_migracion.py tablas
+python -I tools/tw_migracion.py instalar_tablas
+python -I tools/tw_migracion.py contenido
+```
+
+### Ampliación de la misma fecha: update32.pak propio y región Sand Castle Tales
+
+- **update32.pak propio.** `tools/parchear_angel_update32.py` parchea el
+  `angel.dat` IGG (desempaquetado con UPX) para que monte también
+  `update32.pak`: en `0x534201` (justo tras cargar update31) un `jmp` a una
+  cueva en `0x8b29e0` que hace `sub_74BBD0("update32.pak", 0)`, luego el
+  `CoInitialize` original y vuelve a `0x53420c`; la cadena va en `0x9125e0`
+  (relleno de `.rdata`) y se amplía el VirtualSize de `.text`/`.rdata` hasta
+  su SizeOfRawData. Verificado con REA. Original guardado como
+  `angel.dat.antes_update32` (y `angel_igg.dat`). `DESTINO_PAK` ya manda TW 32
+  a `update32.pak`.
+- **map169.mpc (Karang Desert)** de TW 32 reemplaza al de IGG
+  (`REEMPLAZOS_TW`): trae el tornado `(7,172) → 423`, la entrada a la región.
+- **Servidor:** mapas 423–429 poblados desde sus `.mpc`
+  (`tools/poblar_del_cliente.py`, 218–237 monstruos cada uno, nv 400–466) y
+  registrados en `login.PLANTILLAS_POR_STAGE`; portales de 169 y 423–429 con
+  `tools/propagar_portales.py`; Superwing (`angels_go.json`, ids 356–364) y
+  aparición (`jumpmap.json`) con `work/registrar_region.py`; lógica de mapas
+  (misiones 1620–1624 de Rotwood Abyss, barreras `CHANGE_STATICOBJ`,
+  diálogos) en `eventos.json` con `tools/propagar_eventos.py`.
+- **TRAMPA DEL `<ALIAS>`.** Las tablas IGG acaban en uno o varios
+  `<ALIAS …/>`/`<DEFINE …/>` (traducen los atributos chinos a los nombres que
+  pide el exe: `id`, `classname`…). Lo que va **detrás** no lo carga el
+  cliente. La primera instalación dejó ahí las filas de TW: sin `stage 423`
+  el cliente crasheaba al entrar (terreno nulo en `sub_56F160`, EIP
+  `0x56F1B3`) y la categoría 40 no salía en el Superwing.
+  `punto_insercion()` ahora mete las filas antes del primer ALIAS/DEFINE y
+  `tw_migracion.py reparar_alias` arregló lo instalado (34 tablas).
+- **Región 30 del mapa del mundo.** El exe registra las regiones en código
+  (`sub_5AA1E0(this, region, res, smap, mpc)`, 29 regiones, hueco para 30).
+  `parchear_angel_update32.py` añade la 30 (`smap\world89/88/90`,
+  `world*_30.mpc`) con una cueva en el relleno de `.rdata` (marcada
+  ejecutable). Sin probar en partida: la pestaña puede necesitar algo más.
+- **Chaos nuevas (Past the Time Spirit, Rainbow Town 308).** Pobladas 430,
+  431, 439, 440; destinos en `dialogos.VIAJES_POR_OPCION` con la casilla del
+  TAG 1 de cada `.mpc`. Menú en dos páginas (`PAST_TIME_PAG1/2`, mensajes TW
+  158419–158425).
+
+### Tercera ronda (26/10): lo que faltaba para jugar la región
+
+- **Paredes**: `tools/transitable.py` regenerado (408 mapas): sin esto el
+  servidor trataba los mapas nuevos como todo transitable y los mobs
+  atravesaban las rocas. Mapas repoblados después, para que nadie nazca
+  dentro de una pared.
+- **Instancias que no reviven**: `tools/instancias_de_stage.py --json`
+  (429, 430, 431, 439, 440 quedan `dinamica`).
+- **NPC de la región** (36): `tools/npcs_del_cliente.py --poner` en 423–429.
+  Los de servicio de Bluesand Realm (entidades 90425000–90425004) hablan en
+  `dialogos.propio`; los investigadores abren las tiendas 227/228 de
+  `shop.xml` TW (skills nuevas I–IV). Textos propios en
+  `work/msg_propios.json` (`tw_migracion.py msg_propios`).
+- **Skills V nuevas**: las 18 tienen rama, nivel (390/400), rango 5 y
+  pergamino en `content.db`; `/skills5` ya las enseña sin cambios.
+- **Interfaz** (`tw_migracion.py ajustes_wnd`, copia de lo que hizo TW):
+  lista "Map Types" del Superwing `rows=40` en `wnd05.xml`; pestaña 25516
+  "Sand Castle Tales" en `wnd01.xml` (página 8).
+- **Drops**: las tablas de drop de los mobs nuevos (28174…) no vienen en el
+  cliente TW (son del servidor oficial). Se usa el respaldo por nivel de
+  `drops_monstruos.json` (cubos 400–470). Los mobs de tropa de las Chaos no
+  sueltan al 100% (`combate.es_de_tropa`).
+- **Item Mall**: el catálogo TW no está en el cliente (solo
+  `malllayout.xml`); `mall_selection.py` no mezcla IDs de TW. Pendiente de
+  decisión.
+
+### Mascotas de Taiwan (26/10)
+
+- `tools/pets_de_pet_xml.py` regenerado: 1.795 mascotas (+44: los cinco de
+  los Tres Reinos, la linea Mecha y la linea Raccoon) y 164 tablas de
+  habilidades (+15). El generador ahora recorta los valores: TW trae clases
+  como `' 輔助攻擊型'` y el servidor las buscaba tal cual en petattrib.
+- **Choque de ID 83266**: aqui es la Rank Promotion Medal, en TW un huevo.
+  La memoria emparejaba '機兵蛋' con "Rank Promotion Medal" y lo puso en el
+  huevo 83173 y la mascota 30081. `tw_migracion.IDS_PROPIOS` excluye esos IDs
+  de la memoria; `work/revertir_choque_83266.py` devolvio los campos. Si se
+  crea otro objeto propio, anadir su ID a `IDS_PROPIOS`.
+
+### Traducción de las 18 skills nuevas (26/10)
+
+- Completadas las descripciones de los 90 pergaminos (item9, 80625–80714),
+  siguiendo el formato IGG: `Skill rank N, [description], right click the
+  scroll to learn.` El objeto 80715 es Healing Oil y queda fuera de este parche.
+- `tools/traducir.py` compone el texto del pergamino a partir del nombre de
+  la skill y su descripción traducida. Solo lo da por completo si ambos
+  están resueltos; conserva la memoria exacta de los pergaminos antiguos.
+- Los manuales ahora tienen la prioridad documentada sobre la memoria:
+  se evita el par incorrecto `反連鎖戰術Ⅴ → Wallpaper Frame Egg`. Las referencias
+  usan `Anti-Chain Tactics`, como las skills 596–600 del cliente instalado.
+- Manual ampliado en `work/traduccion/manual/skills_nuevas_tw.json`.
+  Aplicadas las traducciones que Claude había dejado pendientes de instalar:
+  276 campos en 236 filas de magic, dentro de las 276 filas que corresponden
+  a estas 18 skills y sus efectos; 90 campos de item9 y 366 textos en
+  `corpus/content.db`. No cambian los parámetros de juego.
+- Instalado en `extracted_paks/update26/setting/eng`, `content.db` y
+  `C:\AO\Angels Online\update26.pak` y `.bak`. Respaldo de los XML, ambos
+  PAK y la base de contenido en `work/backup/skills_20261026_180929`.
+  El helper `work/traduccion/aplicar_skills.py` y el manifiesto
+  `work/traduccion/skills_instalacion.json` conservan el alcance y hashes.
+- Verificación: diez pruebas de traducción; números, marcadores `%1` y
+  separadores de línea conservados; CRC de las 939 entradas de cada PAK;
+  contenido idéntico en todas las entradas ajenas a las dos tablas;
+  comprobación de integridad de SQLite. Reiniciar el cliente para cargar los textos.
+
+### Ejecución de las skills TW 390/400 (26/10)
+
+El servidor aun usaba `client_tables.json` anterior a TW: faltaban las 276
+filas de estas 18 lineas (incluidos los subhechizos) y los efectos 715–733.
+Por eso `efecto_existe()` descartaba sus sprites y los encadenados no se
+resolvian. Ultimate Healing se clasificaba como buff sin efecto y Time Rift
+Strike como un AoE de radio 1, sin salto ni raiz. Los logs de las 18:17–18:18
+confirmaban ambos casos.
+
+- `tools/actualizar_skills_tw.py` sincroniza esas 276 filas y el catalogo de
+  efectos de la tabla portable. Conserva todas las filas anteriores y las
+  otras secciones. Los sprites 715–733 se verificaron tambien en los PAK
+  instalados en `C:\AO\Angels Online`.
+- `server/taiwan_skills.py` ejecuta las 18 lineas en sus cinco rangos. Usa
+  los datos originales para potencias, coeficientes, duraciones, intervalos,
+  umbrales de HP, probabilidades, radios, SP, MP y tiempos de impacto.
+  Se conecta desde el manejador real de `0x0006` de `app.py`.
+- Implementa Wind Armor y el golpe de Whirlwind Sword Dance; combos y
+  componente de mano secundaria; Earthsplitter frontal con tres impactos;
+  Skullcrusher condicionado por HP restante; ruptura de armadura y su onda;
+  carga de lanza; disparo con retirada; rafaga de area pequena; golpe extra
+  de Deathcall; bombas con drenaje de mana y detonacion manual/automatica;
+  rescate de un miembro del grupo intercambiando posiciones, curandolo y
+  protegiendo al lanzador; Ultimate Healing con segunda cura condicionada;
+  pulsos de Terror desde las invocaciones; Soul Burst consumiendo ambas;
+  Time Rift con salto instantaneo, impacto y raiz; Flame Brand con tics y
+  explosion; Rockskin; Steel Beak con raiz, reduccion de defensas y
+  recuperacion de HP/MP al matar.
+- Publica las dos fases de los efectos nativos y la animacion corporal del
+  arma en habilidades fisicas. Adapta las entidades al receptor para que
+  otros jugadores vean los efectos. Respeta las reglas de PvP/estructuras;
+  las raices tambien bloquean el movimiento de jugadores. Anti-Chain Tactics
+  reduce la precision de los golpes posteriores de un combo entre jugadores.
+- Valida recursos antes de cobrarlos, comparte cooldown entre rangos y
+  cancela impactos pendientes tras muerte, desconexion, cambio de personaje,
+  mapa/sala o respawn. `Monstruo.vida_combate` distingue cada vida del blanco.
+- Validacion: 130 casos nuevos, incluyendo ejecucion de los 90 rangos,
+  paquetes reales de cast, animaciones, PvP, costes y cancelaciones; junto
+  con regresiones relevantes, **186 pruebas correctas**. Cuatro pruebas
+  antiguas fallan igual cargando `app.py` y `combate.py` de HEAD: critico
+  base esperado 6 frente al actual 5; dobles de personaje incompletos para
+  dos casos de SP; y un doble de sesion sin `volcar` en el caso de muerte.
+  Se excluyeron explicitamente de la corrida de 186.
+
+Reiniciar el servidor y volver a entrar para cargar el modulo y la tabla
+actualizados. La validacion es de servidor y paquetes; no se automatizo una
+sesion visual del cliente. La revision siguiente detecto que tambien faltaba
+el script visual en los PAK; la instalacion anterior no bastaba.
+
+### Correccion del script visual, NPC y flores (26/10)
+
+El cliente nativo busca `castNNN` y `magicNNN` en `SCRIPT\MAGIC.SO` al
+recibir `0x0011` (handler IGG `0x5F0420`). El script IGG llegaba a 714:
+estaban los sprites nuevos, pero faltaban las funciones 715--733. Flame
+Brand usaba efectos anteriores (19/546), por eso era la excepcion visible.
+
+- Instalado el `magic.so` de TW en ambos `update26.pak` del cliente y en
+  los extraidos. Conserva los 4.268 simbolos anteriores con las mismas
+  firmas y agrega 130; incluye los 38 exports de cast/impacto nuevos.
+  `script/main.l` es identico en ambas versiones. `tools/smart_script.py`
+  valida la tabla; `tw_migracion.py` ya incluye esta sustitucion.
+- `tools/reparar_region_tw.py` preparo, respaldo e instalo solo ese script
+  y las traducciones de flores/comerciantes en `msg.xml`. Los 940 recursos
+  de cada PAK pasan CRC y los ajenos al cambio conservan su contenido.
+  Respaldo: `work/backup/region_tw_20261026_191156`; manifiesto:
+  `work/region_tw_reparacion.json`. La primera copia fue bloqueada por el
+  juego abierto; se instalo tras confirmar el usuario que lo cerro.
+- Los temporizadores de las skills vacian la cola de la sesion real al
+  emitir efectos. La cura muestra su numero verde tambien con HP lleno,
+  manteniendo el HP limitado al maximo. Rescue permite seleccion propia.
+  Retirados los avisos de chat propios de este modulo.
+- Restaurados los arboles y raices NPC nativos de mapas 423--429. Los
+  investigadores de Bluesand abren las tiendas originales 228/227 antes
+  de intentar el emparejamiento antiguo por retrato (que elegia quest625).
+  Los ocho totems usan la visibilidad capturada en Lyceum: nombre al pasar
+  el cursor, sin rotulo permanente bajo el modelo.
+- Fragrant Greenhouse tiene 39 puntos de interaccion con flores, de tres
+  colores; 41 referencias de objetos en el MPC, dos repetidas en decorado.
+  Se conecto el evento 5011, asignado al decorado 12986 sin interactivo,
+  usando el mismo objeto de clic 60305 de las otras flores. Las decisiones
+  nativas conducen a 17 TAG, incluido el regreso a la entrada. Sus casillas
+  coinciden con el MPC y permiten caminar. Informe reproducible:
+  `python tools/auditar_flores_fragrant.py` -> `work/flores_fragrant.json`.
+- Verificacion: 226 casos de skills, traduccion y region; otras 75
+  regresiones de eventos, buffs, totems y portales; todos correctos.
+  Incluye clic real a cada flor, cuidados correctos/incorrectos y paquete
+  de traslado con cambio efectivo de posicion, no un mock de teletransporte.
+  Compilacion de app/combate/cuentas/presencia y modulos nuevos correcta.
+
+No se observo una sesion grafica del juego: los paquetes, datos y exports
+instalados estan comprobados; la apariencia final se valida al abrir el
+cliente. El servidor debe cargar el codigo y los arboles nuevos al arrancar.
+Arranque realizado a las 19:27:44: login/mundo escuchan en 16768/16769;
+`reparar_region_tw.py verificar` sigue correcto tras sincronizar el cliente.
+
+### Flores amarillas y Healing Cross (26/10)
+
+- La captura posterior mostro `517396`, flores amarillas, aun en chino.
+  Traducidos ese prompt y el libro de cuidados (517382--517395), incluidos
+  capitulos y cantidades de agua, deshierbe y control de plagas. Instalados
+  ambos PAK y el XML extraido tras cerrar el usuario el cliente. Solo cambia
+  `msg.xml`; el script visual anterior se conserva. Respaldo y preparado:
+  `work/backup/region_tw_20261026_194145`.
+- La auditoria ya reconoce las flores por sus opciones nativas, evitando
+  excluir colores por una lista incompleta de mensajes. Con las amarillas
+  son 52 interactivos y 18 destinos internos (54 referencias de objetos,
+  dos repetidas). Conectado tambien el evento amarillo 3012, que solo tenia
+  decorado. Los casos anteriores de 39/17 correspondian a tres colores.
+- Healing Cross I--V (13310--13314) no entraba en las curas: la formula 58
+  no estaba implementada y la frase `spell attack` lo clasificaba como
+  ataque. Ahora se reconoce por formula y calcula la cura a partir de sus
+  parametros: base + MATK * coeficiente / 100, limitada al 80% del HP maximo
+  del receptor. Se respetan coste, cooldown y prohibicion de objetivo monstruo.
+- Los paquetes de cura ahora conservan el byte alto del efecto 499 (antes
+  se truncaba a 243). En el flujo de curacion se manda el tiempo real de
+  casteo en el campo correspondiente, junto al ID del hechizo; el numero
+  verde va en su paquete independiente. Objetivo cero de una cura propia
+  no se interpreta como area de ataque en la casilla (0,0).
+- Verificados 14 casos de Healing Cross y 343 casos conjuntos correctos,
+  excluyendo el caso antiguo de critico base ya documentado. Incluyen HP
+  bajo, cinco rangos, seleccion propia/automatica, otro jugador con un
+  maximo diferente, HP lleno, monstruos, MP y cooldown, efecto y casteo.
+  Reiniciar el servidor propio desde su terminal para cargar este codigo.
+  No se deja ninguna instancia adicional en segundo plano.
+
+### Avisos de resultado de las flores (26/10)
+
+Las capturas TW posteriores muestran 517405 (fallo: el Flower Spirit
+expulsa al jugador) y 517404 (acierto: lo guia hacia el interior) abiertos
+tras el traslado. En el servidor se enviaban los mensajes, pero el cierre
+del portal los borraba inmediatamente. En esos dos nodos de Fragrant
+Greenhouse se aplica primero el salto y despues se abre el resultado,
+conservando el texto traducido y el avance normal para cerrarlo. Los demas
+dialogos mantienen su orden. Verificados los avisos de acierto/fallo de las
+52 flores, su destino y cierre manual: 110 pruebas de region correctas;
+tambien pasaron 23 regresiones de eventos y portales.
+
+Pendiente de sistemas (necesitan código/captura, no solo datos): World Boss
+(`worldboss.xml`, `script\WorldBoss.l`), los 11 mapas nuevos de `stage.xml`
+(el servidor aún no los puebla), nuevos NPC/quests de `sp_v29_questnpc.xml` y
+`sp2026_*.xml`, textos en imágenes `.tga`.
+
 ## Estado al cerrar esta investigación
 
 - Confirmado que Taiwan llega a `update32`.
@@ -577,3 +906,54 @@ y sus pruebas se corrigieron para enviar sólo esos paquetes de seis bytes.
 - No se modificó ninguna instalación externa ni ningún PAK.
 - La migración queda aplazada; este documento conserva el punto exacto desde
   el cual retomarla.
+
+## NPC de spmsg, dialogos en chino, tope 481 y canjes del Lyceum (26/10/2026)
+
+- **Matia y demas NPC de los sp_*.xml.** Su arbol esta en `setting/eng/spmsg.xml`,
+  no en un .mpc. `tools/propagar_dialogos_mapa.py --sp` lo vuelca a
+  `server/plantillas/dialogos_sp.json`; `dialogos_mapa._arbol()` lo pone debajo
+  del de cada mapa y `app._msgid_sp()` + `dialogos_mapa.raiz_sp()` lo usan al
+  hacer clic, solo si `dialogos.propio()` no tenia mas que la linea raiz.
+  Matia decia 159001 ("no tienes nivel 380") porque la mision 1590 ya estaba
+  cogida y misiones.py no tenia nada que ofrecer; ahora sigue el arbol
+  (en curso 159013, terminada 159014). Test: `tools/test_dialogos_sp.py`.
+- **Dialogos en chino.** 371 segmentos alcanzables desde NPC que existen
+  (region TW + sp colocados) en `work/traduccion/manual/npc_dialogos_00{0,1,2}.json`.
+  Ojo: `RN` (`\d+`) junta el color con el numero (`/c$2390等` -> `/c$#等`), asi
+  que el valor debe llevar `/c$#...`. Quedan ~3.600 lineas de eventos TW cuyos
+  NPC no estan colocados.
+- **Tope de nivel 481.** level.xml (TW update32) llega a 481; `level_curves.json`
+  acababa en 471. Ampliado 472-481 (nivel, skills, mascotas A/B/C) y
+  `combate.NIVEL_MAXIMO = 481`.
+- **Canjes.** exchange.xml instalado = filas IGG + filas TW con numero nuevo.
+  En los grupos donde IGG y TW comparten recetas (Fashionable 439, Gear Clerk
+  181/182, Astral Angel 393) TW anadio 410 recetas que reusaban numeros IGG:
+  `work/anadir_canjes_tw.py instalar` las mete como 34979-35388. Fortunia no
+  tiene nada nuevo: sus grupos altos (495+) ya contienen todo lo de TW y los
+  bajos (4-294) son contenido distinto, no ampliado.
+
+## Item Mall de Taiwan invisible y pestana del mapa (26/10/2026)
+
+- **Item Mall.** El 0x005F del cliente (REA `FUN_00620e80`, registrado en el
+  slot +0xda0 de la tabla de handlers) guarda cada producto en una tabla
+  indexada por id y descarta `id >= 0x9C41` (40001); ademas solo avanza el
+  puntero en los aceptados, asi que tras el primer rechazo se pierde el resto.
+  Las 257 filas de Taiwan iban en 50000+: no salia ninguna. Renumeradas a
+  36000-36256 (hueco libre de IGG entre 34022 y 39000); `tools/mall_tw.py`
+  usa `ID_BASE = 36000` y `test_product_ids_fit_the_client_table` lo vigila.
+- **Pestana "Sand Castle Tales".** Faltaba `<child>25516</child>` en la ventana
+  del mapa, y ademas estaba en la pagina 8: `script\main.l` (update25) tiene
+  `MAX_MAPPAGE = 5` y las paginas IGG son appdata 3..7. Ahora va en la 7 con
+  Sun Sea Maze / Cybertronica / Night City Code, cuatro botones de 98 px
+  (`tw_migracion.py ajustes_wnd`).
+
+## "????" en las bolsas del Item Mall (26/10/2026)
+
+El cliente pinta como `?` lo que sigue en chino/japones. `work/pendientes_mall.py`
+recorre producto -> objeto -> `動態資料1` (fila de drop.xml/serv_drop.xml) ->
+objetos de dentro y saca lo pendiente de `原型名稱`, `基本名稱` y `說明定義`:
+3.768 objetos alcanzables, 175 textos traducidos en
+`work/traduccion/manual/mall_contenidos_000.json` (instalado). Ojo: la memoria
+TW<->IGG tiene pares malos por reutilizacion de IDs (p. ej. 吉祥如意結 ->
+"Zionic-Tsubasa's Attack", 粉柔-貴雅小鹿斑比 -> "Shiny Mana Rune"); los que
+aparecieron van corregidos en ese manual, que manda sobre la memoria.

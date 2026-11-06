@@ -17,6 +17,17 @@ def test_collection_uses_native_level_squared_formula_and_color(world):
     assert album.valor_de(69578,{'extra':{'atk':1000}})>4495
 
 
+def test_native_shoe_spelling_and_real_slot_63_are_collectible(world):
+    assert album._items()[66725]['物品類別']=='鞋子'
+    assert album.descripcion(66725)[:3]==(4,2,4)
+    s=world.player(items={7:340,63:66725})
+    deposit(s,63)
+    assert 63 not in s.inventario, s.packets
+    assert stored(world,s)['album']['zapatos']>0
+    packet=next(p for p in s.packets if p[:2]==b'\x56\x01')
+    assert struct.unpack_from('<8H',packet,6)[4]==1
+
+
 def test_album_native_packet_and_consumption_are_persisted_without_losing_stack(world):
     s=world.player(items={20:355});s.cantidades[20]=2;world.save(s)
     deposit(s,20)

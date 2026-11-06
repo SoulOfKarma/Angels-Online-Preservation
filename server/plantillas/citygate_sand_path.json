@@ -1,0 +1,3431 @@
+{
+ "_nota": "citygate_sand_path (stage 424). POBLADO DESDE EL CLIENTE, no desde una captura: los generadores de monstruos son objetos del propio map424.mpc -- el monstruo en el u16 del +34, la zona en el +21, el tiempo en el +38 y cuantos en el +42. Eso da el censo COMPLETO del mapa, que una captura no puede dar porque solo trae lo que estuvo a la vista. El entity_id es fabricado y estable, no el del servidor. Las casillas son las del TAG de cada generador; los que no declaran TAG ponen sus monstruos en la casilla del generador y en un anillo de radio 3 a su alrededor, que es la dispersion MEDIDA en el stage 73. Los objetos de mapa son los del .mpc cuyo id esta en la lista de los que el servidor manda de verdad, con el cuerpo del 0x000E copiado de una captura del mismo objeto. Los tornados se dibujan aparte, desde portales.json. Ver tools/poblar_del_cliente.py.",
+ "stage": 424,
+ "spawns": [
+  {
+   "entity_id": 92400000,
+   "nombre": "Heretic Zealot",
+   "npc_type": 23875,
+   "sprite": 111572,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    93,
+    60
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 92400001,
+   "nombre": "Heretic Zealot",
+   "npc_type": 23875,
+   "sprite": 111572,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    88,
+    55
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 92400002,
+   "nombre": "Heretic Zealot",
+   "npc_type": 23875,
+   "sprite": 111572,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    88,
+    60
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 92400003,
+   "nombre": "Heretic Zealot",
+   "npc_type": 23875,
+   "sprite": 111572,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    88,
+    65
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 92400004,
+   "nombre": "Heretic Zealot",
+   "npc_type": 23875,
+   "sprite": 111572,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    93,
+    55
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 92400005,
+   "nombre": "Heretic Zealot",
+   "npc_type": 23875,
+   "sprite": 111572,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    98,
+    56
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 92400006,
+   "nombre": "Heretic Zealot",
+   "npc_type": 23875,
+   "sprite": 111572,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    98,
+    61
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 92400007,
+   "nombre": "Heretic Zealot",
+   "npc_type": 23875,
+   "sprite": 111572,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    93,
+    65
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 92400008,
+   "nombre": "Heretic Zealot",
+   "npc_type": 23875,
+   "sprite": 111572,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    98,
+    66
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 92400009,
+   "nombre": "Heretic Zealot",
+   "npc_type": 23875,
+   "sprite": 111572,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    98,
+    51
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 92400010,
+   "nombre": "Heretic Zealot",
+   "npc_type": 23875,
+   "sprite": 111572,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    103,
+    51
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 92400011,
+   "nombre": "Heretic Zealot",
+   "npc_type": 23875,
+   "sprite": 111572,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    103,
+    56
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 92400012,
+   "nombre": "Heretic Zealot",
+   "npc_type": 23875,
+   "sprite": 111572,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    103,
+    61
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 92400013,
+   "nombre": "Heretic Zealot",
+   "npc_type": 23875,
+   "sprite": 111572,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    103,
+    66
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 92400014,
+   "nombre": "Heretic Zealot",
+   "npc_type": 23875,
+   "sprite": 111572,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    86,
+    50
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 92400015,
+   "nombre": "Heretic Zealot",
+   "npc_type": 23875,
+   "sprite": 111572,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    99,
+    46
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 92400016,
+   "nombre": "Heretic Zealot",
+   "npc_type": 23875,
+   "sprite": 111572,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    108,
+    48
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 92400017,
+   "nombre": "Heretic Zealot",
+   "npc_type": 23875,
+   "sprite": 111572,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    108,
+    53
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 92400018,
+   "nombre": "Heretic Zealot",
+   "npc_type": 23875,
+   "sprite": 111572,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    108,
+    58
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 92400019,
+   "nombre": "Heretic Zealot",
+   "npc_type": 23875,
+   "sprite": 111572,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    108,
+    63
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 92400020,
+   "nombre": "Heretic Zealot",
+   "npc_type": 23875,
+   "sprite": 111572,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    108,
+    68
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 92400021,
+   "nombre": "Heretic Zealot",
+   "npc_type": 23875,
+   "sprite": 111572,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    84,
+    45
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 92400022,
+   "nombre": "Heretic Zealot",
+   "npc_type": 23875,
+   "sprite": 111572,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    83,
+    55
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 92400023,
+   "nombre": "Heretic Zealot",
+   "npc_type": 23875,
+   "sprite": 111572,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    83,
+    60
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 92400024,
+   "nombre": "Heretic Zealot",
+   "npc_type": 23875,
+   "sprite": 111572,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    83,
+    65
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 92400025,
+   "nombre": "Heretic Zealot",
+   "npc_type": 23875,
+   "sprite": 111572,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    113,
+    46
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 92400026,
+   "nombre": "Heretic Zealot",
+   "npc_type": 23875,
+   "sprite": 111572,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    113,
+    51
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 92400027,
+   "nombre": "Heretic Zealot",
+   "npc_type": 23875,
+   "sprite": 111572,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    113,
+    56
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 92400028,
+   "nombre": "Heretic Zealot",
+   "npc_type": 23875,
+   "sprite": 111572,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    113,
+    61
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 92400029,
+   "nombre": "Heretic Zealot",
+   "npc_type": 23875,
+   "sprite": 111572,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    113,
+    66
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 92400030,
+   "nombre": "Heretic Zealot",
+   "npc_type": 23875,
+   "sprite": 111572,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    114,
+    39
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 92400031,
+   "nombre": "Heretic Zealot",
+   "npc_type": 23875,
+   "sprite": 111572,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    81,
+    50
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 92400032,
+   "nombre": "Heretic Zealot",
+   "npc_type": 23875,
+   "sprite": 111572,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    79,
+    43
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 92400033,
+   "nombre": "Heretic Zealot",
+   "npc_type": 23875,
+   "sprite": 111572,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    78,
+    57
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 92400034,
+   "nombre": "Heretic Zealot",
+   "npc_type": 23875,
+   "sprite": 111572,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    78,
+    62
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 92400035,
+   "nombre": "Black Flame Cultist",
+   "npc_type": 23876,
+   "sprite": 111584,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    55,
+    100
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 92400036,
+   "nombre": "Black Flame Cultist",
+   "npc_type": 23876,
+   "sprite": 111584,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    50,
+    95
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 92400037,
+   "nombre": "Black Flame Cultist",
+   "npc_type": 23876,
+   "sprite": 111584,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    50,
+    100
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 92400038,
+   "nombre": "Black Flame Cultist",
+   "npc_type": 23876,
+   "sprite": 111584,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    50,
+    105
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 92400039,
+   "nombre": "Black Flame Cultist",
+   "npc_type": 23876,
+   "sprite": 111584,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    55,
+    95
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 92400040,
+   "nombre": "Black Flame Cultist",
+   "npc_type": 23876,
+   "sprite": 111584,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    60,
+    93
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 92400041,
+   "nombre": "Black Flame Cultist",
+   "npc_type": 23876,
+   "sprite": 111584,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    60,
+    98
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 92400042,
+   "nombre": "Black Flame Cultist",
+   "npc_type": 23876,
+   "sprite": 111584,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    52,
+    90
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 92400043,
+   "nombre": "Black Flame Cultist",
+   "npc_type": 23876,
+   "sprite": 111584,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    45,
+    94
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 92400044,
+   "nombre": "Black Flame Cultist",
+   "npc_type": 23876,
+   "sprite": 111584,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    45,
+    99
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 92400045,
+   "nombre": "Black Flame Cultist",
+   "npc_type": 23876,
+   "sprite": 111584,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    57,
+    88
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 92400046,
+   "nombre": "Black Flame Cultist",
+   "npc_type": 23876,
+   "sprite": 111584,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    62,
+    88
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 92400047,
+   "nombre": "Black Flame Cultist",
+   "npc_type": 23876,
+   "sprite": 111584,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    45,
+    104
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 92400048,
+   "nombre": "Black Flame Cultist",
+   "npc_type": 23876,
+   "sprite": 111584,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    65,
+    93
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 92400049,
+   "nombre": "Black Flame Cultist",
+   "npc_type": 23876,
+   "sprite": 111584,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    43,
+    109
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 92400050,
+   "nombre": "Black Flame Cultist",
+   "npc_type": 23876,
+   "sprite": 111584,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    51,
+    85
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 92400051,
+   "nombre": "Black Flame Cultist",
+   "npc_type": 23876,
+   "sprite": 111584,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    67,
+    84
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 92400052,
+   "nombre": "Black Flame Cultist",
+   "npc_type": 23876,
+   "sprite": 111584,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    56,
+    83
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 92400053,
+   "nombre": "Black Flame Cultist",
+   "npc_type": 23876,
+   "sprite": 111584,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    61,
+    83
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 92400054,
+   "nombre": "Black Flame Cultist",
+   "npc_type": 23876,
+   "sprite": 111584,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    40,
+    98
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 92400055,
+   "nombre": "Black Flame Cultist",
+   "npc_type": 23876,
+   "sprite": 111584,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    43,
+    81
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 92400056,
+   "nombre": "Black Flame Cultist",
+   "npc_type": 23876,
+   "sprite": 111584,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    40,
+    103
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 92400057,
+   "nombre": "Black Flame Cultist",
+   "npc_type": 23876,
+   "sprite": 111584,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    48,
+    80
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 92400058,
+   "nombre": "Black Flame Cultist",
+   "npc_type": 23876,
+   "sprite": 111584,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    70,
+    89
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 92400059,
+   "nombre": "Black Flame Cultist",
+   "npc_type": 23876,
+   "sprite": 111584,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    70,
+    94
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 92400060,
+   "nombre": "Black Flame Cultist",
+   "npc_type": 23876,
+   "sprite": 111584,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    53,
+    78
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 92400061,
+   "nombre": "Black Flame Cultist",
+   "npc_type": 23876,
+   "sprite": 111584,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    58,
+    78
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 92400062,
+   "nombre": "Black Flame Cultist",
+   "npc_type": 23876,
+   "sprite": 111584,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    63,
+    78
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 92400063,
+   "nombre": "Black Flame Cultist",
+   "npc_type": 23876,
+   "sprite": 111584,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    38,
+    76
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 92400064,
+   "nombre": "Black Flame Cultist",
+   "npc_type": 23876,
+   "sprite": 111584,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    38,
+    108
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 92400065,
+   "nombre": "Black Flame Cultist",
+   "npc_type": 23876,
+   "sprite": 111584,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    43,
+    76
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 92400066,
+   "nombre": "Black Flame Cultist",
+   "npc_type": 23876,
+   "sprite": 111584,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    48,
+    75
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 92400067,
+   "nombre": "Black Flame Cultist",
+   "npc_type": 23876,
+   "sprite": 111584,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    72,
+    83
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 92400068,
+   "nombre": "Black Flame Cultist",
+   "npc_type": 23876,
+   "sprite": 111584,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    35,
+    102
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 92400069,
+   "nombre": "Black Flame Cultist",
+   "npc_type": 23876,
+   "sprite": 111584,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    75,
+    88
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 92400070,
+   "nombre": "Bone Wanderer",
+   "npc_type": 23871,
+   "sprite": 111595,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    265,
+    20
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 410
+  },
+  {
+   "entity_id": 92400071,
+   "nombre": "Bone Wanderer",
+   "npc_type": 23871,
+   "sprite": 111595,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    260,
+    20
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 410
+  },
+  {
+   "entity_id": 92400072,
+   "nombre": "Bone Wanderer",
+   "npc_type": 23871,
+   "sprite": 111595,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    260,
+    25
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 410
+  },
+  {
+   "entity_id": 92400073,
+   "nombre": "Bone Wanderer",
+   "npc_type": 23871,
+   "sprite": 111595,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    265,
+    25
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 410
+  },
+  {
+   "entity_id": 92400074,
+   "nombre": "Bone Wanderer",
+   "npc_type": 23871,
+   "sprite": 111595,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    270,
+    16
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 410
+  },
+  {
+   "entity_id": 92400075,
+   "nombre": "Bone Wanderer",
+   "npc_type": 23871,
+   "sprite": 111595,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    270,
+    21
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 410
+  },
+  {
+   "entity_id": 92400076,
+   "nombre": "Bone Wanderer",
+   "npc_type": 23871,
+   "sprite": 111595,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    270,
+    26
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 410
+  },
+  {
+   "entity_id": 92400077,
+   "nombre": "Bone Wanderer",
+   "npc_type": 23871,
+   "sprite": 111595,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    275,
+    13
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 410
+  },
+  {
+   "entity_id": 92400078,
+   "nombre": "Bone Wanderer",
+   "npc_type": 23871,
+   "sprite": 111595,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    275,
+    18
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 410
+  },
+  {
+   "entity_id": 92400079,
+   "nombre": "Bone Wanderer",
+   "npc_type": 23871,
+   "sprite": 111595,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    275,
+    23
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 410
+  },
+  {
+   "entity_id": 92400080,
+   "nombre": "Bone Wanderer",
+   "npc_type": 23871,
+   "sprite": 111595,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    275,
+    28
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 410
+  },
+  {
+   "entity_id": 92400081,
+   "nombre": "Bone Wanderer",
+   "npc_type": 23871,
+   "sprite": 111595,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    258,
+    30
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 410
+  },
+  {
+   "entity_id": 92400082,
+   "nombre": "Bone Wanderer",
+   "npc_type": 23871,
+   "sprite": 111595,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    263,
+    30
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 410
+  },
+  {
+   "entity_id": 92400083,
+   "nombre": "Bone Wanderer",
+   "npc_type": 23871,
+   "sprite": 111595,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    268,
+    31
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 410
+  },
+  {
+   "entity_id": 92400084,
+   "nombre": "Bone Wanderer",
+   "npc_type": 23871,
+   "sprite": 111595,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    280,
+    10
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 410
+  },
+  {
+   "entity_id": 92400085,
+   "nombre": "Bone Wanderer",
+   "npc_type": 23871,
+   "sprite": 111595,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    280,
+    15
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 410
+  },
+  {
+   "entity_id": 92400086,
+   "nombre": "Bone Wanderer",
+   "npc_type": 23871,
+   "sprite": 111595,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    280,
+    28
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 410
+  },
+  {
+   "entity_id": 92400087,
+   "nombre": "Bone Wanderer",
+   "npc_type": 23871,
+   "sprite": 111595,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    273,
+    33
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 410
+  },
+  {
+   "entity_id": 92400088,
+   "nombre": "Bone Wanderer",
+   "npc_type": 23871,
+   "sprite": 111595,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    278,
+    33
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 410
+  },
+  {
+   "entity_id": 92400089,
+   "nombre": "Bone Wanderer",
+   "npc_type": 23871,
+   "sprite": 111595,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    255,
+    17
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 410
+  },
+  {
+   "entity_id": 92400090,
+   "nombre": "Bone Wanderer",
+   "npc_type": 23871,
+   "sprite": 111595,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    283,
+    33
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 410
+  },
+  {
+   "entity_id": 92400091,
+   "nombre": "Bone Wanderer",
+   "npc_type": 23871,
+   "sprite": 111595,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    255,
+    22
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 410
+  },
+  {
+   "entity_id": 92400092,
+   "nombre": "Bone Wanderer",
+   "npc_type": 23871,
+   "sprite": 111595,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    267,
+    36
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 410
+  },
+  {
+   "entity_id": 92400093,
+   "nombre": "Bone Wanderer",
+   "npc_type": 23871,
+   "sprite": 111595,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    285,
+    7
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 410
+  },
+  {
+   "entity_id": 92400094,
+   "nombre": "Bone Wanderer",
+   "npc_type": 23871,
+   "sprite": 111595,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    285,
+    12
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 410
+  },
+  {
+   "entity_id": 92400095,
+   "nombre": "Bone Wanderer",
+   "npc_type": 23871,
+   "sprite": 111595,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    272,
+    38
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 410
+  },
+  {
+   "entity_id": 92400096,
+   "nombre": "Bone Wanderer",
+   "npc_type": 23871,
+   "sprite": 111595,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    277,
+    38
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 410
+  },
+  {
+   "entity_id": 92400097,
+   "nombre": "Bone Wanderer",
+   "npc_type": 23871,
+   "sprite": 111595,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    282,
+    38
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 410
+  },
+  {
+   "entity_id": 92400098,
+   "nombre": "Bone Wanderer",
+   "npc_type": 23871,
+   "sprite": 111595,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    290,
+    5
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 410
+  },
+  {
+   "entity_id": 92400099,
+   "nombre": "Bone Wanderer",
+   "npc_type": 23871,
+   "sprite": 111595,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    290,
+    10
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 410
+  },
+  {
+   "entity_id": 92400100,
+   "nombre": "Bone Wanderer",
+   "npc_type": 23871,
+   "sprite": 111595,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    265,
+    41
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 410
+  },
+  {
+   "entity_id": 92400101,
+   "nombre": "Bone Wanderer",
+   "npc_type": 23871,
+   "sprite": 111595,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    253,
+    27
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 410
+  },
+  {
+   "entity_id": 92400102,
+   "nombre": "Bone Wanderer",
+   "npc_type": 23871,
+   "sprite": 111595,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    270,
+    43
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 410
+  },
+  {
+   "entity_id": 92400103,
+   "nombre": "Bone Wanderer",
+   "npc_type": 23871,
+   "sprite": 111595,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    275,
+    43
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 410
+  },
+  {
+   "entity_id": 92400104,
+   "nombre": "Bone Wanderer",
+   "npc_type": 23871,
+   "sprite": 111595,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    280,
+    43
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 410
+  },
+  {
+   "entity_id": 92400105,
+   "nombre": "Bone Disciple",
+   "npc_type": 23872,
+   "sprite": 111596,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    234,
+    58
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 411
+  },
+  {
+   "entity_id": 92400106,
+   "nombre": "Bone Disciple",
+   "npc_type": 23872,
+   "sprite": 111596,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    229,
+    58
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 411
+  },
+  {
+   "entity_id": 92400107,
+   "nombre": "Bone Disciple",
+   "npc_type": 23872,
+   "sprite": 111596,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    229,
+    63
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 411
+  },
+  {
+   "entity_id": 92400108,
+   "nombre": "Bone Disciple",
+   "npc_type": 23872,
+   "sprite": 111596,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    234,
+    63
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 411
+  },
+  {
+   "entity_id": 92400109,
+   "nombre": "Bone Disciple",
+   "npc_type": 23872,
+   "sprite": 111596,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    236,
+    53
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 411
+  },
+  {
+   "entity_id": 92400110,
+   "nombre": "Bone Disciple",
+   "npc_type": 23872,
+   "sprite": 111596,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    239,
+    58
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 411
+  },
+  {
+   "entity_id": 92400111,
+   "nombre": "Bone Disciple",
+   "npc_type": 23872,
+   "sprite": 111596,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    239,
+    63
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 411
+  },
+  {
+   "entity_id": 92400112,
+   "nombre": "Bone Disciple",
+   "npc_type": 23872,
+   "sprite": 111596,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    241,
+    53
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 411
+  },
+  {
+   "entity_id": 92400113,
+   "nombre": "Bone Disciple",
+   "npc_type": 23872,
+   "sprite": 111596,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    226,
+    68
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 411
+  },
+  {
+   "entity_id": 92400114,
+   "nombre": "Bone Disciple",
+   "npc_type": 23872,
+   "sprite": 111596,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    244,
+    58
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 411
+  },
+  {
+   "entity_id": 92400115,
+   "nombre": "Bone Disciple",
+   "npc_type": 23872,
+   "sprite": 111596,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    244,
+    63
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 411
+  },
+  {
+   "entity_id": 92400116,
+   "nombre": "Bone Disciple",
+   "npc_type": 23872,
+   "sprite": 111596,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    229,
+    49
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 411
+  },
+  {
+   "entity_id": 92400117,
+   "nombre": "Bone Disciple",
+   "npc_type": 23872,
+   "sprite": 111596,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    246,
+    49
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 411
+  },
+  {
+   "entity_id": 92400118,
+   "nombre": "Bone Disciple",
+   "npc_type": 23872,
+   "sprite": 111596,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    234,
+    48
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 411
+  },
+  {
+   "entity_id": 92400119,
+   "nombre": "Bone Disciple",
+   "npc_type": 23872,
+   "sprite": 111596,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    239,
+    48
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 411
+  },
+  {
+   "entity_id": 92400120,
+   "nombre": "Bone Disciple",
+   "npc_type": 23872,
+   "sprite": 111596,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    249,
+    54
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 411
+  },
+  {
+   "entity_id": 92400121,
+   "nombre": "Bone Disciple",
+   "npc_type": 23872,
+   "sprite": 111596,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    249,
+    59
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 411
+  },
+  {
+   "entity_id": 92400122,
+   "nombre": "Bone Disciple",
+   "npc_type": 23872,
+   "sprite": 111596,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    251,
+    47
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 411
+  },
+  {
+   "entity_id": 92400123,
+   "nombre": "Bone Disciple",
+   "npc_type": 23872,
+   "sprite": 111596,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    224,
+    46
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 411
+  },
+  {
+   "entity_id": 92400124,
+   "nombre": "Bone Disciple",
+   "npc_type": 23872,
+   "sprite": 111596,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    224,
+    57
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 411
+  },
+  {
+   "entity_id": 92400125,
+   "nombre": "Bone Disciple",
+   "npc_type": 23872,
+   "sprite": 111596,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    224,
+    62
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 411
+  },
+  {
+   "entity_id": 92400126,
+   "nombre": "Bone Disciple",
+   "npc_type": 23872,
+   "sprite": 111596,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    254,
+    52
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 411
+  },
+  {
+   "entity_id": 92400127,
+   "nombre": "Bone Disciple",
+   "npc_type": 23872,
+   "sprite": 111596,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    254,
+    57
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 411
+  },
+  {
+   "entity_id": 92400128,
+   "nombre": "Bone Disciple",
+   "npc_type": 23872,
+   "sprite": 111596,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    229,
+    44
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 411
+  },
+  {
+   "entity_id": 92400129,
+   "nombre": "Bone Disciple",
+   "npc_type": 23872,
+   "sprite": 111596,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    244,
+    44
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 411
+  },
+  {
+   "entity_id": 92400130,
+   "nombre": "Bone Disciple",
+   "npc_type": 23872,
+   "sprite": 111596,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    256,
+    45
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 411
+  },
+  {
+   "entity_id": 92400131,
+   "nombre": "Bone Disciple",
+   "npc_type": 23872,
+   "sprite": 111596,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    256,
+    77
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 411
+  },
+  {
+   "entity_id": 92400132,
+   "nombre": "Bone Disciple",
+   "npc_type": 23872,
+   "sprite": 111596,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    222,
+    79
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 411
+  },
+  {
+   "entity_id": 92400133,
+   "nombre": "Bone Disciple",
+   "npc_type": 23872,
+   "sprite": 111596,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    234,
+    43
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 411
+  },
+  {
+   "entity_id": 92400134,
+   "nombre": "Bone Disciple",
+   "npc_type": 23872,
+   "sprite": 111596,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    239,
+    43
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 411
+  },
+  {
+   "entity_id": 92400135,
+   "nombre": "Bone Disciple",
+   "npc_type": 23872,
+   "sprite": 111596,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    259,
+    50
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 411
+  },
+  {
+   "entity_id": 92400136,
+   "nombre": "Bone Disciple",
+   "npc_type": 23872,
+   "sprite": 111596,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    259,
+    55
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 411
+  },
+  {
+   "entity_id": 92400137,
+   "nombre": "Bone Disciple",
+   "npc_type": 23872,
+   "sprite": 111596,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    221,
+    41
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 411
+  },
+  {
+   "entity_id": 92400138,
+   "nombre": "Bone Disciple",
+   "npc_type": 23872,
+   "sprite": 111596,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    221,
+    67
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 411
+  },
+  {
+   "entity_id": 92400139,
+   "nombre": "Bone Disciple",
+   "npc_type": 23872,
+   "sprite": 111596,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    227,
+    81
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 411
+  },
+  {
+   "entity_id": 92400140,
+   "nombre": "Green Lava Baby",
+   "npc_type": 23873,
+   "sprite": 111598,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    275,
+    58
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 413
+  },
+  {
+   "entity_id": 92400141,
+   "nombre": "Green Lava Baby",
+   "npc_type": 23873,
+   "sprite": 111598,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    275,
+    63
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 413
+  },
+  {
+   "entity_id": 92400142,
+   "nombre": "Green Lava Baby",
+   "npc_type": 23873,
+   "sprite": 111598,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    277,
+    53
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 413
+  },
+  {
+   "entity_id": 92400143,
+   "nombre": "Green Lava Baby",
+   "npc_type": 23873,
+   "sprite": 111598,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    280,
+    58
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 413
+  },
+  {
+   "entity_id": 92400144,
+   "nombre": "Green Lava Baby",
+   "npc_type": 23873,
+   "sprite": 111598,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    280,
+    63
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 413
+  },
+  {
+   "entity_id": 92400145,
+   "nombre": "Green Lava Baby",
+   "npc_type": 23873,
+   "sprite": 111598,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    282,
+    53
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 413
+  },
+  {
+   "entity_id": 92400146,
+   "nombre": "Green Lava Baby",
+   "npc_type": 23873,
+   "sprite": 111598,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    285,
+    58
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 413
+  },
+  {
+   "entity_id": 92400147,
+   "nombre": "Green Lava Baby",
+   "npc_type": 23873,
+   "sprite": 111598,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    285,
+    63
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 413
+  },
+  {
+   "entity_id": 92400148,
+   "nombre": "Green Lava Baby",
+   "npc_type": 23873,
+   "sprite": 111598,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    268,
+    49
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 413
+  },
+  {
+   "entity_id": 92400149,
+   "nombre": "Green Lava Baby",
+   "npc_type": 23873,
+   "sprite": 111598,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    270,
+    67
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 413
+  },
+  {
+   "entity_id": 92400150,
+   "nombre": "Green Lava Baby",
+   "npc_type": 23873,
+   "sprite": 111598,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    273,
+    48
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 413
+  },
+  {
+   "entity_id": 92400151,
+   "nombre": "Green Lava Baby",
+   "npc_type": 23873,
+   "sprite": 111598,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    278,
+    48
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 413
+  },
+  {
+   "entity_id": 92400152,
+   "nombre": "Green Lava Baby",
+   "npc_type": 23873,
+   "sprite": 111598,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    283,
+    48
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 413
+  },
+  {
+   "entity_id": 92400153,
+   "nombre": "Green Lava Baby",
+   "npc_type": 23873,
+   "sprite": 111598,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    287,
+    53
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 413
+  },
+  {
+   "entity_id": 92400154,
+   "nombre": "Green Lava Baby",
+   "npc_type": 23873,
+   "sprite": 111598,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    288,
+    48
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 413
+  },
+  {
+   "entity_id": 92400155,
+   "nombre": "Green Lava Baby",
+   "npc_type": 23873,
+   "sprite": 111598,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    275,
+    68
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 413
+  },
+  {
+   "entity_id": 92400156,
+   "nombre": "Green Lava Baby",
+   "npc_type": 23873,
+   "sprite": 111598,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    280,
+    68
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 413
+  },
+  {
+   "entity_id": 92400157,
+   "nombre": "Green Lava Baby",
+   "npc_type": 23873,
+   "sprite": 111598,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    285,
+    68
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 413
+  },
+  {
+   "entity_id": 92400158,
+   "nombre": "Green Lava Baby",
+   "npc_type": 23873,
+   "sprite": 111598,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    290,
+    58
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 413
+  },
+  {
+   "entity_id": 92400159,
+   "nombre": "Green Lava Baby",
+   "npc_type": 23873,
+   "sprite": 111598,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    290,
+    63
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 413
+  },
+  {
+   "entity_id": 92400160,
+   "nombre": "Green Lava Baby",
+   "npc_type": 23873,
+   "sprite": 111598,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    292,
+    53
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 413
+  },
+  {
+   "entity_id": 92400161,
+   "nombre": "Green Lava Baby",
+   "npc_type": 23873,
+   "sprite": 111598,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    290,
+    68
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 413
+  },
+  {
+   "entity_id": 92400162,
+   "nombre": "Green Lava Baby",
+   "npc_type": 23873,
+   "sprite": 111598,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    295,
+    65
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 413
+  },
+  {
+   "entity_id": 92400163,
+   "nombre": "Green Lava Baby",
+   "npc_type": 23873,
+   "sprite": 111598,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    265,
+    71
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 413
+  },
+  {
+   "entity_id": 92400164,
+   "nombre": "Green Lava Baby",
+   "npc_type": 23873,
+   "sprite": 111598,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    270,
+    72
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 413
+  },
+  {
+   "entity_id": 92400165,
+   "nombre": "Green Lava Baby",
+   "npc_type": 23873,
+   "sprite": 111598,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    275,
+    73
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 413
+  },
+  {
+   "entity_id": 92400166,
+   "nombre": "Green Lava Baby",
+   "npc_type": 23873,
+   "sprite": 111598,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    280,
+    73
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 413
+  },
+  {
+   "entity_id": 92400167,
+   "nombre": "Green Lava Baby",
+   "npc_type": 23873,
+   "sprite": 111598,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    285,
+    73
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 413
+  },
+  {
+   "entity_id": 92400168,
+   "nombre": "Green Lava Baby",
+   "npc_type": 23873,
+   "sprite": 111598,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    261,
+    76
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 413
+  },
+  {
+   "entity_id": 92400169,
+   "nombre": "Green Lava Baby",
+   "npc_type": 23873,
+   "sprite": 111598,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    266,
+    77
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 413
+  },
+  {
+   "entity_id": 92400170,
+   "nombre": "Green Lava Baby",
+   "npc_type": 23873,
+   "sprite": 111598,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    271,
+    78
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 413
+  },
+  {
+   "entity_id": 92400171,
+   "nombre": "Green Lava Baby",
+   "npc_type": 23873,
+   "sprite": 111598,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    261,
+    81
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 413
+  },
+  {
+   "entity_id": 92400172,
+   "nombre": "Green Lava Baby",
+   "npc_type": 23873,
+   "sprite": 111598,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    256,
+    82
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 413
+  },
+  {
+   "entity_id": 92400173,
+   "nombre": "Green Lava Baby",
+   "npc_type": 23873,
+   "sprite": 111598,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    266,
+    82
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 413
+  },
+  {
+   "entity_id": 92400174,
+   "nombre": "Green Lava Baby",
+   "npc_type": 23873,
+   "sprite": 111598,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    251,
+    82
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 413
+  },
+  {
+   "entity_id": 92400175,
+   "nombre": "Molten Egg",
+   "npc_type": 23874,
+   "sprite": 111599,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    256,
+    127
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 92400176,
+   "nombre": "Molten Egg",
+   "npc_type": 23874,
+   "sprite": 111599,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    261,
+    125
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 92400177,
+   "nombre": "Molten Egg",
+   "npc_type": 23874,
+   "sprite": 111599,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    261,
+    130
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 92400178,
+   "nombre": "Molten Egg",
+   "npc_type": 23874,
+   "sprite": 111599,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    251,
+    130
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 92400179,
+   "nombre": "Molten Egg",
+   "npc_type": 23874,
+   "sprite": 111599,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    256,
+    132
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 92400180,
+   "nombre": "Molten Egg",
+   "npc_type": 23874,
+   "sprite": 111599,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    266,
+    123
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 92400181,
+   "nombre": "Molten Egg",
+   "npc_type": 23874,
+   "sprite": 111599,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    266,
+    128
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 92400182,
+   "nombre": "Molten Egg",
+   "npc_type": 23874,
+   "sprite": 111599,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    251,
+    135
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 92400183,
+   "nombre": "Molten Egg",
+   "npc_type": 23874,
+   "sprite": 111599,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    268,
+    118
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 92400184,
+   "nombre": "Molten Egg",
+   "npc_type": 23874,
+   "sprite": 111599,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    262,
+    115
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 92400185,
+   "nombre": "Molten Egg",
+   "npc_type": 23874,
+   "sprite": 111599,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    271,
+    123
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 92400186,
+   "nombre": "Molten Egg",
+   "npc_type": 23874,
+   "sprite": 111599,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    271,
+    128
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 92400187,
+   "nombre": "Molten Egg",
+   "npc_type": 23874,
+   "sprite": 111599,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    271,
+    133
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 92400188,
+   "nombre": "Molten Egg",
+   "npc_type": 23874,
+   "sprite": 111599,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    273,
+    115
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 92400189,
+   "nombre": "Molten Egg",
+   "npc_type": 23874,
+   "sprite": 111599,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    248,
+    140
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 92400190,
+   "nombre": "Molten Egg",
+   "npc_type": 23874,
+   "sprite": 111599,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    272,
+    140
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 92400191,
+   "nombre": "Molten Egg",
+   "npc_type": 23874,
+   "sprite": 111599,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    276,
+    120
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 92400192,
+   "nombre": "Molten Egg",
+   "npc_type": 23874,
+   "sprite": 111599,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    276,
+    125
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 92400193,
+   "nombre": "Molten Egg",
+   "npc_type": 23874,
+   "sprite": 111599,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    276,
+    130
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 92400194,
+   "nombre": "Molten Egg",
+   "npc_type": 23874,
+   "sprite": 111599,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    276,
+    135
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 92400195,
+   "nombre": "Molten Egg",
+   "npc_type": 23874,
+   "sprite": 111599,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    277,
+    140
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 92400196,
+   "nombre": "Molten Egg",
+   "npc_type": 23874,
+   "sprite": 111599,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    267,
+    143
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 92400197,
+   "nombre": "Molten Egg",
+   "npc_type": 23874,
+   "sprite": 111599,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    278,
+    115
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 92400198,
+   "nombre": "Molten Egg",
+   "npc_type": 23874,
+   "sprite": 111599,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    267,
+    113
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 92400199,
+   "nombre": "Molten Egg",
+   "npc_type": 23874,
+   "sprite": 111599,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    272,
+    145
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 92400200,
+   "nombre": "Molten Egg",
+   "npc_type": 23874,
+   "sprite": 111599,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    281,
+    120
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 92400201,
+   "nombre": "Molten Egg",
+   "npc_type": 23874,
+   "sprite": 111599,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    281,
+    129
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 92400202,
+   "nombre": "Molten Egg",
+   "npc_type": 23874,
+   "sprite": 111599,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    281,
+    134
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 92400203,
+   "nombre": "Molten Egg",
+   "npc_type": 23874,
+   "sprite": 111599,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    277,
+    145
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 92400204,
+   "nombre": "Molten Egg",
+   "npc_type": 23874,
+   "sprite": 111599,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    282,
+    139
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 92400205,
+   "nombre": "Molten Egg",
+   "npc_type": 23874,
+   "sprite": 111599,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    282,
+    144
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 92400206,
+   "nombre": "Molten Egg",
+   "npc_type": 23874,
+   "sprite": 111599,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    262,
+    146
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 92400207,
+   "nombre": "Molten Egg",
+   "npc_type": 23874,
+   "sprite": 111599,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    283,
+    114
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 92400208,
+   "nombre": "Molten Egg",
+   "npc_type": 23874,
+   "sprite": 111599,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    267,
+    148
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 92400209,
+   "nombre": "Molten Egg",
+   "npc_type": 23874,
+   "sprite": 111599,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    256,
+    111
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 92400210,
+   "nombre": "Elite-Molten Egg",
+   "npc_type": 23877,
+   "sprite": 111599,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    170,
+    127
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 92400211,
+   "nombre": "Elite-Molten Egg",
+   "npc_type": 23877,
+   "sprite": 111599,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    165,
+    122
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 92400212,
+   "nombre": "Elite-Molten Egg",
+   "npc_type": 23877,
+   "sprite": 111599,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    165,
+    127
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 92400213,
+   "nombre": "Elite-Molten Egg",
+   "npc_type": 23877,
+   "sprite": 111599,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    165,
+    132
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 92400214,
+   "nombre": "Elite-Molten Egg",
+   "npc_type": 23877,
+   "sprite": 111599,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    170,
+    122
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 92400215,
+   "nombre": "Elite-Black Flame Cultist",
+   "npc_type": 23878,
+   "sprite": 111584,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    136,
+    117
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 92400216,
+   "nombre": "Elite-Black Flame Cultist",
+   "npc_type": 23878,
+   "sprite": 111584,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    131,
+    112
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 92400217,
+   "nombre": "Elite-Black Flame Cultist",
+   "npc_type": 23878,
+   "sprite": 111584,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    131,
+    117
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 92400218,
+   "nombre": "Elite-Black Flame Cultist",
+   "npc_type": 23878,
+   "sprite": 111584,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    131,
+    122
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 92400219,
+   "nombre": "Elite-Black Flame Cultist",
+   "npc_type": 23878,
+   "sprite": 111584,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    136,
+    112
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 92400220,
+   "nombre": "Bone Haha Chieftain",
+   "npc_type": 23879,
+   "sprite": 111597,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    203,
+    13
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 425
+  },
+  {
+   "entity_id": 92400221,
+   "nombre": "Heresy Hunter Steelblade",
+   "npc_type": 23880,
+   "sprite": 111573,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    132,
+    90
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 425
+  },
+  {
+   "entity_id": 90424000,
+   "nombre": "Townsman Aziz",
+   "nombre_completo": "Townsman Aziz",
+   "npc_type": 24865,
+   "sprite": 40499,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    58,
+    23
+   ],
+   "direccion": 6,
+   "visible": 1,
+   "puesto_por": "npcs_del_cliente"
+  },
+  {
+   "entity_id": 90424001,
+   "nombre": "Salus",
+   "nombre_completo": "Salus",
+   "npc_type": 24871,
+   "sprite": 40183,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    246,
+    142
+   ],
+   "direccion": 6,
+   "visible": 1,
+   "puesto_por": "npcs_del_cliente"
+  },
+  {
+   "entity_id": 90424002,
+   "nombre": "Pavel",
+   "nombre_completo": "Pavel",
+   "npc_type": 24883,
+   "sprite": 40708,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    93,
+    68
+   ],
+   "direccion": 6,
+   "visible": 1,
+   "puesto_por": "npcs_del_cliente"
+  }
+ ],
+ "recursos": [
+  {
+   "entity_id": 102400000,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    1503,
+    3632
+   ],
+   "tile": [
+    46,
+    113
+   ],
+   "crudo": "00801a0600000000df050000300e00000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102400001,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    3149,
+    4848
+   ],
+   "tile": [
+    98,
+    151
+   ],
+   "crudo": "01801a06000000004d0c0000f01200000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102400002,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    6982,
+    4656
+   ],
+   "tile": [
+    218,
+    145
+   ],
+   "crudo": "02801a0600000000461b0000301200000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  }
+ ]
+}

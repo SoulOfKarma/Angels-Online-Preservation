@@ -63,21 +63,6 @@
    "nivel": 400
   },
   {
-   "entity_id": 86000004,
-   "nombre": "Wind Elf",
-   "npc_type": 1,
-   "sprite": 42055,
-   "klass": 1,
-   "monstruo": true,
-   "tile": [
-    290,
-    5
-   ],
-   "direccion": 2,
-   "visible": 0,
-   "nivel": 4
-  },
-  {
    "entity_id": 86000005,
    "nombre": "Goldcrown",
    "npc_type": 22500,
@@ -2268,38 +2253,6 @@
    "nivel": 395
   },
   {
-   "entity_id": 86000151,
-   "nombre": "Wind Elf",
-   "npc_type": 1,
-   "sprite": 42055,
-   "klass": 1,
-   "monstruo": true,
-   "tile": [
-    131,
-    87
-   ],
-   "direccion": 2,
-   "visible": 0,
-   "nivel": 4,
-   "apagado": true
-  },
-  {
-   "entity_id": 86000152,
-   "nombre": "Fire Elf",
-   "npc_type": 2,
-   "sprite": 42056,
-   "klass": 1,
-   "monstruo": true,
-   "tile": [
-    164,
-    60
-   ],
-   "direccion": 2,
-   "visible": 0,
-   "nivel": 7,
-   "apagado": true
-  },
-  {
    "entity_id": 90360000,
    "nombre": "Servant Agnise",
    "nombre_completo": "Servant Agnise",
@@ -2346,6 +2299,38 @@
    "direccion": 6,
    "visible": 1,
    "puesto_por": "npcs_del_cliente"
+  },
+  {
+   "entity_id": 86000151,
+   "nombre": "Wind Elf",
+   "npc_type": 1,
+   "sprite": 42055,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    131,
+    87
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 4,
+   "apagado": true
+  },
+  {
+   "entity_id": 86000152,
+   "nombre": "Fire Elf",
+   "npc_type": 2,
+   "sprite": 42056,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    164,
+    60
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 7,
+   "apagado": true
   }
  ],
  "recursos": [

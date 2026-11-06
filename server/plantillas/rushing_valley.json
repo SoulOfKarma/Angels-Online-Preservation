@@ -1,0 +1,3523 @@
+{
+ "_nota": "rushing_valley (stage 423). POBLADO DESDE EL CLIENTE, no desde una captura: los generadores de monstruos son objetos del propio map423.mpc -- el monstruo en el u16 del +34, la zona en el +21, el tiempo en el +38 y cuantos en el +42. Eso da el censo COMPLETO del mapa, que una captura no puede dar porque solo trae lo que estuvo a la vista. El entity_id es fabricado y estable, no el del servidor. Las casillas son las del TAG de cada generador; los que no declaran TAG ponen sus monstruos en la casilla del generador y en un anillo de radio 3 a su alrededor, que es la dispersion MEDIDA en el stage 73. Los objetos de mapa son los del .mpc cuyo id esta en la lista de los que el servidor manda de verdad, con el cuerpo del 0x000E copiado de una captura del mismo objeto. Los tornados se dibujan aparte, desde portales.json. Ver tools/poblar_del_cliente.py.",
+ "stage": 423,
+ "spawns": [
+  {
+   "entity_id": 92300000,
+   "nombre": "Sandtail Lizard",
+   "npc_type": 23861,
+   "sprite": 111587,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    265,
+    19
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400
+  },
+  {
+   "entity_id": 92300001,
+   "nombre": "Sandtail Lizard",
+   "npc_type": 23861,
+   "sprite": 111587,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    260,
+    19
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400
+  },
+  {
+   "entity_id": 92300002,
+   "nombre": "Sandtail Lizard",
+   "npc_type": 23861,
+   "sprite": 111587,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    260,
+    24
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400
+  },
+  {
+   "entity_id": 92300003,
+   "nombre": "Sandtail Lizard",
+   "npc_type": 23861,
+   "sprite": 111587,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    265,
+    24
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400
+  },
+  {
+   "entity_id": 92300004,
+   "nombre": "Sandtail Lizard",
+   "npc_type": 23861,
+   "sprite": 111587,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    270,
+    19
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400
+  },
+  {
+   "entity_id": 92300005,
+   "nombre": "Sandtail Lizard",
+   "npc_type": 23861,
+   "sprite": 111587,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    270,
+    24
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400
+  },
+  {
+   "entity_id": 92300006,
+   "nombre": "Sandtail Lizard",
+   "npc_type": 23861,
+   "sprite": 111587,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    265,
+    29
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400
+  },
+  {
+   "entity_id": 92300007,
+   "nombre": "Sandtail Lizard",
+   "npc_type": 23861,
+   "sprite": 111587,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    270,
+    29
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400
+  },
+  {
+   "entity_id": 92300008,
+   "nombre": "Sandtail Lizard",
+   "npc_type": 23861,
+   "sprite": 111587,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    275,
+    16
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400
+  },
+  {
+   "entity_id": 92300009,
+   "nombre": "Sandtail Lizard",
+   "npc_type": 23861,
+   "sprite": 111587,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    275,
+    21
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400
+  },
+  {
+   "entity_id": 92300010,
+   "nombre": "Sandtail Lizard",
+   "npc_type": 23861,
+   "sprite": 111587,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    255,
+    17
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400
+  },
+  {
+   "entity_id": 92300011,
+   "nombre": "Sandtail Lizard",
+   "npc_type": 23861,
+   "sprite": 111587,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    255,
+    22
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400
+  },
+  {
+   "entity_id": 92300012,
+   "nombre": "Sandtail Lizard",
+   "npc_type": 23861,
+   "sprite": 111587,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    279,
+    11
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400
+  },
+  {
+   "entity_id": 92300013,
+   "nombre": "Sandtail Lizard",
+   "npc_type": 23861,
+   "sprite": 111587,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    280,
+    16
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400
+  },
+  {
+   "entity_id": 92300014,
+   "nombre": "Sandtail Lizard",
+   "npc_type": 23861,
+   "sprite": 111587,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    280,
+    21
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400
+  },
+  {
+   "entity_id": 92300015,
+   "nombre": "Sandtail Lizard",
+   "npc_type": 23861,
+   "sprite": 111587,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    265,
+    34
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400
+  },
+  {
+   "entity_id": 92300016,
+   "nombre": "Sandtail Lizard",
+   "npc_type": 23861,
+   "sprite": 111587,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    270,
+    34
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400
+  },
+  {
+   "entity_id": 92300017,
+   "nombre": "Sandtail Lizard",
+   "npc_type": 23861,
+   "sprite": 111587,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    275,
+    34
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400
+  },
+  {
+   "entity_id": 92300018,
+   "nombre": "Sandtail Lizard",
+   "npc_type": 23861,
+   "sprite": 111587,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    254,
+    35
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400
+  },
+  {
+   "entity_id": 92300019,
+   "nombre": "Sandtail Lizard",
+   "npc_type": 23861,
+   "sprite": 111587,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    252,
+    27
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400
+  },
+  {
+   "entity_id": 92300020,
+   "nombre": "Sandtail Lizard",
+   "npc_type": 23861,
+   "sprite": 111587,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    259,
+    37
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400
+  },
+  {
+   "entity_id": 92300021,
+   "nombre": "Sandtail Lizard",
+   "npc_type": 23861,
+   "sprite": 111587,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    284,
+    7
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400
+  },
+  {
+   "entity_id": 92300022,
+   "nombre": "Sandtail Lizard",
+   "npc_type": 23861,
+   "sprite": 111587,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    285,
+    12
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400
+  },
+  {
+   "entity_id": 92300023,
+   "nombre": "Sandtail Lizard",
+   "npc_type": 23861,
+   "sprite": 111587,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    285,
+    17
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400
+  },
+  {
+   "entity_id": 92300024,
+   "nombre": "Sandtail Lizard",
+   "npc_type": 23861,
+   "sprite": 111587,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    264,
+    39
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400
+  },
+  {
+   "entity_id": 92300025,
+   "nombre": "Sandtail Lizard",
+   "npc_type": 23861,
+   "sprite": 111587,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    269,
+    39
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400
+  },
+  {
+   "entity_id": 92300026,
+   "nombre": "Sandtail Lizard",
+   "npc_type": 23861,
+   "sprite": 111587,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    274,
+    39
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400
+  },
+  {
+   "entity_id": 92300027,
+   "nombre": "Sandtail Lizard",
+   "npc_type": 23861,
+   "sprite": 111587,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    252,
+    40
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400
+  },
+  {
+   "entity_id": 92300028,
+   "nombre": "Sandtail Lizard",
+   "npc_type": 23861,
+   "sprite": 111587,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    279,
+    41
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400
+  },
+  {
+   "entity_id": 92300029,
+   "nombre": "Sandtail Lizard",
+   "npc_type": 23861,
+   "sprite": 111587,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    250,
+    18
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400
+  },
+  {
+   "entity_id": 92300030,
+   "nombre": "Sandtail Lizard",
+   "npc_type": 23861,
+   "sprite": 111587,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    257,
+    42
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400
+  },
+  {
+   "entity_id": 92300031,
+   "nombre": "Sandtail Lizard",
+   "npc_type": 23861,
+   "sprite": 111587,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    289,
+    6
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400
+  },
+  {
+   "entity_id": 92300032,
+   "nombre": "Sandtail Lizard",
+   "npc_type": 23861,
+   "sprite": 111587,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    262,
+    44
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400
+  },
+  {
+   "entity_id": 92300033,
+   "nombre": "Sandtail Lizard",
+   "npc_type": 23861,
+   "sprite": 111587,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    267,
+    44
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400
+  },
+  {
+   "entity_id": 92300034,
+   "nombre": "Sandtail Lizard",
+   "npc_type": 23861,
+   "sprite": 111587,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    272,
+    44
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400
+  },
+  {
+   "entity_id": 92300035,
+   "nombre": "Sakura Shadow Lizard",
+   "npc_type": 23862,
+   "sprite": 111588,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    240,
+    42
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 402
+  },
+  {
+   "entity_id": 92300036,
+   "nombre": "Sakura Shadow Lizard",
+   "npc_type": 23862,
+   "sprite": 111588,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    235,
+    37
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 402
+  },
+  {
+   "entity_id": 92300037,
+   "nombre": "Sakura Shadow Lizard",
+   "npc_type": 23862,
+   "sprite": 111588,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    240,
+    37
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 402
+  },
+  {
+   "entity_id": 92300038,
+   "nombre": "Sakura Shadow Lizard",
+   "npc_type": 23862,
+   "sprite": 111588,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    245,
+    37
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 402
+  },
+  {
+   "entity_id": 92300039,
+   "nombre": "Sakura Shadow Lizard",
+   "npc_type": 23862,
+   "sprite": 111588,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    245,
+    42
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 402
+  },
+  {
+   "entity_id": 92300040,
+   "nombre": "Sakura Shadow Lizard",
+   "npc_type": 23862,
+   "sprite": 111588,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    233,
+    32
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 402
+  },
+  {
+   "entity_id": 92300041,
+   "nombre": "Sakura Shadow Lizard",
+   "npc_type": 23862,
+   "sprite": 111588,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    238,
+    32
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 402
+  },
+  {
+   "entity_id": 92300042,
+   "nombre": "Sakura Shadow Lizard",
+   "npc_type": 23862,
+   "sprite": 111588,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    243,
+    32
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 402
+  },
+  {
+   "entity_id": 92300043,
+   "nombre": "Sakura Shadow Lizard",
+   "npc_type": 23862,
+   "sprite": 111588,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    231,
+    27
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 402
+  },
+  {
+   "entity_id": 92300044,
+   "nombre": "Sakura Shadow Lizard",
+   "npc_type": 23862,
+   "sprite": 111588,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    236,
+    27
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 402
+  },
+  {
+   "entity_id": 92300045,
+   "nombre": "Sakura Shadow Lizard",
+   "npc_type": 23862,
+   "sprite": 111588,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    241,
+    27
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 402
+  },
+  {
+   "entity_id": 92300046,
+   "nombre": "Sakura Shadow Lizard",
+   "npc_type": 23862,
+   "sprite": 111588,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    246,
+    27
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 402
+  },
+  {
+   "entity_id": 92300047,
+   "nombre": "Sakura Shadow Lizard",
+   "npc_type": 23862,
+   "sprite": 111588,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    224,
+    61
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 402
+  },
+  {
+   "entity_id": 92300048,
+   "nombre": "Sakura Shadow Lizard",
+   "npc_type": 23862,
+   "sprite": 111588,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    225,
+    23
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 402
+  },
+  {
+   "entity_id": 92300049,
+   "nombre": "Sakura Shadow Lizard",
+   "npc_type": 23862,
+   "sprite": 111588,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    230,
+    22
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 402
+  },
+  {
+   "entity_id": 92300050,
+   "nombre": "Sakura Shadow Lizard",
+   "npc_type": 23862,
+   "sprite": 111588,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    264,
+    49
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 402
+  },
+  {
+   "entity_id": 92300051,
+   "nombre": "Sakura Shadow Lizard",
+   "npc_type": 23862,
+   "sprite": 111588,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    264,
+    59
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 402
+  },
+  {
+   "entity_id": 92300052,
+   "nombre": "Sakura Shadow Lizard",
+   "npc_type": 23862,
+   "sprite": 111588,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    235,
+    22
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 402
+  },
+  {
+   "entity_id": 92300053,
+   "nombre": "Sakura Shadow Lizard",
+   "npc_type": 23862,
+   "sprite": 111588,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    240,
+    22
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 402
+  },
+  {
+   "entity_id": 92300054,
+   "nombre": "Sakura Shadow Lizard",
+   "npc_type": 23862,
+   "sprite": 111588,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    245,
+    22
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 402
+  },
+  {
+   "entity_id": 92300055,
+   "nombre": "Sakura Shadow Lizard",
+   "npc_type": 23862,
+   "sprite": 111588,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    267,
+    54
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 402
+  },
+  {
+   "entity_id": 92300056,
+   "nombre": "Sakura Shadow Lizard",
+   "npc_type": 23862,
+   "sprite": 111588,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    262,
+    64
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 402
+  },
+  {
+   "entity_id": 92300057,
+   "nombre": "Sakura Shadow Lizard",
+   "npc_type": 23862,
+   "sprite": 111588,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    267,
+    64
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 402
+  },
+  {
+   "entity_id": 92300058,
+   "nombre": "Sakura Shadow Lizard",
+   "npc_type": 23862,
+   "sprite": 111588,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    269,
+    49
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 402
+  },
+  {
+   "entity_id": 92300059,
+   "nombre": "Sakura Shadow Lizard",
+   "npc_type": 23862,
+   "sprite": 111588,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    269,
+    59
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 402
+  },
+  {
+   "entity_id": 92300060,
+   "nombre": "Sakura Shadow Lizard",
+   "npc_type": 23862,
+   "sprite": 111588,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    224,
+    18
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 402
+  },
+  {
+   "entity_id": 92300061,
+   "nombre": "Sakura Shadow Lizard",
+   "npc_type": 23862,
+   "sprite": 111588,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    224,
+    66
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 402
+  },
+  {
+   "entity_id": 92300062,
+   "nombre": "Sakura Shadow Lizard",
+   "npc_type": 23862,
+   "sprite": 111588,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    272,
+    54
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 402
+  },
+  {
+   "entity_id": 92300063,
+   "nombre": "Sakura Shadow Lizard",
+   "npc_type": 23862,
+   "sprite": 111588,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    272,
+    64
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 402
+  },
+  {
+   "entity_id": 92300064,
+   "nombre": "Sakura Shadow Lizard",
+   "npc_type": 23862,
+   "sprite": 111588,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    274,
+    49
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 402
+  },
+  {
+   "entity_id": 92300065,
+   "nombre": "Sakura Shadow Lizard",
+   "npc_type": 23862,
+   "sprite": 111588,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    274,
+    59
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 402
+  },
+  {
+   "entity_id": 92300066,
+   "nombre": "Sakura Shadow Lizard",
+   "npc_type": 23862,
+   "sprite": 111588,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    260,
+    69
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 402
+  },
+  {
+   "entity_id": 92300067,
+   "nombre": "Sakura Shadow Lizard",
+   "npc_type": 23862,
+   "sprite": 111588,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    265,
+    69
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 402
+  },
+  {
+   "entity_id": 92300068,
+   "nombre": "Sakura Shadow Lizard",
+   "npc_type": 23862,
+   "sprite": 111588,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    270,
+    69
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 402
+  },
+  {
+   "entity_id": 92300069,
+   "nombre": "Sakura Shadow Lizard",
+   "npc_type": 23862,
+   "sprite": 111588,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    277,
+    54
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 402
+  },
+  {
+   "entity_id": 92300070,
+   "nombre": "Wild Grass Demon",
+   "npc_type": 23863,
+   "sprite": 111589,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    165,
+    48
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 403
+  },
+  {
+   "entity_id": 92300071,
+   "nombre": "Wild Grass Demon",
+   "npc_type": 23863,
+   "sprite": 111589,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    160,
+    43
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 403
+  },
+  {
+   "entity_id": 92300072,
+   "nombre": "Wild Grass Demon",
+   "npc_type": 23863,
+   "sprite": 111589,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    160,
+    48
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 403
+  },
+  {
+   "entity_id": 92300073,
+   "nombre": "Wild Grass Demon",
+   "npc_type": 23863,
+   "sprite": 111589,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    165,
+    43
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 403
+  },
+  {
+   "entity_id": 92300074,
+   "nombre": "Wild Grass Demon",
+   "npc_type": 23863,
+   "sprite": 111589,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    170,
+    43
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 403
+  },
+  {
+   "entity_id": 92300075,
+   "nombre": "Wild Grass Demon",
+   "npc_type": 23863,
+   "sprite": 111589,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    170,
+    48
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 403
+  },
+  {
+   "entity_id": 92300076,
+   "nombre": "Wild Grass Demon",
+   "npc_type": 23863,
+   "sprite": 111589,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    171,
+    53
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 403
+  },
+  {
+   "entity_id": 92300077,
+   "nombre": "Wild Grass Demon",
+   "npc_type": 23863,
+   "sprite": 111589,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    175,
+    39
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 403
+  },
+  {
+   "entity_id": 92300078,
+   "nombre": "Wild Grass Demon",
+   "npc_type": 23863,
+   "sprite": 111589,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    175,
+    44
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 403
+  },
+  {
+   "entity_id": 92300079,
+   "nombre": "Wild Grass Demon",
+   "npc_type": 23863,
+   "sprite": 111589,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    158,
+    38
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 403
+  },
+  {
+   "entity_id": 92300080,
+   "nombre": "Wild Grass Demon",
+   "npc_type": 23863,
+   "sprite": 111589,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    176,
+    49
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 403
+  },
+  {
+   "entity_id": 92300081,
+   "nombre": "Wild Grass Demon",
+   "npc_type": 23863,
+   "sprite": 111589,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    163,
+    38
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 403
+  },
+  {
+   "entity_id": 92300082,
+   "nombre": "Wild Grass Demon",
+   "npc_type": 23863,
+   "sprite": 111589,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    168,
+    38
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 403
+  },
+  {
+   "entity_id": 92300083,
+   "nombre": "Wild Grass Demon",
+   "npc_type": 23863,
+   "sprite": 111589,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    176,
+    54
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 403
+  },
+  {
+   "entity_id": 92300084,
+   "nombre": "Wild Grass Demon",
+   "npc_type": 23863,
+   "sprite": 111589,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    180,
+    35
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 403
+  },
+  {
+   "entity_id": 92300085,
+   "nombre": "Wild Grass Demon",
+   "npc_type": 23863,
+   "sprite": 111589,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    180,
+    40
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 403
+  },
+  {
+   "entity_id": 92300086,
+   "nombre": "Wild Grass Demon",
+   "npc_type": 23863,
+   "sprite": 111589,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    173,
+    34
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 403
+  },
+  {
+   "entity_id": 92300087,
+   "nombre": "Wild Grass Demon",
+   "npc_type": 23863,
+   "sprite": 111589,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    181,
+    45
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 403
+  },
+  {
+   "entity_id": 92300088,
+   "nombre": "Wild Grass Demon",
+   "npc_type": 23863,
+   "sprite": 111589,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    181,
+    50
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 403
+  },
+  {
+   "entity_id": 92300089,
+   "nombre": "Wild Grass Demon",
+   "npc_type": 23863,
+   "sprite": 111589,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    181,
+    55
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 403
+  },
+  {
+   "entity_id": 92300090,
+   "nombre": "Wild Grass Demon",
+   "npc_type": 23863,
+   "sprite": 111589,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    161,
+    33
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 403
+  },
+  {
+   "entity_id": 92300091,
+   "nombre": "Wild Grass Demon",
+   "npc_type": 23863,
+   "sprite": 111589,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    166,
+    33
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 403
+  },
+  {
+   "entity_id": 92300092,
+   "nombre": "Wild Grass Demon",
+   "npc_type": 23863,
+   "sprite": 111589,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    185,
+    31
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 403
+  },
+  {
+   "entity_id": 92300093,
+   "nombre": "Wild Grass Demon",
+   "npc_type": 23863,
+   "sprite": 111589,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    185,
+    36
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 403
+  },
+  {
+   "entity_id": 92300094,
+   "nombre": "Wild Grass Demon",
+   "npc_type": 23863,
+   "sprite": 111589,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    178,
+    30
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 403
+  },
+  {
+   "entity_id": 92300095,
+   "nombre": "Wild Grass Demon",
+   "npc_type": 23863,
+   "sprite": 111589,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    186,
+    41
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 403
+  },
+  {
+   "entity_id": 92300096,
+   "nombre": "Wild Grass Demon",
+   "npc_type": 23863,
+   "sprite": 111589,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    186,
+    46
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 403
+  },
+  {
+   "entity_id": 92300097,
+   "nombre": "Wild Grass Demon",
+   "npc_type": 23863,
+   "sprite": 111589,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    186,
+    51
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 403
+  },
+  {
+   "entity_id": 92300098,
+   "nombre": "Wild Grass Demon",
+   "npc_type": 23863,
+   "sprite": 111589,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    186,
+    56
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 403
+  },
+  {
+   "entity_id": 92300099,
+   "nombre": "Wild Grass Demon",
+   "npc_type": 23863,
+   "sprite": 111589,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    171,
+    29
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 403
+  },
+  {
+   "entity_id": 92300100,
+   "nombre": "Wild Grass Demon",
+   "npc_type": 23863,
+   "sprite": 111589,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    160,
+    28
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 403
+  },
+  {
+   "entity_id": 92300101,
+   "nombre": "Wild Grass Demon",
+   "npc_type": 23863,
+   "sprite": 111589,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    165,
+    28
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 403
+  },
+  {
+   "entity_id": 92300102,
+   "nombre": "Wild Grass Demon",
+   "npc_type": 23863,
+   "sprite": 111589,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    190,
+    28
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 403
+  },
+  {
+   "entity_id": 92300103,
+   "nombre": "Wild Grass Demon",
+   "npc_type": 23863,
+   "sprite": 111589,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    190,
+    33
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 403
+  },
+  {
+   "entity_id": 92300104,
+   "nombre": "Wild Grass Demon",
+   "npc_type": 23863,
+   "sprite": 111589,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    191,
+    39
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 403
+  },
+  {
+   "entity_id": 92300105,
+   "nombre": "Straw Knot",
+   "npc_type": 23864,
+   "sprite": 111590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    126,
+    72
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 405
+  },
+  {
+   "entity_id": 92300106,
+   "nombre": "Straw Knot",
+   "npc_type": 23864,
+   "sprite": 111590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    121,
+    67
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 405
+  },
+  {
+   "entity_id": 92300107,
+   "nombre": "Straw Knot",
+   "npc_type": 23864,
+   "sprite": 111590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    121,
+    72
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 405
+  },
+  {
+   "entity_id": 92300108,
+   "nombre": "Straw Knot",
+   "npc_type": 23864,
+   "sprite": 111590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    121,
+    77
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 405
+  },
+  {
+   "entity_id": 92300109,
+   "nombre": "Straw Knot",
+   "npc_type": 23864,
+   "sprite": 111590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    126,
+    67
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 405
+  },
+  {
+   "entity_id": 92300110,
+   "nombre": "Straw Knot",
+   "npc_type": 23864,
+   "sprite": 111590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    131,
+    68
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 405
+  },
+  {
+   "entity_id": 92300111,
+   "nombre": "Straw Knot",
+   "npc_type": 23864,
+   "sprite": 111590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    131,
+    63
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 405
+  },
+  {
+   "entity_id": 92300112,
+   "nombre": "Straw Knot",
+   "npc_type": 23864,
+   "sprite": 111590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    136,
+    63
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 405
+  },
+  {
+   "entity_id": 92300113,
+   "nombre": "Straw Knot",
+   "npc_type": 23864,
+   "sprite": 111590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    116,
+    66
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 405
+  },
+  {
+   "entity_id": 92300114,
+   "nombre": "Straw Knot",
+   "npc_type": 23864,
+   "sprite": 111590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    116,
+    71
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 405
+  },
+  {
+   "entity_id": 92300115,
+   "nombre": "Straw Knot",
+   "npc_type": 23864,
+   "sprite": 111590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    116,
+    76
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 405
+  },
+  {
+   "entity_id": 92300116,
+   "nombre": "Straw Knot",
+   "npc_type": 23864,
+   "sprite": 111590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    141,
+    59
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 405
+  },
+  {
+   "entity_id": 92300117,
+   "nombre": "Straw Knot",
+   "npc_type": 23864,
+   "sprite": 111590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    111,
+    71
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 405
+  },
+  {
+   "entity_id": 92300118,
+   "nombre": "Straw Knot",
+   "npc_type": 23864,
+   "sprite": 111590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    111,
+    76
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 405
+  },
+  {
+   "entity_id": 92300119,
+   "nombre": "Straw Knot",
+   "npc_type": 23864,
+   "sprite": 111590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    146,
+    57
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 405
+  },
+  {
+   "entity_id": 92300120,
+   "nombre": "Straw Knot",
+   "npc_type": 23864,
+   "sprite": 111590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    107,
+    81
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 405
+  },
+  {
+   "entity_id": 92300121,
+   "nombre": "Straw Knot",
+   "npc_type": 23864,
+   "sprite": 111590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    151,
+    54
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 405
+  },
+  {
+   "entity_id": 92300122,
+   "nombre": "Straw Knot",
+   "npc_type": 23864,
+   "sprite": 111590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    106,
+    74
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 405
+  },
+  {
+   "entity_id": 92300123,
+   "nombre": "Straw Knot",
+   "npc_type": 23864,
+   "sprite": 111590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    104,
+    86
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 405
+  },
+  {
+   "entity_id": 92300124,
+   "nombre": "Straw Knot",
+   "npc_type": 23864,
+   "sprite": 111590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    152,
+    95
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 405
+  },
+  {
+   "entity_id": 92300125,
+   "nombre": "Straw Knot",
+   "npc_type": 23864,
+   "sprite": 111590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    157,
+    93
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 405
+  },
+  {
+   "entity_id": 92300126,
+   "nombre": "Straw Knot",
+   "npc_type": 23864,
+   "sprite": 111590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    157,
+    98
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 405
+  },
+  {
+   "entity_id": 92300127,
+   "nombre": "Straw Knot",
+   "npc_type": 23864,
+   "sprite": 111590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    102,
+    79
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 405
+  },
+  {
+   "entity_id": 92300128,
+   "nombre": "Straw Knot",
+   "npc_type": 23864,
+   "sprite": 111590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    146,
+    99
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 405
+  },
+  {
+   "entity_id": 92300129,
+   "nombre": "Straw Knot",
+   "npc_type": 23864,
+   "sprite": 111590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    152,
+    41
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 405
+  },
+  {
+   "entity_id": 92300130,
+   "nombre": "Straw Knot",
+   "npc_type": 23864,
+   "sprite": 111590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    162,
+    91
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 405
+  },
+  {
+   "entity_id": 92300131,
+   "nombre": "Straw Knot",
+   "npc_type": 23864,
+   "sprite": 111590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    162,
+    96
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 405
+  },
+  {
+   "entity_id": 92300132,
+   "nombre": "Straw Knot",
+   "npc_type": 23864,
+   "sprite": 111590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    101,
+    36
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 405
+  },
+  {
+   "entity_id": 92300133,
+   "nombre": "Straw Knot",
+   "npc_type": 23864,
+   "sprite": 111590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    149,
+    36
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 405
+  },
+  {
+   "entity_id": 92300134,
+   "nombre": "Straw Knot",
+   "npc_type": 23864,
+   "sprite": 111590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    151,
+    100
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 405
+  },
+  {
+   "entity_id": 92300135,
+   "nombre": "Rose Thorn Ranger",
+   "npc_type": 23865,
+   "sprite": 111592,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    181,
+    60
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 407
+  },
+  {
+   "entity_id": 92300136,
+   "nombre": "Rose Thorn Ranger",
+   "npc_type": 23865,
+   "sprite": 111592,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    188,
+    61
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 407
+  },
+  {
+   "entity_id": 92300137,
+   "nombre": "Rose Thorn Ranger",
+   "npc_type": 23865,
+   "sprite": 111592,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    190,
+    66
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 407
+  },
+  {
+   "entity_id": 92300138,
+   "nombre": "Rose Thorn Ranger",
+   "npc_type": 23865,
+   "sprite": 111592,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    191,
+    50
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 407
+  },
+  {
+   "entity_id": 92300139,
+   "nombre": "Rose Thorn Ranger",
+   "npc_type": 23865,
+   "sprite": 111592,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    191,
+    55
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 407
+  },
+  {
+   "entity_id": 92300140,
+   "nombre": "Rose Thorn Ranger",
+   "npc_type": 23865,
+   "sprite": 111592,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    193,
+    60
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 407
+  },
+  {
+   "entity_id": 92300141,
+   "nombre": "Rose Thorn Ranger",
+   "npc_type": 23865,
+   "sprite": 111592,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    195,
+    65
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 407
+  },
+  {
+   "entity_id": 92300142,
+   "nombre": "Rose Thorn Ranger",
+   "npc_type": 23865,
+   "sprite": 111592,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    196,
+    51
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 407
+  },
+  {
+   "entity_id": 92300143,
+   "nombre": "Rose Thorn Ranger",
+   "npc_type": 23865,
+   "sprite": 111592,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    191,
+    45
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 407
+  },
+  {
+   "entity_id": 92300144,
+   "nombre": "Rose Thorn Ranger",
+   "npc_type": 23865,
+   "sprite": 111592,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    195,
+    70
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 407
+  },
+  {
+   "entity_id": 92300145,
+   "nombre": "Rose Thorn Ranger",
+   "npc_type": 23865,
+   "sprite": 111592,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    198,
+    56
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 407
+  },
+  {
+   "entity_id": 92300146,
+   "nombre": "Rose Thorn Ranger",
+   "npc_type": 23865,
+   "sprite": 111592,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    200,
+    61
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 407
+  },
+  {
+   "entity_id": 92300147,
+   "nombre": "Rose Thorn Ranger",
+   "npc_type": 23865,
+   "sprite": 111592,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    200,
+    66
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 407
+  },
+  {
+   "entity_id": 92300148,
+   "nombre": "Rose Thorn Ranger",
+   "npc_type": 23865,
+   "sprite": 111592,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    186,
+    71
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 407
+  },
+  {
+   "entity_id": 92300149,
+   "nombre": "Rose Thorn Ranger",
+   "npc_type": 23865,
+   "sprite": 111592,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    200,
+    71
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 407
+  },
+  {
+   "entity_id": 92300150,
+   "nombre": "Rose Thorn Ranger",
+   "npc_type": 23865,
+   "sprite": 111592,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    203,
+    54
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 407
+  },
+  {
+   "entity_id": 92300151,
+   "nombre": "Rose Thorn Ranger",
+   "npc_type": 23865,
+   "sprite": 111592,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    205,
+    59
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 407
+  },
+  {
+   "entity_id": 92300152,
+   "nombre": "Rose Thorn Ranger",
+   "npc_type": 23865,
+   "sprite": 111592,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    205,
+    64
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 407
+  },
+  {
+   "entity_id": 92300153,
+   "nombre": "Rose Thorn Ranger",
+   "npc_type": 23865,
+   "sprite": 111592,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    205,
+    69
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 407
+  },
+  {
+   "entity_id": 92300154,
+   "nombre": "Rose Thorn Ranger",
+   "npc_type": 23865,
+   "sprite": 111592,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    191,
+    75
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 407
+  },
+  {
+   "entity_id": 92300155,
+   "nombre": "Rose Thorn Ranger",
+   "npc_type": 23865,
+   "sprite": 111592,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    208,
+    54
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 407
+  },
+  {
+   "entity_id": 92300156,
+   "nombre": "Rose Thorn Ranger",
+   "npc_type": 23865,
+   "sprite": 111592,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    210,
+    59
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 407
+  },
+  {
+   "entity_id": 92300157,
+   "nombre": "Rose Thorn Ranger",
+   "npc_type": 23865,
+   "sprite": 111592,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    210,
+    64
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 407
+  },
+  {
+   "entity_id": 92300158,
+   "nombre": "Rose Thorn Ranger",
+   "npc_type": 23865,
+   "sprite": 111592,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    210,
+    69
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 407
+  },
+  {
+   "entity_id": 92300159,
+   "nombre": "Rose Thorn Ranger",
+   "npc_type": 23865,
+   "sprite": 111592,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    183,
+    76
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 407
+  },
+  {
+   "entity_id": 92300160,
+   "nombre": "Rose Thorn Ranger",
+   "npc_type": 23865,
+   "sprite": 111592,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    195,
+    29
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 407
+  },
+  {
+   "entity_id": 92300161,
+   "nombre": "Rose Thorn Ranger",
+   "npc_type": 23865,
+   "sprite": 111592,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    196,
+    76
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 407
+  },
+  {
+   "entity_id": 92300162,
+   "nombre": "Rose Thorn Ranger",
+   "npc_type": 23865,
+   "sprite": 111592,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    200,
+    28
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 407
+  },
+  {
+   "entity_id": 92300163,
+   "nombre": "Rose Thorn Ranger",
+   "npc_type": 23865,
+   "sprite": 111592,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    213,
+    54
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 407
+  },
+  {
+   "entity_id": 92300164,
+   "nombre": "Rose Thorn Ranger",
+   "npc_type": 23865,
+   "sprite": 111592,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    183,
+    26
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 407
+  },
+  {
+   "entity_id": 92300165,
+   "nombre": "Rose Thorn Ranger",
+   "npc_type": 23865,
+   "sprite": 111592,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    205,
+    26
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 407
+  },
+  {
+   "entity_id": 92300166,
+   "nombre": "Rose Thorn Ranger",
+   "npc_type": 23865,
+   "sprite": 111592,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    176,
+    25
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 407
+  },
+  {
+   "entity_id": 92300167,
+   "nombre": "Rose Thorn Ranger",
+   "npc_type": 23865,
+   "sprite": 111592,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    215,
+    59
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 407
+  },
+  {
+   "entity_id": 92300168,
+   "nombre": "Rose Thorn Ranger",
+   "npc_type": 23865,
+   "sprite": 111592,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    215,
+    64
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 407
+  },
+  {
+   "entity_id": 92300169,
+   "nombre": "Rose Thorn Ranger",
+   "npc_type": 23865,
+   "sprite": 111592,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    215,
+    69
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 407
+  },
+  {
+   "entity_id": 92300170,
+   "nombre": "Azure Thorn Guard",
+   "npc_type": 23866,
+   "sprite": 111593,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    82,
+    135
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 409
+  },
+  {
+   "entity_id": 92300171,
+   "nombre": "Azure Thorn Guard",
+   "npc_type": 23866,
+   "sprite": 111593,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    77,
+    135
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 409
+  },
+  {
+   "entity_id": 92300172,
+   "nombre": "Azure Thorn Guard",
+   "npc_type": 23866,
+   "sprite": 111593,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    77,
+    140
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 409
+  },
+  {
+   "entity_id": 92300173,
+   "nombre": "Azure Thorn Guard",
+   "npc_type": 23866,
+   "sprite": 111593,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    82,
+    140
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 409
+  },
+  {
+   "entity_id": 92300174,
+   "nombre": "Azure Thorn Guard",
+   "npc_type": 23866,
+   "sprite": 111593,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    87,
+    134
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 409
+  },
+  {
+   "entity_id": 92300175,
+   "nombre": "Azure Thorn Guard",
+   "npc_type": 23866,
+   "sprite": 111593,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    87,
+    139
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 409
+  },
+  {
+   "entity_id": 92300176,
+   "nombre": "Azure Thorn Guard",
+   "npc_type": 23866,
+   "sprite": 111593,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    90,
+    129
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 409
+  },
+  {
+   "entity_id": 92300177,
+   "nombre": "Azure Thorn Guard",
+   "npc_type": 23866,
+   "sprite": 111593,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    92,
+    134
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 409
+  },
+  {
+   "entity_id": 92300178,
+   "nombre": "Azure Thorn Guard",
+   "npc_type": 23866,
+   "sprite": 111593,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    92,
+    139
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 409
+  },
+  {
+   "entity_id": 92300179,
+   "nombre": "Azure Thorn Guard",
+   "npc_type": 23866,
+   "sprite": 111593,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    87,
+    144
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 409
+  },
+  {
+   "entity_id": 92300180,
+   "nombre": "Azure Thorn Guard",
+   "npc_type": 23866,
+   "sprite": 111593,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    92,
+    144
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 409
+  },
+  {
+   "entity_id": 92300181,
+   "nombre": "Azure Thorn Guard",
+   "npc_type": 23866,
+   "sprite": 111593,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    95,
+    127
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 409
+  },
+  {
+   "entity_id": 92300182,
+   "nombre": "Azure Thorn Guard",
+   "npc_type": 23866,
+   "sprite": 111593,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    74,
+    145
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 409
+  },
+  {
+   "entity_id": 92300183,
+   "nombre": "Azure Thorn Guard",
+   "npc_type": 23866,
+   "sprite": 111593,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    79,
+    145
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 409
+  },
+  {
+   "entity_id": 92300184,
+   "nombre": "Azure Thorn Guard",
+   "npc_type": 23866,
+   "sprite": 111593,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    97,
+    132
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 409
+  },
+  {
+   "entity_id": 92300185,
+   "nombre": "Azure Thorn Guard",
+   "npc_type": 23866,
+   "sprite": 111593,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    97,
+    137
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 409
+  },
+  {
+   "entity_id": 92300186,
+   "nombre": "Azure Thorn Guard",
+   "npc_type": 23866,
+   "sprite": 111593,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    97,
+    142
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 409
+  },
+  {
+   "entity_id": 92300187,
+   "nombre": "Azure Thorn Guard",
+   "npc_type": 23866,
+   "sprite": 111593,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    97,
+    147
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 409
+  },
+  {
+   "entity_id": 92300188,
+   "nombre": "Azure Thorn Guard",
+   "npc_type": 23866,
+   "sprite": 111593,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    100,
+    125
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 409
+  },
+  {
+   "entity_id": 92300189,
+   "nombre": "Azure Thorn Guard",
+   "npc_type": 23866,
+   "sprite": 111593,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    72,
+    130
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 409
+  },
+  {
+   "entity_id": 92300190,
+   "nombre": "Azure Thorn Guard",
+   "npc_type": 23866,
+   "sprite": 111593,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    102,
+    144
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 409
+  },
+  {
+   "entity_id": 92300191,
+   "nombre": "Azure Thorn Guard",
+   "npc_type": 23866,
+   "sprite": 111593,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    84,
+    149
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 409
+  },
+  {
+   "entity_id": 92300192,
+   "nombre": "Azure Thorn Guard",
+   "npc_type": 23866,
+   "sprite": 111593,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    89,
+    149
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 409
+  },
+  {
+   "entity_id": 92300193,
+   "nombre": "Azure Thorn Guard",
+   "npc_type": 23866,
+   "sprite": 111593,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    102,
+    149
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 409
+  },
+  {
+   "entity_id": 92300194,
+   "nombre": "Azure Thorn Guard",
+   "npc_type": 23866,
+   "sprite": 111593,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    73,
+    150
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 409
+  },
+  {
+   "entity_id": 92300195,
+   "nombre": "Azure Thorn Guard",
+   "npc_type": 23866,
+   "sprite": 111593,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    105,
+    122
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 409
+  },
+  {
+   "entity_id": 92300196,
+   "nombre": "Azure Thorn Guard",
+   "npc_type": 23866,
+   "sprite": 111593,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    78,
+    150
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 409
+  },
+  {
+   "entity_id": 92300197,
+   "nombre": "Azure Thorn Guard",
+   "npc_type": 23866,
+   "sprite": 111593,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    107,
+    144
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 409
+  },
+  {
+   "entity_id": 92300198,
+   "nombre": "Azure Thorn Guard",
+   "npc_type": 23866,
+   "sprite": 111593,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    107,
+    149
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 409
+  },
+  {
+   "entity_id": 92300199,
+   "nombre": "Azure Thorn Guard",
+   "npc_type": 23866,
+   "sprite": 111593,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    94,
+    152
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 409
+  },
+  {
+   "entity_id": 92300200,
+   "nombre": "Azure Thorn Guard",
+   "npc_type": 23866,
+   "sprite": 111593,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    110,
+    119
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 409
+  },
+  {
+   "entity_id": 92300201,
+   "nombre": "Azure Thorn Guard",
+   "npc_type": 23866,
+   "sprite": 111593,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    72,
+    135
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 409
+  },
+  {
+   "entity_id": 92300202,
+   "nombre": "Azure Thorn Guard",
+   "npc_type": 23866,
+   "sprite": 111593,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    72,
+    140
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 409
+  },
+  {
+   "entity_id": 92300203,
+   "nombre": "Azure Thorn Guard",
+   "npc_type": 23866,
+   "sprite": 111593,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    83,
+    154
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 409
+  },
+  {
+   "entity_id": 92300204,
+   "nombre": "Azure Thorn Guard",
+   "npc_type": 23866,
+   "sprite": 111593,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    88,
+    154
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 409
+  },
+  {
+   "entity_id": 92300205,
+   "nombre": "Elite-Straw Knot",
+   "npc_type": 23868,
+   "sprite": 111590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    240,
+    148
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 413
+  },
+  {
+   "entity_id": 92300206,
+   "nombre": "Elite-Straw Knot",
+   "npc_type": 23868,
+   "sprite": 111590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    235,
+    143
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 413
+  },
+  {
+   "entity_id": 92300207,
+   "nombre": "Elite-Straw Knot",
+   "npc_type": 23868,
+   "sprite": 111590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    235,
+    148
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 413
+  },
+  {
+   "entity_id": 92300208,
+   "nombre": "Elite-Straw Knot",
+   "npc_type": 23868,
+   "sprite": 111590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    235,
+    153
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 413
+  },
+  {
+   "entity_id": 92300209,
+   "nombre": "Elite-Straw Knot",
+   "npc_type": 23868,
+   "sprite": 111590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    240,
+    143
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 413
+  },
+  {
+   "entity_id": 92300210,
+   "nombre": "Elite-Sakura Shadow Lizard",
+   "npc_type": 23867,
+   "sprite": 111588,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    275,
+    132
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 411
+  },
+  {
+   "entity_id": 92300211,
+   "nombre": "Elite-Sakura Shadow Lizard",
+   "npc_type": 23867,
+   "sprite": 111588,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    270,
+    128
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 411
+  },
+  {
+   "entity_id": 92300212,
+   "nombre": "Elite-Sakura Shadow Lizard",
+   "npc_type": 23867,
+   "sprite": 111588,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    270,
+    133
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 411
+  },
+  {
+   "entity_id": 92300213,
+   "nombre": "Elite-Sakura Shadow Lizard",
+   "npc_type": 23867,
+   "sprite": 111588,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    275,
+    127
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 411
+  },
+  {
+   "entity_id": 92300214,
+   "nombre": "Elite-Sakura Shadow Lizard",
+   "npc_type": 23867,
+   "sprite": 111588,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    275,
+    137
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 411
+  },
+  {
+   "entity_id": 92300215,
+   "nombre": "Red Thorn Boss Haki",
+   "npc_type": 23870,
+   "sprite": 111594,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    63,
+    133
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 92300216,
+   "nombre": "Withered Demon Blago",
+   "npc_type": 23869,
+   "sprite": 111591,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    31,
+    113
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 92300217,
+   "nombre": "Straw Knot",
+   "npc_type": 23864,
+   "sprite": 111590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    162,
+    101
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 405
+  },
+  {
+   "entity_id": 92300218,
+   "nombre": "Straw Knot",
+   "npc_type": 23864,
+   "sprite": 111590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    99,
+    84
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 405
+  },
+  {
+   "entity_id": 92300219,
+   "nombre": "Straw Knot",
+   "npc_type": 23864,
+   "sprite": 111590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    99,
+    89
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 405
+  },
+  {
+   "entity_id": 92300220,
+   "nombre": "Straw Knot",
+   "npc_type": 23864,
+   "sprite": 111590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    140,
+    102
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 405
+  },
+  {
+   "entity_id": 92300221,
+   "nombre": "Straw Knot",
+   "npc_type": 23864,
+   "sprite": 111590,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    156,
+    103
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 405
+  },
+  {
+   "entity_id": 90423000,
+   "nombre": "Botanist Hashim",
+   "nombre_completo": "Botanist Hashim",
+   "npc_type": 24864,
+   "sprite": 40526,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    274,
+    36
+   ],
+   "direccion": 6,
+   "visible": 1,
+   "puesto_por": "npcs_del_cliente"
+  },
+  {
+   "entity_id": 90423001,
+   "nombre": "Gleb",
+   "nombre_completo": "Gleb",
+   "npc_type": 24880,
+   "sprite": 40790,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    162,
+    14
+   ],
+   "direccion": 6,
+   "visible": 1,
+   "puesto_por": "npcs_del_cliente"
+  },
+  {
+   "entity_id": 90423002,
+   "nombre": "Viktor",
+   "nombre_completo": "Viktor",
+   "npc_type": 24882,
+   "sprite": 40331,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    5,
+    81
+   ],
+   "direccion": 6,
+   "visible": 1,
+   "puesto_por": "npcs_del_cliente"
+  },
+  {
+   "entity_id": 90423003,
+   "nombre": "Radu",
+   "nombre_completo": "Radu",
+   "npc_type": 24881,
+   "sprite": 40394,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    176,
+    58
+   ],
+   "direccion": 6,
+   "visible": 1,
+   "puesto_por": "npcs_del_cliente"
+  },
+  {
+   "entity_id": 90423004,
+   "nombre": "Milos",
+   "nombre_completo": "Milos",
+   "npc_type": 24879,
+   "sprite": 40777,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    203,
+    28
+   ],
+   "direccion": 6,
+   "visible": 1,
+   "puesto_por": "npcs_del_cliente"
+  }
+ ],
+ "recursos": [
+  {
+   "entity_id": 102300000,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    6795,
+    1712
+   ],
+   "tile": [
+    212,
+    53
+   ],
+   "crudo": "60f91806000000008b1a0000b00600000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102300001,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    2242,
+    208
+   ],
+   "tile": [
+    70,
+    6
+   ],
+   "crudo": "61f9180600000000c2080000d00000000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102300002,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    5869,
+    4240
+   ],
+   "tile": [
+    183,
+    132
+   ],
+   "crudo": "62f9180600000000ed160000901000000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102300003,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    7220,
+    4656
+   ],
+   "tile": [
+    225,
+    145
+   ],
+   "crudo": "63f9180600000000341c0000301200000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102300004,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    1012,
+    3760
+   ],
+   "tile": [
+    31,
+    117
+   ],
+   "crudo": "64f9180600000000f4030000b00e00000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102300005,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    1417,
+    3600
+   ],
+   "tile": [
+    44,
+    112
+   ],
+   "crudo": "65f918060000000089050000100e00000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102300006,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    579,
+    3792
+   ],
+   "tile": [
+    18,
+    118
+   ],
+   "crudo": "66f918060000000043020000d00e00000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  }
+ ]
+}

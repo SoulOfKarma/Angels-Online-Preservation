@@ -334,10 +334,10 @@ def test_la_curva_de_niveles_es_la_del_parche_nuevo():
     """La experiencia por nivel cambio con cada parche.
 
     En data1 la tabla llegaba al nivel 80; en UPDATE13 al 301 y en update26
-    al 471. La del nivel 300 lleva fija en 801.133.037.724.519 desde el
+    al 471, y el update32 de Taiwan la llevo al 481. La del nivel 300 lleva fija en 801.133.037.724.519 desde el
     UPDATE13. Hay que usar la mas nueva, que es la que esta en content.db.
 
-    El tope se queda en 471 aunque el juego llegue tecnicamente a 600: de
+    El tope se queda en 481 aunque el juego llegue tecnicamente a 600: de
     ahi en adelante no hay datos de cuanta experiencia pide cada nivel, y el
     respaldo que habia (nivel * 120) daba 72.000 para el 600, o sea que se
     subia de golpe.
@@ -348,11 +348,11 @@ def test_la_curva_de_niveles_es_la_del_parche_nuevo():
     curva = cb._cargar_curva_nivel()
     if not curva:
         return
-    assert max(curva) == 471, max(curva)
-    assert cb.nivel_maximo() == 471
+    assert max(curva) == 481, max(curva)
+    assert cb.nivel_maximo() == 481
     assert cb.exp_para_nivel(300) == 801133037724519
     # Y siempre crece, que es lo que el bucle de subir de nivel necesita.
-    for n in range(2, 471):
+    for n in range(2, 481):
         assert cb.exp_para_nivel(n) < cb.exp_para_nivel(n + 1), n
 
 

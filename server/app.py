@@ -3530,6 +3530,21 @@ DIALOGO_DE_ENTIDAD = {
 }
 
 
+def _msgid_sp(stage, ent):
+    """El msgid del NPC de quest 900+k del mapa (npc_por_mapa.json), o None."""
+    k = int(ent or 0) - 900
+    if k < 0:
+        return None
+    import json
+    try:
+        d = json.loads((pathlib.Path(__file__).parent / 'plantillas' / 'npc_por_mapa.json')
+                       .read_text(encoding='utf-8')).get('mapas', {})
+        npcs = d.get(str(int(stage or 0)), [])
+    except Exception:
+        return None
+    return npcs[k].get('msgid') if k < len(npcs) else None
+
+
 def _npc_type_de(stage, ent):
     """El npc_type de la entidad ent en la plantilla del stage, o None."""
     st = int(stage or 0)
@@ -8169,6 +8184,13 @@ def _recorrer_dialogo_mapa(ses, addr, stage, nodo):
                              [o[0] for o in opciones] if opciones else [],
                              strings=cadenas(mensajes[-1]),
                              acciones=[o[1] for o in opciones] if opciones else [])[2:])
+    if (int(stage) == 428 and mensajes[-1] in (517404, 517405)
+            and any(ef[0] == 'ir_a_tag' for ef in efectos)):
+        # Las flores dejan su resultado abierto DESPUES del salto (TW).
+        # El portal cierra el menu anterior: mostrar antes el resultado
+        # hacia que desapareciera en el mismo envio de paquetes.
+        _aplicar_efectos(ses, addr, efectos, ' (dialogo de flores %s)' % nodo)
+        efectos = []
     ses.dlg_ent, ses.dlg_guion, ses.dlg_paso, ses.dlg_val = p.entity_id, g, 1, cara
     ses.dlg_mapa = ({'stage': stage, 'opciones': opciones, 'guion': g}
                     if opciones else None)
@@ -12053,9 +12075,15 @@ class Servidor:
             arma_puesta = ses.inventario.get(3, 0) if ses.inventario else 0
 
             mag = _cb.datos_magia(tipo) if tipo != _cb.ATAQUE_NORMAL else {}
+            if m is not None and mag.get('no_monstruos'):
+                return
             if (__import__('daily_events').basic_only(ses.personaje.stage)
                     and tipo != _cb.ATAQUE_NORMAL and (mag.get('es_ataque') or mag.get('es_invocacion'))):
                 __import__('daily_events').aviso(ses,'Only normal attacks are allowed in Quick Reflexes.')
+                return
+            import taiwan_skills as _tw_sk
+            if _tw_sk.linea(tipo):
+                _tw_sk.lanzar(ses, tipo, objetivo, tx, ty, addr)
                 return
             if mag.get('formula')==7 and mag.get('es_terreno') and not mag.get('es_ataque'):
                 __import__('desplazamientos').lanzar(ses,tipo,mag,tx,ty)
@@ -12069,7 +12097,8 @@ class Servidor:
                     _casa_usar_token(ses, slot)
                 return
             es_invocacion = bool(mag.get('es_invocacion'))
-            es_terreno = (bool(mag.get('es_terreno')) or (objetivo == 0 and tipo != _cb.ATAQUE_NORMAL)) and not es_invocacion
+            es_terreno = (bool(mag.get('es_terreno')) or (objetivo == 0 and tipo != _cb.ATAQUE_NORMAL
+                                                        and not mag.get('es_auto'))) and not es_invocacion
             es_self_aoe = bool(mag.get('es_self_aoe')) and not es_invocacion
             es_aoe = (es_terreno or es_self_aoe or bool(mag.get('es_aoe'))) and not es_invocacion
 
@@ -12824,7 +12853,12 @@ class Servidor:
 
                     # 2. Habilidad de curacion real (Cure Spell de mago, Holy Light, etc.)
                     if mag.get('es_cura') and ses.personaje and not _tic:
-                        cura = max(10, abs(mag.get('hp', 0)))
+                        _matk_c = (struct.unpack_from('<I', _stats_ses(ses), 46)[0]
+                                   if mag.get('formula') == 58 else 0)
+                        def _potencia_cura(hp_max):
+                            return _cb.curacion_de_magia(mag, _matk_c, hp_max)
+                        cura = _potencia_cura(_ms.hp_max_eff(f_pet_cast) if es_target_pet
+                                              else _vida_max(ses.personaje, ses.inventario))
                         # A otro jugador (角色 con el pinchado) o en area a los
                         # del grupo (自己/隊伍 con radio), como los buffs.
                         _otros_c, _a_mi_c = (([], True) if es_target_pet
@@ -12832,21 +12866,26 @@ class Servidor:
                         for _s_c in _otros_c:
                             try:
                                 _p_c = _s_c.personaje
-                                _p_c.hp = min(_vida_max(_p_c, _s_c.inventario), _p_c.hp + cura)
+                                _max_c = _vida_max(_p_c, _s_c.inventario)
+                                _cura_otro = _potencia_cura(_max_c)
+                                _p_c.hp = min(_max_c, _p_c.hp + _cura_otro)
                                 import presencia as _pr_cu
                                 _pub_c = _pr_cu.entidad_de(ses)
                                 _s_c.enviar_inmediato(
-                                    _cb.efecto_curacion_inicio(_pub_c, _p_c.entity_id, cura, efecto=ef),
-                                    _cb.efecto_curacion_fin(_pub_c, _p_c.entity_id, efecto=ef),
-                                    _cb.numero_flotante(_p_c.entity_id, cura, _cb.TIPO_CURA_HP),
+                                    _cb.efecto_curacion_inicio(_pub_c, _p_c.entity_id, _cura_otro, efecto=ef,
+                                                              cast_time=cast_time, ataque=tipo),
+                                    _cb.efecto_curacion_fin(_pub_c, _p_c.entity_id, efecto=ef, ataque=tipo),
+                                    _cb.numero_flotante(_p_c.entity_id, _cura_otro, _cb.TIPO_CURA_HP),
                                     _cb.atributo(_p_c.entity_id, _p_c.hp, _cb.KIND_HP))
                             except Exception:
                                 log.exception('curar a otro jugador')
                         if not _a_mi_c and _otros_c:
                             import presencia as _pr_cv
                             _vis_c = _pr_cv.entidad_de(_otros_c[0])
-                            ses.enviar(_cb.efecto_curacion_inicio(yo, _vis_c, cura, efecto=ef),
-                                       _cb.efecto_curacion_fin(yo, _vis_c, efecto=ef),
+                            cura = _potencia_cura(_vida_max(_otros_c[0].personaje, _otros_c[0].inventario))
+                            ses.enviar(_cb.efecto_curacion_inicio(yo, _vis_c, cura, efecto=ef,
+                                                                 cast_time=cast_time, ataque=tipo),
+                                       _cb.efecto_curacion_fin(yo, _vis_c, efecto=ef, ataque=tipo),
                                        _cb.atributo(yo, ses.personaje.mp, _cb.KIND_MP), _cb.gcd_paquete())
                             if cd_ms > 0:
                                 ses.enviar(struct.pack('<HIBBII', 0x001D, yo, 1, 3, tipo, cd_ms))
@@ -12867,12 +12906,13 @@ class Servidor:
                             if _mp_c > 0:
                                 ses.personaje.mp = min(_mana_max(ses.personaje),
                                                        ses.personaje.mp + _mp_c)
-                        ses.enviar(_cb.efecto_curacion_inicio(yo, targ_cura_vis, cura, efecto=ef), _cb.gcd_paquete())
+                        ses.enviar(_cb.efecto_curacion_inicio(yo, targ_cura_vis, cura, efecto=ef,
+                                                              cast_time=cast_time, ataque=tipo), _cb.gcd_paquete())
 
                         def _fin_cura():
                             if ses.personaje:
                                 pkgs_fin = [
-                                    _cb.efecto_curacion_fin(yo, targ_cura_vis, efecto=ef),
+                                    _cb.efecto_curacion_fin(yo, targ_cura_vis, efecto=ef, ataque=tipo),
                                     _cb.atributo(yo, ses.personaje.mp, _cb.KIND_MP),
                                 ]
                                 if es_target_pet and isinstance(f_pet_cast, dict) and f_pet_cast.get('fuera') and pet_eid_cast:
@@ -18096,6 +18136,27 @@ class Servidor:
                 return
 
             if ses.personaje and ses.personaje.stage != MAPA_DEL_TUTORIAL:
+                # Region TW: el NPC y su dialogo pertenecen al MPC de ESTA
+                # zona. Los retratos reutilizados no identifican misiones de
+                # regiones antiguas (Realm Spell Researcher caia en quest625).
+                _st_tw = int(ses.personaje.stage)
+                if 423 <= _st_tw <= 429:
+                    _type_tw = _npc_type_de(_st_tw, ent)
+                    _root_tw = DIALOGO_DE_NPC.get((_st_tw, _type_tw))
+                    if _root_tw:
+                        ses.dlg_quest_ofrecida = None
+                        ses.dlg_quest_fase = None
+                        if _recorrer_dialogo_mapa(ses, addr, _st_tw, _root_tw):
+                            return
+                    _name_tw = _nombre_entidad(ses, ent) or ''
+                    if _name_tw in ('Aurora Totem', 'Dark City Totem', 'Breeze Totem', 'Iron Totem'):
+                        _script_tw = dialogos.propio(_name_tw, entidad=ent,
+                                                    faccion=ses.personaje.faction)
+                        if _script_tw:
+                            ses.dlg_ent, ses.dlg_guion, ses.dlg_paso = ent, _script_tw, 1
+                            ses.dlg_val = struct.unpack_from('<H', _script_tw[0], 4)[0]
+                            ses.enviar(dialogos.linea_de(_script_tw, 0, ses.personaje.nombre))
+                        return
                 # Fuera del tutorial, cada NPC tiene su propia linea, sacada
                 # de msg.xml por su nombre.
                 faccion = ses.personaje.faction if ses.personaje else "Heaven"
@@ -18417,6 +18478,16 @@ class Servidor:
                         _raiz_ent = DIALOGO_DE_ENTIDAD.get((int(_st_c), int(ent)))
                         if _raiz_ent and _recorrer_dialogo_mapa(ses, addr, _st_c, _raiz_ent):
                             log.info(f"[{addr}] {_nom_ent}: dialogo del arbol del mapa ({_raiz_ent})")
+                            return
+                        # NPC de los sp_*.xml (Matia...): su arbol de spmsg.xml
+                        # elige la linea por nivel y paso de mision.
+                        # Solo si propio() no tiene nada mejor que la linea
+                        # raiz suelta (Past the Time Spirit lleva su menu).
+                        _raiz_sp = _dm_c.raiz_sp(_msgid_sp(_st_c, ent))
+                        if (_raiz_sp and (not g2 or (len(g2) == 1 and len(g2[0]) >= 4
+                                and struct.unpack_from('<I', g2[0], 0)[0] == _raiz_sp))
+                                and _recorrer_dialogo_mapa(ses, addr, _st_c, _raiz_sp)):
+                            log.info(f"[{addr}] {_nom_ent}: dialogo de spmsg ({_raiz_sp})")
                             return
                         if (es_instancia(_st_c) and _st_c != 500) or not g2:
                             _ret_c = dialogos.val_por_entidad(ent)
@@ -19726,6 +19797,8 @@ class Servidor:
                 return
 
         if opcode == 0x0004 and d:
+            if __import__('taiwan_skills').bloquear_movimiento(ses):
+                return
             if __import__('desplazamientos').movimiento_obsoleto(ses,d['cur_x'],d['cur_y']):
                 # Acknowledge the old request without moving back across a
                 # local blink, including empty-path "I'm stuck" reports.

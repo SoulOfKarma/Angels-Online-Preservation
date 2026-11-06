@@ -877,6 +877,23 @@ PLANTILLAS_POR_STAGE = {
     #
     # El 77 trae un solo monstruo a proposito: es el laberinto de tornados,
     # con 52 portales internos y nada mas.
+    # SAND CASTLE TALES (砂城秘譚), la region de ALO Taiwan update31-32
+    # (jumpmapclass 40). Se entra por el tornado nuevo de (7,172) del 169
+    # Karang Desert, que solo trae el map169.mpc de TW 32. Pobladas desde los
+    # generadores de sus .mpc; ver docs/MIGRACION_TAIWAN_UPDATE32.md.
+    423 : 'rushing_valley.json',            # nv 400
+    424 : 'citygate_sand_path.json',        # nv 417
+    425 : 'bluesand_realm.json',            # nv 420
+    426 : 'shimmering_harbor.json',         # nv 430
+    427 : 'ancient_library.json',           # nv 440
+    428 : 'fragrant_greenhouse.json',       # nv 457
+    429 : 'rotwood_abyss.json',             # 腐域森淵, instancia, nv 465
+    # Las cuatro Chaos de TW update31-32. Se entra por Past the Time Spirit
+    # (Rainbow Town, 308); ver dialogos.VIAJES_POR_OPCION.
+    430 : 'c_muno_battleship.json',         # Chaos-Muno Battleship, nv 400
+    431 : 'c_shooting_star_palace.json',    # Chaos-Shooting Star Palace, nv 285
+    439 : 'c_lost_chamber.json',            # Chaos-Lost Chamber, nv 319
+    440 : 'c_phantom_gold_city.json',       # Chaos-Phantom Gold Enigma City, nv 417
     76  : 'gulp_room.json',
     77  : 'gulp_room_2.json',
     78  : 'gulp_room_3.json',

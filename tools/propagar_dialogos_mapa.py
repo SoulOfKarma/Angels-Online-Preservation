@@ -23,6 +23,13 @@ siguiente]...], r: [{si: [[cond, params, negada]...], o: basta_una, ir:
 nodo}...], a: [[accion, params]...]}.
 
     python tools/propagar_dialogos_mapa.py
+    python tools/propagar_dialogos_mapa.py --sp   # solo dialogos_sp.json
+
+LOS NPC DE LOS sp_*.xml (Matia en las cuatro ciudades, los de la region de
+Taiwan...) no viven en ningun .mpc: su arbol esta en setting/eng/spmsg.xml,
+con el mismo formato. Va aparte, a dialogos_sp.json, y el servidor lo pone
+debajo del arbol de cada mapa. Sin el, Matia decia siempre su linea raiz
+("hace falta nivel 380") aunque el personaje tuviera 425.
 """
 import json
 import pathlib
@@ -35,6 +42,7 @@ sys.path.insert(0, str(RAIZ / 'tools'))
 import mapa_del_cliente as mc
 
 SALIDA = RAIZ / 'server' / 'plantillas' / 'dialogos_mapa.json'
+SALIDA_SP = RAIZ / 'server' / 'plantillas' / 'dialogos_sp.json'
 
 
 def _int(v):
@@ -116,5 +124,20 @@ def propagar():
           % (mapas, total, peso / 1e6, SALIDA))
 
 
+def propagar_sp():
+    import paks
+    nodos = {}
+    for n in _nodos(paks.texto('spmsg.xml')):
+        k = _int(n.get('編號'))
+        if k:
+            nodos[str(k)] = _nodo(n)
+    SALIDA_SP.write_text(json.dumps(nodos, ensure_ascii=False, separators=(',', ':')),
+                         encoding='utf-8')
+    print('spmsg.xml: %d nodos, %.1f MB en %s'
+          % (len(nodos), SALIDA_SP.stat().st_size / 1e6, SALIDA_SP))
+
+
 if __name__ == '__main__':
-    propagar()
+    if '--sp' not in sys.argv:
+        propagar()
+    propagar_sp()

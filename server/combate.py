@@ -304,9 +304,10 @@ def exp_para_mascota(nv: int, tipo: str = 'A') -> int:
 
 
 # El tope de nivel. El juego tecnicamente llega a 600, pero la curva de
-# level.xml acaba en 471 y de ahi en adelante no hay datos: se queda en 471,
-# que es hasta donde se puede saber cuanta experiencia pide cada nivel.
-NIVEL_MAXIMO = 471
+# level.xml acaba en 481 (TW update32 anadio 472-481; antes acababa en 471) y
+# de ahi en adelante no hay datos: se queda en 481, que es hasta donde se
+# puede saber cuanta experiencia pide cada nivel.
+NIVEL_MAXIMO = 481
 
 
 def nivel_maximo() -> int:
@@ -331,7 +332,7 @@ def exp_para_nivel(nv: int) -> int:
         return int(nv * 120)
     ultimo = max(curva)
     if nv > ultimo:
-        # La curva de level.xml acaba en 471 y el tope del juego es 600. El
+        # La curva de level.xml acaba en 481 y el tope del juego es 600. El
         # respaldo que habia (nivel * 120) daba 72.000 para el nivel 600,
         # o sea que se subia de golpe. Se extrapola con el salto de los dos
         # ultimos niveles, que es lo unico que se puede hacer sin datos.
@@ -549,6 +550,7 @@ class Monstruo:
         # Las Lilys no se mueven de su lugar pero atacan a distancia como arqueros
         self.es_estatico = ('lily' in nombre.lower() or self.move_speed == 0)
         self.muerto_en = None
+        self.vida_combate = 0
         self.en_combate_con = None
         self.ultimo_ataque = 0.0
         # Efectos que le aplicaron los ataques del jugador. El stun y el
@@ -772,6 +774,7 @@ class Monstruo:
     def revivir(self):
         """Vuelve a la vida cerca de su sitio, no clavado en el mismo punto."""
         import random as _r
+        self.vida_combate = getattr(self, 'vida_combate', 0) + 1
         self.hp = self.hp_max
         self.muerto_en = None
         if getattr(self, 'es_estatico', False) or getattr(self, 'move_speed', 50) == 0 or getattr(self, 'move_range', 6) <= 0:
@@ -1307,6 +1310,7 @@ def datos_magia(magic_id: int) -> dict:
             # 不能對玩家施放: el hechizo no se puede usar contra jugadores (71 en
             # magic.xml). Lo mira pvp_liga.atacar.
             res['no_jugadores'] = d.get('不能對玩家施放') == '是'
+            res['no_monstruos'] = d.get('不能對怪物施放') == '是'
             res['hijo_area'] = _num(d.get('轉嫁法術'), 0) if res['multi_golpe_area'] else 0
             res['sigilo'] = d.get('魔法狀態') == '潛行'
             res['esquiva_fis'] = _num(d.get('物理迴避'), 0)
@@ -1358,6 +1362,12 @@ def datos_magia(magic_id: int) -> dict:
             res['dano_var'] = _num(d.get('傷害變數'), 0)
             res['dano_coef'] = _num(d.get('傷害係數'), 0)
             res['formula'] = _num(d.get('公式'), 0)
+            if res['formula'] == 58:
+                # Healing Cross I..V: cura fija + porcentaje de MATK,
+                # limitada a un porcentaje de la vida maxima del receptor.
+                res['cura_base'] = _num(d.get('動態參數1'), 0)
+                res['cura_coef'] = _num(d.get('動態參數2'), 0)
+                res['cura_tope_pct'] = _num(d.get('動態參數3'), 100)
 
             target = str(d.get('對象') or '')
             desc = str(d.get('desc') or d.get('說明') or '')
@@ -1703,6 +1713,9 @@ def datos_magia(magic_id: int) -> dict:
 
             # Curacion directa solo si es un hechizo curativo real (ej. Cure Spell, Holy Light, Angel Prayer, Tears of Life, Mighty Cure)
             res['es_cura'] = (not res['es_invocacion']) and (not res['es_encanto']) and (not res['es_panico']) and (not res['es_debuff']) and (not res.get('es_brand')) and (
+                res['formula'] in (58, 71) or
+                (res['formula'] == 1 and target == '角色' and res['hp'] > 0
+                 and d.get('HP定義') == '數值' and res['dur_ms'] == 0) or
                 any(k in nom_l for k in ('cure spell', 'mighty cure', 'holy light', 'angel prayer', 'tears of life', "angel's tears")) or
                 ('restores hp' in desc_l and 'speed' not in desc_l and 'injury' not in nom_l and 'song' not in nom_l)
             ) and d.get('攻擊型') != '是'
@@ -1774,6 +1787,16 @@ def datos_magia(magic_id: int) -> dict:
             pass
     _MAGIC_CACHE[magic_id] = res
     return res
+
+
+def curacion_de_magia(magia, ataque_magico=0, hp_max=0):
+    """Potencia de cura; el limite de Healing Cross pertenece al receptor."""
+    if magia.get('formula') == 58:
+        amount = max(0, int(magia.get('cura_base', 0)))
+        amount += max(0, int(ataque_magico)) * max(0, int(magia.get('cura_coef', 0))) // 100
+        cap = max(0, int(hp_max)) * max(0, min(100, int(magia.get('cura_tope_pct', 100)))) // 100
+        return min(amount, cap)
+    return max(10, abs(magia.get('hp', 0)))
 
 
 # Stats oficiales extraidos directamente de monster.xml (update26/setting/eng/monster.xml)
@@ -2981,27 +3004,28 @@ def efecto_captura(atacante: int, objetivo: int, x: int = 0, y: int = 0,
 
 
 
-def efecto_curacion_inicio(atacante: int, objetivo: int, cura_hp: int, efecto: int = 165) -> bytes:
+def efecto_curacion_inicio(atacante: int, objetivo: int, cura_hp: int, efecto: int = 165,
+                          cast_time=None, ataque=0) -> bytes:
     """Fase 0x00 de curacion 0x0011."""
     b0 = bytearray(23)
     b0[0] = efecto & 0xFF
-    b0[1] = 0x00
+    b0[1] = (efecto >> 8) & 0x0F
     struct.pack_into('<II', b0, 2, atacante, objetivo)
-    struct.pack_into('<H', b0, 18, max(0, min(65535, cura_hp)))
-    b0[20] = 1  # Tipo 1 (cura/verde)
-    struct.pack_into('<H', b0, 21, 0)
+    struct.pack_into('<H', b0, 18, max(0, min(65535, cura_hp if cast_time is None else cast_time)))
+    b0[20] = 1  # Magia; el numero verde se envia aparte con 0x000B.
+    struct.pack_into('<H', b0, 21, ataque & 0xFFFF)
     return struct.pack('<H', 0x0011) + bytes(b0)
 
 
-def efecto_curacion_fin(atacante: int, objetivo: int, efecto: int = 165) -> bytes:
+def efecto_curacion_fin(atacante: int, objetivo: int, efecto: int = 165, ataque=0) -> bytes:
     """Fase 0x80 de curacion 0x0011."""
     b1 = bytearray(23)
     b1[0] = efecto & 0xFF
-    b1[1] = 0x80
+    b1[1] = 0x80 | ((efecto >> 8) & 0x0F)
     struct.pack_into('<II', b1, 2, atacante, objetivo)
     struct.pack_into('<H', b1, 18, 0)
     b1[20] = 1
-    struct.pack_into('<H', b1, 21, 0)
+    struct.pack_into('<H', b1, 21, ataque & 0xFFFF)
     return struct.pack('<H', 0x0011) + bytes(b1)
 
 

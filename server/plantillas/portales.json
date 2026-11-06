@@ -28,47 +28,565 @@
    }
   ],
   "47": [
-   {"entity":70474700,"tile":[37,182],"destino":41,"llegada":[175,89],"radio":1,"dibujar":true,"preguntar":false,"outpost_evento":906,"outpost_tag":1},
-   {"entity":70474701,"tile":[75,172],"destino":47,"llegada":[146,187],"radio":1,"dibujar":true,"preguntar":false,"outpost_evento":905,"outpost_tag":5},
-   {"entity":70474702,"tile":[57,163],"destino":47,"llegada":[146,187],"radio":1,"dibujar":true,"preguntar":false,"outpost_evento":905,"outpost_tag":5},
-   {"entity":70474703,"tile":[364,182],"destino":41,"llegada":[175,89],"radio":1,"dibujar":true,"preguntar":false,"outpost_evento":906,"outpost_tag":1},
-   {"entity":70474704,"tile":[326,171],"destino":47,"llegada":[146,187],"radio":1,"dibujar":true,"preguntar":false,"outpost_evento":905,"outpost_tag":5},
-   {"entity":70474705,"tile":[342,163],"destino":47,"llegada":[146,187],"radio":1,"dibujar":true,"preguntar":false,"outpost_evento":905,"outpost_tag":5},
-   {"entity":70474706,"tile":[37,19],"destino":41,"llegada":[175,89],"radio":1,"dibujar":true,"preguntar":false,"outpost_evento":906,"outpost_tag":1},
-   {"entity":70474707,"tile":[57,37],"destino":47,"llegada":[146,187],"radio":1,"dibujar":true,"preguntar":false,"outpost_evento":905,"outpost_tag":5},
-   {"entity":70474708,"tile":[73,29],"destino":47,"llegada":[146,187],"radio":1,"dibujar":true,"preguntar":false,"outpost_evento":905,"outpost_tag":5},
-   {"entity":70474709,"tile":[365,20],"destino":41,"llegada":[175,89],"radio":1,"dibujar":true,"preguntar":false,"outpost_evento":906,"outpost_tag":1},
-   {"entity":70474710,"tile":[344,38],"destino":47,"llegada":[146,187],"radio":1,"dibujar":true,"preguntar":false,"outpost_evento":905,"outpost_tag":5},
-   {"entity":70474711,"tile":[327,29],"destino":47,"llegada":[146,187],"radio":1,"dibujar":true,"preguntar":false,"outpost_evento":905,"outpost_tag":5},
-   {"entity":70474712,"tile":[88,158],"destino":47,"llegada":[54,179],"radio":1,"dibujar":true,"preguntar":false,"outpost_evento":901,"outpost_tag":1},
-   {"entity":70474713,"tile":[313,46],"destino":47,"llegada":[363,31],"radio":1,"dibujar":true,"preguntar":false,"outpost_evento":904,"outpost_tag":4},
-   {"entity":70474714,"tile":[310,157],"destino":47,"llegada":[357,178],"radio":1,"dibujar":true,"preguntar":false,"outpost_evento":902,"outpost_tag":2},
-   {"entity":70474715,"tile":[88,44],"destino":47,"llegada":[44,23],"radio":1,"dibujar":true,"preguntar":false,"outpost_evento":903,"outpost_tag":3}
+   {
+    "entity": 70474700,
+    "tile": [
+     37,
+     182
+    ],
+    "destino": 41,
+    "llegada": [
+     175,
+     89
+    ],
+    "radio": 1,
+    "dibujar": true,
+    "preguntar": false,
+    "outpost_evento": 906,
+    "outpost_tag": 1
+   },
+   {
+    "entity": 70474701,
+    "tile": [
+     75,
+     172
+    ],
+    "destino": 47,
+    "llegada": [
+     146,
+     187
+    ],
+    "radio": 1,
+    "dibujar": true,
+    "preguntar": false,
+    "outpost_evento": 905,
+    "outpost_tag": 5
+   },
+   {
+    "entity": 70474702,
+    "tile": [
+     57,
+     163
+    ],
+    "destino": 47,
+    "llegada": [
+     146,
+     187
+    ],
+    "radio": 1,
+    "dibujar": true,
+    "preguntar": false,
+    "outpost_evento": 905,
+    "outpost_tag": 5
+   },
+   {
+    "entity": 70474703,
+    "tile": [
+     364,
+     182
+    ],
+    "destino": 41,
+    "llegada": [
+     175,
+     89
+    ],
+    "radio": 1,
+    "dibujar": true,
+    "preguntar": false,
+    "outpost_evento": 906,
+    "outpost_tag": 1
+   },
+   {
+    "entity": 70474704,
+    "tile": [
+     326,
+     171
+    ],
+    "destino": 47,
+    "llegada": [
+     146,
+     187
+    ],
+    "radio": 1,
+    "dibujar": true,
+    "preguntar": false,
+    "outpost_evento": 905,
+    "outpost_tag": 5
+   },
+   {
+    "entity": 70474705,
+    "tile": [
+     342,
+     163
+    ],
+    "destino": 47,
+    "llegada": [
+     146,
+     187
+    ],
+    "radio": 1,
+    "dibujar": true,
+    "preguntar": false,
+    "outpost_evento": 905,
+    "outpost_tag": 5
+   },
+   {
+    "entity": 70474706,
+    "tile": [
+     37,
+     19
+    ],
+    "destino": 41,
+    "llegada": [
+     175,
+     89
+    ],
+    "radio": 1,
+    "dibujar": true,
+    "preguntar": false,
+    "outpost_evento": 906,
+    "outpost_tag": 1
+   },
+   {
+    "entity": 70474707,
+    "tile": [
+     57,
+     37
+    ],
+    "destino": 47,
+    "llegada": [
+     146,
+     187
+    ],
+    "radio": 1,
+    "dibujar": true,
+    "preguntar": false,
+    "outpost_evento": 905,
+    "outpost_tag": 5
+   },
+   {
+    "entity": 70474708,
+    "tile": [
+     73,
+     29
+    ],
+    "destino": 47,
+    "llegada": [
+     146,
+     187
+    ],
+    "radio": 1,
+    "dibujar": true,
+    "preguntar": false,
+    "outpost_evento": 905,
+    "outpost_tag": 5
+   },
+   {
+    "entity": 70474709,
+    "tile": [
+     365,
+     20
+    ],
+    "destino": 41,
+    "llegada": [
+     175,
+     89
+    ],
+    "radio": 1,
+    "dibujar": true,
+    "preguntar": false,
+    "outpost_evento": 906,
+    "outpost_tag": 1
+   },
+   {
+    "entity": 70474710,
+    "tile": [
+     344,
+     38
+    ],
+    "destino": 47,
+    "llegada": [
+     146,
+     187
+    ],
+    "radio": 1,
+    "dibujar": true,
+    "preguntar": false,
+    "outpost_evento": 905,
+    "outpost_tag": 5
+   },
+   {
+    "entity": 70474711,
+    "tile": [
+     327,
+     29
+    ],
+    "destino": 47,
+    "llegada": [
+     146,
+     187
+    ],
+    "radio": 1,
+    "dibujar": true,
+    "preguntar": false,
+    "outpost_evento": 905,
+    "outpost_tag": 5
+   },
+   {
+    "entity": 70474712,
+    "tile": [
+     88,
+     158
+    ],
+    "destino": 47,
+    "llegada": [
+     54,
+     179
+    ],
+    "radio": 1,
+    "dibujar": true,
+    "preguntar": false,
+    "outpost_evento": 901,
+    "outpost_tag": 1
+   },
+   {
+    "entity": 70474713,
+    "tile": [
+     313,
+     46
+    ],
+    "destino": 47,
+    "llegada": [
+     363,
+     31
+    ],
+    "radio": 1,
+    "dibujar": true,
+    "preguntar": false,
+    "outpost_evento": 904,
+    "outpost_tag": 4
+   },
+   {
+    "entity": 70474714,
+    "tile": [
+     310,
+     157
+    ],
+    "destino": 47,
+    "llegada": [
+     357,
+     178
+    ],
+    "radio": 1,
+    "dibujar": true,
+    "preguntar": false,
+    "outpost_evento": 902,
+    "outpost_tag": 2
+   },
+   {
+    "entity": 70474715,
+    "tile": [
+     88,
+     44
+    ],
+    "destino": 47,
+    "llegada": [
+     44,
+     23
+    ],
+    "radio": 1,
+    "dibujar": true,
+    "preguntar": false,
+    "outpost_evento": 903,
+    "outpost_tag": 3
+   }
   ],
   "48": [
-   {"entity":70474800,"tile":[37,182],"destino":41,"llegada":[175,89],"radio":1,"dibujar":true,"preguntar":false,"outpost_evento":906,"outpost_tag":1},
-   {"entity":70474801,"tile":[75,172],"destino":48,"llegada":[146,187],"radio":1,"dibujar":true,"preguntar":false,"outpost_evento":905,"outpost_tag":5},
-   {"entity":70474802,"tile":[57,163],"destino":48,"llegada":[146,187],"radio":1,"dibujar":true,"preguntar":false,"outpost_evento":905,"outpost_tag":5},
-   {"entity":70474803,"tile":[364,182],"destino":41,"llegada":[175,89],"radio":1,"dibujar":true,"preguntar":false,"outpost_evento":906,"outpost_tag":1},
-   {"entity":70474804,"tile":[326,171],"destino":48,"llegada":[146,187],"radio":1,"dibujar":true,"preguntar":false,"outpost_evento":905,"outpost_tag":5},
-   {"entity":70474805,"tile":[342,163],"destino":48,"llegada":[146,187],"radio":1,"dibujar":true,"preguntar":false,"outpost_evento":905,"outpost_tag":5},
-   {"entity":70474806,"tile":[37,19],"destino":41,"llegada":[175,89],"radio":1,"dibujar":true,"preguntar":false,"outpost_evento":906,"outpost_tag":1},
-   {"entity":70474807,"tile":[57,37],"destino":48,"llegada":[146,187],"radio":1,"dibujar":true,"preguntar":false,"outpost_evento":905,"outpost_tag":5},
-   {"entity":70474808,"tile":[73,29],"destino":48,"llegada":[146,187],"radio":1,"dibujar":true,"preguntar":false,"outpost_evento":905,"outpost_tag":5},
-   {"entity":70474809,"tile":[365,20],"destino":41,"llegada":[175,89],"radio":1,"dibujar":true,"preguntar":false,"outpost_evento":906,"outpost_tag":1},
-   {"entity":70474810,"tile":[344,38],"destino":48,"llegada":[146,187],"radio":1,"dibujar":true,"preguntar":false,"outpost_evento":905,"outpost_tag":5},
-   {"entity":70474811,"tile":[327,29],"destino":48,"llegada":[146,187],"radio":1,"dibujar":true,"preguntar":false,"outpost_evento":905,"outpost_tag":5},
-   {"entity":70474812,"tile":[88,158],"destino":48,"llegada":[54,179],"radio":1,"dibujar":true,"preguntar":false,"outpost_evento":901,"outpost_tag":1},
-   {"entity":70474813,"tile":[313,46],"destino":48,"llegada":[363,31],"radio":1,"dibujar":true,"preguntar":false,"outpost_evento":904,"outpost_tag":4},
-   {"entity":70474814,"tile":[310,157],"destino":48,"llegada":[357,178],"radio":1,"dibujar":true,"preguntar":false,"outpost_evento":902,"outpost_tag":2},
-   {"entity":70474815,"tile":[88,44],"destino":48,"llegada":[44,23],"radio":1,"dibujar":true,"preguntar":false,"outpost_evento":903,"outpost_tag":3}
+   {
+    "entity": 70474800,
+    "tile": [
+     37,
+     182
+    ],
+    "destino": 41,
+    "llegada": [
+     175,
+     89
+    ],
+    "radio": 1,
+    "dibujar": true,
+    "preguntar": false,
+    "outpost_evento": 906,
+    "outpost_tag": 1
+   },
+   {
+    "entity": 70474801,
+    "tile": [
+     75,
+     172
+    ],
+    "destino": 48,
+    "llegada": [
+     146,
+     187
+    ],
+    "radio": 1,
+    "dibujar": true,
+    "preguntar": false,
+    "outpost_evento": 905,
+    "outpost_tag": 5
+   },
+   {
+    "entity": 70474802,
+    "tile": [
+     57,
+     163
+    ],
+    "destino": 48,
+    "llegada": [
+     146,
+     187
+    ],
+    "radio": 1,
+    "dibujar": true,
+    "preguntar": false,
+    "outpost_evento": 905,
+    "outpost_tag": 5
+   },
+   {
+    "entity": 70474803,
+    "tile": [
+     364,
+     182
+    ],
+    "destino": 41,
+    "llegada": [
+     175,
+     89
+    ],
+    "radio": 1,
+    "dibujar": true,
+    "preguntar": false,
+    "outpost_evento": 906,
+    "outpost_tag": 1
+   },
+   {
+    "entity": 70474804,
+    "tile": [
+     326,
+     171
+    ],
+    "destino": 48,
+    "llegada": [
+     146,
+     187
+    ],
+    "radio": 1,
+    "dibujar": true,
+    "preguntar": false,
+    "outpost_evento": 905,
+    "outpost_tag": 5
+   },
+   {
+    "entity": 70474805,
+    "tile": [
+     342,
+     163
+    ],
+    "destino": 48,
+    "llegada": [
+     146,
+     187
+    ],
+    "radio": 1,
+    "dibujar": true,
+    "preguntar": false,
+    "outpost_evento": 905,
+    "outpost_tag": 5
+   },
+   {
+    "entity": 70474806,
+    "tile": [
+     37,
+     19
+    ],
+    "destino": 41,
+    "llegada": [
+     175,
+     89
+    ],
+    "radio": 1,
+    "dibujar": true,
+    "preguntar": false,
+    "outpost_evento": 906,
+    "outpost_tag": 1
+   },
+   {
+    "entity": 70474807,
+    "tile": [
+     57,
+     37
+    ],
+    "destino": 48,
+    "llegada": [
+     146,
+     187
+    ],
+    "radio": 1,
+    "dibujar": true,
+    "preguntar": false,
+    "outpost_evento": 905,
+    "outpost_tag": 5
+   },
+   {
+    "entity": 70474808,
+    "tile": [
+     73,
+     29
+    ],
+    "destino": 48,
+    "llegada": [
+     146,
+     187
+    ],
+    "radio": 1,
+    "dibujar": true,
+    "preguntar": false,
+    "outpost_evento": 905,
+    "outpost_tag": 5
+   },
+   {
+    "entity": 70474809,
+    "tile": [
+     365,
+     20
+    ],
+    "destino": 41,
+    "llegada": [
+     175,
+     89
+    ],
+    "radio": 1,
+    "dibujar": true,
+    "preguntar": false,
+    "outpost_evento": 906,
+    "outpost_tag": 1
+   },
+   {
+    "entity": 70474810,
+    "tile": [
+     344,
+     38
+    ],
+    "destino": 48,
+    "llegada": [
+     146,
+     187
+    ],
+    "radio": 1,
+    "dibujar": true,
+    "preguntar": false,
+    "outpost_evento": 905,
+    "outpost_tag": 5
+   },
+   {
+    "entity": 70474811,
+    "tile": [
+     327,
+     29
+    ],
+    "destino": 48,
+    "llegada": [
+     146,
+     187
+    ],
+    "radio": 1,
+    "dibujar": true,
+    "preguntar": false,
+    "outpost_evento": 905,
+    "outpost_tag": 5
+   },
+   {
+    "entity": 70474812,
+    "tile": [
+     88,
+     158
+    ],
+    "destino": 48,
+    "llegada": [
+     54,
+     179
+    ],
+    "radio": 1,
+    "dibujar": true,
+    "preguntar": false,
+    "outpost_evento": 901,
+    "outpost_tag": 1
+   },
+   {
+    "entity": 70474813,
+    "tile": [
+     313,
+     46
+    ],
+    "destino": 48,
+    "llegada": [
+     363,
+     31
+    ],
+    "radio": 1,
+    "dibujar": true,
+    "preguntar": false,
+    "outpost_evento": 904,
+    "outpost_tag": 4
+   },
+   {
+    "entity": 70474814,
+    "tile": [
+     310,
+     157
+    ],
+    "destino": 48,
+    "llegada": [
+     357,
+     178
+    ],
+    "radio": 1,
+    "dibujar": true,
+    "preguntar": false,
+    "outpost_evento": 902,
+    "outpost_tag": 2
+   },
+   {
+    "entity": 70474815,
+    "tile": [
+     88,
+     44
+    ],
+    "destino": 48,
+    "llegada": [
+     44,
+     23
+    ],
+    "radio": 1,
+    "dibujar": true,
+    "preguntar": false,
+    "outpost_evento": 903,
+    "outpost_tag": 3
+   }
   ],
   "114": [
    {
     "entity": 70114001,
-    "tile": [23, 29],
+    "tile": [
+     23,
+     29
+    ],
     "destino": 41,
-    "llegada": [175, 89],
+    "llegada": [
+     175,
+     89
+    ],
     "preguntar": false,
     "dibujar": true,
     "nota": "Sign-up Office -> Lyceum. Tornado de regreso ubicado por el usuario en (23,29), 22/10/2026."
@@ -2635,22 +3153,6 @@
   ],
   "169": [
    {
-    "entity": 114588,
-    "tile": [
-     5,
-     13
-    ],
-    "destino": 39,
-    "llegada": [
-     288,
-     98
-    ],
-    "radio": 3,
-    "dibujar": false,
-    "preguntar": false,
-    "nota": "Karang Desert -> Cactus Plain. Tornado 114588; el MOVE_REQ vino de (8,15), a tres casillas. La llegada (288,98) es la que mando Celestia. LOS DOS SENTIDOS MEDIDOS. Queda sin destino (286,173)."
-   },
-   {
     "entity": 114589,
     "tile": [
      286,
@@ -2665,6 +3167,38 @@
     "dibujar": false,
     "preguntar": false,
     "nota": "Karang Desert -> Pharaoh Village por el tornado 114589, el del sureste. Cruzado dos veces y las dos el primer tramo acabo en (285,172), pegado al tornado. Las llegadas fueron (25,10) y (22,12); se usa la primera. LOS DOS SENTIDOS MEDIDOS. Con esto Karang Desert queda cerrado: sus dos tornados van a Cactus Plain y aqui."
+   },
+   {
+    "entity": 70169000,
+    "tile": [
+     7,
+     172
+    ],
+    "destino": 423,
+    "llegada": [
+     284,
+     14
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Del mapa del cliente: map169.mpc, objeto 60001 en esa casilla, evento 2, que hace CHANGE_MAP(423, 1). Llegada (284, 14): la confirma jumpmap.xml. Las casillas del TAG son [(289, 14), (284, 14), (285, 10)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
+   },
+   {
+    "entity": 114588,
+    "tile": [
+     5,
+     13
+    ],
+    "destino": 39,
+    "llegada": [
+     288,
+     98
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Karang Desert -> Cactus Plain. Tornado 114588; el MOVE_REQ vino de (8,15), a tres casillas. La llegada (288,98) es la que mando Celestia. LOS DOS SENTIDOS MEDIDOS. Queda sin destino (286,173)."
    }
   ],
   "34": [
@@ -18610,6 +19144,321 @@
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map207.mpc, objeto 60001 en esa casilla, evento 1, que hace CHANGE_MAP(21, 30). Llegada (161, 105): la mas despejada de las 3 del TAG. Las casillas del TAG son [(151, 110), (161, 105), (150, 100)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
+   }
+  ],
+  "423": [
+   {
+    "entity": 70423000,
+    "tile": [
+     292,
+     6
+    ],
+    "destino": 169,
+    "llegada": [
+     15,
+     169
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Del mapa del cliente: map423.mpc, objeto 60001 en esa casilla, evento 1, que hace CHANGE_MAP(169, 2). Llegada (15, 169): la mas despejada de las 3 del TAG. Las casillas del TAG son [(11, 168), (8, 165), (15, 169)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
+   },
+   {
+    "entity": 70423001,
+    "tile": [
+     15,
+     168
+    ],
+    "destino": 424,
+    "llegada": [
+     286,
+     14
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Del mapa del cliente: map423.mpc, objeto 60001 en esa casilla, evento 2, que hace CHANGE_MAP(424, 1). Llegada (286, 14): la confirma jumpmap.xml. Las casillas del TAG son [(288, 11), (286, 14), (283, 11)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
+   }
+  ],
+  "424": [
+   {
+    "entity": 70424000,
+    "tile": [
+     293,
+     6
+    ],
+    "destino": 423,
+    "llegada": [
+     29,
+     163
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Del mapa del cliente: map424.mpc, objeto 60001 en esa casilla, evento 1, que hace CHANGE_MAP(423, 2). Llegada (29, 163): la mas despejada de las 3 del TAG. Las casillas del TAG son [(29, 163), (21, 166), (24, 164)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
+   },
+   {
+    "entity": 70424001,
+    "tile": [
+     285,
+     169
+    ],
+    "destino": 425,
+    "llegada": [
+     15,
+     9
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Del mapa del cliente: map424.mpc, objeto 60001 en esa casilla, evento 2, que hace CHANGE_MAP(425, 1). Llegada (15, 9): la mas despejada de las 3 del TAG. Las casillas del TAG son [(15, 9), (10, 13), (14, 13)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
+   },
+   {
+    "entity": 70424002,
+    "tile": [
+     6,
+     171
+    ],
+    "destino": 426,
+    "llegada": [
+     283,
+     6
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Del mapa del cliente: map424.mpc, objeto 60001 en esa casilla, evento 3, que hace CHANGE_MAP(426, 1). Llegada (283, 6): la mas despejada de las 3 del TAG. Las casillas del TAG son [(285, 10), (289, 12), (283, 6)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
+   }
+  ],
+  "425": [
+   {
+    "entity": 70425000,
+    "tile": [
+     8,
+     6
+    ],
+    "destino": 424,
+    "llegada": [
+     278,
+     168
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Del mapa del cliente: map425.mpc, objeto 60001 en esa casilla, evento 1, que hace CHANGE_MAP(424, 2). Llegada (278, 168): la mas despejada de las 3 del TAG. Las casillas del TAG son [(281, 164), (286, 164), (278, 168)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
+   },
+   {
+    "entity": 70425001,
+    "tile": [
+     9,
+     170
+    ],
+    "destino": 427,
+    "llegada": [
+     281,
+     7
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Del mapa del cliente: map425.mpc, objeto 60001 en esa casilla, evento 2, que hace CHANGE_MAP(427, 1). Llegada (281, 7): la mas despejada de las 3 del TAG. Las casillas del TAG son [(285, 7), (285, 10), (281, 7)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
+   }
+  ],
+  "426": [
+   {
+    "entity": 70426000,
+    "tile": [
+     293,
+     5
+    ],
+    "destino": 424,
+    "llegada": [
+     12,
+     169
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Del mapa del cliente: map426.mpc, objeto 60001 en esa casilla, evento 1, que hace CHANGE_MAP(424, 3). Llegada (12, 169): la mas despejada de las 3 del TAG. Las casillas del TAG son [(11, 166), (7, 166), (12, 169)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
+   },
+   {
+    "entity": 70426001,
+    "tile": [
+     293,
+     171
+    ],
+    "destino": 427,
+    "llegada": [
+     23,
+     5
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Del mapa del cliente: map426.mpc, objeto 60001 en esa casilla, evento 2, que hace CHANGE_MAP(427, 2). Llegada (23, 5): la mas despejada de las 3 del TAG. Las casillas del TAG son [(18, 6), (23, 5), (20, 9)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
+   }
+  ],
+  "427": [
+   {
+    "entity": 70427000,
+    "tile": [
+     291,
+     4
+    ],
+    "destino": 425,
+    "llegada": [
+     17,
+     170
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Del mapa del cliente: map427.mpc, objeto 60001 en esa casilla, evento 1, que hace CHANGE_MAP(425, 2). Llegada (17, 170): la mas despejada de las 3 del TAG. Las casillas del TAG son [(14, 167), (17, 170), (8, 166)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
+   },
+   {
+    "entity": 70427001,
+    "tile": [
+     13,
+     3
+    ],
+    "destino": 426,
+    "llegada": [
+     284,
+     168
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Del mapa del cliente: map427.mpc, objeto 60001 en esa casilla, evento 2, que hace CHANGE_MAP(426, 2). Llegada (284, 168): la mas despejada de las 3 del TAG. Las casillas del TAG son [(284, 168), (286, 171), (289, 168)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
+   },
+   {
+    "entity": 70427002,
+    "tile": [
+     282,
+     165
+    ],
+    "destino": 428,
+    "llegada": [
+     20,
+     6
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Del mapa del cliente: map427.mpc, objeto 60001 en esa casilla, evento 3, que hace CHANGE_MAP(428, 1). Llegada (20, 6): la mas despejada de las 3 del TAG. Las casillas del TAG son [(16, 7), (20, 6), (18, 10)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
+   },
+   {
+    "entity": 70427003,
+    "tile": [
+     292,
+     160
+    ],
+    "destino": 428,
+    "llegada": [
+     20,
+     6
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Del mapa del cliente: map427.mpc, objeto 60001 en esa casilla, evento 3, que hace CHANGE_MAP(428, 1). Llegada (20, 6): la mas despejada de las 3 del TAG. Las casillas del TAG son [(16, 7), (20, 6), (18, 10)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
+   }
+  ],
+  "428": [
+   {
+    "entity": 70428000,
+    "tile": [
+     9,
+     4
+    ],
+    "destino": 427,
+    "llegada": [
+     275,
+     163
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Del mapa del cliente: map428.mpc, objeto 60001 en esa casilla, evento 1, que hace CHANGE_MAP(427, 3). Llegada (275, 163): la mas despejada de las 2 del TAG. Las casillas del TAG son [(285, 161), (275, 163)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
+   },
+   {
+    "entity": 70428001,
+    "tile": [
+     291,
+     163
+    ],
+    "destino": 429,
+    "llegada": [
+     18,
+     6
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Del mapa del cliente: map428.mpc, objeto 60001 en esa casilla, evento 2, que hace CHANGE_MAP(429, 1). Llegada (18, 6): la mas despejada de las 3 del TAG. Las casillas del TAG son [(12, 6), (18, 6), (15, 9)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
+   }
+  ],
+  "429": [
+   {
+    "entity": 70429000,
+    "tile": [
+     6,
+     3
+    ],
+    "destino": 428,
+    "llegada": [
+     281,
+     158
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Del mapa del cliente: map429.mpc, objeto 60001 en esa casilla, evento 1, que hace CHANGE_MAP(428, 2). Llegada (281, 158): la mas despejada de las 3 del TAG. Las casillas del TAG son [(281, 158), (283, 162), (288, 157)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
+   },
+   {
+    "entity": 70429001,
+    "tile": [
+     264,
+     8
+    ],
+    "destino": null,
+    "llegada": null,
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Del mapa del cliente: map429.mpc, objeto 60001 en esa casilla, evento 350, que hace sacar el dialogo [(350,)]. su evento no viaja, solo saca dialogo.  Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
+   },
+   {
+    "entity": 70429002,
+    "tile": [
+     270,
+     155
+    ],
+    "destino": 429,
+    "llegada": [
+     18,
+     6
+    ],
+    "radio": 3,
+    "dibujar": true,
+    "preguntar": false,
+    "nota": "Del mapa del cliente: map429.mpc, objeto 60001 en esa casilla, evento 360, que hace GOTO_TAG(1). Llegada (18, 6): la mas despejada de las 3 del TAG. Las casillas del TAG son [(12, 6), (18, 6), (15, 9)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
+   },
+   {
+    "entity": 70429003,
+    "tile": [
+     181,
+     102
+    ],
+    "destino": 429,
+    "llegada": [
+     18,
+     6
+    ],
+    "radio": 3,
+    "dibujar": false,
+    "preguntar": false,
+    "nota": "Del mapa del cliente: map429.mpc, objeto 60001 en esa casilla, evento 420, que hace GOTO_TAG(1). Llegada (18, 6): la mas despejada de las 3 del TAG. Las casillas del TAG son [(12, 6), (18, 6), (15, 9)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. RADIO ajustado a 3 para que no alcance ninguna casilla de llegada de este mapa."
    }
   ]
  },

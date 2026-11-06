@@ -1,0 +1,3040 @@
+{
+ "_nota": "c_shooting_star_palace (stage 431). POBLADO DESDE EL CLIENTE, no desde una captura: los generadores de monstruos son objetos del propio map431.mpc -- el monstruo en el u16 del +34, la zona en el +21, el tiempo en el +38 y cuantos en el +42. Eso da el censo COMPLETO del mapa, que una captura no puede dar porque solo trae lo que estuvo a la vista. El entity_id es fabricado y estable, no el del servidor. Las casillas son las del TAG de cada generador; los que no declaran TAG ponen sus monstruos en la casilla del generador y en un anillo de radio 3 a su alrededor, que es la dispersion MEDIDA en el stage 73. Los objetos de mapa son los del .mpc cuyo id esta en la lista de los que el servidor manda de verdad, con el cuerpo del 0x000E copiado de una captura del mismo objeto. Los tornados se dibujan aparte, desde portales.json. Ver tools/poblar_del_cliente.py.",
+ "stage": 431,
+ "spawns": [
+  {
+   "entity_id": 93100000,
+   "nombre": "Chaos-Hephaestus",
+   "npc_type": 23976,
+   "sprite": 110950,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    43,
+    149
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 93100001,
+   "nombre": "Chaos-Zeus",
+   "npc_type": 23977,
+   "sprite": 110951,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    225,
+    122
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 93100002,
+   "nombre": "Chaos-Oriel",
+   "npc_type": 23978,
+   "sprite": 110952,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    265,
+    145
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 93100003,
+   "nombre": "Chaos-Illusion Messier",
+   "npc_type": 23979,
+   "sprite": 110514,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    252,
+    146
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 93100004,
+   "nombre": "Chaos-Phoenix Feather Dust Bird",
+   "npc_type": 23964,
+   "sprite": 110989,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    94,
+    39
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 280
+  },
+  {
+   "entity_id": 93100005,
+   "nombre": "Chaos-Phoenix Feather Dust Bird",
+   "npc_type": 23964,
+   "sprite": 110989,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    99,
+    35
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 280
+  },
+  {
+   "entity_id": 93100006,
+   "nombre": "Chaos-Phoenix Feather Dust Bird",
+   "npc_type": 23964,
+   "sprite": 110989,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    89,
+    41
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 280
+  },
+  {
+   "entity_id": 93100007,
+   "nombre": "Chaos-Phoenix Feather Dust Bird",
+   "npc_type": 23964,
+   "sprite": 110989,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    94,
+    34
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 280
+  },
+  {
+   "entity_id": 93100008,
+   "nombre": "Chaos-Phoenix Feather Dust Bird",
+   "npc_type": 23964,
+   "sprite": 110989,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    94,
+    44
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 280
+  },
+  {
+   "entity_id": 93100009,
+   "nombre": "Chaos-Phoenix Feather Dust Bird",
+   "npc_type": 23964,
+   "sprite": 110989,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    99,
+    44
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 280
+  },
+  {
+   "entity_id": 93100010,
+   "nombre": "Chaos-Phoenix Feather Dust Bird",
+   "npc_type": 23964,
+   "sprite": 110989,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    84,
+    42
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 280
+  },
+  {
+   "entity_id": 93100011,
+   "nombre": "Chaos-Phoenix Feather Dust Bird",
+   "npc_type": 23964,
+   "sprite": 110989,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    104,
+    32
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 280
+  },
+  {
+   "entity_id": 93100012,
+   "nombre": "Chaos-Phoenix Feather Dust Bird",
+   "npc_type": 23964,
+   "sprite": 110989,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    92,
+    49
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 280
+  },
+  {
+   "entity_id": 93100013,
+   "nombre": "Chaos-Phoenix Feather Dust Bird",
+   "npc_type": 23964,
+   "sprite": 110989,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    104,
+    37
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 280
+  },
+  {
+   "entity_id": 93100014,
+   "nombre": "Chaos-Phoenix Feather Dust Bird",
+   "npc_type": 23964,
+   "sprite": 110989,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    97,
+    49
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 280
+  },
+  {
+   "entity_id": 93100015,
+   "nombre": "Chaos-Phoenix Feather Dust Bird",
+   "npc_type": 23964,
+   "sprite": 110989,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    102,
+    49
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 280
+  },
+  {
+   "entity_id": 93100016,
+   "nombre": "Chaos-Phoenix Feather Dust Bird",
+   "npc_type": 23964,
+   "sprite": 110989,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    107,
+    52
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 280
+  },
+  {
+   "entity_id": 93100017,
+   "nombre": "Chaos-Phoenix Feather Dust Bird",
+   "npc_type": 23964,
+   "sprite": 110989,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    109,
+    29
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 280
+  },
+  {
+   "entity_id": 93100018,
+   "nombre": "Chaos-Phoenix Feather Dust Bird",
+   "npc_type": 23964,
+   "sprite": 110989,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    79,
+    42
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 280
+  },
+  {
+   "entity_id": 93100019,
+   "nombre": "Chaos-Flamewing Fairy",
+   "npc_type": 23965,
+   "sprite": 110985,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    90,
+    54
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 280
+  },
+  {
+   "entity_id": 93100020,
+   "nombre": "Chaos-Flamewing Fairy",
+   "npc_type": 23965,
+   "sprite": 110985,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    109,
+    34
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 280
+  },
+  {
+   "entity_id": 93100021,
+   "nombre": "Chaos-Flamewing Fairy",
+   "npc_type": 23965,
+   "sprite": 110985,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    95,
+    54
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 280
+  },
+  {
+   "entity_id": 93100022,
+   "nombre": "Chaos-Flamewing Fairy",
+   "npc_type": 23965,
+   "sprite": 110985,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    112,
+    52
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 280
+  },
+  {
+   "entity_id": 93100023,
+   "nombre": "Chaos-Flamewing Fairy",
+   "npc_type": 23965,
+   "sprite": 110985,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    100,
+    54
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 280
+  },
+  {
+   "entity_id": 93100024,
+   "nombre": "Chaos-Flamewing Fairy",
+   "npc_type": 23965,
+   "sprite": 110985,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    113,
+    21
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 280
+  },
+  {
+   "entity_id": 93100025,
+   "nombre": "Chaos-Flamewing Fairy",
+   "npc_type": 23965,
+   "sprite": 110985,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    85,
+    56
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 280
+  },
+  {
+   "entity_id": 93100026,
+   "nombre": "Chaos-Flamewing Fairy",
+   "npc_type": 23965,
+   "sprite": 110985,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    114,
+    26
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 280
+  },
+  {
+   "entity_id": 93100027,
+   "nombre": "Chaos-Flamewing Fairy",
+   "npc_type": 23965,
+   "sprite": 110985,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    105,
+    57
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 280
+  },
+  {
+   "entity_id": 93100028,
+   "nombre": "Chaos-Flamewing Fairy",
+   "npc_type": 23965,
+   "sprite": 110985,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    114,
+    31
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 280
+  },
+  {
+   "entity_id": 93100029,
+   "nombre": "Chaos-Flamewing Fairy",
+   "npc_type": 23965,
+   "sprite": 110985,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    110,
+    57
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 280
+  },
+  {
+   "entity_id": 93100030,
+   "nombre": "Chaos-Flamewing Fairy",
+   "npc_type": 23965,
+   "sprite": 110985,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    115,
+    57
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 280
+  },
+  {
+   "entity_id": 93100031,
+   "nombre": "Chaos-Flamewing Fairy",
+   "npc_type": 23965,
+   "sprite": 110985,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    80,
+    58
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 280
+  },
+  {
+   "entity_id": 93100032,
+   "nombre": "Chaos-Flamewing Fairy",
+   "npc_type": 23965,
+   "sprite": 110985,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    118,
+    17
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 280
+  },
+  {
+   "entity_id": 93100033,
+   "nombre": "Chaos-Flamewing Fairy",
+   "npc_type": 23965,
+   "sprite": 110985,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    74,
+    40
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 280
+  },
+  {
+   "entity_id": 93100034,
+   "nombre": "Chaos Elite-Flamewing Fairy",
+   "npc_type": 23970,
+   "sprite": 110985,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    53,
+    78
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 291
+  },
+  {
+   "entity_id": 93100035,
+   "nombre": "Chaos Elite-Flamewing Fairy",
+   "npc_type": 23970,
+   "sprite": 110985,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    48,
+    88
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 291
+  },
+  {
+   "entity_id": 93100036,
+   "nombre": "Chaos Elite-Flamewing Fairy",
+   "npc_type": 23970,
+   "sprite": 110985,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    43,
+    83
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 291
+  },
+  {
+   "entity_id": 93100037,
+   "nombre": "Chaos Elite-Flamewing Fairy",
+   "npc_type": 23970,
+   "sprite": 110985,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    58,
+    74
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 291
+  },
+  {
+   "entity_id": 93100038,
+   "nombre": "Chaos Elite-Flamewing Fairy",
+   "npc_type": 23970,
+   "sprite": 110985,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    48,
+    77
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 291
+  },
+  {
+   "entity_id": 93100039,
+   "nombre": "Chaos-Camo Helm Bird",
+   "npc_type": 23966,
+   "sprite": 110943,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    48,
+    82
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 285
+  },
+  {
+   "entity_id": 93100040,
+   "nombre": "Chaos-Camo Helm Bird",
+   "npc_type": 23966,
+   "sprite": 110943,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    43,
+    88
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 285
+  },
+  {
+   "entity_id": 93100041,
+   "nombre": "Chaos-Camo Helm Bird",
+   "npc_type": 23966,
+   "sprite": 110943,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    38,
+    85
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 285
+  },
+  {
+   "entity_id": 93100042,
+   "nombre": "Chaos-Camo Helm Bird",
+   "npc_type": 23966,
+   "sprite": 110943,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    58,
+    79
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 285
+  },
+  {
+   "entity_id": 93100043,
+   "nombre": "Chaos-Camo Helm Bird",
+   "npc_type": 23966,
+   "sprite": 110943,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    53,
+    83
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 285
+  },
+  {
+   "entity_id": 93100044,
+   "nombre": "Chaos-Camo Helm Bird",
+   "npc_type": 23966,
+   "sprite": 110943,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    44,
+    93
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 285
+  },
+  {
+   "entity_id": 93100045,
+   "nombre": "Chaos-Camo Helm Bird",
+   "npc_type": 23966,
+   "sprite": 110943,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    49,
+    93
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 285
+  },
+  {
+   "entity_id": 93100046,
+   "nombre": "Chaos-Camo Helm Bird",
+   "npc_type": 23966,
+   "sprite": 110943,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    63,
+    72
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 285
+  },
+  {
+   "entity_id": 93100047,
+   "nombre": "Chaos-Camo Helm Bird",
+   "npc_type": 23966,
+   "sprite": 110943,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    53,
+    88
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 285
+  },
+  {
+   "entity_id": 93100048,
+   "nombre": "Chaos-Camo Helm Bird",
+   "npc_type": 23966,
+   "sprite": 110943,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    54,
+    93
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 285
+  },
+  {
+   "entity_id": 93100049,
+   "nombre": "Chaos-Camo Helm Bird",
+   "npc_type": 23966,
+   "sprite": 110943,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    53,
+    98
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 285
+  },
+  {
+   "entity_id": 93100050,
+   "nombre": "Chaos-Camo Helm Bird",
+   "npc_type": 23966,
+   "sprite": 110943,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    63,
+    77
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 285
+  },
+  {
+   "entity_id": 93100051,
+   "nombre": "Chaos-Camo Helm Bird",
+   "npc_type": 23966,
+   "sprite": 110943,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    59,
+    89
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 285
+  },
+  {
+   "entity_id": 93100052,
+   "nombre": "Chaos-Camo Helm Bird",
+   "npc_type": 23966,
+   "sprite": 110943,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    58,
+    98
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 285
+  },
+  {
+   "entity_id": 93100053,
+   "nombre": "Chaos-Camo Helm Bird",
+   "npc_type": 23966,
+   "sprite": 110943,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    49,
+    103
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 285
+  },
+  {
+   "entity_id": 93100054,
+   "nombre": "Chaos-Camo Helm Bird",
+   "npc_type": 23966,
+   "sprite": 110943,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    68,
+    70
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 285
+  },
+  {
+   "entity_id": 93100055,
+   "nombre": "Chaos-Camo Helm Bird",
+   "npc_type": 23966,
+   "sprite": 110943,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    68,
+    75
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 285
+  },
+  {
+   "entity_id": 93100056,
+   "nombre": "Chaos-Camo Helm Bird",
+   "npc_type": 23966,
+   "sprite": 110943,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    54,
+    103
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 285
+  },
+  {
+   "entity_id": 93100057,
+   "nombre": "Chaos-Camo Helm Bird",
+   "npc_type": 23966,
+   "sprite": 110943,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    59,
+    103
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 285
+  },
+  {
+   "entity_id": 93100058,
+   "nombre": "Chaos-Camo Helm Bird",
+   "npc_type": 23966,
+   "sprite": 110943,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    70,
+    62
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 285
+  },
+  {
+   "entity_id": 93100059,
+   "nombre": "Chaos-Camo Helm Bird",
+   "npc_type": 23966,
+   "sprite": 110943,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    73,
+    67
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 285
+  },
+  {
+   "entity_id": 93100060,
+   "nombre": "Chaos-Camo Helm Bird",
+   "npc_type": 23966,
+   "sprite": 110943,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    64,
+    100
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 285
+  },
+  {
+   "entity_id": 93100061,
+   "nombre": "Chaos-Camo Helm Bird",
+   "npc_type": 23966,
+   "sprite": 110943,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    64,
+    105
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 285
+  },
+  {
+   "entity_id": 93100062,
+   "nombre": "Chaos-Camo Helm Bird",
+   "npc_type": 23966,
+   "sprite": 110943,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    75,
+    60
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 285
+  },
+  {
+   "entity_id": 93100063,
+   "nombre": "Chaos-Camo Helm Bird",
+   "npc_type": 23966,
+   "sprite": 110943,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    69,
+    102
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 285
+  },
+  {
+   "entity_id": 93100064,
+   "nombre": "Chaos-Stardust Floating Spirit",
+   "npc_type": 23967,
+   "sprite": 110949,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    78,
+    65
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 285
+  },
+  {
+   "entity_id": 93100065,
+   "nombre": "Chaos-Stardust Floating Spirit",
+   "npc_type": 23967,
+   "sprite": 110949,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    69,
+    107
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 285
+  },
+  {
+   "entity_id": 93100066,
+   "nombre": "Chaos-Stardust Floating Spirit",
+   "npc_type": 23967,
+   "sprite": 110949,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    72,
+    112
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 285
+  },
+  {
+   "entity_id": 93100067,
+   "nombre": "Chaos-Stardust Floating Spirit",
+   "npc_type": 23967,
+   "sprite": 110949,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    83,
+    63
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 285
+  },
+  {
+   "entity_id": 93100068,
+   "nombre": "Chaos-Stardust Floating Spirit",
+   "npc_type": 23967,
+   "sprite": 110949,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    74,
+    104
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 285
+  },
+  {
+   "entity_id": 93100069,
+   "nombre": "Chaos-Stardust Floating Spirit",
+   "npc_type": 23967,
+   "sprite": 110949,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    76,
+    117
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 285
+  },
+  {
+   "entity_id": 93100070,
+   "nombre": "Chaos-Stardust Floating Spirit",
+   "npc_type": 23967,
+   "sprite": 110949,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    77,
+    109
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 285
+  },
+  {
+   "entity_id": 93100071,
+   "nombre": "Chaos-Stardust Floating Spirit",
+   "npc_type": 23967,
+   "sprite": 110949,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    88,
+    61
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 285
+  },
+  {
+   "entity_id": 93100072,
+   "nombre": "Chaos-Stardust Floating Spirit",
+   "npc_type": 23967,
+   "sprite": 110949,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    82,
+    111
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 285
+  },
+  {
+   "entity_id": 93100073,
+   "nombre": "Chaos-Stardust Floating Spirit",
+   "npc_type": 23967,
+   "sprite": 110949,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    69,
+    120
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 285
+  },
+  {
+   "entity_id": 93100074,
+   "nombre": "Chaos-Stardust Floating Spirit",
+   "npc_type": 23967,
+   "sprite": 110949,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    81,
+    116
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 285
+  },
+  {
+   "entity_id": 93100075,
+   "nombre": "Chaos-Stardust Floating Spirit",
+   "npc_type": 23967,
+   "sprite": 110949,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    87,
+    111
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 285
+  },
+  {
+   "entity_id": 93100076,
+   "nombre": "Chaos-Stardust Floating Spirit",
+   "npc_type": 23967,
+   "sprite": 110949,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    86,
+    116
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 285
+  },
+  {
+   "entity_id": 93100077,
+   "nombre": "Chaos-Stardust Floating Spirit",
+   "npc_type": 23967,
+   "sprite": 110949,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    81,
+    121
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 285
+  },
+  {
+   "entity_id": 93100078,
+   "nombre": "Chaos-Stardust Floating Spirit",
+   "npc_type": 23967,
+   "sprite": 110949,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    74,
+    122
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 285
+  },
+  {
+   "entity_id": 93100079,
+   "nombre": "Chaos-Stardust Floating Spirit",
+   "npc_type": 23967,
+   "sprite": 110949,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    93,
+    59
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 285
+  },
+  {
+   "entity_id": 93100080,
+   "nombre": "Chaos-Stardust Floating Spirit",
+   "npc_type": 23967,
+   "sprite": 110949,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    91,
+    116
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 285
+  },
+  {
+   "entity_id": 93100081,
+   "nombre": "Chaos-Stardust Floating Spirit",
+   "npc_type": 23967,
+   "sprite": 110949,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    79,
+    126
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 285
+  },
+  {
+   "entity_id": 93100082,
+   "nombre": "Chaos-Stardust Floating Spirit",
+   "npc_type": 23967,
+   "sprite": 110949,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    86,
+    121
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 285
+  },
+  {
+   "entity_id": 93100083,
+   "nombre": "Chaos-Stardust Floating Spirit",
+   "npc_type": 23967,
+   "sprite": 110949,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    93,
+    64
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 285
+  },
+  {
+   "entity_id": 93100084,
+   "nombre": "Chaos-Stardust Floating Spirit",
+   "npc_type": 23967,
+   "sprite": 110949,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    68,
+    38
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 285
+  },
+  {
+   "entity_id": 93100085,
+   "nombre": "Chaos-Stardust Floating Spirit",
+   "npc_type": 23967,
+   "sprite": 110949,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    69,
+    127
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 285
+  },
+  {
+   "entity_id": 93100086,
+   "nombre": "Chaos-Stardust Floating Spirit",
+   "npc_type": 23967,
+   "sprite": 110949,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    74,
+    127
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 285
+  },
+  {
+   "entity_id": 93100087,
+   "nombre": "Chaos-Stardust Floating Spirit",
+   "npc_type": 23967,
+   "sprite": 110949,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    63,
+    35
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 285
+  },
+  {
+   "entity_id": 93100088,
+   "nombre": "Chaos-Stardust Floating Spirit",
+   "npc_type": 23967,
+   "sprite": 110949,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    98,
+    59
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 285
+  },
+  {
+   "entity_id": 93100089,
+   "nombre": "Chaos-Pure Heart Maid",
+   "npc_type": 23973,
+   "sprite": 110986,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    98,
+    64
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 295
+  },
+  {
+   "entity_id": 93100090,
+   "nombre": "Chaos-Holy Palace Guard",
+   "npc_type": 23968,
+   "sprite": 110946,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    151,
+    87
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 290
+  },
+  {
+   "entity_id": 93100091,
+   "nombre": "Chaos-Holy Palace Guard",
+   "npc_type": 23968,
+   "sprite": 110946,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    150,
+    82
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 290
+  },
+  {
+   "entity_id": 93100092,
+   "nombre": "Chaos-Holy Palace Guard",
+   "npc_type": 23968,
+   "sprite": 110946,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    155,
+    79
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 290
+  },
+  {
+   "entity_id": 93100093,
+   "nombre": "Chaos-Holy Palace Guard",
+   "npc_type": 23968,
+   "sprite": 110946,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    151,
+    74
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 290
+  },
+  {
+   "entity_id": 93100094,
+   "nombre": "Chaos-Holy Palace Guard",
+   "npc_type": 23968,
+   "sprite": 110946,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    146,
+    88
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 290
+  },
+  {
+   "entity_id": 93100095,
+   "nombre": "Chaos-Holy Palace Guard",
+   "npc_type": 23968,
+   "sprite": 110946,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    156,
+    84
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 290
+  },
+  {
+   "entity_id": 93100096,
+   "nombre": "Chaos-Holy Palace Guard",
+   "npc_type": 23968,
+   "sprite": 110946,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    145,
+    79
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 290
+  },
+  {
+   "entity_id": 93100097,
+   "nombre": "Chaos-Holy Palace Guard",
+   "npc_type": 23968,
+   "sprite": 110946,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    156,
+    70
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 290
+  },
+  {
+   "entity_id": 93100098,
+   "nombre": "Chaos-Holy Palace Guard",
+   "npc_type": 23968,
+   "sprite": 110946,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    151,
+    92
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 290
+  },
+  {
+   "entity_id": 93100099,
+   "nombre": "Chaos-Holy Palace Guard",
+   "npc_type": 23968,
+   "sprite": 110946,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    156,
+    89
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 290
+  },
+  {
+   "entity_id": 93100100,
+   "nombre": "Chaos-Holy Palace Guard",
+   "npc_type": 23968,
+   "sprite": 110946,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    161,
+    87
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 290
+  },
+  {
+   "entity_id": 93100101,
+   "nombre": "Chaos-Holy Palace Guard",
+   "npc_type": 23968,
+   "sprite": 110946,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    146,
+    69
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 290
+  },
+  {
+   "entity_id": 93100102,
+   "nombre": "Chaos-Holy Palace Guard",
+   "npc_type": 23968,
+   "sprite": 110946,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    156,
+    94
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 290
+  },
+  {
+   "entity_id": 93100103,
+   "nombre": "Chaos-Holy Palace Guard",
+   "npc_type": 23968,
+   "sprite": 110946,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    161,
+    92
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 290
+  },
+  {
+   "entity_id": 93100104,
+   "nombre": "Chaos-Holy Palace Guard",
+   "npc_type": 23968,
+   "sprite": 110946,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    143,
+    74
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 290
+  },
+  {
+   "entity_id": 93100105,
+   "nombre": "Chaos-Holy Palace Guard",
+   "npc_type": 23968,
+   "sprite": 110946,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    151,
+    69
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 290
+  },
+  {
+   "entity_id": 93100106,
+   "nombre": "Chaos-Holy Palace Guard",
+   "npc_type": 23968,
+   "sprite": 110946,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    141,
+    90
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 290
+  },
+  {
+   "entity_id": 93100107,
+   "nombre": "Chaos-Holy Palace Guard",
+   "npc_type": 23968,
+   "sprite": 110946,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    140,
+    79
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 290
+  },
+  {
+   "entity_id": 93100108,
+   "nombre": "Chaos-Holy Palace Guard",
+   "npc_type": 23968,
+   "sprite": 110946,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    166,
+    82
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 290
+  },
+  {
+   "entity_id": 93100109,
+   "nombre": "Chaos-Holy Palace Guard",
+   "npc_type": 23968,
+   "sprite": 110946,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    166,
+    87
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 290
+  },
+  {
+   "entity_id": 93100110,
+   "nombre": "Chaos-Holy Palace Guard",
+   "npc_type": 23968,
+   "sprite": 110946,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    149,
+    97
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 290
+  },
+  {
+   "entity_id": 93100111,
+   "nombre": "Chaos-Holy Palace Guard",
+   "npc_type": 23968,
+   "sprite": 110946,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    161,
+    97
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 290
+  },
+  {
+   "entity_id": 93100112,
+   "nombre": "Chaos-Holy Palace Guard",
+   "npc_type": 23968,
+   "sprite": 110946,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    166,
+    92
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 290
+  },
+  {
+   "entity_id": 93100113,
+   "nombre": "Chaos-Holy Palace Guard",
+   "npc_type": 23968,
+   "sprite": 110946,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    161,
+    66
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 290
+  },
+  {
+   "entity_id": 93100114,
+   "nombre": "Chaos-Holy Palace Guard",
+   "npc_type": 23968,
+   "sprite": 110946,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    154,
+    99
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 290
+  },
+  {
+   "entity_id": 93100115,
+   "nombre": "Chaos-Holy Palace Attendant",
+   "npc_type": 23969,
+   "sprite": 110997,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    138,
+    74
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 290
+  },
+  {
+   "entity_id": 93100116,
+   "nombre": "Chaos-Holy Palace Attendant",
+   "npc_type": 23969,
+   "sprite": 110997,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    166,
+    97
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 290
+  },
+  {
+   "entity_id": 93100117,
+   "nombre": "Chaos-Holy Palace Attendant",
+   "npc_type": 23969,
+   "sprite": 110997,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    156,
+    65
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 290
+  },
+  {
+   "entity_id": 93100118,
+   "nombre": "Chaos-Holy Palace Attendant",
+   "npc_type": 23969,
+   "sprite": 110997,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    148,
+    64
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 290
+  },
+  {
+   "entity_id": 93100119,
+   "nombre": "Chaos-Holy Palace Attendant",
+   "npc_type": 23969,
+   "sprite": 110997,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    136,
+    84
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 290
+  },
+  {
+   "entity_id": 93100120,
+   "nombre": "Chaos-Holy Palace Attendant",
+   "npc_type": 23969,
+   "sprite": 110997,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    136,
+    89
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 290
+  },
+  {
+   "entity_id": 93100121,
+   "nombre": "Chaos-Holy Palace Attendant",
+   "npc_type": 23969,
+   "sprite": 110997,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    166,
+    64
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 290
+  },
+  {
+   "entity_id": 93100122,
+   "nombre": "Chaos-Holy Palace Attendant",
+   "npc_type": 23969,
+   "sprite": 110997,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    171,
+    62
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 290
+  },
+  {
+   "entity_id": 93100123,
+   "nombre": "Chaos-Holy Palace Attendant",
+   "npc_type": 23969,
+   "sprite": 110997,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    148,
+    102
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 290
+  },
+  {
+   "entity_id": 93100124,
+   "nombre": "Chaos-Holy Palace Attendant",
+   "npc_type": 23969,
+   "sprite": 110997,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    135,
+    79
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 290
+  },
+  {
+   "entity_id": 93100125,
+   "nombre": "Chaos-Holy Palace Attendant",
+   "npc_type": 23969,
+   "sprite": 110997,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    171,
+    85
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 290
+  },
+  {
+   "entity_id": 93100126,
+   "nombre": "Chaos-Holy Palace Attendant",
+   "npc_type": 23969,
+   "sprite": 110997,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    171,
+    90
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 290
+  },
+  {
+   "entity_id": 93100127,
+   "nombre": "Chaos-Holy Palace Attendant",
+   "npc_type": 23969,
+   "sprite": 110997,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    159,
+    102
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 290
+  },
+  {
+   "entity_id": 93100128,
+   "nombre": "Chaos-Holy Palace Attendant",
+   "npc_type": 23969,
+   "sprite": 110997,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    164,
+    102
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 290
+  },
+  {
+   "entity_id": 93100129,
+   "nombre": "Chaos-Holy Palace Attendant",
+   "npc_type": 23969,
+   "sprite": 110997,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    171,
+    95
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 290
+  },
+  {
+   "entity_id": 93100130,
+   "nombre": "Chaos-Holy Palace Attendant",
+   "npc_type": 23969,
+   "sprite": 110997,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    161,
+    61
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 290
+  },
+  {
+   "entity_id": 93100131,
+   "nombre": "Chaos-Holy Palace Attendant",
+   "npc_type": 23969,
+   "sprite": 110997,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    133,
+    74
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 290
+  },
+  {
+   "entity_id": 93100132,
+   "nombre": "Chaos-Holy Palace Attendant",
+   "npc_type": 23969,
+   "sprite": 110997,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    169,
+    102
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 290
+  },
+  {
+   "entity_id": 93100133,
+   "nombre": "Chaos-Holy Palace Attendant",
+   "npc_type": 23969,
+   "sprite": 110997,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    174,
+    100
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 290
+  },
+  {
+   "entity_id": 93100134,
+   "nombre": "Chaos-Holy Palace Attendant",
+   "npc_type": 23969,
+   "sprite": 110997,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    166,
+    59
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 290
+  },
+  {
+   "entity_id": 93100135,
+   "nombre": "Chaos-Holy Palace Attendant",
+   "npc_type": 23969,
+   "sprite": 110997,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    131,
+    84
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 290
+  },
+  {
+   "entity_id": 93100136,
+   "nombre": "Chaos-Holy Palace Attendant",
+   "npc_type": 23969,
+   "sprite": 110997,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    131,
+    89
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 290
+  },
+  {
+   "entity_id": 93100137,
+   "nombre": "Chaos-Holy Palace Attendant",
+   "npc_type": 23969,
+   "sprite": 110997,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    130,
+    79
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 290
+  },
+  {
+   "entity_id": 93100138,
+   "nombre": "Chaos-Holy Palace Attendant",
+   "npc_type": 23969,
+   "sprite": 110997,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    171,
+    57
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 290
+  },
+  {
+   "entity_id": 93100139,
+   "nombre": "Chaos-Holy Palace Attendant",
+   "npc_type": 23969,
+   "sprite": 110997,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    149,
+    107
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 290
+  },
+  {
+   "entity_id": 93100140,
+   "nombre": "Chaos Elite-Camo Helm Bird",
+   "npc_type": 23971,
+   "sprite": 110943,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    154,
+    107
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 292
+  },
+  {
+   "entity_id": 93100141,
+   "nombre": "Chaos Elite-Camo Helm Bird",
+   "npc_type": 23971,
+   "sprite": 110943,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    174,
+    105
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 292
+  },
+  {
+   "entity_id": 93100142,
+   "nombre": "Chaos Elite-Camo Helm Bird",
+   "npc_type": 23971,
+   "sprite": 110943,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    176,
+    86
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 292
+  },
+  {
+   "entity_id": 93100143,
+   "nombre": "Chaos-Assault War Bird",
+   "npc_type": 23974,
+   "sprite": 110992,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    159,
+    107
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 295
+  },
+  {
+   "entity_id": 93100144,
+   "nombre": "Chaos Elite-Stardust Floating Spirit",
+   "npc_type": 23972,
+   "sprite": 110949,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    169,
+    107
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 293
+  },
+  {
+   "entity_id": 93100145,
+   "nombre": "Chaos Elite-Stardust Floating Spirit",
+   "npc_type": 23972,
+   "sprite": 110949,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    181,
+    101
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 293
+  },
+  {
+   "entity_id": 93100146,
+   "nombre": "Chaos Elite-Stardust Floating Spirit",
+   "npc_type": 23972,
+   "sprite": 110949,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    179,
+    106
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 293
+  },
+  {
+   "entity_id": 93100147,
+   "nombre": "Chaos Elite-Stardust Floating Spirit",
+   "npc_type": 23972,
+   "sprite": 110949,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    179,
+    96
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 293
+  },
+  {
+   "entity_id": 93100148,
+   "nombre": "Chaos Elite-Stardust Floating Spirit",
+   "npc_type": 23972,
+   "sprite": 110949,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    164,
+    107
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 293
+  },
+  {
+   "entity_id": 93100149,
+   "nombre": "Chaos-Nuclear Spirit",
+   "npc_type": 23975,
+   "sprite": 111000,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    164,
+    112
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 295
+  },
+  {
+   "entity_id": 93100150,
+   "nombre": "Ba'shin's Gaze",
+   "npc_type": 23729,
+   "sprite": 111552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    47,
+    27
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 93100151,
+   "nombre": "Ba'shin's Gaze",
+   "npc_type": 23729,
+   "sprite": 111552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    42,
+    22
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 93100152,
+   "nombre": "Ba'shin's Gaze",
+   "npc_type": 23729,
+   "sprite": 111552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    47,
+    22
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 93100153,
+   "nombre": "Ba'shin's Gaze",
+   "npc_type": 23729,
+   "sprite": 111552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    52,
+    22
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 93100154,
+   "nombre": "Ba'shin's Gaze",
+   "npc_type": 23729,
+   "sprite": 111552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    52,
+    27
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 93100155,
+   "nombre": "Ba'shin's Gaze",
+   "npc_type": 23729,
+   "sprite": 111552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    37,
+    17
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 93100156,
+   "nombre": "Ba'shin's Gaze",
+   "npc_type": 23729,
+   "sprite": 111552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    37,
+    22
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 93100157,
+   "nombre": "Ba'shin's Gaze",
+   "npc_type": 23729,
+   "sprite": 111552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    42,
+    17
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 93100158,
+   "nombre": "Ba'shin's Gaze",
+   "npc_type": 23729,
+   "sprite": 111552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    57,
+    25
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 93100159,
+   "nombre": "Ba'shin's Gaze",
+   "npc_type": 23729,
+   "sprite": 111552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    32,
+    12
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 93100160,
+   "nombre": "Ba'shin's Gaze",
+   "npc_type": 23729,
+   "sprite": 111552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    32,
+    17
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 93100161,
+   "nombre": "Ba'shin's Gaze",
+   "npc_type": 23729,
+   "sprite": 111552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    62,
+    28
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 93100162,
+   "nombre": "Ba'shin's Gaze",
+   "npc_type": 23729,
+   "sprite": 111552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    27,
+    10
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 93100163,
+   "nombre": "Ba'shin's Gaze",
+   "npc_type": 23729,
+   "sprite": 111552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    27,
+    15
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 93100164,
+   "nombre": "Ba'shin's Gaze",
+   "npc_type": 23729,
+   "sprite": 111552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    22,
+    9
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 93100165,
+   "nombre": "Wind Elf",
+   "npc_type": 1,
+   "sprite": 42055,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    126,
+    84
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 4,
+   "apagado": true
+  },
+  {
+   "entity_id": 93100166,
+   "nombre": "Fire Elf",
+   "npc_type": 2,
+   "sprite": 42056,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    165,
+    54
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 7,
+   "apagado": true
+  }
+ ],
+ "recursos": [
+  {
+   "entity_id": 103100000,
+   "sprite": 60461,
+   "capa": 0,
+   "px": [
+    3758,
+    2160
+   ],
+   "tile": [
+    117,
+    67
+   ],
+   "crudo": "602e250600000000ae0e0000700800000000000023000000000000000000000000062dec00000480000000",
+   "copiado_de": "cuerpo de una captura del objeto 60461"
+  },
+  {
+   "entity_id": 103100001,
+   "sprite": 60461,
+   "capa": 0,
+   "px": [
+    3917,
+    2064
+   ],
+   "tile": [
+    122,
+    64
+   ],
+   "crudo": "612e2506000000004d0f0000100800000000000023000000000000000000000000062dec00000480000000",
+   "copiado_de": "cuerpo de una captura del objeto 60461"
+  },
+  {
+   "entity_id": 103100002,
+   "sprite": 60461,
+   "capa": 2,
+   "px": [
+    2062,
+    4400
+   ],
+   "tile": [
+    64,
+    137
+   ],
+   "crudo": "622e2506020000000e080000301100000000000023000000000000000000000000062dec00000480000000",
+   "copiado_de": "cuerpo de una captura del objeto 60461"
+  },
+  {
+   "entity_id": 103100003,
+   "sprite": 60461,
+   "capa": 0,
+   "px": [
+    5521,
+    2736
+   ],
+   "tile": [
+    172,
+    85
+   ],
+   "crudo": "632e25060000000091150000b00a00000000000023000000000000000000000000062dec00000480000000",
+   "copiado_de": "cuerpo de una captura del objeto 60461"
+  },
+  {
+   "entity_id": 103100004,
+   "sprite": 60461,
+   "capa": 0,
+   "px": [
+    5256,
+    2864
+   ],
+   "tile": [
+    164,
+    89
+   ],
+   "crudo": "642e25060000000088140000300b00000000000023000000000000000000000000062dec00000480000000",
+   "copiado_de": "cuerpo de una captura del objeto 60461"
+  },
+  {
+   "entity_id": 103100005,
+   "sprite": 60461,
+   "capa": 0,
+   "px": [
+    4997,
+    2992
+   ],
+   "tile": [
+    156,
+    93
+   ],
+   "crudo": "652e25060000000085130000b00b00000000000023000000000000000000000000062dec00000480000000",
+   "copiado_de": "cuerpo de una captura del objeto 60461"
+  },
+  {
+   "entity_id": 103100006,
+   "sprite": 60461,
+   "capa": 0,
+   "px": [
+    4805,
+    3088
+   ],
+   "tile": [
+    150,
+    96
+   ],
+   "crudo": "662e250600000000c5120000100c00000000000023000000000000000000000000062dec00000480000000",
+   "copiado_de": "cuerpo de una captura del objeto 60461"
+  },
+  {
+   "entity_id": 103100007,
+   "sprite": 60461,
+   "capa": 0,
+   "px": [
+    5891,
+    3408
+   ],
+   "tile": [
+    184,
+    106
+   ],
+   "crudo": "672e25060000000003170000500d00000000000023000000000000000000000000062dec00000480000000",
+   "copiado_de": "cuerpo de una captura del objeto 60461"
+  },
+  {
+   "entity_id": 103100008,
+   "sprite": 60461,
+   "capa": 0,
+   "px": [
+    6213,
+    3600
+   ],
+   "tile": [
+    194,
+    112
+   ],
+   "crudo": "682e25060000000045180000100e00000000000023000000000000000000000000062dec00000480000000",
+   "copiado_de": "cuerpo de una captura del objeto 60461"
+  },
+  {
+   "entity_id": 103100009,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    5502,
+    3376
+   ],
+   "tile": [
+    171,
+    105
+   ],
+   "crudo": "692e2506000000007e150000300d00000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 103100010,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    5637,
+    3184
+   ],
+   "tile": [
+    176,
+    99
+   ],
+   "crudo": "6a2e25060000000005160000700c00000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 103100011,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    5251,
+    3248
+   ],
+   "tile": [
+    164,
+    101
+   ],
+   "crudo": "6b2e25060000000083140000b00c00000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 103100012,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    5886,
+    3056
+   ],
+   "tile": [
+    183,
+    95
+   ],
+   "crudo": "6c2e250600000000fe160000f00b00000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 103100013,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    5620,
+    3312
+   ],
+   "tile": [
+    175,
+    103
+   ],
+   "crudo": "6d2e250600000000f4150000f00c00000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 103100014,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    5890,
+    3184
+   ],
+   "tile": [
+    184,
+    99
+   ],
+   "crudo": "6e2e25060000000002170000700c00000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 103100015,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    5376,
+    3312
+   ],
+   "tile": [
+    168,
+    103
+   ],
+   "crudo": "6f2e25060000000000150000f00c00000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 103100016,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    5243,
+    3376
+   ],
+   "tile": [
+    163,
+    105
+   ],
+   "crudo": "702e2506000000007b140000300d00000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 103100017,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    6015,
+    3120
+   ],
+   "tile": [
+    187,
+    97
+   ],
+   "crudo": "712e2506000000007f170000300c00000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 103100018,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    5379,
+    3184
+   ],
+   "tile": [
+    168,
+    99
+   ],
+   "crudo": "722e25060000000003150000700c00000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 103100019,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    4832,
+    720
+   ],
+   "tile": [
+    151,
+    22
+   ],
+   "crudo": "732e250600000000e0120000d00200000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 103100020,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    3659,
+    1136
+   ],
+   "tile": [
+    114,
+    35
+   ],
+   "crudo": "742e2506000000004b0e0000700400000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 103100021,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    2843,
+    2128
+   ],
+   "tile": [
+    88,
+    66
+   ],
+   "crudo": "752e2506000000001b0b0000500800000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 103100022,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    2587,
+    3376
+   ],
+   "tile": [
+    80,
+    105
+   ],
+   "crudo": "762e2506000000001b0a0000300d00000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 103100023,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    8101,
+    1072
+   ],
+   "tile": [
+    253,
+    33
+   ],
+   "crudo": "772e250600000000a51f0000300400000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 103100024,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    6001,
+    1264
+   ],
+   "tile": [
+    187,
+    39
+   ],
+   "crudo": "782e25060000000071170000f00400000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 103100025,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    4907,
+    1904
+   ],
+   "tile": [
+    153,
+    59
+   ],
+   "crudo": "792e2506000000002b130000700700000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 103100026,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    4666,
+    2672
+   ],
+   "tile": [
+    145,
+    83
+   ],
+   "crudo": "7a2e2506000000003a120000700a00000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 103100027,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    4402,
+    2768
+   ],
+   "tile": [
+    137,
+    86
+   ],
+   "crudo": "7b2e25060000000032110000d00a00000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 103100028,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    5215,
+    2128
+   ],
+   "tile": [
+    162,
+    66
+   ],
+   "crudo": "7c2e2506000000005f140000500800000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 103100029,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    8271,
+    4784
+   ],
+   "tile": [
+    258,
+    149
+   ],
+   "crudo": "7d2e2506000000004f200000b01200000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 103100030,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    2224,
+    3536
+   ],
+   "tile": [
+    69,
+    110
+   ],
+   "crudo": "7e2e250600000000b0080000d00d00000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 103100031,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    3902,
+    784
+   ],
+   "tile": [
+    121,
+    24
+   ],
+   "crudo": "7f2e2506000000003e0f0000100300000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 103100032,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    3197,
+    1968
+   ],
+   "tile": [
+    99,
+    61
+   ],
+   "crudo": "802e2506000000007d0c0000b00700000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 103100033,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    2373,
+    2064
+   ],
+   "tile": [
+    74,
+    64
+   ],
+   "crudo": "812e25060000000045090000100800000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 103100034,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    2684,
+    3728
+   ],
+   "tile": [
+    83,
+    116
+   ],
+   "crudo": "822e2506000000007c0a0000900e00000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  }
+ ]
+}

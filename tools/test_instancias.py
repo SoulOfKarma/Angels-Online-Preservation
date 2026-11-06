@@ -114,8 +114,13 @@ def test_el_censo_de_cada_cuarto_es_el_del_cliente():
         # la plantilla: salen con su mecanica. Ver tools/quitar_oleadas.py.
         # Solo en las salas ya limpiadas (las que lo dicen en su nota).
         de_evento = pob.zonas_de_evento(st) if 'OLEADAS' in d.get('_nota', '') else set()
+        nivel_mapa = pob._nivel_tipico(cli.mapa(st), cat)
         for g in cli.mapa(st).generadores():
             if g.get('zona') in de_evento:
+                continue
+            # Los elfos elementales marcadores no son monstruos
+            # (pob.MARCADORES): no van en la plantilla.
+            if g['cantidad'] and pob.es_marcador(g['tipo'], nivel_mapa):
                 continue
             if g['tipo'] in cat:
                 # Con el tope: doce generadores de las instancias declaran

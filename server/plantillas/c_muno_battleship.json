@@ -1,0 +1,7308 @@
+{
+ "_nota": "c_muno_battleship (stage 430). POBLADO DESDE EL CLIENTE, no desde una captura: los generadores de monstruos son objetos del propio map430.mpc -- el monstruo en el u16 del +34, la zona en el +21, el tiempo en el +38 y cuantos en el +42. Eso da el censo COMPLETO del mapa, que una captura no puede dar porque solo trae lo que estuvo a la vista. El entity_id es fabricado y estable, no el del servidor. Las casillas son las del TAG de cada generador; los que no declaran TAG ponen sus monstruos en la casilla del generador y en un anillo de radio 3 a su alrededor, que es la dispersion MEDIDA en el stage 73. Los objetos de mapa son los del .mpc cuyo id esta en la lista de los que el servidor manda de verdad, con el cuerpo del 0x000E copiado de una captura del mismo objeto. Los tornados se dibujan aparte, desde portales.json. Ver tools/poblar_del_cliente.py.",
+ "stage": 430,
+ "spawns": [
+  {
+   "entity_id": 93000000,
+   "nombre": "Chaos-Big Brain Gregon",
+   "npc_type": 23952,
+   "sprite": 43551,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    281,
+    164
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400
+  },
+  {
+   "entity_id": 93000001,
+   "nombre": "Chaos-Jason Knight",
+   "npc_type": 23953,
+   "sprite": 43552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    36,
+    12
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400
+  },
+  {
+   "entity_id": 93000002,
+   "nombre": "Chaos-Insect Queen Elian",
+   "npc_type": 23954,
+   "sprite": 43553,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    23,
+    162
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400
+  },
+  {
+   "entity_id": 93000003,
+   "nombre": "Chaos-Star Core Ember",
+   "npc_type": 23939,
+   "sprite": 43526,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    266,
+    10
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 380
+  },
+  {
+   "entity_id": 93000004,
+   "nombre": "Chaos-Star Core Ember",
+   "npc_type": 23939,
+   "sprite": 43526,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    261,
+    8
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 380
+  },
+  {
+   "entity_id": 93000005,
+   "nombre": "Chaos-Star Core Ember",
+   "npc_type": 23939,
+   "sprite": 43526,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    261,
+    13
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 380
+  },
+  {
+   "entity_id": 93000006,
+   "nombre": "Chaos-Star Core Ember",
+   "npc_type": 23939,
+   "sprite": 43526,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    271,
+    5
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 380
+  },
+  {
+   "entity_id": 93000007,
+   "nombre": "Chaos-Star Core Ember",
+   "npc_type": 23939,
+   "sprite": 43526,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    271,
+    10
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 380
+  },
+  {
+   "entity_id": 93000008,
+   "nombre": "Chaos-Star Core Ember",
+   "npc_type": 23939,
+   "sprite": 43526,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    258,
+    18
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 380
+  },
+  {
+   "entity_id": 93000009,
+   "nombre": "Chaos-Star Core Ember",
+   "npc_type": 23939,
+   "sprite": 43526,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    256,
+    8
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 380
+  },
+  {
+   "entity_id": 93000010,
+   "nombre": "Chaos-Star Core Ember",
+   "npc_type": 23939,
+   "sprite": 43526,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    256,
+    13
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 380
+  },
+  {
+   "entity_id": 93000011,
+   "nombre": "Chaos-Star Core Ember",
+   "npc_type": 23939,
+   "sprite": 43526,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    275,
+    20
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 380
+  },
+  {
+   "entity_id": 93000012,
+   "nombre": "Chaos-Star Core Ember",
+   "npc_type": 23939,
+   "sprite": 43526,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    276,
+    4
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 380
+  },
+  {
+   "entity_id": 93000013,
+   "nombre": "Chaos-Star Core Ember",
+   "npc_type": 23939,
+   "sprite": 43526,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    276,
+    9
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 380
+  },
+  {
+   "entity_id": 93000014,
+   "nombre": "Chaos-Star Core Ember",
+   "npc_type": 23939,
+   "sprite": 43526,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    277,
+    15
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 380
+  },
+  {
+   "entity_id": 93000015,
+   "nombre": "Chaos-Star Core Ember",
+   "npc_type": 23939,
+   "sprite": 43526,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    253,
+    18
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 380
+  },
+  {
+   "entity_id": 93000016,
+   "nombre": "Chaos-Star Core Ember",
+   "npc_type": 23939,
+   "sprite": 43526,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    251,
+    9
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 380
+  },
+  {
+   "entity_id": 93000017,
+   "nombre": "Chaos-Star Core Ember",
+   "npc_type": 23939,
+   "sprite": 43526,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    270,
+    25
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 380
+  },
+  {
+   "entity_id": 93000018,
+   "nombre": "Chaos-Star Core Ember",
+   "npc_type": 23939,
+   "sprite": 43526,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    275,
+    25
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 380
+  },
+  {
+   "entity_id": 93000019,
+   "nombre": "Chaos-Star Core Ember",
+   "npc_type": 23939,
+   "sprite": 43526,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    281,
+    4
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 380
+  },
+  {
+   "entity_id": 93000020,
+   "nombre": "Chaos-Star Core Ember",
+   "npc_type": 23939,
+   "sprite": 43526,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    281,
+    9
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 380
+  },
+  {
+   "entity_id": 93000021,
+   "nombre": "Chaos-Star Core Ember",
+   "npc_type": 23939,
+   "sprite": 43526,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    282,
+    14
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 380
+  },
+  {
+   "entity_id": 93000022,
+   "nombre": "Chaos-Star Core Ember",
+   "npc_type": 23939,
+   "sprite": 43526,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    282,
+    19
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 380
+  },
+  {
+   "entity_id": 93000023,
+   "nombre": "Chaos-Star Core Ember",
+   "npc_type": 23939,
+   "sprite": 43526,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    248,
+    14
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 380
+  },
+  {
+   "entity_id": 93000024,
+   "nombre": "Chaos-Star Core Ember",
+   "npc_type": 23939,
+   "sprite": 43526,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    248,
+    19
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 380
+  },
+  {
+   "entity_id": 93000025,
+   "nombre": "Chaos-Star Core Ember",
+   "npc_type": 23939,
+   "sprite": 43526,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    263,
+    28
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 380
+  },
+  {
+   "entity_id": 93000026,
+   "nombre": "Chaos-Star Core Ember",
+   "npc_type": 23939,
+   "sprite": 43526,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    268,
+    30
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 380
+  },
+  {
+   "entity_id": 93000027,
+   "nombre": "Chaos-Star Core Ember",
+   "npc_type": 23939,
+   "sprite": 43526,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    273,
+    30
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 380
+  },
+  {
+   "entity_id": 93000028,
+   "nombre": "Chaos-Cosmic Man-Eater Flower",
+   "npc_type": 23940,
+   "sprite": 43532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    286,
+    8
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 380
+  },
+  {
+   "entity_id": 93000029,
+   "nombre": "Chaos-Cosmic Man-Eater Flower",
+   "npc_type": 23940,
+   "sprite": 43532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    287,
+    13
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 380
+  },
+  {
+   "entity_id": 93000030,
+   "nombre": "Chaos-Cosmic Man-Eater Flower",
+   "npc_type": 23940,
+   "sprite": 43532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    291,
+    4
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 380
+  },
+  {
+   "entity_id": 93000031,
+   "nombre": "Chaos-Cosmic Man-Eater Flower",
+   "npc_type": 23940,
+   "sprite": 43532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    292,
+    9
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 380
+  },
+  {
+   "entity_id": 93000032,
+   "nombre": "Chaos-Cosmic Man-Eater Flower",
+   "npc_type": 23940,
+   "sprite": 43532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    292,
+    14
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 380
+  },
+  {
+   "entity_id": 93000033,
+   "nombre": "Chaos-Cosmic Man-Eater Flower",
+   "npc_type": 23940,
+   "sprite": 43532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    278,
+    30
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 380
+  },
+  {
+   "entity_id": 93000034,
+   "nombre": "Chaos-Cosmic Man-Eater Flower",
+   "npc_type": 23940,
+   "sprite": 43532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    266,
+    35
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 380
+  },
+  {
+   "entity_id": 93000035,
+   "nombre": "Chaos-Cosmic Man-Eater Flower",
+   "npc_type": 23940,
+   "sprite": 43532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    271,
+    35
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 380
+  },
+  {
+   "entity_id": 93000036,
+   "nombre": "Chaos-Cosmic Man-Eater Flower",
+   "npc_type": 23940,
+   "sprite": 43532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    276,
+    35
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 380
+  },
+  {
+   "entity_id": 93000037,
+   "nombre": "Chaos-Cosmic Man-Eater Flower",
+   "npc_type": 23940,
+   "sprite": 43532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    281,
+    35
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 380
+  },
+  {
+   "entity_id": 93000038,
+   "nombre": "Chaos-Cosmic Man-Eater Flower",
+   "npc_type": 23940,
+   "sprite": 43532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    267,
+    40
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 380
+  },
+  {
+   "entity_id": 93000039,
+   "nombre": "Chaos-Cosmic Man-Eater Flower",
+   "npc_type": 23940,
+   "sprite": 43532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    272,
+    40
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 380
+  },
+  {
+   "entity_id": 93000040,
+   "nombre": "Chaos-Cosmic Man-Eater Flower",
+   "npc_type": 23940,
+   "sprite": 43532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    277,
+    40
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 380
+  },
+  {
+   "entity_id": 93000041,
+   "nombre": "Chaos-Cosmic Man-Eater Flower",
+   "npc_type": 23940,
+   "sprite": 43532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    252,
+    39
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 380
+  },
+  {
+   "entity_id": 93000042,
+   "nombre": "Chaos-Cosmic Man-Eater Flower",
+   "npc_type": 23940,
+   "sprite": 43532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    250,
+    44
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 380
+  },
+  {
+   "entity_id": 93000043,
+   "nombre": "Chaos-Cosmic Man-Eater Flower",
+   "npc_type": 23940,
+   "sprite": 43532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    255,
+    44
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 380
+  },
+  {
+   "entity_id": 93000044,
+   "nombre": "Chaos-Cosmic Man-Eater Flower",
+   "npc_type": 23940,
+   "sprite": 43532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    263,
+    45
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 380
+  },
+  {
+   "entity_id": 93000045,
+   "nombre": "Chaos-Cosmic Man-Eater Flower",
+   "npc_type": 23940,
+   "sprite": 43532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    268,
+    45
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 380
+  },
+  {
+   "entity_id": 93000046,
+   "nombre": "Chaos-Cosmic Man-Eater Flower",
+   "npc_type": 23940,
+   "sprite": 43532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    273,
+    45
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 380
+  },
+  {
+   "entity_id": 93000047,
+   "nombre": "Chaos-Cosmic Man-Eater Flower",
+   "npc_type": 23940,
+   "sprite": 43532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    278,
+    46
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 380
+  },
+  {
+   "entity_id": 93000048,
+   "nombre": "Chaos-Cosmic Man-Eater Flower",
+   "npc_type": 23940,
+   "sprite": 43532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    247,
+    38
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 380
+  },
+  {
+   "entity_id": 93000049,
+   "nombre": "Chaos-Cosmic Man-Eater Flower",
+   "npc_type": 23940,
+   "sprite": 43532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    245,
+    43
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 380
+  },
+  {
+   "entity_id": 93000050,
+   "nombre": "Chaos-Cosmic Man-Eater Flower",
+   "npc_type": 23940,
+   "sprite": 43532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    245,
+    48
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 380
+  },
+  {
+   "entity_id": 93000051,
+   "nombre": "Chaos-Cosmic Man-Eater Flower",
+   "npc_type": 23940,
+   "sprite": 43532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    250,
+    49
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 380
+  },
+  {
+   "entity_id": 93000052,
+   "nombre": "Chaos-Cosmic Man-Eater Flower",
+   "npc_type": 23940,
+   "sprite": 43532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    255,
+    49
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 380
+  },
+  {
+   "entity_id": 93000053,
+   "nombre": "Chaos-Super Galaxy Police Dog",
+   "npc_type": 23942,
+   "sprite": 43535,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    282,
+    55
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 93000054,
+   "nombre": "Chaos-Super Galaxy Police Dog",
+   "npc_type": 23942,
+   "sprite": 43535,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    277,
+    51
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 93000055,
+   "nombre": "Chaos-Super Galaxy Police Dog",
+   "npc_type": 23942,
+   "sprite": 43535,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    277,
+    56
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 93000056,
+   "nombre": "Chaos-Super Galaxy Police Dog",
+   "npc_type": 23942,
+   "sprite": 43535,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    282,
+    60
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 93000057,
+   "nombre": "Chaos-Super Galaxy Police Dog",
+   "npc_type": 23942,
+   "sprite": 43535,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    287,
+    56
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 93000058,
+   "nombre": "Chaos-Super Galaxy Police Dog",
+   "npc_type": 23942,
+   "sprite": 43535,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    276,
+    61
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 93000059,
+   "nombre": "Chaos-Super Galaxy Police Dog",
+   "npc_type": 23942,
+   "sprite": 43535,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    272,
+    50
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 93000060,
+   "nombre": "Chaos-Super Galaxy Police Dog",
+   "npc_type": 23942,
+   "sprite": 43535,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    272,
+    55
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 93000061,
+   "nombre": "Chaos-Super Galaxy Police Dog",
+   "npc_type": 23942,
+   "sprite": 43535,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    271,
+    60
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 93000062,
+   "nombre": "Chaos-Super Galaxy Police Dog",
+   "npc_type": 23942,
+   "sprite": 43535,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    271,
+    65
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 93000063,
+   "nombre": "Chaos-Super Galaxy Police Dog",
+   "npc_type": 23942,
+   "sprite": 43535,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    276,
+    66
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 93000064,
+   "nombre": "Chaos-Super Galaxy Police Dog",
+   "npc_type": 23942,
+   "sprite": 43535,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    267,
+    50
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 93000065,
+   "nombre": "Chaos-Super Galaxy Police Dog",
+   "npc_type": 23942,
+   "sprite": 43535,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    267,
+    70
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 93000066,
+   "nombre": "Chaos-Super Galaxy Police Dog",
+   "npc_type": 23942,
+   "sprite": 43535,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    266,
+    61
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 93000067,
+   "nombre": "Chaos-Super Galaxy Police Dog",
+   "npc_type": 23942,
+   "sprite": 43535,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    272,
+    71
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 93000068,
+   "nombre": "Chaos-Super Galaxy Police Dog",
+   "npc_type": 23942,
+   "sprite": 43535,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    277,
+    71
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 93000069,
+   "nombre": "Chaos-Super Galaxy Police Dog",
+   "npc_type": 23942,
+   "sprite": 43535,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    262,
+    66
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 93000070,
+   "nombre": "Chaos-Super Galaxy Police Dog",
+   "npc_type": 23942,
+   "sprite": 43535,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    262,
+    71
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 93000071,
+   "nombre": "Chaos-Super Galaxy Police Dog",
+   "npc_type": 23942,
+   "sprite": 43535,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    282,
+    75
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 93000072,
+   "nombre": "Chaos-Super Galaxy Police Dog",
+   "npc_type": 23942,
+   "sprite": 43535,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    276,
+    76
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 93000073,
+   "nombre": "Chaos-Super Galaxy Police Dog",
+   "npc_type": 23942,
+   "sprite": 43535,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    260,
+    76
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 93000074,
+   "nombre": "Chaos-Super Galaxy Police Dog",
+   "npc_type": 23942,
+   "sprite": 43535,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    257,
+    68
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 93000075,
+   "nombre": "Chaos-Super Galaxy Police Dog",
+   "npc_type": 23942,
+   "sprite": 43535,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    281,
+    80
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 93000076,
+   "nombre": "Chaos-Super Galaxy Police Dog",
+   "npc_type": 23942,
+   "sprite": 43535,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    286,
+    80
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 93000077,
+   "nombre": "Chaos-Super Galaxy Police Dog",
+   "npc_type": 23942,
+   "sprite": 43535,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    256,
+    81
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 93000078,
+   "nombre": "Chaos-Super Galaxy Police Dog",
+   "npc_type": 23942,
+   "sprite": 43535,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    261,
+    81
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 93000079,
+   "nombre": "Chaos-Super Galaxy Police Dog",
+   "npc_type": 23942,
+   "sprite": 43535,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    276,
+    81
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 93000080,
+   "nombre": "Chaos-Super Galaxy Police Dog",
+   "npc_type": 23942,
+   "sprite": 43535,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    255,
+    73
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 93000081,
+   "nombre": "Chaos-Super Galaxy Police Dog",
+   "npc_type": 23942,
+   "sprite": 43535,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    266,
+    85
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 93000082,
+   "nombre": "Chaos-Super Galaxy Police Dog",
+   "npc_type": 23942,
+   "sprite": 43535,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    281,
+    85
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 93000083,
+   "nombre": "Chaos-Satellite Barrel Mecha",
+   "npc_type": 23944,
+   "sprite": 43544,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    251,
+    54
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 385
+  },
+  {
+   "entity_id": 93000084,
+   "nombre": "Chaos-Satellite Barrel Mecha",
+   "npc_type": 23944,
+   "sprite": 43544,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    250,
+    72
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 385
+  },
+  {
+   "entity_id": 93000085,
+   "nombre": "Chaos-Satellite Barrel Mecha",
+   "npc_type": 23944,
+   "sprite": 43544,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    250,
+    77
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 385
+  },
+  {
+   "entity_id": 93000086,
+   "nombre": "Chaos-Satellite Barrel Mecha",
+   "npc_type": 23944,
+   "sprite": 43544,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    246,
+    54
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 385
+  },
+  {
+   "entity_id": 93000087,
+   "nombre": "Chaos-Satellite Barrel Mecha",
+   "npc_type": 23944,
+   "sprite": 43544,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    241,
+    53
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 385
+  },
+  {
+   "entity_id": 93000088,
+   "nombre": "Chaos-Satellite Barrel Mecha",
+   "npc_type": 23944,
+   "sprite": 43544,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    240,
+    38
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 385
+  },
+  {
+   "entity_id": 93000089,
+   "nombre": "Chaos-Satellite Barrel Mecha",
+   "npc_type": 23944,
+   "sprite": 43544,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    240,
+    43
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 385
+  },
+  {
+   "entity_id": 93000090,
+   "nombre": "Chaos-Satellite Barrel Mecha",
+   "npc_type": 23944,
+   "sprite": 43544,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    240,
+    48
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 385
+  },
+  {
+   "entity_id": 93000091,
+   "nombre": "Chaos-Satellite Barrel Mecha",
+   "npc_type": 23944,
+   "sprite": 43544,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    242,
+    20
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 385
+  },
+  {
+   "entity_id": 93000092,
+   "nombre": "Chaos-Satellite Barrel Mecha",
+   "npc_type": 23944,
+   "sprite": 43544,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    263,
+    90
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 385
+  },
+  {
+   "entity_id": 93000093,
+   "nombre": "Chaos-Satellite Barrel Mecha",
+   "npc_type": 23944,
+   "sprite": 43544,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    277,
+    90
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 385
+  },
+  {
+   "entity_id": 93000094,
+   "nombre": "Chaos-Satellite Barrel Mecha",
+   "npc_type": 23944,
+   "sprite": 43544,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    282,
+    90
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 385
+  },
+  {
+   "entity_id": 93000095,
+   "nombre": "Chaos-Satellite Barrel Mecha",
+   "npc_type": 23944,
+   "sprite": 43544,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    236,
+    32
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 385
+  },
+  {
+   "entity_id": 93000096,
+   "nombre": "Chaos-Satellite Barrel Mecha",
+   "npc_type": 23944,
+   "sprite": 43544,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    268,
+    91
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 385
+  },
+  {
+   "entity_id": 93000097,
+   "nombre": "Chaos-Satellite Barrel Mecha",
+   "npc_type": 23944,
+   "sprite": 43544,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    235,
+    37
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 385
+  },
+  {
+   "entity_id": 93000098,
+   "nombre": "Chaos-Satellite Barrel Mecha",
+   "npc_type": 23944,
+   "sprite": 43544,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    235,
+    42
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 385
+  },
+  {
+   "entity_id": 93000099,
+   "nombre": "Chaos-Satellite Barrel Mecha",
+   "npc_type": 23944,
+   "sprite": 43544,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    234,
+    17
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 385
+  },
+  {
+   "entity_id": 93000100,
+   "nombre": "Chaos-Satellite Barrel Mecha",
+   "npc_type": 23944,
+   "sprite": 43544,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    239,
+    15
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 385
+  },
+  {
+   "entity_id": 93000101,
+   "nombre": "Chaos-Satellite Barrel Mecha",
+   "npc_type": 23944,
+   "sprite": 43544,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    262,
+    95
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 385
+  },
+  {
+   "entity_id": 93000102,
+   "nombre": "Chaos-Satellite Barrel Mecha",
+   "npc_type": 23944,
+   "sprite": 43544,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    273,
+    95
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 385
+  },
+  {
+   "entity_id": 93000103,
+   "nombre": "Chaos-Satellite Barrel Mecha",
+   "npc_type": 23944,
+   "sprite": 43544,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    278,
+    95
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 385
+  },
+  {
+   "entity_id": 93000104,
+   "nombre": "Chaos-Satellite Barrel Mecha",
+   "npc_type": 23944,
+   "sprite": 43544,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    283,
+    95
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 385
+  },
+  {
+   "entity_id": 93000105,
+   "nombre": "Chaos-Satellite Barrel Mecha",
+   "npc_type": 23944,
+   "sprite": 43544,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    231,
+    31
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 385
+  },
+  {
+   "entity_id": 93000106,
+   "nombre": "Chaos-Satellite Barrel Mecha",
+   "npc_type": 23944,
+   "sprite": 43544,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    267,
+    96
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 385
+  },
+  {
+   "entity_id": 93000107,
+   "nombre": "Chaos-Satellite Barrel Mecha",
+   "npc_type": 23944,
+   "sprite": 43544,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    230,
+    36
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 385
+  },
+  {
+   "entity_id": 93000108,
+   "nombre": "Chaos-Satellite Barrel Mecha",
+   "npc_type": 23944,
+   "sprite": 43544,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    230,
+    41
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 385
+  },
+  {
+   "entity_id": 93000109,
+   "nombre": "Chaos-Satellite Barrel Mecha",
+   "npc_type": 23944,
+   "sprite": 43544,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    230,
+    57
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 385
+  },
+  {
+   "entity_id": 93000110,
+   "nombre": "Chaos-Satellite Barrel Mecha",
+   "npc_type": 23944,
+   "sprite": 43544,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    229,
+    15
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 385
+  },
+  {
+   "entity_id": 93000111,
+   "nombre": "Chaos-Satellite Barrel Mecha",
+   "npc_type": 23944,
+   "sprite": 43544,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    234,
+    12
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 385
+  },
+  {
+   "entity_id": 93000112,
+   "nombre": "Chaos-Satellite Barrel Mecha",
+   "npc_type": 23944,
+   "sprite": 43544,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    228,
+    62
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 385
+  },
+  {
+   "entity_id": 93000113,
+   "nombre": "Chaos-Sky Wanderer",
+   "npc_type": 23946,
+   "sprite": 43547,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    260,
+    100
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000114,
+   "nombre": "Chaos-Sky Wanderer",
+   "npc_type": 23946,
+   "sprite": 43547,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    272,
+    100
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000115,
+   "nombre": "Chaos-Sky Wanderer",
+   "npc_type": 23946,
+   "sprite": 43547,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    277,
+    100
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000116,
+   "nombre": "Chaos-Sky Wanderer",
+   "npc_type": 23946,
+   "sprite": 43547,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    265,
+    101
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000117,
+   "nombre": "Chaos-Sky Wanderer",
+   "npc_type": 23946,
+   "sprite": 43547,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    227,
+    49
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000118,
+   "nombre": "Chaos-Sky Wanderer",
+   "npc_type": 23946,
+   "sprite": 43547,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    227,
+    104
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000119,
+   "nombre": "Chaos-Sky Wanderer",
+   "npc_type": 23946,
+   "sprite": 43547,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    226,
+    31
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000120,
+   "nombre": "Chaos-Sky Wanderer",
+   "npc_type": 23946,
+   "sprite": 43547,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    232,
+    105
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000121,
+   "nombre": "Chaos-Sky Wanderer",
+   "npc_type": 23946,
+   "sprite": 43547,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    252,
+    105
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000122,
+   "nombre": "Chaos-Sky Wanderer",
+   "npc_type": 23946,
+   "sprite": 43547,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    257,
+    105
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000123,
+   "nombre": "Chaos-Sky Wanderer",
+   "npc_type": 23946,
+   "sprite": 43547,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    270,
+    105
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000124,
+   "nombre": "Chaos-Sky Wanderer",
+   "npc_type": 23946,
+   "sprite": 43547,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    225,
+    36
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000125,
+   "nombre": "Chaos-Sky Wanderer",
+   "npc_type": 23946,
+   "sprite": 43547,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    225,
+    41
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000126,
+   "nombre": "Chaos-Sky Wanderer",
+   "npc_type": 23946,
+   "sprite": 43547,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    225,
+    54
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000127,
+   "nombre": "Chaos-Sky Wanderer",
+   "npc_type": 23946,
+   "sprite": 43547,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    237,
+    106
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000128,
+   "nombre": "Chaos-Sky Wanderer",
+   "npc_type": 23946,
+   "sprite": 43547,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    224,
+    15
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000129,
+   "nombre": "Chaos-Sky Wanderer",
+   "npc_type": 23946,
+   "sprite": 43547,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    223,
+    59
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000130,
+   "nombre": "Chaos-Sky Wanderer",
+   "npc_type": 23946,
+   "sprite": 43547,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    223,
+    64
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000131,
+   "nombre": "Chaos-Sky Wanderer",
+   "npc_type": 23946,
+   "sprite": 43547,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    242,
+    108
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000132,
+   "nombre": "Chaos-Sky Wanderer",
+   "npc_type": 23946,
+   "sprite": 43547,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    247,
+    108
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000133,
+   "nombre": "Chaos-Sky Wanderer",
+   "npc_type": 23946,
+   "sprite": 43547,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    222,
+    46
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000134,
+   "nombre": "Chaos-Sky Wanderer",
+   "npc_type": 23946,
+   "sprite": 43547,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    222,
+    105
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000135,
+   "nombre": "Chaos-Sky Wanderer",
+   "npc_type": 23946,
+   "sprite": 43547,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    227,
+    109
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000136,
+   "nombre": "Chaos-Sky Wanderer",
+   "npc_type": 23946,
+   "sprite": 43547,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    265,
+    109
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000137,
+   "nombre": "Chaos-Sky Wanderer",
+   "npc_type": 23946,
+   "sprite": 43547,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    221,
+    27
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000138,
+   "nombre": "Chaos-Sky Wanderer",
+   "npc_type": 23946,
+   "sprite": 43547,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    221,
+    110
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000139,
+   "nombre": "Chaos-Sky Wanderer",
+   "npc_type": 23946,
+   "sprite": 43547,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    232,
+    110
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000140,
+   "nombre": "Chaos-Sky Wanderer",
+   "npc_type": 23946,
+   "sprite": 43547,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    252,
+    110
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000141,
+   "nombre": "Chaos-Sky Wanderer",
+   "npc_type": 23946,
+   "sprite": 43547,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    270,
+    110
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000142,
+   "nombre": "Chaos-Sky Wanderer",
+   "npc_type": 23946,
+   "sprite": 43547,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    220,
+    32
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000143,
+   "nombre": "Chaos-Space Cactus",
+   "npc_type": 23943,
+   "sprite": 43529,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    195,
+    12
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 385
+  },
+  {
+   "entity_id": 93000144,
+   "nombre": "Chaos-Space Cactus",
+   "npc_type": 23943,
+   "sprite": 43529,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    190,
+    10
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 385
+  },
+  {
+   "entity_id": 93000145,
+   "nombre": "Chaos-Space Cactus",
+   "npc_type": 23943,
+   "sprite": 43529,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    190,
+    15
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 385
+  },
+  {
+   "entity_id": 93000146,
+   "nombre": "Chaos-Space Cactus",
+   "npc_type": 23943,
+   "sprite": 43529,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    198,
+    17
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 385
+  },
+  {
+   "entity_id": 93000147,
+   "nombre": "Chaos-Space Cactus",
+   "npc_type": 23943,
+   "sprite": 43529,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    200,
+    12
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 385
+  },
+  {
+   "entity_id": 93000148,
+   "nombre": "Chaos-Space Cactus",
+   "npc_type": 23943,
+   "sprite": 43529,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    187,
+    20
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 385
+  },
+  {
+   "entity_id": 93000149,
+   "nombre": "Chaos-Space Cactus",
+   "npc_type": 23943,
+   "sprite": 43529,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    203,
+    17
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 385
+  },
+  {
+   "entity_id": 93000150,
+   "nombre": "Chaos-Space Cactus",
+   "npc_type": 23943,
+   "sprite": 43529,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    185,
+    9
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 385
+  },
+  {
+   "entity_id": 93000151,
+   "nombre": "Chaos-Space Cactus",
+   "npc_type": 23943,
+   "sprite": 43529,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    185,
+    14
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 385
+  },
+  {
+   "entity_id": 93000152,
+   "nombre": "Chaos-Space Cactus",
+   "npc_type": 23943,
+   "sprite": 43529,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    201,
+    22
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 385
+  },
+  {
+   "entity_id": 93000153,
+   "nombre": "Chaos-Space Cactus",
+   "npc_type": 23943,
+   "sprite": 43529,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    205,
+    12
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 385
+  },
+  {
+   "entity_id": 93000154,
+   "nombre": "Chaos-Space Cactus",
+   "npc_type": 23943,
+   "sprite": 43529,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    206,
+    22
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 385
+  },
+  {
+   "entity_id": 93000155,
+   "nombre": "Chaos-Space Cactus",
+   "npc_type": 23943,
+   "sprite": 43529,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    182,
+    19
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 385
+  },
+  {
+   "entity_id": 93000156,
+   "nombre": "Chaos-Space Cactus",
+   "npc_type": 23943,
+   "sprite": 43529,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    208,
+    17
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 385
+  },
+  {
+   "entity_id": 93000157,
+   "nombre": "Chaos-Space Cactus",
+   "npc_type": 23943,
+   "sprite": 43529,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    181,
+    24
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 385
+  },
+  {
+   "entity_id": 93000158,
+   "nombre": "Chaos-Space Cactus",
+   "npc_type": 23943,
+   "sprite": 43529,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    180,
+    10
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 385
+  },
+  {
+   "entity_id": 93000159,
+   "nombre": "Chaos-Space Cactus",
+   "npc_type": 23943,
+   "sprite": 43529,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    199,
+    27
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 385
+  },
+  {
+   "entity_id": 93000160,
+   "nombre": "Chaos-Space Cactus",
+   "npc_type": 23943,
+   "sprite": 43529,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    204,
+    27
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 385
+  },
+  {
+   "entity_id": 93000161,
+   "nombre": "Chaos-Space Cactus",
+   "npc_type": 23943,
+   "sprite": 43529,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    209,
+    27
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 385
+  },
+  {
+   "entity_id": 93000162,
+   "nombre": "Chaos-Space Cactus",
+   "npc_type": 23943,
+   "sprite": 43529,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    210,
+    12
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 385
+  },
+  {
+   "entity_id": 93000163,
+   "nombre": "Chaos-Space Cactus",
+   "npc_type": 23943,
+   "sprite": 43529,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    211,
+    22
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 385
+  },
+  {
+   "entity_id": 93000164,
+   "nombre": "Chaos-Space Cactus",
+   "npc_type": 23943,
+   "sprite": 43529,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    178,
+    29
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 385
+  },
+  {
+   "entity_id": 93000165,
+   "nombre": "Chaos-Space Cactus",
+   "npc_type": 23943,
+   "sprite": 43529,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    177,
+    15
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 385
+  },
+  {
+   "entity_id": 93000166,
+   "nombre": "Chaos-Space Cactus",
+   "npc_type": 23943,
+   "sprite": 43529,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    213,
+    17
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 385
+  },
+  {
+   "entity_id": 93000167,
+   "nombre": "Chaos-Space Cactus",
+   "npc_type": 23943,
+   "sprite": 43529,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    176,
+    20
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 385
+  },
+  {
+   "entity_id": 93000168,
+   "nombre": "Chaos-Space Cactus",
+   "npc_type": 23943,
+   "sprite": 43529,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    214,
+    27
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 385
+  },
+  {
+   "entity_id": 93000169,
+   "nombre": "Chaos-Space Cactus",
+   "npc_type": 23943,
+   "sprite": 43529,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    208,
+    32
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 385
+  },
+  {
+   "entity_id": 93000170,
+   "nombre": "Chaos-Space Cactus",
+   "npc_type": 23943,
+   "sprite": 43529,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    213,
+    32
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 385
+  },
+  {
+   "entity_id": 93000171,
+   "nombre": "Chaos-Space Cactus",
+   "npc_type": 23943,
+   "sprite": 43529,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    216,
+    22
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 385
+  },
+  {
+   "entity_id": 93000172,
+   "nombre": "Chaos-Space Cactus",
+   "npc_type": 23943,
+   "sprite": 43529,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    173,
+    25
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 385
+  },
+  {
+   "entity_id": 93000173,
+   "nombre": "Chaos-Interstellar Vulture Captain",
+   "npc_type": 23945,
+   "sprite": 43538,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    173,
+    30
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000174,
+   "nombre": "Chaos-Interstellar Vulture Captain",
+   "npc_type": 23945,
+   "sprite": 43538,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    171,
+    19
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000175,
+   "nombre": "Chaos-Interstellar Vulture Captain",
+   "npc_type": 23945,
+   "sprite": 43538,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    168,
+    24
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000176,
+   "nombre": "Chaos-Interstellar Vulture Captain",
+   "npc_type": 23945,
+   "sprite": 43538,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    168,
+    29
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000177,
+   "nombre": "Chaos-Interstellar Vulture Captain",
+   "npc_type": 23945,
+   "sprite": 43538,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    168,
+    34
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000178,
+   "nombre": "Chaos-Interstellar Vulture Captain",
+   "npc_type": 23945,
+   "sprite": 43538,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    163,
+    21
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000179,
+   "nombre": "Chaos-Interstellar Vulture Captain",
+   "npc_type": 23945,
+   "sprite": 43538,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    163,
+    26
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000180,
+   "nombre": "Chaos-Interstellar Vulture Captain",
+   "npc_type": 23945,
+   "sprite": 43538,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    163,
+    31
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000181,
+   "nombre": "Chaos-Interstellar Vulture Captain",
+   "npc_type": 23945,
+   "sprite": 43538,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    214,
+    42
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000182,
+   "nombre": "Chaos-Interstellar Vulture Captain",
+   "npc_type": 23945,
+   "sprite": 43538,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    186,
+    43
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000183,
+   "nombre": "Chaos-Interstellar Vulture Captain",
+   "npc_type": 23945,
+   "sprite": 43538,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    216,
+    37
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000184,
+   "nombre": "Chaos-Interstellar Vulture Captain",
+   "npc_type": 23945,
+   "sprite": 43538,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    191,
+    44
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000185,
+   "nombre": "Chaos-Interstellar Vulture Captain",
+   "npc_type": 23945,
+   "sprite": 43538,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    218,
+    15
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000186,
+   "nombre": "Chaos-Interstellar Vulture Captain",
+   "npc_type": 23945,
+   "sprite": 43538,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    180,
+    46
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000187,
+   "nombre": "Chaos-Interstellar Vulture Captain",
+   "npc_type": 23945,
+   "sprite": 43538,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    196,
+    46
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000188,
+   "nombre": "Chaos-Interstellar Vulture Captain",
+   "npc_type": 23945,
+   "sprite": 43538,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    158,
+    21
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000189,
+   "nombre": "Chaos-Interstellar Vulture Captain",
+   "npc_type": 23945,
+   "sprite": 43538,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    158,
+    26
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000190,
+   "nombre": "Chaos-Interstellar Vulture Captain",
+   "npc_type": 23945,
+   "sprite": 43538,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    158,
+    31
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000191,
+   "nombre": "Chaos-Interstellar Vulture Captain",
+   "npc_type": 23945,
+   "sprite": 43538,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    201,
+    47
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000192,
+   "nombre": "Chaos-Interstellar Vulture Captain",
+   "npc_type": 23945,
+   "sprite": 43538,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    206,
+    47
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000193,
+   "nombre": "Chaos-Interstellar Vulture Captain",
+   "npc_type": 23945,
+   "sprite": 43538,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    211,
+    47
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000194,
+   "nombre": "Chaos-Interstellar Vulture Captain",
+   "npc_type": 23945,
+   "sprite": 43538,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    216,
+    47
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000195,
+   "nombre": "Chaos-Interstellar Vulture Captain",
+   "npc_type": 23945,
+   "sprite": 43538,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    174,
+    48
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000196,
+   "nombre": "Chaos-Interstellar Vulture Captain",
+   "npc_type": 23945,
+   "sprite": 43538,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    185,
+    48
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000197,
+   "nombre": "Chaos-Interstellar Vulture Captain",
+   "npc_type": 23945,
+   "sprite": 43538,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    190,
+    49
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000198,
+   "nombre": "Chaos-Interstellar Vulture Captain",
+   "npc_type": 23945,
+   "sprite": 43538,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    179,
+    51
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000199,
+   "nombre": "Chaos-Interstellar Vulture Captain",
+   "npc_type": 23945,
+   "sprite": 43538,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    195,
+    51
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000200,
+   "nombre": "Chaos-Interstellar Vulture Captain",
+   "npc_type": 23945,
+   "sprite": 43538,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    153,
+    19
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000201,
+   "nombre": "Chaos-Interstellar Vulture Captain",
+   "npc_type": 23945,
+   "sprite": 43538,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    153,
+    24
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000202,
+   "nombre": "Chaos-Interstellar Vulture Captain",
+   "npc_type": 23945,
+   "sprite": 43538,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    153,
+    29
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000203,
+   "nombre": "Chaos Elite-Meerkat Gunslinger",
+   "npc_type": 23960,
+   "sprite": 43637,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    200,
+    52
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 93000204,
+   "nombre": "Chaos Elite-Meerkat Gunslinger",
+   "npc_type": 23960,
+   "sprite": 43637,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    218,
+    52
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 93000205,
+   "nombre": "Chaos Elite-Meerkat Gunslinger",
+   "npc_type": 23960,
+   "sprite": 43637,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    148,
+    18
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 93000206,
+   "nombre": "Chaos Elite-Meerkat Gunslinger",
+   "npc_type": 23960,
+   "sprite": 43637,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    148,
+    23
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 93000207,
+   "nombre": "Chaos Elite-Meerkat Gunslinger",
+   "npc_type": 23960,
+   "sprite": 43637,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    172,
+    53
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 93000208,
+   "nombre": "Chaos-Titanium Steel God Brain",
+   "npc_type": 23948,
+   "sprite": 43597,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    184,
+    53
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 390
+  },
+  {
+   "entity_id": 93000209,
+   "nombre": "Chaos-Titanium Steel God Brain",
+   "npc_type": 23948,
+   "sprite": 43597,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    179,
+    56
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 390
+  },
+  {
+   "entity_id": 93000210,
+   "nombre": "Chaos-Titanium Steel God Brain",
+   "npc_type": 23948,
+   "sprite": 43597,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    184,
+    58
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 390
+  },
+  {
+   "entity_id": 93000211,
+   "nombre": "Chaos-Titanium Steel God Brain",
+   "npc_type": 23948,
+   "sprite": 43597,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    189,
+    54
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 390
+  },
+  {
+   "entity_id": 93000212,
+   "nombre": "Chaos-Titanium Steel God Brain",
+   "npc_type": 23948,
+   "sprite": 43597,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    189,
+    59
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 390
+  },
+  {
+   "entity_id": 93000213,
+   "nombre": "Chaos-Titanium Steel God Brain",
+   "npc_type": 23948,
+   "sprite": 43597,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    179,
+    61
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 390
+  },
+  {
+   "entity_id": 93000214,
+   "nombre": "Chaos-Titanium Steel God Brain",
+   "npc_type": 23948,
+   "sprite": 43597,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    184,
+    63
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 390
+  },
+  {
+   "entity_id": 93000215,
+   "nombre": "Chaos-Titanium Steel God Brain",
+   "npc_type": 23948,
+   "sprite": 43597,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    189,
+    64
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 390
+  },
+  {
+   "entity_id": 93000216,
+   "nombre": "Chaos-Titanium Steel God Brain",
+   "npc_type": 23948,
+   "sprite": 43597,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    162,
+    65
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 390
+  },
+  {
+   "entity_id": 93000217,
+   "nombre": "Chaos-Titanium Steel God Brain",
+   "npc_type": 23948,
+   "sprite": 43597,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    194,
+    61
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 390
+  },
+  {
+   "entity_id": 93000218,
+   "nombre": "Chaos-Titanium Steel God Brain",
+   "npc_type": 23948,
+   "sprite": 43597,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    177,
+    66
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 390
+  },
+  {
+   "entity_id": 93000219,
+   "nombre": "Chaos-Titanium Steel God Brain",
+   "npc_type": 23948,
+   "sprite": 43597,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    194,
+    66
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 390
+  },
+  {
+   "entity_id": 93000220,
+   "nombre": "Chaos-Titanium Steel God Brain",
+   "npc_type": 23948,
+   "sprite": 43597,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    167,
+    67
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 390
+  },
+  {
+   "entity_id": 93000221,
+   "nombre": "Chaos-Titanium Steel God Brain",
+   "npc_type": 23948,
+   "sprite": 43597,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    172,
+    68
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 390
+  },
+  {
+   "entity_id": 93000222,
+   "nombre": "Chaos-Titanium Steel God Brain",
+   "npc_type": 23948,
+   "sprite": 43597,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    182,
+    68
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 390
+  },
+  {
+   "entity_id": 93000223,
+   "nombre": "Chaos-Titanium Steel God Brain",
+   "npc_type": 23948,
+   "sprite": 43597,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    187,
+    69
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 390
+  },
+  {
+   "entity_id": 93000224,
+   "nombre": "Chaos-Titanium Steel God Brain",
+   "npc_type": 23948,
+   "sprite": 43597,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    157,
+    62
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 390
+  },
+  {
+   "entity_id": 93000225,
+   "nombre": "Chaos-Titanium Steel God Brain",
+   "npc_type": 23948,
+   "sprite": 43597,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    157,
+    67
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 390
+  },
+  {
+   "entity_id": 93000226,
+   "nombre": "Chaos-Titanium Steel God Brain",
+   "npc_type": 23948,
+   "sprite": 43597,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    162,
+    70
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 390
+  },
+  {
+   "entity_id": 93000227,
+   "nombre": "Chaos-Titanium Steel God Brain",
+   "npc_type": 23948,
+   "sprite": 43597,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    199,
+    66
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 390
+  },
+  {
+   "entity_id": 93000228,
+   "nombre": "Chaos Elite-Man-Eater Flower Variant",
+   "npc_type": 23963,
+   "sprite": 43640,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    204,
+    66
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 93000229,
+   "nombre": "Chaos Elite-Man-Eater Flower Variant",
+   "npc_type": 23963,
+   "sprite": 43640,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    209,
+    65
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 93000230,
+   "nombre": "Chaos Elite-Man-Eater Flower Variant",
+   "npc_type": 23963,
+   "sprite": 43640,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    209,
+    70
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 93000231,
+   "nombre": "Chaos Elite-Man-Eater Flower Variant",
+   "npc_type": 23963,
+   "sprite": 43640,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    177,
+    71
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 93000232,
+   "nombre": "Chaos Elite-Man-Eater Flower Variant",
+   "npc_type": 23963,
+   "sprite": 43640,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    214,
+    63
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 93000233,
+   "nombre": "Chaos-Interstellar Cruiser",
+   "npc_type": 23951,
+   "sprite": 43541,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    85,
+    114
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000234,
+   "nombre": "Chaos-Interstellar Cruiser",
+   "npc_type": 23951,
+   "sprite": 43541,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    80,
+    109
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000235,
+   "nombre": "Chaos-Interstellar Cruiser",
+   "npc_type": 23951,
+   "sprite": 43541,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    80,
+    114
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000236,
+   "nombre": "Chaos-Interstellar Cruiser",
+   "npc_type": 23951,
+   "sprite": 43541,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    80,
+    119
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000237,
+   "nombre": "Chaos-Interstellar Cruiser",
+   "npc_type": 23951,
+   "sprite": 43541,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    85,
+    119
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000238,
+   "nombre": "Chaos-Interstellar Cruiser",
+   "npc_type": 23951,
+   "sprite": 43541,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    90,
+    110
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000239,
+   "nombre": "Chaos-Interstellar Cruiser",
+   "npc_type": 23951,
+   "sprite": 43541,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    90,
+    115
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000240,
+   "nombre": "Chaos-Interstellar Cruiser",
+   "npc_type": 23951,
+   "sprite": 43541,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    90,
+    120
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000241,
+   "nombre": "Chaos-Interstellar Cruiser",
+   "npc_type": 23951,
+   "sprite": 43541,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    94,
+    105
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000242,
+   "nombre": "Chaos-Interstellar Cruiser",
+   "npc_type": 23951,
+   "sprite": 43541,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    75,
+    105
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000243,
+   "nombre": "Chaos-Interstellar Cruiser",
+   "npc_type": 23951,
+   "sprite": 43541,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    75,
+    115
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000244,
+   "nombre": "Chaos-Interstellar Cruiser",
+   "npc_type": 23951,
+   "sprite": 43541,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    95,
+    110
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000245,
+   "nombre": "Chaos-Interstellar Cruiser",
+   "npc_type": 23951,
+   "sprite": 43541,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    89,
+    125
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000246,
+   "nombre": "Chaos-Interstellar Cruiser",
+   "npc_type": 23951,
+   "sprite": 43541,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    94,
+    125
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000247,
+   "nombre": "Chaos-Interstellar Cruiser",
+   "npc_type": 23951,
+   "sprite": 43541,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    95,
+    100
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000248,
+   "nombre": "Chaos-Interstellar Cruiser",
+   "npc_type": 23951,
+   "sprite": 43541,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    99,
+    105
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000249,
+   "nombre": "Chaos-Interstellar Cruiser",
+   "npc_type": 23951,
+   "sprite": 43541,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    70,
+    102
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000250,
+   "nombre": "Chaos-Interstellar Cruiser",
+   "npc_type": 23951,
+   "sprite": 43541,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    70,
+    115
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000251,
+   "nombre": "Chaos-Interstellar Cruiser",
+   "npc_type": 23951,
+   "sprite": 43541,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    100,
+    99
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000252,
+   "nombre": "Chaos-Interstellar Cruiser",
+   "npc_type": 23951,
+   "sprite": 43541,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    100,
+    110
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000253,
+   "nombre": "Chaos-Interstellar Cruiser",
+   "npc_type": 23951,
+   "sprite": 43541,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    91,
+    130
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000254,
+   "nombre": "Chaos-Interstellar Cruiser",
+   "npc_type": 23951,
+   "sprite": 43541,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    101,
+    115
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000255,
+   "nombre": "Chaos-Interstellar Cruiser",
+   "npc_type": 23951,
+   "sprite": 43541,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    68,
+    131
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000256,
+   "nombre": "Chaos-Interstellar Cruiser",
+   "npc_type": 23951,
+   "sprite": 43541,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    73,
+    131
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000257,
+   "nombre": "Chaos-Interstellar Cruiser",
+   "npc_type": 23951,
+   "sprite": 43541,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    96,
+    131
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000259,
+   "nombre": "Chaos-Blaze Satellite Crystal",
+   "npc_type": 23956,
+   "sprite": 42355,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    269,
+    171
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000260,
+   "nombre": "Chaos-Blaze Satellite Crystal",
+   "npc_type": 23956,
+   "sprite": 42355,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    264,
+    167
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000261,
+   "nombre": "Chaos-Blaze Satellite Crystal",
+   "npc_type": 23956,
+   "sprite": 42355,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    269,
+    166
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000262,
+   "nombre": "Chaos-Blaze Satellite Crystal",
+   "npc_type": 23956,
+   "sprite": 42355,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    274,
+    166
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000263,
+   "nombre": "Chaos-Blaze Satellite Crystal",
+   "npc_type": 23956,
+   "sprite": 42355,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    274,
+    171
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000264,
+   "nombre": "Chaos-Blaze Satellite Crystal",
+   "npc_type": 23956,
+   "sprite": 42355,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    259,
+    165
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000265,
+   "nombre": "Chaos-Blaze Satellite Crystal",
+   "npc_type": 23956,
+   "sprite": 42355,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    259,
+    170
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000266,
+   "nombre": "Chaos-Blaze Satellite Crystal",
+   "npc_type": 23956,
+   "sprite": 42355,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    279,
+    169
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000267,
+   "nombre": "Chaos-Blaze Satellite Crystal",
+   "npc_type": 23956,
+   "sprite": 42355,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    279,
+    159
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000268,
+   "nombre": "Chaos-Blaze Satellite Crystal",
+   "npc_type": 23956,
+   "sprite": 42355,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    254,
+    161
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000269,
+   "nombre": "Chaos-Blaze Satellite Crystal",
+   "npc_type": 23956,
+   "sprite": 42355,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    254,
+    166
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000270,
+   "nombre": "Chaos-Blaze Satellite Crystal",
+   "npc_type": 23956,
+   "sprite": 42355,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    284,
+    156
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000271,
+   "nombre": "Chaos-Blaze Satellite Crystal",
+   "npc_type": 23956,
+   "sprite": 42355,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    284,
+    169
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000272,
+   "nombre": "Chaos-Blaze Satellite Crystal",
+   "npc_type": 23956,
+   "sprite": 42355,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    265,
+    155
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000273,
+   "nombre": "Chaos-Blaze Satellite Crystal",
+   "npc_type": 23956,
+   "sprite": 42355,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    270,
+    155
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000274,
+   "nombre": "Chaos-Blaze Satellite Crystal",
+   "npc_type": 23956,
+   "sprite": 42355,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    286,
+    161
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000275,
+   "nombre": "Chaos-Blaze Satellite Crystal",
+   "npc_type": 23956,
+   "sprite": 42355,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    251,
+    153
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000276,
+   "nombre": "Chaos-Blaze Satellite Crystal",
+   "npc_type": 23956,
+   "sprite": 42355,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    249,
+    158
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000277,
+   "nombre": "Chaos-Blaze Satellite Crystal",
+   "npc_type": 23956,
+   "sprite": 42355,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    249,
+    163
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000278,
+   "nombre": "Chaos-Blaze Satellite Crystal",
+   "npc_type": 23956,
+   "sprite": 42355,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    249,
+    168
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000279,
+   "nombre": "Chaos-Blaze Satellite Crystal",
+   "npc_type": 23956,
+   "sprite": 42355,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    256,
+    151
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000280,
+   "nombre": "Chaos-Blaze Satellite Crystal",
+   "npc_type": 23956,
+   "sprite": 42355,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    275,
+    151
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000281,
+   "nombre": "Chaos-Blaze Satellite Crystal",
+   "npc_type": 23956,
+   "sprite": 42355,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    280,
+    151
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000282,
+   "nombre": "Chaos-Blaze Satellite Crystal",
+   "npc_type": 23956,
+   "sprite": 42355,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    285,
+    151
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000283,
+   "nombre": "Chaos-Blaze Satellite Crystal",
+   "npc_type": 23956,
+   "sprite": 42355,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    289,
+    156
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000284,
+   "nombre": "Chaos-Blaze Satellite Crystal",
+   "npc_type": 23956,
+   "sprite": 42355,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    261,
+    150
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000285,
+   "nombre": "Chaos-Blaze Satellite Crystal",
+   "npc_type": 23956,
+   "sprite": 42355,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    266,
+    150
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000286,
+   "nombre": "Chaos-Blaze Satellite Crystal",
+   "npc_type": 23956,
+   "sprite": 42355,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    291,
+    161
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000287,
+   "nombre": "Chaos-Blaze Satellite Crystal",
+   "npc_type": 23956,
+   "sprite": 42355,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    246,
+    148
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000288,
+   "nombre": "Chaos-Blaze Satellite Crystal",
+   "npc_type": 23956,
+   "sprite": 42355,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    246,
+    153
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000289,
+   "nombre": "Chaos-Thunder Satellite Crystal",
+   "npc_type": 23957,
+   "sprite": 42361,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    251,
+    148
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000290,
+   "nombre": "Chaos-Thunder Satellite Crystal",
+   "npc_type": 23957,
+   "sprite": 42361,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    256,
+    146
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000291,
+   "nombre": "Chaos-Thunder Satellite Crystal",
+   "npc_type": 23957,
+   "sprite": 42361,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    271,
+    146
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000292,
+   "nombre": "Chaos-Thunder Satellite Crystal",
+   "npc_type": 23957,
+   "sprite": 42361,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    276,
+    146
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000293,
+   "nombre": "Chaos-Thunder Satellite Crystal",
+   "npc_type": 23957,
+   "sprite": 42361,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    281,
+    146
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000294,
+   "nombre": "Chaos-Thunder Satellite Crystal",
+   "npc_type": 23957,
+   "sprite": 42361,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    286,
+    146
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000295,
+   "nombre": "Chaos-Thunder Satellite Crystal",
+   "npc_type": 23957,
+   "sprite": 42361,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    261,
+    145
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000296,
+   "nombre": "Chaos-Thunder Satellite Crystal",
+   "npc_type": 23957,
+   "sprite": 42361,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    266,
+    145
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000297,
+   "nombre": "Chaos-Thunder Satellite Crystal",
+   "npc_type": 23957,
+   "sprite": 42361,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    244,
+    143
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000298,
+   "nombre": "Chaos-Thunder Satellite Crystal",
+   "npc_type": 23957,
+   "sprite": 42361,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    244,
+    158
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000299,
+   "nombre": "Chaos-Thunder Satellite Crystal",
+   "npc_type": 23957,
+   "sprite": 42361,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    244,
+    163
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000300,
+   "nombre": "Chaos-Thunder Satellite Crystal",
+   "npc_type": 23957,
+   "sprite": 42361,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    253,
+    141
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000301,
+   "nombre": "Chaos-Thunder Satellite Crystal",
+   "npc_type": 23957,
+   "sprite": 42361,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    273,
+    141
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000302,
+   "nombre": "Chaos-Thunder Satellite Crystal",
+   "npc_type": 23957,
+   "sprite": 42361,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    278,
+    141
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000303,
+   "nombre": "Chaos-Thunder Satellite Crystal",
+   "npc_type": 23957,
+   "sprite": 42361,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    283,
+    141
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000304,
+   "nombre": "Chaos-Thunder Satellite Crystal",
+   "npc_type": 23957,
+   "sprite": 42361,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    239,
+    141
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000305,
+   "nombre": "Chaos-Thunder Satellite Crystal",
+   "npc_type": 23957,
+   "sprite": 42361,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    239,
+    157
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000306,
+   "nombre": "Chaos-Thunder Satellite Crystal",
+   "npc_type": 23957,
+   "sprite": 42361,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    239,
+    162
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000307,
+   "nombre": "Chaos-Thunder Satellite Crystal",
+   "npc_type": 23957,
+   "sprite": 42361,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    244,
+    138
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000308,
+   "nombre": "Chaos-Thunder Satellite Crystal",
+   "npc_type": 23957,
+   "sprite": 42361,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    249,
+    136
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000309,
+   "nombre": "Chaos-Thunder Satellite Crystal",
+   "npc_type": 23957,
+   "sprite": 42361,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    254,
+    136
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000310,
+   "nombre": "Chaos-Thunder Satellite Crystal",
+   "npc_type": 23957,
+   "sprite": 42361,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    281,
+    136
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000311,
+   "nombre": "Chaos-Thunder Satellite Crystal",
+   "npc_type": 23957,
+   "sprite": 42361,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    286,
+    136
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000312,
+   "nombre": "Chaos-Thunder Satellite Crystal",
+   "npc_type": 23957,
+   "sprite": 42361,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    236,
+    135
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000313,
+   "nombre": "Chaos-Thunder Satellite Crystal",
+   "npc_type": 23957,
+   "sprite": 42361,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    234,
+    140
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000314,
+   "nombre": "Chaos-Thunder Satellite Crystal",
+   "npc_type": 23957,
+   "sprite": 42361,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    234,
+    159
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000315,
+   "nombre": "Chaos-Thunder Satellite Crystal",
+   "npc_type": 23957,
+   "sprite": 42361,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    241,
+    133
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000316,
+   "nombre": "Chaos-Thunder Satellite Crystal",
+   "npc_type": 23957,
+   "sprite": 42361,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    246,
+    131
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000317,
+   "nombre": "Chaos-Thunder Satellite Crystal",
+   "npc_type": 23957,
+   "sprite": 42361,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    251,
+    131
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000318,
+   "nombre": "Chaos-Thunder Satellite Crystal",
+   "npc_type": 23957,
+   "sprite": 42361,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    231,
+    132
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000319,
+   "nombre": "Chaos-Frost Satellite Crystal",
+   "npc_type": 23958,
+   "sprite": 42353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    236,
+    130
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000320,
+   "nombre": "Chaos-Frost Satellite Crystal",
+   "npc_type": 23958,
+   "sprite": 42353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    241,
+    128
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000321,
+   "nombre": "Chaos-Frost Satellite Crystal",
+   "npc_type": 23958,
+   "sprite": 42353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    246,
+    126
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000322,
+   "nombre": "Chaos-Frost Satellite Crystal",
+   "npc_type": 23958,
+   "sprite": 42353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    251,
+    126
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000323,
+   "nombre": "Chaos-Frost Satellite Crystal",
+   "npc_type": 23958,
+   "sprite": 42353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    264,
+    125
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000324,
+   "nombre": "Chaos-Frost Satellite Crystal",
+   "npc_type": 23958,
+   "sprite": 42353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    229,
+    137
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000325,
+   "nombre": "Chaos-Frost Satellite Crystal",
+   "npc_type": 23958,
+   "sprite": 42353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    229,
+    142
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000326,
+   "nombre": "Chaos-Frost Satellite Crystal",
+   "npc_type": 23958,
+   "sprite": 42353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    229,
+    162
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000327,
+   "nombre": "Chaos-Frost Satellite Crystal",
+   "npc_type": 23958,
+   "sprite": 42353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    256,
+    123
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000328,
+   "nombre": "Chaos-Frost Satellite Crystal",
+   "npc_type": 23958,
+   "sprite": 42353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    269,
+    123
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000329,
+   "nombre": "Chaos-Frost Satellite Crystal",
+   "npc_type": 23958,
+   "sprite": 42353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    227,
+    126
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000330,
+   "nombre": "Chaos-Frost Satellite Crystal",
+   "npc_type": 23958,
+   "sprite": 42353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    251,
+    121
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000331,
+   "nombre": "Chaos-Frost Satellite Crystal",
+   "npc_type": 23958,
+   "sprite": 42353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    226,
+    131
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000332,
+   "nombre": "Chaos-Frost Satellite Crystal",
+   "npc_type": 23958,
+   "sprite": 42353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    261,
+    120
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000333,
+   "nombre": "Chaos-Frost Satellite Crystal",
+   "npc_type": 23958,
+   "sprite": 42353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    225,
+    119
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000334,
+   "nombre": "Chaos-Frost Satellite Crystal",
+   "npc_type": 23958,
+   "sprite": 42353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    224,
+    136
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000335,
+   "nombre": "Chaos-Frost Satellite Crystal",
+   "npc_type": 23958,
+   "sprite": 42353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    224,
+    141
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000336,
+   "nombre": "Chaos-Frost Satellite Crystal",
+   "npc_type": 23958,
+   "sprite": 42353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    256,
+    118
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000337,
+   "nombre": "Chaos-Frost Satellite Crystal",
+   "npc_type": 23958,
+   "sprite": 42353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    266,
+    118
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000338,
+   "nombre": "Chaos-Frost Satellite Crystal",
+   "npc_type": 23958,
+   "sprite": 42353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    222,
+    124
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000339,
+   "nombre": "Chaos-Frost Satellite Crystal",
+   "npc_type": 23958,
+   "sprite": 42353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    230,
+    116
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000340,
+   "nombre": "Chaos-Frost Satellite Crystal",
+   "npc_type": 23958,
+   "sprite": 42353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    239,
+    115
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000341,
+   "nombre": "Chaos-Frost Satellite Crystal",
+   "npc_type": 23958,
+   "sprite": 42353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    261,
+    115
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000342,
+   "nombre": "Chaos-Frost Satellite Crystal",
+   "npc_type": 23958,
+   "sprite": 42353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    220,
+    115
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000343,
+   "nombre": "Chaos-Frost Satellite Crystal",
+   "npc_type": 23958,
+   "sprite": 42353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    219,
+    139
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000344,
+   "nombre": "Chaos-Frost Satellite Crystal",
+   "npc_type": 23958,
+   "sprite": 42353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    217,
+    121
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000345,
+   "nombre": "Chaos-Frost Satellite Crystal",
+   "npc_type": 23958,
+   "sprite": 42353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    216,
+    110
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000346,
+   "nombre": "Chaos-Frost Satellite Crystal",
+   "npc_type": 23958,
+   "sprite": 42353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    215,
+    126
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000347,
+   "nombre": "Chaos-Frost Satellite Crystal",
+   "npc_type": 23958,
+   "sprite": 42353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    215,
+    144
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000348,
+   "nombre": "Chaos-Frost Satellite Crystal",
+   "npc_type": 23958,
+   "sprite": 42353,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    214,
+    149
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 395
+  },
+  {
+   "entity_id": 93000350,
+   "nombre": "Chaos-Xeno Larva",
+   "npc_type": 23955,
+   "sprite": 42546,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    15,
+    161
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400,
+   "declarados": 50
+  },
+  {
+   "entity_id": 93000351,
+   "nombre": "Chaos-Xeno Larva",
+   "npc_type": 23955,
+   "sprite": 42546,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    10,
+    156
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400,
+   "declarados": 50
+  },
+  {
+   "entity_id": 93000352,
+   "nombre": "Chaos-Xeno Larva",
+   "npc_type": 23955,
+   "sprite": 42546,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    10,
+    161
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400,
+   "declarados": 50
+  },
+  {
+   "entity_id": 93000353,
+   "nombre": "Chaos-Xeno Larva",
+   "npc_type": 23955,
+   "sprite": 42546,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    10,
+    166
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400,
+   "declarados": 50
+  },
+  {
+   "entity_id": 93000354,
+   "nombre": "Chaos-Xeno Larva",
+   "npc_type": 23955,
+   "sprite": 42546,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    15,
+    156
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400,
+   "declarados": 50
+  },
+  {
+   "entity_id": 93000355,
+   "nombre": "Chaos-Xeno Larva",
+   "npc_type": 23955,
+   "sprite": 42546,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    15,
+    166
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400,
+   "declarados": 50
+  },
+  {
+   "entity_id": 93000356,
+   "nombre": "Chaos-Xeno Larva",
+   "npc_type": 23955,
+   "sprite": 42546,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    20,
+    156
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400,
+   "declarados": 50
+  },
+  {
+   "entity_id": 93000357,
+   "nombre": "Chaos-Xeno Larva",
+   "npc_type": 23955,
+   "sprite": 42546,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    20,
+    167
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400,
+   "declarados": 50
+  },
+  {
+   "entity_id": 93000358,
+   "nombre": "Chaos-Xeno Larva",
+   "npc_type": 23955,
+   "sprite": 42546,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    8,
+    151
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400,
+   "declarados": 50
+  },
+  {
+   "entity_id": 93000359,
+   "nombre": "Chaos-Xeno Larva",
+   "npc_type": 23955,
+   "sprite": 42546,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    13,
+    151
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400,
+   "declarados": 50
+  },
+  {
+   "entity_id": 93000360,
+   "nombre": "Chaos-Xeno Larva",
+   "npc_type": 23955,
+   "sprite": 42546,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    18,
+    151
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400,
+   "declarados": 50
+  },
+  {
+   "entity_id": 93000361,
+   "nombre": "Chaos-Xeno Larva",
+   "npc_type": 23955,
+   "sprite": 42546,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    23,
+    151
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400,
+   "declarados": 50
+  },
+  {
+   "entity_id": 93000362,
+   "nombre": "Chaos-Xeno Larva",
+   "npc_type": 23955,
+   "sprite": 42546,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    25,
+    157
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400,
+   "declarados": 50
+  },
+  {
+   "entity_id": 93000363,
+   "nombre": "Chaos-Xeno Larva",
+   "npc_type": 23955,
+   "sprite": 42546,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    25,
+    167
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400,
+   "declarados": 50
+  },
+  {
+   "entity_id": 93000364,
+   "nombre": "Chaos-Xeno Larva",
+   "npc_type": 23955,
+   "sprite": 42546,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    28,
+    148
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400,
+   "declarados": 50
+  },
+  {
+   "entity_id": 93000365,
+   "nombre": "Chaos-Xeno Larva",
+   "npc_type": 23955,
+   "sprite": 42546,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    28,
+    162
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400,
+   "declarados": 50
+  },
+  {
+   "entity_id": 93000366,
+   "nombre": "Chaos-Xeno Larva",
+   "npc_type": 23955,
+   "sprite": 42546,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    28,
+    172
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400,
+   "declarados": 50
+  },
+  {
+   "entity_id": 93000367,
+   "nombre": "Chaos-Xeno Larva",
+   "npc_type": 23955,
+   "sprite": 42546,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    10,
+    146
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400,
+   "declarados": 50
+  },
+  {
+   "entity_id": 93000368,
+   "nombre": "Chaos-Xeno Larva",
+   "npc_type": 23955,
+   "sprite": 42546,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    15,
+    146
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400,
+   "declarados": 50
+  },
+  {
+   "entity_id": 93000369,
+   "nombre": "Chaos-Xeno Larva",
+   "npc_type": 23955,
+   "sprite": 42546,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    20,
+    146
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400,
+   "declarados": 50
+  },
+  {
+   "entity_id": 93000370,
+   "nombre": "Chaos-Xeno Larva",
+   "npc_type": 23955,
+   "sprite": 42546,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    30,
+    167
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400,
+   "declarados": 50
+  },
+  {
+   "entity_id": 93000371,
+   "nombre": "Chaos-Xeno Larva",
+   "npc_type": 23955,
+   "sprite": 42546,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    25,
+    143
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400,
+   "declarados": 50
+  },
+  {
+   "entity_id": 93000372,
+   "nombre": "Chaos-Xeno Larva",
+   "npc_type": 23955,
+   "sprite": 42546,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    30,
+    143
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400,
+   "declarados": 50
+  },
+  {
+   "entity_id": 93000373,
+   "nombre": "Chaos-Xeno Larva",
+   "npc_type": 23955,
+   "sprite": 42546,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    33,
+    172
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400,
+   "declarados": 50
+  },
+  {
+   "entity_id": 93000374,
+   "nombre": "Chaos-Xeno Larva",
+   "npc_type": 23955,
+   "sprite": 42546,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    8,
+    141
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400,
+   "declarados": 50
+  },
+  {
+   "entity_id": 93000375,
+   "nombre": "Chaos-Xeno Larva",
+   "npc_type": 23955,
+   "sprite": 42546,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    13,
+    141
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400,
+   "declarados": 50
+  },
+  {
+   "entity_id": 93000376,
+   "nombre": "Chaos-Xeno Larva",
+   "npc_type": 23955,
+   "sprite": 42546,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    18,
+    141
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400,
+   "declarados": 50
+  },
+  {
+   "entity_id": 93000377,
+   "nombre": "Chaos-Xeno Larva",
+   "npc_type": 23955,
+   "sprite": 42546,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    35,
+    141
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400,
+   "declarados": 50
+  },
+  {
+   "entity_id": 93000378,
+   "nombre": "Chaos-Xeno Larva",
+   "npc_type": 23955,
+   "sprite": 42546,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    35,
+    164
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400,
+   "declarados": 50
+  },
+  {
+   "entity_id": 93000379,
+   "nombre": "Chaos-Xeno Larva",
+   "npc_type": 23955,
+   "sprite": 42546,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    23,
+    138
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400,
+   "declarados": 50
+  },
+  {
+   "entity_id": 93000380,
+   "nombre": "Chaos-Xeno Larva",
+   "npc_type": 23955,
+   "sprite": 42546,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    38,
+    151
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400,
+   "declarados": 50
+  },
+  {
+   "entity_id": 93000381,
+   "nombre": "Chaos-Xeno Larva",
+   "npc_type": 23955,
+   "sprite": 42546,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    38,
+    169
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400,
+   "declarados": 50
+  },
+  {
+   "entity_id": 93000382,
+   "nombre": "Chaos-Xeno Larva",
+   "npc_type": 23955,
+   "sprite": 42546,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    38,
+    174
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400,
+   "declarados": 50
+  },
+  {
+   "entity_id": 93000383,
+   "nombre": "Chaos-Xeno Larva",
+   "npc_type": 23955,
+   "sprite": 42546,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    159
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400,
+   "declarados": 50
+  },
+  {
+   "entity_id": 93000384,
+   "nombre": "Chaos-Xeno Larva",
+   "npc_type": 23955,
+   "sprite": 42546,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    9,
+    136
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400,
+   "declarados": 50
+  },
+  {
+   "entity_id": 93000385,
+   "nombre": "Chaos-Xeno Larva",
+   "npc_type": 23955,
+   "sprite": 42546,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    14,
+    136
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400,
+   "declarados": 50
+  },
+  {
+   "entity_id": 93000386,
+   "nombre": "Chaos-Xeno Larva",
+   "npc_type": 23955,
+   "sprite": 42546,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    36,
+    136
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400,
+   "declarados": 50
+  },
+  {
+   "entity_id": 93000387,
+   "nombre": "Chaos-Xeno Larva",
+   "npc_type": 23955,
+   "sprite": 42546,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    40,
+    141
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400,
+   "declarados": 50
+  },
+  {
+   "entity_id": 93000388,
+   "nombre": "Chaos-Xeno Larva",
+   "npc_type": 23955,
+   "sprite": 42546,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    40,
+    164
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400,
+   "declarados": 50
+  },
+  {
+   "entity_id": 93000389,
+   "nombre": "Chaos-Xeno Larva",
+   "npc_type": 23955,
+   "sprite": 42546,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    41,
+    135
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400,
+   "declarados": 50
+  },
+  {
+   "entity_id": 93000390,
+   "nombre": "Chaos Elite-Star Core Ember",
+   "npc_type": 23959,
+   "sprite": 43636,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    214,
+    68
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 93000391,
+   "nombre": "Chaos Elite-Star Core Ember",
+   "npc_type": 23959,
+   "sprite": 43636,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    193,
+    76
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 93000392,
+   "nombre": "Chaos Elite-Star Core Ember",
+   "npc_type": 23959,
+   "sprite": 43636,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    193,
+    85
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 93000393,
+   "nombre": "Chaos Elite-Star Core Ember",
+   "npc_type": 23959,
+   "sprite": 43636,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    188,
+    74
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 93000394,
+   "nombre": "Chaos Elite-Star Core Ember",
+   "npc_type": 23959,
+   "sprite": 43636,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    188,
+    79
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 93000395,
+   "nombre": "Chaos-Meerkat Gunslinger",
+   "npc_type": 23941,
+   "sprite": 43550,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    143,
+    18
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 93000396,
+   "nombre": "Chaos-Meerkat Gunslinger",
+   "npc_type": 23941,
+   "sprite": 43550,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    143,
+    23
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 93000397,
+   "nombre": "Chaos-Meerkat Gunslinger",
+   "npc_type": 23941,
+   "sprite": 43550,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    147,
+    59
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 93000398,
+   "nombre": "Chaos-Meerkat Gunslinger",
+   "npc_type": 23941,
+   "sprite": 43550,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    152,
+    59
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 93000399,
+   "nombre": "Chaos-Meerkat Gunslinger",
+   "npc_type": 23941,
+   "sprite": 43550,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    141,
+    28
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 93000400,
+   "nombre": "Chaos-Meerkat Gunslinger",
+   "npc_type": 23941,
+   "sprite": 43550,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    141,
+    62
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 93000401,
+   "nombre": "Chaos-Meerkat Gunslinger",
+   "npc_type": 23941,
+   "sprite": 43550,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    138,
+    18
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 93000402,
+   "nombre": "Chaos-Meerkat Gunslinger",
+   "npc_type": 23941,
+   "sprite": 43550,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    138,
+    23
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 93000403,
+   "nombre": "Chaos-Meerkat Gunslinger",
+   "npc_type": 23941,
+   "sprite": 43550,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    146,
+    64
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 93000404,
+   "nombre": "Chaos-Meerkat Gunslinger",
+   "npc_type": 23941,
+   "sprite": 43550,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    151,
+    64
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 93000405,
+   "nombre": "Chaos-Meerkat Gunslinger",
+   "npc_type": 23941,
+   "sprite": 43550,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    136,
+    28
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 93000406,
+   "nombre": "Chaos-Meerkat Gunslinger",
+   "npc_type": 23941,
+   "sprite": 43550,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    136,
+    63
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 93000407,
+   "nombre": "Chaos-Meerkat Gunslinger",
+   "npc_type": 23941,
+   "sprite": 43550,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    141,
+    67
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 93000408,
+   "nombre": "Chaos-Meerkat Gunslinger",
+   "npc_type": 23941,
+   "sprite": 43550,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    134,
+    68
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 93000409,
+   "nombre": "Chaos-Meerkat Gunslinger",
+   "npc_type": 23941,
+   "sprite": 43550,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    133,
+    15
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 93000410,
+   "nombre": "Chaos-Meerkat Gunslinger",
+   "npc_type": 23941,
+   "sprite": 43550,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    133,
+    20
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 93000411,
+   "nombre": "Chaos-Meerkat Gunslinger",
+   "npc_type": 23941,
+   "sprite": 43550,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    146,
+    69
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 93000412,
+   "nombre": "Chaos-Meerkat Gunslinger",
+   "npc_type": 23941,
+   "sprite": 43550,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    151,
+    69
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 93000413,
+   "nombre": "Chaos-Meerkat Gunslinger",
+   "npc_type": 23941,
+   "sprite": 43550,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    131,
+    25
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 93000414,
+   "nombre": "Chaos-Meerkat Gunslinger",
+   "npc_type": 23941,
+   "sprite": 43550,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    129,
+    65
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 93000415,
+   "nombre": "Chaos-Meerkat Gunslinger",
+   "npc_type": 23941,
+   "sprite": 43550,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    129,
+    70
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 93000416,
+   "nombre": "Chaos-Meerkat Gunslinger",
+   "npc_type": 23941,
+   "sprite": 43550,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    182,
+    73
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 93000417,
+   "nombre": "Chaos-Meerkat Gunslinger",
+   "npc_type": 23941,
+   "sprite": 43550,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    128,
+    14
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 93000418,
+   "nombre": "Chaos-Meerkat Gunslinger",
+   "npc_type": 23941,
+   "sprite": 43550,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    127,
+    75
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 93000419,
+   "nombre": "Chaos-Meerkat Gunslinger",
+   "npc_type": 23941,
+   "sprite": 43550,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    132,
+    75
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 93000420,
+   "nombre": "Chaos-Meerkat Gunslinger",
+   "npc_type": 23941,
+   "sprite": 43550,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    126,
+    22
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 93000421,
+   "nombre": "Chaos-Meerkat Gunslinger",
+   "npc_type": 23941,
+   "sprite": 43550,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    126,
+    27
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 93000422,
+   "nombre": "Chaos-Meerkat Gunslinger",
+   "npc_type": 23941,
+   "sprite": 43550,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    176,
+    76
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 93000423,
+   "nombre": "Chaos-Meerkat Gunslinger",
+   "npc_type": 23941,
+   "sprite": 43550,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    181,
+    78
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 93000424,
+   "nombre": "Chaos-Meerkat Gunslinger",
+   "npc_type": 23941,
+   "sprite": 43550,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    123,
+    13
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 382
+  },
+  {
+   "entity_id": 93000425,
+   "nombre": "Chaos Elite-Space Cactus",
+   "npc_type": 23961,
+   "sprite": 43638,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    131,
+    80
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 93000426,
+   "nombre": "Chaos Elite-Space Cactus",
+   "npc_type": 23961,
+   "sprite": 43638,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    136,
+    80
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 93000427,
+   "nombre": "Chaos Elite-Space Cactus",
+   "npc_type": 23961,
+   "sprite": 43638,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    176,
+    81
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 93000428,
+   "nombre": "Chaos Elite-Space Cactus",
+   "npc_type": 23961,
+   "sprite": 43638,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    183,
+    83
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 93000429,
+   "nombre": "Chaos Elite-Space Cactus",
+   "npc_type": 23961,
+   "sprite": 43638,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    141,
+    84
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 93000430,
+   "nombre": "Chaos Elite-Satellite Barrel Mecha",
+   "npc_type": 23962,
+   "sprite": 43639,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    211,
+    112
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 93000431,
+   "nombre": "Chaos Elite-Satellite Barrel Mecha",
+   "npc_type": 23962,
+   "sprite": 43639,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    207,
+    117
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 93000432,
+   "nombre": "Chaos Elite-Satellite Barrel Mecha",
+   "npc_type": 23962,
+   "sprite": 43639,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    202,
+    119
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 93000433,
+   "nombre": "Chaos Elite-Satellite Barrel Mecha",
+   "npc_type": 23962,
+   "sprite": 43639,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    207,
+    122
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 93000434,
+   "nombre": "Chaos Elite-Satellite Barrel Mecha",
+   "npc_type": 23962,
+   "sprite": 43639,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    197,
+    120
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 389
+  },
+  {
+   "entity_id": 93000435,
+   "nombre": "Chaos-Man-Eater Flower Variant",
+   "npc_type": 23947,
+   "sprite": 43532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    188,
+    84
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000436,
+   "nombre": "Chaos-Man-Eater Flower Variant",
+   "npc_type": 23947,
+   "sprite": 43532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    181,
+    88
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000437,
+   "nombre": "Chaos-Man-Eater Flower Variant",
+   "npc_type": 23947,
+   "sprite": 43532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    186,
+    89
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000438,
+   "nombre": "Chaos-Man-Eater Flower Variant",
+   "npc_type": 23947,
+   "sprite": 43532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    191,
+    90
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000439,
+   "nombre": "Chaos-Man-Eater Flower Variant",
+   "npc_type": 23947,
+   "sprite": 43532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    160,
+    91
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000440,
+   "nombre": "Chaos-Man-Eater Flower Variant",
+   "npc_type": 23947,
+   "sprite": 43532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    165,
+    92
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000441,
+   "nombre": "Chaos-Man-Eater Flower Variant",
+   "npc_type": 23947,
+   "sprite": 43532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    180,
+    93
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000442,
+   "nombre": "Chaos-Man-Eater Flower Variant",
+   "npc_type": 23947,
+   "sprite": 43532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    154,
+    94
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000443,
+   "nombre": "Chaos-Man-Eater Flower Variant",
+   "npc_type": 23947,
+   "sprite": 43532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    136,
+    85
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000444,
+   "nombre": "Chaos-Man-Eater Flower Variant",
+   "npc_type": 23947,
+   "sprite": 43532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    149,
+    96
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000445,
+   "nombre": "Chaos-Man-Eater Flower Variant",
+   "npc_type": 23947,
+   "sprite": 43532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    136,
+    96
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000446,
+   "nombre": "Chaos-Man-Eater Flower Variant",
+   "npc_type": 23947,
+   "sprite": 43532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    159,
+    96
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000447,
+   "nombre": "Chaos-Man-Eater Flower Variant",
+   "npc_type": 23947,
+   "sprite": 43532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    164,
+    97
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000448,
+   "nombre": "Chaos-Man-Eater Flower Variant",
+   "npc_type": 23947,
+   "sprite": 43532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    141,
+    98
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000449,
+   "nombre": "Chaos-Man-Eater Flower Variant",
+   "npc_type": 23947,
+   "sprite": 43532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    169,
+    98
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000450,
+   "nombre": "Chaos-Man-Eater Flower Variant",
+   "npc_type": 23947,
+   "sprite": 43532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    178,
+    98
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000451,
+   "nombre": "Chaos-Man-Eater Flower Variant",
+   "npc_type": 23947,
+   "sprite": 43532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    133,
+    90
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000452,
+   "nombre": "Chaos-Man-Eater Flower Variant",
+   "npc_type": 23947,
+   "sprite": 43532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    154,
+    99
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000453,
+   "nombre": "Chaos-Man-Eater Flower Variant",
+   "npc_type": 23947,
+   "sprite": 43532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    131,
+    85
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000454,
+   "nombre": "Chaos-Man-Eater Flower Variant",
+   "npc_type": 23947,
+   "sprite": 43532,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    134,
+    101
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 388
+  },
+  {
+   "entity_id": 93000455,
+   "nombre": "Ba'shin's Gaze",
+   "npc_type": 23739,
+   "sprite": 111552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    176,
+    103
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400
+  },
+  {
+   "entity_id": 93000456,
+   "nombre": "Ba'shin's Gaze",
+   "npc_type": 23739,
+   "sprite": 111552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    169,
+    103
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400
+  },
+  {
+   "entity_id": 93000457,
+   "nombre": "Ba'shin's Gaze",
+   "npc_type": 23739,
+   "sprite": 111552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    181,
+    106
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400
+  },
+  {
+   "entity_id": 93000458,
+   "nombre": "Ba'shin's Gaze",
+   "npc_type": 23739,
+   "sprite": 111552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    164,
+    106
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400
+  },
+  {
+   "entity_id": 93000459,
+   "nombre": "Ba'shin's Gaze",
+   "npc_type": 23739,
+   "sprite": 111552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    171,
+    108
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400
+  },
+  {
+   "entity_id": 93000460,
+   "nombre": "Ba'shin's Gaze",
+   "npc_type": 23739,
+   "sprite": 111552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    176,
+    108
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400
+  },
+  {
+   "entity_id": 93000461,
+   "nombre": "Ba'shin's Gaze",
+   "npc_type": 23739,
+   "sprite": 111552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    166,
+    111
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400
+  },
+  {
+   "entity_id": 93000462,
+   "nombre": "Ba'shin's Gaze",
+   "npc_type": 23739,
+   "sprite": 111552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    161,
+    111
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400
+  },
+  {
+   "entity_id": 93000463,
+   "nombre": "Ba'shin's Gaze",
+   "npc_type": 23739,
+   "sprite": 111552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    171,
+    113
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400
+  },
+  {
+   "entity_id": 93000464,
+   "nombre": "Ba'shin's Gaze",
+   "npc_type": 23739,
+   "sprite": 111552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    159,
+    105
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400
+  },
+  {
+   "entity_id": 93000465,
+   "nombre": "Ba'shin's Gaze",
+   "npc_type": 23739,
+   "sprite": 111552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    192,
+    120
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400
+  },
+  {
+   "entity_id": 93000466,
+   "nombre": "Ba'shin's Gaze",
+   "npc_type": 23739,
+   "sprite": 111552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    156,
+    110
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400
+  },
+  {
+   "entity_id": 93000467,
+   "nombre": "Ba'shin's Gaze",
+   "npc_type": 23739,
+   "sprite": 111552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    186,
+    123
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400
+  },
+  {
+   "entity_id": 93000468,
+   "nombre": "Ba'shin's Gaze",
+   "npc_type": 23739,
+   "sprite": 111552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    154,
+    104
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400
+  },
+  {
+   "entity_id": 93000469,
+   "nombre": "Ba'shin's Gaze",
+   "npc_type": 23739,
+   "sprite": 111552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    191,
+    125
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 400
+  }
+ ],
+ "recursos": [
+  {
+   "entity_id": 103000000,
+   "sprite": 60461,
+   "capa": 2,
+   "px": [
+    7014,
+    1296
+   ],
+   "tile": [
+    219,
+    40
+   ],
+   "crudo": "c0a7230602000000661b0000100500000000000023000000000000000000000000062dec00000480000000",
+   "copiado_de": "cuerpo de una captura del objeto 60461"
+  },
+  {
+   "entity_id": 103000001,
+   "sprite": 60461,
+   "capa": 2,
+   "px": [
+    7183,
+    1392
+   ],
+   "tile": [
+    224,
+    43
+   ],
+   "crudo": "c1a72306020000000f1c0000700500000000000023000000000000000000000000062dec00000480000000",
+   "copiado_de": "cuerpo de una captura del objeto 60461"
+  },
+  {
+   "entity_id": 103000002,
+   "sprite": 60461,
+   "capa": 2,
+   "px": [
+    3082,
+    3312
+   ],
+   "tile": [
+    96,
+    103
+   ],
+   "crudo": "c2a72306020000000a0c0000f00c00000000000023000000000000000000000000062dec00000480000000",
+   "copiado_de": "cuerpo de una captura del objeto 60461"
+  },
+  {
+   "entity_id": 103000003,
+   "sprite": 60461,
+   "capa": 2,
+   "px": [
+    3428,
+    3504
+   ],
+   "tile": [
+    107,
+    109
+   ],
+   "crudo": "c3a7230602000000640d0000b00d00000000000023000000000000000000000000062dec00000480000000",
+   "copiado_de": "cuerpo de una captura del objeto 60461"
+  },
+  {
+   "entity_id": 103000004,
+   "sprite": 60461,
+   "capa": 2,
+   "px": [
+    3172,
+    3376
+   ],
+   "tile": [
+    99,
+    105
+   ],
+   "crudo": "c4a7230602000000640c0000300d00000000000023000000000000000000000000062dec00000480000000",
+   "copiado_de": "cuerpo de una captura del objeto 60461"
+  },
+  {
+   "entity_id": 103000005,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    9149,
+    176
+   ],
+   "tile": [
+    285,
+    5
+   ],
+   "crudo": "c5a7230600000000bd230000b00000000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 103000006,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    9374,
+    304
+   ],
+   "tile": [
+    292,
+    9
+   ],
+   "crudo": "c6a72306000000009e240000300100000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 103000007,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    1942,
+    2512
+   ],
+   "tile": [
+    60,
+    78
+   ],
+   "crudo": "c7a723060000000096070000d00900000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 103000008,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    1700,
+    2512
+   ],
+   "tile": [
+    53,
+    78
+   ],
+   "crudo": "c8a7230600000000a4060000d00900000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 103000009,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    7620,
+    4368
+   ],
+   "tile": [
+    238,
+    136
+   ],
+   "crudo": "c9a7230600000000c41d0000101100000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 103000010,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    6453,
+    4848
+   ],
+   "tile": [
+    201,
+    151
+   ],
+   "crudo": "caa723060000000035190000f01200000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 103000011,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    5775,
+    4048
+   ],
+   "tile": [
+    180,
+    126
+   ],
+   "crudo": "cba72306000000008f160000d00f00000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 103000012,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    7561,
+    3696
+   ],
+   "tile": [
+    236,
+    115
+   ],
+   "crudo": "cca7230600000000891d0000700e00000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 103000013,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    8284,
+    3984
+   ],
+   "tile": [
+    258,
+    124
+   ],
+   "crudo": "cda72306000000005c200000900f00000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 103000014,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    9243,
+    272
+   ],
+   "tile": [
+    288,
+    8
+   ],
+   "crudo": "cea72306000000001b240000100100000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 103000015,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    3029,
+    1232
+   ],
+   "tile": [
+    94,
+    38
+   ],
+   "crudo": "cfa7230600000000d50b0000d00400000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  }
+ ]
+}

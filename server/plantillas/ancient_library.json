@@ -1,0 +1,3461 @@
+{
+ "_nota": "ancient_library (stage 427). POBLADO DESDE EL CLIENTE, no desde una captura: los generadores de monstruos son objetos del propio map427.mpc -- el monstruo en el u16 del +34, la zona en el +21, el tiempo en el +38 y cuantos en el +42. Eso da el censo COMPLETO del mapa, que una captura no puede dar porque solo trae lo que estuvo a la vista. El entity_id es fabricado y estable, no el del servidor. Las casillas son las del TAG de cada generador; los que no declaran TAG ponen sus monstruos en la casilla del generador y en un anillo de radio 3 a su alrededor, que es la dispersion MEDIDA en el stage 73. Los objetos de mapa son los del .mpc cuyo id esta en la lista de los que el servidor manda de verdad, con el cuerpo del 0x000E copiado de una captura del mismo objeto. Los tornados se dibujan aparte, desde portales.json. Ver tools/poblar_del_cliente.py.",
+ "stage": 427,
+ "spawns": [
+  {
+   "entity_id": 92700000,
+   "nombre": "Blue Robe Claw",
+   "npc_type": 23901,
+   "sprite": 111610,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    255,
+    20
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 440
+  },
+  {
+   "entity_id": 92700001,
+   "nombre": "Blue Robe Claw",
+   "npc_type": 23901,
+   "sprite": 111610,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    250,
+    15
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 440
+  },
+  {
+   "entity_id": 92700002,
+   "nombre": "Blue Robe Claw",
+   "npc_type": 23901,
+   "sprite": 111610,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    255,
+    15
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 440
+  },
+  {
+   "entity_id": 92700003,
+   "nombre": "Blue Robe Claw",
+   "npc_type": 23901,
+   "sprite": 111610,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    260,
+    15
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 440
+  },
+  {
+   "entity_id": 92700004,
+   "nombre": "Blue Robe Claw",
+   "npc_type": 23901,
+   "sprite": 111610,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    260,
+    20
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 440
+  },
+  {
+   "entity_id": 92700005,
+   "nombre": "Blue Robe Claw",
+   "npc_type": 23901,
+   "sprite": 111610,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    245,
+    12
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 440
+  },
+  {
+   "entity_id": 92700006,
+   "nombre": "Blue Robe Claw",
+   "npc_type": 23901,
+   "sprite": 111610,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    250,
+    10
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 440
+  },
+  {
+   "entity_id": 92700007,
+   "nombre": "Blue Robe Claw",
+   "npc_type": 23901,
+   "sprite": 111610,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    255,
+    10
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 440
+  },
+  {
+   "entity_id": 92700008,
+   "nombre": "Blue Robe Claw",
+   "npc_type": 23901,
+   "sprite": 111610,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    260,
+    10
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 440
+  },
+  {
+   "entity_id": 92700009,
+   "nombre": "Blue Robe Claw",
+   "npc_type": 23901,
+   "sprite": 111610,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    263,
+    25
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 440
+  },
+  {
+   "entity_id": 92700010,
+   "nombre": "Blue Robe Claw",
+   "npc_type": 23901,
+   "sprite": 111610,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    240,
+    8
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 440
+  },
+  {
+   "entity_id": 92700011,
+   "nombre": "Blue Robe Claw",
+   "npc_type": 23901,
+   "sprite": 111610,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    240,
+    13
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 440
+  },
+  {
+   "entity_id": 92700012,
+   "nombre": "Blue Robe Claw",
+   "npc_type": 23901,
+   "sprite": 111610,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    245,
+    7
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 440
+  },
+  {
+   "entity_id": 92700013,
+   "nombre": "Blue Robe Claw",
+   "npc_type": 23901,
+   "sprite": 111610,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    237,
+    18
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 440
+  },
+  {
+   "entity_id": 92700014,
+   "nombre": "Blue Robe Claw",
+   "npc_type": 23901,
+   "sprite": 111610,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    250,
+    5
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 440
+  },
+  {
+   "entity_id": 92700015,
+   "nombre": "Blue Robe Claw",
+   "npc_type": 23901,
+   "sprite": 111610,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    235,
+    8
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 440
+  },
+  {
+   "entity_id": 92700016,
+   "nombre": "Blue Robe Claw",
+   "npc_type": 23901,
+   "sprite": 111610,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    235,
+    13
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 440
+  },
+  {
+   "entity_id": 92700017,
+   "nombre": "Blue Robe Claw",
+   "npc_type": 23901,
+   "sprite": 111610,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    232,
+    18
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 440
+  },
+  {
+   "entity_id": 92700018,
+   "nombre": "Blue Robe Claw",
+   "npc_type": 23901,
+   "sprite": 111610,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    230,
+    31
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 440
+  },
+  {
+   "entity_id": 92700019,
+   "nombre": "Blue Robe Claw",
+   "npc_type": 23901,
+   "sprite": 111610,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    235,
+    33
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 440
+  },
+  {
+   "entity_id": 92700020,
+   "nombre": "Blue Robe Claw",
+   "npc_type": 23901,
+   "sprite": 111610,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    265,
+    19
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 440
+  },
+  {
+   "entity_id": 92700021,
+   "nombre": "Blue Robe Claw",
+   "npc_type": 23901,
+   "sprite": 111610,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    267,
+    30
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 440
+  },
+  {
+   "entity_id": 92700022,
+   "nombre": "Blue Robe Claw",
+   "npc_type": 23901,
+   "sprite": 111610,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    268,
+    24
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 440
+  },
+  {
+   "entity_id": 92700023,
+   "nombre": "Blue Robe Claw",
+   "npc_type": 23901,
+   "sprite": 111610,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    265,
+    14
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 440
+  },
+  {
+   "entity_id": 92700024,
+   "nombre": "Blue Robe Claw",
+   "npc_type": 23901,
+   "sprite": 111610,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    270,
+    14
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 440
+  },
+  {
+   "entity_id": 92700025,
+   "nombre": "Blue Robe Claw",
+   "npc_type": 23901,
+   "sprite": 111610,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    260,
+    33
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 440
+  },
+  {
+   "entity_id": 92700026,
+   "nombre": "Blue Robe Claw",
+   "npc_type": 23901,
+   "sprite": 111610,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    270,
+    19
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 440
+  },
+  {
+   "entity_id": 92700027,
+   "nombre": "Blue Robe Claw",
+   "npc_type": 23901,
+   "sprite": 111610,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    265,
+    35
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 440
+  },
+  {
+   "entity_id": 92700028,
+   "nombre": "Blue Robe Claw",
+   "npc_type": 23901,
+   "sprite": 111610,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    270,
+    35
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 440
+  },
+  {
+   "entity_id": 92700029,
+   "nombre": "Blue Robe Claw",
+   "npc_type": 23901,
+   "sprite": 111610,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    271,
+    9
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 440
+  },
+  {
+   "entity_id": 92700030,
+   "nombre": "Blue Robe Claw",
+   "npc_type": 23901,
+   "sprite": 111610,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    272,
+    29
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 440
+  },
+  {
+   "entity_id": 92700031,
+   "nombre": "Blue Robe Claw",
+   "npc_type": 23901,
+   "sprite": 111610,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    273,
+    24
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 440
+  },
+  {
+   "entity_id": 92700032,
+   "nombre": "Blue Robe Claw",
+   "npc_type": 23901,
+   "sprite": 111610,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    275,
+    14
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 440
+  },
+  {
+   "entity_id": 92700033,
+   "nombre": "Blue Robe Claw",
+   "npc_type": 23901,
+   "sprite": 111610,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    275,
+    19
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 440
+  },
+  {
+   "entity_id": 92700034,
+   "nombre": "Blue Robe Claw",
+   "npc_type": 23901,
+   "sprite": 111610,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    275,
+    34
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 440
+  },
+  {
+   "entity_id": 92700035,
+   "nombre": "Red Flame Walker",
+   "npc_type": 23902,
+   "sprite": 111611,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    188,
+    67
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 441
+  },
+  {
+   "entity_id": 92700036,
+   "nombre": "Red Flame Walker",
+   "npc_type": 23902,
+   "sprite": 111611,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    183,
+    70
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 441
+  },
+  {
+   "entity_id": 92700037,
+   "nombre": "Red Flame Walker",
+   "npc_type": 23902,
+   "sprite": 111611,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    187,
+    62
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 441
+  },
+  {
+   "entity_id": 92700038,
+   "nombre": "Red Flame Walker",
+   "npc_type": 23902,
+   "sprite": 111611,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    188,
+    72
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 441
+  },
+  {
+   "entity_id": 92700039,
+   "nombre": "Red Flame Walker",
+   "npc_type": 23902,
+   "sprite": 111611,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    192,
+    62
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 441
+  },
+  {
+   "entity_id": 92700040,
+   "nombre": "Red Flame Walker",
+   "npc_type": 23902,
+   "sprite": 111611,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    193,
+    67
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 441
+  },
+  {
+   "entity_id": 92700041,
+   "nombre": "Red Flame Walker",
+   "npc_type": 23902,
+   "sprite": 111611,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    193,
+    72
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 441
+  },
+  {
+   "entity_id": 92700042,
+   "nombre": "Red Flame Walker",
+   "npc_type": 23902,
+   "sprite": 111611,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    197,
+    62
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 441
+  },
+  {
+   "entity_id": 92700043,
+   "nombre": "Red Flame Walker",
+   "npc_type": 23902,
+   "sprite": 111611,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    198,
+    67
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 441
+  },
+  {
+   "entity_id": 92700044,
+   "nombre": "Red Flame Walker",
+   "npc_type": 23902,
+   "sprite": 111611,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    198,
+    72
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 441
+  },
+  {
+   "entity_id": 92700045,
+   "nombre": "Red Flame Walker",
+   "npc_type": 23902,
+   "sprite": 111611,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    185,
+    77
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 441
+  },
+  {
+   "entity_id": 92700046,
+   "nombre": "Red Flame Walker",
+   "npc_type": 23902,
+   "sprite": 111611,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    190,
+    77
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 441
+  },
+  {
+   "entity_id": 92700047,
+   "nombre": "Red Flame Walker",
+   "npc_type": 23902,
+   "sprite": 111611,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    195,
+    77
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 441
+  },
+  {
+   "entity_id": 92700048,
+   "nombre": "Red Flame Walker",
+   "npc_type": 23902,
+   "sprite": 111611,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    202,
+    60
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 441
+  },
+  {
+   "entity_id": 92700049,
+   "nombre": "Red Flame Walker",
+   "npc_type": 23902,
+   "sprite": 111611,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    203,
+    65
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 441
+  },
+  {
+   "entity_id": 92700050,
+   "nombre": "Red Flame Walker",
+   "npc_type": 23902,
+   "sprite": 111611,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    203,
+    70
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 441
+  },
+  {
+   "entity_id": 92700051,
+   "nombre": "Red Flame Walker",
+   "npc_type": 23902,
+   "sprite": 111611,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    203,
+    75
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 441
+  },
+  {
+   "entity_id": 92700052,
+   "nombre": "Red Flame Walker",
+   "npc_type": 23902,
+   "sprite": 111611,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    183,
+    82
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 441
+  },
+  {
+   "entity_id": 92700053,
+   "nombre": "Red Flame Walker",
+   "npc_type": 23902,
+   "sprite": 111611,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    188,
+    82
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 441
+  },
+  {
+   "entity_id": 92700054,
+   "nombre": "Red Flame Walker",
+   "npc_type": 23902,
+   "sprite": 111611,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    193,
+    82
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 441
+  },
+  {
+   "entity_id": 92700055,
+   "nombre": "Red Flame Walker",
+   "npc_type": 23902,
+   "sprite": 111611,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    208,
+    61
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 441
+  },
+  {
+   "entity_id": 92700056,
+   "nombre": "Red Flame Walker",
+   "npc_type": 23902,
+   "sprite": 111611,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    208,
+    66
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 441
+  },
+  {
+   "entity_id": 92700057,
+   "nombre": "Red Flame Walker",
+   "npc_type": 23902,
+   "sprite": 111611,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    208,
+    71
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 441
+  },
+  {
+   "entity_id": 92700058,
+   "nombre": "Red Flame Walker",
+   "npc_type": 23902,
+   "sprite": 111611,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    194,
+    57
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 441
+  },
+  {
+   "entity_id": 92700059,
+   "nombre": "Red Flame Walker",
+   "npc_type": 23902,
+   "sprite": 111611,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    207,
+    56
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 441
+  },
+  {
+   "entity_id": 92700060,
+   "nombre": "Red Flame Walker",
+   "npc_type": 23902,
+   "sprite": 111611,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    213,
+    59
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 441
+  },
+  {
+   "entity_id": 92700061,
+   "nombre": "Red Flame Walker",
+   "npc_type": 23902,
+   "sprite": 111611,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    213,
+    64
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 441
+  },
+  {
+   "entity_id": 92700062,
+   "nombre": "Red Flame Walker",
+   "npc_type": 23902,
+   "sprite": 111611,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    213,
+    69
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 441
+  },
+  {
+   "entity_id": 92700063,
+   "nombre": "Red Flame Walker",
+   "npc_type": 23902,
+   "sprite": 111611,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    185,
+    87
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 441
+  },
+  {
+   "entity_id": 92700064,
+   "nombre": "Red Flame Walker",
+   "npc_type": 23902,
+   "sprite": 111611,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    190,
+    87
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 441
+  },
+  {
+   "entity_id": 92700065,
+   "nombre": "Red Flame Walker",
+   "npc_type": 23902,
+   "sprite": 111611,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    195,
+    87
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 441
+  },
+  {
+   "entity_id": 92700066,
+   "nombre": "Red Flame Walker",
+   "npc_type": 23902,
+   "sprite": 111611,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    218,
+    57
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 441
+  },
+  {
+   "entity_id": 92700067,
+   "nombre": "Red Flame Walker",
+   "npc_type": 23902,
+   "sprite": 111611,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    218,
+    62
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 441
+  },
+  {
+   "entity_id": 92700068,
+   "nombre": "Red Flame Walker",
+   "npc_type": 23902,
+   "sprite": 111611,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    218,
+    67
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 441
+  },
+  {
+   "entity_id": 92700069,
+   "nombre": "Red Flame Walker",
+   "npc_type": 23902,
+   "sprite": 111611,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    200,
+    90
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 441
+  },
+  {
+   "entity_id": 92700070,
+   "nombre": "Swordclaw Horn",
+   "npc_type": 23909,
+   "sprite": 111612,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    223,
+    61
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 455
+  },
+  {
+   "entity_id": 92700071,
+   "nombre": "Snow Rabbit Mage",
+   "npc_type": 23903,
+   "sprite": 111613,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    40,
+    25
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 443
+  },
+  {
+   "entity_id": 92700072,
+   "nombre": "Snow Rabbit Mage",
+   "npc_type": 23903,
+   "sprite": 111613,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    37,
+    30
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 443
+  },
+  {
+   "entity_id": 92700073,
+   "nombre": "Snow Rabbit Mage",
+   "npc_type": 23903,
+   "sprite": 111613,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    45,
+    22
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 443
+  },
+  {
+   "entity_id": 92700074,
+   "nombre": "Snow Rabbit Mage",
+   "npc_type": 23903,
+   "sprite": 111613,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    35,
+    20
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 443
+  },
+  {
+   "entity_id": 92700075,
+   "nombre": "Snow Rabbit Mage",
+   "npc_type": 23903,
+   "sprite": 111613,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    35,
+    25
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 443
+  },
+  {
+   "entity_id": 92700076,
+   "nombre": "Snow Rabbit Mage",
+   "npc_type": 23903,
+   "sprite": 111613,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    40,
+    20
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 443
+  },
+  {
+   "entity_id": 92700077,
+   "nombre": "Snow Rabbit Mage",
+   "npc_type": 23903,
+   "sprite": 111613,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    50,
+    18
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 443
+  },
+  {
+   "entity_id": 92700078,
+   "nombre": "Snow Rabbit Mage",
+   "npc_type": 23903,
+   "sprite": 111613,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    42,
+    33
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 443
+  },
+  {
+   "entity_id": 92700079,
+   "nombre": "Snow Rabbit Mage",
+   "npc_type": 23903,
+   "sprite": 111613,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    45,
+    17
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 443
+  },
+  {
+   "entity_id": 92700080,
+   "nombre": "Snow Rabbit Mage",
+   "npc_type": 23903,
+   "sprite": 111613,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    33,
+    15
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 443
+  },
+  {
+   "entity_id": 92700081,
+   "nombre": "Snow Rabbit Mage",
+   "npc_type": 23903,
+   "sprite": 111613,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    38,
+    15
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 443
+  },
+  {
+   "entity_id": 92700082,
+   "nombre": "Snow Rabbit Mage",
+   "npc_type": 23903,
+   "sprite": 111613,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    55,
+    14
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 443
+  },
+  {
+   "entity_id": 92700083,
+   "nombre": "Snow Rabbit Mage",
+   "npc_type": 23903,
+   "sprite": 111613,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    34,
+    35
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 443
+  },
+  {
+   "entity_id": 92700084,
+   "nombre": "Snow Rabbit Mage",
+   "npc_type": 23903,
+   "sprite": 111613,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    47,
+    35
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 443
+  },
+  {
+   "entity_id": 92700085,
+   "nombre": "Snow Rabbit Mage",
+   "npc_type": 23903,
+   "sprite": 111613,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    50,
+    13
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 443
+  },
+  {
+   "entity_id": 92700086,
+   "nombre": "Snow Rabbit Mage",
+   "npc_type": 23903,
+   "sprite": 111613,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    43,
+    12
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 443
+  },
+  {
+   "entity_id": 92700087,
+   "nombre": "Snow Rabbit Mage",
+   "npc_type": 23903,
+   "sprite": 111613,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    34,
+    10
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 443
+  },
+  {
+   "entity_id": 92700088,
+   "nombre": "Snow Rabbit Mage",
+   "npc_type": 23903,
+   "sprite": 111613,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    60,
+    10
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 443
+  },
+  {
+   "entity_id": 92700089,
+   "nombre": "Snow Rabbit Mage",
+   "npc_type": 23903,
+   "sprite": 111613,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    60,
+    15
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 443
+  },
+  {
+   "entity_id": 92700090,
+   "nombre": "Snow Rabbit Mage",
+   "npc_type": 23903,
+   "sprite": 111613,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    55,
+    9
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 443
+  },
+  {
+   "entity_id": 92700091,
+   "nombre": "Snow Rabbit Mage",
+   "npc_type": 23903,
+   "sprite": 111613,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    48,
+    8
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 443
+  },
+  {
+   "entity_id": 92700092,
+   "nombre": "Snow Rabbit Mage",
+   "npc_type": 23903,
+   "sprite": 111613,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    63,
+    36
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 443
+  },
+  {
+   "entity_id": 92700093,
+   "nombre": "Snow Rabbit Mage",
+   "npc_type": 23903,
+   "sprite": 111613,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    38
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 443
+  },
+  {
+   "entity_id": 92700094,
+   "nombre": "Snow Rabbit Mage",
+   "npc_type": 23903,
+   "sprite": 111613,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    52,
+    38
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 443
+  },
+  {
+   "entity_id": 92700095,
+   "nombre": "Snow Rabbit Mage",
+   "npc_type": 23903,
+   "sprite": 111613,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    65,
+    6
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 443
+  },
+  {
+   "entity_id": 92700096,
+   "nombre": "Snow Rabbit Mage",
+   "npc_type": 23903,
+   "sprite": 111613,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    65,
+    11
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 443
+  },
+  {
+   "entity_id": 92700097,
+   "nombre": "Snow Rabbit Mage",
+   "npc_type": 23903,
+   "sprite": 111613,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    60,
+    5
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 443
+  },
+  {
+   "entity_id": 92700098,
+   "nombre": "Snow Rabbit Mage",
+   "npc_type": 23903,
+   "sprite": 111613,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    67,
+    16
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 443
+  },
+  {
+   "entity_id": 92700099,
+   "nombre": "Snow Rabbit Mage",
+   "npc_type": 23903,
+   "sprite": 111613,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    68,
+    34
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 443
+  },
+  {
+   "entity_id": 92700100,
+   "nombre": "Snow Rabbit Mage",
+   "npc_type": 23903,
+   "sprite": 111613,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    57,
+    39
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 443
+  },
+  {
+   "entity_id": 92700101,
+   "nombre": "Snow Rabbit Mage",
+   "npc_type": 23903,
+   "sprite": 111613,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    70,
+    7
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 443
+  },
+  {
+   "entity_id": 92700102,
+   "nombre": "Snow Rabbit Mage",
+   "npc_type": 23903,
+   "sprite": 111613,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    68,
+    39
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 443
+  },
+  {
+   "entity_id": 92700103,
+   "nombre": "Snow Rabbit Mage",
+   "npc_type": 23903,
+   "sprite": 111613,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    72,
+    12
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 443
+  },
+  {
+   "entity_id": 92700104,
+   "nombre": "Snow Rabbit Mage",
+   "npc_type": 23903,
+   "sprite": 111613,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    72,
+    17
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 443
+  },
+  {
+   "entity_id": 92700105,
+   "nombre": "Snow Rabbit Mage",
+   "npc_type": 23903,
+   "sprite": 111613,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    33,
+    40
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 443
+  },
+  {
+   "entity_id": 92700106,
+   "nombre": "Phantom Violet Sorcerer",
+   "npc_type": 23904,
+   "sprite": 111614,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    74,
+    51
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 445
+  },
+  {
+   "entity_id": 92700107,
+   "nombre": "Phantom Violet Sorcerer",
+   "npc_type": 23904,
+   "sprite": 111614,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    79,
+    53
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 445
+  },
+  {
+   "entity_id": 92700108,
+   "nombre": "Phantom Violet Sorcerer",
+   "npc_type": 23904,
+   "sprite": 111614,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    69,
+    44
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 445
+  },
+  {
+   "entity_id": 92700109,
+   "nombre": "Phantom Violet Sorcerer",
+   "npc_type": 23904,
+   "sprite": 111614,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    69,
+    50
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 445
+  },
+  {
+   "entity_id": 92700110,
+   "nombre": "Phantom Violet Sorcerer",
+   "npc_type": 23904,
+   "sprite": 111614,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    69,
+    55
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 445
+  },
+  {
+   "entity_id": 92700111,
+   "nombre": "Phantom Violet Sorcerer",
+   "npc_type": 23904,
+   "sprite": 111614,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    74,
+    56
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 445
+  },
+  {
+   "entity_id": 92700112,
+   "nombre": "Phantom Violet Sorcerer",
+   "npc_type": 23904,
+   "sprite": 111614,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    79,
+    58
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 445
+  },
+  {
+   "entity_id": 92700113,
+   "nombre": "Phantom Violet Sorcerer",
+   "npc_type": 23904,
+   "sprite": 111614,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    64,
+    44
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 445
+  },
+  {
+   "entity_id": 92700114,
+   "nombre": "Phantom Violet Sorcerer",
+   "npc_type": 23904,
+   "sprite": 111614,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    64,
+    49
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 445
+  },
+  {
+   "entity_id": 92700115,
+   "nombre": "Phantom Violet Sorcerer",
+   "npc_type": 23904,
+   "sprite": 111614,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    64,
+    54
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 445
+  },
+  {
+   "entity_id": 92700116,
+   "nombre": "Phantom Violet Sorcerer",
+   "npc_type": 23904,
+   "sprite": 111614,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    84,
+    56
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 445
+  },
+  {
+   "entity_id": 92700117,
+   "nombre": "Phantom Violet Sorcerer",
+   "npc_type": 23904,
+   "sprite": 111614,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    68,
+    60
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 445
+  },
+  {
+   "entity_id": 92700118,
+   "nombre": "Phantom Violet Sorcerer",
+   "npc_type": 23904,
+   "sprite": 111614,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    73,
+    61
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 445
+  },
+  {
+   "entity_id": 92700119,
+   "nombre": "Phantom Violet Sorcerer",
+   "npc_type": 23904,
+   "sprite": 111614,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    84,
+    61
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 445
+  },
+  {
+   "entity_id": 92700120,
+   "nombre": "Phantom Violet Sorcerer",
+   "npc_type": 23904,
+   "sprite": 111614,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    74,
+    40
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 445
+  },
+  {
+   "entity_id": 92700121,
+   "nombre": "Phantom Violet Sorcerer",
+   "npc_type": 23904,
+   "sprite": 111614,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    89,
+    58
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 445
+  },
+  {
+   "entity_id": 92700122,
+   "nombre": "Phantom Violet Sorcerer",
+   "npc_type": 23904,
+   "sprite": 111614,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    78,
+    63
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 445
+  },
+  {
+   "entity_id": 92700123,
+   "nombre": "Phantom Violet Sorcerer",
+   "npc_type": 23904,
+   "sprite": 111614,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    89,
+    63
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 445
+  },
+  {
+   "entity_id": 92700124,
+   "nombre": "Phantom Violet Sorcerer",
+   "npc_type": 23904,
+   "sprite": 111614,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    79,
+    38
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 445
+  },
+  {
+   "entity_id": 92700125,
+   "nombre": "Phantom Violet Sorcerer",
+   "npc_type": 23904,
+   "sprite": 111614,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    83,
+    66
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 445
+  },
+  {
+   "entity_id": 92700126,
+   "nombre": "Phantom Violet Sorcerer",
+   "npc_type": 23904,
+   "sprite": 111614,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    94,
+    58
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 445
+  },
+  {
+   "entity_id": 92700127,
+   "nombre": "Phantom Violet Sorcerer",
+   "npc_type": 23904,
+   "sprite": 111614,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    94,
+    63
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 445
+  },
+  {
+   "entity_id": 92700128,
+   "nombre": "Phantom Violet Sorcerer",
+   "npc_type": 23904,
+   "sprite": 111614,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    93,
+    39
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 445
+  },
+  {
+   "entity_id": 92700129,
+   "nombre": "Phantom Violet Sorcerer",
+   "npc_type": 23904,
+   "sprite": 111614,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    74,
+    68
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 445
+  },
+  {
+   "entity_id": 92700130,
+   "nombre": "Phantom Violet Sorcerer",
+   "npc_type": 23904,
+   "sprite": 111614,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    88,
+    68
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 445
+  },
+  {
+   "entity_id": 92700131,
+   "nombre": "Phantom Violet Sorcerer",
+   "npc_type": 23904,
+   "sprite": 111614,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    93,
+    68
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 445
+  },
+  {
+   "entity_id": 92700132,
+   "nombre": "Phantom Violet Sorcerer",
+   "npc_type": 23904,
+   "sprite": 111614,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    98,
+    39
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 445
+  },
+  {
+   "entity_id": 92700133,
+   "nombre": "Phantom Violet Sorcerer",
+   "npc_type": 23904,
+   "sprite": 111614,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    98,
+    68
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 445
+  },
+  {
+   "entity_id": 92700134,
+   "nombre": "Phantom Violet Sorcerer",
+   "npc_type": 23904,
+   "sprite": 111614,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    99,
+    56
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 445
+  },
+  {
+   "entity_id": 92700135,
+   "nombre": "Phantom Violet Sorcerer",
+   "npc_type": 23904,
+   "sprite": 111614,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    99,
+    61
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 445
+  },
+  {
+   "entity_id": 92700136,
+   "nombre": "Phantom Violet Sorcerer",
+   "npc_type": 23904,
+   "sprite": 111614,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    69,
+    71
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 445
+  },
+  {
+   "entity_id": 92700137,
+   "nombre": "Phantom Violet Sorcerer",
+   "npc_type": 23904,
+   "sprite": 111614,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    79,
+    71
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 445
+  },
+  {
+   "entity_id": 92700138,
+   "nombre": "Phantom Violet Sorcerer",
+   "npc_type": 23904,
+   "sprite": 111614,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    101,
+    44
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 445
+  },
+  {
+   "entity_id": 92700139,
+   "nombre": "Phantom Violet Sorcerer",
+   "npc_type": 23904,
+   "sprite": 111614,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    74,
+    73
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 445
+  },
+  {
+   "entity_id": 92700140,
+   "nombre": "Phantom Violet Sorcerer",
+   "npc_type": 23904,
+   "sprite": 111614,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    94,
+    73
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 445
+  },
+  {
+   "entity_id": 92700141,
+   "nombre": "Star Rabbit Bunnita",
+   "npc_type": 23910,
+   "sprite": 111615,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    10,
+    101
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 455
+  },
+  {
+   "entity_id": 92700142,
+   "nombre": "Red-Green Urn",
+   "npc_type": 23905,
+   "sprite": 111616,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    23,
+    146
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 447
+  },
+  {
+   "entity_id": 92700143,
+   "nombre": "Red-Green Urn",
+   "npc_type": 23905,
+   "sprite": 111616,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    18,
+    142
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 447
+  },
+  {
+   "entity_id": 92700144,
+   "nombre": "Red-Green Urn",
+   "npc_type": 23905,
+   "sprite": 111616,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    28,
+    142
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 447
+  },
+  {
+   "entity_id": 92700145,
+   "nombre": "Red-Green Urn",
+   "npc_type": 23905,
+   "sprite": 111616,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    28,
+    147
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 447
+  },
+  {
+   "entity_id": 92700146,
+   "nombre": "Red-Green Urn",
+   "npc_type": 23905,
+   "sprite": 111616,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    23,
+    141
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 447
+  },
+  {
+   "entity_id": 92700147,
+   "nombre": "Red-Green Urn",
+   "npc_type": 23905,
+   "sprite": 111616,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    32,
+    152
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 447
+  },
+  {
+   "entity_id": 92700148,
+   "nombre": "Red-Green Urn",
+   "npc_type": 23905,
+   "sprite": 111616,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    33,
+    144
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 447
+  },
+  {
+   "entity_id": 92700149,
+   "nombre": "Red-Green Urn",
+   "npc_type": 23905,
+   "sprite": 111616,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    15,
+    137
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 447
+  },
+  {
+   "entity_id": 92700150,
+   "nombre": "Red-Green Urn",
+   "npc_type": 23905,
+   "sprite": 111616,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    20,
+    136
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 447
+  },
+  {
+   "entity_id": 92700151,
+   "nombre": "Red-Green Urn",
+   "npc_type": 23905,
+   "sprite": 111616,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    25,
+    136
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 447
+  },
+  {
+   "entity_id": 92700152,
+   "nombre": "Red-Green Urn",
+   "npc_type": 23905,
+   "sprite": 111616,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    37,
+    149
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 447
+  },
+  {
+   "entity_id": 92700153,
+   "nombre": "Red-Green Urn",
+   "npc_type": 23905,
+   "sprite": 111616,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    37,
+    154
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 447
+  },
+  {
+   "entity_id": 92700154,
+   "nombre": "Red-Green Urn",
+   "npc_type": 23905,
+   "sprite": 111616,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    30,
+    135
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 447
+  },
+  {
+   "entity_id": 92700155,
+   "nombre": "Red-Green Urn",
+   "npc_type": 23905,
+   "sprite": 111616,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    42,
+    147
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 447
+  },
+  {
+   "entity_id": 92700156,
+   "nombre": "Red-Green Urn",
+   "npc_type": 23905,
+   "sprite": 111616,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    42,
+    152
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 447
+  },
+  {
+   "entity_id": 92700157,
+   "nombre": "Red-Green Urn",
+   "npc_type": 23905,
+   "sprite": 111616,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    35,
+    132
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 447
+  },
+  {
+   "entity_id": 92700158,
+   "nombre": "Red-Green Urn",
+   "npc_type": 23905,
+   "sprite": 111616,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    47,
+    145
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 447
+  },
+  {
+   "entity_id": 92700159,
+   "nombre": "Red-Green Urn",
+   "npc_type": 23905,
+   "sprite": 111616,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    47,
+    150
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 447
+  },
+  {
+   "entity_id": 92700160,
+   "nombre": "Red-Green Urn",
+   "npc_type": 23905,
+   "sprite": 111616,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    47,
+    155
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 447
+  },
+  {
+   "entity_id": 92700161,
+   "nombre": "Red-Green Urn",
+   "npc_type": 23905,
+   "sprite": 111616,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    21,
+    131
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 447
+  },
+  {
+   "entity_id": 92700162,
+   "nombre": "Red-Green Urn",
+   "npc_type": 23905,
+   "sprite": 111616,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    26,
+    130
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 447
+  },
+  {
+   "entity_id": 92700163,
+   "nombre": "Red-Green Urn",
+   "npc_type": 23905,
+   "sprite": 111616,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    52,
+    130
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 447
+  },
+  {
+   "entity_id": 92700164,
+   "nombre": "Red-Green Urn",
+   "npc_type": 23905,
+   "sprite": 111616,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    52,
+    143
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 447
+  },
+  {
+   "entity_id": 92700165,
+   "nombre": "Red-Green Urn",
+   "npc_type": 23905,
+   "sprite": 111616,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    52,
+    148
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 447
+  },
+  {
+   "entity_id": 92700166,
+   "nombre": "Red-Green Urn",
+   "npc_type": 23905,
+   "sprite": 111616,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    52,
+    153
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 447
+  },
+  {
+   "entity_id": 92700167,
+   "nombre": "Red-Green Urn",
+   "npc_type": 23905,
+   "sprite": 111616,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    52,
+    158
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 447
+  },
+  {
+   "entity_id": 92700168,
+   "nombre": "Red-Green Urn",
+   "npc_type": 23905,
+   "sprite": 111616,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    40,
+    128
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 447
+  },
+  {
+   "entity_id": 92700169,
+   "nombre": "Red-Green Urn",
+   "npc_type": 23905,
+   "sprite": 111616,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    45,
+    128
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 447
+  },
+  {
+   "entity_id": 92700170,
+   "nombre": "Red-Green Urn",
+   "npc_type": 23905,
+   "sprite": 111616,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    57,
+    128
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 447
+  },
+  {
+   "entity_id": 92700171,
+   "nombre": "Red-Green Urn",
+   "npc_type": 23905,
+   "sprite": 111616,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    57,
+    133
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 447
+  },
+  {
+   "entity_id": 92700172,
+   "nombre": "Red-Green Urn",
+   "npc_type": 23905,
+   "sprite": 111616,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    57,
+    141
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 447
+  },
+  {
+   "entity_id": 92700173,
+   "nombre": "Red-Green Urn",
+   "npc_type": 23905,
+   "sprite": 111616,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    57,
+    146
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 447
+  },
+  {
+   "entity_id": 92700174,
+   "nombre": "Red-Green Urn",
+   "npc_type": 23905,
+   "sprite": 111616,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    57,
+    154
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 447
+  },
+  {
+   "entity_id": 92700175,
+   "nombre": "Red-Green Urn",
+   "npc_type": 23905,
+   "sprite": 111616,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    57,
+    159
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 447
+  },
+  {
+   "entity_id": 92700176,
+   "nombre": "Red-Green Urn",
+   "npc_type": 23905,
+   "sprite": 111616,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    60,
+    164
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 447
+  },
+  {
+   "entity_id": 92700177,
+   "nombre": "Indigo Source",
+   "npc_type": 23906,
+   "sprite": 111617,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    256,
+    156
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 449
+  },
+  {
+   "entity_id": 92700178,
+   "nombre": "Indigo Source",
+   "npc_type": 23906,
+   "sprite": 111617,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    261,
+    154
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 449
+  },
+  {
+   "entity_id": 92700179,
+   "nombre": "Indigo Source",
+   "npc_type": 23906,
+   "sprite": 111617,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    262,
+    159
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 449
+  },
+  {
+   "entity_id": 92700180,
+   "nombre": "Indigo Source",
+   "npc_type": 23906,
+   "sprite": 111617,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    251,
+    151
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 449
+  },
+  {
+   "entity_id": 92700181,
+   "nombre": "Indigo Source",
+   "npc_type": 23906,
+   "sprite": 111617,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    256,
+    151
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 449
+  },
+  {
+   "entity_id": 92700182,
+   "nombre": "Indigo Source",
+   "npc_type": 23906,
+   "sprite": 111617,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    267,
+    157
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 449
+  },
+  {
+   "entity_id": 92700183,
+   "nombre": "Indigo Source",
+   "npc_type": 23906,
+   "sprite": 111617,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    269,
+    162
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 449
+  },
+  {
+   "entity_id": 92700184,
+   "nombre": "Indigo Source",
+   "npc_type": 23906,
+   "sprite": 111617,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    247,
+    146
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 449
+  },
+  {
+   "entity_id": 92700185,
+   "nombre": "Indigo Source",
+   "npc_type": 23906,
+   "sprite": 111617,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    252,
+    146
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 449
+  },
+  {
+   "entity_id": 92700186,
+   "nombre": "Indigo Source",
+   "npc_type": 23906,
+   "sprite": 111617,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    257,
+    146
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 449
+  },
+  {
+   "entity_id": 92700187,
+   "nombre": "Indigo Source",
+   "npc_type": 23906,
+   "sprite": 111617,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    272,
+    147
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 449
+  },
+  {
+   "entity_id": 92700188,
+   "nombre": "Indigo Source",
+   "npc_type": 23906,
+   "sprite": 111617,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    274,
+    161
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 449
+  },
+  {
+   "entity_id": 92700189,
+   "nombre": "Indigo Source",
+   "npc_type": 23906,
+   "sprite": 111617,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    262,
+    145
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 449
+  },
+  {
+   "entity_id": 92700190,
+   "nombre": "Indigo Source",
+   "npc_type": 23906,
+   "sprite": 111617,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    267,
+    144
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 449
+  },
+  {
+   "entity_id": 92700191,
+   "nombre": "Indigo Source",
+   "npc_type": 23906,
+   "sprite": 111617,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    277,
+    144
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 449
+  },
+  {
+   "entity_id": 92700192,
+   "nombre": "Indigo Source",
+   "npc_type": 23906,
+   "sprite": 111617,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    277,
+    149
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 449
+  },
+  {
+   "entity_id": 92700193,
+   "nombre": "Indigo Source",
+   "npc_type": 23906,
+   "sprite": 111617,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    278,
+    166
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 449
+  },
+  {
+   "entity_id": 92700194,
+   "nombre": "Indigo Source",
+   "npc_type": 23906,
+   "sprite": 111617,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    272,
+    142
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 449
+  },
+  {
+   "entity_id": 92700195,
+   "nombre": "Indigo Source",
+   "npc_type": 23906,
+   "sprite": 111617,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    255,
+    141
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 449
+  },
+  {
+   "entity_id": 92700196,
+   "nombre": "Indigo Source",
+   "npc_type": 23906,
+   "sprite": 111617,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    282,
+    147
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 449
+  },
+  {
+   "entity_id": 92700197,
+   "nombre": "Indigo Source",
+   "npc_type": 23906,
+   "sprite": 111617,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    282,
+    152
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 449
+  },
+  {
+   "entity_id": 92700198,
+   "nombre": "Indigo Source",
+   "npc_type": 23906,
+   "sprite": 111617,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    282,
+    161
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 449
+  },
+  {
+   "entity_id": 92700199,
+   "nombre": "Indigo Source",
+   "npc_type": 23906,
+   "sprite": 111617,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    283,
+    166
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 449
+  },
+  {
+   "entity_id": 92700200,
+   "nombre": "Indigo Source",
+   "npc_type": 23906,
+   "sprite": 111617,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    260,
+    140
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 449
+  },
+  {
+   "entity_id": 92700201,
+   "nombre": "Indigo Source",
+   "npc_type": 23906,
+   "sprite": 111617,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    265,
+    139
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 449
+  },
+  {
+   "entity_id": 92700202,
+   "nombre": "Indigo Source",
+   "npc_type": 23906,
+   "sprite": 111617,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    287,
+    149
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 449
+  },
+  {
+   "entity_id": 92700203,
+   "nombre": "Indigo Source",
+   "npc_type": 23906,
+   "sprite": 111617,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    287,
+    154
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 449
+  },
+  {
+   "entity_id": 92700204,
+   "nombre": "Indigo Source",
+   "npc_type": 23906,
+   "sprite": 111617,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    287,
+    159
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 449
+  },
+  {
+   "entity_id": 92700205,
+   "nombre": "Indigo Source",
+   "npc_type": 23906,
+   "sprite": 111617,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    288,
+    164
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 449
+  },
+  {
+   "entity_id": 92700206,
+   "nombre": "Indigo Source",
+   "npc_type": 23906,
+   "sprite": 111617,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    242,
+    143
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 449
+  },
+  {
+   "entity_id": 92700207,
+   "nombre": "Indigo Source",
+   "npc_type": 23906,
+   "sprite": 111617,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    292,
+    152
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 449
+  },
+  {
+   "entity_id": 92700208,
+   "nombre": "Indigo Source",
+   "npc_type": 23906,
+   "sprite": 111617,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    292,
+    157
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 449
+  },
+  {
+   "entity_id": 92700209,
+   "nombre": "Indigo Source",
+   "npc_type": 23906,
+   "sprite": 111617,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    293,
+    162
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 449
+  },
+  {
+   "entity_id": 92700210,
+   "nombre": "Indigo Source",
+   "npc_type": 23906,
+   "sprite": 111617,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    270,
+    137
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 449
+  },
+  {
+   "entity_id": 92700211,
+   "nombre": "Indigo Source",
+   "npc_type": 23906,
+   "sprite": 111617,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    242,
+    136
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 449
+  },
+  {
+   "entity_id": 92700212,
+   "nombre": "Elite-Red Flame Walker",
+   "npc_type": 23907,
+   "sprite": 111611,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    142,
+    161
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 451
+  },
+  {
+   "entity_id": 92700213,
+   "nombre": "Elite-Red Flame Walker",
+   "npc_type": 23907,
+   "sprite": 111611,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    137,
+    156
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 451
+  },
+  {
+   "entity_id": 92700214,
+   "nombre": "Elite-Red Flame Walker",
+   "npc_type": 23907,
+   "sprite": 111611,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    142,
+    156
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 451
+  },
+  {
+   "entity_id": 92700215,
+   "nombre": "Elite-Red Flame Walker",
+   "npc_type": 23907,
+   "sprite": 111611,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    147,
+    156
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 451
+  },
+  {
+   "entity_id": 92700216,
+   "nombre": "Elite-Red Flame Walker",
+   "npc_type": 23907,
+   "sprite": 111611,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    132,
+    151
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 451
+  },
+  {
+   "entity_id": 92700217,
+   "nombre": "Elite-Indigo Source",
+   "npc_type": 23908,
+   "sprite": 111617,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    155,
+    162
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 453
+  },
+  {
+   "entity_id": 92700218,
+   "nombre": "Elite-Indigo Source",
+   "npc_type": 23908,
+   "sprite": 111617,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    152,
+    157
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 453
+  },
+  {
+   "entity_id": 92700219,
+   "nombre": "Elite-Indigo Source",
+   "npc_type": 23908,
+   "sprite": 111617,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    157,
+    157
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 453
+  },
+  {
+   "entity_id": 92700220,
+   "nombre": "Elite-Indigo Source",
+   "npc_type": 23908,
+   "sprite": 111617,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    160,
+    162
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 453
+  },
+  {
+   "entity_id": 92700221,
+   "nombre": "Elite-Indigo Source",
+   "npc_type": 23908,
+   "sprite": 111617,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    162,
+    155
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 453
+  },
+  {
+   "entity_id": 90427000,
+   "nombre": "Curator Safa",
+   "nombre_completo": "Curator Safa",
+   "npc_type": 24868,
+   "sprite": 40528,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    154,
+    124
+   ],
+   "direccion": 6,
+   "visible": 1,
+   "puesto_por": "npcs_del_cliente"
+  },
+  {
+   "entity_id": 90427001,
+   "nombre": "Sofaen",
+   "nombre_completo": "Sofaen",
+   "npc_type": 24874,
+   "sprite": 40727,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    231,
+    127
+   ],
+   "direccion": 6,
+   "visible": 1,
+   "puesto_por": "npcs_del_cliente"
+  },
+  {
+   "entity_id": 90427002,
+   "nombre": "Bogdan",
+   "nombre_completo": "Bogdan",
+   "npc_type": 24886,
+   "sprite": 40211,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    159,
+    111
+   ],
+   "direccion": 6,
+   "visible": 1,
+   "puesto_por": "npcs_del_cliente"
+  }
+ ],
+ "recursos": [
+  {
+   "entity_id": 102700000,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    4962,
+    2736
+   ],
+   "tile": [
+    155,
+    85
+   ],
+   "crudo": "e0131f060000000062130000b00a00000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102700001,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    8712,
+    2384
+   ],
+   "tile": [
+    272,
+    74
+   ],
+   "crudo": "e1131f060000000008220000500900000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102700002,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    7813,
+    4368
+   ],
+   "tile": [
+    244,
+    136
+   ],
+   "crudo": "e2131f0600000000851e0000101100000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102700003,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    5212,
+    3888
+   ],
+   "tile": [
+    162,
+    121
+   ],
+   "crudo": "e3131f06000000005c140000300f00000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102700004,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    4049,
+    3088
+   ],
+   "tile": [
+    126,
+    96
+   ],
+   "crudo": "e4131f0600000000d10f0000100c00000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  }
+ ]
+}

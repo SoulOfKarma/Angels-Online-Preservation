@@ -1,5 +1,6 @@
 """Recent IGG bags and voucher exchanges; atomic inventory changes."""
 import functools
+import datetime
 import json
 import pathlib
 import random
@@ -9,7 +10,19 @@ import time
 
 @functools.lru_cache(maxsize=1)
 def datos():
-    return json.loads((pathlib.Path(__file__).parent/'plantillas/recent_mall.json').read_text('utf8'))
+    directory = pathlib.Path(__file__).parent/'plantillas'
+    data = json.loads((directory/'recent_mall.json').read_text('utf8'))
+    extra = directory/'tw_exchanges.json'
+    if extra.exists():
+        additions = json.loads(extra.read_text('utf8'))
+        for section in ('nodes','node_owners','exchange_owners'):
+            data[section].update(additions[section])
+        data['npcs'].extend(additions['npcs'])
+    # IGG repite por error el titulo de Noryo en el acceso a Winter Holiday.
+    for option in data['nodes']['504816'].get('o', []):
+        if option == [517355,2022800]:
+            option[0] = 517276
+    return data
 
 
 class Rechazo(ValueError):pass
@@ -22,6 +35,8 @@ def _aviso(ses,text):
 
 EXCHANGE_STAGES = {41}
 CITY_EXCHANGE_TILES = {41: {'Gear Clerk': (170, 93), 'Party Angel': (174, 91), 'Fashionable': (158, 91), 'Daily Events Clerk': (161, 93), 'Astral Angel': (177, 100), 'Chat Bubble Exchange': (151, 87), 'Reissue Angel': (194, 91)}}
+CITY_EXCHANGE_TILES[41]['Fortunia'] = (174,82)
+CITY_EXCHANGE_TILES[41]['Scrollmaker'] = (169,71)
 
 
 def cerca(ses, name):
@@ -43,9 +58,8 @@ def poblar(stage):
         return []
     import login
     if stage == 41:
-        return [login._npc_spawn(n['entity_id'], n['npc_type'], n['nombre'], tuple(n['tile']),
-                                sprite=n['sprite'], klass=200, direccion=n['direccion'])
-                for n in datos()['npcs'] if n['nombre'] != 'Gear Clerk']
+        return [_spawn(n)
+                for n in datos()['npcs'] if n['nombre'] not in ('Gear Clerk','Fortunia','Scrollmaker')]
     tiles = CITY_EXCHANGE_TILES.get(stage, {})
     out = []
     base_id = 71000000 + stage * 10000
@@ -56,6 +70,22 @@ def poblar(stage):
         out.append(login._npc_spawn(base_id + idx, proto['npc_type'], nom, tuple(tile),
                                     sprite=proto['sprite'], klass=200, direccion=proto.get('direccion', 6)))
     return out
+
+
+def _spawn(npc):
+    import login
+    if npc.get('spawn_template'):
+        # Conservar direccion y ajustes visuales del NPC original, incluidos
+        # los bytes 48/49 que _npc_spawn no aporta en una entidad nueva.
+        original=next(n for n in json.loads((pathlib.Path(__file__).parent/'plantillas/lyceum.json').read_text('utf8'))['spawns']
+                      if n['nombre']==npc['spawn_template'])
+        body=bytearray.fromhex(original['hex'])
+        struct.pack_into('<I',body,0,npc['entity_id'])
+        struct.pack_into('<II',body,8,*npc['tile'])
+        body[16:32]=npc['nombre'].encode('ascii')[:16].ljust(16,b'\0')
+        return struct.pack('<H',8)+bytes(body)
+    return login._npc_spawn(npc['entity_id'],npc['npc_type'],npc['nombre'],tuple(npc['tile']),
+                            sprite=npc['sprite'],klass=200,direccion=npc['direccion'])
 
 
 def pulsar(ses, ent, addr):
@@ -261,6 +291,21 @@ def canjear(ses,recipe_id,times):
             if amount:consume[slot]=consume.get(slot,0)+amount;remaining-=amount
             if not remaining:break
         if remaining:_aviso(ses,'You do not have enough materials for this exchange.');return True
-    try:cambiar(ses,consume,[(i,n*times) for i,n in recipe['premios']])
+    def quota(con,data):
+        kind = row.get('限量類型')
+        if not kind:
+            return
+        if kind != '日':
+            raise Rechazo('This limited exchange is currently unavailable.')
+        limit = int(row.get('動態參數2') or 0)
+        day = datetime.datetime.now().astimezone().date().isoformat()
+        history = data.setdefault('exchange_daily', {})
+        key = str(recipe_id)
+        record = history.get(key, {})
+        used = int(record.get('used', 0)) if record.get('day') == day else 0
+        if limit <= 0 or used + times > limit:
+            raise Rechazo('You have reached the daily limit for this exchange.')
+        history[key] = {'day':day, 'used':used+times}
+    try:cambiar(ses,consume,[(i,n*times) for i,n in recipe['premios']],transaccion=quota)
     except Rechazo as exc:_aviso(ses,str(exc))
     return True

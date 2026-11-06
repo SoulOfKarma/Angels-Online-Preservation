@@ -20,9 +20,9 @@ NIVEL_MIN = 1
 
 
 def _nivel_max() -> int:
-    """Character and skill cap. level.xml ends at 471, which is past the old 300."""
+    """Character and skill cap. level.xml ends at 481, which is past the old 300."""
     import combate as _cb
-    return int(getattr(_cb, 'NIVEL_MAXIMO', 471))
+    return int(getattr(_cb, 'NIVEL_MAXIMO', 481))
 
 _CMDS_ITEM = ('item', 'give', 'i')
 _CMDS_LEVEL = ('level', 'lvl', 'lv')

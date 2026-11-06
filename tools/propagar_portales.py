@@ -433,7 +433,7 @@ def main():
             entidad = (previa or {}).get('entity') or next(libres)
             nota = NOTA % (stage, e['evento'], accion,
                            ('Llegada %s: %s.' % (llegada, porque)
-                            if llegada else porque + '.'),
+                            if llegada else (porque or 'sin llegada en el cliente') + '.'),
                            ('Las casillas del TAG son %s y el servidor coge '
                             'una al azar.' % (cli.llegada(e['destino'],
                                                           e['tag']),)

@@ -416,7 +416,7 @@ def propio(nombre: str, faccion: str = "Heaven", jugador: str = "",
         v = val or 1342
         if nivel is not None and nivel < 250:
             return [armar_linea(158401, v, [158418])[2:]]
-        return [armar_linea(158421, v, [158416, 158417, 158514, 158418])[2:]]
+        return [armar_linea(158421, v, PAST_TIME_PAG1)[2:]]
 
     if nom_lower in ('maid eilian', 'eilian') or entidad in (260300, 2603):
         v = MAID_PORTRAIT
@@ -1709,6 +1709,25 @@ def propio(nombre: str, faccion: str = "Heaven", jugador: str = "",
         if nombre == 'Street Banker':
             return [armar_linea(517067, npc_val or 4, [])[2:]]
 
+    # --- Bluesand Realm (stage 425, region Sand Castle Tales, TW 31-32) ---
+    # NPC de servicio puestos por tools/npcs_del_cliente.py (entidades
+    # 90425000-90425004, fijas: salen del stage). Misma forma que Floral
+    # Alley: los investigadores usan sus lineas 516188/516190 (no nombran
+    # ciudad) y abren las tiendas 228/227 de shop.xml de Taiwan, las de las
+    # skills nuevas (TIENDAS_POR_ENTIDAD_Y_OPCION). Reparador, mercader y
+    # banco llevan lineas propias (work/msg_propios.json, 990101-990103)
+    # porque las de Floral dicen "Floral Alley".
+    if entidad == 90425000 or nombre.startswith('Realm Spell'):
+        return [armar_linea(516188, npc_val or 4, [516189, 516201])[2:]]
+    if entidad == 90425001 or nombre.startswith('Realm Technique'):
+        return [armar_linea(516190, npc_val or 4, [516191, 516201])[2:]]
+    if entidad == 90425002 or nombre.startswith('Realm Repair'):
+        return [armar_linea(990101, npc_val or 4, [516193, 516201])[2:]]
+    if entidad == 90425003 or nombre.startswith('Realm Sundries'):
+        return [armar_linea(990102, npc_val or 4, [516195, 516201])[2:]]
+    if entidad == 90425004 or nombre.startswith('Realm Banker'):
+        return [armar_linea(990103, npc_val or 4, [516199, 516200, 516201])[2:]]
+
     # --- Floral Alley (stage 398, region de Sun Sea Maze) ---
     # Este mapa NO viene de una captura: se poblo desde el cliente oficial
     # de Taiwan y sus NPC estaban mudos. Las lineas salen de msg.xml
@@ -2010,6 +2029,9 @@ TIENDAS_POR_NOMBRE = {
 # escoge banda de nivel, asi que la entidad sola no alcanza: hace falta la
 # pareja (entidad, opcion).
 TIENDAS_POR_ENTIDAD_Y_OPCION = {
+    # --- Bluesand Realm (stage 425): las skills nuevas de TW 31-32 ---
+    (90425000, 516189): 228,   # Realm Spell Researcher     -> magias
+    (90425001, 516191): 227,   # Realm Technique Researcher -> guerrero
     # --- Joaquin (Stage 276) ---
     (123498, 508316): 155,   # Florentia Smith  -> recetas nivel 211-215
     (123498, 508317): 157,   # Florentia Smith  -> recetas nivel 221-225
@@ -2503,7 +2525,20 @@ VIAJES_POR_OPCION = {
     # Past the Time Spirit (Rainbow Town, Stage 308)
     (308, 158416): (413, [20, 11]),    # Chaos-Dinosaur Arena (Tag 1)
     (308, 158417): (414, [289, 7]),    # Chaos-End Time (Tag 1)
+    # Las cuatro de ALO Taiwan 31-32, mismas reglas: casilla del TAG 1 de su
+    # .mpc (tools/mapa_del_cliente.llegada; para el 413 da el (20,11) medido).
+    (308, 158419): (430, [289, 8]),    # Chaos-Muno Battleship (Lv400)
+    (308, 158420): (431, [22, 14]),    # Chaos-Shooting Star Palace (Lv300)
+    (308, 158422): (439, [23, 9]),     # Chaos-Lost Chamber (Lv350)
+    (308, 158423): (440, [278, 18]),   # Chaos-Phantom Gold Enigma City (Lv430)
 }
+
+# Past the Time Spirit con las seis Chaos no cabe en un menu: dos paginas,
+# con los "Next"/"Prev Page" (158424/158425) que trae msg.xml de Taiwan.
+# La pagina 1 es la de IGG de siempre (mas "Next"); la 2, las cuatro nuevas
+# por nivel recomendado: 300, 350, 400, 430.
+PAST_TIME_PAG1 = [158416, 158417, 158514, 158424, 158418]
+PAST_TIME_PAG2 = [158420, 158422, 158419, 158423, 158425, 158418]
 
 
 def es_opcion(valor: int) -> bool:
@@ -3223,6 +3258,11 @@ def respuesta_a(opcion_id: int, entidad: int = 0, val: int = 4,
         pkg_exch = struct.pack('<HI', 0x0151, 254)
         pkg_cierre = struct.pack('<H', 0x0012) + FIN
         return (pkg_exch, pkg_cierre)
+
+    if opcion_id in (158424, 158425):
+        # Past the Time Spirit: pasar de pagina en el menu de las Chaos.
+        return (armar_linea(158421, 1342,
+                            PAST_TIME_PAG2 if opcion_id == 158424 else PAST_TIME_PAG1),)
 
     if opcion_id == 158514:
         # Past the Time Spirit no abre una tienda: 659 es el grupo de

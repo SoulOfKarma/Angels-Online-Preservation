@@ -1,0 +1,3623 @@
+{
+ "_nota": "c_phantom_gold_city (stage 440). POBLADO DESDE EL CLIENTE, no desde una captura: los generadores de monstruos son objetos del propio map440.mpc -- el monstruo en el u16 del +34, la zona en el +21, el tiempo en el +38 y cuantos en el +42. Eso da el censo COMPLETO del mapa, que una captura no puede dar porque solo trae lo que estuvo a la vista. El entity_id es fabricado y estable, no el del servidor. Las casillas son las del TAG de cada generador; los que no declaran TAG ponen sus monstruos en la casilla del generador y en un anillo de radio 3 a su alrededor, que es la dispersion MEDIDA en el stage 73. Los objetos de mapa son los del .mpc cuyo id esta en la lista de los que el servidor manda de verdad, con el cuerpo del 0x000E copiado de una captura del mismo objeto. Los tornados se dibujan aparte, desde portales.json. Ver tools/poblar_del_cliente.py.",
+ "stage": 440,
+ "spawns": [
+  {
+   "entity_id": 94000000,
+   "nombre": "Chaos-Grass Ridge Ancient Bandit",
+   "npc_type": 24017,
+   "sprite": 110628,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    252,
+    41
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 94000001,
+   "nombre": "Chaos-Grass Ridge Ancient Bandit",
+   "npc_type": 24017,
+   "sprite": 110628,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    247,
+    39
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 94000002,
+   "nombre": "Chaos-Grass Ridge Ancient Bandit",
+   "npc_type": 24017,
+   "sprite": 110628,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    258,
+    46
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 94000003,
+   "nombre": "Chaos-Grass Ridge Ancient Bandit",
+   "npc_type": 24017,
+   "sprite": 110628,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    252,
+    46
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 94000004,
+   "nombre": "Chaos-Grass Ridge Ancient Bandit",
+   "npc_type": 24017,
+   "sprite": 110628,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    247,
+    44
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 94000005,
+   "nombre": "Chaos-Grass Ridge Ancient Bandit",
+   "npc_type": 24017,
+   "sprite": 110628,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    242,
+    34
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 94000006,
+   "nombre": "Chaos-Grass Ridge Ancient Bandit",
+   "npc_type": 24017,
+   "sprite": 110628,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    257,
+    41
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 94000007,
+   "nombre": "Chaos-Grass Ridge Ancient Bandit",
+   "npc_type": 24017,
+   "sprite": 110628,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    261,
+    51
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 94000008,
+   "nombre": "Chaos-Grass Ridge Ancient Bandit",
+   "npc_type": 24017,
+   "sprite": 110628,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    252,
+    36
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 94000009,
+   "nombre": "Chaos-Grass Ridge Ancient Bandit",
+   "npc_type": 24017,
+   "sprite": 110628,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    242,
+    39
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 94000010,
+   "nombre": "Chaos-Grass Ridge Ancient Bandit",
+   "npc_type": 24017,
+   "sprite": 110628,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    262,
+    41
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 94000011,
+   "nombre": "Chaos-Grass Ridge Ancient Bandit",
+   "npc_type": 24017,
+   "sprite": 110628,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    257,
+    36
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 94000012,
+   "nombre": "Chaos-Grass Ridge Ancient Bandit",
+   "npc_type": 24017,
+   "sprite": 110628,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    247,
+    34
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 94000013,
+   "nombre": "Chaos-Grass Ridge Ancient Bandit",
+   "npc_type": 24017,
+   "sprite": 110628,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    254,
+    31
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 94000014,
+   "nombre": "Chaos-Grass Ridge Ancient Bandit",
+   "npc_type": 24017,
+   "sprite": 110628,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    263,
+    46
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 94000015,
+   "nombre": "Chaos-Blazing Skull Mushroom",
+   "npc_type": 24018,
+   "sprite": 110596,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    259,
+    31
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 94000016,
+   "nombre": "Chaos-Blazing Skull Mushroom",
+   "npc_type": 24018,
+   "sprite": 110596,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    237,
+    29
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 94000017,
+   "nombre": "Chaos-Blazing Skull Mushroom",
+   "npc_type": 24018,
+   "sprite": 110596,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    266,
+    51
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 94000018,
+   "nombre": "Chaos-Blazing Skull Mushroom",
+   "npc_type": 24018,
+   "sprite": 110596,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    264,
+    33
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 94000019,
+   "nombre": "Chaos-Blazing Skull Mushroom",
+   "npc_type": 24018,
+   "sprite": 110596,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    242,
+    29
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 94000020,
+   "nombre": "Chaos-Blazing Skull Mushroom",
+   "npc_type": 24018,
+   "sprite": 110596,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    237,
+    34
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 94000021,
+   "nombre": "Chaos-Blazing Skull Mushroom",
+   "npc_type": 24018,
+   "sprite": 110596,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    268,
+    42
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 94000022,
+   "nombre": "Chaos-Blazing Skull Mushroom",
+   "npc_type": 24018,
+   "sprite": 110596,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    242,
+    55
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 94000023,
+   "nombre": "Chaos-Blazing Skull Mushroom",
+   "npc_type": 24018,
+   "sprite": 110596,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    264,
+    28
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 94000024,
+   "nombre": "Chaos-Blazing Skull Mushroom",
+   "npc_type": 24018,
+   "sprite": 110596,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    237,
+    39
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 94000025,
+   "nombre": "Chaos-Blazing Skull Mushroom",
+   "npc_type": 24018,
+   "sprite": 110596,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    271,
+    47
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 94000026,
+   "nombre": "Chaos-Blazing Skull Mushroom",
+   "npc_type": 24018,
+   "sprite": 110596,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    269,
+    29
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 94000027,
+   "nombre": "Chaos-Blazing Skull Mushroom",
+   "npc_type": 24018,
+   "sprite": 110596,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    237,
+    53
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 94000028,
+   "nombre": "Chaos-Blazing Skull Mushroom",
+   "npc_type": 24018,
+   "sprite": 110596,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    232,
+    24
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 94000029,
+   "nombre": "Chaos-Blazing Skull Mushroom",
+   "npc_type": 24018,
+   "sprite": 110596,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    271,
+    52
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 415
+  },
+  {
+   "entity_id": 94000030,
+   "nombre": "Chaos Elite-Laurel Nief",
+   "npc_type": 24027,
+   "sprite": 110560,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    235,
+    58
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 425
+  },
+  {
+   "entity_id": 94000031,
+   "nombre": "Chaos-Hundred-Pace Sharpshooter",
+   "npc_type": 24032,
+   "sprite": 110619,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    237,
+    24
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 427
+  },
+  {
+   "entity_id": 94000032,
+   "nombre": "Ba'shin's Gaze",
+   "npc_type": 23729,
+   "sprite": 111552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    269,
+    24
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 94000033,
+   "nombre": "Ba'shin's Gaze",
+   "npc_type": 23729,
+   "sprite": 111552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    274,
+    19
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 94000034,
+   "nombre": "Ba'shin's Gaze",
+   "npc_type": 23729,
+   "sprite": 111552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    274,
+    24
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 94000035,
+   "nombre": "Ba'shin's Gaze",
+   "npc_type": 23729,
+   "sprite": 111552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    279,
+    17
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 94000036,
+   "nombre": "Ba'shin's Gaze",
+   "npc_type": 23729,
+   "sprite": 111552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    279,
+    22
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 94000037,
+   "nombre": "Ba'shin's Gaze",
+   "npc_type": 23729,
+   "sprite": 111552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    284,
+    14
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 94000038,
+   "nombre": "Ba'shin's Gaze",
+   "npc_type": 23729,
+   "sprite": 111552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    284,
+    19
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 94000039,
+   "nombre": "Ba'shin's Gaze",
+   "npc_type": 23729,
+   "sprite": 111552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    243,
+    24
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 94000040,
+   "nombre": "Ba'shin's Gaze",
+   "npc_type": 23729,
+   "sprite": 111552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    276,
+    50
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 94000041,
+   "nombre": "Ba'shin's Gaze",
+   "npc_type": 23729,
+   "sprite": 111552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    282,
+    52
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 94000042,
+   "nombre": "Ba'shin's Gaze",
+   "npc_type": 23729,
+   "sprite": 111552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    289,
+    15
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 94000043,
+   "nombre": "Ba'shin's Gaze",
+   "npc_type": 23729,
+   "sprite": 111552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    289,
+    20
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 94000044,
+   "nombre": "Ba'shin's Gaze",
+   "npc_type": 23729,
+   "sprite": 111552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    276,
+    55
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 94000045,
+   "nombre": "Ba'shin's Gaze",
+   "npc_type": 23729,
+   "sprite": 111552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    271,
+    57
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 94000046,
+   "nombre": "Ba'shin's Gaze",
+   "npc_type": 23729,
+   "sprite": 111552,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    281,
+    57
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 300
+  },
+  {
+   "entity_id": 94000047,
+   "nombre": "Chaos-Giant Venom Frill Lizard",
+   "npc_type": 24019,
+   "sprite": 110591,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    237,
+    105
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 94000048,
+   "nombre": "Chaos-Giant Venom Frill Lizard",
+   "npc_type": 24019,
+   "sprite": 110591,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    242,
+    102
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 94000049,
+   "nombre": "Chaos-Giant Venom Frill Lizard",
+   "npc_type": 24019,
+   "sprite": 110591,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    232,
+    105
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 94000050,
+   "nombre": "Chaos-Giant Venom Frill Lizard",
+   "npc_type": 24019,
+   "sprite": 110591,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    242,
+    107
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 94000051,
+   "nombre": "Chaos-Giant Venom Frill Lizard",
+   "npc_type": 24019,
+   "sprite": 110591,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    232,
+    110
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 94000052,
+   "nombre": "Chaos-Giant Venom Frill Lizard",
+   "npc_type": 24019,
+   "sprite": 110591,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    247,
+    97
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 94000053,
+   "nombre": "Chaos-Giant Venom Frill Lizard",
+   "npc_type": 24019,
+   "sprite": 110591,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    227,
+    105
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 94000054,
+   "nombre": "Chaos-Giant Venom Frill Lizard",
+   "npc_type": 24019,
+   "sprite": 110591,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    247,
+    102
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 94000055,
+   "nombre": "Chaos-Giant Venom Frill Lizard",
+   "npc_type": 24019,
+   "sprite": 110591,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    227,
+    110
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 94000056,
+   "nombre": "Chaos-Giant Venom Frill Lizard",
+   "npc_type": 24019,
+   "sprite": 110591,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    252,
+    95
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 94000057,
+   "nombre": "Chaos-Giant Venom Frill Lizard",
+   "npc_type": 24019,
+   "sprite": 110591,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    225,
+    115
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 94000058,
+   "nombre": "Chaos-Giant Venom Frill Lizard",
+   "npc_type": 24019,
+   "sprite": 110591,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    252,
+    100
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 94000059,
+   "nombre": "Chaos-Giant Venom Frill Lizard",
+   "npc_type": 24019,
+   "sprite": 110591,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    222,
+    103
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 94000060,
+   "nombre": "Chaos-Giant Venom Frill Lizard",
+   "npc_type": 24019,
+   "sprite": 110591,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    257,
+    88
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 94000061,
+   "nombre": "Chaos-Giant Venom Frill Lizard",
+   "npc_type": 24019,
+   "sprite": 110591,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    222,
+    108
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 94000062,
+   "nombre": "Chaos-Giant Venom Frill Lizard",
+   "npc_type": 24019,
+   "sprite": 110591,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    257,
+    93
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 94000063,
+   "nombre": "Chaos-Giant Venom Frill Lizard",
+   "npc_type": 24019,
+   "sprite": 110591,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    220,
+    113
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 94000064,
+   "nombre": "Chaos-Giant Venom Frill Lizard",
+   "npc_type": 24019,
+   "sprite": 110591,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    257,
+    98
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 94000065,
+   "nombre": "Chaos-Giant Venom Frill Lizard",
+   "npc_type": 24019,
+   "sprite": 110591,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    219,
+    118
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 94000066,
+   "nombre": "Chaos-Giant Venom Frill Lizard",
+   "npc_type": 24019,
+   "sprite": 110591,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    241,
+    84
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 94000067,
+   "nombre": "Chaos-Giant Venom Frill Lizard",
+   "npc_type": 24019,
+   "sprite": 110591,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    217,
+    105
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 94000068,
+   "nombre": "Chaos-Giant Venom Frill Lizard",
+   "npc_type": 24019,
+   "sprite": 110591,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    246,
+    83
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 94000069,
+   "nombre": "Chaos-Giant Venom Frill Lizard",
+   "npc_type": 24019,
+   "sprite": 110591,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    215,
+    110
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 94000070,
+   "nombre": "Chaos-Giant Venom Frill Lizard",
+   "npc_type": 24019,
+   "sprite": 110591,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    255,
+    83
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 94000071,
+   "nombre": "Chaos-Giant Venom Frill Lizard",
+   "npc_type": 24019,
+   "sprite": 110591,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    214,
+    115
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 94000072,
+   "nombre": "Chaos-Lurking Shadow Witch",
+   "npc_type": 24020,
+   "sprite": 110609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    214,
+    120
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 94000073,
+   "nombre": "Chaos-Lurking Shadow Witch",
+   "npc_type": 24020,
+   "sprite": 110609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    262,
+    90
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 94000074,
+   "nombre": "Chaos-Lurking Shadow Witch",
+   "npc_type": 24020,
+   "sprite": 110609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    235,
+    81
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 94000075,
+   "nombre": "Chaos-Lurking Shadow Witch",
+   "npc_type": 24020,
+   "sprite": 110609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    262,
+    95
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 94000076,
+   "nombre": "Chaos-Lurking Shadow Witch",
+   "npc_type": 24020,
+   "sprite": 110609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    240,
+    79
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 94000077,
+   "nombre": "Chaos-Lurking Shadow Witch",
+   "npc_type": 24020,
+   "sprite": 110609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    229,
+    78
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 94000078,
+   "nombre": "Chaos-Lurking Shadow Witch",
+   "npc_type": 24020,
+   "sprite": 110609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    210,
+    106
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 94000079,
+   "nombre": "Chaos-Lurking Shadow Witch",
+   "npc_type": 24020,
+   "sprite": 110609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    245,
+    78
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 94000080,
+   "nombre": "Chaos-Lurking Shadow Witch",
+   "npc_type": 24020,
+   "sprite": 110609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    251,
+    78
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 94000081,
+   "nombre": "Chaos-Lurking Shadow Witch",
+   "npc_type": 24020,
+   "sprite": 110609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    267,
+    86
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 94000082,
+   "nombre": "Chaos-Lurking Shadow Witch",
+   "npc_type": 24020,
+   "sprite": 110609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    209,
+    83
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 94000083,
+   "nombre": "Chaos-Lurking Shadow Witch",
+   "npc_type": 24020,
+   "sprite": 110609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    267,
+    91
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 94000084,
+   "nombre": "Chaos-Lurking Shadow Witch",
+   "npc_type": 24020,
+   "sprite": 110609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    209,
+    111
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 94000085,
+   "nombre": "Chaos-Lurking Shadow Witch",
+   "npc_type": 24020,
+   "sprite": 110609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    234,
+    76
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 94000086,
+   "nombre": "Chaos-Lurking Shadow Witch",
+   "npc_type": 24020,
+   "sprite": 110609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    209,
+    116
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 94000087,
+   "nombre": "Chaos-Lurking Shadow Witch",
+   "npc_type": 24020,
+   "sprite": 110609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    221,
+    74
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 94000088,
+   "nombre": "Chaos-Lurking Shadow Witch",
+   "npc_type": 24020,
+   "sprite": 110609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    209,
+    121
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 94000089,
+   "nombre": "Chaos-Lurking Shadow Witch",
+   "npc_type": 24020,
+   "sprite": 110609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    239,
+    74
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 94000090,
+   "nombre": "Chaos-Lurking Shadow Witch",
+   "npc_type": 24020,
+   "sprite": 110609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    260,
+    74
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 94000091,
+   "nombre": "Chaos-Lurking Shadow Witch",
+   "npc_type": 24020,
+   "sprite": 110609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    226,
+    73
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 94000092,
+   "nombre": "Chaos-Lurking Shadow Witch",
+   "npc_type": 24020,
+   "sprite": 110609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    244,
+    73
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 94000093,
+   "nombre": "Chaos-Lurking Shadow Witch",
+   "npc_type": 24020,
+   "sprite": 110609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    249,
+    73
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 94000094,
+   "nombre": "Chaos-Lurking Shadow Witch",
+   "npc_type": 24020,
+   "sprite": 110609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    254,
+    73
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 94000095,
+   "nombre": "Chaos-Lurking Shadow Witch",
+   "npc_type": 24020,
+   "sprite": 110609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    272,
+    84
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 94000096,
+   "nombre": "Chaos-Lurking Shadow Witch",
+   "npc_type": 24020,
+   "sprite": 110609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    204,
+    78
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 417
+  },
+  {
+   "entity_id": 94000097,
+   "nombre": "Chaos-Laurel Nief",
+   "npc_type": 24021,
+   "sprite": 110560,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    165,
+    105
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 94000098,
+   "nombre": "Chaos-Laurel Nief",
+   "npc_type": 24021,
+   "sprite": 110560,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    171,
+    102
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 94000099,
+   "nombre": "Chaos-Laurel Nief",
+   "npc_type": 24021,
+   "sprite": 110560,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    175,
+    56
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 94000100,
+   "nombre": "Chaos-Laurel Nief",
+   "npc_type": 24021,
+   "sprite": 110560,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    180,
+    54
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 94000101,
+   "nombre": "Chaos-Laurel Nief",
+   "npc_type": 24021,
+   "sprite": 110560,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    160,
+    104
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 94000102,
+   "nombre": "Chaos-Laurel Nief",
+   "npc_type": 24021,
+   "sprite": 110560,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    172,
+    97
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 94000103,
+   "nombre": "Chaos-Laurel Nief",
+   "npc_type": 24021,
+   "sprite": 110560,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    170,
+    58
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 94000104,
+   "nombre": "Chaos-Laurel Nief",
+   "npc_type": 24021,
+   "sprite": 110560,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    175,
+    49
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 94000105,
+   "nombre": "Chaos-Laurel Nief",
+   "npc_type": 24021,
+   "sprite": 110560,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    160,
+    109
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 94000106,
+   "nombre": "Chaos-Laurel Nief",
+   "npc_type": 24021,
+   "sprite": 110560,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    176,
+    102
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 94000107,
+   "nombre": "Chaos-Laurel Nief",
+   "npc_type": 24021,
+   "sprite": 110560,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    175,
+    61
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 94000108,
+   "nombre": "Chaos-Laurel Nief",
+   "npc_type": 24021,
+   "sprite": 110560,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    180,
+    49
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 94000109,
+   "nombre": "Chaos-Laurel Nief",
+   "npc_type": 24021,
+   "sprite": 110560,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    165,
+    110
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 94000110,
+   "nombre": "Chaos-Laurel Nief",
+   "npc_type": 24021,
+   "sprite": 110560,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    177,
+    96
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 94000111,
+   "nombre": "Chaos-Laurel Nief",
+   "npc_type": 24021,
+   "sprite": 110560,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    180,
+    59
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 94000112,
+   "nombre": "Chaos-Laurel Nief",
+   "npc_type": 24021,
+   "sprite": 110560,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    185,
+    49
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 94000113,
+   "nombre": "Chaos-Laurel Nief",
+   "npc_type": 24021,
+   "sprite": 110560,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    156,
+    114
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 94000114,
+   "nombre": "Chaos-Laurel Nief",
+   "npc_type": 24021,
+   "sprite": 110560,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    160,
+    91
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 94000115,
+   "nombre": "Chaos-Laurel Nief",
+   "npc_type": 24021,
+   "sprite": 110560,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    170,
+    50
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 94000116,
+   "nombre": "Chaos-Laurel Nief",
+   "npc_type": 24021,
+   "sprite": 110560,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    185,
+    54
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 94000117,
+   "nombre": "Chaos-Titan Iron Guard",
+   "npc_type": 24022,
+   "sprite": 110563,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    161,
+    115
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 94000118,
+   "nombre": "Chaos-Titan Iron Guard",
+   "npc_type": 24022,
+   "sprite": 110563,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    165,
+    91
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 94000119,
+   "nombre": "Chaos-Titan Iron Guard",
+   "npc_type": 24022,
+   "sprite": 110563,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    168,
+    63
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 94000120,
+   "nombre": "Chaos-Titan Iron Guard",
+   "npc_type": 24022,
+   "sprite": 110563,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    170,
+    44
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 94000121,
+   "nombre": "Chaos-Titan Iron Guard",
+   "npc_type": 24022,
+   "sprite": 110563,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    166,
+    115
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 94000122,
+   "nombre": "Chaos-Titan Iron Guard",
+   "npc_type": 24022,
+   "sprite": 110563,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    182,
+    93
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 94000123,
+   "nombre": "Chaos-Titan Iron Guard",
+   "npc_type": 24022,
+   "sprite": 110563,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    165,
+    46
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 94000124,
+   "nombre": "Chaos-Titan Iron Guard",
+   "npc_type": 24022,
+   "sprite": 110563,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    175,
+    44
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 94000125,
+   "nombre": "Chaos-Titan Iron Guard",
+   "npc_type": 24022,
+   "sprite": 110563,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    154,
+    94
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 94000126,
+   "nombre": "Chaos-Titan Iron Guard",
+   "npc_type": 24022,
+   "sprite": 110563,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    182,
+    98
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 94000127,
+   "nombre": "Chaos-Titan Iron Guard",
+   "npc_type": 24022,
+   "sprite": 110563,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    163,
+    61
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 94000128,
+   "nombre": "Chaos-Titan Iron Guard",
+   "npc_type": 24022,
+   "sprite": 110563,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    190,
+    46
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 94000129,
+   "nombre": "Chaos-Titan Iron Guard",
+   "npc_type": 24022,
+   "sprite": 110563,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    166,
+    120
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 94000130,
+   "nombre": "Chaos-Titan Iron Guard",
+   "npc_type": 24022,
+   "sprite": 110563,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    170,
+    89
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 94000131,
+   "nombre": "Chaos-Titan Iron Guard",
+   "npc_type": 24022,
+   "sprite": 110563,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    163,
+    66
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 94000132,
+   "nombre": "Chaos-Titan Iron Guard",
+   "npc_type": 24022,
+   "sprite": 110563,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    190,
+    51
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 94000133,
+   "nombre": "Chaos-Titan Iron Guard",
+   "npc_type": 24022,
+   "sprite": 110563,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    149,
+    89
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 94000134,
+   "nombre": "Chaos-Titan Iron Guard",
+   "npc_type": 24022,
+   "sprite": 110563,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    155,
+    86
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 94000135,
+   "nombre": "Chaos-Titan Iron Guard",
+   "npc_type": 24022,
+   "sprite": 110563,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    168,
+    68
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 94000136,
+   "nombre": "Chaos-Titan Iron Guard",
+   "npc_type": 24022,
+   "sprite": 110563,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    165,
+    39
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 419
+  },
+  {
+   "entity_id": 94000137,
+   "nombre": "Chaos-Armored Bull",
+   "npc_type": 24023,
+   "sprite": 110548,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    149,
+    94
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 94000138,
+   "nombre": "Chaos-Armored Bull",
+   "npc_type": 24023,
+   "sprite": 110548,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    160,
+    86
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 94000139,
+   "nombre": "Chaos-Armored Bull",
+   "npc_type": 24023,
+   "sprite": 110548,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    173,
+    69
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 94000140,
+   "nombre": "Chaos-Armored Bull",
+   "npc_type": 24023,
+   "sprite": 110548,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    195,
+    48
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 94000141,
+   "nombre": "Chaos-Armored Bull",
+   "npc_type": 24023,
+   "sprite": 110548,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    146,
+    111
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 94000142,
+   "nombre": "Chaos-Armored Bull",
+   "npc_type": 24023,
+   "sprite": 110548,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    165,
+    86
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 94000143,
+   "nombre": "Chaos-Armored Bull",
+   "npc_type": 24023,
+   "sprite": 110548,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    160,
+    41
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 94000144,
+   "nombre": "Chaos-Armored Bull",
+   "npc_type": 24023,
+   "sprite": 110548,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    195,
+    53
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 94000145,
+   "nombre": "Chaos-Armored Bull",
+   "npc_type": 24023,
+   "sprite": 110548,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    175,
+    86
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 94000146,
+   "nombre": "Chaos-Armored Bull",
+   "npc_type": 24023,
+   "sprite": 110548,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    187,
+    90
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 94000147,
+   "nombre": "Chaos-Armored Bull",
+   "npc_type": 24023,
+   "sprite": 110548,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    160,
+    46
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 94000148,
+   "nombre": "Chaos-Armored Bull",
+   "npc_type": 24023,
+   "sprite": 110548,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    163,
+    71
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 94000149,
+   "nombre": "Chaos-Armored Bull",
+   "npc_type": 24023,
+   "sprite": 110548,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    170,
+    125
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 94000150,
+   "nombre": "Chaos-Armored Bull",
+   "npc_type": 24023,
+   "sprite": 110548,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    187,
+    95
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 94000151,
+   "nombre": "Chaos-Armored Bull",
+   "npc_type": 24023,
+   "sprite": 110548,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    189,
+    72
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 94000152,
+   "nombre": "Chaos-Armored Bull",
+   "npc_type": 24023,
+   "sprite": 110548,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    168,
+    73
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 94000153,
+   "nombre": "Chaos-Armored Bull",
+   "npc_type": 24023,
+   "sprite": 110548,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    180,
+    85
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 94000154,
+   "nombre": "Chaos-Armored Bull",
+   "npc_type": 24023,
+   "sprite": 110548,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    170,
+    84
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 94000155,
+   "nombre": "Chaos-Armored Bull",
+   "npc_type": 24023,
+   "sprite": 110548,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    158,
+    59
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 94000156,
+   "nombre": "Chaos-Armored Bull",
+   "npc_type": 24023,
+   "sprite": 110548,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    194,
+    73
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 94000157,
+   "nombre": "Chaos-Strange Flame Warhorse",
+   "npc_type": 24024,
+   "sprite": 110545,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    144,
+    84
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 94000158,
+   "nombre": "Chaos-Strange Flame Warhorse",
+   "npc_type": 24024,
+   "sprite": 110545,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    185,
+    82
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 94000159,
+   "nombre": "Chaos-Strange Flame Warhorse",
+   "npc_type": 24024,
+   "sprite": 110545,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    158,
+    64
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 94000160,
+   "nombre": "Chaos-Strange Flame Warhorse",
+   "npc_type": 24024,
+   "sprite": 110545,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    158,
+    32
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 94000161,
+   "nombre": "Chaos-Strange Flame Warhorse",
+   "npc_type": 24024,
+   "sprite": 110545,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    144,
+    90
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 94000162,
+   "nombre": "Chaos-Strange Flame Warhorse",
+   "npc_type": 24024,
+   "sprite": 110545,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    150,
+    81
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 94000163,
+   "nombre": "Chaos-Strange Flame Warhorse",
+   "npc_type": 24024,
+   "sprite": 110545,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    157,
+    74
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 94000164,
+   "nombre": "Chaos-Strange Flame Warhorse",
+   "npc_type": 24024,
+   "sprite": 110545,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    162,
+    76
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 94000165,
+   "nombre": "Chaos-Strange Flame Warhorse",
+   "npc_type": 24024,
+   "sprite": 110545,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    144,
+    95
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 94000166,
+   "nombre": "Chaos-Strange Flame Warhorse",
+   "npc_type": 24024,
+   "sprite": 110545,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    155,
+    81
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 94000167,
+   "nombre": "Chaos-Strange Flame Warhorse",
+   "npc_type": 24024,
+   "sprite": 110545,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    155,
+    37
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 94000168,
+   "nombre": "Chaos-Strange Flame Warhorse",
+   "npc_type": 24024,
+   "sprite": 110545,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    183,
+    76
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 94000169,
+   "nombre": "Chaos-Strange Flame Warhorse",
+   "npc_type": 24024,
+   "sprite": 110545,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    143,
+    116
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 94000170,
+   "nombre": "Chaos-Strange Flame Warhorse",
+   "npc_type": 24024,
+   "sprite": 110545,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    175,
+    81
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 94000171,
+   "nombre": "Chaos-Strange Flame Warhorse",
+   "npc_type": 24024,
+   "sprite": 110545,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    155,
+    42
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 94000172,
+   "nombre": "Chaos-Strange Flame Warhorse",
+   "npc_type": 24024,
+   "sprite": 110545,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    199,
+    76
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 94000173,
+   "nombre": "Chaos-Strange Flame Warhorse",
+   "npc_type": 24024,
+   "sprite": 110545,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    186,
+    127
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 94000174,
+   "nombre": "Chaos-Strange Flame Warhorse",
+   "npc_type": 24024,
+   "sprite": 110545,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    190,
+    81
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 94000175,
+   "nombre": "Chaos-Strange Flame Warhorse",
+   "npc_type": 24024,
+   "sprite": 110545,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    155,
+    47
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 94000176,
+   "nombre": "Chaos-Strange Flame Warhorse",
+   "npc_type": 24024,
+   "sprite": 110545,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    204,
+    30
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 94000177,
+   "nombre": "Chaos-Phantom Gold Tiger King",
+   "npc_type": 24025,
+   "sprite": 110557,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    26,
+    19
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 94000178,
+   "nombre": "Chaos-Phantom Gold Tiger King",
+   "npc_type": 24025,
+   "sprite": 110557,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    31,
+    18
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 94000179,
+   "nombre": "Chaos-Phantom Gold Tiger King",
+   "npc_type": 24025,
+   "sprite": 110557,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    79,
+    9
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 94000180,
+   "nombre": "Chaos-Phantom Gold Tiger King",
+   "npc_type": 24025,
+   "sprite": 110557,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    84,
+    9
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 94000181,
+   "nombre": "Chaos-Phantom Gold Tiger King",
+   "npc_type": 24025,
+   "sprite": 110557,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    19,
+    57
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 94000182,
+   "nombre": "Chaos-Phantom Gold Tiger King",
+   "npc_type": 24025,
+   "sprite": 110557,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    24,
+    56
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 94000183,
+   "nombre": "Chaos-Phantom Gold Tiger King",
+   "npc_type": 24025,
+   "sprite": 110557,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    21,
+    15
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 94000184,
+   "nombre": "Chaos-Phantom Gold Tiger King",
+   "npc_type": 24025,
+   "sprite": 110557,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    31,
+    23
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 94000185,
+   "nombre": "Chaos-Phantom Gold Tiger King",
+   "npc_type": 24025,
+   "sprite": 110557,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    74,
+    10
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 94000186,
+   "nombre": "Chaos-Phantom Gold Tiger King",
+   "npc_type": 24025,
+   "sprite": 110557,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    79,
+    14
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 94000187,
+   "nombre": "Chaos-Phantom Gold Tiger King",
+   "npc_type": 24025,
+   "sprite": 110557,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    14,
+    56
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 94000188,
+   "nombre": "Chaos-Phantom Gold Tiger King",
+   "npc_type": 24025,
+   "sprite": 110557,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    24,
+    61
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 94000189,
+   "nombre": "Chaos-Phantom Gold Tiger King",
+   "npc_type": 24025,
+   "sprite": 110557,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    21,
+    20
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 94000190,
+   "nombre": "Chaos-Phantom Gold Tiger King",
+   "npc_type": 24025,
+   "sprite": 110557,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    26,
+    24
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 94000191,
+   "nombre": "Chaos-Phantom Gold Tiger King",
+   "npc_type": 24025,
+   "sprite": 110557,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    84,
+    14
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 94000192,
+   "nombre": "Chaos-Phantom Gold Tiger King",
+   "npc_type": 24025,
+   "sprite": 110557,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    89,
+    11
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 94000193,
+   "nombre": "Chaos-Phantom Gold Tiger King",
+   "npc_type": 24025,
+   "sprite": 110557,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    14,
+    61
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 94000194,
+   "nombre": "Chaos-Phantom Gold Tiger King",
+   "npc_type": 24025,
+   "sprite": 110557,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    19,
+    62
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 94000195,
+   "nombre": "Chaos-Phantom Gold Tiger King",
+   "npc_type": 24025,
+   "sprite": 110557,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    20,
+    25
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 94000196,
+   "nombre": "Chaos-Phantom Gold Tiger King",
+   "npc_type": 24025,
+   "sprite": 110557,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    36,
+    20
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 94000197,
+   "nombre": "Chaos-Enigma City Dragon King",
+   "npc_type": 24026,
+   "sprite": 110554,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    16,
+    17
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 94000198,
+   "nombre": "Chaos-Enigma City Dragon King",
+   "npc_type": 24026,
+   "sprite": 110554,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    15,
+    22
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 94000199,
+   "nombre": "Chaos-Enigma City Dragon King",
+   "npc_type": 24026,
+   "sprite": 110554,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    73,
+    15
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 94000200,
+   "nombre": "Chaos-Enigma City Dragon King",
+   "npc_type": 24026,
+   "sprite": 110554,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    89,
+    16
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 94000201,
+   "nombre": "Chaos-Enigma City Dragon King",
+   "npc_type": 24026,
+   "sprite": 110554,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    24,
+    66
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 94000202,
+   "nombre": "Chaos-Enigma City Dragon King",
+   "npc_type": 24026,
+   "sprite": 110554,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    29,
+    57
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 94000203,
+   "nombre": "Chaos-Enigma City Dragon King",
+   "npc_type": 24026,
+   "sprite": 110554,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    10,
+    20
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 94000204,
+   "nombre": "Chaos-Enigma City Dragon King",
+   "npc_type": 24026,
+   "sprite": 110554,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    53,
+    43
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 94000205,
+   "nombre": "Chaos-Enigma City Dragon King",
+   "npc_type": 24026,
+   "sprite": 110554,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    78,
+    19
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 94000206,
+   "nombre": "Chaos-Enigma City Dragon King",
+   "npc_type": 24026,
+   "sprite": 110554,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    83,
+    19
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 94000207,
+   "nombre": "Chaos-Enigma City Dragon King",
+   "npc_type": 24026,
+   "sprite": 110554,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    9,
+    59
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 94000208,
+   "nombre": "Chaos-Enigma City Dragon King",
+   "npc_type": 24026,
+   "sprite": 110554,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    29,
+    62
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 94000209,
+   "nombre": "Chaos-Enigma City Dragon King",
+   "npc_type": 24026,
+   "sprite": 110554,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    55,
+    48
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 94000210,
+   "nombre": "Chaos-Enigma City Dragon King",
+   "npc_type": 24026,
+   "sprite": 110554,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    58,
+    43
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 94000211,
+   "nombre": "Chaos-Enigma City Dragon King",
+   "npc_type": 24026,
+   "sprite": 110554,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    68,
+    13
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 94000212,
+   "nombre": "Chaos-Enigma City Dragon King",
+   "npc_type": 24026,
+   "sprite": 110554,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    94,
+    14
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 94000213,
+   "nombre": "Chaos-Enigma City Dragon King",
+   "npc_type": 24026,
+   "sprite": 110554,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    34,
+    59
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 94000214,
+   "nombre": "Chaos-Enigma City Dragon King",
+   "npc_type": 24026,
+   "sprite": 110554,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    42,
+    78
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 94000215,
+   "nombre": "Chaos-Enigma City Dragon King",
+   "npc_type": 24026,
+   "sprite": 110554,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    58,
+    53
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 94000216,
+   "nombre": "Chaos-Enigma City Dragon King",
+   "npc_type": 24026,
+   "sprite": 110554,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    60,
+    48
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 94000217,
+   "nombre": "Chaos Elite-Phantom Gold Tiger King",
+   "npc_type": 24030,
+   "sprite": 110557,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    52,
+    56
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 425
+  },
+  {
+   "entity_id": 94000218,
+   "nombre": "Chaos Elite-Enigma City Dragon King",
+   "npc_type": 24031,
+   "sprite": 110554,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    63,
+    53
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 425
+  },
+  {
+   "entity_id": 94000219,
+   "nombre": "Chaos-Genius General",
+   "npc_type": 24033,
+   "sprite": 110615,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    57,
+    58
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 428
+  },
+  {
+   "entity_id": 94000220,
+   "nombre": "Chaos-Genius Marshal",
+   "npc_type": 24034,
+   "sprite": 110612,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    62,
+    58
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 429
+  },
+  {
+   "entity_id": 94000221,
+   "nombre": "Chaos-Lancer Soul",
+   "npc_type": 24039,
+   "sprite": 110662,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    56,
+    143
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 410
+  },
+  {
+   "entity_id": 94000222,
+   "nombre": "Chaos-Dragon King Soul",
+   "npc_type": 24038,
+   "sprite": 110661,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    73,
+    151
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 410
+  },
+  {
+   "entity_id": 94000223,
+   "nombre": "Chaos-Atlas",
+   "npc_type": 24035,
+   "sprite": 110567,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    264,
+    158
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 430
+  },
+  {
+   "entity_id": 94000224,
+   "nombre": "Chaos-Hestia",
+   "npc_type": 24036,
+   "sprite": 110568,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    91,
+    60
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 430
+  },
+  {
+   "entity_id": 94000225,
+   "nombre": "Chaos-Diana",
+   "npc_type": 24037,
+   "sprite": 110569,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    59,
+    152
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 430
+  }
+ ],
+ "recursos": [
+  {
+   "entity_id": 104000000,
+   "sprite": 60461,
+   "capa": 0,
+   "px": [
+    8085,
+    2480
+   ],
+   "tile": [
+    252,
+    77
+   ],
+   "crudo": "00ea320600000000951f0000b00900000000000023000000000000000000000000062dec00000480000000",
+   "copiado_de": "cuerpo de una captura del objeto 60461"
+  },
+  {
+   "entity_id": 104000001,
+   "sprite": 60461,
+   "capa": 0,
+   "px": [
+    5377,
+    3856
+   ],
+   "tile": [
+    168,
+    120
+   ],
+   "crudo": "01ea32060000000001150000100f00000000000023000000000000000000000000062dec00000480000000",
+   "copiado_de": "cuerpo de una captura del objeto 60461"
+  },
+  {
+   "entity_id": 104000002,
+   "sprite": 60461,
+   "capa": 0,
+   "px": [
+    4452,
+    3664
+   ],
+   "tile": [
+    139,
+    114
+   ],
+   "crudo": "02ea32060000000064110000500e00000000000023000000000000000000000000062dec00000480000000",
+   "copiado_de": "cuerpo de una captura del objeto 60461"
+  },
+  {
+   "entity_id": 104000003,
+   "sprite": 60461,
+   "capa": 0,
+   "px": [
+    4662,
+    3568
+   ],
+   "tile": [
+    145,
+    111
+   ],
+   "crudo": "03ea32060000000036120000f00d00000000000023000000000000000000000000062dec00000480000000",
+   "copiado_de": "cuerpo de una captura del objeto 60461"
+  },
+  {
+   "entity_id": 104000004,
+   "sprite": 60461,
+   "capa": 2,
+   "px": [
+    6079,
+    2448
+   ],
+   "tile": [
+    189,
+    76
+   ],
+   "crudo": "04ea320602000000bf170000900900000000000023000000000000000000000000062dec00000480000000",
+   "copiado_de": "cuerpo de una captura del objeto 60461"
+  },
+  {
+   "entity_id": 104000005,
+   "sprite": 60461,
+   "capa": 2,
+   "px": [
+    3700,
+    2704
+   ],
+   "tile": [
+    115,
+    84
+   ],
+   "crudo": "05ea320602000000740e0000900a00000000000023000000000000000000000000062dec00000480000000",
+   "copiado_de": "cuerpo de una captura del objeto 60461"
+  },
+  {
+   "entity_id": 104000006,
+   "sprite": 60461,
+   "capa": 2,
+   "px": [
+    3902,
+    2800
+   ],
+   "tile": [
+    121,
+    87
+   ],
+   "crudo": "06ea3206020000003e0f0000f00a00000000000023000000000000000000000000062dec00000480000000",
+   "copiado_de": "cuerpo de una captura del objeto 60461"
+  },
+  {
+   "entity_id": 104000007,
+   "sprite": 60461,
+   "capa": 2,
+   "px": [
+    6179,
+    1744
+   ],
+   "tile": [
+    193,
+    54
+   ],
+   "crudo": "07ea32060200000023180000d00600000000000023000000000000000000000000062dec00000480000000",
+   "copiado_de": "cuerpo de una captura del objeto 60461"
+  },
+  {
+   "entity_id": 104000008,
+   "sprite": 60461,
+   "capa": 0,
+   "px": [
+    6172,
+    1616
+   ],
+   "tile": [
+    192,
+    50
+   ],
+   "crudo": "08ea3206000000001c180000500600000000000023000000000000000000000000062dec00000480000000",
+   "copiado_de": "cuerpo de una captura del objeto 60461"
+  },
+  {
+   "entity_id": 104000009,
+   "sprite": 60461,
+   "capa": 2,
+   "px": [
+    6064,
+    1552
+   ],
+   "tile": [
+    189,
+    48
+   ],
+   "crudo": "09ea320602000000b0170000100600000000000023000000000000000000000000062dec00000480000000",
+   "copiado_de": "cuerpo de una captura del objeto 60461"
+  },
+  {
+   "entity_id": 104000010,
+   "sprite": 60461,
+   "capa": 2,
+   "px": [
+    5087,
+    880
+   ],
+   "tile": [
+    158,
+    27
+   ],
+   "crudo": "0aea320602000000df130000700300000000000023000000000000000000000000062dec00000480000000",
+   "copiado_de": "cuerpo de una captura del objeto 60461"
+  },
+  {
+   "entity_id": 104000011,
+   "sprite": 60461,
+   "capa": 0,
+   "px": [
+    4996,
+    752
+   ],
+   "tile": [
+    156,
+    23
+   ],
+   "crudo": "0bea32060000000084130000f00200000000000023000000000000000000000000062dec00000480000000",
+   "copiado_de": "cuerpo de una captura del objeto 60461"
+  },
+  {
+   "entity_id": 104000012,
+   "sprite": 60461,
+   "capa": 2,
+   "px": [
+    3767,
+    1264
+   ],
+   "tile": [
+    117,
+    39
+   ],
+   "crudo": "0cea320602000000b70e0000f00400000000000023000000000000000000000000062dec00000480000000",
+   "copiado_de": "cuerpo de una captura del objeto 60461"
+  },
+  {
+   "entity_id": 104000013,
+   "sprite": 60461,
+   "capa": 2,
+   "px": [
+    2550,
+    4496
+   ],
+   "tile": [
+    79,
+    140
+   ],
+   "crudo": "0dea320602000000f6090000901100000000000023000000000000000000000000062dec00000480000000",
+   "copiado_de": "cuerpo de una captura del objeto 60461"
+  },
+  {
+   "entity_id": 104000014,
+   "sprite": 60461,
+   "capa": 2,
+   "px": [
+    2740,
+    4592
+   ],
+   "tile": [
+    85,
+    143
+   ],
+   "crudo": "0eea320602000000b40a0000f01100000000000023000000000000000000000000062dec00000480000000",
+   "copiado_de": "cuerpo de una captura del objeto 60461"
+  }
+ ]
+}

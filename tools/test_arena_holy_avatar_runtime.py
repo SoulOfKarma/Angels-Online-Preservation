@@ -13,8 +13,8 @@ import presencia
 def test_level_cap_and_test_notice_are_not_internal_sentinels(world,monkeypatch):
     monkeypatch.setattr(c,'_modo_pruebas',lambda:True)
     r=c.iniciar(240,30,5,434)
-    assert r['max']==combate.nivel_maximo()==471
-    assert c.tramo(472) is None
+    assert r["max"]==combate.nivel_maximo()==481
+    assert c.tramo(482) is None
     assert not any(b'10000' in p or b'TEST ROUND' in p for p in world.broadcasts)
     monkeypatch.setattr(combate,'_CURVA_NIVEL',{1:0,480:1})
     assert combate.nivel_maximo()==480 and c.tramo(480)[1]==480

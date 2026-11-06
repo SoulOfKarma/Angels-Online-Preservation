@@ -57,3 +57,20 @@ data/cuentas.bak
 # Volcados de REA/Ghidra (pseudo codigo del cliente): se regeneran con el MCP
 # rea y son codigo descompilado de IGG, no se publican.
 docs/rea_evidence/
+
+# Extraccion de los paks de Taiwan (ALO TW 27-32), separada de la de IGG.
+extracted_paks_tw
+# work/: se suben los scripts y las traducciones a mano; no los respaldos
+# (copias de los paks, GB), la salida generada ni lo que se regenera.
+work/backup/
+work/salida/
+work/__pycache__/
+work/traduccion/lotes/
+work/traduccion/memoria.json
+work/*.txt
+work/*.log
+# Dependencia local de las pruebas x86 y referencias descompiladas del tooltip.
+work/vendor/
+work/tooltip_*.c
+work/tooltip_functions.json
+work/item_tooltip_entry.c

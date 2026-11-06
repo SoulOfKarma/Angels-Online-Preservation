@@ -1,0 +1,3696 @@
+{
+ "_nota": "bluesand_realm (stage 425). POBLADO DESDE EL CLIENTE, no desde una captura: los generadores de monstruos son objetos del propio map425.mpc -- el monstruo en el u16 del +34, la zona en el +21, el tiempo en el +38 y cuantos en el +42. Eso da el censo COMPLETO del mapa, que una captura no puede dar porque solo trae lo que estuvo a la vista. El entity_id es fabricado y estable, no el del servidor. Las casillas son las del TAG de cada generador; los que no declaran TAG ponen sus monstruos en la casilla del generador y en un anillo de radio 3 a su alrededor, que es la dispersion MEDIDA en el stage 73. Los objetos de mapa son los del .mpc cuyo id esta en la lista de los que el servidor manda de verdad, con el cuerpo del 0x000E copiado de una captura del mismo objeto. Los tornados se dibujan aparte, desde portales.json. Ver tools/poblar_del_cliente.py.",
+ "stage": 425,
+ "spawns": [
+  {
+   "entity_id": 92500000,
+   "nombre": "Lacquered Blue Dragon",
+   "npc_type": 23881,
+   "sprite": 111608,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    20,
+    25
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 420
+  },
+  {
+   "entity_id": 92500001,
+   "nombre": "Lacquered Blue Dragon",
+   "npc_type": 23881,
+   "sprite": 111608,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    15,
+    20
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 420
+  },
+  {
+   "entity_id": 92500002,
+   "nombre": "Lacquered Blue Dragon",
+   "npc_type": 23881,
+   "sprite": 111608,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    20,
+    20
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 420
+  },
+  {
+   "entity_id": 92500003,
+   "nombre": "Lacquered Blue Dragon",
+   "npc_type": 23881,
+   "sprite": 111608,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    24,
+    30
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 420
+  },
+  {
+   "entity_id": 92500004,
+   "nombre": "Lacquered Blue Dragon",
+   "npc_type": 23881,
+   "sprite": 111608,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    25,
+    20
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 420
+  },
+  {
+   "entity_id": 92500005,
+   "nombre": "Lacquered Blue Dragon",
+   "npc_type": 23881,
+   "sprite": 111608,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    25,
+    25
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 420
+  },
+  {
+   "entity_id": 92500006,
+   "nombre": "Lacquered Blue Dragon",
+   "npc_type": 23881,
+   "sprite": 111608,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    29,
+    30
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 420
+  },
+  {
+   "entity_id": 92500007,
+   "nombre": "Lacquered Blue Dragon",
+   "npc_type": 23881,
+   "sprite": 111608,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    30,
+    16
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 420
+  },
+  {
+   "entity_id": 92500008,
+   "nombre": "Lacquered Blue Dragon",
+   "npc_type": 23881,
+   "sprite": 111608,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    30,
+    21
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 420
+  },
+  {
+   "entity_id": 92500009,
+   "nombre": "Lacquered Blue Dragon",
+   "npc_type": 23881,
+   "sprite": 111608,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    13,
+    15
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 420
+  },
+  {
+   "entity_id": 92500010,
+   "nombre": "Lacquered Blue Dragon",
+   "npc_type": 23881,
+   "sprite": 111608,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    18,
+    15
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 420
+  },
+  {
+   "entity_id": 92500011,
+   "nombre": "Lacquered Blue Dragon",
+   "npc_type": 23881,
+   "sprite": 111608,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    23,
+    15
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 420
+  },
+  {
+   "entity_id": 92500012,
+   "nombre": "Lacquered Blue Dragon",
+   "npc_type": 23881,
+   "sprite": 111608,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    34,
+    28
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 420
+  },
+  {
+   "entity_id": 92500013,
+   "nombre": "Lacquered Blue Dragon",
+   "npc_type": 23881,
+   "sprite": 111608,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    34,
+    33
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 420
+  },
+  {
+   "entity_id": 92500014,
+   "nombre": "Lacquered Blue Dragon",
+   "npc_type": 23881,
+   "sprite": 111608,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    24,
+    35
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 420
+  },
+  {
+   "entity_id": 92500015,
+   "nombre": "Lacquered Blue Dragon",
+   "npc_type": 23881,
+   "sprite": 111608,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    35,
+    15
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 420
+  },
+  {
+   "entity_id": 92500016,
+   "nombre": "Lacquered Blue Dragon",
+   "npc_type": 23881,
+   "sprite": 111608,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    35,
+    20
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 420
+  },
+  {
+   "entity_id": 92500017,
+   "nombre": "Lacquered Blue Dragon",
+   "npc_type": 23881,
+   "sprite": 111608,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    29,
+    35
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 420
+  },
+  {
+   "entity_id": 92500018,
+   "nombre": "Lacquered Blue Dragon",
+   "npc_type": 23881,
+   "sprite": 111608,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    30
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 420
+  },
+  {
+   "entity_id": 92500019,
+   "nombre": "Lacquered Blue Dragon",
+   "npc_type": 23881,
+   "sprite": 111608,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    35
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 420
+  },
+  {
+   "entity_id": 92500020,
+   "nombre": "Lacquered Blue Dragon",
+   "npc_type": 23881,
+   "sprite": 111608,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    40,
+    13
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 420
+  },
+  {
+   "entity_id": 92500021,
+   "nombre": "Lacquered Blue Dragon",
+   "npc_type": 23881,
+   "sprite": 111608,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    40,
+    18
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 420
+  },
+  {
+   "entity_id": 92500022,
+   "nombre": "Lacquered Blue Dragon",
+   "npc_type": 23881,
+   "sprite": 111608,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    14,
+    10
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 420
+  },
+  {
+   "entity_id": 92500023,
+   "nombre": "Lacquered Blue Dragon",
+   "npc_type": 23881,
+   "sprite": 111608,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    19,
+    10
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 420
+  },
+  {
+   "entity_id": 92500024,
+   "nombre": "Lacquered Blue Dragon",
+   "npc_type": 23881,
+   "sprite": 111608,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    20,
+    40
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 420
+  },
+  {
+   "entity_id": 92500025,
+   "nombre": "Lacquered Blue Dragon",
+   "npc_type": 23881,
+   "sprite": 111608,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    44,
+    30
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 420
+  },
+  {
+   "entity_id": 92500026,
+   "nombre": "Lacquered Blue Dragon",
+   "npc_type": 23881,
+   "sprite": 111608,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    45,
+    14
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 420
+  },
+  {
+   "entity_id": 92500027,
+   "nombre": "Lacquered Blue Dragon",
+   "npc_type": 23881,
+   "sprite": 111608,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    45,
+    19
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 420
+  },
+  {
+   "entity_id": 92500028,
+   "nombre": "Lacquered Blue Dragon",
+   "npc_type": 23881,
+   "sprite": 111608,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    45,
+    35
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 420
+  },
+  {
+   "entity_id": 92500029,
+   "nombre": "Lacquered Blue Dragon",
+   "npc_type": 23881,
+   "sprite": 111608,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    25,
+    40
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 420
+  },
+  {
+   "entity_id": 92500030,
+   "nombre": "Lacquered Blue Dragon",
+   "npc_type": 23881,
+   "sprite": 111608,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    48,
+    24
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 420
+  },
+  {
+   "entity_id": 92500031,
+   "nombre": "Lacquered Blue Dragon",
+   "npc_type": 23881,
+   "sprite": 111608,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    49,
+    29
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 420
+  },
+  {
+   "entity_id": 92500032,
+   "nombre": "Lacquered Blue Dragon",
+   "npc_type": 23881,
+   "sprite": 111608,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    50,
+    17
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 420
+  },
+  {
+   "entity_id": 92500033,
+   "nombre": "Lacquered Blue Dragon",
+   "npc_type": 23881,
+   "sprite": 111608,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    50,
+    34
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 420
+  },
+  {
+   "entity_id": 92500034,
+   "nombre": "Lacquered Blue Dragon",
+   "npc_type": 23881,
+   "sprite": 111608,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    13,
+    5
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 420
+  },
+  {
+   "entity_id": 92500035,
+   "nombre": "Violet-Striped Chameleon",
+   "npc_type": 23882,
+   "sprite": 111609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    34,
+    93
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 92500036,
+   "nombre": "Violet-Striped Chameleon",
+   "npc_type": 23882,
+   "sprite": 111609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    29,
+    96
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 92500037,
+   "nombre": "Violet-Striped Chameleon",
+   "npc_type": 23882,
+   "sprite": 111609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    34,
+    98
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 92500038,
+   "nombre": "Violet-Striped Chameleon",
+   "npc_type": 23882,
+   "sprite": 111609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    91
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 92500039,
+   "nombre": "Violet-Striped Chameleon",
+   "npc_type": 23882,
+   "sprite": 111609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    96
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 92500040,
+   "nombre": "Violet-Striped Chameleon",
+   "npc_type": 23882,
+   "sprite": 111609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    29,
+    101
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 92500041,
+   "nombre": "Violet-Striped Chameleon",
+   "npc_type": 23882,
+   "sprite": 111609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    101
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 92500042,
+   "nombre": "Violet-Striped Chameleon",
+   "npc_type": 23882,
+   "sprite": 111609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    34,
+    103
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 92500043,
+   "nombre": "Violet-Striped Chameleon",
+   "npc_type": 23882,
+   "sprite": 111609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    44,
+    88
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 92500044,
+   "nombre": "Violet-Striped Chameleon",
+   "npc_type": 23882,
+   "sprite": 111609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    44,
+    93
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 92500045,
+   "nombre": "Violet-Striped Chameleon",
+   "npc_type": 23882,
+   "sprite": 111609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    44,
+    98
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 92500046,
+   "nombre": "Violet-Striped Chameleon",
+   "npc_type": 23882,
+   "sprite": 111609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    44,
+    105
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 92500047,
+   "nombre": "Violet-Striped Chameleon",
+   "npc_type": 23882,
+   "sprite": 111609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    106
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 92500048,
+   "nombre": "Violet-Striped Chameleon",
+   "npc_type": 23882,
+   "sprite": 111609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    24,
+    99
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 92500049,
+   "nombre": "Violet-Striped Chameleon",
+   "npc_type": 23882,
+   "sprite": 111609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    49,
+    86
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 92500050,
+   "nombre": "Violet-Striped Chameleon",
+   "npc_type": 23882,
+   "sprite": 111609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    49,
+    91
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 92500051,
+   "nombre": "Violet-Striped Chameleon",
+   "npc_type": 23882,
+   "sprite": 111609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    49,
+    96
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 92500052,
+   "nombre": "Violet-Striped Chameleon",
+   "npc_type": 23882,
+   "sprite": 111609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    49,
+    108
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 92500053,
+   "nombre": "Violet-Striped Chameleon",
+   "npc_type": 23882,
+   "sprite": 111609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    44,
+    110
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 92500054,
+   "nombre": "Violet-Striped Chameleon",
+   "npc_type": 23882,
+   "sprite": 111609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    49,
+    113
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 92500055,
+   "nombre": "Violet-Striped Chameleon",
+   "npc_type": 23882,
+   "sprite": 111609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    54,
+    83
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 92500056,
+   "nombre": "Violet-Striped Chameleon",
+   "npc_type": 23882,
+   "sprite": 111609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    54,
+    88
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 92500057,
+   "nombre": "Violet-Striped Chameleon",
+   "npc_type": 23882,
+   "sprite": 111609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    54,
+    93
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 92500058,
+   "nombre": "Violet-Striped Chameleon",
+   "npc_type": 23882,
+   "sprite": 111609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    54,
+    111
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 92500059,
+   "nombre": "Violet-Striped Chameleon",
+   "npc_type": 23882,
+   "sprite": 111609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    54,
+    116
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 92500060,
+   "nombre": "Violet-Striped Chameleon",
+   "npc_type": 23882,
+   "sprite": 111609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    43,
+    118
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 92500061,
+   "nombre": "Violet-Striped Chameleon",
+   "npc_type": 23882,
+   "sprite": 111609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    48,
+    118
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 92500062,
+   "nombre": "Violet-Striped Chameleon",
+   "npc_type": 23882,
+   "sprite": 111609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    59,
+    80
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 92500063,
+   "nombre": "Violet-Striped Chameleon",
+   "npc_type": 23882,
+   "sprite": 111609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    59,
+    85
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 92500064,
+   "nombre": "Violet-Striped Chameleon",
+   "npc_type": 23882,
+   "sprite": 111609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    59,
+    90
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 92500065,
+   "nombre": "Violet-Striped Chameleon",
+   "npc_type": 23882,
+   "sprite": 111609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    59,
+    113
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 92500066,
+   "nombre": "Violet-Striped Chameleon",
+   "npc_type": 23882,
+   "sprite": 111609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    59,
+    118
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 92500067,
+   "nombre": "Violet-Striped Chameleon",
+   "npc_type": 23882,
+   "sprite": 111609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    37,
+    121
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 92500068,
+   "nombre": "Violet-Striped Chameleon",
+   "npc_type": 23882,
+   "sprite": 111609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    53,
+    121
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 92500069,
+   "nombre": "Violet-Striped Chameleon",
+   "npc_type": 23882,
+   "sprite": 111609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    42,
+    123
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 421
+  },
+  {
+   "entity_id": 92500070,
+   "nombre": "Orange Blossom Spirit",
+   "npc_type": 23885,
+   "sprite": 111605,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    47,
+    123
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 427
+  },
+  {
+   "entity_id": 92500071,
+   "nombre": "Orange Blossom Spirit",
+   "npc_type": 23885,
+   "sprite": 111605,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    52,
+    126
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 427
+  },
+  {
+   "entity_id": 92500072,
+   "nombre": "Orange Blossom Spirit",
+   "npc_type": 23885,
+   "sprite": 111605,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    42,
+    128
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 427
+  },
+  {
+   "entity_id": 92500073,
+   "nombre": "Orange Blossom Spirit",
+   "npc_type": 23885,
+   "sprite": 111605,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    47,
+    128
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 427
+  },
+  {
+   "entity_id": 92500074,
+   "nombre": "Orange Blossom Spirit",
+   "npc_type": 23885,
+   "sprite": 111605,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    55,
+    68
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 427
+  },
+  {
+   "entity_id": 92500075,
+   "nombre": "Orange Blossom Spirit",
+   "npc_type": 23885,
+   "sprite": 111605,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    57,
+    126
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 427
+  },
+  {
+   "entity_id": 92500076,
+   "nombre": "Orange Blossom Spirit",
+   "npc_type": 23885,
+   "sprite": 111605,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    36,
+    131
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 427
+  },
+  {
+   "entity_id": 92500077,
+   "nombre": "Orange Blossom Spirit",
+   "npc_type": 23885,
+   "sprite": 111605,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    52,
+    131
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 427
+  },
+  {
+   "entity_id": 92500078,
+   "nombre": "Orange Blossom Spirit",
+   "npc_type": 23885,
+   "sprite": 111605,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    57,
+    131
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 427
+  },
+  {
+   "entity_id": 92500079,
+   "nombre": "Orange Blossom Spirit",
+   "npc_type": 23885,
+   "sprite": 111605,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    60,
+    66
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 427
+  },
+  {
+   "entity_id": 92500080,
+   "nombre": "Orange Blossom Spirit",
+   "npc_type": 23885,
+   "sprite": 111605,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    60,
+    71
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 427
+  },
+  {
+   "entity_id": 92500081,
+   "nombre": "Orange Blossom Spirit",
+   "npc_type": 23885,
+   "sprite": 111605,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    41,
+    133
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 427
+  },
+  {
+   "entity_id": 92500082,
+   "nombre": "Orange Blossom Spirit",
+   "npc_type": 23885,
+   "sprite": 111605,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    62,
+    123
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 427
+  },
+  {
+   "entity_id": 92500083,
+   "nombre": "Orange Blossom Spirit",
+   "npc_type": 23885,
+   "sprite": 111605,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    62,
+    128
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 427
+  },
+  {
+   "entity_id": 92500084,
+   "nombre": "Orange Blossom Spirit",
+   "npc_type": 23885,
+   "sprite": 111605,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    62,
+    133
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 427
+  },
+  {
+   "entity_id": 92500085,
+   "nombre": "Orange Blossom Spirit",
+   "npc_type": 23885,
+   "sprite": 111605,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    64,
+    76
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 427
+  },
+  {
+   "entity_id": 92500086,
+   "nombre": "Orange Blossom Spirit",
+   "npc_type": 23885,
+   "sprite": 111605,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    64,
+    81
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 427
+  },
+  {
+   "entity_id": 92500087,
+   "nombre": "Orange Blossom Spirit",
+   "npc_type": 23885,
+   "sprite": 111605,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    64,
+    86
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 427
+  },
+  {
+   "entity_id": 92500088,
+   "nombre": "Orange Blossom Spirit",
+   "npc_type": 23885,
+   "sprite": 111605,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    64,
+    116
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 427
+  },
+  {
+   "entity_id": 92500089,
+   "nombre": "Orange Blossom Spirit",
+   "npc_type": 23885,
+   "sprite": 111605,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    30,
+    134
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 427
+  },
+  {
+   "entity_id": 92500090,
+   "nombre": "Orange Blossom Spirit",
+   "npc_type": 23885,
+   "sprite": 111605,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    65,
+    70
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 427
+  },
+  {
+   "entity_id": 92500091,
+   "nombre": "Orange Blossom Spirit",
+   "npc_type": 23885,
+   "sprite": 111605,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    67,
+    121
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 427
+  },
+  {
+   "entity_id": 92500092,
+   "nombre": "Orange Blossom Spirit",
+   "npc_type": 23885,
+   "sprite": 111605,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    67,
+    126
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 427
+  },
+  {
+   "entity_id": 92500093,
+   "nombre": "Orange Blossom Spirit",
+   "npc_type": 23885,
+   "sprite": 111605,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    67,
+    131
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 427
+  },
+  {
+   "entity_id": 92500094,
+   "nombre": "Orange Blossom Spirit",
+   "npc_type": 23885,
+   "sprite": 111605,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    35,
+    136
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 427
+  },
+  {
+   "entity_id": 92500095,
+   "nombre": "Orange Blossom Spirit",
+   "npc_type": 23885,
+   "sprite": 111605,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    69,
+    75
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 427
+  },
+  {
+   "entity_id": 92500096,
+   "nombre": "Orange Blossom Spirit",
+   "npc_type": 23885,
+   "sprite": 111605,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    69,
+    80
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 427
+  },
+  {
+   "entity_id": 92500097,
+   "nombre": "Orange Blossom Spirit",
+   "npc_type": 23885,
+   "sprite": 111605,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    69,
+    85
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 427
+  },
+  {
+   "entity_id": 92500098,
+   "nombre": "Orange Blossom Spirit",
+   "npc_type": 23885,
+   "sprite": 111605,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    67,
+    136
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 427
+  },
+  {
+   "entity_id": 92500099,
+   "nombre": "Orange Blossom Spirit",
+   "npc_type": 23885,
+   "sprite": 111605,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    70,
+    68
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 427
+  },
+  {
+   "entity_id": 92500100,
+   "nombre": "Orange Blossom Spirit",
+   "npc_type": 23885,
+   "sprite": 111605,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    24,
+    137
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 427
+  },
+  {
+   "entity_id": 92500101,
+   "nombre": "Orange Blossom Spirit",
+   "npc_type": 23885,
+   "sprite": 111605,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    72,
+    119
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 427
+  },
+  {
+   "entity_id": 92500102,
+   "nombre": "Orange Blossom Spirit",
+   "npc_type": 23885,
+   "sprite": 111605,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    72,
+    124
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 427
+  },
+  {
+   "entity_id": 92500103,
+   "nombre": "Orange Blossom Spirit",
+   "npc_type": 23885,
+   "sprite": 111605,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    72,
+    132
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 427
+  },
+  {
+   "entity_id": 92500104,
+   "nombre": "Orange Blossom Spirit",
+   "npc_type": 23885,
+   "sprite": 111605,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    72,
+    137
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 427
+  },
+  {
+   "entity_id": 92500105,
+   "nombre": "Starshine Flower",
+   "npc_type": 23886,
+   "sprite": 111606,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    87,
+    135
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 429
+  },
+  {
+   "entity_id": 92500106,
+   "nombre": "Starshine Flower",
+   "npc_type": 23886,
+   "sprite": 111606,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    82,
+    130
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 429
+  },
+  {
+   "entity_id": 92500107,
+   "nombre": "Starshine Flower",
+   "npc_type": 23886,
+   "sprite": 111606,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    82,
+    135
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 429
+  },
+  {
+   "entity_id": 92500108,
+   "nombre": "Starshine Flower",
+   "npc_type": 23886,
+   "sprite": 111606,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    82,
+    140
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 429
+  },
+  {
+   "entity_id": 92500109,
+   "nombre": "Starshine Flower",
+   "npc_type": 23886,
+   "sprite": 111606,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    87,
+    130
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 429
+  },
+  {
+   "entity_id": 92500110,
+   "nombre": "Starshine Flower",
+   "npc_type": 23886,
+   "sprite": 111606,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    92,
+    129
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 429
+  },
+  {
+   "entity_id": 92500111,
+   "nombre": "Starshine Flower",
+   "npc_type": 23886,
+   "sprite": 111606,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    92,
+    134
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 429
+  },
+  {
+   "entity_id": 92500112,
+   "nombre": "Starshine Flower",
+   "npc_type": 23886,
+   "sprite": 111606,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    92,
+    139
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 429
+  },
+  {
+   "entity_id": 92500113,
+   "nombre": "Starshine Flower",
+   "npc_type": 23886,
+   "sprite": 111606,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    87,
+    140
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 429
+  },
+  {
+   "entity_id": 92500114,
+   "nombre": "Starshine Flower",
+   "npc_type": 23886,
+   "sprite": 111606,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    78,
+    125
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 429
+  },
+  {
+   "entity_id": 92500115,
+   "nombre": "Starshine Flower",
+   "npc_type": 23886,
+   "sprite": 111606,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    83,
+    125
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 429
+  },
+  {
+   "entity_id": 92500116,
+   "nombre": "Starshine Flower",
+   "npc_type": 23886,
+   "sprite": 111606,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    88,
+    124
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 429
+  },
+  {
+   "entity_id": 92500117,
+   "nombre": "Starshine Flower",
+   "npc_type": 23886,
+   "sprite": 111606,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    93,
+    124
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 429
+  },
+  {
+   "entity_id": 92500118,
+   "nombre": "Starshine Flower",
+   "npc_type": 23886,
+   "sprite": 111606,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    77,
+    133
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 429
+  },
+  {
+   "entity_id": 92500119,
+   "nombre": "Starshine Flower",
+   "npc_type": 23886,
+   "sprite": 111606,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    77,
+    138
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 429
+  },
+  {
+   "entity_id": 92500120,
+   "nombre": "Starshine Flower",
+   "npc_type": 23886,
+   "sprite": 111606,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    77,
+    120
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 429
+  },
+  {
+   "entity_id": 92500121,
+   "nombre": "Starshine Flower",
+   "npc_type": 23886,
+   "sprite": 111606,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    82,
+    120
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 429
+  },
+  {
+   "entity_id": 92500122,
+   "nombre": "Starshine Flower",
+   "npc_type": 23886,
+   "sprite": 111606,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    97,
+    129
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 429
+  },
+  {
+   "entity_id": 92500123,
+   "nombre": "Starshine Flower",
+   "npc_type": 23886,
+   "sprite": 111606,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    97,
+    134
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 429
+  },
+  {
+   "entity_id": 92500124,
+   "nombre": "Starshine Flower",
+   "npc_type": 23886,
+   "sprite": 111606,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    87,
+    119
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 429
+  },
+  {
+   "entity_id": 92500125,
+   "nombre": "Starshine Flower",
+   "npc_type": 23886,
+   "sprite": 111606,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    92,
+    117
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 429
+  },
+  {
+   "entity_id": 92500126,
+   "nombre": "Starshine Flower",
+   "npc_type": 23886,
+   "sprite": 111606,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    98,
+    124
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 429
+  },
+  {
+   "entity_id": 92500127,
+   "nombre": "Starshine Flower",
+   "npc_type": 23886,
+   "sprite": 111606,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    97,
+    115
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 429
+  },
+  {
+   "entity_id": 92500128,
+   "nombre": "Starshine Flower",
+   "npc_type": 23886,
+   "sprite": 111606,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    72,
+    142
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 429
+  },
+  {
+   "entity_id": 92500129,
+   "nombre": "Starshine Flower",
+   "npc_type": 23886,
+   "sprite": 111606,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    77,
+    143
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 429
+  },
+  {
+   "entity_id": 92500130,
+   "nombre": "Starshine Flower",
+   "npc_type": 23886,
+   "sprite": 111606,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    102,
+    111
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 429
+  },
+  {
+   "entity_id": 92500131,
+   "nombre": "Starshine Flower",
+   "npc_type": 23886,
+   "sprite": 111606,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    102,
+    129
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 429
+  },
+  {
+   "entity_id": 92500132,
+   "nombre": "Starshine Flower",
+   "npc_type": 23886,
+   "sprite": 111606,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    102,
+    134
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 429
+  },
+  {
+   "entity_id": 92500133,
+   "nombre": "Starshine Flower",
+   "npc_type": 23886,
+   "sprite": 111606,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    97,
+    110
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 429
+  },
+  {
+   "entity_id": 92500134,
+   "nombre": "Starshine Flower",
+   "npc_type": 23886,
+   "sprite": 111606,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    103,
+    123
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 429
+  },
+  {
+   "entity_id": 92500135,
+   "nombre": "Starshine Flower",
+   "npc_type": 23886,
+   "sprite": 111606,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    103,
+    106
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 429
+  },
+  {
+   "entity_id": 92500136,
+   "nombre": "Starshine Flower",
+   "npc_type": 23886,
+   "sprite": 111606,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    107,
+    111
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 429
+  },
+  {
+   "entity_id": 92500137,
+   "nombre": "Starshine Flower",
+   "npc_type": 23886,
+   "sprite": 111606,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    107,
+    133
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 429
+  },
+  {
+   "entity_id": 92500138,
+   "nombre": "Starshine Flower",
+   "npc_type": 23886,
+   "sprite": 111606,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    107,
+    138
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 429
+  },
+  {
+   "entity_id": 92500139,
+   "nombre": "Starshine Flower",
+   "npc_type": 23886,
+   "sprite": 111606,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    82,
+    145
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 429
+  },
+  {
+   "entity_id": 92500140,
+   "nombre": "Flame Dancer",
+   "npc_type": 23883,
+   "sprite": 111602,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    115,
+    50
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 92500141,
+   "nombre": "Flame Dancer",
+   "npc_type": 23883,
+   "sprite": 111602,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    110,
+    47
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 92500142,
+   "nombre": "Flame Dancer",
+   "npc_type": 23883,
+   "sprite": 111602,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    115,
+    55
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 92500143,
+   "nombre": "Flame Dancer",
+   "npc_type": 23883,
+   "sprite": 111602,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    120,
+    52
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 92500144,
+   "nombre": "Flame Dancer",
+   "npc_type": 23883,
+   "sprite": 111602,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    120,
+    57
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 92500145,
+   "nombre": "Flame Dancer",
+   "npc_type": 23883,
+   "sprite": 111602,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    110,
+    60
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 92500146,
+   "nombre": "Flame Dancer",
+   "npc_type": 23883,
+   "sprite": 111602,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    115,
+    60
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 92500147,
+   "nombre": "Flame Dancer",
+   "npc_type": 23883,
+   "sprite": 111602,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    125,
+    51
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 92500148,
+   "nombre": "Flame Dancer",
+   "npc_type": 23883,
+   "sprite": 111602,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    125,
+    56
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 92500149,
+   "nombre": "Flame Dancer",
+   "npc_type": 23883,
+   "sprite": 111602,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    105,
+    45
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 92500150,
+   "nombre": "Flame Dancer",
+   "npc_type": 23883,
+   "sprite": 111602,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    130,
+    49
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 92500151,
+   "nombre": "Flame Dancer",
+   "npc_type": 23883,
+   "sprite": 111602,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    130,
+    54
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 92500152,
+   "nombre": "Flame Dancer",
+   "npc_type": 23883,
+   "sprite": 111602,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    105,
+    62
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 92500153,
+   "nombre": "Flame Dancer",
+   "npc_type": 23883,
+   "sprite": 111602,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    110,
+    65
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 92500154,
+   "nombre": "Flame Dancer",
+   "npc_type": 23883,
+   "sprite": 111602,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    115,
+    65
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 92500155,
+   "nombre": "Flame Dancer",
+   "npc_type": 23883,
+   "sprite": 111602,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    132,
+    38
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 92500156,
+   "nombre": "Flame Dancer",
+   "npc_type": 23883,
+   "sprite": 111602,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    104,
+    67
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 92500157,
+   "nombre": "Flame Dancer",
+   "npc_type": 23883,
+   "sprite": 111602,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    135,
+    46
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 92500158,
+   "nombre": "Flame Dancer",
+   "npc_type": 23883,
+   "sprite": 111602,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    135,
+    51
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 92500159,
+   "nombre": "Flame Dancer",
+   "npc_type": 23883,
+   "sprite": 111602,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    126,
+    35
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 92500160,
+   "nombre": "Flame Dancer",
+   "npc_type": 23883,
+   "sprite": 111602,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    109,
+    70
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 92500161,
+   "nombre": "Flame Dancer",
+   "npc_type": 23883,
+   "sprite": 111602,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    114,
+    70
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 92500162,
+   "nombre": "Flame Dancer",
+   "npc_type": 23883,
+   "sprite": 111602,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    119,
+    70
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 92500163,
+   "nombre": "Flame Dancer",
+   "npc_type": 23883,
+   "sprite": 111602,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    137,
+    36
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 92500164,
+   "nombre": "Flame Dancer",
+   "npc_type": 23883,
+   "sprite": 111602,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    138,
+    41
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 92500165,
+   "nombre": "Flame Dancer",
+   "npc_type": 23883,
+   "sprite": 111602,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    138,
+    56
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 92500166,
+   "nombre": "Flame Dancer",
+   "npc_type": 23883,
+   "sprite": 111602,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    140,
+    46
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 92500167,
+   "nombre": "Flame Dancer",
+   "npc_type": 23883,
+   "sprite": 111602,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    140,
+    51
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 92500168,
+   "nombre": "Flame Dancer",
+   "npc_type": 23883,
+   "sprite": 111602,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    124,
+    73
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 92500169,
+   "nombre": "Flame Dancer",
+   "npc_type": 23883,
+   "sprite": 111602,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    141,
+    74
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 92500170,
+   "nombre": "Flame Dancer",
+   "npc_type": 23883,
+   "sprite": 111602,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    142,
+    36
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 92500171,
+   "nombre": "Flame Dancer",
+   "npc_type": 23883,
+   "sprite": 111602,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    114,
+    75
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 92500172,
+   "nombre": "Flame Dancer",
+   "npc_type": 23883,
+   "sprite": 111602,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    119,
+    75
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 92500173,
+   "nombre": "Flame Dancer",
+   "npc_type": 23883,
+   "sprite": 111602,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    129,
+    75
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 92500174,
+   "nombre": "Flame Dancer",
+   "npc_type": 23883,
+   "sprite": 111602,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    143,
+    41
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 423
+  },
+  {
+   "entity_id": 92500175,
+   "nombre": "Violet Mist Maiden",
+   "npc_type": 23884,
+   "sprite": 111603,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    214,
+    25
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 425
+  },
+  {
+   "entity_id": 92500176,
+   "nombre": "Violet Mist Maiden",
+   "npc_type": 23884,
+   "sprite": 111603,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    209,
+    22
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 425
+  },
+  {
+   "entity_id": 92500177,
+   "nombre": "Violet Mist Maiden",
+   "npc_type": 23884,
+   "sprite": 111603,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    209,
+    27
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 425
+  },
+  {
+   "entity_id": 92500178,
+   "nombre": "Violet Mist Maiden",
+   "npc_type": 23884,
+   "sprite": 111603,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    214,
+    30
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 425
+  },
+  {
+   "entity_id": 92500179,
+   "nombre": "Violet Mist Maiden",
+   "npc_type": 23884,
+   "sprite": 111603,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    219,
+    22
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 425
+  },
+  {
+   "entity_id": 92500180,
+   "nombre": "Violet Mist Maiden",
+   "npc_type": 23884,
+   "sprite": 111603,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    219,
+    27
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 425
+  },
+  {
+   "entity_id": 92500181,
+   "nombre": "Violet Mist Maiden",
+   "npc_type": 23884,
+   "sprite": 111603,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    219,
+    32
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 425
+  },
+  {
+   "entity_id": 92500182,
+   "nombre": "Violet Mist Maiden",
+   "npc_type": 23884,
+   "sprite": 111603,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    204,
+    22
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 425
+  },
+  {
+   "entity_id": 92500183,
+   "nombre": "Violet Mist Maiden",
+   "npc_type": 23884,
+   "sprite": 111603,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    204,
+    27
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 425
+  },
+  {
+   "entity_id": 92500184,
+   "nombre": "Violet Mist Maiden",
+   "npc_type": 23884,
+   "sprite": 111603,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    224,
+    20
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 425
+  },
+  {
+   "entity_id": 92500185,
+   "nombre": "Violet Mist Maiden",
+   "npc_type": 23884,
+   "sprite": 111603,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    224,
+    25
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 425
+  },
+  {
+   "entity_id": 92500186,
+   "nombre": "Violet Mist Maiden",
+   "npc_type": 23884,
+   "sprite": 111603,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    224,
+    30
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 425
+  },
+  {
+   "entity_id": 92500187,
+   "nombre": "Violet Mist Maiden",
+   "npc_type": 23884,
+   "sprite": 111603,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    224,
+    35
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 425
+  },
+  {
+   "entity_id": 92500188,
+   "nombre": "Violet Mist Maiden",
+   "npc_type": 23884,
+   "sprite": 111603,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    217,
+    37
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 425
+  },
+  {
+   "entity_id": 92500189,
+   "nombre": "Violet Mist Maiden",
+   "npc_type": 23884,
+   "sprite": 111603,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    202,
+    32
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 425
+  },
+  {
+   "entity_id": 92500190,
+   "nombre": "Violet Mist Maiden",
+   "npc_type": 23884,
+   "sprite": 111603,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    222,
+    40
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 425
+  },
+  {
+   "entity_id": 92500191,
+   "nombre": "Violet Mist Maiden",
+   "npc_type": 23884,
+   "sprite": 111603,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    227,
+    40
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 425
+  },
+  {
+   "entity_id": 92500192,
+   "nombre": "Violet Mist Maiden",
+   "npc_type": 23884,
+   "sprite": 111603,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    229,
+    17
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 425
+  },
+  {
+   "entity_id": 92500193,
+   "nombre": "Violet Mist Maiden",
+   "npc_type": 23884,
+   "sprite": 111603,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    229,
+    22
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 425
+  },
+  {
+   "entity_id": 92500194,
+   "nombre": "Violet Mist Maiden",
+   "npc_type": 23884,
+   "sprite": 111603,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    229,
+    33
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 425
+  },
+  {
+   "entity_id": 92500195,
+   "nombre": "Violet Mist Maiden",
+   "npc_type": 23884,
+   "sprite": 111603,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    212,
+    42
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 425
+  },
+  {
+   "entity_id": 92500196,
+   "nombre": "Violet Mist Maiden",
+   "npc_type": 23884,
+   "sprite": 111603,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    217,
+    42
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 425
+  },
+  {
+   "entity_id": 92500197,
+   "nombre": "Violet Mist Maiden",
+   "npc_type": 23884,
+   "sprite": 111603,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    222,
+    45
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 425
+  },
+  {
+   "entity_id": 92500198,
+   "nombre": "Violet Mist Maiden",
+   "npc_type": 23884,
+   "sprite": 111603,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    227,
+    45
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 425
+  },
+  {
+   "entity_id": 92500199,
+   "nombre": "Violet Mist Maiden",
+   "npc_type": 23884,
+   "sprite": 111603,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    232,
+    38
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 425
+  },
+  {
+   "entity_id": 92500200,
+   "nombre": "Violet Mist Maiden",
+   "npc_type": 23884,
+   "sprite": 111603,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    232,
+    43
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 425
+  },
+  {
+   "entity_id": 92500201,
+   "nombre": "Violet Mist Maiden",
+   "npc_type": 23884,
+   "sprite": 111603,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    207,
+    46
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 425
+  },
+  {
+   "entity_id": 92500202,
+   "nombre": "Violet Mist Maiden",
+   "npc_type": 23884,
+   "sprite": 111603,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    212,
+    47
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 425
+  },
+  {
+   "entity_id": 92500203,
+   "nombre": "Violet Mist Maiden",
+   "npc_type": 23884,
+   "sprite": 111603,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    217,
+    47
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 425
+  },
+  {
+   "entity_id": 92500204,
+   "nombre": "Violet Mist Maiden",
+   "npc_type": 23884,
+   "sprite": 111603,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    234,
+    15
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 425
+  },
+  {
+   "entity_id": 92500205,
+   "nombre": "Violet Mist Maiden",
+   "npc_type": 23884,
+   "sprite": 111603,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    234,
+    20
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 425
+  },
+  {
+   "entity_id": 92500206,
+   "nombre": "Violet Mist Maiden",
+   "npc_type": 23884,
+   "sprite": 111603,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    202,
+    49
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 425
+  },
+  {
+   "entity_id": 92500207,
+   "nombre": "Violet Mist Maiden",
+   "npc_type": 23884,
+   "sprite": 111603,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    199,
+    25
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 425
+  },
+  {
+   "entity_id": 92500208,
+   "nombre": "Violet Mist Maiden",
+   "npc_type": 23884,
+   "sprite": 111603,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    237,
+    35
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 425
+  },
+  {
+   "entity_id": 92500209,
+   "nombre": "Violet Mist Maiden",
+   "npc_type": 23884,
+   "sprite": 111603,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    237,
+    40
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 425
+  },
+  {
+   "entity_id": 92500210,
+   "nombre": "Elite-Violet Mist Maiden",
+   "npc_type": 23888,
+   "sprite": 111603,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    270,
+    159
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 433
+  },
+  {
+   "entity_id": 92500211,
+   "nombre": "Elite-Violet Mist Maiden",
+   "npc_type": 23888,
+   "sprite": 111603,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    265,
+    158
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 433
+  },
+  {
+   "entity_id": 92500212,
+   "nombre": "Elite-Violet Mist Maiden",
+   "npc_type": 23888,
+   "sprite": 111603,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    265,
+    163
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 433
+  },
+  {
+   "entity_id": 92500213,
+   "nombre": "Elite-Violet Mist Maiden",
+   "npc_type": 23888,
+   "sprite": 111603,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    270,
+    164
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 433
+  },
+  {
+   "entity_id": 92500214,
+   "nombre": "Elite-Violet Mist Maiden",
+   "npc_type": 23888,
+   "sprite": 111603,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    273,
+    154
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 433
+  },
+  {
+   "entity_id": 92500215,
+   "nombre": "Elite-Violet-Striped Chameleon",
+   "npc_type": 23887,
+   "sprite": 111609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    243,
+    155
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 431
+  },
+  {
+   "entity_id": 92500216,
+   "nombre": "Elite-Violet-Striped Chameleon",
+   "npc_type": 23887,
+   "sprite": 111609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    238,
+    150
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 431
+  },
+  {
+   "entity_id": 92500217,
+   "nombre": "Elite-Violet-Striped Chameleon",
+   "npc_type": 23887,
+   "sprite": 111609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    238,
+    155
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 431
+  },
+  {
+   "entity_id": 92500218,
+   "nombre": "Elite-Violet-Striped Chameleon",
+   "npc_type": 23887,
+   "sprite": 111609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    240,
+    160
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 431
+  },
+  {
+   "entity_id": 92500219,
+   "nombre": "Elite-Violet-Striped Chameleon",
+   "npc_type": 23887,
+   "sprite": 111609,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    243,
+    150
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 431
+  },
+  {
+   "entity_id": 92500220,
+   "nombre": "Furious Hunter Zack",
+   "npc_type": 23890,
+   "sprite": 111607,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    28,
+    142
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 435
+  },
+  {
+   "entity_id": 92500221,
+   "nombre": "Decayer Livina",
+   "npc_type": 23889,
+   "sprite": 111604,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    283,
+    60
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 435
+  },
+  {
+   "entity_id": 90425000,
+   "nombre": "Realm Spell Rese",
+   "nombre_completo": "Realm Spell Researcher",
+   "npc_type": 24859,
+   "sprite": 40268,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    186,
+    97
+   ],
+   "direccion": 6,
+   "visible": 1,
+   "puesto_por": "npcs_del_cliente"
+  },
+  {
+   "entity_id": 90425001,
+   "nombre": "Realm Technique ",
+   "nombre_completo": "Realm Technique Researcher",
+   "npc_type": 24860,
+   "sprite": 40265,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    222,
+    113
+   ],
+   "direccion": 6,
+   "visible": 1,
+   "puesto_por": "npcs_del_cliente"
+  },
+  {
+   "entity_id": 90425002,
+   "nombre": "Realm Repairman",
+   "nombre_completo": "Realm Repairman",
+   "npc_type": 24861,
+   "sprite": 40068,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    255,
+    113
+   ],
+   "direccion": 6,
+   "visible": 1,
+   "puesto_por": "npcs_del_cliente"
+  },
+  {
+   "entity_id": 90425003,
+   "nombre": "Realm Sundries M",
+   "nombre_completo": "Realm Sundries Merchant",
+   "npc_type": 24862,
+   "sprite": 40346,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    264,
+    101
+   ],
+   "direccion": 6,
+   "visible": 1,
+   "puesto_por": "npcs_del_cliente"
+  },
+  {
+   "entity_id": 90425004,
+   "nombre": "Realm Banker",
+   "nombre_completo": "Realm Banker",
+   "npc_type": 24863,
+   "sprite": 40348,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    238,
+    90
+   ],
+   "direccion": 6,
+   "visible": 1,
+   "puesto_por": "npcs_del_cliente"
+  },
+  {
+   "entity_id": 90425005,
+   "nombre": "Cupid",
+   "nombre_completo": "Cupid",
+   "npc_type": 1502,
+   "sprite": 40006,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    224,
+    102
+   ],
+   "direccion": 6,
+   "visible": 1,
+   "puesto_por": "npcs_del_cliente"
+  },
+  {
+   "entity_id": 90425006,
+   "nombre": "Aurora Totem",
+   "nombre_completo": "Aurora Totem",
+   "npc_type": 1937,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    255,
+    126
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "puesto_por": "npcs_del_cliente"
+  },
+  {
+   "entity_id": 90425007,
+   "nombre": "Dark City Totem",
+   "nombre_completo": "Dark City Totem",
+   "npc_type": 1938,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    262,
+    122
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "puesto_por": "npcs_del_cliente"
+  },
+  {
+   "entity_id": 90425008,
+   "nombre": "Breeze Totem",
+   "nombre_completo": "Breeze Totem",
+   "npc_type": 1940,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    261,
+    128
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "puesto_por": "npcs_del_cliente"
+  },
+  {
+   "entity_id": 90425009,
+   "nombre": "Iron Totem",
+   "nombre_completo": "Iron Totem",
+   "npc_type": 1939,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    268,
+    124
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "puesto_por": "npcs_del_cliente"
+  },
+  {
+   "entity_id": 90425010,
+   "nombre": "Merchant Samir",
+   "nombre_completo": "Merchant Samir",
+   "npc_type": 24866,
+   "sprite": 40574,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    234,
+    68
+   ],
+   "direccion": 6,
+   "visible": 1,
+   "puesto_por": "npcs_del_cliente"
+  },
+  {
+   "entity_id": 90425011,
+   "nombre": "Freyre",
+   "nombre_completo": "Freyre",
+   "npc_type": 24872,
+   "sprite": 40302,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    123,
+    146
+   ],
+   "direccion": 6,
+   "visible": 1,
+   "puesto_por": "npcs_del_cliente"
+  },
+  {
+   "entity_id": 90425012,
+   "nombre": "Jusha",
+   "nombre_completo": "Jusha",
+   "npc_type": 24884,
+   "sprite": 40778,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    252,
+    149
+   ],
+   "direccion": 6,
+   "visible": 1,
+   "puesto_por": "npcs_del_cliente"
+  }
+ ],
+ "recursos": [
+  {
+   "entity_id": 102500000,
+   "sprite": 60051,
+   "capa": 0,
+   "px": [
+    8167,
+    4048
+   ],
+   "tile": [
+    255,
+    126
+   ],
+   "crudo": "a0061c0600000000e71f0000d00f0000006f70706572284d2900000000000000000693ea00002280140000",
+   "copiado_de": "cuerpo de una captura del objeto 60051"
+  },
+  {
+   "entity_id": 102500001,
+   "sprite": 60052,
+   "capa": 0,
+   "px": [
+    8397,
+    3952
+   ],
+   "tile": [
+    262,
+    123
+   ],
+   "crudo": "a1061c0600000000cd200000700f000000000000180000000000000000000000dc0694ea00002280140000",
+   "copiado_de": "cuerpo de una captura del objeto 60052"
+  },
+  {
+   "entity_id": 102500002,
+   "sprite": 60053,
+   "capa": 0,
+   "px": [
+    8570,
+    4016
+   ],
+   "tile": [
+    267,
+    125
+   ],
+   "crudo": "a2061c06000000007a210000b00f0000006f70706572284d2900000000000000000695ea00002280140000",
+   "copiado_de": "cuerpo de una captura del objeto 60053"
+  },
+  {
+   "entity_id": 102500003,
+   "sprite": 60054,
+   "capa": 0,
+   "px": [
+    8350,
+    4112
+   ],
+   "tile": [
+    260,
+    128
+   ],
+   "crudo": "a3061c06000000009e20000010100000000000ba156f77650000000000000000000696ea00002280140000",
+   "copiado_de": "cuerpo de una captura del objeto 60054"
+  },
+  {
+   "entity_id": 102500004,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    3175,
+    3600
+   ],
+   "tile": [
+    99,
+    112
+   ],
+   "crudo": "a4061c0600000000670c0000100e00000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102500005,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    1714,
+    1872
+   ],
+   "tile": [
+    53,
+    58
+   ],
+   "crudo": "a5061c0600000000b2060000500700000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102500006,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    7886,
+    464
+   ],
+   "tile": [
+    246,
+    14
+   ],
+   "crudo": "a6061c0600000000ce1e0000d00100000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102500007,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    9217,
+    3824
+   ],
+   "tile": [
+    288,
+    119
+   ],
+   "crudo": "a7061c060000000001240000f00e00000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102500008,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    2726,
+    2512
+   ],
+   "tile": [
+    85,
+    78
+   ],
+   "crudo": "a8061c0600000000a60a0000d00900000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102500009,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    8793,
+    1744
+   ],
+   "tile": [
+    274,
+    54
+   ],
+   "crudo": "a9061c060000000059220000d00600000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  }
+ ]
+}

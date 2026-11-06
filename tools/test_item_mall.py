@@ -50,7 +50,19 @@ def test_recent_fashion_and_bubble_sell_verified_root_bags_not_their_rewards():
         assert {r['category'] for r in rows if r['item']==item}>={23,24,25,28}
         assert all(r.get('original_sale',{}).get('source','').startswith('https://ao.igg.com/')
                    for r in rows if r['item']==item)
-    assert {r['item'] for r in rows if r['category']==40}=={82270}
+    # Las filas de Taiwan (tools/mall_tw.py) van aparte: de IGG, en Chat
+    # Bubble solo se vende la raiz verificada 82270.
+    assert {r['item'] for r in rows if r['category']==40
+            and not r.get('price_source','').startswith('Taiwan mall capture')}=={82270}
+
+
+def test_taiwan_rows_are_marked_unique_and_new():
+    rows=mall.datos()['rows']
+    tw=[r for r in rows if r.get('price_source','').startswith('Taiwan mall capture')]
+    assert tw and all(r['flags']==1 and r['price']>0 for r in tw)
+    igg={r['item'] for r in rows if r not in tw}
+    # un objeto que IGG ya vendia conserva su fila y su precio originales
+    assert not igg & {r['item'] for r in tw}
     assert not {r['item'] for r in rows}&{82272,82411,82412,82413,82664,82665,82661}
 
 
@@ -198,3 +210,10 @@ def test_timed_delivery_preserves_deadline_through_save_move_and_expiry(world):
     world.now[0]=meta['mall_fin']+1
     mall.caducados(s)
     assert not s.inventario and not s.personaje.mejoras
+
+
+def test_product_ids_fit_the_client_table():
+    # El 0x005F del cliente (REA FUN_00620e80) descarta id >= 40001 y deja de
+    # avanzar: con los de Taiwan en 50000+ no salia ninguno.
+    ids=[r['id'] for r in mall.datos()['rows']]
+    assert all(0<i<40001 for i in ids) and len(ids)==len(set(ids))

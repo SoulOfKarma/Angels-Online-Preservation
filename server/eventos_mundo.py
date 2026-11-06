@@ -778,7 +778,11 @@ def al_pulsar(ses, tile):
     if not evento:
         return []
     ctx = ContextoSesion(ses, estado)
-    disparo = ev.DISPAROS_AL_PULSAR if not ctx.es_alma else (ev.ALMA_PULSA,)
+    # Vivo NO dispara los de alma (6): los totems de faccion llevan los dos
+    # (d=2 -> 1001 "The vine which symbolizes...", d=6 -> 2001 revivir), y
+    # con los dos el ultimo pisaba al primero: a un vivo le salia "Revival" y
+    # "You are not the angel of this totem" (Bluesand Realm y Lyceum).
+    disparo = (ev.PULSAR, ev.MIRAR) if not ctx.es_alma else (ev.ALMA_PULSA,)
     return _sin_mision(estado.stage, evento, _permiso_una_vez(
         ses, estado.stage, evento, ev.ejecutar(estado.stage, evento, disparo, ctx)))
 

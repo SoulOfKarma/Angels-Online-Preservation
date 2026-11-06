@@ -1,0 +1,3535 @@
+{
+ "_nota": "rotwood_abyss (stage 429). POBLADO DESDE EL CLIENTE, no desde una captura: los generadores de monstruos son objetos del propio map429.mpc -- el monstruo en el u16 del +34, la zona en el +21, el tiempo en el +38 y cuantos en el +42. Eso da el censo COMPLETO del mapa, que una captura no puede dar porque solo trae lo que estuvo a la vista. El entity_id es fabricado y estable, no el del servidor. Las casillas son las del TAG de cada generador; los que no declaran TAG ponen sus monstruos en la casilla del generador y en un anillo de radio 3 a su alrededor, que es la dispersion MEDIDA en el stage 73. Los objetos de mapa son los del .mpc cuyo id esta en la lista de los que el servidor manda de verdad, con el cuerpo del 0x000E copiado de una captura del mismo objeto. Los tornados se dibujan aparte, desde portales.json. Ver tools/poblar_del_cliente.py.",
+ "stage": 429,
+ "spawns": [
+  {
+   "entity_id": 92900000,
+   "nombre": "Malice of the Demon Academy",
+   "npc_type": 23980,
+   "sprite": 44166,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    13,
+    46
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 480
+  },
+  {
+   "entity_id": 92900001,
+   "nombre": "Violet Fungus",
+   "npc_type": 23921,
+   "sprite": 111626,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    81,
+    39
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 465
+  },
+  {
+   "entity_id": 92900002,
+   "nombre": "Violet Fungus",
+   "npc_type": 23921,
+   "sprite": 111626,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    86,
+    36
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 465
+  },
+  {
+   "entity_id": 92900003,
+   "nombre": "Violet Fungus",
+   "npc_type": 23921,
+   "sprite": 111626,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    77,
+    44
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 465
+  },
+  {
+   "entity_id": 92900004,
+   "nombre": "Violet Fungus",
+   "npc_type": 23921,
+   "sprite": 111626,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    76,
+    34
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 465
+  },
+  {
+   "entity_id": 92900005,
+   "nombre": "Violet Fungus",
+   "npc_type": 23921,
+   "sprite": 111626,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    76,
+    39
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 465
+  },
+  {
+   "entity_id": 92900006,
+   "nombre": "Violet Fungus",
+   "npc_type": 23921,
+   "sprite": 111626,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    81,
+    34
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 465
+  },
+  {
+   "entity_id": 92900007,
+   "nombre": "Violet Fungus",
+   "npc_type": 23921,
+   "sprite": 111626,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    73,
+    49
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 465
+  },
+  {
+   "entity_id": 92900008,
+   "nombre": "Violet Fungus",
+   "npc_type": 23921,
+   "sprite": 111626,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    86,
+    31
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 465
+  },
+  {
+   "entity_id": 92900009,
+   "nombre": "Violet Fungus",
+   "npc_type": 23921,
+   "sprite": 111626,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    91,
+    31
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 465
+  },
+  {
+   "entity_id": 92900010,
+   "nombre": "Violet Fungus",
+   "npc_type": 23921,
+   "sprite": 111626,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    72,
+    44
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 465
+  },
+  {
+   "entity_id": 92900011,
+   "nombre": "Violet Fungus",
+   "npc_type": 23921,
+   "sprite": 111626,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    71,
+    29
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 465
+  },
+  {
+   "entity_id": 92900012,
+   "nombre": "Violet Fungus",
+   "npc_type": 23921,
+   "sprite": 111626,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    71,
+    34
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 465
+  },
+  {
+   "entity_id": 92900013,
+   "nombre": "Violet Fungus",
+   "npc_type": 23921,
+   "sprite": 111626,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    71,
+    39
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 465
+  },
+  {
+   "entity_id": 92900014,
+   "nombre": "Violet Fungus",
+   "npc_type": 23921,
+   "sprite": 111626,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    76,
+    29
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 465
+  },
+  {
+   "entity_id": 92900015,
+   "nombre": "Violet Fungus",
+   "npc_type": 23921,
+   "sprite": 111626,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    81,
+    29
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 465
+  },
+  {
+   "entity_id": 92900016,
+   "nombre": "Violet Fungus",
+   "npc_type": 23921,
+   "sprite": 111626,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    68,
+    49
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 465
+  },
+  {
+   "entity_id": 92900017,
+   "nombre": "Violet Fungus",
+   "npc_type": 23921,
+   "sprite": 111626,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    68,
+    54
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 465
+  },
+  {
+   "entity_id": 92900018,
+   "nombre": "Violet Fungus",
+   "npc_type": 23921,
+   "sprite": 111626,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    73,
+    54
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 465
+  },
+  {
+   "entity_id": 92900019,
+   "nombre": "Violet Fungus",
+   "npc_type": 23921,
+   "sprite": 111626,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    86,
+    26
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 465
+  },
+  {
+   "entity_id": 92900020,
+   "nombre": "Violet Fungus",
+   "npc_type": 23921,
+   "sprite": 111626,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    91,
+    26
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 465
+  },
+  {
+   "entity_id": 92900021,
+   "nombre": "Violet Fungus",
+   "npc_type": 23921,
+   "sprite": 111626,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    95,
+    54
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 465
+  },
+  {
+   "entity_id": 92900022,
+   "nombre": "Violet Fungus",
+   "npc_type": 23921,
+   "sprite": 111626,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    96,
+    26
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 465
+  },
+  {
+   "entity_id": 92900023,
+   "nombre": "Violet Fungus",
+   "npc_type": 23921,
+   "sprite": 111626,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    96,
+    31
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 465
+  },
+  {
+   "entity_id": 92900024,
+   "nombre": "Violet Fungus",
+   "npc_type": 23921,
+   "sprite": 111626,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    67,
+    44
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 465
+  },
+  {
+   "entity_id": 92900025,
+   "nombre": "Violet Fungus",
+   "npc_type": 23921,
+   "sprite": 111626,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    66,
+    24
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 465
+  },
+  {
+   "entity_id": 92900026,
+   "nombre": "Flame Mushroom Sprite",
+   "npc_type": 23922,
+   "sprite": 111627,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    71,
+    24
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 466
+  },
+  {
+   "entity_id": 92900027,
+   "nombre": "Flame Mushroom Sprite",
+   "npc_type": 23922,
+   "sprite": 111627,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    76,
+    24
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 466
+  },
+  {
+   "entity_id": 92900028,
+   "nombre": "Flame Mushroom Sprite",
+   "npc_type": 23922,
+   "sprite": 111627,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    81,
+    24
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 466
+  },
+  {
+   "entity_id": 92900029,
+   "nombre": "Flame Mushroom Sprite",
+   "npc_type": 23922,
+   "sprite": 111627,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    99,
+    49
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 466
+  },
+  {
+   "entity_id": 92900030,
+   "nombre": "Flame Mushroom Sprite",
+   "npc_type": 23922,
+   "sprite": 111627,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    100,
+    54
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 466
+  },
+  {
+   "entity_id": 92900031,
+   "nombre": "Flame Mushroom Sprite",
+   "npc_type": 23922,
+   "sprite": 111627,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    101,
+    22
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 466
+  },
+  {
+   "entity_id": 92900032,
+   "nombre": "Flame Mushroom Sprite",
+   "npc_type": 23922,
+   "sprite": 111627,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    101,
+    27
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 466
+  },
+  {
+   "entity_id": 92900033,
+   "nombre": "Flame Mushroom Sprite",
+   "npc_type": 23922,
+   "sprite": 111627,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    86,
+    21
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 466
+  },
+  {
+   "entity_id": 92900034,
+   "nombre": "Flame Mushroom Sprite",
+   "npc_type": 23922,
+   "sprite": 111627,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    91,
+    21
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 466
+  },
+  {
+   "entity_id": 92900035,
+   "nombre": "Flame Mushroom Sprite",
+   "npc_type": 23922,
+   "sprite": 111627,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    96,
+    21
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 466
+  },
+  {
+   "entity_id": 92900036,
+   "nombre": "Flame Mushroom Sprite",
+   "npc_type": 23922,
+   "sprite": 111627,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    66,
+    29
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 466
+  },
+  {
+   "entity_id": 92900037,
+   "nombre": "Flame Mushroom Sprite",
+   "npc_type": 23922,
+   "sprite": 111627,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    66,
+    34
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 466
+  },
+  {
+   "entity_id": 92900038,
+   "nombre": "Flame Mushroom Sprite",
+   "npc_type": 23922,
+   "sprite": 111627,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    66,
+    39
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 466
+  },
+  {
+   "entity_id": 92900039,
+   "nombre": "Flame Mushroom Sprite",
+   "npc_type": 23922,
+   "sprite": 111627,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    69,
+    19
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 466
+  },
+  {
+   "entity_id": 92900040,
+   "nombre": "Flame Mushroom Sprite",
+   "npc_type": 23922,
+   "sprite": 111627,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    74,
+    19
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 466
+  },
+  {
+   "entity_id": 92900041,
+   "nombre": "Flame Mushroom Sprite",
+   "npc_type": 23922,
+   "sprite": 111627,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    79,
+    19
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 466
+  },
+  {
+   "entity_id": 92900042,
+   "nombre": "Flame Mushroom Sprite",
+   "npc_type": 23922,
+   "sprite": 111627,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    104,
+    48
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 466
+  },
+  {
+   "entity_id": 92900043,
+   "nombre": "Flame Mushroom Sprite",
+   "npc_type": 23922,
+   "sprite": 111627,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    90,
+    58
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 466
+  },
+  {
+   "entity_id": 92900044,
+   "nombre": "Flame Mushroom Sprite",
+   "npc_type": 23922,
+   "sprite": 111627,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    105,
+    53
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 466
+  },
+  {
+   "entity_id": 92900045,
+   "nombre": "Flame Mushroom Sprite",
+   "npc_type": 23922,
+   "sprite": 111627,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    105,
+    58
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 466
+  },
+  {
+   "entity_id": 92900046,
+   "nombre": "Flame Mushroom Sprite",
+   "npc_type": 23922,
+   "sprite": 111627,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    95,
+    59
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 466
+  },
+  {
+   "entity_id": 92900047,
+   "nombre": "Flame Mushroom Sprite",
+   "npc_type": 23922,
+   "sprite": 111627,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    100,
+    59
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 466
+  },
+  {
+   "entity_id": 92900048,
+   "nombre": "Flame Mushroom Sprite",
+   "npc_type": 23922,
+   "sprite": 111627,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    101,
+    17
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 466
+  },
+  {
+   "entity_id": 92900049,
+   "nombre": "Flame Mushroom Sprite",
+   "npc_type": 23922,
+   "sprite": 111627,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    106,
+    17
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 466
+  },
+  {
+   "entity_id": 92900050,
+   "nombre": "Flame Mushroom Sprite",
+   "npc_type": 23922,
+   "sprite": 111627,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    106,
+    22
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 466
+  },
+  {
+   "entity_id": 92900051,
+   "nombre": "Wisteria Fern",
+   "npc_type": 23923,
+   "sprite": 111628,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    106,
+    27
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 467
+  },
+  {
+   "entity_id": 92900052,
+   "nombre": "Wisteria Fern",
+   "npc_type": 23923,
+   "sprite": 111628,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    84,
+    16
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 467
+  },
+  {
+   "entity_id": 92900053,
+   "nombre": "Wisteria Fern",
+   "npc_type": 23923,
+   "sprite": 111628,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    89,
+    16
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 467
+  },
+  {
+   "entity_id": 92900054,
+   "nombre": "Wisteria Fern",
+   "npc_type": 23923,
+   "sprite": 111628,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    94,
+    16
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 467
+  },
+  {
+   "entity_id": 92900055,
+   "nombre": "Wisteria Fern",
+   "npc_type": 23923,
+   "sprite": 111628,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    109,
+    47
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 467
+  },
+  {
+   "entity_id": 92900056,
+   "nombre": "Wisteria Fern",
+   "npc_type": 23923,
+   "sprite": 111628,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    110,
+    52
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 467
+  },
+  {
+   "entity_id": 92900057,
+   "nombre": "Wisteria Fern",
+   "npc_type": 23923,
+   "sprite": 111628,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    110,
+    57
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 467
+  },
+  {
+   "entity_id": 92900058,
+   "nombre": "Wisteria Fern",
+   "npc_type": 23923,
+   "sprite": 111628,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    111,
+    14
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 467
+  },
+  {
+   "entity_id": 92900059,
+   "nombre": "Wisteria Fern",
+   "npc_type": 23923,
+   "sprite": 111628,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    111,
+    19
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 467
+  },
+  {
+   "entity_id": 92900060,
+   "nombre": "Wisteria Fern",
+   "npc_type": 23923,
+   "sprite": 111628,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    111,
+    24
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 467
+  },
+  {
+   "entity_id": 92900061,
+   "nombre": "Wisteria Fern",
+   "npc_type": 23923,
+   "sprite": 111628,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    99,
+    12
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 467
+  },
+  {
+   "entity_id": 92900062,
+   "nombre": "Wisteria Fern",
+   "npc_type": 23923,
+   "sprite": 111628,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    104,
+    12
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 467
+  },
+  {
+   "entity_id": 92900063,
+   "nombre": "Wisteria Fern",
+   "npc_type": 23923,
+   "sprite": 111628,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    93,
+    11
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 467
+  },
+  {
+   "entity_id": 92900064,
+   "nombre": "Wisteria Fern",
+   "npc_type": 23923,
+   "sprite": 111628,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    114,
+    44
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 467
+  },
+  {
+   "entity_id": 92900065,
+   "nombre": "Wisteria Fern",
+   "npc_type": 23923,
+   "sprite": 111628,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    63,
+    49
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 467
+  },
+  {
+   "entity_id": 92900066,
+   "nombre": "Wisteria Fern",
+   "npc_type": 23923,
+   "sprite": 111628,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    63,
+    54
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 467
+  },
+  {
+   "entity_id": 92900067,
+   "nombre": "Wisteria Fern",
+   "npc_type": 23923,
+   "sprite": 111628,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    110,
+    62
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 467
+  },
+  {
+   "entity_id": 92900068,
+   "nombre": "Wisteria Fern",
+   "npc_type": 23923,
+   "sprite": 111628,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    115,
+    49
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 467
+  },
+  {
+   "entity_id": 92900069,
+   "nombre": "Wisteria Fern",
+   "npc_type": 23923,
+   "sprite": 111628,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    115,
+    54
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 467
+  },
+  {
+   "entity_id": 92900070,
+   "nombre": "Wisteria Fern",
+   "npc_type": 23923,
+   "sprite": 111628,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    115,
+    59
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 467
+  },
+  {
+   "entity_id": 92900071,
+   "nombre": "Wisteria Fern",
+   "npc_type": 23923,
+   "sprite": 111628,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    62,
+    44
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 467
+  },
+  {
+   "entity_id": 92900072,
+   "nombre": "Wisteria Fern",
+   "npc_type": 23923,
+   "sprite": 111628,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    85,
+    63
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 467
+  },
+  {
+   "entity_id": 92900073,
+   "nombre": "Wisteria Fern",
+   "npc_type": 23923,
+   "sprite": 111628,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    90,
+    63
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 467
+  },
+  {
+   "entity_id": 92900074,
+   "nombre": "Wisteria Fern",
+   "npc_type": 23923,
+   "sprite": 111628,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    105,
+    63
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 467
+  },
+  {
+   "entity_id": 92900075,
+   "nombre": "Wisteria Fern",
+   "npc_type": 23923,
+   "sprite": 111628,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    109,
+    9
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 467
+  },
+  {
+   "entity_id": 92900076,
+   "nombre": "Masked King Magna",
+   "npc_type": 23930,
+   "sprite": 111574,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    116,
+    10
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 478
+  },
+  {
+   "entity_id": 92900077,
+   "nombre": "Blood Green Fern",
+   "npc_type": 23924,
+   "sprite": 111629,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    121,
+    55
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 468
+  },
+  {
+   "entity_id": 92900078,
+   "nombre": "Blood Green Fern",
+   "npc_type": 23924,
+   "sprite": 111629,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    126,
+    52
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 468
+  },
+  {
+   "entity_id": 92900079,
+   "nombre": "Blood Green Fern",
+   "npc_type": 23924,
+   "sprite": 111629,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    120,
+    50
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 468
+  },
+  {
+   "entity_id": 92900080,
+   "nombre": "Blood Green Fern",
+   "npc_type": 23924,
+   "sprite": 111629,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    125,
+    47
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 468
+  },
+  {
+   "entity_id": 92900081,
+   "nombre": "Blood Green Fern",
+   "npc_type": 23924,
+   "sprite": 111629,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    130,
+    47
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 468
+  },
+  {
+   "entity_id": 92900082,
+   "nombre": "Blood Green Fern",
+   "npc_type": 23924,
+   "sprite": 111629,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    120,
+    45
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 468
+  },
+  {
+   "entity_id": 92900083,
+   "nombre": "Blood Green Fern",
+   "npc_type": 23924,
+   "sprite": 111629,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    133,
+    68
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 468
+  },
+  {
+   "entity_id": 92900084,
+   "nombre": "Blood Green Fern",
+   "npc_type": 23924,
+   "sprite": 111629,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    128,
+    69
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 468
+  },
+  {
+   "entity_id": 92900085,
+   "nombre": "Blood Green Fern",
+   "npc_type": 23924,
+   "sprite": 111629,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    135,
+    43
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 468
+  },
+  {
+   "entity_id": 92900086,
+   "nombre": "Blood Green Fern",
+   "npc_type": 23924,
+   "sprite": 111629,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    135,
+    48
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 468
+  },
+  {
+   "entity_id": 92900087,
+   "nombre": "Blood Green Fern",
+   "npc_type": 23924,
+   "sprite": 111629,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    125,
+    42
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 468
+  },
+  {
+   "entity_id": 92900088,
+   "nombre": "Blood Green Fern",
+   "npc_type": 23924,
+   "sprite": 111629,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    130,
+    42
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 468
+  },
+  {
+   "entity_id": 92900089,
+   "nombre": "Blood Green Fern",
+   "npc_type": 23924,
+   "sprite": 111629,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    138,
+    65
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 468
+  },
+  {
+   "entity_id": 92900090,
+   "nombre": "Blood Green Fern",
+   "npc_type": 23924,
+   "sprite": 111629,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    138,
+    70
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 468
+  },
+  {
+   "entity_id": 92900091,
+   "nombre": "Blood Green Fern",
+   "npc_type": 23924,
+   "sprite": 111629,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    105,
+    68
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 468
+  },
+  {
+   "entity_id": 92900092,
+   "nombre": "Blood Green Fern",
+   "npc_type": 23924,
+   "sprite": 111629,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    133,
+    73
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 468
+  },
+  {
+   "entity_id": 92900093,
+   "nombre": "Blood Green Fern",
+   "npc_type": 23924,
+   "sprite": 111629,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    123,
+    74
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 468
+  },
+  {
+   "entity_id": 92900094,
+   "nombre": "Blood Green Fern",
+   "npc_type": 23924,
+   "sprite": 111629,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    128,
+    74
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 468
+  },
+  {
+   "entity_id": 92900095,
+   "nombre": "Blood Green Fern",
+   "npc_type": 23924,
+   "sprite": 111629,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    135,
+    38
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 468
+  },
+  {
+   "entity_id": 92900096,
+   "nombre": "Blood Green Fern",
+   "npc_type": 23924,
+   "sprite": 111629,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    140,
+    38
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 468
+  },
+  {
+   "entity_id": 92900097,
+   "nombre": "Gray-Blue Archer",
+   "npc_type": 23925,
+   "sprite": 111630,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    140,
+    43
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 471
+  },
+  {
+   "entity_id": 92900098,
+   "nombre": "Gray-Blue Archer",
+   "npc_type": 23925,
+   "sprite": 111630,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    140,
+    48
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 471
+  },
+  {
+   "entity_id": 92900099,
+   "nombre": "Gray-Blue Archer",
+   "npc_type": 23925,
+   "sprite": 111630,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    143,
+    64
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 471
+  },
+  {
+   "entity_id": 92900100,
+   "nombre": "Gray-Blue Archer",
+   "npc_type": 23925,
+   "sprite": 111630,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    143,
+    69
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 471
+  },
+  {
+   "entity_id": 92900101,
+   "nombre": "Gray-Blue Archer",
+   "npc_type": 23925,
+   "sprite": 111630,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    143,
+    74
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 471
+  },
+  {
+   "entity_id": 92900102,
+   "nombre": "Gray-Blue Archer",
+   "npc_type": 23925,
+   "sprite": 111630,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    145,
+    36
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 471
+  },
+  {
+   "entity_id": 92900103,
+   "nombre": "Gray-Blue Archer",
+   "npc_type": 23925,
+   "sprite": 111630,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    145,
+    41
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 471
+  },
+  {
+   "entity_id": 92900104,
+   "nombre": "Gray-Blue Archer",
+   "npc_type": 23925,
+   "sprite": 111630,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    145,
+    46
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 471
+  },
+  {
+   "entity_id": 92900105,
+   "nombre": "Gray-Blue Archer",
+   "npc_type": 23925,
+   "sprite": 111630,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    138,
+    75
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 471
+  },
+  {
+   "entity_id": 92900106,
+   "nombre": "Gray-Blue Archer",
+   "npc_type": 23925,
+   "sprite": 111630,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    103,
+    73
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 471
+  },
+  {
+   "entity_id": 92900107,
+   "nombre": "Gray-Blue Archer",
+   "npc_type": 23925,
+   "sprite": 111630,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    148,
+    51
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 471
+  },
+  {
+   "entity_id": 92900108,
+   "nombre": "Gray-Blue Archer",
+   "npc_type": 23925,
+   "sprite": 111630,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    148,
+    64
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 471
+  },
+  {
+   "entity_id": 92900109,
+   "nombre": "Gray-Blue Archer",
+   "npc_type": 23925,
+   "sprite": 111630,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    148,
+    69
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 471
+  },
+  {
+   "entity_id": 92900110,
+   "nombre": "Gray-Blue Archer",
+   "npc_type": 23925,
+   "sprite": 111630,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    148,
+    74
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 471
+  },
+  {
+   "entity_id": 92900111,
+   "nombre": "Gray-Blue Archer",
+   "npc_type": 23925,
+   "sprite": 111630,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    133,
+    78
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 471
+  },
+  {
+   "entity_id": 92900112,
+   "nombre": "Gray-Blue Archer",
+   "npc_type": 23925,
+   "sprite": 111630,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    100,
+    64
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 471
+  },
+  {
+   "entity_id": 92900113,
+   "nombre": "Gray-Blue Archer",
+   "npc_type": 23925,
+   "sprite": 111630,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    100,
+    78
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 471
+  },
+  {
+   "entity_id": 92900114,
+   "nombre": "Gray-Blue Archer",
+   "npc_type": 23925,
+   "sprite": 111630,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    119,
+    79
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 471
+  },
+  {
+   "entity_id": 92900115,
+   "nombre": "Gray-Blue Archer",
+   "npc_type": 23925,
+   "sprite": 111630,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    124,
+    79
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 471
+  },
+  {
+   "entity_id": 92900116,
+   "nombre": "Gray-Blue Archer",
+   "npc_type": 23925,
+   "sprite": 111630,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    143,
+    79
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 471
+  },
+  {
+   "entity_id": 92900117,
+   "nombre": "Netherworld Mushroom",
+   "npc_type": 23926,
+   "sprite": 111631,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    150,
+    35
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 472
+  },
+  {
+   "entity_id": 92900118,
+   "nombre": "Netherworld Mushroom",
+   "npc_type": 23926,
+   "sprite": 111631,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    150,
+    40
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 472
+  },
+  {
+   "entity_id": 92900119,
+   "nombre": "Netherworld Mushroom",
+   "npc_type": 23926,
+   "sprite": 111631,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    150,
+    45
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 472
+  },
+  {
+   "entity_id": 92900120,
+   "nombre": "Netherworld Mushroom",
+   "npc_type": 23926,
+   "sprite": 111631,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    148,
+    79
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 472
+  },
+  {
+   "entity_id": 92900121,
+   "nombre": "Netherworld Mushroom",
+   "npc_type": 23926,
+   "sprite": 111631,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    138,
+    80
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 472
+  },
+  {
+   "entity_id": 92900122,
+   "nombre": "Netherworld Mushroom",
+   "npc_type": 23926,
+   "sprite": 111631,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    153,
+    50
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 472
+  },
+  {
+   "entity_id": 92900123,
+   "nombre": "Netherworld Mushroom",
+   "npc_type": 23926,
+   "sprite": 111631,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    153,
+    64
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 472
+  },
+  {
+   "entity_id": 92900124,
+   "nombre": "Netherworld Mushroom",
+   "npc_type": 23926,
+   "sprite": 111631,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    153,
+    69
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 472
+  },
+  {
+   "entity_id": 92900125,
+   "nombre": "Netherworld Mushroom",
+   "npc_type": 23926,
+   "sprite": 111631,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    153,
+    74
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 472
+  },
+  {
+   "entity_id": 92900126,
+   "nombre": "Netherworld Mushroom",
+   "npc_type": 23926,
+   "sprite": 111631,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    153,
+    79
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 472
+  },
+  {
+   "entity_id": 92900127,
+   "nombre": "Netherworld Mushroom",
+   "npc_type": 23926,
+   "sprite": 111631,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    98,
+    69
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 472
+  },
+  {
+   "entity_id": 92900128,
+   "nombre": "Netherworld Mushroom",
+   "npc_type": 23926,
+   "sprite": 111631,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    116,
+    25
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 472
+  },
+  {
+   "entity_id": 92900129,
+   "nombre": "Netherworld Mushroom",
+   "npc_type": 23926,
+   "sprite": 111631,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    155,
+    34
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 472
+  },
+  {
+   "entity_id": 92900130,
+   "nombre": "Netherworld Mushroom",
+   "npc_type": 23926,
+   "sprite": 111631,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    155,
+    39
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 472
+  },
+  {
+   "entity_id": 92900131,
+   "nombre": "Netherworld Mushroom",
+   "npc_type": 23926,
+   "sprite": 111631,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    155,
+    44
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 472
+  },
+  {
+   "entity_id": 92900132,
+   "nombre": "Netherworld Mushroom",
+   "npc_type": 23926,
+   "sprite": 111631,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    96,
+    83
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 472
+  },
+  {
+   "entity_id": 92900133,
+   "nombre": "Netherworld Mushroom",
+   "npc_type": 23926,
+   "sprite": 111631,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    121,
+    23
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 472
+  },
+  {
+   "entity_id": 92900134,
+   "nombre": "Netherworld Mushroom",
+   "npc_type": 23926,
+   "sprite": 111631,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    129,
+    83
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 472
+  },
+  {
+   "entity_id": 92900135,
+   "nombre": "Netherworld Mushroom",
+   "npc_type": 23926,
+   "sprite": 111631,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    95,
+    64
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 472
+  },
+  {
+   "entity_id": 92900136,
+   "nombre": "Netherworld Mushroom",
+   "npc_type": 23926,
+   "sprite": 111631,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    95,
+    74
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 472
+  },
+  {
+   "entity_id": 92900137,
+   "nombre": "F-07",
+   "npc_type": 23933,
+   "sprite": 111581,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    31,
+    143
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 480
+  },
+  {
+   "entity_id": 92900138,
+   "nombre": "Mitaunos",
+   "npc_type": 23934,
+   "sprite": 111582,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    159,
+    129
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 480
+  },
+  {
+   "entity_id": 92900139,
+   "nombre": "Susula",
+   "npc_type": 23935,
+   "sprite": 111583,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    174,
+    103
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 480
+  },
+  {
+   "entity_id": 92900140,
+   "nombre": "Wave Warden Nero",
+   "npc_type": 23931,
+   "sprite": 111577,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    126,
+    22
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 478
+  },
+  {
+   "entity_id": 92900141,
+   "nombre": "Deep Sea Barrel Soul Vilot",
+   "npc_type": 23932,
+   "sprite": 111580,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    121,
+    96
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 478
+  },
+  {
+   "entity_id": 92900142,
+   "nombre": "Elite-Flame Mushroom Sprite",
+   "npc_type": 23927,
+   "sprite": 111627,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    289,
+    28
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 474
+  },
+  {
+   "entity_id": 92900143,
+   "nombre": "Elite-Flame Mushroom Sprite",
+   "npc_type": 23927,
+   "sprite": 111627,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    284,
+    28
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 474
+  },
+  {
+   "entity_id": 92900144,
+   "nombre": "Elite-Flame Mushroom Sprite",
+   "npc_type": 23927,
+   "sprite": 111627,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    284,
+    23
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 474
+  },
+  {
+   "entity_id": 92900145,
+   "nombre": "Elite-Flame Mushroom Sprite",
+   "npc_type": 23927,
+   "sprite": 111627,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    279,
+    23
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 474
+  },
+  {
+   "entity_id": 92900146,
+   "nombre": "Elite-Flame Mushroom Sprite",
+   "npc_type": 23927,
+   "sprite": 111627,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    289,
+    23
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 474
+  },
+  {
+   "entity_id": 92900147,
+   "nombre": "Elite-Blood Green Fern",
+   "npc_type": 23928,
+   "sprite": 111629,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    294,
+    23
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 475
+  },
+  {
+   "entity_id": 92900148,
+   "nombre": "Elite-Blood Green Fern",
+   "npc_type": 23928,
+   "sprite": 111629,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    279,
+    28
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 475
+  },
+  {
+   "entity_id": 92900149,
+   "nombre": "Elite-Blood Green Fern",
+   "npc_type": 23928,
+   "sprite": 111629,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    294,
+    28
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 475
+  },
+  {
+   "entity_id": 92900150,
+   "nombre": "Elite-Blood Green Fern",
+   "npc_type": 23928,
+   "sprite": 111629,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    274,
+    18
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 475
+  },
+  {
+   "entity_id": 92900151,
+   "nombre": "Elite-Blood Green Fern",
+   "npc_type": 23928,
+   "sprite": 111629,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    279,
+    18
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 475
+  },
+  {
+   "entity_id": 92900152,
+   "nombre": "Elite-Netherworld Mushroom",
+   "npc_type": 23929,
+   "sprite": 111631,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    116,
+    91
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 476
+  },
+  {
+   "entity_id": 92900153,
+   "nombre": "Elite-Netherworld Mushroom",
+   "npc_type": 23929,
+   "sprite": 111631,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    126,
+    95
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 476
+  },
+  {
+   "entity_id": 92900154,
+   "nombre": "Elite-Netherworld Mushroom",
+   "npc_type": 23929,
+   "sprite": 111631,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    121,
+    91
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 476
+  },
+  {
+   "entity_id": 92900155,
+   "nombre": "Elite-Netherworld Mushroom",
+   "npc_type": 23929,
+   "sprite": 111631,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    126,
+    90
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 476
+  },
+  {
+   "entity_id": 92900156,
+   "nombre": "Elite-Netherworld Mushroom",
+   "npc_type": 23929,
+   "sprite": 111631,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    117,
+    86
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 476
+  },
+  {
+   "entity_id": 92900157,
+   "nombre": "Boom Mushroom",
+   "npc_type": 23936,
+   "sprite": 111638,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    83,
+    74
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 92900158,
+   "nombre": "Boom Mushroom",
+   "npc_type": 23936,
+   "sprite": 111638,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    83,
+    79
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 92900159,
+   "nombre": "Boom Mushroom",
+   "npc_type": 23936,
+   "sprite": 111638,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    84,
+    69
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 92900160,
+   "nombre": "Boom Mushroom",
+   "npc_type": 23936,
+   "sprite": 111638,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    88,
+    74
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 92900161,
+   "nombre": "Boom Mushroom",
+   "npc_type": 23936,
+   "sprite": 111638,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    88,
+    79
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 92900162,
+   "nombre": "Boom Mushroom",
+   "npc_type": 23936,
+   "sprite": 111638,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    89,
+    68
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 92900163,
+   "nombre": "Boom Mushroom",
+   "npc_type": 23936,
+   "sprite": 111638,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    82,
+    84
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 92900164,
+   "nombre": "Boom Mushroom",
+   "npc_type": 23936,
+   "sprite": 111638,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    87,
+    84
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 92900165,
+   "nombre": "Boom Mushroom",
+   "npc_type": 23936,
+   "sprite": 111638,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    92,
+    88
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 92900166,
+   "nombre": "Boom Mushroom",
+   "npc_type": 23936,
+   "sprite": 111638,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    97,
+    88
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 92900167,
+   "nombre": "Boom Mushroom",
+   "npc_type": 23936,
+   "sprite": 111638,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    68,
+    79
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 92900168,
+   "nombre": "Boom Mushroom",
+   "npc_type": 23936,
+   "sprite": 111638,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    82,
+    89
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 92900169,
+   "nombre": "Boom Mushroom",
+   "npc_type": 23936,
+   "sprite": 111638,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    87,
+    89
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 92900170,
+   "nombre": "Boom Mushroom",
+   "npc_type": 23936,
+   "sprite": 111638,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    66,
+    90
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 92900171,
+   "nombre": "Boom Mushroom",
+   "npc_type": 23936,
+   "sprite": 111638,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    65,
+    74
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 92900172,
+   "nombre": "Boom Mushroom",
+   "npc_type": 23936,
+   "sprite": 111638,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    64,
+    84
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 92900173,
+   "nombre": "Boom Mushroom",
+   "npc_type": 23936,
+   "sprite": 111638,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    92,
+    93
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 92900174,
+   "nombre": "Boom Mushroom",
+   "npc_type": 23936,
+   "sprite": 111638,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    97,
+    93
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 92900175,
+   "nombre": "Boom Mushroom",
+   "npc_type": 23936,
+   "sprite": 111638,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    102,
+    90
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 92900176,
+   "nombre": "Boom Mushroom",
+   "npc_type": 23936,
+   "sprite": 111638,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    63,
+    79
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 92900177,
+   "nombre": "Little Flower Bud",
+   "npc_type": 23938,
+   "sprite": 111640,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    156,
+    109
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 92900178,
+   "nombre": "Little Flower Bud",
+   "npc_type": 23938,
+   "sprite": 111640,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    153,
+    104
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 92900179,
+   "nombre": "Little Flower Bud",
+   "npc_type": 23938,
+   "sprite": 111640,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    162,
+    106
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 92900180,
+   "nombre": "Little Flower Bud",
+   "npc_type": 23938,
+   "sprite": 111640,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    149,
+    99
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 92900181,
+   "nombre": "Little Flower Bud",
+   "npc_type": 23938,
+   "sprite": 111640,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    159,
+    101
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 92900182,
+   "nombre": "Little Flower Bud",
+   "npc_type": 23938,
+   "sprite": 111640,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    168,
+    104
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 92900183,
+   "nombre": "Little Flower Bud",
+   "npc_type": 23938,
+   "sprite": 111640,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    154,
+    96
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 92900184,
+   "nombre": "Little Flower Bud",
+   "npc_type": 23938,
+   "sprite": 111640,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    165,
+    99
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 92900185,
+   "nombre": "Little Flower Bud",
+   "npc_type": 23938,
+   "sprite": 111640,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    173,
+    98
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 92900186,
+   "nombre": "Little Flower Bud",
+   "npc_type": 23938,
+   "sprite": 111640,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    183,
+    101
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 92900187,
+   "nombre": "Little Flower Bud",
+   "npc_type": 23938,
+   "sprite": 111640,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    161,
+    93
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 92900188,
+   "nombre": "Little Flower Bud",
+   "npc_type": 23938,
+   "sprite": 111640,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    181,
+    89
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 92900189,
+   "nombre": "Little Flower Bud",
+   "npc_type": 23938,
+   "sprite": 111640,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    181,
+    95
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 92900190,
+   "nombre": "Little Flower Bud",
+   "npc_type": 23938,
+   "sprite": 111640,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    166,
+    88
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 92900191,
+   "nombre": "Little Flower Bud",
+   "npc_type": 23938,
+   "sprite": 111640,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    175,
+    90
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 92900192,
+   "nombre": "Little Flower Bud",
+   "npc_type": 23938,
+   "sprite": 111640,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    187,
+    92
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 92900193,
+   "nombre": "Little Flower Bud",
+   "npc_type": 23938,
+   "sprite": 111640,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    169,
+    93
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 92900194,
+   "nombre": "Little Flower Bud",
+   "npc_type": 23938,
+   "sprite": 111640,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    150,
+    91
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 92900195,
+   "nombre": "Little Flower Bud",
+   "npc_type": 23938,
+   "sprite": 111640,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    156,
+    87
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 92900196,
+   "nombre": "Little Flower Bud",
+   "npc_type": 23938,
+   "sprite": 111640,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    174,
+    85
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 92900197,
+   "nombre": "Little Whirlpool",
+   "npc_type": 23937,
+   "sprite": 111637,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    161,
+    88
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 1
+  },
+  {
+   "entity_id": 90429000,
+   "nombre": "Aiwei",
+   "nombre_completo": "Aiwei",
+   "npc_type": 24876,
+   "sprite": 40791,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    43,
+    18
+   ],
+   "direccion": 6,
+   "visible": 1,
+   "puesto_por": "npcs_del_cliente"
+  },
+  {
+   "entity_id": 90429001,
+   "nombre": "Ruins Guardian",
+   "nombre_completo": "Ruins Guardian",
+   "npc_type": 24877,
+   "sprite": 40709,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    76,
+    53
+   ],
+   "direccion": 6,
+   "visible": 1,
+   "puesto_por": "npcs_del_cliente"
+  }
+ ],
+ "recursos": [
+  {
+   "entity_id": 102900000,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    5043,
+    1328
+   ],
+   "tile": [
+    157,
+    41
+   ],
+   "crudo": "2021220600000000b3130000300500000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102900001,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    6738,
+    3024
+   ],
+   "tile": [
+    210,
+    94
+   ],
+   "crudo": "2121220600000000521a0000d00b00000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102900002,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    3664,
+    1584
+   ],
+   "tile": [
+    114,
+    49
+   ],
+   "crudo": "2221220600000000500e0000300600000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102900003,
+   "sprite": 60461,
+   "capa": 0,
+   "px": [
+    4746,
+    2800
+   ],
+   "tile": [
+    148,
+    87
+   ],
+   "crudo": "23212206000000008a120000f00a00000000000023000000000000000000000000062dec00000480000000",
+   "copiado_de": "cuerpo de una captura del objeto 60461"
+  },
+  {
+   "entity_id": 102900004,
+   "sprite": 60461,
+   "capa": 0,
+   "px": [
+    5003,
+    2672
+   ],
+   "tile": [
+    156,
+    83
+   ],
+   "crudo": "24212206000000008b130000700a00000000000023000000000000000000000000062dec00000480000000",
+   "copiado_de": "cuerpo de una captura del objeto 60461"
+  },
+  {
+   "entity_id": 102900005,
+   "sprite": 60461,
+   "capa": 2,
+   "px": [
+    1894,
+    4560
+   ],
+   "tile": [
+    59,
+    142
+   ],
+   "crudo": "252122060200000066070000d01100000000000023000000000000000000000000062dec00000480000000",
+   "copiado_de": "cuerpo de una captura del objeto 60461"
+  },
+  {
+   "entity_id": 102900006,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    6328,
+    1744
+   ],
+   "tile": [
+    197,
+    54
+   ],
+   "crudo": "2621220600000000b8180000d00600000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102900007,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    5114,
+    4144
+   ],
+   "tile": [
+    159,
+    129
+   ],
+   "crudo": "2721220600000000fa130000301000000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102900008,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    6428,
+    3856
+   ],
+   "tile": [
+    200,
+    120
+   ],
+   "crudo": "28212206000000001c190000100f00000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102900009,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    3581,
+    3760
+   ],
+   "tile": [
+    111,
+    117
+   ],
+   "crudo": "2921220600000000fd0d0000b00e00000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102900010,
+   "sprite": 60461,
+   "capa": 2,
+   "px": [
+    5302,
+    1872
+   ],
+   "tile": [
+    165,
+    58
+   ],
+   "crudo": "2a21220602000000b6140000500700000000000023000000000000000000000000062dec00000480000000",
+   "copiado_de": "cuerpo de una captura del objeto 60461"
+  },
+  {
+   "entity_id": 102900011,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    2866,
+    1872
+   ],
+   "tile": [
+    89,
+    58
+   ],
+   "crudo": "2b21220600000000320b0000500700000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102900012,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    3580,
+    848
+   ],
+   "tile": [
+    111,
+    26
+   ],
+   "crudo": "2c21220600000000fc0d0000500300000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102900013,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    2203,
+    560
+   ],
+   "tile": [
+    68,
+    17
+   ],
+   "crudo": "2d212206000000009b080000300200000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102900014,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    4542,
+    656
+   ],
+   "tile": [
+    141,
+    20
+   ],
+   "crudo": "2e21220600000000be110000900200000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102900015,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    5789,
+    752
+   ],
+   "tile": [
+    180,
+    23
+   ],
+   "crudo": "2f212206000000009d160000f00200000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102900016,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    6621,
+    816
+   ],
+   "tile": [
+    206,
+    25
+   ],
+   "crudo": "3021220600000000dd190000300300000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102900017,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    7412,
+    1232
+   ],
+   "tile": [
+    231,
+    38
+   ],
+   "crudo": "3121220600000000f41c0000d00400000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102900018,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    9206,
+    2448
+   ],
+   "tile": [
+    287,
+    76
+   ],
+   "crudo": "3221220600000000f6230000900900000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102900019,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    1268,
+    1552
+   ],
+   "tile": [
+    39,
+    48
+   ],
+   "crudo": "3321220600000000f4040000100600000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102900020,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    8970,
+    4016
+   ],
+   "tile": [
+    280,
+    125
+   ],
+   "crudo": "34212206000000000a230000b00f00000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102900021,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    7252,
+    4272
+   ],
+   "tile": [
+    226,
+    133
+   ],
+   "crudo": "3521220600000000541c0000b01000000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102900022,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    7670,
+    4144
+   ],
+   "tile": [
+    239,
+    129
+   ],
+   "crudo": "3621220600000000f61d0000301000000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102900023,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    6490,
+    5328
+   ],
+   "tile": [
+    202,
+    166
+   ],
+   "crudo": "37212206000000005a190000d01400000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102900024,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    5268,
+    5424
+   ],
+   "tile": [
+    164,
+    169
+   ],
+   "crudo": "382122060000000094140000301500000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102900025,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    9384,
+    2128
+   ],
+   "tile": [
+    293,
+    66
+   ],
+   "crudo": "3921220600000000a8240000500800000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102900026,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    3910,
+    4912
+   ],
+   "tile": [
+    122,
+    153
+   ],
+   "crudo": "3a21220600000000460f0000301300000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102900027,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    2699,
+    4880
+   ],
+   "tile": [
+    84,
+    152
+   ],
+   "crudo": "3b212206000000008b0a0000101300000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102900028,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    2395,
+    4656
+   ],
+   "tile": [
+    74,
+    145
+   ],
+   "crudo": "3c212206000000005b090000301200000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102900029,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    1056,
+    3408
+   ],
+   "tile": [
+    33,
+    106
+   ],
+   "crudo": "3d2122060000000020040000500d00000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102900030,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    2169,
+    2928
+   ],
+   "tile": [
+    67,
+    91
+   ],
+   "crudo": "3e2122060000000079080000700b00000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102900031,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    1433,
+    2800
+   ],
+   "tile": [
+    44,
+    87
+   ],
+   "crudo": "3f2122060000000099050000f00a00000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102900032,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    2888,
+    2832
+   ],
+   "tile": [
+    90,
+    88
+   ],
+   "crudo": "4021220600000000480b0000100b00000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102900033,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    5811,
+    3280
+   ],
+   "tile": [
+    181,
+    102
+   ],
+   "crudo": "4121220600000000b3160000d00c00000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102900034,
+   "sprite": 60095,
+   "capa": 0,
+   "px": [
+    5841,
+    3440
+   ],
+   "tile": [
+    182,
+    107
+   ],
+   "crudo": "4221220600000000d1160000700d00000000000027000000000000001a000000dc06bfea00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60095"
+  }
+ ]
+}

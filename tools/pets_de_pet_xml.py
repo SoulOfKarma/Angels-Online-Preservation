@@ -84,8 +84,11 @@ def cargar(raiz=None):
                 continue
             d = {}
             for k, v in CAMPOS.items():
-                val = a.get(k)
-                if val is None or val == '':
+                # Taiwan trae clases con espacios (' 輔助攻擊型', '魔攻型 ') y
+                # el servidor las busca tal cual en petattrib: sin recortar,
+                # esas mascotas caian en la clase por defecto.
+                val = (a.get(k) or '').strip()
+                if val == '':
                     continue
                 d[v] = int(val) if val.lstrip('-').isdigit() else val
             idx[int(a['編號'])] = d

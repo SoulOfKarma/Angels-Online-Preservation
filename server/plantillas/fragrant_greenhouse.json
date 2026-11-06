@@ -1,0 +1,4397 @@
+{
+ "_nota": "fragrant_greenhouse (stage 428). POBLADO DESDE EL CLIENTE, no desde una captura: los generadores de monstruos son objetos del propio map428.mpc -- el monstruo en el u16 del +34, la zona en el +21, el tiempo en el +38 y cuantos en el +42. Eso da el censo COMPLETO del mapa, que una captura no puede dar porque solo trae lo que estuvo a la vista. El entity_id es fabricado y estable, no el del servidor. Las casillas son las del TAG de cada generador; los que no declaran TAG ponen sus monstruos en la casilla del generador y en un anillo de radio 3 a su alrededor, que es la dispersion MEDIDA en el stage 73. Los objetos de mapa son los del .mpc cuyo id esta en la lista de los que el servidor manda de verdad, con el cuerpo del 0x000E copiado de una captura del mismo objeto. Los tornados se dibujan aparte, desde portales.json. Ver tools/poblar_del_cliente.py.",
+ "stage": 428,
+ "spawns": [
+  {
+   "entity_id": 92800000,
+   "nombre": "Jade Forest Spirit",
+   "npc_type": 23911,
+   "sprite": 111618,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    20,
+    106
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 450
+  },
+  {
+   "entity_id": 92800001,
+   "nombre": "Jade Forest Spirit",
+   "npc_type": 23911,
+   "sprite": 111618,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    15,
+    103
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 450
+  },
+  {
+   "entity_id": 92800002,
+   "nombre": "Jade Forest Spirit",
+   "npc_type": 23911,
+   "sprite": 111618,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    20,
+    101
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 450
+  },
+  {
+   "entity_id": 92800003,
+   "nombre": "Jade Forest Spirit",
+   "npc_type": 23911,
+   "sprite": 111618,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    25,
+    105
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 450
+  },
+  {
+   "entity_id": 92800004,
+   "nombre": "Jade Forest Spirit",
+   "npc_type": 23911,
+   "sprite": 111618,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    25,
+    114
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 450
+  },
+  {
+   "entity_id": 92800005,
+   "nombre": "Jade Forest Spirit",
+   "npc_type": 23911,
+   "sprite": 111618,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    25,
+    98
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 450
+  },
+  {
+   "entity_id": 92800006,
+   "nombre": "Jade Forest Spirit",
+   "npc_type": 23911,
+   "sprite": 111618,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    19,
+    117
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 450
+  },
+  {
+   "entity_id": 92800007,
+   "nombre": "Jade Forest Spirit",
+   "npc_type": 23911,
+   "sprite": 111618,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    30,
+    107
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 450
+  },
+  {
+   "entity_id": 92800008,
+   "nombre": "Jade Forest Spirit",
+   "npc_type": 23911,
+   "sprite": 111618,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    30,
+    112
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 450
+  },
+  {
+   "entity_id": 92800009,
+   "nombre": "Jade Forest Spirit",
+   "npc_type": 23911,
+   "sprite": 111618,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    30,
+    117
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 450
+  },
+  {
+   "entity_id": 92800010,
+   "nombre": "Jade Forest Spirit",
+   "npc_type": 23911,
+   "sprite": 111618,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    24,
+    119
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 450
+  },
+  {
+   "entity_id": 92800011,
+   "nombre": "Jade Forest Spirit",
+   "npc_type": 23911,
+   "sprite": 111618,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    13,
+    120
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 450
+  },
+  {
+   "entity_id": 92800012,
+   "nombre": "Jade Forest Spirit",
+   "npc_type": 23911,
+   "sprite": 111618,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    30,
+    95
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 450
+  },
+  {
+   "entity_id": 92800013,
+   "nombre": "Jade Forest Spirit",
+   "npc_type": 23911,
+   "sprite": 111618,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    18,
+    122
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 450
+  },
+  {
+   "entity_id": 92800014,
+   "nombre": "Jade Forest Spirit",
+   "npc_type": 23911,
+   "sprite": 111618,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    29,
+    122
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 450
+  },
+  {
+   "entity_id": 92800015,
+   "nombre": "Jade Forest Spirit",
+   "npc_type": 23911,
+   "sprite": 111618,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    35,
+    95
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 450
+  },
+  {
+   "entity_id": 92800016,
+   "nombre": "Jade Forest Spirit",
+   "npc_type": 23911,
+   "sprite": 111618,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    35,
+    110
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 450
+  },
+  {
+   "entity_id": 92800017,
+   "nombre": "Jade Forest Spirit",
+   "npc_type": 23911,
+   "sprite": 111618,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    35,
+    115
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 450
+  },
+  {
+   "entity_id": 92800018,
+   "nombre": "Jade Forest Spirit",
+   "npc_type": 23911,
+   "sprite": 111618,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    35,
+    120
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 450
+  },
+  {
+   "entity_id": 92800019,
+   "nombre": "Jade Forest Spirit",
+   "npc_type": 23911,
+   "sprite": 111618,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    7,
+    123
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 450
+  },
+  {
+   "entity_id": 92800020,
+   "nombre": "Jade Forest Spirit",
+   "npc_type": 23911,
+   "sprite": 111618,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    23,
+    124
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 450
+  },
+  {
+   "entity_id": 92800021,
+   "nombre": "Jade Forest Spirit",
+   "npc_type": 23911,
+   "sprite": 111618,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    12,
+    125
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 450
+  },
+  {
+   "entity_id": 92800022,
+   "nombre": "Jade Forest Spirit",
+   "npc_type": 23911,
+   "sprite": 111618,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    34,
+    125
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 450
+  },
+  {
+   "entity_id": 92800023,
+   "nombre": "Jade Forest Spirit",
+   "npc_type": 23911,
+   "sprite": 111618,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    125
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 450
+  },
+  {
+   "entity_id": 92800024,
+   "nombre": "Jade Forest Spirit",
+   "npc_type": 23911,
+   "sprite": 111618,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    40,
+    92
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 450
+  },
+  {
+   "entity_id": 92800025,
+   "nombre": "Jade Forest Spirit",
+   "npc_type": 23911,
+   "sprite": 111618,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    40,
+    97
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 450
+  },
+  {
+   "entity_id": 92800026,
+   "nombre": "Jade Forest Spirit",
+   "npc_type": 23911,
+   "sprite": 111618,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    40,
+    111
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 450
+  },
+  {
+   "entity_id": 92800027,
+   "nombre": "Jade Forest Spirit",
+   "npc_type": 23911,
+   "sprite": 111618,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    40,
+    116
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 450
+  },
+  {
+   "entity_id": 92800028,
+   "nombre": "Jade Forest Spirit",
+   "npc_type": 23911,
+   "sprite": 111618,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    17,
+    127
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 450
+  },
+  {
+   "entity_id": 92800029,
+   "nombre": "Jade Forest Spirit",
+   "npc_type": 23911,
+   "sprite": 111618,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    28,
+    127
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 450
+  },
+  {
+   "entity_id": 92800030,
+   "nombre": "Violet Night Guardian",
+   "npc_type": 23912,
+   "sprite": 111619,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    104,
+    63
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 451
+  },
+  {
+   "entity_id": 92800031,
+   "nombre": "Violet Night Guardian",
+   "npc_type": 23912,
+   "sprite": 111619,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    99,
+    60
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 451
+  },
+  {
+   "entity_id": 92800032,
+   "nombre": "Violet Night Guardian",
+   "npc_type": 23912,
+   "sprite": 111619,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    104,
+    58
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 451
+  },
+  {
+   "entity_id": 92800033,
+   "nombre": "Violet Night Guardian",
+   "npc_type": 23912,
+   "sprite": 111619,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    109,
+    58
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 451
+  },
+  {
+   "entity_id": 92800034,
+   "nombre": "Violet Night Guardian",
+   "npc_type": 23912,
+   "sprite": 111619,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    109,
+    63
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 451
+  },
+  {
+   "entity_id": 92800035,
+   "nombre": "Violet Night Guardian",
+   "npc_type": 23912,
+   "sprite": 111619,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    95,
+    55
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 451
+  },
+  {
+   "entity_id": 92800036,
+   "nombre": "Violet Night Guardian",
+   "npc_type": 23912,
+   "sprite": 111619,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    94,
+    60
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 451
+  },
+  {
+   "entity_id": 92800037,
+   "nombre": "Violet Night Guardian",
+   "npc_type": 23912,
+   "sprite": 111619,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    114,
+    54
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 451
+  },
+  {
+   "entity_id": 92800038,
+   "nombre": "Violet Night Guardian",
+   "npc_type": 23912,
+   "sprite": 111619,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    114,
+    59
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 451
+  },
+  {
+   "entity_id": 92800039,
+   "nombre": "Violet Night Guardian",
+   "npc_type": 23912,
+   "sprite": 111619,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    114,
+    64
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 451
+  },
+  {
+   "entity_id": 92800040,
+   "nombre": "Violet Night Guardian",
+   "npc_type": 23912,
+   "sprite": 111619,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    115,
+    75
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 451
+  },
+  {
+   "entity_id": 92800041,
+   "nombre": "Violet Night Guardian",
+   "npc_type": 23912,
+   "sprite": 111619,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    116,
+    69
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 451
+  },
+  {
+   "entity_id": 92800042,
+   "nombre": "Violet Night Guardian",
+   "npc_type": 23912,
+   "sprite": 111619,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    100,
+    53
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 451
+  },
+  {
+   "entity_id": 92800043,
+   "nombre": "Violet Night Guardian",
+   "npc_type": 23912,
+   "sprite": 111619,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    105,
+    53
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 451
+  },
+  {
+   "entity_id": 92800044,
+   "nombre": "Violet Night Guardian",
+   "npc_type": 23912,
+   "sprite": 111619,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    109,
+    78
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 451
+  },
+  {
+   "entity_id": 92800045,
+   "nombre": "Violet Night Guardian",
+   "npc_type": 23912,
+   "sprite": 111619,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    119,
+    57
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 451
+  },
+  {
+   "entity_id": 92800046,
+   "nombre": "Violet Night Guardian",
+   "npc_type": 23912,
+   "sprite": 111619,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    119,
+    62
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 451
+  },
+  {
+   "entity_id": 92800047,
+   "nombre": "Violet Night Guardian",
+   "npc_type": 23912,
+   "sprite": 111619,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    119,
+    51
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 451
+  },
+  {
+   "entity_id": 92800048,
+   "nombre": "Violet Night Guardian",
+   "npc_type": 23912,
+   "sprite": 111619,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    120,
+    74
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 451
+  },
+  {
+   "entity_id": 92800049,
+   "nombre": "Violet Night Guardian",
+   "npc_type": 23912,
+   "sprite": 111619,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    120,
+    79
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 451
+  },
+  {
+   "entity_id": 92800050,
+   "nombre": "Violet Night Guardian",
+   "npc_type": 23912,
+   "sprite": 111619,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    114,
+    80
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 451
+  },
+  {
+   "entity_id": 92800051,
+   "nombre": "Violet Night Guardian",
+   "npc_type": 23912,
+   "sprite": 111619,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    121,
+    67
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 451
+  },
+  {
+   "entity_id": 92800052,
+   "nombre": "Violet Night Guardian",
+   "npc_type": 23912,
+   "sprite": 111619,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    103,
+    81
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 451
+  },
+  {
+   "entity_id": 92800053,
+   "nombre": "Violet Night Guardian",
+   "npc_type": 23912,
+   "sprite": 111619,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    91,
+    50
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 451
+  },
+  {
+   "entity_id": 92800054,
+   "nombre": "Violet Night Guardian",
+   "npc_type": 23912,
+   "sprite": 111619,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    91,
+    65
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 451
+  },
+  {
+   "entity_id": 92800055,
+   "nombre": "Violet Night Guardian",
+   "npc_type": 23912,
+   "sprite": 111619,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    124,
+    60
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 451
+  },
+  {
+   "entity_id": 92800056,
+   "nombre": "Violet Night Guardian",
+   "npc_type": 23912,
+   "sprite": 111619,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    91,
+    82
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 451
+  },
+  {
+   "entity_id": 92800057,
+   "nombre": "Violet Night Guardian",
+   "npc_type": 23912,
+   "sprite": 111619,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    108,
+    83
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 451
+  },
+  {
+   "entity_id": 92800058,
+   "nombre": "Violet Night Guardian",
+   "npc_type": 23912,
+   "sprite": 111619,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    110,
+    49
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 451
+  },
+  {
+   "entity_id": 92800059,
+   "nombre": "Violet Night Guardian",
+   "npc_type": 23912,
+   "sprite": 111619,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    125,
+    72
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 451
+  },
+  {
+   "entity_id": 92800060,
+   "nombre": "Branch Shadow Giant",
+   "npc_type": 23913,
+   "sprite": 111621,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    19,
+    149
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 453
+  },
+  {
+   "entity_id": 92800061,
+   "nombre": "Branch Shadow Giant",
+   "npc_type": 23913,
+   "sprite": 111621,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    14,
+    145
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 453
+  },
+  {
+   "entity_id": 92800062,
+   "nombre": "Branch Shadow Giant",
+   "npc_type": 23913,
+   "sprite": 111621,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    24,
+    145
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 453
+  },
+  {
+   "entity_id": 92800063,
+   "nombre": "Branch Shadow Giant",
+   "npc_type": 23913,
+   "sprite": 111621,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    24,
+    150
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 453
+  },
+  {
+   "entity_id": 92800064,
+   "nombre": "Branch Shadow Giant",
+   "npc_type": 23913,
+   "sprite": 111621,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    19,
+    144
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 453
+  },
+  {
+   "entity_id": 92800065,
+   "nombre": "Branch Shadow Giant",
+   "npc_type": 23913,
+   "sprite": 111621,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    29,
+    144
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 453
+  },
+  {
+   "entity_id": 92800066,
+   "nombre": "Branch Shadow Giant",
+   "npc_type": 23913,
+   "sprite": 111621,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    29,
+    149
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 453
+  },
+  {
+   "entity_id": 92800067,
+   "nombre": "Branch Shadow Giant",
+   "npc_type": 23913,
+   "sprite": 111621,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    29,
+    154
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 453
+  },
+  {
+   "entity_id": 92800068,
+   "nombre": "Branch Shadow Giant",
+   "npc_type": 23913,
+   "sprite": 111621,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    24,
+    140
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 453
+  },
+  {
+   "entity_id": 92800069,
+   "nombre": "Branch Shadow Giant",
+   "npc_type": 23913,
+   "sprite": 111621,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    29,
+    139
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 453
+  },
+  {
+   "entity_id": 92800070,
+   "nombre": "Branch Shadow Giant",
+   "npc_type": 23913,
+   "sprite": 111621,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    34,
+    142
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 453
+  },
+  {
+   "entity_id": 92800071,
+   "nombre": "Branch Shadow Giant",
+   "npc_type": 23913,
+   "sprite": 111621,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    34,
+    147
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 453
+  },
+  {
+   "entity_id": 92800072,
+   "nombre": "Branch Shadow Giant",
+   "npc_type": 23913,
+   "sprite": 111621,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    34,
+    152
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 453
+  },
+  {
+   "entity_id": 92800073,
+   "nombre": "Branch Shadow Giant",
+   "npc_type": 23913,
+   "sprite": 111621,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    34,
+    137
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 453
+  },
+  {
+   "entity_id": 92800074,
+   "nombre": "Branch Shadow Giant",
+   "npc_type": 23913,
+   "sprite": 111621,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    137
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 453
+  },
+  {
+   "entity_id": 92800075,
+   "nombre": "Branch Shadow Giant",
+   "npc_type": 23913,
+   "sprite": 111621,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    142
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 453
+  },
+  {
+   "entity_id": 92800076,
+   "nombre": "Branch Shadow Giant",
+   "npc_type": 23913,
+   "sprite": 111621,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    147
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 453
+  },
+  {
+   "entity_id": 92800077,
+   "nombre": "Branch Shadow Giant",
+   "npc_type": 23913,
+   "sprite": 111621,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    152
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 453
+  },
+  {
+   "entity_id": 92800078,
+   "nombre": "Branch Shadow Giant",
+   "npc_type": 23913,
+   "sprite": 111621,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    44,
+    135
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 453
+  },
+  {
+   "entity_id": 92800079,
+   "nombre": "Branch Shadow Giant",
+   "npc_type": 23913,
+   "sprite": 111621,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    44,
+    140
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 453
+  },
+  {
+   "entity_id": 92800080,
+   "nombre": "Branch Shadow Giant",
+   "npc_type": 23913,
+   "sprite": 111621,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    44,
+    145
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 453
+  },
+  {
+   "entity_id": 92800081,
+   "nombre": "Branch Shadow Giant",
+   "npc_type": 23913,
+   "sprite": 111621,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    44,
+    150
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 453
+  },
+  {
+   "entity_id": 92800082,
+   "nombre": "Branch Shadow Giant",
+   "npc_type": 23913,
+   "sprite": 111621,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    27,
+    134
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 453
+  },
+  {
+   "entity_id": 92800083,
+   "nombre": "Branch Shadow Giant",
+   "npc_type": 23913,
+   "sprite": 111621,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    49,
+    137
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 453
+  },
+  {
+   "entity_id": 92800084,
+   "nombre": "Branch Shadow Giant",
+   "npc_type": 23913,
+   "sprite": 111621,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    49,
+    142
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 453
+  },
+  {
+   "entity_id": 92800085,
+   "nombre": "Branch Shadow Giant",
+   "npc_type": 23913,
+   "sprite": 111621,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    49,
+    147
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 453
+  },
+  {
+   "entity_id": 92800086,
+   "nombre": "Branch Shadow Giant",
+   "npc_type": 23913,
+   "sprite": 111621,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    52,
+    152
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 453
+  },
+  {
+   "entity_id": 92800087,
+   "nombre": "Branch Shadow Giant",
+   "npc_type": 23913,
+   "sprite": 111621,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    32,
+    132
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 453
+  },
+  {
+   "entity_id": 92800088,
+   "nombre": "Branch Shadow Giant",
+   "npc_type": 23913,
+   "sprite": 111621,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    37,
+    132
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 453
+  },
+  {
+   "entity_id": 92800089,
+   "nombre": "Branch Shadow Giant",
+   "npc_type": 23913,
+   "sprite": 111621,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    54,
+    139
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 453
+  },
+  {
+   "entity_id": 92800090,
+   "nombre": "Branch Shadow Giant",
+   "npc_type": 23913,
+   "sprite": 111621,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    54,
+    144
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 453
+  },
+  {
+   "entity_id": 92800091,
+   "nombre": "Branch Shadow Giant",
+   "npc_type": 23913,
+   "sprite": 111621,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    57,
+    149
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 453
+  },
+  {
+   "entity_id": 92800092,
+   "nombre": "Branch Shadow Giant",
+   "npc_type": 23913,
+   "sprite": 111621,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    57,
+    154
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 453
+  },
+  {
+   "entity_id": 92800093,
+   "nombre": "Branch Shadow Giant",
+   "npc_type": 23913,
+   "sprite": 111621,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    22,
+    131
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 453
+  },
+  {
+   "entity_id": 92800094,
+   "nombre": "Branch Shadow Giant",
+   "npc_type": 23913,
+   "sprite": 111621,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    59,
+    142
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 453
+  },
+  {
+   "entity_id": 92800095,
+   "nombre": "Rotten Branch Sprite",
+   "npc_type": 23914,
+   "sprite": 111622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    111,
+    89
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 455
+  },
+  {
+   "entity_id": 92800096,
+   "nombre": "Rotten Branch Sprite",
+   "npc_type": 23914,
+   "sprite": 111622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    116,
+    86
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 455
+  },
+  {
+   "entity_id": 92800097,
+   "nombre": "Rotten Branch Sprite",
+   "npc_type": 23914,
+   "sprite": 111622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    107,
+    94
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 455
+  },
+  {
+   "entity_id": 92800098,
+   "nombre": "Rotten Branch Sprite",
+   "npc_type": 23914,
+   "sprite": 111622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    106,
+    88
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 455
+  },
+  {
+   "entity_id": 92800099,
+   "nombre": "Rotten Branch Sprite",
+   "npc_type": 23914,
+   "sprite": 111622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    103,
+    99
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 455
+  },
+  {
+   "entity_id": 92800100,
+   "nombre": "Rotten Branch Sprite",
+   "npc_type": 23914,
+   "sprite": 111622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    121,
+    84
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 455
+  },
+  {
+   "entity_id": 92800101,
+   "nombre": "Rotten Branch Sprite",
+   "npc_type": 23914,
+   "sprite": 111622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    108,
+    99
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 455
+  },
+  {
+   "entity_id": 92800102,
+   "nombre": "Rotten Branch Sprite",
+   "npc_type": 23914,
+   "sprite": 111622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    102,
+    93
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 455
+  },
+  {
+   "entity_id": 92800103,
+   "nombre": "Rotten Branch Sprite",
+   "npc_type": 23914,
+   "sprite": 111622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    113,
+    100
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 455
+  },
+  {
+   "entity_id": 92800104,
+   "nombre": "Rotten Branch Sprite",
+   "npc_type": 23914,
+   "sprite": 111622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    101,
+    86
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 455
+  },
+  {
+   "entity_id": 92800105,
+   "nombre": "Rotten Branch Sprite",
+   "npc_type": 23914,
+   "sprite": 111622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    125,
+    79
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 455
+  },
+  {
+   "entity_id": 92800106,
+   "nombre": "Rotten Branch Sprite",
+   "npc_type": 23914,
+   "sprite": 111622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    130,
+    74
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 455
+  },
+  {
+   "entity_id": 92800107,
+   "nombre": "Rotten Branch Sprite",
+   "npc_type": 23914,
+   "sprite": 111622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    130,
+    79
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 455
+  },
+  {
+   "entity_id": 92800108,
+   "nombre": "Rotten Branch Sprite",
+   "npc_type": 23914,
+   "sprite": 111622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    100,
+    104
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 455
+  },
+  {
+   "entity_id": 92800109,
+   "nombre": "Rotten Branch Sprite",
+   "npc_type": 23914,
+   "sprite": 111622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    105,
+    104
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 455
+  },
+  {
+   "entity_id": 92800110,
+   "nombre": "Rotten Branch Sprite",
+   "npc_type": 23914,
+   "sprite": 111622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    135,
+    70
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 455
+  },
+  {
+   "entity_id": 92800111,
+   "nombre": "Rotten Branch Sprite",
+   "npc_type": 23914,
+   "sprite": 111622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    135,
+    75
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 455
+  },
+  {
+   "entity_id": 92800112,
+   "nombre": "Rotten Branch Sprite",
+   "npc_type": 23914,
+   "sprite": 111622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    110,
+    105
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 455
+  },
+  {
+   "entity_id": 92800113,
+   "nombre": "Rotten Branch Sprite",
+   "npc_type": 23914,
+   "sprite": 111622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    130,
+    69
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 455
+  },
+  {
+   "entity_id": 92800114,
+   "nombre": "Rotten Branch Sprite",
+   "npc_type": 23914,
+   "sprite": 111622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    136,
+    98
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 455
+  },
+  {
+   "entity_id": 92800115,
+   "nombre": "Rotten Branch Sprite",
+   "npc_type": 23914,
+   "sprite": 111622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    136,
+    103
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 455
+  },
+  {
+   "entity_id": 92800116,
+   "nombre": "Rotten Branch Sprite",
+   "npc_type": 23914,
+   "sprite": 111622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    140,
+    66
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 455
+  },
+  {
+   "entity_id": 92800117,
+   "nombre": "Rotten Branch Sprite",
+   "npc_type": 23914,
+   "sprite": 111622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    140,
+    71
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 455
+  },
+  {
+   "entity_id": 92800118,
+   "nombre": "Rotten Branch Sprite",
+   "npc_type": 23914,
+   "sprite": 111622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    140,
+    76
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 455
+  },
+  {
+   "entity_id": 92800119,
+   "nombre": "Rotten Branch Sprite",
+   "npc_type": 23914,
+   "sprite": 111622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    135,
+    65
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 455
+  },
+  {
+   "entity_id": 92800120,
+   "nombre": "Rotten Branch Sprite",
+   "npc_type": 23914,
+   "sprite": 111622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    141,
+    95
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 455
+  },
+  {
+   "entity_id": 92800121,
+   "nombre": "Rotten Branch Sprite",
+   "npc_type": 23914,
+   "sprite": 111622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    141,
+    100
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 455
+  },
+  {
+   "entity_id": 92800122,
+   "nombre": "Rotten Branch Sprite",
+   "npc_type": 23914,
+   "sprite": 111622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    141,
+    105
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 455
+  },
+  {
+   "entity_id": 92800123,
+   "nombre": "Rotten Branch Sprite",
+   "npc_type": 23914,
+   "sprite": 111622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    129,
+    64
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 455
+  },
+  {
+   "entity_id": 92800124,
+   "nombre": "Rotten Branch Sprite",
+   "npc_type": 23914,
+   "sprite": 111622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    133,
+    108
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 455
+  },
+  {
+   "entity_id": 92800125,
+   "nombre": "Rotten Branch Sprite",
+   "npc_type": 23914,
+   "sprite": 111622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    145,
+    63
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 455
+  },
+  {
+   "entity_id": 92800126,
+   "nombre": "Rotten Branch Sprite",
+   "npc_type": 23914,
+   "sprite": 111622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    145,
+    68
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 455
+  },
+  {
+   "entity_id": 92800127,
+   "nombre": "Rotten Branch Sprite",
+   "npc_type": 23914,
+   "sprite": 111622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    145,
+    73
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 455
+  },
+  {
+   "entity_id": 92800128,
+   "nombre": "Rotten Branch Sprite",
+   "npc_type": 23914,
+   "sprite": 111622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    146,
+    94
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 455
+  },
+  {
+   "entity_id": 92800129,
+   "nombre": "Rotten Branch Sprite",
+   "npc_type": 23914,
+   "sprite": 111622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    146,
+    99
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 455
+  },
+  {
+   "entity_id": 92800130,
+   "nombre": "Tree Queen Marma",
+   "npc_type": 23919,
+   "sprite": 111620,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    192,
+    22
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 465
+  },
+  {
+   "entity_id": 92800131,
+   "nombre": "Soft Mist Spirit",
+   "npc_type": 23915,
+   "sprite": 111623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    62,
+    147
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 457
+  },
+  {
+   "entity_id": 92800132,
+   "nombre": "Soft Mist Spirit",
+   "npc_type": 23915,
+   "sprite": 111623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    62,
+    152
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 457
+  },
+  {
+   "entity_id": 92800133,
+   "nombre": "Soft Mist Spirit",
+   "npc_type": 23915,
+   "sprite": 111623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    62,
+    157
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 457
+  },
+  {
+   "entity_id": 92800134,
+   "nombre": "Soft Mist Spirit",
+   "npc_type": 23915,
+   "sprite": 111623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    64,
+    142
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 457
+  },
+  {
+   "entity_id": 92800135,
+   "nombre": "Soft Mist Spirit",
+   "npc_type": 23915,
+   "sprite": 111623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    67,
+    147
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 457
+  },
+  {
+   "entity_id": 92800136,
+   "nombre": "Soft Mist Spirit",
+   "npc_type": 23915,
+   "sprite": 111623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    67,
+    152
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 457
+  },
+  {
+   "entity_id": 92800137,
+   "nombre": "Soft Mist Spirit",
+   "npc_type": 23915,
+   "sprite": 111623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    67,
+    157
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 457
+  },
+  {
+   "entity_id": 92800138,
+   "nombre": "Soft Mist Spirit",
+   "npc_type": 23915,
+   "sprite": 111623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    69,
+    142
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 457
+  },
+  {
+   "entity_id": 92800139,
+   "nombre": "Soft Mist Spirit",
+   "npc_type": 23915,
+   "sprite": 111623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    72,
+    147
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 457
+  },
+  {
+   "entity_id": 92800140,
+   "nombre": "Soft Mist Spirit",
+   "npc_type": 23915,
+   "sprite": 111623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    72,
+    152
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 457
+  },
+  {
+   "entity_id": 92800141,
+   "nombre": "Soft Mist Spirit",
+   "npc_type": 23915,
+   "sprite": 111623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    72,
+    157
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 457
+  },
+  {
+   "entity_id": 92800142,
+   "nombre": "Soft Mist Spirit",
+   "npc_type": 23915,
+   "sprite": 111623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    72,
+    162
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 457
+  },
+  {
+   "entity_id": 92800143,
+   "nombre": "Soft Mist Spirit",
+   "npc_type": 23915,
+   "sprite": 111623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    74,
+    140
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 457
+  },
+  {
+   "entity_id": 92800144,
+   "nombre": "Soft Mist Spirit",
+   "npc_type": 23915,
+   "sprite": 111623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    77,
+    145
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 457
+  },
+  {
+   "entity_id": 92800145,
+   "nombre": "Soft Mist Spirit",
+   "npc_type": 23915,
+   "sprite": 111623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    77,
+    150
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 457
+  },
+  {
+   "entity_id": 92800146,
+   "nombre": "Soft Mist Spirit",
+   "npc_type": 23915,
+   "sprite": 111623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    77,
+    155
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 457
+  },
+  {
+   "entity_id": 92800147,
+   "nombre": "Soft Mist Spirit",
+   "npc_type": 23915,
+   "sprite": 111623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    77,
+    160
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 457
+  },
+  {
+   "entity_id": 92800148,
+   "nombre": "Soft Mist Spirit",
+   "npc_type": 23915,
+   "sprite": 111623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    79,
+    138
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 457
+  },
+  {
+   "entity_id": 92800149,
+   "nombre": "Soft Mist Spirit",
+   "npc_type": 23915,
+   "sprite": 111623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    79,
+    165
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 457
+  },
+  {
+   "entity_id": 92800150,
+   "nombre": "Soft Mist Spirit",
+   "npc_type": 23915,
+   "sprite": 111623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    70,
+    135
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 457
+  },
+  {
+   "entity_id": 92800151,
+   "nombre": "Soft Mist Spirit",
+   "npc_type": 23915,
+   "sprite": 111623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    82,
+    143
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 457
+  },
+  {
+   "entity_id": 92800152,
+   "nombre": "Soft Mist Spirit",
+   "npc_type": 23915,
+   "sprite": 111623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    82,
+    159
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 457
+  },
+  {
+   "entity_id": 92800153,
+   "nombre": "Soft Mist Spirit",
+   "npc_type": 23915,
+   "sprite": 111623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    84,
+    136
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 457
+  },
+  {
+   "entity_id": 92800154,
+   "nombre": "Soft Mist Spirit",
+   "npc_type": 23915,
+   "sprite": 111623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    84,
+    164
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 457
+  },
+  {
+   "entity_id": 92800155,
+   "nombre": "Soft Mist Spirit",
+   "npc_type": 23915,
+   "sprite": 111623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    75,
+    133
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 457
+  },
+  {
+   "entity_id": 92800156,
+   "nombre": "Soft Mist Spirit",
+   "npc_type": 23915,
+   "sprite": 111623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    87,
+    141
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 457
+  },
+  {
+   "entity_id": 92800157,
+   "nombre": "Soft Mist Spirit",
+   "npc_type": 23915,
+   "sprite": 111623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    87,
+    169
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 457
+  },
+  {
+   "entity_id": 92800158,
+   "nombre": "Soft Mist Spirit",
+   "npc_type": 23915,
+   "sprite": 111623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    89,
+    133
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 457
+  },
+  {
+   "entity_id": 92800159,
+   "nombre": "Soft Mist Spirit",
+   "npc_type": 23915,
+   "sprite": 111623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    89,
+    162
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 457
+  },
+  {
+   "entity_id": 92800160,
+   "nombre": "Soft Mist Spirit",
+   "npc_type": 23915,
+   "sprite": 111623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    80,
+    131
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 457
+  },
+  {
+   "entity_id": 92800161,
+   "nombre": "Soft Mist Spirit",
+   "npc_type": 23915,
+   "sprite": 111623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    92,
+    138
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 457
+  },
+  {
+   "entity_id": 92800162,
+   "nombre": "Soft Mist Spirit",
+   "npc_type": 23915,
+   "sprite": 111623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    92,
+    167
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 457
+  },
+  {
+   "entity_id": 92800163,
+   "nombre": "Soft Mist Spirit",
+   "npc_type": 23915,
+   "sprite": 111623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    94,
+    132
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 457
+  },
+  {
+   "entity_id": 92800164,
+   "nombre": "Soft Mist Spirit",
+   "npc_type": 23915,
+   "sprite": 111623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    94,
+    162
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 457
+  },
+  {
+   "entity_id": 92800165,
+   "nombre": "Soft Mist Spirit",
+   "npc_type": 23915,
+   "sprite": 111623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    65,
+    130
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 457
+  },
+  {
+   "entity_id": 92800166,
+   "nombre": "Soft Mist Spirit",
+   "npc_type": 23915,
+   "sprite": 111623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    97,
+    137
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 457
+  },
+  {
+   "entity_id": 92800167,
+   "nombre": "Soft Mist Spirit",
+   "npc_type": 23915,
+   "sprite": 111623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    97,
+    167
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 457
+  },
+  {
+   "entity_id": 92800168,
+   "nombre": "Soft Mist Spirit",
+   "npc_type": 23915,
+   "sprite": 111623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    70,
+    130
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 457
+  },
+  {
+   "entity_id": 92800169,
+   "nombre": "Soft Mist Spirit",
+   "npc_type": 23915,
+   "sprite": 111623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    99,
+    130
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 457
+  },
+  {
+   "entity_id": 92800170,
+   "nombre": "Soft Mist Spirit",
+   "npc_type": 23915,
+   "sprite": 111623,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    99,
+    161
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 457
+  },
+  {
+   "entity_id": 92800171,
+   "nombre": "Morning Dew Spirit",
+   "npc_type": 23916,
+   "sprite": 111624,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    284,
+    68
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 459
+  },
+  {
+   "entity_id": 92800172,
+   "nombre": "Morning Dew Spirit",
+   "npc_type": 23916,
+   "sprite": 111624,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    279,
+    64
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 459
+  },
+  {
+   "entity_id": 92800173,
+   "nombre": "Morning Dew Spirit",
+   "npc_type": 23916,
+   "sprite": 111624,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    279,
+    69
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 459
+  },
+  {
+   "entity_id": 92800174,
+   "nombre": "Morning Dew Spirit",
+   "npc_type": 23916,
+   "sprite": 111624,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    274,
+    61
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 459
+  },
+  {
+   "entity_id": 92800175,
+   "nombre": "Morning Dew Spirit",
+   "npc_type": 23916,
+   "sprite": 111624,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    274,
+    66
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 459
+  },
+  {
+   "entity_id": 92800176,
+   "nombre": "Morning Dew Spirit",
+   "npc_type": 23916,
+   "sprite": 111624,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    274,
+    71
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 459
+  },
+  {
+   "entity_id": 92800177,
+   "nombre": "Morning Dew Spirit",
+   "npc_type": 23916,
+   "sprite": 111624,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    269,
+    55
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 459
+  },
+  {
+   "entity_id": 92800178,
+   "nombre": "Morning Dew Spirit",
+   "npc_type": 23916,
+   "sprite": 111624,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    269,
+    60
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 459
+  },
+  {
+   "entity_id": 92800179,
+   "nombre": "Morning Dew Spirit",
+   "npc_type": 23916,
+   "sprite": 111624,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    269,
+    65
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 459
+  },
+  {
+   "entity_id": 92800180,
+   "nombre": "Morning Dew Spirit",
+   "npc_type": 23916,
+   "sprite": 111624,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    269,
+    70
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 459
+  },
+  {
+   "entity_id": 92800181,
+   "nombre": "Morning Dew Spirit",
+   "npc_type": 23916,
+   "sprite": 111624,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    269,
+    75
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 459
+  },
+  {
+   "entity_id": 92800182,
+   "nombre": "Morning Dew Spirit",
+   "npc_type": 23916,
+   "sprite": 111624,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    265,
+    84
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 459
+  },
+  {
+   "entity_id": 92800183,
+   "nombre": "Morning Dew Spirit",
+   "npc_type": 23916,
+   "sprite": 111624,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    264,
+    53
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 459
+  },
+  {
+   "entity_id": 92800184,
+   "nombre": "Morning Dew Spirit",
+   "npc_type": 23916,
+   "sprite": 111624,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    264,
+    58
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 459
+  },
+  {
+   "entity_id": 92800185,
+   "nombre": "Morning Dew Spirit",
+   "npc_type": 23916,
+   "sprite": 111624,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    264,
+    63
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 459
+  },
+  {
+   "entity_id": 92800186,
+   "nombre": "Morning Dew Spirit",
+   "npc_type": 23916,
+   "sprite": 111624,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    264,
+    68
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 459
+  },
+  {
+   "entity_id": 92800187,
+   "nombre": "Morning Dew Spirit",
+   "npc_type": 23916,
+   "sprite": 111624,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    264,
+    73
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 459
+  },
+  {
+   "entity_id": 92800188,
+   "nombre": "Morning Dew Spirit",
+   "npc_type": 23916,
+   "sprite": 111624,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    263,
+    78
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 459
+  },
+  {
+   "entity_id": 92800189,
+   "nombre": "Morning Dew Spirit",
+   "npc_type": 23916,
+   "sprite": 111624,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    270,
+    86
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 459
+  },
+  {
+   "entity_id": 92800190,
+   "nombre": "Morning Dew Spirit",
+   "npc_type": 23916,
+   "sprite": 111624,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    260,
+    83
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 459
+  },
+  {
+   "entity_id": 92800191,
+   "nombre": "Morning Dew Spirit",
+   "npc_type": 23916,
+   "sprite": 111624,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    259,
+    54
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 459
+  },
+  {
+   "entity_id": 92800192,
+   "nombre": "Morning Dew Spirit",
+   "npc_type": 23916,
+   "sprite": 111624,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    259,
+    59
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 459
+  },
+  {
+   "entity_id": 92800193,
+   "nombre": "Morning Dew Spirit",
+   "npc_type": 23916,
+   "sprite": 111624,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    259,
+    64
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 459
+  },
+  {
+   "entity_id": 92800194,
+   "nombre": "Morning Dew Spirit",
+   "npc_type": 23916,
+   "sprite": 111624,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    259,
+    69
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 459
+  },
+  {
+   "entity_id": 92800195,
+   "nombre": "Morning Dew Spirit",
+   "npc_type": 23916,
+   "sprite": 111624,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    259,
+    88
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 459
+  },
+  {
+   "entity_id": 92800196,
+   "nombre": "Morning Dew Spirit",
+   "npc_type": 23916,
+   "sprite": 111624,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    258,
+    74
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 459
+  },
+  {
+   "entity_id": 92800197,
+   "nombre": "Morning Dew Spirit",
+   "npc_type": 23916,
+   "sprite": 111624,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    264,
+    89
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 459
+  },
+  {
+   "entity_id": 92800198,
+   "nombre": "Morning Dew Spirit",
+   "npc_type": 23916,
+   "sprite": 111624,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    275,
+    89
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 459
+  },
+  {
+   "entity_id": 92800199,
+   "nombre": "Morning Dew Spirit",
+   "npc_type": 23916,
+   "sprite": 111624,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    255,
+    79
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 459
+  },
+  {
+   "entity_id": 92800200,
+   "nombre": "Morning Dew Spirit",
+   "npc_type": 23916,
+   "sprite": 111624,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    269,
+    91
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 459
+  },
+  {
+   "entity_id": 92800201,
+   "nombre": "Morning Dew Spirit",
+   "npc_type": 23916,
+   "sprite": 111624,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    280,
+    91
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 459
+  },
+  {
+   "entity_id": 92800202,
+   "nombre": "Morning Dew Spirit",
+   "npc_type": 23916,
+   "sprite": 111624,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    254,
+    56
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 459
+  },
+  {
+   "entity_id": 92800203,
+   "nombre": "Morning Dew Spirit",
+   "npc_type": 23916,
+   "sprite": 111624,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    254,
+    61
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 459
+  },
+  {
+   "entity_id": 92800204,
+   "nombre": "Morning Dew Spirit",
+   "npc_type": 23916,
+   "sprite": 111624,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    254,
+    66
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 459
+  },
+  {
+   "entity_id": 92800205,
+   "nombre": "Morning Dew Spirit",
+   "npc_type": 23916,
+   "sprite": 111624,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    254,
+    84
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 459
+  },
+  {
+   "entity_id": 92800206,
+   "nombre": "Morning Dew Spirit",
+   "npc_type": 23916,
+   "sprite": 111624,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    253,
+    71
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 459
+  },
+  {
+   "entity_id": 92800207,
+   "nombre": "Morning Dew Spirit",
+   "npc_type": 23916,
+   "sprite": 111624,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    274,
+    94
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 459
+  },
+  {
+   "entity_id": 92800208,
+   "nombre": "Morning Dew Spirit",
+   "npc_type": 23916,
+   "sprite": 111624,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    285,
+    94
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 459
+  },
+  {
+   "entity_id": 92800209,
+   "nombre": "Morning Dew Spirit",
+   "npc_type": 23916,
+   "sprite": 111624,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    250,
+    76
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 459
+  },
+  {
+   "entity_id": 92800210,
+   "nombre": "Morning Dew Spirit",
+   "npc_type": 23916,
+   "sprite": 111624,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    249,
+    54
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 459
+  },
+  {
+   "entity_id": 92800211,
+   "nombre": "Poison Root Saphira",
+   "npc_type": 23920,
+   "sprite": 111625,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    274,
+    53
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 465
+  },
+  {
+   "entity_id": 92800212,
+   "nombre": "Elite-Rotten Branch Sprite",
+   "npc_type": 23917,
+   "sprite": 111622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    257,
+    27
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 461
+  },
+  {
+   "entity_id": 92800213,
+   "nombre": "Elite-Rotten Branch Sprite",
+   "npc_type": 23917,
+   "sprite": 111622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    252,
+    22
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 461
+  },
+  {
+   "entity_id": 92800214,
+   "nombre": "Elite-Rotten Branch Sprite",
+   "npc_type": 23917,
+   "sprite": 111622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    252,
+    27
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 461
+  },
+  {
+   "entity_id": 92800215,
+   "nombre": "Elite-Rotten Branch Sprite",
+   "npc_type": 23917,
+   "sprite": 111622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    252,
+    32
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 461
+  },
+  {
+   "entity_id": 92800216,
+   "nombre": "Elite-Rotten Branch Sprite",
+   "npc_type": 23917,
+   "sprite": 111622,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    257,
+    22
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 461
+  },
+  {
+   "entity_id": 92800217,
+   "nombre": "Elite-Morning Dew Spirit",
+   "npc_type": 23918,
+   "sprite": 111624,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    268,
+    32
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 463
+  },
+  {
+   "entity_id": 92800218,
+   "nombre": "Elite-Morning Dew Spirit",
+   "npc_type": 23918,
+   "sprite": 111624,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    273,
+    33
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 463
+  },
+  {
+   "entity_id": 92800219,
+   "nombre": "Elite-Morning Dew Spirit",
+   "npc_type": 23918,
+   "sprite": 111624,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    263,
+    30
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 463
+  },
+  {
+   "entity_id": 92800220,
+   "nombre": "Elite-Morning Dew Spirit",
+   "npc_type": 23918,
+   "sprite": 111624,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    263,
+    35
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 463
+  },
+  {
+   "entity_id": 92800221,
+   "nombre": "Elite-Morning Dew Spirit",
+   "npc_type": 23918,
+   "sprite": 111624,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    268,
+    37
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 463
+  },
+  {
+   "entity_id": 90428000,
+   "nombre": "Gardener Laila",
+   "nombre_completo": "Gardener Laila",
+   "npc_type": 24869,
+   "sprite": 40274,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    183,
+    27
+   ],
+   "direccion": 6,
+   "visible": 1,
+   "puesto_por": "npcs_del_cliente"
+  },
+  {
+   "entity_id": 90428001,
+   "nombre": "Irona",
+   "nombre_completo": "Irona",
+   "npc_type": 24875,
+   "sprite": 40494,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    162,
+    81
+   ],
+   "direccion": 6,
+   "visible": 1,
+   "puesto_por": "npcs_del_cliente"
+  },
+  {
+   "entity_id": 90428002,
+   "nombre": "Aurora Totem",
+   "nombre_completo": "Aurora Totem",
+   "npc_type": 1937,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    223,
+    155
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "puesto_por": "npcs_del_cliente"
+  },
+  {
+   "entity_id": 90428003,
+   "nombre": "Breeze Totem",
+   "nombre_completo": "Breeze Totem",
+   "npc_type": 1940,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    242,
+    146
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "puesto_por": "npcs_del_cliente"
+  },
+  {
+   "entity_id": 90428004,
+   "nombre": "Dark City Totem",
+   "nombre_completo": "Dark City Totem",
+   "npc_type": 1938,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    229,
+    153
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "puesto_por": "npcs_del_cliente"
+  },
+  {
+   "entity_id": 90428005,
+   "nombre": "Iron Totem",
+   "nombre_completo": "Iron Totem",
+   "npc_type": 1939,
+   "sprite": 60241,
+   "klass": 200,
+   "monstruo": false,
+   "tile": [
+    236,
+    149
+   ],
+   "direccion": 6,
+   "visible": 0,
+   "puesto_por": "npcs_del_cliente"
+  },
+  {
+   "entity_id": 90428006,
+   "nombre": "Nadia",
+   "nombre_completo": "Nadia",
+   "npc_type": 24887,
+   "sprite": 110549,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    88,
+    67
+   ],
+   "direccion": 6,
+   "visible": 1,
+   "puesto_por": "npcs_del_cliente"
+  }
+ ],
+ "recursos": [
+  {
+   "entity_id": 102800000,
+   "sprite": 60051,
+   "capa": 0,
+   "px": [
+    7149,
+    4976
+   ],
+   "tile": [
+    223,
+    155
+   ],
+   "crudo": "809a200600000000ed1b000070130000006f70706572284d2900000000000000000693ea00002280140000",
+   "copiado_de": "cuerpo de una captura del objeto 60051"
+  },
+  {
+   "entity_id": 102800001,
+   "sprite": 60054,
+   "capa": 0,
+   "px": [
+    7772,
+    4688
+   ],
+   "tile": [
+    242,
+    146
+   ],
+   "crudo": "819a2006000000005c1e000050120000000000ba156f77650000000000000000000696ea00002280140000",
+   "copiado_de": "cuerpo de una captura del objeto 60054"
+  },
+  {
+   "entity_id": 102800002,
+   "sprite": 60052,
+   "capa": 0,
+   "px": [
+    7351,
+    4912
+   ],
+   "tile": [
+    229,
+    153
+   ],
+   "crudo": "829a200600000000b71c00003013000000000000180000000000000000000000dc0694ea00002280140000",
+   "copiado_de": "cuerpo de una captura del objeto 60052"
+  },
+  {
+   "entity_id": 102800003,
+   "sprite": 60053,
+   "capa": 0,
+   "px": [
+    7560,
+    4784
+   ],
+   "tile": [
+    236,
+    149
+   ],
+   "crudo": "839a200600000000881d0000b0120000006f70706572284d2900000000000000000695ea00002280140000",
+   "copiado_de": "cuerpo de una captura del objeto 60053"
+  },
+  {
+   "entity_id": 102800004,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    2376,
+    1648
+   ],
+   "tile": [
+    74,
+    51
+   ],
+   "crudo": "849a20060000000048090000700600000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102800005,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    684,
+    2512
+   ],
+   "tile": [
+    21,
+    78
+   ],
+   "crudo": "859a200600000000ac020000d00900000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102800006,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    3156,
+    1296
+   ],
+   "tile": [
+    98,
+    40
+   ],
+   "crudo": "869a200600000000540c0000100500000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102800007,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    4034,
+    880
+   ],
+   "tile": [
+    126,
+    27
+   ],
+   "crudo": "879a200600000000c20f0000700300000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102800008,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    4607,
+    368
+   ],
+   "tile": [
+    143,
+    11
+   ],
+   "crudo": "889a200600000000ff110000700100000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102800009,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    1490,
+    1008
+   ],
+   "tile": [
+    46,
+    31
+   ],
+   "crudo": "899a200600000000d2050000f00300000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102800010,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    1220,
+    848
+   ],
+   "tile": [
+    38,
+    26
+   ],
+   "crudo": "8a9a200600000000c4040000500300000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102800011,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    748,
+    944
+   ],
+   "tile": [
+    23,
+    29
+   ],
+   "crudo": "8b9a200600000000ec020000b00300000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102800012,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    611,
+    976
+   ],
+   "tile": [
+    19,
+    30
+   ],
+   "crudo": "8c9a20060000000063020000d00300000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102800013,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    542,
+    1168
+   ],
+   "tile": [
+    16,
+    36
+   ],
+   "crudo": "8d9a2006000000001e020000900400000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102800014,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    807,
+    1232
+   ],
+   "tile": [
+    25,
+    38
+   ],
+   "crudo": "8e9a20060000000027030000d00400000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102800015,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    634,
+    1360
+   ],
+   "tile": [
+    19,
+    42
+   ],
+   "crudo": "8f9a2006000000007a020000500500000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102800016,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    1423,
+    1232
+   ],
+   "tile": [
+    44,
+    38
+   ],
+   "crudo": "909a2006000000008f050000d00400000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102800017,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    1569,
+    1200
+   ],
+   "tile": [
+    49,
+    37
+   ],
+   "crudo": "919a20060000000021060000b00400000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102800018,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    1723,
+    1072
+   ],
+   "tile": [
+    53,
+    33
+   ],
+   "crudo": "929a200600000000bb060000300400000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102800019,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    483,
+    1616
+   ],
+   "tile": [
+    15,
+    50
+   ],
+   "crudo": "939a200600000000e3010000500600000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102800020,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    819,
+    1616
+   ],
+   "tile": [
+    25,
+    50
+   ],
+   "crudo": "949a20060000000033030000500600000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102800021,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    751,
+    1520
+   ],
+   "tile": [
+    23,
+    47
+   ],
+   "crudo": "959a200600000000ef020000f00500000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102800022,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    1306,
+    1584
+   ],
+   "tile": [
+    40,
+    49
+   ],
+   "crudo": "969a2006000000001a050000300600000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102800023,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    1586,
+    1648
+   ],
+   "tile": [
+    49,
+    51
+   ],
+   "crudo": "979a20060000000032060000700600000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102800024,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    1725,
+    1616
+   ],
+   "tile": [
+    53,
+    50
+   ],
+   "crudo": "989a200600000000bd060000500600000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102800025,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    1612,
+    1520
+   ],
+   "tile": [
+    50,
+    47
+   ],
+   "crudo": "999a2006000000004c060000f00500000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102800026,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    515,
+    1968
+   ],
+   "tile": [
+    16,
+    61
+   ],
+   "crudo": "9a9a20060000000003020000b00700000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102800027,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    788,
+    2192
+   ],
+   "tile": [
+    24,
+    68
+   ],
+   "crudo": "9b9a20060000000014030000900800000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102800028,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    804,
+    2032
+   ],
+   "tile": [
+    25,
+    63
+   ],
+   "crudo": "9c9a20060000000024030000f00700000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102800029,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    985,
+    2384
+   ],
+   "tile": [
+    30,
+    74
+   ],
+   "crudo": "9d9a200600000000d9030000500900000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102800030,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    1373,
+    2000
+   ],
+   "tile": [
+    42,
+    62
+   ],
+   "crudo": "9e9a2006000000005d050000d00700000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102800031,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    1450,
+    1904
+   ],
+   "tile": [
+    45,
+    59
+   ],
+   "crudo": "9f9a200600000000aa050000700700000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102800032,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    2228,
+    1520
+   ],
+   "tile": [
+    69,
+    47
+   ],
+   "crudo": "a09a200600000000b4080000f00500000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102800033,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    2422,
+    1456
+   ],
+   "tile": [
+    75,
+    45
+   ],
+   "crudo": "a19a20060000000076090000b00500000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102800034,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    2365,
+    1264
+   ],
+   "tile": [
+    73,
+    39
+   ],
+   "crudo": "a29a2006000000003d090000f00400000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102800035,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    2556,
+    1168
+   ],
+   "tile": [
+    79,
+    36
+   ],
+   "crudo": "a39a200600000000fc090000900400000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102800036,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    2218,
+    1040
+   ],
+   "tile": [
+    69,
+    32
+   ],
+   "crudo": "a49a200600000000aa080000100400000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102800037,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    2381,
+    1072
+   ],
+   "tile": [
+    74,
+    33
+   ],
+   "crudo": "a59a2006000000004d090000300400000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102800038,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    2904,
+    1264
+   ],
+   "tile": [
+    90,
+    39
+   ],
+   "crudo": "a69a200600000000580b0000f00400000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102800039,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    2995,
+    1168
+   ],
+   "tile": [
+    93,
+    36
+   ],
+   "crudo": "a79a200600000000b30b0000900400000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102800040,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    2106,
+    784
+   ],
+   "tile": [
+    65,
+    24
+   ],
+   "crudo": "a89a2006000000003a080000100300000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102800041,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    2498,
+    848
+   ],
+   "tile": [
+    78,
+    26
+   ],
+   "crudo": "a99a200600000000c2090000500300000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102800042,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    2245,
+    912
+   ],
+   "tile": [
+    70,
+    28
+   ],
+   "crudo": "aa9a200600000000c5080000900300000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102800043,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    2373,
+    912
+   ],
+   "tile": [
+    74,
+    28
+   ],
+   "crudo": "ab9a20060000000045090000900300000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102800044,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    2151,
+    496
+   ],
+   "tile": [
+    67,
+    15
+   ],
+   "crudo": "ac9a20060000000067080000f00100000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102800045,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    2407,
+    528
+   ],
+   "tile": [
+    75,
+    16
+   ],
+   "crudo": "ad9a20060000000067090000100200000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102800046,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    2460,
+    432
+   ],
+   "tile": [
+    76,
+    13
+   ],
+   "crudo": "ae9a2006000000009c090000b00100000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102800047,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    2900,
+    848
+   ],
+   "tile": [
+    90,
+    26
+   ],
+   "crudo": "af9a200600000000540b0000500300000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102800048,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    3054,
+    944
+   ],
+   "tile": [
+    95,
+    29
+   ],
+   "crudo": "b09a200600000000ee0b0000b00300000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102800049,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    3219,
+    880
+   ],
+   "tile": [
+    100,
+    27
+   ],
+   "crudo": "b19a200600000000930c0000700300000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102800050,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    3248,
+    656
+   ],
+   "tile": [
+    101,
+    20
+   ],
+   "crudo": "b29a200600000000b00c0000900200000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102800051,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    3049,
+    496
+   ],
+   "tile": [
+    95,
+    15
+   ],
+   "crudo": "b39a200600000000e90b0000f00100000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102800052,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    3028,
+    368
+   ],
+   "tile": [
+    94,
+    11
+   ],
+   "crudo": "b49a200600000000d40b0000700100000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102800053,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    3221,
+    464
+   ],
+   "tile": [
+    100,
+    14
+   ],
+   "crudo": "b59a200600000000950c0000d00100000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102800054,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    3694,
+    496
+   ],
+   "tile": [
+    115,
+    15
+   ],
+   "crudo": "b69a2006000000006e0e0000f00100000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102800055,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    3937,
+    368
+   ],
+   "tile": [
+    123,
+    11
+   ],
+   "crudo": "b79a200600000000610f0000700100000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102800056,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    3888,
+    528
+   ],
+   "tile": [
+    121,
+    16
+   ],
+   "crudo": "b89a200600000000300f0000100200000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102800057,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    4058,
+    720
+   ],
+   "tile": [
+    126,
+    22
+   ],
+   "crudo": "b99a200600000000da0f0000d00200000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102800058,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    3768,
+    912
+   ],
+   "tile": [
+    117,
+    28
+   ],
+   "crudo": "ba9a200600000000b80e0000900300000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102800059,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    1566,
+    656
+   ],
+   "tile": [
+    48,
+    20
+   ],
+   "crudo": "bb9a2006000000001e060000900200000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102800060,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    1597,
+    2096
+   ],
+   "tile": [
+    49,
+    65
+   ],
+   "crudo": "bc9a2006000000003d060000300800000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  },
+  {
+   "entity_id": 102800061,
+   "sprite": 60305,
+   "capa": 2,
+   "px": [
+    4690,
+    464
+   ],
+   "tile": [
+    146,
+    14
+   ],
+   "crudo": "bd9a20060200000052120000d00100000000000027000000000000001a000000dc0691eb00004080140000",
+   "evento": 5011,
+   "copiado_de": "interactivo 60305 de las otras flores; evento nativo 5011"
+  },
+  {
+   "entity_id": 102800062,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    4086,
+    432
+   ],
+   "tile": [
+    127,
+    13
+   ],
+   "crudo": "be9a200600000000f60f0000b00100000000000027000000000000001a000000dc0691eb00004080140000",
+   "evento": 3012,
+   "copiado_de": "interactivo 60305 de las otras flores; evento nativo 3012"
+  }
+ ]
+}

@@ -479,7 +479,10 @@ def actualizar_pak_cliente(pak_path: pathlib.Path, reemplazos: dict) -> bool:
         return False
     for i in range(4, 22):
         eocd[i] ^= (3 * i - 91) & 0xFF
-    comp_cd_size, cd_disk, disk_entries, total_entries, cd_size, cd_offset, comment_len = struct.unpack('<HHHHIIH', eocd[4:22])
+    comp_lo, comp_hi, disk_entries, total_entries, cd_size, cd_offset, comment_len = struct.unpack('<HHHHIIH', eocd[4:22])
+    # El tamano del indice comprimido son DOS u16 (lo | hi << 16): con solo
+    # el bajo, un indice de mas de 64 KB sale truncado (paks de Taiwan).
+    comp_cd_size = comp_lo | (comp_hi << 16)
     cd_raw = bytearray(data[cd_offset + 4 : cd_offset + 4 + comp_cd_size])
     cd_raw[0] ^= 0x7A
     cd = bytearray(zlib.decompress(bytes(cd_raw)))
@@ -524,8 +527,8 @@ def actualizar_pak_cliente(pak_path: pathlib.Path, reemplazos: dict) -> bool:
 
     nuevo_eocd = bytearray(b'OD\x05\x06' + struct.pack(
         '<HHHHIIH',
-        len(cd_comp),
-        0,
+        len(cd_comp) & 0xFFFF,
+        len(cd_comp) >> 16,
         total_entries,
         total_entries,
         len(cd),
@@ -551,7 +554,8 @@ def _extraer_archivo_pak(pak_path: pathlib.Path, nombre_buscado: str) -> bytes:
         return b''
     for i in range(4, 22):
         eocd[i] ^= (3 * i - 91) & 0xFF
-    comp_cd_size, _, _, _, _, cd_offset, _ = struct.unpack('<HHHHIIH', eocd[4:22])
+    comp_lo, comp_hi, _, _, _, cd_offset, _ = struct.unpack('<HHHHIIH', eocd[4:22])
+    comp_cd_size = comp_lo | (comp_hi << 16)
     cd_raw = bytearray(data[cd_offset + 4 : cd_offset + 4 + comp_cd_size])
     cd_raw[0] ^= 0x7A
     cd = zlib.decompress(bytes(cd_raw))
@@ -736,6 +740,13 @@ def aplicar_modo_estacion(modo: str = None) -> str:
     return modo_Norm
 
 
+# Version que ensenan el launcher y el juego (reg.ini y update3.ini). Desde
+# el 26/10/2026 el cliente lleva el contenido de ALO Taiwan hasta update32
+# (8.7.6.1), ver tools/tw_migracion.py. angel.dat solo la muestra ("Version:
+# %s", 7 caracteres); no viaja al servidor, asi que no afecta al login.
+VERSION_CLIENTE = '8.7.6.1'
+
+
 def parchear_launcher():
     """Parchea C:\\AO\\Angels Online\\START.EXE y reg.ini (creando .bak antes)
     para que el launcher apunte a 127.0.0.1 y muestre el panel local."""
@@ -753,7 +764,7 @@ def parchear_launcher():
         txt_reg = (
             "[PROFILE]\r\n"
             "GameName = Angels Online\r\n"
-            "Version = 8.5.1.0\r\n"
+            f"Version = {VERSION_CLIENTE}\r\n"
             "GameDir = ./\r\n"
             "LoaderVer = 1.7\r\n"
             "PassiveMode = 1\r\n"
@@ -1008,8 +1019,8 @@ def _contenido_update3_ini() -> bytes:
         # INFO\LoaderURL del fichero que acaba de bajarse. Por eso ponerlo en
         # el reg.ini no servia de nada y seguia yendo a su host.
         "LoaderURL = 127.0.0.1\r\n"
-        "GameVerFrom = 8.5.1.0\r\n"
-        "GameVerTrans = 8.5.1.0\r\n"
+        f"GameVerFrom = {VERSION_CLIENTE}\r\n"
+        f"GameVerTrans = {VERSION_CLIENTE}\r\n"
         "[VERSION]\r\n"
         "[COMPLEXFILE]\r\n"
     ).encode('ascii')

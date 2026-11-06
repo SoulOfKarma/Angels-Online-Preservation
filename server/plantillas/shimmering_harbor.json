@@ -1,0 +1,3626 @@
+{
+ "_nota": "shimmering_harbor (stage 426). POBLADO DESDE EL CLIENTE, no desde una captura: los generadores de monstruos son objetos del propio map426.mpc -- el monstruo en el u16 del +34, la zona en el +21, el tiempo en el +38 y cuantos en el +42. Eso da el censo COMPLETO del mapa, que una captura no puede dar porque solo trae lo que estuvo a la vista. El entity_id es fabricado y estable, no el del servidor. Las casillas son las del TAG de cada generador; los que no declaran TAG ponen sus monstruos en la casilla del generador y en un anillo de radio 3 a su alrededor, que es la dispersion MEDIDA en el stage 73. Los objetos de mapa son los del .mpc cuyo id esta en la lista de los que el servidor manda de verdad, con el cuerpo del 0x000E copiado de una captura del mismo objeto. Los tornados se dibujan aparte, desde portales.json. Ver tools/poblar_del_cliente.py.",
+ "stage": 426,
+ "spawns": [
+  {
+   "entity_id": 92600000,
+   "nombre": "Wandering Fisherman",
+   "npc_type": 23891,
+   "sprite": 111575,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    284,
+    22
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 430
+  },
+  {
+   "entity_id": 92600001,
+   "nombre": "Wandering Fisherman",
+   "npc_type": 23891,
+   "sprite": 111575,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    279,
+    17
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 430
+  },
+  {
+   "entity_id": 92600002,
+   "nombre": "Wandering Fisherman",
+   "npc_type": 23891,
+   "sprite": 111575,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    279,
+    22
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 430
+  },
+  {
+   "entity_id": 92600003,
+   "nombre": "Wandering Fisherman",
+   "npc_type": 23891,
+   "sprite": 111575,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    279,
+    27
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 430
+  },
+  {
+   "entity_id": 92600004,
+   "nombre": "Wandering Fisherman",
+   "npc_type": 23891,
+   "sprite": 111575,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    284,
+    17
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 430
+  },
+  {
+   "entity_id": 92600005,
+   "nombre": "Wandering Fisherman",
+   "npc_type": 23891,
+   "sprite": 111575,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    284,
+    27
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 430
+  },
+  {
+   "entity_id": 92600006,
+   "nombre": "Wandering Fisherman",
+   "npc_type": 23891,
+   "sprite": 111575,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    289,
+    14
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 430
+  },
+  {
+   "entity_id": 92600007,
+   "nombre": "Wandering Fisherman",
+   "npc_type": 23891,
+   "sprite": 111575,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    289,
+    22
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 430
+  },
+  {
+   "entity_id": 92600008,
+   "nombre": "Wandering Fisherman",
+   "npc_type": 23891,
+   "sprite": 111575,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    274,
+    13
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 430
+  },
+  {
+   "entity_id": 92600009,
+   "nombre": "Wandering Fisherman",
+   "npc_type": 23891,
+   "sprite": 111575,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    274,
+    18
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 430
+  },
+  {
+   "entity_id": 92600010,
+   "nombre": "Wandering Fisherman",
+   "npc_type": 23891,
+   "sprite": 111575,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    274,
+    23
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 430
+  },
+  {
+   "entity_id": 92600011,
+   "nombre": "Wandering Fisherman",
+   "npc_type": 23891,
+   "sprite": 111575,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    279,
+    12
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 430
+  },
+  {
+   "entity_id": 92600012,
+   "nombre": "Wandering Fisherman",
+   "npc_type": 23891,
+   "sprite": 111575,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    284,
+    12
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 430
+  },
+  {
+   "entity_id": 92600013,
+   "nombre": "Wandering Fisherman",
+   "npc_type": 23891,
+   "sprite": 111575,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    289,
+    9
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 430
+  },
+  {
+   "entity_id": 92600014,
+   "nombre": "Wandering Fisherman",
+   "npc_type": 23891,
+   "sprite": 111575,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    289,
+    31
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 430
+  },
+  {
+   "entity_id": 92600015,
+   "nombre": "Wandering Fisherman",
+   "npc_type": 23891,
+   "sprite": 111575,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    269,
+    12
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 430
+  },
+  {
+   "entity_id": 92600016,
+   "nombre": "Wandering Fisherman",
+   "npc_type": 23891,
+   "sprite": 111575,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    269,
+    17
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 430
+  },
+  {
+   "entity_id": 92600017,
+   "nombre": "Wandering Fisherman",
+   "npc_type": 23891,
+   "sprite": 111575,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    269,
+    22
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 430
+  },
+  {
+   "entity_id": 92600018,
+   "nombre": "Wandering Fisherman",
+   "npc_type": 23891,
+   "sprite": 111575,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    277,
+    7
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 430
+  },
+  {
+   "entity_id": 92600019,
+   "nombre": "Wandering Fisherman",
+   "npc_type": 23891,
+   "sprite": 111575,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    282,
+    7
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 430
+  },
+  {
+   "entity_id": 92600020,
+   "nombre": "Wandering Fisherman",
+   "npc_type": 23891,
+   "sprite": 111575,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    264,
+    11
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 430
+  },
+  {
+   "entity_id": 92600021,
+   "nombre": "Wandering Fisherman",
+   "npc_type": 23891,
+   "sprite": 111575,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    264,
+    16
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 430
+  },
+  {
+   "entity_id": 92600022,
+   "nombre": "Wandering Fisherman",
+   "npc_type": 23891,
+   "sprite": 111575,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    264,
+    21
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 430
+  },
+  {
+   "entity_id": 92600023,
+   "nombre": "Wandering Fisherman",
+   "npc_type": 23891,
+   "sprite": 111575,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    264,
+    26
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 430
+  },
+  {
+   "entity_id": 92600024,
+   "nombre": "Wandering Fisherman",
+   "npc_type": 23891,
+   "sprite": 111575,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    281,
+    32
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 430
+  },
+  {
+   "entity_id": 92600025,
+   "nombre": "Wandering Fisherman",
+   "npc_type": 23891,
+   "sprite": 111575,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    287,
+    4
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 430
+  },
+  {
+   "entity_id": 92600026,
+   "nombre": "Wandering Fisherman",
+   "npc_type": 23891,
+   "sprite": 111575,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    292,
+    4
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 430
+  },
+  {
+   "entity_id": 92600027,
+   "nombre": "Wandering Fisherman",
+   "npc_type": 23891,
+   "sprite": 111575,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    294,
+    9
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 430
+  },
+  {
+   "entity_id": 92600028,
+   "nombre": "Wandering Fisherman",
+   "npc_type": 23891,
+   "sprite": 111575,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    294,
+    34
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 430
+  },
+  {
+   "entity_id": 92600029,
+   "nombre": "Wandering Fisherman",
+   "npc_type": 23891,
+   "sprite": 111575,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    259,
+    8
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 430
+  },
+  {
+   "entity_id": 92600030,
+   "nombre": "Wandering Fisherman",
+   "npc_type": 23891,
+   "sprite": 111575,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    259,
+    13
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 430
+  },
+  {
+   "entity_id": 92600031,
+   "nombre": "Wandering Fisherman",
+   "npc_type": 23891,
+   "sprite": 111575,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    259,
+    18
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 430
+  },
+  {
+   "entity_id": 92600032,
+   "nombre": "Wandering Fisherman",
+   "npc_type": 23891,
+   "sprite": 111575,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    259,
+    25
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 430
+  },
+  {
+   "entity_id": 92600033,
+   "nombre": "Wandering Fisherman",
+   "npc_type": 23891,
+   "sprite": 111575,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    258,
+    30
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 430
+  },
+  {
+   "entity_id": 92600034,
+   "nombre": "Wandering Fisherman",
+   "npc_type": 23891,
+   "sprite": 111575,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    286,
+    36
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 430
+  },
+  {
+   "entity_id": 92600035,
+   "nombre": "Lone Sail Fisherman",
+   "npc_type": 23892,
+   "sprite": 111585,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    125,
+    16
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 431
+  },
+  {
+   "entity_id": 92600036,
+   "nombre": "Lone Sail Fisherman",
+   "npc_type": 23892,
+   "sprite": 111585,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    120,
+    16
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 431
+  },
+  {
+   "entity_id": 92600037,
+   "nombre": "Lone Sail Fisherman",
+   "npc_type": 23892,
+   "sprite": 111585,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    120,
+    21
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 431
+  },
+  {
+   "entity_id": 92600038,
+   "nombre": "Lone Sail Fisherman",
+   "npc_type": 23892,
+   "sprite": 111585,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    125,
+    21
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 431
+  },
+  {
+   "entity_id": 92600039,
+   "nombre": "Lone Sail Fisherman",
+   "npc_type": 23892,
+   "sprite": 111585,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    130,
+    11
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 431
+  },
+  {
+   "entity_id": 92600040,
+   "nombre": "Lone Sail Fisherman",
+   "npc_type": 23892,
+   "sprite": 111585,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    130,
+    16
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 431
+  },
+  {
+   "entity_id": 92600041,
+   "nombre": "Lone Sail Fisherman",
+   "npc_type": 23892,
+   "sprite": 111585,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    115,
+    19
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 431
+  },
+  {
+   "entity_id": 92600042,
+   "nombre": "Lone Sail Fisherman",
+   "npc_type": 23892,
+   "sprite": 111585,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    115,
+    24
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 431
+  },
+  {
+   "entity_id": 92600043,
+   "nombre": "Lone Sail Fisherman",
+   "npc_type": 23892,
+   "sprite": 111585,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    135,
+    9
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 431
+  },
+  {
+   "entity_id": 92600044,
+   "nombre": "Lone Sail Fisherman",
+   "npc_type": 23892,
+   "sprite": 111585,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    135,
+    14
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 431
+  },
+  {
+   "entity_id": 92600045,
+   "nombre": "Lone Sail Fisherman",
+   "npc_type": 23892,
+   "sprite": 111585,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    110,
+    21
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 431
+  },
+  {
+   "entity_id": 92600046,
+   "nombre": "Lone Sail Fisherman",
+   "npc_type": 23892,
+   "sprite": 111585,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    110,
+    26
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 431
+  },
+  {
+   "entity_id": 92600047,
+   "nombre": "Lone Sail Fisherman",
+   "npc_type": 23892,
+   "sprite": 111585,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    134,
+    32
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 431
+  },
+  {
+   "entity_id": 92600048,
+   "nombre": "Lone Sail Fisherman",
+   "npc_type": 23892,
+   "sprite": 111585,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    105,
+    24
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 431
+  },
+  {
+   "entity_id": 92600049,
+   "nombre": "Lone Sail Fisherman",
+   "npc_type": 23892,
+   "sprite": 111585,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    105,
+    29
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 431
+  },
+  {
+   "entity_id": 92600050,
+   "nombre": "Lone Sail Fisherman",
+   "npc_type": 23892,
+   "sprite": 111585,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    128,
+    35
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 431
+  },
+  {
+   "entity_id": 92600051,
+   "nombre": "Lone Sail Fisherman",
+   "npc_type": 23892,
+   "sprite": 111585,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    133,
+    37
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 431
+  },
+  {
+   "entity_id": 92600052,
+   "nombre": "Lone Sail Fisherman",
+   "npc_type": 23892,
+   "sprite": 111585,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    138,
+    37
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 431
+  },
+  {
+   "entity_id": 92600053,
+   "nombre": "Lone Sail Fisherman",
+   "npc_type": 23892,
+   "sprite": 111585,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    139,
+    31
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 431
+  },
+  {
+   "entity_id": 92600054,
+   "nombre": "Lone Sail Fisherman",
+   "npc_type": 23892,
+   "sprite": 111585,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    100,
+    26
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 431
+  },
+  {
+   "entity_id": 92600055,
+   "nombre": "Lone Sail Fisherman",
+   "npc_type": 23892,
+   "sprite": 111585,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    100,
+    31
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 431
+  },
+  {
+   "entity_id": 92600056,
+   "nombre": "Lone Sail Fisherman",
+   "npc_type": 23892,
+   "sprite": 111585,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    123,
+    38
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 431
+  },
+  {
+   "entity_id": 92600057,
+   "nombre": "Lone Sail Fisherman",
+   "npc_type": 23892,
+   "sprite": 111585,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    128,
+    40
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 431
+  },
+  {
+   "entity_id": 92600058,
+   "nombre": "Lone Sail Fisherman",
+   "npc_type": 23892,
+   "sprite": 111585,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    140,
+    10
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 431
+  },
+  {
+   "entity_id": 92600059,
+   "nombre": "Lone Sail Fisherman",
+   "npc_type": 23892,
+   "sprite": 111585,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    140,
+    15
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 431
+  },
+  {
+   "entity_id": 92600060,
+   "nombre": "Lone Sail Fisherman",
+   "npc_type": 23892,
+   "sprite": 111585,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    95,
+    29
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 431
+  },
+  {
+   "entity_id": 92600061,
+   "nombre": "Lone Sail Fisherman",
+   "npc_type": 23892,
+   "sprite": 111585,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    95,
+    34
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 431
+  },
+  {
+   "entity_id": 92600062,
+   "nombre": "Lone Sail Fisherman",
+   "npc_type": 23892,
+   "sprite": 111585,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    117,
+    43
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 431
+  },
+  {
+   "entity_id": 92600063,
+   "nombre": "Lone Sail Fisherman",
+   "npc_type": 23892,
+   "sprite": 111585,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    122,
+    43
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 431
+  },
+  {
+   "entity_id": 92600064,
+   "nombre": "Lone Sail Fisherman",
+   "npc_type": 23892,
+   "sprite": 111585,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    142,
+    20
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 431
+  },
+  {
+   "entity_id": 92600065,
+   "nombre": "Lone Sail Fisherman",
+   "npc_type": 23892,
+   "sprite": 111585,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    90,
+    31
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 431
+  },
+  {
+   "entity_id": 92600066,
+   "nombre": "Lone Sail Fisherman",
+   "npc_type": 23892,
+   "sprite": 111585,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    90,
+    36
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 431
+  },
+  {
+   "entity_id": 92600067,
+   "nombre": "Lone Sail Fisherman",
+   "npc_type": 23892,
+   "sprite": 111585,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    111,
+    46
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 431
+  },
+  {
+   "entity_id": 92600068,
+   "nombre": "Lone Sail Fisherman",
+   "npc_type": 23892,
+   "sprite": 111585,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    116,
+    48
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 431
+  },
+  {
+   "entity_id": 92600069,
+   "nombre": "Lone Sail Fisherman",
+   "npc_type": 23892,
+   "sprite": 111585,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    105,
+    49
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 431
+  },
+  {
+   "entity_id": 92600070,
+   "nombre": "Drifting Barrel Bandit",
+   "npc_type": 23893,
+   "sprite": 111578,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    142,
+    60
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 433
+  },
+  {
+   "entity_id": 92600071,
+   "nombre": "Drifting Barrel Bandit",
+   "npc_type": 23893,
+   "sprite": 111578,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    137,
+    58
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 433
+  },
+  {
+   "entity_id": 92600072,
+   "nombre": "Drifting Barrel Bandit",
+   "npc_type": 23893,
+   "sprite": 111578,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    137,
+    63
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 433
+  },
+  {
+   "entity_id": 92600073,
+   "nombre": "Drifting Barrel Bandit",
+   "npc_type": 23893,
+   "sprite": 111578,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    147,
+    57
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 433
+  },
+  {
+   "entity_id": 92600074,
+   "nombre": "Drifting Barrel Bandit",
+   "npc_type": 23893,
+   "sprite": 111578,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    133,
+    68
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 433
+  },
+  {
+   "entity_id": 92600075,
+   "nombre": "Drifting Barrel Bandit",
+   "npc_type": 23893,
+   "sprite": 111578,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    152,
+    54
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 433
+  },
+  {
+   "entity_id": 92600076,
+   "nombre": "Drifting Barrel Bandit",
+   "npc_type": 23893,
+   "sprite": 111578,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    152,
+    59
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 433
+  },
+  {
+   "entity_id": 92600077,
+   "nombre": "Drifting Barrel Bandit",
+   "npc_type": 23893,
+   "sprite": 111578,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    132,
+    61
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 433
+  },
+  {
+   "entity_id": 92600078,
+   "nombre": "Drifting Barrel Bandit",
+   "npc_type": 23893,
+   "sprite": 111578,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    157,
+    48
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 433
+  },
+  {
+   "entity_id": 92600079,
+   "nombre": "Drifting Barrel Bandit",
+   "npc_type": 23893,
+   "sprite": 111578,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    157,
+    53
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 433
+  },
+  {
+   "entity_id": 92600080,
+   "nombre": "Drifting Barrel Bandit",
+   "npc_type": 23893,
+   "sprite": 111578,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    157,
+    58
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 433
+  },
+  {
+   "entity_id": 92600081,
+   "nombre": "Drifting Barrel Bandit",
+   "npc_type": 23893,
+   "sprite": 111578,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    157,
+    63
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 433
+  },
+  {
+   "entity_id": 92600082,
+   "nombre": "Drifting Barrel Bandit",
+   "npc_type": 23893,
+   "sprite": 111578,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    130,
+    73
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 433
+  },
+  {
+   "entity_id": 92600083,
+   "nombre": "Drifting Barrel Bandit",
+   "npc_type": 23893,
+   "sprite": 111578,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    128,
+    66
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 433
+  },
+  {
+   "entity_id": 92600084,
+   "nombre": "Drifting Barrel Bandit",
+   "npc_type": 23893,
+   "sprite": 111578,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    162,
+    46
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 433
+  },
+  {
+   "entity_id": 92600085,
+   "nombre": "Drifting Barrel Bandit",
+   "npc_type": 23893,
+   "sprite": 111578,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    162,
+    51
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 433
+  },
+  {
+   "entity_id": 92600086,
+   "nombre": "Drifting Barrel Bandit",
+   "npc_type": 23893,
+   "sprite": 111578,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    162,
+    56
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 433
+  },
+  {
+   "entity_id": 92600087,
+   "nombre": "Drifting Barrel Bandit",
+   "npc_type": 23893,
+   "sprite": 111578,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    162,
+    61
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 433
+  },
+  {
+   "entity_id": 92600088,
+   "nombre": "Drifting Barrel Bandit",
+   "npc_type": 23893,
+   "sprite": 111578,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    162,
+    66
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 433
+  },
+  {
+   "entity_id": 92600089,
+   "nombre": "Drifting Barrel Bandit",
+   "npc_type": 23893,
+   "sprite": 111578,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    167,
+    43
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 433
+  },
+  {
+   "entity_id": 92600090,
+   "nombre": "Drifting Barrel Bandit",
+   "npc_type": 23893,
+   "sprite": 111578,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    167,
+    48
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 433
+  },
+  {
+   "entity_id": 92600091,
+   "nombre": "Drifting Barrel Bandit",
+   "npc_type": 23893,
+   "sprite": 111578,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    167,
+    53
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 433
+  },
+  {
+   "entity_id": 92600092,
+   "nombre": "Drifting Barrel Bandit",
+   "npc_type": 23893,
+   "sprite": 111578,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    167,
+    58
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 433
+  },
+  {
+   "entity_id": 92600093,
+   "nombre": "Drifting Barrel Bandit",
+   "npc_type": 23893,
+   "sprite": 111578,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    167,
+    63
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 433
+  },
+  {
+   "entity_id": 92600094,
+   "nombre": "Drifting Barrel Bandit",
+   "npc_type": 23893,
+   "sprite": 111578,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    167,
+    68
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 433
+  },
+  {
+   "entity_id": 92600095,
+   "nombre": "Drifting Barrel Bandit",
+   "npc_type": 23893,
+   "sprite": 111578,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    169,
+    37
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 433
+  },
+  {
+   "entity_id": 92600096,
+   "nombre": "Drifting Barrel Bandit",
+   "npc_type": 23893,
+   "sprite": 111578,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    143,
+    36
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 433
+  },
+  {
+   "entity_id": 92600097,
+   "nombre": "Drifting Barrel Bandit",
+   "npc_type": 23893,
+   "sprite": 111578,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    172,
+    42
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 433
+  },
+  {
+   "entity_id": 92600098,
+   "nombre": "Drifting Barrel Bandit",
+   "npc_type": 23893,
+   "sprite": 111578,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    172,
+    47
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 433
+  },
+  {
+   "entity_id": 92600099,
+   "nombre": "Drifting Barrel Bandit",
+   "npc_type": 23893,
+   "sprite": 111578,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    172,
+    64
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 433
+  },
+  {
+   "entity_id": 92600100,
+   "nombre": "Drifting Barrel Bandit",
+   "npc_type": 23893,
+   "sprite": 111578,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    172,
+    69
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 433
+  },
+  {
+   "entity_id": 92600101,
+   "nombre": "Drifting Barrel Bandit",
+   "npc_type": 23893,
+   "sprite": 111578,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    163,
+    34
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 433
+  },
+  {
+   "entity_id": 92600102,
+   "nombre": "Drifting Barrel Bandit",
+   "npc_type": 23893,
+   "sprite": 111578,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    174,
+    34
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 433
+  },
+  {
+   "entity_id": 92600103,
+   "nombre": "Drifting Barrel Bandit",
+   "npc_type": 23893,
+   "sprite": 111578,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    148,
+    33
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 433
+  },
+  {
+   "entity_id": 92600104,
+   "nombre": "Drifting Barrel Bandit",
+   "npc_type": 23893,
+   "sprite": 111578,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    168,
+    32
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 433
+  },
+  {
+   "entity_id": 92600105,
+   "nombre": "Drifting Sea Bandit",
+   "npc_type": 23894,
+   "sprite": 111586,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    29,
+    64
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 435
+  },
+  {
+   "entity_id": 92600106,
+   "nombre": "Drifting Sea Bandit",
+   "npc_type": 23894,
+   "sprite": 111586,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    24,
+    59
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 435
+  },
+  {
+   "entity_id": 92600107,
+   "nombre": "Drifting Sea Bandit",
+   "npc_type": 23894,
+   "sprite": 111586,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    26,
+    69
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 435
+  },
+  {
+   "entity_id": 92600108,
+   "nombre": "Drifting Sea Bandit",
+   "npc_type": 23894,
+   "sprite": 111586,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    29,
+    59
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 435
+  },
+  {
+   "entity_id": 92600109,
+   "nombre": "Drifting Sea Bandit",
+   "npc_type": 23894,
+   "sprite": 111586,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    31,
+    69
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 435
+  },
+  {
+   "entity_id": 92600110,
+   "nombre": "Drifting Sea Bandit",
+   "npc_type": 23894,
+   "sprite": 111586,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    34,
+    60
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 435
+  },
+  {
+   "entity_id": 92600111,
+   "nombre": "Drifting Sea Bandit",
+   "npc_type": 23894,
+   "sprite": 111586,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    36,
+    65
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 435
+  },
+  {
+   "entity_id": 92600112,
+   "nombre": "Drifting Sea Bandit",
+   "npc_type": 23894,
+   "sprite": 111586,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    34,
+    55
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 435
+  },
+  {
+   "entity_id": 92600113,
+   "nombre": "Drifting Sea Bandit",
+   "npc_type": 23894,
+   "sprite": 111586,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    55
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 435
+  },
+  {
+   "entity_id": 92600114,
+   "nombre": "Drifting Sea Bandit",
+   "npc_type": 23894,
+   "sprite": 111586,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    39,
+    60
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 435
+  },
+  {
+   "entity_id": 92600115,
+   "nombre": "Drifting Sea Bandit",
+   "npc_type": 23894,
+   "sprite": 111586,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    23,
+    54
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 435
+  },
+  {
+   "entity_id": 92600116,
+   "nombre": "Drifting Sea Bandit",
+   "npc_type": 23894,
+   "sprite": 111586,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    28,
+    54
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 435
+  },
+  {
+   "entity_id": 92600117,
+   "nombre": "Drifting Sea Bandit",
+   "npc_type": 23894,
+   "sprite": 111586,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    41,
+    65
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 435
+  },
+  {
+   "entity_id": 92600118,
+   "nombre": "Drifting Sea Bandit",
+   "npc_type": 23894,
+   "sprite": 111586,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    22,
+    74
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 435
+  },
+  {
+   "entity_id": 92600119,
+   "nombre": "Drifting Sea Bandit",
+   "npc_type": 23894,
+   "sprite": 111586,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    27,
+    74
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 435
+  },
+  {
+   "entity_id": 92600120,
+   "nombre": "Drifting Sea Bandit",
+   "npc_type": 23894,
+   "sprite": 111586,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    44,
+    54
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 435
+  },
+  {
+   "entity_id": 92600121,
+   "nombre": "Drifting Sea Bandit",
+   "npc_type": 23894,
+   "sprite": 111586,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    44,
+    59
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 435
+  },
+  {
+   "entity_id": 92600122,
+   "nombre": "Drifting Sea Bandit",
+   "npc_type": 23894,
+   "sprite": 111586,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    32,
+    74
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 435
+  },
+  {
+   "entity_id": 92600123,
+   "nombre": "Drifting Sea Bandit",
+   "npc_type": 23894,
+   "sprite": 111586,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    33,
+    50
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 435
+  },
+  {
+   "entity_id": 92600124,
+   "nombre": "Drifting Sea Bandit",
+   "npc_type": 23894,
+   "sprite": 111586,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    46,
+    64
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 435
+  },
+  {
+   "entity_id": 92600125,
+   "nombre": "Drifting Sea Bandit",
+   "npc_type": 23894,
+   "sprite": 111586,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    47,
+    69
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 435
+  },
+  {
+   "entity_id": 92600126,
+   "nombre": "Drifting Sea Bandit",
+   "npc_type": 23894,
+   "sprite": 111586,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    24,
+    49
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 435
+  },
+  {
+   "entity_id": 92600127,
+   "nombre": "Drifting Sea Bandit",
+   "npc_type": 23894,
+   "sprite": 111586,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    49,
+    57
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 435
+  },
+  {
+   "entity_id": 92600128,
+   "nombre": "Drifting Sea Bandit",
+   "npc_type": 23894,
+   "sprite": 111586,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    49,
+    74
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 435
+  },
+  {
+   "entity_id": 92600129,
+   "nombre": "Drifting Sea Bandit",
+   "npc_type": 23894,
+   "sprite": 111586,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    51,
+    62
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 435
+  },
+  {
+   "entity_id": 92600130,
+   "nombre": "Drifting Sea Bandit",
+   "npc_type": 23894,
+   "sprite": 111586,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    52,
+    67
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 435
+  },
+  {
+   "entity_id": 92600131,
+   "nombre": "Drifting Sea Bandit",
+   "npc_type": 23894,
+   "sprite": 111586,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    29,
+    45
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 435
+  },
+  {
+   "entity_id": 92600132,
+   "nombre": "Drifting Sea Bandit",
+   "npc_type": 23894,
+   "sprite": 111586,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    37,
+    77
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 435
+  },
+  {
+   "entity_id": 92600133,
+   "nombre": "Drifting Sea Bandit",
+   "npc_type": 23894,
+   "sprite": 111586,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    20,
+    44
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 435
+  },
+  {
+   "entity_id": 92600134,
+   "nombre": "Drifting Sea Bandit",
+   "npc_type": 23894,
+   "sprite": 111586,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    44,
+    78
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 435
+  },
+  {
+   "entity_id": 92600135,
+   "nombre": "Drifting Sea Bandit",
+   "npc_type": 23894,
+   "sprite": 111586,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    54,
+    72
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 435
+  },
+  {
+   "entity_id": 92600136,
+   "nombre": "Drifting Sea Bandit",
+   "npc_type": 23894,
+   "sprite": 111586,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    54,
+    77
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 435
+  },
+  {
+   "entity_id": 92600137,
+   "nombre": "Drifting Sea Bandit",
+   "npc_type": 23894,
+   "sprite": 111586,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    56,
+    60
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 435
+  },
+  {
+   "entity_id": 92600138,
+   "nombre": "Drifting Sea Bandit",
+   "npc_type": 23894,
+   "sprite": 111586,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    19,
+    49
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 435
+  },
+  {
+   "entity_id": 92600139,
+   "nombre": "Drifting Sea Bandit",
+   "npc_type": 23894,
+   "sprite": 111586,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    19,
+    59
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 435
+  },
+  {
+   "entity_id": 92600140,
+   "nombre": "Mud Snail",
+   "npc_type": 23895,
+   "sprite": 111600,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    250,
+    93
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 437
+  },
+  {
+   "entity_id": 92600141,
+   "nombre": "Mud Snail",
+   "npc_type": 23895,
+   "sprite": 111600,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    245,
+    88
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 437
+  },
+  {
+   "entity_id": 92600142,
+   "nombre": "Mud Snail",
+   "npc_type": 23895,
+   "sprite": 111600,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    245,
+    93
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 437
+  },
+  {
+   "entity_id": 92600143,
+   "nombre": "Mud Snail",
+   "npc_type": 23895,
+   "sprite": 111600,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    245,
+    98
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 437
+  },
+  {
+   "entity_id": 92600144,
+   "nombre": "Mud Snail",
+   "npc_type": 23895,
+   "sprite": 111600,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    250,
+    88
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 437
+  },
+  {
+   "entity_id": 92600145,
+   "nombre": "Mud Snail",
+   "npc_type": 23895,
+   "sprite": 111600,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    255,
+    89
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 437
+  },
+  {
+   "entity_id": 92600146,
+   "nombre": "Mud Snail",
+   "npc_type": 23895,
+   "sprite": 111600,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    255,
+    94
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 437
+  },
+  {
+   "entity_id": 92600147,
+   "nombre": "Mud Snail",
+   "npc_type": 23895,
+   "sprite": 111600,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    255,
+    84
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 437
+  },
+  {
+   "entity_id": 92600148,
+   "nombre": "Mud Snail",
+   "npc_type": 23895,
+   "sprite": 111600,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    260,
+    84
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 437
+  },
+  {
+   "entity_id": 92600149,
+   "nombre": "Mud Snail",
+   "npc_type": 23895,
+   "sprite": 111600,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    260,
+    89
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 437
+  },
+  {
+   "entity_id": 92600150,
+   "nombre": "Mud Snail",
+   "npc_type": 23895,
+   "sprite": 111600,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    260,
+    94
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 437
+  },
+  {
+   "entity_id": 92600151,
+   "nombre": "Mud Snail",
+   "npc_type": 23895,
+   "sprite": 111600,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    246,
+    83
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 437
+  },
+  {
+   "entity_id": 92600152,
+   "nombre": "Mud Snail",
+   "npc_type": 23895,
+   "sprite": 111600,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    260,
+    99
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 437
+  },
+  {
+   "entity_id": 92600153,
+   "nombre": "Mud Snail",
+   "npc_type": 23895,
+   "sprite": 111600,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    265,
+    80
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 437
+  },
+  {
+   "entity_id": 92600154,
+   "nombre": "Mud Snail",
+   "npc_type": 23895,
+   "sprite": 111600,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    265,
+    85
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 437
+  },
+  {
+   "entity_id": 92600155,
+   "nombre": "Mud Snail",
+   "npc_type": 23895,
+   "sprite": 111600,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    265,
+    90
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 437
+  },
+  {
+   "entity_id": 92600156,
+   "nombre": "Mud Snail",
+   "npc_type": 23895,
+   "sprite": 111600,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    265,
+    95
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 437
+  },
+  {
+   "entity_id": 92600157,
+   "nombre": "Mud Snail",
+   "npc_type": 23895,
+   "sprite": 111600,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    265,
+    100
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 437
+  },
+  {
+   "entity_id": 92600158,
+   "nombre": "Mud Snail",
+   "npc_type": 23895,
+   "sprite": 111600,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    251,
+    79
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 437
+  },
+  {
+   "entity_id": 92600159,
+   "nombre": "Mud Snail",
+   "npc_type": 23895,
+   "sprite": 111600,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    256,
+    79
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 437
+  },
+  {
+   "entity_id": 92600160,
+   "nombre": "Mud Snail",
+   "npc_type": 23895,
+   "sprite": 111600,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    270,
+    87
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 437
+  },
+  {
+   "entity_id": 92600161,
+   "nombre": "Mud Snail",
+   "npc_type": 23895,
+   "sprite": 111600,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    270,
+    92
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 437
+  },
+  {
+   "entity_id": 92600162,
+   "nombre": "Mud Snail",
+   "npc_type": 23895,
+   "sprite": 111600,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    270,
+    97
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 437
+  },
+  {
+   "entity_id": 92600163,
+   "nombre": "Mud Snail",
+   "npc_type": 23895,
+   "sprite": 111600,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    246,
+    76
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 437
+  },
+  {
+   "entity_id": 92600164,
+   "nombre": "Mud Snail",
+   "npc_type": 23895,
+   "sprite": 111600,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    270,
+    76
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 437
+  },
+  {
+   "entity_id": 92600165,
+   "nombre": "Mud Snail",
+   "npc_type": 23895,
+   "sprite": 111600,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    263,
+    75
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 437
+  },
+  {
+   "entity_id": 92600166,
+   "nombre": "Mud Snail",
+   "npc_type": 23895,
+   "sprite": 111600,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    270,
+    102
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 437
+  },
+  {
+   "entity_id": 92600167,
+   "nombre": "Mud Snail",
+   "npc_type": 23895,
+   "sprite": 111600,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    275,
+    74
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 437
+  },
+  {
+   "entity_id": 92600168,
+   "nombre": "Mud Snail",
+   "npc_type": 23895,
+   "sprite": 111600,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    275,
+    89
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 437
+  },
+  {
+   "entity_id": 92600169,
+   "nombre": "Mud Snail",
+   "npc_type": 23895,
+   "sprite": 111600,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    275,
+    94
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 437
+  },
+  {
+   "entity_id": 92600170,
+   "nombre": "Mud Snail",
+   "npc_type": 23895,
+   "sprite": 111600,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    280,
+    70
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 437
+  },
+  {
+   "entity_id": 92600171,
+   "nombre": "Mud Snail",
+   "npc_type": 23895,
+   "sprite": 111600,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    280,
+    92
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 437
+  },
+  {
+   "entity_id": 92600172,
+   "nombre": "Mud Snail",
+   "npc_type": 23895,
+   "sprite": 111600,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    260,
+    105
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 437
+  },
+  {
+   "entity_id": 92600173,
+   "nombre": "Mud Snail",
+   "npc_type": 23895,
+   "sprite": 111600,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    265,
+    105
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 437
+  },
+  {
+   "entity_id": 92600174,
+   "nombre": "Mud Snail",
+   "npc_type": 23895,
+   "sprite": 111600,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    272,
+    69
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 437
+  },
+  {
+   "entity_id": 92600175,
+   "nombre": "Red Snail",
+   "npc_type": 23896,
+   "sprite": 111601,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    215,
+    145
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 439
+  },
+  {
+   "entity_id": 92600176,
+   "nombre": "Red Snail",
+   "npc_type": 23896,
+   "sprite": 111601,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    218,
+    140
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 439
+  },
+  {
+   "entity_id": 92600177,
+   "nombre": "Red Snail",
+   "npc_type": 23896,
+   "sprite": 111601,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    210,
+    147
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 439
+  },
+  {
+   "entity_id": 92600178,
+   "nombre": "Red Snail",
+   "npc_type": 23896,
+   "sprite": 111601,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    220,
+    145
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 439
+  },
+  {
+   "entity_id": 92600179,
+   "nombre": "Red Snail",
+   "npc_type": 23896,
+   "sprite": 111601,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    215,
+    150
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 439
+  },
+  {
+   "entity_id": 92600180,
+   "nombre": "Red Snail",
+   "npc_type": 23896,
+   "sprite": 111601,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    223,
+    139
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 439
+  },
+  {
+   "entity_id": 92600181,
+   "nombre": "Red Snail",
+   "npc_type": 23896,
+   "sprite": 111601,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    220,
+    150
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 439
+  },
+  {
+   "entity_id": 92600182,
+   "nombre": "Red Snail",
+   "npc_type": 23896,
+   "sprite": 111601,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    212,
+    137
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 439
+  },
+  {
+   "entity_id": 92600183,
+   "nombre": "Red Snail",
+   "npc_type": 23896,
+   "sprite": 111601,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    225,
+    144
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 439
+  },
+  {
+   "entity_id": 92600184,
+   "nombre": "Red Snail",
+   "npc_type": 23896,
+   "sprite": 111601,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    225,
+    149
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 439
+  },
+  {
+   "entity_id": 92600185,
+   "nombre": "Red Snail",
+   "npc_type": 23896,
+   "sprite": 111601,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    228,
+    138
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 439
+  },
+  {
+   "entity_id": 92600186,
+   "nombre": "Red Snail",
+   "npc_type": 23896,
+   "sprite": 111601,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    230,
+    143
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 439
+  },
+  {
+   "entity_id": 92600187,
+   "nombre": "Red Snail",
+   "npc_type": 23896,
+   "sprite": 111601,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    217,
+    135
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 439
+  },
+  {
+   "entity_id": 92600188,
+   "nombre": "Red Snail",
+   "npc_type": 23896,
+   "sprite": 111601,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    211,
+    155
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 439
+  },
+  {
+   "entity_id": 92600189,
+   "nombre": "Red Snail",
+   "npc_type": 23896,
+   "sprite": 111601,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    216,
+    155
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 439
+  },
+  {
+   "entity_id": 92600190,
+   "nombre": "Red Snail",
+   "npc_type": 23896,
+   "sprite": 111601,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    233,
+    136
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 439
+  },
+  {
+   "entity_id": 92600191,
+   "nombre": "Red Snail",
+   "npc_type": 23896,
+   "sprite": 111601,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    235,
+    141
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 439
+  },
+  {
+   "entity_id": 92600192,
+   "nombre": "Red Snail",
+   "npc_type": 23896,
+   "sprite": 111601,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    221,
+    155
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 439
+  },
+  {
+   "entity_id": 92600193,
+   "nombre": "Red Snail",
+   "npc_type": 23896,
+   "sprite": 111601,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    226,
+    155
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 439
+  },
+  {
+   "entity_id": 92600194,
+   "nombre": "Red Snail",
+   "npc_type": 23896,
+   "sprite": 111601,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    212,
+    130
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 439
+  },
+  {
+   "entity_id": 92600195,
+   "nombre": "Red Snail",
+   "npc_type": 23896,
+   "sprite": 111601,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    238,
+    134
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 439
+  },
+  {
+   "entity_id": 92600196,
+   "nombre": "Red Snail",
+   "npc_type": 23896,
+   "sprite": 111601,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    240,
+    139
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 439
+  },
+  {
+   "entity_id": 92600197,
+   "nombre": "Red Snail",
+   "npc_type": 23896,
+   "sprite": 111601,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    217,
+    130
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 439
+  },
+  {
+   "entity_id": 92600198,
+   "nombre": "Red Snail",
+   "npc_type": 23896,
+   "sprite": 111601,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    239,
+    156
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 439
+  },
+  {
+   "entity_id": 92600199,
+   "nombre": "Red Snail",
+   "npc_type": 23896,
+   "sprite": 111601,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    236,
+    129
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 439
+  },
+  {
+   "entity_id": 92600200,
+   "nombre": "Red Snail",
+   "npc_type": 23896,
+   "sprite": 111601,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    243,
+    130
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 439
+  },
+  {
+   "entity_id": 92600201,
+   "nombre": "Red Snail",
+   "npc_type": 23896,
+   "sprite": 111601,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    244,
+    154
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 439
+  },
+  {
+   "entity_id": 92600202,
+   "nombre": "Red Snail",
+   "npc_type": 23896,
+   "sprite": 111601,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    222,
+    128
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 439
+  },
+  {
+   "entity_id": 92600203,
+   "nombre": "Red Snail",
+   "npc_type": 23896,
+   "sprite": 111601,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    231,
+    158
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 439
+  },
+  {
+   "entity_id": 92600204,
+   "nombre": "Red Snail",
+   "npc_type": 23896,
+   "sprite": 111601,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    245,
+    135
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 439
+  },
+  {
+   "entity_id": 92600205,
+   "nombre": "Red Snail",
+   "npc_type": 23896,
+   "sprite": 111601,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    245,
+    140
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 439
+  },
+  {
+   "entity_id": 92600206,
+   "nombre": "Red Snail",
+   "npc_type": 23896,
+   "sprite": 111601,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    248,
+    128
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 439
+  },
+  {
+   "entity_id": 92600207,
+   "nombre": "Red Snail",
+   "npc_type": 23896,
+   "sprite": 111601,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    244,
+    159
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 439
+  },
+  {
+   "entity_id": 92600208,
+   "nombre": "Red Snail",
+   "npc_type": 23896,
+   "sprite": 111601,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    249,
+    151
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 439
+  },
+  {
+   "entity_id": 92600209,
+   "nombre": "Red Snail",
+   "npc_type": 23896,
+   "sprite": 111601,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    249,
+    156
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 439
+  },
+  {
+   "entity_id": 92600210,
+   "nombre": "Elite-Lone Sail Fisherman",
+   "npc_type": 23897,
+   "sprite": 111585,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    56,
+    136
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 441
+  },
+  {
+   "entity_id": 92600211,
+   "nombre": "Elite-Lone Sail Fisherman",
+   "npc_type": 23897,
+   "sprite": 111585,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    51,
+    131
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 441
+  },
+  {
+   "entity_id": 92600212,
+   "nombre": "Elite-Lone Sail Fisherman",
+   "npc_type": 23897,
+   "sprite": 111585,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    51,
+    136
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 441
+  },
+  {
+   "entity_id": 92600213,
+   "nombre": "Elite-Lone Sail Fisherman",
+   "npc_type": 23897,
+   "sprite": 111585,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    52,
+    141
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 441
+  },
+  {
+   "entity_id": 92600214,
+   "nombre": "Elite-Lone Sail Fisherman",
+   "npc_type": 23897,
+   "sprite": 111585,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    56,
+    131
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 441
+  },
+  {
+   "entity_id": 92600215,
+   "nombre": "Elite-Drifting Sea Bandit",
+   "npc_type": 23898,
+   "sprite": 111586,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    73,
+    157
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 443
+  },
+  {
+   "entity_id": 92600216,
+   "nombre": "Elite-Drifting Sea Bandit",
+   "npc_type": 23898,
+   "sprite": 111586,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    68,
+    152
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 443
+  },
+  {
+   "entity_id": 92600217,
+   "nombre": "Elite-Drifting Sea Bandit",
+   "npc_type": 23898,
+   "sprite": 111586,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    68,
+    157
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 443
+  },
+  {
+   "entity_id": 92600218,
+   "nombre": "Elite-Drifting Sea Bandit",
+   "npc_type": 23898,
+   "sprite": 111586,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    68,
+    162
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 443
+  },
+  {
+   "entity_id": 92600219,
+   "nombre": "Elite-Drifting Sea Bandit",
+   "npc_type": 23898,
+   "sprite": 111586,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    73,
+    152
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 443
+  },
+  {
+   "entity_id": 92600220,
+   "nombre": "Tide Axe Wavechaser Red",
+   "npc_type": 23899,
+   "sprite": 111576,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    229,
+    98
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 445
+  },
+  {
+   "entity_id": 92600221,
+   "nombre": "Barrel Blade Vice-Captain Jello",
+   "npc_type": 23900,
+   "sprite": 111579,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    22,
+    109
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 445
+  },
+  {
+   "entity_id": 92600222,
+   "nombre": "Rotten Wandering Fisherman",
+   "npc_type": 23983,
+   "sprite": 111645,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    67,
+    147
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 430
+  },
+  {
+   "entity_id": 92600223,
+   "nombre": "Rotten Wandering Fisherman",
+   "npc_type": 23983,
+   "sprite": 111645,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    72,
+    147
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 430
+  },
+  {
+   "entity_id": 92600224,
+   "nombre": "Rotten Wandering Fisherman",
+   "npc_type": 23983,
+   "sprite": 111645,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    77,
+    147
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 430
+  },
+  {
+   "entity_id": 92600225,
+   "nombre": "Rotten Wandering Fisherman",
+   "npc_type": 23983,
+   "sprite": 111645,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    76,
+    142
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 430
+  },
+  {
+   "entity_id": 92600226,
+   "nombre": "Rotten Wandering Fisherman",
+   "npc_type": 23983,
+   "sprite": 111645,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    71,
+    137
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 430
+  },
+  {
+   "entity_id": 92600227,
+   "nombre": "Rotten Wandering Fisherman",
+   "npc_type": 23983,
+   "sprite": 111645,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    71,
+    142
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 430
+  },
+  {
+   "entity_id": 92600228,
+   "nombre": "Rotten Wandering Fisherman",
+   "npc_type": 23983,
+   "sprite": 111645,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    66,
+    141
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 430
+  },
+  {
+   "entity_id": 92600229,
+   "nombre": "Rotten Wandering Fisherman",
+   "npc_type": 23983,
+   "sprite": 111645,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    62,
+    146
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 430
+  },
+  {
+   "entity_id": 92600230,
+   "nombre": "Rotten Wandering Fisherman",
+   "npc_type": 23983,
+   "sprite": 111645,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    61,
+    136
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 430
+  },
+  {
+   "entity_id": 92600231,
+   "nombre": "Rotten Wandering Fisherman",
+   "npc_type": 23983,
+   "sprite": 111645,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    82,
+    146
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 430
+  },
+  {
+   "entity_id": 92600232,
+   "nombre": "Rotten Wandering Fisherman",
+   "npc_type": 23983,
+   "sprite": 111645,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    87,
+    146
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 430
+  },
+  {
+   "entity_id": 92600233,
+   "nombre": "Rotten Wandering Fisherman",
+   "npc_type": 23983,
+   "sprite": 111645,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    78,
+    159
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 430
+  },
+  {
+   "entity_id": 92600234,
+   "nombre": "Rotten Wandering Fisherman",
+   "npc_type": 23983,
+   "sprite": 111645,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    57,
+    143
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 430
+  },
+  {
+   "entity_id": 92600235,
+   "nombre": "Rotten Wandering Fisherman",
+   "npc_type": 23983,
+   "sprite": 111645,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    57,
+    148
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 430
+  },
+  {
+   "entity_id": 92600236,
+   "nombre": "Rotten Wandering Fisherman",
+   "npc_type": 23983,
+   "sprite": 111645,
+   "klass": 1,
+   "monstruo": true,
+   "tile": [
+    63,
+    157
+   ],
+   "direccion": 2,
+   "visible": 0,
+   "nivel": 430
+  },
+  {
+   "entity_id": 90426000,
+   "nombre": "Fisherman Farid",
+   "nombre_completo": "Fisherman Farid",
+   "npc_type": 24867,
+   "sprite": 40135,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    82,
+    12
+   ],
+   "direccion": 6,
+   "visible": 1,
+   "puesto_por": "npcs_del_cliente"
+  },
+  {
+   "entity_id": 90426001,
+   "nombre": "Airi",
+   "nombre_completo": "Airi",
+   "npc_type": 24873,
+   "sprite": 40082,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    245,
+    100
+   ],
+   "direccion": 6,
+   "visible": 1,
+   "puesto_por": "npcs_del_cliente"
+  },
+  {
+   "entity_id": 90426002,
+   "nombre": "Irina",
+   "nombre_completo": "Irina",
+   "npc_type": 24885,
+   "sprite": 40498,
+   "klass": 199,
+   "monstruo": false,
+   "tile": [
+    179,
+    47
+   ],
+   "direccion": 6,
+   "visible": 1,
+   "puesto_por": "npcs_del_cliente"
+  }
+ ],
+ "recursos": [
+  {
+   "entity_id": 102600000,
+   "sprite": 60305,
+   "capa": 0,
+   "px": [
+    2290,
+    4688
+   ],
+   "tile": [
+    71,
+    146
+   ],
+   "crudo": "408d1d0600000000f2080000501200000000000027000000000000001a000000dc0691eb00004080140000",
+   "copiado_de": "cuerpo de una captura del objeto 60305"
+  }
+ ]
+}

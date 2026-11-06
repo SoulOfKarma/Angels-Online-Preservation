@@ -27,9 +27,13 @@ import eventos as ev
 log = logging.getLogger(__name__)
 
 RUTA = pathlib.Path(__file__).parent / 'plantillas' / 'dialogos_mapa.json'
+# Arbol de spmsg.xml (NPC de los sp_*.xml). Va debajo del de cada mapa.
+RUTA_SP = pathlib.Path(__file__).parent / 'plantillas' / 'dialogos_sp.json'
 MAX_LINEAS = 8
 
 _TODO = None
+_SP = None
+_CON_SP = {}
 
 
 @lru_cache(maxsize=None)
@@ -56,7 +60,11 @@ def es_comercio(stage, raiz):
     return not pending and has_shop
 
 
-def _arbol(stage):
+def _arbol(stage, con_sp=True):
+    """El arbol del stage. con_sp=False: solo el del mapa, sin spmsg.xml --
+    para BUSCAR raices (por retrato o por accion); con spmsg, el Breeze Totem
+    de Bluesand y los del Lyceum cogian una raiz de spmsg con su mismo retrato
+    ("You are not the angel of this totem...") estando vivo."""
     global _TODO
     if _TODO is None:
         try:
@@ -70,10 +78,37 @@ def _arbol(stage):
         except Exception:
             log.exception('Terra Keeper antiguo')
     result=_TODO.get(str(int(stage)), {})
+    if con_sp:
+        result=_con_sp(int(stage), result)
     if int(stage)==41:
         import olympus,recent_mall
         return {**result,**olympus.datos()['nodes'],**recent_mall.datos()['nodes']}
     return result
+
+
+def arbol_sp():
+    global _SP
+    if _SP is None:
+        try:
+            _SP = json.loads(RUTA_SP.read_text(encoding='utf-8'))
+        except Exception:
+            _SP = {}
+    return _SP
+
+
+def _con_sp(stage, propio):
+    # El del mapa gana si un numero de nodo coincide. Se mezcla una vez por
+    # mapa: son ~25.000 nodos y _arbol se llama en cada click.
+    if stage not in _CON_SP:
+        _CON_SP[stage] = {**arbol_sp(), **propio} if arbol_sp() else propio
+    return _CON_SP[stage]
+
+
+def raiz_sp(msgid):
+    """El nodo raiz de un NPC de sp_*.xml si su arbol decide algo (ramas u
+    opciones); si es una linea suelta sigue el dialogo de siempre."""
+    n = arbol_sp().get(str(int(msgid or 0)))
+    return int(msgid) if n and (n.get('r') or n.get('o')) else None
 
 
 # EL TERRA KEEPER DE LA GUERRA ANTIGUA (totem_war.MODO = 'antigua'). Medido en
@@ -116,7 +151,7 @@ def raiz_del_npc(stage, retrato):
     Solo cuenta si hay uno y con ramas: dos raices con el mismo retrato no
     se pueden distinguir y entonces no se arriesga.
     """
-    arbol = _arbol(stage)
+    arbol = _arbol(stage, con_sp=False)
     if not arbol or not retrato:
         return None
     cands = [k for k in _raices(arbol)
@@ -218,7 +253,7 @@ def raiz_interactiva(stage, retrato):
     Annoying Clerk de la sala 2 de la Magic Kichen Path entra por un nodo con
     tres opciones y sin ramas (10001: "contame el juego" / "acepto" / salir).
     """
-    arbol = _arbol(stage)
+    arbol = _arbol(stage, con_sp=False)
     if not arbol or not retrato:
         return None
     for k in _raices(arbol):
@@ -245,7 +280,7 @@ def nodo_fin_de_juego(stage):
     """La raiz que cierra el NPCKILLGAME (63, 0) y no lo empieza: la que el
     servidor abre cuando se acaba el tiempo. En el stage 74 es la 61102, que
     mira si ganaste (mas de 50 bajas) y te pasa al 75 o te devuelve."""
-    arbol = _arbol(stage)
+    arbol = _arbol(stage, con_sp=False)
     for k in _raices(arbol):
         if (_acciones_debajo(arbol, k, 63, 0)
                 and not _acciones_debajo(arbol, k, 63, 1)):
@@ -257,7 +292,7 @@ def zonas_de_inicio_de_juego(stage):
     """Las zonas que GENERA (accion 31) la raiz que empieza el NPCKILLGAME
     (63, 1): las marcas de "carrera en marcha". En el stage 74 es la 103, que
     la raiz de cierre (61102) mira con GENERATOR_ALIVE."""
-    arbol = _arbol(stage)
+    arbol = _arbol(stage, con_sp=False)
     zonas = set()
     for n in arbol.values():
         if any(a[0] == 63 and (a[1] or [None])[0] == 1 for a in n.get('a', ())):

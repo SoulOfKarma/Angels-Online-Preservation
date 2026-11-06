@@ -385,6 +385,26 @@ def zonas_de_evento(stage):
     return zonas
 
 
+# Los cuatro elfos elementales (Wind, Fire, Water y Earth Elf, nivel 4-7)
+# los usan los .mpc como MARCADORES de posicion: generadores de uno en su
+# propia zona, en filas ordenadas, en instancias de nivel 300-465. En el
+# cliente oficial no aparecen; poblandolos salian Fire Elf nivel 7 a la
+# entrada de Rotwood Abyss (nivel 465), visto por el usuario el 26/10/2026.
+MARCADORES = {1, 2, 3, 4}
+
+
+def _nivel_tipico(m, cat):
+    import statistics
+    nv = [cat[g['tipo']][1] or 0 for g in m.generadores()
+          if g['tipo'] in cat and cat[g['tipo']][3] and g['tipo'] not in MARCADORES]
+    return statistics.median(nv) if nv else 0
+
+
+def es_marcador(tipo, nivel_mapa):
+    """Un elfo elemental en un mapa de nivel alto es un marcador, no un bicho."""
+    return tipo in MARCADORES and nivel_mapa > 50
+
+
 def spawns_de(stage, con_zonas_de_evento=False):
     """La lista de spawns del mapa, en el formato de las plantillas.
 
@@ -404,8 +424,12 @@ def spawns_de(stage, con_zonas_de_evento=False):
     # casilla y se veian los bichos uno encima de otro: en Gulp Room 4
     # llegaron a caer 53 en una sola casilla.
     ocupadas = set()
+    nivel_mapa = _nivel_tipico(m, cat)
     for k, g in enumerate(m.generadores()):
         if g['zona'] and g['zona'] in fuera:
+            continue
+        # Los de cantidad 0 no: esos los invoca un evento (Gulp Room 3).
+        if g['cantidad'] and es_marcador(g['tipo'], nivel_mapa):
             continue
         info = cat.get(g['tipo'])
         if not info:
