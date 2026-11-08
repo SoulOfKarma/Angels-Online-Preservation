@@ -65,8 +65,6 @@ def indice(raiz: pathlib.Path, nombres, solo_setting: bool = False) -> dict:
     vista = {}
     for n in sorted(nombres, key=lambda x: paks.numero(raiz / x)):
         base = raiz / n
-        if not base.is_dir():
-            continue
         dirs = [d for d in base.iterdir() if d.is_dir()
                 and (not solo_setting or d.name.lower() == 'setting')]
         for d in dirs:
@@ -161,13 +159,29 @@ def numeros_casan(zh: str, en: str) -> bool:
 
 def memoria():
     """Pares zh->en por ID y campo: TW (chino) contra IGG (ya en ingles)."""
-    tablas = tablas_vigentes()
+    igg, tw_ = indice_igg(True), indice_tw(True)
+    u26_puro = RAIZ / 'work' / 'backup' / '20261026_160246' / 'extracted_paks_update26'
+    if (u26_puro / 'setting').is_dir():
+        igg = indice(IGG, [d.name for d in IGG.iterdir() if d.is_dir()
+                           and paks.numero(IGG / d.name) < 26], True)
+        for f in (u26_puro / 'setting').rglob('*'):
+            if f.is_file():
+                igg[normal(str(f.relative_to(u26_puro)))] = ('update26', f)
+    tablas = []
+    for r in sorted(set(igg) | set(tw_)):
+        if r.startswith('setting\\eng\\') and r.endswith('.xml'):
+            fi = filas(leer(igg[r][1])) if r in igg else {}
+            ft = filas(leer(tw_[r][1])) if r in tw_ else {}
+            if fi or ft:
+                tablas.append((r, fi, ft))
     votos = collections.defaultdict(collections.Counter)
     for r, fi, ft in tablas:
         for i, fila_t in ft.items():
             if i not in fi or i in IDS_PROPIOS:
                 continue
             ai, at = atributos(fi[i]), atributos(fila_t)
+            if r.endswith('\\exchange.xml') and ai.get('獎賞1') != at.get('獎賞1'):
+                continue
             for a, zh in at.items():
                 en = ai.get(a)
                 if (es_texto(a) and en and RE_CJK.search(zh)
@@ -176,7 +190,7 @@ def memoria():
     tm = {zh: c.most_common(1)[0][0] for zh, c in votos.items()}
     MEMORIA.parent.mkdir(parents=True, exist_ok=True)
     MEMORIA.write_text(json.dumps(tm, ensure_ascii=False, indent=0), encoding='utf-8')
-    pend = pendientes(tablas)
+    pend = pendientes(tablas_vigentes())
     cubiertas = [v for v in pend if v in tm]
     print('pares zh->en: %d' % len(tm))
     print('textos CJK a traducir: %d unicos (%d chars); cubiertos por memoria: %d'
@@ -304,10 +318,6 @@ def fusionar_obd_add(igg: bytes, tw_: bytes) -> bytes:
 
 def construir(con_paks: bool = True):
     """work/salida/setting (tablas fusionadas y traducidas) y work/salida/paks."""
-    faltantes = [n for n in PAKS_TW if not (TW / n).is_dir()]
-    if faltantes:
-        raise FileNotFoundError('faltan extracciones completas de Taiwan: %s'
-                                % ', '.join(faltantes))
     import shutil
     import traducir
     trad = traducir.Traductor()
@@ -371,7 +381,7 @@ def construir(con_paks: bool = True):
     if not con_paks:
         return
 
-    # Assets nuevos (ruta que IGG no tiene) -> update27..32.pak
+    # Assets nuevos (ruta que IGG no tiene) -> update27..31.pak
     igg_todo, tw_todo = indice_igg(), indice_tw()
     por_pak = collections.defaultdict(list)
     for r, (pak, f) in tw_todo.items():
@@ -564,8 +574,9 @@ def ajustes_wnd():
     * wnd05.xml, ventana Angels GO!: la lista de "Map Types" (id 28383)
       tenia rows="39"; con la categoria 40 (Sand Castle Tales) TW la sube a
       rows="40" y alto 460. Con 39 la categoria 40 no salia en la lista.
-    * wnd01.xml, mapa del mundo: las cuatro pestañas nuevas usan appdata=5,
-      como en Taiwan; se separan los botones y se desplaza "Switch Maps".
+    * wnd01.xml, mapa del mundo: TW anade la pestana 25516 "砂城秘譚". Los
+      cuatro mapas nuevos usan appdata=5 en el archivo TW; las pestañas en
+      inglés se separan y Switch Maps se desplaza para dejarles sitio.
     Las versiones vigentes (update26 y update25) se copian a update26 y se
     meten en update26.pak y su .bak."""
     import paks
@@ -581,10 +592,12 @@ def ajustes_wnd():
     w1 = pathlib.Path(paks.vigente('wnd01.xml'))
     t = w1.read_bytes().decode('utf-8-sig')
     if 'id="25516"' not in t:
-        t = t.replace('title="Night City Code" appdata="7">\r\n\t\t<style wsVisible="" bsVCenter="" '
-                      'bsHCenter="" bsRadio=""  wsTab="" bsRadioEnd=""/>',
-                      'title="Night City Code" appdata="7">\r\n\t\t<style wsVisible="" bsVCenter="" '
-                      'bsHCenter="" bsRadio=""  wsTab=""/>', 1)
+        inicio = t.find('id="25515"')
+        fin = t.find('</window>', inicio)
+        if inicio < 0 or fin < 0:
+            raise SystemExit('wnd01.xml: no se encontro la pestana Night City Code')
+        boton_night = t[inicio:fin]
+        t = t[:inicio] + boton_night.replace(' bsRadioEnd=""', '') + t[fin:]
         boton = ('\t<window class="WND_CLASS_BUTTON" id="25516" range="494,561,105,17" fcolor="101" '
                  'font="1" icon="27108" check="27112" title="Sand Castle Tales" appdata="5">\r\n'
                  '\t\t<style wsVisible="" bsVCenter="" bsHCenter="" bsRadio=""  wsTab="" bsRadioEnd=""/>\r\n'
