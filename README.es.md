@@ -318,7 +318,7 @@ Path`, `Third Spirit`, `Limit Breaker`, `Shadow Meld`, `Killer Intent`) y la
 - **Sistema de Combate y Habilidades de Alto Nivel**:
   - **Combos multihit y ráfagas continuas**: soporte completo para habilidades encadenadas y ataques de ráfaga (fórmulas 36, 40 y 42, ej. _Rapidfire_, _Steel Rain_, _Victory Sword_, _Quake Spear_, _Strangle Strike_, _Windbreaker Arrow_). La animación de casteo/disparo del personaje se ejecuta **una sola vez** al inicio, mientras que los impactos subsiguientes impactan secuencialmente con intervalos naturales.
   - **Distribución de ráfagas en área y rebotes**: ráfagas de área (_Steel Rain_, _Sword of Kings_, _Quake Spear_, _Flaming Blade Rain_) distribuyen sus N impactos aleatoriamente entre los enemigos vivos del área (o concentran todos los impactos si hay un solo objetivo). _Windbreaker Arrow_ genera un tornado inicial en área y luego 5 a 10 impactos de rebote (ricochets) a enemigos cercanos.
-  - **Escalado de habilidades físicas y base en R.Atk**: las habilidades físicas escalan fielmente sobre el ataque de mano principal (R.Atk) y Stance Power (PESO_STANCE = 2.0) contra la defensa del objetivo. Los combos aplican una bonificación calibrada de +0.2x (1.2x por impacto) y los golpes únicos usan 1.35x, respetando la penalización oficial del 50% de daño contra jefes en _Rapidfire_.
+  - **Escalado de habilidades físicas y base en R.Atk**: las habilidades físicas escalan fielmente sobre el ataque de mano principal (R.Atk) y Stance Power (PESO*STANCE = 2.0) contra la defensa del objetivo. Los combos aplican una bonificación calibrada de +0.2x (1.2x por impacto) y los golpes únicos usan 1.35x, respetando la penalización oficial del 50% de daño contra jefes en \_Rapidfire*.
   - **Delegación de habilidades de tier alto**: habilidades lanzadoras de arquero y largo alcance (fórmulas 63 y 7, ej. _TNT Arrow_, _Aparctias Shot_, _Toma Tornado_, _Windbreaker Arrow_) resuelven sus sub-hechizos de combate para heredar Stance Power auténtico, radio de explosión de área (5-6 casillas) y efectos secundarios (derribo/knockback, silencio, DoT elemental y ceguera/blind).
   - **Efectos secundarios de invocaciones y tótems**: tótems e invocaciones aplican sus auras y DoTs automáticos (ej. _Black Thorn Totem_ aplica corrosión y lentitud), respetando la regla oficial de no coexistencia con _Guardian Star (Starchaos)_.
   - **Gestión de cuentas y borrado de personajes**: resolución de cierre/crash del cliente al borrar personajes mediante envío crudo de `0x0004`, junto con persistencia transparente en SQLite `cuentas.db`.
@@ -568,7 +568,7 @@ IGG cerró el juego en febrero de 2026, así que el cliente ya no se puede
 descargar de ellos. Esta es la copia con la que se desarrolla y se prueba
 este proyecto:
 
-**[Cliente de Angels Online 8.5.1.0](https://drive.google.com/file/d/1YcTsZ2LzVJgGwaSWZo1C0tE9dWOE31t_/view?usp=sharing)**
+**[Cliente de Angels Online 8.7.6.1](https://drive.google.com/file/d/1bLV3dQpr8bjI6TqaPllOn9uosHbjhMKR/view?usp=sharing)**
 
 Es el cliente de IGG, sin modificar. Está aquí porque un protocolo que no se
 puede ejecutar contra nada no sirve de mucho, y porque sin él no se puede

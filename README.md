@@ -553,7 +553,7 @@ taken with an **8.6.0.8**, and both speak the same thing.
 IGG took the game down in February 2026, so the client is no longer available
 from them. This is the copy this project is developed and tested against:
 
-**[Angels Online client 8.5.1.0](https://drive.google.com/file/d/1YcTsZ2LzVJgGwaSWZo1C0tE9dWOE31t_/view?usp=sharing)**
+**[Angels Online client 8.7.6.1](https://drive.google.com/file/d/1bLV3dQpr8bjI6TqaPllOn9uosHbjhMKR/view?usp=sharing)**
 
 It is IGG's client, unmodified. It is here because a protocol you cannot run
 against anything is not much use, and because without it none of the
