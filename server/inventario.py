@@ -208,10 +208,11 @@ def vaciar_ranura(dueno: int, ranura: int,
     #   558       Equip Pet de Gear
     #   559..598  las casillas de Pet Amplify (sin ellas, sacar la mascota
     #             dejaba la 559 llena en el cliente y se cerraba, 21/10/2026)
+    #   599..607  Pet Equipment (3 trajes de arma/armadura/accesorio)
     #   616       burbuja de chat equipada
     #   617..666  bolsa de burbujas de chat
     # Esas casillas tambien aceptan el submensaje de vaciado con ranura u16.
-    if contenedor == CONT_MOCHILA and (ranura < 0 or (ranura > 154 and not ((156 <= ranura <= 556) or (558 <= ranura <= 598) or (616 <= ranura <= 666)))):
+    if contenedor == CONT_MOCHILA and (ranura < 0 or (ranura > 154 and not ((156 <= ranura <= 556) or (558 <= ranura <= 607) or (616 <= ranura <= 666)))):
         log.warning(f"Intento de vaciar ranura fuera de limites ({ranura}) en CONT_MOCHILA - omitido para evitar crash")
         return b''
     return struct.pack('<HIBBIH', 0x001B, 1, 2, contenedor, dueno, ranura)
@@ -254,7 +255,8 @@ def es_equipo(ranura) -> bool:
         return False
     # La 175 es la insignia y la 166 (0xA6) es la tarjeta de puesto (Stall Card).
     # La 616 es la ranura equipada de la burbuja de chat (Speech Bubble slot).
-    return (r < PRIMERA_RANURA_BOLSA) or (166 <= r <= 175) or (r == RANURA_BURBUJA) or r == 558
+    # Las ranuras 599..607 corresponden al equipamiento de la mascota (Pet Equipment: 3 trajes de arma/armadura/accesorio).
+    return (r < PRIMERA_RANURA_BOLSA) or (166 <= r <= 175) or (r == RANURA_BURBUJA) or r == 558 or (599 <= r <= 607)
 
 
 def es_burbuja_bag(ranura) -> bool:
@@ -1692,6 +1694,14 @@ def es_ranura_valida(item_id: int, ranura: int) -> bool:
     # 7c2. Pet Amplify (559..598): solo mascotas (ver amplify.py)
     if 559 <= ranura <= 598:
         return es_mascota(item_id)
+    # 7c3. Pet Equipment (599..607): 3 trajes de Arma, Armadura y Accesorio para mascota
+    if ranura in (599, 602, 605):
+        return categoria_item(item_id) == '寵物武器' or categoria_de(item_id) == '寵物武器'
+    if ranura in (600, 603, 606):
+        return categoria_item(item_id) == '寵物防具' or categoria_de(item_id) == '寵物防具'
+    if ranura in (601, 604, 607):
+        cat_p = categoria_item(item_id) or categoria_de(item_id)
+        return cat_p in ('寵物飾品', '寵物裝備')
     # 7d. Raise-a-Pet Room (477..486): mascotas y huevos de mascotas
     if 477 <= ranura <= 486:
         return es_mascota(item_id) or categoria_item(item_id) in ('寵物', '寵物蛋')
@@ -1706,8 +1716,11 @@ def es_ranura_valida(item_id: int, ranura: int) -> bool:
         return categoria_item(item_id) == '怪物蛋' or 'egg' in str(categoria_item(item_id)).lower()
     # 8. Mochila normal (20..120): valida para cualquier item regular
     if 20 <= ranura <= 120:
-
         return True
+    # Los items de equipamiento de mascota NO van en las ranuras de equipo humano
+    cat_eq = categoria_item(item_id) or categoria_de(item_id)
+    if cat_eq in ('寵物武器', '寵物防具', '寵物飾品', '寵物裝備'):
+        return False
     if es_mascota(item_id):
         # UNA MASCOTA NO ES UN ACCESORIO.
         return False
@@ -1873,6 +1886,12 @@ def ranuras_posibles(item_id: int):
         return []
     if r in RANURAS_ACCESORIO:
         return list(RANURAS_ACCESORIO)
+    if r == 599:
+        return [599, 602, 605]
+    if r == 600:
+        return [600, 603, 606]
+    if r == 601:
+        return [601, 604, 607]
     return [r]
 
 
@@ -1972,6 +1991,12 @@ def ranura_equipo_de(item_id: int):
                     _SLOT_CACHE[iid] = 7
                 elif acc:
                     _SLOT_CACHE[iid] = 8
+                elif cat == '寵物武器':
+                    _SLOT_CACHE[iid] = 599
+                elif cat == '寵物防具':
+                    _SLOT_CACHE[iid] = 600
+                elif cat in ('寵物飾品', '寵物裝備'):
+                    _SLOT_CACHE[iid] = 601
                 elif cat == '徽章':
                     # INSIGNIAS. No declaran ninguna columna de equipo, asi
                     # que se quedaban SIN RANURA: no se podian poner y por eso
@@ -1985,7 +2010,19 @@ def ranura_equipo_de(item_id: int):
             con.close()
             for _sc in ITEMS_TARJETA_PUESTO:
                 _SLOT_CACHE[_sc] = RANURA_PUESTO
-    return _SLOT_CACHE.get(item_id)
+    res = _SLOT_CACHE.get(item_id)
+    if res is None and item_id:
+        try:
+            cat_dyn = categoria_item(item_id) or categoria_de(item_id)
+            if cat_dyn == '寵物武器':
+                return 599
+            if cat_dyn == '寵物防具':
+                return 600
+            if cat_dyn in ('寵物飾品', '寵物裝備'):
+                return 601
+        except Exception:
+            pass
+    return res
 
 _TWO_HAND_CACHE = {}
 _CAT_ITEM_CACHE = None

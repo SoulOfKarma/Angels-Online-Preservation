@@ -583,6 +583,7 @@ class Monstruo:
         self.rotten_atk = d.get('rotten_atk', 0)
         self.rotten_prob = d.get('rotten_prob', 0)
         self.captura_fallida_en = None
+        self.capturado_en = None
 
     def registrar_dano(self, cantidad: int, es_pet: bool = False):
         """Acumula el dano real infligido al monstruo (jugador/invocacion/charmed vs mascota)."""
@@ -809,6 +810,7 @@ class Monstruo:
         if hasattr(self, 'debuffs') and self.debuffs:
             self.debuffs.clear()
         self.captura_fallida_en = None
+        self.capturado_en = None
 
 
 

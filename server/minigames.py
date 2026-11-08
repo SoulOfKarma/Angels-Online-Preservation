@@ -54,7 +54,7 @@ def usar(s,slot):
         data.setdefault('mejoras',{})[str(dest)]=({'mini_game_fin':deadline,'mall_fin':deadline,'mall_item':hidden} if deadline else {})
     try:recent_mall.cambiar(s,{slot:1},[],transaccion=activate)
     except recent_mall.Rechazo as exc:_notice(s,str(exc));return True
-    _notice(s,'%s is now available in your Friends Game menu%s.'%(NAMES[kind],' permanently' if not seconds else ' for%d days'%(seconds//86400)))
+    _notice(s,'%s is now available in your Friends Game menu%s.'%(NAMES[kind],' permanently' if not seconds else ' for %d days'%(seconds//86400)))
     return True
 
 

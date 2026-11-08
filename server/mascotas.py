@@ -651,7 +651,10 @@ def mejorar_mascota(ficha: dict) -> tuple:
     # Conservamos la politica de incrementos existente hasta verificar la
     # formula oficial; no presentar estos coeficientes como datos del XML.
     for k, (lo, hi) in rangos.items():
-        inc = max(1, random.randint(max(1, lo // 2), max(2, hi // 2)))
+        # Hay mascotas con el minimo por encima del maximo en pet.xml: sin
+        # ordenar, randint lanzaba ValueError y el pienso fallaba.
+        a, b = sorted((max(1, lo // 2), max(2, hi // 2)))
+        inc = max(1, random.randint(a, b))
         bonos[k] = int(bonos.get(k, 0)) + inc
     ficha['bonos'] = bonos
     ficha['estrellas'] = calcular_estrellas_total(bonos)

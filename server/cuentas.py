@@ -24,11 +24,15 @@ import asyncio
 
 log = logging.getLogger('cuentas')
 
-BASE = pathlib.Path(__file__).parent.parent / 'data'
+# AO_DATOS: otra carpeta de datos (cuentas.db, backups, muestras de AUTH).
+# Sin ella, todo como siempre. La usa tools/comparar_login.py para correr el
+# servidor Python y el Rust contra COPIAS de la base, nunca contra la real.
+_DATOS_AISLADOS = os.environ.get('AO_DATOS')
+BASE = pathlib.Path(_DATOS_AISLADOS) if _DATOS_AISLADOS else pathlib.Path(__file__).parent.parent / 'data'
 DB_PATH = BASE / 'cuentas.db'
 BACKUPS_DIR = BASE / 'backups'
 ARCHIVO = BASE / 'cuentas.json'
-MUESTRAS = pathlib.Path(__file__).parent.parent / 'logs' / 'auth_muestras'
+MUESTRAS = (BASE / 'auth_muestras') if _DATOS_AISLADOS else pathlib.Path(__file__).parent.parent / 'logs' / 'auth_muestras'
 
 _LOCK = threading.RLock()
 
@@ -874,7 +878,7 @@ def guardar_inventario(usuario: str, char_id: int, bolsa: dict,
         if mejoras is not None:
             p['mejoras'] = {str(k): v
                             for k, v in sorted(mejoras.items(), key=_slot_sort_key)
-                            if v and (v.get('veces') or v.get('gemas')
+                            if v and (v.get('veces') or v.get('gemas') or v.get('huecos')
                                       or v.get('extra') or v.get('vinculacion')
                                       or v.get('house_egg_deadline') or v.get('mercenary_token_deadline') or v.get('holy_pass_fin')
                                       or v.get('arena_premio_fin') or v.get('mall_fin'))}
@@ -893,6 +897,9 @@ def guardar_mejoras(usuario: str, char_id: int, mejoras: dict):
     def _mut(p):
         p['mejoras'] = {str(k): v for k, v in sorted((mejoras or {}).items(), key=_slot_sort_key)
                         if v and (v.get('veces') or v.get('gemas')
+                                  # Un hueco abierto sin gema tambien cuenta:
+                                  # sin esto se perdia al reconectar.
+                                  or v.get('huecos')
                                   or v.get('extra') or v.get('vinculacion')
                                   or v.get('house_egg_deadline') or v.get('mercenary_token_deadline') or v.get('holy_pass_fin')
                                   or v.get('arena_premio_fin') or v.get('mall_fin'))}
@@ -1047,6 +1054,22 @@ def guardar_casa(usuario: str, char_id: int, casa):
     _actualizar_personaje(usuario, char_id, _mut)
 
 
+def guardar_casa_de(char_id: int, casa):
+    """Guarda la casa en la ficha de SU dueno, buscando su usuario por char_id.
+
+    Votar o limpiar una casa ajena llamaba a guardar_casa(usuario_del_visitante,
+    char_id_del_dueno, ...): ese par no existe y _actualizar_personaje caia al
+    primer personaje del VISITANTE, cuya casa quedaba sustituida por la ajena.
+    """
+    con = _get_conn()
+    try:
+        row = con.execute('SELECT usuario FROM personajes WHERE char_id=?', (int(char_id),)).fetchone()
+    finally:
+        con.close()
+    if row:
+        guardar_casa(row[0], char_id, casa)
+
+
 def guardar_casa_e_inventario(usuario: str, char_id: int, casa, bolsa: dict,
                                cantidades=None, mejoras=None):
     """Commit a decoration save atomically.
@@ -1081,7 +1104,7 @@ def guardar_casa_e_inventario(usuario: str, char_id: int, casa, bolsa: dict,
                 datos['mejoras'] = {
                     str(k): v
                     for k, v in sorted(mejoras.items(), key=_slot_sort_key)
-                    if v and (v.get('veces') or v.get('gemas')
+                    if v and (v.get('veces') or v.get('gemas') or v.get('huecos')
                               or v.get('extra') or v.get('vinculacion')
                               or v.get('house_egg_deadline') or v.get('mercenary_token_deadline') or v.get('holy_pass_fin')
                               or v.get('arena_premio_fin') or v.get('mall_fin'))

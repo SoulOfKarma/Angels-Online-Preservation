@@ -17,7 +17,12 @@ import struct
 import time
 import datetime
 
-RAIZ = pathlib.Path(__file__).parent.parent / 'logs' / 'sesiones'
+import os
+
+# Con AO_DATOS (datos aislados para pruebas, ver cuentas.py) las sesiones van
+# alli y no ensucian logs/sesiones.
+RAIZ = (pathlib.Path(os.environ['AO_DATOS']) / 'sesiones' if os.environ.get('AO_DATOS')
+        else pathlib.Path(__file__).parent.parent / 'logs' / 'sesiones')
 
 
 class Grabador:
@@ -89,6 +94,15 @@ class Grabador:
         # Solo el .bin: estos bytes vienen cifrados. El .jsonl del sentido
         # c2s lo llena el dispatcher con submensaje(), ya descifrado.
         self.c2s.write(datos); self.c2s.flush(); self.n_c2s += len(datos)
+
+    def fijar_clave(self, clave):
+        """Reescribe _clave.txt con la clave que de verdad se usa.
+
+        Session.enviar_hello() cambia la clave a 16 ceros (cifrador embebido)
+        DESPUES de crear el grabador: 4.342 sesiones guardaron la aleatoria
+        de antes y su C->S no se podia descifrar con ella (lo vio
+        rust/validar-capturas el 27/10/2026)."""
+        (RAIZ / f"{self.base}_clave.txt").write_text(bytes(clave).hex(), encoding='utf-8')
 
     def salida(self, datos):
         self.s2c.write(datos); self.s2c.flush(); self.n_s2c += len(datos)

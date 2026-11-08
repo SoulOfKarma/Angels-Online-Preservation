@@ -390,6 +390,15 @@ def secuencia(p: Personaje):
     salida.append(_pr.paquete_quick_emotes(p.entity_id, getattr(p, 'quick_emotes', None) or {}))
     salida.extend(__import__('chat_filtros').paquetes(p))
     salida.append(__import__('star_blessing').paquete(p))
+    # En mapas normales (fuera de Holy Battlefield y Arenas), apagar explicitamente
+    # auras y marcas de PVP/HB residuales en el cliente (circulo de combate en el suelo).
+    if getattr(p, 'stage', 0) not in (112, 44, 45, 46, 47):
+        salida.extend([
+            struct.pack('<HIBBII', 0x001D, p.entity_id, 1, 36, 0, 0),
+            struct.pack('<HIBBII', 0x001D, p.entity_id, 1, 38, 1, 0),
+            struct.pack('<HIBBII', 0x001D, p.entity_id, 1, 42, p.entity_id, 0),
+            struct.pack('<HIBBII', 0x001D, p.entity_id, 1, 62, 0, 0),
+        ])
     return salida
 
 
@@ -1561,7 +1570,10 @@ def _quests(p, base):
     import misiones as _mis
     qs = []
     for q, s in p.quests:
-        comp = _mis.mision_completada(p, q)
+        # Cada entrada con su propio paso: con una mision repetida, mirar solo
+        # la primera daba paso 998 para la de 999 y el U8 del codec impedia
+        # entrar al mundo.
+        comp = _mis.mision_completada_raw(q, s)
         paso_red = _mis.total_pasos_mision(q) if comp else max(0, s - 1)
         qs.append({'char_id': p.char_id, 'quest_id': q, 'paso': paso_red, 'resto': b'\x00' * 11})
     return m.build(n=len(qs), quests=qs)

@@ -504,6 +504,13 @@ def al_entrar(ses):
         if getattr(ses, 'competicion_pvp', False):
             ses.enviar(totem_war.modo_pvp(p.entity_id, False))
             ses.competicion_pvp = False
+        import struct
+        ses.enviar(
+            modo_arena(p.entity_id, False),
+            struct.pack('<HIBBII', 0x001D, p.entity_id, 1, 38, 1, 0),
+            struct.pack('<HIBBII', 0x001D, p.entity_id, 1, 42, p.entity_id, 0),
+            struct.pack('<HIBBII', 0x001D, p.entity_id, 1, 62, 0, 0),
+        )
         __import__('daily_events').al_entrar(ses)
         return
     r = ronda(p.stage)

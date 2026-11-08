@@ -101,7 +101,7 @@ def descripcion(item_id,extra=None):
     stat_sum+=delta.get('atk_r',0)-(2*delta.get('accuracy',0) if category==0 else 0)
     weight=(225,45,72,32,30,100,75)[category]
     multiplier=(1,2,5)[color]
-    if category==5:multiplier=(2,5,0)[color]
+    if category==5:multiplier=(2,5,10)[color]
     if not multiplier:return None
     value=math.ceil((level*level*.3+stat_sum)*weight*.01*.0072)*multiplier
     bucket=0 if level<100 else min(4,(level-100)//20+1)

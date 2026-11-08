@@ -60,7 +60,7 @@ def caducados(ses,now=None,*,campo_fin='arena_premio_fin',campo_item='arena_prem
         elif slot<-10000:
             key=-10000-slot
             stored=(getattr(p,'banco',None) or {}).get(key)
-            if stored and int(stored[0])==iid:
+            if stored and int(stored[0] if isinstance(stored,(list,tuple)) else stored)==iid:
                 p.banco.pop(key);bank.append(key)
         p.mejoras.pop(slot,None)
     if not changed and not bank:return
