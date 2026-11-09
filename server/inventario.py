@@ -358,13 +358,18 @@ def _bonus(item_id: int) -> dict:
                     rf_col = 'res_fire' if 'res_fire' in cols else '0'
                     ri_col = 'res_ice' if 'res_ice' in cols else '0'
                     rc_col = 'res_corrosion' if 'res_corrosion' in cols else '0'
+                    al_col = '"雷電攻擊"' if '雷電攻擊' in cols else '0'
+                    af_col = '"火焰攻擊"' if '火焰攻擊' in cols else '0'
+                    ai_col = '"寒冰攻擊"' if '寒冰攻擊' in cols else '0'
+                    ac_col = '"腐蝕攻擊"' if '腐蝕攻擊' in cols else '0'
                     _filas_b += list(con.execute(
                         f"select id, def, accuracy, agility, atk_avg, matk, mdef, {hp_col}, {mp_col}, {carga_col}, "
-                        f"{rb_col}, {rm_col}, {rl_col}, {rf_col}, {ri_col}, {rc_col} from {_t} "
+                        f"{rb_col}, {rm_col}, {rl_col}, {rf_col}, {ri_col}, {rc_col}, "
+                        f"{al_col}, {af_col}, {ai_col}, {ac_col} from {_t} "
                         "where id glob '[0-9]*'"))
                 except Exception:
                     continue
-            for i, d, ac, ag, av, ma, md, _hp, _mp, _cg, _rb, _rm, _rl, _rf, _ri, _rc in _filas_b:
+            for i, d, ac, ag, av, ma, md, _hp, _mp, _cg, _rb, _rm, _rl, _rf, _ri, _rc, _al, _af, _ai, _ac in _filas_b:
                 # Algunos valores vienen con decimales en item.xml.
                 def _n(x):
                     try:
@@ -378,11 +383,14 @@ def _bonus(item_id: int) -> dict:
                                 'carga': _n(_cg),
                                 'res_body': _n(_rb), 'res_mind': _n(_rm),
                                 'res_lightning': _n(_rl), 'res_fire': _n(_rf),
-                                'res_ice': _n(_ri), 'res_corrosion': _n(_rc)}
+                                'res_ice': _n(_ri), 'res_corrosion': _n(_rc),
+                                'atk_lightning': _n(_al), 'atk_fire': _n(_af),
+                                'atk_ice': _n(_ai), 'atk_corrosion': _n(_ac)}
     return _BON.get(item_id, {'def': 0, 'accuracy': 0, 'agility': 0, 'atk': 0,
                               'matk': 0, 'mdef': 0, 'hp': 0, 'mp': 0, 'carga': 0,
                               'res_body': 0, 'res_mind': 0, 'res_lightning': 0,
-                              'res_fire': 0, 'res_ice': 0, 'res_corrosion': 0})
+                              'res_fire': 0, 'res_ice': 0, 'res_corrosion': 0,
+                              'atk_lightning': 0, 'atk_fire': 0, 'atk_ice': 0, 'atk_corrosion': 0})
 
 
 def bonos_de_habilidades(habilidades):
@@ -516,7 +524,7 @@ def bonos_de_equipo(bolsa, mejoras: dict = None, mascotas: dict = None) -> dict:
             iid = int(item_id)
         except (ValueError, TypeError):
             continue
-        if not es_equipo(r) or r == RANURA_ORO or r in (11, 12, pet_equipment.RANURA):
+        if not es_equipo(r) or r == RANURA_ORO or r in (11, 12, pet_equipment.RANURA) or (599 <= r <= 607):
             continue
         x = dict(_bonus(iid))
         # LOS STATS DEL MARTILLO VERDE. Se guardaban y se enseñaban en el
@@ -613,6 +621,88 @@ def bonos_de_equipo(bolsa, mejoras: dict = None, mascotas: dict = None) -> dict:
 
     eq['atk_r'] = r_weap_atk + gen_atk
     eq['atk_l'] = l_weap_atk + gen_atk
+    return eq
+
+
+def bonos_equipo_mascota(bolsa, mejoras=None, traje=0) -> dict:
+    """Calcula los atributos que otorgan los 3 slots del traje activo de pet equipment.
+
+    Traje 0 (Set 1): 599 (Weapon), 600 (Armor), 601 (Accessory)
+    Traje 1 (Set 2): 602 (Weapon), 603 (Armor), 604 (Accessory)
+    Traje 2 (Set 3): 605 (Weapon), 606 (Armor), 607 (Accessory)
+    """
+    eq = {
+        'def': 0, 'accuracy': 0, 'agility': 0, 'atk': 0,
+        'matk': 0, 'mdef': 0, 'hp': 0, 'mp': 0,
+        'res_body': 0, 'res_mind': 0,
+        'res_lightning': 0, 'res_fire': 0, 'res_ice': 0, 'res_corrosion': 0,
+        'atk_lightning': 0, 'atk_fire': 0, 'atk_ice': 0, 'atk_corrosion': 0,
+    }
+    if not bolsa:
+        return eq
+
+    # `traje` es lo que manda el cliente en el 0x015E (game.updatepetequipsuit,
+    # medido en angel.dat 0x649610): 0 = ninguna casilla marcada, 1..3 = la
+    # fila marcada. Sin fila marcada el equipo no da nada.
+    try:
+        traje_n = int(traje or 0)
+    except (TypeError, ValueError):
+        traje_n = 0
+    if traje_n not in (1, 2, 3):
+        return eq
+    base_r = 599 + (traje_n - 1) * 3
+    slots_traje = (base_r, base_r + 1, base_r + 2)
+
+    for r in slots_traje:
+        item_id = bolsa.get(r) if r in bolsa else bolsa.get(str(r))
+        if not item_id:
+            continue
+        try:
+            iid = int(item_id)
+        except (ValueError, TypeError):
+            continue
+        if iid <= 0:
+            continue
+
+        x = dict(_bonus(iid))
+        _ex = (mejoras or {}).get(r) or (mejoras or {}).get(str(r)) or {}
+        _veces = int(_ex.get('veces') or 0)
+        if _veces > 0:
+            try:
+                import mejoras as _mj
+                _pct = _mj.pct_por_mejoras(_mj.tipo_de_ranura(r, iid), _veces)
+            except Exception:
+                _pct = {}
+            for _k, _p in (_pct or {}).items():
+                _orig = {'rigor': 'accuracy', 'dfs': 'def', 'agilidad': 'agility'}.get(_k, _k)
+                _b = x.get('atk' if _orig == 'atk' else _orig, 0)
+                if _b:
+                    x[_orig] = _b + int(_b * _p / 100.0)
+
+        for _g in (_ex.get('gemas') or []):
+            if not _g:
+                continue
+            for _k, _v in bono_gema(_g, r, iid).items():
+                _dest = {'rigor': 'accuracy', 'dfs': 'def',
+                         'agilidad': 'agility', 'peso': 'carga',
+                         '體抗': 'res_body', '心抗': 'res_mind',
+                         '電抗': 'res_lightning', '火抗': 'res_fire',
+                         '冰抗': 'res_ice', '腐抗': 'res_corrosion'}.get(_k, _k)
+                if _dest in eq:
+                    x[_dest] = x.get(_dest, 0) + int(_v)
+
+        for _k, _v in (_ex.get('extra') or {}).items():
+            _dest = {'rigor': 'accuracy', 'dfs': 'def',
+                     'agilidad': 'agility', 'peso': 'carga',
+                     '體抗': 'res_body', '心抗': 'res_mind',
+                     '電抗': 'res_lightning', '火抗': 'res_fire',
+                     '冰抗': 'res_ice', '腐抗': 'res_corrosion'}.get(_k, _k)
+            if _dest in eq:
+                x[_dest] = x.get(_dest, 0) + int(_v)
+
+        for k in eq:
+            eq[k] += x.get(k, 0)
+
     return eq
 
 
@@ -3156,10 +3246,19 @@ def bono_gema(item_id: int, ranura: int, pieza: int = 0) -> dict:
     if not fila:
         return {}
     r = int(ranura)
-    if r == RANURA_IZQUIERDA and pieza:
+    cat_pz = (categoria_item(pieza) or '') if pieza else ''
+    if r in (599, 602, 605) or cat_pz == '寵物武器':
+        cuales = fila.get('arma') or []
+    elif r in (600, 603, 606) or cat_pz == '寵物防具':
+        equipo = fila.get('equipo') or {}
+        cuales = equipo.get('2') or fila.get('armadura') or []
+    elif r in (601, 604, 607) or cat_pz in ('寵物飾品', '寵物裝備'):
+        equipo = fila.get('equipo') or {}
+        cuales = equipo.get('8') or equipo.get('2') or fila.get('accesorio') or []
+    elif r == RANURA_IZQUIERDA and pieza:
         # Decide la PIEZA, no la ranura: una espada en la izquierda cuenta
         # como arma.
-        es_escudo = (categoria_item(pieza) or '') in CATEGORIAS_ESCUDO
+        es_escudo = cat_pz in CATEGORIAS_ESCUDO
         cuales = fila.get('escudo' if es_escudo else 'arma') or []
     elif r == RANURA_DERECHA:
         cuales = fila.get('arma') or []

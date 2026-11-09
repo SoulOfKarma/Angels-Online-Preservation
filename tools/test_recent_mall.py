@@ -34,7 +34,7 @@ def test_compensation_angel_is_not_published_or_accessible():
     assert '513497' not in rm.datos()['nodes']
 
 
-def test_2026_anniversary_angel_opens_the_isolated_exchange(world):
+def test_2026_anniversary_angel_opens_and_runs_the_isolated_coin_exchange(world):
     import house_services as hs
     s=world.player(items={20:85007});s.cantidades[20]=10;world.save(s)
     s.personaje.stage=41;s.personaje.tile_x,s.personaje.tile_y=165,86
@@ -42,7 +42,9 @@ def test_2026_anniversary_angel_opens_the_isolated_exchange(world):
     assert sum(struct.unpack_from('<I',packet,2)[0]==71410010 for packet in spawns)==1
     click(s,71410010)
     assert mid(s)==514661
-    answer(s,1);answer(s,0)
+    answer(s,1)
+    assert mid(s)==509279
+    answer(s,0)
     assert s._lyceum_exchange==2417
     assert s._recent_mall_npc=='Anniversary Angel'
     assert struct.pack('<HI',0x151,2417) in s.packets
@@ -51,7 +53,7 @@ def test_2026_anniversary_angel_opens_the_isolated_exchange(world):
                    if row.get('群組')=='2417' and row.get('材料1')=='85007')
     app.Servidor.__new__(app.Servidor).manejar(
         s,0x160,None,None,'test',struct.pack('<II',recipe_id,1))
-    assert not total(s,85007) and total(s,85008)==1
+    assert total(s,85007)==0 and total(s,85008)==1
 
 
 def test_daily_clerk_blue_stall_card_exchange_then_native_use(world):

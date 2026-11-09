@@ -759,6 +759,9 @@ def _cargar_mascotas(p: dict) -> dict:
     return res
 
 
+SPRITES_SPIRIT_INVENTADOS = frozenset(range(30106, 30117))
+
+
 def _cargar_mascota(m) -> dict:
     if not isinstance(m, dict) or not m.get('sprite'):
         return {}
@@ -767,6 +770,13 @@ def _cargar_mascota(m) -> dict:
     f['fuera'] = False
     f['entidad'] = None
     sp = int(f.get('sprite') or 0)
+    if sp in SPRITES_SPIRIT_INVENTADOS:
+        # Evoluciones de la Spirit Egg que invento Antigravity (30106..30116):
+        # ya no existen en pet.xml del cliente y pasar el raton por la mascota
+        # lo cerraba. Vuelve a ser el huevo 30105 en nivel 1.
+        sp = 30105
+        f.update(sprite=sp, nivel=1, exp=0, hp=0, mp=0)
+        f.pop('exp_max', None)
     nv = max(1, int(f.get('nivel') or 1))
     d = _ms.ficha_de_sprite(sp)
     if d.get('tipo'):

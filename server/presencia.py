@@ -411,10 +411,9 @@ def paquetes_mascota(ses_owner) -> list:
         _ms.enlazar(owner_eid, pet_eid),
         _cb.atributo(pet_eid, _ms.hp_eff(f_pet), _cb.KIND_HP),
     ]
-    if int(f_pet.get('saciedad', 0)) > 100:
-        pkts.append(struct.pack('<HIBBII', 0x001D, pet_eid, 1, 4, 3796, max(60000, (int(f_pet['saciedad']) - 100) * 60000)))
-    if p.stage in __import__('competiciones').MAPAS:
-        pkts.extend(__import__('competiciones').marcas_actor(ses_owner,True))
+    import competiciones as _comp
+    if p.stage in _comp.MAPAS and _comp.fase(_comp.ronda(p.stage)) == 'combate':
+        pkts.extend(_comp.marcas_actor(ses_owner, True))
     return pkts
 
 
@@ -814,8 +813,8 @@ def notificar_mascota_spawn(ses, pet_eid=None, sprite=None, tx=None, ty=None):
         return
     pkts = paquetes_mascota(ses)
     import competiciones as _c
-    if ses.personaje.stage in _c.MAPAS:
-        pkts.extend(_c.marcas_actor(ses,True))
+    if ses.personaje.stage in _c.MAPAS and _c.fase(_c.ronda(ses.personaje.stage)) == 'combate':
+        pkts.extend(_c.marcas_actor(ses, True))
         ses.enviar(*_c.marcas_actor(ses))
     if not pkts:
         return

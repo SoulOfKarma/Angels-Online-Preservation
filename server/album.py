@@ -85,7 +85,10 @@ def descripcion(item_id,extra=None):
         return _apariencia(row)
     category=_CATEGORY.get(row.get('\u7269\u54c1\u985e\u5225'))
     if category is None:return None
-    color={'':0,'\u767d':0,'\u85cd':1,'\u9ec3':2}.get(row.get('\u984f\u8272',''))
+    #5f5be0: the Robot page only has Blue (0) and Yellow (1); the others
+    # are White (0), Blue (1), Yellow (2).
+    colors={'\u85cd':0,'\u9ec3':1} if category==5 else {'':0,'\u767d':0,'\u85cd':1,'\u9ec3':2}
+    color=colors.get(row.get('\u984f\u8272',''))
     level=int(row.get('\u7269\u54c1\u7b49\u7d1a') or 0)
     if color is None or level<=0 or int(row.get('\u6301\u7e8c\u6642\u9593') or 0)>0:return None
     slot=(3,1,2,5,6,8,7)[category]
@@ -100,9 +103,8 @@ def descripcion(item_id,extra=None):
     #folds accuracy into the right-hand attack, which must be removed here.
     stat_sum+=delta.get('atk_r',0)-(2*delta.get('accuracy',0) if category==0 else 0)
     weight=(225,45,72,32,30,100,75)[category]
-    multiplier=(1,2,5)[color]
-    if category==5:multiplier=(2,5,10)[color]
-    if not multiplier:return None
+    #705d50 adds 1 to the Robot color before705e40 (1,2,5): Blue 2, Yellow 5.
+    multiplier=(1,2,5)[color+1 if category==5 else color]
     value=math.ceil((level*level*.3+stat_sum)*weight*.01*.0072)*multiplier
     bucket=0 if level<100 else min(4,(level-100)//20+1)
     return category,color,bucket,max(1,min(0x1ffff,int(value)))
@@ -139,7 +141,25 @@ def valor_de(item_id,extra=None):
     return desc[3] if desc else 0
 
 
+def normalizar(valores):
+    """Robots saved before the 5f5be0 color fix: Blue went in the Yellow row
+    (color 1, x5) and Yellow in a row the client lacks (color 2, x10). Moves
+    them to Blue 0 (x2) / Yellow 1 (x5) and recomputes the page totals."""
+    valores=dict(valores or {})
+    if '_entries' not in valores or valores.get('_robot_color'):return valores
+    records=[]
+    for r in valores['_entries']:
+        r=list(r)
+        if r[0]==5 and r[1]==1:r[1],r[4]=0,max(1,r[4]//5*2)
+        elif r[0]==5 and r[1]==2:r[1],r[4]=1,max(1,r[4]//10*5)
+        records.append(r)
+    valores['_entries']=records;valores['_robot_color']=1
+    for index,key in enumerate(CATEGORIAS):valores[key]=sum(r[4] for r in records if r[0]==index)
+    return valores
+
+
 def registros(valores):
+    valores=normalizar(valores)
     if '_entries' in valores:return [list(r) for r in valores['_entries']]
     # Older saves only retained category totals. Represent those totals as
     # legacy cells instead of erasing previously earned points on migration.
@@ -154,7 +174,7 @@ def registros(valores):
 
 def paquete(personaje):
     """S2C0156: expansion mask,u16 count per category,packed32-bit cells."""
-    values=getattr(personaje,'album',None) or {};records=registros(values)
+    values=normalizar(getattr(personaje,'album',None) or {});records=registros(values)
     counts=[0]*8;words=[]
     for category in range(8):
         rows=[r for r in records if r[0]==category]
@@ -178,7 +198,7 @@ def registrar(ses,slot):
     category,color,bucket,value=description
     updated=[]
     def collect(con,data):
-        values=dict(data.get('album') or {});records=registros(values)
+        values=normalizar(data.get('album') or {});records=registros(values)
         limit=5 if int(values.get('_expanded',0))&(1<<(color+4*category)) else 4
         cells={r[3]:r for r in records if r[:3]==[category,color,bucket]}
         if category==7:
@@ -209,7 +229,7 @@ def registrar(ses,slot):
 
 
 def bono_buff(personaje):
-    raw=bonos(getattr(personaje,'album',None) or {})
+    raw=bonos(normalizar(getattr(personaje,'album',None) or {}))
     aliases={'dfs':'def','rigor':'hit','agilidad':'eva','hp':'hp_bonus','mp':'mp_bonus',
              'critico':'crit','peso':'carga','res_con':'res_body','res_spr':'res_mind',
              'res_rayo':'res_lightning','res_fuego':'res_fire','res_hielo':'res_ice',

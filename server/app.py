@@ -1342,6 +1342,7 @@ def _gm_parsear(texto: str):
         # /sistemas            el estado de los seis
         # /album <categoria> <valor>   pone valor a mano, para probar
         # /logros              los que cumple ahora mismo
+        # /logros full <Tipo>[:<Subtipo>]   los da al 100% (ej. Quests:Sand Castle Tales)
         return ('sistemas', cmd, partes[1:] if len(partes) > 1 else [])
     if cmd in ('rama', 'skill', 'branch'):
         # /rama <fuera> <dentro>  cambia una rama por otra
@@ -1508,6 +1509,8 @@ def _probar_gm(ses, cuerpo, addr) -> bool:
             '/aastart [min] [level] [registration_min] | /aastop [level] | '
             '/hbstart [min] [registration_min] | /hbstop | /aa status | /hb status | /notice <text>',
             '/aa lobby|enter|watch|begin|finish [level] | /hb lobby|enter|watch|begin|finish; /hbteam <text>',
+            '/logros full <Type>[:<Subtype>] (e.g. /logros full Quests:Sand Castle Tales, /logros full * = all) | '
+            '/sistemas | /album <category> <value> | /daily start|enter|stop|finish|status <event> [min]',
             tipo=0, msg_id=_cl.MSG_TEXTO))
         log.info('[%s] GM help' % (addr,))
         return True
@@ -1573,6 +1576,8 @@ def _probar_gm(ses, cuerpo, addr) -> bool:
         import estrellas as _es, casas as _cs, tesoros as _ts
         _p = ses.personaje
         _que, _args = leido[1], leido[2]
+        if _que == 'logros' and _args and _args[0].lower() in ('full', 'completar', 'all'):
+            return _gm_logros_completar(ses, addr, ' '.join(_args[1:]))
         if getattr(_p, 'album', None) is None:
             _p.album = {}
         if _que == 'album' and len(_args) >= 2:
@@ -2031,6 +2036,7 @@ def _pet_alternar(ses, addr, ranura):
     import struct as _st
     import combate as _cb
     import mascotas as _ms
+    import inventario as inv
     import pet_equipment as _peq
     if int(ranura) == _peq.RANURA:
         import clases as _cl_peq
@@ -2050,8 +2056,11 @@ def _pet_alternar(ses, addr, ranura):
         f['entidad'] = None
         ses.pet_entity_id = None
         log.info('[%s] mascota guardada: %s' % (addr, f.get('nombre')))
-        ses.enviar(*_refrescar(ses, [ranura]))
+        _tocadas_eq = _pet_equipo_guardar(ses, f) if f.get('equipo_cargado') else []
+        ses.personaje.pet_suit = 0
+        ses.enviar(*_refrescar(ses, [ranura] + _tocadas_eq))
         _guardar_bolsa(ses, p.char_id)
+        _guardar_fichas_mascota(ses)
         return
 
     # Despawnear cualquier otra mascota que estuviera fuera previamente
@@ -2074,6 +2083,12 @@ def _pet_alternar(ses, addr, ranura):
                 if _other_r is not None:
                     ses.enviar(*_refrescar(ses, [_other_r]))
 
+    # SU equipo en las casillas 599..607.
+    _tocadas_eq = _pet_equipo_cambiar(ses, f)
+    if _tocadas_eq:
+        ses.enviar(*_refrescar(ses, _tocadas_eq))
+    p.pet_suit = int((getattr(ses, 'pet_suits', None) or {}).get(str(ranura), 0) or 0)
+
     # Cada vez que sale es una entidad NUEVA
     p.mascota = f
     f['entidad'] = _pet_siguiente_entidad(ses)
@@ -2089,6 +2104,8 @@ def _pet_alternar(ses, addr, ranura):
     est.update({'x': px, 'y': py,
                 'dueno': p.entity_id, 'dueno_nombre': p.nombre,
                 'tipo': f.get('tipo', 0)})
+    b_eq_sp = inv.bonos_equipo_mascota(getattr(ses, 'inventario', {}), getattr(p, 'mejoras', None), getattr(p, 'pet_suit', 0))
+    f['bonos_eq'] = b_eq_sp
     pkgs_spawn = [
         _ms.enlazar(p.entity_id, f['entidad']),
         _st.pack('<HIBBI', 0x0013, f['entidad'], 1, 0x3F, 0),
@@ -2104,8 +2121,123 @@ def _pet_alternar(ses, addr, ranura):
     import presencia as _pr
     _pr.notificar_mascota_spawn(ses)
     _guardar_bolsa(ses, p.char_id)
+    _guardar_fichas_mascota(ses)
     log.info('[%s] mascota fuera: %s (entidad %d en %d,%d)'
              % (addr, f.get('nombre'), f['entidad'], px, py))
+
+
+# El equipo de mascota (Pet Equipment, casillas 599..607: tres filas de
+# arma, armadura y accesorio) es de CADA mascota: en la bolsa solo esta el
+# de la mascota que esta fuera (`equipo_cargado` en su ficha); el de las
+# demas va guardado en su ficha (`equipo`).
+_SLOTS_EQ_PET = tuple(range(599, 608))
+
+
+def _pet_equipo_guardar(ses, ficha) -> list:
+    """Las casillas 599..607 pasan a la ficha de la mascota y se vacian."""
+    p = ses.personaje
+    bolsa, cants, inst = ses.inventario, _cantidades(ses), _instancias(ses)
+    mej = getattr(p, 'mejoras', None)
+    if mej is None:
+        mej = p.mejoras = {}
+    eq = {}
+    for r in _SLOTS_EQ_PET:
+        if r in bolsa:
+            i = inst.get(r)
+            eq[str(r)] = {'item': int(bolsa[r]), 'cant': int(cants.get(r, 1) or 1),
+                          'mejoras': mej.get(r), 'inst': i.hex() if isinstance(i, (bytes, bytearray)) else None}
+            bolsa.pop(r, None)
+            cants.pop(r, None)
+            mej.pop(r, None)
+            inst.pop(r, None)
+    ficha['equipo'] = eq
+    ficha['equipo_cargado'] = False
+    return list(_SLOTS_EQ_PET)
+
+
+def _pet_equipo_cargar(ses, ficha) -> list:
+    """El equipo guardado en la ficha vuelve a las casillas 599..607."""
+    p = ses.personaje
+    bolsa, cants, inst = ses.inventario, _cantidades(ses), _instancias(ses)
+    mej = getattr(p, 'mejoras', None)
+    if mej is None:
+        mej = p.mejoras = {}
+    for k, e in (ficha.get('equipo') or {}).items():
+        r = int(k)
+        if not isinstance(e, dict) or r in bolsa or not (599 <= r <= 607):
+            continue
+        bolsa[r] = int(e.get('item') or 0)
+        if int(e.get('cant') or 1) > 1:
+            cants[r] = int(e['cant'])
+        if e.get('mejoras'):
+            mej[r] = dict(e['mejoras'])
+        if e.get('inst'):
+            try:
+                inst[r] = bytes.fromhex(e['inst'])
+            except ValueError:
+                pass
+    ficha['equipo'] = {}
+    ficha['equipo_cargado'] = True
+    return list(_SLOTS_EQ_PET)
+
+
+def _pet_equipo_cambiar(ses, ficha) -> list:
+    """Al sacar `ficha`: el equipo que hay en 599..607 vuelve a su duena y se
+    carga el de esta. El que no es de nadie (de antes de separar el equipo
+    por mascota) vuelve a la mochila si cabe."""
+    p = ses.personaje
+    bolsa = ses.inventario
+    if ficha.get('equipo_cargado'):
+        return []
+    tocadas = set()
+    duena = next((m for m in (getattr(p, 'mascotas', None) or {}).values()
+                  if isinstance(m, dict) and m is not ficha and m.get('equipo_cargado')), None)
+    if duena is not None:
+        tocadas.update(_pet_equipo_guardar(ses, duena))
+    else:
+        for r in _SLOTS_EQ_PET:
+            if r in bolsa:
+                libre = _ranura_libre(bolsa)
+                if libre is None:
+                    break
+                _mover_casilla(ses, r, libre)
+                tocadas.update((r, libre))
+    tocadas.update(_pet_equipo_cargar(ses, ficha))
+    return sorted(tocadas)
+
+
+def _mover_casilla(ses, org, dst):
+    """Mueve el contenido entero de una casilla vacia a otra (item,
+    cantidad, mejoras e instancia)."""
+    p = ses.personaje
+    bolsa, cants, inst = ses.inventario, _cantidades(ses), _instancias(ses)
+    mej = getattr(p, 'mejoras', None) or {}
+    bolsa[dst] = bolsa.pop(org)
+    if org in cants:
+        cants[dst] = cants.pop(org)
+    if org in mej:
+        mej[dst] = mej.pop(org)
+    if org in inst:
+        inst[dst] = inst.pop(org)
+
+
+def _guardar_fichas_mascota(ses):
+    p = ses.personaje
+    if getattr(ses, 'usuario', None) and getattr(p, 'mascotas', None) is not None:
+        try:
+            cuentas.guardar_mascota(ses.usuario, p.char_id, getattr(p, 'mascota', None), p.mascotas)
+        except Exception:
+            log.exception('no se pudieron guardar las fichas de mascota')
+
+
+def _pet_tiene_equipo(ses, ranura) -> bool:
+    """Si la mascota de esa casilla lleva equipo (guardado o puesto)."""
+    f = (getattr(ses.personaje, 'mascotas', None) or {}).get(str(ranura))
+    if not isinstance(f, dict):
+        return False
+    if f.get('equipo'):
+        return True
+    return bool(f.get('equipo_cargado') and any(r in ses.inventario for r in _SLOTS_EQ_PET))
 
 
 _PET_ENT = [0x105000]
@@ -7090,6 +7222,55 @@ def _top_student_dar_premio(ses, addr, mago):
 # ------------------------------------------------ ALIUA / SUPREME POWER
 # Ver supremo.py: la mision 1491 "Surpass Your Limits" y el logro 3715.
 
+def _gm_logros_completar(ses, addr, que):
+    """GM: /logros full <Tipo>[:<Subtipo>] da al 100% todos los logros de ese
+    tipo (主類別) y, si se pone, solo los de ese subtipo (次類別), tal como se
+    ven en los desplegables de la ventana. Sin nada lista los tipos; un
+    subtipo que no existe lista los del tipo. `/logros full *` da todos."""
+    import logros as _lg_g
+    import clases as _cl_g
+    p = ses.personaje
+    tipo, _, sub = (que or '').partition(':')
+    tipo, sub = tipo.strip().lower(), sub.strip().lower()
+    filas = _lg_g.tabla()
+    tipos = sorted({str(f.get('categoria') or '') for f in filas})
+
+    def avisar(*lineas):
+        ses.enviar(*[_cl_g.aviso(x, tipo=0) for x in lineas])
+        return True
+
+    if not tipo:
+        return avisar('Usage: /logros full <Type>[:<Subtype>]   (/logros full * = all)',
+                      'Types: ' + ', '.join(tipos))
+    if tipo != '*':
+        exactos = [t for t in tipos if t.lower() == tipo]
+        cand = exactos or [t for t in tipos if t.lower().startswith(tipo)]
+        if len(cand) != 1:
+            return avisar('Unknown or ambiguous type "%s". Types: %s' % (tipo, ', '.join(tipos)))
+        filas = [f for f in filas if f.get('categoria') == cand[0]]
+        if sub:
+            subs = sorted({str(f.get('subcategoria') or '') for f in filas})
+            exactos = [s for s in subs if s.lower().replace('\xa0', ' ') == sub]
+            cand_s = exactos or [s for s in subs if s.lower().replace('\xa0', ' ').startswith(sub)]
+            if len(cand_s) != 1:
+                return avisar('Unknown or ambiguous subtype "%s" in %s. Subtypes: %s'
+                              % (sub, cand[0], ', '.join(subs)))
+            filas = [f for f in filas if f.get('subcategoria') == cand_s[0]]
+    _logros_datos(ses)
+    if p.logros is None:
+        p.logros = []
+    antes = set(_lg_g.titulos_de(p.logros))
+    dados = [int(f['id']) for f in filas if _lg_g.otorgar(p.logros, int(f['id']))]
+    for _t in sorted(set(_lg_g.titulos_de(p.logros)) - antes):
+        ses.enviar(_lg_g.paquete_titulo_nuevo(p.entity_id, _t))
+    _logros_guardar(ses)
+    log.info('[%s] GM logros full %r -> %d logros', addr, que, len(dados))
+    avisar('Achievements completed: %d of %d (%s).' % (len(dados), len(filas), que.strip()))
+    # Los de "tener otros logros" y los de puntos que ahora se cumplen.
+    _logros_actualizar(ses, addr, enviar=True)
+    return True
+
+
 def _logros_dar(ses, addr, lid):
     """Da un logro a mano (los NPC觸發 que el servidor no vigila), con su
     aviso, su titulo en caliente (0x001D codigo 56) y el Super BC."""
@@ -11628,8 +11809,10 @@ class Servidor:
                                             and ahora >= cd_pet.get(int(s), 0)
                                         ]
                                         sk_usada = random.choice(sk_cands) if sk_cands and random.random() < 0.65 else None
-                                        base_atk_pet = int(f_pet.get('atk', 100)) + int(b_star.get('atk', 0)) + int(b_bf_atk.get('atk', 0))
-                                        base_matk_pet = int(f_pet.get('matk', 100)) + int(b_star.get('matk', 0)) + int(b_bf_atk.get('matk', 0))
+                                        import inventario as _iv_peq
+                                        b_eq_comb = _iv_peq.bonos_equipo_mascota(getattr(ses, 'inventario', {}), getattr(p, 'mejoras', None), getattr(p, 'pet_suit', 0)) if getattr(p, 'char_id', None) else {}
+                                        base_atk_pet = int(f_pet.get('atk', 100)) + int(b_star.get('atk', 0)) + int(b_bf_atk.get('atk', 0)) + int(b_eq_comb.get('atk', 0))
+                                        base_matk_pet = int(f_pet.get('matk', 100)) + int(b_star.get('matk', 0)) + int(b_bf_atk.get('matk', 0)) + int(b_eq_comb.get('matk', 0))
                                         if sac_buff:
                                             base_atk_pet = int(round(base_atk_pet * 1.4))
                                             base_matk_pet = int(round(base_matk_pet * 1.4))
@@ -15418,6 +15601,10 @@ class Servidor:
                 log.warning(f"[{addr}] destruir: la casilla {ranura} no tiene "
                             f"el item {item_id}")
                 return
+            if _iv.es_mascota(int(item_id)) and _pet_tiene_equipo(ses, ranura):
+                ses.enviar(clases_aviso('Remove the pet equipment before destroying this pet.'),
+                           *_refrescar(ses, [ranura]))
+                return
             cuantas = _cant_de(ses, ranura)
             _sacar(ses, ranura, cuantas)
             cid = ses.personaje.char_id
@@ -15438,6 +15625,9 @@ class Servidor:
             slot = cuerpo[0]
             bolsa = getattr(ses, 'inventario', {})
             cid = ses.personaje.char_id
+            if slot in bolsa and _iv.es_mascota(int(bolsa[slot])) and _pet_tiene_equipo(ses, slot):
+                ses.enviar(_c.aviso('Remove the pet equipment before destroying this pet.', tipo=0))
+                return
             if slot in bolsa:
                 item_del = bolsa[slot]
                 del bolsa[slot]
@@ -15612,6 +15802,15 @@ class Servidor:
                 log.warning(f"[{addr}] mover {org} -> {dst}: la ranura {org} esta vacia")
                 return
             it_org = bolsa[org]
+            # El equipo de mascota es de la mascota que esta fuera.
+            _m_fuera = getattr(ses.personaje, 'mascota', None)
+            if ((599 <= dst <= 607 or 599 <= org <= 607)
+                    and not (isinstance(_m_fuera, dict) and _m_fuera.get('fuera'))):
+                ses.enviar(clases_aviso('Summon a pet before changing its equipment.'),
+                           *_refrescar(ses, [org, dst]))
+                return
+            if isinstance(_m_fuera, dict) and _m_fuera.get('fuera') and (599 <= dst <= 607):
+                _m_fuera['equipo_cargado'] = True
             import furniture_items as _furn_move
             if (_furn_move.protegido(ses,org) and not 377<=dst<=476
                     or _furn_move.protegido(ses,dst) and not 377<=org<=476):
@@ -15847,9 +16046,12 @@ class Servidor:
                     ses.personaje.mascotas[str(dst)] = _f_mv
             salida = [inv.acuse_movimiento(org)]
             salida.extend(_refrescar(ses, [org, dst] + _extra_tocadas))
-            if isinstance(_masc_p, dict) and _masc_p.get('fuera') and _masc_p.get('ranura') == dst:
-                import mascotas as _ms_mv
-                salida.append(_ms_mv.armar(_masc_p))
+            if isinstance(_masc_p, dict) and _masc_p.get('fuera'):
+                if (599 <= org <= 607) or (599 <= dst <= 607) or _masc_p.get('ranura') in (org, dst):
+                    import mascotas as _ms_mv
+                    b_eq_mv = inv.bonos_equipo_mascota(bolsa, getattr(ses.personaje, 'mejoras', None), getattr(ses.personaje, 'pet_suit', 0))
+                    _masc_p['bonos_eq'] = b_eq_mv
+                    salida.append(_ms_mv.armar(_masc_p, bonos_eq=b_eq_mv))
             if inv.es_equipo(org) or inv.es_equipo(dst):
                 if ses.personaje:
                     import combate as _cb
@@ -15951,6 +16153,14 @@ class Servidor:
             import inventario as _iv
             import mejoras as _mj
             import combate as _cb_15e
+            if cuerpo and len(cuerpo) >= 1:
+                try:
+                    ses.personaje.pet_suit = int(cuerpo[0])
+                    _f_suit = getattr(ses.personaje, 'mascota', None)
+                    if isinstance(_f_suit, dict) and _f_suit.get('ranura') is not None:
+                        ses.__dict__.setdefault('pet_suits', {})[str(_f_suit['ranura'])] = ses.personaje.pet_suit
+                except Exception:
+                    pass
             ficha = getattr(ses.personaje, 'mascota', None)
             if not ficha and getattr(ses, 'inventario', None):
                 for r, iid in ses.inventario.items():
@@ -15961,7 +16171,9 @@ class Servidor:
                 r = ficha.get('ranura')
                 veces = (ses.personaje.mejoras.get(r) or {}).get('veces', 0) if getattr(ses.personaje, 'mejoras', None) and r is not None else 0
                 f_env = _ms.aplicar_mejoras(ficha, _mj.stats_de_mejora(ficha.get('item', 0), 'mascota', veces)) if veces > 0 else ficha
-                pkgs_15e = [_ms.armar(f_env)]
+                b_eq_15e = _iv.bonos_equipo_mascota(getattr(ses, 'inventario', {}), getattr(ses.personaje, 'mejoras', None), getattr(ses.personaje, 'pet_suit', 0))
+                f_env['bonos_eq'] = b_eq_15e
+                pkgs_15e = [_ms.armar(f_env, bonos_eq=b_eq_15e)]
                 pet_eid_15e = getattr(ses, 'pet_entity_id', None) or f_env.get('entidad')
                 if f_env.get('fuera') and pet_eid_15e:
                     pkgs_15e.append(_cb_15e.atributo(int(pet_eid_15e), _ms.hp_eff(f_env), _cb_15e.KIND_HP))
@@ -17384,6 +17596,14 @@ class Servidor:
                 # Sin acuse: en la captura el 0x002E (usar) no recibe
                 # ninguno, solo el 0x0012 de arrastrar.
                 salida = list(_refrescar(ses, [ranura, dst] + _extra_tocadas_2e))
+                if ses.personaje and getattr(ses.personaje, 'mascota', None):
+                    _f_pet_eq = ses.personaje.mascota
+                    if isinstance(_f_pet_eq, dict) and _f_pet_eq.get('fuera'):
+                        if (599 <= dst <= 607) or (599 <= ranura <= 607) or inv.categoria_item(item_id) in ('寵物武器', '寵物防具', '寵物飾品', '寵物裝備'):
+                            import mascotas as _ms_eq2
+                            b_eq_2e = inv.bonos_equipo_mascota(bolsa, getattr(ses.personaje, 'mejoras', None), getattr(ses.personaje, 'pet_suit', 0))
+                            _f_pet_eq['bonos_eq'] = b_eq_2e
+                            salida.append(_ms_eq2.armar(_f_pet_eq, bonos_eq=b_eq_2e))
                 salida.append(_stats_ses(ses))
                 salida.extend(_apariencia(ses))
                 if ses.personaje:

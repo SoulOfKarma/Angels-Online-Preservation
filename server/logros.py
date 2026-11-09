@@ -130,7 +130,8 @@ def comprobar(personaje, conseguidos, *, muertos=None, stats=None) -> list:
     for f in por_regla('達成成就'):
         if f['id'] in ya:
             continue
-        pide = [_num(f.get('param1')), _num(f.get('param2'))]
+        # Todos sus param1..paramN (370 pide 371..375; antes solo miraba 2).
+        pide = [_num(f.get('param%d' % i)) for i in range(1, 20)]
         pide = [x for x in pide if x]
         if pide and all(x in ya for x in pide):
             nuevos.append(f['id'])

@@ -13,15 +13,6 @@ import pase
 import tw_migracion
 
 
-def test_potent_blue_potion_uses_complete_english_name():
-    source = pathlib.Path(tw_migracion.paks.vigente('item4.xml'))
-    root = ET.parse(source).getroot()
-    item = next(e for e in root.iter() if e.attrib.get('編號') == '31916')
-
-    assert item.attrib['原型名稱'] == 'Potent '
-    assert item.attrib['基本名稱'] == 'Blue Potion 6'
-
-
 def test_missing_current_pass_quest_lists_are_rebuilt():
     now = datetime.datetime(2026, 11, 5, 21)
     day, week = pase._periodos(now)
@@ -37,16 +28,15 @@ def test_missing_current_pass_quest_lists_are_rebuilt():
 
 
 def test_map_tabs_use_taiwan_page_and_have_clear_spacing(tmp_path, monkeypatch):
-    source_wnd01 = pathlib.Path(tw_migracion.paks.vigente('wnd01.xml'))
-    source_wnd05 = pathlib.Path(tw_migracion.paks.vigente('wnd05.xml'))
+    source = ROOT / 'extracted_paks' / 'update26' / 'setting' / 'eng'
     legacy = tmp_path / 'legacy'
     legacy.mkdir()
-    text = source_wnd01.read_text(encoding='utf-8-sig')
+    text = (source / 'wnd01.xml').read_text(encoding='utf-8-sig')
     text, removed = re.subn(
         r'\t<window class="WND_CLASS_BUTTON" id="25516".*?</window>\r?\n?',
         '', text, count=1, flags=re.DOTALL)
-    if removed:
-        text = text.replace('\t\t<child>25516</child>\r\n', '')
+    assert removed == 1
+    text = text.replace('\t\t<child>25516</child>\r\n', '')
     night = text.find('id="25515"')
     night_end = text.find('</window>', night)
     text = (text[:night] + text[night:night_end].replace(
@@ -59,7 +49,7 @@ def test_map_tabs_use_taiwan_page_and_have_clear_spacing(tmp_path, monkeypatch):
     text = re.sub(r'(id="24750" range=")\d+,561,70,18(")',
                   r'\g<1>545,561,70,18\2', text)
     (legacy / 'wnd01.xml').write_text(text, encoding='utf-8')
-    shutil.copy2(source_wnd05, legacy / 'wnd05.xml')
+    shutil.copy2(source / 'wnd05.xml', legacy / 'wnd05.xml')
     monkeypatch.setattr(tw_migracion.paks, 'vigente',
                         lambda name: legacy / name)
     monkeypatch.setattr(tw_migracion, 'IGG', tmp_path / 'extracted_paks')

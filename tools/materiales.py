@@ -19,10 +19,12 @@ es el id del material. En la Magic Kichen Path (stage 73) las seis vetas
     python tools/materiales.py
 """
 import json
+import os
 import pathlib
 import re
 import struct
 import sys
+import tempfile
 import xml.etree.ElementTree as ET
 
 RAIZ = pathlib.Path(__file__).resolve().parent.parent
@@ -66,7 +68,7 @@ def objetos_material():
     return salida
 
 
-def vetas_de_plantillas(objs):
+def vetas_de_plantillas(objs, solo=None):
     """{stage: {entity_id: material}} de las vetas que YA mandan las plantillas.
 
     Las plantillas de los mapas abiertos traen sus vetas, arboles y hierbas
@@ -82,7 +84,14 @@ def vetas_de_plantillas(objs):
     vetas = {int(k) for k in objs}
     mapas = mc.mapas_del_cliente()
     salida = {}
-    for stage, fichero in sorted(lg.PLANTILLAS_POR_STAGE.items()):
+    plantillas = dict(lg.PLANTILLAS_POR_STAGE)
+    # Daily se carga por su controlador, fuera de PLANTILLAS_POR_STAGE.
+    # Los MATOBJ de Joy tambien llevan el material exacto en MPC+22.
+    for stage in (182, 372):
+        plantillas[stage] = 'daily_%d.json' % stage
+    for stage, fichero in sorted(plantillas.items()):
+        if solo is not None and stage not in solo:
+            continue
         f = RAIZ / 'server' / 'plantillas' / fichero
         if stage not in mapas or not f.exists():
             continue
@@ -120,6 +129,21 @@ def vetas_de_plantillas(objs):
 
 
 def main():
+    if '--solo-daily' in sys.argv or '--comprobar-daily' in sys.argv:
+        data = json.loads(SALIDA.read_text(encoding='utf-8'))
+        vetas = vetas_de_plantillas(data['objetos_material'], solo={182, 372})
+        for stage in (182, 372):
+            recursos = json.loads((SALIDA.parent / ('daily_%d.json' % stage)).read_text(encoding='utf-8'))['recursos']
+            assert len(vetas.get(str(stage), {})) == len(recursos), ('Joy sin vincular', stage)
+            assert all(str(mid) in data['materiales'] for mid in vetas[str(stage)].values())
+        if '--comprobar-daily' in sys.argv:
+            assert all(data['vetas'].get(stage) == rows for stage, rows in vetas.items())
+            print('Joy: %d vinculos coinciden con MPC+22' % sum(map(len, vetas.values())))
+        else:
+            data['vetas'].update(vetas)
+            SALIDA.write_text(json.dumps(data, ensure_ascii=False, indent=1) + '\n', encoding='utf-8')
+            print('Joy: %d vinculos actualizados; resto de materiales conservados' % sum(map(len, vetas.values())))
+        return
     mats, objs = materiales(), objetos_material()
     vetas = vetas_de_plantillas(objs)
     SALIDA.write_text(json.dumps({
@@ -135,4 +159,8 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    # Los imports del servidor pueden inicializar cuentas; el exportador
+    # de contenido nunca necesita ni debe abrir la base de juego real.
+    with tempfile.TemporaryDirectory(prefix='ao_materiales_') as cuentas:
+        os.environ['AO_DATOS'] = cuentas
+        main()

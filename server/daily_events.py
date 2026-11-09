@@ -302,8 +302,53 @@ def room(r):
             m=combate.Monstruo(eid,typ,row['\u540d\u7a31'],tile,int(row['\u5716\u865f']),stage=r['stage'])
             m.daily_objective=True;m.daily_team=team;m.daily_round=r['id'];m.agro=0;m.move_speed=0;m.generado=True
             e.monstruos[eid]=m
+    if r['kind']==KIND_QUICK_REFLEXES:_repartir_cofres(r,e)
     _ROOMS[r['id']]=e
     return e
+
+
+KIND_QUICK_REFLEXES=4
+
+
+def puntos_cofres(stage):
+    """Native chest points of Quick Reflexes: MPC tag 70 (81 points across the
+    whole forest). The 40 MPC chests sit in the checkered holding area by the
+    entrance; the arrival point (277,122) is also tag 70 and stays clear."""
+    llegadas=[tuple(p['llegada']) for p in portales(stage) if p.get('llegada')]
+    return [tuple(t) for t in datos(stage).get('tags',{}).get('70',[])
+            if all(max(abs(t[0]-x),abs(t[1]-y))>2 for x,y in llegadas)]
+
+
+def semilla_ronda(rid):
+    """Integer seed from the round id (a uuid hex): its last 8 bytes, big endian."""
+    return int.from_bytes(str(rid).encode('utf8')[-8:],'big')
+
+
+def _repartir_cofres(r,e):
+    """The native points are shuffled per round and each chest gets its own
+    (no repeats while there are points). Chests do not walk: monster.xml
+    gives 9234 no speed and the default 50 made the AI wander them. When
+    opened, a chest comes back (after its `respawn`) on that same point
+    (combate.revivir)."""
+    import random
+    puntos=puntos_cofres(r['stage'])
+    cofres=[m for m in e.monstruos.values() if m.npc_type==9234]
+    if not puntos or not cofres:return
+    orden=list(puntos);random.Random(semilla_ronda(r['id'])).shuffle(orden)
+    for i,m in enumerate(cofres):
+        m.spawn_x,m.spawn_y=orden[i%len(orden)]
+        m.tile_x,m.tile_y=m.spawn_x,m.spawn_y;m.tile=[m.tile_x,m.tile_y]
+        m.daily_puntos=[(m.spawn_x,m.spawn_y)]
+        m.es_estatico=True;m.move_speed=0;m.move_range=0
+
+
+def posiciones(stage):
+    """{entity_id: tile} of the running round's room. login sends the map's
+    monsters from the daily_<stage>.json template; without this the Quick
+    Reflexes chests appeared in the entrance holding area."""
+    r=actual(stage)
+    if not r:return {}
+    return {eid:(m.tile_x,m.tile_y) for eid,m in room(r).monstruos.items()}
 
 
 def generar(ses,stage,tag):
@@ -489,6 +534,9 @@ def _finish(r,cancel=False):
         if objs:
             best=max(m.hp for m in objs);teams=[m.daily_team for m in objs if m.hp==best]
             if len(teams)!=1:teams=[]
+    if not cancel and r['kind'] in (2, 3):
+        con_score = {m['team'] for m in r['members'].values() if m.get('score', 0) > 0}
+        teams = sorted(con_score if con_score else {m['team'] for m in r['members'].values()})
     if not cancel and r['kind']==6 and any(m.vivo and m.hp>0 for m in room(r).monstruos.values() if getattr(m,'daily_objective',False)):teams=[1]
     new=copy.deepcopy(r);new['phase']='cancelled' if cancel else 'ended';new['winners']=teams;new['return_at']=time.time()+10
     eligible={_key(s) for s in _sessions(r)}

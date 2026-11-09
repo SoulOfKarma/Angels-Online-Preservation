@@ -21,7 +21,7 @@ cambio el contenido entero: eso no es "nuevo" y no se toca.
     python -I work/anadir_canjes_tw.py instalar   # tambien actualiza los PAK del cliente
 """
 import datetime, json, pathlib, re, shutil, sys
-sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / 'tools'))
+sys.path.insert(0, r'G:\Ao Proyect Improved\AO 2\tools')
 sys.stdout.reconfigure(encoding='utf-8')
 import tw_migracion as tw, pak_tool
 

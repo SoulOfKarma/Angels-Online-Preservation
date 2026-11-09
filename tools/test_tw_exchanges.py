@@ -70,17 +70,33 @@ def test_all_removed_recipes_keep_native_costs_rewards_and_separate_groups():
     assert sum(r.get('群組') == '607' for r in current.values()) == 2
 
 
-def test_2026_anniversary_recipes_use_a_separate_english_group():
-    current=hs.xml_rows('exchange.xml')
-    ids=CONFIG['new_group_recipe_ids']
-    assert len(ids)==65
-    assert CONFIG['isolated_group_map']['683']==2417
-    assert CONFIG['exchange_owners']['2417']=='Anniversary Angel'
-    assert CONFIG['nodes']['2019294']['a']==[[98,[2417]]]
-    assert CONFIG['node_owners']['2019294']=='Anniversary Angel'
-    anniversary=[current[rid] for rid in ids]
-    assert all(row['群組']=='2417' and row['獎賞說明'].isascii()
-               for row in anniversary)
+def test_2026_anniversary_recipes_use_a_separate_group_without_replacing_igg():
+    import tw_migracion as migration
+    source_path = migration.indice_tw(True)['setting\\eng\\exchange.xml'][1]
+    source = migration.filas(migration.leer(source_path))
+    sample = migration.atributos(next(iter(source.values())))
+    group_key = list(sample)[1]
+    source_rows = [(key, migration.atributos(row)) for key, row in source.items()
+                   if migration.atributos(row).get(group_key) == '683']
+    current = hs.xml_rows('exchange.xml')
+    source_to_target = CONFIG['isolated_group_map']
+    target_group = source_to_target['683']
+    target_ids = CONFIG['new_group_recipe_ids']
+
+    assert len(source_rows) == len(target_ids) == 65
+    assert CONFIG['exchange_owners'][str(target_group)] == 'Anniversary Angel'
+    assert rm.datos()['nodes']['2019294']['a'] == [[98, [target_group]]]
+    assert rm.datos()['node_owners']['2019294'] == 'Anniversary Angel'
+    assert current[33477]['群組'] == '683'
+    assert current[33477]['獎賞1'] == '83008'
+    for (source_id, source_row), target_id in zip(source_rows, target_ids):
+        target_row = current[target_id]
+        assert target_row['群組'] == str(target_group)
+        assert target_row['獎賞說明'].isascii()
+        assert {k: v for k, v in target_row.items()
+                if k not in ('編號', '群組', '獎賞說明')} == {
+                    k: v for k, v in source_row.items()
+                    if k not in ('編號', '群組', '獎賞說明')}
 
 
 def test_menu_labels_are_installed_english_and_every_group_is_reachable():
@@ -93,6 +109,8 @@ def test_menu_labels_are_installed_english_and_every_group_is_reachable():
     fashion = rm.datos()['nodes']['504816']['o']
     assert [517276,2022800] in fashion and [517355,2022800] not in fashion
     assert rm.datos()['nodes']['2022800']['a'] == [[98,[622]]]
+    assert texts[514661].startswith("It's time for the 2026 Mall Anniversary!")
+    assert texts[513667] == 'Anniversary Wave 1 (Badges)'
 
 
 def test_fortunia_is_not_spawned_twice_and_original_shops_still_open(world):

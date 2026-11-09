@@ -778,7 +778,22 @@ class Monstruo:
         self.vida_combate = getattr(self, 'vida_combate', 0) + 1
         self.hp = self.hp_max
         self.muerto_en = None
-        if getattr(self, 'es_estatico', False) or getattr(self, 'move_speed', 50) == 0 or getattr(self, 'move_range', 6) <= 0:
+        puntos = getattr(self, 'daily_puntos', None)
+        if puntos:
+            # Cofres de Quick Reflexes: no andan, pero vuelven CERCA de su
+            # punto nativo del mapa (tag 70), a 3 casillas como mucho.
+            import transitable as _tr
+            st = getattr(self, 'stage', None)
+            bx, by = puntos[0]
+            self.tile_x, self.tile_y = bx, by
+            for _ in range(10):
+                tx = max(0, bx + _r.randint(-RADIO_COFRE_DAILY, RADIO_COFRE_DAILY))
+                ty = max(0, by + _r.randint(-RADIO_COFRE_DAILY, RADIO_COFRE_DAILY))
+                if st is None or _tr.se_pisa(st, tx, ty):
+                    self.tile_x, self.tile_y = tx, ty
+                    break
+            self.spawn_x, self.spawn_y = self.tile_x, self.tile_y
+        elif getattr(self, 'es_estatico', False) or getattr(self, 'move_speed', 50) == 0 or getattr(self, 'move_range', 6) <= 0:
             self.tile_x = self.spawn_x
             self.tile_y = self.spawn_y
         else:
@@ -1067,6 +1082,14 @@ _DROPS_PONDERADOS_JEFES = {
     422: (3, ((3040, 1, 981481), (5919, 1, 18519))),
     424: (3, ((3040, 1, 990741), (5921, 1, 9259))),
     426: (3, ((3040, 1, 99537), (5920, 1, 463))),
+    # Cofres de Daily Events: su fila de serv_drop.xml tal cual (個數 tiradas,
+    # prob/factor; las prob suman justo el factor, asi que siempre sale algo).
+    # Sin esto pasaban por la probabilidad normal de botin y no daban nada.
+    # 9223 Completion Treasure Box, 9224 Swindle King's Chest, 9234 Quick Hand
+    # Treasure Box (Quick Reflexes).
+    9223: (1, ((22250, 200, 75), (22250, 100, 125), (22250, 50, 250), (22250, 10, 1000), (22250, 5, 2000), (22250, 1, 6550))),
+    9224: (1, ((22250, 200, 25), (22250, 100, 30), (22250, 50, 70), (22250, 25, 150), (22250, 10, 275), (22250, 5, 450))),
+    9234: (1, ((10117, 1, 4), (17958, 1, 100), (9953, 1, 100), (2002, 1, 500), (3121, 1, 500), (4457, 1, 500), (7094, 1, 500), (3696, 1, 4000), (510, 1, 4000), (508, 1, 4000), (3384, 1, 4000), (3805, 1, 7500), (3807, 1, 7500), (3806, 1, 7500), (3808, 1, 7500), (3468, 1, 8000), (3467, 1, 8000), (1356, 1, 8000), (1357, 1, 8000), (22250, 1, 19796))),
 }
 
 
@@ -2413,6 +2436,8 @@ PROB_SKILL_EXP = 0.55
 # para que no pasearan cuatro veces mas. En monster.xml el Little Slarm trae
 # move_range=2 y apenas se despega del sitio.
 RANGO_PASEO_MIN = 9
+# Quick Reflexes: a cuantas casillas de su punto puede reaparecer un cofre.
+RADIO_COFRE_DAILY = 3
 PROB_PASEO = 0.055
 
 # Hasta cuantas casillas te persigue un monstruo al que le pegaste. Son

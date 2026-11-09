@@ -1331,6 +1331,10 @@ def poblar(stage: int, player_level=1):
     f43 = PLANTILLAS / _pg[stage] if stage in _pg else None
     if f43 is not None and f43.exists():
         d43 = json.loads(f43.read_text(encoding='utf-8'))
+        # Daily Events: los bichos van donde los tiene la sala de la ronda
+        # (los cofres de Quick Reflexes se reparten por el bosque).
+        _daily = __import__('daily_events')
+        _pos_daily = _daily.posiciones(stage) if stage in _daily.STAGES else {}
         for e in d43['spawns']:
             # 'apagado': generador que el cliente declara con cantidad 0 (lo
             # saca otra cosa o no sale). Se deja en la plantilla para el censo
@@ -1343,7 +1347,7 @@ def poblar(stage: int, player_level=1):
             # Angel Michael y los totems igual. El suyo es 40006 para Cupid y
             # 60241 para los cuatro totems.
             salida.append(_npc_spawn(e['entity_id'], e['npc_type'],
-                                     e['nombre'], tuple(e['tile']),
+                                     e['nombre'], _pos_daily.get(e['entity_id'], tuple(e['tile'])),
                                      sprite=e.get('sprite', 0),
                                      klass=e.get('klass', 200),
                                      direccion=e.get('direccion'),

@@ -713,11 +713,12 @@ def pct_por_mejoras(tipo: str, veces: int) -> dict:
 
 
 def tipo_de_ranura(ranura, item_id=None):
-    """'arma', 'escudo', 'montura' o 'armadura' segun donde este puesta.
+    """'arma', 'escudo', 'montura', 'armadura' o 'accesorio' segun donde este puesta.
 
     Si en la mano izquierda (ranura 4 o 170) se lleva un arma dual (espada o
     hacha) en lugar de un escudo, sus mejoras "+N" son de 'arma' (+6% atk/matk
     por mejora) para que el L.Atk coincida con el R.Atk.
+    Para Pet Equipment (599..607), las armas dan 6% atk/matk por mejora.
     """
     if item_id:
         try:
@@ -725,13 +726,23 @@ def tipo_de_ranura(ranura, item_id=None):
             cat = _iv.categoria_item(int(item_id))
             if cat in ('座騎', '機甲'):
                 return 'montura'
+            if cat == '寵物武器':
+                return 'arma'
+            if cat == '寵物防具':
+                return 'armadura'
+            if cat in ('寵物飾品', '寵物裝備'):
+                return 'accesorio'
         except Exception:
             pass
     r = int(ranura)
     if r in (10, 174):
         return 'montura'
-    if r == 3 or r == 169:
+    if r in (3, 169, 599, 602, 605):
         return 'arma'
+    if r in (600, 603, 606):
+        return 'armadura'
+    if r in (601, 604, 607):
+        return 'accesorio'
     if r == 4 or r == 170:
         if item_id:
             try:
