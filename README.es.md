@@ -572,7 +572,7 @@ IGG cerró el juego en febrero de 2026, así que el cliente ya no se puede
 descargar de ellos. Esta es la copia con la que se desarrolla y se prueba
 este proyecto:
 
-**[Cliente de Angels Online 8.7.6.1](https://drive.google.com/file/d/1_adZqMfxdDE4hKKWkG7ejJUpojETpiuW/view?usp=sharing)**
+**[Cliente de Angels Online 8.7.6.1](https://drive.google.com/file/d/1FTw0sNVxRwEF0KL3il6A4bpwEgG6dH5k/view?usp=sharing)**
 
 Es el cliente de IGG con el contenido de ALO Taiwan hasta el update32
 (8.7.6.1) migrado y traducido al inglés por este proyecto. Está aquí porque un protocolo que no se
