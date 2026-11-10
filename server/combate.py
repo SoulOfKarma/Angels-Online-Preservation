@@ -2554,6 +2554,32 @@ def espera_persecucion(dur):
     return max(dur * 0.5, dur - ANTICIPO_PERSECUCION)
 
 
+def tramo_en_curso(m):
+    """(tramo, espera) del ultimo movimiento programado del monstruo.
+
+    - persecucion: su tramo y `reemitir_paso` (el siguiente sale antes);
+    - paseo: su tramo y 0, porque al entrar en combate NO espera a acabar el
+      paseo ni su pausa (antes tardaba hasta ~2 s en reaccionar);
+    - otro: (None, proximo_paso)."""
+    pp = getattr(m, 'proximo_paso', 0)
+    mov = getattr(m, 'mov_persecucion', None)
+    if mov and mov[5] == pp:
+        return mov, getattr(m, 'reemitir_paso', 0)
+    pa = getattr(m, 'mov_paseo', None)
+    if pa and pa[6] == pp:
+        return pa[:6], 0.0
+    return None, pp
+
+
+def fin_de_paso(m):
+    """Desde cuando puede pegar: al llegar. La pausa del paseo no cuenta."""
+    pp = getattr(m, 'proximo_paso', 0)
+    pa = getattr(m, 'mov_paseo', None)
+    if pa and pa[6] == pp:
+        return pa[5]
+    return pp
+
+
 def origen_persecucion(mov, ahora, defecto):
     """Pixel donde va el monstruo: interpolado en su tramo de persecucion
     `mov` = (t0, cx, cy, dx, dy, fin) si sigue en curso; si no, `defecto`."""

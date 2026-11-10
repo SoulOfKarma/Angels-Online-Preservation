@@ -103,10 +103,6 @@ def skills_arma_ses(ses):
 # los que piden a partir de 0.92, que son los que se veian en el log
 # (1.03, 1.05, 1.10). Lo que llegue antes de eso sigue fuera.
 MARGEN_CADENCIA = 0.20
-# Primer golpe basico sobre un objetivo NUEVO: se espera por si el clic
-# venia con una habilidad preparada, que llega ~80 ms despues del 0x0016 0x0c.
-ESPERA_BASICO_OBJETIVO_NUEVO = 0.25
-
 
 def lleva_duales_ses(ses):
     """Si el personaje pelea con DOS armas de mano (el escudo no cuenta)."""
@@ -11424,7 +11420,7 @@ class Servidor:
                                     # pantalla todavia va andando; pegando ya,
                                     # se le veia atacar desde lejos (los Goat
                                     # Demon del Training Palace).
-                                    if d_targ <= r_atk and ahora >= getattr(m, 'proximo_paso', 0):
+                                    if d_targ <= r_atk and ahora >= _cb.fin_de_paso(m):
                                         if ahora - getattr(m, 'ultimo_ataque', 0) >= _cb.cadencia_monstruo(m):
                                             m.ultimo_ataque = ahora
                                             if targ_eid == yo:
@@ -11625,11 +11621,9 @@ class Servidor:
                                             # (el ultimo que se programo):
                                             # el siguiente sale antes de que
                                             # acabe, desde donde va.
-                                            _mov = getattr(m, 'mov_persecucion', None)
-                                            if not (_mov and _mov[5] == getattr(m, 'proximo_paso', 0)):
-                                                _mov = None
-                                            if ahora < (getattr(m, 'reemitir_paso', 0) if _mov
-                                                        else getattr(m, 'proximo_paso', 0)):
+                                            # Paseando: arranca ya, desde donde va.
+                                            _mov, _espera = _cb.tramo_en_curso(m)
+                                            if ahora < _espera:
                                                 continue
                                             dx = targ_x - m.tile_x
                                             dy = targ_y - m.tile_y
@@ -11701,6 +11695,12 @@ class Servidor:
                             m.tile_y = new_y
                             m.tile[0], m.tile[1] = new_x, new_y
                             dst_x, dst_y = new_x * 32, new_y * 32
+                            # El tramo, por si entra en combate a mitad.
+                            m.mov_paseo = (ahora, cur_x, cur_y, dst_x, dst_y,
+                                           ahora + _cb.duracion_persecucion(
+                                               (cur_x, cur_y), (dst_x, dst_y),
+                                               m.move_speed or _cb.VELOCIDAD_PASEO),
+                                           m.proximo_paso)
                             ses.enviar(MOVE.build(entity_id=m.entity_id,
                                                   cur_x=cur_x, cur_y=cur_y,
                                                   dst_x=dst_x, dst_y=dst_y,
@@ -20133,6 +20133,25 @@ class Servidor:
                     if getattr(ses, 'usuario', None):
                         cuentas.guardar_quick_emotes(ses.usuario, ses.personaje.char_id, ses.personaje.quick_emotes)
                 return
+            if (accion == 0x0C and ses.personaje and not getattr(ses, 'muerto', False)
+                    and parametro in (getattr(ses, 'monstruos', None) or {})):
+                # A UN MONSTRUO: SELECCIONAR, NO PEGAR. Medido en logs/proxy (10/11/2026):
+                # en el oficial 9.758 golpes basicos del jugador van precedidos
+                # del clic sobre el bicho (0x0005, que el cliente repite en cada
+                # golpe) y solo ~30 de este 0x0c; de 17.661 0x0c a un objetivo
+                # nuevo, el servidor oficial no pega en el 94%. El cliente lo
+                # manda TAMBIEN solo: al recibir un golpe o tras una baja elige
+                # al siguiente bicho. Pegar aqui hacia que el personaje
+                # contraatacara solo, y la espera para no pisar una habilidad
+                # (0,25 s) era el "lo piensa" del primer golpe. Con habilidad
+                # preparada el cliente no manda 0x0005 (0 de 36 en la sesion
+                # 20261110_004920), asi que el clic ya no compite con ella.
+                _pend = getattr(ses, '_basico_pendiente', None)
+                if _pend is not None:
+                    _pend.cancel()
+                    ses._basico_pendiente = None
+                return
+            # A un jugador (PvP) sigue pegando como antes; no se ha medido.
             if accion == 0x0C and ses.personaje and not getattr(ses, 'muerto', False):
                 # ATAQUE BASICO. El cliente NO manda 0x0006 para pegar sin
                 # habilidad ni espera a que se le conteste un clic: manda este
@@ -20161,7 +20180,7 @@ class Servidor:
                         if ses.personaje and not getattr(ses, 'muerto', False):
                             _golpe_basico()
                     ses._basico_pendiente = asyncio.get_event_loop().call_later(
-                        ESPERA_BASICO_OBJETIVO_NUEVO, _diferido)
+                        0.25, _diferido)
                 return
             if accion == 3 and ses.personaje and getattr(ses, 'muerto', False):
                 # QUEDARSE COMO ALMA. Medido en Celestia (mundo_203502_844482
