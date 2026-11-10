@@ -2530,21 +2530,39 @@ CADENCIA_MONSTRUO_MIN = 0.40
 PASO_PASEO_MAX = 3
 VELOCIDAD_PASEO = 75
 
-# PERSECUCION SIN PARONES. El siguiente tramo de un monstruo que persigue se
-# pide ANTES de que acabe el actual: asi le llega al cliente antes de pararse
-# y no se ve "A -> B, parado, B -> C". Medido en las capturas del oficial
-# (logs/proxy, 4.294 tramos de persecucion encadenados, 10/11/2026): el
-# siguiente llega de mediana justo al acabar y una cuarta parte entre 0,25 y
-# 0,45 s antes. Nosotros lo mandabamos siempre despues (tick de 0,1 s mas lo
-# que tardase el servidor).
-ANTICIPO_PERSECUCION = 0.2
+# PERSECUCION SIN PARONES. Medido en las capturas del oficial (logs/proxy,
+# 16.829 tramos de persecucion encadenados, 10/11/2026):
+# - el monstruo avanza a unos 2x su velocidad del 0x0005 en pixeles/s
+#   (distancia euclidea; mediana 2,11). Con 1x el tramo duraba el doble de lo
+#   que tarda el cliente: llegaba a B y se quedaba quieto media espera.
+# - el siguiente tramo sale poco antes de acabar el actual y su origen es
+#   DONDE VA el monstruo en ese momento (pixel interpolado), no el destino
+#   anterior: el cliente no salta ni se para.
+FACTOR_VELOCIDAD_PERSECUCION = 2.0
+ANTICIPO_PERSECUCION = 0.1
 
 
-def espera_persecucion(pasos, spd):
-    """Segundos hasta pedir el siguiente tramo de persecucion: la duracion del
-    tramo menos ANTICIPO_PERSECUCION, sin bajar de la mitad del tramo."""
-    dur = pasos * 32.0 / spd
+def duracion_persecucion(cur, dst, spd):
+    """Segundos que tarda el cliente en ir de `cur` a `dst` (pixeles)."""
+    d = ((dst[0] - cur[0]) ** 2 + (dst[1] - cur[1]) ** 2) ** 0.5
+    return d / (FACTOR_VELOCIDAD_PERSECUCION * max(1, spd))
+
+
+def espera_persecucion(dur):
+    """Segundos hasta pedir el siguiente tramo: la duracion menos
+    ANTICIPO_PERSECUCION, sin bajar de la mitad del tramo."""
     return max(dur * 0.5, dur - ANTICIPO_PERSECUCION)
+
+
+def origen_persecucion(mov, ahora, defecto):
+    """Pixel donde va el monstruo: interpolado en su tramo de persecucion
+    `mov` = (t0, cx, cy, dx, dy, fin) si sigue en curso; si no, `defecto`."""
+    if not mov or ahora >= mov[5] or mov[5] <= mov[0]:
+        return defecto
+    f = max(0.0, (ahora - mov[0]) / (mov[5] - mov[0]))
+    return (int(round(mov[1] + (mov[3] - mov[1]) * f)), int(round(mov[2] + (mov[4] - mov[2]) * f)))
+
+
 SEGUNDOS_ENTRE_PASEOS = 5.6
 
 # Cuanto tarda un monstruo en recorrer una casilla, y cuanto descansa entre

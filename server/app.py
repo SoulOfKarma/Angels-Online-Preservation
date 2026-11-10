@@ -3279,7 +3279,12 @@ def _procesar_muerte_monstruo(ses, m, yo, addr, espera=0.0):
         if ses.personaje and getattr(ses, 'usuario', None):
             cuentas.guardar_inventario(ses.usuario, cid, bolsa, _cantidades(ses))
 
-        log.info(f"[{addr}] mato un {m.nombre} (entidad {objetivo}); +{exp_ganada} exp, +{oro} oro, {len(drops)} items")
+        # Con grupo o con varios atacantes cada participante pasa por aqui:
+        # el log dice a QUIEN le toca (antes parecia que el que mato cobraba
+        # dos veces y el botin se perdia).
+        log.info(f"[{addr}] mato un {m.nombre} (entidad {objetivo}); para "
+                 f"{getattr(ses.personaje, 'nombre', '?')} ({fraccion:.0%}): +{exp_ganada} exp, +{oro} oro, "
+                 f"{len(drops)} items{'' if con_botin else ' (el botin le toco a otro)'}")
 
     for _s_pr, _fr_pr, _bot_pr in _repartir_muerte(ses, m):
         try:
@@ -8884,6 +8889,30 @@ def _choques_al_llegar(ses, addr, st, llegada, token, vistos):
         pass
 
 
+def _eventos_al_aterrizar(ses, addr):
+    """El evento del objeto que hay JUSTO en la casilla de llegada al mapa.
+
+    Al entrar por un portal o un teletransporte el personaje aparece encima
+    y no anda, asi que nada lo disparaba. Los mapas lo usan para arrancar la
+    instancia una sola vez (MAPVAR): Gulp Room 3 crea a Overlord Legte
+    (evento 502, GENERATE 102, en las tres casillas de llegada del tag 1),
+    Gulp Room 2 sortea su laberinto (101) y el 97 el suyo (100). Los
+    tornados y los portales de portales.json no entran: esos son para salir.
+    Queda apuntado como "tocando" para que el primer paso no lo repita.
+    """
+    p = ses.personaje
+    if not p:
+        return
+    import eventos as _ev_at
+    st, t = p.stage, (p.tile_x, p.tile_y)
+    o = ((_ev_at.del_stage(st) or {}).get('objetos') or {}).get('%d,%d' % t)
+    if not o or int(o[1]) == 60001 or _portal_en(st, *t):
+        return
+    _eventos_al_pisar(ses, addr, t)
+    if ses.personaje and ses.personaje.stage == st:
+        ses._ev_tocando = set(getattr(ses, '_ev_tocando', None) or ()) | {(st, int(o[0]))}
+
+
 def _eventos_al_pisar(ses, addr, tile, solo_chocar=False):
     """Dispara el evento del mapa de la casilla en la que se acaba de parar.
 
@@ -11592,7 +11621,15 @@ class Servidor:
                                                 _impacto()
                                     else:
                                         if not getattr(m, 'es_estatico', False):
-                                            if ahora < getattr(m, 'proximo_paso', 0):
+                                            # Tramo de persecucion en curso
+                                            # (el ultimo que se programo):
+                                            # el siguiente sale antes de que
+                                            # acabe, desde donde va.
+                                            _mov = getattr(m, 'mov_persecucion', None)
+                                            if not (_mov and _mov[5] == getattr(m, 'proximo_paso', 0)):
+                                                _mov = None
+                                            if ahora < (getattr(m, 'reemitir_paso', 0) if _mov
+                                                        else getattr(m, 'proximo_paso', 0)):
                                                 continue
                                             dx = targ_x - m.tile_x
                                             dy = targ_y - m.tile_y
@@ -11609,18 +11646,21 @@ class Servidor:
                                             if not step_x and not step_y:
                                                 m.proximo_paso = ahora + 0.5
                                                 continue
-                                            cur_x, cur_y = m.tile_x * 32, m.tile_y * 32
+                                            cur_x, cur_y = _cb.origen_persecucion(
+                                                _mov, ahora, (m.tile_x * 32, m.tile_y * 32))
                                             m.tile_x += step_x
                                             m.tile_y += step_y
                                             m.tile[0], m.tile[1] = m.tile_x, m.tile_y
                                             dst_x, dst_y = m.tile_x * 32, m.tile_y * 32
-                                            _pasos = max(abs(step_x), abs(step_y)) or 1
                                             spd = m.move_speed or _cb.VELOCIDAD_PASEO
                                             if getattr(m, 'debuffs', None):
                                                 for deb in m.debuffs.values():
                                                     if deb.get('vel_mov_mod'):
                                                         spd = max(10, spd + deb['vel_mov_mod'])
-                                            m.proximo_paso = ahora + _cb.espera_persecucion(_pasos, spd)
+                                            _dur = _cb.duracion_persecucion((cur_x, cur_y), (dst_x, dst_y), spd)
+                                            m.proximo_paso = ahora + _dur
+                                            m.reemitir_paso = ahora + _cb.espera_persecucion(_dur)
+                                            m.mov_persecucion = (ahora, cur_x, cur_y, dst_x, dst_y, m.proximo_paso)
                                             ses.enviar(MOVE.build(entity_id=m.entity_id,
                                                                   cur_x=cur_x, cur_y=cur_y,
                                                                   dst_x=dst_x, dst_y=dst_y,
@@ -14751,6 +14791,7 @@ class Servidor:
 
             if hasattr(ses,'terminar_carga_mapa'):
                 ses.terminar_carga_mapa()
+            _eventos_al_aterrizar(ses, addr)
             log.info(f"[{addr}] mapa cargado exitosamente: stage {p.stage} "
                      f"tile ({p.tile_x},{p.tile_y})")
             return
