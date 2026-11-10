@@ -3025,11 +3025,27 @@ def uso_en_mascota(item_id: int):
         if not db.exists():
             return None
         con = sqlite3.connect(db)
-        fila = fila_item(con, '"使用目標", "動態資料1", "常駐法術", "基本名稱"', item_id)
+        fila = fila_item(con, '"使用目標", "動態資料1", "常駐法術", "基本名稱", "使用公式", "動態資料2"', item_id)
         if not fila or str(fila[0] or '') != OBJETIVO_MASCOTA:
             return None
+        # Piedras y diamantes de EXP (使用公式=6): capacidad y % que guardan.
+        if str(fila[4] or '') == '6' and str(fila[1] or '').isdigit() and str(fila[5] or '').isdigit():
+            return {'piedra': {'max': int(fila[1]), 'pct': int(fila[5])}}
         hechizo = str(fila[2] or '')
         if hechizo.isdigit() and int(hechizo):
+            # Pociones de mascota (1756..1761 y las demas iguales): el hechizo
+            # da HP/MP en numero (數值) o en % (百分比) al momento, sin
+            # duracion. Antes caian en el buff de EXP y no curaban nada.
+            c = con.execute('select HP,"HP定義",MP,"MP定義",持續時間 from magic where id=?',
+                            (hechizo,)).fetchone()
+            if c and not str(c[4] or '').strip('0 '):
+                cura = {}
+                for v, defn, k in ((c[0], c[1], 'hp'), (c[2], c[3], 'mp')):
+                    if str(v or '').isdigit() and int(v) and defn in ('數值', '百分比'):
+                        cura[k] = int(v)
+                        cura[k + '_pct'] = defn == '百分比'
+                if cura:
+                    return {'cura': cura}
             r = con.execute('select 持續時間,經驗加倍 from magic where id=?',
                             (hechizo,)).fetchone()
             seg = int(r[0]) if r and str(r[0] or '').lstrip('-').isdigit() else 0

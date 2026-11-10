@@ -390,6 +390,23 @@ def hp_max_eff(estado: dict) -> int:
     return max(1, val)
 
 
+def curar(ficha: dict, cura: dict) -> str:
+    """Pocion de mascota: {'hp': n, 'hp_pct': bool, 'mp': n, 'mp_pct': bool}.
+    Sube el HP/MP actual de la ficha sin pasar de su maximo."""
+    hechos = []
+    for k in ('hp', 'mp'):
+        if k not in cura:
+            continue
+        tope = max(1, int(ficha.get(k + '_max') or ficha.get(k) or 1))
+        n = int(cura[k])
+        if cura.get(k + '_pct'):
+            n = tope * n // 100
+        antes = int(ficha.get(k) or 0)
+        ficha[k] = min(tope, antes + n)
+        hechos.append('%s %d -> %d' % (k.upper(), antes, ficha[k]))
+    return ', '.join(hechos)
+
+
 def hp_eff(estado: dict) -> int:
     """Devuelve el HP actual efectivo de la mascota (escalado con estrella, Pet's Satiation > 100 y buffs activos)."""
     if not isinstance(estado, dict):
@@ -536,11 +553,76 @@ def armar(estado: dict, bonos_eq: dict = None) -> bytes:
                          int(sks[1] or 0) & 0xFFFF,
                          int(sks[2] or 0) & 0xFFFF)
 
+    # Piedra / diamante de EXP (sub_60ADC0): +180 lo acumulado (dword_142B8),
+    # +184 su capacidad (dword_142BC) y +191 el item (dword_14354, el icono
+    # de la barra de WND_PET_INFO). El boton de pasarla al jugador solo se
+    # enciende con los dos primeros distintos de 0 (0x66585F).
+    dm = diamante_de(estado)
+    if dm:
+        struct.pack_into('<II', b, 180, int(dm['exp']) & 0xFFFFFFFF, int(dm['max']) & 0xFFFFFFFF)
+        struct.pack_into('<I', b, 191, int(dm['item']) & 0xFFFFFFFF)
     # Byte 190 (a2+192 en sub_60ADC0 -> dword_1434C): contador de mejoras (+N) en WND_PET_INFO
     b[190] = min(255, mej)
     # Estrellas (+196, 1 = Star Level 0.1)
     struct.pack_into('<I', b, 196, st_lvl & 0xFFFFFFFF)
     return struct.pack('<H', 0x0065) + bytes(b)
+
+
+# ---------------------------------------------------------------------------
+# Piedras y diamantes de EXP (item.xml 使用公式=6: 3383..3385, 4450..4455,
+# 5707..5710). Se engastan en la mascota fuera; en cada combate guardan un %
+# EXTRA (動態資料2: 25, 35 o 60) de la EXP que gana la mascota, hasta su
+# capacidad (動態資料1). Llena, el boton de WND_PET_INFO (petinfo.lua
+# OnWithdrawGemExp -> c2s 0x003E con PET_COMMAND_WITHDRAW_GEMEXP = 3) da esa
+# EXP al JUGADOR. Mensajes de string.xml:
+MSG_DIAMANTE_PUESTO = 943     # "Use Exp diamond to share %s%% exp and then the total exp is %s!"
+MSG_DIAMANTE_YA = 944         # "You are using an exp diamond!"
+MSG_DIAMANTE_NO_LLENO = 945   # "...unless the Exp Diamond is full."
+MSG_DIAMANTE_NINGUNO = 946    # "Unable to use the function unless you have used Exp diamond."
+MSG_DIAMANTE_COBRADO = 947    # "You add %s exp from the exp diamond to yourself."
+ORDEN_COBRAR_DIAMANTE = 3     # petinfo.lua PET_COMMAND_WITHDRAW_GEMEXP
+# El aviso del cuadro (string 970) dice que la intimidad baja al cobrarla;
+# cuanto no lo dice ninguna tabla.
+INTIMIDAD_AL_COBRAR_DIAMANTE = 10
+
+
+def diamante_de(estado: dict):
+    """{'item', 'max', 'pct', 'exp'} de la piedra engastada, o None."""
+    d = estado.get('diamante') if isinstance(estado, dict) else None
+    if isinstance(d, dict) and int(d.get('max') or 0) > 0 and int(d.get('item') or 0):
+        return d
+    return None
+
+
+def poner_diamante(estado: dict, item: int, capacidad: int, pct: int) -> bool:
+    """Engasta la piedra. False si ya lleva una (mensaje 944)."""
+    if diamante_de(estado):
+        return False
+    estado['diamante'] = {'item': int(item), 'max': int(capacidad), 'pct': int(pct), 'exp': 0}
+    return True
+
+
+def acumular_diamante(estado: dict, exp_ganada: int) -> int:
+    """Lo que guarda la piedra de un combate: su % de la EXP de la mascota."""
+    d = diamante_de(estado)
+    if not d or exp_ganada <= 0:
+        return 0
+    hueco = max(0, int(d['max']) - int(d.get('exp') or 0))
+    suma = min(hueco, int(exp_ganada) * int(d.get('pct') or 0) // 100)
+    d['exp'] = int(d.get('exp') or 0) + suma
+    return suma
+
+
+def cobrar_diamante(estado: dict):
+    """(mensaje, exp para el jugador). Solo llena: la vacia y la quita."""
+    d = diamante_de(estado)
+    if not d:
+        return MSG_DIAMANTE_NINGUNO, 0
+    if int(d.get('exp') or 0) < int(d['max']):
+        return MSG_DIAMANTE_NO_LLENO, 0
+    estado.pop('diamante', None)
+    estado['intimidad'] = max(0, int(estado.get('intimidad', 60)) - INTIMIDAD_AL_COBRAR_DIAMANTE)
+    return MSG_DIAMANTE_COBRADO, int(d['exp'])
 
 
 def alimentar(estado: dict, cantidad: int = SACIEDAD_POR_PIENSO) -> tuple:

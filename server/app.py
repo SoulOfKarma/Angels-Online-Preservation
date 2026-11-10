@@ -3177,6 +3177,8 @@ def _procesar_muerte_monstruo(ses, m, yo, addr, espera=0.0):
             if pet_fuera and exp_pet > 0:
                 import mascotas as _ms
                 _sp_antes = f_pet.get('sprite')
+                # La piedra de EXP engastada guarda su % EXTRA de este combate.
+                _ms.acumular_diamante(f_pet, exp_pet)
                 _sub_p = _ms.dar_exp(f_pet, exp_pet)
                 _r_pet = f_pet.get('ranura')
                 if _r_pet is not None and getattr(p, 'mascotas', None) is not None:
@@ -7221,6 +7223,36 @@ def _top_student_dar_premio(ses, addr, mago):
 
 # ------------------------------------------------ ALIUA / SUPREME POWER
 # Ver supremo.py: la mision 1491 "Surpass Your Limits" y el logro 3715.
+
+def _cobrar_diamante(ses, addr):
+    """c2s 0x003E orden 3 (boton de la barra de WND_PET_INFO): la EXP de la
+    piedra llena pasa al jugador (mensajes 945/946/947)."""
+    import mascotas as _ms
+    import clases as _cl_dm
+    p = ses.personaje
+    f = getattr(p, 'mascota', None)
+    if not isinstance(f, dict):
+        ses.enviar(_cl_dm.aviso('', tipo=7, msg_id=_ms.MSG_DIAMANTE_NINGUNO))
+        return
+    msg, cuanto = _ms.cobrar_diamante(f)
+    if not cuanto:
+        ses.enviar(_cl_dm.aviso('', tipo=7, msg_id=msg))
+        return
+    _r = f.get('ranura')
+    if _r is not None and getattr(p, 'mascotas', None) is not None:
+        p.mascotas[str(_r)] = f
+    if getattr(ses, 'usuario', None):
+        cuentas.guardar_mascota(ses.usuario, p.char_id, f, getattr(p, 'mascotas', None))
+    ses.enviar(_cl_dm.aviso(str(cuanto), tipo=7, msg_id=msg),
+               _cl_dm.aviso(str(_ms.INTIMIDAD_AL_COBRAR_DIAMANTE), tipo=7, msg_id=965),
+               _ms.armar(f))
+    _dar_exp_y_creditos(ses, exp=cuanto)
+    log.info('[%s] diamante de EXP cobrado: +%d exp al jugador', addr, cuanto)
+
+
+# string.xml 940: los objetos de mascota solo valen con la mascota fuera.
+MSG_SOLO_MASCOTA_PRESENTE = 940
+
 
 def _gm_logros_completar(ses, addr, que):
     """GM: /logros full <Tipo>[:<Subtipo>] da al 100% todos los logros de ese
@@ -16203,6 +16235,9 @@ class Servidor:
                 log.info('[%s] crianza: opcion %d, crianza %+d -> %d'
                          % (addr, _ms.opcion_de(modo), _suma, _total))
                 return
+            if modo == _ms.ORDEN_COBRAR_DIAMANTE:
+                _cobrar_diamante(ses, addr)
+                return
             ses.personaje.mascota_orden = modo
             ses.pet_objetivo = None
             ses.enviar(_ms.paquete_orden(ses.personaje.entity_id, modo))
@@ -17119,18 +17154,14 @@ class Servidor:
                 import clases as _clp
                 import mascotas as _msp
                 import combate as _cb_pu
-                _f = None
-                if objetivo is not None and objetivo in bolsa and inv.es_mascota(bolsa[objetivo]):
-                    _f = _pet_ficha(ses, objetivo)
-                if not _f:
-                    _f = getattr(ses.personaje, 'mascota', None)
-                if not _f and bolsa:
-                    for _r_b, _iid_b in bolsa.items():
-                        if inv.es_mascota(_iid_b):
-                            _f = _pet_ficha(ses, _r_b)
-                            break
-                if not _f:
-                    ses.enviar(_clp.aviso('no tienes ninguna mascota', tipo=0))
+                # Solo sobre la mascota que esta FUERA: string 940 "The props
+                # can only be used in the present pet." Antes tiraba de la
+                # ultima mascota (o la primera de la bolsa), mandaba su ficha y
+                # el cliente abria su ventana sin tenerla invocada.
+                _f = getattr(ses.personaje, 'mascota', None)
+                if not (isinstance(_f, dict) and _f.get('fuera')):
+                    ses.enviar(_clp.aviso('', tipo=7, msg_id=MSG_SOLO_MASCOTA_PRESENTE),
+                               *_refrescar(ses, [ranura]))
                     return
                 _avisos_pu = []
                 _sp_ant_pu = _f.get('sprite')
@@ -17146,6 +17177,17 @@ class Servidor:
                     if _diff_int > 0:
                         _avisos_pu.append(_clp.aviso(str(_diff_int), tipo=7, msg_id=966))
                     _txt = 'saciedad %d' % _val
+                elif 'piedra' in _pet_uso:
+                    _pd = _pet_uso['piedra']
+                    if not _msp.poner_diamante(_f, item_id, _pd['max'], _pd['pct']):
+                        ses.enviar(_clp.aviso('', tipo=7, msg_id=_msp.MSG_DIAMANTE_YA),
+                                   *_refrescar(ses, [ranura]))
+                        return
+                    _avisos_pu.append(_clp.aviso_doble(_msp.MSG_DIAMANTE_PUESTO, str(_pd['pct']),
+                                                       str(_pd['max'])))
+                    _txt = 'piedra de EXP %d (%d%% hasta %d)' % (item_id, _pd['pct'], _pd['max'])
+                elif 'cura' in _pet_uso:
+                    _txt = _msp.curar(_f, _pet_uso['cura'])
                 elif 'exp' in _pet_uso:
                     _sub_pu = _msp.dar_exp(_f, _pet_uso['exp'])
                     _txt = '+%d exp (%d niveles -> nv %d)' % (_pet_uso['exp'], _sub_pu, _f.get('nivel', 1))
@@ -17194,6 +17236,8 @@ class Servidor:
                             _msp.armar(_f),
                         ])
                     salida_pet.append(_cb_pu.atributo(int(pet_eid), _msp.hp_eff(_f), _cb_pu.KIND_HP))
+                    if 'cura' in _pet_uso and 'mp' in _pet_uso['cura']:
+                        salida_pet.append(_cb_pu.atributo(int(pet_eid), int(_f.get('mp') or 0), _cb_pu.KIND_MP))
                     if int(_f.get('saciedad', 0)) > 100:
                         salida_pet.append(struct.pack('<HIBBII', 0x001D, int(pet_eid), 1, 4, 3796, max(60000, (int(_f['saciedad']) - 100) * 60000)))
                     if _pet_uso.get('buff') and _pet_uso.get('segundos'):
