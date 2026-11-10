@@ -63,6 +63,10 @@ top rolling banner announcements (/notice style) for registration start, battle 
 exit warps back to Angel Lyceum (radius 2, with Training City exit under the clover archway at 28,25),
 and preservation of the original chest return mechanic upon opening.
 Use /daily start and /daily enter for GM checks. Original server schedules and draw odds remain unavailable.
+**Fixes of 10/11/2026.** Album: the Collection Box Key now opens the 5th grid of a subcategory ("Add more Grids", C2S `0x002F` container `0x34`).
+Single-target skills (Vampire Arrow, Rapidfire...) cast on the clicked enemy instead of being replaced by a basic attack.
+The Magic Kitchen Path Devil Kitchen gate now requires Devil's Feast (611) the first time; afterwards it stays open for that character, and in a party one member opens it for everyone.
+Quests 602-611 no longer skip steps by talking to the wrong NPC (the two Michaels are told apart; Athlete Cliff is the "strong human" of 610), quest 602 uses its own dialogue lines, and parent achievements such as Demon's Kitchen show partial progress.
 Angel Lyceum: restored missing NPCs Astral Angel (Star Key exchange 393), Party Angel (renewal gifts & exchange 245),
 Chat Bubble Exchange (groups 559, 570), Fashionable (voucher recipes), and Reissue Angel.
 Party Angel applies the original 12-hour Archangel's Secret; Compensation Angel is removed.
@@ -547,15 +551,16 @@ The **client ships separately**, not in the repo.
 ## Running it
 
 You need **Python 3.10 or newer** and the Angels Online client installed.
-Tested against client **8.5.1.0**; the captures the protocol comes from were
+Tested against client **8.7.6.1**; the captures the protocol comes from were
 taken with an **8.6.0.8**, and both speak the same thing.
 
 IGG took the game down in February 2026, so the client is no longer available
 from them. This is the copy this project is developed and tested against:
 
-**[Angels Online client 8.7.6.1](https://drive.google.com/file/d/1bLV3dQpr8bjI6TqaPllOn9uosHbjhMKR/view?usp=sharing)**
+**[Angels Online client 8.7.6.1](https://drive.google.com/file/d/1_adZqMfxdDE4hKKWkG7ejJUpojETpiuW/view?usp=sharing)**
 
-It is IGG's client, unmodified. It is here because a protocol you cannot run
+It is IGG's client with the ALO Taiwan content up to update32 (8.7.6.1)
+migrated into it and translated to English by this project. It is here because a protocol you cannot run
 against anything is not much use, and because without it none of the
 measurements in this repository can be reproduced.
 

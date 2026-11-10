@@ -228,6 +228,44 @@ def registrar(ses,slot):
     return True
 
 
+LLAVE_EXPANSION = 21101  # Collection Box Key
+
+
+def expandir(ses, categoria, color):
+    """C2S 0x002F [u8 0x34][u32 categoria][u32 color]: el boton "Add more
+    Grids" (game.buycltnslot, 0x59A800). Gasta una Collection Box Key y abre
+    el quinto grid de esa subcategoria. El cliente mira el bit
+    color+4*categoria de la mascara de S2C0156 (0x4A5A40)."""
+    import app, clases, recent_mall
+    def reject(text):
+        ses.enviar(clases.aviso(text, tipo=0)); return False
+    # Robot no tiene blanco; Apariencia no usa grids de nivel.
+    if not (0 <= categoria < 7 and 0 <= color <= 2) or (categoria == 5 and color == 0):
+        return reject('This Album category cannot be expanded.')
+    bit = 1 << (color + 4 * categoria)
+    if int(normalizar(getattr(ses.personaje, 'album', None) or {}).get('_expanded', 0)) & bit:
+        return reject('The Expansion Grid of this category is already open.')
+    tope = app._tope_bolsa(ses.inventario)
+    slot = next((s for s in sorted(ses.inventario)
+                 if 20 <= s <= tope and ses.inventario.get(s) == LLAVE_EXPANSION), None)
+    if slot is None:
+        return reject('You need a Collection Box Key to open the Expansion Grid.')
+    updated = []
+    def abrir(con, data):
+        values = normalizar(data.get('album') or {})
+        if int(values.get('_expanded', 0)) & bit:
+            raise recent_mall.Rechazo('The Expansion Grid of this category is already open.')
+        values['_expanded'] = int(values.get('_expanded', 0)) | bit
+        data['album'] = values; updated.append(values)
+    try:
+        recent_mall.cambiar(ses, {slot: 1}, [], transaccion=abrir)
+    except recent_mall.Rechazo as exc:
+        return reject(str(exc))
+    ses.personaje.album = updated[0]
+    ses.enviar(paquete(ses.personaje), clases.aviso('The Expansion Grid of the Album has been opened.', tipo=0))
+    return True
+
+
 def bono_buff(personaje):
     raw=bonos(normalizar(getattr(personaje,'album',None) or {}))
     aliases={'dfs':'def','rigor':'hit','agilidad':'eva','hp':'hp_bonus','mp':'mp_bonus',

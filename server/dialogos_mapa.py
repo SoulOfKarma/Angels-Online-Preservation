@@ -319,3 +319,121 @@ def nodo_de_victoria(stage):
             pendientes.append(str(r.get('ir')))
         pendientes += [str(n['s'])] if n.get('s') else []
     return None
+
+
+_PASOS_DE_ARBOL = None
+
+# Misiones cuyos pasos de "ve a tal sitio" (el texto no nombra a ningun NPC)
+# se han repasado contra el arbol del mapa, nodo por nodo. En ellas el paso
+# solo se cumple en el mapa que dice el arbol; hablandole al NPC compilado en
+# otro mapa se saltaban (10/11/2026, la tanda de la Magic Kichen Path):
+#   603 paso 1  "Find Boship"            lo cumplia el Angel Inspector
+#   609 paso 2  "Find the Annoying Clerk" lo cumplia Luxious Ba al entregar
+#   610 paso 2  "Find strong human"      lo cumplia el Annoying Clerk, y de
+#               ahi encadenaba el 3 y el 4: la mision entera sin la sangre
+# No se aplica a todas porque en 40 pasos el mapa compilado y el del arbol no
+# coinciden y habria que mirarlos uno a uno antes de cerrarlos.
+MISIONES_POR_ARBOL = frozenset((603, 609, 610))
+
+
+def pasos_de_arbol():
+    """{(quest, paso de cliente): mapas} donde un nodo del arbol pone ese paso
+    (accion 4, SET_STEP)."""
+    global _PASOS_DE_ARBOL
+    if _PASOS_DE_ARBOL is None:
+        _arbol(0)
+        donde = {}
+        for st, arbol in (_TODO or {}).items():
+            if not isinstance(arbol, dict) or not str(st).isdigit():
+                continue
+            for nodo in arbol.values():
+                if not isinstance(nodo, dict):
+                    continue
+                for acc in nodo.get('a') or []:
+                    if acc and acc[0] == 4 and len(acc[1]) >= 2:
+                        donde.setdefault((int(acc[1][0]), int(acc[1][1])), set()).add(int(st))
+        _PASOS_DE_ARBOL = {k: frozenset(v) for k, v in donde.items()}
+    return _PASOS_DE_ARBOL
+
+
+def _mismo_mapa(stage, mapas):
+    """Si `stage` es uno de esos mapas (o su copia de canal, +100 / +200)."""
+    return any(abs(int(stage or 0) - m) in (0, 100, 200) for m in mapas)
+
+
+def paso_solo_del_mapa(quest, paso, stage_paso, stage_jugador):
+    """Si el paso `paso` (el del servidor, 1 = el primero) de esa mision NO se
+    puede cumplir hablando con un NPC desde donde esta el jugador, porque lo
+    pone el arbol de un mapa:
+      * de instancia (pasos_solo_instancia): nunca hablando;
+      * de una mision repasada (MISIONES_POR_ARBOL): solo en ese mapa."""
+    clave = (int(quest), int(paso))
+    if clave in pasos_solo_instancia():
+        return True
+    mapas = pasos_de_arbol().get(clave)
+    return bool(mapas and int(quest) in MISIONES_POR_ARBOL and stage_paso
+                and _mismo_mapa(stage_paso, mapas)
+                and not _mismo_mapa(stage_jugador, mapas))
+
+
+def raiz_con_mision_en_curso(stage, retrato, ctx, quests):
+    """El nodo de entrada del NPC con ese retrato cuya rama CUMPLIDA mira el
+    paso de una mision en curso que el arbol pone en este mapa. None si no.
+
+    Para el NPC que el compilador no asocio a la mision: Athlete Cliff es el
+    "strong human" de la 610 y su arbol (83500) lo sabe, pero por nombre
+    nadie lo encuentra y antes de llegar al arbol se le ofrecian sus otras
+    misiones."""
+    arbol = _arbol(stage, con_sp=False)
+    if not arbol or not retrato:
+        return None
+    pasos = pasos_de_arbol()
+    mias = {int(q): int(pa) for q, pa in (quests or [])}
+    # Los nodos de entrada son los que llevan numero propio (los 1000xxx son
+    # los interiores). No vale _raices(): al 83500 de Cliff vuelve una opcion
+    # de su propio menu y deja de parecer raiz.
+    for k, n in arbol.items():
+        if int(k) >= 1000000 or n.get('c') != int(retrato):
+            continue
+        for rama in n.get('r', ()):
+            if not _cumple(rama, ctx):
+                continue
+            for num, parms, negada in rama.get('si', ()):
+                if num != 2 or negada or not parms:
+                    continue
+                q = int(parms[0])
+                pa = mias.get(q)
+                if (pa is not None and paso_solo_del_mapa(q, pa, stage, 0)
+                        and _mismo_mapa(stage, pasos.get((q, pa), ()))):
+                    return int(k)
+            break       # la primera rama cumplida es la que seguiria el arbol
+    return None
+
+
+_SOLO_INSTANCIA = None
+
+
+def pasos_solo_instancia():
+    """{(quest, paso de cliente)}: los pasos que SOLO pone un nodo del arbol de
+    un mapa de instancia (accion 4, SET_STEP). Son los de "haz algo dentro de
+    la mazmorra" -- acercarse a la puerta de la Devil Kitchen, encontrar la
+    llave en la Gulp Room (611) --, que no se cumplen hablando con el NPC que
+    dio la mision. Ver misiones.interactuar_npc."""
+    global _SOLO_INSTANCIA
+    if _SOLO_INSTANCIA is None:
+        import eventos_mundo as _em
+        _arbol(0)
+        donde = {}
+        for st, arbol in (_TODO or {}).items():
+            if not isinstance(arbol, dict) or not str(st).isdigit():
+                continue
+            for nodo in arbol.values():
+                if not isinstance(nodo, dict):
+                    continue
+                for acc in nodo.get('a') or []:
+                    if acc and acc[0] == 4 and len(acc[1]) >= 2:
+                        donde.setdefault((int(acc[1][0]), int(acc[1][1])), set()).add(int(st))
+        _SOLO_INSTANCIA = frozenset(
+            k for k, sts in donde.items()
+            if all(_em.grupo_de_instancia(x) is not None for x in sts))
+    return _SOLO_INSTANCIA

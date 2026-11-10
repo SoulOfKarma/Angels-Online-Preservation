@@ -682,14 +682,16 @@ class ContextoSesion(ev.Contexto):
 
 # PUERTAS QUE EL SERVIDOR ABRE SIN LA MISION QUE PIDEN. Decision del usuario
 # (14/10/2026): no quiere que la instancia se corte por una mision.
-#   (74, 61101) la puerta de la cara de demonio de la sala 2 de la Magic
-#     Kichen Path (64967 "There is a huge metal gate carved with a cruel
-#     Devil's face..."). El mapa solo la abre con la Main Angel Quest (611)
-#     en el paso 2 con el item 4594, o en el 3-4. Abrirla es
-#     CHANGE_STATICOBJ(153, 60295), lo mismo que hacen esos disparadores.
 # (stage, evento) -> (efectos que se anaden, dialogos que se quitan)
+#
+# La puerta de la cara de demonio de la sala 2 de la Magic Kichen Path
+# (74, 61101) ESTUVO aqui y se quito el 10/11/2026 a pedido del usuario: ahora
+# pide la Devil's Feast (611) como el mapa manda -- paso 2 con la Pepper Pot
+# (4594), paso 3-4 o hecha -- y despues queda abierta para ese personaje
+# (PERMISO_UNA_VEZ). En equipo la abre uno y pasan todos: el objeto cambia en
+# la corrida compartida. El bypass, ademas, quitaba el dialogo 61100, que es
+# el que pasa la 611 del paso 0 al 1, asi que la mision no podia avanzar.
 SIN_MISION = {
-    (74, 61101): ([('objeto_estatico', 153, 60295)], {61100}),
     # El TRONO de Sunshine Palace (286,168) a Mystic Space (132). En el
     # cliente pide la mision 988 en el paso 2 o 3, o hecha; si no, dice
     # "It seems that it has been sealed by some unknown magic" (98801).

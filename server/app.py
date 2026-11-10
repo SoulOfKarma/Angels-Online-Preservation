@@ -102,6 +102,9 @@ def skills_arma_ses(ses):
 # los que piden a partir de 0.92, que son los que se veian en el log
 # (1.03, 1.05, 1.10). Lo que llegue antes de eso sigue fuera.
 MARGEN_CADENCIA = 0.20
+# Primer golpe basico sobre un objetivo NUEVO: se espera por si el clic
+# venia con una habilidad preparada, que llega ~80 ms despues del 0x0016 0x0c.
+ESPERA_BASICO_OBJETIVO_NUEVO = 0.25
 
 
 def lleva_duales_ses(ses):
@@ -12313,6 +12316,13 @@ class Servidor:
             tipo, objetivo = d3
             tx = getattr(d3, 'tx', 0)
             ty = getattr(d3, 'ty', 0)
+            if tipo != _cb.ATAQUE_NORMAL:
+                # Una habilidad manda sobre el basico que dejo en espera el
+                # 0x0016 0x0c del clic (ver alli).
+                _pend = getattr(ses, '_basico_pendiente', None)
+                if _pend is not None:
+                    _pend.cancel()
+                    ses._basico_pendiente = None
             yo = ses.entity_id or 1001
 
             bichos = getattr(ses, 'monstruos', None) or {}
@@ -15245,6 +15255,12 @@ class Servidor:
             if __import__('item_mall').procesar(ses,opcode,cuerpo):
                 return
             _contenedor = cuerpo[0]
+            if _contenedor == 0x34:
+                # "Add more Grids" del Album: game.buycltnslot (0x59A800)
+                # manda [u8 0x34][u32 categoria][u32 color].
+                import album as _alb
+                _alb.expandir(ses, *struct.unpack_from('<II', cuerpo, 1))
+                return
             if _contenedor == 10:
                 # Cambio de rama de habilidad (Skill Angel). Medido: [u8 10][u32 la que se
                 # descarga][u32 la que se equipa].
@@ -18598,7 +18614,8 @@ class Servidor:
                                 completada=(tipo_proc == 'completada'),
                                 paso=paso_proc, tipo_evento=tipo_proc
                             )
-                            dp = dialogos.propio(_nom_ent, faccion=faccion, jugador=nom2, entidad=ent, graduado=_es_graduado(ses))
+                            dp = dialogos.propio(_nom_ent, faccion=faccion, jugador=nom2, entidad=ent, graduado=_es_graduado(ses),
+                                                 stage=getattr(ses.personaje, 'stage', 0))
                             if _nom_ent.lower() in ('aurora angel', 'dark city angel', 'ironcastle angel', 'breezewood angel'):
                                 g_comp = dp if dp else g_mis
                             else:
@@ -18649,6 +18666,26 @@ class Servidor:
                                 log.info(f"[{addr}] {_nom_ent}: recordatorio de mision {qid_proc} en curso a {nom2}")
                                 return
                             return
+
+                    # 1b. El NPC que el compilador no asocio a la mision pero
+                    # cuyo arbol del mapa mira el paso en curso (Athlete Cliff
+                    # es el "strong human" de la 610): manda el arbol, antes
+                    # de ofrecerle sus otras misiones.
+                    try:
+                        import dialogos_mapa as _dm_q
+                        import eventos_mundo as _evm_q
+                        _st_q = getattr(ses.personaje, 'stage', 0)
+                        _raiz_q = _dm_q.raiz_con_mision_en_curso(
+                            _st_q, dialogos.val_por_entidad(ent),
+                            _evm_q.ContextoSesion(ses), ses.personaje.quests)
+                        if _raiz_q:
+                            ses.dlg_quest_ofrecida = None
+                            ses.dlg_quest_fase = None
+                            if _recorrer_dialogo_mapa(ses, addr, _st_q, _raiz_q):
+                                log.info(f"[{addr}] {_nom_ent}: arbol del mapa por mision en curso ({_raiz_q})")
+                                return
+                    except Exception:
+                        log.exception('arbol del mapa por mision en curso')
 
                     # 2. Si no habia mision activa con este NPC, comprobar si ofrece misiones disponibles.
                     # Los profesores y docentes de Angel Lyceum no auto-asignan disponibles[0],
@@ -19822,6 +19859,7 @@ class Servidor:
             # 54.29.
             if (ses.personaje and paso == len(g) - 1
                     and _nombre_entidad(ses, ent) == 'Michael'
+                    and getattr(ses.personaje, 'stage', 0) == 58
                     and not getattr(ses.personaje, 'hablo_michael', False)):
                 import clases as _cl7
                 ses.personaje.hablo_michael = True
@@ -19980,8 +20018,29 @@ class Servidor:
                 # 0x0016 y lo repite solo cada ~1,5 s mientras dure el combate.
                 # Medido en Celestia, mundo_201655_173169 t=40.4.
                 import combate as _cb5
-                self.manejar(ses, 0x0006, m, d, addr,
-                             struct.pack('<HI', _cb5.ATAQUE_NORMAL, parametro))
+                # Con una habilidad de un solo objetivo preparada, clicar al
+                # enemigo manda PRIMERO este 0x0c y ~80 ms despues el 0x0006
+                # con la habilidad (sesion 20261110_004920, t=158.736/158.817).
+                # Pegar el basico al instante podia matar al bicho y la
+                # habilidad llegaba a un cadaver y se perdia. Si el objetivo
+                # es NUEVO, el basico espera un poco; si llega una habilidad
+                # antes, la habilidad lo cancela (ver opcode 0x0006).
+                _pend = getattr(ses, '_basico_pendiente', None)
+                if _pend is not None:
+                    _pend.cancel()
+                    ses._basico_pendiente = None
+                _golpe_basico = (lambda obj=parametro: self.manejar(
+                    ses, 0x0006, m, d, addr,
+                    struct.pack('<HI', _cb5.ATAQUE_NORMAL, obj)))
+                if getattr(ses, 'objetivo_actual', None) == parametro:
+                    _golpe_basico()
+                else:
+                    def _diferido():
+                        ses._basico_pendiente = None
+                        if ses.personaje and not getattr(ses, 'muerto', False):
+                            _golpe_basico()
+                    ses._basico_pendiente = asyncio.get_event_loop().call_later(
+                        ESPERA_BASICO_OBJETIVO_NUEVO, _diferido)
                 return
             if accion == 3 and ses.personaje and getattr(ses, 'muerto', False):
                 # QUEDARSE COMO ALMA. Medido en Celestia (mundo_203502_844482

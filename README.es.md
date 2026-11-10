@@ -52,6 +52,10 @@ tipo /notice al abrir registro, empezar combate y finalizar evento, warps de sal
 Angel Lyceum (radio 2, con salida bajo el arco de trebol en 28,25 para Training City) y preservacion del retorno original
 a la base al abrir cofres.
 Comandos GM: /daily start y /daily enter. No se recuperaron los horarios ni probabilidades del servidor original.
+**Arreglos del 10/11/2026.** Álbum: la Collection Box Key abre el 5º grid de una subcategoría ("Add more Grids", C2S `0x002F` contenedor `0x34`).
+Las habilidades de un solo objetivo (Vampire Arrow, Rapidfire...) salen sobre el enemigo clicado en vez de cambiarse por un golpe básico.
+La puerta de la Devil Kitchen de la Magic Kitchen Path pide la Devil's Feast (611) la primera vez; después queda abierta para ese personaje, y en equipo la abre uno para todos.
+Las misiones 602-611 ya no se saltan pasos hablando con el NPC equivocado (los dos Michael se distinguen; Athlete Cliff es el "strong human" de la 610), la 602 usa sus propias líneas y los logros padre como Demon's Kitchen muestran el progreso parcial.
 Angel Lyceum: NPCs restaurados
 Astral Angel (canje de Star Keys 393), Party Angel (cajas renewal y canje 245), Chat Bubble Exchange
 (grupos 559, 570), Fashionable (recetas de vouchers) y Reissue Angel.
@@ -561,16 +565,17 @@ El **cliente va aparte**, no en el repo.
 ## Cómo ejecutarlo
 
 Hace falta **Python 3.10 o superior** y el cliente de Angels Online
-instalado. Probado con el cliente **8.5.1.0**; las capturas de las que sale
+instalado. Probado con el cliente **8.7.6.1**; las capturas de las que sale
 el protocolo se tomaron con un **8.6.0.8**, y los dos hablan lo mismo.
 
 IGG cerró el juego en febrero de 2026, así que el cliente ya no se puede
 descargar de ellos. Esta es la copia con la que se desarrolla y se prueba
 este proyecto:
 
-**[Cliente de Angels Online 8.7.6.1](https://drive.google.com/file/d/1bLV3dQpr8bjI6TqaPllOn9uosHbjhMKR/view?usp=sharing)**
+**[Cliente de Angels Online 8.7.6.1](https://drive.google.com/file/d/1_adZqMfxdDE4hKKWkG7ejJUpojETpiuW/view?usp=sharing)**
 
-Es el cliente de IGG, sin modificar. Está aquí porque un protocolo que no se
+Es el cliente de IGG con el contenido de ALO Taiwan hasta el update32
+(8.7.6.1) migrado y traducido al inglés por este proyecto. Está aquí porque un protocolo que no se
 puede ejecutar contra nada no sirve de mucho, y porque sin él no se puede
 reproducir ninguna de las mediciones de este repositorio.
 

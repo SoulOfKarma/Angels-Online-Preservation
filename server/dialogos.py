@@ -715,6 +715,12 @@ def propio(nombre: str, faccion: str = "Heaven", jugador: str = "",
                     armar_linea(10132, 1, [])[2:],
                     armar_linea(10133, 1, [])[2:],
                     armar_linea(10134, 1, [], ['1', jugador or '?'])[2:]]
+        elif stage == 29:
+            # El Michael de Breeze Woods NO es el lider del Lyceum: es el
+            # enfermo de la mision 602 (Investigate Evil Food), con otro
+            # retrato. Su saludo es el 60213 ("What can I do for you,
+            # traveler?"); antes le salia el menu del Lyceum (10/11/2026).
+            return [armar_linea(60213, npc_val or 162, [])[2:]]
         else:
             # Angel Lyceum (stage 41): intro y opcion a Top Student Training
             # (Quest 123), que un graduado ya no puede empezar.
@@ -3467,6 +3473,25 @@ def info_flujo_mision(qid: int) -> dict:
             'completada': [10104, 10105],
         }
 
+    if qid == 602:  # Investigate Evil Food (Angel Inspector)
+        # Una sola pregunta: 60202 con "Agree to help" / "Pretend to be
+        # busy". La 60205 es el agradecimiento (sin opciones; la mision se
+        # acepta al cerrarlo) y la 60206 el recordatorio. Las 60207+ son de
+        # los enfermos (DIALOGOS_PASOS_ESPECIALES), no opciones.
+        return {
+            'tipo': '602',
+            'intro': [60201],
+            'rechazo_nivel': None,
+            'pregunta': 60202,
+            'ops_preg': [60203, 60204],
+            'historia': [],
+            'propuesta': 60205,
+            'ops_prop': [],
+            'exito': None,
+            'progreso': 60206,
+            'completada': [60223, 60224],
+        }
+
     if qid == 852:  # Nark Paul (Desert Racetrack / Crescent Valley)
         return {
             'tipo': '852',
@@ -3621,6 +3646,17 @@ def info_flujo_mision(qid: int) -> dict:
 
 
 DIALOGOS_PASOS_ESPECIALES = {
+    # Quest 602: Investigate Evil Food. Cada enfermo dice SUS lineas de
+    # msg.xml (van seguidas, por NPC) y cierra la narracion que manda a la
+    # ciudad siguiente. Con la plantilla generica todos decian la 60209 (la
+    # de Machel) y el Inspector cerraba con las de Romier.
+    (602, 'machel'): {1: [60207, 60208, 60209]},
+    (602, 'romier'): {2: [60210, 60211, 60212]},
+    (602, 'michael'): {3: [60213, 60214, 60215, 60216, 60217]},
+    (602, 'nemize'): {4: [60218, 60219, 60221, 60222]},
+    (602, 'angel inspector'): {'progreso': [60206],
+                               'completada': [60223, 60224]},
+
     # Quest 1566: Rogue Guardian (Leif en Sandy Heights)
     (1566, 'leif'): {
         1: [156617, 156618, 156619],

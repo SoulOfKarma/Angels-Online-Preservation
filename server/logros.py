@@ -191,6 +191,11 @@ def _pct(personaje, f, ya, pts, habs, muertos, stats):
         return frac(_num(stats.get(clave)), f.get('param2')) if clave else 0
     if regla == '成就積分':
         return frac(pts, f.get('param1'))
+    if regla == '達成成就':
+        # El logro "padre" (Demon's Kitchen = seis misiones): la parte de sus
+        # hijos que ya se tiene. Antes se quedaba en 0% hasta tenerlos todos.
+        pide = [x for x in (_num(f.get('param%d' % i)) for i in range(1, 20)) if x]
+        return frac(sum(1 for x in pide if x in ya), len(pide))
     return 0
 
 
