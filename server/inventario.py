@@ -502,7 +502,42 @@ def bonos_de_habilidades(habilidades):
     }
 
 
+_CACHE_BONOS_EQUIPO = {}
+
+
 def bonos_de_equipo(bolsa, mejoras: dict = None, mascotas: dict = None) -> dict:
+    """bonos_de_equipo con memoria: la clave es EXACTAMENTE lo que lee el
+    calculo (las casillas de equipo, sus mejoras y la ficha de la mascota
+    equipada), asi que cualquier cambio da otra clave. Se pedia en cada golpe
+    que recibe el jugador, gemas incluidas: 0,6 ms cada vez (perfil del
+    10/11/2026)."""
+    if not bolsa:
+        return _bonos_de_equipo_calc(bolsa, mejoras, mascotas)
+    try:
+        import pet_equipment
+        mej = mejoras or {}
+        eq = []
+        for ranura, item_id in bolsa.items():
+            try:
+                r = int(ranura)
+            except (ValueError, TypeError):
+                continue
+            if es_equipo(r):
+                eq.append((r, item_id, mej.get(r) or mej.get(str(r))))
+        eq.sort(key=lambda x: x[0])
+        pet = (mascotas or {}).get(str(pet_equipment.RANURA)) or (mascotas or {}).get(pet_equipment.RANURA)
+        clave = json.dumps([eq, pet], sort_keys=True, default=str)
+    except Exception:
+        return _bonos_de_equipo_calc(bolsa, mejoras, mascotas)
+    r = _CACHE_BONOS_EQUIPO.get(clave)
+    if r is None:
+        if len(_CACHE_BONOS_EQUIPO) > 512:
+            _CACHE_BONOS_EQUIPO.clear()
+        r = _CACHE_BONOS_EQUIPO[clave] = _bonos_de_equipo_calc(bolsa, mejoras, mascotas)
+    return dict(r)
+
+
+def _bonos_de_equipo_calc(bolsa, mejoras: dict = None, mascotas: dict = None) -> dict:
     """Calcula la suma de atributos que otorgan los items equipados en la bolsa (Gear 1..10 y Fashion 167..174)."""
     eq = {'def': 0, 'accuracy': 0, 'agility': 0, 'atk_r': 0, 'atk_l': 0, 'matk': 0, 'mdef': 0, 'hp': 0, 'mp': 0, 'carga': 0,
           'res_body': 0, 'res_mind': 0, 'res_lightning': 0, 'res_fire': 0, 'res_ice': 0, 'res_corrosion': 0}

@@ -21,6 +21,7 @@ import sys
 
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 import paks  # noqa: E402
+from colores_texto import normalizar_colores  # noqa: E402
 
 RAIZ = pathlib.Path(__file__).parent.parent
 TW = RAIZ / 'extracted_paks_tw'
@@ -215,8 +216,10 @@ REEMPLAZOS_TW = {'map\\map169.mpc', 'script\\magic.so'}
 def traducir_xml(texto: str, trad) -> str:
     def _attr(m):
         sp, a, v = m.groups()
-        if es_texto(a) and RE_CJK.search(v):
-            v = trad.traducir(v)[0]
+        if es_texto(a):
+            if RE_CJK.search(v):
+                v = trad.traducir(v)[0]
+            v = normalizar_colores(v)
         return '%s%s="%s"' % (sp, a, v)
     return RE_VALOR.sub(_attr, texto)
 

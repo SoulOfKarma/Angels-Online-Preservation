@@ -16,6 +16,7 @@ if __name__ == '__main__':
     _sys_alias.modules.setdefault('app', _sys_alias.modules[__name__])
 import asyncio
 import argparse
+import functools
 import os
 import logging
 import logging.handlers
@@ -3689,7 +3690,8 @@ def _npc_type_de(stage, ent):
     if st not in _NPC_TYPE_CACHE:
         import login as _lg_nt
         idx = {}
-        f = _lg_nt.PLANTILLAS_POR_STAGE.get(st)
+        # El Lyceum se carga aparte en login y no figura en ese indice.
+        f = 'lyceum.json' if st == 41 else _lg_nt.PLANTILLAS_POR_STAGE.get(st)
         if f:
             try:
                 import json as _js
@@ -5260,10 +5262,23 @@ def _aplicar_efectos(ses, addr, efectos, motivo=''):
                         tocadas.append(r)
                 if tocadas:
                     ses.enviar(*_refrescar(ses, tocadas))
+                    # El plato de Exposed Plot se consumia visualmente, pero
+                    # volvia al reconectar porque solo se guardaban los tokens.
+                    if p:
+                        _guardar_bolsa(ses, p.char_id)
             elif que == 'oro':
+                # GIVE_MONEY / TAKE_MONEY. El oro de la sesion es ses.oro (el
+                # que pinta _refrescar y guarda guardar_oro); antes se tocaba
+                # solo p.oro y el premio de oro de un arbol no llegaba nunca.
                 if p:
-                    p.oro = max(0, int(p.oro or 0) + int(ef[1]))
+                    ses.oro = max(0, int(getattr(ses, 'oro', 0) or 0) + int(ef[1]))
+                    p.oro = ses.oro
                     ses.enviar(*_refrescar(ses, [], con_oro=True))
+                    if int(ef[1]) > 0:
+                        import clases as _cl_oro
+                        ses.enviar(_cl_oro.aviso('%d Gold' % int(ef[1]), tipo=0, msg_id=_cl_oro.MSG_ITEM))
+                    if getattr(ses, 'usuario', None):
+                        cuentas.guardar_oro(ses.usuario, p.char_id, ses.oro)
             elif que == 'paso':
                 # EL PASO VIENE EN LA NUMERACION DEL CLIENTE, que empieza en
                 # 0; la del servidor empieza en 1. Es la misma conversion que
@@ -5273,9 +5288,16 @@ def _aplicar_efectos(ses, addr, efectos, motivo=''):
                 paso_servidor = int(ef[2]) + 1
                 if not _mis.tiene_mision(p, qid):
                     _mis.aceptar_mision(ses, qid)
+                # Pasar del ultimo paso es TERMINARLA: el arbol ya dio su
+                # premio con sus ADD_PROPERTY / GIVE_MONEY / CREATE_ITEM, asi
+                # que se cierra sin el de misiones_completas.json.
+                _total_m = len(_mis.info_mision(qid).get('pasos') or []) or 1
+                if paso_servidor > _total_m:
+                    if not _mis.mision_completada(p, qid):
+                        _mis.completar_mision(ses, qid, sin_premio=True)
                 # Y solo si CAMBIA. Un evento de pisar salta cada vez que te
                 # paras encima, y sin esto el cartel se repetia en cada paso.
-                if _mis.obtener_paso_actual(p, qid) != paso_servidor:
+                elif _mis.obtener_paso_actual(p, qid) != paso_servidor:
                     _mis.avanzar_paso(ses, qid, paso_servidor)
             elif que == 'matar_para_avanzar':
                 # KILLTO_NEXTSTEP(mision, paso, objeto oculto, por baja,
@@ -5589,6 +5611,13 @@ def _aplicar_efectos(ses, addr, efectos, motivo=''):
                     if atr == _ev_p.ATR_HP and nuevo < act:
                         ses.enviar(_cb_p.numero_flotante(p.entity_id, act - nuevo))
                     log.info('[%s] evento%s: %s %d -> %d', addr, motivo, campo, act, nuevo)
+                elif atr in (_ev_p.ATR_EXP, _ev_p.ATR_FUNCION) and modo == 'sumar' and val > 0:
+                    # Premios de los arboles de mision: experiencia (32) y
+                    # creditos de rango (49), con subida de nivel y de rango.
+                    _dar_exp_y_creditos(ses, exp=val if atr == _ev_p.ATR_EXP else 0,
+                                        creditos=val if atr == _ev_p.ATR_FUNCION else 0)
+                    log.info('[%s] evento%s: +%d %s', addr, motivo, val,
+                             'exp' if atr == _ev_p.ATR_EXP else 'creditos')
                 else:
                     sin_hacer.append('propiedad %d' % atr)
             elif que == 'objeto_estatico':
@@ -7733,6 +7762,15 @@ def _listas_ranking(p):
     return _RANKING_CACHE['listas']
 
 
+@functools.lru_cache(maxsize=None)
+def _hechizo_v(mid):
+    """Si el hechizo es de nivel V (su nombre acaba en ' V'). Se miraba
+    datos_magia de cada hechizo aprendido en cada revision de logros: 128 ms
+    cada vez (perfil del 10/11/2026)."""
+    import combate as _cb_c
+    return str(_cb_c.datos_magia(int(mid)).get('nombre') or '').endswith(' V')
+
+
 def _logros_ctx(ses):
     """Lo que miran las reglas ampliadas de logros.medir."""
     import logros as _lg_c
@@ -7745,9 +7783,8 @@ def _logros_ctx(ses):
         pass
     hechizos_v = 0
     try:
-        import combate as _cb_c
         hechizos_v = sum(1 for h in (getattr(p, 'hechizos_aprendidos', None) or [])
-                         if str(_cb_c.datos_magia(int(h)).get('nombre') or '').endswith(' V'))
+                         if _hechizo_v(int(h)))
     except Exception:
         pass
     ronda = 0
@@ -18601,6 +18638,29 @@ class Servidor:
                     ses.enviar(dialogos.linea_de(g_servicio, 0, ses.personaje.nombre))
                     return
 
+                # EL ARBOL OFICIAL DEL NPC manda en sus misiones cuando, para
+                # este jugador, hace algo de mision (dialogos_mapa.
+                # arbol_de_mision_para): textos, ofertas, condiciones y premios
+                # del cliente en vez de la plantilla generica.
+                if ses.personaje:
+                    try:
+                        import dialogos_mapa as _dm_q0
+                        import eventos_mundo as _evm_q0
+                        _st_q0 = int(getattr(ses.personaje, 'stage', 0) or 0)
+                        _raiz_nativa_q0 = (DIALOGO_DE_ENTIDAD.get((_st_q0, ent))
+                                           or DIALOGO_DE_NPC.get((_st_q0, _npc_type_de(_st_q0, ent))))
+                        _raiz_q0 = _dm_q0.arbol_de_mision_para(
+                            _st_q0, dialogos.val_por_entidad(ent), _evm_q0.ContextoSesion(ses),
+                            raiz=_raiz_nativa_q0)
+                        if _raiz_q0:
+                            ses.dlg_quest_ofrecida = None
+                            ses.dlg_quest_fase = None
+                            if _recorrer_dialogo_mapa(ses, addr, _st_q0, _raiz_q0):
+                                log.info(f"[{addr}] {_nom_ent}: misiones por su arbol ({_raiz_q0})")
+                                return
+                    except Exception:
+                        log.exception('arbol de mision del NPC')
+
                 g_quest = None
                 if ses.personaje:
                     proc, tipo_proc, datos_proc = _mis.interactuar_npc(ses, _nom_ent, entidad=ent)
@@ -20760,10 +20820,51 @@ def main():
         paks_cliente.asegurar_extraidos()
     except Exception:
         log.exception('no se pudieron sacar las tablas del cliente')
+    _precargar()
     try:
         asyncio.run(Servidor(a.host, a.port, a.fport, a.wport).correr())
     except KeyboardInterrupt:
         log.info("detenido")
+
+
+def _precargar():
+    """Las tablas que se cargaban en el PRIMER uso, con un jugador esperando.
+
+    Medido el 10/11/2026: la base de misiones tardaba 8,8 s en la primera
+    entrada al mundo; el primer clic a un NPC con mision, ~3 s (las 389
+    plantillas de mapa para el retrato del NPC, msg.xml, los arboles...). Y
+    mientras tanto el servidor no atendia a nadie. Se cargan al arrancar.
+    """
+    import time as _t
+    pasos = (
+        ('misiones', lambda: __import__('misiones')._cargar_db()),
+        ('npcs de los mapas', lambda: __import__('dialogos')._cargar_npcs()),
+        ('msg.xml', lambda: __import__('dialogos')._cargar_msg_dict()),
+        ('arboles de dialogo', lambda: __import__('dialogos_mapa')._arbol(0)),
+        ('spmsg', lambda: __import__('dialogos_mapa').arbol_sp()),
+        ('pasos de los arboles', lambda: (__import__('dialogos_mapa').pasos_de_arbol(),
+                                          __import__('dialogos_mapa').pasos_solo_instancia())),
+        ('nombres de NPC', lambda: __import__('misiones').npc_segun_texto('talk to x', 'x')),
+        ('eventos', lambda: __import__('eventos')._datos()),
+        # Las tablas de monstruos y objetos: la primera muerte, el primer
+        # refresco de la bolsa o la primera entrada las cargaban enteras.
+        ('monstruos', lambda: __import__('combate')._datos(0)),
+        ('bonos de objetos', lambda: __import__('inventario')._bonus(0)),
+        ('tabla de objetos', lambda: __import__('inventario')._tabla()),
+        ('categorias', lambda: __import__('inventario').categoria_de(1)),
+        ('ranuras de equipo', lambda: __import__('inventario').ranura_equipo_de(1)),
+        ('vinculaciones', lambda: __import__('inventario').vinculaciones_de(1)),
+        ('pesos', lambda: __import__('inventario').peso_de(1)),
+        ('habilidades de objetos', lambda: __import__('clases').skill_de_item(1)),
+        ('logros', lambda: __import__('logros').tabla()),
+    )
+    t0 = _t.time()
+    for nombre, f in pasos:
+        try:
+            f()
+        except Exception:
+            log.exception('precarga: %s', nombre)
+    log.info('tablas precargadas en %.1f s', _t.time() - t0)
 
 
 if __name__ == '__main__':

@@ -789,7 +789,8 @@ def avanzar_paso(ses, qid: int, nuevo_paso: int) -> bool:
 
 
 def completar_mision(ses, qid: int, exp: int = 0, oro: int = 0,
-                     items: list = None, creditos_honor: int = 0) -> bool:
+                     items: list = None, creditos_honor: int = 0,
+                     sin_premio: bool = False) -> bool:
     """Marca la mision como completada, retira items requeridos, entrega recompensas y persiste."""
     p = getattr(ses, 'personaje', None)
     if not p:
@@ -860,8 +861,9 @@ def completar_mision(ses, qid: int, exp: int = 0, oro: int = 0,
         ses.cantidades.pop(slot_oc, None)
         ses.cantidades.pop(str(slot_oc), None)
 
-    # 4. Recompensas por defecto si no vienen fijadas
-    recomp = info.get('recompensa', {})
+    # 4. Recompensas por defecto si no vienen fijadas. Con `sin_premio` (la
+    # cierra el arbol oficial del NPC, que ya dio su premio) no se da nada.
+    recomp = {} if sin_premio else info.get('recompensa', {})
     if qid == 976:
         # Recompensa oficial de Quest 976 ("Nature is Crying for Help"):
         # EXP dependiente del nivel (Lv<90: 36M, Lv 90-94: 48M, Lv>=95: 72M)
@@ -887,7 +889,7 @@ def completar_mision(ses, qid: int, exp: int = 0, oro: int = 0,
         oro = recomp.get('oro', 0)
     if creditos_honor <= 0:
         creditos_honor = recomp.get('creditos', 0)
-    if creditos_honor <= 0:
+    if creditos_honor <= 0 and not sin_premio:
         creditos_honor = max(10, min(200, int((exp or 1000) // 1000) * 5))
 
     # 5. Oro de recompensa

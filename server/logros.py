@@ -59,17 +59,36 @@ def de_id(lid: int):
     return None
 
 
+_PUNTOS_TITULO = None
+
+
+def _puntos_y_titulos():
+    """{id: (puntos, titulo)} de la tabla, una vez. puntos_de y titulos_de
+    recorrian los 4.443 logros en cada llamada, y titulos_de se llama al
+    calcular los stats del jugador: en cada golpe de cada monstruo (perfil del
+    10/11/2026: 3,9 s de 72 en un combate)."""
+    global _PUNTOS_TITULO
+    if _PUNTOS_TITULO is None:
+        m = {}
+        for f in tabla():
+            # Si un id se repite, cuenta cada fila, como el recorrido de antes.
+            m.setdefault(f.get('id'), []).append((int(f.get('puntos') or 0), f.get('titulo')))
+        _PUNTOS_TITULO = m
+    return _PUNTOS_TITULO
+
+
 def puntos_de(conseguidos) -> int:
     """La suma de puntos de los logros que ya tiene."""
     ids = set(int(x) for x in (conseguidos or []))
-    return sum(int(f.get('puntos') or 0) for f in tabla() if f.get('id') in ids)
+    m = _puntos_y_titulos()
+    return sum(pt for i in ids for pt, _t in m.get(i, ()))
 
 
 def titulos_de(conseguidos) -> list:
     """Los titulos que desbloquean esos logros."""
     ids = set(int(x) for x in (conseguidos or []))
-    return sorted({int(f['titulo']) for f in tabla()
-                   if f.get('id') in ids and f.get('titulo')})
+    m = _puntos_y_titulos()
+    return sorted({int(t) for i in ids for _pt, t in m.get(i, ()) if t})
 
 
 # --------------------------------------------------------------- reglas

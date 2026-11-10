@@ -437,3 +437,131 @@ def pasos_solo_instancia():
             k for k, sts in donde.items()
             if all(_em.grupo_de_instancia(x) is not None for x in sts))
     return _SOLO_INSTANCIA
+
+
+# ---------------------------------------------------------------------------
+# EL ARBOL DEL NPC COMO FUENTE DE SUS MISIONES (10/11/2026, decidido con el
+# usuario: "lo mas recomendado y mejor para todo").
+#
+# Cada NPC de mision tiene en el mapa del cliente su arbol oficial: en que
+# orden dice cada linea, cuando ofrece cada mision (el Angel Inspector solo da
+# la 606 con la 605 terminada), con que nombre (SET_PLAYERNAME) y que premio
+# da (ADD_PROPERTY 32 = exp, 49 = creditos, GIVE_MONEY, CREATE_ITEM) antes del
+# SET_STEP que la cierra. La plantilla generica de dialogos.info_flujo_mision
+# adivinaba todo eso por posicion y fallaba en ~775 misiones.
+#
+# Se usa el arbol solo cuando, para ESE jugador, hace algo de mision: entra por
+# una rama que mira una mision o acaba en un SET_STEP. Si no, el NPC sigue
+# como antes (sus misiones de misiones_completas.json, su dialogo propio).
+# ---------------------------------------------------------------------------
+CONDICIONES_DE_MISION = frozenset((2, 7, 11, 13))   # QUEST_STEP, QUESTITEM, QUEST_FINISH, QUEST_RUNNING
+# Tutorial (51, 57) y Graduation Palace (58): sus NPC llevan un flujo medido
+# en captura en app.py (Michael marca hablo_michael, que desbloquea el segundo
+# dialogo de los Angeles de faccion; el arbol no lo hace).
+STAGES_SIN_ARBOL_DE_MISION = frozenset((51, 57, 58))
+ACCION_SET_STEP = 4
+_RAICES_NPC = {}
+
+
+def _destinos(arbol):
+    out = set()
+    for n in arbol.values():
+        if n.get('s'):
+            out.add(int(n['s']))
+        for _m, d in n.get('o', ()):
+            out.add(int(d))
+        for r in n.get('r', ()):
+            out.add(int(r.get('ir') or 0))
+    return out
+
+
+def raiz_de_mision(stage, retrato):
+    """La raiz del arbol del NPC con ese retrato si es la UNICA que mira
+    misiones (ramas QUEST_* o algun SET_STEP debajo), o None."""
+    clave = (int(stage or 0), int(retrato or 0))
+    if clave in _RAICES_NPC:
+        return _RAICES_NPC[clave]
+    arbol = _arbol(stage, con_sp=False)
+    res = None
+    if arbol and retrato:
+        destinos = _destinos(arbol)
+        cands = []
+        for k, n in arbol.items():
+            if (not str(k).isdigit() or int(k) >= 1000000 or int(k) in destinos
+                    or n.get('c') != int(retrato)):
+                continue
+            if _mira_misiones(arbol, k):
+                cands.append(int(k))
+        res = cands[0] if len(cands) == 1 else None
+    _RAICES_NPC[clave] = res
+    return res
+
+
+def _mira_misiones(arbol, k, visto=None, prof=0):
+    """Si debajo de `k` hay ramas QUEST_* o un SET_STEP."""
+    visto = set() if visto is None else visto
+    if k in visto or prof > 40:
+        return False
+    visto.add(k)
+    n = arbol.get(str(k))
+    if not n:
+        return False
+    if any(a and a[0] == ACCION_SET_STEP for a in n.get('a') or ()):
+        return True
+    for r in n.get('r', ()):
+        if any(c[0] in CONDICIONES_DE_MISION for c in r.get('si', ())):
+            return True
+    sig = [r.get('ir') for r in n.get('r', ())] + [d for _m, d in n.get('o', ())] + [n.get('s')]
+    return any(_mira_misiones(arbol, str(x), visto, prof + 1) for x in sig if x)
+
+
+def arbol_de_mision_para(stage, retrato, ctx, raiz=None):
+    """La raiz del NPC si, para este jugador, su arbol hace algo de mision:
+    baja por las ramas que se cumplen y mira si alguna miraba una mision o si
+    lo que dice despues (siguiente / opciones) llega a un SET_STEP."""
+    if int(stage or 0) in STAGES_SIN_ARBOL_DE_MISION:
+        return None
+    arbol = _arbol(stage, con_sp=False)
+    if raiz is None:
+        raiz = raiz_de_mision(stage, retrato)
+    elif str(raiz) not in arbol or not _mira_misiones(arbol, str(raiz)):
+        # La asociacion NPC -> nodo del MPC identifica al interlocutor,
+        # aunque comparta retrato con otra raiz (Healing Lecturer, 60401).
+        # Nunca elegir por ese retrato un arbol distinto del NPC conocido.
+        return None
+    if raiz is None:
+        return None
+    k, prof, de_mision = str(raiz), 0, False
+    while prof < 8:
+        n = arbol.get(k)
+        if n is None:
+            return None
+        salto = None
+        for rama in n.get('r', ()):
+            if _cumple(rama, ctx):
+                salto = rama.get('ir')
+                if any(c[0] in CONDICIONES_DE_MISION for c in rama.get('si', ())):
+                    de_mision = True
+                break
+        if not salto:
+            break
+        k, prof = str(salto), prof + 1
+    if de_mision or _llega_a_set_step(arbol, k):
+        return raiz
+    return None
+
+
+def _llega_a_set_step(arbol, k, visto=None, prof=0):
+    """Si desde `k` (sin seguir ramas: lo que se dice y se elige) se llega a
+    un SET_STEP."""
+    visto = set() if visto is None else visto
+    if k in visto or prof > 20:
+        return False
+    visto.add(k)
+    n = arbol.get(str(k))
+    if not n:
+        return False
+    if any(a and a[0] == ACCION_SET_STEP for a in n.get('a') or ()):
+        return True
+    sig = [d for _m, d in n.get('o', ())] + [n.get('s')]
+    return any(_llega_a_set_step(arbol, str(x), visto, prof + 1) for x in sig if x)

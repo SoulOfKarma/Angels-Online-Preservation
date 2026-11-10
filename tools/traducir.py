@@ -28,6 +28,7 @@ import unicodedata
 
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 import tw_migracion as tw  # noqa: E402
+from colores_texto import normalizar_colores  # noqa: E402
 
 DIR = tw.RAIZ / 'work' / 'traduccion'
 MANUAL = DIR / 'manual'
@@ -106,10 +107,10 @@ class Traductor:
     def traducir(self, v: str):
         """(texto, completo). Lo no resuelto se deja como estaba."""
         if not tw.RE_CJK.search(v):
-            return v, True
+            return normalizar_colores(v), True
         r = self.buscar(v)
         if r is not None:
-            return r, True
+            return normalizar_colores(r), True
         trozos, completo = [], True
         for s in SEP.split(v):
             if not s or SEP.fullmatch(s) or not tw.RE_CJK.search(s):
@@ -122,7 +123,7 @@ class Traductor:
                 trozos.append(s)
             else:
                 trozos.append(pre + r + (suf or ''))
-        return ''.join(trozos), completo
+        return normalizar_colores(''.join(trozos)), completo
 
     def segmentos_pendientes(self, v: str):
         """Claves normalizadas (con '#') que faltan para traducir v."""
