@@ -6339,6 +6339,13 @@ def _cambiar_objeto_de_mapa(ses, addr, estado, tag, sprite):
     De los objetos que hay en las casillas del TAG se cambia el que NO lleva
     evento: en esas casillas comparten sitio la barrera (sin evento) y un
     60094 con su evento 110..112, y en la Global el 60094 se queda.
+
+    Y SI SOLO HAY OBJETOS CON EVENTO, no se toca ninguno: se CREA uno nuevo en
+    la casilla. Es el caso de los braseros (60094, 火盆) de la sala 1: el tag
+    de la llama lo lleva en el .mpc un 60308 de decorado que el servidor no
+    manda, y al encender la antorcha (CHANGE_STATICOBJ(115, 60302), 60302 =
+    副本2小火黃色, solo la llama) se cambiaba el brasero: desaparecia y quedaba
+    la llama sola (10/11/2026). Un segundo cambio sustituye al creado.
     """
     import eventos as _ev
     import combate as _cb
@@ -6349,24 +6356,37 @@ def _cambiar_objeto_de_mapa(ses, addr, estado, tag, sprite):
         log.info('[%s] CHANGE_STATICOBJ(%d, %d) en el mapa %d: no hay objeto '
                  'de mapa en ese tag', addr, tag, sprite, estado.stage)
         return
-    cambiar = [r for r in recs if not r.get('evento')] or recs
+    sin_evento = [r for r in recs if not r.get('evento')]
+    crear = not sin_evento
+    cambiar = sin_evento or recs
     puestos = estado.__dict__.setdefault('puestos', {})   # eid original -> (eid, sprite)
     salida = []
     for r in cambiar:
         orig = int(r['entity_id'])
-        eid_act, spr_act = puestos.get(orig, (orig, int(r['sprite'])))
+        if crear:
+            eid_act, spr_act = puestos.get(orig, (None, None))
+        else:
+            eid_act, spr_act = puestos.get(orig, (orig, int(r['sprite'])))
         if spr_act == sprite:
+            continue
+        if crear and sprite == int(r['sprite']):
+            # Vuelve a ser lo que ya es el objeto con evento: fuera el creado.
+            if eid_act is not None:
+                salida.append(_cb.despawn_monstruo(eid_act))
+                puestos.pop(orig, None)
             continue
         _SIG_OBJETO_CAMBIADO[0] += 1
         nuevo = _SIG_OBJETO_CAMBIADO[0]
         b = bytearray(bytes.fromhex(r['crudo'])[:43])
         struct.pack_into('<I', b, 0, nuevo)
         struct.pack_into('<H', b, 34, sprite)
-        salida.append(_cb.despawn_monstruo(eid_act))
+        if eid_act is not None:
+            salida.append(_cb.despawn_monstruo(eid_act))
         salida.append(struct.pack('<H', 0x000E) + bytes(b))
         puestos[orig] = (nuevo, sprite)
-        log.info('[%s] mapa %d, tag %d: objeto %d (%d) -> %d (%d)', addr,
-                 estado.stage, tag, eid_act, spr_act, nuevo, sprite)
+        log.info('[%s] mapa %d, tag %d: objeto %s (%s) -> %d (%d)%s', addr,
+                 estado.stage, tag, eid_act, spr_act, nuevo, sprite,
+                 ' (nuevo; el objeto con evento se queda)' if crear else '')
     if salida:
         ses.enviar(*salida)
         # La puerta se abre para todos los que esten en la sala, no solo
