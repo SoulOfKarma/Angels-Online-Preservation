@@ -11620,7 +11620,7 @@ class Servidor:
                                                 for deb in m.debuffs.values():
                                                     if deb.get('vel_mov_mod'):
                                                         spd = max(10, spd + deb['vel_mov_mod'])
-                                            m.proximo_paso = ahora + (_pasos * 32.0 / spd)
+                                            m.proximo_paso = ahora + _cb.espera_persecucion(_pasos, spd)
                                             ses.enviar(MOVE.build(entity_id=m.entity_id,
                                                                   cur_x=cur_x, cur_y=cur_y,
                                                                   dst_x=dst_x, dst_y=dst_y,
@@ -20877,6 +20877,11 @@ def _precargar():
         ('pesos', lambda: __import__('inventario').peso_de(1)),
         ('habilidades de objetos', lambda: __import__('clases').skill_de_item(1)),
         ('logros', lambda: __import__('logros').tabla()),
+        # Otras dos que leian las 389 plantillas de mapa en su primer uso:
+        # el primer clic a un NPC que ofrece misiones (1,1 s parado en Gulp
+        # Room, 10/11/2026) y la primera muerte (botin de jefes o de tropa).
+        ('stage de cada NPC', lambda: __import__('misiones').stage_de_entidad(0)),
+        ('monstruos de tropa', lambda: __import__('combate').es_de_tropa(0)),
     )
     t0 = _t.time()
     for nombre, f in pasos:

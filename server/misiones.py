@@ -1811,6 +1811,16 @@ def interactuar_npc(ses, npc_nombre: str, entidad: int = 0) -> tuple:
 
                 # Objetivo de caceria
                 elif tipo_obj == 'matar':
+                    # Dentro de una instancia, si el paso lo cumplen los
+                    # eventos de la sala al matar (Beelzebub, paso 4 de la
+                    # 611), hablar con el NPC no es entregarle nada: el clic
+                    # sigue a su dialogo del mapa. Antes salia "Defeat
+                    # targets first!" y el recordatorio, y el Annoying Clerk
+                    # de la sala 2 nunca abria la carrera (10/11/2026).
+                    import eventos as _ev_k
+                    if (__import__('app').es_instancia(stage)
+                            and _ev_k.paso_definido_por_muertes(q, pa - 1)):
+                        continue
                     req = paso_actual.get('cantidad', 1)
                     kills = (getattr(ses, 'quest_kills', {}) or {}).get((q, pa), 0)
                     if kills < req:

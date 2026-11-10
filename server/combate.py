@@ -2529,6 +2529,22 @@ CADENCIA_MONSTRUO_MIN = 0.40
 # velocidad 50 el mapa se veia quieto comparado con el suyo.
 PASO_PASEO_MAX = 3
 VELOCIDAD_PASEO = 75
+
+# PERSECUCION SIN PARONES. El siguiente tramo de un monstruo que persigue se
+# pide ANTES de que acabe el actual: asi le llega al cliente antes de pararse
+# y no se ve "A -> B, parado, B -> C". Medido en las capturas del oficial
+# (logs/proxy, 4.294 tramos de persecucion encadenados, 10/11/2026): el
+# siguiente llega de mediana justo al acabar y una cuarta parte entre 0,25 y
+# 0,45 s antes. Nosotros lo mandabamos siempre despues (tick de 0,1 s mas lo
+# que tardase el servidor).
+ANTICIPO_PERSECUCION = 0.2
+
+
+def espera_persecucion(pasos, spd):
+    """Segundos hasta pedir el siguiente tramo de persecucion: la duracion del
+    tramo menos ANTICIPO_PERSECUCION, sin bajar de la mitad del tramo."""
+    dur = pasos * 32.0 / spd
+    return max(dur * 0.5, dur - ANTICIPO_PERSECUCION)
 SEGUNDOS_ENTRE_PASEOS = 5.6
 
 # Cuanto tarda un monstruo en recorrer una casilla, y cuanto descansa entre
