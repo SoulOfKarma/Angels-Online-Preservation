@@ -9811,6 +9811,12 @@ class Servidor:
             pass
         finally:
             ses.desconectado = True
+            # _companeros, presencia._vivas, la sala y las capturas descartan
+            # las sesiones con 'cerrada', pero nada la ponia: la sesion muerta
+            # se quedaba en sala.sesiones como "companero" con el mismo
+            # entity_id del personaje al volver a entrar, la IA trataba a sus
+            # monstruos como ajenos (_ajenos_ia) y no contraatacaban.
+            ses.cerrada = True
             _ia_task = getattr(ses, 'ia_monstruos_task', None)
             if _ia_task:
                 _ia_task.cancel()
