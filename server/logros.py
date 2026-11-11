@@ -606,6 +606,17 @@ def medir(f, personaje, ctx):
         return None
     if regla == '變身成特定圖號':
         return c('transforma:%d' % _num(p1)), 1
+    # Cambios de rama en el Skill Angel (los cuenta app, contenedor 10).
+    if regla == '換技能次數':
+        return c('cambio_rama'), _num(p1)
+    if regla == '換過N種職業頭銜':
+        # Clases distintas alcanzadas, contando la actual; Novice (0) no es
+        # un titulo de clase. Supuesto, no verificado contra el original.
+        clases = {k for k in cont if str(k).startswith('clase:') and c(k)}
+        actual = _num(getattr(personaje, 'class_id', 0))
+        if actual:
+            clases.add('clase:%d' % actual)
+        return len(clases), _num(p1)
     dias = ctx.get('dias') or []
     if regla == '累計上線時間N天':
         return len(set(dias)), _num(p1)
