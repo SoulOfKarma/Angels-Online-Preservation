@@ -1217,6 +1217,47 @@ def quitar_exclusion_ramas() -> int:
     return cuantas
 
 
+# El filtro de nombres. update25.pak (16/09/2025) cambio setting/eng/
+# strfilter.xml por una lista de 4.476 entradas (spam, politica, varios
+# idiomas) y la puso IGUAL en <保留> y en <過濾>. El selector del cliente busca
+# cada entrada DENTRO del nombre y sin mirar mayusculas, y la lista trae "e",
+# "dan", "sha", "jude"...: no deja crear Kevin, Danny ni Test1. Comprobado en
+# el cliente 8.7.6.1 (11/11/2026): quitando "dan" solo de <保留> sigue
+# rechazando Danny; quitando "e" de las dos, Kevin pasa. Se deja suelta la
+# version de UPDATE21.PAK (gm/gamemaster/master y ~40 insultos), la ultima con
+# la que se podian crear nombres normales: Danny y Jude pasan, GMTobias no. Se
+# lee del pak del propio jugador, asi que nada de IGG viaja en el repo. Para
+# deshacerlo basta borrar el archivo suelto.
+RUTA_STRFILTER_XML = 'setting/eng/strfilter.xml'
+PAK_STRFILTER = 'update21.pak'
+
+
+def restaurar_filtro_nombres() -> bool:
+    """Deja suelto el strfilter.xml de UPDATE21.PAK. True si quedo puesto."""
+    ruta_cli = ruta_cliente()
+    pak = next((p for p in ruta_cli.glob('*')
+                if p.name.lower() == PAK_STRFILTER), None)
+    if pak is None:
+        log.warning('no esta %s en %s; el filtro de nombres queda como venga'
+                    % (PAK_STRFILTER, ruta_cli))
+        return False
+    raw = _extraer_archivo_pak(pak, r'SETTING\ENG\STRFILTER.XML')
+    if not raw:
+        log.warning('%s no trae setting/eng/strfilter.xml' % pak.name)
+        return False
+    destino = ruta_cli / RUTA_STRFILTER_XML
+    try:
+        if destino.exists() and destino.read_bytes() == raw:
+            return True
+        destino.parent.mkdir(parents=True, exist_ok=True)
+        destino.write_bytes(raw)
+        log.info('strfilter.xml suelto: filtro de nombres de %s' % pak.name)
+    except OSError as e:
+        log.warning('no se pudo escribir %s: %s' % (destino, e))
+        return False
+    return True
+
+
 def abrir_clientes(cuantos: int = 1) -> int:
     """Lanza N copias del cliente (angel.dat o Angel.exe) y devuelve cuantas arrancaron.
 

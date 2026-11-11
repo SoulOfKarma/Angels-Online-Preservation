@@ -321,3 +321,9 @@ QUITAR_LOGO_ARRANQUE = True
 # cliente. Se deja un skill.xml suelto en el cliente, y para deshacerlo
 # basta borrarlo.
 RAMAS_SIN_EXCLUSION = True
+
+# Filtro de nombres de UPDATE21.PAK en vez del de update25.pak, que no deja
+# crear nombres con "e" ni otros normales (Danny, Jude). Ver
+# cliente_local.restaurar_filtro_nombres. Para deshacerlo, borrar el
+# setting/eng/strfilter.xml suelto del cliente.
+FILTRO_NOMBRES_UPDATE21 = True
