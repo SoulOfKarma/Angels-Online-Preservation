@@ -20150,6 +20150,13 @@ class Servidor:
                 if _pend is not None:
                     _pend.cancel()
                     ses._basico_pendiente = None
+                # La barra del objetivo (nombre, elemento, vida) sale vacia hasta
+                # que llega un 0x0013 con la vida del bicho. Antes lo traia el
+                # primer golpe; ahora que seleccionar no pega, se manda aqui,
+                # igual que en el clic 0x0005.
+                _m_sel = ses.monstruos.get(parametro)
+                ses.enviar(__import__('combate').atributo(
+                    parametro, _m_sel.porcentaje if getattr(_m_sel, 'vivo', False) else 0))
                 return
             # A un jugador (PvP) sigue pegando como antes; no se ha medido.
             if accion == 0x0C and ses.personaje and not getattr(ses, 'muerto', False):
