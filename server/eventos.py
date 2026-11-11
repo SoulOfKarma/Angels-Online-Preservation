@@ -707,6 +707,25 @@ def paso_definido_por_muertes(quest, paso_cliente):
     return (int(quest), int(paso_cliente)) in _PASOS_POR_MUERTE
 
 
+# Solo Gulp Room: en otras instancias (la Magic Kichen Path...) los
+# contadores tienen su propia mecanica de oleadas.
+REAPARECEN_EN_INSTANCIA_STAGES = {76, 77, 78, 79}
+
+
+def cuenta_al_morir(stage, npc_type):
+    """Si la muerte de ese tipo suma a una variable del mapa (ADD_MAPVAR):
+    el Heat Elf de Gulp Room 4 (20 bajas sacan al Demon Kidace). Esos
+    reaparecen tambien en las instancias, como en el oficial (su generador
+    es de 5 con 10 s); si no, el contador no llegaria nunca."""
+    if int(stage) not in REAPARECEN_EN_INSTANCIA_STAGES:
+        return False
+    d = del_stage(stage)
+    ev = (d or {}).get('monstruos', {}).get(str(int(npc_type))) if d else None
+    if not ev:
+        return False
+    return any(a == 57 for x in disparadores(stage, ev) for a, _p in x['haz'])   # ADD_MAPVAR
+
+
 def cobertura():
     """Que parte de lo que usan los mapas sabe este interprete.
 

@@ -56,6 +56,13 @@ Comandos GM: /daily start y /daily enter. No se recuperaron los horarios ni prob
 Las habilidades de un solo objetivo (Vampire Arrow, Rapidfire...) salen sobre el enemigo clicado en vez de cambiarse por un golpe básico.
 La puerta de la Devil Kitchen de la Magic Kitchen Path pide la Devil's Feast (611) la primera vez; después queda abierta para ese personaje, y en equipo la abre uno para todos.
 Las misiones 602-611 ya no se saltan pasos hablando con el NPC equivocado (los dos Michael se distinguen; Athlete Cliff es el "strong human" de la 610), la 602 usa sus propias líneas y los logros padre como Demon's Kitchen muestran el progreso parcial.
+**Arreglos del 11/11/2026.** Monstruos: persecución fluida (van a ~2x la velocidad del 0x0005 y renuevan el tramo antes de llegar, medido en 53.461 tramos del oficial) y reaccionan al momento en vez de terminar su paseo.
+El clic sobre un monstruo ataca; la selección automática del cliente (0x0016) ya no hace que el personaje contraataque solo (PvP sin cambios), y la barra de vida del objetivo sale llena.
+Los monstruos lanzan sus hechizos de monster.xml (2.453 de daño, 276 maldiciones, 19 curas, 297 mitigaciones pasivas; un intento cada 1,5 s al 50%): daño, daño por tiempo (536 monstruos), aturdir/congelar/silenciar/sellar con su duración y probabilidad reales, y debuffs de atributos y velocidad con sus valores.
+El silencio bloquea los hechizos de MP y el sello las posturas de SP, en los dos sentidos (Remove Magic y Silencing Chop también paran los hechizos de los monstruos). Las habilidades exigen el arma de magic.xml (1.889).
+Mapas del tesoro (TreMap): las Robber Lord Map Piece se cuentan (S2C 0x012A), los mapas de nivel 1-7 dan los tipos de tesoro de la guía y aparece un cofre privado en el punto marcado.
+Gulp Room: Overlord Legte aparece al llegar; el Exit Guide y las puertas del laberinto obedecen el sorteo del mapa (el Exit Guide lleva a Hank); el Lion Dragon solo es vulnerable unos segundos tras explotar un Powder Pail cerca; Evil Eye saca sus cristales durante la pelea; los Heat Elf reaparecen en la instancia para que salga el Demon Kidace.
+Los eventos de la casilla de llegada se disparan al cargar el mapa. Las monturas blancas no entran en el álbum por diseño del cliente (solo azules/amarillas).
 Angel Lyceum: NPCs restaurados
 Astral Angel (canje de Star Keys 393), Party Angel (cajas renewal y canje 245), Chat Bubble Exchange
 (grupos 559, 570), Fashionable (recetas de vouchers) y Reissue Angel.

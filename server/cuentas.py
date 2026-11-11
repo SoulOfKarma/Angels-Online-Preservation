@@ -727,6 +727,7 @@ def personaje_de(cuenta, ranura=0):
                    if isinstance(x, (list, tuple)) and len(x) >= 2],
         star_blessing=p.get('star_blessing') or {},
         travel_mark=p.get('travel_mark') or {},
+        tesoro=p.get('tesoro') or {},
         casa=_casa_limpia,
         buffs={int(k): v for k, v in (p.get('buffs') or {}).items()
                if str(k).isdigit() and isinstance(v, dict) and v.get('fin', 0) > _ahora()},

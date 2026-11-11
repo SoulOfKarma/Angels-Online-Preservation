@@ -67,6 +67,13 @@ Use /daily start and /daily enter for GM checks. Original server schedules and d
 Single-target skills (Vampire Arrow, Rapidfire...) cast on the clicked enemy instead of being replaced by a basic attack.
 The Magic Kitchen Path Devil Kitchen gate now requires Devil's Feast (611) the first time; afterwards it stays open for that character, and in a party one member opens it for everyone.
 Quests 602-611 no longer skip steps by talking to the wrong NPC (the two Michaels are told apart; Athlete Cliff is the "strong human" of 610), quest 602 uses its own dialogue lines, and parent achievements such as Demon's Kitchen show partial progress.
+**Fixes of 11/11/2026.** Monsters: smooth chase (they move at ~2x the 0x0005 speed value and re-target before arriving, measured on 53,461 official segments) and they react immediately instead of finishing their wander step.
+Clicking a monster attacks; the client's automatic 0x0016 target selection no longer makes the character counter-attack on its own (PvP unchanged); the selected monster's HP bar is filled.
+Monsters cast their monster.xml spells (2,453 damage spells, 276 curses, 19 heals, 297 passive mitigations; one try every 1.5 s at 50%): damage, damage over time (536 monsters), stun/freeze/silence/seal with their real duration and probability, and stat/speed debuffs with their values.
+Silence blocks MP spells and Seal blocks SP stances, both ways (Remove Magic and Silencing Chop also stop monster spells). Skills now require the weapon listed in magic.xml (1,889 skills).
+Treasure maps (TreMap): Robber Lord Map Pieces are counted (S2C 0x012A), level 1-7 maps give the treasure types from the guide, and a private chest appears at the marked spot.
+Gulp Room: Overlord Legte spawns on arrival; the Exit Guide and maze doors follow the map's maze roll (the Exit Guide takes you to Hank); the Lion Dragon is only vulnerable for a few seconds after a nearby Powder Pail explodes; Evil Eye summons its crystals during the fight; Heat Elf respawn inside the instance so Demon Kidace can appear.
+Arrival-tile map events fire when a map finishes loading. White mounts cannot go in the album by client design (only blue/yellow).
 Angel Lyceum: restored missing NPCs Astral Angel (Star Key exchange 393), Party Angel (renewal gifts & exchange 245),
 Chat Bubble Exchange (groups 559, 570), Fashionable (voucher recipes), and Reissue Angel.
 Party Angel applies the original 12-hour Archangel's Secret; Compensation Angel is removed.

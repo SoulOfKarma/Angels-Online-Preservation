@@ -2838,6 +2838,80 @@ def _procesar_muerte_lord_playground(ses, m, addr):
     log.info(f"[{addr}] {m.nombre} (eid={m.entity_id}) ha sido derrotado en Playground.")
 
 
+def _dot_de_monstruo(ses, dot):
+    """El dano por tiempo que deja el hechizo de un monstruo en el jugador:
+    su icono y un tic de `dot['hp']` cada `dot['intervalo']` segundos hasta
+    `dot['dur_ms']`. No mata (deja 1 de vida); relanzarlo lo renueva."""
+    import combate as _cb
+    p = ses.personaje
+    if p is None:
+        return
+    if not getattr(p, 'buffs', None):
+        p.buffs = {}
+    fin = time.time() + dot['dur_ms'] / 1000.0
+    p.buffs[int(dot['id'])] = {'fin': fin, 'dot_mon': True}
+    ses.enviar_inmediato(struct.pack('<HIBBII', 0x001D, p.entity_id, 1, 4, int(dot['id']), int(dot['dur_ms'])))
+
+    def _tic(quedan):
+        p2 = ses.personaje
+        if p2 is None or getattr(ses, 'muerto', False):
+            return
+        act = (getattr(p2, 'buffs', None) or {}).get(int(dot['id']))
+        if not act or act.get('fin') != fin:
+            return
+        dano = min(int(dot['hp']), p2.hp - 1)
+        if dano > 0:
+            p2.hp -= dano
+            ses.enviar_inmediato(_cb.numero_flotante(p2.entity_id, dano, _cb.TIPO_DANO_ESTADO),
+                                 _cb.atributo(p2.entity_id, p2.hp, _cb.KIND_HP))
+        if quedan > 1:
+            asyncio.get_event_loop().call_later(dot['intervalo'], _tic, quedan - 1)
+        else:
+            p2.buffs.pop(int(dot['id']), None)
+            ses.enviar_inmediato(struct.pack('<HIBBII', 0x001D, p2.entity_id, 1, 4, int(dot['id']), 0))
+    try:
+        asyncio.get_event_loop().call_later(
+            dot['intervalo'], _tic, max(1, int(dot['dur_ms'] / 1000.0 // dot['intervalo'])))
+    except Exception:
+        log.debug('dot de monstruo', exc_info=True)
+
+
+def _pk_golpe_mon(m, a_quien, ef_atk):
+    """El 0x0011 del impacto de un monstruo: el cierre de su hechizo
+    (`m.hz_golpe`, puesto al empezar a lanzarlo) o el del golpe normal."""
+    import combate as _cb
+    hz = getattr(m, 'hz_golpe', None)
+    if hz:
+        return _cb.cierre_de_dano(m.entity_id, a_quien, ataque=hz['id'], efecto=ef_atk,
+                                  es_magia=hz['es_magia'])
+    return _cb.numero_de_dano(m.entity_id, a_quien, 0, ataque=656, efecto=ef_atk)
+
+
+def _fin_hechizo_monstruo(ses, m, hz, teid):
+    """Al acabar el lanzamiento de una maldicion o una cura de un monstruo:
+    el cierre del 0x0011 y su efecto (el buff al jugador o la vida al
+    monstruo). Los hechizos de dano van por `_impacto`."""
+    import combate as _cb
+    if not getattr(m, 'vivo', False) or not getattr(ses, 'personaje', None):
+        return
+    cierre = _cb.cierre_de_dano(m.entity_id, teid, ataque=hz['id'], efecto=hz['efecto'],
+                                es_magia=hz['es_magia'])
+    if hz['tipo'] == 'cura':
+        cura = max(0, min(int(hz['cura']), m.hp_max - m.hp))
+        m.hp += cura
+        ses.enviar_inmediato(cierre, _cb.numero_flotante(m.entity_id, cura, _cb.TIPO_CURA_HP),
+                             _cb.atributo(m.entity_id, m.porcentaje))
+        return
+    if getattr(ses, 'muerto', False) or getattr(m, 'en_combate_con', None) != teid:
+        return
+    ses.enviar_inmediato(cierre)
+    mag = _cb.datos_magia(hz['id'])
+    entrada = _entrada_de_buff(mag, hz['dur_ms'] / 1000.0)
+    if _cb.control_de_magia(hz['id']):
+        entrada['control'] = _cb.control_de_magia(hz['id'])
+    _buff_a_otro(ses, hz['id'], entrada, hz['dur_ms'], mag)
+
+
 def _despawn_monstruo_muerto(ses, m, objetivo):
     """Manda el despawn del monstruo al jugador y a sus companeros, y limpia si fue generado."""
     import combate as _cb
@@ -2856,6 +2930,22 @@ def _despawn_monstruo_muerto(ses, m, objetivo):
             _s.monstruos.pop(objetivo, None)
 
 
+def _explosion_barril(ses, barril, yo, addr):
+    """Un Powder Pail roto explota: los jefes inmunes cercanos
+    (combate.INMUNES_A_JUGADORES) quedan vulnerables VENTANA_VULNERABLE s."""
+    import combate as _cb
+    for jefe in list((getattr(ses, 'monstruos', None) or {}).values()):
+        if (int(getattr(jefe, 'npc_type', 0) or 0) not in _cb.INMUNES_A_JUGADORES
+                or not getattr(jefe, 'vivo', False)
+                or max(abs(jefe.tile_x - barril.tile_x), abs(jefe.tile_y - barril.tile_y)) > _cb.RADIO_EXPLOSION):
+            continue
+        jefe.vulnerable_hasta = time.time() + _cb.VENTANA_VULNERABLE
+        log.info('[%s] el barril %d explota: el %s es vulnerable %.0f s', addr,
+                 barril.entity_id, jefe.nombre, _cb.VENTANA_VULNERABLE)
+        import clases as _cl_v
+        ses.enviar(_cl_v.aviso('The explosion leaves %s vulnerable!' % jefe.nombre, tipo=0))
+
+
 def _procesar_muerte_monstruo(ses, m, yo, addr, espera=0.0):
     """Procesa respawn, EXP, subida de nivel, oro y drops cuando un monstruo es derrotado."""
     import combate as _cb
@@ -2867,6 +2957,8 @@ def _procesar_muerte_monstruo(ses, m, yo, addr, espera=0.0):
     yo_muerte = yo
     if __import__('league_war').monster_dead(ses,m):
         return
+    if int(getattr(m, 'npc_type', 0) or 0) in _cb.BARRILES:
+        _explosion_barril(ses, m, yo, addr)
 
     if getattr(m, 'es_estructura_hb', False):
         # Building death/construction is persisted by Holy's own engine.
@@ -2990,7 +3082,8 @@ def _procesar_muerte_monstruo(ses, m, yo, addr, espera=0.0):
                         else 0):
             import eventos_mundo as _evm_rc
             _jrc = getattr(_evm_rc.estado_de(ses), 'juego_matar', None)
-            if not (_jrc and time.time() < _jrc.get('fin', 0)):
+            if (not (_jrc and time.time() < _jrc.get('fin', 0))
+                    and not __import__('eventos').cuenta_al_morir(ses.personaje.stage, m.npc_type)):
                 return
         if getattr(m, 'generado', False):
             return            # lo saco un evento (GENERATE): no vuelve solo
@@ -4080,6 +4173,10 @@ def _armar_portal_al_llegar(ses, addr, destino_tile, casillas):
                         ses.dlg_val = 0
                         ses.dlg_portal = p_act
                         ses.enviar(sub)
+                    elif p_act.get('evento_cliente') and p_act.get('tile'):
+                        # El evento del mapa decide (Exit Guide y puertas del
+                        # laberinto de Gulp Room: condicionados por el sorteo).
+                        _portal_por_evento(ses, addr, p_act)
                     else:
                         _viajar_por_portal(ses, addr, p_act, '(al terminar el paso)')
         except Exception:
@@ -8850,6 +8947,11 @@ def _choques_al_llegar(ses, addr, st, llegada, token, vistos):
             or (p.tile_x, p.tile_y) != tuple(llegada)
             or getattr(ses, 'house_furnishing', False)):
         return
+    # El tesoro del mapa terminado, si llego a su punto.
+    try:
+        __import__('mapa_tesoro').al_llegar(ses)
+    except Exception:
+        log.exception('mapa del tesoro al llegar')
     if st==112:
         ses._holy_camino=None
         __import__('holy_battlefield').contacto_cristal(ses)
@@ -11319,6 +11421,17 @@ class Servidor:
                                     continue
                             if m.aturdido:
                                 continue
+                            # El Evil Eye saca sus cristales mientras pelea.
+                            if (int(getattr(m, 'npc_type', 0) or 0) == _cb.EVIL_EYE
+                                    and getattr(m, 'en_combate_con', None) is not None
+                                    and ahora >= getattr(m, 'proximo_cristal', 0)):
+                                m.proximo_cristal = ahora + _cb.ESPERA_CRISTAL
+                                _vivos_cr = sum(1 for _x in (ses.monstruos or {}).values()
+                                                if int(getattr(_x, 'npc_type', 0) or 0) in _cb.CRISTALES
+                                                and getattr(_x, 'vivo', False))
+                                if _vivos_cr < _cb.MAX_CRISTALES:
+                                    _generar_zona(ses, addr, ses.personaje.stage,
+                                                  random.choice(_cb.GEN_CRISTALES), cuantos=1)
 
                             if getattr(m, 'panico', False):
                                 if ahora >= getattr(m, 'panico_hasta', 0):
@@ -11420,7 +11533,36 @@ class Servidor:
                                     # pantalla todavia va andando; pegando ya,
                                     # se le veia atacar desde lejos (los Goat
                                     # Demon del Training Palace).
-                                    if d_targ <= r_atk and ahora >= _cb.fin_de_paso(m):
+                                    # HECHIZO del monstruo (攻擊法術1..4 de monster.xml): en vez del
+                                    # golpe, y tambien a distancia si el hechizo alcanza.
+                                    _hz = None
+                                    if (ahora >= _cb.fin_de_paso(m)
+                                            and ahora - getattr(m, 'ultimo_ataque', 0) >= _cb.cadencia_monstruo(m)):
+                                        _hz = _cb.elegir_hechizo_monstruo(
+                                            m, d_targ, ahora, random, a_jugador=(targ_eid == yo),
+                                            activos=[k for k, b in (getattr(p, 'buffs', None) or {}).items()
+                                                     if isinstance(b, dict) and b.get('fin', 0) > ahora])
+                                    if _hz and _hz['tipo'] != 'ataque':
+                                        # Maldicion al jugador o cura propia: el lanzamiento y, al
+                                        # acabar, el cierre con su efecto. No es un golpe.
+                                        m.ultimo_ataque = ahora
+                                        _a_quien = m.entity_id if _hz['tipo'] == 'cura' else targ_eid
+                                        ses.enviar(_cb.numero_de_dano(m.entity_id, _a_quien, 0, ataque=_hz['id'], efecto=_hz['efecto'],
+                                                                      cast_time=_hz['cast_time'], es_magia=_hz['es_magia'],
+                                                                      tile_x=(m.tile_x if _hz['tipo'] == 'cura' else targ_x),
+                                                                      tile_y=(m.tile_y if _hz['tipo'] == 'cura' else targ_y)))
+
+                                        def _fin_de(hz, m=m, a_quien=_a_quien):
+                                            def _fin_hechizo(m=m, suyo=0, ef_atk=hz['efecto'], teid=a_quien):
+                                                _fin_hechizo_monstruo(ses, m, hz, teid)
+                                            return _fin_hechizo
+                                        _fin_hechizo = _fin_de(_hz)
+                                        try:
+                                            asyncio.get_event_loop().call_later(_hz['cast_time'] / 1000.0, _fin_hechizo)
+                                        except Exception:
+                                            _fin_hechizo()
+                                        continue
+                                    if (d_targ <= r_atk or _hz) and ahora >= _cb.fin_de_paso(m):
                                         if ahora - getattr(m, 'ultimo_ataque', 0) >= _cb.cadencia_monstruo(m):
                                             m.ultimo_ataque = ahora
                                             if targ_eid == yo:
@@ -11467,7 +11609,24 @@ class Servidor:
                                                     suyo = max(1, int(round(suyo * (1.0 - b_bf_mit / 100.0))))
                                             ef_atk = m.proj_ef if m.proj_ef > 0 else 148
 
-                                            ses.enviar(_cb.ataque(m.entity_id, targ_eid, _cb.anim_de_monstruo(m.nombre)))
+                                            if _hz:
+                                                # Como el oficial (logs/proxy): 0x0011 de inicio con la
+                                                # casilla del objetivo y, al acabar el lanzamiento, el
+                                                # 0x0011 de cierre, el numero y la vida.
+                                                if suyo:
+                                                    suyo = max(1, int(round(suyo * _hz['mult'])))
+                                                ef_atk = _hz['efecto']
+                                                ses.enviar(_cb.numero_de_dano(m.entity_id, targ_eid, 0, ataque=_hz['id'], efecto=ef_atk,
+                                                                              cast_time=_hz['cast_time'], es_magia=_hz['es_magia'],
+                                                                              tile_x=targ_x, tile_y=targ_y))
+                                            else:
+                                                ses.enviar(_cb.ataque(m.entity_id, targ_eid, _cb.anim_de_monstruo(m.nombre)))
+
+                                            # El hechizo de ESTE golpe viaja en el monstruo: _impacto corre
+                                            # mas tarde y una variable del bucle ya seria la de otro bicho.
+                                            m.hz_golpe = _hz
+                                            _espera_imp = (_hz['cast_time'] / 1000.0 if _hz
+                                                           else _cb.retraso_golpe_monstruo(m))
 
                                             def _impacto(m=m, suyo=suyo, ef_atk=ef_atk, teid=targ_eid):
                                                 if not getattr(m, 'vivo', False):
@@ -11515,7 +11674,7 @@ class Servidor:
                                                     suyo = __import__('avatar_clones').absorber(ses,suyo)
                                                     pj.hp = max(0, pj.hp - suyo)
                                                     pkgs_imp_yo = [
-                                                        _cb.numero_de_dano(m.entity_id, yo, suyo, ataque=656, efecto=ef_atk),
+                                                        _pk_golpe_mon(m, yo, ef_atk),
                                                         _cb.numero_flotante(yo, suyo),
                                                         _cb.atributo(yo, pj.hp, _cb.KIND_HP),
                                                     ]
@@ -11538,6 +11697,27 @@ class Servidor:
                                                         if getattr(m, 'vivo', False) and m.hp > 0:
                                                             pkgs_imp_yo.extend(_procesar_triggers_buffs(ses, yo, m, addr=addr, en_ataque=False))
                                                         ses.enviar_inmediato(*pkgs_imp_yo)
+                                                        # Un hechizo de dano con duracion (silencio, veneno...)
+                                                        # deja ademas su efecto, como una maldicion.
+                                                        _hz_i = getattr(m, 'hz_golpe', None)
+                                                        if _hz_i and _hz_i.get('dot'):
+                                                            _dot_de_monstruo(ses, _hz_i['dot'])
+                                                        # Su estado (aturdir, congelar, silenciar...), con su
+                                                        # probabilidad (轉嫁機率).
+                                                        _est_i = _hz_i.get('est') if _hz_i else None
+                                                        if _est_i and random.randint(1, 100) <= _est_i['prob']:
+                                                            # Con sus bonos (velocidad, defensa...: lo que leen los stats
+                                                            # y _velocidad_de en buff['mag']), no solo el icono.
+                                                            _mag_e = _cb.datos_magia(_est_i['id'])
+                                                            _ent_e = _entrada_de_buff(_mag_e, _est_i['dur_ms'] / 1000.0)
+                                                            _ent_e['control'] = _est_i['control']
+                                                            _buff_a_otro(ses, _est_i['id'], _ent_e, _est_i['dur_ms'], _mag_e)
+                                                        if _hz_i and _hz_i['dur_ms'] >= _cb.DUR_MIN_EFECTO_HECHIZO:
+                                                            _mag_i = _cb.datos_magia(_hz_i['id'])
+                                                            _ent_i = _entrada_de_buff(_mag_i, _hz_i['dur_ms'] / 1000.0)
+                                                            if _cb.control_de_magia(_hz_i['id']):
+                                                                _ent_i['control'] = _cb.control_de_magia(_hz_i['id'])
+                                                            _buff_a_otro(ses, _hz_i['id'], _ent_i, _hz_i['dur_ms'], _mag_i)
                                                     try:
                                                         import equipos as _eq
                                                         _eq.notificar_stats(ses)
@@ -11558,7 +11738,7 @@ class Servidor:
                                                         m.en_combate_con = yo
                                                         _r_p = f_pet.get('ranura')
                                                         pkgs_pet_muerte = [
-                                                            _cb.numero_de_dano(m.entity_id, pet_eid, suyo, ataque=656, efecto=ef_atk),
+                                                            _pk_golpe_mon(m, pet_eid, ef_atk),
                                                             _cb.numero_flotante(pet_eid, suyo),
                                                             _ms.quitar(pet_eid),
                                                             _ms.enlazar(yo, 0),
@@ -11579,14 +11759,14 @@ class Servidor:
                                                             cuentas.guardar_mascota(ses.usuario, ses.personaje.char_id, f_pet, getattr(ses.personaje, 'mascotas', None))
                                                     else:
                                                         ses.enviar_inmediato(
-                                                            _cb.numero_de_dano(m.entity_id, pet_eid, suyo, ataque=656, efecto=ef_atk),
+                                                            _pk_golpe_mon(m, pet_eid, ef_atk),
                                                             _cb.numero_flotante(pet_eid, suyo),
                                                             _cb.atributo(pet_eid, _ms.hp_eff(f_pet), _cb.KIND_HP),
                                                             _ms.armar(f_pet))
                                                 elif getattr(ses, 'invocacion', None) and teid == ses.invocacion.get('entity_id'):
                                                     ses.invocacion['hp'] = max(0, ses.invocacion.get('hp', 1) - suyo)
                                                     ses.enviar_inmediato(
-                                                        _cb.numero_de_dano(m.entity_id, teid, suyo, ataque=656, efecto=ef_atk),
+                                                        _pk_golpe_mon(m, teid, ef_atk),
                                                         _cb.numero_flotante(teid, suyo),
                                                         _cb.atributo(teid, int(100 * ses.invocacion['hp'] / max(1, ses.invocacion['hp_max'])), _cb.KIND_HP)
                                                     )
@@ -11599,7 +11779,7 @@ class Servidor:
                                                 elif getattr(ses, 'invocacion2', None) and teid == ses.invocacion2.get('entity_id'):
                                                     ses.invocacion2['hp'] = max(0, ses.invocacion2.get('hp', 1) - suyo)
                                                     ses.enviar_inmediato(
-                                                        _cb.numero_de_dano(m.entity_id, teid, suyo, ataque=656, efecto=ef_atk),
+                                                        _pk_golpe_mon(m, teid, ef_atk),
                                                         _cb.numero_flotante(teid, suyo),
                                                         _cb.atributo(teid, int(100 * ses.invocacion2['hp'] / max(1, ses.invocacion2['hp_max'])), _cb.KIND_HP)
                                                     )
@@ -11612,7 +11792,7 @@ class Servidor:
 
                                             try:
                                                 asyncio.get_event_loop().call_later(
-                                                    _cb.retraso_golpe_monstruo(m), _impacto)
+                                                    _espera_imp, _impacto)
                                             except Exception:
                                                 _impacto()
                                     else:
@@ -11625,25 +11805,29 @@ class Servidor:
                                             _mov, _espera = _cb.tramo_en_curso(m)
                                             if ahora < _espera:
                                                 continue
-                                            dx = targ_x - m.tile_x
-                                            dy = targ_y - m.tile_y
-                                            dist_t = max(abs(dx), abs(dy))
-                                            pasos_dar = min(max(1, dist_t - r_atk), 3)
-                                            # Bordeando paredes (transitable.py):
-                                            # antes iba en linea recta y las
-                                            # cruzaba. Si no hay por donde, se
-                                            # queda quieto en su lado.
-                                            _nx, _ny = _transitable.avanzar(
-                                                _mapa_de_paso(m, ses.personaje.stage), (m.tile_x, m.tile_y),
-                                                (targ_x, targ_y), pasos_dar, parar_a=r_atk)
-                                            step_x, step_y = _nx - m.tile_x, _ny - m.tile_y
-                                            if not step_x and not step_y:
-                                                m.proximo_paso = ahora + 0.5
-                                                continue
+                                            # El tramo nuevo sale de DONDE VA
+                                            # (pixel interpolado y su casilla),
+                                            # no del destino anterior; si desde
+                                            # ahi no hay paso, desde su casilla.
                                             cur_x, cur_y = _cb.origen_persecucion(
                                                 _mov, ahora, (m.tile_x * 32, m.tile_y * 32))
-                                            m.tile_x += step_x
-                                            m.tile_y += step_y
+                                            _mp = _mapa_de_paso(m, ses.personaje.stage)
+                                            _nx = _ny = None
+                                            for _ini in dict.fromkeys((_cb.casilla_de_pixel((cur_x, cur_y)),
+                                                                       (m.tile_x, m.tile_y))):
+                                                dist_t = max(abs(targ_x - _ini[0]), abs(targ_y - _ini[1]))
+                                                pasos_dar = min(max(1, dist_t - r_atk), _cb.PASOS_PERSECUCION)
+                                                # Bordeando paredes (transitable.py);
+                                                # si no hay por donde, se queda.
+                                                _nx, _ny = _transitable.avanzar(
+                                                    _mp, _ini, (targ_x, targ_y), pasos_dar, parar_a=r_atk)
+                                                if (_nx, _ny) != _ini:
+                                                    break
+                                                _nx = _ny = None
+                                            if _nx is None:
+                                                m.proximo_paso = ahora + 0.5
+                                                continue
+                                            m.tile_x, m.tile_y = _nx, _ny
                                             m.tile[0], m.tile[1] = m.tile_x, m.tile_y
                                             dst_x, dst_y = m.tile_x * 32, m.tile_y * 32
                                             spd = m.move_speed or _cb.VELOCIDAD_PASEO
@@ -12411,6 +12595,16 @@ class Servidor:
             if not d3:
                 return
             tipo, objetivo = d3
+            # Aturdido, congelado... no ataca; silencio: sin hechizos; sello:
+            # sin posturas.
+            if ses.personaje and _cb.bloqueado_por_control(ses.personaje, tipo, time.time(),
+                                                           _cb.ATAQUE_NORMAL):
+                return
+            # El arma que pide la habilidad (裝備限制), en alguna mano.
+            if tipo != _cb.ATAQUE_NORMAL and not _cb.arma_valida(getattr(ses, 'inventario', None), tipo):
+                import clases as _cl_ar
+                ses.enviar(_cl_ar.aviso('You need the required weapon equipped to use this skill.', tipo=0))
+                return
             tx = getattr(d3, 'tx', 0)
             ty = getattr(d3, 'ty', 0)
             if tipo != _cb.ATAQUE_NORMAL:
@@ -14792,6 +14986,7 @@ class Servidor:
             if hasattr(ses,'terminar_carga_mapa'):
                 ses.terminar_carga_mapa()
             _eventos_al_aterrizar(ses, addr)
+            __import__('mapa_tesoro').al_entrar(ses)
             log.info(f"[{addr}] mapa cargado exitosamente: stage {p.stage} "
                      f"tile ({p.tile_x},{p.tile_y})")
             return
@@ -16881,6 +17076,9 @@ class Servidor:
                 return
             if __import__('travel_items').usar(ses,ranura,objetivo):
                 return
+            # Robber Lord Map Piece: al mapa del tesoro (TreMap).
+            if __import__('mapa_tesoro').usar_pieza(ses, ranura):
+                return
             if _usar_objeto_de_servicio(ses, addr, ranura, objetivo):
                 return
 
@@ -18363,6 +18561,8 @@ class Servidor:
             if ses.personaje and __import__('elementary').pulsar(ses,ent):
                 return
             if __import__('travel_items').pulsar(ses,ent):
+                return
+            if __import__('mapa_tesoro').pulsar(ses, ent):
                 return
             if _casa_click(ses, ent):
                 return
@@ -20150,6 +20350,10 @@ class Servidor:
                 if _pend is not None:
                     _pend.cancel()
                     ses._basico_pendiente = None
+                # Su vida, para el marco del objetivo (si no, sale vacio).
+                import combate as _cb_sel
+                _m_sel = ses.monstruos[parametro]
+                ses.enviar(_cb_sel.atributo(parametro, _m_sel.porcentaje if getattr(_m_sel, 'vivo', False) else 0))
                 return
             # A un jugador (PvP) sigue pegando como antes; no se ha medido.
             if accion == 0x0C and ses.personaje and not getattr(ses, 'muerto', False):

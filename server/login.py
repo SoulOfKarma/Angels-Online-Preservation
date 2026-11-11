@@ -110,6 +110,7 @@ class Personaje:
     star_blessing: dict = field(default_factory=dict)
     travel_mark: dict = field(default_factory=dict)
     recetas: list = field(default_factory=list)
+    tesoro: dict = field(default_factory=dict)       # mapa del tesoro (mapa_tesoro.py)
 
 
 def _cargar_secuencia():
