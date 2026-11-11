@@ -346,7 +346,14 @@ def rama_de_relleno(ya_llevadas) -> int:
 # Wizard Jr. La regla escrita a mano de antes (_clase_por_reglas) daba Wizard
 # Jr. en los cuatro. Es lo que docs/01_HECHOS_VERIFICADOS.md tenia como "regla
 # no identificada".
-# EMPATES: sin verificar todavia; por ahora gana el id mas bajo.
+# Tambien comprobado (11/11/2026, tres pruebas en el Skill Angel):
+#   - el nivel de la rama NO pesa: Meditate/Hit/Staff Hit/Vestment a Lv 3 con
+#     Shield y Weapon a Lv 1 sale Protector, no una clase de magia;
+#   - en un EMPATE gana el id mas bajo: Earth+Sword+Axe+Hit+Staff Hit+Vestment
+#     (Magician 13 = M.Soldier 13) sale Magician; Shield+Weapon+Meditate+Hit+
+#     Staff Hit+Vestment (Protector 10 = Weaponsmith 10) sale Protector;
+#   - el orden de las ranuras no importa: con Shield y Weapon cambiados de
+#     ranura sigue saliendo Protector.
 _PUNTOS_CLASE = None
 
 
@@ -387,7 +394,8 @@ def puntos_de_clase() -> dict:
 
 def calcular_class_id(skill_ids) -> int:
     """El class_id (0..20 de class.xml) de las ramas puestas: la clase con mas
-    puntos de skill.xml. Sin la tabla, la regla escrita a mano de antes."""
+    puntos de skill.xml, y en empate la de id mas bajo. Sin la tabla, la
+    regla escrita a mano de antes."""
     ids = set()
     for s in skill_ids:
         ids.add(s[0] if isinstance(s, (list, tuple)) else int(s))
