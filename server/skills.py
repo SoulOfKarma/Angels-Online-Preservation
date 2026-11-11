@@ -336,8 +336,76 @@ def rama_de_relleno(ya_llevadas) -> int:
     return 0
 
 
+# LA CLASE SALE DE LOS PUNTOS DE skill.xml. Cada rama trae atributos ptN="v":
+# v puntos para la clase N de class.xml (Life: pt1=10 Priest, pt16=6 Wizard
+# Jr., pt17=5, pt18=5; Curse/Meditate/Hit/Staff Hit: 1 a cada clase de magia).
+# El cliente suma los de las seis ramas puestas y enseña la de mas puntos.
+# Comprobado en el cliente 8.7.6.1 (11/11/2026): el set inicial de magia
+# (Curse, Meditate, Hit, Staff Hit, Vestment) con Life / Wraith / Chaos /
+# Earth sale Priest / Summoner / Wizard / Magician, 15 puntos contra 11 de
+# Wizard Jr. La regla escrita a mano de antes (_clase_por_reglas) daba Wizard
+# Jr. en los cuatro. Es lo que docs/01_HECHOS_VERIFICADOS.md tenia como "regla
+# no identificada".
+# EMPATES: sin verificar todavia; por ahora gana el id mas bajo.
+_PUNTOS_CLASE = None
+
+
+def _xml_de_habilidades() -> str:
+    """El skill.xml vigente: el extraido del cliente, o la plantilla del repo."""
+    import re
+    import zlib
+    raiz = pathlib.Path(__file__).resolve().parent.parent / 'extracted_paks'
+    mejor = None
+    if raiz.is_dir():
+        for c in raiz.iterdir():
+            m = re.fullmatch(r'update(\d*)', c.name.lower())
+            f = c / 'setting' / 'eng' / 'skill.xml'
+            if m and f.is_file() and (mejor is None or int(m.group(1) or 0) > mejor[0]):
+                mejor = (int(m.group(1) or 0), f)
+    if mejor:
+        return mejor[1].read_text(encoding='utf-8', errors='ignore')
+    plantilla = pathlib.Path(__file__).parent / 'plantillas' / 'skill_sin_exclusion.xml.zlib'
+    if plantilla.exists():
+        return zlib.decompress(plantilla.read_bytes()).decode('utf-8', errors='ignore')
+    return ''
+
+
+def puntos_de_clase() -> dict:
+    """{rama: {class_id: puntos}} de los ptN de skill.xml (se lee una vez)."""
+    global _PUNTOS_CLASE
+    if _PUNTOS_CLASE is None:
+        import re
+        tabla = {}
+        for attrs in re.findall(r'<技能 ([^>]*)/>', _xml_de_habilidades()):
+            m = re.search(r'編號="(\d+)"', attrs)
+            if m:
+                tabla[int(m.group(1))] = {int(k): int(v) for k, v in
+                                          re.findall(r'\bpt(\d+)="(\d+)"', attrs)}
+        _PUNTOS_CLASE = tabla
+    return _PUNTOS_CLASE
+
+
 def calcular_class_id(skill_ids) -> int:
-    """Calcula el class_id (0..20 de class.xml) segun las habilidades equipadas."""
+    """El class_id (0..20 de class.xml) de las ramas puestas: la clase con mas
+    puntos de skill.xml. Sin la tabla, la regla escrita a mano de antes."""
+    ids = set()
+    for s in skill_ids:
+        ids.add(s[0] if isinstance(s, (list, tuple)) else int(s))
+    tabla = puntos_de_clase()
+    if not tabla:
+        return _clase_por_reglas(ids)
+    total = {}
+    for sid in ids:
+        for cid, v in tabla.get(sid, {}).items():
+            total[cid] = total.get(cid, 0) + v
+    if not total:
+        return 0  # Novice
+    mejor = max(total.values())
+    return min(cid for cid, v in total.items() if v == mejor)
+
+
+def _clase_por_reglas(skill_ids) -> int:
+    """La regla escrita a mano de antes. Solo si no hay skill.xml."""
     ids = set()
     for s in skill_ids:
         ids.add(s[0] if isinstance(s, (list, tuple)) else int(s))
