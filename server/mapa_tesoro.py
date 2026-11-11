@@ -237,6 +237,26 @@ def pulsar(ses, ent):
     return True
 
 
+def borrar(ses, cuerpo):
+    """c2s 0x012A [u32 tipo]: el boton Delete de la pestana TreMap (visto en
+    el log al pulsarlo). Vacia el mapa normal (tipo 0), lo guarda y avisa con
+    el texto 721. El especial (tipo 1) no se lleva en el servidor."""
+    import recent_mall
+    import clases
+    tipo = int.from_bytes(bytes(cuerpo or b'')[:4].ljust(4, bytes(1)), 'little')
+    if tipo != 0 or not getattr(ses, 'personaje', None):
+        return
+    vacio = {'mapa': 0, 'escena': 0, 'piezas': 0, 'punto': 0, 'semilla': 0, 'nivel': 0}
+    try:
+        recent_mall.cambiar(ses, {}, [], transaccion=lambda con, data: data.__setitem__('tesoro', vacio))
+    except Exception as e:
+        ses.enviar(clases.aviso(str(e) or 'The treasure map could not be deleted.', tipo=0))
+        return
+    ses.personaje.tesoro = vacio
+    ses._cofre_tesoro = None
+    ses.enviar(paquete(vacio), _aviso(721))
+
+
 def al_entrar(ses):
     """El estado del mapa al cargar el mapa (la ventana lo lee del personaje).
     El cofre de antes se queda en el otro mapa: hay que volver al punto."""

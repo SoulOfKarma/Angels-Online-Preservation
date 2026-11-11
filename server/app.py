@@ -5570,6 +5570,20 @@ def _aplicar_efectos(ses, addr, efectos, motivo=''):
                 _ly_bless.bendecir(ses)
             elif que == 'magia' and p and p.stage == 41 and int(ef[1]) == 14955:
                 __import__('lyceum_services').bendicion_party(ses)
+            elif que == 'magia' and p and p.stage != 41:
+                # CAST generico del mapa sobre el jugador: su efecto visual y,
+                # si dura y no es un ataque, su buff. La puerta equivocada del
+                # laberinto de Gulp Room: CAST(0, 0, 3072), el "Swiftness
+                # Spell for Instance Testing" (efecto 45, 1 s clavado).
+                import combate as _cb_mg
+                _mid_mg = next((int(x) for x in ef[1:4] if int(x or 0)), 0)
+                _mg = _cb_mg.datos_magia(_mid_mg) if _mid_mg else {}
+                if _mg.get('efecto'):
+                    ses.enviar(_cb_mg.efecto_magia_self_inicio(p.entity_id, int(_mg['efecto']), _mid_mg),
+                               _cb_mg.efecto_magia_self_fin(p.entity_id, int(_mg['efecto']), _mid_mg))
+                    _dur_mg = int(_mg.get('dur_ms') or 0)
+                    if _dur_mg > 0 and not _mg.get('es_ataque'):
+                        _buff_a_otro(ses, _mid_mg, _entrada_de_buff(_mg, _dur_mg / 1000.0), _dur_mg, _mg)
             elif que == 'salir_de_casa':
                 _salir_de_casa(ses, addr)
             elif que == 'casa_buff_diario':
@@ -15000,6 +15014,11 @@ class Servidor:
         # o sea [u32 n] y luego n veces [u32 item_id][u32 cantidad]. Antes se
         # leia UN solo item por mensaje, por eso no se podia comprar mas de
         # una cosa a la vez ni llevarse varias unidades.
+        # Delete de la pestana TreMap (mapa del tesoro).
+        if opcode == 0x012A and ses.rol == 'mundo':
+            __import__('mapa_tesoro').borrar(ses, cuerpo)
+            return
+
         if opcode == 0x0027 and ses.rol == 'mundo' and cuerpo and len(cuerpo) >= 4:
             import clases as _c
             import inventario as _iv

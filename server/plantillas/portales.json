@@ -10976,7 +10976,7 @@
      244,
      20
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map076.mpc, objeto 60001 en esa casilla, evento 1, que hace CHANGE_MAP(71, 2). Llegada (244, 20): la confirma jumpmap.xml. Las casillas del TAG son [(243, 25), (244, 20), (254, 19)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -10992,7 +10992,7 @@
      401,
      160
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map076.mpc, objeto 60001 en esa casilla, evento 3, que hace GOTO_TAG(2). Llegada (401, 160): la mas despejada de las 3 del TAG. Las casillas del TAG son [(397, 161), (401, 160), (397, 167)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -11008,7 +11008,7 @@
      204,
      185
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "ACTIVADA desde el cliente. Del mapa del cliente: map076.mpc, objeto 60001 en esa casilla, evento 4, que hace abrir el dialogo 1004, que detras lleva GOTO_TAG(5). Llegada (204, 185): la mas despejada de las 2 del TAG. ESCALERA CON CONDICION: en el juego de verdad el dialogo comprueba algo antes de dejar pasar -- en Limitless Tower, que el piso este limpio de bichos. Esa condicion NO se modela y aqui se pasa siempre; sin esto el tornado quedaba muerto y la instancia no se podia recorrer. Las casillas del TAG son [(211, 185), (204, 185)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. Lo que decia antes: ACTIVADA desde el cliente. Del mapa del cliente: map076.mpc, objeto 60001 en esa casilla, evento 4, que hace sacar el dialogo [(1004,)]. su evento no viaja, solo saca dialogo.  Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. Lo que decia antes: ACTIVADA desde el cliente. Del mapa del cliente: map076.mpc, objeto 60001 en esa casilla, evento 4, que hace sacar el dialogo [(1004,)]. su evento no viaja, solo saca dialogo.  Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. Lo que decia antes: ACTIVADA desde el cliente. Del mapa del cliente: map076.mpc, objeto 60001 en esa casilla, evento 4, que hace sacar el dialogo [(1004,)]. su evento no viaja, solo saca dialogo.  Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. Lo que decia antes: ACTIVADA desde el cliente. Del mapa del cliente: map076.mpc, objeto 60001 en esa casilla, evento 4, que hace sacar el dialogo [(1004,)]. su evento no viaja, solo saca dialogo.  Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. Lo que decia antes: Del mapa del cliente: map076.mpc, objeto 60001 en esa casilla, evento 4, que hace sacar el dialogo [(1004,)]. su evento no viaja, solo saca dialogo.  Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -11024,7 +11024,7 @@
      343,
      195
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map076.mpc, objeto 60001 en esa casilla, evento 5, que hace GOTO_TAG(4). Llegada (343, 195): la mas despejada de las 2 del TAG. Las casillas del TAG son [(339, 194), (343, 195)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -11040,7 +11040,7 @@
      74,
      84
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "ACTIVADA desde el cliente. Del mapa del cliente: map076.mpc, objeto 60001 en esa casilla, evento 6, que hace abrir el dialogo 1006, que detras lleva GOTO_TAG(7). Llegada (74, 84): la mas despejada de las 2 del TAG. ESCALERA CON CONDICION: en el juego de verdad el dialogo comprueba algo antes de dejar pasar -- en Limitless Tower, que el piso este limpio de bichos. Esa condicion NO se modela y aqui se pasa siempre; sin esto el tornado quedaba muerto y la instancia no se podia recorrer. Las casillas del TAG son [(74, 84), (78, 88)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. Lo que decia antes: ACTIVADA desde el cliente. Del mapa del cliente: map076.mpc, objeto 60001 en esa casilla, evento 6, que hace sacar el dialogo [(1006,)]. su evento no viaja, solo saca dialogo.  Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. Lo que decia antes: ACTIVADA desde el cliente. Del mapa del cliente: map076.mpc, objeto 60001 en esa casilla, evento 6, que hace sacar el dialogo [(1006,)]. su evento no viaja, solo saca dialogo.  Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. Lo que decia antes: ACTIVADA desde el cliente. Del mapa del cliente: map076.mpc, objeto 60001 en esa casilla, evento 6, que hace sacar el dialogo [(1006,)]. su evento no viaja, solo saca dialogo.  Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. Lo que decia antes: ACTIVADA desde el cliente. Del mapa del cliente: map076.mpc, objeto 60001 en esa casilla, evento 6, que hace sacar el dialogo [(1006,)]. su evento no viaja, solo saca dialogo.  Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. Lo que decia antes: Del mapa del cliente: map076.mpc, objeto 60001 en esa casilla, evento 6, que hace sacar el dialogo [(1006,)]. su evento no viaja, solo saca dialogo.  Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -11056,7 +11056,7 @@
      98,
      192
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map076.mpc, objeto 60001 en esa casilla, evento 7, que hace GOTO_TAG(6). Llegada (98, 192): la mas despejada de las 2 del TAG. Las casillas del TAG son [(94, 191), (98, 192)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -11072,7 +11072,7 @@
      61,
      215
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "ACTIVADA desde el cliente. Del mapa del cliente: map076.mpc, objeto 60001 en esa casilla, evento 8, que hace abrir el dialogo 1008, que detras lleva CHANGE_MAP(77, 1). Llegada (61, 215): la mas despejada de las 2 del TAG. ESCALERA CON CONDICION: en el juego de verdad el dialogo comprueba algo antes de dejar pasar -- en Limitless Tower, que el piso este limpio de bichos. Esa condicion NO se modela y aqui se pasa siempre; sin esto el tornado quedaba muerto y la instancia no se podia recorrer. Las casillas del TAG son [(61, 215), (64, 217)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. Lo que decia antes: ACTIVADA desde el cliente. Del mapa del cliente: map076.mpc, objeto 60001 en esa casilla, evento 8, que hace sacar el dialogo [(1008,)]. su evento no viaja, solo saca dialogo.  Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. Lo que decia antes: ACTIVADA desde el cliente. Del mapa del cliente: map076.mpc, objeto 60001 en esa casilla, evento 8, que hace sacar el dialogo [(1008,)]. su evento no viaja, solo saca dialogo.  Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. Lo que decia antes: ACTIVADA desde el cliente. Del mapa del cliente: map076.mpc, objeto 60001 en esa casilla, evento 8, que hace sacar el dialogo [(1008,)]. su evento no viaja, solo saca dialogo.  Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. Lo que decia antes: ACTIVADA desde el cliente. Del mapa del cliente: map076.mpc, objeto 60001 en esa casilla, evento 8, que hace sacar el dialogo [(1008,)]. su evento no viaja, solo saca dialogo.  Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. Lo que decia antes: Del mapa del cliente: map076.mpc, objeto 60001 en esa casilla, evento 8, que hace sacar el dialogo [(1008,)]. su evento no viaja, solo saca dialogo.  Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -11088,7 +11088,7 @@
      35,
      238
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map076.mpc, objeto 60001 en esa casilla, evento 9, que hace CHANGE_MAP(77, 199). Llegada (35, 238): la mas despejada de las 1 del TAG. Las casillas del TAG son [(35, 238)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -11104,7 +11104,7 @@
      25,
      12
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map076.mpc, objeto 60001 en esa casilla, evento 11, que hace GOTO_TAG(10). Llegada (25, 12): la mas despejada de las 3 del TAG. Las casillas del TAG son [(22, 14), (25, 12), (16, 13)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -11120,7 +11120,7 @@
      66,
      246
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map076.mpc, objeto 60001 en esa casilla, evento 12, que hace CHANGE_MAP(78, 1). Llegada (66, 246): la mas despejada de las 3 del TAG. Las casillas del TAG son [(66, 246), (70, 249), (76, 249)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -11136,7 +11136,7 @@
      47,
      46
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "ACTIVADA desde el cliente. Del mapa del cliente: map076.mpc, objeto 60001 en esa casilla, evento 13, que hace abrir el dialogo 1013, que detras lleva GOTO_TAG(14). Llegada (47, 46): la mas despejada de las 2 del TAG. ESCALERA CON CONDICION: en el juego de verdad el dialogo comprueba algo antes de dejar pasar -- en Limitless Tower, que el piso este limpio de bichos. Esa condicion NO se modela y aqui se pasa siempre; sin esto el tornado quedaba muerto y la instancia no se podia recorrer. Las casillas del TAG son [(43, 43), (47, 46)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. Lo que decia antes: ACTIVADA desde el cliente. Del mapa del cliente: map076.mpc, objeto 60001 en esa casilla, evento 13, que hace sacar el dialogo [(1013,)]. su evento no viaja, solo saca dialogo.  Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. Lo que decia antes: ACTIVADA desde el cliente. Del mapa del cliente: map076.mpc, objeto 60001 en esa casilla, evento 13, que hace sacar el dialogo [(1013,)]. su evento no viaja, solo saca dialogo.  Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. Lo que decia antes: ACTIVADA desde el cliente. Del mapa del cliente: map076.mpc, objeto 60001 en esa casilla, evento 13, que hace sacar el dialogo [(1013,)]. su evento no viaja, solo saca dialogo.  Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. Lo que decia antes: ACTIVADA desde el cliente. Del mapa del cliente: map076.mpc, objeto 60001 en esa casilla, evento 13, que hace sacar el dialogo [(1013,)]. su evento no viaja, solo saca dialogo.  Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. Lo que decia antes: Del mapa del cliente: map076.mpc, objeto 60001 en esa casilla, evento 13, que hace sacar el dialogo [(1013,)]. su evento no viaja, solo saca dialogo.  Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -11152,7 +11152,7 @@
      163,
      106
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "ACTIVADA desde el cliente. Del mapa del cliente: map076.mpc, objeto 60001 en esa casilla, evento 14, que hace abrir el dialogo 1014, que detras lleva GOTO_TAG(13). Llegada (163, 106): la mas despejada de las 2 del TAG. ESCALERA CON CONDICION: en el juego de verdad el dialogo comprueba algo antes de dejar pasar -- en Limitless Tower, que el piso este limpio de bichos. Esa condicion NO se modela y aqui se pasa siempre; sin esto el tornado quedaba muerto y la instancia no se podia recorrer. Las casillas del TAG son [(163, 106), (165, 107)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. Lo que decia antes: ACTIVADA desde el cliente. Del mapa del cliente: map076.mpc, objeto 60001 en esa casilla, evento 14, que hace sacar el dialogo [(1014,)]. su evento no viaja, solo saca dialogo.  Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. Lo que decia antes: ACTIVADA desde el cliente. Del mapa del cliente: map076.mpc, objeto 60001 en esa casilla, evento 14, que hace sacar el dialogo [(1014,)]. su evento no viaja, solo saca dialogo.  Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. Lo que decia antes: ACTIVADA desde el cliente. Del mapa del cliente: map076.mpc, objeto 60001 en esa casilla, evento 14, que hace sacar el dialogo [(1014,)]. su evento no viaja, solo saca dialogo.  Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. Lo que decia antes: ACTIVADA desde el cliente. Del mapa del cliente: map076.mpc, objeto 60001 en esa casilla, evento 14, que hace sacar el dialogo [(1014,)]. su evento no viaja, solo saca dialogo.  Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. Lo que decia antes: Del mapa del cliente: map076.mpc, objeto 60001 en esa casilla, evento 14, que hace sacar el dialogo [(1014,)]. su evento no viaja, solo saca dialogo.  Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -11170,7 +11170,7 @@
      113,
      200
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map077.mpc, objeto 60001 en esa casilla, evento 1, que hace CHANGE_MAP(76, 8). Llegada (113, 200): la mas despejada de las 1 del TAG. Las casillas del TAG son [(113, 200)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -11186,7 +11186,7 @@
      57,
      175
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map077.mpc, objeto 60001 en esa casilla, evento 2, que hace GOTO_TAG(4). Llegada (57, 175): la mas despejada de las 2 del TAG. Las casillas del TAG son [(54, 173), (57, 175)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -11202,7 +11202,7 @@
      115,
      227
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map077.mpc, objeto 60001 en esa casilla, evento 3, que hace GOTO_TAG(7). Llegada (115, 227): la mas despejada de las 2 del TAG. Las casillas del TAG son [(115, 227), (119, 224)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -11218,7 +11218,7 @@
      24,
      253
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map077.mpc, objeto 60001 en esa casilla, evento 4, que hace GOTO_TAG(2). Llegada (24, 253): la mas despejada de las 2 del TAG. Las casillas del TAG son [(24, 253), (21, 251)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -11234,7 +11234,7 @@
      144,
      172
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map077.mpc, objeto 60001 en esa casilla, evento 5, que hace GOTO_TAG(10). Llegada (144, 172): la mas despejada de las 2 del TAG. Las casillas del TAG son [(140, 169), (144, 172)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -11250,7 +11250,7 @@
      44,
      110
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map077.mpc, objeto 60001 en esa casilla, evento 6, que hace GOTO_TAG(13). Llegada (44, 110): la mas despejada de las 2 del TAG. Las casillas del TAG son [(41, 111), (44, 110)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -11266,7 +11266,7 @@
      56,
      248
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map077.mpc, objeto 60001 en esa casilla, evento 7, que hace GOTO_TAG(3). Llegada (56, 248): la mas despejada de las 2 del TAG. Las casillas del TAG son [(56, 248), (59, 246)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -11282,7 +11282,7 @@
      61,
      119
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map077.mpc, objeto 60001 en esa casilla, evento 8, que hace GOTO_TAG(14). Llegada (61, 119): la mas despejada de las 2 del TAG. Las casillas del TAG son [(58, 117), (61, 119)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -11298,7 +11298,7 @@
      199,
      225
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map077.mpc, objeto 60001 en esa casilla, evento 9, que hace GOTO_TAG(17). Llegada (199, 225): la mas despejada de las 2 del TAG. Las casillas del TAG son [(202, 223), (199, 225)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -11314,7 +11314,7 @@
      29,
      192
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map077.mpc, objeto 60001 en esa casilla, evento 10, que hace GOTO_TAG(5). Llegada (29, 192): la mas despejada de las 2 del TAG. Las casillas del TAG son [(27, 191), (29, 192)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -11330,7 +11330,7 @@
      144,
      116
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map077.mpc, objeto 60001 en esa casilla, evento 11, que hace GOTO_TAG(20). Llegada (144, 116): la mas despejada de las 2 del TAG. Las casillas del TAG son [(141, 114), (144, 116)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -11346,7 +11346,7 @@
      207,
      102
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map077.mpc, objeto 60001 en esa casilla, evento 12, que hace GOTO_TAG(23). Llegada (207, 102): la mas despejada de las 2 del TAG. Las casillas del TAG son [(210, 99), (207, 102)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -11362,7 +11362,7 @@
      62,
      188
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map077.mpc, objeto 60001 en esa casilla, evento 13, que hace GOTO_TAG(6). Llegada (62, 188): la mas despejada de las 2 del TAG. Las casillas del TAG son [(65, 187), (62, 188)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -11378,7 +11378,7 @@
      109,
      250
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map077.mpc, objeto 60001 en esa casilla, evento 14, que hace GOTO_TAG(8). Llegada (109, 250): la mas despejada de las 2 del TAG. Las casillas del TAG son [(106, 248), (109, 250)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -11394,7 +11394,7 @@
      229,
      107
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map077.mpc, objeto 60001 en esa casilla, evento 15, que hace GOTO_TAG(24). Llegada (229, 107): la mas despejada de las 2 del TAG. Las casillas del TAG son [(227, 105), (229, 107)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -11410,7 +11410,7 @@
      209,
      160
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map077.mpc, objeto 60001 en esa casilla, evento 16, que hace GOTO_TAG(27). Llegada (209, 160): la mas despejada de las 2 del TAG. Las casillas del TAG son [(209, 160), (205, 162)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -11426,7 +11426,7 @@
      140,
      245
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map077.mpc, objeto 60001 en esa casilla, evento 17, que hace GOTO_TAG(9). Llegada (140, 245): la mas despejada de las 2 del TAG. Las casillas del TAG son [(143, 243), (140, 245)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -11442,7 +11442,7 @@
      228,
      169
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map077.mpc, objeto 60001 en esa casilla, evento 18, que hace GOTO_TAG(28). Llegada (228, 169): la mas despejada de las 2 del TAG. Las casillas del TAG son [(225, 167), (228, 169)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -11458,7 +11458,7 @@
      283,
      225
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map077.mpc, objeto 60001 en esa casilla, evento 19, que hace GOTO_TAG(31). Llegada (283, 225): la mas despejada de las 2 del TAG. Las casillas del TAG son [(288, 223), (283, 225)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -11474,7 +11474,7 @@
      116,
      191
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map077.mpc, objeto 60001 en esa casilla, evento 20, que hace GOTO_TAG(11). Llegada (116, 191): la mas despejada de las 2 del TAG. Las casillas del TAG son [(114, 188), (116, 191)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -11490,7 +11490,7 @@
      234,
      35
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map077.mpc, objeto 60001 en esa casilla, evento 21, que hace GOTO_TAG(34). Llegada (234, 35): la mas despejada de las 2 del TAG. Las casillas del TAG son [(234, 35), (232, 33)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -11506,7 +11506,7 @@
      38,
      48
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map077.mpc, objeto 60001 en esa casilla, evento 22, que hace GOTO_TAG(37). Llegada (38, 48): la mas despejada de las 2 del TAG. Las casillas del TAG son [(42, 46), (38, 48)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -11522,7 +11522,7 @@
      147,
      185
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map077.mpc, objeto 60001 en esa casilla, evento 23, que hace GOTO_TAG(12). Llegada (147, 185): la mas despejada de las 2 del TAG. Las casillas del TAG son [(149, 184), (147, 185)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -11538,7 +11538,7 @@
      33,
      137
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map077.mpc, objeto 60001 en esa casilla, evento 24, que hace GOTO_TAG(15). Llegada (33, 137): la mas despejada de las 2 del TAG. Las casillas del TAG son [(29, 135), (33, 137)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -11554,7 +11554,7 @@
      61,
      54
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map077.mpc, objeto 60001 en esa casilla, evento 25, que hace GOTO_TAG(38). Llegada (61, 54): la mas despejada de las 2 del TAG. Las casillas del TAG son [(59, 52), (61, 54)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -11570,7 +11570,7 @@
      129,
      48
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map077.mpc, objeto 60001 en esa casilla, evento 26, que hace GOTO_TAG(41). Llegada (129, 48): la mas despejada de las 2 del TAG. Las casillas del TAG son [(132, 46), (129, 48)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -11586,7 +11586,7 @@
      65,
      132
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map077.mpc, objeto 60001 en esa casilla, evento 27, que hace GOTO_TAG(16). Llegada (65, 132): la mas despejada de las 2 del TAG. Las casillas del TAG son [(65, 132), (67, 130)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -11602,7 +11602,7 @@
      194,
      250
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map077.mpc, objeto 60001 en esa casilla, evento 28, que hace GOTO_TAG(18). Llegada (194, 250): la mas despejada de las 2 del TAG. Las casillas del TAG son [(191, 247), (194, 250)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -11618,7 +11618,7 @@
      151,
      55
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map077.mpc, objeto 60001 en esa casilla, evento 29, que hace GOTO_TAG(42). Llegada (151, 55): la mas despejada de las 2 del TAG. Las casillas del TAG son [(148, 53), (151, 55)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -11634,7 +11634,7 @@
      288,
      164
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map077.mpc, objeto 60001 en esa casilla, evento 30, que hace GOTO_TAG(45). Llegada (288, 164): la mas despejada de las 2 del TAG. Las casillas del TAG son [(288, 164), (291, 161)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -11650,7 +11650,7 @@
      224,
      245
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map077.mpc, objeto 60001 en esa casilla, evento 31, que hace GOTO_TAG(19). Llegada (224, 245): la mas despejada de las 2 del TAG. Las casillas del TAG son [(224, 245), (227, 243)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -11666,7 +11666,7 @@
      314,
      165
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map077.mpc, objeto 60001 en esa casilla, evento 32, que hace GOTO_TAG(46). Llegada (314, 165): la mas despejada de las 2 del TAG. Las casillas del TAG son [(311, 164), (314, 165)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -11682,7 +11682,7 @@
      290,
      100
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map077.mpc, objeto 60001 en esa casilla, evento 33, que hace GOTO_TAG(49). Llegada (290, 100): la mas despejada de las 2 del TAG. Las casillas del TAG son [(293, 98), (290, 100)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -11698,7 +11698,7 @@
      118,
      134
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map077.mpc, objeto 60001 en esa casilla, evento 34, que hace GOTO_TAG(21). Llegada (118, 134): la mas despejada de las 2 del TAG. Las casillas del TAG son [(115, 133), (118, 134)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -11714,7 +11714,7 @@
      68,
      38
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map077.mpc, objeto 60001 en esa casilla, evento 35, que hace CHANGE_MAP(76, 9). Llegada (68, 38): la mas despejada de las 1 del TAG. Las casillas del TAG son [(68, 38)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py.",
@@ -11731,7 +11731,7 @@
      298,
      28
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map077.mpc, objeto 60001 en esa casilla, evento 36, que hace GOTO_TAG(52). Llegada (298, 28): la mas despejada de las 2 del TAG. Las casillas del TAG son [(301, 26), (298, 28)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -11747,7 +11747,7 @@
      148,
      129
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map077.mpc, objeto 60001 en esa casilla, evento 37, que hace GOTO_TAG(22). Llegada (148, 129): la mas despejada de las 2 del TAG. Las casillas del TAG son [(151, 128), (148, 129)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -11763,7 +11763,7 @@
      202,
      125
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map077.mpc, objeto 60001 en esa casilla, evento 38, que hace GOTO_TAG(25). Llegada (202, 125): la mas despejada de las 2 del TAG. Las casillas del TAG son [(202, 125), (200, 124)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -11779,7 +11779,7 @@
      68,
      38
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map077.mpc, objeto 60001 en esa casilla, evento 39, que hace CHANGE_MAP(76, 9). Llegada (68, 38): la mas despejada de las 1 del TAG. Las casillas del TAG son [(68, 38)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py.",
@@ -11796,7 +11796,7 @@
      298,
      28
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map077.mpc, objeto 60001 en esa casilla, evento 40, que hace GOTO_TAG(52). Llegada (298, 28): la mas despejada de las 2 del TAG. Las casillas del TAG son [(301, 26), (298, 28)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -11812,7 +11812,7 @@
      234,
      120
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map077.mpc, objeto 60001 en esa casilla, evento 41, que hace GOTO_TAG(26). Llegada (234, 120): la mas despejada de las 2 del TAG. Las casillas del TAG son [(234, 120), (236, 118)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -11828,7 +11828,7 @@
      199,
      186
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map077.mpc, objeto 60001 en esa casilla, evento 42, que hace GOTO_TAG(29). Llegada (199, 186): la mas despejada de las 2 del TAG. Las casillas del TAG son [(196, 184), (199, 186)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -11844,7 +11844,7 @@
      68,
      38
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map077.mpc, objeto 60001 en esa casilla, evento 43, que hace CHANGE_MAP(76, 9). Llegada (68, 38): la mas despejada de las 1 del TAG. Las casillas del TAG son [(68, 38)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py.",
@@ -11861,7 +11861,7 @@
      298,
      28
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map077.mpc, objeto 60001 en esa casilla, evento 44, que hace GOTO_TAG(52). Llegada (298, 28): la mas despejada de las 2 del TAG. Las casillas del TAG son [(301, 26), (298, 28)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -11877,7 +11877,7 @@
      230,
      181
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map077.mpc, objeto 60001 en esa casilla, evento 45, que hace GOTO_TAG(30). Llegada (230, 181): la mas despejada de las 2 del TAG. Las casillas del TAG son [(234, 180), (230, 181)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -11893,7 +11893,7 @@
      277,
      248
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map077.mpc, objeto 60001 en esa casilla, evento 46, que hace GOTO_TAG(32). Llegada (277, 248): la mas despejada de las 2 del TAG. Las casillas del TAG son [(273, 246), (277, 248)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -11909,7 +11909,7 @@
      68,
      38
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map077.mpc, objeto 60001 en esa casilla, evento 47, que hace CHANGE_MAP(76, 9). Llegada (68, 38): la mas despejada de las 1 del TAG. Las casillas del TAG son [(68, 38)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py.",
@@ -11926,7 +11926,7 @@
      298,
      28
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map077.mpc, objeto 60001 en esa casilla, evento 48, que hace GOTO_TAG(52). Llegada (298, 28): la mas despejada de las 2 del TAG. Las casillas del TAG son [(301, 26), (298, 28)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -11942,7 +11942,7 @@
      309,
      244
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map077.mpc, objeto 60001 en esa casilla, evento 49, que hace GOTO_TAG(33). Llegada (309, 244): la mas despejada de las 2 del TAG. Las casillas del TAG son [(309, 244), (311, 242)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -11958,7 +11958,7 @@
      68,
      38
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map077.mpc, objeto 60001 en esa casilla, evento 50, que hace CHANGE_MAP(76, 9). Llegada (68, 38): la mas despejada de las 1 del TAG. Las casillas del TAG son [(68, 38)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py.",
@@ -11975,7 +11975,7 @@
      298,
      28
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map077.mpc, objeto 60001 en esa casilla, evento 51, que hace GOTO_TAG(52). Llegada (298, 28): la mas despejada de las 2 del TAG. Las casillas del TAG son [(301, 26), (298, 28)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -11991,7 +11991,7 @@
      314,
      120
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map077.mpc, objeto 60001 en esa casilla, evento 52, que hace GOTO_TAG(51). Llegada (314, 120): la mas despejada de las 2 del TAG. Las casillas del TAG son [(314, 120), (317, 118)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -12009,7 +12009,7 @@
      275,
      94
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map078.mpc, objeto 60001 en esa casilla, evento 1, que hace CHANGE_MAP(76, 12). Llegada (275, 94): la mas despejada de las 1 del TAG. Las casillas del TAG son [(275, 94)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -12025,7 +12025,7 @@
      65,
      17
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map078.mpc, objeto 60001 en esa casilla, evento 2, que hace CHANGE_MAP(79, 1). Llegada (65, 17): la mas despejada de las 5 del TAG. Las casillas del TAG son [(61, 20), (64, 19), (65, 17), (61, 18), (63, 17)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -12041,7 +12041,7 @@
      184,
      72
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": false,
     "preguntar": false,
     "nota": "Del mapa del cliente: map078.mpc, objeto 60001 en esa casilla, evento 103, que hace GOTO_TAG(3). Llegada (184, 72): la mas despejada de las 10 del TAG. Las casillas del TAG son [(93, 112), (129, 114), (147, 105), (129, 95), (148, 88), (166, 80), (184, 72), (202, 80), (202, 97), (165, 129)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. RADIO ajustado a 3 para que no alcance ninguna casilla de llegada de este mapa.",
@@ -12058,7 +12058,7 @@
      184,
      72
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": false,
     "preguntar": false,
     "nota": "Del mapa del cliente: map078.mpc, objeto 60001 en esa casilla, evento 103, que hace GOTO_TAG(3). Llegada (184, 72): la mas despejada de las 10 del TAG. Las casillas del TAG son [(93, 112), (129, 114), (147, 105), (129, 95), (148, 88), (166, 80), (184, 72), (202, 80), (202, 97), (165, 129)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. RADIO ajustado a 3 para que no alcance ninguna casilla de llegada de este mapa.",
@@ -12075,7 +12075,7 @@
      184,
      72
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": false,
     "preguntar": false,
     "nota": "Del mapa del cliente: map078.mpc, objeto 60001 en esa casilla, evento 103, que hace GOTO_TAG(3). Llegada (184, 72): la mas despejada de las 10 del TAG. Las casillas del TAG son [(93, 112), (129, 114), (147, 105), (129, 95), (148, 88), (166, 80), (184, 72), (202, 80), (202, 97), (165, 129)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. RADIO ajustado a 3 para que no alcance ninguna casilla de llegada de este mapa.",
@@ -12092,7 +12092,7 @@
      184,
      72
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": false,
     "preguntar": false,
     "nota": "Del mapa del cliente: map078.mpc, objeto 60001 en esa casilla, evento 103, que hace GOTO_TAG(3). Llegada (184, 72): la mas despejada de las 10 del TAG. Las casillas del TAG son [(93, 112), (129, 114), (147, 105), (129, 95), (148, 88), (166, 80), (184, 72), (202, 80), (202, 97), (165, 129)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. RADIO ajustado a 3 para que no alcance ninguna casilla de llegada de este mapa.",
@@ -12109,7 +12109,7 @@
      184,
      72
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": false,
     "preguntar": false,
     "nota": "Del mapa del cliente: map078.mpc, objeto 60001 en esa casilla, evento 103, que hace GOTO_TAG(3). Llegada (184, 72): la mas despejada de las 10 del TAG. Las casillas del TAG son [(93, 112), (129, 114), (147, 105), (129, 95), (148, 88), (166, 80), (184, 72), (202, 80), (202, 97), (165, 129)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. RADIO ajustado a 3 para que no alcance ninguna casilla de llegada de este mapa.",
@@ -12126,7 +12126,7 @@
      184,
      72
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": false,
     "preguntar": false,
     "nota": "Del mapa del cliente: map078.mpc, objeto 60001 en esa casilla, evento 103, que hace GOTO_TAG(3). Llegada (184, 72): la mas despejada de las 10 del TAG. Las casillas del TAG son [(93, 112), (129, 114), (147, 105), (129, 95), (148, 88), (166, 80), (184, 72), (202, 80), (202, 97), (165, 129)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. RADIO ajustado a 3 para que no alcance ninguna casilla de llegada de este mapa.",
@@ -12143,7 +12143,7 @@
      184,
      72
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": false,
     "preguntar": false,
     "nota": "Del mapa del cliente: map078.mpc, objeto 60001 en esa casilla, evento 103, que hace GOTO_TAG(3). Llegada (184, 72): la mas despejada de las 10 del TAG. Las casillas del TAG son [(93, 112), (129, 114), (147, 105), (129, 95), (148, 88), (166, 80), (184, 72), (202, 80), (202, 97), (165, 129)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. RADIO ajustado a 3 para que no alcance ninguna casilla de llegada de este mapa.",
@@ -12160,7 +12160,7 @@
      184,
      72
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": false,
     "preguntar": false,
     "nota": "Del mapa del cliente: map078.mpc, objeto 60001 en esa casilla, evento 103, que hace GOTO_TAG(3). Llegada (184, 72): la mas despejada de las 10 del TAG. Las casillas del TAG son [(93, 112), (129, 114), (147, 105), (129, 95), (148, 88), (166, 80), (184, 72), (202, 80), (202, 97), (165, 129)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. RADIO ajustado a 3 para que no alcance ninguna casilla de llegada de este mapa.",
@@ -12177,7 +12177,7 @@
      184,
      72
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": false,
     "preguntar": false,
     "nota": "Del mapa del cliente: map078.mpc, objeto 60001 en esa casilla, evento 103, que hace GOTO_TAG(3). Llegada (184, 72): la mas despejada de las 10 del TAG. Las casillas del TAG son [(93, 112), (129, 114), (147, 105), (129, 95), (148, 88), (166, 80), (184, 72), (202, 80), (202, 97), (165, 129)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. RADIO ajustado a 3 para que no alcance ninguna casilla de llegada de este mapa.",
@@ -12194,7 +12194,7 @@
      184,
      72
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": false,
     "preguntar": false,
     "nota": "Del mapa del cliente: map078.mpc, objeto 60001 en esa casilla, evento 103, que hace GOTO_TAG(3). Llegada (184, 72): la mas despejada de las 10 del TAG. Las casillas del TAG son [(93, 112), (129, 114), (147, 105), (129, 95), (148, 88), (166, 80), (184, 72), (202, 80), (202, 97), (165, 129)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. RADIO ajustado a 3 para que no alcance ninguna casilla de llegada de este mapa.",
@@ -12211,7 +12211,7 @@
      184,
      72
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": false,
     "preguntar": false,
     "nota": "Del mapa del cliente: map078.mpc, objeto 60001 en esa casilla, evento 103, que hace GOTO_TAG(3). Llegada (184, 72): la mas despejada de las 10 del TAG. Las casillas del TAG son [(93, 112), (129, 114), (147, 105), (129, 95), (148, 88), (166, 80), (184, 72), (202, 80), (202, 97), (165, 129)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. RADIO ajustado a 3 para que no alcance ninguna casilla de llegada de este mapa.",
@@ -12228,7 +12228,7 @@
      184,
      72
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": false,
     "preguntar": false,
     "nota": "Del mapa del cliente: map078.mpc, objeto 60001 en esa casilla, evento 106, que hace GOTO_TAG(3). Llegada (184, 72): la mas despejada de las 10 del TAG. Las casillas del TAG son [(93, 112), (129, 114), (147, 105), (129, 95), (148, 88), (166, 80), (184, 72), (202, 80), (202, 97), (165, 129)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. RADIO ajustado a 3 para que no alcance ninguna casilla de llegada de este mapa.",
@@ -12245,7 +12245,7 @@
      184,
      72
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": false,
     "preguntar": false,
     "nota": "Del mapa del cliente: map078.mpc, objeto 60001 en esa casilla, evento 106, que hace GOTO_TAG(3). Llegada (184, 72): la mas despejada de las 10 del TAG. Las casillas del TAG son [(93, 112), (129, 114), (147, 105), (129, 95), (148, 88), (166, 80), (184, 72), (202, 80), (202, 97), (165, 129)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. RADIO ajustado a 3 para que no alcance ninguna casilla de llegada de este mapa.",
@@ -12262,7 +12262,7 @@
      184,
      72
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": false,
     "preguntar": false,
     "nota": "Del mapa del cliente: map078.mpc, objeto 60001 en esa casilla, evento 106, que hace GOTO_TAG(3). Llegada (184, 72): la mas despejada de las 10 del TAG. Las casillas del TAG son [(93, 112), (129, 114), (147, 105), (129, 95), (148, 88), (166, 80), (184, 72), (202, 80), (202, 97), (165, 129)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. RADIO ajustado a 3 para que no alcance ninguna casilla de llegada de este mapa.",
@@ -12279,7 +12279,7 @@
      184,
      72
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": false,
     "preguntar": false,
     "nota": "Del mapa del cliente: map078.mpc, objeto 60001 en esa casilla, evento 106, que hace GOTO_TAG(3). Llegada (184, 72): la mas despejada de las 10 del TAG. Las casillas del TAG son [(93, 112), (129, 114), (147, 105), (129, 95), (148, 88), (166, 80), (184, 72), (202, 80), (202, 97), (165, 129)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. RADIO ajustado a 3 para que no alcance ninguna casilla de llegada de este mapa.",
@@ -12296,7 +12296,7 @@
      184,
      72
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": false,
     "preguntar": false,
     "nota": "Del mapa del cliente: map078.mpc, objeto 60001 en esa casilla, evento 106, que hace GOTO_TAG(3). Llegada (184, 72): la mas despejada de las 10 del TAG. Las casillas del TAG son [(93, 112), (129, 114), (147, 105), (129, 95), (148, 88), (166, 80), (184, 72), (202, 80), (202, 97), (165, 129)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. RADIO ajustado a 3 para que no alcance ninguna casilla de llegada de este mapa.",
@@ -12313,7 +12313,7 @@
      184,
      72
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": false,
     "preguntar": false,
     "nota": "Del mapa del cliente: map078.mpc, objeto 60001 en esa casilla, evento 106, que hace GOTO_TAG(3). Llegada (184, 72): la mas despejada de las 10 del TAG. Las casillas del TAG son [(93, 112), (129, 114), (147, 105), (129, 95), (148, 88), (166, 80), (184, 72), (202, 80), (202, 97), (165, 129)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. RADIO ajustado a 3 para que no alcance ninguna casilla de llegada de este mapa.",
@@ -12330,7 +12330,7 @@
      184,
      72
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": false,
     "preguntar": false,
     "nota": "Del mapa del cliente: map078.mpc, objeto 60001 en esa casilla, evento 106, que hace GOTO_TAG(3). Llegada (184, 72): la mas despejada de las 10 del TAG. Las casillas del TAG son [(93, 112), (129, 114), (147, 105), (129, 95), (148, 88), (166, 80), (184, 72), (202, 80), (202, 97), (165, 129)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. RADIO ajustado a 3 para que no alcance ninguna casilla de llegada de este mapa.",
@@ -12347,7 +12347,7 @@
      184,
      72
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": false,
     "preguntar": false,
     "nota": "Del mapa del cliente: map078.mpc, objeto 60001 en esa casilla, evento 106, que hace GOTO_TAG(3). Llegada (184, 72): la mas despejada de las 10 del TAG. Las casillas del TAG son [(93, 112), (129, 114), (147, 105), (129, 95), (148, 88), (166, 80), (184, 72), (202, 80), (202, 97), (165, 129)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. RADIO ajustado a 3 para que no alcance ninguna casilla de llegada de este mapa.",
@@ -12364,7 +12364,7 @@
      184,
      72
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": false,
     "preguntar": false,
     "nota": "Del mapa del cliente: map078.mpc, objeto 60001 en esa casilla, evento 106, que hace GOTO_TAG(3). Llegada (184, 72): la mas despejada de las 10 del TAG. Las casillas del TAG son [(93, 112), (129, 114), (147, 105), (129, 95), (148, 88), (166, 80), (184, 72), (202, 80), (202, 97), (165, 129)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. RADIO ajustado a 3 para que no alcance ninguna casilla de llegada de este mapa.",
@@ -12381,7 +12381,7 @@
      184,
      72
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": false,
     "preguntar": false,
     "nota": "Del mapa del cliente: map078.mpc, objeto 60001 en esa casilla, evento 106, que hace GOTO_TAG(3). Llegada (184, 72): la mas despejada de las 10 del TAG. Las casillas del TAG son [(93, 112), (129, 114), (147, 105), (129, 95), (148, 88), (166, 80), (184, 72), (202, 80), (202, 97), (165, 129)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. RADIO ajustado a 3 para que no alcance ninguna casilla de llegada de este mapa.",
@@ -12398,7 +12398,7 @@
      184,
      72
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": false,
     "preguntar": false,
     "nota": "Del mapa del cliente: map078.mpc, objeto 60001 en esa casilla, evento 106, que hace GOTO_TAG(3). Llegada (184, 72): la mas despejada de las 10 del TAG. Las casillas del TAG son [(93, 112), (129, 114), (147, 105), (129, 95), (148, 88), (166, 80), (184, 72), (202, 80), (202, 97), (165, 129)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. RADIO ajustado a 3 para que no alcance ninguna casilla de llegada de este mapa.",
@@ -12415,7 +12415,7 @@
      184,
      72
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": false,
     "preguntar": false,
     "nota": "Del mapa del cliente: map078.mpc, objeto 60001 en esa casilla, evento 106, que hace GOTO_TAG(3). Llegada (184, 72): la mas despejada de las 10 del TAG. Las casillas del TAG son [(93, 112), (129, 114), (147, 105), (129, 95), (148, 88), (166, 80), (184, 72), (202, 80), (202, 97), (165, 129)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. RADIO ajustado a 3 para que no alcance ninguna casilla de llegada de este mapa.",
@@ -12432,7 +12432,7 @@
      184,
      72
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": false,
     "preguntar": false,
     "nota": "Del mapa del cliente: map078.mpc, objeto 60001 en esa casilla, evento 107, que hace GOTO_TAG(3). Llegada (184, 72): la mas despejada de las 10 del TAG. Las casillas del TAG son [(93, 112), (129, 114), (147, 105), (129, 95), (148, 88), (166, 80), (184, 72), (202, 80), (202, 97), (165, 129)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. RADIO ajustado a 3 para que no alcance ninguna casilla de llegada de este mapa.",
@@ -12449,7 +12449,7 @@
      184,
      72
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": false,
     "preguntar": false,
     "nota": "Del mapa del cliente: map078.mpc, objeto 60001 en esa casilla, evento 107, que hace GOTO_TAG(3). Llegada (184, 72): la mas despejada de las 10 del TAG. Las casillas del TAG son [(93, 112), (129, 114), (147, 105), (129, 95), (148, 88), (166, 80), (184, 72), (202, 80), (202, 97), (165, 129)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. RADIO ajustado a 3 para que no alcance ninguna casilla de llegada de este mapa.",
@@ -12466,7 +12466,7 @@
      184,
      72
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": false,
     "preguntar": false,
     "nota": "Del mapa del cliente: map078.mpc, objeto 60001 en esa casilla, evento 107, que hace GOTO_TAG(3). Llegada (184, 72): la mas despejada de las 10 del TAG. Las casillas del TAG son [(93, 112), (129, 114), (147, 105), (129, 95), (148, 88), (166, 80), (184, 72), (202, 80), (202, 97), (165, 129)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. RADIO ajustado a 3 para que no alcance ninguna casilla de llegada de este mapa.",
@@ -12483,7 +12483,7 @@
      184,
      72
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": false,
     "preguntar": false,
     "nota": "Del mapa del cliente: map078.mpc, objeto 60001 en esa casilla, evento 107, que hace GOTO_TAG(3). Llegada (184, 72): la mas despejada de las 10 del TAG. Las casillas del TAG son [(93, 112), (129, 114), (147, 105), (129, 95), (148, 88), (166, 80), (184, 72), (202, 80), (202, 97), (165, 129)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. RADIO ajustado a 3 para que no alcance ninguna casilla de llegada de este mapa.",
@@ -12500,7 +12500,7 @@
      184,
      72
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": false,
     "preguntar": false,
     "nota": "Del mapa del cliente: map078.mpc, objeto 60001 en esa casilla, evento 107, que hace GOTO_TAG(3). Llegada (184, 72): la mas despejada de las 10 del TAG. Las casillas del TAG son [(93, 112), (129, 114), (147, 105), (129, 95), (148, 88), (166, 80), (184, 72), (202, 80), (202, 97), (165, 129)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. RADIO ajustado a 3 para que no alcance ninguna casilla de llegada de este mapa.",
@@ -12517,7 +12517,7 @@
      184,
      72
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": false,
     "preguntar": false,
     "nota": "Del mapa del cliente: map078.mpc, objeto 60001 en esa casilla, evento 107, que hace GOTO_TAG(3). Llegada (184, 72): la mas despejada de las 10 del TAG. Las casillas del TAG son [(93, 112), (129, 114), (147, 105), (129, 95), (148, 88), (166, 80), (184, 72), (202, 80), (202, 97), (165, 129)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. RADIO ajustado a 3 para que no alcance ninguna casilla de llegada de este mapa.",
@@ -12534,7 +12534,7 @@
      184,
      72
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": false,
     "preguntar": false,
     "nota": "Del mapa del cliente: map078.mpc, objeto 60001 en esa casilla, evento 107, que hace GOTO_TAG(3). Llegada (184, 72): la mas despejada de las 10 del TAG. Las casillas del TAG son [(93, 112), (129, 114), (147, 105), (129, 95), (148, 88), (166, 80), (184, 72), (202, 80), (202, 97), (165, 129)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. RADIO ajustado a 3 para que no alcance ninguna casilla de llegada de este mapa.",
@@ -12551,7 +12551,7 @@
      68,
      38
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": false,
     "preguntar": false,
     "nota": "Del mapa del cliente: map078.mpc, objeto 60001 en esa casilla, evento 108, que hace CHANGE_MAP(76, 9). Llegada (68, 38): la mas despejada de las 1 del TAG. Las casillas del TAG son [(68, 38)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. RADIO ajustado a 3 para que no alcance ninguna casilla de llegada de este mapa.",
@@ -12568,7 +12568,7 @@
      68,
      38
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": false,
     "preguntar": false,
     "nota": "Del mapa del cliente: map078.mpc, objeto 60001 en esa casilla, evento 108, que hace CHANGE_MAP(76, 9). Llegada (68, 38): la mas despejada de las 1 del TAG. Las casillas del TAG son [(68, 38)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. RADIO ajustado a 3 para que no alcance ninguna casilla de llegada de este mapa.",
@@ -12585,7 +12585,7 @@
      37,
      129
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": false,
     "preguntar": false,
     "nota": "Del mapa del cliente: map078.mpc, objeto 60001 en esa casilla, evento 109, que hace CHANGE_MAP(79, 6). Llegada (37, 129): la mas despejada de las 5 del TAG. Las casillas del TAG son [(41, 131), (40, 131), (39, 130), (37, 129), (43, 132)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. RADIO ajustado a 3 para que no alcance ninguna casilla de llegada de este mapa.",
@@ -12602,7 +12602,7 @@
      37,
      129
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": false,
     "preguntar": false,
     "nota": "Del mapa del cliente: map078.mpc, objeto 60001 en esa casilla, evento 110, que hace CHANGE_MAP(79, 6). Llegada (37, 129): la mas despejada de las 5 del TAG. Las casillas del TAG son [(41, 131), (40, 131), (39, 130), (37, 129), (43, 132)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. RADIO ajustado a 3 para que no alcance ninguna casilla de llegada de este mapa.",
@@ -12621,7 +12621,7 @@
      16,
      127
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map079.mpc, objeto 60001 en esa casilla, evento 2, que hace GOTO_TAG(3). Llegada (16, 127): la mas despejada de las 5 del TAG. Las casillas del TAG son [(11, 130), (10, 131), (13, 129), (14, 128), (16, 127)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py.",
@@ -12638,7 +12638,7 @@
      189,
      123
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map079.mpc, objeto 60001 en esa casilla, evento 3, que hace GOTO_TAG(2). Llegada (189, 123): la mas despejada de las 3 del TAG. Las casillas del TAG son [(189, 123), (191, 122), (193, 121)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py.",
@@ -12655,7 +12655,7 @@
      141,
      185
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map079.mpc, objeto 60001 en esa casilla, evento 7, que hace GOTO_TAG(8). Llegada (141, 185): la mas despejada de las 5 del TAG. Las casillas del TAG son [(136, 182), (141, 185), (138, 184), (143, 184), (145, 182)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -12671,7 +12671,7 @@
      42,
      147
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map079.mpc, objeto 60001 en esa casilla, evento 8, que hace GOTO_TAG(7). Llegada (42, 147): la mas despejada de las 5 del TAG. Las casillas del TAG son [(55, 149), (42, 147), (44, 146), (45, 145), (46, 144)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."
@@ -12687,7 +12687,7 @@
      204,
      297
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map079.mpc, objeto 60001 en esa casilla, evento 9, que hace CHANGE_MAP(78, 2). Llegada (204, 297): la mas despejada de las 1 del TAG. Las casillas del TAG son [(204, 297)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py.",
@@ -12704,7 +12704,7 @@
      284,
      276
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map079.mpc, objeto 60001 en esa casilla, evento 11, que hace CHANGE_MAP(78, 5). Llegada (284, 276): la mas despejada de las 1 del TAG. Las casillas del TAG son [(284, 276)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py.",
@@ -12721,7 +12721,7 @@
      40,
      223
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": false,
     "preguntar": false,
     "nota": "Del mapa del cliente: map079.mpc, objeto 60001 en esa casilla, evento 21, que hace GOTO_TAG(94). Llegada (40, 223): la mas despejada de las 5 del TAG. Las casillas del TAG son [(35, 220), (40, 223), (39, 222), (38, 221), (36, 221)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py. RADIO ajustado a 3 para que no alcance ninguna casilla de llegada de este mapa."
@@ -12737,7 +12737,7 @@
      124,
      263
     ],
-    "radio": 3,
+    "radio": 1,
     "dibujar": true,
     "preguntar": false,
     "nota": "Del mapa del cliente: map079.mpc, objeto 60001 en esa casilla, evento 984, que hace GOTO_TAG(98). Llegada (124, 263): la mas despejada de las 4 del TAG. Las casillas del TAG son [(124, 263), (129, 261), (124, 262), (126, 261)] y el servidor coge una al azar. Metodo comprobado contra las 546 llegadas que este json tiene medidas cruzando portales una por una: reproduce todas. Ver tools/mapa_del_cliente.py y tools/propagar_portales.py."

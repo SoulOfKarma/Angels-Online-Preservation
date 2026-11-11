@@ -137,6 +137,12 @@ def comprobar(personaje, conseguidos, *, muertos=None, stats=None) -> list:
         tipo = _num(f.get('param1'))
         if tipo and muertos.get(tipo, 0) >= max(1, _num(f.get('param2'), 1)):
             nuevos.append(f['id'])
+    # 完成某副本: "Go to [Magic Kitchen Path] to defeat [Fly King]"; param1 es
+    # el jefe de la instancia (798 Fly King, 853 Berssif...): matarlo una vez.
+    for f in por_regla('完成某副本'):
+        tipo = _num(f.get('param1'))
+        if f['id'] not in ya and tipo and muertos.get(tipo, 0) >= 1:
+            nuevos.append(f['id'])
     for f in por_regla('角色素質'):
         if f['id'] in ya:
             continue
@@ -205,6 +211,8 @@ def _pct(personaje, f, ya, pts, habs, muertos, stats):
         return frac(max(habs.values() or [0]), f.get('param1'))
     if regla == '殺指定編號怪物':
         return frac(muertos.get(_num(f.get('param1')), 0), max(1, _num(f.get('param2'), 1)))
+    if regla == '完成某副本':
+        return frac(muertos.get(_num(f.get('param1')), 0), 1)
     if regla == '角色素質':
         clave = STATS.get(str(f.get('param1') or ''))
         return frac(_num(stats.get(clave)), f.get('param2')) if clave else 0
@@ -281,7 +289,8 @@ def paquete_titulo(entidad, titulo, es_yo) -> bytes:
 @__import__('functools').lru_cache(maxsize=1)
 def tipos_con_logro() -> frozenset:
     """Los npc_type que cuenta algun logro de "matar N de este monstruo"."""
-    return frozenset(_num(f.get('param1')) for f in por_regla('殺指定編號怪物') if _num(f.get('param1')))
+    return frozenset(_num(f.get('param1')) for r in ('殺指定編號怪物', '完成某副本')
+                     for f in por_regla(r) if _num(f.get('param1')))
 
 
 # ---- Logros de RANKING (排行榜相關, 52): estar entre los N primeros ----
