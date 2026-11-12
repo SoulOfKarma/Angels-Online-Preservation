@@ -3100,6 +3100,37 @@ def uso_en_mascota(item_id: int):
     return None
 
 
+# LOS OBJETOS QUE SE USAN SOBRE EL ICONO DE LA MASCOTA (使用目標=道具,
+# 使用公式=5): se usan y luego se hace clic en la mascota de la mochila, asi
+# que llegan con su casilla como objetivo, y valen aunque este guardada o
+# muerta. En el cliente solo hay tres:
+#   3382 / 15167 Master's Love     動態資料1=100  "restores pet intimacy degree to 100"
+#   3381         Master's Embrace  動態資料1=20   "It makes the pet more loyal."
+# El de Love deja la intimidad en su valor; el de Embrace no dice cuanto: se
+# toma como +20 (supuesto, hasta 100).
+OBJETIVO_OBJETO = '道具'
+
+
+def intimidad_sobre_mascota(item_id: int):
+    """('fijar', n) / ('sumar', n) para los objetos de intimidad que se usan
+    sobre el icono de la mascota, o None."""
+    try:
+        import sqlite3
+        db = pathlib.Path(__file__).parent.parent / 'corpus' / 'content.db'
+        if not db.exists():
+            return None
+        con = sqlite3.connect(db)
+        fila = fila_item(con, '"使用目標", "使用公式", "動態資料1", "說明定義"', item_id)
+        if not fila or str(fila[0] or '') != OBJETIVO_OBJETO or str(fila[1] or '') != '5':
+            return None
+        n = int(fila[2]) if str(fila[2] or '').isdigit() else 0
+        if n <= 0:
+            return None
+        return ('fijar' if 'restores' in str(fila[3] or '').lower() else 'sumar', n)
+    except Exception:
+        return None
+
+
 # Los multiplicadores de experiencia y botin. Cada carta lleva un 常駐法術 y
 # es el HECHIZO el que dice a que afecta y cuanto:
 #

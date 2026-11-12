@@ -411,17 +411,44 @@ def hp_eff(estado: dict) -> int:
     """Devuelve el HP actual efectivo de la mascota (escalado con estrella, Pet's Satiation > 100 y buffs activos)."""
     if not isinstance(estado, dict):
         return 127
-    b_star = bonos_de_ficha(estado)
+    # PROPORCIONAL al maximo efectivo: antes era vida base + bono de
+    # estrellas (x3.5 saciada), y como el golpe solo bajaba la base, la
+    # mascota moria con media barra (la parte de las estrellas). 12/11/2026.
     hp_max = max(1, int(estado.get('hp_max') or estado.get('hp') or 127))
     hp = max(1, int(estado.get('hp') or hp_max))
-    val = hp + int(b_star.get('hp', 0))
-    h_max_s = hp_max + int(b_star.get('hp', 0))
+    eff_max = hp_max_eff(estado)
+    return max(1, min(eff_max, hp * eff_max // hp_max))
+
+
+def dano_a_base(estado: dict, dano: int) -> int:
+    """El golpe `dano` (en la vida que ve el cliente) pasado a la vida base de
+    la ficha, con la misma proporcion que hp_eff: al llegar la base a 0 la
+    barra tambien esta en 0."""
+    hp_max = max(1, int(estado.get('hp_max') or estado.get('hp') or 127))
+    eff_max = hp_max_eff(estado)
+    return max(1, -(-int(dano) * hp_max // eff_max))
+
+
+def defensa_efectiva(estado: dict) -> int:
+    """La defensa fisica del panel (armar): (dfs + estrellas) x1.4 saciada,
+    + buffs + equipo de la mascota (estado['bonos_eq']). Antes el golpe de un
+    monstruo no contaba el equipo."""
+    b_star = bonos_de_ficha(estado)
+    b_eq = estado.get('bonos_eq') or {}
+    v = int(estado.get('dfs') if estado.get('dfs') is not None else 50) + int(b_star.get('dfs', 0))
     if int(estado.get('saciedad') or 0) > 100:
-        val = int(round(val * 3.5))
-        h_max_s = int(round(h_max_s * 3.5))
-    b_bf = bonos_buffs(estado, h_max_base=h_max_s)
-    val += int(b_bf.get('hp_total', 0))
-    return max(1, min(hp_max_eff(estado), val))
+        v = int(round(v * 1.4))
+    v += int(bonos_buffs(estado).get('dfs', 0))
+    v += int(b_eq.get('def', 0)) or int(b_eq.get('dfs', 0))
+    return max(0, v)
+
+
+def defensas_elementales(estado: dict) -> list:
+    """T/F/I/R.Dfs del panel (armar): 60 + mejoras + resistencias del equipo."""
+    mej = max(0, int(estado.get('mejoras') or 0))
+    b_eq = estado.get('bonos_eq') or {}
+    return [min(0xFFFF, DEFENSAS_ELEM_BASE[i] + mej + int(b_eq.get(k, 0)))
+            for i, k in ((3, 'res_lightning'), (7, 'res_fire'), (11, 'res_ice'), (15, 'res_corrosion'))]
 
 
 def armar(estado: dict, bonos_eq: dict = None) -> bytes:
@@ -457,7 +484,8 @@ def armar(estado: dict, bonos_eq: dict = None) -> bytes:
     b_bf = bonos_buffs(estado, h_max_base=h_max_eff, m_max_base=m_max_eff)
     h_max_eff += int(b_bf.get('hp_total', 0)) + hp_eq
     m_max_eff += int(b_bf.get('mp_total', 0)) + mp_eq
-    h_eff = min(h_max_eff, h_eff + int(b_bf.get('hp_total', 0)) + hp_eq)
+    # Vida actual proporcional al maximo efectivo (ver hp_eff).
+    h_eff = max(1, min(h_max_eff, hp * h_max_eff // hp_max))
     m_eff = min(m_max_eff, m_eff + int(b_bf.get('mp_total', 0)) + mp_eq)
 
     eq_stat_map = {
@@ -1548,6 +1576,37 @@ def poner_buff_exp(ficha: dict, segundos: int, pct: int, ahora=None) -> dict:
     ficha['buff_exp'] = {'hasta': ahora + max(0, int(segundos)),
                          'pct': int(pct)}
     return ficha['buff_exp']
+
+
+# Las claves del hechizo que se copian al buff de la mascota con otro nombre
+# (las mismas que los buffs que lanza ella misma, app.py / companeros.rs).
+BUFF_PET = (('crit_rate', 'crit'), ('phys_mit', 'mit'), ('mag_mit', 'mag_mit'),
+            ('def_bonus', 'def'), ('atk_bonus', 'atk'), ('matk_bonus', 'matk'),
+            ('mdef_bonus', 'mdef'), ('mag_dmg_pct', 'mag_dmg_pct'),
+            ('phys_dmg_pct', 'phys_dmg_pct'), ('hp_bonus', 'hp_bonus'), ('mp_bonus', 'mp_bonus'))
+
+
+def stats_buff_objeto(buff_id: int) -> dict:
+    """Lo que suma a la mascota el hechizo de un objeto (Pet's Assault Potion:
+    atk 60; la High-effect: 120; Defence: def). {} si no suma nada."""
+    import combate
+    mag = combate.datos_magia(int(buff_id)) or {}
+    return {dst: mag[src] for src, dst in BUFF_PET if mag.get(src)}
+
+
+def poner_buff_objeto(ficha: dict, buff_id: int, segundos: int, ahora=None) -> bool:
+    """El buff de un objeto en la ficha (ficha['buffs'][id], que lee
+    bonos_buffs). Antes las pociones de ataque/defensa solo ponian el icono
+    (y pisaban la carta de doble EXP con 0%)."""
+    import time
+    stats = stats_buff_objeto(buff_id)
+    if not stats or int(segundos) <= 0:
+        return False
+    ahora = time.time() if ahora is None else ahora
+    entrada = dict(stats)
+    entrada['fin'] = ahora + int(segundos)
+    ficha.setdefault('buffs', {})[int(buff_id)] = entrada
+    return True
 
 
 def dar_exp(ficha: dict, cantidad: int, ahora=None) -> int:

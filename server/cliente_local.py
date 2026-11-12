@@ -510,6 +510,12 @@ def actualizar_pak_cliente(pak_path: pathlib.Path, reemplazos: dict) -> bool:
     """Reemplaza archivos dentro de un archivo .pak (formato OD\\x05\\x06 de Angel.exe).
     reemplazos: {'MAP\\\\MAP041.MPC': bytes_nuevos, 'SETTING\\\\ENG\\\\ITEM9.XML': bytes_nuevos}
     """
+    # Tambien al parche del launcher, para los clientes de otras maquinas.
+    try:
+        import parche_cliente
+        parche_cliente.registrar_pak(pak_path, reemplazos)
+    except Exception as e:
+        log.warning('parche del launcher: %s' % e)
     if not pak_path.exists():
         return False
     _asegurar_bak(pak_path)
@@ -788,6 +794,11 @@ def aplicar_modo_estacion(modo: str = None) -> str:
 VERSION_CLIENTE = '8.7.6.1'
 
 
+# Los 20 bytes de CUpdater::ThreadProc (raw 0x00E3D5) del START.EXE original
+# de IGG, los que el atajo de "ya tienes la ultima version" sustituye.
+START_EXE_UPDATER_ORIGINAL = bytes.fromhex('6a118bcee8d2a2ffff8bcde82b66ffff84c07531')
+
+
 def parchear_launcher():
     """Parchea C:\\AO\\Angels Online\\START.EXE y reg.ini (creando .bak antes)
     para que el launcher apunte a 127.0.0.1 y muestre el panel local."""
@@ -802,10 +813,20 @@ def parchear_launcher():
     reg_ini = ruta_cli / 'reg.ini'
     if reg_ini.exists():
         _asegurar_bak(reg_ini)
+        # La version que dejo el launcher al bajarse el parche se respeta: si
+        # se volviera a la base, se lo bajaria otra vez en cada arranque.
+        version_reg = VERSION_CLIENTE
+        try:
+            m_v = re.search(r'^\s*Version\s*=\s*([\d.]+)',
+                            reg_ini.read_text(encoding='utf-8', errors='ignore'), re.M)
+            if m_v and _version_tupla(m_v.group(1)) > _version_tupla(VERSION_CLIENTE):
+                version_reg = m_v.group(1)
+        except OSError:
+            pass
         txt_reg = (
             "[PROFILE]\r\n"
             "GameName = Angels Online\r\n"
-            f"Version = {VERSION_CLIENTE}\r\n"
+            f"Version = {version_reg}\r\n"
             "GameDir = ./\r\n"
             "LoaderVer = 1.7\r\n"
             "PassiveMode = 1\r\n"
@@ -861,7 +882,16 @@ def parchear_launcher():
             # Marcar estado 4 ("You have the latest version.") y completado ([esi+4]=1, [esi+5]=0)
             # al instante sin bloquearse esperando en WinInet FTP
             parche_ready = bytes.fromhex('6a048bcee8d2a2ffffc6460401c6460500eb2390')
-            if raw[0x00E3D5:0x00E3D5 + 20] != parche_ready:
+            if actualizar_por_launcher():
+                # Con el parche por el launcher el updater tiene que correr de
+                # verdad: se devuelven los 20 bytes originales del START.EXE de
+                # IGG (1.482.240 B). Fijos y no leidos del .bak: quien tuviera
+                # ya el atajo puesto lo tendria tambien en su .bak. Solo si en
+                # ese sitio esta el atajo (otro START.EXE no se toca).
+                if raw[0x00E3D5:0x00E3D5 + 20] == parche_ready:
+                    raw[0x00E3D5:0x00E3D5 + 20] = START_EXE_UPDATER_ORIGINAL
+                    cambiado = True
+            elif raw[0x00E3D5:0x00E3D5 + 20] != parche_ready:
                 raw[0x00E3D5:0x00E3D5 + 20] = parche_ready
                 cambiado = True
 
@@ -934,7 +964,15 @@ async def _manejar_http_parche(peticion: bytes, writer: asyncio.StreamWriter):
         ruta = linea.split(' ')[1] if ' ' in linea else '/'
     except Exception:
         ruta = '/'
-    if ruta.lower().endswith('.ini'):
+    parche = _archivo_parche(ruta, 'deflate') if ruta.lower().endswith('.pak') else None
+    if parche is not None:
+        cuerpo = parche
+        cab = (b'HTTP/1.1 200 OK\r\n'
+               b'Content-Type: application/octet-stream\r\n'
+               b'Content-Length: ' + str(len(cuerpo)).encode('ascii') + b'\r\n'
+               b'Connection: close\r\n\r\n')
+        log.info('launcher Global: parche %s (%d B)', ruta, len(cuerpo))
+    elif ruta.lower().endswith('.ini'):
         cuerpo = _contenido_update3_ini()
         cab = (b'HTTP/1.1 200 OK\r\n'
                b'Content-Type: text/plain\r\n'
@@ -957,11 +995,29 @@ async def _manejar_http_parche(peticion: bytes, writer: asyncio.StreamWriter):
         pass
 
 
+def _pedido_ftp(cwd: str, arg: str) -> bytes:
+    """Lo que se le da al launcher por RETR/SIZE: el archivo del parche si lo
+    es (parche_cliente), y si no el indice de version, como siempre."""
+    ruta = arg if arg.startswith('/') else (cwd.rstrip('/') + '/' + arg)
+    datos = _archivo_parche(ruta)
+    if datos is not None:
+        log.info('launcher: parche %s (%d B)', ruta, len(datos))
+        return datos
+    # Con el parche activo, una ruta que no es del parche ni un .ini NO recibe
+    # el indice: asi el launcher instalo el indice dentro de update26.pak
+    # (12/11/2026). None = 550, y el launcher falla sin tocar nada.
+    if actualizar_por_launcher() and not ruta.lower().endswith('.ini'):
+        log.warning('launcher: %s no es del parche (550)', ruta)
+        return None
+    return _contenido_update3_ini()
+
+
 async def _manejar_ftp(reader: asyncio.StreamReader, writer: asyncio.StreamWriter,
                        ya_leido: bytes = b''):
     """Mini servidor FTP local para que START.EXE valide update3.ini al instante."""
     pasv_srv = None
     pasv_queue = asyncio.Queue()
+    cwd = '/'
 
     async def _on_data_conn(r_d, w_d):
         await pasv_queue.put((r_d, w_d))
@@ -991,6 +1047,8 @@ async def _manejar_ftp(reader: asyncio.StreamReader, writer: asyncio.StreamWrite
             parts = cmd_line.split(' ', 1)
             cmd = parts[0].upper()
             arg = parts[1].strip() if len(parts) > 1 else ''
+            if actualizar_por_launcher() and cmd not in ('USER', 'PASS', 'NOOP'):
+                log.info('launcher FTP: %s %s (cwd %s)', cmd, arg, cwd)
 
             if cmd == 'USER':
                 writer.write(b"331 User name okay, need password.\r\n")
@@ -1003,6 +1061,7 @@ async def _manejar_ftp(reader: asyncio.StreamReader, writer: asyncio.StreamWrite
             elif cmd == 'TYPE':
                 writer.write(b"200 Type set to I.\r\n")
             elif cmd == 'CWD':
+                cwd = arg if arg.startswith('/') else (cwd.rstrip('/') + '/' + arg)
                 writer.write(b"250 Directory changed.\r\n")
             elif cmd == 'PASV':
                 if pasv_srv:
@@ -1012,20 +1071,32 @@ async def _manejar_ftp(reader: asyncio.StreamReader, writer: asyncio.StreamWrite
                 p1, p2 = port >> 8, port & 0xFF
                 writer.write(f"227 Entering Passive Mode (127,0,0,1,{p1},{p2}).\r\n".encode('ascii'))
             elif cmd in ('LIST', 'NLST'):
-                ini_bytes = _contenido_update3_ini()
+                # El nombre y tamano de lo que se pregunta (el launcher hace
+                # LIST de cada archivo antes de bajarlo); sin nombre, el indice.
+                nombre_l = (arg.split('/')[-1] if arg and not arg.startswith('-') else '') or 'update3.ini'
+                ini_bytes = _pedido_ftp(cwd, arg) if arg and not arg.startswith('-') else _contenido_update3_ini()
+                if ini_bytes is None:
+                    writer.write(b"550 File not found.\r\n")
+                    await writer.drain()
+                    continue
                 writer.write(b"150 Opening ASCII mode data connection for directory list.\r\n")
                 await writer.drain()
                 r_d, w_d = await asyncio.wait_for(pasv_queue.get(), timeout=5.0)
-                list_line = f"-rw-r--r-- 1 owner group {len(ini_bytes)} Jan 01 00:00 update3.ini\r\n".encode('ascii')
+                list_line = f"-rw-r--r-- 1 owner group {len(ini_bytes)} Jan 01 00:00 {nombre_l}\r\n".encode('ascii', 'replace')
                 w_d.write(list_line)
                 await w_d.drain()
                 w_d.close()
                 writer.write(b"226 Transfer complete.\r\n")
             elif cmd == 'SIZE':
-                ini_bytes = _contenido_update3_ini()
-                writer.write(f"213 {len(ini_bytes)}\r\n".encode('ascii'))
+                ini_bytes = _pedido_ftp(cwd, arg)
+                writer.write(b"550 File not found.\r\n" if ini_bytes is None
+                             else f"213 {len(ini_bytes)}\r\n".encode('ascii'))
             elif cmd == 'RETR':
-                ini_bytes = _contenido_update3_ini()
+                ini_bytes = _pedido_ftp(cwd, arg)
+                if ini_bytes is None:
+                    writer.write(b"550 File not found.\r\n")
+                    await writer.drain()
+                    continue
                 writer.write(b"150 Opening BINARY mode data connection.\r\n")
                 await writer.drain()
                 r_d, w_d = await asyncio.wait_for(pasv_queue.get(), timeout=5.0)
@@ -1060,11 +1131,84 @@ def _contenido_update3_ini() -> bytes:
         # INFO\LoaderURL del fichero que acaba de bajarse. Por eso ponerlo en
         # el reg.ini no servia de nada y seguia yendo a su host.
         "LoaderURL = 127.0.0.1\r\n"
-        f"GameVerFrom = {VERSION_CLIENTE}\r\n"
-        f"GameVerTrans = {VERSION_CLIENTE}\r\n"
-        "[VERSION]\r\n"
-        "[COMPLEXFILE]\r\n"
+        # Con parche, sin GameVerFrom/GameVerTrans (el indice real de Global
+        # las trae comentadas): con GameVerTrans = la version del cliente el
+        # START.EXE (FUN_0040d2e0) no busca versiones nuevas.
+        + ("" if _seccion_parche() else
+           f"GameVerFrom = {VERSION_CLIENTE}\r\nGameVerTrans = {VERSION_CLIENTE}\r\n")
+        + (_seccion_parche() or "[VERSION]\r\n")
+        + "[COMPLEXFILE]\r\n"
     ).encode('ascii')
+
+
+# LOS BANNERS DE EVENT NEWS. Son SHAPE\ACTBOARD\BG_URL02..06.SHP (los botones
+# de activityurl.xml); los ingleses estan en update25 (02..05) y update26
+# (06), pero el update32 de Taiwan los tapa con los suyos en chino. Se
+# devuelven los ingleses dentro de update32 SOLO por el parche del launcher
+# (no se escribe en el cliente local): asi se ve si el launcher actualiza.
+BANNERS_EVENTOS = (('update25.pak', 'BG_URL02.SHP'), ('update25.pak', 'BG_URL03.SHP'),
+                   ('update25.pak', 'BG_URL04.SHP'), ('update25.pak', 'BG_URL05.SHP'),
+                   ('update26.pak', 'BG_URL06.SHP'))
+
+
+def restaurar_banners_eventos() -> int:
+    """Mete en el parche del launcher los banners ingleses de Event News."""
+    if not actualizar_por_launcher():
+        return 0
+    import parche_cliente
+    ruta_cli = ruta_cliente()
+    hechos = 0
+    for pak, nombre in BANNERS_EVENTOS:
+        p = ruta_cli / pak
+        bak = p.with_name(p.name + '.bak')
+        raw = _extraer_archivo_pak(bak if bak.exists() else p,
+                                   'SHAPE' + chr(92) + 'ACTBOARD' + chr(92) + nombre)
+        if raw:
+            parche_cliente.registrar(PAK_PARCHE, 'shape/actboard', nombre.lower(), raw)
+            hechos += 1
+    log.info('banners de Event News en el parche del launcher: %d', hechos)
+    return hechos
+
+
+# EL PARCHE POR EL LAUNCHER (parche_cliente.py, docs/ACTUALIZADOR_LAUNCHER_IGG.md).
+# Lo que el servidor cambia en el cliente va al pak mas alto que carga
+# angel.dat; lo que ya iba a un pak concreto (update26, UPDATE21) sigue ahi.
+PAK_PARCHE = 'update32'
+
+
+def actualizar_por_launcher() -> bool:
+    return bool(getattr(_cf, 'ACTUALIZAR_CLIENTE_POR_LAUNCHER', False))
+
+
+def _seccion_parche() -> str:
+    if not actualizar_por_launcher():
+        return ''
+    try:
+        import parche_cliente
+        return parche_cliente.lineas_indice(VERSION_CLIENTE)
+    except Exception as e:
+        log.warning('parche del launcher: %s' % e)
+        return ''
+
+
+def _archivo_parche(ruta: str, formato: str = 'pak'):
+    """Los bytes de un archivo del parche pedido por el launcher, o None.
+    'pak' para el START.EXE de IGG (FTP), 'deflate' para el de Global (HTTP)."""
+    if not actualizar_por_launcher():
+        return None
+    try:
+        import parche_cliente
+        return parche_cliente.resolver(ruta, VERSION_CLIENTE, formato)
+    except Exception as e:
+        log.warning('parche del launcher: %s' % e)
+        return None
+
+
+def _version_tupla(v: str):
+    try:
+        return tuple(int(x) for x in str(v).strip().split('.'))
+    except ValueError:
+        return ()
 
 
 # El panel del launcher en dos idiomas. El elegido se recuerda mientras
@@ -1203,6 +1347,11 @@ def quitar_exclusion_ramas() -> int:
         nuevo, cuantas = _RE_EXCLUSION.subn('', txt)
     if not cuantas:
         return 0
+    try:
+        import parche_cliente
+        parche_cliente.registrar(PAK_PARCHE, 'setting/eng', 'skill.xml', nuevo.encode('utf-8'))
+    except Exception as e:
+        log.warning('parche del launcher: %s' % e)
     ruta_cli = ruta_cliente()
     destino = ruta_cli / RUTA_SKILL_XML
     try:
@@ -1245,6 +1394,11 @@ def restaurar_filtro_nombres() -> bool:
     if not raw:
         log.warning('%s no trae setting/eng/strfilter.xml' % pak.name)
         return False
+    try:
+        import parche_cliente
+        parche_cliente.registrar(PAK_PARCHE, 'setting/eng', 'strfilter.xml', raw)
+    except Exception as e:
+        log.warning('parche del launcher: %s' % e)
     destino = ruta_cli / RUTA_STRFILTER_XML
     try:
         if destino.exists() and destino.read_bytes() == raw:

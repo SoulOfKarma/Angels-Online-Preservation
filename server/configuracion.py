@@ -327,3 +327,11 @@ RAMAS_SIN_EXCLUSION = True
 # cliente_local.restaurar_filtro_nombres. Para deshacerlo, borrar el
 # setting/eng/strfilter.xml suelto del cliente.
 FILTRO_NOMBRES_UPDATE21 = True
+
+# El servidor manda al cliente sus archivos cambiados (item9.xml, skill.xml,
+# strfilter.xml, logo...) como un parche normal del launcher: quien abra
+# START.EXE se lo baja solo y el launcher lo mete en su pak. Ver
+# parche_cliente.py y docs/ACTUALIZADOR_LAUNCHER_IGG.md. Con True se quita
+# del START.EXE el atajo de "ya tienes la ultima version" para que el updater
+# corra de verdad; con False todo queda como antes (solo cliente local).
+ACTUALIZAR_CLIENTE_POR_LAUNCHER = True

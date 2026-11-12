@@ -2133,6 +2133,59 @@ def _pet_alternar(ses, addr, ranura):
 _SLOTS_EQ_PET = tuple(range(599, 608))
 
 
+# EL PET AMULET: revive solo a la mascota con toda la vida cuando muere y se
+# gasta. 3379 "No losses to exp"; los Pet Amulet 1%/2%/3% (4497..4499) dicen
+# que pierde un 4%/3%/2% de experiencia. Se gasta primero el que no quita.
+AMULETOS_MASCOTA = ((3379, 0), (4499, 2), (4498, 3), (4497, 4))
+
+
+def _amuleto_mascota(ses, f_pet, m, suyo, ef_atk, pet_eid, yo) -> bool:
+    """Si el golpe `suyo` mataria a la mascota y hay un Pet Amulet en la
+    mochila, lo gasta y la deja a toda vida (no muere ni desaparece).
+    Devuelve True si el amuleto se uso. Va antes de la rama del golpe a la
+    mascota de _impacto, con sus mismas guardas."""
+    import mascotas as _ms_am
+    import combate as _cb_am
+    if not getattr(m, 'vivo', False) or getattr(m, 'en_combate_con', None) != pet_eid:
+        return False
+    if int(f_pet.get('hp', 100)) - _ms_am.dano_a_base(f_pet, suyo) > 0:
+        return False
+    bolsa = getattr(ses, 'inventario', None) or {}
+    tope = _tope_bolsa(bolsa)
+    elegido = None
+    for item_am, pct_am in AMULETOS_MASCOTA:
+        r_am = next((s for s in sorted(bolsa) if 20 <= s <= tope and bolsa[s] == item_am), None)
+        if r_am is not None:
+            elegido = (r_am, item_am, pct_am)
+            break
+    if elegido is None:
+        return False
+    r_am, item_am, pct_am = elegido
+    queda = ses.cantidades.get(r_am, 1) - 1
+    if queda > 0:
+        ses.cantidades[r_am] = queda
+    else:
+        bolsa.pop(r_am, None)
+        ses.cantidades.pop(r_am, None)
+    f_pet['hp'] = max(1, int(f_pet.get('hp_max') or 100))
+    if pct_am:
+        exp_max = int(f_pet.get('exp_max') or _ms_am.exp_para_subir(int(f_pet.get('nivel') or 1), f_pet.get('sprite')))
+        f_pet['exp'] = max(0, int(f_pet.get('exp', 0)) - int(round(exp_max * pct_am / 100.0)))
+    salida = [
+        _pk_golpe_mon(m, pet_eid, ef_atk),
+        _cb_am.numero_flotante(pet_eid, suyo),
+        _cb_am.atributo(pet_eid, _ms_am.hp_eff(f_pet), _cb_am.KIND_HP),
+        _ms_am.armar(f_pet),
+    ]
+    salida.extend(_refrescar(ses, [r_am]))
+    ses.enviar_inmediato(*salida)
+    if getattr(ses, 'usuario', None) and ses.personaje:
+        _guardar_bolsa(ses, ses.personaje.char_id)
+        cuentas.guardar_mascota(ses.usuario, ses.personaje.char_id, f_pet, getattr(ses.personaje, 'mascotas', None))
+    log.info('Pet Amulet %d: %s revive a toda vida (exp -%d%%)', item_am, f_pet.get('nombre'), pct_am)
+    return True
+
+
 def _pet_equipo_guardar(ses, ficha) -> list:
     """Las casillas 599..607 pasan a la ficha de la mascota y se vacian."""
     p = ses.personaje
@@ -11595,12 +11648,18 @@ class Servidor:
                                                 elem_tot = thnd_d + fire_d + ice_d + rot_d
                                                 suyo = _cb.dano_recibido(m.pegar(), def_targ, elem_atk=elem_tot, elem_def=0)
                                             elif f_pet and targ_eid == pet_eid:
-                                                b_st_def = _ms.bonos_de_ficha(f_pet)
-                                                b_bf_def = _ms.bonos_buffs(f_pet)
-                                                def_targ = int(f_pet.get('dfs', 50)) + int(b_st_def.get('dfs', 0)) + int(b_bf_def.get('dfs', 0))
-                                                if int(f_pet.get('saciedad', 0)) > 100:
-                                                    def_targ = int(round(def_targ * 1.4))
-                                                elem_tot = getattr(m, 'thnd_atk', 0) + getattr(m, 'fire_atk', 0) + getattr(m, 'ice_atk', 0) + getattr(m, 'rotten_atk', 0)
+                                                # La defensa del panel (con su equipo) y sus defensas
+                                                # elementales, como al personaje. El equipo se lee
+                                                # vivo, como en su ataque (b_eq_comb): la copia de la
+                                                # ficha se quedaba vacia y no contaba.
+                                                if getattr(p, 'char_id', None):
+                                                    f_pet['bonos_eq'] = _iv.bonos_equipo_mascota(
+                                                        getattr(ses, 'inventario', {}), getattr(p, 'mejoras', None),
+                                                        getattr(p, 'pet_suit', 0))
+                                                def_targ = _ms.defensa_efectiva(f_pet)
+                                                _de_pet = _ms.defensas_elementales(f_pet)
+                                                elem_tot = sum(max(0, getattr(m, k, 0) - _de_pet[i]) for i, k in
+                                                               enumerate(('thnd_atk', 'fire_atk', 'ice_atk', 'rotten_atk')))
                                                 suyo = _cb.dano_recibido(m.pegar(), def_targ, elem_atk=elem_tot, elem_def=0)
                                             else:
                                                 def_targ = 100
@@ -11743,8 +11802,10 @@ class Servidor:
                                                         _eq.notificar_stats(ses)
                                                     except Exception:
                                                         pass
+                                                elif f_pet and teid == pet_eid and _amuleto_mascota(ses, f_pet, m, suyo, ef_atk, pet_eid, yo):
+                                                    pass  # Pet Amulet: revivio a toda vida
                                                 elif f_pet and teid == pet_eid:
-                                                    dano_base = max(1, int(round(suyo / 3.5))) if int(f_pet.get('saciedad', 0)) > 100 else suyo
+                                                    dano_base = _ms.dano_a_base(f_pet, suyo)
                                                     f_pet['hp'] = max(0, int(f_pet.get('hp', 100)) - dano_base)
                                                     if f_pet['hp'] <= 0:
                                                         # Si muere la mascota, baja su intimidad (-10 puntos, pero nunca menos de 40 para que no escape) y se guarda
@@ -11757,10 +11818,17 @@ class Servidor:
                                                         ses.pet_objetivo = None
                                                         m.en_combate_con = yo
                                                         _r_p = f_pet.get('ranura')
+                                                        # Su equipo (599..607) vuelve a su ficha, como al
+                                                        # guardarla a mano; si no, se quedaba en las casillas.
+                                                        _eq_muerte = _pet_equipo_guardar(ses, f_pet) if f_pet.get('equipo_cargado') else []
+                                                        ses.personaje.pet_suit = 0
                                                         pkgs_pet_muerte = [
                                                             _pk_golpe_mon(m, pet_eid, ef_atk),
                                                             _cb.numero_flotante(pet_eid, suyo),
                                                             _ms.quitar(pet_eid),
+                                                            # Como al guardarla: sin la orden 0x0B el
+                                                            # cliente deja abierto su panel.
+                                                            _ms.paquete_orden(yo, 0x0B),
                                                             _ms.enlazar(yo, 0),
                                                             _ms.armar(f_pet),
                                                             _cl_pm.aviso('10', tipo=7, msg_id=965),
@@ -11768,7 +11836,7 @@ class Servidor:
                                                         if _r_p is not None:
                                                             if getattr(ses.personaje, 'mascotas', None) is not None:
                                                                 ses.personaje.mascotas[str(_r_p)] = f_pet
-                                                            pkgs_pet_muerte.extend(_refrescar(ses, [_r_p]))
+                                                            pkgs_pet_muerte.extend(_refrescar(ses, [_r_p] + _eq_muerte))
                                                         ses.enviar_inmediato(*pkgs_pet_muerte)
                                                         # Los paquetes de quitar/desenlazar no contienen
                                                         # la entidad del monstruo y por eso no pasan por
@@ -17133,6 +17201,48 @@ class Servidor:
                         msg_id=_c.MSG_TEXTO))
                 return
 
+            # MASTER'S LOVE / MASTER'S EMBRACE (inv.intimidad_sobre_mascota): se
+            # usan sobre el ICONO de la mascota en la mochila (llega como
+            # objetivo) y valen aunque este guardada o muerta. Antes caian en
+            # la rama general, que solo los gastaba.
+            _intim = inv.intimidad_sobre_mascota(bolsa[ranura]) if ses.personaje else None
+            if _intim:
+                import clases as _cl_ml
+                import mascotas as _ms_ml
+                if not (objetivo and objetivo in bolsa and inv.es_mascota(bolsa[objetivo])):
+                    ses.enviar(_cl_ml.aviso("Click the pet's icon in your backpack after using it.", tipo=0),
+                               *_refrescar(ses, [ranura]))
+                    return
+                _item_ml = bolsa[ranura]
+                _f_ml = _pet_ficha(ses, objetivo)
+                _ant_ml = int(_f_ml.get('intimidad', 60))
+                _modo_ml, _n_ml = _intim
+                _f_ml['intimidad'] = min(100, _n_ml if _modo_ml == 'fijar' else _ant_ml + _n_ml)
+                if _modo_ml == 'fijar':
+                    _f_ml['intimidad'] = max(_ant_ml, _f_ml['intimidad'])
+                _queda_ml = ses.cantidades.get(ranura, 1) - 1
+                if _queda_ml > 0:
+                    ses.cantidades[ranura] = _queda_ml
+                else:
+                    ses.inventario.pop(ranura, None)
+                    ses.cantidades.pop(ranura, None)
+                if getattr(ses.personaje, 'mascotas', None) is not None:
+                    ses.personaje.mascotas[str(objetivo)] = _f_ml
+                _sal_ml = list(_refrescar(ses, [ranura, objetivo]))
+                _sube_ml = _f_ml['intimidad'] - _ant_ml
+                if _sube_ml > 0:
+                    _sal_ml.append(_cl_ml.aviso(str(_sube_ml), tipo=7, msg_id=966))
+                if _f_ml.get('fuera'):
+                    _sal_ml.append(_ms_ml.armar(_f_ml))
+                ses.enviar(*_sal_ml)
+                _guardar_bolsa(ses, ses.personaje.char_id)
+                if getattr(ses, 'usuario', None):
+                    cuentas.guardar_mascota(ses.usuario, ses.personaje.char_id, _f_ml,
+                                            getattr(ses.personaje, 'mascotas', None))
+                log.info('[%s] %s sobre la mascota %s: intimidad %d -> %d'
+                         % (addr, _item_ml, _f_ml.get('nombre'), _ant_ml, _f_ml['intimidad']))
+                return
+
             # SACAR O GUARDAR LA MASCOTA. Medido el 29/09/2026: el juego
             # manda "2100000000", o sea la casilla 33 con destino cero, que
             # es donde estaba la Battlemaid. No es una mejora ni se equipa:
@@ -17537,11 +17647,17 @@ class Servidor:
                     _sub_pu = _msp.dar_exp(_f, _pet_uso['exp'])
                     _txt = '+%d exp (%d niveles -> nv %d)' % (_pet_uso['exp'], _sub_pu, _f.get('nivel', 1))
                 else:
-                    _msp.poner_buff_exp(_f, _pet_uso['segundos'],
-                                        _pet_uso['exp_pct'])
+                    # La carta de EXP pone su contador; las pociones de
+                    # ataque/defensa (exp 0%) su buff de stats, sin pisar la carta.
+                    if _pet_uso['exp_pct'] > 0:
+                        _msp.poner_buff_exp(_f, _pet_uso['segundos'],
+                                            _pet_uso['exp_pct'])
+                    _con_stats = _msp.poner_buff_objeto(_f, _pet_uso['buff'], _pet_uso['segundos'])
                     _txt = ('x%.1f de experiencia durante %d s'
                             % (1 + _pet_uso['exp_pct'] / 100.0,
                                _pet_uso['segundos']))
+                    if _con_stats:
+                        _txt += ', buff %d %s' % (_pet_uso['buff'], _msp.stats_buff_objeto(_pet_uso['buff']))
                 _queda = ses.cantidades.get(ranura, 1) - 1
                 if _queda > 0:
                     ses.cantidades[ranura] = _queda
@@ -21087,6 +21203,7 @@ class Servidor:
                 _cl_loc.quitar_exclusion_ramas()
             if getattr(_cf_logo, 'FILTRO_NOMBRES_UPDATE21', True):
                 _cl_loc.restaurar_filtro_nombres()
+            _cl_loc.restaurar_banners_eventos()
             _cl_loc.parchear_launcher()
             _srvs_launcher = await _cl_loc.iniciar_servidores_launcher()
             for _sl in _srvs_launcher:
