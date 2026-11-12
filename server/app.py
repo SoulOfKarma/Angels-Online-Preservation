@@ -15629,6 +15629,14 @@ class Servidor:
                     cuentas.guardar_habilidades(ses.usuario, _p.char_id, _p.habilidades)
                     cuentas.guardar_clase(ses.usuario, _p.char_id, _p.class_id)
                     cuentas.guardar_banco_habilidades(ses.usuario, _p.char_id, _p.banco_habilidades)
+                # Logros "I love change" (換技能次數, cuantos cambios de rama) y
+                # "Love to change skills" (換過N種職業頭銜, cuantas clases
+                # distintas): ninguno se contaba y se quedaban en 0% por mas
+                # ramas que se cambiaran en el Skill Angel. Cada clase a la que
+                # se llega queda marcada como 'clase:<id>'; ver logros.medir.
+                _logros_contar(ses, 'cambio_rama', addr=addr)
+                if _p.class_id:
+                    _logros_contar(ses, 'clase:%d' % int(_p.class_id), 1, maximo=True, addr=addr)
                 log.info(f"[{addr}] cambio de rama: fuera "
                          f"{_sk.nombre_rama(_fuera)}, dentro "
                          f"{_sk.nombre_rama(_dentro)} (Lv {_nv_rec}) "
