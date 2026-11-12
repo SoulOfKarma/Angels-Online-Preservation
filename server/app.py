@@ -133,7 +133,7 @@ def _portales():
 # que se tratan aparte. Estaba escrito a mano en tres sitios distintos y ya
 # se pago caro una vez: cada copia que se olvidaba dejaba un mapa entero sin
 # IA. Aqui esta una sola vez.
-MAPAS_APARTE = {41: 'lyceum.json', 57: 'fighting_palace'}
+MAPAS_APARTE = {41: 'lyceum.json', 57: 'fighting_palace.json'}
 # Hasta donde piensa un monstruo. Mas alla de esto el jugador no lo ve -- su
 # radio de vision son 38 casillas, medido -- asi que gastarle IA no sirve de
 # nada. Ver el bucle de IA, que corre diez veces por segundo.
