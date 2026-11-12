@@ -2587,6 +2587,30 @@ def casilla_de_pixel(px):
     return ((px[0] + 16) // 32, (px[1] + 16) // 32)
 
 
+def tramo_mascota(f, ahora):
+    """(tramo, espera) del movimiento en curso de una mascota (su ficha):
+    como `tramo_en_curso` de los monstruos, con 'mov_paso' y
+    'reemitir_paso' en la ficha. Sin tramo en curso: (None, proximo_paso)."""
+    mv = f.get('mov_paso')
+    pp = f.get('proximo_paso', 0)
+    if isinstance(mv, (list, tuple)) and len(mv) == 6 and mv[5] == pp:
+        return tuple(mv), f.get('reemitir_paso', 0)
+    return None, pp
+
+
+def paso_mascota(f, ahora, mov, origen_tile, destino_tile, spd):
+    """Programa un tramo de la mascota como los de persecucion: velocidad
+    real del cliente, desde el pixel donde va y renovado antes de llegar.
+    Devuelve (cur, dst) en pixeles para el 0x0005."""
+    cur = origen_persecucion(mov, ahora, (origen_tile[0] * 32, origen_tile[1] * 32))
+    dst = (destino_tile[0] * 32, destino_tile[1] * 32)
+    dur = duracion_persecucion(cur, dst, spd)
+    f['proximo_paso'] = ahora + dur
+    f['reemitir_paso'] = ahora + espera_persecucion(dur)
+    f['mov_paso'] = [ahora, cur[0], cur[1], dst[0], dst[1], f['proximo_paso']]
+    return cur, dst
+
+
 def tramo_en_curso(m):
     """(tramo, espera) del ultimo movimiento programado del monstruo.
 

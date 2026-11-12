@@ -64,6 +64,7 @@ Mapas del tesoro (TreMap): las Robber Lord Map Piece se cuentan (S2C 0x012A), lo
 Gulp Room: Overlord Legte aparece al llegar; el Exit Guide y las puertas del laberinto obedecen el sorteo del mapa (el Exit Guide lleva a Hank); el Lion Dragon solo es vulnerable unos segundos tras explotar un Powder Pail cerca; Evil Eye saca sus cristales durante la pelea; los Heat Elf reaparecen en la instancia para que salga el Demon Kidace.
 Los eventos de la casilla de llegada se disparan al cargar el mapa. Las monturas blancas no entran en el álbum por diseño del cliente (solo azules/amarillas).
 Más tarde el 11/11: el botón Delete del TreMap borra el mapa también en el servidor (C2S 0x012A); los 43 logros "Defeat <jefe>" cuentan al matar al jefe de la instancia (Fly King = Beelzebub, Berssif = GluttonBeelzebub...); las puertas equivocadas del laberinto de Gulp Room muestran el teletransporte de Swiftness y solo saltan en la puerta (radio 1); el nombre de la Knight Statue queda sobre la estatua.
+Mascotas: su movimiento (seguirte e ir a por un objetivo) ahora es fluido como el de los monstruos. La pestaña Pet del Item Mall vende 361 mascotas base y de fusión a 299 AG (no las del mall actual ni las de sus bolsas); traducidas 8 descripciones de huevos.
 Angel Lyceum: NPCs restaurados
 Astral Angel (canje de Star Keys 393), Party Angel (cajas renewal y canje 245), Chat Bubble Exchange
 (grupos 559, 570), Fashionable (recetas de vouchers) y Reissue Angel.

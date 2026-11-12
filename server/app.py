@@ -12214,7 +12214,8 @@ class Servidor:
                                             ses.pet_objetivo = None
                                             _procesar_muerte_monstruo(ses, pet_targ, yo, addr, espera=0.1)
                                 else:
-                                    if ahora >= f_pet.get('proximo_paso', 0):
+                                    _mov_pet, _esp_pet = _cb.tramo_mascota(f_pet, ahora)
+                                    if ahora >= _esp_pet:
                                         spd_p = 140 if int(f_pet.get('saciedad', 0)) > 100 else 105
                                         # Por casillas que se pisan, como al seguir al jugador.
                                         (nx_p, ny_p), _ok_pet = _transitable.tramo(
@@ -12225,13 +12226,12 @@ class Servidor:
                                             # Sin paso posible: se queda y lo reintenta luego.
                                             f_pet['proximo_paso'] = ahora + 0.5
                                         else:
-                                            pasos_dar = max(1, max(abs(nx_p - pet_x), abs(ny_p - pet_y)))
-                                            cur_px, cur_py = pet_x * 32, pet_y * 32
+                                            # Fluido como los monstruos (combate.paso_mascota).
+                                            (cur_px, cur_py), (dst_px, dst_py) = _cb.paso_mascota(
+                                                f_pet, ahora, _mov_pet, (pet_x, pet_y), (nx_p, ny_p), spd_p)
                                             f_pet['x'] = nx_p
                                             f_pet['y'] = ny_p
                                             ses.pet_tile = [nx_p, ny_p]
-                                            dst_px, dst_py = nx_p * 32, ny_p * 32
-                                            f_pet['proximo_paso'] = ahora + (32.0 * pasos_dar / float(spd_p))
                                             _p_mv = MOVE.build(entity_id=pet_eid, cur_x=cur_px, cur_y=cur_py, dst_x=dst_px, dst_y=dst_py, speed=spd_p)
                                             ses.enviar(_p_mv)
                                             import presencia as _pr
@@ -12248,7 +12248,8 @@ class Servidor:
                                 # al lado si no hay camino o esta muy lejos.
                                 _st_pet = int(getattr(p, 'stage', 0) or 0)
                                 _fin_pet, _hay_camino = ((pet_x, pet_y), True)
-                                if 1 < dist_jug <= 30 and ahora >= f_pet.get('proximo_paso', 0):
+                                _mov_pet, _esp_pet = _cb.tramo_mascota(f_pet, ahora)
+                                if 1 < dist_jug <= 30 and ahora >= _esp_pet:
                                     _fin_pet, _hay_camino = _transitable.tramo(
                                         _st_pet, (pet_x, pet_y), (p.tile_x, p.tile_y),
                                         min(dist_jug - 1, 6 if dist_jug > 6 else 4), parar_a=1)
@@ -12265,18 +12266,17 @@ class Servidor:
                                     )
                                     import presencia as _pr
                                     _pr.notificar_mascota_movimiento(ses, pet_eid, _p_mv)
-                                elif dist_jug > 1 and ahora >= f_pet.get('proximo_paso', 0) \
+                                elif dist_jug > 1 and ahora >= _esp_pet \
                                         and _fin_pet != (pet_x, pet_y):
                                     nx_j, ny_j = _fin_pet
-                                    pasos_dar = max(1, max(abs(nx_j - pet_x), abs(ny_j - pet_y)))
                                     if dist_jug > 6:
                                         spd_p = max(spd_p, 200)     # alcanzar corriendo
-                                    cur_px, cur_py = pet_x * 32, pet_y * 32
+                                    # Fluido como los monstruos (combate.paso_mascota).
+                                    (cur_px, cur_py), (dst_px, dst_py) = _cb.paso_mascota(
+                                        f_pet, ahora, _mov_pet, (pet_x, pet_y), (nx_j, ny_j), spd_p)
                                     f_pet['x'] = nx_j
                                     f_pet['y'] = ny_j
                                     ses.pet_tile = [nx_j, ny_j]
-                                    dst_px, dst_py = nx_j * 32, ny_j * 32
-                                    f_pet['proximo_paso'] = ahora + (32.0 * pasos_dar / float(spd_p))
                                     _p_mv = MOVE.build(entity_id=pet_eid, cur_x=cur_px, cur_y=cur_py, dst_x=dst_px, dst_y=dst_py, speed=spd_p)
                                     ses.enviar(_p_mv)
                                     import presencia as _pr

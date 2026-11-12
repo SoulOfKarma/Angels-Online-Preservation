@@ -75,6 +75,7 @@ Treasure maps (TreMap): Robber Lord Map Pieces are counted (S2C 0x012A), level 1
 Gulp Room: Overlord Legte spawns on arrival; the Exit Guide and maze doors follow the map's maze roll (the Exit Guide takes you to Hank); the Lion Dragon is only vulnerable for a few seconds after a nearby Powder Pail explodes; Evil Eye summons its crystals during the fight; Heat Elf respawn inside the instance so Demon Kidace can appear.
 Arrival-tile map events fire when a map finishes loading. White mounts cannot go in the album by client design (only blue/yellow).
 Later on 11/11: the TreMap Delete button now clears the map on the server (C2S 0x012A); the 43 "Defeat <boss>" achievements count killing the instance boss (Fly King = Beelzebub, Berssif = GluttonBeelzebub...); wrong maze doors in Gulp Room show the Swiftness teleport and only trigger at the door (radius 1); the Knight Statue name sits over the statue.
+Pets: their movement (following you and going for a target) is now smooth like the monsters'. Item Mall Pet tab sells 361 base and fusion pets at 299 AG (not the ones in the current mall or its bags); 8 pet egg descriptions translated.
 Angel Lyceum: restored missing NPCs Astral Angel (Star Key exchange 393), Party Angel (renewal gifts & exchange 245),
 Chat Bubble Exchange (groups 559, 570), Fashionable (voucher recipes), and Reissue Angel.
 Party Angel applies the original 12-hour Archangel's Secret; Compensation Angel is removed.
