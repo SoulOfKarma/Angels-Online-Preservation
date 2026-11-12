@@ -12520,7 +12520,7 @@ class Servidor:
                     })
                     salida.extend([
                         _pet.enlazar(yo, f_pet['entidad']),
-                        struct.pack('<HIBBI', 0x0013, yo, 1, 0x3F, f_pet['entidad']),
+                        struct.pack('<HIBBI', 0x0013, f_pet['entidad'], 1, 0x3F, 0),  # TEAMID 0 de la mascota (no del jugador: le ponia la placa de PvP)
                         _pet.armar(f_pet),
                         *_refrescar(ses, [_r_p]),
                         _pet.entidad_mundo(_pet_plantilla(), est_pet),
@@ -14873,7 +14873,7 @@ class Servidor:
                 })
                 _pkgs_pet = [
                     _pet.enlazar(p.entity_id, f_pet['entidad']),
-                    struct.pack('<HIBBI', 0x0013, p.entity_id, 1, 0x3F, f_pet['entidad']),
+                    struct.pack('<HIBBI', 0x0013, f_pet['entidad'], 1, 0x3F, 0),  # TEAMID 0 de la mascota (no del jugador: le ponia la placa de PvP)
                     _pet.armar(f_pet),
                     *_refrescar(ses, [_r_p]),
                     _pet.entidad_mundo(_pet_plantilla(), est_pet),
