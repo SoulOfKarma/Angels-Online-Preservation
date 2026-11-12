@@ -21077,6 +21077,8 @@ class Servidor:
                 _cl_loc.quitar_logo_arranque()
             if getattr(_cf_logo, 'RAMAS_SIN_EXCLUSION', True):
                 _cl_loc.quitar_exclusion_ramas()
+            if getattr(_cf_logo, 'FILTRO_NOMBRES_UPDATE21', True):
+                _cl_loc.restaurar_filtro_nombres()
             _cl_loc.parchear_launcher()
             _srvs_launcher = await _cl_loc.iniciar_servidores_launcher()
             for _sl in _srvs_launcher:
