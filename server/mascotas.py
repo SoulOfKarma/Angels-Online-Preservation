@@ -685,6 +685,19 @@ ORDEN_ATACAR = 2
 KIND_ORDEN = 0x11
 
 
+def paquete_traje(fila: int) -> bytes:
+    """s2c 0x017A: la fila marcada del Pet Equipment (0 ninguna, 1..3).
+
+    REA angel.dat: el manejador (hueco 0x1f50 de FUN_005e5350, FUN_005f8eb0)
+    carga el bloque de tipo 4 (FUN_006e74d0): [u32 tam] y, si tam > 4, 18
+    u32 fijos; [u32 n] y n x [u32][u8][u8 fila]. Por cada entrada guarda la
+    fila, marca WND_PET_EQUIP_SUIT_SELECT y manda el mismo el 0x015E. Sin
+    este paquete su fila arranca en 0 y al sacar la mascota mandaba un
+    0x015E con 00 aunque la casilla se viera marcada.
+    """
+    return struct.pack('<HII', 0x017A, 4, 1) + struct.pack('<IBB', 0, 0, max(0, min(3, int(fila or 0))))
+
+
 def paquete_orden(entidad_jugador: int, modo: int) -> bytes:
     """El 0x001D que confirma la orden.
 

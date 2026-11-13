@@ -103,6 +103,9 @@ def skills_arma_ses(ses):
 # los que piden a partir de 0.92, que son los que se veian en el log
 # (1.03, 1.05, 1.10). Lo que llegue antes de eso sigue fuera.
 MARGEN_CADENCIA = 0.20
+# El atk_speed de Pet's Satiation (magia 3796): la mascota saciada ataca un
+# 30 % mas rapido (se suma al de sus buffs, con el tope del 40 %).
+ATK_SPEED_SACIEDAD = 30
 
 def lleva_duales_ses(ses):
     """Si el personaje pelea con DOS armas de mano (el escudo no cuenta)."""
@@ -2088,7 +2091,10 @@ def _pet_alternar(ses, addr, ranura):
     _tocadas_eq = _pet_equipo_cambiar(ses, f)
     if _tocadas_eq:
         ses.enviar(*_refrescar(ses, _tocadas_eq))
-    p.pet_suit = int((getattr(ses, 'pet_suits', None) or {}).get(str(ranura), 0) or 0)
+    # La fila marcada del Pet Equipment: la de esta sesion o, si no, la que
+    # quedo guardada en su ficha ('traje'). Solo con la de la sesion, al
+    # volver a entrar el set no daba nada hasta remarcar la fila.
+    p.pet_suit = int((getattr(ses, 'pet_suits', None) or {}).get(str(ranura), f.get('traje', 0)) or 0)
 
     # Cada vez que sale es una entidad NUEVA
     p.mascota = f
@@ -2118,6 +2124,9 @@ def _pet_alternar(ses, addr, ranura):
     ]
     if int(f.get('saciedad', 0)) > 100:
         pkgs_spawn.append(_st.pack('<HIBBII', 0x001D, f['entidad'], 1, 4, 3796, max(60000, (int(f['saciedad']) - 100) * 60000)))
+    # La fila marcada del Pet Equipment al cliente (0x017A): si no, la suya
+    # arranca en 0 y el set no daba nada hasta remarcarla.
+    pkgs_spawn.append(_ms.paquete_traje(p.pet_suit))
     ses.enviar(*pkgs_spawn)
     import presencia as _pr
     _pr.notificar_mascota_spawn(ses)
@@ -12255,9 +12264,14 @@ class Servidor:
                                 agi_total = int(f_pet.get('agilidad', 15)) + int(b_star.get('agilidad', 0)) + int(b_bf_atk.get('agilidad', 0))
                                 if sac_buff:
                                     agi_total = int(round(agi_total * 1.2))
-                                cadencia_pet = max(0.95 if sac_buff else 1.15, min(1.55, 1.55 - agi_total * 0.002))
-                                if b_bf_atk.get('atk_speed'):
-                                    cadencia_pet = max(0.75, cadencia_pet * (1.0 - min(0.40, b_bf_atk['atk_speed'] / 100.0)))
+                                cadencia_pet = max(1.15, min(1.55, 1.55 - agi_total * 0.002))
+                                # Saciada (Pet's Satiation, 3796) suma su atk_speed 30
+                                # a la de los buffs. Antes solo bajaba el suelo de
+                                # 1.15 a 0.95 s, un numero puesto a mano que casi no
+                                # se notaba; ahora va a 1.15 * 0.70 = 0.805 s.
+                                _vel_pet = b_bf_atk.get('atk_speed', 0) + (ATK_SPEED_SACIEDAD if sac_buff else 0)
+                                if _vel_pet:
+                                    cadencia_pet = max(0.75, cadencia_pet * (1.0 - min(0.40, _vel_pet / 100.0)))
                                 if dist_pet <= r_pet:
                                     if (ahora - f_pet.get('ultimo_ataque', 0) >= cadencia_pet
                                             and ahora >= f_pet.get('combo_hasta', 0)):
@@ -16660,6 +16674,10 @@ class Servidor:
                     _f_suit = getattr(ses.personaje, 'mascota', None)
                     if isinstance(_f_suit, dict) and _f_suit.get('ranura') is not None:
                         ses.__dict__.setdefault('pet_suits', {})[str(_f_suit['ranura'])] = ses.personaje.pet_suit
+                        # Y en su ficha, para la proxima sesion.
+                        if _f_suit.get('traje', 0) != ses.personaje.pet_suit:
+                            _f_suit['traje'] = ses.personaje.pet_suit
+                            _guardar_fichas_mascota(ses)
                 except Exception:
                     pass
             ficha = getattr(ses.personaje, 'mascota', None)

@@ -570,7 +570,9 @@ taken with an **8.6.0.8**, and both speak the same thing.
 IGG took the game down in February 2026, so the client is no longer available
 from them. This is the copy this project is developed and tested against:
 
-**[Angels Online client 8.7.6.1](https://drive.google.com/file/d/1FTw0sNVxRwEF0KL3il6A4bpwEgG6dH5k/view?usp=sharing)**
+**[Angels Online client 8.7.6.1](https://drive.google.com/file/d/1SDckJV2GFD2-lyHQ_3sgtJrB2PjROyWg/view?usp=sharing)**
+
+This is the last full client download: from now on the client updates itself from the server through its normal launcher (START.EXE), so there is no need to download a new client again.
 
 It is IGG's client with the ALO Taiwan content up to update32 (8.7.6.1)
 migrated into it and translated to English by this project. It is here because a protocol you cannot run
