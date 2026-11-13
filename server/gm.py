@@ -593,9 +593,11 @@ def aplicar(ses, parsed) -> str:
             finally:
                 con.close()
         actualizado = cuentas.db_obtener_gremio(g['guild_id'])
-        mundos = getattr(ses, 'mundos_ref', None) or [ses]
-        for s_m in _grm_cmd.miembros_online_de(g['guild_id'], mundos):
-            s_m.enviar(_grm_cmd.paquete_datos_gremio(actualizado, s_m.personaje.char_id))
+        # Antes con `ses.mundos_ref`, que no existe: solo se avisaba a uno
+        # mismo (dos veces) y los demas de la liga no veian el cambio.
+        for s_m in _grm_cmd.miembros_online_de(g['guild_id'], _app()._tw_sesiones()):
+            if s_m is not ses:
+                s_m.enviar(_grm_cmd.paquete_datos_gremio(actualizado, s_m.personaje.char_id))
         ses.enviar(_grm_cmd.paquete_datos_gremio(actualizado, p.char_id))
         msg = f"League '{g['nombre']}' promoted to level/rank {target_lvl} (Rep: {actualizado['reputacion']})."
         _avisar(ses, msg)
@@ -621,9 +623,11 @@ def aplicar(ses, parsed) -> str:
             finally:
                 con.close()
         actualizado = cuentas.db_obtener_gremio(g['guild_id'])
-        mundos = getattr(ses, 'mundos_ref', None) or [ses]
-        for s_m in _grm_cmd.miembros_online_de(g['guild_id'], mundos):
-            s_m.enviar(_grm_cmd.paquete_datos_gremio(actualizado, s_m.personaje.char_id))
+        # Antes con `ses.mundos_ref`, que no existe: solo se avisaba a uno
+        # mismo (dos veces) y los demas de la liga no veian el cambio.
+        for s_m in _grm_cmd.miembros_online_de(g['guild_id'], _app()._tw_sesiones()):
+            if s_m is not ses:
+                s_m.enviar(_grm_cmd.paquete_datos_gremio(actualizado, s_m.personaje.char_id))
         ses.enviar(_grm_cmd.paquete_datos_gremio(actualizado, p.char_id))
         msg = f"League '{g['nombre']}' reputation set to {rep_val} (Level: {actualizado['nivel']})."
         _avisar(ses, msg)

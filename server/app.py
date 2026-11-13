@@ -1504,7 +1504,9 @@ def _probar_gm(ses, cuerpo, addr) -> bool:
         _comp_gm.comando_gm(ses, leido[1], leido[2])
         return True
     if leido[0] == 'help':
-        ses.enviar(_cl.aviso(
+        # Antes un solo aviso con las tres cadenas: la segunda caia en `tipo`
+        # y con tipo=0 daba TypeError, asi que /help no contestaba nunca.
+        ses.enviar(*(_cl.aviso(_t_help, tipo=0, msg_id=_cl.MSG_TEXTO) for _t_help in (
             'GM: /item <id> [qty] | /level <n> | /levelall <n> | /skills [lv] | /skillsall [lv] | /skills5 | /clearskills | '
             '/pet level|exp|path|evolve | /rango [1..20] | /recipes [all|weapon|armor|sewing|craft|cooking] [level] | '
             '/estacion <normal|navidad|halloween|sakura|verano> | /emote <0..36> | /emote unlock <id> | /emote unlockall | /emote list | '
@@ -1514,8 +1516,7 @@ def _probar_gm(ses, cuerpo, addr) -> bool:
             '/hbstart [min] [registration_min] | /hbstop | /aa status | /hb status | /notice <text>',
             '/aa lobby|enter|watch|begin|finish [level] | /hb lobby|enter|watch|begin|finish; /hbteam <text>',
             '/logros full <Type>[:<Subtype>] (e.g. /logros full Quests:Sand Castle Tales, /logros full * = all) | '
-            '/sistemas | /album <category> <value> | /daily start|enter|stop|finish|status <event> [min]',
-            tipo=0, msg_id=_cl.MSG_TEXTO))
+            '/sistemas | /album <category> <value> | /daily start|enter|stop|finish|status <event> [min]')))
         log.info('[%s] GM help' % (addr,))
         return True
     if leido[0] == 'emote' and ses.personaje:
@@ -1902,9 +1903,11 @@ def _probar_gm(ses, cuerpo, addr) -> bool:
             finally:
                 con.close()
         actualizado = cuentas.db_obtener_gremio(g['guild_id'])
-        mundos = getattr(ses, 'mundos_ref', None) or [ses]
-        for s_m in _grm_cmd.miembros_online_de(g['guild_id'], mundos):
-            s_m.enviar(_grm_cmd.paquete_datos_gremio(actualizado, s_m.personaje.char_id))
+        # Antes con `ses.mundos_ref`, que no existe: solo se avisaba a uno
+        # mismo (dos veces) y los demas de la liga no veian el cambio.
+        for s_m in _grm_cmd.miembros_online_de(g['guild_id'], _tw_sesiones()):
+            if s_m is not ses:
+                s_m.enviar(_grm_cmd.paquete_datos_gremio(actualizado, s_m.personaje.char_id))
         ses.enviar(_grm_cmd.paquete_datos_gremio(actualizado, ses.personaje.char_id))
         ses.enviar(_cl.aviso(f"League '{g['nombre']}' promoted to level/rank {target_lvl} (Rep: {actualizado['reputacion']}).", tipo=0, msg_id=_cl.MSG_TEXTO))
         log.info(f"[{addr}] GM guildlevel: {g['nombre']} -> level {target_lvl}")
@@ -1927,9 +1930,11 @@ def _probar_gm(ses, cuerpo, addr) -> bool:
             finally:
                 con.close()
         actualizado = cuentas.db_obtener_gremio(g['guild_id'])
-        mundos = getattr(ses, 'mundos_ref', None) or [ses]
-        for s_m in _grm_cmd.miembros_online_de(g['guild_id'], mundos):
-            s_m.enviar(_grm_cmd.paquete_datos_gremio(actualizado, s_m.personaje.char_id))
+        # Antes con `ses.mundos_ref`, que no existe: solo se avisaba a uno
+        # mismo (dos veces) y los demas de la liga no veian el cambio.
+        for s_m in _grm_cmd.miembros_online_de(g['guild_id'], _tw_sesiones()):
+            if s_m is not ses:
+                s_m.enviar(_grm_cmd.paquete_datos_gremio(actualizado, s_m.personaje.char_id))
         ses.enviar(_grm_cmd.paquete_datos_gremio(actualizado, ses.personaje.char_id))
         ses.enviar(_cl.aviso(f"League '{g['nombre']}' reputation set to {rep_val} (Level: {actualizado['nivel']}).", tipo=0, msg_id=_cl.MSG_TEXTO))
         log.info(f"[{addr}] GM guildrep: {g['nombre']} -> rep {rep_val}")
@@ -8672,6 +8677,23 @@ def _recorrer_dialogo_mapa(ses, addr, stage, nodo):
         # Ya hay un viaje para cuando se cierre el cuadro (dejar el
         # entrenamiento): el CHANGE_MAP del arbol lo duplicaria a destiempo.
         efectos = [e for e in efectos if e[0] != 'viajar']
+    elif not opciones and not any(e[0] == 'cerrar_dialogo' for e in efectos):
+        # (Si el propio arbol cierra el cuadro -- CLOSE_MESSAGE antes del
+        # CHANGE_MAP, como "Send me back to the Angel Lyceum" -- el cliente
+        # ya no manda el cierre y el viaje va ahi mismo.)
+        # Un CHANGE_MAP a OTRO mapa tras un texto sin opciones ("I will send
+        # you to your city" de Director Wolay, "Send me back to the Angel
+        # Lyceum" de los Angeles de faccion) espera a que se cierre el cuadro.
+        # Hecho aqui mismo, el personaje aparecia en la ciudad con el texto
+        # del NPC todavia abierto encima (13/11/2026).
+        for i, e in enumerate(efectos):
+            if e[0] != 'viajar' or int(e[1]) == int(getattr(p, 'stage', 0) or 0):
+                continue
+            cas = _ev_d.casillas_de_tag(int(e[1]), int(e[2]))
+            if cas:
+                ses.viaje_pendiente = (int(e[1]), tuple(cas[0]), 'stage %d' % int(e[1]))
+                efectos = efectos[:i] + efectos[i + 1:]
+            break
     if efectos:
         _aplicar_efectos(ses, addr, efectos, ' (dialogo %s)' % nodo)
     # TOTEM WAR: el Terra Keeper del campo contesta "Okay...Let's get going!"
@@ -21255,6 +21277,7 @@ class Servidor:
             if getattr(_cf_logo, 'FILTRO_NOMBRES_UPDATE21', True):
                 _cl_loc.restaurar_filtro_nombres()
             _cl_loc.restaurar_banners_eventos()
+            _cl_loc.publicar_tablas_texto()
             _cl_loc.parchear_launcher()
             _srvs_launcher = await _cl_loc.iniciar_servidores_launcher()
             for _sl in _srvs_launcher:

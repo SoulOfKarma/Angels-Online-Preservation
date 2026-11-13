@@ -1,5 +1,5 @@
 {
-  "_nota": "Wise Institute (stage 406), segunda parada de Cybertronica, del cliente OFICIAL de Taiwan (8.7.5.7). Poblado desde UNA sola sesion, la mas completa: el entity_id no sobrevive a la conexion, asi que juntar sesiones duplica. Hicieron falta dos pasadas; la segunda aporto los de la entrada, que el usuario echo en falta. Los objetos van CRUDOS.",
+  "_nota": "Wise Institute (stage 406), segunda parada de Cybertronica, del cliente OFICIAL de Taiwan (8.7.5.7). Poblado desde UNA sola sesion, la mas completa: el entity_id no sobrevive a la conexion, asi que juntar sesiones duplica. Hicieron falta dos pasadas; la segunda aporto los de la entrada, que el usuario echo en falta. Los objetos van CRUDOS. Patrol Hound: 1 capturado (tag 11) + 5 anadidos a peticion del usuario (en Taiwan salian 5 o 6): tags 8, 10, 106, 90 y 112.",
   "stage": 406,
   "spawns": [
     {
@@ -2078,6 +2078,86 @@
       "direccion": 6,
       "visible": 1,
       "puesto_por": "npcs_del_cliente"
+    },
+    {
+      "entity_id": 206505762,
+      "nombre": "Patrol Hound",
+      "npc_type": 23661,
+      "sprite": 111488,
+      "klass": 1,
+      "monstruo": true,
+      "tile": [
+        276,
+        93
+      ],
+      "direccion": 3,
+      "visible": 0,
+      "nivel": 450,
+      "nombre_original": "巡邏衛犬"
+    },
+    {
+      "entity_id": 206505763,
+      "nombre": "Patrol Hound",
+      "npc_type": 23661,
+      "sprite": 111488,
+      "klass": 1,
+      "monstruo": true,
+      "tile": [
+        140,
+        34
+      ],
+      "direccion": 3,
+      "visible": 0,
+      "nivel": 450,
+      "nombre_original": "巡邏衛犬"
+    },
+    {
+      "entity_id": 206505764,
+      "nombre": "Patrol Hound",
+      "npc_type": 23661,
+      "sprite": 111488,
+      "klass": 1,
+      "monstruo": true,
+      "tile": [
+        147,
+        105
+      ],
+      "direccion": 3,
+      "visible": 0,
+      "nivel": 450,
+      "nombre_original": "巡邏衛犬"
+    },
+    {
+      "entity_id": 206505765,
+      "nombre": "Patrol Hound",
+      "npc_type": 23661,
+      "sprite": 111488,
+      "klass": 1,
+      "monstruo": true,
+      "tile": [
+        165,
+        145
+      ],
+      "direccion": 3,
+      "visible": 0,
+      "nivel": 450,
+      "nombre_original": "巡邏衛犬"
+    },
+    {
+      "entity_id": 206505766,
+      "nombre": "Patrol Hound",
+      "npc_type": 23661,
+      "sprite": 111488,
+      "klass": 1,
+      "monstruo": true,
+      "tile": [
+        191,
+        101
+      ],
+      "direccion": 3,
+      "visible": 0,
+      "nivel": 450,
+      "nombre_original": "巡邏衛犬"
     }
   ],
   "recursos": [

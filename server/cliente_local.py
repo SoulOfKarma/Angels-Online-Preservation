@@ -1377,6 +1377,32 @@ def quitar_exclusion_ramas() -> int:
 # la que se podian crear nombres normales: Danny y Jude pasan, GMTobias no. Se
 # lee del pak del propio jugador, asi que nada de IGG viaja en el repo. Para
 # deshacerlo basta borrar el archivo suelto.
+# Las tablas de texto traducidas (tools/aplicar_traducciones_cliente.py) van
+# tambien en el parche del launcher: update26 es el ultimo pak que las trae,
+# asi que la copia de update32 manda. Asi cada cliente recibe los textos nuevos
+# sin tocar a mano su update26.pak (13/11/2026: los Angeles de las ciudades
+# salian en chino).
+TABLAS_TEXTO = ('msg.xml', 'quest.xml', 'achievement.xml', 'crown.xml')
+
+
+def publicar_tablas_texto() -> int:
+    """Registra en el parche las tablas de extracted_paks/update26. Cuantas."""
+    d = RAIZ_PROYECTO / 'extracted_paks' / 'update26' / 'setting' / 'eng'
+    n = 0
+    try:
+        import parche_cliente
+    except Exception as e:
+        log.warning('parche del launcher: %s' % e)
+        return 0
+    for nombre in TABLAS_TEXTO:
+        f = d / nombre
+        if not f.exists():
+            continue
+        parche_cliente.registrar(PAK_PARCHE, 'setting/eng', nombre, f.read_bytes())
+        n += 1
+    return n
+
+
 RUTA_STRFILTER_XML = 'setting/eng/strfilter.xml'
 PAK_STRFILTER = 'update21.pak'
 
