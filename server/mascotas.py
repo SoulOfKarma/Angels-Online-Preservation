@@ -1609,6 +1609,45 @@ def poner_buff_objeto(ficha: dict, buff_id: int, segundos: int, ahora=None) -> b
     return True
 
 
+REGEN_CADA = 2.0
+
+
+def regenerar(ficha: dict, ahora: float, dueno_en_combate: bool, atacando: bool) -> bool:
+    """Regeneracion pasiva de la mascota que esta fuera, como la del jugador
+    de pie (configuracion.regenera con el nivel de la mascota) sobre su vida
+    y mana base: cada REGEN_CADA s, quieta (ahora >= proximo_paso), sin
+    atacar, sin dano desde el tick anterior ('regen_hp') y con el dueno fuera
+    de combate. Devuelve True si subio algo."""
+    import configuracion
+    import os
+    # Las pruebas que comparan paquetes exactos la apagan: va por reloj.
+    if os.environ.get('AO_REGEN_MASCOTA') == '0':
+        return False
+    if ahora - float(ficha.get('regen_tick') or 0) < REGEN_CADA:
+        return False
+    ficha['regen_tick'] = ahora
+    hp_max = max(1, int(ficha.get('hp_max') or ficha.get('hp') or 127))
+    hp = int(ficha.get('hp') if ficha.get('hp') is not None else hp_max)
+    visto = ficha.get('regen_hp')
+    ficha['regen_hp'] = hp
+    if (dueno_en_combate or atacando or ahora < float(ficha.get('proximo_paso') or 0)
+            or (visto is not None and hp < int(visto))):
+        return False
+    nv = max(1, int(ficha.get('nivel') or 1))
+    cambio = False
+    if hp < hp_max:
+        hp = min(hp_max, hp + configuracion.regenera(hp_max, nv, False, True))
+        ficha['hp'] = hp
+        cambio = True
+    mp_max = max(0, int(ficha.get('mp_max') or ficha.get('mp') or 0))
+    mp = int(ficha.get('mp') if ficha.get('mp') is not None else mp_max)
+    if mp < mp_max:
+        ficha['mp'] = min(mp_max, mp + configuracion.regenera(mp_max, nv, False, False))
+        cambio = True
+    ficha['regen_hp'] = int(ficha.get('hp') or hp)
+    return cambio
+
+
 def dar_exp(ficha: dict, cantidad: int, ahora=None) -> int:
     """Suma experiencia y sube de nivel lo que haga falta.
 

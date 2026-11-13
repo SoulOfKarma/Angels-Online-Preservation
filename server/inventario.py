@@ -1277,6 +1277,38 @@ def es_apilable(item_id: int) -> bool:
 
 
 _OCULTO_CACHE = {}
+_PROTOTIPOS = None
+
+
+def _prototipos_item() -> dict:
+    """id (texto) -> 原型介面 de TODAS las tablas de items, leido de una vez.
+
+    Antes `es_item_oculto` abria content.db y recorria las nueve tablas (sin
+    indice) por cada objeto: la primera carga de misiones (668 objetos) tenia
+    el servidor bloqueado 17 s en el primer clic a un NPC. Como `fila_item`,
+    manda la primera tabla que tenga el id.
+    """
+    global _PROTOTIPOS
+    if _PROTOTIPOS is not None:
+        return _PROTOTIPOS
+    _PROTOTIPOS = {}
+    try:
+        import sqlite3
+        db = pathlib.Path(__file__).parent.parent / 'corpus' / 'content.db'
+        if db.exists():
+            con = sqlite3.connect(db)
+            col_proto = chr(0x539f) + chr(0x578b) + chr(0x4ecb) + chr(0x9762)
+            for tabla in TABLAS_ITEM:
+                try:
+                    filas = con.execute('select id, [%s] from %s' % (col_proto, tabla)).fetchall()
+                except Exception:
+                    continue
+                for i, p in filas:
+                    _PROTOTIPOS.setdefault(str(i), p)
+            con.close()
+    except Exception:
+        pass
+    return _PROTOTIPOS
 
 
 def es_item_oculto(item_id: int) -> bool:
@@ -1293,21 +1325,10 @@ def es_item_oculto(item_id: int) -> bool:
         _OCULTO_CACHE[iid] = True
         return True
 
-    try:
-        import sqlite3
-        db = pathlib.Path(__file__).parent.parent / 'corpus' / 'content.db'
-        if db.exists():
-            con = sqlite3.connect(db)
-            col_proto = chr(0x539f) + chr(0x578b) + chr(0x4ecb) + chr(0x9762)
-            row = fila_item(con, f'[{col_proto}]', iid)
-            con.close()
-            if row and row[0] is not None:
-                proto_str = str(row[0]).strip()
-                if proto_str == '5001':
-                    _OCULTO_CACHE[iid] = True
-                    return True
-    except Exception:
-        pass
+    proto = _prototipos_item().get(str(iid))
+    if proto is not None and str(proto).strip() == '5001':
+        _OCULTO_CACHE[iid] = True
+        return True
 
     try:
         import misiones as _mis

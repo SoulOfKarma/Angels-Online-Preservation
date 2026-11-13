@@ -601,8 +601,9 @@ def _final_tutorial(ses, addr):
             ses.enviar(clases.aviso(_nombre_item(item_id), tipo=0,
                                     msg_id=clases.MSG_ITEM))
             ses.enviar(*inv.entregar(cid, item_id, ranura))
-    ses.enviar(inv.stats(bolsa, mejoras=_mejoras_de(ses),
-                         mascotas=getattr(ses.personaje, 'mascotas', None)))
+    # Las stats completas: sin habilidades, vida ni oro el cliente se quedaba
+    # con el panel a cero hasta el siguiente 0x0042.
+    ses.enviar(_stats_ses(ses))
     ses.enviar(*_apariencia(ses))
     import presencia as _pr
     _pr.notificar_equipo(ses)
@@ -8658,6 +8659,10 @@ def _recorrer_dialogo_mapa(ses, addr, stage, nodo):
     ses.enviar(_dl.linea_de(g, 0, p.nombre))
     log.info('[%s] dialogo del mapa %s/%s: %s%s', addr, stage, nodo, mensajes,
              ' opciones %s' % [o[0] for o in opciones] if opciones else '')
+    if getattr(ses, 'viaje_pendiente', None):
+        # Ya hay un viaje para cuando se cierre el cuadro (dejar el
+        # entrenamiento): el CHANGE_MAP del arbol lo duplicaria a destiempo.
+        efectos = [e for e in efectos if e[0] != 'viajar']
     if efectos:
         _aplicar_efectos(ses, addr, efectos, ' (dialogo %s)' % nodo)
     # TOTEM WAR: el Terra Keeper del campo contesta "Okay...Let's get going!"
@@ -9138,6 +9143,42 @@ def _eventos_al_morir(ses, monstruo, addr):
                              ' pendientes tras morir %s' % getattr(monstruo, 'nombre', '?'))
     except Exception:
         log.exception('fallo el evento al morir el monstruo')
+
+
+def _dejar_entrenamiento(ses, addr):
+    """La opcion 10125 ("Quit the training") del Angels' Tutor, venga por
+    respuesta_a o por su arbol del mapa (41/1000337). False si se rechaza
+    (ya graduado: 11512 y cierre).
+
+    El traslado NO va aqui. Medido: al decir que si el servidor manda el
+    10127, el cliente pide la linea siguiente, llega el cierre del cuadro y
+    RECIEN ENTONCES el cambio de mapa. Mandandolo en este momento el traslado
+    caia en mitad del dialogo y el cuadro se quedaba colgado. Por el arbol
+    pasaba eso y peor: su CHANGE_MAP(58, 1) no tenia casillas (eventos.json
+    no traia el mapa 58) y el jugador se quedaba en el Lyceum sin graduarse.
+    """
+    import dialogos
+    import misiones as _mis_quit
+    if _es_graduado(ses):
+        ses.enviar(dialogos.armar_linea(11512, 2, []), struct.pack('<H', 0x0012) + dialogos.FIN)
+        ses.dlg_ent = None
+        log.info(f"[{addr}] Abandono rechazado: el personaje ya esta graduado")
+        return False
+    if _mis_quit.tiene_mision(ses.personaje, 102):
+        _mis_quit.completar_mision(ses, 102)
+    elif _mis_quit.tiene_mision(ses.personaje, 101):
+        _mis_quit.completar_mision(ses, 101)
+        if _mis_quit.tiene_mision(ses.personaje, 102):
+            _mis_quit.completar_mision(ses, 102)
+    ses.viaje_pendiente = (STAGE_GRADUACION, TILE_GRADUACION,
+                           'Graduation Palace')
+    ses.personaje.faction = "Graduated"
+    if getattr(ses, 'usuario', None):
+        cuentas.guardar_faccion(ses.usuario,
+                                ses.personaje.char_id, "Graduated")
+    log.info(f"[{addr}] {ses.personaje.nombre} confirmo dejar "
+             f"el entrenamiento; viaja al cerrarse el dialogo")
+    return True
 
 
 def _cerrar_viaje(ses, addr, stage, tile, nombre_dest):
@@ -9861,6 +9902,21 @@ class Servidor:
                             cuentas.guardar_progreso(ses.usuario, p.char_id, p.nivel, p.exp,
                                                      p.hp, p.mp, p.habilidades,
                                                      hp_max=p.hp_max, mp_max=p.mp_max, sp=getattr(ses, "sp", None), buffs=getattr(ses.personaje, "buffs", None) if ses.personaje else None)
+
+                # --- Regeneracion pasiva de la MASCOTA (12/11/2026) ---
+                # Como el jugador de pie (configuracion.regenera con su nivel):
+                # cada 2 s, fuera, quieta, sin atacar, sin dano desde el tick
+                # anterior y con el dueno fuera de combate. La tasa propia de
+                # la mascota no sale de los datos: se usa la del jugador.
+                f_pet = getattr(p, 'mascota', None)
+                if isinstance(f_pet, dict) and f_pet.get('fuera'):
+                    import mascotas as _ms_rg
+                    _pkgs_rg = _ms_rg.regenerar(f_pet, ahora, en_combate,
+                                                getattr(ses, 'pet_objetivo', None) is not None)
+                    _pet_eid_rg = getattr(ses, 'pet_entity_id', None) or f_pet.get('entidad')
+                    if _pkgs_rg and _pet_eid_rg:
+                        ses.enviar_inmediato(_cb.atributo(int(_pet_eid_rg), _ms_rg.hp_eff(f_pet), _cb.KIND_HP),
+                                             _ms_rg.armar(f_pet))
 
                 # --- Decaimiento periodico de saciedad (60s) y ganancia/perdida de intimidad (180s) ---
                 f_pet = getattr(p, 'mascota', None)
@@ -11825,12 +11881,15 @@ class Servidor:
                                                         pkgs_pet_muerte = [
                                                             _pk_golpe_mon(m, pet_eid, ef_atk),
                                                             _cb.numero_flotante(pet_eid, suyo),
+                                                            # Igual que al guardarla a mano (quitar,
+                                                            # orden 0x0B, desenlazar, quitar). SIN el
+                                                            # 0x0065 (armar): llegando tras desenlazar,
+                                                            # el cliente volvia a abrir el panel de la
+                                                            # mascota muerta y se quedaba ahi.
                                                             _ms.quitar(pet_eid),
-                                                            # Como al guardarla: sin la orden 0x0B el
-                                                            # cliente deja abierto su panel.
                                                             _ms.paquete_orden(yo, 0x0B),
                                                             _ms.enlazar(yo, 0),
-                                                            _ms.armar(f_pet),
+                                                            _ms.quitar(pet_eid),
                                                             _cl_pm.aviso('10', tipo=7, msg_id=965),
                                                         ]
                                                         if _r_p is not None:
@@ -19443,6 +19502,9 @@ class Servidor:
                                struct.pack('<H', 0x0012) + _dlg_m.FIN)
                     log.info(f"[{addr}] Bluesand skill shop opened: {_tienda}")
                     return
+                if (_dlm.get('stage') == 41 and _opcion == 10125 and ses.personaje
+                        and not _dejar_entrenamiento(ses, addr)):
+                    return
                 _sig = _ops[_i][1] if 0 <= _i < len(_ops) else 0
                 ses.dlg_ent = None
                 ses.enviar(struct.pack('<H', 0x0012) + _dlg_m.FIN)
@@ -19872,32 +19934,8 @@ class Servidor:
                     _st_area, _tile_area, _nombre_area = DESTINOS_ENTRENAMIENTO[_el]
                     ses.viaje_pendiente = (_st_area, _tile_area, _nombre_area)
                 elif _el == 10125 and ses.personaje:
-                    if _es_graduado(ses):
-                        ses.enviar(dialogos.armar_linea(11512, 2, []), struct.pack('<H', 0x0012) + dialogos.FIN)
-                        ses.dlg_ent = None
-                        log.info(f"[{addr}] Abandono rechazado: el personaje ya esta graduado")
+                    if not _dejar_entrenamiento(ses, addr):
                         return
-                    # "Quit the training": el traslado NO va aqui. Medido:
-                    # al decir que si el servidor manda el 10127, el cliente
-                    # pide la linea siguiente, llega el cierre del cuadro y
-                    # RECIEN ENTONCES el cambio de mapa. Mandandolo en este
-                    # momento el traslado caia en mitad del dialogo y el
-                    # cuadro se quedaba colgado.
-                    import misiones as _mis_quit
-                    if _mis_quit.tiene_mision(ses.personaje, 102):
-                        _mis_quit.completar_mision(ses, 102)
-                    elif _mis_quit.tiene_mision(ses.personaje, 101):
-                        _mis_quit.completar_mision(ses, 101)
-                        if _mis_quit.tiene_mision(ses.personaje, 102):
-                            _mis_quit.completar_mision(ses, 102)
-                    ses.viaje_pendiente = (STAGE_GRADUACION, TILE_GRADUACION,
-                                           'Graduation Palace')
-                    ses.personaje.faction = "Graduated"
-                    if getattr(ses, 'usuario', None):
-                        cuentas.guardar_faccion(ses.usuario,
-                                                ses.personaje.char_id, "Graduated")
-                    log.info(f"[{addr}] {ses.personaje.nombre} confirmo dejar "
-                             f"el entrenamiento; viaja al cerrarse el dialogo")
                 elif _el == 10235 and ses.personaje:
                     # Confirmar la faccion. Se decide por el NOMBRE del NPC,
                     # no por su id: antes habia una lista de ids de totems
@@ -20392,16 +20430,11 @@ class Servidor:
                                 ses.personaje.oro = 10
                                 import clases as _cls
                                 import inventario as _iv
-                                bars, max_pts = _max_sp_info(ses.personaje)
                                 ses.enviar(struct.pack('<HIBBI', 0x0013, ses.personaje.entity_id, 1, 6, 10),
                                            _cls.aviso("10 Gold", tipo=0, msg_id=_cls.MSG_PAGO),
                                            _iv.completo(ses.personaje.char_id, _con_oro(ses), None,
                                                _mejoras_de(ses)),
-                                           _iv.stats(ses.inventario, ses.personaje.habilidades,
-                                                     hp=ses.personaje.hp, hp_max=ses.personaje.hp_max,
-                                                     mp=ses.personaje.mp, mp_max=ses.personaje.mp_max,
-                                                     oro=10, sp=getattr(ses, 'sp', None), sp_max=bars,
-                                                     mejoras=_mejoras_de(ses)))
+                                           _stats_ses(ses))
                                 if getattr(ses, 'usuario', None):
                                     cuentas.guardar_oro(ses.usuario, ses.personaje.char_id, 10)
                             log.info(f"[{addr}] Raphael: fin etapa 2 -> 10 de oro otorgados")
