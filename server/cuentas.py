@@ -443,7 +443,10 @@ def guardar_documento(datos: dict):
                 for idx, p in enumerate(p_list):
                     r = int(p.get('ranura') if p.get('ranura') is not None else idx)
                     ranuras_activas.add(r)
-                    cid = int(p.get('char_id') or (1001 + r))
+                    # Sin char_id, uno NUEVO (antes 1001 + ranura, que repetia
+                    # el de otro personaje y compartian casa, liga y entidad).
+                    cid = int(p.get('char_id') or con.execute(
+                        'SELECT COALESCE(MAX(char_id),1000)+1 FROM personajes').fetchone()[0])
                     con.execute(
                         "INSERT OR REPLACE INTO personajes (usuario, char_id, ranura, nombre, datos) VALUES (?, ?, ?, ?, ?)",
                         (u, cid, r, p.get('nombre', ''), json.dumps(p, ensure_ascii=False))

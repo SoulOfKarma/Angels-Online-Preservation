@@ -753,9 +753,15 @@ def vida_maxima(hp_max, habilidades, bolsa=None, mejoras=None, buffs=None, mp_ma
                     total += int(round(total * (b_data['hp_pct'] / 100.0)))
                 if 'hp_bonus' in b_data and b_data['hp_bonus'] > 0:
                     total += int(b_data['hp_bonus'])
-                if 'mp_to_hp_pct' in b_data and b_data['mp_to_hp_pct'] > 0:
-                    base_mp = mana_maximo(mp_max, habilidades, bolsa=bolsa, mejoras=mejoras, mascotas=mascotas)
-                    total += int(round(base_mp * (b_data['mp_to_hp_pct'] / 100.0)))
+        # Shark Shift (mp_to_hp_pct): con el mana maximo FINAL (con buffs) y al
+        # final, igual que el 0x0042. Antes iba sin buffs y el tope con que se
+        # recorta la vida quedaba por debajo de la maxima del cliente (14/11/2026).
+        mana = None
+        for b_id, b_data in buffs.items():
+            if isinstance(b_data, dict) and b_data.get('fin', 0) > now and b_data.get('mp_to_hp_pct', 0) > 0:
+                if mana is None:
+                    mana = mana_maximo(mp_max, habilidades, bolsa=bolsa, mejoras=mejoras, buffs=buffs, mascotas=mascotas)
+                total += int(round(mana * (b_data['mp_to_hp_pct'] / 100.0)))
     return total
 
 
@@ -1036,9 +1042,7 @@ def stats(bolsa=None, habilidades: list = None,
                     hp_max_eff += int(round(hp_max_eff * (b_data['hp_pct'] / 100.0)))
                 if 'mp_pct' in b_data and b_data['mp_pct'] > 0:
                     mp_max_eff += int(round(mp_max_eff * (b_data['mp_pct'] / 100.0)))
-                if 'mp_to_hp_pct' in b_data and b_data['mp_to_hp_pct'] > 0:
-                    # e.g. Shark Shift: +130% de Max MP se suma a Max HP
-                    hp_max_eff += int(round(mp_max_eff * (b_data['mp_to_hp_pct'] / 100.0)))
+                # Shark Shift (mp_to_hp_pct) va despues del bucle, con el mana final.
 
                 # 2. Transformaciones de combate cuerpo a cuerpo (近戰化 / Shark Shift)
                 # Traspasa el poder magico (Spl Atk / Spl Dfs) transformado a ataque fisico R.Atk/L.Atk y defensa Dfs
@@ -1095,6 +1099,13 @@ def stats(bolsa=None, habilidades: list = None,
                     rotten_eff += b_data['res_corrosion']
                 if b_data.get('carga'):
                     load_max += b_data['carga']
+
+    # Shark Shift (mp_to_hp_pct): con el mana FINAL, despues de todos los
+    # buffs, igual que vida_maxima (14/11/2026).
+    if buffs:
+        for b_id, b_data in buffs.items():
+            if isinstance(b_data, dict) and b_data.get('fin', 0) > now and b_data.get('mp_to_hp_pct', 0) > 0:
+                hp_max_eff += int(round(mp_max_eff * (b_data['mp_to_hp_pct'] / 100.0)))
 
     # TODO lo que va aqui se recorta al rango del campo. Sin esto, un solo
     # numero fuera de sitio -- un debuff que deje un stat en negativo, o un
