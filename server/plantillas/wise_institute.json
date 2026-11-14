@@ -1,5 +1,5 @@
 {
-  "_nota": "Wise Institute (stage 406), segunda parada de Cybertronica, del cliente OFICIAL de Taiwan (8.7.5.7). Poblado desde UNA sola sesion, la mas completa: el entity_id no sobrevive a la conexion, asi que juntar sesiones duplica. Hicieron falta dos pasadas; la segunda aporto los de la entrada, que el usuario echo en falta. Los objetos van CRUDOS. Patrol Hound: 1 capturado (tag 11) + 5 anadidos a peticion del usuario (en Taiwan salian 5 o 6): tags 8, 10, 106, 90 y 112.",
+  "_nota": "Wise Institute (stage 406), segunda parada de Cybertronica, del cliente OFICIAL de Taiwan (8.7.5.7). Poblado desde UNA sola sesion, la mas completa: el entity_id no sobrevive a la conexion, asi que juntar sesiones duplica. Hicieron falta dos pasadas; la segunda aporto los de la entrada, que el usuario echo en falta. Los objetos van CRUDOS. Patrol Hound: 1 capturado (tag 11) + 5 anadidos a peticion del usuario (en Taiwan salian 5 o 6): tags 8, 10, 106, 90 y 112. OBJETOS (13/11/2026): se anaden los 60305 que la captura no trae (el boton bueno de la alarma en 77,70, un boton falso en 32,164 y el ordenador en 156,101) para que se puedan pulsar; entidades 0x0E400000..06 (los huecos de la secuencia eran NPC). Son los botones de la alarma de la 1567. Tambien las cuatro terminales de teletransporte (194,61; 147,97; 271,164; 50,166), entidades 0x0E400003..06.",
   "stage": 406,
   "spawns": [
     {
@@ -4347,6 +4347,111 @@
       "sprite": 60038,
       "cola": "00000000000000",
       "crudo": "4c067a0b0000000097220000b20b000000cfa95aa74ab3bd00df000000000000000686ea00000000000000"
+    },
+    {
+      "entity_id": 239075328,
+      "capa": 0,
+      "px": [
+        1040,
+        5264
+      ],
+      "medio": "0070a8b3c37ebef0c24f004f00000000",
+      "marca": 0,
+      "orient": 6,
+      "sprite": 60305,
+      "cola": "00000280140000",
+      "crudo": "0000400e0000000010040000901400000070a8b3c37ebef0c24f004f00000000000691eb00000280140000",
+      "nota": "anadido: la captura no lo trae (objeto del .mpc en 32,164)"
+    },
+    {
+      "entity_id": 239075329,
+      "capa": 0,
+      "px": [
+        2480,
+        2256
+      ],
+      "medio": "0070a8b3c37ebef0c24f004f00000000",
+      "marca": 0,
+      "orient": 6,
+      "sprite": 60305,
+      "cola": "00000280140000",
+      "crudo": "0100400e00000000b0090000d00800000070a8b3c37ebef0c24f004f00000000000691eb00000280140000",
+      "nota": "anadido: la captura no lo trae (objeto del .mpc en 77,70)"
+    },
+    {
+      "entity_id": 239075330,
+      "capa": 0,
+      "px": [
+        5008,
+        3248
+      ],
+      "medio": "0070a8b3c37ebef0c24f004f00000000",
+      "marca": 0,
+      "orient": 6,
+      "sprite": 60305,
+      "cola": "00000280140000",
+      "crudo": "0200400e0000000090130000b00c00000070a8b3c37ebef0c24f004f00000000000691eb00000280140000",
+      "nota": "anadido: la captura no lo trae (objeto del .mpc en 156,101)"
+    },
+    {
+      "entity_id": 239075331,
+      "capa": 0,
+      "px": [
+        6224,
+        1968
+      ],
+      "medio": "0070a8b3c37ebef0c24f004f00000000",
+      "marca": 0,
+      "orient": 6,
+      "sprite": 60305,
+      "cola": "00000280140000",
+      "crudo": "0300400e0000000050180000b00700000070a8b3c37ebef0c24f004f00000000000691eb00000280140000",
+      "nota": "anadido: la captura no lo trae (objeto del .mpc en 194,61)"
+    },
+    {
+      "entity_id": 239075332,
+      "capa": 0,
+      "px": [
+        4720,
+        3120
+      ],
+      "medio": "0070a8b3c37ebef0c24f004f00000000",
+      "marca": 0,
+      "orient": 6,
+      "sprite": 60305,
+      "cola": "00000280140000",
+      "crudo": "0400400e0000000070120000300c00000070a8b3c37ebef0c24f004f00000000000691eb00000280140000",
+      "nota": "anadido: la captura no lo trae (objeto del .mpc en 147,97)"
+    },
+    {
+      "entity_id": 239075333,
+      "capa": 0,
+      "px": [
+        8688,
+        5264
+      ],
+      "medio": "0070a8b3c37ebef0c24f004f00000000",
+      "marca": 0,
+      "orient": 6,
+      "sprite": 60305,
+      "cola": "00000280140000",
+      "crudo": "0500400e00000000f0210000901400000070a8b3c37ebef0c24f004f00000000000691eb00000280140000",
+      "nota": "anadido: la captura no lo trae (objeto del .mpc en 271,164)"
+    },
+    {
+      "entity_id": 239075334,
+      "capa": 0,
+      "px": [
+        1616,
+        5328
+      ],
+      "medio": "0070a8b3c37ebef0c24f004f00000000",
+      "marca": 0,
+      "orient": 6,
+      "sprite": 60305,
+      "cola": "00000280140000",
+      "crudo": "0600400e0000000050060000d01400000070a8b3c37ebef0c24f004f00000000000691eb00000280140000",
+      "nota": "anadido: la captura no lo trae (objeto del .mpc en 50,166)"
     }
   ]
 }

@@ -290,6 +290,14 @@ def _dialogo_de_estatua(e):
     return struct.pack('<H', 0x0012) + bytes(b)
 
 
+def _portal_por_entidad(stage, entidad):
+    """El tornado de portales.json con esa entidad en ese mapa, o None."""
+    for por in _portales().get('mapas', {}).get(str(int(stage)), []):
+        if por.get('entity') is not None and int(por['entity']) == int(entidad):
+            return por
+    return None
+
+
 def _portal_en(stage, tx, ty):
     """El tornado que se esta pisando, o None."""
     import competiciones
@@ -3023,6 +3031,14 @@ def _procesar_muerte_monstruo(ses, m, yo, addr, espera=0.0):
     import asyncio
     objetivo = m.entity_id
     yo_muerte = yo
+    # UNA baja por vida: dos golpes casi juntos (el disparo tras moverse y el
+    # anterior) procesaban la misma muerte dos veces y daban EXP, oro y botin
+    # dobles (13/11/2026). `vida_combate` sube en cada revivir().
+    _vida_m = getattr(m, 'vida_combate', 0)
+    if getattr(m, 'baja_de_vida', None) == _vida_m:
+        log.debug(f"[{addr}] {m.nombre} (entidad {objetivo}) ya estaba muerto: baja repetida ignorada")
+        return
+    m.baja_de_vida = _vida_m
     if __import__('league_war').monster_dead(ses,m):
         return
     if int(getattr(m, 'npc_type', 0) or 0) in _cb.BARRILES:
@@ -3448,6 +3464,33 @@ def _procesar_muerte_monstruo(ses, m, yo, addr, espera=0.0):
             _premiar(_s_pr, _fr_pr, _bot_pr)
         except Exception:
             log.exception('[%s] no se pudo premiar a un participante', addr)
+    _pasos_tras_botin(ses, m, addr)
+
+
+def _pasos_tras_botin(ses, m, addr):
+    """Los pasos de mision del evento de muerte, otra vez DESPUES del botin.
+
+    El evento que avanza el paso ("si llevas 3 y 3 -> paso siguiente") se
+    mira antes de repartir: si el ultimo objeto llegaba con el botin, la
+    mision se quedaba con 3/3 sin avanzar hasta otra baja (Institute Mystery
+    paso 4, 13/11/2026). Solo se aplican los 'paso'; nada de botin doble.
+    """
+    if not getattr(ses, 'personaje', None):
+        return
+    try:
+        import eventos as _ev_pb
+        import eventos_mundo as _evm_pb
+        estado = _evm_pb.estado_de(ses)
+        evento = getattr(m, 'evento_muerte', None) or _evm_pb.evento_del_monstruo(
+            estado.stage, getattr(m, 'npc_type', 0) or 0)
+        if not evento:
+            return
+        efs = [e for e in _ev_pb.ejecutar(estado.stage, evento, _ev_pb.DISPAROS_AL_MORIR,
+                                          _evm_pb.ContextoSesion(ses, estado)) if e[0] == 'paso']
+        if efs:
+            _aplicar_efectos(ses, addr, efs, ' tras el botin de %s' % getattr(m, 'nombre', '?'))
+    except Exception:
+        log.exception('pasos de mision tras el botin')
 
 
 
@@ -18798,6 +18841,19 @@ class Servidor:
             _cerrar_viaje(ses, addr, _st_retorno, _tile_retorno, _nombre_retorno)
             return
 
+        # --- el cliente choca con un portal: 0x000D [yo][portal][disparo] ---
+        # El viaje lo hace portales.json, pero el EVENTO del portal no se
+        # ejecutaba nunca: el de Sandy Heights -> Wise Institute (evento 2 del
+        # 405) es el que da el paso 7 de Rogue Guardian (1566) y empieza la
+        # 1567. Se ejecuta sin sus viajes, como al pisar (13/11/2026).
+        if (opcode == 0x000D and ses.rol == 'mundo' and ses.personaje
+                and len(cuerpo) == 9
+                and struct.unpack_from('<I', cuerpo, 0)[0] == ses.personaje.entity_id):
+            _por_ch = _portal_por_entidad(ses.personaje.stage, struct.unpack_from('<I', cuerpo, 4)[0])
+            if _por_ch is not None:
+                _eventos_al_pisar(ses, addr, tuple(_por_ch['tile']), solo_chocar=cuerpo[8] == 3)
+                return
+
         # --- dialogo con los NPC -------------------------------------
         # Secuencia establecida con una captura con marca de tiempo:
         #   0x0005 [LE32 entity] clic   ->  0x0012 primera linea
@@ -18859,6 +18915,12 @@ class Servidor:
                     try:
                         import eventos_mundo as _evm_p
                         _ef_obj = _evm_p.al_pulsar(ses, _tile_obj)
+                        if not _ef_obj and not _portal_en(ses.personaje.stage, *_tile_obj):
+                            # Objeto que solo salta al PISARLO (la terminal del
+                            # centro de Wise Institute, 147,97): el cliente se
+                            # para al lado y no lo pisa nunca. Pulsarlo cuenta
+                            # como pisarlo (13/11/2026).
+                            _ef_obj = _evm_p.al_pisar(ses, _tile_obj)
                         if _portal_en(ses.personaje.stage, *_tile_obj):
                             _ef_obj = [e for e in _ef_obj if e[0] not in ('viajar', 'ir_a_tag')]
                         if _ef_obj:
@@ -20955,7 +21017,10 @@ class Servidor:
                                           abs(_bi.tile_y - _oy))
                         _dist_ahora = max(abs(_bi.tile_x - ses.personaje.tile_x),
                                           abs(_bi.tile_y - ses.personaje.tile_y))
-                        if _dist_ahora > 20 or (_dist_ahora > _dist_antes and _dist_ahora > _alc + 1):
+                        # Alejarse lo suelta AUNQUE siga a tiro: con arco
+                        # cada paso corto dentro del alcance era otro disparo
+                        # ("lluvia de flechas", 13/11/2026).
+                        if _dist_ahora > 20 or _dist_ahora > _dist_antes:
                             ses.objetivo_actual = None
                             log.info(f"[{addr}] objetivo soltado: te alejaste a "
                                      f"{_dist_ahora} casillas del {_bi.nombre}")

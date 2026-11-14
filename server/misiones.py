@@ -1354,11 +1354,28 @@ def _etiquetas_del_paso(texto):
     if _RE_ETIQUETA is None:
         _RE_ETIQUETA = _re_e.compile(r"([A-Za-z][A-Za-z'\.\- ]{1,40}?)\s*[:：]\s*(?:/c\$\d)?%(\d+)%")
     limpio = _re_e.sub(r'\\n|[\r\n\t]+', '\n', texto or '')
-    return {int(i): e.strip() for e, i in _RE_ETIQUETA.findall(limpio)}
+    salida = {int(i): e.strip() for e, i in _RE_ETIQUETA.findall(limpio)}
+    # Formato de Taiwan: la criatura en su propia linea ("Gather from Walking
+    # Bomb:") y sus objetos en las siguientes ("Barbed wire %75200% 50."). Sin
+    # esto el paso no tenia etiquetas y cualquier bicho nombrado en el texto
+    # soltaba TODOS los objetos (1573: Walking Bomb daba tambien Iron nail).
+    actual = None
+    for linea in limpio.split('\n'):
+        m = _re_e.match(r"\s*(?:\d+\.\s*)?(?:Gather|Collect|Obtain|Get)\s+from\s+"
+                        r"([A-Za-z][A-Za-z'\.\- ]{1,40}?)\s*[:：]\s*$", linea)
+        if m:
+            actual = m.group(1).strip()
+            continue
+        for i in _re_e.findall(r'%(\d+)%', linea):
+            if actual and int(i) not in salida:
+                salida[int(i)] = actual
+    return salida
 
 
 def _singular(nombre):
     n = (nombre or '').lower().strip()
+    if n.endswith('lves'):            # Poison Elves -> poison elf
+        return n[:-3] + 'f'
     for suf in ('ies', 'es', 's'):
         if n.endswith(suf) and len(n) > len(suf) + 2:
             return n[:-len(suf)] + ('y' if suf == 'ies' else '')
