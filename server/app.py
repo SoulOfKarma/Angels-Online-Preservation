@@ -2588,13 +2588,7 @@ def _sumar_sp(ses, yo, cantidad, addr='') -> int:
     p.sp = despues
     paquetes = [_cb.atributo(yo, despues, _cb.KIND_SP)]
     if antes // _cb.SP_POR_LAMPARA != despues // _cb.SP_POR_LAMPARA:
-        bars, _ = _max_sp_info(p)
-        paquetes.append(_iv.stats(
-            getattr(ses, 'inventario', None), getattr(p, 'habilidades', None),
-            hp=p.hp, hp_max=p.hp_max, mp=p.mp, mp_max=p.mp_max,
-            oro=getattr(ses, 'oro', getattr(p, 'oro', 0)),
-            buffs=getattr(p, 'buffs', None), sp=despues, sp_max=bars,
-            mejoras=_mejoras_de(ses)))
+        paquetes.append(_stats_ses(ses))
     ses.enviar(*paquetes)
     log.debug('[%s] SP %d -> %d (+%d)', addr, antes, despues, despues - antes)
     return despues - antes
@@ -5461,11 +5455,13 @@ def _aplicar_efectos(ses, addr, efectos, motivo=''):
                 __import__('production_sites').open_station(ses,int(ef[1]))
             elif que == 'quitar':
                 tocadas = []
+                import inventario as _iv_ef
                 for item, cant in ef[1]:
-                    if _ev.es_objeto_de_mision(int(item)):
-                        _quitar_token_oculto(ses, addr, int(item), int(cant))
+                    iid = int(item)
+                    if _iv_ef.es_item_oculto(iid) or _ev.es_objeto_de_mision(iid):
+                        _quitar_token_oculto(ses, addr, iid, int(cant))
                         continue
-                    r = _ranura_de_item(ses, int(item))
+                    r = _ranura_de_item(ses, iid)
                     if r is not None:
                         _sacar(ses, r, int(cant))
                         tocadas.append(r)
@@ -9358,7 +9354,8 @@ def _stats_ses(ses):
     if sp is None and p is not None:
         sp = max(0, int(getattr(p, 'sp', 0) or 0))
         ses.sp = sp
-    import logros as _lg_st
+    import combate as _cb_st, logros as _lg_st
+    _cb_st.rehidratar_transformaciones(buffs)
     buffs = _lg_st.con_reputacion(buffs, p)     # las stats fijas de la reputacion
     return inv.stats(bolsa, habs, hp=hp, hp_max=hp_max, mp=mp, mp_max=mp_max,
                      oro=oro, buffs=buffs, sp=sp, sp_max=bars,
@@ -9587,7 +9584,7 @@ def _ejecutar_proc_subhechizo(ses, yo, m, sub_id: int, addr=None) -> list:
         return pkgs
 
     es_mag_p = int(float(d_sub.get('平均傷害') or 0)) > 0 or str(d_sub.get('公式') or '') in ('4', '5', '6', '7', '17')
-    st_bin = _iv.stats(ses.inventario, p.habilidades, buffs=getattr(p, 'buffs', None), mejoras=_mejoras_de(ses))
+    st_bin = _stats_ses(ses)
     atk_pow = struct.unpack_from('<I', st_bin, 2 + 44)[0] if es_mag_p else struct.unpack_from('<I', st_bin, 2 + 20 + 4)[0]
     if not es_mag_p:
         stance_p = _cb.stance_de(int(sub_id))
@@ -12670,12 +12667,7 @@ class Servidor:
                     struct.pack('<BQ', 30, max(0, int(_cb.exp_para_nivel(p.nivel)))) +
                     struct.pack('<BQ', 31, _u64(exp_sig)) +
                     struct.pack('<BQ', 32, _u64(exp_actual_ui)),
-                    inv.stats(b, p.habilidades,
-                              hp=p.hp, hp_max=p.hp_max,
-                              mp=p.mp, mp_max=p.mp_max,
-                              oro=getattr(ses, 'oro', p.oro), buffs=getattr(p, 'buffs', None),
-                              sp=ses.sp, sp_max=bars, mejoras=_mejoras_de(ses),
-                              mascotas=getattr(p, 'mascotas', None)),
+                    _stats_ses(ses),
                     *_apariencia(ses)
                 ]
                 # Restauracion de buffs activos al entrar al mundo (relog)
@@ -13212,7 +13204,7 @@ class Servidor:
                     if blancos:
                         habs = ses.personaje.habilidades if ses.personaje else None
                         buffs_activos = getattr(ses.personaje, 'buffs', None)
-                        st = _iv.stats(ses.inventario, habs, buffs=__import__('logros').con_reputacion(buffs_activos, ses.personaje), mejoras=_mejoras_de(ses))
+                        st = _stats_ses(ses)
                         if is_magic_skill:
                             ataque = struct.unpack_from('<I', st, 2 + 44)[0]
                             dano_base = mag.get('dano_base', 0)
@@ -14358,7 +14350,7 @@ class Servidor:
             import skills as _sk_mod
             habs = ses.personaje.habilidades if ses.personaje else None
             buffs_activos = getattr(ses.personaje, 'buffs', None)
-            st = _iv.stats(ses.inventario, habs, buffs=__import__('logros').con_reputacion(buffs_activos, ses.personaje), mejoras=_mejoras_de(ses))
+            st = _stats_ses(ses)
             is_magic_skill = bool(tipo != _cb.ATAQUE_NORMAL and (_sk_mod.skill_de_magia(tipo) in (1, 2, 3, 4)))
             if is_magic_skill:
                 ataque = struct.unpack_from('<I', st, 2 + 44)[0]
@@ -14698,12 +14690,7 @@ class Servidor:
             curr_bars = ses.sp // 1000
             pkgs_sp = [_cb.atributo(yo, ses.sp, _cb.KIND_SP)]
             if curr_bars != ant_bars:
-                pkgs_sp.append(_iv.stats(ses.inventario, ses.personaje.habilidades,
-                                         hp=ses.personaje.hp, hp_max=ses.personaje.hp_max,
-                                         mp=ses.personaje.mp, mp_max=ses.personaje.mp_max,
-                                         oro=ses.personaje.oro, buffs=buffs_activos,
-                                         sp=ses.sp, sp_max=bars,
-                                         mejoras=_mejoras_de(ses)))
+                pkgs_sp.append(_stats_ses(ses))
 
             ses.esfuerzo = max(0, getattr(ses, 'esfuerzo', 900) - _cb.COSTE_GOLPE)
             pkgs_sk = _otorgar_skill_exp(ses, ses.personaje, yo, arma_puesta=arma_puesta,
@@ -14905,7 +14892,7 @@ class Servidor:
                     _prev_eid = prev_eid
                     habs = ses.personaje.habilidades if ses.personaje else None
                     buffs_act = getattr(ses.personaje, 'buffs', None)
-                    st = _iv.stats(ses.inventario, habs, buffs=buffs_act, mejoras=_mejoras_de(ses))
+                    st = _stats_ses(ses)
                     ataque_j = struct.unpack_from('<I', st, 2 + 44)[0]
                     _sub_mult = ((_sub_dano_base / float(_sub_denom))
                                  if _sub_dano_base > 0 else 1.0)

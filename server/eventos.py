@@ -469,6 +469,9 @@ def traducir(numero, parms):
         return ('paso', _p(parms, 0), _p(parms, 1))
     if numero == 7:
         return ('propiedad', 'sumar', _p(parms, 0), _p(parms, 1))
+    if numero == 117:
+        # ADD_PROPERTY_EX(atr, yi, resto): valor de 64 bits = yi * 10^8 + resto.
+        return ('propiedad', 'sumar', _p(parms, 0), _p(parms, 1) * 100_000_000 + _p(parms, 2))
     if numero == 8:
         return ('propiedad', 'poner', _p(parms, 0), _p(parms, 1))
     if numero == 9:
@@ -589,7 +592,7 @@ def traducir(numero, parms):
 SE_TRADUCEN = frozenset((1, 3, 4, 7, 8, 9, 10, 12, 13, 14, 18, 19, 20, 21, 22, 24,
                          25, 34, 37, 29, 30, 31, 33, 36, 39, 41, 42, 47, 50, 51, 52, 53,
                          54, 55, 56, 57, 60, 63, 67, 70, 72, 78, 81,
-                         16, 59, 69, 89, 90, 91, 92, 93, 94, 95, 96, 104, 107, 111, 112))
+                         16, 59, 69, 89, 90, 91, 92, 93, 94, 95, 96, 104, 107, 111, 112, 117))
 def _alguna(condiciones, ctx):
     for c in condiciones:
         r = evaluar(c[0], c[1], ctx)
