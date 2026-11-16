@@ -79,6 +79,7 @@ CAT_PIENSO_MASCOTA = '寵物強化'
 CAT_PERFORAR = '打孔道具'
 CAT_GEMA = '寶石'
 CAT_GEMA_MASCOTA = '寵物寶石'
+CAT_SACAR_GEMA = '挖寶石道具'
 # El "martillo verde": no mejora, REEMPLAZA los atributos extra por otros
 # nuevos. Su descripcion lo dice: "Apply it to gear, rides or robots below
 # level N to replace their additional attributes bonus with new attributes".
@@ -91,6 +92,7 @@ CLASES = {
     CAT_PERFORAR: 'perforar',
     CAT_GEMA: 'gema',
     CAT_GEMA_MASCOTA: 'gema_mascota',
+    CAT_SACAR_GEMA: 'sacar_gema',
     CAT_VERDE: 'verde',
 }
 
@@ -309,7 +311,7 @@ def perforar(estado: dict, ranura, item_id, nivel_equipo: int, tipo: str,
     st = estado.setdefault(int(ranura), {'veces': 0, 'gemas': [],
                                          'extra': {}, 'huecos': 0})
     st.setdefault('veces', 0)
-    st.setdefault('gemas', [])
+    st['gemas'] = [int(g) for g in (st.get('gemas') or []) if int(g or 0) > 0]
     st.setdefault('extra', {})
     st.setdefault('huecos', 0)
     ok, motivo = puede_perforar(item_id, nivel_equipo, tipo)
@@ -344,7 +346,7 @@ def engarzar(estado: dict, ranura, gema_id, nivel_equipo: int, tipo: str):
     st = estado.setdefault(int(ranura), {'veces': 0, 'gemas': [],
                                          'extra': {}, 'huecos': 0})
     st.setdefault('veces', 0)
-    st.setdefault('gemas', [])
+    st['gemas'] = [int(g) for g in (st.get('gemas') or []) if int(g or 0) > 0]
     st.setdefault('extra', {})
     st.setdefault('huecos', 0)
     libres = st.get('huecos', 0) - len(st['gemas'])
@@ -353,6 +355,22 @@ def engarzar(estado: dict, ranura, gema_id, nivel_equipo: int, tipo: str):
         return False, motivo
     st['gemas'].append(int(gema_id))
     return True, 'gema engarzada'
+
+
+def sacar_gema(estado: dict, ranura, tipo: str):
+    """Quita la ultima gema engarzada sin perder el hueco."""
+    if tipo not in ('arma', 'armadura', 'escudo'):
+        return False, 'las gemas solo van en armas, armaduras y escudos'
+    st = estado.setdefault(int(ranura), {'veces': 0, 'gemas': [],
+                                         'extra': {}, 'huecos': 0})
+    st.setdefault('veces', 0)
+    st['gemas'] = [int(g) for g in (st.get('gemas') or []) if int(g or 0) > 0]
+    st.setdefault('extra', {})
+    st.setdefault('huecos', 0)
+    if not st['gemas']:
+        return False, 'no hay gemas que quitar'
+    quitada = st['gemas'].pop()
+    return True, f'gema {quitada} quitada'
 
 
 def puede_mejorar(item_id, nivel_equipo: int, tipo: str, veces: int):
@@ -658,7 +676,7 @@ def aplicar(estado: dict, ranura, item_id, nivel_equipo: int, tipo: str,
     st = estado.setdefault(int(ranura), {'veces': 0, 'gemas': [],
                                          'extra': {}, 'huecos': 0})
     st.setdefault('veces', 0)
-    st.setdefault('gemas', [])
+    st['gemas'] = [int(g) for g in (st.get('gemas') or []) if int(g or 0) > 0]
     st.setdefault('extra', {})
     st.setdefault('huecos', 0)
     ok, motivo = puede_mejorar(item_id, nivel_equipo, tipo, st['veces'])

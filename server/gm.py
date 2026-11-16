@@ -84,7 +84,7 @@ def dar_item(ses, item_id: int, n: int = 1) -> str:
     n = max(1, min(9999, int(n)))
     if not _item_existe(item_id):
         return f"unknown item id {item_id}"
-    ranura = a._meter(ses, item_id, n)
+    ranura = a._meter(ses, item_id, n, ignorar_peso=True)
     if ranura is None:
         return "inventory full"
     import clases as _cl

@@ -20,6 +20,9 @@ def objetivo(ses,inv,target=None):
     if target is None:
         threats=[m for m in monsters.values() if getattr(m,'en_combate_con',None)==p.entity_id and valid(m)]
         target=min(threats,key=lambda m:max(abs(m.tile_x-p.tile_x),abs(m.tile_y-p.tile_y)),default=None)
+    if target is None:
+        cerca=[m for m in monsters.values() if max(abs(m.tile_x-p.tile_x),abs(m.tile_y-p.tile_y))<=10 and valid(m)]
+        target=min(cerca,key=lambda m:max(abs(m.tile_x-p.tile_x),abs(m.tile_y-p.tile_y)),default=None)
     inv['objetivo']=target
 
 
@@ -35,7 +38,7 @@ def atacar(ses,inv,target,ahora):
     if inv.get('objetivo') is not target or inv.get('clon_sustituto'):return
     origin=(inv['tile_x'],inv['tile_y']);end=(target.tile_x,target.tile_y)
     if max(abs(end[0]-origin[0]),abs(end[1]-origin[1]))>inv['atk_range']:return
-    if ahora<inv.get('proximo_paso',0) or not transitable.linea_libre(ses.personaje.stage,origin,end):return
+    if not transitable.linea_libre(ses.personaje.stage,origin,end):return
     cadence=inv['cadencia']
     if ahora-inv.get('ultimo_ataque',0)<cadence:return
     critical=random.random()*100<inv['crit_rate']
@@ -56,20 +59,105 @@ def atacar(ses,inv,target,ahora):
         app._procesar_muerte_monstruo(ses,target,ses.personaje.entity_id,'Power Clone',espera=0.1)
 
 
+_OBJ_BANDERAS=None
+
+def _compatible_sexo(item_id,sexo):
+    global _OBJ_BANDERAS
+    if not item_id:return True
+    if _OBJ_BANDERAS is None:
+        import json,os
+        ruta=os.path.join(os.path.dirname(os.path.dirname(__file__)),'rust','ao-juego','datos','objetos.json')
+        try:
+            with open(ruta,encoding='utf-8') as f:
+                _OBJ_BANDERAS={int(k):int(v[1]) for k,v in json.load(f).get('objetos',{}).items()}
+        except Exception:
+            _OBJ_BANDERAS={}
+    b=_OBJ_BANDERAS.get(int(item_id),0)
+    if (b&4096) and sexo!=0:return False
+    if (b&8192) and sexo!=1:return False
+    return True
+
+def _tacticas_activas(buffs,ahora=None):
+    if not buffs:return False
+    t=time.time() if ahora is None else ahora
+    return any(isinstance(b,dict) and b.get('fin',0)>t and (b.get('mag') or b).get('efecto') in (260,581) for b in buffs.values())
+
 def spawn(ses,inv):
     """005EBBF0 -> 005EC200: NPC6269/6270 requires a47-byte doll tail."""
     import login
     p=ses.personaje
     a=list(getattr(p,'apariencia',None) or [0,0,0,8,8])
+    sexo=int(a[0]) if a else 0
     tail=bytearray(47)
     tail[:5]=bytes([a[0],a[4],a[3],a[2],a[1]])
     bag=getattr(ses,'inventario',{})
     for i,(fashion,gear) in enumerate(((167,1),(168,2),(169,3),(170,4),(171,5),(172,6),(173,7),(174,10))):
-        struct.pack_into('<I',tail,5+i*4,int(bag.get(fashion) or bag.get(gear) or 0))
-    struct.pack_into('<IIH',tail,37,int(bag.get(3,0)),int(bag.get(175,0)),int(p.class_id))
-    base=login.spawn_invocacion(inv['entity_id'],inv['npc_type'],inv['nombre'],(inv['tile_x'],inv['tile_y']),sprite=inv['sprite'])
-    return base[:65]+bytes(tail)
+        f_it=bag.get(fashion)
+        struct.pack_into('<I',tail,5+i*4,int(f_it or bag.get(gear) or 0))
+    struct.pack_into('<IIH',tail,37,int(bag.get(3,0)),int(bag.get(175,0)),0)
+    base=bytearray(login.spawn_invocacion(inv['entity_id'],inv['npc_type'],inv['nombre'],(inv['tile_x'],inv['tile_y']),sprite=inv['sprite']))
+    camp=max(1,min(5,int(login.CODIGO_FACCION.get(getattr(p,'faction',''),5) or 5)))
+    base[2+4]|=1
+    base[2+38]=camp
+    base[2+39]=0
+    base[2+44]=0
+    return bytes(base[:65])+bytes(tail)
 
+
+def _crear_y_publicar_clon(ses,mag,con_cierre_tipo=None):
+    import app,combate,presencia
+    p=ses.personaje
+    old=getattr(ses,'avatar_clon',None)
+    if old:
+        ses.enviar(combate.despawn_monstruo(old['entity_id']))
+        presencia.notificar_invocacion_despawn(ses,old['entity_id'])
+    npc=int(mag['invoca_npc'])
+    info=combate.datos_invocacion(npc)
+    mult=2 if _tacticas_activas(getattr(p,'buffs',None)) else 1
+    pct=max(1,int(mag['clon_poder']))*mult
+    stats=app._stats_ses(ses)
+    hp=max(1,app._vida_max(p)*pct//100)
+    eid=90_000_000+presencia.entidad_de(ses)*4+3
+    inv=dict(entity_id=eid,npc_type=npc,nombre=p.nombre,sprite=info['sprite'],
+             hp=hp,hp_max=hp,atk=struct.unpack_from('<I',stats,26)[0]*pct//100,
+             matk=struct.unpack_from('<I',stats,46)[0]*pct//100,
+             defensa=struct.unpack_from('<I',stats,38)[0]*pct//100,
+             mdef=struct.unpack_from('<I',stats,54)[0]*pct//100,
+             atk_l=struct.unpack_from('<I',stats,30)[0]*pct//100,
+             mp=app._mana_max(p)*pct//100,mp_max=app._mana_max(p)*pct//100,
+             accuracy=struct.unpack_from('<H',stats,60)[0]*pct//100,
+             agility=struct.unpack_from('<H',stats,64)[0]*pct//100,
+             crit_rate=struct.unpack_from('<H',stats,68)[0]*pct//100,
+             move_speed=app._velocidad_de(ses),
+             arma=ses.inventario.get(3,0),
+             cadencia=combate.cadencia_ataque(p.buffs,p.habilidades,
+                 duales=app.lleva_duales_ses(ses),item_id=ses.inventario.get(3,0)),
+             atk_range=app._cb_alcance(ses),skills=[],tile_x=p.tile_x+1,tile_y=p.tile_y,
+             expira=time.time()+mag['dur_invoca'],objetivo=None,ultimo_ataque=0,
+             es_clon=True,
+             clon_sustituto=bool(mag['clon_sustituto']))
+    ses.avatar_clon=inv
+    inv['level']=p.nivel
+    for key,offset in (('res_body',72),('res_mind',76),('res_lightning',78),
+                       ('res_fire',82),('res_ice',86),('res_corrosion',90)):
+        inv[key]=struct.unpack_from('<H',stats,offset)[0]*pct//100 if len(stats)>=offset+2 else 0
+    objetivo(ses,inv)
+    spawn_packet=spawn(ses,inv)
+    health=combate.atributo(eid,100,combate.KIND_HP)
+    pkgs=[]
+    if con_cierre_tipo is not None:
+        pkgs.append(combate.cierre_de_dano(p.entity_id,p.entity_id,ataque=con_cierre_tipo,efecto=mag.get('efecto',0)))
+    pkgs.extend([spawn_packet,health,struct.pack('<HIBBI',0x0013,p.entity_id,1,0x3d,eid),struct.pack('<HIBBI',0x0013,eid,1,0x3c,eid),spawn_packet])
+    ses.enviar(*pkgs)
+    presencia.notificar_invocacion_spawn(ses,inv,spawn_packet,health)
+    if con_cierre_tipo is not None:
+        ses.enviar(*app._otorgar_skill_exp(ses,p,p.entity_id,magic_id=con_cierre_tipo))
+
+def spawnear_clon_inmediato(ses,clon_mag_id):
+    import combate
+    mag=combate.datos_magia(clon_mag_id)
+    if mag:
+        _crear_y_publicar_clon(ses,mag,con_cierre_tipo=None)
 
 def lanzar(ses, tipo, mag):
     import app, combate, login, presencia
@@ -91,50 +179,7 @@ def lanzar(ses, tipo, mag):
         if (getattr(ses,'desconectado',False) or getattr(ses,'muerto',False) or p.stage!=stage
                 or getattr(ses,'competicion_vida',0)!=vida):
             return
-        old=getattr(ses,'avatar_clon',None)
-        if old:
-            ses.enviar(combate.despawn_monstruo(old['entity_id']))
-            presencia.notificar_invocacion_despawn(ses,old['entity_id'])
-        npc=int(mag['invoca_npc'])
-        info=combate.datos_invocacion(npc)
-        pct=max(1,int(mag['clon_poder']))
-        stats=app._stats_ses(ses)
-        hp=max(1,app._vida_max(p)*pct//100)
-        # Parameter2 scales the owner's EFFECTIVE stats, including gear,
-        # passives and active transformations. V copies100%, not NPC6270's
-        # generic movement/range/critical and attack cadence.
-        # This server-side scaling is explicit; no unrelated static NPC damage.
-        eid=90_000_000+presencia.entidad_de(ses)*4+3
-        inv=dict(entity_id=eid,npc_type=npc,nombre=p.nombre,sprite=info['sprite'],
-                 hp=hp,hp_max=hp,atk=struct.unpack_from('<I',stats,26)[0]*pct//100,
-                 matk=struct.unpack_from('<I',stats,46)[0]*pct//100,
-                 defensa=struct.unpack_from('<I',stats,38)[0]*pct//100,
-                 mdef=struct.unpack_from('<I',stats,54)[0]*pct//100,
-                 atk_l=struct.unpack_from('<I',stats,30)[0]*pct//100,
-                 mp=app._mana_max(p)*pct//100,mp_max=app._mana_max(p)*pct//100,
-                 accuracy=struct.unpack_from('<H',stats,60)[0]*pct//100,
-                 agility=struct.unpack_from('<H',stats,64)[0]*pct//100,
-                 crit_rate=struct.unpack_from('<H',stats,68)[0]*pct//100,
-                 move_speed=app._velocidad_de(ses),
-                 arma=ses.inventario.get(3,0),
-                 cadencia=combate.cadencia_ataque(p.buffs,p.habilidades,
-                     duales=app.lleva_duales_ses(ses),item_id=ses.inventario.get(3,0)),
-                 atk_range=app._cb_alcance(ses),skills=[],tile_x=p.tile_x+1,tile_y=p.tile_y,
-                 expira=time.time()+mag['dur_invoca'],objetivo=None,ultimo_ataque=0,
-                 es_clon=True,
-                 clon_sustituto=bool(mag['clon_sustituto']))
-        ses.avatar_clon=inv
-        inv['level']=p.nivel
-        for key,offset in (('res_body',72),('res_mind',76),('res_lightning',78),
-                           ('res_fire',82),('res_ice',86),('res_corrosion',90)):
-            inv[key]=struct.unpack_from('<H',stats,offset)[0]*pct//100 if len(stats)>=offset+2 else 0
-        objetivo(ses,inv)
-        spawn_packet=spawn(ses,inv)
-        health=combate.atributo(eid,100,combate.KIND_HP)
-        ses.enviar(combate.cierre_de_dano(p.entity_id,p.entity_id,ataque=tipo,efecto=mag.get('efecto',0)),
-                   spawn_packet,health,struct.pack('<HIBBI',0x0013,eid,1,0x3c,p.entity_id))
-        presencia.notificar_invocacion_spawn(ses,inv,spawn_packet,health)
-        ses.enviar(*app._otorgar_skill_exp(ses,p,p.entity_id,magic_id=tipo))
+        _crear_y_publicar_clon(ses,mag,con_cierre_tipo=tipo)
     asyncio.get_event_loop().call_later(max(0.01,cast/1000),finish)
     if getattr(ses,'usuario',None):
         app.cuentas.guardar_progreso(ses.usuario,p.char_id,p.nivel,p.exp,p.hp,p.mp,sp=ses.sp)

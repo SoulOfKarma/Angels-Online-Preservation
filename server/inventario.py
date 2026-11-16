@@ -102,10 +102,39 @@ def peso_de(item_id: int) -> int:
     return _PESOS.get(int(item_id or 0), 0)
 
 
-def peso_total(bolsa) -> int:
-    """Lo que pesa todo lo que se lleva encima."""
-    return sum(peso_de(i) for r, i in (bolsa or {}).items()
-               if r != RANURA_ORO)
+def peso_total(bolsa, cantidades=None) -> int:
+    """Lo que pesa todo lo que se lleva encima (peso unitario * cantidad)."""
+    cants = cantidades or {}
+    total = 0
+    for r, i in (bolsa or {}).items():
+        if r == RANURA_ORO:
+            continue
+        try:
+            ri = int(r)
+        except (TypeError, ValueError):
+            ri = r
+        c = cants.get(ri, cants.get(str(r), 1))
+        try:
+            c = max(1, int(c))
+        except (TypeError, ValueError):
+            c = 1
+        total += peso_de(i) * c
+    return total
+
+
+def carga_maxima(bolsa=None, habilidades: list = None,
+                 buffs: dict = None, mejoras: dict = None,
+                 mascotas: dict = None) -> int:
+    """Carga maxima total (skills + equipo + buffs activos)."""
+    load_max = bonos_de_habilidades(habilidades)['carga']
+    eq = bonos_de_equipo(bolsa, mejoras, mascotas)
+    load_max += eq.get('carga', 0)
+    if buffs:
+        now = time.time()
+        for b_data in buffs.values():
+            if isinstance(b_data, dict) and b_data.get('fin', 0) > now and b_data.get('carga'):
+                load_max += b_data['carga']
+    return max(1, int(load_max))
 
 
 _CORRELATIVO = [0x030000]
@@ -946,7 +975,8 @@ def stats(bolsa=None, habilidades: list = None,
           oro: int = None,
           buffs: dict = None,
           sp: int = None, sp_max: int = None,
-          mejoras: dict = None, mascotas: dict = None) -> bytes:
+          mejoras: dict = None, mascotas: dict = None,
+          cantidades: dict = None) -> bytes:
     """Sub-mensaje 0x0042 con los stats del personaje segun lo que lleva puesto y habilidades pasivas.
 
     El array que empieza en +20 alterna valor base y valor efectivo:
@@ -1157,7 +1187,7 @@ def stats(bolsa=None, habilidades: list = None,
     # en el 100 y el cliente lo leia como peso, por eso la barra aparecia
     # llena. El oro no va aqui: viaja en la ranura 0 del inventario.
     tope = max(1, load_max)
-    struct.pack_into('<III', b, 92, tope, tope, min(peso_total(bolsa), 0xFFFFFFFF))
+    struct.pack_into('<III', b, 92, tope, tope, min(peso_total(bolsa, cantidades), 0xFFFFFFFF))
 
     return struct.pack('<H', 0x0042) + bytes(b)
 
@@ -3263,12 +3293,13 @@ def marcar_huecos(entrada: bytes, huecos: int, gemas=None) -> bytes:
     b = bytearray(entrada)
     n = max(0, min(MAX_HUECOS_ENTRADA, int(huecos or 0)))
     b[base + OFF_HUECOS] = n
+    validas = [int(g) for g in (gemas or []) if int(g or 0) > 0]
     for i in range(MAX_HUECOS_ENTRADA):
         o = base + OFF_GEMAS + i * TAM_GEMA
         if o + TAM_GEMA > len(b):
             break
-        g = (gemas or [])[i] if i < len(gemas or []) else 0
-        struct.pack_into('<I', b, o, int(g or 0) & 0xFFFFFFFF)
+        g = validas[i] if i < len(validas) else 0
+        struct.pack_into('<I', b, o, g & 0xFFFFFFFF)
     return bytes(b)
 
 

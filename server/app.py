@@ -741,13 +741,49 @@ def _mover_inst(ses, origen: int, destino: int):
         mej[o] = b
 
 
-def _meter(ses, item_id: int, n: int = 1, pet_metadata: dict = None) -> int:
+def _peso_excedido(ses, item_id: int, n: int = 1) -> bool:
+    """True si sumar `n` unidades de `item_id` supera el peso maximo (items con peso 0 no bloquean)."""
+    import inventario as inv
+    peso_u = inv.peso_de(int(item_id))
+    if peso_u <= 0:
+        return False
+    bolsa = getattr(ses, 'inventario', None)
+    if bolsa is None:
+        return False
+    p = getattr(ses, 'personaje', None)
+    habs = p.habilidades if p else None
+    buffs = getattr(p, 'buffs', None) if p else None
+    if buffs is not None or p is not None:
+        import combate as _cb_st, logros as _lg_st
+        _cb_st.rehidratar_transformaciones(buffs)
+        buffs = _lg_st.con_reputacion(buffs, p)
+    tope = inv.carga_maxima(
+        bolsa, habs, buffs=buffs,
+        mejoras=getattr(p, 'mejoras', None) if p else None,
+        mascotas=getattr(p, 'mascotas', None) if p else None,
+    )
+    actual = inv.peso_total(bolsa, getattr(ses, 'inventario_cantidades', None))
+    return actual + peso_u * max(1, int(n)) > tope
+
+
+def _meter(ses, item_id: int, n: int = 1, pet_metadata: dict = None,
+           ignorar_peso: bool = False) -> int:
     """Mete n unidades en la mochila y devuelve la casilla que las lleva.
 
     Si el item se apila y ya hay un monton suyo, se suma ahi en vez de
     ocupar una casilla nueva. Si es no-apilable (muebles, equipo, mascotas),
     asigna casillas individuales independientes con id de instancia unico.
     """
+    import inventario as inv
+    item_id = int(item_id)
+    n = max(1, int(n))
+    if inv.es_item_oculto(item_id):
+        log.warning(f"Intento de meter item oculto de mision {item_id} en la mochila visible bloqueado")
+        return None
+    if not ignorar_peso and _peso_excedido(ses, item_id, n):
+        import clases as _cl_peso
+        ses.enviar(_cl_peso.aviso("", tipo=0, msg_id=1611))
+        return None
     try:
         import logros as _lg_m
         if int(item_id) in _lg_m.items_contados()[0] and getattr(ses, 'personaje', None):
@@ -762,13 +798,7 @@ def _meter(ses, item_id: int, n: int = 1, pet_metadata: dict = None) -> int:
                 lambda: _pase_evento(ses, '蒐集道具類', int(n or 1), int(item_id)))
     except Exception:
         pass
-    import inventario as inv
-    item_id = int(item_id)
-    if inv.es_item_oculto(item_id):
-        log.warning(f"Intento de meter item oculto de mision {item_id} en la mochila visible bloqueado")
-        return None
     bolsa = ses.inventario
-    n = max(1, int(n))
     if inv.es_apilable(item_id):
         for ranura, it in bolsa.items():
             r = int(ranura)
@@ -2423,6 +2453,14 @@ def _usar_mejora(ses, addr, ranura, objetivo) -> bool:
                                bono_primer_hueco=blessing.get('pierce_first_pct', 0) / 100.0)
     elif clase in ('gema', 'gema_mascota'):
         ok, msg = _mj.engarzar(p.mejoras, objetivo, item, nivel_pieza, tipo)
+    elif clase == 'sacar_gema':
+        ok, msg = _mj.sacar_gema(p.mejoras, objetivo, tipo)
+        if not ok:
+            ses.enviar(_cl.aviso(
+                'No gems to remove.' if 'quitar' in msg
+                else 'Gems can only be removed from weapons, armors and shields.',
+                tipo=0))
+            return True
     else:
         ok, msg = _mj.aplicar(p.mejoras, objetivo, item, nivel_pieza, tipo,
                               exito_seguro=seguro,
@@ -3419,6 +3457,10 @@ def _procesar_muerte_monstruo(ses, m, yo, addr, espera=0.0):
                 salida_combate.append(_cl.aviso(_nombre_item(item_drop), tipo=0, msg_id=_cl.MSG_ITEM))
                 continue
 
+            if _peso_excedido(ses, item_drop, cant):
+                salida_combate.append(_cl.aviso("", tipo=0, msg_id=1611))
+                continue
+
             apila = None
             if _iv.es_apilable(item_drop):
                 for s_r, it_id in bolsa.items():
@@ -3429,10 +3471,14 @@ def _procesar_muerte_monstruo(ses, m, yo, addr, espera=0.0):
                 log.info(f"[{addr}] inventario lleno (limite={max_ranura}), drop {item_drop} ignorado silenciosamente")
                 continue
 
-            tocadas_botin.append(_meter(ses, item_drop, cant))
-            salida_combate.append(_cl.aviso(_nombre_item(item_drop), tipo=0, msg_id=_cl.MSG_ITEM))
+            slot_drop = _meter(ses, item_drop, cant, ignorar_peso=True)
+            if slot_drop is not None:
+                tocadas_botin.append(slot_drop)
+                salida_combate.append(_cl.aviso(_nombre_item(item_drop), tipo=0, msg_id=_cl.MSG_ITEM))
 
         salida_combate.extend(_refrescar(ses, tocadas_botin, con_oro=True))
+        if tocadas_botin:
+            salida_combate.append(_stats_ses(ses))
         if ses.personaje and tocadas_botin:
             import misiones as _mis_col
             pkgs_rec = _mis_col.verificar_progreso_recoleccion(ses, [d[0] for d in drops])
@@ -8980,6 +9026,34 @@ def _pulso_aura(ses, aura_id, hijo_id, fin):
         pass
 
 
+def _tiene_clon_visual_activo(buffs, ahora=None):
+    """Indica si hay un buff activo con efecto 262 (Amazing/Deceptive/Triple Clones)."""
+    if not buffs:
+        return False
+    t = time.time() if ahora is None else ahora
+    for b in buffs.values():
+        if not isinstance(b, dict) or b.get('fin', 0) <= t:
+            continue
+        mag = b.get('mag') if isinstance(b.get('mag'), dict) else b
+        if int(mag.get('efecto') or 0) == 262:
+            return True
+    return False
+
+
+def _sincronizar_flags_clon(ses, ahora=None):
+    """Actualiza el bit 39 (0x80 en hi) de 0x0185 para animar 1/2/3 clones al castear."""
+    p = getattr(ses, 'personaje', None)
+    if not p:
+        return None
+    activo = _tiene_clon_visual_activo(getattr(p, 'buffs', None), ahora=ahora)
+    lo, hi = getattr(ses, 'flags_magicos', (0, 0))
+    nuevo_hi = (hi | 0x80) if activo else (hi & ~0x80)
+    if (lo, nuevo_hi) == (lo, hi) and not activo:
+        return None
+    ses.flags_magicos = (lo, nuevo_hi)
+    return struct.pack('<HIII', 0x0185, p.entity_id, lo, nuevo_hi)
+
+
 def _buff_a_otro(s, tipo, entrada, dur_ms, mag, lanzador=None, ef=0):
     """Pone el buff a otro jugador: su icono, su ficha y su caducidad.
 
@@ -9008,10 +9082,16 @@ def _buff_a_otro(s, tipo, entrada, dur_ms, mag, lanzador=None, ef=0):
     # Subir el maximo no cura ni devuelve mana. Solo recortar si disminuyo.
     p2.hp = min(p2.hp, _vida_max(p2, s.inventario))
     p2.mp = min(p2.mp, _mana_max(p2, s.inventario))
-    s.enviar_inmediato(struct.pack('<HIBBII', 0x001D, yo2, 1, 4, int(tipo), max(0, int(dur_ms))),
-                       _cb_o.atributo(yo2, p2.hp, _cb_o.KIND_HP),
-                       _cb_o.atributo(yo2, p2.mp, _cb_o.KIND_MP),
-                       _stats_ses(s))
+    p_clon = _sincronizar_flags_clon(s)
+    pks_o = [
+        struct.pack('<HIBBII', 0x001D, yo2, 1, 4, int(tipo), max(0, int(dur_ms))),
+        _cb_o.atributo(yo2, p2.hp, _cb_o.KIND_HP),
+        _cb_o.atributo(yo2, p2.mp, _cb_o.KIND_MP),
+        _stats_ses(s),
+    ]
+    if p_clon:
+        pks_o.append(p_clon)
+    s.enviar_inmediato(*pks_o)
 
     def _caduca(fin=e['fin']):
         if not s.personaje:
@@ -9022,10 +9102,16 @@ def _buff_a_otro(s, tipo, entrada, dur_ms, mag, lanzador=None, ef=0):
         s.personaje.buffs.pop(int(tipo), None)
         s.personaje.hp = min(s.personaje.hp, _vida_max(s.personaje, s.inventario))
         s.personaje.mp = min(s.personaje.mp, _mana_max(s.personaje, s.inventario))
-        s.enviar_inmediato(struct.pack('<HIBBII', 0x001D, s.personaje.entity_id, 1, 4, int(tipo), 0),
-                           _cb_o.atributo(s.personaje.entity_id, s.personaje.hp, _cb_o.KIND_HP),
-                           _cb_o.atributo(s.personaje.entity_id, s.personaje.mp, _cb_o.KIND_MP),
-                           _stats_ses(s))
+        pks_c = [
+            struct.pack('<HIBBII', 0x001D, s.personaje.entity_id, 1, 4, int(tipo), 0),
+            _cb_o.atributo(s.personaje.entity_id, s.personaje.hp, _cb_o.KIND_HP),
+            _cb_o.atributo(s.personaje.entity_id, s.personaje.mp, _cb_o.KIND_MP),
+            _stats_ses(s),
+        ]
+        p_clon_c = _sincronizar_flags_clon(s)
+        if p_clon_c:
+            pks_c.append(p_clon_c)
+        s.enviar_inmediato(*pks_c)
     if dur_ms > 0:
         try:
             asyncio.get_event_loop().call_later(dur_ms / 1000.0, _caduca)
@@ -9360,7 +9446,8 @@ def _stats_ses(ses):
     return inv.stats(bolsa, habs, hp=hp, hp_max=hp_max, mp=mp, mp_max=mp_max,
                      oro=oro, buffs=buffs, sp=sp, sp_max=bars,
                      mejoras=getattr(p, 'mejoras', None) if p else None,
-                     mascotas=getattr(p, 'mascotas', None) if p else None)
+                     mascotas=getattr(p, 'mascotas', None) if p else None,
+                     cantidades=getattr(ses, 'inventario_cantidades', None))
 
 
 def _otorgar_skill_exp(ses, p, yo, arma_puesta=0, magic_id=0, accion=None, skills_forzadas=None, prob_override=None):
@@ -11327,7 +11414,7 @@ class Servidor:
                                     r_inv = max(1, inv.get('atk_range', 1))
                                     if dist_t > 15:
                                         inv['objetivo'] = None
-                                    elif dist_t <= r_inv:
+                                    elif dist_t <= r_inv and (not inv.get('es_clon') or _cb.linea_libre(ses.stage, (inv['tile_x'], inv['tile_y']), (targ.tile_x, targ.tile_y))):
                                         if inv.get('es_clon'):
                                             __import__('avatar_clones').atacar(ses,inv,targ,ahora)
                                             continue
@@ -11389,18 +11476,114 @@ class Servidor:
                                             _pr_inv_action.notificar_companero_accion(
                                                 ses, *pkgs_inv_hit)
                                     else:
-                                        if (inv.get('move_speed', 50) or 0) > 0 and ahora >= inv.get('proximo_paso', 0):
+                                        if (inv.get('move_speed', 50) or 0) > 0:
+                                            _es_clon = bool(inv.get('es_clon'))
                                             dx = targ.tile_x - inv['tile_x']
                                             dy = targ.tile_y - inv['tile_y']
                                             dist_t = max(abs(dx), abs(dy))
                                             r_inv = inv.get('atk_range', 1)
-                                            pasos_dar = min(max(1, dist_t - r_inv), 3)
-                                            stx = (1 if dx > 0 else (-1 if dx < 0 else 0)) * pasos_dar
-                                            sty = (1 if dy > 0 else (-1 if dy < 0 else 0)) * pasos_dar
-                                            if inv.get('es_clon'):
-                                                _nx,_ny=__import__('transitable').avanzar(p.stage,
-                                                    (inv['tile_x'],inv['tile_y']),(targ.tile_x,targ.tile_y),pasos_dar,parar_a=r_inv)
-                                                stx,sty=_nx-inv['tile_x'],_ny-inv['tile_y']
+                                            if _es_clon:
+                                                _mov_cl, _esp_cl = _cb.tramo_mascota(inv, ahora)
+                                                if ahora >= _esp_cl:
+                                                    spd = max(inv.get('move_speed', 50) or 50, 110)
+                                                    (_nx, _ny), _hay_cl = _transitable.tramo(
+                                                        p.stage, (inv['tile_x'], inv['tile_y']),
+                                                        (targ.tile_x, targ.tile_y),
+                                                        min(max(1, dist_t - r_inv), 4), parar_a=r_inv)
+                                                    if not _hay_cl or (_nx, _ny) == (inv['tile_x'], inv['tile_y']):
+                                                        inv['objetivo'] = None
+                                                        inv['proximo_paso'] = ahora + 0.25
+                                                    else:
+                                                        (cur_x, cur_y), (dst_x, dst_y) = _cb.paso_mascota(
+                                                            inv, ahora, _mov_cl, (inv['tile_x'], inv['tile_y']), (_nx, _ny), spd)
+                                                        inv['tile_x'], inv['tile_y'] = _nx, _ny
+                                                        _mv_inv = MOVE.build(entity_id=inv['entity_id'],
+                                                                             cur_x=cur_x, cur_y=cur_y,
+                                                                             dst_x=dst_x, dst_y=dst_y,
+                                                                             speed=spd)
+                                                        ses.enviar(_mv_inv)
+                                                        import presencia as _pr
+                                                        _pr.notificar_invocacion_movimiento(ses, inv['entity_id'], _mv_inv)
+                                            elif ahora >= inv.get('proximo_paso', 0):
+                                                pasos_dar = min(max(1, dist_t - r_inv), 3)
+                                                stx = (1 if dx > 0 else (-1 if dx < 0 else 0)) * pasos_dar
+                                                sty = (1 if dy > 0 else (-1 if dy < 0 else 0)) * pasos_dar
+                                                if stx != 0 or sty != 0:
+                                                    cur_x, cur_y = inv['tile_x'] * 32, inv['tile_y'] * 32
+                                                    inv['tile_x'] += stx
+                                                    inv['tile_y'] += sty
+                                                    dst_x, dst_y = inv['tile_x'] * 32, inv['tile_y'] * 32
+                                                    _pasos = max(abs(stx), abs(sty)) or 1
+                                                    spd = inv.get('move_speed', 50) or 50
+                                                    inv['proximo_paso'] = ahora + (_pasos * 32.0 / spd)
+                                                    _mv_inv = MOVE.build(entity_id=inv['entity_id'],
+                                                                         cur_x=cur_x, cur_y=cur_y,
+                                                                         dst_x=dst_x, dst_y=dst_y,
+                                                                         speed=spd)
+                                                    ses.enviar(_mv_inv)
+                                                    import presencia as _pr
+                                                    _pr.notificar_invocacion_movimiento(ses, inv['entity_id'], _mv_inv)
+                                else:
+                                    if (inv.get('move_speed', 50) or 0) <= 0:
+                                        continue
+                                    # Seguir al jugador si no tiene objetivo
+                                    _off_inv_x = -1 if inv_key == 'invocacion2' else 1
+                                    p_dx = (p.tile_x + _off_inv_x) - inv['tile_x']
+                                    p_dy = p.tile_y - inv['tile_y']
+                                    p_dist = max(abs(p_dx), abs(p_dy))
+                                    _es_clon = bool(inv.get('es_clon'))
+                                    if _es_clon:
+                                        spd = max(inv.get('move_speed', 50) or 50, 110)
+                                        _mov_cl, _esp_cl = _cb.tramo_mascota(inv, ahora)
+                                        _fin_cl, _hay_cl = ((inv['tile_x'], inv['tile_y']), True)
+                                        if 1 < p_dist <= 15 and ahora >= _esp_cl:
+                                            _fin_cl, _hay_cl = _transitable.tramo(
+                                                p.stage, (inv['tile_x'], inv['tile_y']),
+                                                (p.tile_x, p.tile_y),
+                                                min(max(1, p_dist - 1), 6 if p_dist > 6 else 4), parar_a=1)
+                                        if p_dist > 15 or not _hay_cl:
+                                            _lado = p.tile_x + _off_inv_x if _transitable.se_pisa(p.stage, p.tile_x + _off_inv_x, p.tile_y) else p.tile_x
+                                            inv['tile_x'], inv['tile_y'] = _lado, p.tile_y
+                                            inv.pop('mov_paso', None)
+                                            inv['proximo_paso'] = ahora
+                                            cur_x, cur_y = _lado * 32, p.tile_y * 32
+                                            _mv_inv = MOVE.build(entity_id=inv['entity_id'],
+                                                                 cur_x=cur_x, cur_y=cur_y,
+                                                                 dst_x=cur_x, dst_y=cur_y,
+                                                                 speed=spd)
+                                            ses.enviar(struct.pack('<HIII', 0x0003, inv['entity_id'], _lado, p.tile_y), _mv_inv)
+                                            import presencia as _pr
+                                            _pr.notificar_invocacion_movimiento(ses, inv['entity_id'], _mv_inv)
+                                        elif p_dist > 1 and ahora >= _esp_cl and _fin_cl != (inv['tile_x'], inv['tile_y']):
+                                            if p_dist > 6:
+                                                spd = max(spd, 200)
+                                            (cur_x, cur_y), (dst_x, dst_y) = _cb.paso_mascota(
+                                                inv, ahora, _mov_cl, (inv['tile_x'], inv['tile_y']), _fin_cl, spd)
+                                            inv['tile_x'], inv['tile_y'] = _fin_cl
+                                            _mv_inv = MOVE.build(entity_id=inv['entity_id'],
+                                                                 cur_x=cur_x, cur_y=cur_y,
+                                                                 dst_x=dst_x, dst_y=dst_y,
+                                                                 speed=spd)
+                                            ses.enviar(_mv_inv)
+                                            import presencia as _pr
+                                            _pr.notificar_invocacion_movimiento(ses, inv['entity_id'], _mv_inv)
+                                    elif p_dist > 15:
+                                        inv['tile_x'] = p.tile_x + _off_inv_x
+                                        inv['tile_y'] = p.tile_y
+                                        cur_x, cur_y = inv['tile_x'] * 32, inv['tile_y'] * 32
+                                        spd = inv.get('move_speed', 50) or 50
+                                        _mv_inv = MOVE.build(entity_id=inv['entity_id'],
+                                                             cur_x=cur_x, cur_y=cur_y,
+                                                             dst_x=cur_x, dst_y=cur_y,
+                                                             speed=spd)
+                                        ses.enviar(_mv_inv)
+                                        import presencia as _pr
+                                        _pr.notificar_invocacion_movimiento(ses, inv['entity_id'], _mv_inv)
+                                    elif p_dist > 2 and ahora >= inv.get('proximo_paso', 0):
+                                        pasos_dar = min(p_dist - 2, 3)
+                                        stx = (1 if p_dx > 0 else (-1 if p_dx < 0 else 0)) * pasos_dar
+                                        sty = (1 if p_dy > 0 else (-1 if p_dy < 0 else 0)) * pasos_dar
+                                        if stx != 0 or sty != 0:
                                             cur_x, cur_y = inv['tile_x'] * 32, inv['tile_y'] * 32
                                             inv['tile_x'] += stx
                                             inv['tile_y'] += sty
@@ -11415,43 +11598,6 @@ class Servidor:
                                             ses.enviar(_mv_inv)
                                             import presencia as _pr
                                             _pr.notificar_invocacion_movimiento(ses, inv['entity_id'], _mv_inv)
-                                else:
-                                    if (inv.get('move_speed', 50) or 0) <= 0:
-                                        continue
-                                    # Seguir al jugador si no tiene objetivo
-                                    _off_inv_x = -1 if inv_key == 'invocacion2' else 1
-                                    p_dx = (p.tile_x + _off_inv_x) - inv['tile_x']
-                                    p_dy = p.tile_y - inv['tile_y']
-                                    p_dist = max(abs(p_dx), abs(p_dy))
-                                    if p_dist > 15:
-                                        inv['tile_x'] = p.tile_x + _off_inv_x
-                                        inv['tile_y'] = p.tile_y
-                                        cur_x, cur_y = inv['tile_x'] * 32, inv['tile_y'] * 32
-                                        _mv_inv = MOVE.build(entity_id=inv['entity_id'],
-                                                             cur_x=cur_x, cur_y=cur_y,
-                                                             dst_x=cur_x, dst_y=cur_y,
-                                                             speed=inv.get('move_speed', 50) or 50)
-                                        ses.enviar(_mv_inv)
-                                        import presencia as _pr
-                                        _pr.notificar_invocacion_movimiento(ses, inv['entity_id'], _mv_inv)
-                                    elif p_dist > 2 and ahora >= inv.get('proximo_paso', 0):
-                                        pasos_dar = min(p_dist - 2, 3)
-                                        stx = (1 if p_dx > 0 else (-1 if p_dx < 0 else 0)) * pasos_dar
-                                        sty = (1 if p_dy > 0 else (-1 if p_dy < 0 else 0)) * pasos_dar
-                                        cur_x, cur_y = inv['tile_x'] * 32, inv['tile_y'] * 32
-                                        inv['tile_x'] += stx
-                                        inv['tile_y'] += sty
-                                        dst_x, dst_y = inv['tile_x'] * 32, inv['tile_y'] * 32
-                                        _pasos = max(abs(stx), abs(sty)) or 1
-                                        spd = inv.get('move_speed', 50) or 50
-                                        inv['proximo_paso'] = ahora + (_pasos * 32.0 / spd)
-                                        _mv_inv = MOVE.build(entity_id=inv['entity_id'],
-                                                             cur_x=cur_x, cur_y=cur_y,
-                                                             dst_x=dst_x, dst_y=dst_y,
-                                                             speed=spd)
-                                        ses.enviar(_mv_inv)
-                                        import presencia as _pr
-                                        _pr.notificar_invocacion_movimiento(ses, inv['entity_id'], _mv_inv)
 
                         # LOS QUE ESTAN LEJOS NO SE PIENSAN. Este bucle corre
                         # cada TICK_IA, o sea diez veces por segundo, y antes
@@ -11558,54 +11704,77 @@ class Servidor:
                                                         _cb.atributo(ch_targ.entity_id, ch_targ.porcentaje)
                                                     )
                                         else:
-                                            if ahora >= getattr(m, 'proximo_paso', 0):
-                                                dx = ch_targ.tile_x - m.tile_x
-                                                dy = ch_targ.tile_y - m.tile_y
-                                                dist_t = max(abs(dx), abs(dy))
-                                                pasos_dar = min(max(1, dist_t - r_m), 3)
-                                                _nx, _ny = _transitable.avanzar(
-                                                    _mapa_de_paso(m, p.stage), (m.tile_x, m.tile_y),
-                                                    (ch_targ.tile_x, ch_targ.tile_y), pasos_dar, parar_a=r_m)
-                                                stx, sty = _nx - m.tile_x, _ny - m.tile_y
-                                                cur_x, cur_y = m.tile_x * 32, m.tile_y * 32
-                                                m.tile_x += stx
-                                                m.tile_y += sty
-                                                m.tile[0], m.tile[1] = m.tile_x, m.tile_y
-                                                dst_x, dst_y = m.tile_x * 32, m.tile_y * 32
-                                                _pasos = max(abs(stx), abs(sty)) or 1
-                                                spd = m.move_speed or _cb.VELOCIDAD_PASEO
-                                                _mv_ch = MOVE.build(entity_id=m.entity_id,
-                                                                    cur_x=cur_x, cur_y=cur_y,
-                                                                    dst_x=dst_x, dst_y=dst_y,
-                                                                    speed=spd)
-                                                ses.enviar(_mv_ch)
-                                                import presencia as _pr
-                                                _pr.notificar_invocacion_movimiento(ses, m.entity_id, _mv_ch)
+                                            _mov, _espera = _cb.tramo_en_curso(m)
+                                            if ahora >= _espera:
+                                                cur_x, cur_y = _cb.origen_persecucion(
+                                                    _mov, ahora, (m.tile_x * 32, m.tile_y * 32))
+                                                _mp = _mapa_de_paso(m, p.stage)
+                                                _nx = _ny = None
+                                                for _ini in dict.fromkeys((_cb.casilla_de_pixel((cur_x, cur_y)),
+                                                                           (m.tile_x, m.tile_y))):
+                                                    dist_t = max(abs(ch_targ.tile_x - _ini[0]), abs(ch_targ.tile_y - _ini[1]))
+                                                    pasos_dar = min(max(1, dist_t - r_m), _cb.PASOS_PERSECUCION)
+                                                    _nx, _ny = _transitable.avanzar(
+                                                        _mp, _ini, (ch_targ.tile_x, ch_targ.tile_y), pasos_dar, parar_a=r_m)
+                                                    if (_nx, _ny) != _ini:
+                                                        break
+                                                    _nx = _ny = None
+                                                if _nx is None:
+                                                    m.proximo_paso = ahora + 0.5
+                                                else:
+                                                    m.tile_x, m.tile_y = _nx, _ny
+                                                    m.tile[0], m.tile[1] = m.tile_x, m.tile_y
+                                                    dst_x, dst_y = m.tile_x * 32, m.tile_y * 32
+                                                    spd = m.move_speed or _cb.VELOCIDAD_PASEO
+                                                    _dur = _cb.duracion_persecucion((cur_x, cur_y), (dst_x, dst_y), spd)
+                                                    m.proximo_paso = ahora + _dur
+                                                    m.reemitir_paso = ahora + _cb.espera_persecucion(_dur)
+                                                    m.mov_persecucion = (ahora, cur_x, cur_y, dst_x, dst_y, m.proximo_paso)
+                                                    _mv_ch = MOVE.build(entity_id=m.entity_id,
+                                                                        cur_x=cur_x, cur_y=cur_y,
+                                                                        dst_x=dst_x, dst_y=dst_y,
+                                                                        speed=spd)
+                                                    ses.enviar(_mv_ch)
+                                                    import presencia as _pr
+                                                    _pr.notificar_invocacion_movimiento(ses, m.entity_id, _mv_ch)
                                     else:
                                         p_dx = p.tile_x - m.tile_x
                                         p_dy = p.tile_y - m.tile_y
                                         p_dist = max(abs(p_dx), abs(p_dy))
-                                        if p_dist > 2 and ahora >= getattr(m, 'proximo_paso', 0):
-                                            pasos_dar = min(p_dist - 2, 3)
-                                            _nx, _ny = _transitable.avanzar(
-                                                _mapa_de_paso(m, p.stage), (m.tile_x, m.tile_y),
-                                                (p.tile_x, p.tile_y), pasos_dar, parar_a=2)
-                                            stx, sty = _nx - m.tile_x, _ny - m.tile_y
-                                            cur_x, cur_y = m.tile_x * 32, m.tile_y * 32
-                                            m.tile_x += stx
-                                            m.tile_y += sty
-                                            m.tile[0], m.tile[1] = m.tile_x, m.tile_y
-                                            dst_x, dst_y = m.tile_x * 32, m.tile_y * 32
-                                            _pasos = max(abs(stx), abs(sty)) or 1
-                                            spd = m.move_speed or _cb.VELOCIDAD_PASEO
-                                            m.proximo_paso = ahora + (_pasos * 32.0 / spd)
-                                            _mv_ch = MOVE.build(entity_id=m.entity_id,
-                                                                  cur_x=cur_x, cur_y=cur_y,
-                                                                  dst_x=dst_x, dst_y=dst_y,
-                                                                  speed=spd)
-                                            ses.enviar(_mv_ch)
-                                            import presencia as _pr
-                                            _pr.notificar_invocacion_movimiento(ses, m.entity_id, _mv_ch)
+                                        if p_dist > 2:
+                                            _mov, _espera = _cb.tramo_en_curso(m)
+                                            if ahora >= _espera:
+                                                cur_x, cur_y = _cb.origen_persecucion(
+                                                    _mov, ahora, (m.tile_x * 32, m.tile_y * 32))
+                                                _mp = _mapa_de_paso(m, p.stage)
+                                                _nx = _ny = None
+                                                for _ini in dict.fromkeys((_cb.casilla_de_pixel((cur_x, cur_y)),
+                                                                           (m.tile_x, m.tile_y))):
+                                                    dist_t = max(abs(p.tile_x - _ini[0]), abs(p.tile_y - _ini[1]))
+                                                    pasos_dar = min(max(1, dist_t - 2), _cb.PASOS_PERSECUCION)
+                                                    _nx, _ny = _transitable.avanzar(
+                                                        _mp, _ini, (p.tile_x, p.tile_y), pasos_dar, parar_a=2)
+                                                    if (_nx, _ny) != _ini:
+                                                        break
+                                                    _nx = _ny = None
+                                                if _nx is None:
+                                                    m.proximo_paso = ahora + 0.5
+                                                else:
+                                                    m.tile_x, m.tile_y = _nx, _ny
+                                                    m.tile[0], m.tile[1] = m.tile_x, m.tile_y
+                                                    dst_x, dst_y = m.tile_x * 32, m.tile_y * 32
+                                                    spd = m.move_speed or _cb.VELOCIDAD_PASEO
+                                                    _dur = _cb.duracion_persecucion((cur_x, cur_y), (dst_x, dst_y), spd)
+                                                    m.proximo_paso = ahora + _dur
+                                                    m.reemitir_paso = ahora + _cb.espera_persecucion(_dur)
+                                                    m.mov_persecucion = (ahora, cur_x, cur_y, dst_x, dst_y, m.proximo_paso)
+                                                    _mv_ch = MOVE.build(entity_id=m.entity_id,
+                                                                          cur_x=cur_x, cur_y=cur_y,
+                                                                          dst_x=dst_x, dst_y=dst_y,
+                                                                          speed=spd)
+                                                    ses.enviar(_mv_ch)
+                                                    import presencia as _pr
+                                                    _pr.notificar_invocacion_movimiento(ses, m.entity_id, _mv_ch)
                                 continue
 
                             # El sangrado / veneno le resta vida aunque nadie lo toque,
@@ -13224,10 +13393,7 @@ class Servidor:
                             dano_base = mag.get('dano_base', 0)
                             _cb_aoe_info = _cb.combo_de(tipo)
                             es_combo_aoe = bool(_cb_aoe_info and _cb_aoe_info.get('golpes', 1) > 1)
-                            if es_combo_aoe:
-                                mult_spell = 1.2
-                            else:
-                                mult_spell = 1.35
+                            mult_spell = _cb.mult_habilidad_fisica(stance, es_combo_aoe)
                             coef = mag.get('dano_coef', 0)
                             if coef > 0:
                                 mult_spell *= (coef / 100.0)
@@ -13776,6 +13942,10 @@ class Servidor:
                                             and isinstance(prev_bdata, dict) and int(prev_bdata.get('priority_group') or 0) == _pg):
                                         _dict_b_obj.pop(prev_bid, None)
                                         ses.enviar(struct.pack('<HIBBII', 0x001D, targ_confirm, 1, 4, int(prev_bid), 0))
+                                if not (es_target_pet and isinstance(f_pet_cast, dict)):
+                                    _p_clon_pg = _sincronizar_flags_clon(ses)
+                                    if _p_clon_pg:
+                                        ses.enviar(_p_clon_pg)
 
                             buff_dur_s = (dur_ms / 1000.0) if dur_ms > 0 else 300.0
                             buff_entry = dict(mag)
@@ -13895,6 +14065,9 @@ class Servidor:
                                     pass          # era para otro jugador: ya lo tiene
                                 else:
                                     pkgs_buff.append(struct.pack('<HIBBII', 0x001D, yo, 1, 4, tipo, dur_ms))
+                                    _p_clon = _sincronizar_flags_clon(ses)
+                                    if _p_clon:
+                                        pkgs_buff.append(_p_clon)
                                     ses.personaje.hp = min(ses.personaje.hp, _vida_max(ses.personaje, ses.inventario))
                                     ses.personaje.mp = min(ses.personaje.mp, _mana_max(ses.personaje, ses.inventario))
                                     pkgs_buff.append(_cb.atributo(yo, ses.personaje.hp, _cb.KIND_HP))
@@ -13950,6 +14123,9 @@ class Servidor:
                                                 except Exception:
                                                     pass
                                             pkgs_expirar.append(_stats_ses(ses))
+                                            _p_clon_exp = _sincronizar_flags_clon(ses)
+                                            if _p_clon_exp:
+                                                pkgs_expirar.append(_p_clon_exp)
                                     if pkgs_expirar:
                                         ses.enviar_inmediato(*pkgs_expirar)
                                 asyncio.get_event_loop().call_later(dur_ms / 1000.0, _expirar_buff)
@@ -14126,6 +14302,14 @@ class Servidor:
                     except Exception:
                         pass
 
+                prev_enc = getattr(ses, 'monstruo_encantado', None)
+                if prev_enc is not None and prev_enc is not m and getattr(prev_enc, 'encantado', False):
+                    prev_enc.encantado = False
+                    prev_enc.charmed_objetivo = None
+                    ses.enviar_inmediato(
+                        struct.pack('<HIBBII', 0x001D, prev_enc.entity_id, 1, 4, 303, 0),
+                        struct.pack('<HIBBI', 0x0013, prev_enc.entity_id, 1, 0x3c, 0),
+                    )
                 dur_s = max(10, mag.get('dur_ms', 600000) // 1000)
                 dur_ms = dur_s * 1000
                 m.encantado = True
@@ -14516,6 +14700,10 @@ class Servidor:
             # El ataque puede encadenar otro hechizo (轉嫁法術): Slicing Hit
             # sangra al 100%, Poison Hit envenena al 100%, Basic Beating aturde,
             # Tendon Chop ralentiza, o Ember/Holy Brand aplica/consume la marca.
+            _drain_bleed_id = mag.get('drain_bleed_id', 0) if tipo != _cb.ATAQUE_NORMAL else 0
+            _tenia_bleed_drain = bool(
+                _drain_bleed_id and (getattr(m, 'efectos_activos', None) or {}).get(_drain_bleed_id, 0) > time.time()
+            )
             _ef2 = _cb.efecto_secundario(tipo) if tipo != _cb.ATAQUE_NORMAL else None
             _pkg_debuff_m = []
             if tipo != _cb.ATAQUE_NORMAL and mag.get('es_brand'):
@@ -14551,7 +14739,10 @@ class Servidor:
                         m.efectos_activos.pop(_brand_prev_id, None)
                         _pkg_debuff_m.append(struct.pack('<HIBBII', 0x001D, m.entity_id, 1, 4, _brand_prev_id, 0))
                     _ef2 = _cb.efecto_secundario(mag.get('brand_aoe_id', 0))
-            if _ef2 and random.random() * 100 < _ef2.get('prob', 0):
+            if mag.get('efecto') == 680 and _ef2 and _ef2.get('sub_debuff'):
+                import avatar_clones as _av_mir
+                _av_mir.spawnear_clon_inmediato(ses, _ef2['sub_debuff'])
+            elif _ef2 and random.random() * 100 < _ef2.get('prob', 0):
                 _aplicado = m.aplicar_efecto(_ef2)
                 if _aplicado:
                     dur_ms = _ef2.get('dur_ms', 10000)
@@ -14577,16 +14768,16 @@ class Servidor:
                     log.info(f"[{addr}] {m.nombre}: {_aplicado} por "
                              f"{_ef2.get('nombre')} (mid={mid}, {dur_ms}ms)")
             # Marcar al monstruo en combate con el jugador
-            # Forbidden Curse: absorber HP y MP del daño infligido
+            # Forbidden Curse / Bloodthirst Arrow / Lethal Arrow: absorber HP y MP del daño infligido
             _pkgs_drain = []
             if tipo != _cb.ATAQUE_NORMAL and dano > 0 and ses.personaje:
-                _hp_drain = mag.get('drain_hp_pct', 0)
+                _hp_drain = (mag.get('drain_hp_bleed_pct', 0) if _tenia_bleed_drain else 0) or mag.get('drain_hp_pct', 0)
                 _mp_drain = mag.get('drain_mp_pct', 0)
                 if _hp_drain > 0:
                     _prob_drain = mag.get('drain_hp_prob', 100)
                     if random.random() * 100.0 < _prob_drain:
                         _hp_gain = max(1, int(round(dano * (_hp_drain / 100.0))))
-                        ses.personaje.hp = min(_vida_max(ses.personaje),
+                        ses.personaje.hp = min(_vida_max(ses.personaje, bolsa=ses.inventario),
                                               ses.personaje.hp + _hp_gain)
                         _pkgs_drain.append(_cb.atributo(yo, ses.personaje.hp, _cb.KIND_HP))
                         _pkgs_drain.append(_cb.numero_flotante(yo, _hp_gain,
@@ -15041,14 +15232,19 @@ class Servidor:
                     inv['tile_x'] = p.tile_x + _off_x
                     inv['tile_y'] = p.tile_y
                     inv['objetivo'] = None
-                    ses.enviar(
+                    _sp_inv = (__import__('avatar_clones').spawn(ses,inv) if inv.get('es_clon') else
+                               _lg2.spawn_invocacion(inv['entity_id'], inv['npc_type'], inv['nombre'], (inv['tile_x'], inv['tile_y']), sprite=inv['sprite']))
+                    _enl_inv = inv['entity_id'] if inv.get('es_clon') else p.entity_id
+                    _pkgs_inv_ack = [
                         struct.pack('<HIBBI', 0x0013, p.entity_id, 1, 0x3d, inv['entity_id']),
                         struct.pack('<HIBBII', 0x001D, p.entity_id, 1, 0x2a, inv['entity_id'], 0),
-                        (__import__('avatar_clones').spawn(ses,inv) if inv.get('es_clon') else
-                         _lg2.spawn_invocacion(inv['entity_id'], inv['npc_type'], inv['nombre'], (inv['tile_x'], inv['tile_y']), sprite=inv['sprite'])),
+                        _sp_inv,
                         _cb2.atributo(inv['entity_id'], max(0,min(100,int(100*inv.get('hp',1)/max(1,inv.get('hp_max',1))))), _cb2.KIND_HP),
-                        struct.pack('<HIBBI', 0x0013, inv['entity_id'], 1, 0x3c, p.entity_id)
-                    )
+                        struct.pack('<HIBBI', 0x0013, inv['entity_id'], 1, 0x3c, _enl_inv),
+                    ]
+                    if inv.get('es_clon'):
+                        _pkgs_inv_ack.append(_sp_inv)
+                    ses.enviar(*_pkgs_inv_ack)
 
             # Re-spawn de la mascota activa al cambiar de mapa
             f_pet = getattr(p, 'mascota', None)
@@ -15096,6 +15292,9 @@ class Servidor:
                             pkgs_rest = [struct.pack('<HIBBII', 0x001D, p.entity_id, 1, 4, int(b_id), rem_ms)]
                             if b_data.get('es_transform') and b_data.get('mag', {}).get('trans_sprite'):
                                 pkgs_rest.append(_cb2.atributo(p.entity_id, b_data['mag']['trans_sprite'], _cb2.KIND_TRANSFORM))
+                            _p_clon_rest = _sincronizar_flags_clon(ses, ahora=now_t)
+                            if _p_clon_rest:
+                                pkgs_rest.append(_p_clon_rest)
                             ses.enviar(*pkgs_rest)
                             def _expirar_restaurado(sk_id=int(b_id), fin=b_data['fin']):
                                 buffs_act = getattr(p, 'buffs', None)
@@ -15107,6 +15306,9 @@ class Servidor:
                                 if act.get('es_transform'):
                                     pks.append(_cb2.atributo(p.entity_id, 0, _cb2.KIND_TRANSFORM))
                                 pks.append(_stats_ses(ses))
+                                _p_clon_er = _sincronizar_flags_clon(ses)
+                                if _p_clon_er:
+                                    pks.append(_p_clon_er)
                                 ses.enviar_inmediato(*pks)
                             asyncio.get_event_loop().call_later(rem_s, _expirar_restaurado)
                         else:

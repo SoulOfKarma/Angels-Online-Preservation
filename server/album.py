@@ -72,7 +72,7 @@ def _items():
 # Mantle, Appearance. Preserve the legacy saved category names.
 _CATEGORY={**{k:0 for k in ('\u528d','\u5200','\u65a7','\u939a','\u69cd','\u6756','\u5f13\u7bad','\u5f48\u5f13','\u5f71\u5203')},
            '\u982d\u98fe':1,'\u8863\u670d':2,'\u624b\u5957':3,'\u9774\u5b50':4,
-           '\u5ea7\u9a0e':5,'\u6a5f\u7532':5,'\u62ab\u98a8':6,'\u76fe':6}
+           '\u5ea7\u9a0e':5,'\u6a5f\u7532':5,'\u62ab\u98a8':6,'\u76fe':6,'\u98fe\u54c1':6,'\u80cc\u5305':6}
 # Las tablas IGG/TW usan ambas grafias para botas y martillos.
 _CATEGORY.update({'鞋子':4,'錘':0})
 

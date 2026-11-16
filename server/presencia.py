@@ -445,7 +445,8 @@ def paquetes_invocaciones(ses_owner) -> list:
             hp_pct = max(1, min(100, int(100 * cur_hp / max_hp)))
             hp_pkg = _cb.atributo(eid, hp_pct, _cb.KIND_HP)
             link_owner = struct.pack('<HIBBI', 0x0013, owner_pub_eid, 1, 0x3d, eid)
-            link_inv = struct.pack('<HIBBI', 0x0013, eid, 1, 0x3c, owner_pub_eid)
+            link_target = eid if inv.get('es_clon') else owner_pub_eid
+            link_inv = struct.pack('<HIBBI', 0x0013, eid, 1, 0x3c, link_target)
             pkts.extend([sp_pkg, hp_pkg, link_owner, link_inv])
     if pkts and p.stage in __import__('competiciones').MAPAS:
         pkts.extend(__import__('competiciones').marcas_actor(ses_owner,True))
@@ -766,7 +767,8 @@ def notificar_invocacion_spawn(ses, inv, spawn_pkg, hp_pkg):
     owner_pub_eid = entidad_de(ses)
     eid = inv.get('entity_id') if isinstance(inv, dict) else 0
     link_owner = struct.pack('<HIBBI', 0x0013, owner_pub_eid, 1, 0x3d, eid) if eid else b''
-    link_inv = struct.pack('<HIBBI', 0x0013, eid, 1, 0x3c, owner_pub_eid) if eid else b''
+    link_target = eid if isinstance(inv, dict) and inv.get('es_clon') else owner_pub_eid
+    link_inv = struct.pack('<HIBBI', 0x0013, eid, 1, 0x3c, link_target) if eid else b''
     import competiciones as _c
     marks=_c.marcas_actor(ses,True) if ses.personaje.stage in _c.MAPAS else []
     if marks:ses.enviar(*_c.marcas_actor(ses))

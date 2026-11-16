@@ -410,10 +410,18 @@ def pct_dano_buffs(buffs, es_magico: bool, ahora: float = None) -> int:
     clave = 'mag_dmg_pct' if es_magico else 'phys_dmg_pct'
     if ahora is None:
         ahora = time.time()
+    tacticas = any(
+        isinstance(b, dict) and b.get('fin', 0) > ahora
+        and (b.get('mag') or b).get('efecto') in (260, 581)
+        for b in buffs.values()
+    )
     total = 0
     for b in buffs.values():
         if isinstance(b, dict) and b.get('fin', 0) > ahora:
-            total += b.get(clave, 0) or 0
+            v = b.get(clave, 0) or 0
+            if tacticas and (b.get('mag') or b).get('efecto') == 262:
+                v *= 2
+            total += v
     return total
 
 
@@ -1290,6 +1298,10 @@ def encontrar_sub_combate(mid: int, d: dict, tabla: dict):
             return mid + 120
         if p1 and str(p1).isdigit() and int(p1) in tabla:
             return int(p1)
+    if form == '65' and d.get('攻擊型') == '是':
+        st = d.get('狀態參數')
+        if st and str(st).isdigit() and int(st) in tabla:
+            return int(st)
     if hijo and str(hijo).isdigit() and int(hijo) in tabla:
         h_d = tabla[int(hijo)]
         if not hp and (h_d.get('HP') or h_d.get('hp')):
@@ -1457,7 +1469,7 @@ def datos_magia(magic_id: int) -> dict:
             # Ember Brand I..V (13841..13845) & Holy Brand I..V (15241..15245) - Formula 65:
             # Fase 1: golpe individual (狀態參數: 13846..13850 / 15246..15250) + marca DoT (動態參數1: 13976..13980 / 15251..15255)
             # Fase 2 (si el enemigo ya tiene la marca activa): consume la marca y detona AOE (動態參數2: 14036..14040 / 15256..15260)
-            if (res['formula'] == 65 and d.get('攻擊型') == '是') or (13841 <= magic_id <= 13845) or (15241 <= magic_id <= 15245):
+            if (13841 <= magic_id <= 13845) or (15241 <= magic_id <= 15245):
                 res['es_brand'] = True
                 _b_hit = _num(d.get('狀態參數'), 0)
                 _b_dot = _num(d.get('動態參數1'), 0)
@@ -1472,6 +1484,21 @@ def datos_magia(magic_id: int) -> dict:
                     res['dano_coef'] = _num(_d_hit.get('傷害係數'), res['dano_coef'])
                     res['base_denom'] = _num(_d_hit.get('高權位'), res['base_denom']) or 200
                     res['efecto'] = _num(_d_hit.get('特效編號'), res['efecto'])
+            elif res['formula'] == 65 and d.get('攻擊型') == '是':
+                # Otros ataques Formula 65 (ej. Lethal Arrow I..V 15961..15965):
+                # heredan efecto/robo de HP de 狀態參數 y mejora por sangrado de 動態參數2.
+                _f65_st = _num(d.get('狀態參數'), 0)
+                _d_f65_st = _magic_xml().get(_f65_st) or {}
+                if _d_f65_st:
+                    res['efecto'] = _num(_d_f65_st.get('特效編號'), res['efecto'])
+                    if _num(_d_f65_st.get('公式'), 0) == 24:
+                        res['drain_hp_pct'] = _num(_d_f65_st.get('動態參數2'), 30)
+                        res['drain_hp_prob'] = _num(_d_f65_st.get('動態參數1'), 100)
+                        _f65_p2 = _num(d.get('動態參數2'), 0)
+                        _d_f65_p2 = _magic_xml().get(_f65_p2) or {}
+                        if _num(_d_f65_p2.get('公式'), 0) == 24:
+                            res['drain_hp_bleed_pct'] = _num(_d_f65_p2.get('動態參數2'), 0)
+                            res['drain_bleed_id'] = _num(d.get('動態參數1'), 0)
 
             # Formula 65 tambien selecciona BUFFS al reutilizar (Meditate).
             # No son marcas ofensivas ni una recuperacion completa de mana.
@@ -2305,10 +2332,19 @@ _WEAPON_ATTACK_CACHE = {}
 #
 # Queda como constante para poder subirlo si en el juego se siente flojo. En
 # 1.0 es la suma pura, que es lo unico que respalda la medicion.
-PESO_STANCE = 2
+PESO_STANCE = 6
 
 # Divisor fijo del daño de hechizo. Ver la nota del 高權位 mas abajo.
 DENOM_HECHIZO = 200
+
+
+def mult_habilidad_fisica(stance: int, es_combo_aoe: bool = False) -> float:
+    """Multiplicador de habilidad fisica (Archer/Melee) escalado por Stance Power."""
+    import math
+    base = 1.65 if es_combo_aoe else 2.0
+    s = max(0, int(stance or 0))
+    bono = min(2.0, math.log10(1 + s) * 0.35) if s > 0 else 0.0
+    return base + bono
 
 
 def stance_de(magic_id: int) -> int:
@@ -2521,14 +2557,13 @@ CADENCIA_ATAQUE = 1.15
 
 
 def dano_recibido(ataque: int, defensa: int, elem_atk: int = 0, elem_def: int = 0) -> int:
-    """Dano que recibe el jugador, ya reducido por su defensa fisica y elemental."""
+    """Dano que recibe el jugador, reducido por su defensa fisica y elemental (curva 420/(def+420))."""
     def_eff = max(0, defensa)
-    if ataque > def_eff:
-        d = ataque - def_eff
-    else:
-        d = max(1, int(round(ataque * 0.05)))
+    factor = 420.0 / (def_eff + 420.0)
+    d = max(1, int(round(ataque * factor)))
     if elem_atk > 0:
-        elem_d = max(0, elem_atk - max(0, elem_def))
+        elem_factor = 420.0 / (max(0, elem_def) + 420.0)
+        elem_d = max(0, int(round(elem_atk * elem_factor)))
         d += elem_d
     return max(1, d)
 

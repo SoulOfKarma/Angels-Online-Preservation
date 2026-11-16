@@ -167,7 +167,7 @@ class EstadoDeMapa:
         """TAG de zona -> cuantos bichos siguen vivos en ella."""
         cuenta = {}
         for m in (monstruos or {}).values():
-            if not getattr(m, 'vivo', False):
+            if not getattr(m, 'vivo', False) or getattr(m, 'encantado', False):
                 continue
             # La zona apuntada en la plantilla manda (tools/zonas_de_plantilla.py);
             # 0 = de la plantilla y sin zona. Si no hay, por cercania, como siempre.

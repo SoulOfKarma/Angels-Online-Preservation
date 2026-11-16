@@ -1408,6 +1408,9 @@ def poblar(stage: int, player_level=1):
             salida.append(struct.pack('<H', 0x000E) + bytes.fromhex(e['hex']))
         else:
             salida.append(objeto_de_mapa(e))
+            n = objeto_nombrado(e)
+            if n:
+                salida.append(n)
     return salida
 
 

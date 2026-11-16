@@ -247,7 +247,9 @@ def _finish(r):
             s.enviar(struct.pack('<HII17sI',0x167,min(30,len(ranked)),index,m['name'].encode('latin-1','replace')[:16].ljust(17,b'\0'),m['score']))
         rank=next(i+1 for i,(key,_) in enumerate(ranked) if key==_key(s))
         m=r['members'][_key(s)]
-        s.enviar(struct.pack('<H10I',0x168,m['score'],rank-1,len(ranked),m['correct'],m['heart'],m['star'],0,0,0,0))
+        _pts=max(1,m['score']);_mult=2 if m.get('bell') else 1;_lvl=max(1,int(m.get('level',1)))
+        _xp_d=min(0xFFFFFFFF,_lvl*_lvl*_pts*_mult);_sk_d=min(0xFFFFFFFF,_pts*_mult);_cr_d=(m['score']//10)*_mult
+        s.enviar(struct.pack('<H10I',0x168,m['score'],rank-1,len(ranked),m['correct'],m['heart'],m['star'],_xp_d,_sk_d,_cr_d,0))
         _notice(s,'Angel Elementary finished. Your rank: %d; points: %d.'%(rank,m['score']))
 
 
@@ -330,7 +332,7 @@ def pulsar(s,entity):
     if max(abs(s.personaje.tile_x-132),abs(s.personaje.tile_y-80))>8 or getattr(s,'muerto',False):return True
     import dialogos
     s._elementary_teacher='menu';s.dlg_ent=TEACHER
-    s.enviar(dialogos.armar_linea(8341,4,[8342,8343]))
+    s.enviar(dialogos.armar_linea(8341,1585,[8342,8343]))
     return True
 
 

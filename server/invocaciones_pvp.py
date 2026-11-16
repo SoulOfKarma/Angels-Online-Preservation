@@ -14,7 +14,7 @@ def tick(ses, inv, ahora):
     if getattr(ses, 'desconectado', False) or getattr(ses, 'mapa_cargando', False):
         return False
     if inv.get('clon_sustituto'):
-        return True  # Defensive substitute never acquires an offensive target.
+        return False  # Defensive substitute never acquires an offensive target; still follows owner.
     p = ses.personaje
     alcance = max(1, int(inv.get('atk_range', 1)))
     origen = (inv['tile_x'], inv['tile_y'])
