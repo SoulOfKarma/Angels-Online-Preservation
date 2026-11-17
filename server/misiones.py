@@ -1332,6 +1332,31 @@ def fijar_token_mision(ses, token_id: int, cant: int = 1):
         cuentas.guardar_inventario(ses.usuario, char_id, inv, cants)
 
 
+def refrescar_tokens_mision(ses) -> list:
+    """Las ranuras ocultas de mision (497..556) otra vez, al acabar de cargar.
+
+    Al entrar, el registro de misiones (0x0021) llega ANTES que el inventario
+    (0x001A), y el cliente calcula los contadores de las misiones con lo que
+    tiene en ese momento: nada. Salian todas a 0 hasta la primera baja de
+    mision, cuyo 0x0018 de la ficha hace que el cliente las recalcule todas.
+    Se manda ese mismo 0x0018 para cada ficha que lleve el personaje.
+    """
+    import inventario as _inv
+    p = getattr(ses, 'personaje', None)
+    if not p:
+        return []
+    inv = getattr(p, 'inventario', None) or {}
+    cants = getattr(p, 'cantidades', None) or {}
+    dueno = getattr(ses, 'entity_id', p.char_id)
+    out = []
+    for r in range(497, 557):
+        iid = inv.get(r) or inv.get(str(r))
+        if iid:
+            cnt = int(cants.get(r, cants.get(str(r), 1)) or 0)
+            out.append(_inv.actualizar_ranura(p.char_id, r, int(iid), cnt, dueno=dueno))
+    return out
+
+
 def incrementar_token_mision(ses, token_id: int, delta: int = 1) -> int:
     """Incrementa la cantidad de un token de mision y devuelve el nuevo total."""
     actual = obtener_token_mision(ses, token_id)

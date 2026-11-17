@@ -11414,7 +11414,7 @@ class Servidor:
                                     r_inv = max(1, inv.get('atk_range', 1))
                                     if dist_t > 15:
                                         inv['objetivo'] = None
-                                    elif dist_t <= r_inv and (not inv.get('es_clon') or _cb.linea_libre(ses.stage, (inv['tile_x'], inv['tile_y']), (targ.tile_x, targ.tile_y))):
+                                    elif dist_t <= r_inv and (not inv.get('es_clon') or _transitable.linea_libre(ses.personaje.stage, (inv['tile_x'], inv['tile_y']), (targ.tile_x, targ.tile_y))):
                                         if inv.get('es_clon'):
                                             __import__('avatar_clones').atacar(ses,inv,targ,ahora)
                                             continue
@@ -11663,7 +11663,8 @@ class Servidor:
                                         ses.monstruo_encantado = None
                                     ses.enviar(
                                         struct.pack('<HIBBII', 0x001D, m.entity_id, 1, 4, 303, 0),
-                                        struct.pack('<HIBBI', 0x0013, m.entity_id, 1, 0x3c, 0)
+                                        struct.pack('<HIBBI', 0x0013, m.entity_id, 1, 0x3c, 0),
+                                        *_cb.bando_encantado(m),
                                     )
                                     log.info(f"[{addr}] encanto sobre {m.nombre} expirado")
                                 else:
@@ -14309,6 +14310,7 @@ class Servidor:
                     ses.enviar_inmediato(
                         struct.pack('<HIBBII', 0x001D, prev_enc.entity_id, 1, 4, 303, 0),
                         struct.pack('<HIBBI', 0x0013, prev_enc.entity_id, 1, 0x3c, 0),
+                        *_cb.bando_encantado(prev_enc),
                     )
                 dur_s = max(10, mag.get('dur_ms', 600000) // 1000)
                 dur_ms = dur_s * 1000
@@ -14358,6 +14360,9 @@ class Servidor:
                         # servidor lo rechazaba uno a uno. Medido en
                         # mundo_234602_153654_orden.jsonl.
                         _cb.entidad_aliada(m.entity_id),
+                        # Bando del jugador: sin esto el AutoFight (Angel
+                        # Baby) lo seguia eligiendo como enemigo.
+                        *_cb.bando_encantado(m, _cb.bando_del_jugador(ses.personaje)),
                         struct.pack('<HIBBII', 0x001D, m.entity_id, 1, 4, tipo, dur_ms),
                         struct.pack('<HIBBI', 0x0013, m.entity_id, 1, 0x3c, yo),
                         _cb.efecto_aura_objetivo(yo, objetivo, m.tile_x, m.tile_y, tipo),
@@ -15400,6 +15405,10 @@ class Servidor:
 
             if hasattr(ses,'terminar_carga_mapa'):
                 ses.terminar_carga_mapa()
+            # Contadores de mision: sin esto salian a 0 hasta la primera baja.
+            _tok_mis = __import__("misiones").refrescar_tokens_mision(ses)
+            if _tok_mis:
+                ses.enviar(*_tok_mis)
             _eventos_al_aterrizar(ses, addr)
             __import__('mapa_tesoro').al_entrar(ses)
             log.info(f"[{addr}] mapa cargado exitosamente: stage {p.stage} "

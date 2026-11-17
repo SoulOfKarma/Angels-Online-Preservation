@@ -3507,6 +3507,37 @@ def efecto_magia_self_cierre(yo: int, ef: int, tipo: int,
     return struct.pack('<H', 0x0011) + bytes(b)
 
 
+BANDO_MONSTRUO = 7
+
+
+def bando_encantado(m, bando: int = BANDO_MONSTRUO) -> tuple:
+    """Re-aparicion (0x0008) del monstruo con otro bando, y su vida.
+
+    El AutoFight del cliente (angel_up FUN_0055b120 -> FUN_004ac3a0 ->
+    FUN_0074a6d0) solo elige como blanco a quien tenga un bando hostil al
+    del jugador. El bando va en el u16 del offset 38 del 0x0008: los
+    monstruos traen 7 y los clones del Avatar el del jugador (1..5), y por
+    eso el Angel Baby no los ataca. El 0x0006 de `entidad_aliada` basta para
+    el clic manual, pero no para el AutoFight, que seguia apuntando al
+    monstruo encantado. Al encantarlo se le da el bando del jugador; al
+    soltarlo, el 7 de nuevo.
+    """
+    import login
+    sp = bytearray(login._monster_spawn(
+        m.entity_id, m.npc_type, m.nombre, (m.tile_x, m.tile_y),
+        sprite=getattr(m, 'sprite', 0) or 0))
+    struct.pack_into('<H', sp, 2 + 38, int(bando) & 0xFFFF)
+    hp_max = max(1, int(getattr(m, 'hp_max', 1) or 1))
+    pct = max(1, min(100, int(getattr(m, 'hp', hp_max)) * 100 // hp_max))
+    return bytes(sp), atributo(m.entity_id, pct, VIDA)
+
+
+def bando_del_jugador(p) -> int:
+    import login
+    return max(1, min(5, int(login.CODIGO_FACCION.get(
+        getattr(p, 'faction', ''), 5) or 5)))
+
+
 def entidad_aliada(entidad: int, a: int = 30, b: int = 15) -> bytes:
     """0x0006: le dice al cliente que esa entidad pasa a ser ALIADA.
 

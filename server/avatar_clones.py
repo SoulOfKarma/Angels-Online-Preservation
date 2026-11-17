@@ -97,7 +97,9 @@ def spawn(ses,inv):
     struct.pack_into('<IIH',tail,37,int(bag.get(3,0)),int(bag.get(175,0)),0)
     base=bytearray(login.spawn_invocacion(inv['entity_id'],inv['npc_type'],inv['nombre'],(inv['tile_x'],inv['tile_y']),sprite=inv['sprite']))
     camp=max(1,min(5,int(login.CODIGO_FACCION.get(getattr(p,'faction',''),5) or 5)))
-    base[2+4]|=1
+    # Bit 0 de b[4..8] ([entidad+0x1e0]): en un aliado pone el cursor de
+    # dialogo (FUN_005b3d40 -> param_2=0xc). El clon no habla: se apaga.
+    base[2+4]&=~1&0xFF
     base[2+38]=camp
     base[2+39]=0
     base[2+44]=0
