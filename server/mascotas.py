@@ -71,7 +71,7 @@ DEFENSAS_ELEM_BASE = (0, 0, 60, 60, 0, 0, 60, 60, 0, 0, 60, 60, 0, 0, 60, 60)
 # "Increases the satiation degree by 500. (The pet can enhance its abilities
 # after the satiation degree is more than 100.)"
 SACIEDAD_PARA_MEJORAR = 100
-SACIEDAD_MAXIMA = 1000
+SACIEDAD_MAXIMA = 500         # tope del juego: 5 + un pienso = 500
 SACIEDAD_POR_PIENSO = 500
 
 
@@ -654,7 +654,7 @@ def cobrar_diamante(estado: dict):
 
 
 def alimentar(estado: dict, cantidad: int = SACIEDAD_POR_PIENSO) -> tuple:
-    """El Pet Feed normal: sube la saciedad (hasta 600) y recupera intimidad."""
+    """El Pet Feed normal: sube la saciedad (hasta 500) y recupera intimidad."""
     antes = int(estado.get('saciedad', 0))
     estado['saciedad'] = min(SACIEDAD_MAXIMA, antes + cantidad)
     estado['intimidad'] = min(100, int(estado.get('intimidad', 60)) + 5)

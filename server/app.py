@@ -7051,6 +7051,49 @@ def _entidades_propias(ses):
     return ids
 
 
+# Mas lejos que esto del dueno, el encantado salta a su lado (como la
+# mascota, `dist_jug > 30`).
+SALTO_ENCANTADO = 30
+
+
+def _saltar_encantado(ses, m, p, ahora):
+    """Al lado del jugador (x+1 si se pisa), sin tramo: 0x0003 + 0x0005."""
+    import combate as _cb
+    MOVE = Msg.registry[(0x0005, 's2c', '*')]
+    x = p.tile_x + 1 if _transitable.se_pisa(p.stage, p.tile_x + 1, p.tile_y) else p.tile_x
+    m.tile_x, m.tile_y = x, p.tile_y
+    m.tile[0], m.tile[1] = m.tile_x, m.tile_y
+    m.mov_persecucion = None
+    m.proximo_paso = ahora + 0.5
+    m.reemitir_paso = ahora + 0.5
+    px, py = x * 32, p.tile_y * 32
+    mv = MOVE.build(entity_id=m.entity_id, cur_x=px, cur_y=py, dst_x=px, dst_y=py,
+                    speed=_cb.VELOCIDAD_PASEO)
+    ses.enviar(struct.pack('<HIII', 0x0003, m.entity_id, x, p.tile_y), mv)
+    import presencia as _pr
+    _pr.notificar_invocacion_movimiento(ses, m.entity_id, mv)
+
+
+def _soltar_encanto(ses):
+    """El encanto se pierde al dejar el mapa, al salir o al cambiar de
+    personaje: el bicho vuelve a su bando en la sala vieja y se avisa a los
+    que siguen alli. Al dueno no, ya no tiene ese mapa cargado."""
+    m = getattr(ses, 'monstruo_encantado', None)
+    clave = getattr(ses, '_encanto_sala', None)
+    ses.monstruo_encantado = None
+    ses._encanto_sala = None
+    if m is None or not getattr(m, 'encantado', False):
+        return
+    import combate as _cb
+    pk = _cb.soltar_encanto(m)
+    if clave is None:
+        return
+    import presencia as _pr
+    for s in _pr._vivas(clave):
+        if s is not ses:
+            _pr._mandar(s, *pk)
+
+
 def _espejar(ses, submsgs):
     """Reenvia a los demas de la sala lo que se acaba de mandar sobre sus bichos."""
     if getattr(ses, '_espejando', False):
@@ -10222,6 +10265,10 @@ class Servidor:
             except Exception:
                 pass
             try:
+                _soltar_encanto(ses)
+            except Exception:
+                log.exception('encanto: fallo al soltar al salir')
+            try:
                 import presencia as _pres
                 _pres.salir(ses)
             except Exception:
@@ -11635,6 +11682,14 @@ class Servidor:
                         def _conduce_ia_de(mm, _men=_menores_ia):
                             return not any(max(abs(mm.tile_x - _x), abs(mm.tile_y - _y)) <= RADIO_IA
                                            for _x, _y in _men)
+                        # Fuera del mapa donde se encanto (portal, viaje,
+                        # casa...) el encanto se pierde; si otro lo solto
+                        # (caduco en su vuelta), se olvida.
+                        _enc_ia = getattr(ses, 'monstruo_encantado', None)
+                        if _enc_ia is not None and not (
+                                (ses.monstruos or {}).get(_enc_ia.entity_id) is _enc_ia
+                                and getattr(_enc_ia, 'encantado', False)):
+                            _soltar_encanto(ses)
                         for m in list((ses.monstruos or {}).values()):
                             if ses.personaje.stage in __import__('league_war').STAGES:
                                 continue
@@ -11659,6 +11714,7 @@ class Servidor:
                                 if ahora >= getattr(m, 'encantado_expira', 0):
                                     m.encantado = False
                                     m.charmed_objetivo = None
+                                    m.encantado_por = None
                                     if getattr(ses, 'monstruo_encantado', None) == m:
                                         ses.monstruo_encantado = None
                                     ses.enviar(
@@ -11667,6 +11723,13 @@ class Servidor:
                                         *_cb.bando_encantado(m),
                                     )
                                     log.info(f"[{addr}] encanto sobre {m.nombre} expirado")
+                                elif getattr(m, 'encantado_por', None) not in (None, ses):
+                                    pass    # solo lo conduce la sesion de su dueno
+                                elif max(abs(m.tile_x - p.tile_x), abs(m.tile_y - p.tile_y)) > SALTO_ENCANTADO:
+                                    # Muy lejos del dueno (aunque estuviera peleando):
+                                    # suelta el objetivo y salta a su lado.
+                                    m.charmed_objetivo = None
+                                    _saltar_encantado(ses, m, p, ahora)
                                 else:
                                     ch_targ = getattr(m, 'charmed_objetivo', None)
                                     if ch_targ and (not getattr(ch_targ, 'vivo', False) or ch_targ.hp <= 0 or getattr(ch_targ, 'encantado', False)):
@@ -11742,7 +11805,9 @@ class Servidor:
                                         p_dx = p.tile_x - m.tile_x
                                         p_dy = p.tile_y - m.tile_y
                                         p_dist = max(abs(p_dx), abs(p_dy))
-                                        if p_dist > 2:
+                                        if p_dist > SALTO_ENCANTADO:
+                                            _saltar_encantado(ses, m, p, ahora)
+                                        elif p_dist > 2:
                                             _mov, _espera = _cb.tramo_en_curso(m)
                                             if ahora >= _espera:
                                                 cur_x, cur_y = _cb.origen_persecucion(
@@ -11759,7 +11824,8 @@ class Servidor:
                                                         break
                                                     _nx = _ny = None
                                                 if _nx is None:
-                                                    m.proximo_paso = ahora + 0.5
+                                                    # Sin camino hacia el dueno (quedaba atrapado): salta.
+                                                    _saltar_encantado(ses, m, p, ahora)
                                                 else:
                                                     m.tile_x, m.tile_y = _nx, _ny
                                                     m.tile[0], m.tile[1] = m.tile_x, m.tile_y
@@ -14307,6 +14373,7 @@ class Servidor:
                 if prev_enc is not None and prev_enc is not m and getattr(prev_enc, 'encantado', False):
                     prev_enc.encantado = False
                     prev_enc.charmed_objetivo = None
+                    prev_enc.encantado_por = None
                     ses.enviar_inmediato(
                         struct.pack('<HIBBII', 0x001D, prev_enc.entity_id, 1, 4, 303, 0),
                         struct.pack('<HIBBI', 0x0013, prev_enc.entity_id, 1, 0x3c, 0),
@@ -14315,10 +14382,12 @@ class Servidor:
                 dur_s = max(10, mag.get('dur_ms', 600000) // 1000)
                 dur_ms = dur_s * 1000
                 m.encantado = True
+                m.encantado_por = ses
                 m.encantado_expira = time.time() + dur_s
                 m.en_combate_con = None
                 m.charmed_objetivo = None
                 ses.monstruo_encantado = m
+                ses._encanto_sala = getattr(ses, '_mapa_presencia', None)
 
                 if getattr(ses, 'invocacion', None) and ses.invocacion.get('objetivo') == m:
                     ses.invocacion['objetivo'] = None

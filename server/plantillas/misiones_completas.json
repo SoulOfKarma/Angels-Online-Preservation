@@ -1,7 +1,7 @@
 {
   "_info": "Base de datos completa de misiones para Angels Online",
-  "total_misiones": 1489,
-  "total_repetibles": 662,
+  "total_misiones": 1506,
+  "total_repetibles": 668,
   "misiones": {
     "1": {
       "id": 1,
@@ -92876,28 +92876,1674 @@
         "oro": 48380,
         "creditos": 50
       }
+    },
+    "1607": {
+      "id": 1607,
+      "nombre": "Valley Survey",
+      "tipo": "Rushing Valley",
+      "faccion": null,
+      "intro": "Special plants in Rushing Valley are surrounded by hostile creatures. Botanist Hashim asks you to gather distant plant samples and clear the Wild Grass Demons.",
+      "repetible": true,
+      "npc_inicio": "Botanist Hashim",
+      "mapa_inicio": "Rushing Valley",
+      "stage_id": 423,
+      "borrar_items": [],
+      "pasos": [
+        {
+          "tipo": "recolectar",
+          "items": [
+            {
+              "item_id": 80418,
+              "cantidad": 1
+            },
+            {
+              "item_id": 80419,
+              "cantidad": 1
+            },
+            {
+              "item_id": 80420,
+              "cantidad": 1
+            },
+            {
+              "item_id": 80421,
+              "cantidad": 1
+            }
+          ],
+          "cantidad": 1,
+          "token_id": 80418,
+          "npc_entrega": "Botanist Hashim",
+          "mapa": "Rushing Valley",
+          "stage_id": 423,
+          "paso": 1,
+          "texto": "1.Gather plants in Rushing\n  Valley:\n  Collection Point I: /c$9%80418%/c* / 1\n  Collection Point II: /c$9%80419%/c* / 1\n  Collection Point III: /c$9%80420%/c* / 1\n  Collection Point IV: /c$9%80421%/c* / 1",
+          "siguiente_paso": 2
+        },
+        {
+          "tipo": "hablar",
+          "cantidad": 1,
+          "npc_entrega": "Botanist Hashim",
+          "mapa": "Rushing Valley",
+          "stage_id": 423,
+          "paso": 2,
+          "texto": "2.Report back to Botanist\n  Hashim.",
+          "siguiente_paso": 3
+        },
+        {
+          "tipo": "recolectar",
+          "items": [
+            {
+              "item_id": 80422,
+              "cantidad": 50
+            }
+          ],
+          "cantidad": 50,
+          "token_id": 80422,
+          "npc_entrega": "Botanist Hashim",
+          "mapa": "Rushing Valley",
+          "stage_id": 423,
+          "paso": 3,
+          "texto": "3.Defeat Wild Grass Demon:\n  Wild Grass Demon: /c$9%80422%/c* / 50",
+          "siguiente_paso": 4,
+          "monstruo_ids": [
+            23863
+          ],
+          "monstruos": [
+            "wild grass demon"
+          ]
+        },
+        {
+          "tipo": "hablar",
+          "cantidad": 1,
+          "npc_entrega": "Botanist Hashim",
+          "mapa": "Rushing Valley",
+          "stage_id": 423,
+          "paso": 4,
+          "texto": "4.Inform Botanist Hashim.",
+          "siguiente_paso": 5,
+          "es_ultimo": true
+        }
+      ],
+      "recompensa": {
+        "exp": 57600000,
+        "oro": 0,
+        "creditos": 950,
+        "items": [
+          {
+            "item_id": 5406,
+            "cantidad": 32
+          }
+        ]
+      }
+    },
+    "1608": {
+      "id": 1608,
+      "nombre": "Water Gathering & Greening",
+      "tipo": "Citygate Sand Path",
+      "faccion": null,
+      "intro": "A townsman along Citygate Sand Path needs help filling three water buckets and clearing Molten Eggs that threaten the desert greenery.",
+      "repetible": true,
+      "npc_inicio": "Townsman Aziz",
+      "mapa_inicio": "Citygate Sand Path",
+      "stage_id": 424,
+      "borrar_items": [],
+      "pasos": [
+        {
+          "tipo": "recolectar",
+          "items": [
+            {
+              "item_id": 80424,
+              "cantidad": 1
+            },
+            {
+              "item_id": 80425,
+              "cantidad": 1
+            },
+            {
+              "item_id": 80426,
+              "cantidad": 1
+            }
+          ],
+          "cantidad": 1,
+          "token_id": 80424,
+          "npc_entrega": "Townsman Aziz",
+          "mapa": "Citygate Sand Path",
+          "stage_id": 424,
+          "paso": 1,
+          "texto": "1.Draw water at 3 spots in\n  Citygate Sand Path:\n  Water Bucket A: /c$9%80424%/c* / 1\n  Water Bucket B: /c$9%80425%/c* / 1\n  Water Bucket C: /c$9%80426%/c* / 1",
+          "siguiente_paso": 2
+        },
+        {
+          "tipo": "recolectar",
+          "items": [
+            {
+              "item_id": 80427,
+              "cantidad": 50
+            }
+          ],
+          "cantidad": 50,
+          "token_id": 80427,
+          "npc_entrega": "Townsman Aziz",
+          "mapa": "Citygate Sand Path",
+          "stage_id": 424,
+          "paso": 2,
+          "texto": "2.Clear Molten Egg:\n  Molten Egg: /c$9%80427%/c* / 50",
+          "siguiente_paso": 3,
+          "monstruo_ids": [
+            23874
+          ],
+          "monstruos": [
+            "molten egg"
+          ]
+        },
+        {
+          "tipo": "hablar",
+          "cantidad": 1,
+          "npc_entrega": "Townsman Aziz",
+          "mapa": "Citygate Sand Path",
+          "stage_id": 424,
+          "paso": 3,
+          "texto": "3.Report back to Townsman Aziz.",
+          "siguiente_paso": 4,
+          "es_ultimo": true
+        }
+      ],
+      "recompensa": {
+        "exp": 40700000,
+        "oro": 0,
+        "creditos": 970,
+        "items": [
+          {
+            "item_id": 6757,
+            "cantidad": 32
+          }
+        ]
+      }
+    },
+    "1609": {
+      "id": 1609,
+      "nombre": "Trace of the Lost Gem",
+      "tipo": "Bluesand Realm",
+      "faccion": null,
+      "intro": "Gem merchant Samir in Bluesand Realm lost his prized Blue Star gem. Search around town to trace the thief and recover it.",
+      "repetible": true,
+      "npc_inicio": "Merchant Samir",
+      "mapa_inicio": "Bluesand Realm",
+      "stage_id": 425,
+      "borrar_items": [],
+      "pasos": [
+        {
+          "tipo": "recolectar",
+          "items": [
+            {
+              "item_id": 80429,
+              "cantidad": 1
+            },
+            {
+              "item_id": 80430,
+              "cantidad": 1
+            },
+            {
+              "item_id": 80431,
+              "cantidad": 1
+            }
+          ],
+          "cantidad": 1,
+          "token_id": 80429,
+          "npc_entrega": "Merchant Samir",
+          "mapa": "Bluesand Realm",
+          "stage_id": 425,
+          "paso": 1,
+          "texto": "1.Search the waterhole, east town,\n  and west outskirts of Bluesand\n  Realm to trace the culprit.",
+          "siguiente_paso": 2
+        },
+        {
+          "tipo": "recolectar",
+          "items": [
+            {
+              "item_id": 80432,
+              "cantidad": 1
+            }
+          ],
+          "cantidad": 1,
+          "token_id": 80432,
+          "npc_entrega": "Merchant Samir",
+          "mapa": "Bluesand Realm",
+          "stage_id": 425,
+          "paso": 2,
+          "texto": "2.Defeat Orange Blossom Spirit\n  in the west outskirts:\n  Orange Blossom Spirit: /c$9%80432%/c* / 1",
+          "siguiente_paso": 3,
+          "monstruo_ids": [
+            23885
+          ],
+          "monstruos": [
+            "orange blossom spirit"
+          ]
+        },
+        {
+          "tipo": "hablar",
+          "cantidad": 1,
+          "npc_entrega": "Merchant Samir",
+          "mapa": "Bluesand Realm",
+          "stage_id": 425,
+          "paso": 3,
+          "texto": "3.Report back to Merchant Samir\n  and return the gem.",
+          "siguiente_paso": 4,
+          "es_ultimo": true
+        }
+      ],
+      "recompensa": {
+        "exp": 18400000,
+        "oro": 0,
+        "creditos": 1010,
+        "items": [
+          {
+            "item_id": 10811,
+            "cantidad": 32
+          }
+        ]
+      }
+    },
+    "1610": {
+      "id": 1610,
+      "nombre": "Harbor Robbery",
+      "tipo": "Shimmering Harbor",
+      "faccion": null,
+      "intro": "Fisherman Farid at Shimmering Harbor had his compass and sea chart stolen and cannot sail out. Recover both items from the pirates.",
+      "repetible": true,
+      "npc_inicio": "Fisherman Farid",
+      "mapa_inicio": "Shimmering Harbor",
+      "stage_id": 426,
+      "borrar_items": [],
+      "pasos": [
+        {
+          "tipo": "recolectar",
+          "items": [
+            {
+              "item_id": 80434,
+              "cantidad": 1
+            },
+            {
+              "item_id": 80435,
+              "cantidad": 1
+            }
+          ],
+          "cantidad": 1,
+          "token_id": 80434,
+          "npc_entrega": "Fisherman Farid",
+          "mapa": "Shimmering Harbor",
+          "stage_id": 426,
+          "paso": 1,
+          "texto": "1.Recover Farid's tools in\n  Shimmering Harbor:\n  Lone Sail Fisherman: /c$9%80434%/c* / 1\n  Drifting Sea Bandit: /c$9%80435%/c* / 1",
+          "siguiente_paso": 2,
+          "monstruo_ids": [
+            23892,
+            23894
+          ],
+          "monstruos": [
+            "lone sail fisherman",
+            "drifting sea bandit"
+          ]
+        },
+        {
+          "tipo": "hablar",
+          "cantidad": 1,
+          "npc_entrega": "Fisherman Farid",
+          "mapa": "Shimmering Harbor",
+          "stage_id": 426,
+          "paso": 2,
+          "texto": "2.Report back to Fisherman Farid.",
+          "siguiente_paso": 3,
+          "es_ultimo": true
+        }
+      ],
+      "recompensa": {
+        "exp": 2800000,
+        "oro": 0,
+        "creditos": 1050,
+        "items": [
+          {
+            "item_id": 12614,
+            "cantidad": 32
+          }
+        ]
+      }
+    },
+    "1611": {
+      "id": 1611,
+      "nombre": "Whereabouts of the Ancient Tome",
+      "tipo": "Ancient Library",
+      "faccion": null,
+      "intro": "Both volumes of the Stardust Prophecy went missing from the Ancient Library. Curator Safa seeks help retrieving them.",
+      "repetible": true,
+      "npc_inicio": "Curator Safa",
+      "mapa_inicio": "Ancient Library",
+      "stage_id": 427,
+      "borrar_items": [],
+      "pasos": [
+        {
+          "tipo": "recolectar",
+          "items": [
+            {
+              "item_id": 80437,
+              "cantidad": 1
+            },
+            {
+              "item_id": 80438,
+              "cantidad": 1
+            }
+          ],
+          "cantidad": 1,
+          "token_id": 80437,
+          "npc_entrega": "Curator Safa",
+          "mapa": "Ancient Library",
+          "stage_id": 427,
+          "paso": 1,
+          "texto": "1.Recover the ancient tome in\n  Ancient Library:\n  Phantom Violet Sorcerer: /c$9%80437%/c* / 1\n  Library Corner: /c$9%80438%/c* / 1",
+          "siguiente_paso": 2,
+          "monstruo_ids": [
+            23904
+          ],
+          "monstruos": [
+            "phantom violet sorcerer"
+          ]
+        },
+        {
+          "tipo": "hablar",
+          "cantidad": 1,
+          "npc_entrega": "Curator Safa",
+          "mapa": "Ancient Library",
+          "stage_id": 427,
+          "paso": 2,
+          "texto": "2.Report back to Curator Safa.",
+          "siguiente_paso": 3,
+          "es_ultimo": true
+        }
+      ],
+      "recompensa": {
+        "exp": 86200000,
+        "oro": 0,
+        "creditos": 1090,
+        "items": [
+          {
+            "item_id": 10811,
+            "cantidad": 32
+          }
+        ]
+      }
+    },
+    "1612": {
+      "id": 1612,
+      "nombre": "Solving the Plant Blight",
+      "tipo": "Fragrant Greenhouse",
+      "faccion": null,
+      "intro": "Rare plants in the Fragrant Greenhouse have stopped growing and begun to wither. Gardener Laila asks you to purge the blight sources.",
+      "repetible": true,
+      "npc_inicio": "Gardener Laila",
+      "mapa_inicio": "Fragrant Greenhouse",
+      "stage_id": 428,
+      "borrar_items": [],
+      "pasos": [
+        {
+          "tipo": "recolectar",
+          "items": [
+            {
+              "item_id": 80440,
+              "cantidad": 100
+            },
+            {
+              "item_id": 80441,
+              "cantidad": 100
+            }
+          ],
+          "cantidad": 100,
+          "token_id": 80440,
+          "npc_entrega": "Gardener Laila",
+          "mapa": "Fragrant Greenhouse",
+          "stage_id": 428,
+          "paso": 1,
+          "texto": "1.Cleanse the blight in Fragrant\n  Greenhouse:\n  Rotten Branch Sprite: /c$9%80440%/c* / 100\n  Soft Mist Spirit: /c$9%80441%/c* / 100",
+          "siguiente_paso": 2,
+          "monstruo_ids": [
+            23914,
+            23915
+          ],
+          "monstruos": [
+            "rotten branch sprite",
+            "soft mist spirit"
+          ]
+        },
+        {
+          "tipo": "hablar",
+          "cantidad": 1,
+          "npc_entrega": "Gardener Laila",
+          "mapa": "Fragrant Greenhouse",
+          "stage_id": 428,
+          "paso": 2,
+          "texto": "2.Report the results to Gardener\n  Laila.",
+          "siguiente_paso": 3,
+          "es_ultimo": true
+        }
+      ],
+      "recompensa": {
+        "exp": 19200000,
+        "oro": 0,
+        "creditos": 1130,
+        "items": [
+          {
+            "item_id": 12165,
+            "cantidad": 32
+          }
+        ]
+      }
+    },
+    "1614": {
+      "id": 1614,
+      "nombre": "Source Investigation",
+      "tipo": "Eden-Angel Quest",
+      "faccion": null,
+      "intro": "Adventurer Fahad found a broken ancient stone tablet from Sand Land Castle. Investigate Rushing Valley to uncover the secrets behind the other half.",
+      "repetible": false,
+      "npc_inicio": "Fahad",
+      "mapa_inicio": "Rushing Valley",
+      "stage_id": 423,
+      "borrar_items": [],
+      "pasos": [
+        {
+          "tipo": "recolectar",
+          "items": [
+            {
+              "item_id": 80847,
+              "cantidad": 1
+            },
+            {
+              "item_id": 80848,
+              "cantidad": 1
+            },
+            {
+              "item_id": 80849,
+              "cantidad": 1
+            }
+          ],
+          "cantidad": 1,
+          "token_id": 80847,
+          "npc_entrega": "Milos",
+          "mapa": "Rushing Valley",
+          "stage_id": 423,
+          "paso": 1,
+          "texto": "1.Ask residents in Rushing Valley\n  about the tablet:\n  Milos: /c$9%80847%/c* / 1\n  Gleb: /c$9%80848%/c* / 1\n  Radu: /c$9%80849%/c* / 1",
+          "siguiente_paso": 2
+        },
+        {
+          "tipo": "recolectar",
+          "items": [
+            {
+              "item_id": 81092,
+              "cantidad": 1
+            },
+            {
+              "item_id": 81093,
+              "cantidad": 1
+            },
+            {
+              "item_id": 81094,
+              "cantidad": 1
+            }
+          ],
+          "cantidad": 1,
+          "token_id": 81092,
+          "npc_entrega": "Viktor",
+          "mapa": "Rushing Valley",
+          "stage_id": 423,
+          "paso": 2,
+          "texto": "2.Investigate the western ruins in\n  Rushing Valley:\n  Tool Stack: /c$9%81094%/c* / 1\n  Documents: /c$9%81093%/c* / 1\n  Ruins: /c$9%81092%/c* / 1\n  Find Archaeologist Viktor.",
+          "siguiente_paso": 3
+        },
+        {
+          "tipo": "recolectar",
+          "items": [
+            {
+              "item_id": 80850,
+              "cantidad": 200
+            }
+          ],
+          "cantidad": 200,
+          "token_id": 80850,
+          "npc_entrega": "Viktor",
+          "mapa": "Rushing Valley",
+          "stage_id": 423,
+          "paso": 3,
+          "texto": "3.Calm the disturbance:\n  Straw Knot: /c$9%80850%/c* / 200",
+          "siguiente_paso": 4,
+          "monstruo_ids": [
+            23864
+          ],
+          "monstruos": [
+            "straw knot"
+          ]
+        },
+        {
+          "tipo": "hablar",
+          "cantidad": 1,
+          "npc_entrega": "Viktor",
+          "mapa": "Rushing Valley",
+          "stage_id": 423,
+          "paso": 4,
+          "texto": "4.Report back to Viktor.",
+          "siguiente_paso": 5
+        },
+        {
+          "tipo": "recolectar",
+          "items": [
+            {
+              "item_id": 80851,
+              "cantidad": 1
+            }
+          ],
+          "cantidad": 1,
+          "token_id": 80851,
+          "npc_entrega": "Viktor",
+          "mapa": "Rushing Valley",
+          "stage_id": 423,
+          "paso": 5,
+          "texto": "5.Defeat Rose Thorn Ranger and\n  recover the tool:\n  Rose Thorn Ranger: /c$9%80851%/c* / 1",
+          "siguiente_paso": 6,
+          "monstruo_ids": [
+            23865
+          ],
+          "monstruos": [
+            "rose thorn ranger"
+          ]
+        },
+        {
+          "tipo": "hablar",
+          "cantidad": 1,
+          "npc_entrega": "Viktor",
+          "mapa": "Rushing Valley",
+          "stage_id": 423,
+          "paso": 6,
+          "texto": "6.Report back to Viktor.",
+          "siguiente_paso": 7
+        },
+        {
+          "tipo": "hablar",
+          "cantidad": 1,
+          "npc_entrega": "Pavel",
+          "mapa": "Citygate Sand Path",
+          "stage_id": 424,
+          "paso": 7,
+          "texto": "7.Go to Citygate Sand Path and\n  find Pavel.",
+          "siguiente_paso": 8,
+          "es_ultimo": true
+        }
+      ],
+      "recompensa": {
+        "exp": 35500000,
+        "oro": 35500000,
+        "creditos": 100000,
+        "items": [
+          {
+            "item_id": 370,
+            "cantidad": 32
+          }
+        ]
+      }
+    },
+    "1615": {
+      "id": 1615,
+      "nombre": "Sand Path Tracking",
+      "tipo": "Eden-Angel Quest",
+      "faccion": null,
+      "intro": "To decipher the tablet's origin and contents, head to Citygate Sand Path and seek help from researcher Pavel.",
+      "repetible": false,
+      "npc_inicio": "Pavel",
+      "mapa_inicio": "Citygate Sand Path",
+      "stage_id": 424,
+      "borrar_items": [],
+      "pasos": [
+        {
+          "tipo": "recolectar",
+          "items": [
+            {
+              "item_id": 80852,
+              "cantidad": 100
+            },
+            {
+              "item_id": 80853,
+              "cantidad": 100
+            }
+          ],
+          "cantidad": 100,
+          "token_id": 80852,
+          "npc_entrega": "Pavel",
+          "mapa": "Citygate Sand Path",
+          "stage_id": 424,
+          "paso": 1,
+          "texto": "1.Drive off the cultists:\n  Bone Wanderer: /c$9%80852%/c* / 100\n  Bone Disciple: /c$9%80853%/c* / 100",
+          "siguiente_paso": 2,
+          "monstruo_ids": [
+            23871,
+            23872
+          ],
+          "monstruos": [
+            "bone wanderer",
+            "bone disciple"
+          ]
+        },
+        {
+          "tipo": "hablar",
+          "cantidad": 1,
+          "npc_entrega": "Pavel",
+          "mapa": "Citygate Sand Path",
+          "stage_id": 424,
+          "paso": 2,
+          "texto": "2.Report back to Pavel.",
+          "siguiente_paso": 3
+        },
+        {
+          "tipo": "recolectar",
+          "items": [
+            {
+              "item_id": 80854,
+              "cantidad": 1
+            }
+          ],
+          "cantidad": 1,
+          "token_id": 80854,
+          "npc_entrega": "Pavel",
+          "mapa": "Citygate Sand Path",
+          "stage_id": 424,
+          "paso": 3,
+          "texto": "3.Defeat Heretic Zealot or Black\n  Flame Cultist to obtain canon:\n  Heretic Zealot: /c$9%80854%/c* / 1",
+          "siguiente_paso": 4,
+          "monstruo_ids": [
+            23875,
+            23876
+          ],
+          "monstruos": [
+            "heretic zealot",
+            "black flame cultist"
+          ]
+        },
+        {
+          "tipo": "hablar",
+          "cantidad": 1,
+          "npc_entrega": "Pavel",
+          "mapa": "Citygate Sand Path",
+          "stage_id": 424,
+          "paso": 4,
+          "texto": "4.Report back to Pavel.",
+          "siguiente_paso": 5
+        },
+        {
+          "tipo": "recolectar",
+          "items": [
+            {
+              "item_id": 80855,
+              "cantidad": 1
+            }
+          ],
+          "cantidad": 1,
+          "token_id": 80855,
+          "npc_entrega": "Pavel",
+          "mapa": "Citygate Sand Path",
+          "stage_id": 424,
+          "paso": 5,
+          "texto": "5.Repel the ambush:\n  Heresy Hunter Steelblade: /c$9%80855%/c* / 1",
+          "siguiente_paso": 6,
+          "monstruo_ids": [
+            23880
+          ],
+          "monstruos": [
+            "heresy hunter steelblade"
+          ]
+        },
+        {
+          "tipo": "hablar",
+          "cantidad": 1,
+          "npc_entrega": "Pavel",
+          "mapa": "Citygate Sand Path",
+          "stage_id": 424,
+          "paso": 6,
+          "texto": "6.Report back to Pavel.",
+          "siguiente_paso": 7
+        },
+        {
+          "tipo": "hablar",
+          "cantidad": 1,
+          "npc_entrega": "Jusha",
+          "mapa": "Bluesand Realm",
+          "stage_id": 425,
+          "paso": 7,
+          "texto": "7.Go to Bluesand Realm and\n  find Jusha.",
+          "siguiente_paso": 8,
+          "es_ultimo": true
+        }
+      ],
+      "recompensa": {
+        "exp": 37000000,
+        "oro": 37000000,
+        "creditos": 135000,
+        "items": [
+          {
+            "item_id": 385,
+            "cantidad": 32
+          }
+        ]
+      }
+    },
+    "1616": {
+      "id": 1616,
+      "nombre": "Shadow of Bluesand",
+      "tipo": "Eden-Angel Quest",
+      "faccion": null,
+      "intro": "Pavel still needs time and the missing half of the tablet. On his introduction, seek out Jusha in Bluesand Realm for assistance.",
+      "repetible": false,
+      "npc_inicio": "Jusha",
+      "mapa_inicio": "Bluesand Realm",
+      "stage_id": 425,
+      "borrar_items": [],
+      "pasos": [
+        {
+          "tipo": "recolectar",
+          "items": [
+            {
+              "item_id": 80856,
+              "cantidad": 150
+            },
+            {
+              "item_id": 80857,
+              "cantidad": 150
+            }
+          ],
+          "cantidad": 150,
+          "token_id": 80856,
+          "npc_entrega": "Jusha",
+          "mapa": "Bluesand Realm",
+          "stage_id": 425,
+          "paso": 1,
+          "texto": "1.Collect paint dyes:\n  Lacquered Blue Dragon: /c$9%80856%/c* / 150\n  Violet-Striped Chameleon: /c$9%80857%/c* / 150",
+          "siguiente_paso": 2,
+          "monstruo_ids": [
+            23881,
+            23882
+          ],
+          "monstruos": [
+            "lacquered blue dragon",
+            "violet-striped chameleon"
+          ]
+        },
+        {
+          "tipo": "hablar",
+          "cantidad": 1,
+          "npc_entrega": "Jusha",
+          "mapa": "Bluesand Realm",
+          "stage_id": 425,
+          "paso": 2,
+          "texto": "2.Report back to Jusha.",
+          "siguiente_paso": 3
+        },
+        {
+          "tipo": "recolectar",
+          "items": [
+            {
+              "item_id": 80858,
+              "cantidad": 1
+            },
+            {
+              "item_id": 80859,
+              "cantidad": 1
+            },
+            {
+              "item_id": 80860,
+              "cantidad": 1
+            }
+          ],
+          "cantidad": 1,
+          "token_id": 80858,
+          "npc_entrega": "Jusha",
+          "mapa": "Bluesand Realm",
+          "stage_id": 425,
+          "paso": 3,
+          "texto": "3.Help paint the houses:\n  Northeast House: /c$9%80858%/c* / 1\n  West District: /c$9%80859%/c* / 1\n  East House: /c$9%80860%/c* / 1",
+          "siguiente_paso": 4
+        },
+        {
+          "tipo": "hablar",
+          "cantidad": 1,
+          "npc_entrega": "Jusha",
+          "mapa": "Bluesand Realm",
+          "stage_id": 425,
+          "paso": 4,
+          "texto": "4.Report back to Jusha.",
+          "siguiente_paso": 5
+        },
+        {
+          "tipo": "recolectar",
+          "items": [
+            {
+              "item_id": 80861,
+              "cantidad": 200
+            },
+            {
+              "item_id": 80862,
+              "cantidad": 200
+            }
+          ],
+          "cantidad": 200,
+          "token_id": 80861,
+          "npc_entrega": "Jusha",
+          "mapa": "Bluesand Realm",
+          "stage_id": 425,
+          "paso": 5,
+          "texto": "5.Investigate the disappearances:\n  Flame Dancer: /c$9%80861%/c* / 200\n  Violet Mist Maiden: /c$9%80862%/c* / 200",
+          "siguiente_paso": 6,
+          "monstruo_ids": [
+            23883,
+            23884
+          ],
+          "monstruos": [
+            "flame dancer",
+            "violet mist maiden"
+          ]
+        },
+        {
+          "tipo": "recolectar",
+          "items": [
+            {
+              "item_id": 80863,
+              "cantidad": 1
+            }
+          ],
+          "cantidad": 1,
+          "token_id": 80863,
+          "npc_entrega": "Jusha",
+          "mapa": "Bluesand Realm",
+          "stage_id": 425,
+          "paso": 6,
+          "texto": "6.Follow the note's clue:\n  Decayer Livina: /c$9%80863%/c* / 1",
+          "siguiente_paso": 7,
+          "monstruo_ids": [
+            23889
+          ],
+          "monstruos": [
+            "decayer livina"
+          ]
+        },
+        {
+          "tipo": "hablar",
+          "cantidad": 1,
+          "npc_entrega": "Jusha",
+          "mapa": "Bluesand Realm",
+          "stage_id": 425,
+          "paso": 7,
+          "texto": "7.Report back to Jusha.",
+          "siguiente_paso": 8
+        },
+        {
+          "tipo": "hablar",
+          "cantidad": 1,
+          "npc_entrega": "Irina",
+          "mapa": "Shimmering Harbor",
+          "stage_id": 426,
+          "paso": 8,
+          "texto": "8.Head to Shimmering Harbor and\n  check the situation with Irina.",
+          "siguiente_paso": 9,
+          "es_ultimo": true
+        }
+      ],
+      "recompensa": {
+        "exp": 38500000,
+        "oro": 38500000,
+        "creditos": 175000,
+        "items": [
+          {
+            "item_id": 400,
+            "cantidad": 32
+          }
+        ]
+      }
+    },
+    "1617": {
+      "id": 1617,
+      "nombre": "Fish Tide Attack",
+      "tipo": "Eden-Angel Quest",
+      "faccion": null,
+      "intro": "A mysterious notebook taken from Decayer Livina points toward the turmoil at Shimmering Harbor. Jusha sends you to Irina.",
+      "repetible": false,
+      "npc_inicio": "Irina",
+      "mapa_inicio": "Shimmering Harbor",
+      "stage_id": 426,
+      "borrar_items": [],
+      "pasos": [
+        {
+          "tipo": "recolectar",
+          "items": [
+            {
+              "item_id": 80864,
+              "cantidad": 1
+            }
+          ],
+          "cantidad": 1,
+          "token_id": 80864,
+          "npc_entrega": "Irina",
+          "mapa": "Shimmering Harbor",
+          "stage_id": 426,
+          "paso": 1,
+          "texto": "1.Investigate the cause:\n  Seal of Yisz: /c$9%80864%/c* / 1",
+          "siguiente_paso": 2
+        },
+        {
+          "tipo": "recolectar",
+          "items": [
+            {
+              "item_id": 80865,
+              "cantidad": 15
+            }
+          ],
+          "cantidad": 15,
+          "token_id": 80865,
+          "npc_entrega": "Irina",
+          "mapa": "Shimmering Harbor",
+          "stage_id": 426,
+          "paso": 2,
+          "texto": "2.Break through the ambush and\n  report to Irina:\n  Rotten Wandering Fisherman: /c$9%80865%/c* / 15",
+          "siguiente_paso": 3,
+          "monstruo_ids": [
+            23983
+          ],
+          "monstruos": [
+            "rotten wandering fisherman"
+          ]
+        },
+        {
+          "tipo": "recolectar",
+          "items": [
+            {
+              "item_id": 80866,
+              "cantidad": 100
+            },
+            {
+              "item_id": 80867,
+              "cantidad": 200
+            }
+          ],
+          "cantidad": 100,
+          "token_id": 80866,
+          "npc_entrega": "Irina",
+          "mapa": "Shimmering Harbor",
+          "stage_id": 426,
+          "paso": 3,
+          "texto": "3.Seize weapons from Drifting\n  Barrel Bandit:\n  Cutlass: /c$9%80866%/c* / 100\n  Knife: /c$9%80867%/c* / 200",
+          "siguiente_paso": 4,
+          "monstruo_ids": [
+            23893
+          ],
+          "monstruos": [
+            "drifting barrel bandit"
+          ]
+        },
+        {
+          "tipo": "hablar",
+          "cantidad": 1,
+          "npc_entrega": "Irina",
+          "mapa": "Shimmering Harbor",
+          "stage_id": 426,
+          "paso": 4,
+          "texto": "4.Report back to Irina.",
+          "siguiente_paso": 5
+        },
+        {
+          "tipo": "recolectar",
+          "items": [
+            {
+              "item_id": 80868,
+              "cantidad": 1
+            }
+          ],
+          "cantidad": 1,
+          "token_id": 80868,
+          "npc_entrega": "Irina",
+          "mapa": "Shimmering Harbor",
+          "stage_id": 426,
+          "paso": 5,
+          "texto": "5.Stop the pirate raid:\n  Barrel Blade Vice-Captain Jello: /c$9%80868%/c* / 1",
+          "siguiente_paso": 6,
+          "monstruo_ids": [
+            23900
+          ],
+          "monstruos": [
+            "barrel blade vice-captain jello"
+          ]
+        },
+        {
+          "tipo": "hablar",
+          "cantidad": 1,
+          "npc_entrega": "Irina",
+          "mapa": "Shimmering Harbor",
+          "stage_id": 426,
+          "paso": 6,
+          "texto": "6.Report back to Irina.",
+          "siguiente_paso": 7
+        },
+        {
+          "tipo": "hablar",
+          "cantidad": 1,
+          "npc_entrega": "Pavel",
+          "mapa": "Citygate Sand Path",
+          "stage_id": 424,
+          "paso": 7,
+          "texto": "7.Report back to Pavel in\n  Citygate Sand Path.",
+          "siguiente_paso": 8
+        },
+        {
+          "tipo": "hablar",
+          "cantidad": 1,
+          "npc_entrega": "Bogdan",
+          "mapa": "Ancient Library",
+          "stage_id": 427,
+          "paso": 8,
+          "texto": "8.Head to the Ancient Library to\n  meet Master Bogdan.",
+          "siguiente_paso": 9,
+          "es_ultimo": true
+        }
+      ],
+      "recompensa": {
+        "exp": 40000000,
+        "oro": 40000000,
+        "creditos": 220000,
+        "items": [
+          {
+            "item_id": 415,
+            "cantidad": 32
+          }
+        ]
+      }
+    },
+    "1618": {
+      "id": 1618,
+      "nombre": "Ancient Revelation",
+      "tipo": "Eden-Angel Quest",
+      "faccion": null,
+      "intro": "After recovering the other half of the tablet and returning to Pavel, seek his teacher Bogdan in the Ancient Library.",
+      "repetible": false,
+      "npc_inicio": "Bogdan",
+      "mapa_inicio": "Ancient Library",
+      "stage_id": 427,
+      "borrar_items": [],
+      "pasos": [
+        {
+          "tipo": "recolectar",
+          "items": [
+            {
+              "item_id": 80869,
+              "cantidad": 1
+            },
+            {
+              "item_id": 80870,
+              "cantidad": 1
+            },
+            {
+              "item_id": 80871,
+              "cantidad": 1
+            }
+          ],
+          "cantidad": 1,
+          "token_id": 80869,
+          "npc_entrega": "Bogdan",
+          "mapa": "Ancient Library",
+          "stage_id": 427,
+          "paso": 1,
+          "texto": "1.Find the texts requested by\n  Bogdan:\n  Kabiru Order History: /c$9%80869%/c* / 1\n  Kabiru Original Canon: /c$9%80870%/c* / 1\n  Modern Kabiru History: /c$9%80871%/c* / 1",
+          "siguiente_paso": 2
+        },
+        {
+          "tipo": "hablar",
+          "cantidad": 1,
+          "npc_entrega": "Bogdan",
+          "mapa": "Ancient Library",
+          "stage_id": 427,
+          "paso": 2,
+          "texto": "2.Report back to Bogdan.",
+          "siguiente_paso": 3
+        },
+        {
+          "tipo": "recolectar",
+          "items": [
+            {
+              "item_id": 80872,
+              "cantidad": 1
+            },
+            {
+              "item_id": 80873,
+              "cantidad": 200
+            }
+          ],
+          "cantidad": 1,
+          "token_id": 80872,
+          "npc_entrega": "Bogdan",
+          "mapa": "Ancient Library",
+          "stage_id": 427,
+          "paso": 3,
+          "texto": "3.Recover the missing pages and\n  drive off the beasts:\n  Missing Pages: /c$9%80872%/c* / 1\n  Blue Robe Claw, Red Flame Walker: /c$9%80873%/c* / 200",
+          "siguiente_paso": 4,
+          "monstruo_ids": [
+            23901,
+            23902
+          ],
+          "monstruos": [
+            "blue robe claw",
+            "red flame walker"
+          ]
+        },
+        {
+          "tipo": "hablar",
+          "cantidad": 1,
+          "npc_entrega": "Bogdan",
+          "mapa": "Ancient Library",
+          "stage_id": 427,
+          "paso": 4,
+          "texto": "4.Report back to Bogdan.",
+          "siguiente_paso": 5
+        },
+        {
+          "tipo": "recolectar",
+          "items": [
+            {
+              "item_id": 80874,
+              "cantidad": 1
+            },
+            {
+              "item_id": 80875,
+              "cantidad": 200
+            },
+            {
+              "item_id": 80876,
+              "cantidad": 200
+            }
+          ],
+          "cantidad": 1,
+          "token_id": 80874,
+          "npc_entrega": "Bogdan",
+          "mapa": "Ancient Library",
+          "stage_id": 427,
+          "paso": 5,
+          "texto": "5.Gather materials for the\n  Time-Chant Crystal:\n  Rough Ore: /c$9%80874%/c* / 1\n  Red-Green Urn: /c$9%80875%/c* / 200\n  Indigo Source: /c$9%80876%/c* / 200",
+          "siguiente_paso": 6,
+          "monstruo_ids": [
+            23905,
+            23906
+          ],
+          "monstruos": [
+            "red-green urn",
+            "indigo source"
+          ]
+        },
+        {
+          "tipo": "hablar",
+          "cantidad": 1,
+          "npc_entrega": "Bogdan",
+          "mapa": "Ancient Library",
+          "stage_id": 427,
+          "paso": 6,
+          "texto": "6.Report back to Bogdan.",
+          "siguiente_paso": 7
+        },
+        {
+          "tipo": "hablar",
+          "cantidad": 1,
+          "npc_entrega": "Nadia",
+          "mapa": "Fragrant Greenhouse",
+          "stage_id": 428,
+          "paso": 7,
+          "texto": "7.Head to Fragrant Greenhouse.",
+          "siguiente_paso": 8,
+          "es_ultimo": true
+        }
+      ],
+      "recompensa": {
+        "exp": 41500000,
+        "oro": 41500000,
+        "creditos": 265000,
+        "items": [
+          {
+            "item_id": 430,
+            "cantidad": 32
+          }
+        ]
+      }
+    },
+    "1619": {
+      "id": 1619,
+      "nombre": "Awaken Purification",
+      "tipo": "Eden-Angel Quest",
+      "faccion": null,
+      "intro": "Enter the Fragrant Greenhouse with Nadia to trace the strange voice and purify the corrupted spirits.",
+      "repetible": false,
+      "npc_inicio": "Nadia",
+      "mapa_inicio": "Fragrant Greenhouse",
+      "stage_id": 428,
+      "borrar_items": [],
+      "pasos": [
+        {
+          "tipo": "hablar",
+          "cantidad": 1,
+          "npc_entrega": "Saphira",
+          "mapa": "Fragrant Greenhouse",
+          "stage_id": 428,
+          "paso": 1,
+          "texto": "1.Find the source of the voice.",
+          "siguiente_paso": 2
+        },
+        {
+          "tipo": "recolectar",
+          "items": [
+            {
+              "item_id": 80877,
+              "cantidad": 1
+            }
+          ],
+          "cantidad": 1,
+          "token_id": 80877,
+          "npc_entrega": "Saphira",
+          "mapa": "Fragrant Greenhouse",
+          "stage_id": 428,
+          "paso": 2,
+          "texto": "2.Calm Poison Root Saphira down:\n  Poison Root Saphira: /c$9%80877%/c* / 1",
+          "siguiente_paso": 3,
+          "monstruo_ids": [
+            23920
+          ],
+          "monstruos": [
+            "poison root saphira"
+          ]
+        },
+        {
+          "tipo": "hablar",
+          "cantidad": 1,
+          "npc_entrega": "Saphira",
+          "mapa": "Fragrant Greenhouse",
+          "stage_id": 428,
+          "paso": 3,
+          "texto": "3.Speak with Saphira.",
+          "siguiente_paso": 4
+        },
+        {
+          "tipo": "recolectar",
+          "items": [
+            {
+              "item_id": 80878,
+              "cantidad": 200
+            },
+            {
+              "item_id": 80879,
+              "cantidad": 200
+            },
+            {
+              "item_id": 80880,
+              "cantidad": 200
+            }
+          ],
+          "cantidad": 200,
+          "token_id": 80878,
+          "npc_entrega": "Saphira",
+          "mapa": "Fragrant Greenhouse",
+          "stage_id": 428,
+          "paso": 4,
+          "texto": "4.Quell the spirits and extract\n  corrupted residue:\n  Violet Night Guardian: /c$9%80878%/c* / 200\n  Morning Dew Spirit: /c$9%80879%/c* / 200\n  Branch Shadow Giant: /c$9%80880%/c* / 200",
+          "siguiente_paso": 5,
+          "monstruo_ids": [
+            23912,
+            23916,
+            23913
+          ],
+          "monstruos": [
+            "violet night guardian",
+            "morning dew spirit",
+            "branch shadow giant"
+          ]
+        },
+        {
+          "tipo": "hablar",
+          "cantidad": 1,
+          "npc_entrega": "Saphira",
+          "mapa": "Fragrant Greenhouse",
+          "stage_id": 428,
+          "paso": 5,
+          "texto": "5.Report back to Saphira.",
+          "siguiente_paso": 6,
+          "es_ultimo": true
+        }
+      ],
+      "recompensa": {
+        "exp": 43000000,
+        "oro": 43000000,
+        "creditos": 310000,
+        "items": [
+          {
+            "item_id": 445,
+            "cantidad": 32
+          }
+        ]
+      }
+    },
+    "1620": {
+      "id": 1620,
+      "nombre": "Salus's Atonement",
+      "tipo": "Team-Instance Quest",
+      "faccion": null,
+      "intro": "Salus now knows his blind devotion helped revive an evil god. Enter Rotwood Abyss and recover relics for those who were sacrificed.",
+      "repetible": false,
+      "npc_inicio": "Salus",
+      "mapa_inicio": "Citygate Sand Path",
+      "stage_id": 424,
+      "borrar_items": [],
+      "pasos": [
+        {
+          "tipo": "recolectar",
+          "items": [
+            {
+              "item_id": 80949,
+              "cantidad": 1
+            },
+            {
+              "item_id": 80950,
+              "cantidad": 1
+            },
+            {
+              "item_id": 80951,
+              "cantidad": 1
+            }
+          ],
+          "cantidad": 1,
+          "token_id": 80949,
+          "npc_entrega": "Salus",
+          "mapa": "Rotwood Abyss",
+          "stage_id": 429,
+          "paso": 1,
+          "texto": "1.In Rotwood Abyss, obtain:\n  Flame Mushroom Sprite: /c$9%80949%/c* / 1\n  Blood Green Fern: /c$9%80950%/c* / 1\n  Gray-Blue Archer: /c$9%80951%/c* / 1",
+          "siguiente_paso": 2,
+          "monstruo_ids": [
+            23922,
+            23924,
+            23925
+          ],
+          "monstruos": [
+            "flame mushroom sprite",
+            "blood green fern",
+            "gray-blue archer"
+          ]
+        },
+        {
+          "tipo": "hablar",
+          "cantidad": 1,
+          "npc_entrega": "Salus",
+          "mapa": "Citygate Sand Path",
+          "stage_id": 424,
+          "paso": 2,
+          "texto": "2.Report back to Salus in\n  Citygate Sand Path.",
+          "siguiente_paso": 3,
+          "es_ultimo": true
+        }
+      ],
+      "recompensa": {
+        "exp": 35500000,
+        "oro": 0,
+        "creditos": 35000,
+        "items": [
+          {
+            "item_id": 3604,
+            "cantidad": 32
+          }
+        ]
+      }
+    },
+    "1621": {
+      "id": 1621,
+      "nombre": "Unfinished Chant",
+      "tipo": "Team-Instance Quest",
+      "faccion": null,
+      "intro": "Freyre sensed earth and time trembling through the ley lines when the Time-Chant Crystal stirred. Reclaim it from Masked King Magna in Rotwood Abyss.",
+      "repetible": false,
+      "npc_inicio": "Freyre",
+      "mapa_inicio": "Bluesand Realm",
+      "stage_id": 425,
+      "borrar_items": [],
+      "pasos": [
+        {
+          "tipo": "recolectar",
+          "items": [
+            {
+              "item_id": 80952,
+              "cantidad": 1
+            }
+          ],
+          "cantidad": 1,
+          "token_id": 80952,
+          "npc_entrega": "Freyre",
+          "mapa": "Rotwood Abyss",
+          "stage_id": 429,
+          "paso": 1,
+          "texto": "1.In Rotwood Abyss, defeat\n  Masked King Magna:\n  Masked King Magna: /c$9%80952%/c* / 1",
+          "siguiente_paso": 2,
+          "monstruo_ids": [
+            23930
+          ],
+          "monstruos": [
+            "masked king magna"
+          ]
+        },
+        {
+          "tipo": "hablar",
+          "cantidad": 1,
+          "npc_entrega": "Freyre",
+          "mapa": "Bluesand Realm",
+          "stage_id": 425,
+          "paso": 2,
+          "texto": "2.Report back to Freyre.",
+          "siguiente_paso": 3,
+          "es_ultimo": true
+        }
+      ],
+      "recompensa": {
+        "exp": 35500000,
+        "oro": 0,
+        "creditos": 35000,
+        "items": [
+          {
+            "item_id": 3604,
+            "cantidad": 32
+          }
+        ]
+      }
+    },
+    "1622": {
+      "id": 1622,
+      "nombre": "Silence of the Guardian",
+      "tipo": "Team-Instance Quest",
+      "faccion": null,
+      "intro": "Artisan Airi once studied ancient automatons and asks you to bring back a piece of F-07 from Rotwood Abyss as a keepsake.",
+      "repetible": false,
+      "npc_inicio": "Airi",
+      "mapa_inicio": "Shimmering Harbor",
+      "stage_id": 426,
+      "borrar_items": [],
+      "pasos": [
+        {
+          "tipo": "recolectar",
+          "items": [
+            {
+              "item_id": 80953,
+              "cantidad": 1
+            }
+          ],
+          "cantidad": 1,
+          "token_id": 80953,
+          "npc_entrega": "Airi",
+          "mapa": "Rotwood Abyss",
+          "stage_id": 429,
+          "paso": 1,
+          "texto": "1.Obtain from F-07 in Rotwood\n  Abyss:\n  F-07: /c$9%80953%/c* / 1",
+          "siguiente_paso": 2,
+          "monstruo_ids": [
+            23933
+          ],
+          "monstruos": [
+            "f-07"
+          ]
+        },
+        {
+          "tipo": "hablar",
+          "cantidad": 1,
+          "npc_entrega": "Airi",
+          "mapa": "Shimmering Harbor",
+          "stage_id": 426,
+          "paso": 2,
+          "texto": "2.Report back to Airi.",
+          "siguiente_paso": 3,
+          "es_ultimo": true
+        }
+      ],
+      "recompensa": {
+        "exp": 18400000,
+        "oro": 0,
+        "creditos": 105000,
+        "items": [
+          {
+            "item_id": 10811,
+            "cantidad": 32
+          }
+        ]
+      }
+    },
+    "1623": {
+      "id": 1623,
+      "nombre": "Anomaly of Faith",
+      "tipo": "Team-Instance Quest",
+      "faccion": null,
+      "intro": "Sofaen discovered the Demon Academy branded Mitaunos with a forced-faith curse. Retrieve a curse shard from Rotwood Abyss for research.",
+      "repetible": false,
+      "npc_inicio": "Sofaen",
+      "mapa_inicio": "Ancient Library",
+      "stage_id": 427,
+      "borrar_items": [],
+      "pasos": [
+        {
+          "tipo": "recolectar",
+          "items": [
+            {
+              "item_id": 80954,
+              "cantidad": 1
+            }
+          ],
+          "cantidad": 1,
+          "token_id": 80954,
+          "npc_entrega": "Sofaen",
+          "mapa": "Rotwood Abyss",
+          "stage_id": 429,
+          "paso": 1,
+          "texto": "1.Obtain from Mitaunos in Rotwood\n  Abyss:\n  Mitaunos: /c$9%80954%/c* / 1",
+          "siguiente_paso": 2,
+          "monstruo_ids": [
+            23934
+          ],
+          "monstruos": [
+            "mitaunos"
+          ]
+        },
+        {
+          "tipo": "hablar",
+          "cantidad": 1,
+          "npc_entrega": "Sofaen",
+          "mapa": "Ancient Library",
+          "stage_id": 427,
+          "paso": 2,
+          "texto": "2.Report back to Sofaen.",
+          "siguiente_paso": 3,
+          "es_ultimo": true
+        }
+      ],
+      "recompensa": {
+        "exp": 38500000,
+        "oro": 0,
+        "creditos": 105000,
+        "items": [
+          {
+            "item_id": 10811,
+            "cantidad": 32
+          }
+        ]
+      }
+    },
+    "1624": {
+      "id": 1624,
+      "nombre": "One Who Heard the Cries",
+      "tipo": "Team-Instance Quest",
+      "faccion": null,
+      "intro": "Irona hears Susula whispering in sorrow and believes a trace of its true mind remains. Bring back a sleeping seed from Rotwood Abyss.",
+      "repetible": false,
+      "npc_inicio": "Irona",
+      "mapa_inicio": "Fragrant Greenhouse",
+      "stage_id": 428,
+      "borrar_items": [],
+      "pasos": [
+        {
+          "tipo": "recolectar",
+          "items": [
+            {
+              "item_id": 80955,
+              "cantidad": 1
+            }
+          ],
+          "cantidad": 1,
+          "token_id": 80955,
+          "npc_entrega": "Irona",
+          "mapa": "Rotwood Abyss",
+          "stage_id": 429,
+          "paso": 1,
+          "texto": "1.Obtain from Susula in Rotwood\n  Abyss:\n  Susula: /c$9%80955%/c* / 1",
+          "siguiente_paso": 2,
+          "monstruo_ids": [
+            23935
+          ],
+          "monstruos": [
+            "susula"
+          ]
+        },
+        {
+          "tipo": "hablar",
+          "cantidad": 1,
+          "npc_entrega": "Irona",
+          "mapa": "Fragrant Greenhouse",
+          "stage_id": 428,
+          "paso": 2,
+          "texto": "2.Report back to Irona.",
+          "siguiente_paso": 3,
+          "es_ultimo": true
+        }
+      ],
+      "recompensa": {
+        "exp": 89000000,
+        "oro": 0,
+        "creditos": 105000,
+        "items": [
+          {
+            "item_id": 31757,
+            "cantidad": 32
+          }
+        ]
+      }
     }
   },
   "npc_inicio": {
     "angels' tutor": [
       1,
       2,
-      100,
       101,
       102,
       103
     ],
     "director wolay": [
       100
-    ],
-    "michael": [
-      103,
-      123,
-      124,
-      125,
-      126,
-      162,
-      163
     ],
     "potty": [
       104
@@ -92939,29 +94585,33 @@
     "koules": [
       122
     ],
+    "michael": [
+      123,
+      124,
+      125,
+      126,
+      162,
+      163
+    ],
     "aurora angel": [
       127,
       133,
-      137,
-      601
+      137
     ],
     "dark city angel": [
       128,
       134,
-      138,
-      601
+      138
     ],
     "ironcastle angel": [
       129,
       135,
-      139,
-      601
+      139
     ],
     "breezewood angel": [
       130,
       136,
-      140,
-      601
+      140
     ],
     "mobius": [
       131
@@ -93208,8 +94858,7 @@
       252
     ],
     "lvl 20, rank 2 - aurora angel": [
-      256,
-      601
+      256
     ],
     "spy angel": [
       257,
@@ -93223,8 +94872,7 @@
       462,
       559,
       560,
-      561,
-      601
+      561
     ],
     "asmode": [
       260,
@@ -93494,8 +95142,7 @@
       358
     ],
     "lvl 20, rank 2 - dark city angel": [
-      359,
-      601
+      359
     ],
     "level 90 - bassil archeologist": [
       366
@@ -93676,6 +95323,9 @@
     "pioneer ocadon": [
       455
     ],
+    "lvl 20, rank 2 - ironcastle angel": [
+      459
+    ],
     "ebon": [
       466
     ],
@@ -93853,8 +95503,7 @@
       557
     ],
     "lvl 20, rank 2 - breezewood angel": [
-      558,
-      601
+      558
     ],
     "talbott": [
       565,
@@ -93947,7 +95596,9 @@
     "zoe": [
       600
     ],
-    "main city angel": [],
+    "main city angel": [
+      601
+    ],
     "angel inspector": [
       602,
       603,
@@ -96467,9 +98118,56 @@
     "guard collins": [
       1606
     ],
-    "lvl 20, rank 2 - ironcastle angel": [
-      459,
-      601
+    "botanist hashim": [
+      1607
+    ],
+    "townsman aziz": [
+      1608
+    ],
+    "merchant samir": [
+      1609
+    ],
+    "fisherman farid": [
+      1610
+    ],
+    "curator safa": [
+      1611
+    ],
+    "gardener laila": [
+      1612
+    ],
+    "fahad": [
+      1614
+    ],
+    "pavel": [
+      1615
+    ],
+    "jusha": [
+      1616
+    ],
+    "irina": [
+      1617
+    ],
+    "bogdan": [
+      1618
+    ],
+    "nadia": [
+      1619
+    ],
+    "salus": [
+      1620
+    ],
+    "freyre": [
+      1621
+    ],
+    "airi": [
+      1622
+    ],
+    "sofaen": [
+      1623
+    ],
+    "irona": [
+      1624
     ]
   },
   "npc_pasos": {
@@ -118766,6 +120464,316 @@
         "qid": 1606,
         "paso": 2
       }
+    ],
+    "botanist hashim": [
+      {
+        "qid": 1607,
+        "paso": 1
+      },
+      {
+        "qid": 1607,
+        "paso": 2
+      },
+      {
+        "qid": 1607,
+        "paso": 3
+      },
+      {
+        "qid": 1607,
+        "paso": 4
+      }
+    ],
+    "townsman aziz": [
+      {
+        "qid": 1608,
+        "paso": 1
+      },
+      {
+        "qid": 1608,
+        "paso": 2
+      },
+      {
+        "qid": 1608,
+        "paso": 3
+      }
+    ],
+    "merchant samir": [
+      {
+        "qid": 1609,
+        "paso": 1
+      },
+      {
+        "qid": 1609,
+        "paso": 2
+      },
+      {
+        "qid": 1609,
+        "paso": 3
+      }
+    ],
+    "fisherman farid": [
+      {
+        "qid": 1610,
+        "paso": 1
+      },
+      {
+        "qid": 1610,
+        "paso": 2
+      }
+    ],
+    "curator safa": [
+      {
+        "qid": 1611,
+        "paso": 1
+      },
+      {
+        "qid": 1611,
+        "paso": 2
+      }
+    ],
+    "gardener laila": [
+      {
+        "qid": 1612,
+        "paso": 1
+      },
+      {
+        "qid": 1612,
+        "paso": 2
+      }
+    ],
+    "milos": [
+      {
+        "qid": 1614,
+        "paso": 1
+      }
+    ],
+    "viktor": [
+      {
+        "qid": 1614,
+        "paso": 2
+      },
+      {
+        "qid": 1614,
+        "paso": 3
+      },
+      {
+        "qid": 1614,
+        "paso": 4
+      },
+      {
+        "qid": 1614,
+        "paso": 5
+      },
+      {
+        "qid": 1614,
+        "paso": 6
+      }
+    ],
+    "pavel": [
+      {
+        "qid": 1614,
+        "paso": 7
+      },
+      {
+        "qid": 1615,
+        "paso": 1
+      },
+      {
+        "qid": 1615,
+        "paso": 2
+      },
+      {
+        "qid": 1615,
+        "paso": 3
+      },
+      {
+        "qid": 1615,
+        "paso": 4
+      },
+      {
+        "qid": 1615,
+        "paso": 5
+      },
+      {
+        "qid": 1615,
+        "paso": 6
+      },
+      {
+        "qid": 1617,
+        "paso": 7
+      }
+    ],
+    "jusha": [
+      {
+        "qid": 1615,
+        "paso": 7
+      },
+      {
+        "qid": 1616,
+        "paso": 1
+      },
+      {
+        "qid": 1616,
+        "paso": 2
+      },
+      {
+        "qid": 1616,
+        "paso": 3
+      },
+      {
+        "qid": 1616,
+        "paso": 4
+      },
+      {
+        "qid": 1616,
+        "paso": 5
+      },
+      {
+        "qid": 1616,
+        "paso": 6
+      },
+      {
+        "qid": 1616,
+        "paso": 7
+      }
+    ],
+    "irina": [
+      {
+        "qid": 1616,
+        "paso": 8
+      },
+      {
+        "qid": 1617,
+        "paso": 1
+      },
+      {
+        "qid": 1617,
+        "paso": 2
+      },
+      {
+        "qid": 1617,
+        "paso": 3
+      },
+      {
+        "qid": 1617,
+        "paso": 4
+      },
+      {
+        "qid": 1617,
+        "paso": 5
+      },
+      {
+        "qid": 1617,
+        "paso": 6
+      }
+    ],
+    "bogdan": [
+      {
+        "qid": 1617,
+        "paso": 8
+      },
+      {
+        "qid": 1618,
+        "paso": 1
+      },
+      {
+        "qid": 1618,
+        "paso": 2
+      },
+      {
+        "qid": 1618,
+        "paso": 3
+      },
+      {
+        "qid": 1618,
+        "paso": 4
+      },
+      {
+        "qid": 1618,
+        "paso": 5
+      },
+      {
+        "qid": 1618,
+        "paso": 6
+      }
+    ],
+    "nadia": [
+      {
+        "qid": 1618,
+        "paso": 7
+      }
+    ],
+    "saphira": [
+      {
+        "qid": 1619,
+        "paso": 1
+      },
+      {
+        "qid": 1619,
+        "paso": 2
+      },
+      {
+        "qid": 1619,
+        "paso": 3
+      },
+      {
+        "qid": 1619,
+        "paso": 4
+      },
+      {
+        "qid": 1619,
+        "paso": 5
+      }
+    ],
+    "salus": [
+      {
+        "qid": 1620,
+        "paso": 1
+      },
+      {
+        "qid": 1620,
+        "paso": 2
+      }
+    ],
+    "freyre": [
+      {
+        "qid": 1621,
+        "paso": 1
+      },
+      {
+        "qid": 1621,
+        "paso": 2
+      }
+    ],
+    "airi": [
+      {
+        "qid": 1622,
+        "paso": 1
+      },
+      {
+        "qid": 1622,
+        "paso": 2
+      }
+    ],
+    "sofaen": [
+      {
+        "qid": 1623,
+        "paso": 1
+      },
+      {
+        "qid": 1623,
+        "paso": 2
+      }
+    ],
+    "irona": [
+      {
+        "qid": 1624,
+        "paso": 1
+      },
+      {
+        "qid": 1624,
+        "paso": 2
+      }
     ]
   },
   "cacerias": {
@@ -127013,7 +129021,7 @@
       "monstruo_ids": [],
       "monstruos": [],
       "token_id": 28095,
-      "nombre_objetivo": "Monsters (100)",
+      "nombre_objetivo": "",
       "npc_entrega": "Mayor",
       "mapa": "Steam Town"
     },
@@ -128037,7 +130045,7 @@
       "monstruo_ids": [],
       "monstruos": [],
       "token_id": 40462,
-      "nombre_objetivo": "Monsters (125)",
+      "nombre_objetivo": "",
       "npc_entrega": "Wood sprite Griselda",
       "mapa": "Metal Scrapyard"
     },
@@ -128081,7 +130089,7 @@
       "monstruo_ids": [],
       "monstruos": [],
       "token_id": 40469,
-      "nombre_objetivo": "Monsters (175)",
+      "nombre_objetivo": "",
       "npc_entrega": "Captain Lupin",
       "mapa": "Joaquin"
     },
@@ -128093,7 +130101,7 @@
       "monstruo_ids": [],
       "monstruos": [],
       "token_id": 40471,
-      "nombre_objetivo": "Monsters (99)",
+      "nombre_objetivo": "",
       "npc_entrega": "Captain Lupin",
       "mapa": "Joaquin"
     },
@@ -128105,7 +130113,7 @@
       "monstruo_ids": [],
       "monstruos": [],
       "token_id": null,
-      "nombre_objetivo": "Monsters (1)",
+      "nombre_objetivo": "",
       "npc_entrega": "Captain Lupin",
       "mapa": "Joaquin"
     },
@@ -128117,7 +130125,7 @@
       "monstruo_ids": [],
       "monstruos": [],
       "token_id": 40473,
-      "nombre_objetivo": "Monsters (150)",
+      "nombre_objetivo": "",
       "npc_entrega": "Elite Leader Raiden Weis",
       "mapa": "Scrap Iron Works"
     },
@@ -128129,7 +130137,7 @@
       "monstruo_ids": [],
       "monstruos": [],
       "token_id": 40483,
-      "nombre_objetivo": "Monsters (1)",
+      "nombre_objetivo": "",
       "npc_entrega": "Captain Shiffy",
       "mapa": "Paua Shell Harbor"
     },
@@ -128141,7 +130149,7 @@
       "monstruo_ids": [],
       "monstruos": [],
       "token_id": 40485,
-      "nombre_objetivo": "Monsters (200)",
+      "nombre_objetivo": "",
       "npc_entrega": "Minister Roselia",
       "mapa": "Drip-drop Passage"
     },
@@ -128153,7 +130161,7 @@
       "monstruo_ids": [],
       "monstruos": [],
       "token_id": 40493,
-      "nombre_objetivo": "Monsters (40)",
+      "nombre_objetivo": "",
       "npc_entrega": "Frost Bears Mercenary Corps' Dmitri",
       "mapa": "Floral Palace"
     },
@@ -128165,7 +130173,7 @@
       "monstruo_ids": [],
       "monstruos": [],
       "token_id": 40494,
-      "nombre_objetivo": "Monsters (25)",
+      "nombre_objetivo": "",
       "npc_entrega": "Frost Bears Mercenary Corps' Dmitri",
       "mapa": "Floral Palace"
     },
@@ -128177,7 +130185,7 @@
       "monstruo_ids": [],
       "monstruos": [],
       "token_id": 40496,
-      "nombre_objetivo": "Monsters (35)",
+      "nombre_objetivo": "",
       "npc_entrega": "Warrior Leford",
       "mapa": "Floral Palace"
     },
@@ -130777,7 +132785,7 @@
       "monstruo_ids": [],
       "monstruos": [],
       "token_id": 60873,
-      "nombre_objetivo": "Monsters (1)",
+      "nombre_objetivo": "",
       "npc_entrega": "Horizon Delta",
       "mapa": "Rolling Sands"
     },
@@ -131682,7 +133690,7 @@
       "monstruo_ids": [],
       "monstruos": [],
       "token_id": 72163,
-      "nombre_objetivo": "Monsters (150)",
+      "nombre_objetivo": "",
       "npc_entrega": "Kamenosuke",
       "mapa": "Floating Station"
     },
@@ -131838,7 +133846,7 @@
       "monstruo_ids": [],
       "monstruos": [],
       "token_id": 72189,
-      "nombre_objetivo": "Monsters (1)",
+      "nombre_objetivo": "",
       "npc_entrega": "Kappa Koki",
       "mapa": "Seaside Grotto"
     },
@@ -131928,7 +133936,7 @@
       "monstruo_ids": [],
       "monstruos": [],
       "token_id": 73535,
-      "nombre_objetivo": "Monsters (1)",
+      "nombre_objetivo": "",
       "npc_entrega": "Sleuth Goro",
       "mapa": "Dragon's Lair"
     },
@@ -132057,7 +134065,7 @@
       "monstruo_ids": [],
       "monstruos": [],
       "token_id": 75311,
-      "nombre_objetivo": "Monsters (1)",
+      "nombre_objetivo": "",
       "npc_entrega": "Mechanic Valanqi",
       "mapa": "Core Zone"
     },
@@ -132069,7 +134077,7 @@
       "monstruo_ids": [],
       "monstruos": [],
       "token_id": 75313,
-      "nombre_objetivo": "Monsters (1)",
+      "nombre_objetivo": "",
       "npc_entrega": "General Aron",
       "mapa": "Core Zone"
     },
@@ -132081,7 +134089,7 @@
       "monstruo_ids": [],
       "monstruos": [],
       "token_id": 21290,
-      "nombre_objetivo": "Monsters (5)",
+      "nombre_objetivo": "",
       "npc_entrega": "Didiro",
       "mapa": "Chocolate Forest"
     },
@@ -132093,7 +134101,7 @@
       "monstruo_ids": [],
       "monstruos": [],
       "token_id": 21294,
-      "nombre_objetivo": "Monsters (1)",
+      "nombre_objetivo": "",
       "npc_entrega": "Level 125 - Red Riding Hood's Grandpa",
       "mapa": "Block City Outskirts"
     },
@@ -132105,7 +134113,7 @@
       "monstruo_ids": [],
       "monstruos": [],
       "token_id": 21295,
-      "nombre_objetivo": "Monsters (1)",
+      "nombre_objetivo": "",
       "npc_entrega": "Chocolate Forest",
       "mapa": "黑森林"
     },
@@ -132117,7 +134125,7 @@
       "monstruo_ids": [],
       "monstruos": [],
       "token_id": 21296,
-      "nombre_objetivo": "Monsters (1)",
+      "nombre_objetivo": "",
       "npc_entrega": "Level 125 - Red Riding Hood's Grandpa",
       "mapa": "Chocolate Forest"
     },
@@ -132143,7 +134151,7 @@
       "monstruo_ids": [],
       "monstruos": [],
       "token_id": 78183,
-      "nombre_objetivo": "Monsters (200)",
+      "nombre_objetivo": "",
       "npc_entrega": "Tych",
       "mapa": "Neon Sky Corridor"
     },
@@ -132155,7 +134163,7 @@
       "monstruo_ids": [],
       "monstruos": [],
       "token_id": 78186,
-      "nombre_objetivo": "Monsters (200)",
+      "nombre_objetivo": "",
       "npc_entrega": "E. Lightman",
       "mapa": "Black Market District"
     },
@@ -132167,7 +134175,7 @@
       "monstruo_ids": [],
       "monstruos": [],
       "token_id": 78187,
-      "nombre_objetivo": "Monsters (200)",
+      "nombre_objetivo": "",
       "npc_entrega": "Dyren",
       "mapa": "Commercial Street"
     },
@@ -132179,7 +134187,7 @@
       "monstruo_ids": [],
       "monstruos": [],
       "token_id": 78300,
-      "nombre_objetivo": "Monsters (100)",
+      "nombre_objetivo": "",
       "npc_entrega": "Supervisor Ofur",
       "mapa": "Clink Harbor"
     },
@@ -132191,7 +134199,7 @@
       "monstruo_ids": [],
       "monstruos": [],
       "token_id": 78307,
-      "nombre_objetivo": "Monsters (50)",
+      "nombre_objetivo": "",
       "npc_entrega": "Ryaiden",
       "mapa": "Commercial Street"
     },
@@ -132203,7 +134211,7 @@
       "monstruo_ids": [],
       "monstruos": [],
       "token_id": 78312,
-      "nombre_objetivo": "Monsters (50)",
+      "nombre_objetivo": "",
       "npc_entrega": "Coach Keke",
       "mapa": "Ultimate Arena"
     },
@@ -132215,7 +134223,7 @@
       "monstruo_ids": [],
       "monstruos": [],
       "token_id": 78313,
-      "nombre_objetivo": "Monsters (50)",
+      "nombre_objetivo": "",
       "npc_entrega": "Coach Keke",
       "mapa": "Ultimate Arena"
     },
@@ -132257,7 +134265,7 @@
       "monstruo_ids": [],
       "monstruos": [],
       "token_id": null,
-      "nombre_objetivo": "Monsters (1)",
+      "nombre_objetivo": "",
       "npc_entrega": "Information Merchant Henry",
       "mapa": "Secret Peak"
     },
@@ -132269,7 +134277,7 @@
       "monstruo_ids": [],
       "monstruos": [],
       "token_id": null,
-      "nombre_objetivo": "Monsters (1)",
+      "nombre_objetivo": "",
       "npc_entrega": "Noble Morgan",
       "mapa": "Secret Peak"
     },
@@ -145616,6 +147624,778 @@
       ],
       "npc_entrega": "Manager Gable",
       "mapa": "Bling Plaza"
+    },
+    "1607_1": {
+      "qid": 1607,
+      "paso": 1,
+      "siguiente_paso": 2,
+      "cantidad": 1,
+      "items": [
+        {
+          "item_id": 80418,
+          "cantidad": 1
+        },
+        {
+          "item_id": 80419,
+          "cantidad": 1
+        },
+        {
+          "item_id": 80420,
+          "cantidad": 1
+        },
+        {
+          "item_id": 80421,
+          "cantidad": 1
+        }
+      ],
+      "npc_entrega": "Botanist Hashim",
+      "mapa": "Rushing Valley"
+    },
+    "1607_3": {
+      "qid": 1607,
+      "paso": 3,
+      "siguiente_paso": 4,
+      "cantidad": 50,
+      "items": [
+        {
+          "item_id": 80422,
+          "cantidad": 50
+        }
+      ],
+      "npc_entrega": "Botanist Hashim",
+      "mapa": "Rushing Valley",
+      "monstruo_ids": [
+        23863
+      ],
+      "monstruos": [
+        "wild grass demon"
+      ]
+    },
+    "1608_1": {
+      "qid": 1608,
+      "paso": 1,
+      "siguiente_paso": 2,
+      "cantidad": 1,
+      "items": [
+        {
+          "item_id": 80424,
+          "cantidad": 1
+        },
+        {
+          "item_id": 80425,
+          "cantidad": 1
+        },
+        {
+          "item_id": 80426,
+          "cantidad": 1
+        }
+      ],
+      "npc_entrega": "Townsman Aziz",
+      "mapa": "Citygate Sand Path"
+    },
+    "1608_2": {
+      "qid": 1608,
+      "paso": 2,
+      "siguiente_paso": 3,
+      "cantidad": 50,
+      "items": [
+        {
+          "item_id": 80427,
+          "cantidad": 50
+        }
+      ],
+      "npc_entrega": "Townsman Aziz",
+      "mapa": "Citygate Sand Path",
+      "monstruo_ids": [
+        23874
+      ],
+      "monstruos": [
+        "molten egg"
+      ]
+    },
+    "1609_1": {
+      "qid": 1609,
+      "paso": 1,
+      "siguiente_paso": 2,
+      "cantidad": 1,
+      "items": [
+        {
+          "item_id": 80429,
+          "cantidad": 1
+        },
+        {
+          "item_id": 80430,
+          "cantidad": 1
+        },
+        {
+          "item_id": 80431,
+          "cantidad": 1
+        }
+      ],
+      "npc_entrega": "Merchant Samir",
+      "mapa": "Bluesand Realm"
+    },
+    "1609_2": {
+      "qid": 1609,
+      "paso": 2,
+      "siguiente_paso": 3,
+      "cantidad": 1,
+      "items": [
+        {
+          "item_id": 80432,
+          "cantidad": 1
+        }
+      ],
+      "npc_entrega": "Merchant Samir",
+      "mapa": "Bluesand Realm",
+      "monstruo_ids": [
+        23885
+      ],
+      "monstruos": [
+        "orange blossom spirit"
+      ]
+    },
+    "1610_1": {
+      "qid": 1610,
+      "paso": 1,
+      "siguiente_paso": 2,
+      "cantidad": 1,
+      "items": [
+        {
+          "item_id": 80434,
+          "cantidad": 1
+        },
+        {
+          "item_id": 80435,
+          "cantidad": 1
+        }
+      ],
+      "npc_entrega": "Fisherman Farid",
+      "mapa": "Shimmering Harbor",
+      "monstruo_ids": [
+        23892,
+        23894
+      ],
+      "monstruos": [
+        "lone sail fisherman",
+        "drifting sea bandit"
+      ]
+    },
+    "1611_1": {
+      "qid": 1611,
+      "paso": 1,
+      "siguiente_paso": 2,
+      "cantidad": 1,
+      "items": [
+        {
+          "item_id": 80437,
+          "cantidad": 1
+        },
+        {
+          "item_id": 80438,
+          "cantidad": 1
+        }
+      ],
+      "npc_entrega": "Curator Safa",
+      "mapa": "Ancient Library",
+      "monstruo_ids": [
+        23904
+      ],
+      "monstruos": [
+        "phantom violet sorcerer"
+      ]
+    },
+    "1612_1": {
+      "qid": 1612,
+      "paso": 1,
+      "siguiente_paso": 2,
+      "cantidad": 100,
+      "items": [
+        {
+          "item_id": 80440,
+          "cantidad": 100
+        },
+        {
+          "item_id": 80441,
+          "cantidad": 100
+        }
+      ],
+      "npc_entrega": "Gardener Laila",
+      "mapa": "Fragrant Greenhouse",
+      "monstruo_ids": [
+        23914,
+        23915
+      ],
+      "monstruos": [
+        "rotten branch sprite",
+        "soft mist spirit"
+      ]
+    },
+    "1614_1": {
+      "qid": 1614,
+      "paso": 1,
+      "siguiente_paso": 2,
+      "cantidad": 1,
+      "items": [
+        {
+          "item_id": 80847,
+          "cantidad": 1
+        },
+        {
+          "item_id": 80848,
+          "cantidad": 1
+        },
+        {
+          "item_id": 80849,
+          "cantidad": 1
+        }
+      ],
+      "npc_entrega": "Milos",
+      "mapa": "Rushing Valley"
+    },
+    "1614_2": {
+      "qid": 1614,
+      "paso": 2,
+      "siguiente_paso": 3,
+      "cantidad": 1,
+      "items": [
+        {
+          "item_id": 81092,
+          "cantidad": 1
+        },
+        {
+          "item_id": 81093,
+          "cantidad": 1
+        },
+        {
+          "item_id": 81094,
+          "cantidad": 1
+        }
+      ],
+      "npc_entrega": "Viktor",
+      "mapa": "Rushing Valley"
+    },
+    "1614_3": {
+      "qid": 1614,
+      "paso": 3,
+      "siguiente_paso": 4,
+      "cantidad": 200,
+      "items": [
+        {
+          "item_id": 80850,
+          "cantidad": 200
+        }
+      ],
+      "npc_entrega": "Viktor",
+      "mapa": "Rushing Valley",
+      "monstruo_ids": [
+        23864
+      ],
+      "monstruos": [
+        "straw knot"
+      ]
+    },
+    "1614_5": {
+      "qid": 1614,
+      "paso": 5,
+      "siguiente_paso": 6,
+      "cantidad": 1,
+      "items": [
+        {
+          "item_id": 80851,
+          "cantidad": 1
+        }
+      ],
+      "npc_entrega": "Viktor",
+      "mapa": "Rushing Valley",
+      "monstruo_ids": [
+        23865
+      ],
+      "monstruos": [
+        "rose thorn ranger"
+      ]
+    },
+    "1615_1": {
+      "qid": 1615,
+      "paso": 1,
+      "siguiente_paso": 2,
+      "cantidad": 100,
+      "items": [
+        {
+          "item_id": 80852,
+          "cantidad": 100
+        },
+        {
+          "item_id": 80853,
+          "cantidad": 100
+        }
+      ],
+      "npc_entrega": "Pavel",
+      "mapa": "Citygate Sand Path",
+      "monstruo_ids": [
+        23871,
+        23872
+      ],
+      "monstruos": [
+        "bone wanderer",
+        "bone disciple"
+      ]
+    },
+    "1615_3": {
+      "qid": 1615,
+      "paso": 3,
+      "siguiente_paso": 4,
+      "cantidad": 1,
+      "items": [
+        {
+          "item_id": 80854,
+          "cantidad": 1
+        }
+      ],
+      "npc_entrega": "Pavel",
+      "mapa": "Citygate Sand Path",
+      "monstruo_ids": [
+        23875,
+        23876
+      ],
+      "monstruos": [
+        "heretic zealot",
+        "black flame cultist"
+      ]
+    },
+    "1615_5": {
+      "qid": 1615,
+      "paso": 5,
+      "siguiente_paso": 6,
+      "cantidad": 1,
+      "items": [
+        {
+          "item_id": 80855,
+          "cantidad": 1
+        }
+      ],
+      "npc_entrega": "Pavel",
+      "mapa": "Citygate Sand Path",
+      "monstruo_ids": [
+        23880
+      ],
+      "monstruos": [
+        "heresy hunter steelblade"
+      ]
+    },
+    "1616_1": {
+      "qid": 1616,
+      "paso": 1,
+      "siguiente_paso": 2,
+      "cantidad": 150,
+      "items": [
+        {
+          "item_id": 80856,
+          "cantidad": 150
+        },
+        {
+          "item_id": 80857,
+          "cantidad": 150
+        }
+      ],
+      "npc_entrega": "Jusha",
+      "mapa": "Bluesand Realm",
+      "monstruo_ids": [
+        23881,
+        23882
+      ],
+      "monstruos": [
+        "lacquered blue dragon",
+        "violet-striped chameleon"
+      ]
+    },
+    "1616_3": {
+      "qid": 1616,
+      "paso": 3,
+      "siguiente_paso": 4,
+      "cantidad": 1,
+      "items": [
+        {
+          "item_id": 80858,
+          "cantidad": 1
+        },
+        {
+          "item_id": 80859,
+          "cantidad": 1
+        },
+        {
+          "item_id": 80860,
+          "cantidad": 1
+        }
+      ],
+      "npc_entrega": "Jusha",
+      "mapa": "Bluesand Realm"
+    },
+    "1616_5": {
+      "qid": 1616,
+      "paso": 5,
+      "siguiente_paso": 6,
+      "cantidad": 200,
+      "items": [
+        {
+          "item_id": 80861,
+          "cantidad": 200
+        },
+        {
+          "item_id": 80862,
+          "cantidad": 200
+        }
+      ],
+      "npc_entrega": "Jusha",
+      "mapa": "Bluesand Realm",
+      "monstruo_ids": [
+        23883,
+        23884
+      ],
+      "monstruos": [
+        "flame dancer",
+        "violet mist maiden"
+      ]
+    },
+    "1616_6": {
+      "qid": 1616,
+      "paso": 6,
+      "siguiente_paso": 7,
+      "cantidad": 1,
+      "items": [
+        {
+          "item_id": 80863,
+          "cantidad": 1
+        }
+      ],
+      "npc_entrega": "Jusha",
+      "mapa": "Bluesand Realm",
+      "monstruo_ids": [
+        23889
+      ],
+      "monstruos": [
+        "decayer livina"
+      ]
+    },
+    "1617_1": {
+      "qid": 1617,
+      "paso": 1,
+      "siguiente_paso": 2,
+      "cantidad": 1,
+      "items": [
+        {
+          "item_id": 80864,
+          "cantidad": 1
+        }
+      ],
+      "npc_entrega": "Irina",
+      "mapa": "Shimmering Harbor"
+    },
+    "1617_2": {
+      "qid": 1617,
+      "paso": 2,
+      "siguiente_paso": 3,
+      "cantidad": 15,
+      "items": [
+        {
+          "item_id": 80865,
+          "cantidad": 15
+        }
+      ],
+      "npc_entrega": "Irina",
+      "mapa": "Shimmering Harbor",
+      "monstruo_ids": [
+        23983
+      ],
+      "monstruos": [
+        "rotten wandering fisherman"
+      ]
+    },
+    "1617_3": {
+      "qid": 1617,
+      "paso": 3,
+      "siguiente_paso": 4,
+      "cantidad": 100,
+      "items": [
+        {
+          "item_id": 80866,
+          "cantidad": 100
+        },
+        {
+          "item_id": 80867,
+          "cantidad": 200
+        }
+      ],
+      "npc_entrega": "Irina",
+      "mapa": "Shimmering Harbor",
+      "monstruo_ids": [
+        23893
+      ],
+      "monstruos": [
+        "drifting barrel bandit"
+      ]
+    },
+    "1617_5": {
+      "qid": 1617,
+      "paso": 5,
+      "siguiente_paso": 6,
+      "cantidad": 1,
+      "items": [
+        {
+          "item_id": 80868,
+          "cantidad": 1
+        }
+      ],
+      "npc_entrega": "Irina",
+      "mapa": "Shimmering Harbor",
+      "monstruo_ids": [
+        23900
+      ],
+      "monstruos": [
+        "barrel blade vice-captain jello"
+      ]
+    },
+    "1618_1": {
+      "qid": 1618,
+      "paso": 1,
+      "siguiente_paso": 2,
+      "cantidad": 1,
+      "items": [
+        {
+          "item_id": 80869,
+          "cantidad": 1
+        },
+        {
+          "item_id": 80870,
+          "cantidad": 1
+        },
+        {
+          "item_id": 80871,
+          "cantidad": 1
+        }
+      ],
+      "npc_entrega": "Bogdan",
+      "mapa": "Ancient Library"
+    },
+    "1618_3": {
+      "qid": 1618,
+      "paso": 3,
+      "siguiente_paso": 4,
+      "cantidad": 1,
+      "items": [
+        {
+          "item_id": 80872,
+          "cantidad": 1
+        },
+        {
+          "item_id": 80873,
+          "cantidad": 200
+        }
+      ],
+      "npc_entrega": "Bogdan",
+      "mapa": "Ancient Library",
+      "monstruo_ids": [
+        23901,
+        23902
+      ],
+      "monstruos": [
+        "blue robe claw",
+        "red flame walker"
+      ]
+    },
+    "1618_5": {
+      "qid": 1618,
+      "paso": 5,
+      "siguiente_paso": 6,
+      "cantidad": 1,
+      "items": [
+        {
+          "item_id": 80874,
+          "cantidad": 1
+        },
+        {
+          "item_id": 80875,
+          "cantidad": 200
+        },
+        {
+          "item_id": 80876,
+          "cantidad": 200
+        }
+      ],
+      "npc_entrega": "Bogdan",
+      "mapa": "Ancient Library",
+      "monstruo_ids": [
+        23905,
+        23906
+      ],
+      "monstruos": [
+        "red-green urn",
+        "indigo source"
+      ]
+    },
+    "1619_2": {
+      "qid": 1619,
+      "paso": 2,
+      "siguiente_paso": 3,
+      "cantidad": 1,
+      "items": [
+        {
+          "item_id": 80877,
+          "cantidad": 1
+        }
+      ],
+      "npc_entrega": "Saphira",
+      "mapa": "Fragrant Greenhouse",
+      "monstruo_ids": [
+        23920
+      ],
+      "monstruos": [
+        "poison root saphira"
+      ]
+    },
+    "1619_4": {
+      "qid": 1619,
+      "paso": 4,
+      "siguiente_paso": 5,
+      "cantidad": 200,
+      "items": [
+        {
+          "item_id": 80878,
+          "cantidad": 200
+        },
+        {
+          "item_id": 80879,
+          "cantidad": 200
+        },
+        {
+          "item_id": 80880,
+          "cantidad": 200
+        }
+      ],
+      "npc_entrega": "Saphira",
+      "mapa": "Fragrant Greenhouse",
+      "monstruo_ids": [
+        23912,
+        23916,
+        23913
+      ],
+      "monstruos": [
+        "violet night guardian",
+        "morning dew spirit",
+        "branch shadow giant"
+      ]
+    },
+    "1620_1": {
+      "qid": 1620,
+      "paso": 1,
+      "siguiente_paso": 2,
+      "cantidad": 1,
+      "items": [
+        {
+          "item_id": 80949,
+          "cantidad": 1
+        },
+        {
+          "item_id": 80950,
+          "cantidad": 1
+        },
+        {
+          "item_id": 80951,
+          "cantidad": 1
+        }
+      ],
+      "npc_entrega": "Salus",
+      "mapa": "Rotwood Abyss",
+      "monstruo_ids": [
+        23922,
+        23924,
+        23925
+      ],
+      "monstruos": [
+        "flame mushroom sprite",
+        "blood green fern",
+        "gray-blue archer"
+      ]
+    },
+    "1621_1": {
+      "qid": 1621,
+      "paso": 1,
+      "siguiente_paso": 2,
+      "cantidad": 1,
+      "items": [
+        {
+          "item_id": 80952,
+          "cantidad": 1
+        }
+      ],
+      "npc_entrega": "Freyre",
+      "mapa": "Rotwood Abyss",
+      "monstruo_ids": [
+        23930
+      ],
+      "monstruos": [
+        "masked king magna"
+      ]
+    },
+    "1622_1": {
+      "qid": 1622,
+      "paso": 1,
+      "siguiente_paso": 2,
+      "cantidad": 1,
+      "items": [
+        {
+          "item_id": 80953,
+          "cantidad": 1
+        }
+      ],
+      "npc_entrega": "Airi",
+      "mapa": "Rotwood Abyss",
+      "monstruo_ids": [
+        23933
+      ],
+      "monstruos": [
+        "f-07"
+      ]
+    },
+    "1623_1": {
+      "qid": 1623,
+      "paso": 1,
+      "siguiente_paso": 2,
+      "cantidad": 1,
+      "items": [
+        {
+          "item_id": 80954,
+          "cantidad": 1
+        }
+      ],
+      "npc_entrega": "Sofaen",
+      "mapa": "Rotwood Abyss",
+      "monstruo_ids": [
+        23934
+      ],
+      "monstruos": [
+        "mitaunos"
+      ]
+    },
+    "1624_1": {
+      "qid": 1624,
+      "paso": 1,
+      "siguiente_paso": 2,
+      "cantidad": 1,
+      "items": [
+        {
+          "item_id": 80955,
+          "cantidad": 1
+        }
+      ],
+      "npc_entrega": "Irona",
+      "mapa": "Rotwood Abyss",
+      "monstruo_ids": [
+        23935
+      ],
+      "monstruos": [
+        "susula"
+      ]
     }
   },
   "repetibles": [
@@ -146280,6 +149060,12 @@
     1598,
     1599,
     1600,
-    1601
+    1601,
+    1607,
+    1608,
+    1609,
+    1610,
+    1611,
+    1612
   ]
 }

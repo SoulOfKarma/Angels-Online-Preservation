@@ -3532,6 +3532,17 @@ def bando_encantado(m, bando: int = BANDO_MONSTRUO) -> tuple:
     return bytes(sp), atributo(m.entity_id, pct, VIDA)
 
 
+def soltar_encanto(m) -> list:
+    """Quita el encanto a `m` y devuelve lo que ve la sala: fin del efecto
+    303, sin enlace (0x3c) y de vuelta al bando de los monstruos."""
+    m.encantado = False
+    m.charmed_objetivo = None
+    m.encantado_por = None
+    return [struct.pack('<HIBBII', 0x001D, m.entity_id, 1, 4, 303, 0),
+            struct.pack('<HIBBI', 0x0013, m.entity_id, 1, 0x3c, 0),
+            *bando_encantado(m)]
+
+
 def bando_del_jugador(p) -> int:
     import login
     return max(1, min(5, int(login.CODIGO_FACCION.get(
