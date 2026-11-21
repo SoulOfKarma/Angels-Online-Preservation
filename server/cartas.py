@@ -16,6 +16,7 @@ from types import SimpleNamespace
 
 _TABLA = None
 _SETS = None
+_POR_ITEM = None
 log = logging.getLogger('cartas')
 BASE = pathlib.Path(__file__).parent.parent
 
@@ -72,21 +73,35 @@ def sets() -> dict:
     return _SETS
 
 
+def _items_carta() -> dict:
+    """Cache {item_id: card_id} de los items 卡片 en content.db (consulta O(1))."""
+    global _POR_ITEM
+    if _POR_ITEM is None:
+        import inventario
+        mapa = {}
+        con = sqlite3.connect('file:' + (BASE / 'corpus' / 'content.db').as_posix()
+                              + '?mode=ro', uri=True)
+        try:
+            for t in inventario.TABLAS_ITEM:
+                try:
+                    for iid, d1 in con.execute(
+                            f'SELECT id, "動態資料1" FROM {t} WHERE "物品類別" = ?', ('卡片',)):
+                        try:
+                            mapa[int(iid)] = int(d1)
+                        except (TypeError, ValueError):
+                            pass
+                except sqlite3.Error:
+                    continue
+        finally:
+            con.close()
+        _POR_ITEM = mapa
+    return _POR_ITEM
+
+
 def carta_de_item(item_id: int):
     """Only category 卡片, dynamic-data1 = card id; names are not types."""
-    import inventario
-    con = sqlite3.connect('file:' + (BASE / 'corpus' / 'content.db').as_posix()
-                          + '?mode=ro', uri=True)
-    try:
-        r = inventario.fila_item(con, '"物品類別", "動態資料1"', int(item_id))
-    finally:
-        con.close()
-    if r and r[0] == '卡片':
-        try:
-            return de_id(int(r[1]))
-        except (TypeError, ValueError):
-            pass
-    return None
+    cid = _items_carta().get(int(item_id))
+    return de_id(cid) if cid is not None else None
 
 
 def atributo(entity_id: int, kind: int, indice: int, valor: int = 1) -> bytes:

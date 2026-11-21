@@ -3104,6 +3104,9 @@ def _procesar_muerte_monstruo(ses, m, yo, addr, espera=0.0):
     if ses.personaje and ses.personaje.stage == 57 and m.npc_type == 224:
         ses.slarm_kills = getattr(ses, 'slarm_kills', 0) + 1
         log.info(f"[{addr}] Little Slarm derrotado en Fighting Palace ({ses.slarm_kills}/2)")
+        for _s_sl in _grupo_en_sala(ses):
+            if _s_sl is not ses and getattr(_s_sl, 'personaje', None) and _s_sl.personaje.stage == 57:
+                _s_sl.slarm_kills = getattr(_s_sl, 'slarm_kills', 0) + 1
 
     if ses.personaje and getattr(ses.personaje, 'stage', None) in STAGES_PLAYGROUND:
         if m.npc_type in ELFOS_A_LORDS:
@@ -3119,6 +3122,7 @@ def _procesar_muerte_monstruo(ses, m, yo, addr, espera=0.0):
             if _s_gb is not ses:
                 try:
                     _mis_muerte.registrar_baja_monstruo(_s_gb, m.npc_type, getattr(m, 'nombre', None), en_combate_real=True)
+                    _aliua_baja(_s_gb, getattr(m, 'npc_type', 0))
                     _s_gb.volcar()
                 except Exception:
                     log.exception('baja de mision de un companero')
@@ -3450,7 +3454,7 @@ def _procesar_muerte_monstruo(ses, m, yo, addr, espera=0.0):
                 slot_oc = _mis_sl.slot_oculto_para_item(ses, item_drop)
                 bolsa[slot_oc] = item_drop
                 _instancias(ses)[slot_oc] = _iv.instancia_nueva()
-                _cant_actual = int(_cantidades(ses).get(int(slot_oc), 0))
+                _cant_actual = int(_cantidades(ses).get(int(slot_oc), _cantidades(ses).get(str(slot_oc), 0)))
                 _cantidades(ses)[slot_oc] = _cant_actual + cant
                 _cantidades(ses)[str(slot_oc)] = _cant_actual + cant
                 tocadas_botin.append(slot_oc)
@@ -3499,12 +3503,101 @@ def _procesar_muerte_monstruo(ses, m, yo, addr, espera=0.0):
                  f"{getattr(ses.personaje, 'nombre', '?')} ({fraccion:.0%}): +{exp_ganada} exp, +{oro} oro, "
                  f"{len(drops)} items{'' if con_botin else ' (el botin le toco a otro)'}")
 
+    _premiados = set()
+    _participantes_pasos = []
     for _s_pr, _fr_pr, _bot_pr in _repartir_muerte(ses, m):
+        _premiados.add(id(_s_pr))
+        _participantes_pasos.append(_s_pr)
         try:
             _premiar(_s_pr, _fr_pr, _bot_pr)
         except Exception:
             log.exception('[%s] no se pudo premiar a un participante', addr)
-    _pasos_tras_botin(ses, m, addr)
+    # En grupo (incluso en modo Alone=1 si no alcanzo a pegar), todos los
+    # companeros en la sala reciben sus objetos de mision sin repartir EXP/oro.
+    for _s_gb in _grupo_en_sala(ses):
+        if id(_s_gb) not in _premiados:
+            _participantes_pasos.append(_s_gb)
+            try:
+                _entregar_botin_mision(_s_gb, m, getattr(_s_gb, 'addr', addr), _espera_muerte)
+            except Exception:
+                log.exception('[%s] botin de mision para companero', addr)
+    for _s_pb in _participantes_pasos:
+        _pasos_tras_botin(_s_pb, m, getattr(_s_pb, 'addr', addr))
+        if _s_pb is not ses:
+            try:
+                _s_pb.volcar()
+            except Exception:
+                pass
+
+
+def _entregar_botin_mision(ses, m, addr, espera_muerte=0.0):
+    """Entrega solo los objetos de mision de un monstruo muerto a un companero
+    de grupo que no entro en `_repartir_muerte` (ej. modo Alone sin dano)."""
+    if not getattr(ses, 'personaje', None):
+        return False
+    import asyncio
+    import clases as _cl
+    import inventario as _iv
+    import misiones as _mis_drop
+
+    drops = list(_mis_drop.verificar_botin_mision(ses, m.npc_type, getattr(m, 'nombre', '')) or [])
+    if not drops:
+        return False
+
+    bolsa = getattr(ses, 'inventario', {})
+    max_ranura = _tope_bolsa(bolsa)
+    tocadas_botin = []
+    salida = []
+    for item_drop, cant in drops:
+        cant = max(1, int(cant))
+        if _iv.es_item_oculto(item_drop):
+            slot_oc = _mis_drop.slot_oculto_para_item(ses, item_drop)
+            bolsa[slot_oc] = item_drop
+            _instancias(ses)[slot_oc] = _iv.instancia_nueva()
+            _cant_actual = int(_cantidades(ses).get(int(slot_oc), _cantidades(ses).get(str(slot_oc), 0)))
+            _cantidades(ses)[slot_oc] = _cant_actual + cant
+            _cantidades(ses)[str(slot_oc)] = _cant_actual + cant
+            tocadas_botin.append(slot_oc)
+            salida.append(_cl.aviso(_nombre_item(item_drop), tipo=0, msg_id=_cl.MSG_ITEM))
+            continue
+
+        if _peso_excedido(ses, item_drop, cant):
+            salida.append(_cl.aviso("", tipo=0, msg_id=1611))
+            continue
+
+        apila = None
+        if _iv.es_apilable(item_drop):
+            for s_r, it_id in bolsa.items():
+                if 20 <= s_r <= max_ranura and it_id == item_drop:
+                    apila = s_r
+                    break
+        if apila is None and not any(r not in bolsa for r in range(20, max_ranura + 1)):
+            log.info(f"[{addr}] inventario lleno (limite={max_ranura}), drop de mision {item_drop} ignorado")
+            continue
+
+        slot_drop = _meter(ses, item_drop, cant, ignorar_peso=True)
+        if slot_drop is not None:
+            tocadas_botin.append(slot_drop)
+            salida.append(_cl.aviso(_nombre_item(item_drop), tipo=0, msg_id=_cl.MSG_ITEM))
+
+    if tocadas_botin:
+        salida.extend(_refrescar(ses, tocadas_botin, con_oro=False))
+        salida.append(_stats_ses(ses))
+        salida.extend(_mis_drop.verificar_progreso_recoleccion(ses, [d[0] for d in drops]))
+    if salida:
+        try:
+            asyncio.get_event_loop().call_later(
+                espera_muerte,
+                lambda p=tuple(salida): ses.enviar_inmediato(*p))
+        except Exception:
+            ses.enviar(*salida)
+            try:
+                ses.volcar()
+            except Exception:
+                pass
+    if tocadas_botin and getattr(ses, 'usuario', None):
+        cuentas.guardar_inventario(ses.usuario, ses.personaje.char_id, bolsa, _cantidades(ses))
+    return bool(tocadas_botin)
 
 
 def _pasos_tras_botin(ses, m, addr):
