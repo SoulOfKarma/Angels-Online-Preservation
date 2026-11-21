@@ -17565,6 +17565,15 @@ class Servidor:
                 else:
                     return
 
+            # Las cartas reales del Libro de Cartas son un sistema aparte.
+            # Registrarlas antes de las comprobaciones genéricas evita que la
+            # primera carta usada tras arrancar cargue tablas de producción,
+            # bolsas, mascotas o buffs que no necesita y bloquee varios segundos.
+            if ses.personaje and not objetivo:
+                import cartas as _cartas
+                if _cartas.registrar(ses, ranura, _sacar, _refrescar):
+                    return
+
             try:
                 import logros as _lg_u
                 if int(bolsa[ranura]) in _lg_u.items_contados()[1]:
@@ -18991,14 +19000,6 @@ class Servidor:
                 if getattr(ses, 'usuario', None):
                     cuentas.guardar_inventario(ses.usuario, cid, bolsa, _cantidades(ses))
                 log.info('[%s] regalo %s abierto (%s) -> %s', addr, item_id, modo, premios)
-                return
-
-            # Caso 6: genuine Card Book cards. Validation and consumption
-            # must commit together; an English name containing Card is not
-            # sufficient to consume an item (EXP cards are other systems).
-            import cartas as _cartas
-            if ses.personaje and not objetivo and _cartas.registrar(
-                    ses, ranura, _sacar, _refrescar):
                 return
 
             # Caso 7: Advancement Stone (subir nivel del personaje instantaneamente)
