@@ -4284,7 +4284,99 @@ def _paquete_banco_personal(ses):
             _guardado.append((int(r), int(v[0]), int(v[1]) if len(v) > 1 else 1))
         else:
             _guardado.append((int(r), int(v), 1))
-    return _inv.almacen(p.char_id, _guardado, p.entity_id, mejoras=p.mejoras)
+    _extra = _inv.registros_alquiler_banco(p.char_id, getattr(p, 'banco_alquileres', None) or {})
+    return _inv.almacen(p.char_id, _guardado, p.entity_id, mejoras=p.mejoras, extra=_extra)
+
+
+# Alquiler de cofres del banco personal ("Rent" del cliente):
+# el periodo lo manda el dialogo (0=1 dia, 1=7 dias, 2=30 dias, 3=permanente)
+# y la LLAVE que se consume la fija el propio cliente:
+#   - 0x5d4050 (es_clave, arg 1)   -> 1999 (0x7cf)  y 79744 (0x13780): 1 dia
+#   - 0x58b000 (hasbankkey, arg 1) -> 2000 (0x7d0)  y 19243 (0x4b2b): 7 dias
+#   - 0x5d4050 (arg 0x1e)          -> 2001 (0x7d1)  y 79743 (0x1377f): 30 dias
+#   - 0x5d4050 (arg 0)             -> 2734 (0xaae) y 79742 (0x1377e): permanente
+#     (y para los cofres 7..24 el titulo tambien acepta 35771..35788)
+LLAVES_ALQUILER_BANCO = {
+    0: (1999, 79744),
+    1: (2000, 19243),
+    2: (2001, 79743),
+    3: (2734, 79742, 35771),
+}
+DIAS_ALQUILER_BANCO = {0: 1, 1: 7, 2: 30}
+
+
+def _alquiler_vigente(alq, ahora=None):
+    """True si el registro de alquiler sigue en pie."""
+    import time as _t_alq
+    if not isinstance(alq, dict):
+        return False
+    expira = alq.get('expira')
+    if not expira:
+        return True
+    return float(expira) > (_t_alq.time() if ahora is None else ahora)
+
+
+def _alquilar_banco(ses, addr, cofre: int, periodo: int) -> bool:
+    """C2S 0x002F [0x17][LE32 cofre][LE32 periodo]: alquilar un cofre.
+
+    REA: game.sendrentbank (cliente 0x613700) es el UNICO emisor de C2S 0x2F
+    de todo el cliente CN; los arrastres del banco viajan con contenedor 14
+    (0x0e) medido en las grabaciones de sesion, y 16/17 son los clicks
+    derechos. El paquete mide SIEMPRE 9 bytes de cuerpo.
+
+    El cliente pinta el cofre alquilado a partir del REGISTRO de cuenta que
+    llega por 0x001B/0x004E (isbankrent), no de una respuesta al alquiler:
+    basta con meter el registro en el array de cuenta.
+
+    Devuelve True si el paquete era un alquiler atendido; False cuando la
+    forma no cuadra del todo y conviene dejarlo caer al camino del arrastre
+    (sin llave o con rangos imposibles no se puede descartar que sea un
+    arrastre de cofre alquilado de otra build).
+    """
+    import inventario as _inv_alq
+    import time as _t_alq
+    p = ses.personaje
+    if not (0 <= int(cofre) < 24) or int(periodo) not in LLAVES_ALQUILER_BANCO:
+        log.warning('[%s] alquiler banco: forma no valida, se trata como arrastre '
+                    'cofre=%s periodo=%s', addr, cofre, periodo)
+        return False
+    alqs = getattr(p, 'banco_alquileres', None)
+    if alqs is None:
+        alqs = p.banco_alquileres = {}
+    ahora = _t_alq.time()
+    if _alquiler_vigente(alqs.get(int(cofre)), ahora):
+        ses.enviar(clases_aviso('That bank chest is already rented.'))
+        return True
+    bolsa = getattr(ses, 'inventario', {})
+    slot_clave = None
+    clave = None
+    for candidata in LLAVES_ALQUILER_BANCO[int(periodo)]:
+        slot_clave = next((r for r in range(20, _tope_bolsa(bolsa) + 1)
+                           if int(bolsa.get(r, 0)) == candidata), None)
+        if slot_clave is not None:
+            clave = candidata
+            break
+    if slot_clave is None:
+        log.info('[%s] alquiler banco: sin llave para el periodo %d (cofre %d); '
+                 'se deja caer al camino del arrastre', addr, periodo, cofre)
+        return False
+    _sacar(ses, slot_clave, 1)
+    expira = ahora + DIAS_ALQUILER_BANCO[int(periodo)] * 86400 if int(periodo) in DIAS_ALQUILER_BANCO else None
+    alqs[int(cofre)] = {'clave': int(clave), 'expira': expira}
+    if getattr(ses, 'usuario', None):
+        _guardar_bolsa(ses, p.char_id)
+        # al final: los guardados parciales de la bolsa no tocan esta clave,
+        # pero asi un guardado de inventario de tipo "reemplazo" tampoco la
+        # borra.
+        cuentas.guardar_banco_alquileres(ses.usuario, p.char_id, alqs)
+    registro = _inv_alq.registro_alquiler_banco(p.char_id, int(cofre), int(clave), int(expira or 0))
+    ses.enviar(*_refrescar(ses, [slot_clave]), _stats_ses(ses),
+               struct.pack('<HI', 0x001B, 1) + registro)
+    ses.enviar(clases_aviso('The bank chest rental succeeded.'))
+    log.info('[%s] alquiler banco: cofre %d periodo %d con llave %d%s',
+             addr, cofre, periodo, clave,
+             '' if expira else ' (permanente)')
+    return True
 
 
 def _portal_por_evento(ses, addr, por):
@@ -16212,6 +16304,17 @@ class Servidor:
                 _banco_liga_002f(ses, addr, _contenedor, cuerpo)
                 return
 
+            if (_contenedor == 0x17 and len(cuerpo) == 9
+                    and getattr(ses, 'banco_activo', None) in (None, 'personal')):
+                # "Rent" del cofre: game.sendrentbank manda
+                # [u8 0x17][LE32 cofre 0..23][LE32 periodo 0..3] (9 bytes).
+                # Los arrastres reales usan contenedor 14/16/17; si la forma
+                # no cuadra con un alquiler posible, _alquilar_banco pide que
+                # siga al camino del arrastre de abajo.
+                _cofre, _periodo = struct.unpack_from('<II', cuerpo, 1)
+                if _alquilar_banco(ses, addr, _cofre, _periodo):
+                    return
+
             if _contenedor == 16:
                 # Click derecho en casilla del BANCO (usebankitem) -> Retirar a la mochila
                 import inventario as _iv3
@@ -20353,7 +20456,10 @@ class Servidor:
                         else:
                             _guardado.append((int(r), int(v), 1))
                     _real = _inv.almacen(ses.personaje.char_id, _guardado,
-                                         ses.personaje.entity_id, mejoras=ses.personaje.mejoras)
+                                         ses.personaje.entity_id, mejoras=ses.personaje.mejoras,
+                                         extra=_inv.registros_alquiler_banco(
+                                             ses.personaje.char_id,
+                                             getattr(ses.personaje, 'banco_alquileres', None) or {}))
                     submsgs = tuple(_real if m[:2] == struct.pack('<H', 0x004E) else m
                                     for m in submsgs)
                     ses.banco_activo = 'personal'

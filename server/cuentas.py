@@ -720,6 +720,8 @@ def personaje_de(cuenta, ranura=0):
         banco={int(k): (tuple(v) if isinstance(v, list) else v)
                for k, v in p.get('banco', {}).items()},
         banco_oro=int(p.get('banco_oro', 0)),
+        banco_alquileres={int(k): dict(v) for k, v in (p.get('banco_alquileres') or {}).items()
+                          if isinstance(v, dict)},
         album={str(k): ([list(x) if isinstance(x, (list, tuple)) else x for x in v] if isinstance(v, (list, tuple)) else int(v)) for k, v in (p.get('album') or {}).items()},
         logros=[int(x) for x in (p.get('logros') or [])],
         recetas=[int(x) for x in (p.get('recetas') or [])],
@@ -1231,6 +1233,13 @@ def guardar_cardbook(usuario: str, char_id: int, plan):
 def guardar_banco(usuario: str, char_id: int, banco: dict):
     def _mut(p):
         p['banco'] = {str(k): v for k, v in sorted(banco.items(), key=_slot_sort_key)}
+    _actualizar_personaje(usuario, char_id, _mut)
+
+
+def guardar_banco_alquileres(usuario: str, char_id: int, alquileres: dict):
+    """Rentas de los cofres del banco personal: {cofre: {'clave': item, 'expira': epoch|None}}."""
+    def _mut(p):
+        p['banco_alquileres'] = {str(k): dict(v) for k, v in alquileres.items()}
     _actualizar_personaje(usuario, char_id, _mut)
 
 

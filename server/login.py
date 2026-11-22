@@ -72,6 +72,12 @@ class Personaje:
     exp: int = 0
     banco: dict = field(default_factory=dict)
     banco_oro: int = 0
+    # Alquiler de los 24 cofres del banco personal ("Rent" del cliente): la
+    # clave es el indice del cofre 0..23 y el valor guarda {"clave": item id
+    # de la llave consumida, "expira": epoch o None si es permanente}. El
+    # cliente los consulta por los registros de datos de cuenta que viajan en
+    # el 0x001B/0x004E (game.isbankrent, cliente 0x58b530).
+    banco_alquileres: dict = field(default_factory=dict)
     # Creditos de rango, los que la ficha muestra como "Credit:". Suben con
     # las quests y con los objetos de investitem.xml, que dan de cinco en
     # cinco los mas baratos.
