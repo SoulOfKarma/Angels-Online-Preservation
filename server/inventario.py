@@ -2599,7 +2599,7 @@ def completo(char_id: int, items, dueno: int = None, mejoras=None,
 
 
 def almacen(char_id: int, items, dueno: int = None,
-            tipo: int = 2, mejoras: dict = None) -> bytes:
+            tipo: int = 2, mejoras: dict = None, extra: list = None) -> bytes:
     """Sub-mensaje 0x004E con el almacen del banco.
 
     El cuerpo es EL MISMO que el del 0x001A: un LE32 con el numero de
@@ -2632,8 +2632,80 @@ def almacen(char_id: int, items, dueno: int = None,
                                    it[3] if len(it) > 3 else None, dueno)
         key = -10000-int(it[0])
         lista.append(marcar_caducidad_holy(e,(mejoras or {}).get(key) or (mejoras or {}).get(str(key))))
+    # Entradas ya armadas desde fuera (los registros de alquiler de los
+    # cofres): el 0x004E tipo 2 BORRA todos los registros de cuenta en el
+    # cliente (client 0x605480 -> FUN_005117a0 sobre stage+0x61d0), asi que
+    # los alquileres vigentes tienen que volver dentro de ESTE paquete o el
+    # cliente los pierde al abrir el banco.
+    for _extra in (extra or []):
+        lista.append(_extra)
     return (struct.pack('<HI', 0x004E, tipo * 1000 + len(lista))
             + b''.join(lista))
+
+
+def registro_alquiler_banco(char_id: int, cofre: int, item_clave: int,
+                            expira: int = 0) -> bytes:
+    """Entrada 0x001B (86 B) que marca un cofre del banco personal como alquilado.
+
+    REA del cliente CN (angel-cn-unpacked.exe, SHA256 23e5c683...):
+    game.isbankrent (0x58b530) y game.getbankbagmsg (0x58b1f0) leen el array
+    de registros de CUENTA (stage+0x61d0) en la posicion
+
+        cofre 1..6   (Lua 1-base)  ->  0x74 + (cofre-1)
+        cofre 7..24  (Lua 1-base)  ->  0x186 + (cofre-1)
+
+    (con cofre 0-base: 0x74+cofre y 0x186+cofre). Un puntero no nulo ahi
+    significa "alquilado"; FUN_00511a50 guarda cada registro en
+    array[registro+0x25], es decir la ranura LE16 de la entrada (e[38:40]).
+
+    Campos que el cliente mira en el registro:
+      +9   item id de la LLAVE con la que se alquilo: getbankbagmsg decide el
+           titulo "Permanent" con 0x5d4050 (ids 2734/79742 y, para cofres
+           7..24, el rango 0x8bbb..0x8bcc = 35771..35788).
+      +47  fin del alquiler, timestamp absoluto (igual que el de los
+           mercenarios: sub_5C3710 resta el tiempo sincronizado); el titulo
+           formatea esa fecha con el msg 0x363.
+
+    El resto de la entrada sigue la plantilla normal del 0x001B; el byte
+    e[33] (contenedor) vale CONT_BANCO=2 para que el registro aterrice en el
+    array de cuenta y no en el del personaje.
+    """
+    if not 0 <= int(cofre) < 24:
+        raise ValueError('cofre fuera de rango: %r' % (cofre,))
+    slot = 0x74 + int(cofre) if int(cofre) < 6 else 0x186 + int(cofre)
+    e = bytearray(bytes.fromhex(_plantilla_inicial()['normal']))
+    inst = ((0xB000 + int(cofre)) << 16) | (int(char_id) & 0xFFFF)
+    struct.pack_into('<II', e, 1, inst, inst)
+    struct.pack_into('<I', e, 9, int(item_clave))
+    e[33] = CONT_BANCO
+    struct.pack_into('<I', e, 34, ID_BANCO)
+    struct.pack_into('<H', e, 38, slot)
+    struct.pack_into('<I', e, 40, 1)
+    struct.pack_into('<I', e, 47, max(0, min(0xffffffff, int(expira))) if expira else 0)
+    return bytes(e)
+
+
+def registros_alquiler_banco(char_id: int, alquileres: dict,
+                             ahora: float = None) -> list:
+    """Las entradas de alquiler vigentes, listas para meter en el 0x004E.
+
+    `alquileres` es banco_alquileres del personaje: {cofre: {'clave': item,
+    'expira': epoch|None}}. Los vencidos se omiten: sin registro en el array
+    el cliente pinta el cofre como no alquilado, que es lo correcto.
+    """
+    import time as _t
+    now = _t.time() if ahora is None else ahora
+    fuera = []
+    for cofre, alq in sorted((int(k), v) for k, v in (alquileres or {}).items()):
+        if not isinstance(alq, dict) or not int(alq.get('clave') or 0):
+            continue
+        expira = alq.get('expira')
+        if expira and float(expira) <= now:
+            continue
+        fuera.append(registro_alquiler_banco(char_id, cofre,
+                                             int(alq['clave']),
+                                             int(expira or 0)))
+    return fuera
 
 
 def banco_vaciar_ranura(ranura: int) -> bytes:
