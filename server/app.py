@@ -7711,7 +7711,10 @@ def _dar_exp_habilidad(ses, skill_id, puntos):
                 nivel += 1
             pts = min(pts, max(1, clases.exp_requerida_skill(nivel, sid)))
             dada = True
-            ses.enviar(clases.aviso_doble(clases.MSG_SKILL_EXP, clases.nombre(sid), str(int(puntos))))
+            ses.enviar(
+                clases.aviso_doble(clases.MSG_SKILL_EXP, clases.nombre(sid), str(int(puntos))),
+                struct.pack('<HIBBII', 0x001D, int(p.entity_id), 1, 0, int(sid), int(pts) & 0xFFFFFFFF),
+            )
         nuevas.append((sid, nivel, pts))
     if dada:
         p.habilidades = nuevas
@@ -11638,6 +11641,18 @@ class Servidor:
                                                 inv['objetivo'] = cand_m
                                                 targ = cand_m
                                                 break
+                                elif not targ and inv.get('es_mercenario'):
+                                    # Mercenarios: agresivos contra enemigos cercanos, igual que una mascota en modo Active (<= 10 casillas del dueño)
+                                    cands = []
+                                    for cand_m in list(getattr(ses, 'monstruos', {}).values()):
+                                        if cand_m and getattr(cand_m, 'vivo', False) and cand_m.hp > 0 and not getattr(cand_m, 'encantado', False) and __import__('holy_battlefield').puede_atacar(ses,cand_m):
+                                            d_pm = max(abs(cand_m.tile_x - p.tile_x), abs(cand_m.tile_y - p.tile_y))
+                                            if d_pm <= 10 and max(abs(inv['tile_x'] - cand_m.tile_x), abs(inv['tile_y'] - cand_m.tile_y)) <= 15:
+                                                cands.append((d_pm, cand_m))
+                                    if cands:
+                                        cands.sort(key=lambda x: x[0])
+                                        inv['objetivo'] = cands[0][1]
+                                        targ = cands[0][1]
 
                                 if targ:
                                     dist_tx = abs(inv['tile_x'] - targ.tile_x)
@@ -17743,15 +17758,16 @@ class Servidor:
             bolsa = getattr(ses, 'inventario', None)
             if bolsa is None:
                 return
-            if len(cuerpo) == 8:
+            if len(cuerpo) in (8, 16):
                 ranura, target_raw = struct.unpack_from('<II', cuerpo, 0)
                 objetivo = target_raw if target_raw != 0 else None
-            elif len(cuerpo) == 5:
+            elif len(cuerpo) in (5, 13):
                 if cuerpo[4] == 0 and cuerpo[0] not in bolsa and struct.unpack_from('<I', cuerpo, 0)[0] in bolsa:
                     ranura = struct.unpack_from('<I', cuerpo, 0)[0]
                 else:
                     ranura = cuerpo[0]
-                    objetivo = struct.unpack_from('<I', cuerpo, 1)[0]
+                    target_raw = struct.unpack_from('<I', cuerpo, 1)[0]
+                    objetivo = target_raw if target_raw != 0 else None
             else:
                 ranura = struct.unpack_from('<I', cuerpo, 0)[0]
             if ranura not in bolsa:
